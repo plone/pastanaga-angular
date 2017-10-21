@@ -5,8 +5,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatListModule,
   MatIconModule,
-  MatButtonModule,
-  MatInputModule
+  MatFormFieldModule,
+  MatFormFieldControl,
+  MatInputModule,
+  MatButtonModule
 } from '@angular/material';
 
 import { environment } from '../environments/environment';
