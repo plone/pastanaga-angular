@@ -2,13 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import {
   MatListModule,
   MatIconModule,
   MatFormFieldModule,
   MatFormFieldControl,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatCardModule
 } from '@angular/material';
 
 import { environment } from '../environments/environment';
@@ -36,12 +38,14 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
     BrowserModule,
     RESTAPIModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatListModule,
     MatIconModule,
     IconsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
     {

@@ -1,11 +1,15 @@
-<button mat-button>
+<button mat-button mat-fab>
   <a traverseTo="@@add?type=Document"><mat-icon svgIcon="add-document"></mat-icon></a>
 </button>
 
-<button mat-button>
-  <mat-icon svgIcon="folder"></mat-icon>
+<button mat-button mat-fab>
+  <a traverseTo="@@edit">
+    <mat-icon svgIcon="folder"></mat-icon>
+  </a>
 </button>
 
-<button mat-raised-button color="primary">
-  <mat-icon svgIcon="pen"></mat-icon>
+<button mat-raised-button mat-fab color="primary">
+  <a traverseTo="@@edit">
+    <mat-icon svgIcon="pen"></mat-icon>
+  </a>
 </button>
