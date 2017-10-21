@@ -1,17 +1,17 @@
 <h2>Log in</h2>
-<form action="POST">
+<form name="loginform">
 
   <fieldset class="fieldset">
     <legend>Sign in to start session</legend>
 
     <mat-form-field>
       <label for="login-user">User</label>
-      <input matInput id="login-user" name="username">
+      <input matInput #user name="username">
     </mat-form-field>
 
     <mat-form-field>
       <label for="login-password">Password</label>
-      <input matInput id="login-password" name="password">
+      <input type="password" matInput #password name="password">
     </mat-form-field>
 
     <p class="form-help">Forgot password? Ask for a <a href="">new password.</a></p>
@@ -20,7 +20,7 @@
       <button mat-fab>
         <mat-icon svgIcon="clear"></mat-icon>
       </button>
-      <button mat-fab>
+      <button type="submit" mat-fab (click)='submit(user.value, password.value)'>
         <mat-icon svgIcon="ahead"></mat-icon>
       </button>
     </div>
