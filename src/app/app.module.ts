@@ -6,14 +6,23 @@ import {MatListModule} from '@angular/material';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { CustomNavigationComponent } from './custom-navigation/custom-navigation.component';
-import { CustomNavigationLevelComponent } from './custom-navigation-level/custom-navigation-level.component';
+import { PastanagaLoginComponent } from './pastanaga-login/pastanaga-login.component';
+import { PastanagaEditDocumentComponent } from './pastanaga-edit-document/pastanaga-edit-document.component';
+import { PastanagaHomeComponent } from './pastanaga-home/pastanaga-home.component';
+import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomNavigationComponent,
-    CustomNavigationLevelComponent
+    PastanagaLoginComponent,
+    PastanagaEditDocumentComponent,
+    PastanagaHomeComponent,
+    PastanagaToolbarComponent
+  ],
+  entryComponents: [
+    PastanagaHomeComponent,
+    PastanagaLoginComponent,
+    PastanagaEditDocumentComponent,
   ],
   imports: [
     BrowserModule,
