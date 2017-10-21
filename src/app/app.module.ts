@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatListModule} from '@angular/material';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -17,7 +18,8 @@ import { CustomNavigationLevelComponent } from './custom-navigation-level/custom
   imports: [
     BrowserModule,
     RESTAPIModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatListModule
   ],
   providers: [
     {

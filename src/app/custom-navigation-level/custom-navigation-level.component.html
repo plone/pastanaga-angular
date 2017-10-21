@@ -1,3 +1,10 @@
-<p>
-  custom-navigation-level works!
-</p>
+<mat-list>
+  <mat-list-item *ngFor="let link of links">
+    <a mat-line [traverseTo]="link.properties['@id']">
+      {{ link.properties.title }}
+    </a>
+    <custom-navigation-level
+      [links]="link.children"
+      *ngIf="link.children"></custom-navigation-level>
+  </mat-list-item>
+</mat-list>
