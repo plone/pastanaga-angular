@@ -5,7 +5,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatListModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
+  MatInputModule
 } from '@angular/material';
 
 import { environment } from '../environments/environment';
