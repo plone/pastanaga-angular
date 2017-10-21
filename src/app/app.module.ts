@@ -4,7 +4,11 @@ import { RESTAPIModule } from '@plone/restapi-angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatListModule,
-  MatIconModule
+  MatIconModule,
+  MatFormFieldModule,
+  MatFormFieldControl,
+  MatInputModule,
+  MatButtonModule
 } from '@angular/material';
 
 import { environment } from '../environments/environment';
@@ -34,7 +38,10 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
-    IconsModule
+    IconsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     {

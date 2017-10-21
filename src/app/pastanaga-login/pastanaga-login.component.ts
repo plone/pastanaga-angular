@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+
 
 @Component({
   selector: 'app-pastanaga-login',
