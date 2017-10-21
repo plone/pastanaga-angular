@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
-
+import { AuthenticationService } from '@plone/restapi-angular';
 
 @Component({
   selector: 'app-pastanaga-login',
@@ -9,9 +9,19 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
 })
 export class PastanagaLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: AuthenticationService) {
+  }
 
   ngOnInit() {
   }
 
+  login(login: string, password: string) {
+    this.service.login(login, password);
+    return false;
+  }
+
+  logout() {
+    this.service.logout();
+    return false;
+  }
 }
