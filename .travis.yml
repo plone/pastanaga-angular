@@ -12,17 +12,17 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-install:
-      - npm install -g yarn @angular/cli
-      - yarn install
-#   - sudo pip install -r requirements.txt
-before_script:
-  - wget "http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip"
+before_install:
+  - wget "http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip"
   - unzip chromedriver_linux64.zip
   - sudo mv chromedriver /usr/local/bin
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - npm install -g yarn @angular/cli
+install:
+  - yarn install
 script:
   - ng test
-#   - pybot test.robot
 notifications:
   email:
     - stollenwerk@kitconcept.com
