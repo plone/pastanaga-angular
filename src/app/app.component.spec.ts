@@ -9,7 +9,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import {
   MatListModule,
-  MatIconModule
+  MatIconModule,
 } from '@angular/material';
 import { IconsModule } from './icons/icons.module';
 
