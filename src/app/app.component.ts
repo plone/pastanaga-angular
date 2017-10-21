@@ -16,7 +16,7 @@ export class AppComponent {
     public services: Services,
   ) {
     this.views.initialize();
-    // this.services.traverser.addView('login', '*', PastanagaLoginComponent);
+    this.services.traverser.addView('login', '*', PastanagaLoginComponent);
     this.services.traverser.addView('view', 'Plone Site', PastanagaHomeComponent);
     this.services.traverser.addView('add', '*', PastanagaEditDocumentComponent);
     this.services.traverser.addView('edit', '*', PastanagaEditDocumentComponent);

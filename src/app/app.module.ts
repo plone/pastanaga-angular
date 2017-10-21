@@ -39,6 +39,8 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
     MatListModule,
     MatIconModule,
     IconsModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule
   ],
   providers: [
