@@ -4,6 +4,73 @@
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
+$mat-pastanaga: (
+  50: #f1f8e9,
+  100: #dcedc8,
+  200: #c5e1a5,
+  300: #aed581,
+  400: #007eb1,
+  500: #007eb1,
+  600: #007eb1,
+  700: #007eb1,
+  800: #007eb1,
+  900: #007eb1,
+  A100: #ccff90,
+  A200: #b2ff59,
+  A400: #007eb1,
+  A700: #007eb1,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: $black-87-opacity,
+    600: $black-87-opacity,
+    700: white,
+    800: white,
+    900: white,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $black-87-opacity,
+  )
+);
+
+$mat-pastanaga-brown: (
+  50: #f1f8e9,
+  100: #dcedc8,
+  200: #c5e1a5,
+  300: #aed581,
+  400: #826a6a,
+  500: #826a6a,
+  600: #826a6a,
+  700: #826a6a,
+  800: #826a6a,
+  900: #826a6a,
+  A100: #826a6a,
+  A200: #826a6a,
+  A400: #826a6a,
+  A700: #826a6a,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: $black-87-opacity,
+    600: $black-87-opacity,
+    700: white,
+    800: white,
+    900: white,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $black-87-opacity,
+  )
+);
+
+
 $pastanaga-typography: mat-typography-config(
   $font-family: 'Poppins'
 );
@@ -17,14 +84,17 @@ $pastanaga-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$pastanaga-primary: mat-palette($mat-blue);
-$pastanaga-accent:  mat-palette($mat-pink, A200, A100, A400);
+$pastanaga-primary: mat-palette($mat-pastanaga);
+$pastanaga-accent:  mat-palette($mat-pastanaga-brown, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $pastanaga-warn:    mat-palette($mat-red);
 
+
+
 // Create the theme object (a Sass map containing all of the palettes).
-$pastanaga-theme: mat-light-theme($pastanaga-primary, $pastanaga-accent, $pastanaga-warn);
+$pastanaga-theme: mat-light-theme($pastanaga-accent, $pastanaga-primary, $pastanaga-warn);
+
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
