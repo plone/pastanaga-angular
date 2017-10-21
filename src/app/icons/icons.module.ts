@@ -301,6 +301,6 @@ export class IconsModule {
     iconRegistry.addSvgIcon('zoom-in', sanitizer.bypassSecurityTrustResourceUrl('../assets/Icons/zoom-in.svg'));
     iconRegistry.addSvgIcon('zoom-off', sanitizer.bypassSecurityTrustResourceUrl('../assets/Icons/zoom-off.svg'));
     iconRegistry.addSvgIcon('zoom-out', sanitizer.bypassSecurityTrustResourceUrl('../assets/Icons/zoom-out.svg'));
-    iconRegistry.addSvgIcon('zoom.svg', sanitizer.bypassSecurityTrustResourceUrl('../assets/Icons/zoom.svg'));
+    iconRegistry.addSvgIcon('zoom', sanitizer.bypassSecurityTrustResourceUrl('../assets/Icons/zoom.svg'));
   }
 }
