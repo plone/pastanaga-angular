@@ -12,4 +12,8 @@ export class PastanagaEditDocumentComponent extends EditView {
     console.log(this)
   }
 
+  send(value, form) {
+    console.log(value)
+  }
+
 }
