@@ -2,7 +2,7 @@
     <h2>Log in</h2>
 </header>
 
-<form class="pastanaga-form" #f="ngForm" (ngSubmit)="login($event, f.value, f)">
+<form class="pastanaga-form"  #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 
   <fieldset class="fieldset">
 
@@ -12,14 +12,16 @@
 
     <div class="form-body">
 
+      <p class="error" *ngIf="error">{{ error }}</p>
+
       <mat-form-field>
-        <label for="username" class="label">User</label>
-        <input id="username" class="input" name="username" [(ngModel)]="f.username" required matInput>
+        <label for="login" class="label">User</label>
+        <input id="login" class="input" type="text" name="login" ngModel required matInput>
       </mat-form-field>
 
       <mat-form-field>
         <label for="password" class="label">Password</label>
-        <input id="password" class="input" name="password" [(ngModel)]="f.password" type="password" required matInput>
+        <input id="password" class="input" name="password" ngModel type="password" required matInput>
       </mat-form-field>
 
       <p class="form-help">Forgot password? Ask for a <a class="link" href="">new password.</a></p>
@@ -27,10 +29,10 @@
     </div>
 
     <div class="form-actions">
-      <a href="" class="btn btn-clear mat-elevation-z" (click)="goBack($event)" mat-fab color="basic">
-        <mat-icon svgIcon="clear"></mat-icon>
-      </a>
-      <button class="btn btn-submit mat-elevation-z" type="submit" mat-fab color="primary">
+      <button mat-fab color="basic">
+        <mat-icon svgIcon="clear" (click)="cancel()"></mat-icon>
+      </button>
+      <button class="btn btn-submit mat-elevation-z" mat-fab color="primary" type="submit" value="Login">
         <mat-icon svgIcon="ahead"></mat-icon>
       </button>
     </div>
