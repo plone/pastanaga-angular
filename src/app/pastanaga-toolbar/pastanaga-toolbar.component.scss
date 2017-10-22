@@ -1,47 +1,12 @@
 @import '../../styles';
 
-.pastanaga-button {
-  color: mat-color($mat-pastanaga-brown, 500, null);
-  display: block;
-  border-radius: 10em;
-  margin: 0 .5em;
-  line-height: 0;
-  
-  &:hover {
-    color: mat-color($mat-pastanaga-brown, 700, null);
-  }
-
-  &:active {
-    color: mat-color($mat-pastanaga-brown, 900, null);
-  }
-
-  &:focus {
-    outline: 2px solid mat-color($mat-pastanaga, 100, null);
-  }
-  
-  &.primary {
-    color: mat-color($mat-pastanaga, 500, null);
-    border: solid 2px mat-color($mat-pastanaga, 500, null);
-
-    &:hover {
-      color: mat-color($mat-pastanaga, 700, null);
-    }
-
-    &:active {
-      color: mat-color($mat-pastanaga, 900, null);
-    }
-  }
-
-  .mat-icon {
-    width: 2em;
-    height: 2em;
-    padding: .25em;
-  }
-}
-
-
 .pastanaga-toolbar {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  background: white;
   display: flex;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
   justify-content: space-between;
@@ -80,5 +45,44 @@
 
   &:hover::before {
     background: mat-color($mat-pastanaga, 100, null);
+  }
+}
+
+.pastanaga-button {
+  color: mat-color($mat-pastanaga-brown, 500, null);
+  display: block;
+  border-radius: 10em;
+  margin: 0 .5em;
+  line-height: 0;
+  
+  &:hover {
+    color: mat-color($mat-pastanaga-brown, 700, null);
+  }
+
+  &:active {
+    color: mat-color($mat-pastanaga-brown, 900, null);
+  }
+
+  &:focus {
+    outline: 2px solid mat-color($mat-pastanaga, 100, null);
+  }
+  
+  &.primary {
+    color: mat-color($mat-pastanaga, 500, null);
+    border: solid 2px mat-color($mat-pastanaga, 500, null);
+
+    &:hover {
+      color: mat-color($mat-pastanaga, 700, null);
+    }
+
+    &:active {
+      color: mat-color($mat-pastanaga, 900, null);
+    }
+  }
+
+  .mat-icon {
+    width: 2em;
+    height: 2em;
+    padding: .25em;
   }
 }
