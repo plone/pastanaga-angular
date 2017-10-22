@@ -1,0 +1,42 @@
+.pastanaga-button {
+  background: transparent;
+  color: mat-color($mat-pastanaga-brown, 500, null);
+  display: block;
+  border-radius: 10em;
+  margin: 0 .5em;
+  padding: 0;
+  line-height: 0;
+  cursor: pointer;
+  border: solid 2px transparent;
+  
+  &:hover {
+    color: mat-color($mat-pastanaga-brown, 800, null);
+  }
+  
+  &:active {
+    color: mat-color($mat-pastanaga-brown, 900, null);
+  }
+  
+  &:focus {
+    outline: 2px solid mat-color($mat-pastanaga, 100, null);
+  }
+  
+  &.primary {
+    color: mat-color($mat-pastanaga, 500, null);
+    border-color: mat-color($mat-pastanaga, 500, null);
+
+    &:hover {
+      color: mat-color($mat-pastanaga, 800, null);
+    }
+
+    &:active {
+      color: mat-color($mat-pastanaga, 900, null);
+    }
+  }
+
+  .mat-icon {
+    width: 2em;
+    height: 2em;
+    padding: .25em;
+  }
+}
