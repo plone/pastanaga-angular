@@ -41,14 +41,38 @@
 
 
 .pastanaga-toolbar {
+  position: relative;
   display: flex;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
   justify-content: space-between;
-  padding: 1em;
+  padding: 1.25em .75em;
 }
 
 .pastanaga-toolbar-actions {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.pastanaga-toolbar-opener {
+  position: absolute;
+  display: block;
+  left: 50%;
+  bottom: 0;
+  margin-left: -60px;
+  height: 1.25em;
+  transition: transform .3s;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 3px;
+    margin-top: .75em;
+    background: mat-color($mat-pastanaga, 50, null);
+  }
+
+  &:hover {
+    transform: translate(0, 2px);
+  }
 }
