@@ -7,7 +7,6 @@ import {
   MatListModule,
   MatIconModule,
   MatFormFieldModule,
-  MatFormFieldControl,
   MatInputModule,
   MatButtonModule,
   MatCardModule

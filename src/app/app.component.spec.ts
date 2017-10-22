@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject, async } from '@angular/core/testing';
 import {
   HttpTestingController,
   HttpClientTestingModule
@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { APP_BASE_HREF } from '@angular/common';
 import { RESTAPIModule } from '@plone/restapi-angular';
+import { FormsModule } from '@angular/forms';
 import {
   MatListModule,
   MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatCardModule
 } from '@angular/material';
 import { IconsModule } from './icons/icons.module';
 
@@ -28,7 +33,7 @@ export class FakeToolbar { }
 export class FakeHome { }
 
 describe('AppComponent', () => {
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -37,8 +42,13 @@ describe('AppComponent', () => {
       ],
       imports: [
         HttpClientTestingModule,
+        FormsModule,
         MatListModule,
         MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
         IconsModule,
         RESTAPIModule,
       ],
@@ -50,20 +60,20 @@ describe('AppComponent', () => {
           }
         },
       ],
-    });
+    }).compileComponents();
 
     TestBed.overrideModule(BrowserDynamicTestingModule, {
       set: {
         entryComponents: [FakeHome],
       },
     });
-  });
+  }));
 
-  it('should create the app', () => {
+  it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
 
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
+  }));
 });

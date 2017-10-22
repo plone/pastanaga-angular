@@ -22,9 +22,8 @@ before_install:
 install:
   - yarn install
 script:
-  - ng test
+  - npm run test
 notifications:
   email:
     - stollenwerk@kitconcept.com
-    - contact.ajanin@gmail.com
     - ebrehault@gmail.com
