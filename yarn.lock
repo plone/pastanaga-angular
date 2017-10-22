@@ -171,6 +171,12 @@
   dependencies:
     tsickle "^0.21.0"
 
+"@kitconcept/angular-medium-editor@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@kitconcept/angular-medium-editor/-/angular-medium-editor-0.1.3.tgz#4bddd635cc685aa7e86423e7868017047134381f"
+  dependencies:
+    medium-editor "^5.23.0"
+
 "@ngtools/json-schema@1.1.0", "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
@@ -3221,6 +3227,10 @@ md5@^2.2.1:
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
+
+medium-editor@^5.23.0:
+  version "5.23.2"
+  resolved "https://registry.yarnpkg.com/medium-editor/-/medium-editor-5.23.2.tgz#736c681f3e4b175f9c2ee4e48f9543f9f889e066"
 
 mem@^1.1.0:
   version "1.1.0"
