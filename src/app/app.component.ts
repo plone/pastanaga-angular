@@ -12,6 +12,7 @@ import { PastanagaViewComponent } from './pastanaga-view/pastanaga-view.componen
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   constructor(
     public views: PloneViews,
     public services: Services,
