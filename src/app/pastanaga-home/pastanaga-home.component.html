@@ -6,3 +6,4 @@
     <mat-card-subtitle>{{ doc.description }}</mat-card-subtitle>
   </mat-card-header>
 </mat-card>
+<a *ngIf="!authenticated" traverseTo="@@login">Log in</a>
