@@ -18,7 +18,6 @@ import * as MediumEditor from 'medium-editor';
 @Component({
   selector: 'medium-editor',
   template: `<textarea #host></textarea>`,
-  styleUrls: ['./medium.scss'],
 })
 export class MediumEditorComponent {
 

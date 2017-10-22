@@ -56,10 +56,7 @@ import { PastanagaViewComponent } from './pastanaga-view/pastanaga-view.componen
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-<<<<<<< HEAD
-=======
     MatMenuModule
->>>>>>> master
   ],
   providers: [
     {

@@ -15,9 +15,10 @@
         <label for="description">Description</label>
         <textarea id="description" name="description" matInput [ngModel]="context.description"></textarea>
       </mat-form-field>
+      
+      <label for="text">Text</label>
+      <medium-editor [ngModel]="context.text.data" name="text" class="editable"></medium-editor>
 
-      <div class="form-actions">
-      </div>
     </mat-card-content>
     <mat-card-actions>
       <a traverseTo="@@view" class="pastanaga-button">

@@ -13,6 +13,11 @@ export class PastanagaAddDocumentComponent {
 
   save(data) {
     data['@type'] = 'Document';
+    data.text = {
+      'content-type': 'text/html',
+      data: data.text,
+      encoding: 'utf-8',
+    };
     this.services.resource.create('/', data).subscribe(res => {
       this.services.traverser.traverse(res['@id']);
     });
