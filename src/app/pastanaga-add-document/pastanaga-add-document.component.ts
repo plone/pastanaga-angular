@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Services } from '@plone/restapi-angular';
+import * as MediumEditor from 'medium-editor';
 
 @Component({
   selector: 'app-pastanaga-add-document',
