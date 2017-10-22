@@ -2,80 +2,18 @@
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @import '~@angular/material/theming';
+
+$mat-xsmall: 'min-width: 600px';
+$mat-small: 'min-width: 960px';
+
 // Plus imports for other components in your app.
-
-$mat-pastanaga: (
-  50 : #e0f0f6,
-  100 : #b3d8e8,
-  200 : #80bfd8,
-  300 : #4da5c8,
-  400 : #2691bd,
-  500 : #007eb1,
-  600 : #0076aa,
-  700 : #006ba1,
-  800 : #006198,
-  900 : #004e88,
-  A100 : #b4daff,
-  A200 : #81c1ff,
-  A400 : #4ea8ff,
-  A700 : #359bff,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #000000,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #000000,
-      A700 : #000000,
-  )
-);
-
-
-$mat-pastanaga-brown: (
-  50 : #f0eded,
-  100 : #dad2d2,
-  200 : #c1b5b5,
-  300 : #a89797,
-  400 : #958080,
-  500 : #826a6a,
-  600 : #7a6262,
-  700 : #6f5757,
-  800 : #654d4d,
-  900 : #523c3c,
-  A100 : #ffaaaa,
-  A200 : #ff7777,
-  A400 : #ff4444,
-  A700 : #ff2a2a,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #000000,
-      400 : #000000,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #ffffff,
-      A700 : #ffffff,
-  )
-);
-
+@import './pastanaga-theme/palette';
+@import './pastanaga-theme/helpers';
+@import './pastanaga-theme/form';
 
 $pastanaga-typography: mat-typography-config(
   $font-family: 'Poppins'
 );
-
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -91,18 +29,40 @@ $pastanaga-accent:  mat-palette($mat-pastanaga-brown);
 // The warn palette is optional (defaults to red).
 $pastanaga-warn:    mat-palette($mat-red);
 
-
-
 // Create the theme object (a Sass map containing all of the palettes).
-$pastanaga-theme: mat-light-theme($pastanaga-accent, $pastanaga-primary, $pastanaga-warn);
-
+$pastanaga-theme:   mat-light-theme($pastanaga-accent, $pastanaga-primary, $pastanaga-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($pastanaga-theme);
 
+// Palette
+
+$color-light-sage: #c9eab1;
+$color-bodycolor: #252525;
+$color-alert-error: #f5c1c1;
+$color-teal-blue: #007eb1;
+$color-cerulean: #007bc1;
+$color-dark-pastel-green: #51aa55;
+$color-golden-rod: #f6a808;
+$color-reddish-orange: #fa5c2a;
+$color-lipstick: #d01157;
+$color-reddish-grey: #826a6a;
+$color-dark-hot-pink: #e40166;
+$color-slate: #517776;
+
+// Custom CSS
+
 body {
+  background: #f2f5f6;
   margin: 0;
   padding: 0;
+}
+
+.mat-h2, .mat-title, .mat-typography h2 {
+  padding: 1em;
+  border-bottom: solid 4px rgb(199,213,216);
+  margin-bottom: 0;
+  padding: 1em;
 }
