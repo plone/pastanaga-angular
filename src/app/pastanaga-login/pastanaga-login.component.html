@@ -1,28 +1,36 @@
 <header>
     <h2>Log in</h2>
 </header>
-<form name="loginform" class="pastanaga-form">
+
+<form class="pastanaga-form" #f="ngForm" (ngSubmit)="login($event, f.value, f)">
 
   <fieldset class="fieldset">
-    <legend>Sign in to start session</legend>
 
-    <mat-form-field>
-      <label for="login-user">User</label>
-      <input matInput #user name="username">
-    </mat-form-field>
+    <div class="form-header">
+      <legend class="legend">Sign in to start session</legend>
+    </div>
 
-    <mat-form-field>
-      <label for="login-password">Password</label>
-      <input type="password" matInput #password name="password">
-    </mat-form-field>
+    <div class="form-body">
 
-    <p class="form-help">Forgot password? Ask for a <a href="">new password.</a></p>
+      <mat-form-field>
+        <label for="username" class="label">User</label>
+        <input id="username" class="input" name="username" [(ngModel)]="username" required matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label for="password" class="label">Password</label>
+        <input id="password" class="input" name="password" [(ngModel)]="password" type="password" required matInput>
+      </mat-form-field>
+
+      <p class="form-help">Forgot password? Ask for a <a class="link" href="">new password.</a></p>
+
+    </div>
 
     <div class="form-actions">
-      <button mat-fab>
+      <a href="" class="btn btn-clear mat-elevation-z" (click)="goBack($event)" mat-fab color="basic">
         <mat-icon svgIcon="clear"></mat-icon>
-      </button>
-      <button type="submit" mat-fab (click)='login(user.value, password.value)'>
+      </a>
+      <button class="btn btn-submit mat-elevation-z" type="submit" mat-fab color="primary">
         <mat-icon svgIcon="ahead"></mat-icon>
       </button>
     </div>

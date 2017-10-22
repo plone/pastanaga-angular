@@ -24,18 +24,33 @@ $pastanaga-accent:  mat-palette($mat-pastanaga-brown);
 // The warn palette is optional (defaults to red).
 $pastanaga-warn:    mat-palette($mat-red);
 
-
-
 // Create the theme object (a Sass map containing all of the palettes).
-$pastanaga-theme: mat-light-theme($pastanaga-accent, $pastanaga-primary, $pastanaga-warn);
-
+$pastanaga-theme:   mat-light-theme($pastanaga-accent, $pastanaga-primary, $pastanaga-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($pastanaga-theme);
 
+// Palette
+
+$color-light-sage: #c9eab1;
+$color-bodycolor: #252525;
+$color-alert-error: #f5c1c1;
+$color-teal-blue: #007eb1;
+$color-cerulean: #007bc1;
+$color-dark-pastel-green: #51aa55;
+$color-golden-rod: #f6a808;
+$color-reddish-orange: #fa5c2a;
+$color-lipstick: #d01157;
+$color-reddish-grey: #826a6a;
+$color-dark-hot-pink: #e40166;
+$color-slate: #517776;
+
+// Custom CSS
+
 body {
+  background: #f2f5f6;
   margin: 0;
   padding: 0;
 }
@@ -44,4 +59,5 @@ body {
   padding: 1em;
   border-bottom: solid 4px rgb(199,213,216);
   margin-bottom: 0;
+  padding: 1em;
 }
