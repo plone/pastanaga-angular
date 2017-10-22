@@ -1,0 +1,19 @@
+// Styles for forms
+
+.pastanaga-form {
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  legend {
+    display: block;
+    background: mat-color($mat-pastanaga-green, 50, null);
+    color: mat-color($mat-pastanaga-green, 500, null);
+    padding: 1em;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
