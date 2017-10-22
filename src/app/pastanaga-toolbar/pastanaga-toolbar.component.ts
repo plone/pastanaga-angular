@@ -14,4 +14,8 @@ export class PastanagaToolbarComponent {
       this.authenticated = auth.state;
     });
   }
+
+  closeToolbar() {
+    document.getElementById('pastanaga-toolbar-toggle').click()
+  }
 }

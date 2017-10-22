@@ -1,2 +1,4 @@
 <app-pastanaga-toolbar></app-pastanaga-toolbar>
-<traverser-outlet></traverser-outlet>
+<div [ngClass]="{'authenticated': authenticated}">
+  <traverser-outlet></traverser-outlet>
+</div>
