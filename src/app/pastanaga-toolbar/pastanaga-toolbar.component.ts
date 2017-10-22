@@ -21,5 +21,6 @@ export class PastanagaToolbarComponent {
 
   logout() {
     this.services.authentication.logout();
+    this.services.traverser.traverse('');
   }
 }
