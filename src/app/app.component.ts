@@ -11,11 +11,15 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  authenticated: boolean;
+    
   constructor(
     public views: PloneViews,
     public services: Services,
   ) {
+    this.services.authentication.isAuthenticated.subscribe(auth => {
+      this.authenticated = auth.state;
+    });
     this.views.initialize();
     this.services.traverser.addView('login', '*', PastanagaLoginComponent);
     this.services.traverser.addView('view', 'Plone Site', PastanagaHomeComponent);
