@@ -1,0 +1,86 @@
+// Styles for forms
+
+.pastanaga-form {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header-title {
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 500,
+}
+
+.fieldset {
+  background: #fff;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .form-header,
+  .form-body,
+  .form-actions {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .form-header {
+    background: mat-color($mat-pastanaga-green, 50, null);
+    color: mat-color($mat-pastanaga-green, 500, null);
+    .legend {
+        box-sizing: border-box;
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        margin: 0;
+        padding: 1em;
+        text-transform: uppercase;
+        width: 100%;
+    }
+}
+
+.form-body {
+    border-bottom: 1px solid #edf1f2;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.form-actions {
+    text-align: right;
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.input {
+    font-family: "Poppins-Light", "Poppins";
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.form-help {
+    color: mat-color($mat-pastanaga, 500, null);
+    font-family: "Poppins-Light", "Poppins";
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0;
+    .link {
+        // color: #878f93;
+    }
+}
+
+.btn {
+    margin-left: 22px;
+}
+
+
+@media screen and ($mat-small) {
+  .pastanaga-form {
+    width: 50%;
+  }
+}
