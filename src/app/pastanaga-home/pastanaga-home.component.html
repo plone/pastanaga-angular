@@ -1,3 +1,8 @@
-<p>
-  pastanaga-home works!
-</p>
+<mat-card *ngFor="let doc of documents">
+  <mat-card-header>
+    <mat-card-title>
+      <a [traverseTo]="doc['@id']">{{ doc.title }}</a>
+    </mat-card-title>
+    <mat-card-subtitle>{{ doc.description }}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
