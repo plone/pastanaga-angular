@@ -45,7 +45,12 @@
   display: flex;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
   justify-content: space-between;
-  padding: 1.25em .75em;
+  padding: 1.5em .75em;
+  transition: transform .3s $easeInBack;
+}
+
+#pastanaga-toolbar-toggle:checked ~ .pastanaga-toolbar {
+  transform: translate(0, -75%);
 }
 
 .pastanaga-toolbar-actions {
@@ -61,18 +66,19 @@
   bottom: 0;
   margin-left: -60px;
   height: 1.25em;
-  transition: transform .3s;
-
+  cursor: pointer;
+  
   &::before {
     content: '';
     display: block;
     width: 120px;
     height: 3px;
-    margin-top: .75em;
+    margin-top: .5em;
+    transition: background-color .3s;
     background: mat-color($mat-pastanaga, 50, null);
   }
 
-  &:hover {
-    transform: translate(0, 2px);
+  &:hover::before {
+    background: mat-color($mat-pastanaga, 100, null);
   }
 }

@@ -8,6 +8,7 @@ $mat-small: 'min-width: 960px';
 
 // Plus imports for other components in your app.
 @import './pastanaga-theme/palette';
+@import './pastanaga-theme/helpers';
 @import './pastanaga-theme/form';
 
 $pastanaga-typography: mat-typography-config(
