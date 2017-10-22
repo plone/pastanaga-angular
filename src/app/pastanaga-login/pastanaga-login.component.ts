@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
+
 import { AuthenticationService } from '@plone/restapi-angular';
 
 @Component({
@@ -9,19 +12,25 @@ import { AuthenticationService } from '@plone/restapi-angular';
 })
 export class PastanagaLoginComponent implements OnInit {
 
-  constructor(private service: AuthenticationService) {
+  constructor(private _authService: AuthenticationService, private _location: Location) {
   }
 
   ngOnInit() {
   }
 
-  login(login: string, password: string) {
-    this.service.login(login, password);
-    return false;
+  login(event: Event, value: Object = {}, form) {
+    event.preventDefault();
+    this._authService.login(form.username, form.password);
   }
 
-  logout() {
-    this.service.logout();
-    return false;
+  logout(event) {
+    event.preventDefault();
+    this._authService.logout();
   }
+
+  goBack(event) {
+    event.preventDefault();
+    this._location.back();
+  }
+
 }
