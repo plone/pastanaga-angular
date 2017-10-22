@@ -1,0 +1,57 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="30px" height="56px" viewBox="0 0 30 56" enable-background="new 0 0 30 56" xml:space="preserve">
+<g>
+	<defs>
+		<path id="SVGID_1_" d="M1.875,13.199C1.875,5.909,7.751,0,15,0c7.249,0,13.125,5.909,13.125,13.199S22.249,26.397,15,26.397
+			C7.751,26.397,1.875,20.488,1.875,13.199z M24.375,13.199c0-5.207-4.197-9.428-9.375-9.428s-9.375,4.221-9.375,9.428
+			c0,5.207,4.197,9.428,9.375,9.428S24.375,18.405,24.375,13.199z"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<g clip-path="url(#SVGID_2_)">
+		<defs>
+			<rect id="SVGID_3_" x="-20" y="-21" width="1280" height="850"/>
+		</defs>
+		<clipPath id="SVGID_4_">
+			<use xlink:href="#SVGID_3_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_4_)" enable-background="new    ">
+			<g>
+				<defs>
+					<rect id="SVGID_5_" x="-4" y="-5" width="38" height="37"/>
+				</defs>
+				<clipPath id="SVGID_6_">
+					<use xlink:href="#SVGID_5_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#SVGID_6_)">
+					<defs>
+						<rect id="SVGID_7_" x="1" width="28" height="27"/>
+					</defs>
+					<clipPath id="SVGID_8_">
+						<use xlink:href="#SVGID_7_"  overflow="visible"/>
+					</clipPath>
+					<rect x="-3.125" y="-5" clip-path="url(#SVGID_8_)" fill="#51AA55" width="36.25" height="36.397"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<g>
+	<defs>
+		<path id="SVGID_9_" d="M23.553,33.374L6.466,33.381l8.545,15.037L23.553,33.374z M15,56L0,29.603h30L15,56z"/>
+	</defs>
+	<clipPath id="SVGID_10_">
+		<use xlink:href="#SVGID_9_"  overflow="visible"/>
+	</clipPath>
+	<g clip-path="url(#SVGID_10_)">
+		<defs>
+			<rect id="SVGID_11_" x="-20" y="-21" width="1280" height="850"/>
+		</defs>
+		<clipPath id="SVGID_12_">
+			<use xlink:href="#SVGID_11_"  overflow="visible"/>
+		</clipPath>
+		<rect x="-5" y="24.603" clip-path="url(#SVGID_12_)" fill="#F6A808" width="40" height="36.397"/>
+	</g>
+</g>
+</svg>
