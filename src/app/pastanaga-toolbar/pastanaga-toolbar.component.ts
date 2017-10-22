@@ -20,6 +20,7 @@ export class PastanagaToolbarComponent extends TraversingComponent {
   }
 
   onTraverse(target) {
+    this.collapsed = true;
     this.isDocument = target.context['@type'] === 'Document';
     if (target.context.items) {
       this.isFolderish = true;
