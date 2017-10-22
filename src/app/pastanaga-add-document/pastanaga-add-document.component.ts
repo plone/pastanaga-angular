@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { Services } from '@plone/restapi-angular';
+
+@Component({
+  selector: 'app-pastanaga-add-document',
+  templateUrl: './pastanaga-add-document.component.html',
+  styleUrls: ['./pastanaga-add-document.component.scss']
+})
+export class PastanagaAddDocumentComponent {
+
+  constructor(public services: Services) { }
+
+  save(data) {
+    data['@type'] = 'Document';
+    this.services.resource.create('/', data).subscribe(res => {
+      this.services.traverser.traverse(res['@id']);
+    });
+  }
+
+}

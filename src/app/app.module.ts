@@ -10,7 +10,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatCardModule
+  MatCardModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { environment } from '../environments/environment';
@@ -21,6 +22,8 @@ import { PastanagaLoginComponent } from './pastanaga-login/pastanaga-login.compo
 import { PastanagaEditDocumentComponent } from './pastanaga-edit-document/pastanaga-edit-document.component';
 import { PastanagaHomeComponent } from './pastanaga-home/pastanaga-home.component';
 import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar.component';
+import { PastanagaAddDocumentComponent } from './pastanaga-add-document/pastanaga-add-document.component';
+import { PastanagaViewComponent } from './pastanaga-view/pastanaga-view.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +31,16 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
     PastanagaLoginComponent,
     PastanagaEditDocumentComponent,
     PastanagaHomeComponent,
-    PastanagaToolbarComponent
+    PastanagaToolbarComponent,
+    PastanagaAddDocumentComponent,
+    PastanagaViewComponent,
   ],
   entryComponents: [
     PastanagaHomeComponent,
     PastanagaLoginComponent,
     PastanagaEditDocumentComponent,
+    PastanagaAddDocumentComponent,
+    PastanagaViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [
     {

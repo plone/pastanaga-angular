@@ -1,8 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
 import {
   HttpTestingController,
   HttpClientTestingModule
 } from '@angular/common/http/testing';
+import { Component } from '@angular/core';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { APP_BASE_HREF } from '@angular/common';
 import { RESTAPIModule } from '@plone/restapi-angular';
 import { FormsModule } from '@angular/forms';
@@ -13,22 +16,21 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatCardModule,
-  MatMenuModule,
+  MatCardModule
 } from '@angular/material';
 import { IconsModule } from '../icons/icons.module';
 
-import { PastanagaToolbarComponent } from './pastanaga-toolbar.component';
+import { AppComponent } from '../app.component';
 
-describe('PastanagaToolbarComponent', () => {
-  let component: PastanagaToolbarComponent;
-  let fixture: ComponentFixture<PastanagaToolbarComponent>;
+import { PastanagaViewComponent } from './pastanaga-view.component';
+
+describe('PastanagaViewComponent', () => {
+  let component: PastanagaViewComponent;
+  let fixture: ComponentFixture<PastanagaViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        PastanagaToolbarComponent,
-      ],
+      declarations: [PastanagaViewComponent],
       imports: [
         HttpClientTestingModule,
         FormsModule,
@@ -38,10 +40,9 @@ describe('PastanagaToolbarComponent', () => {
         MatInputModule,
         MatButtonModule,
         MatCardModule,
-        MatMenuModule,
         IconsModule,
-        BrowserAnimationsModule,
         RESTAPIModule,
+        BrowserAnimationsModule
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
@@ -51,12 +52,12 @@ describe('PastanagaToolbarComponent', () => {
           }
         },
       ],
-    });
-    TestBed.compileComponents();
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PastanagaToolbarComponent);
+    fixture = TestBed.createComponent(PastanagaViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
