@@ -14,7 +14,7 @@
   transition: transform .3s $easeInBack;
 }
 
-#pastanaga-toolbar-toggle:checked ~ .pastanaga-toolbar {
+.pastanaga-toolbar.collapsed {
   transform: translate(0, -75%);
 }
 

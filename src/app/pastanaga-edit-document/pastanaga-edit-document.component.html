@@ -1,31 +1,31 @@
 <header class="page-header">
   <h2>Edit</h2>
 </header>
-<form #f="ngForm" (ngSubmit)="send(f.value, f)">
+<form #f="ngForm" (ngSubmit)="send(f.value)">
   <mat-card class="example-card">
     <mat-card-content>
       <legend>Modify the document</legend>
 
       <mat-form-field>
         <label for="title">Title</label>
-        <input matInput id="title" name="title" [(ngModel)]="title">
+        <input matInput id="title" name="title" [ngModel]="context.title">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <label for="description">Description</label>
-        <textarea id="description" name="description" matInput [(ngModel)]="description"></textarea>
+        <textarea id="description" name="description" matInput [ngModel]="context.description"></textarea>
       </mat-form-field>
 
       <div class="form-actions">
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-fab>
-          <mat-icon svgIcon="clear"></mat-icon>
-        </button>
-      <button mat-fab>
-          <mat-icon svgIcon="ahead"></mat-icon>
-        </button>
+      <a traverseTo="@@view" class="pastanaga-button">
+        <mat-icon svgIcon="clear"></mat-icon>
+      </a>
+      <a (click)="send(f.value, f)" class="pastanaga-button">
+        <mat-icon svgIcon="ahead"></mat-icon>
+      </a>
     </mat-card-actions>
   </mat-card>
 </form>
