@@ -86,7 +86,7 @@ $pastanaga-typography: mat-typography-config(
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $pastanaga-primary: mat-palette($mat-pastanaga);
-$pastanaga-accent:  mat-palette($mat-pastanaga-brown, A200, A100, A400);
+$pastanaga-accent:  mat-palette($mat-pastanaga-brown);
 
 // The warn palette is optional (defaults to red).
 $pastanaga-warn:    mat-palette($mat-red);
@@ -101,3 +101,8 @@ $pastanaga-theme: mat-light-theme($pastanaga-accent, $pastanaga-primary, $pastan
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($pastanaga-theme);
+
+body {
+  margin: 0;
+  padding: 0;
+}
