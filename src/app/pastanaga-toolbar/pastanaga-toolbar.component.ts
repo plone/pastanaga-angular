@@ -18,4 +18,8 @@ export class PastanagaToolbarComponent {
   closeToolbar() {
     document.getElementById('pastanaga-toolbar-toggle').click()
   }
+
+  logout() {
+    this.services.authentication.logout();
+  }
 }
