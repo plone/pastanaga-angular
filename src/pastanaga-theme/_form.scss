@@ -3,6 +3,10 @@
 .pastanaga-form {
   margin: 0 auto;
   width: 100%;
+
+  a {
+      color: mat-color($mat-pastanaga, 500, null);
+  }
 }
 
 .header-title {
@@ -21,8 +25,7 @@
   .form-header,
   .form-body,
   .form-actions {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 1.5em;
   }
   
   .form-header {
@@ -34,7 +37,7 @@
         font-size: 12px;
         font-weight: 500;
         margin: 0;
-        padding: 1em;
+        padding: 1em 0;
         text-transform: uppercase;
         width: 100%;
     }
@@ -42,45 +45,50 @@
 
 .form-body {
     border-bottom: 1px solid #edf1f2;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+    padding: 1em 1.5em;
 }
 
 .form-actions {
-    text-align: right;
-}
-
-.label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.input {
-    font-family: "Poppins-Light", "Poppins";
-    font-size: 14px;
-    font-weight: 300;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em 1.5em;
 }
 
 .form-help {
-    color: mat-color($mat-pastanaga, 500, null);
+    color: mat-color($mat-pastanaga-brown, 500, null);
     font-family: "Poppins-Light", "Poppins";
     font-size: 12px;
     font-weight: 300;
     margin: 0;
     .link {
-        // color: #878f93;
+        color: mat-color($mat-pastanaga, 500, null);
     }
 }
 
-.btn {
-    margin-left: 22px;
+.mat-form-field {
+    width: 100%;
+    .mat-form-field-infix {
+        display: flex;
+    }
+
+    label {
+        width: 200px;
+        text-transform: uppercase;
+    }
+
+    .mat-form-field-underline {
+        background: mat-color($mat-pastanaga-brown, 50, null);
+    }
 }
 
+
+.mat-input-container {
+    width: 100%;
+}
 
 @media screen and ($mat-small) {
   .pastanaga-form {
     width: 50%;
+    padding-top: 2em;
   }
 }
