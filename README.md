@@ -1,8 +1,14 @@
 # Pastanaga Angular
 
+[![Build Status](https://travis-ci.org/plone/pastanaga-angular.svg?branch=master)](https://travis-ci.org/plone/pastanaga-angular)
+
 ## Objective
 
 Implement a minimal viable product in Angular based on the Pastanaga design.
+
+## Usage
+
+TBC
 
 ## Development server
 
