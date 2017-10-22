@@ -2,6 +2,10 @@
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @import '~@angular/material/theming';
+
+$mat-xsmall: 'min-width: 600px';
+$mat-small: 'min-width: 960px';
+
 // Plus imports for other components in your app.
 @import './pastanaga-theme/palette';
 @import './pastanaga-theme/form';

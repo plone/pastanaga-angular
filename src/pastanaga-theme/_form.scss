@@ -2,18 +2,8 @@
 
 .pastanaga-form {
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
 }
-
-// legend {
-//   display: block;
-//   background: mat-color($mat-pastanaga-green, 50, null);
-//   padding: 1em;
-//   margin: 0;
-//   box-sizing: border-box;
-//   width: 100%;
-// }
-// Elements
 
 .header-title {
   font-family: "Poppins";
@@ -88,10 +78,9 @@
     margin-left: 22px;
 }
 
-// Material Design overrides
 
-// .mat-fab.mat-accent,
-// .mat-mini-fab.mat-accent,
-// .mat-raised-button.mat-accent {
-
-// }
+@media screen and ($mat-small) {
+  .pastanaga-form {
+    width: 50%;
+  }
+}
