@@ -1,15 +1,11 @@
-<button mat-button mat-fab>
-  <a traverseTo="@@add?type=Document"><mat-icon svgIcon="add-document"></mat-icon></a>
-</button>
+<div class="pastanaga-toolbar">
+  <a class="pastanaga-button"><mat-icon svgIcon="more"></mat-icon></a>
 
-<button mat-button mat-fab>
-  <a traverseTo="@@edit">
-    <mat-icon svgIcon="folder"></mat-icon>
-  </a>
-</button>
+  <div class="pastanaga-toolbar-actions">
+    <a class="pastanaga-button" traverseTo="@@add?type=Document"><mat-icon svgIcon="add-document"></mat-icon></a>
+    <a class="pastanaga-button" traverseTo="@@add?type=Folder"><mat-icon svgIcon="folder"></mat-icon></a>
+    <a class="pastanaga-button primary" traverseTo="@@edit"><mat-icon svgIcon="pen"></mat-icon></a>
+  </div>
 
-<button mat-raised-button mat-fab color="primary">
-  <a traverseTo="@@edit">
-    <mat-icon svgIcon="pen"></mat-icon>
-  </a>
-</button>
+  <a href="#" class="pastanaga-toolbar-opener"></a>
+</div>

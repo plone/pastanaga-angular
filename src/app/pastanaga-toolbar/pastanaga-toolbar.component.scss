@@ -1,0 +1,78 @@
+@import '../../styles.scss';
+
+.pastanaga-button {
+  color: mat-color($mat-pastanaga-brown, 500, null);
+  display: block;
+  border-radius: 10em;
+  margin: 0 .5em;
+  line-height: 0;
+  
+  &:hover {
+    color: mat-color($mat-pastanaga-brown, 700, null);
+  }
+
+  &:active {
+    color: mat-color($mat-pastanaga-brown, 900, null);
+  }
+
+  &:focus {
+    outline: 2px solid mat-color($mat-pastanaga, 100, null);
+  }
+  
+  &.primary {
+    color: mat-color($mat-pastanaga, 500, null);
+    border: solid 2px mat-color($mat-pastanaga, 500, null);
+
+    &:hover {
+      color: mat-color($mat-pastanaga, 700, null);
+    }
+
+    &:active {
+      color: mat-color($mat-pastanaga, 900, null);
+    }
+  }
+
+  .mat-icon {
+    width: 2em;
+    height: 2em;
+    padding: .25em;
+  }
+}
+
+
+.pastanaga-toolbar {
+  position: relative;
+  display: flex;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  justify-content: space-between;
+  padding: 1.25em .75em;
+}
+
+.pastanaga-toolbar-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pastanaga-toolbar-opener {
+  position: absolute;
+  display: block;
+  left: 50%;
+  bottom: 0;
+  margin-left: -60px;
+  height: 1.25em;
+  transition: transform .3s;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 3px;
+    margin-top: .75em;
+    background: mat-color($mat-pastanaga, 50, null);
+  }
+
+  &:hover {
+    transform: translate(0, 2px);
+  }
+}
