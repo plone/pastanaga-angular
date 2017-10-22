@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'https://cms.terralego.com/backend-sandbox'
+  backendUrl: 'http://localhost:8080/test2'
 };
