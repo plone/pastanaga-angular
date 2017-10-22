@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EditView } from '@plone/restapi-angular';
 
 @Component({
@@ -8,12 +8,10 @@ import { EditView } from '@plone/restapi-angular';
 })
 export class PastanagaEditDocumentComponent extends EditView {
 
-  ngOnInit() {
-    console.log(this)
-  }
-
-  send(value, form) {
-    console.log(value)
+  send(data) {
+    this.services.resource.update(this.path, data).subscribe(() => {
+      this.services.traverser.traverse(this.path);
+    });
   }
 
 }
