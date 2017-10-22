@@ -60,13 +60,15 @@ describe('AppComponent', () => {
           }
         },
       ],
-    }).compileComponents();
+    });
 
     TestBed.overrideModule(BrowserDynamicTestingModule, {
       set: {
         entryComponents: [FakeHome],
       },
     });
+
+    TestBed.compileComponents();
   }));
 
   it('should create the app', async(() => {
