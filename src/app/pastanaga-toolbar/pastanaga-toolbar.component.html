@@ -1,5 +1,4 @@
-<input type="checkbox" id="pastanaga-toolbar-toggle" hidden checked />
-<div *ngIf="authenticated" class="pastanaga-toolbar">
+<div *ngIf="authenticated" class="pastanaga-toolbar" [class.collapsed]="collapsed">
 
   <button class="pastanaga-button" [matMenuTriggerFor]="menu"><mat-icon svgIcon="more"></mat-icon></button>
   <mat-menu #menu="matMenu">
@@ -13,5 +12,5 @@
     <a (click)="closeToolbar()" class="pastanaga-button primary" traverseTo="@@edit"><mat-icon svgIcon="pen"></mat-icon></a>
   </div>
   
-  <label for="pastanaga-toolbar-toggle" class="pastanaga-toolbar-opener"></label>
+  <label class="pastanaga-toolbar-opener" (click)="toggle()"></label>
 </div>

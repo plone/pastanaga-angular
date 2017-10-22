@@ -8,6 +8,7 @@ import { Services } from '@plone/restapi-angular';
 })
 export class PastanagaToolbarComponent {
   authenticated: boolean;
+  collapsed = true;
 
   constructor(public services: Services) {
     this.services.authentication.isAuthenticated.subscribe(auth => {
@@ -15,8 +16,8 @@ export class PastanagaToolbarComponent {
     });
   }
 
-  closeToolbar() {
-    document.getElementById('pastanaga-toolbar-toggle').click()
+  toggle() {
+    this.collapsed = !this.collapsed;
   }
 
   logout() {
