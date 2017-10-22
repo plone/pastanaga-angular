@@ -10,7 +10,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatCardModule
+  MatCardModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { environment } from '../environments/environment';
@@ -46,7 +47,8 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [
     {

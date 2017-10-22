@@ -1,7 +1,12 @@
 <input type="checkbox" id="pastanaga-toolbar-toggle" hidden checked />
 <div *ngIf="authenticated" class="pastanaga-toolbar">
-  <a class="pastanaga-button"><mat-icon svgIcon="more"></mat-icon></a>
-  
+
+  <button class="pastanaga-button" [matMenuTriggerFor]="menu"><mat-icon svgIcon="more"></mat-icon></button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
   <div class="pastanaga-toolbar-actions">
     <a class="pastanaga-button" traverseTo="@@add?type=Document"><mat-icon svgIcon="add-document"></mat-icon></a>
     <a class="pastanaga-button" traverseTo="@@add?type=Folder"><mat-icon svgIcon="folder"></mat-icon></a>
