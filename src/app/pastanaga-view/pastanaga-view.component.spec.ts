@@ -22,15 +22,15 @@ import { IconsModule } from '../icons/icons.module';
 
 import { AppComponent } from '../app.component';
 
-import { PastanagaHomeComponent } from './pastanaga-home.component';
+import { PastanagaViewComponent } from './pastanaga-view.component';
 
-describe('PastanagaHomeComponent', () => {
-  let component: PastanagaHomeComponent;
-  let fixture: ComponentFixture<PastanagaHomeComponent>;
+describe('PastanagaViewComponent', () => {
+  let component: PastanagaViewComponent;
+  let fixture: ComponentFixture<PastanagaViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PastanagaHomeComponent],
+      declarations: [PastanagaViewComponent],
       imports: [
         HttpClientTestingModule,
         FormsModule,
@@ -57,7 +57,7 @@ describe('PastanagaHomeComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PastanagaHomeComponent);
+    fixture = TestBed.createComponent(PastanagaViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

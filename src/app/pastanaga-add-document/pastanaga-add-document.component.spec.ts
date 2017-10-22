@@ -22,15 +22,15 @@ import { IconsModule } from '../icons/icons.module';
 
 import { AppComponent } from '../app.component';
 
-import { PastanagaHomeComponent } from './pastanaga-home.component';
+import { PastanagaAddDocumentComponent } from './pastanaga-add-document.component';
 
-describe('PastanagaHomeComponent', () => {
-  let component: PastanagaHomeComponent;
-  let fixture: ComponentFixture<PastanagaHomeComponent>;
+describe('PastanagaAddDocumentComponent', () => {
+  let component: PastanagaAddDocumentComponent;
+  let fixture: ComponentFixture<PastanagaAddDocumentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PastanagaHomeComponent],
+      declarations: [PastanagaAddDocumentComponent],
       imports: [
         HttpClientTestingModule,
         FormsModule,
@@ -57,7 +57,7 @@ describe('PastanagaHomeComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PastanagaHomeComponent);
+    fixture = TestBed.createComponent(PastanagaAddDocumentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

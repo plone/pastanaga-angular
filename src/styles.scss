@@ -2,14 +2,10 @@
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @import '~@angular/material/theming';
+@import './pastanaga-theme/palette';
 
 $mat-xsmall: 'min-width: 600px';
 $mat-small: 'min-width: 960px';
-
-// Plus imports for other components in your app.
-@import './pastanaga-theme/palette';
-@import './pastanaga-theme/helpers';
-@import './pastanaga-theme/form';
 
 $pastanaga-typography: mat-typography-config(
   $font-family: 'Poppins'
@@ -36,6 +32,11 @@ $pastanaga-theme:   mat-light-theme($pastanaga-accent, $pastanaga-primary, $past
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($pastanaga-theme);
+
+// Plus imports for other components in your app.
+@import './pastanaga-theme/helpers';
+@import './pastanaga-theme/button';
+@import './pastanaga-theme/form';
 
 // Palette
 
