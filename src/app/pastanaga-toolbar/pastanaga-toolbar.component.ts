@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pastanaga-toolbar',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pastanaga-toolbar.component.scss']
 })
 export class PastanagaToolbarComponent implements OnInit {
+  @Input() authenticated: boolean;
 
   constructor() { }
 
