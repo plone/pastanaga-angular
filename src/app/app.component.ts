@@ -11,7 +11,6 @@ import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  authenticated: boolean = false;
 
   constructor(
     public views: PloneViews,
@@ -22,8 +21,5 @@ export class AppComponent {
     this.services.traverser.addView('view', 'Plone Site', PastanagaHomeComponent);
     this.services.traverser.addView('add', '*', PastanagaEditDocumentComponent);
     this.services.traverser.addView('edit', '*', PastanagaEditDocumentComponent);
-    this.services.authentication.isAuthenticated.subscribe(auth => {
-      this.authenticated= auth.state;
-    });
   }
 }
