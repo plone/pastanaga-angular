@@ -2,10 +2,13 @@
   <h2>Add document</h2>
 </header>
 
-<form #f="ngForm" (ngSubmit)="save(f.value)">
+<form #f="ngForm" (ngSubmit)="save(f.value)" class="pastanaga-form">
+  <header class="form-header">
+    <legend class="legend">Modify the document</legend>
+  </header>
+
   <mat-card class="example-card">
     <mat-card-content>
-      <legend>Modify the document</legend>
 
       <mat-form-field>
         <label for="title">Title</label>
@@ -19,12 +22,14 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-fab>
-        <mat-icon svgIcon="clear"></mat-icon>
-      </button>
-      <button mat-fab>
-        <mat-icon svgIcon="ahead"></mat-icon>
-      </button>
+      <div class="form-actions">
+        <button  class="pastanaga-button">
+          <mat-icon svgIcon="clear"></mat-icon>
+        </button>
+        <button  class="pastanaga-button primary">
+          <mat-icon svgIcon="ahead"></mat-icon>
+        </button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </form>
