@@ -21,7 +21,7 @@ body {
 }
 
 h1 {
-  color: mat-color($mat-pastanaga-green, 400, null);
+  color: $title-color;
   padding-top: .75em;
 }
 
@@ -37,8 +37,8 @@ h2 {
 
 .document-title {
   display: block;
-  color: mat-color($mat-pastanaga-green, 400, null);
-  font-size: 2em;
+  color: $title-color;
+  font-size: 1.75em;
   padding-top: .5em;
   text-decoration: none;
 }
