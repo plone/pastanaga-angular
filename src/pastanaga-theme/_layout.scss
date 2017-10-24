@@ -1,8 +1,7 @@
 // Grid
 
 .container {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 2em 1em;
 }
 
 .content {
@@ -31,7 +30,7 @@ h2 {
 
 .document .mat-card {
   background: transparent;
-  border: solid 1px mat-color($mat-pastanaga-green, 100, null);
+  border-bottom: solid 1px mat-color($mat-pastanaga-green, 100, null);
   margin: .5em 0;
 }
 
@@ -39,7 +38,6 @@ h2 {
   display: block;
   color: $title-color;
   font-size: 1.75em;
-  padding-top: .5em;
   text-decoration: none;
 }
 
@@ -72,12 +70,5 @@ a {
   
   &:focus {
     outline: 2px solid mat-color($mat-pastanaga, 100, null);
-  }
-}
-
-
-@media screen and ($mat-small) {
-  .container {
-    padding: 20px 70px 50px;
   }
 }
