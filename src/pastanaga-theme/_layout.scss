@@ -9,6 +9,18 @@
   max-width: 940px;
 }
 
+// Breadcrumbs
+
+.breadcrumb {
+  margin-top: 2em;
+  li {
+    display: inline;
+    &:not(.active):after {
+      margin-left: 1em;
+      content: "〉";
+    }
+  }
+}
 
 // Misc
 
