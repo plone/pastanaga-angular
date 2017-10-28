@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RESTAPIModule } from '@plone/restapi-angular';
+import { MediumEditorComponent } from './medium';
 
 import {
   MatListModule,
@@ -28,6 +29,7 @@ import { PastanagaViewComponent } from './pastanaga-view/pastanaga-view.componen
 @NgModule({
   declarations: [
     AppComponent,
+    MediumEditorComponent,
     PastanagaLoginComponent,
     PastanagaEditDocumentComponent,
     PastanagaHomeComponent,

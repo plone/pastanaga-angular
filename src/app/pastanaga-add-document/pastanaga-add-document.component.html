@@ -1,10 +1,10 @@
 <header class="page-header">
-  <h2>Add document</h2>
+  <h2>Add</h2>
 </header>
 
 <form #f="ngForm" (ngSubmit)="save(f.value)" class="pastanaga-form">
   <header class="form-header">
-    <legend class="legend">Modify the document</legend>
+    <legend class="legend">Add a document</legend>
   </header>
 
   <mat-card class="example-card">
@@ -19,6 +19,9 @@
         <label for="description">Description</label>
         <textarea id="description" name="description" matInput ngModel></textarea>
       </mat-form-field>
+
+      <label for="text">Text</label>
+      <medium-editor ngModel name="text" class="editable"></medium-editor>
 
     </mat-card-content>
     <mat-card-actions>
