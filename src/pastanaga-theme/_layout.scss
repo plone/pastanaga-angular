@@ -1,0 +1,74 @@
+// Grid
+
+.container {
+  padding: 2em 1em;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 940px;
+}
+
+
+// Misc
+
+body {
+  background: #f2f5f6;
+  margin: 0;
+  padding: 0;
+  color: $body-color;
+}
+
+h1 {
+  color: $title-color;
+  padding-top: .75em;
+}
+
+h2 {
+  padding-top: .5em;
+}
+
+.document .mat-card {
+  background: transparent;
+  border-bottom: solid 1px mat-color($mat-pastanaga-green, 100, null);
+  margin: .5em 0;
+}
+
+.document-title {
+  display: block;
+  color: $title-color;
+  font-size: 1.75em;
+  text-decoration: none;
+}
+
+.rte {
+  font-family: $body-font-family;
+  color: $body-color;
+}
+
+.mat-typography .page-header h2 {
+  padding: 1em;
+  border-bottom: solid 4px rgb(199,213,216);
+  margin-bottom: 0;
+  padding: 1em;
+}
+
+.authenticated {
+  margin-top: 1.5em;
+}
+
+a {
+  color: mat-color($mat-pastanaga, 500, null);
+  
+  &:hover {
+    color: mat-color($mat-pastanaga, 800, null);
+  }
+  
+  &:active {
+    color: mat-color($mat-pastanaga, 900, null);
+  }
+  
+  &:focus {
+    outline: 2px solid mat-color($mat-pastanaga, 100, null);
+  }
+}

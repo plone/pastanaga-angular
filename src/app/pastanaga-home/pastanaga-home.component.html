@@ -1,9 +1,15 @@
-<mat-card *ngFor="let doc of documents">
-  <mat-card-header>
-    <mat-card-title>
-      <a [traverseTo]="doc['@id']">{{ doc.title }}</a>
-    </mat-card-title>
-    <mat-card-subtitle>{{ doc.description }}</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
-<a *ngIf="!authenticated" traverseTo="@@login">Log in</a>
+<div class="container">
+  <div class="content">
+    <div *ngFor="let doc of documents" class="document">
+      <mat-card *ngIf="doc.title" class="mat-elevation-z">
+        <mat-card-header>
+          <mat-card-title>
+            <a [traverseTo]="doc['@id']" class="document-title">{{ doc.title }}</a>
+          </mat-card-title>
+          <mat-card-subtitle>{{ doc.description }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <a *ngIf="!authenticated" traverseTo="@@login">Log in</a>
+  </div>
+</div>
