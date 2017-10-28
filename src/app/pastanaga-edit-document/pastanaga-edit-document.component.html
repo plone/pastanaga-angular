@@ -17,16 +17,17 @@
       </mat-form-field>
       
       <label for="text">Text</label>
-      <medium-editor [ngModel]="context.text.data" name="text" class="editable"></medium-editor>
+      <medium-editor [ngModel]="text" name="text" class="editable"></medium-editor>
 
     </mat-card-content>
-    <mat-card-actions>
+
+    <div class="form-actions">
       <a traverseTo="@@view" class="pastanaga-button">
         <mat-icon svgIcon="clear"></mat-icon>
       </a>
-      <a (click)="send(f.value, f)" class="pastanaga-button">
+      <a (click)="send(f.value, f)" class="pastanaga-button primary">
         <mat-icon svgIcon="ahead"></mat-icon>
       </a>
-    </mat-card-actions>
+    </div>
   </mat-card>
 </form>

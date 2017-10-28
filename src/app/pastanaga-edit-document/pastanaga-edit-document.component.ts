@@ -8,6 +8,12 @@ import { EditView } from '@plone/restapi-angular';
 })
 export class PastanagaEditDocumentComponent extends EditView {
 
+  text: string;
+
+  onTraverse(target) {
+    this.text = target.context.text ? target.context.text.data : '';
+  }
+
   send(data) {
     data.text = {
       'content-type': 'text/html',

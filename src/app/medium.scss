@@ -3,12 +3,19 @@
 
 
 /*custom medium css*/
+.medium-editor-element {
+    padding: 0.5em;
+    &:not(:focus) {
+        border: 1px mat-color($mat-pastanaga-brown, 50, null) dashed;
+    }
+}
+
 .medium-editor-toolbar li button {
-    background-color: #488aff;
+    background-color: mat-color($mat-pastanaga-green, 500, null);
 }
 
 .medium-editor-toolbar li button > b {
-    color: #fff;
+    color: mat-color($mat-pastanaga-green, 50, null);
 }
 
 .medium-toolbar-arrow-under:after {
@@ -22,7 +29,7 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-color: rgba(136, 183, 213, 0);
-    border-top-color: #488aff;
+    border-color: #fff;
+    border-top-color: mat-color($mat-pastanaga-green, 500, null);
     border-width: 8px;
 }
