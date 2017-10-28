@@ -19,6 +19,7 @@ import {
   MatCardModule
 } from '@angular/material';
 import { IconsModule } from '../icons/icons.module';
+import { MediumEditorComponent } from '../medium';
 
 import { AppComponent } from '../app.component';
 
@@ -30,7 +31,10 @@ describe('PastanagaAddDocumentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PastanagaAddDocumentComponent],
+      declarations: [
+        PastanagaAddDocumentComponent,
+        MediumEditorComponent,
+      ],
       imports: [
         HttpClientTestingModule,
         FormsModule,
