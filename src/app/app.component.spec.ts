@@ -13,6 +13,7 @@ import {
   MatIconModule,
   MatFormFieldModule,
   MatInputModule,
+  MatSelectModule,
   MatButtonModule,
   MatCardModule
 } from '@angular/material';
@@ -47,6 +48,7 @@ describe('AppComponent', () => {
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSelectModule,
         MatButtonModule,
         MatCardModule,
         IconsModule,
