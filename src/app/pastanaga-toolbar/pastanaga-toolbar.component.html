@@ -1,16 +1,41 @@
 <div *ngIf="authenticated" class="pastanaga-toolbar" [class.collapsed]="collapsed">
 
-  <button class="pastanaga-button" [matMenuTriggerFor]="menu"><mat-icon svgIcon="more"></mat-icon></button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="logout()">Log out</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
+  <div *ngIf="displayMore" class="pastanaga-toolbar-options">
+    <header class="page-header">
+      <button (click)="logout()" class="logout"><mat-icon svgIcon="log-out"></mat-icon></button>
+      <h2>{{ context.title || context['@type'] }}</h2>
+    </header>
+    <form class="pastanaga-form" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+      <fieldset class="fieldset">
+        <div class="form-body">
+          <mat-form-field *ngIf="state">
+            <label for="state" class="label">State</label>
+            <mat-select id="state" class="input" name="state" matInput #stateSelect
+              [value]="context.review_state" (valueChange)="setState(stateSelect.value)">
+              <mat-option *ngFor="let s of states"
+                [value]="s.id" >
+                <span [class]="'pastanaga-state-option state-' + s.id">{{ s.title }}</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </fieldset>
+    </form>
 
-  <div class="pastanaga-toolbar-actions">
-    <a *ngIf="isFolderish" class="pastanaga-button" traverseTo="@@add"><mat-icon svgIcon="add-document"></mat-icon></a>
-    <a *ngIf="isFolderish" class="pastanaga-button" traverseTo="/"><mat-icon svgIcon="folder"></mat-icon></a>
-    <a *ngIf="isDocument" class="pastanaga-button primary" traverseTo="@@edit"><mat-icon svgIcon="pen"></mat-icon></a>
   </div>
-  
-  <label class="pastanaga-toolbar-opener" (click)="toggle()"></label>
+
+  <div class="pastanaga-toolbar-main">
+    <button class="pastanaga-button" (click)="toggleMore()">
+      <mat-icon *ngIf="!displayMore" svgIcon="more"></mat-icon>
+      <mat-icon *ngIf="displayMore" svgIcon="clear"></mat-icon>
+    </button>
+    
+    <div class="pastanaga-toolbar-actions">
+      <a *ngIf="isFolderish" class="pastanaga-button" traverseTo="@@add"><mat-icon svgIcon="add-document"></mat-icon></a>
+      <a *ngIf="isFolderish" class="pastanaga-button" traverseTo="/"><mat-icon svgIcon="folder"></mat-icon></a>
+      <a *ngIf="isDocument" [class]="'pastanaga-button primary state-' + state" traverseTo="@@edit"><mat-icon svgIcon="pen"></mat-icon></a>
+    </div>
+    
+    <label class="pastanaga-toolbar-opener" (click)="toggle()"></label>
+  </div>
 </div>

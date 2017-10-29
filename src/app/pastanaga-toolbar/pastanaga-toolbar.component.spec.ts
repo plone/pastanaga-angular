@@ -12,9 +12,9 @@ import {
   MatIconModule,
   MatFormFieldModule,
   MatInputModule,
+  MatSelectModule,
   MatButtonModule,
   MatCardModule,
-  MatMenuModule,
 } from '@angular/material';
 import { IconsModule } from '../icons/icons.module';
 
@@ -36,9 +36,9 @@ describe('PastanagaToolbarComponent', () => {
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSelectModule,
         MatButtonModule,
         MatCardModule,
-        MatMenuModule,
         IconsModule,
         BrowserAnimationsModule,
         RESTAPIModule,

@@ -21,6 +21,14 @@
     outline: 2px solid mat-color($mat-pastanaga, 100, null);
   }
   
+  &.state-published {
+    color: $state-published;
+  }
+
+  &.state-private {
+    color: $state-private;
+  }
+
   &.primary {
     color: mat-color($mat-pastanaga, 500, null);
     border-color: mat-color($mat-pastanaga, 500, null);
@@ -31,6 +39,16 @@
 
     &:active {
       color: mat-color($mat-pastanaga, 900, null);
+    }
+
+    &.state-published {
+      color: $state-published;
+      border-color: $state-published;
+    }
+    
+    &.state-private {
+      color: $state-private;
+      border-color: $state-private;
     }
   }
 

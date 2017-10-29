@@ -7,15 +7,22 @@
   top: 0;
   z-index: 10;
   background: white;
-  display: flex;
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
-  justify-content: space-between;
   padding: 1.5em .75em;
   transition: transform .3s $easeInBack;
+
+  .pastanaga-button:focus {
+    outline: 0;
+  }
 }
 
 .pastanaga-toolbar.collapsed {
   transform: translate(0, -75%);
+}
+
+.pastanaga-toolbar-main {
+  display: flex;
+  justify-content: space-between;
 }
 
 .pastanaga-toolbar-actions {
@@ -46,4 +53,29 @@
   &:hover::before {
     background: mat-color($mat-pastanaga, 100, null);
   }
+}
+
+.pastanaga-toolbar-options {
+  .logout {
+    float:right;
+    top: 24px;
+    position: relative;
+  }
+  .form-body {
+    border-bottom: solid 4px rgb(199,213,216);
+    margin-bottom: 1em;
+  }
+}
+.pastanaga-state-option:before {
+  content: '•';
+  font-size: 30px;
+  padding-right: 10px;
+  position: relative;
+  top: 5px;
+}
+.pastanaga-state-option.state-published:before {
+  color: $state-published;
+}
+.pastanaga-state-option.state-private:before {
+  color: $state-private;
 }
