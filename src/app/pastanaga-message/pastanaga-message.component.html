@@ -1,0 +1,7 @@
+<div *ngIf="message" class="pastanaga-message" [class.error]="error">
+  <mat-icon [svgIcon]="error ? 'warning' : 'ready'"></mat-icon>
+  <span>{{ message }}</span>
+  <button class="pastanaga-button">
+    <mat-icon svgIcon="clear" (click)="cancel()"></mat-icon>
+  </button>
+</div>

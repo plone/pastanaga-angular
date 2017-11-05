@@ -19,6 +19,7 @@ import {
 } from '@angular/material';
 import { IconsModule } from './icons/icons.module';
 
+import { PastanagaService } from './service';
 import { AppComponent } from './app.component';
 
 @Component({
@@ -33,6 +34,12 @@ export class FakeToolbar { }
 })
 export class FakeHome { }
 
+@Component({
+  selector: 'app-pastanaga-message',
+  template: ''
+})
+export class FakeMessage { }
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -40,6 +47,7 @@ describe('AppComponent', () => {
         AppComponent,
         FakeToolbar,
         FakeHome,
+        FakeMessage,
       ],
       imports: [
         HttpClientTestingModule,
@@ -55,6 +63,7 @@ describe('AppComponent', () => {
         RESTAPIModule,
       ],
       providers: [
+        PastanagaService,
         { provide: APP_BASE_HREF, useValue: '/' },
         {
           provide: 'CONFIGURATION', useValue: {

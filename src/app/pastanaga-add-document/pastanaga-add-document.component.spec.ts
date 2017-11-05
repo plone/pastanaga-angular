@@ -21,6 +21,7 @@ import {
 import { IconsModule } from '../icons/icons.module';
 import { MediumEditorComponent } from '../medium';
 
+import { PastanagaService } from '../service';
 import { AppComponent } from '../app.component';
 
 import { PastanagaAddDocumentComponent } from './pastanaga-add-document.component';
@@ -49,6 +50,7 @@ describe('PastanagaAddDocumentComponent', () => {
         BrowserAnimationsModule
       ],
       providers: [
+        PastanagaService,
         { provide: APP_BASE_HREF, useValue: '/' },
         {
           provide: 'CONFIGURATION', useValue: {

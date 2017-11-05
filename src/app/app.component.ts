@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PloneViews, Services } from '@plone/restapi-angular';
+import { PastanagaService } from './service';
 import { PastanagaLoginComponent } from './pastanaga-login/pastanaga-login.component';
 import { PastanagaEditDocumentComponent } from './pastanaga-edit-document/pastanaga-edit-document.component';
 import { PastanagaAddDocumentComponent } from './pastanaga-add-document/pastanaga-add-document.component';
@@ -17,9 +18,16 @@ export class AppComponent {
   constructor(
     public views: PloneViews,
     public services: Services,
+    public pastanaga: PastanagaService,
   ) {
     this.services.authentication.isAuthenticated.subscribe(auth => {
       this.authenticated = auth.state;
+      if(this.authenticated) {
+        this.pastanaga.displayMessage('Logged in!');
+      }
+      if(auth.error) {
+        this.pastanaga.displayMessage(auth.error, true);
+      }
     });
     this.views.initialize();
     this.services.traverser.addView('login', '*', PastanagaLoginComponent);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Services, TraversingComponent } from '@plone/restapi-angular';
+import { PastanagaService } from '../service';
 
 @Component({
   selector: 'app-pastanaga-toolbar',
@@ -18,7 +19,10 @@ export class PastanagaToolbarComponent extends TraversingComponent {
   ]; // FIXME: should be obtained from the API
   state: string;
 
-  constructor(public services: Services) {
+  constructor(
+    public services: Services,
+    public pastanaga: PastanagaService,
+  ) {
     super(services);
     this.services.authentication.isAuthenticated.subscribe(auth => {
       this.authenticated = auth.state;
@@ -49,6 +53,7 @@ export class PastanagaToolbarComponent extends TraversingComponent {
 
   logout() {
     this.services.authentication.logout();
+    this.pastanaga.displayMessage('Logged out!');
     this.services.traverser.traverse('');
   }
 
@@ -57,6 +62,10 @@ export class PastanagaToolbarComponent extends TraversingComponent {
       const transition = this.states.filter(s => s.id === state)[0].transition;
       this.services.resource.transition(this.context['@id'], transition).subscribe(res => {
         this.state = res.review_state;
+        this.pastanaga.displayMessage('State changed!');
+        this.toggle();
+      }, err => {      
+        this.pastanaga.displayMessage('Error!');
       });
     }
   }

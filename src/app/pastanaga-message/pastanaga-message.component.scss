@@ -1,0 +1,19 @@
+@import '../../styles';
+
+.pastanaga-message {
+    background-color: $lightSage;
+    padding: 20px;
+    span {
+        position: relative;
+        top: -7px;
+        font-size: 10pt;
+    }
+    button {
+        float: right;
+        position: relative;
+        top: -2px;
+    }
+    &.error {
+        background-color: $yellowish;
+    }
+}
