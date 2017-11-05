@@ -14,9 +14,4 @@ export class PastanagaLoginComponent extends LoginView {
     this.services.traverser.traverse('/');
     return false;
   }
-
-  logout() {
-    this.services.authentication.logout();
-    return false;
-  }
 }

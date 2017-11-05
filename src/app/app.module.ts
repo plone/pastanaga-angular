@@ -18,13 +18,14 @@ import {
 import { environment } from '../environments/environment';
 import { IconsModule } from './icons/icons.module';
 import { AppComponent } from './app.component';
-
+import { PastanagaService } from './service';
 import { PastanagaLoginComponent } from './pastanaga-login/pastanaga-login.component';
 import { PastanagaEditDocumentComponent } from './pastanaga-edit-document/pastanaga-edit-document.component';
 import { PastanagaHomeComponent } from './pastanaga-home/pastanaga-home.component';
 import { PastanagaToolbarComponent } from './pastanaga-toolbar/pastanaga-toolbar.component';
 import { PastanagaAddDocumentComponent } from './pastanaga-add-document/pastanaga-add-document.component';
 import { PastanagaViewComponent } from './pastanaga-view/pastanaga-view.component';
+import { PastanagaMessageComponent } from './pastanaga-message/pastanaga-message.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PastanagaViewComponent } from './pastanaga-view/pastanaga-view.componen
     PastanagaToolbarComponent,
     PastanagaAddDocumentComponent,
     PastanagaViewComponent,
+    PastanagaMessageComponent,
   ],
   entryComponents: [
     PastanagaHomeComponent,
@@ -59,6 +61,7 @@ import { PastanagaViewComponent } from './pastanaga-view/pastanaga-view.componen
     MatCardModule,
   ],
   providers: [
+    PastanagaService,
     {
       provide: 'CONFIGURATION', useValue: {
         BACKEND_URL: environment.backendUrl,

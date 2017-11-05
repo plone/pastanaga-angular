@@ -18,6 +18,7 @@ import {
 } from '@angular/material';
 import { IconsModule } from '../icons/icons.module';
 
+import { PastanagaService } from '../service';
 import { PastanagaToolbarComponent } from './pastanaga-toolbar.component';
 
 describe('PastanagaToolbarComponent', () => {
@@ -44,6 +45,7 @@ describe('PastanagaToolbarComponent', () => {
         RESTAPIModule,
       ],
       providers: [
+        PastanagaService,
         { provide: APP_BASE_HREF, useValue: '/' },
         {
           provide: 'CONFIGURATION', useValue: {
