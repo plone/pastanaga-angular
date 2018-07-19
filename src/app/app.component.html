@@ -159,6 +159,48 @@
         </tr>
         </tbody>
     </table>
+
+    <table>
+        <thead>
+        <tr><th>Sliders</th>
+            <th>2 way data-binding</th>
+            <th>selection</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <pa-slider [(value)]="slider1" name="energy">Energy level</pa-slider>
+                <pa-slider [(value)]="slider2" name="energy" help="I need somebody, Help!">Energy level with help</pa-slider>
+            </td>
+            <td><ul>
+                <li>Value slider1: {{slider1}}</li>
+                <li>Value slider2: {{slider2}}</li>
+            </ul></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="double-sliders">
+                <pa-button size="small" (click)="resetSliders()">reset</pa-button>
+
+                <div class="slider-no-label">
+                    <pa-double-slider [(values)]="sliderValues1" help="no label but help"></pa-double-slider>
+                </div>
+
+                <pa-double-slider [(values)]="sliderValues2">Energy level</pa-double-slider>
+                <pa-double-slider [(values)]="sliderValues3" help="I need somebody, help!">Energy level</pa-double-slider>
+            </td>
+            <td>
+                <ul>
+                    <li>Slider values1: {{sliderValues1 | json}}</li>
+                    <li>Slider values2: {{sliderValues2 | json}}</li>
+                    <li>Slider values2: {{sliderValues3 | json}}</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="example-box">

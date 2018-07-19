@@ -34,4 +34,26 @@
         padding-left: 42px;
     }
 
+    .double-sliders {
+        position: relative;
+        padding-top: 48px;
+
+        pa-button {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+        }
+    }
+    .slider-no-label {
+        ::ng-deep pa-double-slider {
+            .o-slider-wrapper {
+                width: 100%;
+            }
+
+            .o-slider-container {
+                width: calc(100% - 60px);
+            }
+        }
+    }
+
 }

@@ -96,6 +96,14 @@ export class AppComponent {
     toggleGroupSelection2: ToggleModel[] = [];
     toggleGroupSelection3: ToggleModel[] = [];
 
+
+    slider1 = 10;
+    slider2 = 60;
+
+    sliderValues1 = [50, 100];
+    sliderValues2 = [50, 100];
+    sliderValues3 = [50, 100];
+
     // badges
     badgeButtons: BadgeModel[] = [
         {
@@ -110,6 +118,13 @@ export class AppComponent {
         },
     ];
 
+
+    resetSliders() {
+        const defaultValue = [50, 100];
+        this.sliderValues1 = defaultValue;
+        this.sliderValues2 = defaultValue;
+        this.sliderValues3 = defaultValue;
+    }
 
     onButtonClick($event) {
         console.log('Click on button!', $event);

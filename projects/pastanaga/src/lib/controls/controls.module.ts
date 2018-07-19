@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -10,11 +11,14 @@ import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.componen
 import { ButtonModule } from '../button/button.module';
 import { ToggleComponent } from './toggle/toggle.component';
 import { ToggleGroupComponent } from './toggle-group/toggle-group.component';
+import { SliderComponent } from './slider/slider.component';
+import { DoubleSliderComponent } from './double-slider/double-slider.component';
 
 @NgModule({
     imports: [
         CommonModule,
         BrowserAnimationsModule,
+        FormsModule,
         TranslateModule,
         BadgeModule,
         ButtonModule,
@@ -24,6 +28,8 @@ import { ToggleGroupComponent } from './toggle-group/toggle-group.component';
         CheckboxComponent,
         CheckboxExpandableComponent,
         CheckboxGroupComponent,
+        DoubleSliderComponent,
+        SliderComponent,
         ToggleComponent,
         ToggleGroupComponent,
     ],
@@ -31,6 +37,8 @@ import { ToggleGroupComponent } from './toggle-group/toggle-group.component';
         CheckboxComponent,
         CheckboxExpandableComponent,
         CheckboxGroupComponent,
+        DoubleSliderComponent,
+        SliderComponent,
         ToggleComponent,
         ToggleGroupComponent,
     ]

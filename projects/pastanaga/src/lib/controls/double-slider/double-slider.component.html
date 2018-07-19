@@ -1,0 +1,21 @@
+<div class="o-field o-field-slider" [class.disabled]="isDisabled">
+    <label class="o-field-label o-field-label-range" [for]="id" translate>
+        <ng-content></ng-content>
+    </label>
+
+    <div class="o-slider-wrapper">
+        <div class="o-slider-output left">{{values[0]}}</div>
+        <div #container class="o-slider-container">
+            <div #slider class="o-slider">
+                <div #track class="o-slider-track"></div>
+            </div>
+
+            <div #thumbLeft class="o-slider-thumb"></div>
+            <div #thumbRight class="o-slider-thumb"></div>
+        </div>
+        <div class="o-slider-output right">{{values[1]}}</div>
+    </div>
+
+
+    <small *ngIf="help" class="o-field-help" [id]="helpId" translate>{{ help }}</small>
+</div>
