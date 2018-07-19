@@ -1,4 +1,4 @@
-<h1>Pastanaga usage examples</h1>
+<h1 translate>demo-page.title</h1>
 
 <div class="example-box">
     <div class="example-box-header">Controls</div>
@@ -22,6 +22,91 @@
         </tr>
         </tbody>
     </table>
+</div>
 
+<div class="example-box">
+    <div class="example-box-header">Buttons</div>
 
+    <p>
+        <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="small" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="small" (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button color="destructive" size="small" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+        <pa-button color="primary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
+        </pa-button>
+        <pa-button color="destructive" size="small" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
+        </pa-button>
+    </p>
+
+    <p>
+        <pa-button color="primary" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" [border]="falseValue" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button disabled (click)="onButtonClick($event)">Disabled</pa-button>
+        <pa-button color="primary" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" [icon]="'delete'" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" [icon]="'delete'" (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+    </p>
+
+    <p>
+        <pa-button color="primary" size="large" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="large" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="large" (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button color="destructive" size="large" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+        <pa-button color="primary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
+        </pa-button>
+        <pa-button color="destructive" size="large" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
+        </pa-button>
+    </p>
+
+    <p>
+        <pa-button color="primary" size="small" [border]="true" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="small" border (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="small" border (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button color="destructive" size="small" border [disabled]="true" (click)="onButtonClick($event)">Disabled
+        </pa-button>
+        <pa-button color="primary" size="small" [icon]="'delete'" [border]="trueValue" (click)="onButtonClick($event)">
+            Primary
+        </pa-button>
+        <pa-button color="secondary" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
+        </pa-button>
+        <pa-button color="destructive" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
+        </pa-button>
+        <pa-button color="destructive" size="small" [icon]="'delete'" border [disabled]="true"
+                   (click)="onButtonClick($event)">Disabled
+        </pa-button>
+    </p>
+
+    <p>
+        <pa-button color="primary" border (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" border (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" border (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button disabled="true" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
+        <pa-button color="primary" [icon]="'delete'" border (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button disabled="true" [icon]="'delete'" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
+    </p>
+
+    <p>
+        <pa-button color="primary" size="large" border (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="large" border (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="large" border onnaTooltip="Try me" (click)="onButtonClick($event)">Tooltip on
+            me
+        </pa-button>
+        <pa-button color="destructive" size="large" border disabled (click)="onButtonClick($event)">Disabled</pa-button>
+        <pa-button color="primary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
+        </pa-button>
+        <pa-button color="destructive" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
+        </pa-button>
+        <pa-button color="destructive" size="large" [icon]="'delete'" border disabled (click)="onButtonClick($event)">
+            Disabled
+        </pa-button>
+    </p>
 </div>

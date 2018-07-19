@@ -1,0 +1,302 @@
+@import "../styles/_variables";
+
+.o-button {
+    $root: &;
+    background: transparent;
+    display: inline-block;
+    font-weight: $font-weight-bold;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-radius: 10rem;
+    font-family: Rubik;
+    cursor: pointer;
+    outline: 0;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(34, 151, 199, .25);
+
+    &:hover {
+        //background: $azure-light;
+        //border-color: $azure-light;
+        background: rgba($gray-black, .05);
+        border-color: rgba($gray-black, .05);
+        transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    &:active {
+        transition: all .67s cubic-bezier(0.6, 1, 0.8, 1.4);
+        //background: $azure-dark;
+        //border-color: $azure-dark;
+        background: rgba($gray-black, .1);
+        border-color: rgba($gray-black, .1);
+    }
+    &.active {
+        //background: $azure-dark;
+        //border-color: $azure-dark;
+        background: rgba($blue-light, .25);
+        border-color: rgba($blue-light, .25);
+        transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
+        //box-shadow: inset 0 0 0 1.5px rgba($blue,.25);
+    }
+    &:focus {
+        //background: $azure-light;
+        background: rgba($gray-black, .05);
+    }
+    &-wrapper {
+        height: rythm(3);
+        padding: rythm(.5) rythm(1.5);
+        @include font-size(l, xl, l);
+        display: inline-block;
+        /*position: relative;*/
+        /*vertical-align: middle;*/
+        border-radius: 100px;
+        position: relative;
+    }
+    .o-button-accent &-label {
+        min-width: rythm(1)*9;
+        display: inline-block;
+        white-space: nowrap;
+    }
+    & svg {
+        fill: currentColor;
+        width: rythm(2);
+        height: rythm(2);
+        margin-left: - rythm(1);
+        margin-right: - rythm(1);
+        stroke: currentColor;
+        stroke-width: 0.0234375rem;
+        vertical-align: middle;
+        margin-top: - rythm(.25);
+    }
+    &-label:not(.o-sr) + svg {
+        margin-left: rythm(1) !important;
+        margin-right: 0 !important;
+    }
+    & .o-avatar {
+        fill: currentColor;
+        width: rythm(3);
+        height: rythm(3);
+        margin-left: - rythm(1.5);
+        margin-right: - rythm(1.5);
+        margin-top: -.5rem;
+        margin-bottom: - rythm(.5);
+        stroke: currentColor;
+        stroke-width: 0.0234375rem;
+        transition: all .25s ease;
+        &:hover {
+            background: darken($azure, 10%);
+        }
+        & .o-avatar-abbr {
+            cursor: pointer;
+            color: $brown;
+        }
+        &.o-avatar-small {
+            width: rythm(.25)*9;
+            height: rythm(.25)*9;
+            margin-left: - rythm(1);
+            margin-right: - rythm(1);
+            margin-top: -.25rem;
+            margin-bottom: - rythm(.25);
+        }
+    }
+    &#{&}-primary {
+        color: $blue;
+        &:hover {
+            color: $blue-contrast;
+        }
+        &:active {
+            color: $blue-dark;
+        }
+    }
+    &#{&}-secondary {
+        color: $brown;
+        &:hover {
+            color: $brown-contrast;
+        }
+        &:active {
+            color: $brown-dark;
+        }
+    }
+    &#{&}-destructive {
+        color: $red;
+        &:hover {
+            color: $red-contrast;
+        }
+        &:active {
+            color: $red-dark;
+        }
+    }
+    &#{&}-accent, &#{&}-accent:hover, &#{&}-accent:active {
+        box-shadow: inset 0 0 0 1.5px currentColor;
+    }
+    &#{&}-accent#{&}-small, &#{&}-accent#{&}-small:hover, &#{&}-accent#{&}-small:active {
+        box-shadow: inset 0 0 0 1px currentColor;
+    }
+    &#{&}-accent#{&}-large, &#{&}-accent#{&}-large:hover, &#{&}-accent#{&}-large:active {
+        box-shadow: inset 0 0 0 2px currentColor;
+    }
+    &#{&}-accent#{&}-primary:hover {
+        color: $white;
+        box-shadow: inset 0 0 0 1px $blue-contrast;
+        background-color: $blue-contrast;
+    }
+    &#{&}-accent#{&}-primary:active {
+        color: $white;
+        box-shadow: inset 0 0 0 1px $blue-dark;
+        background-color: $blue-dark;
+    }
+    &#{&}-accent#{&}-secondary:hover {
+        color: $white;
+        box-shadow: inset 0 0 0 1px $brown-contrast;
+        background-color: $brown-contrast;
+    }
+    &#{&}-accent#{&}-secondary:active {
+        color: $white;
+        box-shadow: inset 0 0 0 1px $brown-dark;
+        background-color: $brown-dark;
+    }
+    &#{&}-accent#{&}-destructive:hover {
+        color: $white;
+        box-shadow: inset 0 0 0 1px $red-contrast;
+        background-color: $red-contrast;
+    }
+    &#{&}-accent#{&}-destructive:active {
+        color: $white;
+        box-shadow: inset 0 0 0 1px $red-dark;
+        background-color: $red-dark;
+    }
+
+    &#{&}-small {
+        #{$root}-wrapper {
+            height: rythm(2.5);
+            font-size: size(xs);
+            padding: rythm(.5) rythm(1);
+            @include font-size(xs, m, s);
+        }
+        & svg {
+            width: rythm(1.5);
+            height: rythm(1.5);
+            margin-left: -  rythm(.5);
+            margin-right: -  rythm(.5);
+            margin-top: - rythm(.25)/2;
+        }
+    }
+
+    &#{&}-large {
+        #{$root}-wrapper {
+            height: rythm(1)*4.5;
+            font-size: size(xxxl);
+            line-height: rythm(1)*3.5;
+            padding: rythm(.5) rythm(2);
+        }
+        & svg {
+            width: rythm(3);
+            height: rythm(3);
+            margin-left: - rythm(2.5)/2;
+            margin-right: - rythm(2.5)/2;
+            margin-top: - rythm(.25);
+        }
+    }
+
+    &:disabled, &:hover:disabled, &:active:disabled {
+        color: $gray-pale;
+        background: transparent;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    &-link {
+        vertical-align: baseline;
+        font-size: inherit;
+        font-weight: bolder;
+        display: inline;
+        white-space: normal;
+        line-height: inherit;
+
+        &:hover {
+            background: transparent;
+            border-color: transparent;
+        }
+        & .o-button-wrapper {
+            line-height: inherit;
+            display: inline;
+            height: auto;
+            padding: 0 rythm(.25);
+            border-radius: 3px;
+            margin: - rythm(.5) 0;
+            &:hover, &:active {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @keyframes focus-ring {
+        from {
+            box-shadow: 0 0 0 12px rgba(34, 151, 199, 0);
+        }
+        to {
+            box-shadow: 0 0 0 3px rgba(34, 151, 199, .5);
+        }
+    }
+    &:focus > &-wrapper {
+        outline: 0;
+        animation-name: focus-ring;
+        animation-duration: .33s;
+        box-shadow: 0 0 0 3px rgba(34, 151, 199, .5);
+    }
+    &:not(:-moz-focusring):focus > &-wrapper {
+        outline: 0;
+    }
+    &::-moz-focus-inner, button::-moz-focus-outer {
+        border: 0;
+    }
+    &:focus, &-wrapper:focus {
+        outline: 0;
+    }
+}
+
+a.o-button:focus, a.o-button-link:focus {
+    box-shadow: none;
+    animation: none;
+}
+
+.o-button-large.o-button-accent:disabled {
+    box-shadow: none;
+    border-image-slice: 27 27 27 27 fill;
+    border-image-width: 27px 27px 27px 27px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: round round;
+    border-image-source: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij4KICA8ZyBmaWxsPSIjREVFN0U5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPGNpcmNsZSBjeD0iMzIiIGN5PSIxIiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjYzIiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSIxIiBjeT0iMzIiIHI9IjEiLz4KICAgIDxjaXJjbGUgY3g9IjYzIiBjeT0iMzIiIHI9IjEiLz4KICAgIDxjaXJjbGUgY3g9IjM3IiBjeT0iMSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNDIiIGN5PSIxLjUiIHI9IjEiLz4KICAgIDxjaXJjbGUgY3g9IjQ3IiBjeT0iMyIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNTEuNSIgY3k9IjUuNSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNTUuNSIgY3k9IjguNSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNjMiIGN5PSIyNyIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNjIuNSIgY3k9IjIyIiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSI2MSIgY3k9IjE3IiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSI1OC41IiBjeT0iMTIuNSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNjMiIGN5PSIzNyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNjMgMzcpIi8+CiAgICA8Y2lyY2xlIGN4PSI2Mi41IiBjeT0iNDIiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKDkwIDYyLjUgNDIpIi8+CiAgICA8Y2lyY2xlIGN4PSI2MSIgY3k9IjQ3IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2MSA0NykiLz4KICAgIDxjaXJjbGUgY3g9IjU4LjUiIGN5PSI1MS41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA1OC41IDUxLjUpIi8+CiAgICA8Y2lyY2xlIGN4PSI1NS41IiBjeT0iNTUuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNTUuNSA1NS41KSIvPgogICAgPGNpcmNsZSBjeD0iMzciIGN5PSI2MyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgMzcgNjMpIi8+CiAgICA8Y2lyY2xlIGN4PSI0MiIgY3k9IjYyLjUiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKDkwIDQyIDYyLjUpIi8+CiAgICA8Y2lyY2xlIGN4PSI0NyIgY3k9IjYxIiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NyA2MSkiLz4KICAgIDxjaXJjbGUgY3g9IjUxLjUiIGN5PSI1OC41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA1MS41IDU4LjUpIi8+CiAgICA8Y2lyY2xlIGN4PSIxIiBjeT0iMjciIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxIDI3KSIvPgogICAgPGNpcmNsZSBjeD0iMS41IiBjeT0iMjIiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxLjUgMjIpIi8+CiAgICA8Y2lyY2xlIGN4PSIzIiBjeT0iMTciIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC05MCAzIDE3KSIvPgogICAgPGNpcmNsZSBjeD0iNS41IiBjeT0iMTIuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDUuNSAxMi41KSIvPgogICAgPGNpcmNsZSBjeD0iOC41IiBjeT0iOC41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgOC41IDguNSkiLz4KICAgIDxjaXJjbGUgY3g9IjI3IiBjeT0iMSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDI3IDEpIi8+CiAgICA8Y2lyY2xlIGN4PSIyMiIgY3k9IjEuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDIyIDEuNSkiLz4KICAgIDxjaXJjbGUgY3g9IjE3IiBjeT0iMyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDE3IDMpIi8+CiAgICA8Y2lyY2xlIGN4PSIxMi41IiBjeT0iNS41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMTIuNSA1LjUpIi8+CiAgICA8Y2lyY2xlIGN4PSIyNyIgY3k9IjYzIiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDI3IDYzKSIvPgogICAgPGNpcmNsZSBjeD0iMjIiIGN5PSI2Mi41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDIyIDYyLjUpIi8+CiAgICA8Y2lyY2xlIGN4PSIxNyIgY3k9IjYxIiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDE3IDYxKSIvPgogICAgPGNpcmNsZSBjeD0iMTIuNSIgY3k9IjU4LjUiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC0xODAgMTIuNSA1OC41KSIvPgogICAgPGNpcmNsZSBjeD0iOC41IiBjeT0iNTUuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE4MCA4LjUgNTUuNSkiLz4KICAgIDxjaXJjbGUgY3g9IjEiIGN5PSIzNyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE4MCAxIDM3KSIvPgogICAgPGNpcmNsZSBjeD0iMS41IiBjeT0iNDIiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC0xODAgMS41IDQyKSIvPgogICAgPGNpcmNsZSBjeD0iMyIgY3k9IjQ3IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDMgNDcpIi8+CiAgICA8Y2lyY2xlIGN4PSI1LjUiIGN5PSI1MS41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDUuNSA1MS41KSIvPgogIDwvZz4KPC9zdmc+Cg==");
+}
+
+.o-button.o-button-accent:disabled {
+    box-shadow: none;
+    border-image-slice: 27 27 27 27 fill;
+    border-image-width: 27px 27px 27px 27px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: round round;
+    border-image-source: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij4KICA8ZyBmaWxsPSIjREVFN0U5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPGNpcmNsZSBjeD0iMzIiIGN5PSIxIiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjYzIiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSIxIiBjeT0iMzIiIHI9IjEiLz4KICAgIDxjaXJjbGUgY3g9IjYzIiBjeT0iMzIiIHI9IjEiLz4KICAgIDxjaXJjbGUgY3g9IjM3IiBjeT0iMSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNDIiIGN5PSIxLjUiIHI9IjEiLz4KICAgIDxjaXJjbGUgY3g9IjQ3IiBjeT0iMyIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNTEuNSIgY3k9IjUuNSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNTUuNSIgY3k9IjguNSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNjMiIGN5PSIyNyIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNjIuNSIgY3k9IjIyIiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSI2MSIgY3k9IjE3IiByPSIxIi8+CiAgICA8Y2lyY2xlIGN4PSI1OC41IiBjeT0iMTIuNSIgcj0iMSIvPgogICAgPGNpcmNsZSBjeD0iNjMiIGN5PSIzNyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNjMgMzcpIi8+CiAgICA8Y2lyY2xlIGN4PSI2Mi41IiBjeT0iNDIiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKDkwIDYyLjUgNDIpIi8+CiAgICA8Y2lyY2xlIGN4PSI2MSIgY3k9IjQ3IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2MSA0NykiLz4KICAgIDxjaXJjbGUgY3g9IjU4LjUiIGN5PSI1MS41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA1OC41IDUxLjUpIi8+CiAgICA8Y2lyY2xlIGN4PSI1NS41IiBjeT0iNTUuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNTUuNSA1NS41KSIvPgogICAgPGNpcmNsZSBjeD0iMzciIGN5PSI2MyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgMzcgNjMpIi8+CiAgICA8Y2lyY2xlIGN4PSI0MiIgY3k9IjYyLjUiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKDkwIDQyIDYyLjUpIi8+CiAgICA8Y2lyY2xlIGN4PSI0NyIgY3k9IjYxIiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NyA2MSkiLz4KICAgIDxjaXJjbGUgY3g9IjUxLjUiIGN5PSI1OC41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA1MS41IDU4LjUpIi8+CiAgICA8Y2lyY2xlIGN4PSIxIiBjeT0iMjciIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxIDI3KSIvPgogICAgPGNpcmNsZSBjeD0iMS41IiBjeT0iMjIiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxLjUgMjIpIi8+CiAgICA8Y2lyY2xlIGN4PSIzIiBjeT0iMTciIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC05MCAzIDE3KSIvPgogICAgPGNpcmNsZSBjeD0iNS41IiBjeT0iMTIuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDUuNSAxMi41KSIvPgogICAgPGNpcmNsZSBjeD0iOC41IiBjeT0iOC41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgOC41IDguNSkiLz4KICAgIDxjaXJjbGUgY3g9IjI3IiBjeT0iMSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDI3IDEpIi8+CiAgICA8Y2lyY2xlIGN4PSIyMiIgY3k9IjEuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDIyIDEuNSkiLz4KICAgIDxjaXJjbGUgY3g9IjE3IiBjeT0iMyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDE3IDMpIi8+CiAgICA8Y2lyY2xlIGN4PSIxMi41IiBjeT0iNS41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMTIuNSA1LjUpIi8+CiAgICA8Y2lyY2xlIGN4PSIyNyIgY3k9IjYzIiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDI3IDYzKSIvPgogICAgPGNpcmNsZSBjeD0iMjIiIGN5PSI2Mi41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDIyIDYyLjUpIi8+CiAgICA8Y2lyY2xlIGN4PSIxNyIgY3k9IjYxIiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDE3IDYxKSIvPgogICAgPGNpcmNsZSBjeD0iMTIuNSIgY3k9IjU4LjUiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC0xODAgMTIuNSA1OC41KSIvPgogICAgPGNpcmNsZSBjeD0iOC41IiBjeT0iNTUuNSIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE4MCA4LjUgNTUuNSkiLz4KICAgIDxjaXJjbGUgY3g9IjEiIGN5PSIzNyIgcj0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE4MCAxIDM3KSIvPgogICAgPGNpcmNsZSBjeD0iMS41IiBjeT0iNDIiIHI9IjEiIHRyYW5zZm9ybT0icm90YXRlKC0xODAgMS41IDQyKSIvPgogICAgPGNpcmNsZSBjeD0iMyIgY3k9IjQ3IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDMgNDcpIi8+CiAgICA8Y2lyY2xlIGN4PSI1LjUiIGN5PSI1MS41IiByPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDUuNSA1MS41KSIvPgogIDwvZz4KPC9zdmc+Cg==");
+}
+
+.o-notifications-content {
+    &-empty {
+        height: 100%;
+        background: $white-smoke;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        & svg {
+            fill: $green-light;
+            width: rythm(4);
+            height: rythm(4);
+        }
+        & h3 {
+            margin: 0 0 rythm(1);
+            text-align: center;
+        }
+    }
+}

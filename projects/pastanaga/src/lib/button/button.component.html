@@ -1,0 +1,15 @@
+<button class="o-button {{colorClass}} {{sizeClass}}"
+        [class.o-button-accent]="hasBorder"
+        [disabled]="isDisabled"
+        [type]="checkedType"
+        [attr.aria-label]="ariaLabel"
+        [attr.aria-controls]="ariaControls"
+        [attr.aria-expanded]="ariaExpanded"
+        tabindex="0"
+        (click)="onClick($event)">
+    <span class="o-button-wrapper" tabindex="-1">
+        <span #text class="o-button-label" [class.o-sr]="icon" translate><ng-content></ng-content></span>
+        <pa-icon *ngIf="icon" [name]="icon" [hidden]="true"></pa-icon>
+    </span>
+</button>
+
