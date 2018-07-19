@@ -1,0 +1,166 @@
+// stylelint-disable declaration-no-important, selector-list-comma-newline-after
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.xxxl, .xxl, .xl, .l, .m, .s {
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+h1, .xxxl   { @include font-size(xxxl,xxl,l); }   //20
+h2, .xxl    { @include font-size(xxl,xl,l); }     //18
+h3, .xl     { @include font-size(xl,l,m); }       //16
+h4, .l      { @include font-size(l,l,m); }        //15
+h5, .m      { @include font-size(m,m,m); }        //14
+h6, .s      { @include font-size(s,m,s); }        //13
+
+
+// Type display classes
+.d { @include font-size(d,d,xxl); }
+.xd { @include font-size(xd,xd,xxl); }
+.xxd { @include font-size(xxd,xxd,xxl); }
+.xxxd { @include font-size(xxxd,xxxd,xxl); }
+
+
+
+//
+// Horizontal rules
+//
+
+hr {
+  margin-top: rythm(1);
+  margin-bottom: rythm(1);
+  border: 0;
+  border-top: 1px solid $gray-pale;
+}
+
+
+//
+// Emphasis
+//
+
+small,
+.small {
+  font-size: $small-font-size;
+  font-weight: inherit;
+}
+
+mark,
+.mark {
+  padding: 0 rythm(.25);
+  background-color: $yellow-light;
+  border-bottom: 2px solid rgba(239, 233, 9, 0.95);
+  border-top: 1px solid rgba(239, 233, 9, 0.95);
+  box-shadow: 0 0 0 2px rgba(239, 233, 9, 0.95);
+  border-radius: 1px;
+}
+
+ins,
+.ins {
+    background: #B2D375;
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px #b2d375;
+    text-decoration: none;
+}
+
+del,
+.del {
+    background: #e3aa99;
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px #e3aa99;
+    text-decoration: line-through;
+}
+
+
+.help {
+  color: $gray;
+}
+
+
+
+//
+// Lists
+//
+
+ul, ol, menu, dir {
+    padding-left: rythm(2);
+}
+/*
+.list-unstyled {
+  @include list-unstyled;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  @include list-unstyled;
+}
+.list-inline-item {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: $list-inline-padding;
+  }
+}
+*/
+
+
+//
+// Misc
+//
+abbr, abbr[title], abbr[data-original-title] {
+  text-decoration: none;
+  background-image: linear-gradient(to right, $azure-dark 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 3px 1px;
+  background-repeat: repeat-x;
+  cursor: help;
+  transition: all .5s ease;
+  &:hover {
+    background-image: linear-gradient(to right, $gray-light 33%, rgba(255,255,255,0) 0%);
+  }
+}
+// Builds on `abbr`
+.small-caps {
+  font-variant: all-small-caps;
+}
+.all-caps {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+
+// Blockquotes
+blockquote,
+.blockquote {
+  margin:0;
+  margin-bottom: rythm(1);
+  @include font-size(l,l,m);
+  padding-left: rythm(1);
+  position: relative;
+  &::before {
+    content: "";
+    width: rythm(.25);
+    height: 100%;
+    position: absolute;
+    background: $sky-dark;
+    border-radius: rythm(.5);
+    margin-left: - rythm(1);
+  } 
+}
+
+
+.blockquote-footer {
+  display: block;
+  font-size: 80%; // back to default font-size
+  color: $gray;
+
+  &::before {
+    content: "\2014 \00A0"; // em dash, nbsp
+  }
+}

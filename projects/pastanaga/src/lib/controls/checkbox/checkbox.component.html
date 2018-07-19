@@ -1,0 +1,13 @@
+<div class="o-field"
+     [class.o-field-checkbox]="type === 'checkbox'"
+     [class.o-field-radio]="type === 'radio'">
+    <input class="o-field-control" [type]="type" [id]="id" [name]="name" [attr.aria-describedby]="helpId"
+           [checked]="isSelected"
+           [attr.aria-checked]="isSelected"
+           [disabled]="isDisabled"
+           [indeterminate]="isIndeterminate"
+           (change)="toggleCheckbox()">
+    <label class="o-field-label" [for]="id"><span translate [class.o-sr]="isLabelHidden"><pa-icon *ngIf="icon" [name]="icon"></pa-icon><ng-content></ng-content></span></label>
+
+    <small *ngIf="help" class="o-field-help" [class.o-sr]="isLabelHidden" [id]="helpId" translate>{{help}}</small>
+</div>

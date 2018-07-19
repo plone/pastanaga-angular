@@ -1,0 +1,74 @@
+@import "variables";
+
+legend {
+  @include font-size(xs,xs,xs);
+  color: $gray;
+}
+
+
+.o-field {
+  position: relative;
+  margin-bottom: rythm(1.5);
+
+  // o-field-help
+  &-help {
+    @include font-size(xs,s,xs);
+    color: $gray;
+    font-weight: $font-weight-light;
+    display: block;
+    margin-top:rythm(.5);
+  }
+  &-control:disabled ~ &-help {
+    color: $gray-pale;
+  }
+}
+
+// no ng-deep here because this style doesn't belong to a component
+//groups
+fieldset.o-fieldset-group {
+  & > legend {
+    @include font-size(xs,xs,xs);
+    margin-bottom: rythm(1);
+  }
+  & > onna-checkbox:not(:last-child) .o-field {
+    margin-bottom: 0;
+  }
+  & > .o-field.o-field-toggle:not(:last-child) {
+    margin-bottom: rythm(1);
+  }
+}
+fieldset > onna-button.o-field-button-right {
+  float:right;
+  margin-right: -12px;
+  margin-top: -30px;
+}
+
+// errors
+.o-field-error {
+  .o-field-control,
+  .o-field-control:not(:disabled):not(:read-only):hover,
+  .o-field-control:not(:disabled):not(:read-only):active,
+  .o-field-control:not(:disabled):not(:read-only):focus {
+      background: rgba($red, .05);
+      box-shadow: 0 7px 0 -6px $red;
+      caret-color: $red !important;
+  }
+  .o-field-control:not(:disabled):not(:read-only):hover {
+      box-shadow: 0 2px 0 -1px $red-contrast;
+  }
+  .o-field-control:not(:disabled):not(:read-only):active,
+  .o-field-control:not(:disabled):not(:read-only):focus {
+      box-shadow: 0 2px 0 0 $red-light;
+  }
+
+
+  .o-field-control:hover + .o-field-label,
+  .o-field-control:active + .o-field-label,
+  .o-field-control:focus + .o-field-label,
+  .o-field-label {
+      color: $red-contrast !important;
+  }
+  .o-field-help-error {
+      color: $red-contrast;
+  }
+}

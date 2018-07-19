@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    padding: 24px;
+
+    .example-box {
+        border: 3px solid #ddd;
+        border-radius: 6px;
+        padding: 36px 30px;
+        margin: 36px 30px;
+        position: relative;
+    }
+    .example-box-header {
+        background: #ddd;
+        position: sticky;
+        top: 0;
+        left: 0;
+        padding: 3px 6px;
+        margin: -36px -30px 6px;
+        z-index: 9;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th {
+        width: 33%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 12px;
+    }
+    td {
+        padding-left: 42px;
+    }
+
+}

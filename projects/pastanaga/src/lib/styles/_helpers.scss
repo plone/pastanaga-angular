@@ -1,0 +1,145 @@
+/*
+ * _helpers.scss must be imported only once by project as it contains style, not just variables
+ */
+
+@import "variables";
+
+@keyframes default-focus-ring {
+    from {box-shadow: 0 0 0 12px rgba(34,151,199,0);}
+    to {box-shadow: 0 0 0 3px rgba(34,151,199,.5);}
+}
+a:focus {
+    outline: 0;
+    animation-name: focus-ring;
+    animation-duration: .33s;
+    box-shadow: 0 0 0 3px rgba(34,151,199,.5);
+}
+:not(:-moz-focusring):focus {
+    outline:0;
+}
+::-moz-focus-inner, button::-moz-focus-outer {border:0;}
+
+/*
+[href^="http"]:not([href*="onna.io"])::after, [target="_blank"]:not([href*="onna.io"])::after {
+    display: inline-block;
+    width: rythm(1)*1.25;
+    height: rythm(1)*1.25;
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="'+$blue+'" fill-rule="evenodd"><polygon points="16 5 16 7 27.586 7 13.293 21.293 14.707 22.707 29 8.414 29 20 31 20 31 5"/><polygon points="23 29 7 29 7 13 18 13 18 11 5 11 5 31 25 31 25 18 23 18"/></g></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    vertical-align: middle;
+    margin-left: rythm(.25);
+    content: '(external link)';
+    overflow: hidden;
+    white-space: nowrap;
+    text-indent: (15em/14);
+    }
+*/
+
+
+/* screen readers */
+
+.o-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+.o-srf {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    background: $white;
+    &:active,
+    &:focus {
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+    }
+}
+.o-hide {
+    display: none;
+}
+option.o-hide {
+    font-weight: $font-weight-light;
+    color: $gray;
+}
+
+/* scroll shadows */
+.o-content-shadow {
+    position: relative;
+    &-top::before {
+        content:"";
+        width: 100%;
+        height: 6px;
+        background: radial-gradient(ellipse at 50% -3%, rgba(00, 00, 00, 0.25), rgba(97, 97, 97, 0.0) 80%);
+        z-index: 1;
+        position:fixed;
+        left: 0;
+        margin-top: -24px;
+    }
+    &-bottom::after {
+        content:"";
+        width: 100%;
+        height: 6px;
+        background: radial-gradient(ellipse at 50% 97%, rgba(00, 00, 00, 0.25), rgba(97, 97, 97, 0.0) 80%);
+        z-index: 1;
+        position:fixed;
+        left: 0;
+        bottom: 84px;
+    }
+}
+
+//flex
+.o-flex {
+    display: flex;
+    align-items: center;
+
+    &-item {
+        flex:1 auto;
+    }
+    &-item-adaptative {
+        min-width: 0;
+    }
+}
+.o-flex-row {
+    flex-direction: row;
+}
+.o-flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+
+// Només per ús intern
+.½ {
+    width: 50%;
+    margin: -1px;
+    display:inline-block;
+    border: 1px solid #eee;
+    padding: 12px;
+    height: 108px;
+    vertical-align: top;
+}
+.⅓ {
+    width: 33.34%;
+    margin: -1px -2px;
+    display:inline-block;
+    border: 1px solid #eee;
+    padding: 12px;
+    height: 300px;
+    vertical-align: top;
+}
