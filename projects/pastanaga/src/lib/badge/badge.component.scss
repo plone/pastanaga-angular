@@ -1,0 +1,96 @@
+@import "../styles/variables";
+
+.o-badge {
+    display: inline-block;
+    @include font-size(m, l, m);
+    padding: rythm(.25) rythm(.5);
+    margin-left: - rythm(.5);
+    margin-right: rythm(1);
+    font-weight: $font-weight-regular;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    overflow: hidden;
+    @include border-radius(xs);
+    color: $gray-blacky;
+    background-color: $azure-light;
+
+    // Empty badges collapse automatically
+    &:empty {
+        display: none;
+    }
+
+    & ::ng-deep pa-button button {
+        margin: (- rythm(1)) (- rythm(.25));
+    }
+    & ::ng-deep pa-button:last-child button {
+        margin-right: (- rythm(.5));
+    }
+    & .o-avatar-small {
+        margin-top: (- rythm(.25)*5.5);
+        margin-bottom: (- rythm(.25)*4.5);
+        margin-left: (- rythm(.25)*3);
+        margin-right: (rythm(.5));
+        & img {
+            left: 0;
+        }
+    }
+    > .o-badge-ellipsis {
+        opacity: .8;
+    }
+}
+
+.o-badge-small {
+    @include font-size(xs, m, xs);
+    padding: rythm(.25)/2 rythm(.25);
+    &.o-badge-accent {
+        padding-right: rythm(1.5)/3;
+        padding-left: rythm(1.5)/3;
+    }
+}
+
+.on-button .o-badge {
+    position: relative;
+    top: -1px;
+}
+
+.o-badge .o-badge-ellipsis {
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-overflow: "…";
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.o-badge-accent {
+    padding-right: rythm(1.5)/2;
+    padding-left: rythm(1.5)/2;
+    border-radius: 100px;
+}
+
+.o-badge-positive {
+    background-color: $green;
+    color: $white;
+}
+
+.o-badge-destructive {
+    background-color: $red;
+    color: $white;
+}
+
+.o-badge-warning {
+    background-color: $ocher;
+    color: $white;
+}
+
+.o-badge-secondary {
+    background-color: $brown;
+    color: $white;
+}
+
+.o-badge-primary {
+    background-color: $blue;
+    color: $white;
+}

@@ -1,0 +1,31 @@
+<fieldset class="o-fieldset-group" [id]="id">
+    <legend #text translate>
+        <ng-content></ng-content>
+    </legend>
+
+    <pa-button *ngIf="type === 'checkbox' && !shouldHideSelectAll" size="small" class="o-field-button-right"
+               [color]="isAllSelected ? 'secondary' : 'primary'"
+               (click)="toggleSelectAll()">
+        {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
+    </pa-button>
+    <pa-badge *ngIf="isBadgeVisible" [value]="totalSelected" [of]="total"></pa-badge>
+
+    <ng-container *ngFor="let checkbox of checkboxes">
+        <pa-checkbox *ngIf="!checkbox.isFiltered && (!checkbox.children || checkbox.children.length === 0)"
+                     [name]="name || id"
+                     [type]="type"
+                     [(id)]="checkbox.id"
+                     [icon]="checkbox.icon"
+                     [help]="checkbox.help"
+                     [(isSelected)]="checkbox.isSelected"
+                     [isDisabled]="checkbox.isDisabled"
+                     (selection)="updateSelection()">{{checkbox.label}}
+        </pa-checkbox>
+
+        <pa-checkbox-expandable *ngIf="checkbox.children && checkbox.children.length > 0"
+                                [type]="type"
+                                [control]="checkbox"
+                                (selection)="updateSelection()"></pa-checkbox-expandable>
+    </ng-container>
+
+</fieldset>

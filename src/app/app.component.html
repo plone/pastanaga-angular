@@ -20,6 +20,70 @@
                {{standaloneSelection}}
             </td>
         </tr>
+        <tr>
+            <td>
+                <pa-checkbox-group [checkboxes]="simpleCheckboxes"
+                                     (selection)="simpleCheckboxSelection = $event">Simple checkbox group (without badge)
+                </pa-checkbox-group>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let checkbox of simpleCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
+                </ul>
+            </td>
+            <td>
+                Selection: {{simpleCheckboxSelection | json}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pa-checkbox-group [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
+                                     (selection)="iconCheckboxSelection = $event">Icon checkbox group </pa-checkbox-group>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let checkbox of iconCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
+                </ul>
+            </td>
+            <td>
+                <p>Selection: {{iconCheckboxSelection | json}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pa-checkbox-group [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help checkbox
+                    group
+                </pa-checkbox-group>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let checkbox of helpCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
+                </ul>
+            </td>
+            <td>
+                <p>Selection: {{helpCheckboxSelection | json}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pa-checkbox-group [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">Nested
+                    checkbox group
+                </pa-checkbox-group>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let checkbox of nestedCheckboxes">
+                        {{checkbox.label}}: {{checkbox.isSelected}}
+                        <ul *ngIf="checkbox.children">
+                            <li *ngFor="let child of checkbox.children">{{child.label}}: {{child.isSelected}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <p>Selection: {{nestedCheckboxSelection | json}}</p>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -96,7 +160,7 @@
     <p>
         <pa-button color="primary" size="large" border (click)="onButtonClick($event)">Primary</pa-button>
         <pa-button color="secondary" size="large" border (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" size="large" border onnaTooltip="Try me" (click)="onButtonClick($event)">Tooltip on
+        <pa-button color="destructive" size="large" border paTooltip="Try me" (click)="onButtonClick($event)">Tooltip on
             me
         </pa-button>
         <pa-button color="destructive" size="large" border disabled (click)="onButtonClick($event)">Disabled</pa-button>
@@ -109,4 +173,44 @@
             Disabled
         </pa-button>
     </p>
+</div>
+
+<div class="example-box">
+    <div class="example-box-header">Badges</div>
+
+    <div>
+        <pa-badge>Generic badge</pa-badge>
+        <pa-badge color="positive">Generic badge</pa-badge>
+        <pa-badge color="primary">Generic badge</pa-badge>
+        <pa-badge [isSmall]="true" color="secondary">Generic badge</pa-badge>
+        <pa-badge [isSmall]="true" color="warning">Generic badge</pa-badge>
+        <pa-badge [isSmall]="true" color="destructive">Generic badge</pa-badge>
+    </div>
+    <div>
+        <pa-badge [isAccented]="true">Generic badge</pa-badge>
+        <pa-badge [isAccented]="true" color="positive">Generic badge</pa-badge>
+        <pa-badge [isAccented]="true" color="primary">Generic badge</pa-badge>
+        <pa-badge [isSmall]="true" [isAccented]="true" color="secondary">Generic badge</pa-badge>
+        <pa-badge [isSmall]="true" [isAccented]="true" color="warning">Generic badge</pa-badge>
+        <pa-badge [isSmall]="true" [isAccented]="true" color="destructive">Generic badge</pa-badge>
+    </div>
+    <div>
+        <pa-badge [hexaColor]="'#333333'">Custom #333333</pa-badge>
+        <pa-badge [hexaColor]="'#D28D16'">Custom #D28D16</pa-badge>
+        <pa-badge [hexaColor]="'#51A8C8'">Custom #51A8C8</pa-badge>
+        <pa-badge [hexaColor]="'#A7C8BC'">Custom #A7C8BC</pa-badge>
+        <pa-badge [isAccented]="true" hexaColor="#3B0E42">Custom #3B0E42</pa-badge>
+        <pa-badge [isAccented]="true" hexaColor="#7B170A">Custom #7B170A</pa-badge>
+        <pa-badge [isAccented]="true" hexaColor="#C96610">Custom #C96610</pa-badge>
+    </div>
+    <div>
+        <pa-badge [buttons]="badgeButtons">Badge with buttons</pa-badge>
+    </div>
+    <div>
+        <pa-badge maxWidth="100px">Badge with long text and ellipsis</pa-badge>
+    </div>
+    <div>
+        <pa-badge value="1"></pa-badge>
+        <pa-badge value="1" of="4"></pa-badge>
+    </div>
 </div>

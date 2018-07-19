@@ -37,38 +37,6 @@ $b10: #B5E0EA;    $t10: #B7E8E4;    $j10: #B9DDD5;    $g10:#CDE1C8;    $l10:#DFE
 $b05: #DDEEF1;    $t05: #DEF0EF;    $j05: #DEECE9;    $g05:#E5EEE3;    $l05:#EDF1E5;
 
 
-//SOURCES
-$color-addsource:           #B5E0EA;
-$color-box:                 #0074C0;
-$color-confluence:          #F4F5F7;
-$color-s3:                  #FEE00E;
-$color-crawler:             #005C97;
-$color-customsource:        #D8E1E3;
-$color-dropbox:             #EEF5F8;
-$color-dropboxenterprise:   #0562FF;
-$color-facebookworkplace:   #f6f7f9;
-$color-github:              #24292E;
-$color-gmail:               #F5F5F5;
-$color-googledrive:         #F5F5F5;
-$color-googlehangouts:      #F5F5F5;
-$color-googlesuite:         #F5F5F5;
-$color-googlesuiteaudits:   #F5F5F5;
-$color-imap:                #006F7B;
-$color-jira:                #F4F5F7;
-$color-microsoftgraph:      #EFF4F8;
-$color-microsoftonedrive:   #EFF4F8;
-$color-microsoftoutlook:    #EFF4F8;
-$color-microsoftsharepoint: #EFF4F8;
-$color-netdocuments:        #131037;
-$color-onnabridge:          #1791BA;
-$color-quip:                #00ADEC;
-$color-quipenterprise:      #3d3d3d;
-$color-slack:               #E6F1F1;
-$color-slackenterprise:     #212224;
-$color-uploadfiles:         #2880A4;
-$color-zendesk:             #003137;
-
-
 $body-bg:                   $white-ghost !default;
 $body-color:                $gray-blacky !default;
 $link-color:                $blue !default;
@@ -150,9 +118,9 @@ $font-size: (
         xxxl: ($font-size-base * (20/14)),   // ~20px - big buttons
     //display sizes
         d:    ($font-size-base * 1.7142),   // ~24px - empty screen titles
-        xd:   ($font-size-base * 2.5714),   // ~36px - big article promo title (onna.com)
-        xxd:  ($font-size-base * 3),        // ~42px - big section primi title (onna.com)
-        xxxd: ($font-size-base * 4.2857)    // ~60px - main hero claim (onna.com)
+        xd:   ($font-size-base * 2.5714),   // ~36px - big article promo title
+        xxd:  ($font-size-base * 3),        // ~42px - big section primi title
+        xxxd: ($font-size-base * 4.2857)    // ~60px - main hero claim
 ) !default;
 @function size($tshirt-size) {
     @return map-get($font-size, $tshirt-size);

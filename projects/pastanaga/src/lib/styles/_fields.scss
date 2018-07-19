@@ -30,14 +30,14 @@ fieldset.o-fieldset-group {
     @include font-size(xs,xs,xs);
     margin-bottom: rythm(1);
   }
-  & > onna-checkbox:not(:last-child) .o-field {
+  & > pa-checkbox:not(:last-child) .o-field {
     margin-bottom: 0;
   }
   & > .o-field.o-field-toggle:not(:last-child) {
     margin-bottom: rythm(1);
   }
 }
-fieldset > onna-button.o-field-button-right {
+fieldset > pa-button.o-field-button-right {
   float:right;
   margin-right: -12px;
   margin-top: -30px;
