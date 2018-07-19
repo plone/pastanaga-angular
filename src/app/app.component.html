@@ -2,9 +2,9 @@
 
 <div class="example-box">
     <div class="example-box-header">Controls</div>
-    <table>
+    <table class="checkoxes">
         <thead>
-        <tr><th>checkboxes</th>
+        <tr><th>Checkboxes</th>
             <th>2 way data-binding</th>
             <th>selection</th>
         </tr>
@@ -12,7 +12,7 @@
         <tbody>
         <tr>
             <td>
-                <pa-checkbox icon="ninja" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
+                <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
                              (selection)="standaloneSelection = $event">Standalone checkbox</pa-checkbox>
             </td>
             <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
@@ -83,6 +83,79 @@
             <td>
                 <p>Selection: {{nestedCheckboxSelection | json}}</p>
             </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+        <tr><th>Toggles</th>
+            <th>2 way data-binding</th>
+            <th>selection</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <pa-toggle [(isSelected)]="toggleSelection1">Simple toggle</pa-toggle>
+                    <pa-toggle help="Some help" [(isSelected)]="toggleSelection2">Toggle with help (selected by default)
+                    </pa-toggle>
+                    <pa-toggle imageUrl="./assets/ninja.svg" [(isSelected)]="toggleSelection3">Toggle with image</pa-toggle>
+
+                </td>
+                <td>
+                    <ul>
+                        <li>first toggle: {{toggleSelection1 | json}}</li>
+                        <li>second toggle: {{toggleSelection2 | json}}</li>
+                        <li>third toggle: {{toggleSelection3 | json}}</li>
+                    </ul>
+                </td>
+                <td></td>
+            </tr>
+        <tr>
+            <td>
+                <pa-toggle-group [toggles]="toggleGroup1" (onSelection)="toggleGroupSelection1 = $event">Group of simple
+                    toggles
+                </pa-toggle-group>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let toggle of toggleGroup1">
+                        {{toggle.label}}: {{toggle.isSelected}}
+                    </li>
+                </ul>
+            </td>
+            <td>{{toggleGroupSelection1 | json}}</td>
+        </tr>
+        <tr>
+            <td>
+                <pa-toggle-group [toggles]="toggleGroup2" (onSelection)="toggleGroupSelection2 = $event">Group of toggles with
+                    help
+                </pa-toggle-group>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let toggle of toggleGroup2">
+                        {{toggle.label}}: {{toggle.isSelected}}
+                    </li>
+                </ul>
+            </td>
+            <td>{{toggleGroupSelection2 | json}}</td>
+        </tr>
+        <tr>
+            <td>
+                <pa-toggle-group [toggles]="toggleGroup3" (onSelection)="toggleGroupSelection3 = $event">Group of toggles with
+                    images
+                </pa-toggle-group>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let toggle of toggleGroup3">
+                        {{toggle.label}}: {{toggle.isSelected}}
+                    </li>
+                </ul>
+            </td>
+            <td>{{toggleGroupSelection3 | json}}</td>
         </tr>
         </tbody>
     </table>

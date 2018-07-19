@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BadgeModel, ControlModel } from 'pastanaga';
+import { ToggleModel } from '../../projects/pastanaga/src/lib/controls/toggle.model';
 
 
 @Component({
@@ -63,6 +64,37 @@ export class AppComponent {
             ]
         },
     ];
+
+
+    toggleSelection1 = false;
+    toggleSelection2 = true;
+    toggleSelection3 = false;
+
+
+    toggleGroup1: ToggleModel[] = [
+        {label: 'label 1', id: 'toggle1', isSelected: false},
+        {label: 'label 2', id: 'toggle2', isSelected: false},
+        {label: 'label 3', id: 'toggle3', isSelected: false},
+        {label: 'label 4', id: 'toggle4', isSelected: false},
+    ];
+
+    toggleGroup2: ToggleModel[] = [
+        {label: 'label 1', id: 'toggleWithHelp1', help: 'help 1', isSelected: true},
+        {label: 'label 2', id: 'toggleWithHelp2', help: 'help 2', isSelected: true},
+        {label: 'label 3', id: 'toggleWithHelp3', help: 'help 3', isSelected: true},
+        {label: 'label 4', id: 'toggleWithHelp4', help: 'help 4', isSelected: true},
+    ];
+
+    toggleGroup3: ToggleModel[] = [
+        {label: 'label 1', id: 'toggleWithImage1', imageUrl: './assets/ninja.svg', isSelected: true},
+        {label: 'label 2', id: 'toggleWithImage2', imageUrl: './assets/ninja.svg', isSelected: false},
+        {label: 'label 3', id: 'toggleWithImage3', imageUrl: './assets/ninja.svg', isSelected: true},
+        {label: 'label 4', id: 'toggleWithImage4', imageUrl: './assets/ninja.svg', isSelected: false},
+    ];
+
+    toggleGroupSelection1: ToggleModel[] = [];
+    toggleGroupSelection2: ToggleModel[] = [];
+    toggleGroupSelection3: ToggleModel[] = [];
 
     // badges
     badgeButtons: BadgeModel[] = [

@@ -15,6 +15,9 @@ export * from './lib/controls/control.model';
 export * from './lib/controls/checkbox/checkbox.component';
 export * from './lib/controls/checkbox-expandable/checkbox-expandable.component';
 export * from './lib/controls/checkbox-group/checkbox-group.component';
+export * from './lib/controls/toggle.model';
+export * from './lib/controls/toggle/toggle.component';
+export * from './lib/controls/toggle-group/toggle-group.component';
 
 export * from './lib/svg/module';
 export * from './lib/svg/icon.component';

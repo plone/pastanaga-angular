@@ -1,0 +1,168 @@
+@import "../../styles/variables";
+
+:host {
+    display: block;
+}
+
+.o-field-divider {
+    padding: rythm(.5) 0;
+    &:not(.first-in-group).o-field-toggle {
+        margin-top: rythm(1.5);
+    }
+    &:not(.last-in-group)::after {
+        width: 100%;
+        height: 1px;
+        background: $gray-pale;
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: - rythm(.25)*3;
+    }
+}
+
+.o-field.o-field-toggle {
+    .o-field-label {
+        position: relative;
+        font-weight: $font-weight-regular;
+        color: $gray-black;
+    }
+    .o-field-control {
+        float: right;
+        position: relative;
+        width: 32px;
+        height: 18px;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+        cursor: pointer;
+        &:hover {
+            padding: 0;
+            margin: 0;
+        }
+        &:disabled {
+            cursor: default;
+        }
+    }
+    .o-field-control-thumb {
+        width: 32px;
+        height: 6px;
+        background: $blue;
+        position: absolute;
+        margin-top: 6px;
+        right: 0;
+        z-index: 0;
+        border-radius: 3px;
+    }
+    .o-field-control:not(:checked) + .o-field-control-thumb::before {
+        border-color: $brown;
+    }
+    .o-field-control:disabled + .o-field-control-thumb::before {
+        box-shadow: none;
+        border: 0;
+        transition: all .33s ease;
+        border-image-slice: 18 18 18 18 fill;
+        border-image-width: 9px 9px 9px 9px;
+        border-image-repeat: round round;
+        border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23' +str_slice (#{$gray-pale}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1.5" r="1"/><circle cx="28" cy="4" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="34.5" cy="13" r="1"/><circle cx="32" cy="8" r="1"/><circle cx="34.5" cy="23" r="1"/><circle cx="32" cy="28" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="34.5" r="1"/><circle cx="28" cy="32" r="1"/><circle cx="13" cy="34.5" r="1"/><circle cx="8" cy="32" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1.5" cy="23" r="1"/><circle cx="4" cy="28" r="1"/><circle cx="1.5" cy="13" r="1"/><circle cx="4" cy="8" r="1"/><circle cx="13" cy="1.5" r="1"/><circle cx="8" cy="4" r="1"/></g></svg>');
+        cursor: default;
+    }
+    .o-field-control:checked + .o-field-control-thumb::before {
+        right: 0;
+    }
+    .o-field-control:not(:checked) + .o-field-control-thumb::after {
+        right: 14px;
+        opacity: 0;
+        background-size: 6px 6px;
+    }
+    .o-field-control + .o-field-control-thumb::after {
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' +str_slice (#{$blue}, 2)+'" fill-rule="evenodd"/></svg>');
+        content: "";
+        position: absolute;
+        top: -6px;
+        width: 18px;
+        height: 18px;
+        transition: all .175s ease-in;
+        background-position: center center;
+        background-size: 18px 18px;
+        background-repeat: no-repeat;
+        right: 0;
+    }
+    .o-field-control:disabled + .o-field-control-thumb::after {
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' +str_slice (#{$gray-pale}, 2)+'" fill-rule="evenodd"/></svg>');
+        cursor: default;
+    }
+    .o-field-control:not(:checked) + .o-field-control-thumb {
+        background: $brown;
+        cursor: pointer;
+    }
+    .o-field-control:disabled + .o-field-control-thumb {
+        background: $gray-pale;
+        cursor: default;
+    }
+    .o-field-control-thumb::before {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border: 1px solid $blue;
+        background: $white;
+        border-radius: 50%;
+        margin-top: -6px;
+        right: 14px;
+        transition: all .175s ease;
+    }
+    .o-field-control ~ .o-field-output {
+        float: right;
+        margin-top: 1px;
+        margin-right: rythm(1);
+        text-transform: uppercase;
+        color: $gray;
+        position: relative;
+        cursor: pointer;
+    }
+    .o-field-control:disabled ~ .o-field-output {
+        color: $gray-pale;
+        cursor: default;
+    }
+    .o-field-control:not(:checked) ~ .o-field-output .o-field-output-checked {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        transition: all .25s ease;
+    }
+    .o-field-control:checked ~ .o-field-output .o-field-output-unchecked {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        transition: all .25s ease;
+    }
+    .o-field-label {
+        padding-top: 0;
+        margin-bottom: 0;
+        cursor: pointer;
+        & > img {
+            background: $gray-pale;
+            border-radius: 3px;
+            width: 30px;
+            height: 30px;
+            margin-right: 12px;
+            line-height: 0;
+            display: inline;
+            margin-top: -12px;
+            margin-bottom: -12px;
+        }
+        & > span {
+            margin-left: 0;
+        }
+    }
+    .o-field-control:disabled ~ .o-field-label {
+        color: $gray-pale;
+        cursor: default;
+    }
+    .o-field-control ~ .o-field-help {
+        margin: 0;
+    }
+}

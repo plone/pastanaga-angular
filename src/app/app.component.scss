@@ -21,6 +21,7 @@
     table {
         width: 100%;
         border-collapse: collapse;
+        margin: 12px 0;
     }
     th {
         width: 33%;
@@ -29,7 +30,7 @@
         border: 1px solid black;
         padding: 12px;
     }
-    td {
+    .checkoxes td {
         padding-left: 42px;
     }
 

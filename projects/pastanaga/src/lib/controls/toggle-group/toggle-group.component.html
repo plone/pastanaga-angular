@@ -1,0 +1,20 @@
+<fieldset class="o-fieldset-group" [id]="id">
+    <legend #text translate>
+        <ng-content></ng-content>
+    </legend>
+
+    <pa-button size="small" class="o-field-button-right"
+               [color]="isAllSelected ? 'secondary' : 'primary'"
+               (click)="toggleSelectAll()">
+        {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
+    </pa-button>
+
+    <pa-toggle *ngFor="let toggle of toggles; let i = index;"
+               [id]="toggle.id"
+               [imageUrl]="toggle.imageUrl"
+               [help]="toggle.help"
+               [divider]="dividers[i]"
+               [isSelected]="toggle.isSelected"
+               (isSelectedChange)="toggleSelection($event, toggle)">{{toggle.label}}
+    </pa-toggle>
+</fieldset>
