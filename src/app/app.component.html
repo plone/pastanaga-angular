@@ -1,6 +1,76 @@
 <h1 translate>demo-page.title</h1>
 
 <div class="example-box">
+    <div class="example-box-header">Text fields</div>
+
+    <h4>Text input</h4>
+    <div>
+        <form>
+            <fieldset>
+                <legend>Simple text</legend>
+                <pa-input>Your name</pa-input>
+                <legend>Text with value</legend>
+                <pa-input name="firstname" value="James">Your firstname</pa-input>
+                <legend>Text with help</legend>
+                <pa-input help="Only actual super-power, e.g. Batman does not have any super-power">Your super power
+                </pa-input>
+                <legend>Disabled text</legend>
+                <pa-input [isDisabled]="true" value="Rintintin">Your pet name</pa-input>
+                <legend>Read-only text</legend>
+                <pa-input [isReadOnly]="true" value="Justin Bieber">Your favorite singer</pa-input>
+                <legend>Text with placeholder</legend>
+                <pa-input placeholder="Gotham, …">City</pa-input>
+                <legend>Text with error message</legend>
+                <pa-input value="Backend developer" errorHelp="This is not a decent job">Your job</pa-input>
+                <legend>Text with model binding</legend>
+                <pa-input [(ngModel)]="repeat" name="repeat">Repeat after me</pa-input>
+                <p>You said: {{ repeat }}</p>
+                <legend>Text with valueChange</legend>
+                <pa-input [value]="repeatAgain" name="repeat-again" (valueChange)="onRepeat($event)">Repeat again
+                </pa-input>
+                <p>You said: {{ repeatAgain }}</p>
+                <legend>Text with keyUp</legend>
+                <pa-input [value]="word" name="spell" (keyUp)="onSpell($event)">Spell it</pa-input>
+                <p>You said: {{ word }}</p>
+                <legend>Required text</legend>
+                <pa-input name="title" [isRequired]="true" #title
+                            [errorHelp]="title.errors.required ? 'Title is required' : null">Title
+                </pa-input>
+                <legend>Pattern checking</legend>
+                <pa-input name="version" [pattern]="versionFormat" #version placeholder="1.0.3"
+                            [errorHelp]="version.errors.pattern ? 'Version must be x.x.x' : null">Version
+                </pa-input>
+            </fieldset>
+        </form>
+    </div>
+    <h4>Other input types</h4>
+    <div>
+        <fieldset>
+            <legend>Number</legend>
+            <pa-input type="number" value="20">Your age</pa-input>
+            <legend>Email</legend>
+            <pa-input type="email" value="eric@pa.com">Your email</pa-input>
+            <legend>Phone</legend>
+            <pa-input type="tel">Your phone</pa-input>
+            <legend>Password</legend>
+            <pa-input type="password">Your password</pa-input>
+        </fieldset>
+    </div>
+    <h4>Select</h4>
+    <div>
+        <pa-select placeholder="Choose a credit card…" help="5% discount for visa"
+                     (onSelection)="displaySelection($event)" [options]="options">
+            Credit card
+        </pa-select>
+        <p>{{ selection }}</p>
+        <pa-select placeholder="Pick a country" [options]="optionsCountries">
+            Your country
+        </pa-select>
+    </div>
+</div>
+
+
+<div class="example-box">
     <div class="example-box-header">Controls</div>
     <table class="checkoxes">
         <thead>

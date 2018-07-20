@@ -16,8 +16,8 @@ let nextId = 0;
  *  - if no name is given for this group, the id will be used as name
  *
  *  - emit two events:
- *      - onSelection emit a list of strings corresponding to the value of each selected control
- *      - onSelectAll emit isAllSelected as a boolean
+ *      - selection emit a list of strings corresponding to the value of each selected control
+ *      - selectAll emit isAllSelected as a boolean
  */
 @Component({
     selector: 'pa-checkbox-group',

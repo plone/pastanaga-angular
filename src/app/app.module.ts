@@ -5,7 +5,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { BadgeModule, ButtonModule, ControlsModule } from 'pastanaga';
+import { BadgeModule, ButtonModule, ControlsModule, TextFieldModule } from 'pastanaga';
+import { FormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -15,6 +16,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -26,6 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
         BadgeModule,
         ButtonModule,
         ControlsModule,
+        TextFieldModule,
     ],
     declarations: [
         AppComponent,

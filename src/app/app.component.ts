@@ -118,6 +118,18 @@ export class AppComponent {
         },
     ];
 
+    // text fields
+    repeat = 'Hello';
+    repeatAgain = 'Hello';
+    word = '';
+    selection: any;
+    options = [{id: 'visa', name: 'Visa'}, {id: 'mastercard', name: 'Mastercard'}];
+    optionsCountries = [
+        {id: 'fr', name: 'France'},
+        {id: 'it', name: 'Italy', disabled: true},
+        {id: 'de', name: 'Germany', selected: true},
+    ];
+    versionFormat = new RegExp(/^[0-9]+\.[0-9]+\.[0-9]+$/);
 
     resetSliders() {
         const defaultValue = [50, 100];
@@ -128,5 +140,14 @@ export class AppComponent {
 
     onButtonClick($event) {
         console.log('Click on button!', $event);
+    }
+
+
+    onRepeat(value) {
+        this.repeatAgain = value;
+    }
+
+    onSpell(value) {
+        this.word = value;
     }
 }

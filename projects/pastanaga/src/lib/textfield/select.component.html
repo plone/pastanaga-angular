@@ -1,0 +1,14 @@
+<div class="o-field o-field-select">
+    <select class="o-field-control" [id]="id"
+            [attr.aria-describedby]="helpId" [attr.placeholder]="placeholder | translate"
+            (change)="change($event.target.value)">
+        <option *ngIf="placeholder" class="o-hide" disabled selected>{{ placeholder | translate }}</option>
+        <option *ngFor="let option of options" [value]="option.id"
+                [selected]="option.id === value" [disabled]="!!option.disabled">{{ option.name }}
+        </option>
+    </select>
+    <label class="o-field-label"
+           [for]="id"><span translate
+                            [class.o-sr]="isLabelHidden"><ng-content></ng-content></span></label>
+    <small *ngIf="help" class="o-field-help" [id]="helpId">{{ help | translate }}</small>
+</div>

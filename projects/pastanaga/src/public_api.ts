@@ -10,6 +10,8 @@ export * from './lib/button/button.module';
 export * from './lib/button/button.component';
 export * from './lib/button/button-link.component';
 
+export * from './lib/common/selectable.model';
+
 export * from './lib/controls/controls.module';
 export * from './lib/controls/control.model';
 export * from './lib/controls/checkbox/checkbox.component';
@@ -23,4 +25,8 @@ export * from './lib/controls/toggle-group/toggle-group.component';
 
 export * from './lib/svg/module';
 export * from './lib/svg/icon.component';
+
+export * from './lib/textfield/module';
+export * from './lib/textfield/input.component';
+export * from './lib/textfield/select.component';
 
