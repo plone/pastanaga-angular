@@ -385,9 +385,9 @@ select {
 // 2. Correct the inability to style clickable types in iOS and Safari.
 button,
 html [type="button"], // 1
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button; // 2
+html [type="reset"],
+html [type="submit"] {
+  -webkit-appearance: none; // 2
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
