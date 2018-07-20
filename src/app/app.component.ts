@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BadgeModel, ControlModel, ToggleModel } from 'pastanaga';
-
+import { BadgeModel, ControlModel, Toaster, ToastModel, ToggleModel } from 'pastanaga';
 
 @Component({
     selector: 'app-root',
@@ -9,14 +8,7 @@ import { BadgeModel, ControlModel, ToggleModel } from 'pastanaga';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-    constructor(translate: TranslateService) {
-        // this language will be used as a fallback when a translation isn't found in the current language
-        translate.setDefaultLang('en');
-
-        // the lang to use, if the lang isn't available, it will use the current loader to get them
-        translate.use('en');
-    }
+    @ViewChild('toastsContainer', {read: ViewContainerRef}) toastsContainer: ViewContainerRef;
 
     isStandaloneCheckboxSelected: boolean;
     standaloneSelection: string;
@@ -134,7 +126,27 @@ export class AppComponent implements OnInit {
     progressValue: number;
     progressValue2: number;
 
+    toastMessage = 'This is a test';
+    toastIcon = 'alert';
+    toastButton = 'Dismiss';
+    toastButtonColor = 'destructive';
+    toastDelay = 0;
+
+    constructor(
+        private toaster: Toaster,
+        private translate: TranslateService,
+    ) {
+        // this language will be used as a fallback when a translation isn't found in the current language
+        translate.setDefaultLang('en');
+
+        // the lang to use, if the lang isn't available, it will use the current loader to get them
+        translate.use('en');
+    }
+
     ngOnInit() {
+        // Register the toast container.
+        this.toaster.registerContainer(this.toastsContainer);
+
         this.resetProgressValueUntil100();
         this.resetProgressValueUntil200();
     }
@@ -186,4 +198,30 @@ export class AppComponent implements OnInit {
     onSpell(value) {
         this.word = value;
     }
+
+    openToast() {
+        const message = this.toastMessage || 'Toast message';
+        const delay = this.toastDelay || 5000;
+        const icon = this.toastIcon || '';
+        const button = this.toastButton || '';
+        const buttonColor = this.toastButtonColor || 'primary';
+
+
+        const toast = new ToastModel({
+            icon: icon,
+            message: message,
+            delay: delay,
+            buttons: button ? [{id: button, text: button, color: buttonColor, icon: ''}] : []
+        });
+
+        this.toaster.open(toast);
+    }
+
+    openQuickToast() {
+        const message = this.toastMessage || 'Toast message';
+        const button = this.toastButton || '';
+        const delay = this.toastDelay || 5000;
+        this.toaster.open(message, button, delay);
+    }
+
 }

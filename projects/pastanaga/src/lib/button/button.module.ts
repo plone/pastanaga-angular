@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ButtonComponent } from './button.component';
 import { ButtonLinkComponent } from './button-link.component';
-import { SvgModule } from '../svg/module';
+import { SvgModule } from '../svg/svg.module';
 
 @NgModule({
     imports: [

@@ -6,7 +6,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { BadgeModule, ButtonModule, ControlsModule, ProgressModule, TextFieldModule } from 'pastanaga';
+import { BadgeModule, ButtonModule, ControlsModule, ProgressModule, TextFieldModule, ToasterModule } from 'pastanaga';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -29,6 +29,7 @@ export function createTranslateLoader(http: HttpClient) {
         ButtonModule,
         ControlsModule,
         ProgressModule,
+        ToasterModule.forRoot(),
         TextFieldModule,
     ],
     declarations: [

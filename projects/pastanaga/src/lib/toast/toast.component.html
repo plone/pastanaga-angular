@@ -1,0 +1,30 @@
+<div class="o-toast in" [class.is-sibiling]="isSibling" [class.out]="isDismissed" role="status" aria-live="polite"
+     attr.aria-labelledby="{{ariaLabeledBy}}" #toastContainer tabindex="-1" (keyup)="dismissWithESC($event)">
+
+    <header class="o-toast-header">
+        <h2 class="o-toast-title" [id]="!parsedMessage ? ariaLabeledBy : null">
+            <!-- Leading icon -->
+            <pa-icon *ngIf="toast.icon" [name]="toast.icon" [hidden]="true"></pa-icon>
+
+            <div *ngIf="parsedMessage" [innerHTML]="parsedMessage" [id]="parsedMessage ? ariaLabeledBy : null"></div>
+            <ng-container *ngIf="!parsedMessage">
+                {{toast.message | translate:toast.translateParams}}
+            </ng-container>
+        </h2>
+    </header>
+    <footer class="o-toast-footer" *ngIf="toast.buttons.length > 0">
+        <div class="o-toast-footer-wrapper">
+            <!-- Customized buttons -->
+            <ng-container *ngIf="toast.buttons.length > 0">
+                <pa-button *ngFor="let button of toast.buttons; let i = index"
+                           [color]="button.color"
+                           [icon]="button.icon"
+                           [paTooltip]="button.tooltip"
+                           tabindex="{{i}}"
+                           (click)="handleDismiss(button.text)">
+                    <span translate>{{button.text}}</span>
+                </pa-button>
+            </ng-container>
+        </div>
+    </footer>
+</div>

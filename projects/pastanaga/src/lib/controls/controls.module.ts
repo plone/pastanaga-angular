@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxComponent } from './checkbox/checkbox.component';
-import { SvgModule } from '../svg/module';
+import { SvgModule } from '../svg/svg.module';
 import { CheckboxExpandableComponent } from './checkbox-expandable/checkbox-expandable.component';
 import { BadgeModule } from '../badge/badge.module';
 import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.component';

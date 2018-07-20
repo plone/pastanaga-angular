@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BadgeComponent } from './badge.component';
 import { ButtonModule } from '../button/button.module';
-import { TooltipModule } from '../tooltip/module';
+import { TooltipModule } from '../tooltip/tooltip.module';
 
 @NgModule({
     imports: [

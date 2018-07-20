@@ -466,3 +466,24 @@
         <pa-badge value="1" of="4"></pa-badge>
     </div>
 </div>
+
+<div class="example-box">
+    <div class="example-box-header">Toasts</div>
+
+    <div class="pa-toast-configuration">
+        <pa-input placeholder="Toast icon" [(value)]="toastIcon"></pa-input>
+        <pa-input placeholder="Toast message" [(value)]="toastMessage"></pa-input>
+        <pa-input placeholder="Toast button" [(value)]="toastButton"></pa-input>
+        <pa-input placeholder="Toast button color" [(value)]="toastButtonColor"></pa-input>
+        <pa-input placeholder="Toast delay" type="number" [(value)]="toastDelay"></pa-input>
+    </div>
+
+    <pa-button (click)="openToast()">Open toast</pa-button>
+    <pa-button (click)="openQuickToast()">Open quick toast</pa-button>
+</div>
+
+<aside id="pa-toasts-block">
+    <div class="pa-toasts-container">
+        <div #toastsContainer></div>
+    </div>
+</aside>

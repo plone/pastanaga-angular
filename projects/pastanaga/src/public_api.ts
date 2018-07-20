@@ -23,17 +23,22 @@ export * from './lib/controls/toggle.model';
 export * from './lib/controls/toggle/toggle.component';
 export * from './lib/controls/toggle-group/toggle-group.component';
 
-export * from  './lib/progress/module';
+export * from './lib/progress/progress.module';
 export * from  './lib/progress/progress.component';
 
-export * from './lib/svg/module';
+export * from './lib/svg/svg.module';
 export * from './lib/svg/icon.component';
 
-export * from './lib/textfield/module';
+export * from './lib/textfield/textfield.module';
 export * from './lib/textfield/input.component';
 export * from './lib/textfield/select.component';
 
-export * from './lib/tooltip/module';
+export * from './lib/toast/toast.module';
+export * from './lib/toast/toast.component';
+export * from './lib/toast/toast.model';
+export * from './lib/toast/toast.service';
+
+export * from './lib/tooltip/tooltip.module';
 export * from './lib/tooltip/tooltip.component';
 export * from './lib/tooltip/tooltip.directive';
 
