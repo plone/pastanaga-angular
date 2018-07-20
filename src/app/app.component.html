@@ -71,6 +71,73 @@
 
 
 <div class="example-box">
+    <div class="example-box-header">Progress bars</div>
+    <table>
+        <thead>
+        <tr><th>default = primary & normal (no color & no size given)</th>
+            <th>secondary normal</th>
+            <th>secondary small</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div>
+                    <pa-progress [value]="25"></pa-progress>
+                    <p>value = 25: determinate</p>
+                </div>
+
+                <div>
+                    <pa-progress></pa-progress>
+                    <p>no value given: indeterminate</p>
+                </div>
+
+                <div>
+                    <pa-progress [value]="0"></pa-progress>
+                    <p>value = 0: buffer</p>
+                </div>
+
+                <h4>faking some value changes</h4>
+                <div>
+                    <pa-progress [value]="progressValue"></pa-progress>
+                    <p>No maxValue - Progress value = {{progressValue}}</p>
+                </div>
+
+                <div>
+                    <pa-progress [maxValue]="200" [value]="progressValue2"></pa-progress>
+                    <p>maxValue = 200 - Progress value = {{progressValue2}}</p>
+                </div>
+
+                <div>
+                    <pa-progress [maxValue]="95" [value]="progressValue"></pa-progress>
+                    <p>value greater than maxValue - Progress value = {{progressValue}}</p>
+                </div>
+            </td>
+            <td>
+                <pa-progress [value]="25" [isSecondary]="true"></pa-progress>
+                <p>value = 25: determinate</p>
+
+                <pa-progress [value]="undefined" [isSecondary]="true"></pa-progress>
+                <p>value = undefined: indeterminate</p>
+
+                <pa-progress [value]="0" [isSecondary]="true"></pa-progress>
+                <p>value = 0: buffer</p>
+            </td>
+            <td>
+                <pa-progress [value]="25" [isSecondary]="true" [isSmall]="true"></pa-progress>
+                <p>value = 25: determinate</p>
+
+                <pa-progress [value]="null" [isSecondary]="true" [isSmall]="true"></pa-progress>
+                <p>value = null: indeterminate</p>
+
+                <pa-progress [value]="0" [isSecondary]="true" [isSmall]="true"></pa-progress>
+                <p>value = 0: buffer</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="example-box">
     <div class="example-box-header">Controls</div>
     <table class="checkoxes">
         <thead>

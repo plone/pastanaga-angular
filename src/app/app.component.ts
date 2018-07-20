@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BadgeModel, ControlModel } from 'pastanaga';
-import { ToggleModel } from '../../projects/pastanaga/src/lib/controls/toggle.model';
+import { BadgeModel, ControlModel, ToggleModel } from 'pastanaga';
 
 
 @Component({
@@ -9,7 +8,7 @@ import { ToggleModel } from '../../projects/pastanaga/src/lib/controls/toggle.mo
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     constructor(translate: TranslateService) {
         // this language will be used as a fallback when a translation isn't found in the current language
@@ -130,6 +129,43 @@ export class AppComponent {
         {id: 'de', name: 'Germany', selected: true},
     ];
     versionFormat = new RegExp(/^[0-9]+\.[0-9]+\.[0-9]+$/);
+
+
+    progressValue: number;
+    progressValue2: number;
+
+    ngOnInit() {
+        this.resetProgressValueUntil100();
+        this.resetProgressValueUntil200();
+    }
+
+    resetProgressValueUntil100() {
+        setTimeout(() => {
+            this.progressValue = 0;
+
+            setTimeout(() => {
+                setInterval(() => {
+                    if (this.progressValue < 100) {
+                        this.progressValue += 1;
+                    }
+                }, 50);
+            }, 1000);
+        }, 1000);
+    }
+
+    resetProgressValueUntil200() {
+        setTimeout(() => {
+            this.progressValue2 = 0;
+
+            setTimeout(() => {
+                setInterval(() => {
+                    if (this.progressValue2 < 200) {
+                        this.progressValue2 += 1;
+                    }
+                }, 50);
+            }, 1000);
+        }, 2000);
+    }
 
     resetSliders() {
         const defaultValue = [50, 100];

@@ -1,0 +1,146 @@
+@import "../styles/variables";
+
+@keyframes indeterminate-progress {
+    0% {
+        left: -35%;
+        right: 100%;
+    }
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+    100% {
+        left: 100%;
+        right: -90%;
+    }
+}
+
+@keyframes indeterminate-progress-back {
+    0% {
+        left: -200%;
+        right: 100%;
+    }
+    60% {
+        left: 107%;
+        right: -8%;
+    }
+    100% {
+        left: 107%;
+        right: -8%;
+    }
+}
+
+@keyframes buffer-progress {
+    0% {
+        background-position: 0;
+        //background-size: contain;
+    }
+    40% {
+        background-position: -36px;
+        //background-size: contain;
+    }
+    60% {
+        background-position: -72px;
+        //background-size: contain;
+    }
+    100% {
+        background-position: -360px;
+        //background-size: contain;
+    }
+}
+
+.o-progress {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: rythm(.25);
+    appearance: none;
+    border-radius: rythm(.25);
+    overflow: hidden;
+
+    &:not([value]):not([aria-valuenow]), &.o-progress-indeterminate { //indeterminate
+        background-color: $azure-dark;
+        overflow: hidden;
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: $blue;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            will-change: left, right;
+            animation: indeterminate-progress 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: $blue;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            will-change: left, right;
+            animation: indeterminate-progress-back 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            animation-delay: 1.15s;
+            z-index: 1;
+        }
+    }
+    &[aria-valuenow="0"], &.o-progress-buffer { //buffer
+        &::after {
+            content: '';
+            position: absolute;
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%232880a4" fill-rule="evenodd"/></svg>');
+            background-size: contain;
+            background-color: transparent;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            will-change: background-position;
+            animation: buffer-progress 30s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        }
+    }
+    // For Firefox
+    border: 0;
+    background: $azure-dark;
+
+    &::-webkit-progress-bar {
+        background: $azure-dark;
+        border-radius: 3px;
+    }
+
+    &::-webkit-progress-value {
+        background: $blue;
+        border-radius: 0;
+    }
+
+    &::-moz-progress-bar {
+        background: $blue;
+        border-radius: 0;
+    }
+    // For IE and Edge
+    &::-ms-fill {
+        border-radius: 0;
+        border: 0;
+    }
+
+    &-secondary.o-progress-indeterminate::before,
+    &-secondary:not([value]):not([aria-valuenow]).o-progress-indeterminate::before,
+    &-secondary.o-progress-indeterminate::after,
+    &-secondary:not([value]):not([aria-valuenow]).o-progress-indeterminate::after {
+        background-color: $brown;
+    }
+    &-secondary::-webkit-progress-value {
+        background: $brown;
+    }
+    &-secondary::-moz-progress-bar {
+        background: $brown;
+    }
+    &-secondary[aria-valuenow="0"]::after,
+    &-secondary.o-progress-buffer::after {
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%237c7261" fill-rule="evenodd"/></svg>');
+    }
+    &-small {
+        height: 1px;
+    }
+}

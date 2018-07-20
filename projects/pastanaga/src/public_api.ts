@@ -23,6 +23,9 @@ export * from './lib/controls/toggle.model';
 export * from './lib/controls/toggle/toggle.component';
 export * from './lib/controls/toggle-group/toggle-group.component';
 
+export * from  './lib/progress/module';
+export * from  './lib/progress/progress.component';
+
 export * from './lib/svg/module';
 export * from './lib/svg/icon.component';
 

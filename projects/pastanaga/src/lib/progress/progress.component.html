@@ -1,0 +1,30 @@
+<progress *ngIf="percentValue"
+          class="o-progress"
+          [class.o-progress-secondary]="isSecondary"
+          [class.o-progress-small]="isSmall"
+          value="{{percentValue}}"
+          min="0"
+          max="100">
+    <span>{{percentValue}}</span>%
+</progress>
+
+<div *ngIf="isIndeterminate"
+     class="o-progress o-progress-indeterminate"
+     [class.o-progress-secondary]="isSecondary"
+     [class.o-progress-small]="isSmall"
+     role="progressbar"
+     tabindex="0"
+     aria-valuemin="0"
+     aria-valuetext="indeterminate"
+     aria-valuemax="100"></div>
+
+<div *ngIf="!isIndeterminate && value === 0"
+     class="o-progress o-progress-buffer"
+     [class.o-progress-secondary]="isSecondary"
+     [class.o-progress-small]="isSmall"
+     role="progressbar"
+     aria-valuenow="0"
+     tabindex="0"
+     aria-valuemin="0"
+     aria-valuetext="0 percent"
+     aria-valuemax="100"></div>
