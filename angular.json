@@ -131,7 +131,7 @@
         }
       }
     },
-    "pastanaga": {
+    "pastanaga-angular": {
       "root": "projects/pastanaga",
       "sourceRoot": "projects/pastanaga/src",
       "projectType": "library",
