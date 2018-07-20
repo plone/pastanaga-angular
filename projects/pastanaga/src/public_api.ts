@@ -33,3 +33,7 @@ export * from './lib/textfield/module';
 export * from './lib/textfield/input.component';
 export * from './lib/textfield/select.component';
 
+export * from './lib/tooltip/module';
+export * from './lib/tooltip/tooltip.component';
+export * from './lib/tooltip/tooltip.directive';
+

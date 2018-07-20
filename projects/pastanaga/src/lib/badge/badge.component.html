@@ -5,7 +5,7 @@
     <span *ngIf="!value"
           [class.o-badge-ellipsis]="!!maxWidth"
           [style.max-width]="maxWidth"
-          #textContent><ng-content></ng-content></span>
+          [paTooltip]="text" #textContent><ng-content></ng-content></span>
     <pa-button *ngFor="let btn of buttons"
                  size="small" [icon]="btn.icon" [color]="btn.color" (click)="btn.onClick()">{{btn.name}}</pa-button>
     <ng-container *ngIf="!!value || value === 0">{{ value }}<span *ngIf="of"><abbr title="of">/</abbr>{{ of }}</span></ng-container>

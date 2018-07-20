@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input, OnChanges, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 import { BadgeModel } from './badge.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { BadgeModel } from './badge.model';
     templateUrl: './badge.component.html',
     styleUrls: ['./badge.component.scss']
 })
-export class BadgeComponent implements AfterContentInit, OnChanges {
+export class BadgeComponent implements AfterViewInit, OnChanges {
 
     @Input() color: string;
     @Input() hexaColor: string;
@@ -21,11 +21,11 @@ export class BadgeComponent implements AfterContentInit, OnChanges {
     colorStyle: {};
     text: string;
 
-    @ViewChild('textContent') textContent;
+    @ViewChild('textContent') textContent: ElementRef;
 
-    ngAfterContentInit() {
+    ngAfterViewInit() {
         if (!!this.maxWidth && !!this.textContent) {
-            this.text = this.textContent.nativeElement.textContent.trim();
+            setTimeout(() => this.text = this.textContent.nativeElement.textContent.trim());
         }
     }
 
