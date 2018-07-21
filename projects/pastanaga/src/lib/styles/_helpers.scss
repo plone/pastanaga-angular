@@ -105,23 +105,3 @@ option.o-hide {
     flex-wrap: nowrap;
 }
 
-
-// Només per ús intern
-.½ {
-    width: 50%;
-    margin: -1px;
-    display:inline-block;
-    border: 1px solid #eee;
-    padding: 12px;
-    height: 108px;
-    vertical-align: top;
-}
-.⅓ {
-    width: 33.34%;
-    margin: -1px -2px;
-    display:inline-block;
-    border: 1px solid #eee;
-    padding: 12px;
-    height: 300px;
-    vertical-align: top;
-}

@@ -31,7 +31,7 @@
         background-color: transparent;
         border-radius: border-radius(s);
         border:0;
-        box-shadow: 0 7px 0 -6px $blue;
+        box-shadow: 0 7px 0 -6px $gray;
         caret-color: $blue;
         transition: all .25s ease;
         font-weight: $font-weight-regular;
@@ -40,17 +40,17 @@
 
         &.o-field-control-accent {
             background-color: rgba($blue, .06);
-            box-shadow: 0 200px 0 -200px $blue-contrast;
+            box-shadow: 0 200px 0 -200px $gray-dark;
             transition: all .5s ease;
         }
         &:not(:disabled):not(:read-only):hover {
             cursor: pointer;
-            box-shadow: 0 2px 0 -1px $blue-contrast;
+            box-shadow: 0 2px 0 -1px $blue;
         }
         &:not(:disabled):not(:read-only):active,
         &:not(:disabled):not(:read-only):focus {
             box-shadow: 0 2px 0 0px $blue-light;
-            background-color: rgba($blue,.12);
+            background-color: rgba($azure,.5);
         }
         &:focus {
             outline: none;
@@ -90,10 +90,10 @@
         display: inline-block;
         margin-bottom: .5rem;
         @include font-size(m,m,m);
-        //font-size: 14px;
-        font-family: Rubik;
+        text-transform: uppercase;
+        font-family: $font-family-base;
         font-weight: 300;
-        color: $gray;
+        color: $gray-black;
         transform: translateY(0);
         touch-action: none;
         user-select: none;
@@ -134,18 +134,12 @@
         transition: opacity 0s ease;
     }
     // required input
-    .o-field-control:required + .o-field-label::after {
-        content:"Required";
-        font-size: 78.25%;
-        color: $gray-light;
-        margin-left: 6px;
-    }
+    .o-field-control:required + .o-field-label::after,
     .o-field-control:required:active + .o-field-label::after,
     .o-field-control:required:focus + .o-field-label::after {
-        content:"Required";
-        font-size: 78.25%;
-        color: $gray-dark;
-        margin-left: 6px;
+        content:"●";
+        font-size: 100%;
+        color: $red-light;
     }
     // disabled
     .o-field-control:disabled {

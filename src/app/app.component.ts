@@ -116,9 +116,9 @@ export class AppComponent implements OnInit {
     selection: any;
     options = [{id: 'visa', name: 'Visa'}, {id: 'mastercard', name: 'Mastercard'}];
     optionsCountries = [
-        {id: 'fr', name: 'France'},
-        {id: 'it', name: 'Italy', disabled: true},
-        {id: 'de', name: 'Germany', selected: true},
+        {id: 'fr', name: 'Catalonia'},
+        {id: 'it', name: 'Spain', disabled: true},
+        {id: 'de', name: 'Andorra', selected: true},
     ];
     versionFormat = new RegExp(/^[0-9]+\.[0-9]+\.[0-9]+$/);
 

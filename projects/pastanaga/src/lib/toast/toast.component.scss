@@ -2,12 +2,12 @@
 
 .o-toast {
     box-shadow: $shadow-dialog;
-    border-radius: border-radius(m);
-    margin: rythm(2);
+    border-radius: border-radius(s);
+    margin: rythm(1.5);
     max-width: $w-dialog;
-    background: rgba($white-smoke,.975);
+    background: rgba($gray-black,.975);
     @supports (-webkit-backdrop-filter:blur(9px)) {
-        background: rgba($white-smoke,.9);
+        background: rgba($gray-black,.9);
         -webkit-backdrop-filter: blur(9px);
     }
     display: flex;
@@ -28,8 +28,8 @@
         @include font-size(l,l,l);
         font-weight: $font-weight-regular;
         margin: 0;
-        padding: rythm(2) rythm(1)*2.5;
-        color: $gray-blacky;
+        padding: rythm(1.5) rythm(1)*2.5;
+        color: $white-ghost;
         & > svg { //icons next to the title
             width: rythm(2);
             height: rythm(2);

@@ -31,7 +31,7 @@
     height: 6px;
     border-radius: 50px;
 
-    background-color: $blue-light;
+    background-color: $brown-light;
     box-sizing: border-box;
   }
 
@@ -42,8 +42,8 @@
   .o-slider-thumb {
     cursor: pointer;
     border: 1px solid $blue-light;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     background-color: $white;
     border-radius: 50%;
     position: absolute;
@@ -51,9 +51,9 @@
 
   .o-slider-thumb::after {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: $b80;
+    width: 10px;
+    height: 10px;
+    background: $blue;
     border-radius: 50px;
     content: "";
     top: 3px;
@@ -63,7 +63,7 @@
   .o-slider-track {
     pointer-events: none;
     height: 100%;
-    background-color: $blue-dark;
+    background-color: $blue;
   }
 
   .o-slider-output {

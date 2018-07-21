@@ -15,8 +15,8 @@
     font-weight: 400;
     font-size: 0.75rem;
     line-height: 0.75rem;
-    color: $gray-blacky;
-    background: rgba(237, 241, 242, 0.975);
+    color: $white-smoke;
+    background: rgba($gray-black,.95);
     -webkit-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     border-radius: 1px;
@@ -28,7 +28,7 @@
 
 @supports (-webkit-backdrop-filter: blur(3px)) {
     .o-tooltip, .o-tooltip-system {
-        background: rgba(237, 241, 242, 0.9);
+        background: rgba($gray-black,.95);
         -webkit-backdrop-filter: blur(3px);
     }
 }

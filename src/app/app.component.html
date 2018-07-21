@@ -24,14 +24,14 @@
                 <pa-input value="Backend developer" errorHelp="This is not a decent job">Your job</pa-input>
                 <legend>Text with model binding</legend>
                 <pa-input [(ngModel)]="repeat" name="repeat">Repeat after me</pa-input>
-                <p>You said: {{ repeat }}</p>
+                <small class="o-field-help">You said: {{ repeat }}</small>
                 <legend>Text with valueChange</legend>
                 <pa-input [value]="repeatAgain" name="repeat-again" (valueChange)="onRepeat($event)">Repeat again
                 </pa-input>
-                <p>You said: {{ repeatAgain }}</p>
+                <small class="o-field-help">You said: {{ repeatAgain }}</small>
                 <legend>Text with keyUp</legend>
                 <pa-input [value]="word" name="spell" (keyUp)="onSpell($event)">Spell it</pa-input>
-                <p>You said: {{ word }}</p>
+                <small class="o-field-help">You said: {{ word }}</small>
                 <legend>Required text</legend>
                 <pa-input name="title" [isRequired]="true" #title
                             [errorHelp]="title.errors.required ? 'Title is required' : null">Title
@@ -62,7 +62,7 @@
                      (onSelection)="displaySelection($event)" [options]="options">
             Credit card
         </pa-select>
-        <p>{{ selection }}</p>
+        <small class="o-field-help">{{ selection }}</small>
         <pa-select placeholder="Pick a country" [options]="optionsCountries">
             Your country
         </pa-select>
@@ -159,7 +159,7 @@
         </tr>
         <tr>
             <td>
-                <pa-checkbox-group [checkboxes]="simpleCheckboxes"
+                <pa-checkbox-group type="radio" [checkboxes]="simpleCheckboxes"
                                      (selection)="simpleCheckboxSelection = $event">Simple checkbox group (without badge)
                 </pa-checkbox-group>
             </td>

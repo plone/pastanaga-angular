@@ -3,48 +3,30 @@
 
 
 //GRAYS, AZURES, WHITES       //BLUES, SKIES                //BROWNS                       //REDS                       //GREENS                   //OCHERS, YELLOWS
-$gray-black:    #252525;
-$gray-blacky:   #4a4a4a;
-$gray-dark:     #636363;    $blue-dark:     #246c8a;    $brown-dark:     #696152;    $red-dark:     #b23528;    $green-dark:  #4c6f0a;    $ocher-dark:  #6e5d09;
-$gray-contrast: #717171;    $blue-contrast: #26789b;    $brown-contrast: #786e5d;    $red-contrast: #c24134;
-$gray:          #767676;    $blue:          #2880a4;    $brown:          #7c7261;    $red:          #cb4639;    $green:       #58810c;    $ocher:       #8a750d;
-$gray-light:    #949494;    $blue-light:    #2297c7;    $brown-light:    #968465;    $red-light:    #e74535;    $green-light: #6da00f;    $ocher-light: #a78d0e;
+$gray-black:    #212121;
+$gray-blacky:   #4c4c4c;
+$gray-dark:     #656565;    $blue-dark:     #00648d;    $brown-dark:     #685454;    $red-dark:     #b60051;    $green-dark:  #21840a;    $ocher-dark:  #a79b06;
+$gray-contrast: #717171;    $blue-contrast: #00719e;    $brown-contrast: #745f5f;    $red-contrast: #cc005b;
+$gray:          #767676;    $blue:          #007EB1;    $brown:          #826A6A;    $red:          #E40166;    $green:       #24a506;    $ocher:       #bdb107;
+$gray-light:    #959595;    $blue-light:    #4da4c8;    $brown-light:    #a79696;    $red-light:    #ec4d94;    $green-light: #44da21;    $ocher-light: #d8ca19;
 $gray-pale:     #B8C6C8;    $blue-pale:     #90cbe3;
 $azure-dark:    #dee7e9;    $sky-dark:      #c6e4f1;
 $azure:         #edf1f2;    $sky:           #daeef6;
-$azure-light:   #f3f6f7;    $sky-light:     #e8f4f9;                                                                                            $yellow-light: rgba(239, 233, 9, 0.95);
-$white-smoke:   #f5f7f8;    $blue-palish:   #78C0D7;
-$white-ghost:   #f8fafb;
+$azure-light:   #f3f2ef;    $sky-light:     #e8f4f9;                                                                                            $yellow-light: rgba(239, 233, 9, 0.95);
+$white-smoke:   #f7f6f5;    $blue-palish:   #78C0D7;
+$white-ghost:   #fbfaf8;
 $white:         #fff;
-$whitish:       #F1F8FA;
-
-//COLOR BASIC WHEEL
-$magenta-dark:  #CE2C61;    $salmon-dark:   #C75735;    /*ocher-dark*/                /*gree-dark*/                 $teal-dark:  #197F68;    /*blue-dark*/            $purple-dark: #7F508C;     /*red-dark*/
-$magenta:       #EC447B;    $salmon:        #EA6E48;    /*ocher*/                     /*green*/                     $teal:       #23A98B;    /*blue*/                 $purple:      #A872B7;     /*red*/
-$magenta-vivid: #FC6A9A;    $salmon-vivid:  #FB8E6C;    $ocher-vivid:    #D2B62D;   $green-vivid:   #8FCA23;    $teal-vivid: #39D0AE;    $blue-vivid: #41BCEF;  $purple-vivid:#CE95DE;     $red-vivid: #FF5E4F;
 
 
-//BLUE              //TEAL              //JADE              //GREEN            //LIME
-$b90: #16638C;    $t90: #167064;    $j90: #155D45;    $g90:#316926;    $l90:#4E7227;
-$b80: #2880A4;    $t80: #169086;    $j80: #16785D;    $g80:#488538;    $l80:#71903C;
-$b70: #178FB0;    $t70: #17A397;    $j70: #168668;    $g70:#539442;    $l70:#85A147;
-$b60: #179FBD;    $t60: #17B6AB;    $j60: #169575;    $g60:#5FA44D;    $l60:#97B151;
-$b50: #17A9C6;    $t50: #17C3B8;    $j50: #17A07F;    $g50:#69B156;    $l50:#A6BE5A;
-$b40: #2FB4CF;    $t40: #34CBC2;    $j40: #38AE92;    $g40:#7FBB6F;    $l40:#B2C773;
-$b30: #57C1D6;    $t30: #5BD2CC;    $j30: #61BCA6;    $g30:#96C689;    $l30:#B2C773;
-$b20: #88D0E0;    $t20: #8BDED9;    $j20: #8FCCBE;    $g20:#B3D4AA;    $l20:#CFDBAD;
-$b10: #B5E0EA;    $t10: #B7E8E4;    $j10: #B9DDD5;    $g10:#CDE1C8;    $l10:#DFE6CA;
-$b05: #DDEEF1;    $t05: #DEF0EF;    $j05: #DEECE9;    $g05:#E5EEE3;    $l05:#EDF1E5;
 
-
-$body-bg:                   $white-ghost !default;
+$body-bg:                   $white !default;
 $body-color:                $gray-blacky !default;
 $link-color:                $blue !default;
 $link-decoration:           underline !default;
 $link-hover-color:          $blue-contrast !default;
 $link-hover-decoration:     underline !default;
 $text-muted:                $gray !default;
-$text-selection:            rgba($green-light,.35);
+$text-selection:            rgba($red-light,.35);
 
 
 // Shadows
@@ -66,7 +48,7 @@ $shadow: (
 
 // Spacing
 //
-// Control the default styling of most Bootstrap elements by modifying these
+// Control the default styling of most elements by modifying these
 // variables. Mostly focused on spacing.
 // You can add more entries to the $spacers map, should you need more variation.
 
@@ -89,17 +71,17 @@ $rythm: (
 //#################
 //###   FONTS   ###
 //#################
-$font-family-sans-serif:      Rubik, Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-sans-serif:      Poppins, Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
-$arabic:                      U+0600-06FF, U+FB50—FDFF, U+FE70—FEFF;
+
 
 //$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 
 $font-weight-light:           300 !default;
-$font-weight-regular:          400 !default;
+$font-weight-regular:         400 !default;
 $font-weight-normal:          $font-weight-regular;
-$font-weight-bold:            500 !default;
+$font-weight-bold:            700 !default;
 
 $font-weight-base:            $font-weight-light !default;
 
