@@ -1,7 +1,6 @@
 @import 'variables';
 
-// TODO manage path properly for build
-$font-path: './develop/pastanaga-angular/projects/pastanaga/src/assets/fonts';
+$font-path: '../dist/pastanaga/lib/assets/fonts';
 
 @font-face {
     font-family: 'Rubik';
