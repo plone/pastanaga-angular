@@ -1,0 +1,10 @@
+<div class="o-field o-field-textarea" [class.o-field-error]="!!errorHelp">
+    <textarea class="o-field-control" [id]="id" [attr.aria-describedby]="helpId" [attr.placeholder]="placeholder | translate"
+        [name]="name" [readonly]="isReadOnly" [disabled]="isDisabled" [required]="isRequired" (change)="change($event.target.value)"
+        (keyup)="onKeyUp($event.target.value)">{{ value }}</textarea>
+    <label class="o-field-label" [for]="id" [class.o-sr]="isLabelHidden" translate>
+        <ng-content></ng-content>
+    </label>
+    <small *ngIf="errorHelp" class="o-field-help o-field-help-error">{{ errorHelp }}</small>
+    <small *ngIf="help" class="o-field-help" [id]="helpId">{{ help | translate }}</small>
+</div>
