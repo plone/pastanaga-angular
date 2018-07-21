@@ -4,7 +4,7 @@
         (keyup)="onKeyUp($event.target.value)">{{ value }}</textarea>
     <label class="o-field-label" [for]="id" [class.o-sr]="isLabelHidden" translate>
         <ng-content></ng-content>
-    </label>
+    </label><div class="o-field-control-resizer"></div>
     <small *ngIf="errorHelp" class="o-field-help o-field-help-error">{{ errorHelp }}</small>
     <small *ngIf="help" class="o-field-help" [id]="helpId">{{ help | translate }}</small>
 </div>
