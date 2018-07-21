@@ -6,7 +6,7 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "build_lib": "ng build --prod pastanaga",
+        "build_lib": "ng build --prod pastanaga-angular",
         "postbuild_lib": "cp -R ./projects/pastanaga/src/lib/styles dist/pastanaga/lib/styles && cp -R ./projects/pastanaga/src/assets dist/pastanaga/lib/assets",
         "test": "ng test",
         "lint": "ng lint",
