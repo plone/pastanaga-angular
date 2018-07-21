@@ -27,7 +27,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "./dist/pastanaga/lib/assets",
+                "input": "./projects/pastanaga/src/assets",
                 "output": "assets"
               }
             ],
