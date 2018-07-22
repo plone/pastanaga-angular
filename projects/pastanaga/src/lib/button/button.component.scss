@@ -13,7 +13,8 @@
     box-sizing: border-box;
     vertical-align: middle;
     border-radius: 10rem;
-    font-family: Rubik;
+    font-family: $font-family-base;
+    text-transform: uppercase;
     cursor: pointer;
     outline: 0;
     -webkit-touch-callout: none;
@@ -48,7 +49,7 @@
     &-wrapper {
         height: rythm(3);
         padding: rythm(.5) rythm(1.5);
-        @include font-size(l, xl, l);
+        @include font-size(m, xl, l);
         display: inline-block;
         /*position: relative;*/
         /*vertical-align: middle;*/
@@ -172,9 +173,8 @@
     &#{&}-small {
         #{$root}-wrapper {
             height: rythm(2.5);
-            font-size: size(xs);
             padding: rythm(.5) rythm(1);
-            @include font-size(xs, m, s);
+            @include font-size(xxs, m, s);
         }
         & svg {
             width: rythm(1.5);
@@ -188,7 +188,7 @@
     &#{&}-large {
         #{$root}-wrapper {
             height: rythm(1)*4.5;
-            font-size: size(xxxl);
+            font-size: size(xxl);
             line-height: rythm(1)*3.5;
             padding: rythm(.5) rythm(2);
         }

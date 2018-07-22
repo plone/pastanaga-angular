@@ -30,9 +30,9 @@ export class DoubleSliderComponent implements AfterViewInit, OnInit, OnChanges, 
     @Input() isDisabled: boolean;
     @Output() valuesChange: EventEmitter<number[]> = new EventEmitter<number[]>();
 
-    thumbWidth = 16;
+    thumbWidth = 18;
     thumbBorderWidth = 1;
-    trackHeight = 4;
+    trackHeight = 6;
 
     isDraggingLeft = false;
     isDraggingRight = false;

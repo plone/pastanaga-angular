@@ -56,6 +56,10 @@ export class AppComponent implements OnInit {
         },
     ];
 
+    simpleCheckboxSelection: ControlModel[];
+    iconCheckboxSelection: ControlModel[];
+    helpCheckboxSelection: ControlModel[];
+    nestedCheckboxSelection: ControlModel[];
 
     toggleSelection1 = false;
     toggleSelection2 = true;
@@ -116,9 +120,9 @@ export class AppComponent implements OnInit {
     selection: any;
     options = [{id: 'visa', name: 'Visa'}, {id: 'mastercard', name: 'Mastercard'}];
     optionsCountries = [
-        {id: 'fr', name: 'France'},
-        {id: 'it', name: 'Italy', disabled: true},
-        {id: 'de', name: 'Germany', selected: true},
+        {id: 'fr', name: 'Catalonia'},
+        {id: 'it', name: 'Spain', disabled: true},
+        {id: 'de', name: 'Andorra', selected: true},
     ];
     versionFormat = new RegExp(/^[0-9]+\.[0-9]+\.[0-9]+$/);
 
@@ -184,6 +188,10 @@ export class AppComponent implements OnInit {
         this.sliderValues1 = defaultValue;
         this.sliderValues2 = defaultValue;
         this.sliderValues3 = defaultValue;
+    }
+
+    displaySelection(value) {
+        this.selection = value;
     }
 
     onButtonClick($event) {

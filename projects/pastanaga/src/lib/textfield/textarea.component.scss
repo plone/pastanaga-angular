@@ -1,0 +1,82 @@
+@import "../styles/variables";
+
+.o-field.o-field-textarea .o-field-control-resizer {
+    height: 0px;
+    width: 0px;
+    border-top: 7px solid $blue;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    -webkit-transform: rotate(-45deg);
+    position: absolute;
+    margin-top: -5px;
+    right: 7.5px;
+    pointer-events: none;
+    z-index: 1;
+    transition: all .33s ease;
+}
+.o-field.o-field-textarea .o-field-control-resizer::before {
+    content: "";
+    height: 0px;
+    width: 0px;
+    border-top: 4px solid white;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    position: absolute;
+    margin-top: -6px;
+    right: -4px;
+    pointer-events: none;
+    z-index: 1;
+    transition: all .33s ease;
+}
+.o-field.o-field-textarea .o-field-control-resizer::after {
+    -webkit-transform: rotate(-45deg);
+    content: "";
+    height: 6px;
+    width: 10px;
+    background: $white;
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.o-field.o-field-textarea .o-field-control {
+    height: auto;
+    min-height: 45px;
+    border-top:24px solid transparent;
+    padding-top:0;
+    resize: vertical;
+
+    &:hover ~ .o-field-control-resizer,
+    &:active ~ .o-field-control-resizer,
+    &:focus ~ .o-field-control-resizer {
+        right: 2.5px;
+    }
+    &:active ~ .o-field-control-resizer,
+    &:focus ~ .o-field-control-resizer {
+        right: 2.5px;
+        border-top: 7px solid $blue-light;
+    }
+    &:active ~ .o-field-control-resizer::before,
+    &:focus ~ .o-field-control-resizer::before {
+        opacity: 0;
+    }
+    &.o-field-control-accent ~ .o-field-control-resizer {
+        right: 2.5px;
+        border-top: 7px solid $sky-dark;
+        margin-top: -6px;
+    }
+    &.o-field-control-accent ~ .o-field-control-resizer::before {
+        border-top: 4px solid $sky-dark;
+    }
+    &.o-field-control-accent ~ .o-field-control-resizer::after {
+        display: none;
+    }
+    &.o-field-control-accent:active ~ .o-field-control-resizer,
+    &.o-field-control-accent:focus ~ .o-field-control-resizer,
+    &.o-field-control-accent:active ~ .o-field-control-resizer::before,
+    &.o-field-control-accent:focus ~ .o-field-control-resizer::before {
+        border-top-color: $blue-light;
+    }
+}

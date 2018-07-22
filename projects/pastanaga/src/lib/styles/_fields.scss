@@ -2,7 +2,12 @@
 
 legend {
   @include font-size(xs,xs,xs);
-  color: $gray;
+  color: darken($green-dark,12);
+  background: $white-smoke;
+  padding: rythm(1) rythm(1.5);
+  margin-left: - rythm(1.5);
+  margin-right: - rythm(1.5);
+  text-transform: uppercase;
 }
 
 
@@ -28,7 +33,13 @@ legend {
 fieldset.o-fieldset-group {
   & > legend {
     @include font-size(xs,xs,xs);
-    margin-bottom: rythm(1);
+    margin-bottom: rythm(.75);
+    text-transform: uppercase;
+    margin-left: 0;
+    margin-right: 0;
+    background: none;
+    color: $gray;
+    padding: 0;
   }
   & > pa-checkbox:not(:last-child) .o-field {
     margin-bottom: 0;

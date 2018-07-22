@@ -9,9 +9,9 @@
         z-index: -1;
         width: 14px;
         height: 14px;
-        margin-top: 1px;
-        margin-left: 1px;
-        border-radius: 3px;
+        margin-top: 2px;
+        margin-left: 2px;
+        border-radius: 0;
         //opacity: .05; //firefox
         &:focus {
             outline: 0;
@@ -28,7 +28,7 @@
             transform: none !important;
             font-size: inherit !important;
             & > span {
-                margin-left: rythm(1);
+                margin-left: rythm(.5);
             }
         }
         & + .o-field-label + output {
@@ -48,7 +48,7 @@
             height: rythm(1.5);
             background: $white;
             border: 1px solid $brown;
-            border-radius: 3px;
+            border-radius: 0;
         }
         &:checked + .o-field-label::before {
             border: 1px solid $blue;
@@ -108,7 +108,7 @@
             background: $white-smoke;
         }
         & ~ .o-field-help {
-            margin-left: rythm(2.5);
+            margin-left: rythm(2);
             margin-top: - rythm(1);
             margin-bottom: rythm(.5);
         }
