@@ -358,7 +358,7 @@
 
     <p>
         <pa-button color="primary" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" [border]="falseValue" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="secondary" [border]="false" (click)="onButtonClick($event)">Secondary</pa-button>
         <pa-button color="destructive" (click)="onButtonClick($event)">Destructive</pa-button>
         <pa-button disabled (click)="onButtonClick($event)">Disabled</pa-button>
         <pa-button color="primary" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
@@ -386,7 +386,7 @@
         <pa-button color="destructive" size="small" border (click)="onButtonClick($event)">Destructive</pa-button>
         <pa-button color="destructive" size="small" border [disabled]="true" (click)="onButtonClick($event)">Disabled
         </pa-button>
-        <pa-button color="primary" size="small" [icon]="'delete'" [border]="trueValue" (click)="onButtonClick($event)">
+        <pa-button color="primary" size="small" [icon]="'delete'" [border]="true" (click)="onButtonClick($event)">
             Primary
         </pa-button>
         <pa-button color="secondary" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary

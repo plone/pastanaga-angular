@@ -56,6 +56,10 @@ export class AppComponent implements OnInit {
         },
     ];
 
+    simpleCheckboxSelection: ControlModel[];
+    iconCheckboxSelection: ControlModel[];
+    helpCheckboxSelection: ControlModel[];
+    nestedCheckboxSelection: ControlModel[];
 
     toggleSelection1 = false;
     toggleSelection2 = true;
@@ -184,6 +188,10 @@ export class AppComponent implements OnInit {
         this.sliderValues1 = defaultValue;
         this.sliderValues2 = defaultValue;
         this.sliderValues3 = defaultValue;
+    }
+
+    displaySelection(value) {
+        this.selection = value;
     }
 
     onButtonClick($event) {
