@@ -84,7 +84,16 @@ export class CheckboxGroupComponent implements OnInit, OnChanges {
         });
     }
 
-    updateSelection() {
+    updateSelection(checkbox?: ControlModel) {
+        // when type radio, unselect the others
+        if (!!checkbox && this.type === 'radio') {
+            this.checkboxes.forEach(radio => {
+                if (radio.id !== checkbox.id) {
+                    radio.isSelected = false;
+                }
+            });
+        }
+
         let currentSelection: string[] = [];
         this.checkboxes.forEach(parent => {
             if (!!parent.children && parent.children.length > 0) {
