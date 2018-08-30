@@ -51,7 +51,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
         }
     }
 
-    onKeyUp(value) {
+    onKeyUp(e) {
+        const value = e.target.value;
         this.validate(value);
         this.keyUp.emit(value);
     }

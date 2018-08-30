@@ -1,7 +1,7 @@
 <div class="o-field o-field-textarea" [class.o-field-error]="!!errorHelp">
     <textarea class="o-field-control" [id]="id" [attr.aria-describedby]="helpId" [attr.placeholder]="placeholder | translate"
         [name]="name" [readonly]="isReadOnly" [disabled]="isDisabled" [required]="isRequired" (change)="change($event.target.value)"
-        (keyup)="onKeyUp($event.target.value)">{{ value }}</textarea>
+        (keyup)="onKeyUp($event)">{{ value }}</textarea>
     <label class="o-field-label" [for]="id" [class.o-sr]="isLabelHidden" translate>
         <ng-content></ng-content>
     </label><div class="o-field-control-resizer"></div>
