@@ -1,11 +1,11 @@
 import {
     Component,
-    ElementRef,
     EventEmitter,
     Input,
     OnChanges,
     OnDestroy,
     OnInit,
+    AfterViewInit,
     Output,
     ɵlooseIdentical,
     ViewChild
@@ -19,13 +19,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   templateUrl: 'richtext.component.html',
   styleUrls: ['textfield.scss', 'richtext.component.scss'],
 })
-export class RichtextComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+export class RichtextComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy, AfterViewInit {
 
   private lastViewModel: string;
-  private element: HTMLElement;
   private editor: any;
   private active: boolean;
-  @ViewChild("editor_wrapper") editor_wrapper: ElementRef;
+  private htmlContent: string;
   @Input() id: string;
   @Input() name: string;
   @Input() value = '';
@@ -47,14 +46,12 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnChange
       pattern: false,
   };
 
-	@Input('editorModel') model: any;
+  @Input('editorModel') model: any;
   @Input('editorOptions') options: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.element = this.editor_wrapper.nativeElement;
-    this.element.innerHTML = '<div class="me-editable">' + this.model + '</div>';
     this.active = true;
 
     if (this.placeholder && this.placeholder.length) {
@@ -62,9 +59,11 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnChange
         text : this.placeholder
       };
     }
+  }
 
-    // Global MediumEditor
+  ngAfterViewInit() {
     this.editor = new MediumEditor('.me-editable', this.options);
+    this.editor.setContent(this.model);
     this.editor.subscribe('editableInput', (event, editable) => {
       this.updateModel();
     });
