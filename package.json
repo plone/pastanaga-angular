@@ -28,6 +28,7 @@
         "@ngx-translate/http-loader": "^3.0.1",
         "angular-svg-icon": "^6.0.0",
         "core-js": "^2.5.4",
+        "medium-editor": "~5.23.3",
         "rxjs": "^6.0.0",
         "rxjs-compat": "^6.2.2",
         "zone.js": "^0.8.26"

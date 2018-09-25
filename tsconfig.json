@@ -17,11 +17,11 @@
             "dom"
         ],
         "paths": {
-            "pastanaga": [
-                "dist/pastanaga"
+            "pastanaga-angular": [
+                "projects/pastanaga/src"
             ],
-            "pastanaga/*": [
-                "dist/pastanaga/*"
+            "pastanaga-angular/*": [
+                "projects/pastanaga/src/*"
             ]
         }
     }
