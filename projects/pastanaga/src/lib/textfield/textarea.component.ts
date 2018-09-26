@@ -7,6 +7,11 @@ let nextId = 0;
     selector: 'pa-textarea',
     templateUrl: 'textarea.component.html',
     styleUrls: ['textfield.scss', 'textarea.component.scss'],
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => TextareaComponent),
+        multi: true,
+    }],
 })
 export class TextareaComponent implements ControlValueAccessor, OnInit {
     @Input() id: string;

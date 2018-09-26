@@ -8,10 +8,12 @@ import {
     AfterViewInit,
     Output,
     ɵlooseIdentical,
-    ViewChild
+    ViewChild,
+    forwardRef
 } from '@angular/core';
 import * as MediumEditor from 'medium-editor';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AsyncSubject } from 'rxjs';
 
 let nextId = 0;
 
@@ -19,8 +21,13 @@ let nextId = 0;
   selector: 'pa-richtext',
   templateUrl: 'richtext.component.html',
   styleUrls: ['textfield.scss', 'richtext.component.scss'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => RichtextComponent),
+    multi: true,
+  }],
 })
-export class RichtextComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class RichtextComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterViewInit {
 
   private lastViewModel: string;
   private editor: any;
@@ -47,8 +54,7 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnDestro
   };
 
   @Input('editorOptions') options: any;
-
-  constructor() { }
+  isMediumInitialized: AsyncSubject<boolean> = new AsyncSubject();
 
   ngOnInit() {
     this.active = true;
@@ -128,10 +134,15 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnDestro
     }
 
     this.options.imageDragging = true;
+  }
+
+  ngAfterViewInit() {
     this.editor = new MediumEditor('.me-editable', this.options);
     this.editor.subscribe('editableInput', (event, editable) => {
       this.change(event.data)
     });
+    this.isMediumInitialized.next(true);
+    this.isMediumInitialized.complete();
   }
 
 
@@ -149,8 +160,10 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnDestro
   // }
 
   writeValue(value: any) {
-    debugger;
-    this.editor.setContent(value);
+    this.isMediumInitialized.subscribe(() => {
+      this.value = value;
+      this.editor.setContent(this.value);
+    });
   }
 
   registerOnTouched(handler: any) {
