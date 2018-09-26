@@ -1,7 +1,8 @@
 @import 'variables';
 
 // TODO manage path properly for build
-$font-path: '../projects/pastanaga/src/assets/fonts';
+// $font-path: '../projects/pastanaga/src/assets/fonts';
+$font-path: './develop/pastanaga-angular/projects/pastanaga/src/assets/fonts';
 
 @font-face {
     font-family: 'Poppins';
