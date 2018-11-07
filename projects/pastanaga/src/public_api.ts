@@ -32,6 +32,7 @@ export * from './lib/svg/icon.component';
 export * from './lib/textfield/textfield.module';
 export * from './lib/textfield/input.component';
 export * from './lib/textfield/select.component';
+export * from './lib/textfield/richtext.component';
 
 export * from './lib/toast/toast.module';
 export * from './lib/toast/toast.component';

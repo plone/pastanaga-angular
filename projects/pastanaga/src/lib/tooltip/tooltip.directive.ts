@@ -2,7 +2,7 @@ import { ComponentFactoryResolver, ComponentRef, Directive, ElementRef, HostList
 import { TooltipComponent } from './tooltip.component';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/takeUntil';
+import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 
 const SYSTEM = 'system';
@@ -33,7 +33,7 @@ export class TooltipDirective {
     @HostListener('mouseenter')
     focus() {
         Observable.timer(1000)      // display tooltip after 1 second hovering the parent element
-                  .takeUntil(this.focusout)   // unless the mouse leaves before
+                  .pipe(takeUntil(this.focusout))  // unless the mouse leaves before
                   .subscribe(() => {
                       this.show();
                   });

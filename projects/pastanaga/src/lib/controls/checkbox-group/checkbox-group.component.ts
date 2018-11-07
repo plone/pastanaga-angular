@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlModel } from '../control.model';
 
 let nextId = 0;
@@ -23,8 +24,13 @@ let nextId = 0;
     selector: 'pa-checkbox-group',
     templateUrl: './checkbox-group.component.html',
     styleUrls: ['./checkbox-group.component.scss'],
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => CheckboxGroupComponent),
+        multi: true,
+    }],
 })
-export class CheckboxGroupComponent implements OnInit, OnChanges {
+export class CheckboxGroupComponent implements ControlValueAccessor, OnInit, OnChanges {
     @Input() id: string;
     @Input() name: string;
     @Input() checkboxes: ControlModel[];
@@ -32,13 +38,16 @@ export class CheckboxGroupComponent implements OnInit, OnChanges {
     @Input() isBadgeVisible: boolean;
     @Input() total: number;
     @Input() totalSelected: number;
+    @Input() isDisabled: boolean;
     @Input() isCountExternal: boolean;
     @Input() shouldHideSelectAll: boolean;
     @Input() shouldSort = true;
-
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() selectAll: EventEmitter<boolean> = new EventEmitter();
+    @Output() valueChange: EventEmitter<any> = new EventEmitter();
 
+    onChange: any;
+    onTouched: any;
     isAllSelected = false;
 
     ngOnInit() {
@@ -63,6 +72,22 @@ export class CheckboxGroupComponent implements OnInit, OnChanges {
         if (this.isCountExternal) {
             this.isAllSelected = this.totalSelected === this.total;
         }
+    }
+
+    writeValue(value: any) {
+        this.checkboxes.forEach(checkbox => checkbox.isSelected = value.includes(checkbox.value));
+    }
+
+    registerOnTouched(handler: any) {
+        this.onTouched = handler;
+    }
+
+    registerOnChange(handler: any) {
+        this.onChange = handler;
+    }
+
+    setDisabledState(isDisabled: boolean) {
+        this.isDisabled = isDisabled;
     }
 
     updateTotal() {
@@ -112,6 +137,8 @@ export class CheckboxGroupComponent implements OnInit, OnChanges {
         }
         this.updateIsAllSelected();
         this.selection.emit(currentSelection);
+        this.onChange(currentSelection);
+        this.valueChange.emit(currentSelection);
     }
 
     toggleSelectAll() {

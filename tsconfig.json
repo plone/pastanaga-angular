@@ -18,7 +18,10 @@
         ],
         "paths": {
             "pastanaga-angular": [
-                "projects/pastanaga/src/public_api"
+                "projects/pastanaga/src"
+            ],
+            "pastanaga-angular/*": [
+                "projects/pastanaga/src/*"
             ]
         }
     }
