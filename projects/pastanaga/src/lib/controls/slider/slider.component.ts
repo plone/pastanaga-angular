@@ -20,9 +20,7 @@ export class SliderComponent implements OnInit {
     rangeValue: number;
 
     ngOnInit() {
-        if (!this.id) {
-            this.id = `field-range-${nextId++}`;
-        }
+        this.id = !this.id ? `field-range-${nextId++}` : `${this.id}-field-range`;
         this.name = this.name || this.id;
         this.helpId = `${this.id}-help`;
     }

@@ -1,10 +1,10 @@
-@import "../../styles/variables";
+@import "../../variables";
 
 :host {
 
   .pa-field-slider.disabled {
     opacity: 0.5;
-    .pa-slider, .pa-slider-thumb {
+    .pa-slider, .pa-slider-thumb, {
       cursor: not-allowed;
     }
   }
@@ -31,7 +31,7 @@
     height: 6px;
     border-radius: 50px;
 
-    background-color: $brown-light;
+    background-color: $blue-light;
     box-sizing: border-box;
   }
 
@@ -42,8 +42,8 @@
   .pa-slider-thumb {
     cursor: pointer;
     border: 1px solid $blue-light;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background-color: $white;
     border-radius: 50%;
     position: absolute;
@@ -51,9 +51,9 @@
 
   .pa-slider-thumb::after {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background: $blue;
+    width: 8px;
+    height: 8px;
+    background: $b80;
     border-radius: 50px;
     content: "";
     top: 3px;
@@ -63,7 +63,7 @@
   .pa-slider-track {
     pointer-events: none;
     height: 100%;
-    background-color: $blue;
+    background-color: $blue-dark;
   }
 
   .pa-slider-output {
