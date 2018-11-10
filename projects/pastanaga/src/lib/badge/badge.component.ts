@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { BadgeModel } from './badge.model';
 
 @Component({
@@ -16,6 +16,10 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
     @Input() value: number;
     @Input() of: number;
     @Input() buttons: BadgeModel[];
+    @Input() canBeRemoved = false;
+
+    @Output() remove: EventEmitter<null> = new EventEmitter();
+    @Output() render: EventEmitter<ElementRef> = new EventEmitter();
 
     colorClass: string;
     colorStyle: {};
@@ -23,10 +27,13 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
 
     @ViewChild('textContent') textContent: ElementRef;
 
+    constructor(private elementRef: ElementRef) {}
+
     ngAfterViewInit() {
         if (!!this.maxWidth && !!this.textContent) {
             setTimeout(() => this.text = this.textContent.nativeElement.textContent.trim());
         }
+        this.render.emit(this.elementRef);
     }
 
     ngOnChanges(changes) {

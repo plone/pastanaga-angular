@@ -1,5 +1,9 @@
 @import "../styles/_variables";
 
+pa-button {
+    display: inline-block;
+}
+
 .pa-button {
     $root: &;
     background: transparent;
@@ -86,7 +90,7 @@
         margin-bottom: - rythm(.5);
         stroke: currentColor;
         stroke-width: 0.0234375rem;
-        transition: all .25s ease;
+        transition: background-color .25s ease;
         &:hover {
             background: darken($azure, 10%);
         }
@@ -220,7 +224,7 @@
             background: transparent;
             border-color: transparent;
         }
-        & .pa-button-wrapper {
+        & .pa-button-wrapper.inline {
             line-height: inherit;
             display: inline;
             height: auto;
