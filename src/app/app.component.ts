@@ -136,6 +136,8 @@ export class AppComponent implements OnInit {
     toastButtonColor = 'destructive';
     toastDelay = 0;
 
+    sections: any = {};
+
     constructor(
         private toaster: Toaster,
         private translate: TranslateService,
@@ -153,6 +155,11 @@ export class AppComponent implements OnInit {
 
         this.resetProgressValueUntil100();
         this.resetProgressValueUntil200();
+
+        const savedSections = localStorage.getItem('sections');
+        if (savedSections) {
+            this.sections = JSON.parse(savedSections);
+        }
     }
 
     resetProgressValueUntil100() {
@@ -232,4 +239,8 @@ export class AppComponent implements OnInit {
         this.toaster.open(message, button, delay);
     }
 
+    toggleSection(id) {
+        this.sections[id] = !this.sections[id];
+        localStorage.setItem('sections', JSON.stringify(this.sections));
+    }
 }

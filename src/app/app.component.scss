@@ -8,6 +8,12 @@
         padding: 36px 30px;
         margin: 36px 30px;
         position: relative;
+        & > :not(.example-box-header) {
+            display: none;
+        }
+        &.expanded > * {
+            display: block;
+        }
     }
     .example-box-header {
         background: #ddd;
@@ -17,6 +23,7 @@
         padding: 3px 6px;
         margin: -36px -30px 6px;
         z-index: 9;
+        cursor: pointer;
     }
     table {
         width: 100%;

@@ -1,7 +1,9 @@
 <h1 translate>demo-page.title</h1>
 
-<div class="example-box">
-    <div class="example-box-header">Text fields</div>
+<p>To display a section, click on its title</p>
+
+<div class="example-box" [class.expanded]="sections.text">
+    <div class="example-box-header" (click)="toggleSection('text')">Text fields</div>
 
     <h4>Text input</h4>
     <div>
@@ -78,8 +80,8 @@
 </div>
 
 
-<div class="example-box">
-    <div class="example-box-header">Progress bars</div>
+<div class="example-box" [class.expanded]="sections.progress">
+    <div class="example-box-header" (click)="toggleSection('progress')">Progress bars</div>
     <table>
         <thead>
         <tr>
@@ -146,8 +148,8 @@
         </tbody>
     </table>
 </div>
-<div class="example-box">
-    <div class="example-box-header">Controls</div>
+<div class="example-box" [class.expanded]="sections.controls">
+    <div class="example-box-header" (click)="toggleSection('controls')">Controls</div>
     <table class="checkoxes">
         <thead>
         <tr>
@@ -361,8 +363,8 @@
     </table>
 </div>
 
-<div class="example-box">
-    <div class="example-box-header">Buttons</div>
+<div class="example-box" [class.expanded]="sections.buttons">
+    <div class="example-box-header" (click)="toggleSection('buttons')">Buttons</div>
 
     <p>
         <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary
@@ -452,8 +454,8 @@
     </p>
 </div>
 
-<div class="example-box">
-    <div class="example-box-header">Badges</div>
+<div class="example-box" [class.expanded]="sections.badges">
+    <div class="example-box-header" (click)="toggleSection('badges')">Badges</div>
 
     <div>
         <pa-badge>Generic badge</pa-badge>
@@ -492,8 +494,8 @@
     </div>
 </div>
 
-<div class="example-box">
-    <div class="example-box-header">Toasts</div>
+<div class="example-box" [class.expanded]="sections.toasts">
+    <div class="example-box-header" (click)="toggleSection('toasts')">Toasts</div>
 
     <div class="pa-toast-configuration">
         <pa-input placeholder="Toast icon" [(value)]="toastIcon"></pa-input>
