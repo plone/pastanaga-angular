@@ -7,7 +7,7 @@
 .o-field-tel,
 .o-field-url,
 .o-field-search,
-//potentially usable
+    //potentially usable
 .o-field-date,
 .o-field-datetime-local,
 .o-field-month,
@@ -21,7 +21,7 @@
     // o-field-control
     .o-field-control {
         display: block;
-        width: 100%;
+        width: calc(100% + 12px);
         padding: 24px 6px 6px;
         margin-left: -6px;
         margin-right: -6px;
@@ -43,15 +43,31 @@
             box-shadow: 0 200px 0 -200px $gray-dark;
             transition: all .5s ease;
         }
+
         &:not(:disabled):not(:read-only):hover {
+            /* autoprefixer: off */
             cursor: pointer;
             box-shadow: 0 2px 0 -1px $blue;
         }
         &:not(:disabled):not(:read-only):active,
         &:not(:disabled):not(:read-only):focus {
+            /* autoprefixer: off */
             box-shadow: 0 2px 0 0px $blue-light;
-            background-color: rgba($azure,.5);
+            background-color: rgba($blue,.12);
         }
+        // Firefox workaround
+        &:not(:disabled):not(:-moz-read-only):hover {
+            /* autoprefixer: off */
+            cursor: pointer;
+            box-shadow: 0 2px 0 -1px $blue;
+        }
+        &:not(:disabled):not(:-moz-read-only):active,
+        &:not(:disabled):not(:-moz-read-only):focus {
+            /* autoprefixer: off */
+            box-shadow: 0 2px 0 0px $blue-light;
+            background-color: rgba($blue,.12);
+        }
+
         &:focus {
             outline: none;
         }
@@ -72,11 +88,13 @@
         }
         &:active:not(:disabled):not(:read-only)::placeholder,
         &:focus:not(:disabled):not(:read-only)::placeholder {
+            /* autoprefixer: off */
             opacity: 1;
             transition: all 1s ease;
         }
-        &:active:not(:disabled):not(:read-only)::-moz-placeholder,
-        &:focus:not(:disabled):not(:read-only)::-moz-placeholder {
+        &:active:not(:disabled):not(:-moz-read-only)::-moz-placeholder,
+        &:focus:not(:disabled):not(:-moz-read-only)::-moz-placeholder {
+            /* autoprefixer: off */
             opacity: 1;
             transition: all 1s ease;
         }
@@ -101,21 +119,23 @@
         //NEW
         //padding-left:6px;
         //padding-right:6px;
-        }
+    }
     .o-field-control:hover + .o-field-label,
     .o-field-label:hover {
         color: $blue;
     }
     .o-field-control:not(:disabled):not(:read-only):focus + .o-field-label,
     .o-field-control:not(:disabled):not(:read-only):active + .o-field-label {
+        /* autoprefixer: off */
         color: $blue-contrast;
     }
     .o-field-control:focus:not(:disabled):not(:read-only) + .o-field-label,
     .o-field-control:active:not(:disabled):not(:read-only) + .o-field-label,
-    .o-field-control:required:valid + .o-field-label,
+    .o-field-control:required + .o-field-label,
     .o-field-control:optional:not(:valid):not(:disabled):not(:read-only) + .o-field-label,
     .o-field-control:optional:not(:placeholder-shown) + .o-field-label,
     .o-field-control.o-field-control-placeholder-shown + .o-field-label {
+        /* autoprefixer: off */
         @include font-size(xs,xs,m);
         //font-size: 12px;
         transform: translateY(-33%);
@@ -127,29 +147,71 @@
     .o-field-control[type="search"]:optional:not(:valid):not(:disabled):not(:read-only) + .o-field-label,
     .o-field-control[type="search"]:optional:not(:placeholder-shown) + .o-field-label,
     .o-field-control[type="search"].o-field-control-placeholder-shown + .o-field-label {
+        /* autoprefixer: off */
         @include font-size(m,m,m);
         //font-size: 14px;
         transform: translateY(0);
         opacity: 0;
         transition: opacity 0s ease;
     }
+
+    // Firefox workaround
+    .o-field-control:not(:disabled):not(:-moz-read-only):focus + .o-field-label,
+    .o-field-control:not(:disabled):not(:-moz-read-only):active + .o-field-label {
+        /* autoprefixer: off */
+        color: $blue-contrast;
+    }
+    .o-field-control:focus:not(:disabled):not(:-moz-read-only) + .o-field-label,
+    .o-field-control:active:not(:disabled):not(:-moz-read-only) + .o-field-label,
+    .o-field-control:required + .o-field-label,
+    .o-field-control:optional:not(:valid):not(:disabled):not(:-moz-read-only) + .o-field-label,
+    .o-field-control:optional:not(:placeholder-shown) + .o-field-label,
+    .o-field-control.o-field-control-placeholder-shown + .o-field-label {
+        /* autoprefixer: off */
+        @include font-size(xs,xs,m);
+        transform: translateY(-33%);
+        transition: all .33s ease;
+    }
+    .o-field-control[type="search"]:focus:not(:disabled):not(:-moz-read-only) + .o-field-label,
+    .o-field-control[type="search"]:active:not(:disabled):not(:-moz-read-only) + .o-field-label,
+    .o-field-control[type="search"]:required:valid + .o-field-label,
+    .o-field-control[type="search"]:optional:not(:valid):not(:disabled):not(:-moz-read-only) + .o-field-label,
+    .o-field-control[type="search"]:optional:not(:placeholder-shown) + .o-field-label,
+    .o-field-control[type="search"].o-field-control-placeholder-shown + .o-field-label {
+        /* autoprefixer: off */
+        @include font-size(m,m,m);
+        transform: translateY(0);
+        opacity: 0;
+        transition: opacity 0s ease;
+    }
     // required input
-    .o-field-control:required + .o-field-label::after,
+    .o-field-control:required + .o-field-label::after {
+        content:"Required";
+        font-size: 78.25%;
+        color: $gray-light;
+        margin-left: 6px;
+    }
     .o-field-control:required:active + .o-field-label::after,
     .o-field-control:required:focus + .o-field-label::after {
-        content:"●";
-        font-size: 100%;
+        content:"Required";
+        font-size: 78.25%;
         color: $red-light;
+        margin-left: 6px;
     }
     // disabled
     .o-field-control:disabled {
         box-shadow: none;
         background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
-        background-size: 5px 1px;
+        background-size: 6px 1px;
         background-repeat: repeat-x;
         background-position: bottom left;
         background-color: transparent;
         color: $gray-light;
+        padding: 24px 0 6px;
+        background-size: 6px 1px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
 
         &::placeholder {
             font-weight: $font-weight-light;
@@ -161,13 +223,18 @@
     }
     // read-only
     .o-field-control:read-only:not(select) {
+        /* autoprefixer: off */
         box-shadow: none;
         background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
-        background-size: 5px 1px;
         background-repeat: repeat-x;
         background-position: bottom left;
         background-color: transparent;
         color: $gray-black;
+        padding: 24px 0 6px;
+        background-size: 6px 1px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
 
         &::placeholder {
             font-weight: $font-weight-light;
@@ -178,6 +245,40 @@
         }
     }
     .o-field-control.o-field-control-accent:read-only:not(select) {
+        /* autoprefixer: off */
+        background-image: none;
+        box-shadow: none;
+        border-image-slice: 15 15 15 15 fill;
+        border-image-width: 10px 10px 10px 10px;
+        border-image-outset: 0px 0px 0px 0px;
+        border-image-repeat: round round;
+        border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
+    }
+    // Firefox workaround
+    .o-field-control:-moz-read-only:not(select) {
+        /* autoprefixer: off */
+        box-shadow: none;
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
+        background-repeat: repeat-x;
+        background-position: bottom left;
+        background-color: transparent;
+        color: $gray-black;
+        padding: 24px 0 6px;
+        background-size: 6px 1px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+
+        &::placeholder {
+            font-weight: $font-weight-light;
+            color: $gray-pale;
+        }
+        + .o-field-label {
+            color: $gray;
+        }
+    }
+    .o-field-control.o-field-control-accent:-moz-read-only:not(select) {
+        /* autoprefixer: off */
         background-image: none;
         box-shadow: none;
         border-image-slice: 15 15 15 15 fill;

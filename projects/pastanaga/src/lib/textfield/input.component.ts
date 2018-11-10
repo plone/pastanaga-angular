@@ -1,7 +1,6 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-let nextId = 0;
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import { TextfieldCommon } from './textfield.common';
 
 @Component({
     selector: 'pa-input',
@@ -11,79 +10,82 @@ let nextId = 0;
         provide: NG_VALUE_ACCESSOR,
         useExisting: forwardRef(() => InputComponent),
         multi: true,
+    }, {
+        provide: NG_VALIDATORS,
+        useExisting: forwardRef(() => InputComponent),
+        multi: true,
     }],
 })
-export class InputComponent implements ControlValueAccessor, OnInit {
-    @Input() id: string;
-    @Input() name: string;
+export class InputComponent extends TextfieldCommon implements OnInit, OnChanges {
     @Input() type = 'text';
-    @Input() value = '';
-    @Input() errorHelp: string;
-    @Input() placeholder: string;
-    @Input() help: string;
-    @Input() isRequired: boolean;
-    @Input() pattern: RegExp;
-    @Input() isDisabled: boolean;
-    @Input() isReadOnly: boolean;
-    @Input() isLabelHidden: boolean;
-    @Output() valueChange: EventEmitter<any> = new EventEmitter();
-    @Output() keyUp: EventEmitter<any> = new EventEmitter();
-    helpId: string;
-    onChange: any;
-    onTouched: any;
-    errors = {
-        required: false,
-        pattern: false,
-    };
+    @Input() hasFocus: boolean;
+    @Input() hasStrengthBar: boolean;
+
+    @Output() errorList: EventEmitter<any> = new EventEmitter();
+
+    @ViewChild('dataInput') input: ElementRef;
+
+    passwordStrength: number;
+
+    baseId = 'input';
+
+    constructor() {
+        super();
+        this.errors.passwordStrength = false;
+    }
 
     ngOnInit() {
-        if (!this.id) {
-            this.id = `input-${nextId++}`;
+        super.ngOnInit();
+        if (this.hasStrengthBar && this.type === 'password') {
+            this.help = 'common.password-rules';
         }
-        this.name = this.name || this.id;
         if (this.help) {
             this.helpId = `${this.id}-help`;
         }
     }
 
-    change(value: any) {
-        this.validate(value);
-        this.valueChange.emit(value);
-        if (this.onChange) {
-            this.onChange(value);
-        }
-        if (this.onTouched) {
-            this.onTouched(value);
+    ngOnChanges(changes) {
+        if (!!changes.hasFocus && changes.hasFocus.currentValue === true) {
+            this.input.nativeElement.focus();
         }
     }
 
-    onKeyUp(value) {
-        this.validate(value);
-        this.keyUp.emit(value);
-    }
+    _validate(value) {
+        super._validate(value);
 
-    validate(value) {
-        if (this.isRequired) {
-            this.errors.required = !value && value !== 0;
+        if (this.hasStrengthBar && this.type === 'password') {
+            this.checkPasswordStrength(value);
+            this.errors.passwordStrength = this.passwordStrength < 4;
         }
-        if (this.pattern) {
-            this.errors.pattern = value && !this.pattern.test(value);
-        }
+
+        this.errorList.emit(this.errors);
     }
 
-    writeValue(value: any) {
-        this.value = value;
-    }
+    /**
+     * rules:
+     *  - at least 10 characters
+     *  - at least 1 lowercase
+     *  - at least 1 uppercase
+     *  - at least 1 number
+     *  - at least 1 special character
+     * @param password
+     */
+    private checkPasswordStrength(password) {
+        const rules = [
+            password.length >= 10,
+            password.match(rulesRegexp.lowerCase) !== null,
+            password.match(rulesRegexp.upperCase) !== null,
+            password.match(rulesRegexp.number) !== null,
+            password.match(rulesRegexp.specialCharacter) !== null,
+        ];
 
-    registerOnTouched(handler: any) {
-        this.onTouched = handler;
-    }
-
-    registerOnChange(handler: any) {
-        this.onChange = handler;
-    }
-
-    setDisabledState(isDisabled: boolean) {
-        this.isDisabled = isDisabled;
+        this.passwordStrength = rules.filter(isRuleOk => isRuleOk).length;
     }
 }
+
+const rulesRegexp = {
+    lowerCase: new RegExp(/[a-z]/),
+    upperCase: new RegExp(/[A-Z]/),
+    number: new RegExp(/[0-9]/),
+    specialCharacter: new RegExp(/[^\da-zA-Z]/),
+};

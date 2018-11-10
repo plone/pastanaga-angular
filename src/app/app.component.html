@@ -12,7 +12,7 @@
                 <legend>Text with value</legend>
                 <pa-input name="firstname" value="James">Your firstname</pa-input>
                 <legend>Text with help</legend>
-                <pa-input help="Only actual super-power, e.g. Batman does not have any super-power">Your super power
+                <pa-input help="Only actual super power, e.g. Batman does not have any super power">Your super power
                 </pa-input>
                 <legend>Disabled text</legend>
                 <pa-input [isDisabled]="true" value="Rintintin">Your pet name</pa-input>
@@ -60,13 +60,19 @@
     </div>
     <h4>Select</h4>
     <div>
-        <pa-select placeholder="Choose a credit card…" help="5% discount for visa"
-                   (onSelection)="displaySelection($event)" [options]="options">
-            Credit card
+        <pa-select placeholder="Choose a credit card…" help="5% discount for visa" label="Credit card"
+                   (onSelection)="displaySelection($event)">
+            <option *ngFor="let option of options"
+                    [value]="option.id"
+                    [disabled]="!!option.disabled">{{ option.name }}
+            </option>
         </pa-select>
         <small class="o-field-help">{{ selection }}</small>
-        <pa-select placeholder="Pick a country" [options]="optionsCountries">
-            Your country
+        <pa-select placeholder="Pick a country" label="Your country">
+            <option *ngFor="let option of optionsCountries"
+                    [value]="option.id"
+                    [disabled]="!!option.disabled">{{ option.name }}
+            </option>
         </pa-select>
     </div>
 </div>
