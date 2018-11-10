@@ -14,6 +14,9 @@ export class ToggleComponent implements OnInit {
     @Input() help: string;
     @Input() divider: ToggleDivider;
     @Input() isSelected: boolean;
+    @Input() isDisabled: boolean;
+    @Input() yesLabel = 'common.yes';
+    @Input() noLabel = 'common.no';
     @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
 
     @ViewChild('text') textElement: ElementRef;
@@ -21,9 +24,7 @@ export class ToggleComponent implements OnInit {
     helpId: string;
 
     ngOnInit() {
-        if (!this.id) {
-            this.id = `field-toggle-${nextId++}`;
-        }
+        this.id = !this.id ? `field-toggle-${nextId++}` : `${this.id}-field-toggle`;
         this.helpId = `${this.id}-help`;
     }
 

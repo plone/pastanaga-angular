@@ -17,7 +17,7 @@ export class ToggleGroupComponent implements OnInit, OnChanges {
     dividers: ToggleDivider[] = [];
 
     ngOnInit() {
-        this.id = this.id || `fieldset-group-toggle-${nextId++}`;
+        this.id = !this.id ? `fieldset-toggle-group-${nextId++}` : `${this.id}-fieldset-toggle-group`;
     }
 
     ngOnChanges(changes) {
