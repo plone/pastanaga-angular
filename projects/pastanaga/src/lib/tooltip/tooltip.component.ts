@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 
-const VERTICAL_SEPARATION = 9;
-const HORIZONTAL_SEPARATION = 5;
+const VERTICAL_SEPARATION = 21;
+const VERTICAL_SEPARATION_ACTION = 3;
+const HORIZONTAL_SEPARATION = -3;
 
 @Component({
     selector: 'pa-tooltip-element',
@@ -9,75 +10,64 @@ const HORIZONTAL_SEPARATION = 5;
     styleUrls: ['./tooltip.component.scss'],
 })
 export class TooltipComponent implements AfterViewInit {
-
     @Input() text: string;
+    @Input() id: string;
 
+    isAction = false;
     height: number;
     width: number;
     left: number;
     top: number;
-    mouseX: number;
-    mouseY: number;
 
-    @ViewChild('tooltip') tooltip;
     @ViewChild('tooltipText') tooltipText;
 
     ngAfterViewInit() {
-        const topPosition = this.getTopPosition(this.mouseY);
+        this.show();
+    }
 
-        let leftPosition = 0;
+    show() {
+        if (this.tooltipText) {
+            this.tooltipText.nativeElement.style.left = this.getLeftPosition() + 'px';
+            this.tooltipText.nativeElement.style.top = this.getTopPosition() + 'px';
+            this.adjustPosition(); // once position set, check if too far horizontally or vertically
+            this.tooltipText.nativeElement.setAttribute('aria-expanded', true);
+        }
+    }
 
-        // If we have to center the tooltip
-        if (this.width) {
-            leftPosition = this.getCenteredLeftPosition();
+    hide() {
+        if (this.tooltipText) {
+            this.tooltipText.nativeElement.setAttribute('aria-expanded', false);
+        }
+    }
+
+    private getLeftPosition(): number {
+        if (this.isAction) {
+            const tooltipWidth = this.tooltipText.nativeElement.offsetWidth;
+            return this.left + (this.width / 2) - (tooltipWidth / 2);
         } else {
-            leftPosition = this.mouseX;
+            return this.left + HORIZONTAL_SEPARATION;
         }
-
-        const offset = this.getLeftPositionOffset(leftPosition);
-        const left = leftPosition - offset;
-
-        this.tooltip.nativeElement.style.left = left + 'px';
-        this.tooltip.nativeElement.style.top = topPosition + 'px';
-        this.tooltip.nativeElement.style.opacity = 1;
     }
 
-    private getCenteredLeftPosition(): number {
-        const tooltipWidth = this.tooltipText.nativeElement.offsetWidth;
-        return  (this.left + this.width / 2) - (tooltipWidth / 2);
+    private getTopPosition(): number {
+        if (this.isAction) {
+            return this.top + this.height + VERTICAL_SEPARATION_ACTION;
+        } else {
+            return this.top + VERTICAL_SEPARATION;
+        }
     }
 
-    private getLeftPositionOffset(leftPosition: number): number {
-        if (!this.tooltipText) {
-            return 0;
+    private adjustPosition() {
+        const rect = this.tooltipText.nativeElement.getBoundingClientRect();
+        if (rect.right > window.innerWidth) {
+            let left: number = parseInt(this.tooltipText.nativeElement.style.left.replace('px', ''), 10);
+            left = left - (rect.right - window.innerWidth) - HORIZONTAL_SEPARATION;
+            this.tooltipText.nativeElement.style.left = left + 'px';
         }
-
-        const tooltipWidth = this.tooltipText.nativeElement.offsetWidth;
-        const screenWidth = window.innerWidth;
-
-        let rightPosition = leftPosition + tooltipWidth - screenWidth;
-        if (document.querySelector('[cdk-scrollable]')) {
-            rightPosition += document.querySelector('[cdk-scrollable]').scrollTop;
+        if (rect.bottom > window.innerHeight) {
+            let top: number = parseInt(this.tooltipText.nativeElement.style.top.replace('px', ''), 10);
+            top = top - (rect.bottom - window.innerHeight) - VERTICAL_SEPARATION;
+            this.tooltipText.nativeElement.style.top = top + 'px';
         }
-
-        let offset = rightPosition > 0 ? rightPosition + HORIZONTAL_SEPARATION : 0;
-        if (this.text) {
-            const availableWidth = screenWidth - leftPosition + offset;
-            const approxTextWidth = Math.round(this.text.length * 5.2);
-            if (availableWidth < approxTextWidth) {
-                offset = Math.min(approxTextWidth, 300);
-            }
-        }
-        return offset;
-    }
-
-    private getTopPosition(y: number): number {
-        let topPosition = (this.height ? this.top + this.height : y) + VERTICAL_SEPARATION;
-
-        if (document.querySelector('[cdk-scrollable]')) {
-            topPosition += document.querySelector('[cdk-scrollable]').scrollTop;
-        }
-
-        return topPosition;
     }
 }
