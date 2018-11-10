@@ -2,18 +2,18 @@
 
 :host {
 
-  .o-field-slider.disabled {
+  .pa-field-slider.disabled {
     opacity: 0.5;
-    .o-slider, .o-slider-thumb, {
+    .pa-slider, .pa-slider-thumb {
       cursor: not-allowed;
     }
   }
-  .o-slider-wrapper {
+  .pa-slider-wrapper {
     float: right;
     position: relative;
   }
 
-  .o-slider-container {
+  .pa-slider-container {
     display: inline-block;
     position: relative;
     margin: 0.375rem 42px;
@@ -21,7 +21,7 @@
     width: 7.5rem;
   }
 
-  .o-slider {
+  .pa-slider {
     pointer-events: none;
     margin: 0;
     cursor: pointer;
@@ -35,11 +35,11 @@
     box-sizing: border-box;
   }
 
-  .o-slider.focusable {
+  .pa-slider.focusable {
     border: 1px solid $white;
   }
 
-  .o-slider-thumb {
+  .pa-slider-thumb {
     cursor: pointer;
     border: 1px solid $blue-light;
     width: 18px;
@@ -49,7 +49,7 @@
     position: absolute;
   }
 
-  .o-slider-thumb::after {
+  .pa-slider-thumb::after {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -60,13 +60,13 @@
     left: 3px;
   }
 
-  .o-slider-track {
+  .pa-slider-track {
     pointer-events: none;
     height: 100%;
     background-color: $blue;
   }
 
-  .o-slider-output {
+  .pa-slider-output {
     position: absolute;
     color: $gray;
     font-weight: $font-weight-light;
@@ -80,7 +80,7 @@
     }
   }
 
-  .o-field-help {
+  .pa-field-help {
     margin: 0;
   }
 }

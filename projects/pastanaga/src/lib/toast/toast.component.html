@@ -1,8 +1,8 @@
-<div class="o-toast in" [class.is-sibiling]="isSibling" [class.out]="isDismissed" role="status" aria-live="polite"
+<div class="pa-toast in" [class.is-sibiling]="isSibling" [class.out]="isDismissed" role="status" aria-live="polite"
      attr.aria-labelledby="{{ariaLabeledBy}}" #toastContainer tabindex="-1" (keyup)="dismissWithESC($event)">
 
-    <header class="o-toast-header">
-        <h2 class="o-toast-title" [id]="!parsedMessage ? ariaLabeledBy : null">
+    <header class="pa-toast-header">
+        <h2 class="pa-toast-title" [id]="!parsedMessage ? ariaLabeledBy : null">
             <!-- Leading icon -->
             <pa-icon *ngIf="toast.icon" [name]="toast.icon" [hidden]="true"></pa-icon>
 
@@ -12,8 +12,8 @@
             </ng-container>
         </h2>
     </header>
-    <footer class="o-toast-footer" *ngIf="toast.buttons.length > 0">
-        <div class="o-toast-footer-wrapper">
+    <footer class="pa-toast-footer" *ngIf="toast.buttons.length > 0">
+        <div class="pa-toast-footer-wrapper">
             <!-- Customized buttons -->
             <ng-container *ngIf="toast.buttons.length > 0">
                 <pa-button *ngFor="let button of toast.buttons; let i = index"

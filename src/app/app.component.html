@@ -24,14 +24,14 @@
                 <pa-input value="Backend developer" errorHelp="This is not a decent job">Your job</pa-input>
                 <legend>Text with model binding</legend>
                 <pa-input [(ngModel)]="repeat" name="repeat">Repeat after me</pa-input>
-                <small class="o-field-help">You said: {{ repeat }}</small>
+                <small class="pa-field-help">You said: {{ repeat }}</small>
                 <legend>Text with valueChange</legend>
                 <pa-input [value]="repeatAgain" name="repeat-again" (valueChange)="onRepeat($event)">Repeat again
                 </pa-input>
-                <small class="o-field-help">You said: {{ repeatAgain }}</small>
+                <small class="pa-field-help">You said: {{ repeatAgain }}</small>
                 <legend>Text with keyUp</legend>
                 <pa-input [value]="word" name="spell" (keyUp)="onSpell($event)">Spell it</pa-input>
-                <small class="o-field-help">You said: {{ word }}</small>
+                <small class="pa-field-help">You said: {{ word }}</small>
                 <legend>Required text</legend>
                 <pa-input name="title" [isRequired]="true" #title
                           [errorHelp]="title.errors.required ? 'Title is required' : null">Title
@@ -67,7 +67,7 @@
                     [disabled]="!!option.disabled">{{ option.name }}
             </option>
         </pa-select>
-        <small class="o-field-help">{{ selection }}</small>
+        <small class="pa-field-help">{{ selection }}</small>
         <pa-select placeholder="Pick a country" label="Your country">
             <option *ngFor="let option of optionsCountries"
                     [value]="option.id"

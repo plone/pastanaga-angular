@@ -6,7 +6,7 @@
     z-index: 1080;
 }
 
-.o-tooltip, .o-tooltip-system {
+.pa-tooltip, .pa-tooltip-system {
     visibility: visible;
     opacity: 1;
     z-index: 1080;
@@ -27,13 +27,13 @@
 }
 
 @supports (-webkit-backdrop-filter: blur(3px)) {
-    .o-tooltip, .o-tooltip-system {
+    .pa-tooltip, .pa-tooltip-system {
         background: rgba($gray-black,.95);
         -webkit-backdrop-filter: blur(3px);
     }
 }
 
-.o-tooltip > kbd, .o-tooltip-system > kbd {
+.pa-tooltip > kbd, .pa-tooltip-system > kbd {
     line-height: 0;
     color: $gray-contrast;
     top: 0;

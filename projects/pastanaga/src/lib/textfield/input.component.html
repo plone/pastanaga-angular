@@ -1,5 +1,5 @@
-<div [class]="'o-field o-field-'+ type" [class.o-field-error]="hasError || !!errorMessage">
-    <input #dataInput class="o-field-control"
+<div [class]="'pa-field pa-field-'+ type" [class.pa-field-error]="hasError || !!errorMessage">
+    <input #dataInput class="pa-field-control"
            [type]="type"
            [id]="id"
            [attr.aria-describedby]="helpId"
@@ -12,17 +12,17 @@
            (keyup)="onKeyUp($event)"
            (blur)="onBlur()"
     >
-    <label class="o-field-label" [for]="id" [class.o-sr]="isLabelHidden" translate><ng-content></ng-content></label>
-    <small *ngIf="hasError && errorHelp" class="o-field-help o-field-help-error">{{ errorHelp | translate }}</small>
-    <small *ngIf="!!errorMessage" class="o-field-help o-field-help-error">{{ errorMessage | translate }}</small>
-    <div *ngIf="hasStrengthBar && type === 'password'" class="o-field-strength-bar">
-        <div class="o-strength-bar" [class.weak]="passwordStrength === 2" [class.low]="passwordStrength === 3"
+    <label class="pa-field-label" [for]="id" [class.pa-sr]="isLabelHidden" translate><ng-content></ng-content></label>
+    <small *ngIf="hasError && errorHelp" class="pa-field-help pa-field-help-error">{{ errorHelp | translate }}</small>
+    <small *ngIf="!!errorMessage" class="pa-field-help pa-field-help-error">{{ errorMessage | translate }}</small>
+    <div *ngIf="hasStrengthBar && type === 'password'" class="pa-field-strength-bar">
+        <div class="pa-strength-bar" [class.weak]="passwordStrength === 2" [class.low]="passwordStrength === 3"
              [class.insufficient]="passwordStrength === 4" [class.good]="passwordStrength === 5"></div>
-        <div class="o-strength-bar" [class.low]="passwordStrength === 3" [class.insufficient]="passwordStrength === 4"
+        <div class="pa-strength-bar" [class.low]="passwordStrength === 3" [class.insufficient]="passwordStrength === 4"
              [class.good]="passwordStrength === 5"></div>
-        <div class="o-strength-bar" [class.insufficient]="passwordStrength === 4"
+        <div class="pa-strength-bar" [class.insufficient]="passwordStrength === 4"
              [class.good]="passwordStrength === 5"></div>
-        <div class="o-strength-bar" [class.good]="passwordStrength === 5"></div>
+        <div class="pa-strength-bar" [class.good]="passwordStrength === 5"></div>
     </div>
-    <small *ngIf="help" class="o-field-help" [id]="helpId" [class.o-with-bar]="hasStrengthBar" [innerHtml]="help | translate"></small>
+    <small *ngIf="help" class="pa-field-help" [id]="helpId" [class.pa-with-bar]="hasStrengthBar" [innerHtml]="help | translate"></small>
 </div>

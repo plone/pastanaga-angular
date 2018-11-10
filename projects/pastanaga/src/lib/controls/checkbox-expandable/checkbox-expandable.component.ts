@@ -42,7 +42,7 @@ export class CheckboxExpandableComponent implements OnInit, OnChanges {
 
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
 
-    expandButtonId = `o-expand-checkbox-${nextExpandButtonId++}`;
+    expandButtonId = `pa-expand-checkbox-${nextExpandButtonId++}`;
     fieldsetGroupId = `fieldset-group-checkbox-${nextFieldsetGroupId++}`;
 
     isCollapsed = true;

@@ -1,10 +1,10 @@
 @import "../styles/variables";
 
-.o-field.o-field-checkbox,
-.o-field.o-field-radio,
-.o-field.o-field-toggle {
+.pa-field.pa-field-checkbox,
+.pa-field.pa-field-radio,
+.pa-field.pa-field-toggle {
 
-    .o-field-control {
+    .pa-field-control {
         -webkit-appearance: none;
         position: absolute;
         z-index: -1;
@@ -17,7 +17,7 @@
         &:focus {
             outline: 0;
         }
-        & + .o-field-label {
+        & + .pa-field-label {
             position: relative;
             cursor: pointer;
             padding: 0;
@@ -44,15 +44,15 @@
                 }
             }
         }
-        & + .o-field-label + .o-field-output {
+        & + .pa-field-label + .pa-field-output {
             display: inline-block;
             position: relative;
             float: right;
-            & > .o-badge {
+            & > .pa-badge {
                 margin-right: 0;
             }
         }
-        & + .o-field-label::before {
+        & + .pa-field-label::before {
             content: '';
             margin-top: 1px;
             display: inline-block;
@@ -63,11 +63,11 @@
             border: 1px solid $brown;
             border-radius: 0;
         }
-        &:checked + .o-field-label::before,
-        &:indeterminate + .o-field-label::before {
+        &:checked + .pa-field-label::before,
+        &:indeterminate + .pa-field-label::before {
             border: 1px solid $blue;
         }
-        &:disabled + .o-field-label {
+        &:disabled + .pa-field-label {
             color: $gray-pale;
             cursor: default;
 
@@ -75,11 +75,11 @@
                 opacity: .5;
             }
         }
-        &:not(:checked):not(:indeterminate) + .o-field-label::before {
+        &:not(:checked):not(:indeterminate) + .pa-field-label::before {
             border: 1px solid $brown-contrast;
         }
-        &:disabled + .o-field-label::before,
-        &:not(:checked):disabled + .o-field-label::before {
+        &:disabled + .pa-field-label::before,
+        &:not(:checked):disabled + .pa-field-label::before {
             box-shadow: none;
             border: 0;
             transition: all .33s ease;
@@ -88,7 +88,7 @@
             border-image-repeat: round round;
             border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
         }
-        & + .o-field-label::after {
+        & + .pa-field-label::after {
             content: "";
             position: absolute;
             left: 0;
@@ -102,42 +102,42 @@
             opacity: 0;
             background-repeat: no-repeat;
         }
-        &:checked + .o-field-label::after {
+        &:checked + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23'+str_slice(#{$blue}, 2)+'" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
             background-size: rythm(2) rythm(2);
             opacity: 1;
         }
-        &:checked:disabled + .o-field-label::after {
+        &:checked:disabled + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23'+str_slice(#{$gray-pale}, 2)+'" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
             background-size: rythm(1.5) rythm(1.5);
             opacity: 1;
         }
-        &:indeterminate + .o-field-label::after {
+        &:indeterminate + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><polygon fill="%23'+str_slice(#{$blue}, 2)+'" fill-rule="evenodd" points="7 19 29 19 29 16 7 16"/></svg>');
             background-size: rythm(2) rythm(2);
             opacity: 1;
         }
-        &:indeterminate:disabled + .o-field-label::after {
+        &:indeterminate:disabled + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><polygon fill="%23'+str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd" points="7 19 29 19 29 16 7 16"/></svg>');
             background-size: rythm(1.5) rythm(1.5);
             opacity: 1;
         }
 
-        &:active + .o-field-label::before,
-        &:focus + .o-field-label::before {
+        &:active + .pa-field-label::before,
+        &:focus + .pa-field-label::before {
             border: 1px solid $brown-light;
             box-shadow: 0 0 0 1px $brown-light;
             transition: all .33s ease;
             background: $white-smoke;
         }
-        &:checked:active + .o-field-label::before,
-        &:checked:focus + .o-field-label::before {
+        &:checked:active + .pa-field-label::before,
+        &:checked:focus + .pa-field-label::before {
             border: 1px solid $blue-light;
             box-shadow: 0 0 0 1px $blue-light;
             transition: all .33s ease;
             background: $white-smoke;
         }
-        & ~ .o-field-help {
+        & ~ .pa-field-help {
             margin-left: rythm(2);
             margin-top: - rythm(1);
             margin-bottom: rythm(.5);
@@ -145,29 +145,29 @@
         }
     }
     // Radio specifics
-    .o-field-control[type="radio"] {
+    .pa-field-control[type="radio"] {
         border-radius: 50%;
-        & + .o-field-label::before {
+        & + .pa-field-label::before {
             border-radius: 50%;
         }
-        &:disabled + .o-field-label::before {
+        &:disabled + .pa-field-label::before {
             border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1.5" r="1"/><circle cx="28" cy="4" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="34.5" cy="13" r="1"/><circle cx="32" cy="8" r="1"/><circle cx="34.5" cy="23" r="1"/><circle cx="32" cy="28" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="34.5" r="1"/><circle cx="28" cy="32" r="1"/><circle cx="13" cy="34.5" r="1"/><circle cx="8" cy="32" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1.5" cy="23" r="1"/><circle cx="4" cy="28" r="1"/><circle cx="1.5" cy="13" r="1"/><circle cx="4" cy="8" r="1"/><circle cx="13" cy="1.5" r="1"/><circle cx="8" cy="4" r="1"/></g></svg>');
         }
-        &:not(:checked) + .o-field-label::after {
+        &:not(:checked) + .pa-field-label::after {
             background-image: none;
         }
-        &:checked + .o-field-label::after {
+        &:checked + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23'+str_slice(#{$blue}, 2)+'" fill-rule="evenodd"/></svg>');
         }
-        &:checked:disabled + .o-field-label::after {
+        &:checked:disabled + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23'+str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd"/></svg>');
         }
     }
 }
 
 
-.o-field.o-field-slider {
-    .o-field-label {
+.pa-field.pa-field-slider {
+    .pa-field-label {
         position: relative;
         font-weight: $font-weight-regular;
         color: $gray-blacky;
@@ -182,17 +182,17 @@
 }
 
 //Expandable
-.o-field-group {
-    .o-button {
+.pa-field-group {
+    .pa-button {
         float:left;
         margin: - rythm(.5) 0 - rythm(.5) - rythm(2.5);
         transform: rotate(0deg);
     }
-    .o-button[aria-expanded="true"] {
+    .pa-button[aria-expanded="true"] {
         transform: rotate(90deg);
     }
 }
-.o-field-sublist {
+.pa-field-sublist {
     margin-left: 30px;
     padding: 0;
     list-style:none;

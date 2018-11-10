@@ -1,11 +1,11 @@
 @import "../styles/variables";
 
-.o-field-select .o-field-control {
+.pa-field-select .pa-field-control {
     background-image:  url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><polygon fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd" points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"/></svg>');
     background-position: calc(100% - #{rythm(.5)}) center;
     background-repeat: no-repeat;
     background-size: rythm(2) rythm(2);
-    &.o-field-control-accent {
+    &.pa-field-control-accent {
         background-color: rgba($blue, .06);
         box-shadow: 0 200px 0 -200px $blue-contrast;
         transition: all .5s ease;

@@ -46,11 +46,11 @@
     }
     .slider-no-label {
         ::ng-deep pa-double-slider {
-            .o-slider-wrapper {
+            .pa-slider-wrapper {
                 width: 100%;
             }
 
-            .o-slider-container {
+            .pa-slider-container {
                 width: calc(100% - 60px);
             }
         }

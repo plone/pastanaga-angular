@@ -31,7 +31,7 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
 
     ngOnChanges(changes) {
         if (changes.color && changes.color.currentValue) {
-            this.colorClass = `o-badge-${changes.color.currentValue}`;
+            this.colorClass = `pa-badge-${changes.color.currentValue}`;
         }
 
         if (changes.hexaColor && changes.hexaColor.currentValue && !this.colorClass) {

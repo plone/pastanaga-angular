@@ -58,7 +58,7 @@ export class ButtonBase implements OnInit, AfterContentInit {
     }
 
     getButtonClass(value: string) {
-        return `o-button-${value}`;
+        return `pa-button-${value}`;
     }
 
     isPropertyLikeTrue(property) {

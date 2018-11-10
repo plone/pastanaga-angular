@@ -1,9 +1,9 @@
-<span class="o-badge {{colorClass}}"
-      [class.o-badge-accent]="isAccented"
-      [class.o-badge-small]="isSmall"
+<span class="pa-badge {{colorClass}}"
+      [class.pa-badge-accent]="isAccented"
+      [class.pa-badge-small]="isSmall"
       [ngStyle]="colorStyle">
     <span *ngIf="!value"
-          [class.o-badge-ellipsis]="!!maxWidth"
+          [class.pa-badge-ellipsis]="!!maxWidth"
           [style.max-width]="maxWidth"
           [paTooltip]="text" #textContent><ng-content></ng-content></span>
     <pa-button *ngFor="let btn of buttons"

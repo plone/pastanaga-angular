@@ -1,4 +1,4 @@
-<div class="o-field-group">
+<div class="pa-field-group">
     <pa-button color="secondary" size="small" icon="right-key"
                [ariaControls]="expandButtonId"
                [ariaExpanded]="!isCollapsed"
@@ -16,10 +16,10 @@
                  (selection)="updateControlSelection()">{{control.label}}
     </pa-checkbox>
 
-    <div class="o-field-sublist" role="tabpanel" [id]="expandButtonId" [attr.aria-labelledby]="expandButtonId"
+    <div class="pa-field-sublist" role="tabpanel" [id]="expandButtonId" [attr.aria-labelledby]="expandButtonId"
          [attr.aria-hidden]="isCollapsed" [@toggleHeight]="collapsedState">
-        <fieldset class="o-fieldset-group" [id]="fieldsetGroupId" [hidden]="isHidden">
-            <legend *ngIf="sublistLegend" class="o-sr" translate>{{sublistLegend}}</legend>
+        <fieldset class="pa-fieldset-group" [id]="fieldsetGroupId" [hidden]="isHidden">
+            <legend *ngIf="sublistLegend" class="pa-sr" translate>{{sublistLegend}}</legend>
 
             <ng-container *ngFor="let checkbox of control.children">
                 <pa-checkbox *ngIf="!checkbox.isFiltered"

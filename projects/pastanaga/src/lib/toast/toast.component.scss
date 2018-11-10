@@ -1,6 +1,6 @@
 @import "../styles/variables";
 
-.o-toast {
+.pa-toast {
     box-shadow: $shadow-dialog;
     border-radius: border-radius(s);
     margin: rythm(1.5);
@@ -120,25 +120,25 @@
     }
 }
 
-.o-toast.in {
+.pa-toast.in {
     animation-name: toast-in;
     animation-duration: .75s;
     animation-iteration-count:1;
 
-    .o-toast-header,
-    .o-toast-footer {
+    .pa-toast-header,
+    .pa-toast-footer {
         animation-name: toast-in-content;
         animation-duration: 1.25s;
         animation-iteration-count:1;
     }
 }
-.o-toast.out {
+.pa-toast.out {
     animation-name: toast-out;
     animation-duration: .75s;
     animation-iteration-count:1;
 
-    .o-toast-header,
-    .o-toast-footer {
+    .pa-toast-header,
+    .pa-toast-footer {
         animation-name: toast-out-content;
         animation-duration: 1.25s;
         animation-iteration-count:1;
@@ -146,7 +146,7 @@
 }
 
 
-:host ::ng-deep .o-toast-title > pa-icon > svg {
+:host ::ng-deep .pa-toast-title > pa-icon > svg {
     width: rythm(2);
     height: rythm(2);
     fill: $gray-contrast;

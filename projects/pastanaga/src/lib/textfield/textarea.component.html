@@ -1,5 +1,5 @@
-<div class="o-field o-field-textarea" [class.o-field-error]="hasError || !!errorMessage">
-    <textarea class="o-field-control" [id]="id" [attr.aria-describedby]="helpId"
+<div class="pa-field pa-field-textarea" [class.pa-field-error]="hasError || !!errorMessage">
+    <textarea class="pa-field-control" [id]="id" [attr.aria-describedby]="helpId"
               [attr.placeholder]="placeholder | translate"
               [name]="name"
               [readonly]="isReadOnly"
@@ -8,9 +8,9 @@
               (change)="change($event.target.value)"
               (keyup)="onKeyUp($event)"
               (blur)="onBlur()">{{ value }}</textarea>
-    <label class="o-field-label" [for]="id" [class.o-sr]="isLabelHidden" translate><ng-content></ng-content></label>
-    <div class="o-field-control-resizer"></div>
-    <small *ngIf="hasError && errorHelp" class="o-field-help o-field-help-error" translate>{{ errorHelp }}</small>
-    <small *ngIf="!!errorMessage" class="o-field-help o-field-help-error">{{ errorMessage | translate }}</small>
-    <small *ngIf="help" class="o-field-help" [id]="helpId">{{ help | translate }}</small>
+    <label class="pa-field-label" [for]="id" [class.pa-sr]="isLabelHidden" translate><ng-content></ng-content></label>
+    <div class="pa-field-control-resizer"></div>
+    <small *ngIf="hasError && errorHelp" class="pa-field-help pa-field-help-error" translate>{{ errorHelp }}</small>
+    <small *ngIf="!!errorMessage" class="pa-field-help pa-field-help-error">{{ errorMessage | translate }}</small>
+    <small *ngIf="help" class="pa-field-help" [id]="helpId">{{ help | translate }}</small>
 </div>

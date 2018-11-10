@@ -1,34 +1,34 @@
 @import "../../styles/variables";
 
-.o-field-group {
+.pa-field-group {
     ::ng-deep pa-button {
-        .o-button {
+        .pa-button {
             float: left;
             margin: - rythm(.5) 0 - rythm(.5) - rythm(2.5);
             transform: rotate(0deg);
         }
-        .o-button[aria-expanded="true"] {
+        .pa-button[aria-expanded="true"] {
             transform: rotate(90deg);
         }
     }
 }
 
-.o-field-sublist {
+.pa-field-sublist {
     margin-left: 30px;
     padding: 0;
     list-style: none;
     display: block;
 }
 
-.o-field-group {
-    & > ::ng-deep pa-checkbox:not(:last-child) .o-field,
-    & > .o-field-sublist:not(:last-child) {
+.pa-field-group {
+    & > ::ng-deep pa-checkbox:not(:last-child) .pa-field,
+    & > .pa-field-sublist:not(:last-child) {
         margin-bottom: 0;
     }
 }
 
-.o-field-group:not(:last-child) {
-    ::ng-deep pa-checkbox .o-field.o-field-checkbox {
+.pa-field-group:not(:last-child) {
+    ::ng-deep pa-checkbox .pa-field.pa-field-checkbox {
         margin-bottom: 0;
     }
 }
