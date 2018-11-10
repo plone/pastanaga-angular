@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 
 let nextId = 0;
 
@@ -7,39 +7,52 @@ let nextId = 0;
   templateUrl: './checkbox.component.html',
   styleUrls: ['../controls.scss', './checkbox.component.scss']
 })
-export class CheckboxComponent implements OnInit {
-
+export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() type = 'checkbox';
     @Input() help: string;
     @Input() icon: string;
-    @Input() id: string;
     @Input() name: string;
+    @Input() subLabel: string;
     @Input() isDisabled: boolean;
     @Input() isSelected: boolean;
     @Input() isIndeterminate: boolean;
     @Input() isLabelHidden: boolean;
+    @Input() isBadgeVisible = false;
+    @Input() totalChildren: number;
+    @Input() selectedChildren: number;
 
     @Output() selection: EventEmitter<boolean> = new EventEmitter();
     // the following EventEmitters allow two way data-binding
     @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
-    @Output() idChange: EventEmitter<string> = new EventEmitter();
 
     @ViewChild('text') textElement: ElementRef;
+    @ViewChild('badge') badge: ElementRef;
+    @ViewChild('ellipsisText') ellipsisText: ElementRef;
 
+    id: string;
     helpId: string;
+    labelMaxWidth: { [key: string]: string };
+    hasEllipsis: boolean;
+    tooltipText: string;
 
     ngOnInit() {
-        if (!this.id) {
-            this.id = `field-${this.type}-${nextId++}`;
-
-            // send new id asynchronously to prevent ExpressionChangedAfterItHasBeenCheckedError
-            setTimeout(() => {
-                this.idChange.emit(this.id);
-            });
-        }
-
+        this.id = `field-${this.type}-${nextId++}`;
         this.name = this.name || this.id;
         this.helpId = `${this.id}-help`;
+    }
+
+    ngOnChanges(changes) {
+        if (this.isBadgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
+            setTimeout(() => this.setLabelMaxWidth(), 0);
+        }
+    }
+
+    ngAfterViewInit() {
+        if (this.isBadgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
+            setTimeout(() => this.setLabelMaxWidth());
+        } else {
+            setTimeout(() => this.setEllipsis());
+        }
     }
 
     toggleCheckbox() {
@@ -52,4 +65,22 @@ export class CheckboxComponent implements OnInit {
         this.selection.emit(this.isSelected);
     }
 
+    setLabelMaxWidth() {
+        if (this.badge) {
+            const badgeWidth = this.badge.nativeElement.getBoundingClientRect().width;
+            this.labelMaxWidth = {'max-width': `calc(100% - ${badgeWidth}px - 12px)`};
+            this.setEllipsis();
+        }
+    }
+
+    setEllipsis() {
+        if (!this.isLabelHidden) {
+            this.hasEllipsis = this.ellipsisText.nativeElement.offsetWidth < this.ellipsisText.nativeElement.scrollWidth;
+        } else {
+            this.hasEllipsis = false;
+        }
+        if (this.hasEllipsis) {
+            this.tooltipText = this.ellipsisText.nativeElement.innerText;
+        }
+    }
 }
