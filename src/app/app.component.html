@@ -34,11 +34,11 @@
                 <small class="o-field-help">You said: {{ word }}</small>
                 <legend>Required text</legend>
                 <pa-input name="title" [isRequired]="true" #title
-                            [errorHelp]="title.errors.required ? 'Title is required' : null">Title
+                          [errorHelp]="title.errors.required ? 'Title is required' : null">Title
                 </pa-input>
                 <legend>Pattern checking</legend>
                 <pa-input name="version" [pattern]="versionFormat" #version placeholder="1.0.3"
-                            [errorHelp]="version.errors.pattern ? 'Version must be x.x.x' : null">Version
+                          [errorHelp]="version.errors.pattern ? 'Version must be x.x.x' : null">Version
                 </pa-input>
             </fieldset>
         </form>
@@ -61,7 +61,7 @@
     <h4>Select</h4>
     <div>
         <pa-select placeholder="Choose a credit card…" help="5% discount for visa"
-                     (onSelection)="displaySelection($event)" [options]="options">
+                   (onSelection)="displaySelection($event)" [options]="options">
             Credit card
         </pa-select>
         <small class="o-field-help">{{ selection }}</small>
@@ -76,7 +76,8 @@
     <div class="example-box-header">Progress bars</div>
     <table>
         <thead>
-        <tr><th>default = primary & normal (no color & no size given)</th>
+        <tr>
+            <th>default = primary & normal (no color & no size given)</th>
             <th>secondary normal</th>
             <th>secondary small</th>
         </tr>
@@ -111,7 +112,7 @@
                 </div>
 
                 <div>
-                    <pa-progress [maxValue]="95" [value]="progressValue"></pa-progress>
+                    <pa-progress [maxValue]="99" [value]="progressValue"></pa-progress>
                     <p>value greater than maxValue - Progress value = {{progressValue}}</p>
                 </div>
             </td>
@@ -143,7 +144,8 @@
     <div class="example-box-header">Controls</div>
     <table class="checkoxes">
         <thead>
-        <tr><th>Checkboxes</th>
+        <tr>
+            <th>Checkboxes</th>
             <th>2 way data-binding</th>
             <th>selection</th>
         </tr>
@@ -152,17 +154,18 @@
         <tr>
             <td>
                 <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
-                             (selection)="standaloneSelection = $event">Standalone checkbox</pa-checkbox>
+                             (selection)="standaloneSelection = $event">Standalone checkbox
+                </pa-checkbox>
             </td>
             <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
             <td>
-               {{standaloneSelection}}
+                {{standaloneSelection}}
             </td>
         </tr>
         <tr>
             <td>
                 <pa-checkbox-group type="radio" [checkboxes]="simpleCheckboxes"
-                                     (selection)="simpleCheckboxSelection = $event">Simple checkbox group (without badge)
+                                   (selection)="simpleCheckboxSelection = $event">Simple checkbox group (without badge)
                 </pa-checkbox-group>
             </td>
             <td>
@@ -177,7 +180,8 @@
         <tr>
             <td>
                 <pa-checkbox-group [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
-                                     (selection)="iconCheckboxSelection = $event">Icon checkbox group </pa-checkbox-group>
+                                   (selection)="iconCheckboxSelection = $event">Icon checkbox group
+                </pa-checkbox-group>
             </td>
             <td>
                 <ul>
@@ -190,7 +194,8 @@
         </tr>
         <tr>
             <td>
-                <pa-checkbox-group [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help checkbox
+                <pa-checkbox-group [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help
+                    checkbox
                     group
                 </pa-checkbox-group>
             </td>
@@ -228,29 +233,30 @@
 
     <table>
         <thead>
-        <tr><th>Toggles</th>
+        <tr>
+            <th>Toggles</th>
             <th>2 way data-binding</th>
             <th>selection</th>
         </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <pa-toggle [(isSelected)]="toggleSelection1">Simple toggle</pa-toggle>
-                    <pa-toggle help="Some help" [(isSelected)]="toggleSelection2">Toggle with help (selected by default)
-                    </pa-toggle>
-                    <pa-toggle imageUrl="./assets/ninja.svg" [(isSelected)]="toggleSelection3">Toggle with image</pa-toggle>
+        <tr>
+            <td>
+                <pa-toggle [(isSelected)]="toggleSelection1">Simple toggle</pa-toggle>
+                <pa-toggle help="Some help" [(isSelected)]="toggleSelection2">Toggle with help (selected by default)
+                </pa-toggle>
+                <pa-toggle imageUrl="./assets/ninja.svg" [(isSelected)]="toggleSelection3">Toggle with image</pa-toggle>
 
-                </td>
-                <td>
-                    <ul>
-                        <li>first toggle: {{toggleSelection1 | json}}</li>
-                        <li>second toggle: {{toggleSelection2 | json}}</li>
-                        <li>third toggle: {{toggleSelection3 | json}}</li>
-                    </ul>
-                </td>
-                <td></td>
-            </tr>
+            </td>
+            <td>
+                <ul>
+                    <li>first toggle: {{toggleSelection1 | json}}</li>
+                    <li>second toggle: {{toggleSelection2 | json}}</li>
+                    <li>third toggle: {{toggleSelection3 | json}}</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
         <tr>
             <td>
                 <pa-toggle-group [toggles]="toggleGroup1" (onSelection)="toggleGroupSelection1 = $event">Group of simple
@@ -268,7 +274,8 @@
         </tr>
         <tr>
             <td>
-                <pa-toggle-group [toggles]="toggleGroup2" (onSelection)="toggleGroupSelection2 = $event">Group of toggles with
+                <pa-toggle-group [toggles]="toggleGroup2" (onSelection)="toggleGroupSelection2 = $event">Group of
+                    toggles with
                     help
                 </pa-toggle-group>
             </td>
@@ -283,7 +290,8 @@
         </tr>
         <tr>
             <td>
-                <pa-toggle-group [toggles]="toggleGroup3" (onSelection)="toggleGroupSelection3 = $event">Group of toggles with
+                <pa-toggle-group [toggles]="toggleGroup3" (onSelection)="toggleGroupSelection3 = $event">Group of
+                    toggles with
                     images
                 </pa-toggle-group>
             </td>
@@ -301,7 +309,8 @@
 
     <table>
         <thead>
-        <tr><th>Sliders</th>
+        <tr>
+            <th>Sliders</th>
             <th>2 way data-binding</th>
             <th>selection</th>
         </tr>
@@ -310,12 +319,15 @@
         <tr>
             <td>
                 <pa-slider [(value)]="slider1" name="energy">Energy level</pa-slider>
-                <pa-slider [(value)]="slider2" name="energy" help="I need somebody, Help!">Energy level with help</pa-slider>
+                <pa-slider [(value)]="slider2" name="energy" help="I need somebody, Help!">Energy level with help
+                </pa-slider>
             </td>
-            <td><ul>
-                <li>Value slider1: {{slider1}}</li>
-                <li>Value slider2: {{slider2}}</li>
-            </ul></td>
+            <td>
+                <ul>
+                    <li>Value slider1: {{slider1}}</li>
+                    <li>Value slider2: {{slider2}}</li>
+                </ul>
+            </td>
             <td></td>
         </tr>
         <tr>
@@ -327,7 +339,8 @@
                 </div>
 
                 <pa-double-slider [(values)]="sliderValues2">Energy level</pa-double-slider>
-                <pa-double-slider [(values)]="sliderValues3" help="I need somebody, help!">Energy level</pa-double-slider>
+                <pa-double-slider [(values)]="sliderValues3" help="I need somebody, help!">Energy level
+                </pa-double-slider>
             </td>
             <td>
                 <ul>
@@ -346,12 +359,14 @@
     <div class="example-box-header">Buttons</div>
 
     <p>
-        <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary
+        </pa-button>
         <pa-button color="secondary" size="small" (click)="onButtonClick($event)">Secondary</pa-button>
         <pa-button color="destructive" size="small" (click)="onButtonClick($event)">Destructive</pa-button>
         <pa-button color="destructive" size="small" disabled (click)="onButtonClick($event)">Disabled</pa-button>
         <pa-button color="primary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="secondary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
+        </pa-button>
         <pa-button color="destructive" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
         </pa-button>
         <pa-button color="destructive" size="small" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
@@ -375,7 +390,8 @@
         <pa-button color="destructive" size="large" (click)="onButtonClick($event)">Destructive</pa-button>
         <pa-button color="destructive" size="large" disabled (click)="onButtonClick($event)">Disabled</pa-button>
         <pa-button color="primary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="secondary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
+        </pa-button>
         <pa-button color="destructive" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
         </pa-button>
         <pa-button color="destructive" size="large" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
@@ -418,7 +434,8 @@
             me
         </pa-button>
         <pa-button color="destructive" size="large" border disabled (click)="onButtonClick($event)">Disabled</pa-button>
-        <pa-button color="primary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="primary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Primary
+        </pa-button>
         <pa-button color="secondary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
         </pa-button>
         <pa-button color="destructive" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
