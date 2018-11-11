@@ -2,87 +2,89 @@
 
 <p>To display a section, click on its title</p>
 
-<div class="example-box" [class.expanded]="sections.text">
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('text')">Text fields</div>
 
-    <h4>Text input</h4>
-    <div>
-        <form>
+    <div *ngIf="sections.text">
+        <h4>Text input</h4>
+        <div>
+            <form>
+                <fieldset>
+                    <legend>Simple text</legend>
+                    <pa-input>Your name</pa-input>
+                    <legend>Text with value</legend>
+                    <pa-input name="firstname" value="James">Your firstname</pa-input>
+                    <legend>Text with help</legend>
+                    <pa-input help="Only actual super power, e.g. Batman does not have any super power">Your super power
+                    </pa-input>
+                    <legend>Disabled text</legend>
+                    <pa-input [isDisabled]="true" value="Rintintin">Your pet name</pa-input>
+                    <legend>Read-only text</legend>
+                    <pa-input [isReadOnly]="true" value="Justin Bieber">Your favorite singer</pa-input>
+                    <legend>Text with placeholder</legend>
+                    <pa-input placeholder="Gotham, …">City</pa-input>
+                    <legend>Text with error message</legend>
+                    <pa-input value="Backend developer" errorHelp="This is not a decent job">Your job</pa-input>
+                    <legend>Text with model binding</legend>
+                    <pa-input [(ngModel)]="repeat" name="repeat">Repeat after me</pa-input>
+                    <small class="pa-field-help">You said: {{ repeat }}</small>
+                    <legend>Text with valueChange</legend>
+                    <pa-input [value]="repeatAgain" name="repeat-again" (valueChange)="onRepeat($event)">Repeat again
+                    </pa-input>
+                    <small class="pa-field-help">You said: {{ repeatAgain }}</small>
+                    <legend>Text with keyUp</legend>
+                    <pa-input [value]="word" name="spell" (keyUp)="onSpell($event)">Spell it</pa-input>
+                    <small class="pa-field-help">You said: {{ word }}</small>
+                    <legend>Required text</legend>
+                    <pa-input name="title" [isRequired]="true" #title
+                              [errorHelp]="title.errors.required ? 'Title is required' : null">Title
+                    </pa-input>
+                    <legend>Pattern checking</legend>
+                    <pa-input name="version" [pattern]="versionFormat" #version placeholder="1.0.3"
+                              [errorHelp]="version.errors.pattern ? 'Version must be x.x.x' : null">Version
+                    </pa-input>
+                </fieldset>
+            </form>
+        </div>
+        <h4>Other input types</h4>
+        <div>
             <fieldset>
-                <legend>Simple text</legend>
-                <pa-input>Your name</pa-input>
-                <legend>Text with value</legend>
-                <pa-input name="firstname" value="James">Your firstname</pa-input>
-                <legend>Text with help</legend>
-                <pa-input help="Only actual super power, e.g. Batman does not have any super power">Your super power
-                </pa-input>
-                <legend>Disabled text</legend>
-                <pa-input [isDisabled]="true" value="Rintintin">Your pet name</pa-input>
-                <legend>Read-only text</legend>
-                <pa-input [isReadOnly]="true" value="Justin Bieber">Your favorite singer</pa-input>
-                <legend>Text with placeholder</legend>
-                <pa-input placeholder="Gotham, …">City</pa-input>
-                <legend>Text with error message</legend>
-                <pa-input value="Backend developer" errorHelp="This is not a decent job">Your job</pa-input>
-                <legend>Text with model binding</legend>
-                <pa-input [(ngModel)]="repeat" name="repeat">Repeat after me</pa-input>
-                <small class="pa-field-help">You said: {{ repeat }}</small>
-                <legend>Text with valueChange</legend>
-                <pa-input [value]="repeatAgain" name="repeat-again" (valueChange)="onRepeat($event)">Repeat again
-                </pa-input>
-                <small class="pa-field-help">You said: {{ repeatAgain }}</small>
-                <legend>Text with keyUp</legend>
-                <pa-input [value]="word" name="spell" (keyUp)="onSpell($event)">Spell it</pa-input>
-                <small class="pa-field-help">You said: {{ word }}</small>
-                <legend>Required text</legend>
-                <pa-input name="title" [isRequired]="true" #title
-                          [errorHelp]="title.errors.required ? 'Title is required' : null">Title
-                </pa-input>
-                <legend>Pattern checking</legend>
-                <pa-input name="version" [pattern]="versionFormat" #version placeholder="1.0.3"
-                          [errorHelp]="version.errors.pattern ? 'Version must be x.x.x' : null">Version
-                </pa-input>
+                <legend>Number</legend>
+                <pa-input type="number" value="20">Your age</pa-input>
+                <legend>Email</legend>
+                <pa-input type="email" value="eric@pa.com">Your email</pa-input>
+                <legend>Phone</legend>
+                <pa-input type="tel">Your phone</pa-input>
+                <legend>Password</legend>
+                <pa-input type="password">Your password</pa-input>
+                <legend>Richtext</legend>
+                <pa-richtext [editorModel]="'My text'"></pa-richtext>
             </fieldset>
-        </form>
-    </div>
-    <h4>Other input types</h4>
-    <div>
-        <fieldset>
-            <legend>Number</legend>
-            <pa-input type="number" value="20">Your age</pa-input>
-            <legend>Email</legend>
-            <pa-input type="email" value="eric@pa.com">Your email</pa-input>
-            <legend>Phone</legend>
-            <pa-input type="tel">Your phone</pa-input>
-            <legend>Password</legend>
-            <pa-input type="password">Your password</pa-input>
-            <legend>Richtext</legend>
-            <pa-richtext [editorModel]="'My text'"></pa-richtext>
-        </fieldset>
-    </div>
-    <h4>Select</h4>
-    <div>
-        <pa-select placeholder="Choose a credit card…" help="5% discount for visa" label="Credit card"
-                   (onSelection)="displaySelection($event)">
-            <option *ngFor="let option of options"
-                    [value]="option.id"
-                    [disabled]="!!option.disabled">{{ option.name }}
-            </option>
-        </pa-select>
-        <small class="pa-field-help">{{ selection }}</small>
-        <pa-select placeholder="Pick a country" label="Your country">
-            <option *ngFor="let option of optionsCountries"
-                    [value]="option.id"
-                    [disabled]="!!option.disabled">{{ option.name }}
-            </option>
-        </pa-select>
+        </div>
+        <h4>Select</h4>
+        <div>
+            <pa-select placeholder="Choose a credit card…" help="5% discount for visa" label="Credit card"
+                       (onSelection)="displaySelection($event)">
+                <option *ngFor="let option of options"
+                        [value]="option.id"
+                        [disabled]="!!option.disabled">{{ option.name }}
+                </option>
+            </pa-select>
+            <small class="pa-field-help">{{ selection }}</small>
+            <pa-select placeholder="Pick a country" label="Your country">
+                <option *ngFor="let option of optionsCountries"
+                        [value]="option.id"
+                        [disabled]="!!option.disabled">{{ option.name }}
+                </option>
+            </pa-select>
+        </div>
     </div>
 </div>
 
 
-<div class="example-box" [class.expanded]="sections.progress">
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('progress')">Progress bars</div>
-    <table>
+    <table *ngIf="sections.progress">
         <thead>
         <tr>
             <th>default = primary & normal (no color & no size given)</th>
@@ -148,7 +150,7 @@
         </tbody>
     </table>
 </div>
-<div class="example-box" [class.expanded]="sections.progresscircle">
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('progresscircle')">Progress circle</div>
     <div *ngIf="sections.progresscircle">
         <div>
@@ -163,365 +165,374 @@
         </div>
     </div>
 </div>
-<div class="example-box" [class.expanded]="sections.controls">
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('controls')">Controls</div>
-    <table class="checkoxes">
-        <thead>
-        <tr>
-            <th>Checkboxes</th>
-            <th>2 way data-binding</th>
-            <th>selection</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
-                             (selection)="standaloneSelection = $event">Standalone checkbox
-                </pa-checkbox>
-            </td>
-            <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
-            <td>
-                {{standaloneSelection}}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <pa-checkbox-group type="radio" [checkboxes]="simpleCheckboxes"
-                                   (selection)="simpleCheckboxSelection = $event">Simple checkbox group (without badge)
-                </pa-checkbox-group>
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let checkbox of simpleCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
-                </ul>
-            </td>
-            <td>
-                Selection: {{simpleCheckboxSelection | json}}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <pa-checkbox-group [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
-                                   (selection)="iconCheckboxSelection = $event">Icon checkbox group
-                </pa-checkbox-group>
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let checkbox of iconCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
-                </ul>
-            </td>
-            <td>
-                <p>Selection: {{iconCheckboxSelection | json}}</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <pa-checkbox-group [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help
-                    checkbox
-                    group
-                </pa-checkbox-group>
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let checkbox of helpCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
-                </ul>
-            </td>
-            <td>
-                <p>Selection: {{helpCheckboxSelection | json}}</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <pa-checkbox-group [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">Nested
-                    checkbox group
-                </pa-checkbox-group>
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let checkbox of nestedCheckboxes">
-                        {{checkbox.label}}: {{checkbox.isSelected}}
-                        <ul *ngIf="checkbox.children">
-                            <li *ngFor="let child of checkbox.children">{{child.label}}: {{child.isSelected}}</li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-            <td>
-                <p>Selection: {{nestedCheckboxSelection | json}}</p>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div *ngIf="sections.controls">
+        <table class="checkoxes">
+            <thead>
+            <tr>
+                <th>Checkboxes</th>
+                <th>2 way data-binding</th>
+                <th>selection</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
+                                 (selection)="standaloneSelection = $event">Standalone checkbox
+                    </pa-checkbox>
+                </td>
+                <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
+                <td>
+                    {{standaloneSelection}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-group type="radio" [checkboxes]="simpleCheckboxes"
+                                       (selection)="simpleCheckboxSelection = $event">Simple checkbox group (without badge)
+                    </pa-checkbox-group>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let checkbox of simpleCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
+                    </ul>
+                </td>
+                <td>
+                    Selection: {{simpleCheckboxSelection | json}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-group [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
+                                       (selection)="iconCheckboxSelection = $event">Icon checkbox group
+                    </pa-checkbox-group>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let checkbox of iconCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Selection: {{iconCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-group [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help
+                        checkbox
+                        group
+                    </pa-checkbox-group>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let checkbox of helpCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Selection: {{helpCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-group [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">Nested
+                        checkbox group
+                    </pa-checkbox-group>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let checkbox of nestedCheckboxes">
+                            {{checkbox.label}}: {{checkbox.isSelected}}
+                            <ul *ngIf="checkbox.children">
+                                <li *ngFor="let child of checkbox.children">{{child.label}}: {{child.isSelected}}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Selection: {{nestedCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Toggles</th>
-            <th>2 way data-binding</th>
-            <th>selection</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <pa-toggle [(isSelected)]="toggleSelection1">Simple toggle</pa-toggle>
-                <pa-toggle help="Some help" [(isSelected)]="toggleSelection2">Toggle with help (selected by default)
-                </pa-toggle>
-                <pa-toggle imageUrl="./assets/ninja.svg" [(isSelected)]="toggleSelection3">Toggle with image</pa-toggle>
+        <table>
+            <thead>
+            <tr>
+                <th>Toggles</th>
+                <th>2 way data-binding</th>
+                <th>selection</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <pa-toggle [(isSelected)]="toggleSelection1">Simple toggle</pa-toggle>
+                    <pa-toggle help="Some help" [(isSelected)]="toggleSelection2">Toggle with help (selected by default)
+                    </pa-toggle>
+                    <pa-toggle imageUrl="./assets/ninja.svg" [(isSelected)]="toggleSelection3">Toggle with image</pa-toggle>
 
-            </td>
-            <td>
-                <ul>
-                    <li>first toggle: {{toggleSelection1 | json}}</li>
-                    <li>second toggle: {{toggleSelection2 | json}}</li>
-                    <li>third toggle: {{toggleSelection3 | json}}</li>
-                </ul>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <pa-toggle-group [toggles]="toggleGroup1" (onSelection)="toggleGroupSelection1 = $event">Group of simple
-                    toggles
-                </pa-toggle-group>
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let toggle of toggleGroup1">
-                        {{toggle.label}}: {{toggle.isSelected}}
-                    </li>
-                </ul>
-            </td>
-            <td>{{toggleGroupSelection1 | json}}</td>
-        </tr>
-        <tr>
-            <td>
-                <pa-toggle-group [toggles]="toggleGroup2" (onSelection)="toggleGroupSelection2 = $event">Group of
-                    toggles with
-                    help
-                </pa-toggle-group>
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let toggle of toggleGroup2">
-                        {{toggle.label}}: {{toggle.isSelected}}
-                    </li>
-                </ul>
-            </td>
-            <td>{{toggleGroupSelection2 | json}}</td>
-        </tr>
-        <tr>
-            <td>
-                <pa-toggle-group [toggles]="toggleGroup3" (onSelection)="toggleGroupSelection3 = $event">Group of
-                    toggles with
-                    images
-                </pa-toggle-group>
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let toggle of toggleGroup3">
-                        {{toggle.label}}: {{toggle.isSelected}}
-                    </li>
-                </ul>
-            </td>
-            <td>{{toggleGroupSelection3 | json}}</td>
-        </tr>
-        </tbody>
-    </table>
+                </td>
+                <td>
+                    <ul>
+                        <li>first toggle: {{toggleSelection1 | json}}</li>
+                        <li>second toggle: {{toggleSelection2 | json}}</li>
+                        <li>third toggle: {{toggleSelection3 | json}}</li>
+                    </ul>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-toggle-group [toggles]="toggleGroup1" (onSelection)="toggleGroupSelection1 = $event">Group of simple
+                        toggles
+                    </pa-toggle-group>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let toggle of toggleGroup1">
+                            {{toggle.label}}: {{toggle.isSelected}}
+                        </li>
+                    </ul>
+                </td>
+                <td>{{toggleGroupSelection1 | json}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-toggle-group [toggles]="toggleGroup2" (onSelection)="toggleGroupSelection2 = $event">Group of
+                        toggles with
+                        help
+                    </pa-toggle-group>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let toggle of toggleGroup2">
+                            {{toggle.label}}: {{toggle.isSelected}}
+                        </li>
+                    </ul>
+                </td>
+                <td>{{toggleGroupSelection2 | json}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-toggle-group [toggles]="toggleGroup3" (onSelection)="toggleGroupSelection3 = $event">Group of
+                        toggles with
+                        images
+                    </pa-toggle-group>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let toggle of toggleGroup3">
+                            {{toggle.label}}: {{toggle.isSelected}}
+                        </li>
+                    </ul>
+                </td>
+                <td>{{toggleGroupSelection3 | json}}</td>
+            </tr>
+            </tbody>
+        </table>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Sliders</th>
-            <th>2 way data-binding</th>
-            <th>selection</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <pa-slider [(value)]="slider1" name="energy">Energy level</pa-slider>
-                <pa-slider [(value)]="slider2" name="energy" help="I need somebody, Help!">Energy level with help
-                </pa-slider>
-            </td>
-            <td>
-                <ul>
-                    <li>Value slider1: {{slider1}}</li>
-                    <li>Value slider2: {{slider2}}</li>
-                </ul>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="double-sliders">
-                <pa-button size="small" (click)="resetSliders()">reset</pa-button>
+        <table>
+            <thead>
+            <tr>
+                <th>Sliders</th>
+                <th>2 way data-binding</th>
+                <th>selection</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <pa-slider [(value)]="slider1" name="energy">Energy level</pa-slider>
+                    <pa-slider [(value)]="slider2" name="energy" help="I need somebody, Help!">Energy level with help
+                    </pa-slider>
+                </td>
+                <td>
+                    <ul>
+                        <li>Value slider1: {{slider1}}</li>
+                        <li>Value slider2: {{slider2}}</li>
+                    </ul>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="double-sliders">
+                    <pa-button size="small" (click)="resetSliders()">reset</pa-button>
 
-                <div class="slider-no-label">
-                    <pa-double-slider [(values)]="sliderValues1" help="no label but help"></pa-double-slider>
-                </div>
+                    <div class="slider-no-label">
+                        <pa-double-slider [(values)]="sliderValues1" help="no label but help"></pa-double-slider>
+                    </div>
 
-                <pa-double-slider [(values)]="sliderValues2">Energy level</pa-double-slider>
-                <pa-double-slider [(values)]="sliderValues3" help="I need somebody, help!">Energy level
-                </pa-double-slider>
-            </td>
-            <td>
-                <ul>
-                    <li>Slider values1: {{sliderValues1 | json}}</li>
-                    <li>Slider values2: {{sliderValues2 | json}}</li>
-                    <li>Slider values2: {{sliderValues3 | json}}</li>
-                </ul>
-            </td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
+                    <pa-double-slider [(values)]="sliderValues2">Energy level</pa-double-slider>
+                    <pa-double-slider [(values)]="sliderValues3" help="I need somebody, help!">Energy level
+                    </pa-double-slider>
+                </td>
+                <td>
+                    <ul>
+                        <li>Slider values1: {{sliderValues1 | json}}</li>
+                        <li>Slider values2: {{sliderValues2 | json}}</li>
+                        <li>Slider values2: {{sliderValues3 | json}}</li>
+                    </ul>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<div class="example-box" [class.expanded]="sections.buttons">
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('buttons')">Buttons</div>
 
-    <p>
-        <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary
-        </pa-button>
-        <pa-button color="secondary" size="small" (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" size="small" (click)="onButtonClick($event)">Destructive</pa-button>
-        <pa-button color="destructive" size="small" disabled (click)="onButtonClick($event)">Disabled</pa-button>
-        <pa-button color="primary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
-        </pa-button>
-        <pa-button color="destructive" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
-        </pa-button>
-        <pa-button color="destructive" size="small" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
-        </pa-button>
-    </p>
+    <div *ngIf="sections.buttons">
 
-    <p>
-        <pa-button color="primary" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" [border]="false" (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" (click)="onButtonClick($event)">Destructive</pa-button>
-        <pa-button disabled (click)="onButtonClick($event)">Disabled</pa-button>
-        <pa-button color="primary" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" [icon]="'delete'" (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" [icon]="'delete'" (click)="onButtonClick($event)">Destructive</pa-button>
-        <pa-button [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled</pa-button>
-    </p>
+        <p>
+            <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary
+            </pa-button>
+            <pa-button color="secondary" size="small" (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" size="small" (click)="onButtonClick($event)">Destructive</pa-button>
+            <pa-button color="destructive" size="small" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+            <pa-button color="primary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
+            </pa-button>
+            <pa-button color="destructive" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
+            </pa-button>
+            <pa-button color="destructive" size="small" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
+            </pa-button>
+        </p>
 
-    <p>
-        <pa-button color="primary" size="large" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" size="large" (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" size="large" (click)="onButtonClick($event)">Destructive</pa-button>
-        <pa-button color="destructive" size="large" disabled (click)="onButtonClick($event)">Disabled</pa-button>
-        <pa-button color="primary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
-        </pa-button>
-        <pa-button color="destructive" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
-        </pa-button>
-        <pa-button color="destructive" size="large" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
-        </pa-button>
-    </p>
+        <p>
+            <pa-button color="primary" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" [border]="false" (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" (click)="onButtonClick($event)">Destructive</pa-button>
+            <pa-button disabled (click)="onButtonClick($event)">Disabled</pa-button>
+            <pa-button color="primary" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" [icon]="'delete'" (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" [icon]="'delete'" (click)="onButtonClick($event)">Destructive</pa-button>
+            <pa-button [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+        </p>
 
-    <p>
-        <pa-button color="primary" size="small" [border]="true" (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" size="small" border (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" size="small" border (click)="onButtonClick($event)">Destructive</pa-button>
-        <pa-button color="destructive" size="small" border [disabled]="true" (click)="onButtonClick($event)">Disabled
-        </pa-button>
-        <pa-button color="primary" size="small" [icon]="'delete'" [border]="true" (click)="onButtonClick($event)">
-            Primary
-        </pa-button>
-        <pa-button color="secondary" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
-        </pa-button>
-        <pa-button color="destructive" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
-        </pa-button>
-        <pa-button color="destructive" size="small" [icon]="'delete'" border [disabled]="true"
-                   (click)="onButtonClick($event)">Disabled
-        </pa-button>
-    </p>
+        <p>
+            <pa-button color="primary" size="large" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" size="large" (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" size="large" (click)="onButtonClick($event)">Destructive</pa-button>
+            <pa-button color="destructive" size="large" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+            <pa-button color="primary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
+            </pa-button>
+            <pa-button color="destructive" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
+            </pa-button>
+            <pa-button color="destructive" size="large" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
+            </pa-button>
+        </p>
 
-    <p>
-        <pa-button color="primary" border (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" border (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" border (click)="onButtonClick($event)">Destructive</pa-button>
-        <pa-button disabled="true" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
-        <pa-button color="primary" [icon]="'delete'" border (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive</pa-button>
-        <pa-button disabled="true" [icon]="'delete'" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
-    </p>
+        <p>
+            <pa-button color="primary" size="small" [border]="true" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" size="small" border (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" size="small" border (click)="onButtonClick($event)">Destructive</pa-button>
+            <pa-button color="destructive" size="small" border [disabled]="true" (click)="onButtonClick($event)">Disabled
+            </pa-button>
+            <pa-button color="primary" size="small" [icon]="'delete'" [border]="true" (click)="onButtonClick($event)">
+                Primary
+            </pa-button>
+            <pa-button color="secondary" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
+            </pa-button>
+            <pa-button color="destructive" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
+            </pa-button>
+            <pa-button color="destructive" size="small" [icon]="'delete'" border [disabled]="true"
+                       (click)="onButtonClick($event)">Disabled
+            </pa-button>
+        </p>
 
-    <p>
-        <pa-button color="primary" size="large" border (click)="onButtonClick($event)">Primary</pa-button>
-        <pa-button color="secondary" size="large" border (click)="onButtonClick($event)">Secondary</pa-button>
-        <pa-button color="destructive" size="large" border paTooltip="Try me" (click)="onButtonClick($event)">Tooltip on
-            me
-        </pa-button>
-        <pa-button color="destructive" size="large" border disabled (click)="onButtonClick($event)">Disabled</pa-button>
-        <pa-button color="primary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Primary
-        </pa-button>
-        <pa-button color="secondary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
-        </pa-button>
-        <pa-button color="destructive" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
-        </pa-button>
-        <pa-button color="destructive" size="large" [icon]="'delete'" border disabled (click)="onButtonClick($event)">
-            Disabled
-        </pa-button>
-    </p>
+        <p>
+            <pa-button color="primary" border (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" border (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" border (click)="onButtonClick($event)">Destructive</pa-button>
+            <pa-button disabled="true" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
+            <pa-button color="primary" [icon]="'delete'" border (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive</pa-button>
+            <pa-button disabled="true" [icon]="'delete'" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
+        </p>
+
+        <p>
+            <pa-button color="primary" size="large" border (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="secondary" size="large" border (click)="onButtonClick($event)">Secondary</pa-button>
+            <pa-button color="destructive" size="large" border paTooltip="Try me" (click)="onButtonClick($event)">Tooltip on
+                me
+            </pa-button>
+            <pa-button color="destructive" size="large" border disabled (click)="onButtonClick($event)">Disabled</pa-button>
+            <pa-button color="primary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Primary
+            </pa-button>
+            <pa-button color="secondary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
+            </pa-button>
+            <pa-button color="destructive" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
+            </pa-button>
+            <pa-button color="destructive" size="large" [icon]="'delete'" border disabled (click)="onButtonClick($event)">
+                Disabled
+            </pa-button>
+        </p>
+    </div>
 </div>
 
-<div class="example-box" [class.expanded]="sections.badges">
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('badges')">Badges</div>
 
-    <div>
-        <pa-badge>Generic badge</pa-badge>
-        <pa-badge color="positive">Generic badge</pa-badge>
-        <pa-badge color="primary">Generic badge</pa-badge>
-        <pa-badge [isSmall]="true" color="secondary">Generic badge</pa-badge>
-        <pa-badge [isSmall]="true" color="warning">Generic badge</pa-badge>
-        <pa-badge [isSmall]="true" color="destructive">Generic badge</pa-badge>
-    </div>
-    <div>
-        <pa-badge [isAccented]="true">Generic badge</pa-badge>
-        <pa-badge [isAccented]="true" color="positive">Generic badge</pa-badge>
-        <pa-badge [isAccented]="true" color="primary">Generic badge</pa-badge>
-        <pa-badge [isSmall]="true" [isAccented]="true" color="secondary">Generic badge</pa-badge>
-        <pa-badge [isSmall]="true" [isAccented]="true" color="warning">Generic badge</pa-badge>
-        <pa-badge [isSmall]="true" [isAccented]="true" color="destructive">Generic badge</pa-badge>
-    </div>
-    <div>
-        <pa-badge [hexaColor]="'#333333'">Custom #333333</pa-badge>
-        <pa-badge [hexaColor]="'#D28D16'">Custom #D28D16</pa-badge>
-        <pa-badge [hexaColor]="'#51A8C8'">Custom #51A8C8</pa-badge>
-        <pa-badge [hexaColor]="'#A7C8BC'">Custom #A7C8BC</pa-badge>
-        <pa-badge [isAccented]="true" hexaColor="#3B0E42">Custom #3B0E42</pa-badge>
-        <pa-badge [isAccented]="true" hexaColor="#7B170A">Custom #7B170A</pa-badge>
-        <pa-badge [isAccented]="true" hexaColor="#C96610">Custom #C96610</pa-badge>
-    </div>
-    <div>
-        <pa-badge [buttons]="badgeButtons">Badge with buttons</pa-badge>
-    </div>
-    <div>
-        <pa-badge maxWidth="100px">Badge with long text and ellipsis</pa-badge>
-    </div>
-    <div>
-        <pa-badge value="1"></pa-badge>
-        <pa-badge value="1" of="4"></pa-badge>
+    <div *ngIf="sections.badges">
+        <div>
+            <pa-badge>Generic badge</pa-badge>
+            <pa-badge color="positive">Generic badge</pa-badge>
+            <pa-badge color="primary">Generic badge</pa-badge>
+            <pa-badge [isSmall]="true" color="secondary">Generic badge</pa-badge>
+            <pa-badge [isSmall]="true" color="warning">Generic badge</pa-badge>
+            <pa-badge [isSmall]="true" color="destructive">Generic badge</pa-badge>
+        </div>
+        <div>
+            <pa-badge [isAccented]="true">Generic badge</pa-badge>
+            <pa-badge [isAccented]="true" color="positive">Generic badge</pa-badge>
+            <pa-badge [isAccented]="true" color="primary">Generic badge</pa-badge>
+            <pa-badge [isSmall]="true" [isAccented]="true" color="secondary">Generic badge</pa-badge>
+            <pa-badge [isSmall]="true" [isAccented]="true" color="warning">Generic badge</pa-badge>
+            <pa-badge [isSmall]="true" [isAccented]="true" color="destructive">Generic badge</pa-badge>
+        </div>
+        <div>
+            <pa-badge [hexaColor]="'#333333'">Custom #333333</pa-badge>
+            <pa-badge [hexaColor]="'#D28D16'">Custom #D28D16</pa-badge>
+            <pa-badge [hexaColor]="'#51A8C8'">Custom #51A8C8</pa-badge>
+            <pa-badge [hexaColor]="'#A7C8BC'">Custom #A7C8BC</pa-badge>
+            <pa-badge [isAccented]="true" hexaColor="#3B0E42">Custom #3B0E42</pa-badge>
+            <pa-badge [isAccented]="true" hexaColor="#7B170A">Custom #7B170A</pa-badge>
+            <pa-badge [isAccented]="true" hexaColor="#C96610">Custom #C96610</pa-badge>
+        </div>
+        <div>
+            <pa-badge [buttons]="badgeButtons">Badge with buttons</pa-badge>
+        </div>
+        <div>
+            <pa-badge maxWidth="100px">Badge with long text and ellipsis</pa-badge>
+        </div>
+        <div>
+            <pa-badge value="1"></pa-badge>
+            <pa-badge value="1" of="4"></pa-badge>
+        </div>
     </div>
 </div>
 
-<div class="example-box" [class.expanded]="sections.toasts">
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('toasts')">Toasts</div>
 
-    <div class="pa-toast-configuration">
-        <pa-input placeholder="Toast icon" [(value)]="toastIcon"></pa-input>
-        <pa-input placeholder="Toast message" [(value)]="toastMessage"></pa-input>
-        <pa-input placeholder="Toast button" [(value)]="toastButton"></pa-input>
-        <pa-input placeholder="Toast button color" [(value)]="toastButtonColor"></pa-input>
-        <pa-input placeholder="Toast delay" type="number" [(value)]="toastDelay"></pa-input>
-    </div>
+    <div *ngIf="sections.toasts">
+        <div class="pa-toast-configuration">
+            <pa-input placeholder="Toast icon" [(value)]="toastIcon"></pa-input>
+            <pa-input placeholder="Toast message" [(value)]="toastMessage"></pa-input>
+            <pa-input placeholder="Toast button" [(value)]="toastButton"></pa-input>
+            <pa-input placeholder="Toast button color" [(value)]="toastButtonColor"></pa-input>
+            <pa-input placeholder="Toast delay" type="number" [(value)]="toastDelay"></pa-input>
+        </div>
 
-    <pa-button (click)="openToast()">Open toast</pa-button>
-    <pa-button (click)="openQuickToast()">Open quick toast</pa-button>
+        <pa-button (click)="openToast()">Open toast</pa-button>
+        <pa-button (click)="openQuickToast()">Open quick toast</pa-button>
+    </div>
 </div>
 
 <aside id="pa-toasts-block">

@@ -159,6 +159,8 @@ export class AppComponent implements OnInit {
         const savedSections = localStorage.getItem('sections');
         if (savedSections) {
             this.sections = JSON.parse(savedSections);
+        } else {
+            this.sections = {text: true};
         }
     }
 

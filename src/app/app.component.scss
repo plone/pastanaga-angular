@@ -8,12 +8,6 @@
         padding: 36px 30px;
         margin: 36px 30px;
         position: relative;
-        & > :not(.example-box-header) {
-            display: none;
-        }
-        &.expanded > * {
-            display: block;
-        }
     }
     .example-box-header {
         background: #ddd;
