@@ -52,6 +52,9 @@ export class CheckboxTreeComponent implements OnInit, OnChanges {
             this.checkboxes.forEach(checkbox => {
                 checkbox.ariaId = `${checkboxCounter}`;
                 checkboxCounter ++;
+                if (checkbox.children && checkbox.children.length > 0) {
+                    this.setParentState(checkbox);
+                }
             });
             if (this.shouldSort) {
                 this.checkboxes = this.sortCheckboxes(this.checkboxes);

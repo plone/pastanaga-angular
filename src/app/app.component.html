@@ -177,63 +177,63 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
-                    <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
-                                 (selection)="standaloneSelection = $event">Standalone checkbox
-                    </pa-checkbox>
-                </td>
-                <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
-                <td>
-                    {{standaloneSelection}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <pa-checkbox-tree type="radio" [checkboxes]="simpleCheckboxes"
-                                       (selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)
-                    </pa-checkbox-tree>
-                </td>
-                <td>
-                    <ul>
-                        <li *ngFor="let checkbox of simpleCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
-                    </ul>
-                </td>
-                <td>
-                    Selection: {{simpleCheckboxSelection | json}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <pa-checkbox-tree [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
-                                       (selection)="iconCheckboxSelection = $event">Icon checkbox group
-                    </pa-checkbox-tree>
-                </td>
-                <td>
-                    <ul>
-                        <li *ngFor="let checkbox of iconCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
-                    </ul>
-                </td>
-                <td>
-                    <p>Selection: {{iconCheckboxSelection}}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <pa-checkbox-tree [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help
-                        checkbox
-                        group
-                    </pa-checkbox-tree>
-                </td>
-                <td>
-                    <ul>
-                        <li *ngFor="let checkbox of helpCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>
-                    </ul>
-                </td>
-                <td>
-                    <p>Selection: {{helpCheckboxSelection}}</p>
-                </td>
-            </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"-->
+                                 <!--(selection)="standaloneSelection = $event">Standalone checkbox-->
+                    <!--</pa-checkbox>-->
+                <!--</td>-->
+                <!--<td>isSelected: {{isStandaloneCheckboxSelected}}</td>-->
+                <!--<td>-->
+                    <!--{{standaloneSelection}}-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<pa-checkbox-tree type="radio" [checkboxes]="simpleCheckboxes"-->
+                                       <!--(selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)-->
+                    <!--</pa-checkbox-tree>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<ul>-->
+                        <!--<li *ngFor="let checkbox of simpleCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>-->
+                    <!--</ul>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--Selection: {{simpleCheckboxSelection | json}}-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<pa-checkbox-tree [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"-->
+                                       <!--(selection)="iconCheckboxSelection = $event">Icon checkbox group-->
+                    <!--</pa-checkbox-tree>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<ul>-->
+                        <!--<li *ngFor="let checkbox of iconCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>-->
+                    <!--</ul>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<p>Selection: {{iconCheckboxSelection}}</p>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<pa-checkbox-tree [checkboxes]="helpCheckboxes"-->
+                                      <!--[isCountVisible]="true"-->
+                                      <!--(selection)="helpCheckboxSelection = $event">Help checkbox group-->
+                    <!--</pa-checkbox-tree>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<ul>-->
+                        <!--<li *ngFor="let checkbox of helpCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>-->
+                    <!--</ul>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<p>Selection: {{helpCheckboxSelection}}</p>-->
+                <!--</td>-->
+            <!--</tr>-->
             <tr>
                 <td>
                     <pa-checkbox-tree [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">Nested

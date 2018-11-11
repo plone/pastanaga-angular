@@ -1,5 +1,5 @@
 <fieldset class="pa-fieldset-group" [id]="id">
-    <legend [class.pa-sr]="isChildren" translate>
+    <legend [class.pa-sr]="isChildren" [class.pa-select-all]="isSelectAllVisible">
         <ng-content></ng-content>
         <pa-badge *ngIf="isCountVisible" [isSmall]="true" [isAccented]="true"
                   [value]="totalSelected" [of]="totalCount"></pa-badge>
