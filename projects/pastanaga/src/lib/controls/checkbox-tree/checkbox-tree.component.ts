@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ControlModel } from '../control.model';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 let nextId = 0;
 let checkboxCounter = 0;
@@ -8,9 +9,14 @@ let checkboxCounter = 0;
 @Component({
     selector: 'pa-checkbox-tree',
     templateUrl: './checkbox-tree.component.html',
-    styleUrls: ['./checkbox-tree.component.scss']
+    styleUrls: ['./checkbox-tree.component.scss'],
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => CheckboxTreeComponent),
+        multi: true,
+    }],
 })
-export class CheckboxTreeComponent implements OnInit, OnChanges {
+export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnChanges {
     @Input() id: string;
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() checkboxes: ControlModel[];
@@ -24,6 +30,9 @@ export class CheckboxTreeComponent implements OnInit, OnChanges {
 
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() allSelected: EventEmitter<boolean> = new EventEmitter();
+
+    onChange: any;
+    onTouched: any;
 
     isAllSelected: boolean;
     isAsync: boolean;
@@ -66,6 +75,18 @@ export class CheckboxTreeComponent implements OnInit, OnChanges {
         if (changes.doLoadChildren && changes.doLoadChildren.currentValue === true && !changes.doLoadChildren.previousValue) {
             this.loadChildren(this.checkboxes);
         }
+    }
+
+    writeValue(value: any) {
+        this.checkboxes.forEach(checkbox => checkbox.isSelected = value.includes(checkbox.value));
+    }
+
+    registerOnTouched(handler: any) {
+        this.onTouched = handler;
+    }
+
+    registerOnChange(handler: any) {
+        this.onChange = handler;
     }
 
     toggleSelectAll() {
