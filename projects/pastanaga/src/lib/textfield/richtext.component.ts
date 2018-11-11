@@ -20,9 +20,9 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnChange
     @Input() errorHelp: string;
     @Input() placeholder: string;
     @Input() help: string;
-    @Input() isRequired: boolean;
+    @Input() required: boolean;
     @Input() pattern: RegExp;
-    @Input() isDisabled: boolean;
+    @Input() disabled: boolean;
     @Input() isReadOnly: boolean;
     @Input() isLabelHidden: boolean;
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
@@ -84,8 +84,8 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnChange
         this.onChange = handler;
     }
 
-    setDisabledState(isDisabled: boolean) {
-        this.isDisabled = isDisabled;
+    setDisabledState(disabled: boolean) {
+        this.disabled = disabled;
     }
 
     /**

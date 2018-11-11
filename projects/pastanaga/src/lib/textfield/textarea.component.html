@@ -3,8 +3,8 @@
               [attr.placeholder]="placeholder | translate"
               [name]="name"
               [readonly]="isReadOnly"
-              [disabled]="isDisabled"
-              [required]="isRequired"
+              [disabled]="disabled"
+              [required]="required"
               (change)="change($event.target.value)"
               (keyup)="onKeyUp($event)"
               (blur)="onBlur()">{{ value }}</textarea>

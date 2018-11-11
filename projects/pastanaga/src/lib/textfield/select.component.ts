@@ -26,8 +26,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewI
     @Input() help: string;
     @Input() errorHelp: string;
     @Input() errorMessage: string;
-    @Input() isDisabled: boolean;
-    @Input() isRequired: boolean;
+    @Input() disabled: boolean;
+    @Input() required: boolean;
     @Input() isLabelHidden: boolean;
     @Output() onSelection: EventEmitter<any> = new EventEmitter();
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
@@ -86,12 +86,12 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewI
         }
     }
 
-    setDisabledState(isDisabled: boolean) {
-        this.isDisabled = isDisabled;
+    setDisabledState(disabled: boolean) {
+        this.disabled = disabled;
     }
 
     validate(control: FormControl) {
-        if (!this.isRequired || this.value) {
+        if (!this.required || this.value) {
             this.hasError = false;
             return null;
         } else {

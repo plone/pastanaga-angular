@@ -3,6 +3,7 @@ import { EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { keyCodes } from '../keycodes.constant';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
 
@@ -14,11 +15,17 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     @Input() errorMessage: string;
     @Input() placeholder: string;
     @Input() help: string;
-    @Input() isRequired: boolean;
+    @Input()
+    get required(): boolean { return this._required; }
+    set required(value: boolean) { this._required = coerceBooleanProperty(value); }
+    protected _required = false;
     @Input() pattern: RegExp;
     @Input() min: number;
     @Input() max: number;
-    @Input() isDisabled: boolean;
+    @Input()
+    get disabled(): boolean { return this._disabled; }
+    set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
+    protected _disabled = false;
     @Input() isReadOnly: boolean;
     @Input() isLabelHidden: boolean;
 
@@ -79,7 +86,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     }
 
     _validate(value) {
-        if (this.isRequired) {
+        if (this.required) {
             this.errors.required = !value && value !== 0;
         }
         if (this.pattern) {
@@ -128,7 +135,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
         this.onChange = (handler as Function);
     }
 
-    setDisabledState(isDisabled: boolean) {
-        this.isDisabled = isDisabled;
+    setDisabledState(disabled: boolean) {
+        this.disabled = disabled;
     }
 }

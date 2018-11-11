@@ -18,7 +18,7 @@
                     <pa-input help="Only actual super power, e.g. Batman does not have any super power">Your super power
                     </pa-input>
                     <legend>Disabled text</legend>
-                    <pa-input [isDisabled]="true" value="Rintintin">Your pet name</pa-input>
+                    <pa-input disabled value="Rintintin">Your pet name</pa-input>
                     <legend>Read-only text</legend>
                     <pa-input [isReadOnly]="true" value="Justin Bieber">Your favorite singer</pa-input>
                     <legend>Text with placeholder</legend>
@@ -36,7 +36,7 @@
                     <pa-input [value]="word" name="spell" (keyUp)="onSpell($event)">Spell it</pa-input>
                     <small class="pa-field-help">You said: {{ word }}</small>
                     <legend>Required text</legend>
-                    <pa-input name="title" [isRequired]="true" #title
+                    <pa-input name="title" required #title
                               [errorHelp]="title.errors.required ? 'Title is required' : null">Title
                     </pa-input>
                     <legend>Pattern checking</legend>
