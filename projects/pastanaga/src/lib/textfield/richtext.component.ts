@@ -53,7 +53,7 @@ export class RichtextComponent implements ControlValueAccessor, OnInit, OnChange
 
     ngAfterViewInit() {
         this.editor = new MediumEditor('.me-editable', this.options);
-        this.editor.setContent(this.model);
+        this.editor.setContent(this.model || '');
         this.editor.subscribe('editableInput', (event, editable) => {
             this.updateModel();
         });
