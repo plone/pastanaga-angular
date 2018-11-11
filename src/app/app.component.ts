@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
     @ViewChild('toastsContainer', {read: ViewContainerRef}) toastsContainer: ViewContainerRef;
 
     isStandaloneCheckboxSelected: boolean;
-    standaloneSelection: string;
+    standaloneSelection: boolean;
 
     simpleCheckboxes: ControlModel[] = [
         {label: 'checkbox 1', value: 'simple_1'},
@@ -56,10 +56,10 @@ export class AppComponent implements OnInit {
         },
     ];
 
-    simpleCheckboxSelection: ControlModel[];
-    iconCheckboxSelection: ControlModel[];
-    helpCheckboxSelection: ControlModel[];
-    nestedCheckboxSelection: ControlModel[];
+    simpleCheckboxSelection: string[];
+    iconCheckboxSelection: string[];
+    helpCheckboxSelection: string[];
+    nestedCheckboxSelection: string[];
 
     toggleSelection1 = false;
     toggleSelection2 = true;

@@ -190,9 +190,9 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-group type="radio" [checkboxes]="simpleCheckboxes"
-                                       (selection)="simpleCheckboxSelection = $event">Simple checkbox group (without badge)
-                    </pa-checkbox-group>
+                    <pa-checkbox-tree type="radio" [checkboxes]="simpleCheckboxes"
+                                       (selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)
+                    </pa-checkbox-tree>
                 </td>
                 <td>
                     <ul>
@@ -205,9 +205,9 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-group [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
+                    <pa-checkbox-tree [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
                                        (selection)="iconCheckboxSelection = $event">Icon checkbox group
-                    </pa-checkbox-group>
+                    </pa-checkbox-tree>
                 </td>
                 <td>
                     <ul>
@@ -215,15 +215,15 @@
                     </ul>
                 </td>
                 <td>
-                    <p>Selection: {{iconCheckboxSelection | json}}</p>
+                    <p>Selection: {{iconCheckboxSelection}}</p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-group [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help
+                    <pa-checkbox-tree [checkboxes]="helpCheckboxes" (selection)="helpCheckboxSelection = $event">Help
                         checkbox
                         group
-                    </pa-checkbox-group>
+                    </pa-checkbox-tree>
                 </td>
                 <td>
                     <ul>
@@ -231,14 +231,14 @@
                     </ul>
                 </td>
                 <td>
-                    <p>Selection: {{helpCheckboxSelection | json}}</p>
+                    <p>Selection: {{helpCheckboxSelection}}</p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-group [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">Nested
+                    <pa-checkbox-tree [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">Nested
                         checkbox group
-                    </pa-checkbox-group>
+                    </pa-checkbox-tree>
                 </td>
                 <td>
                     <ul>
@@ -251,7 +251,7 @@
                     </ul>
                 </td>
                 <td>
-                    <p>Selection: {{nestedCheckboxSelection | json}}</p>
+                    <p>Selection: {{nestedCheckboxSelection}}</p>
                 </td>
             </tr>
             </tbody>
