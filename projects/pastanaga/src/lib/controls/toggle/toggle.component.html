@@ -16,7 +16,7 @@
     </label>
     <output class="pa-field-output" [for]="id">
         <!-- Important to keep the label without any space between the span to not break the animation between yes and no -->
-        <label role="presentation" [for]="id"><span class="o-field-output-checked" [attr.aria-hidden]="isSelected" translate>{{ yesLabel }}</span><span class="pa-field-output-unchecked" [attr.aria-hidden]="!isSelected" translate>{{ noLabel }}</span></label>
+        <label role="presentation" [for]="id"><span class="o-field-output-checked" *ngIf="isSelected" translate>{{ yesLabel }}</span><span class="pa-field-output-unchecked" *ngIf="!isSelected" translate>{{ noLabel }}</span></label>
     </output>
     <small *ngIf="!imageUrl && !!help" class="pa-field-help" [id]="helpId" [innerHtml]="help|translate">{{help}}</small>
 </div>
