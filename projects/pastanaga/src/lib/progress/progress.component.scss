@@ -49,7 +49,7 @@
     }
 }
 
-.o-progress {
+.pa-progress {
     display: block;
     position: relative;
     width: 100%;
@@ -58,7 +58,7 @@
     border-radius: rythm(.25);
     overflow: hidden;
 
-    &:not([value]):not([aria-valuenow]), &.o-progress-indeterminate { //indeterminate
+    &:not([value]):not([aria-valuenow]), &.pa-progress-indeterminate { //indeterminate
         background-color: $azure-dark;
         overflow: hidden;
         &::before {
@@ -84,7 +84,7 @@
             z-index: 1;
         }
     }
-    &[aria-valuenow="0"], &.o-progress-buffer { //buffer
+    &[aria-valuenow="0"], &.pa-progress-buffer { //buffer
         &::after {
             content: '';
             position: absolute;
@@ -124,10 +124,10 @@
         border: 0;
     }
 
-    &-secondary.o-progress-indeterminate::before,
-    &-secondary:not([value]):not([aria-valuenow]).o-progress-indeterminate::before,
-    &-secondary.o-progress-indeterminate::after,
-    &-secondary:not([value]):not([aria-valuenow]).o-progress-indeterminate::after {
+    &-secondary.pa-progress-indeterminate::before,
+    &-secondary:not([value]):not([aria-valuenow]).pa-progress-indeterminate::before,
+    &-secondary.pa-progress-indeterminate::after,
+    &-secondary:not([value]):not([aria-valuenow]).pa-progress-indeterminate::after {
         background-color: $brown;
     }
     &-secondary::-webkit-progress-value {
@@ -137,7 +137,7 @@
         background: $brown;
     }
     &-secondary[aria-valuenow="0"]::after,
-    &-secondary.o-progress-buffer::after {
+    &-secondary.pa-progress-buffer::after {
         background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%237c7261" fill-rule="evenodd"/></svg>');
     }
     &-small {

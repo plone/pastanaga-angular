@@ -1,5 +1,7 @@
-import { Component, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewEncapsulation } from '@angular/core';
 import { ButtonBase } from './button-base';
+
+let nextId = 0;
 
 @Component({
     selector: 'pa-button',
@@ -7,9 +9,15 @@ import { ButtonBase } from './button-base';
     styleUrls: ['./button.component.scss'],
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })
-export class ButtonComponent extends ButtonBase implements OnChanges {
+export class ButtonComponent extends ButtonBase implements OnInit, OnChanges {
+    @Input() id: string;
+    @Input() active: boolean;
     checkedType = 'button';
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.id = !this.id ? `button-${nextId++}` : `${this.id}-button`;
+    }
 
     ngOnChanges(changes) {
         this.onChanges(changes);

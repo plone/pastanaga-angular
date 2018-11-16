@@ -1,14 +1,15 @@
-<div class="o-field o-field-select">
-    <select class="o-field-control" [id]="id"
+<div class="pa-field pa-field-select" [class.pa-field-error]="hasError || !!errorMessage">
+    <select class="pa-field-control" [id]="id" [attr.disabled]="disabled ? true : null"
+            [required]="required"
             [attr.aria-describedby]="helpId" [attr.placeholder]="placeholder | translate"
             (change)="change($event.target.value)">
-        <option *ngIf="placeholder" class="o-hide" disabled selected>{{ placeholder | translate }}</option>
-        <option *ngFor="let option of options" [value]="option.id"
-                [selected]="option.id === value" [disabled]="!!option.disabled">{{ option.name }}
-        </option>
+        <option *ngIf="placeholder" class="pa-hide" disabled [selected]="hasNoSelection">{{ placeholder | translate }}</option>
+        <ng-content></ng-content>
     </select>
-    <label class="o-field-label"
+    <label class="pa-field-label"
            [for]="id"><span translate
-                            [class.o-sr]="isLabelHidden"><ng-content></ng-content></span></label>
-    <small *ngIf="help" class="o-field-help" [id]="helpId">{{ help | translate }}</small>
+                            [class.pa-sr]="isLabelHidden">{{ label }}</span></label>
+    <small *ngIf="hasError && errorHelp" class="pa-field-help pa-field-help-error">{{ errorHelp | translate }}</small>
+    <small *ngIf="!!errorMessage" class="pa-field-help pa-field-help-error">{{ errorMessage | translate }}</small>
+    <small *ngIf="help" class="pa-field-help" [id]="helpId">{{ help | translate }}</small>
 </div>

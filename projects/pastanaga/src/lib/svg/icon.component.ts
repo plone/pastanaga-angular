@@ -1,5 +1,9 @@
 import { Component, ElementRef, Input, OnChanges, Renderer2, ViewEncapsulation, } from '@angular/core';
 import { SvgIconRegistryService } from 'angular-svg-icon';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
+import { SvgLoader } from './svg-loader';
 
 @Component({
     selector: 'pa-icon',
@@ -16,6 +20,8 @@ export class IconComponent implements OnChanges {
         private element: ElementRef,
         private renderer: Renderer2,
         private service: SvgIconRegistryService,
+        private svgLoader: SvgLoader,
+        @Inject(PLATFORM_ID) protected platformId: Object
     ) {
     }
 
@@ -27,9 +33,15 @@ export class IconComponent implements OnChanges {
     }
 
     private updateSvg() {
-        this.service.loadSvg(this.iconPath).subscribe(svg => {
-            this.setSvg(svg);
-        });
+        if (isPlatformBrowser(this.platformId)) {
+            this.service.loadSvg(this.iconPath).subscribe(svg => {
+                this.setSvg(svg);
+            });
+        } else {
+            this.svgLoader.loadSvgFromSsr(this.iconPath, this.renderer).subscribe(svg => {
+                this.setSvg(svg);
+            });
+        }
     }
 
     private setSvg(svg: SVGElement) {

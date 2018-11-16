@@ -1,21 +1,22 @@
-<div class="o-field o-field-toggle"
-     [class.o-field-divider]="divider && divider.hasDivider"
+<div class="pa-field pa-field-toggle"
+     [class.pa-field-divider]="divider && divider.hasDivider"
      [class.first-in-group]="divider && divider.isFirst"
      [class.last-in-group]="divider && divider.isLast">
-    <input class="o-field-control" type="checkbox" [id]="id" [attr.aria-describedby]="helpId"
+    <input class="pa-field-control" type="checkbox" [id]="id" [attr.aria-describedby]="helpId"
            [checked]="isSelected"
            [attr.aria-checked]="isSelected"
+           [attr.disabled]="isDisabled ? true : null"
            (change)="toggleSelection()">
-    <span class="o-field-control-thumb"> </span>
-    <label class="o-field-label" [for]="id">
+    <span class="pa-field-control-thumb"> </span>
+    <label class="pa-field-label" [for]="id">
         <img *ngIf="imageUrl" [src]="imageUrl" alt="" role="presentation">
         <span translate>
             <ng-content></ng-content>
         </span>
     </label>
-    <output class="o-field-output" [for]="id">
+    <output class="pa-field-output" [for]="id">
         <!-- Important to keep the label without any space between the span to not break the animation between yes and no -->
-        <label role="presentation" [for]="id"><span class="o-field-output-checked" [attr.aria-hidden]="isSelected" translate>common.yes</span><span class="o-field-output-unchecked" [attr.aria-hidden]="!isSelected" translate>common.no</span></label>
+        <label role="presentation" [for]="id"><span class="o-field-output-checked" *ngIf="isSelected" translate>{{ yesLabel }}</span><span class="pa-field-output-unchecked" *ngIf="!isSelected" translate>{{ noLabel }}</span></label>
     </output>
-    <small *ngIf="!imageUrl && !!help" class="o-field-help" [id]="helpId" translate>{{help}}</small>
+    <small *ngIf="!imageUrl && !!help" class="pa-field-help" [id]="helpId" [innerHtml]="help|translate">{{help}}</small>
 </div>

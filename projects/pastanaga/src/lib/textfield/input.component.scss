@@ -1,6 +1,6 @@
 @import "../styles/variables";
 
-.o-field.o-field-number .o-field-control {
+.pa-field.pa-field-number .pa-field-control {
     -moz-appearance: textfield;
 
     &::-webkit-outer-spin-button,
@@ -13,8 +13,8 @@
         bottom: 0;
     }
 }
-.o-field.o-field-number .o-field-control:focus::-webkit-inner-spin-button,
-.o-field.o-field-number .o-field-control:active::-webkit-inner-spin-button {
+.pa-field.pa-field-number .pa-field-control:focus::-webkit-inner-spin-button,
+.pa-field.pa-field-number .pa-field-control:active::-webkit-inner-spin-button {
     background: transparent url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18"><g fill="none" fill-rule="evenodd" transform="translate(-4 -6)"><g transform="translate(0 12)"><polygon fill="%23'+str_slice(#{$gray-dark}, 2)+'" points="4.5 7.707 5.207 7 8.854 10.646 12.5 7 13.207 7.707 8.854 12.06"/></g><g transform="rotate(-180 9 9)"><polygon fill="%23636363" points="5 7.707 5.707 7 9.354 10.646 13 7 13.707 7.707 9.354 12.06"/></g></g></svg>') no-repeat center center;
     background-size: 10px 18px;
 }
@@ -37,4 +37,5 @@ input[type="number"]:active::-webkit-inner-spin-button{
     background: transparent url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18"><g fill="none" fill-rule="evenodd" transform="translate(-4 -6)"><g transform="translate(0 12)"><polygon fill="%23'+str_slice(#{$gray-dark}, 2)+'" points="4.5 7.707 5.207 7 8.854 10.646 12.5 7 13.207 7.707 8.854 12.06"/></g><g transform="rotate(-180 9 9)"><polygon fill="%23636363" points="5 7.707 5.707 7 9.354 10.646 13 7 13.707 7.707 9.354 12.06"/></g></g></svg>') no-repeat center center;
     background-size: 10px 18px;
 }
+
 

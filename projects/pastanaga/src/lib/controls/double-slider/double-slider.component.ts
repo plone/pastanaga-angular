@@ -61,9 +61,7 @@ export class DoubleSliderComponent implements AfterViewInit, OnInit, OnChanges, 
     }
 
     ngOnInit() {
-        if (!this.id) {
-            this.id = `field-double-slider-${nextId++}`;
-        }
+        this.id = !this.id ? `field-double-slider-${nextId++}` : `${this.id}-double-slider`;
         this.helpId = `${this.id}-help`;
     }
 

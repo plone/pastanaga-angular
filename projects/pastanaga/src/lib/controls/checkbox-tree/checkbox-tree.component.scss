@@ -1,0 +1,54 @@
+@import "../../styles/variables";
+
+:host {
+    display: block;
+
+    pa-badge {
+        display: inline-block;
+        position: relative;
+        top: 6px;
+        left: 12px;
+    }
+    .pa-field-group {
+        ::ng-deep pa-button {
+            display: inherit;
+
+            .pa-button {
+                float: left;
+                margin: - rythm(.5) 0 - rythm(.5) - rythm(2.5);
+                transform: rotate(0deg);
+            }
+            .pa-button[aria-expanded="true"] {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    .pa-field-sublist {
+        margin-left: 30px;
+        padding: 0;
+        list-style: none;
+        display: block;
+    }
+
+    .pa-field-group {
+        & > ::ng-deep pa-checkbox:not(:last-child) .pa-field,
+        & > ::ng-deep .pa-field-sublist:not(:last-child) {
+            margin-bottom: 0;
+        }
+    }
+
+    .pa-field-group:not(:last-child) {
+        ::ng-deep pa-checkbox .pa-field.pa-field-checkbox {
+            margin-bottom: 0;
+        }
+    }
+
+    .pa-field-sublist[aria-hidden="true"] {
+        display: none;
+    }
+
+    .pa-select-all {
+        width: calc(100% - 84px);
+    }
+}

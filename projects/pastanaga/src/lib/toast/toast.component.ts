@@ -68,8 +68,8 @@ export class ToastComponent implements OnInit {
     }
 
     private getLink(link: string, url: string): string {
-        return '<a class="o-button o-button-link" tabindex="0" href="' + url +
-            '"> <span class="o-button-wrapper" tabindex="-1">' + link + ' </span></a>';
+        return '<a class="pa-button pa-button-link" tabindex="0" href="' + url +
+            '"> <span class="pa-button-wrapper" tabindex="-1">' + link + ' </span></a>';
     }
 
     dismissWithESC($event) {

@@ -10,13 +10,10 @@ export * from './lib/button/button.module';
 export * from './lib/button/button.component';
 export * from './lib/button/button-link.component';
 
-export * from './lib/common/selectable.model';
-
 export * from './lib/controls/controls.module';
 export * from './lib/controls/control.model';
 export * from './lib/controls/checkbox/checkbox.component';
-export * from './lib/controls/checkbox-expandable/checkbox-expandable.component';
-export * from './lib/controls/checkbox-group/checkbox-group.component';
+export * from './lib/controls/checkbox-tree/checkbox-tree.component';
 export * from './lib/controls/double-slider/double-slider.component';
 export * from './lib/controls/slider/slider.component';
 export * from './lib/controls/toggle.model';
@@ -32,6 +29,7 @@ export * from './lib/svg/icon.component';
 export * from './lib/textfield/textfield.module';
 export * from './lib/textfield/input.component';
 export * from './lib/textfield/select.component';
+export * from './lib/textfield/selectable.model';
 export * from './lib/textfield/richtext.component';
 
 export * from './lib/toast/toast.module';

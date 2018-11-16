@@ -1,3 +1,2 @@
-<div #tooltip class="static-tooltip">
-    <span #tooltipText role="tooltip" class="o-tooltip-system" *ngIf="text" [translate]="text"></span>
-</div>
+<small #tooltipText role="tooltip" [id]="id" *ngIf="text" [translate]="text"
+    class="pa-tooltip" [class.pa-tooltip-system]="!isAction"></small>

@@ -17,6 +17,7 @@
         padding: 3px 6px;
         margin: -36px -30px 6px;
         z-index: 9;
+        cursor: pointer;
     }
     table {
         width: 100%;
@@ -46,11 +47,11 @@
     }
     .slider-no-label {
         ::ng-deep pa-double-slider {
-            .o-slider-wrapper {
+            .pa-slider-wrapper {
                 width: 100%;
             }
 
-            .o-slider-container {
+            .pa-slider-container {
                 width: calc(100% - 60px);
             }
         }

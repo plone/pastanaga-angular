@@ -1,3 +1,5 @@
+@import "variables";
+
 html, body {
     height: 100%;
     overflow: hidden;
@@ -6,20 +8,20 @@ main {
     height: 100%;
 }
 
-.o-main-layout {
+.pa-main-layout {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-content: stretch;
 }
-.o-main-layout--menu {
+.pa-main-layout--menu {
     flex: 0 1 auto;
     align-self: auto;
     //border-right: 3px solid $white-ghost;
     transition: all 1s cubic-bezier(0.33, 0, 0.65, 1.08);
 }
-.o-main-layout--content {
+.pa-main-layout--content {
     flex: 0 1 auto;
     align-self: auto;
     width:100%;
@@ -33,7 +35,7 @@ main {
     }
 }
 
-.o-section-content {
+.pa-section-content {
     background: $white;
     min-height: calc(100% - #{rythm(1)*4.5}  - #{rythm(.25)});
 }

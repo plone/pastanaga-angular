@@ -22,7 +22,7 @@ a:focus {
 
 /* screen readers */
 
-.o-sr {
+.pa-sr {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -34,7 +34,7 @@ a:focus {
 }
 
 
-.o-srf {
+.pa-srf {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -53,16 +53,16 @@ a:focus {
         white-space: normal;
     }
 }
-.o-hide {
+.pa-hide {
     display: none;
 }
-option.o-hide {
+option.pa-hide {
     font-weight: $font-weight-light;
     color: $gray;
 }
 
 /* scroll shadows */
-.o-content-shadow {
+.pa-content-shadow {
     position: relative;
     &-top::before {
         content:"";
@@ -87,7 +87,7 @@ option.o-hide {
 }
 
 //flex
-.o-flex {
+.pa-flex {
     display: flex;
     align-items: center;
 
@@ -98,10 +98,10 @@ option.o-hide {
         min-width: 0;
     }
 }
-.o-flex-row {
+.pa-flex-row {
     flex-direction: row;
 }
-.o-flex-nowrap {
+.pa-flex-nowrap {
     flex-wrap: nowrap;
 }
 

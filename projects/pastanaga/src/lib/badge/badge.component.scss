@@ -1,6 +1,6 @@
 @import "../styles/variables";
 
-.o-badge {
+.pa-badge {
     display: inline-block;
     @include font-size(m, l, m);
     padding: rythm(.25) rythm(.5);
@@ -26,7 +26,7 @@
     & ::ng-deep pa-button:last-child button {
         margin-right: (- rythm(.5));
     }
-    & .o-avatar-small {
+    & .pa-avatar-small {
         margin-top: (- rythm(.25)*5.5);
         margin-bottom: (- rythm(.25)*4.5);
         margin-left: (- rythm(.25)*3);
@@ -35,26 +35,26 @@
             left: 0;
         }
     }
-    > .o-badge-ellipsis {
+    > .pa-badge-ellipsis {
         opacity: .8;
     }
 }
 
-.o-badge-small {
+.pa-badge-small {
     @include font-size(xs, m, xs);
     padding: rythm(.25)/2 rythm(.25);
-    &.o-badge-accent {
+    &.pa-badge-accent {
         padding-right: rythm(1.5)/3;
         padding-left: rythm(1.5)/3;
     }
 }
 
-.on-button .o-badge {
+.on-button .pa-badge {
     position: relative;
     top: -1px;
 }
 
-.o-badge .o-badge-ellipsis {
+.pa-badge .pa-badge-ellipsis {
     max-width: 180px;
     white-space: nowrap;
     overflow: hidden;
@@ -64,33 +64,33 @@
     vertical-align: middle;
 }
 
-.o-badge-accent {
+.pa-badge-accent {
     padding-right: rythm(1.5)/2;
     padding-left: rythm(1.5)/2;
     border-radius: 100px;
 }
 
-.o-badge-positive {
+.pa-badge-positive {
     background-color: $green;
     color: $white;
 }
 
-.o-badge-destructive {
+.pa-badge-destructive {
     background-color: $red;
     color: $white;
 }
 
-.o-badge-warning {
+.pa-badge-warning {
     background-color: $ocher;
     color: $white;
 }
 
-.o-badge-secondary {
+.pa-badge-secondary {
     background-color: $brown;
     color: $white;
 }
 
-.o-badge-primary {
+.pa-badge-primary {
     background-color: $blue;
     color: $white;
 }

@@ -1,9 +1,9 @@
-<fieldset class="o-fieldset-group" [id]="id">
+<fieldset class="pa-fieldset-group" [id]="id">
     <legend #text translate>
         <ng-content></ng-content>
     </legend>
 
-    <pa-button size="small" class="o-field-button-right"
+    <pa-button size="small" class="pa-field-button-right"
                [color]="isAllSelected ? 'secondary' : 'primary'"
                (click)="toggleSelectAll()">
         {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}

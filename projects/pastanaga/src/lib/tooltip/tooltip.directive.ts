@@ -1,90 +1,141 @@
-import { ComponentFactoryResolver, ComponentRef, Directive, ElementRef, HostListener, Input, ViewContainerRef, } from '@angular/core';
+import {
+    ComponentRef,
+    ComponentFactoryResolver,
+    ComponentFactory,
+    Directive,
+    HostListener,
+    Input,
+    ViewContainerRef,
+    ElementRef,
+    Renderer2,
+    ApplicationRef,
+} from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 
 const SYSTEM = 'system';
 const ACTION = 'action';
+
+let nextId = 0;
 
 @Directive({
     selector: '[paTooltip]'
 })
 export class TooltipDirective {
-
     @Input('paTooltip') text: string;
     @Input('paTooltipType') type = SYSTEM;
 
-    focusout: Subject<boolean> = new Subject();
+    id: string;
+    isDisplayed = false;
+    rootParent: HTMLElement;
 
     private component: ComponentRef<TooltipComponent>;
-    private mouseX: number;
-    private mouseY: number;
 
     constructor(
         private element: ElementRef,
         private viewContainerRef: ViewContainerRef,
         private resolver: ComponentFactoryResolver,
-    ) {
-    }
+        private renderer: Renderer2,
+    ) {}
 
-    @HostListener('focusin')
-    @HostListener('mouseenter')
-    focus() {
-        Observable.timer(1000)      // display tooltip after 1 second hovering the parent element
-                  .pipe(takeUntil(this.focusout))  // unless the mouse leaves before
-                  .subscribe(() => {
-                      this.show();
-                  });
-    }
-
-    show() {
-        if (this.component) {
-            this.component.destroy();
-            this.component = null;
+    @HostListener('focusin', ['$event'])
+    focus(event: MouseEvent) {
+        // do not show tooltip if focus has been triggered programmatically
+        if (event['sourceCapabilities']) {
+            this.startDisplay(event);
         }
+    }
 
-        const factory = this.resolver.resolveComponentFactory(TooltipComponent);
-        this.component = this.viewContainerRef.createComponent(factory);
+    @HostListener('mouseenter', ['$event'])
+    enter(event: MouseEvent) {
+        this.startDisplay(event);
+    }
+
+    @HostListener('mousemove', ['$event'])
+    move(event: MouseEvent) {
+        if (this.text && this.isDisplayed && this.type === SYSTEM) {
+            const position = this.getFixedPosition(event);
+            this.show(position[0], position[1]);
+        }
+    }
+
+    startDisplay(event: MouseEvent) {
+        if (this.text && !this.isDisplayed) {
+            const position = this.getFixedPosition(event);
+            if (!this.component) {
+                this.createTooltip(position[0], position[1]);
+            } else {
+                this.show(position[0], position[1]);
+            }
+            this.isDisplayed = true;
+        }
+    }
+
+    show(x: number, y: number) {
+        this.component.instance.left = x || 0;
+        this.component.instance.top = y || 0;
         this.component.instance.text = this.text;
+        this.component.instance.show();
+    }
 
-        switch (this.type) {
-            case ACTION:
-                // It will display the tooltip centered on tooltips owner
-                const rect = this.element.nativeElement.getBoundingClientRect();
-                this.component.instance.top = rect.y;
-                this.component.instance.left = rect.x;
-                this.component.instance.width = rect.width;
-                this.component.instance.height = rect.height;
-                break;
+    createTooltip(x: number, y: number) {
+        this.id = `pa-tooltip-${nextId++}`;
+        this.element.nativeElement.setAttribute('aria-describedby', this.id);
+        const factory = this.resolver.resolveComponentFactory(
+            TooltipComponent,
+        );
+        this.component = this.viewContainerRef.createComponent(factory);
+        this.component.instance.id = this.id;
+        this.component.instance.text = this.text;
+        this.component.instance.isAction = this.type === ACTION;
+        this.component.instance.left = x || 0;
+        this.component.instance.top = y || 0;
+        this.component.instance.width = this.element.nativeElement.clientWidth;
+        this.component.instance.height = this.element.nativeElement.clientHeight;
 
-            case SYSTEM:
-            default:
-                // It will display the tooltip at the right side of the mouse
-                this.component.instance.mouseX = this.mouseX;
-                this.component.instance.mouseY = this.mouseY;
-                break;
-        }
-
+        this.renderer.appendChild(
+            this.viewContainerRef.element.nativeElement,
+            this.component.location.nativeElement,
+        );
     }
 
     @HostListener('focusout')
     @HostListener('mouseleave')
-    hide(): void {
-        this.focusout.next(true);
+    hide() {
         if (this.component) {
-            this.component.destroy();
-            this.component = null;
+            this.component.instance.hide();
         }
+        this.isDisplayed = false;
     }
 
-    @HostListener('mousemove', ['$event'])
-    onMousemove(event: MouseEvent) {
-        if (!this.component) {
-            this.mouseX = event.pageX + (this.type === SYSTEM ? 3 : 0);
-            this.mouseY = event.pageY + 10;
+    getFixedPosition(event: MouseEvent): [number, number] {
+        let position: [number, number];
+        if (this.type === ACTION) {
+            const rect = this.element.nativeElement.getBoundingClientRect();
+            position = [rect.left, rect.top];
+        } else if (event.type === 'focusin') {
+            const rect = this.element.nativeElement.getBoundingClientRect();
+            position = [rect.right, rect.bottom];
+        } else {
+            position = [event.pageX, event.pageY];
+        }
+        if (!this.rootParent) {
+            this.rootParent = this.getFixedRootParent(this.element.nativeElement);
+        }
+        const rootRect = this.rootParent.getBoundingClientRect();
+        return [position[0] - rootRect.left, position[1] - rootRect.top];
+    }
+
+    getFixedRootParent(element: HTMLElement) {
+        if (element.tagName === 'BODY') {
+            return element;
+        }
+        // an element with `position: fixed` will be positionned relatively to the viewport
+        // unless one of the ancestor has a property `transform`, `filter` or `perspective`
+        const style = getComputedStyle(element);
+        if (style.transform !== 'none' || style.perspective !== 'none' || style.filter !== 'none') {
+            return element;
+        } else {
+            return this.getFixedRootParent(element.parentElement);
         }
     }
 }
-

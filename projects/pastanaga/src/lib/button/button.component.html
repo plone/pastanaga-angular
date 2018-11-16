@@ -1,14 +1,16 @@
-<button class="o-button {{colorClass}} {{sizeClass}}"
-        [class.o-button-accent]="hasBorder"
+<button class="pa-button {{colorClass}} {{sizeClass}}"
+        [class.pa-button-accent]="hasBorder"
+        [class.pa-active]="active"
         [disabled]="isDisabled"
         [type]="checkedType"
-        [attr.aria-label]="ariaLabel"
+        [id]="id"
+        [attr.aria-label]="ariaLabel | translate"
         [attr.aria-controls]="ariaControls"
         [attr.aria-expanded]="ariaExpanded"
         tabindex="0"
         (click)="onClick($event)">
-    <span class="o-button-wrapper" tabindex="-1">
-        <span #text class="o-button-label" [class.o-sr]="icon" translate><ng-content></ng-content></span>
+    <span class="pa-button-wrapper" tabindex="-1">
+        <span #text class="pa-button-label" [class.pa-sr]="icon" translate><ng-content></ng-content></span>
         <pa-icon *ngIf="icon" [name]="icon" [hidden]="true"></pa-icon>
     </span>
 </button>

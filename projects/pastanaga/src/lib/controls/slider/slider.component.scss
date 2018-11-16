@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-.o-field .o-field-control-range[type='range'] {
+.pa-field .pa-field-control-range[type='range'] {
     -webkit-appearance: none;
     margin: 0.375rem 0;
     -webkit-transition: all 0.175s ease;
@@ -14,7 +14,7 @@
     border-radius: 12px;
 }
 
-.o-field-label-range {
+.pa-field-label-range {
     position: relative;
     font-weight: $font-weight-regular;
     color: $gray-blacky;
@@ -27,11 +27,11 @@
     font-size: inherit !important;
 }
 
-.o-field .o-field-control-range[type='range'] ~ .o-field-help {
+.pa-field .pa-field-control-range[type='range'] ~ .pa-field-help {
     margin: 0;
 }
 
-.o-field-control.o-field-control-range[type='range'] {
+.pa-field-control.pa-field-control-range[type='range'] {
     -webkit-appearance: none;
     margin: 6px 0;
     -webkit-transition: all 0.175s ease;
@@ -42,7 +42,7 @@
     height: 6px;
 }
 
-.o-field-control-output {
+.pa-field-control-output {
     display: inline-block;
     float: right;
     margin-right: 12px;
@@ -50,21 +50,21 @@
     font-weight: $font-weight-light;
 }
 
-.o-field input[type='range']:focus {
+.pa-field input[type='range']:focus {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
-.o-field input[type='range']:-moz-focusring,
-.o-field input[type='range']::-moz-focus-inner,
-.o-field input[type='range']::-moz-focus-outer {
+.pa-field input[type='range']:-moz-focusring,
+.pa-field input[type='range']::-moz-focus-inner,
+.pa-field input[type='range']::-moz-focus-outer {
     outline: none;
     border: 0;
     box-shadow: none;
 }
 
-.o-field input[type='range']::-webkit-slider-runnable-track {
+.pa-field input[type='range']::-webkit-slider-runnable-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
@@ -80,8 +80,8 @@
     transition: all 0.175s ease;
 }
 
-.o-field input[type='range']::-moz-range-track,
-.o-field input[type='range']:active::-moz-range-track {
+.pa-field input[type='range']::-moz-range-track,
+.pa-field input[type='range']:active::-moz-range-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
@@ -96,15 +96,15 @@
     transition: all 0.175s ease;
 }
 
-.o-field input[type='range']:focus::-webkit-slider-runnable-track {
+.pa-field input[type='range']:focus::-webkit-slider-runnable-track {
     background: $blue-light;
 }
 
-.o-field input[type='range']:focus::-moz-range-track {
+.pa-field input[type='range']:focus::-moz-range-track {
     background: $blue-light;
 }
 
-.o-field input[type='range']::-webkit-slider-thumb {
+.pa-field input[type='range']::-webkit-slider-thumb {
     -webkit-box-shadow: 0;
     box-shadow: 0;
     border: 1px solid $blue-light;
@@ -118,12 +118,12 @@
     -webkit-transition: all 0.175s ease;
     -o-transition: all 0.175s ease;
     transition: all 0.175s ease;
-    -webkit-box-shadow: inset 0 0 0 3px $white, inset 0 0 0 10px $blue;
-    box-shadow: inset 0 0 0 3px $white, inset 0 0 0 10px $blue;
+    -webkit-box-shadow: inset 0 0 0 4.5px $white, inset 0 0 0 10px $blue;
+    box-shadow: inset 0 0 0 4.5px $white, inset 0 0 0 10px $blue;
     animate: 0.175s;
 }
 
-.o-field input[type='range']::-moz-range-thumb {
+.pa-field input[type='range']::-moz-range-thumb {
     box-shadow: 0;
     border: 1px solid $blue;
     height: 16px;
@@ -142,7 +142,7 @@
     animate: 0.175s;
 }
 
-.o-field input[type='range']:hover::-webkit-slider-thumb {
+.pa-field input[type='range']:hover::-webkit-slider-thumb {
     -webkit-transform: scale(1.1, 1.1);
     transform: scale(1.1, 1.1);
     -webkit-transition: all 0.175s ease;
@@ -150,15 +150,15 @@
     transition: all 0.175s ease;
 }
 
-.o-field input[type='range']:hover::-moz-range-thumb {
+.pa-field input[type='range']:hover::-moz-range-thumb {
     transform: scale(1.1, 1.1);
     -webkit-transition: all 0.175s ease;
     -o-transition: all 0.175s ease;
     transition: all 0.175s ease;
 }
 
-.o-field input[type='range']:active::-webkit-slider-thumb,
-.o-field input[type='range']:focus::-webkit-slider-thumb {
+.pa-field input[type='range']:active::-webkit-slider-thumb,
+.pa-field input[type='range']:focus::-webkit-slider-thumb {
     border: 1px solid $blue-light;
     -webkit-box-shadow: 0 0 0 1px $blue-light, inset 0 0 0 4.5px $white-smoke,
         inset 0 0 0 10px $blue;
@@ -169,8 +169,8 @@
     transition: all 0.175s ease;
 }
 
-.o-field input[type='range']:active::-moz-range-thumb,
-.o-field input[type='range']:focus::-moz-range-thumb {
+.pa-field input[type='range']:active::-moz-range-thumb,
+.pa-field input[type='range']:focus::-moz-range-thumb {
     border: 1px solid $blue-light;
     box-shadow: 0 0 0 1px $blue-light, inset 0 0 0 4.5px $white-smoke,
         inset 0 0 0 10px $blue;

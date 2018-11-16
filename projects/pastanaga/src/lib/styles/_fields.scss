@@ -10,27 +10,26 @@ legend {
   text-transform: uppercase;
 }
 
+.pa-field {
+    position: relative;
+    margin-bottom: rythm(1.5);
 
-.o-field {
-  position: relative;
-  margin-bottom: rythm(1.5);
-
-  // o-field-help
-  &-help {
-    @include font-size(xs,s,xs);
-    color: $gray;
-    font-weight: $font-weight-light;
-    display: block;
-    margin-top:rythm(.5);
-  }
-  &-control:disabled ~ &-help {
-    color: $gray-pale;
-  }
+    // o-field-help
+    &-help {
+        @include font-size(xs, s, xs);
+        color: $gray;
+        font-weight: $font-weight-light;
+        display: block;
+        margin-top: rythm(.5);
+    }
+    &-control:disabled ~ &-help {
+        color: $gray-pale;
+    }
 }
 
 // no ng-deep here because this style doesn't belong to a component
 //groups
-fieldset.o-fieldset-group {
+fieldset.pa-fieldset-group {
   & > legend {
     @include font-size(xs,xs,xs);
     margin-bottom: rythm(.75);
@@ -41,47 +40,70 @@ fieldset.o-fieldset-group {
     color: $gray;
     padding: 0;
   }
-  & > pa-checkbox:not(:last-child) .o-field {
+  & > pa-checkbox:not(:last-child) .pa-field {
     margin-bottom: 0;
   }
-  & > .o-field.o-field-toggle:not(:last-child) {
+  & > .pa-field.pa-field-toggle:not(:last-child) {
     margin-bottom: rythm(1);
   }
 }
-fieldset > pa-button.o-field-button-right {
-  float:right;
-  margin-right: -12px;
-  margin-top: -30px;
+
+fieldset > pa-button.pa-field-button-right {
+    float: right;
+    margin-right: -12px;
+    margin-top: -30px;
 }
 
 // errors
-.o-field-error {
-  .o-field-control,
-  .o-field-control:not(:disabled):not(:read-only):hover,
-  .o-field-control:not(:disabled):not(:read-only):active,
-  .o-field-control:not(:disabled):not(:read-only):focus {
-      background: rgba($red, .05);
-      box-shadow: 0 7px 0 -6px $red;
-      caret-color: $red !important;
-  }
-  .o-field-control:not(:disabled):not(:read-only):hover {
-      box-shadow: 0 2px 0 -1px $red-contrast;
-  }
-  .o-field-control:not(:disabled):not(:read-only):active,
-  .o-field-control:not(:disabled):not(:read-only):focus {
-      box-shadow: 0 2px 0 0 $red-light;
-  }
+.pa-field-error {
+    .pa-field-control,
+    .pa-field-control:not(:disabled):not(:read-only):hover,
+    .pa-field-control:not(:disabled):not(:read-only):active,
+    .pa-field-control:not(:disabled):not(:read-only):focus {
+        /* autoprefixer: off */
+        background: rgba($red, .05) !important;
+        box-shadow: 0 2px 0 -1px $red-contrast !important;
+        caret-color: $red !important;
+    }
+    .pa-field-control:not(:disabled):not(:read-only):hover {
+        /* autoprefixer: off */
+        box-shadow: 0 2px 0 -1px $red-contrast !important;
+    }
+    .pa-field-control:not(:disabled):not(:read-only):active,
+    .pa-field-control:not(:disabled):not(:read-only):focus {
+        /* autoprefixer: off */
+        box-shadow: 0 2px 0 0 $red-light !important;
+    }
 
+    .pa-field-control:hover + .pa-field-label,
+    .pa-field-control:active + .pa-field-label,
+    .pa-field-control:focus + .pa-field-label,
+    .pa-field-label {
+        color: $red-contrast !important;
+    }
+    .pa-field-help-error {
+        color: $red-contrast;
+    }
 
-  .o-field-control:hover + .o-field-label,
-  .o-field-control:active + .o-field-label,
-  .o-field-control:focus + .o-field-label,
-  .o-field-label {
-      color: $red-contrast !important;
-  }
-  .o-field-help-error {
-      color: $red-contrast;
-  }
+    // firefox workaround
+    .pa-field-control,
+    .pa-field-control:not(:disabled):not(:-moz-read-only):hover,
+    .pa-field-control:not(:disabled):not(:-moz-read-only):active,
+    .pa-field-control:not(:disabled):not(:-moz-read-only):focus {
+        /* autoprefixer: off */
+        background: rgba($red, .05) !important;
+        box-shadow: 0 7px 0 -6px $red !important;
+        caret-color: $red !important;
+    }
+    .pa-field-control:not(:disabled):not(:-moz-read-only):hover {
+        /* autoprefixer: off */
+        box-shadow: 0 2px 0 -1px $red-contrast !important;
+    }
+    .pa-field-control:not(:disabled):not(:-moz-read-only):active,
+    .pa-field-control:not(:disabled):not(:-moz-read-only):focus {
+        /* autoprefixer: off */
+        box-shadow: 0 2px 0 0 $red-light !important;
+    }
 }
 
 input:-webkit-autofill,

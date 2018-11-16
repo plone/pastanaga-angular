@@ -8,6 +8,7 @@ import { ButtonBase } from './button-base';
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })
 export class ButtonLinkComponent extends ButtonBase implements OnChanges {
+    @Input() hasButtonDisplay = false;
     @Output() clickEvent: EventEmitter<any> = new EventEmitter();
 
     ngOnChanges(changes) {

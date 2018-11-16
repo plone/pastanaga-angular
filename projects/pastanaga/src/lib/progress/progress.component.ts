@@ -5,7 +5,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
     templateUrl: './progress.component.html',
     styleUrls: ['./progress.component.scss'],
 })
-export class ProgressComponent implements OnInit, OnChanges {
+export class PastanagaProgressComponent implements OnInit, OnChanges {
     @Input() value: number;
     @Input() isSecondary = false;
     @Input() isSmall = false;

@@ -1,13 +1,15 @@
-<span class="o-badge {{colorClass}}"
-      [class.o-badge-accent]="isAccented"
-      [class.o-badge-small]="isSmall"
+<span class="pa-badge {{colorClass}}"
+      [class.pa-badge-accent]="isAccented"
+      [class.pa-badge-small]="isSmall"
       [ngStyle]="colorStyle">
     <span *ngIf="!value"
-          [class.o-badge-ellipsis]="!!maxWidth"
+          [class.pa-badge-ellipsis]="!!maxWidth"
           [style.max-width]="maxWidth"
           [paTooltip]="text" #textContent><ng-content></ng-content></span>
     <pa-button *ngFor="let btn of buttons"
                  size="small" [icon]="btn.icon" [color]="btn.color" (click)="btn.onClick()">{{btn.name}}</pa-button>
-    <ng-container *ngIf="!!value || value === 0">{{ value }}<span *ngIf="of"><abbr title="of">/</abbr>{{ of }}</span></ng-container>
+    <pa-button *ngIf="canBeRemoved"
+                 size="small" icon="clear" (click)="remove.emit($event)">Remove</pa-button>
+    <ng-container *ngIf="!!value || value === 0">{{ value | number }}<span *ngIf="of"><abbr title="of">/</abbr>{{ of | number }}</span></ng-container>
 </span>
 

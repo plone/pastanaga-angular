@@ -1,6 +1,6 @@
 @import "../styles/variables";
 
-.o-field.o-field-textarea .o-field-control-resizer {
+.pa-field.pa-field-textarea .pa-field-control-resizer {
     height: 0px;
     width: 0px;
     border-top: 7px solid $blue;
@@ -14,7 +14,7 @@
     z-index: 1;
     transition: all .33s ease;
 }
-.o-field.o-field-textarea .o-field-control-resizer::before {
+.pa-field.pa-field-textarea .pa-field-control-resizer::before {
     content: "";
     height: 0px;
     width: 0px;
@@ -28,7 +28,7 @@
     z-index: 1;
     transition: all .33s ease;
 }
-.o-field.o-field-textarea .o-field-control-resizer::after {
+.pa-field.pa-field-textarea .pa-field-control-resizer::after {
     -webkit-transform: rotate(-45deg);
     content: "";
     height: 6px;
@@ -41,42 +41,42 @@
     z-index: 1;
 }
 
-.o-field.o-field-textarea .o-field-control {
+.pa-field.pa-field-textarea .pa-field-control {
     height: auto;
     min-height: 45px;
     border-top:24px solid transparent;
     padding-top:0;
     resize: vertical;
 
-    &:hover ~ .o-field-control-resizer,
-    &:active ~ .o-field-control-resizer,
-    &:focus ~ .o-field-control-resizer {
+    &:hover ~ .pa-field-control-resizer,
+    &:active ~ .pa-field-control-resizer,
+    &:focus ~ .pa-field-control-resizer {
         right: 2.5px;
     }
-    &:active ~ .o-field-control-resizer,
-    &:focus ~ .o-field-control-resizer {
+    &:active ~ .pa-field-control-resizer,
+    &:focus ~ .pa-field-control-resizer {
         right: 2.5px;
         border-top: 7px solid $blue-light;
     }
-    &:active ~ .o-field-control-resizer::before,
-    &:focus ~ .o-field-control-resizer::before {
+    &:active ~ .pa-field-control-resizer::before,
+    &:focus ~ .pa-field-control-resizer::before {
         opacity: 0;
     }
-    &.o-field-control-accent ~ .o-field-control-resizer {
+    &.pa-field-control-accent ~ .pa-field-control-resizer {
         right: 2.5px;
         border-top: 7px solid $sky-dark;
         margin-top: -6px;
     }
-    &.o-field-control-accent ~ .o-field-control-resizer::before {
+    &.pa-field-control-accent ~ .pa-field-control-resizer::before {
         border-top: 4px solid $sky-dark;
     }
-    &.o-field-control-accent ~ .o-field-control-resizer::after {
+    &.pa-field-control-accent ~ .pa-field-control-resizer::after {
         display: none;
     }
-    &.o-field-control-accent:active ~ .o-field-control-resizer,
-    &.o-field-control-accent:focus ~ .o-field-control-resizer,
-    &.o-field-control-accent:active ~ .o-field-control-resizer::before,
-    &.o-field-control-accent:focus ~ .o-field-control-resizer::before {
+    &.pa-field-control-accent:active ~ .pa-field-control-resizer,
+    &.pa-field-control-accent:focus ~ .pa-field-control-resizer,
+    &.pa-field-control-accent:active ~ .pa-field-control-resizer::before,
+    &.pa-field-control-accent:focus ~ .pa-field-control-resizer::before {
         border-top-color: $blue-light;
     }
 }

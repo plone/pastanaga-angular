@@ -1,6 +1,8 @@
 @import "../../styles/variables";
 
-.o-field {
+.pa-field {
+    position: relative;
+
     // Controls: Checkboxes, radios, toggles, ranges
     &-control[type="checkbox"],
     &-control[type="radio"] {
@@ -16,7 +18,7 @@
         &:focus {
             outline: 0;
         }
-        & + .o-field-label {
+        & + .pa-field-label {
             position: relative;
             cursor: pointer;
             padding: 0;
@@ -30,16 +32,21 @@
             & > span {
                 margin-left: rythm(.5);
             }
+            small {
+                color: $gray-dark;
+            }
         }
-        & + .o-field-label + output {
+        & + .pa-field-label + output {
             display: inline-block;
-            position: relative;
-            float: right;
-            & > .o-badge {
+            position: absolute;
+            right: 0;
+            top: -3px;
+
+            & > .pa-badge {
                 margin-right: 0;
             }
         }
-        & + .o-field-label::before {
+        & + .pa-field-label::before {
             content: '';
             margin-top: -1px;
             display: inline-block;
@@ -50,26 +57,26 @@
             border: 1px solid $brown;
             border-radius: 0;
         }
-        &:checked + .o-field-label::before {
+        &:checked + .pa-field-label::before {
             border: 1px solid $blue;
         }
-        &:disabled + .o-field-label {
+        &:disabled + .pa-field-label {
             color: $gray-pale;
             cursor: default;
         }
-        &:not(:checked) + .o-field-label::before {
+        &:not(:checked) + .pa-field-label::before {
             border: 1px solid $brown-contrast;
         }
-        &:disabled + .o-field-label::before {
+        &:disabled + .pa-field-label::before {
             box-shadow: none;
             border: 0;
             transition: all .33s ease;
             border-image-slice: 18 18 18 18 fill;
             border-image-width: 9px 9px 9px 9px;
             border-image-repeat: round round;
-            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23' +str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
+            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="#B8C6C8" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
         }
-        & + .o-field-label::after {
+        & + .pa-field-label::after {
             content: "";
             position: absolute;
             left: 0;
@@ -82,32 +89,32 @@
             opacity: 0;
             background-repeat: no-repeat;
         }
-        &:checked + .o-field-label::after {
-            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' +str_slice(#{$blue}, 2)+'" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
+        &:checked + .pa-field-label::after {
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="#2880a4" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
             background-size: rythm(1.5) rythm(1.5);
             opacity: 1;
         }
-        &:checked:disabled + .o-field-label::after {
-            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' +str_slice(#{$gray-pale}, 2)+'" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
+        &:checked:disabled + .pa-field-label::after {
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="#B8C6C8" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
             background-size: rythm(1.5) rythm(1.5);
             opacity: 1;
         }
 
-        &:active + .o-field-label::before,
-        &:focus + .o-field-label::before {
+        &:active + .pa-field-label::before,
+        &:focus + .pa-field-label::before {
             border: 1px solid $brown-light;
             box-shadow: 0 0 0 1px $brown-light;
             transition: all .33s ease;
             background: $white-smoke;
         }
-        &:checked:active + .o-field-label::before,
-        &:checked:focus + .o-field-label::before {
+        &:checked:active + .pa-field-label::before,
+        &:checked:focus + .pa-field-label::before {
             border: 1px solid $blue-light;
             box-shadow: 0 0 0 1px $blue-light;
             transition: all .33s ease;
             background: $white-smoke;
         }
-        & ~ .o-field-help {
+        & ~ .pa-field-help {
             margin-left: rythm(2);
             margin-top: - rythm(1);
             margin-bottom: rythm(.5);
@@ -116,17 +123,17 @@
     // Radio specifics
     &-control[type="radio"] {
         border-radius: 50%;
-        & + .o-field-label::before {
+        & + .pa-field-label::before {
             border-radius: 50%;
         }
-        &:disabled + .o-field-label::before {
-            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23' +str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1.5" r="1"/><circle cx="28" cy="4" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="34.5" cy="13" r="1"/><circle cx="32" cy="8" r="1"/><circle cx="34.5" cy="23" r="1"/><circle cx="32" cy="28" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="34.5" r="1"/><circle cx="28" cy="32" r="1"/><circle cx="13" cy="34.5" r="1"/><circle cx="8" cy="32" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1.5" cy="23" r="1"/><circle cx="4" cy="28" r="1"/><circle cx="1.5" cy="13" r="1"/><circle cx="4" cy="8" r="1"/><circle cx="13" cy="1.5" r="1"/><circle cx="8" cy="4" r="1"/></g></svg>');
+        &:disabled + .pa-field-label::before {
+            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="#B8C6C8" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1.5" r="1"/><circle cx="28" cy="4" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="34.5" cy="13" r="1"/><circle cx="32" cy="8" r="1"/><circle cx="34.5" cy="23" r="1"/><circle cx="32" cy="28" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="34.5" r="1"/><circle cx="28" cy="32" r="1"/><circle cx="13" cy="34.5" r="1"/><circle cx="8" cy="32" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1.5" cy="23" r="1"/><circle cx="4" cy="28" r="1"/><circle cx="1.5" cy="13" r="1"/><circle cx="4" cy="8" r="1"/><circle cx="13" cy="1.5" r="1"/><circle cx="8" cy="4" r="1"/></g></svg>');
         }
-        &:checked + .o-field-label::after {
-            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' +str_slice(#{$blue}, 2)+'" fill-rule="evenodd"/></svg>');
+        &:checked + .pa-field-label::after {
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="#2880a4" fill-rule="evenodd"/></svg>');
         }
-        &:checked:disabled + .o-field-label::after {
-            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' +str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd"/></svg>');
+        &:checked:disabled + .pa-field-label::after {
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="#B8C6C8" fill-rule="evenodd"/></svg>');
         }
     }
 }

@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
     @ViewChild('toastsContainer', {read: ViewContainerRef}) toastsContainer: ViewContainerRef;
 
     isStandaloneCheckboxSelected: boolean;
-    standaloneSelection: string;
+    standaloneSelection: boolean;
 
     simpleCheckboxes: ControlModel[] = [
         {label: 'checkbox 1', value: 'simple_1'},
@@ -56,10 +56,10 @@ export class AppComponent implements OnInit {
         },
     ];
 
-    simpleCheckboxSelection: ControlModel[];
-    iconCheckboxSelection: ControlModel[];
-    helpCheckboxSelection: ControlModel[];
-    nestedCheckboxSelection: ControlModel[];
+    simpleCheckboxSelection: string[];
+    iconCheckboxSelection: string[];
+    helpCheckboxSelection: string[];
+    nestedCheckboxSelection: string[];
 
     toggleSelection1 = false;
     toggleSelection2 = true;
@@ -136,6 +136,8 @@ export class AppComponent implements OnInit {
     toastButtonColor = 'destructive';
     toastDelay = 0;
 
+    sections: any = {};
+
     constructor(
         private toaster: Toaster,
         private translate: TranslateService,
@@ -153,6 +155,13 @@ export class AppComponent implements OnInit {
 
         this.resetProgressValueUntil100();
         this.resetProgressValueUntil200();
+
+        const savedSections = localStorage.getItem('sections');
+        if (savedSections) {
+            this.sections = JSON.parse(savedSections);
+        } else {
+            this.sections = {text: true};
+        }
     }
 
     resetProgressValueUntil100() {
@@ -232,4 +241,8 @@ export class AppComponent implements OnInit {
         this.toaster.open(message, button, delay);
     }
 
+    toggleSection(id) {
+        this.sections[id] = !this.sections[id];
+        localStorage.setItem('sections', JSON.stringify(this.sections));
+    }
 }
