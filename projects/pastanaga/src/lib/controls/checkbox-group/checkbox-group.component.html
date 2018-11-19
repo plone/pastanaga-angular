@@ -19,7 +19,7 @@
                      [help]="checkbox.help"
                      [(isSelected)]="checkbox.isSelected"
                      [isDisabled]="checkbox.isDisabled"
-                     (selection)="updateSelection()">{{checkbox.label}}
+                     (selection)="updateSelection(checkbox)">{{checkbox.label}}
         </pa-checkbox>
 
         <pa-checkbox-expandable *ngIf="checkbox.children && checkbox.children.length > 0"
