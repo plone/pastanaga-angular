@@ -100,7 +100,8 @@ export class TooltipDirective {
 
     @HostListener('focusout')
     @HostListener('mouseleave')
-    hide() {
+    @HostListener('mousedown')
+    hide(): void {
         if (this.component) {
             this.component.instance.hide();
         }
