@@ -20,10 +20,12 @@ export class ButtonBase implements OnInit, AfterContentInit {
     buttonLabel: string;
 
     ngAfterContentInit() {
-        this.buttonLabel = this.textElement.nativeElement.textContent.trim();
-        if (!this.ariaLabel) {
-            this.ariaLabel = this.buttonLabel;
-        }
+        setTimeout(() => {
+            this.buttonLabel = this.textElement.nativeElement.textContent.trim();
+            if (!this.ariaLabel) {
+                this.ariaLabel = this.buttonLabel;
+            }
+        }, 0);
     }
 
     ngOnInit() {
