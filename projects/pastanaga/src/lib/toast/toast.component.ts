@@ -14,32 +14,36 @@ const HAS_LINK = /.*(\[(.+)\|(.+)\]).*/g;
 })
 export class ToastComponent implements OnInit {
 
-    @Input() toast: ToastModel;
+    @Input() toast?: ToastModel;
     @Output() dismiss = new EventEmitter();
 
-    @ViewChild('toastContainer') toastContainer: ElementRef;
+    @ViewChild('toastContainer') toastContainer?: ElementRef;
 
-    ariaLabeledBy: string;
-    parsedMessage: SafeHtml;
-    isSibling: boolean;
+    ariaLabeledBy = '';
+    parsedMessage?: SafeHtml;
+    isSibling = false;
     isDismissed = false;
 
     constructor(private sanitized: DomSanitizer) {
     }
 
     ngOnInit() {
-        // If no button was defined, we need to add a delay if it was set to zero.
-        const hasDelay = (this.toast.delay && this.toast.delay > 0) || !this.toast.buttons.length;
-        this.ariaLabeledBy = ARIA_KEY + this.toast.key;
+        if (!!this.toast) {
+            // If no button was defined, we need to add a delay if it was set to zero.
+            const hasDelay = (this.toast.delay && this.toast.delay > 0) || !this.toast.buttons.length;
+            this.ariaLabeledBy = ARIA_KEY + this.toast.key;
 
-        if (hasDelay) {
-            const delay = this.toast.delay || DELAY;
-            setTimeout(() => this.dismiss.emit({toast: this.toast}), delay);
+            if (hasDelay) {
+                const delay = this.toast.delay || DELAY;
+                setTimeout(() => this.dismiss.emit({ toast: this.toast }), delay);
+            }
+
+            // Parse the toast message to check for embedded links
+            this.parseMessage(this.toast.message);
         }
-
-        // Parse the toast message to check for embedded links
-        this.parseMessage(this.toast.message);
-        this.toastContainer.nativeElement.focus();
+        if (!!this.toastContainer) {
+            this.toastContainer.nativeElement.focus();
+        }
     }
 
     handleDismiss(button?: string) {
@@ -74,7 +78,7 @@ export class ToastComponent implements OnInit {
 
     dismissWithESC($event) {
         // Only 'closeable' buttons can be dismissed with ESC
-        if (!this.toast.closeable) {
+        if (!this.toast || !this.toast.closeable) {
             return;
         }
 

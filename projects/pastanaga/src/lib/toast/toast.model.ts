@@ -1,10 +1,10 @@
 import { BehaviorSubject } from 'rxjs';
 
 export class ToastModel {
-    onClick: BehaviorSubject<string>;
+    onClick?: BehaviorSubject<string>;
 
     // Internal toast identifier.
-    key?: string;
+    key: string;
 
     // Message to be displayed in the toast.
     // To display a link within in a toast message, they must be parsed as: [text_to_be_displayed|anchor_url]
@@ -20,7 +20,7 @@ export class ToastModel {
     delay?: number;
 
     // List of buttons to be displayed.
-    buttons?: OnnaToastButton[];
+    buttons: ToastButtonModel[];
 
     // If true (and no buttons defined), the toast will display a close button (with an icon).
     // If a toast has buttons this property will be ignored.
@@ -44,12 +44,12 @@ export class ToastModel {
         this.translateParams = data.translateParams;
 
         if (this.buttons.length > 0) {
-            this.onClick = new BehaviorSubject(null);
+            this.onClick = new BehaviorSubject('');
         }
     }
 }
 
-export class OnnaToastButton {
+export class ToastButtonModel {
 
     public static readonly PRIMARY = 'primary';
     public static readonly SECONDARY = 'secondary';
@@ -67,7 +67,7 @@ export class OnnaToastButton {
 
         this.id = data.id || data.text || data.icon;
         this.text = data.text;
-        this.color = data.color || OnnaToastButton.PRIMARY;
+        this.color = data.color || ToastButtonModel.PRIMARY;
         this.icon = data.icon;
         this.tooltip = data.tooltip;
     }

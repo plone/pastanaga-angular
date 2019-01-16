@@ -18,23 +18,24 @@ let nextId = 0;
     }],
 })
 export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewInit, Validator {
-    @Input() id: string;
-    @Input() name: string;
-    @Input() label: string;
+    @Input() id?: string;
+    @Input() name?: string;
+    @Input() label?: string;
     @Input() value: any;
-    @Input() placeholder: string;
-    @Input() help: string;
-    @Input() errorHelp: string;
-    @Input() errorMessage: string;
-    @Input() disabled: boolean;
-    @Input() required: boolean;
-    @Input() isLabelHidden: boolean;
+    @Input() placeholder?: string;
+    @Input() help?: string;
+    @Input() errorHelp ?: string;
+    @Input() errorMessage ?: string;
+    @Input() disabled = false;
+    @Input() required = false;
+    @Input() isLabelHidden = false;
     @Output() onSelection: EventEmitter<any> = new EventEmitter();
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
-    helpId: string;
-    onChange: Function;
-    onTouched: Function;
-    hasNoSelection: boolean;
+    helpId = '';
+    onChange?: Function;
+    onTouched?: Function;
+    hasNoSelection = false;
+    isPlaceHolderSelected = false;
     hasError = false;
 
     constructor(private element: ElementRef) {
@@ -50,10 +51,15 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewI
 
     ngAfterViewInit() {
         setTimeout(() => {
-            if (this.value) {
+            if (!!this.value) {
                 this.element.nativeElement.querySelector('select').value = this.value;
+            } else if (!!this.placeholder) {
+                this.element.nativeElement.querySelector('select').value = '__PLACEHOLDER__';
+                this.isPlaceHolderSelected = true;
             } else {
-                this.hasNoSelection = this.element.nativeElement.querySelectorAll('option[selected]').length === 0;
+                const firstOption = this.element.nativeElement.querySelector('option:first-child');
+                const noOptionSelected = this.element.nativeElement.querySelectorAll('option:checked').length === 0;
+                this.hasNoSelection = noOptionSelected && !!firstOption && !firstOption.innerText;
             }
         }, 0);
     }

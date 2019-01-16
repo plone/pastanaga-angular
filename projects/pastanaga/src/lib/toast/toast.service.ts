@@ -1,6 +1,6 @@
 import {ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef} from '@angular/core';
 import {ToastComponent} from './toast.component';
-import {ToastModel, OnnaToastButton} from './toast.model';
+import {ToastModel, ToastButtonModel} from './toast.model';
 
 /**
  *   -----------------------
@@ -53,10 +53,10 @@ import {ToastModel, OnnaToastButton} from './toast.model';
  *   // ----------------------------------------------------------------------------------
  *   // We can create custom buttons to dismiss or handle user interactions with our toast
  *
- *   const confirmButton: OnnaToastButton = new OnnaToastButton({text: 'Confirm'}); // Primary color by default.
- *   const dismissButton: OnnaToastButton = new OnnaToastButton({text: 'Dismiss', color: OnnaToastButton.PRIMARY});
- *   const undoButton: OnnaToastButton = new OnnaToastButton({text: 'Undo', color: OnnaToastButton.SECONDARY});
- *   const destroyButton: OnnaToastButton = new OnnaToastButton({text: 'Destroy', color: OnnaToastButton.DESTRUCTIVE});
+ *   const confirmButton: ToastButtonModel = new ToastButtonModel({text: 'Confirm'}); // Primary color by default.
+ *   const dismissButton: ToastButtonModel = new ToastButtonModel({text: 'Dismiss', color: ToastButtonModel.PRIMARY});
+ *   const undoButton: ToastButtonModel = new ToastButtonModel({text: 'Undo', color: ToastButtonModel.SECONDARY});
+ *   const destroyButton: ToastButtonModel = new ToastButtonModel({text: 'Destroy', color: ToastButtonModel.DESTRUCTIVE});
  *
  *
  *   const t1 = new ToastModel({message: 'Auto-dismissible toast'});
@@ -104,8 +104,8 @@ import {ToastModel, OnnaToastButton} from './toast.model';
 @Injectable()
 export class Toaster {
 
-    private entryPoint: ViewContainerRef;
-    private toasts: ComponentRef<ToastComponent>[];
+    private entryPoint?: ViewContainerRef;
+    private toasts?: ComponentRef<ToastComponent>[];
 
     private toastCounter = 0;
 
@@ -137,7 +137,7 @@ export class Toaster {
      *
      *     An auto-dismissible toast with 5 seconds delay and no buttons will be display otherwise.
      */
-    open(toast: ToastModel|string, button?: string|boolean|number, closeable?: boolean|number, delay?: number) {
+    open(toast: ToastModel | string, button?: string | boolean | number, closeable?: boolean | number, delay?: number) {
 
         if (toast instanceof ToastModel) {
             this.createToast(toast);
@@ -147,19 +147,19 @@ export class Toaster {
 
     }
 
-    private openQuickToast(message: string, button?: string|boolean|number, closeable?: boolean|number, delay?: number) {
+    private openQuickToast(message: string, button?: string | boolean | number, closeable?: boolean | number, delay?: number) {
         const buttonText = this.isString(button) ? button : '';
         const closeableValue = this.isBoolean(button) ? button : this.isBoolean(closeable) ? closeable : false;
         const delayValue = this.isNumber(button) ? button : this.isNumber(closeable) ? closeable : this.isNumber(delay) ? delay : 5000;
 
         const quickToast = new ToastModel({message: message, delay: delayValue});
         if (buttonText) {
-            const quickButton = new OnnaToastButton({text: buttonText});
+            const quickButton = new ToastButtonModel({text: buttonText});
             quickToast.buttons = [quickButton];
         } else if (closeableValue) {
             // Fixme: Use the tooltip version when fixed
-            // const cancelButton = new OnnaToastButton({icon: 'clear', color: 'secondary', tooltip: 'Close'});
-            const cancelButton = new OnnaToastButton({icon: 'clear', color: 'secondary'});
+            // const cancelButton = new ToastButtonModel({icon: 'clear', color: 'secondary', tooltip: 'Close'});
+            const cancelButton = new ToastButtonModel({icon: 'clear', color: 'secondary'});
             quickToast.buttons = [cancelButton];
         }
 
@@ -185,12 +185,14 @@ export class Toaster {
             return;
         }
 
-        const toastComponentRef = this.toasts[index];
+        if (!!this.toasts) {
+            const toastComponentRef = this.toasts[index];
 
-        this.toasts.splice(index, 1);
-        this.toasts.forEach((message, i) => message.instance.isSibling = i > 0);
-        toastComponentRef.instance.isDismissed = true;
-        setTimeout(() => toastComponentRef.destroy(), 500);
+            this.toasts.splice(index, 1);
+            this.toasts.forEach((message, i) => message.instance.isSibling = i > 0);
+            toastComponentRef.instance.isDismissed = true;
+            setTimeout(() => toastComponentRef.destroy(), 500);
+        }
 
         if (button && toast.onClick) {
             toast.onClick.next(button);
@@ -199,11 +201,13 @@ export class Toaster {
 
     private getToastIndex(key: string): number {
         let index = -1;
-        for (let i = 0; i < this.toasts.length; i++) {
-            const toast = this.toasts[i];
-            if (toast.instance && toast.instance.toast.key === key) {
-                index = i;
-                break;
+        if (!!this.toasts) {
+            for (let i = 0; i < this.toasts.length; i++) {
+                const toast = this.toasts[i];
+                if (toast.instance && toast.instance.toast && toast.instance.toast.key === key) {
+                    index = i;
+                    break;
+                }
             }
         }
 
@@ -213,13 +217,15 @@ export class Toaster {
     private createToast(toast: ToastModel) {
         toast.key = 'toast' + this.toastCounter++;
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
-        const toastComponentRef: ComponentRef<ToastComponent> = this.entryPoint.createComponent(componentFactory, 0);
-        (<ToastComponent> toastComponentRef.instance).toast = toast;
-        (<ToastComponent> toastComponentRef.instance).isSibling = this.toasts.length > 0;
-        (<ToastComponent> toastComponentRef.instance).dismiss.subscribe(
-            toastToDismiss => this.dismiss(toastToDismiss.toast, toastToDismiss.button)
-        );
+        if (!!this.entryPoint && !!this.toasts) {
+            const toastComponentRef: ComponentRef<ToastComponent> = this.entryPoint.createComponent(componentFactory, 0);
+            (<ToastComponent>toastComponentRef.instance).toast = toast;
+            (<ToastComponent>toastComponentRef.instance).isSibling = this.toasts.length > 0;
+            (<ToastComponent>toastComponentRef.instance).dismiss.subscribe(
+                toastToDismiss => this.dismiss(toastToDismiss.toast, toastToDismiss.button)
+            );
 
-        this.toasts.push(toastComponentRef);
+            this.toasts.push(toastComponentRef);
+        }
     }
 }

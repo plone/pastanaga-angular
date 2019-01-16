@@ -13,5 +13,9 @@ export class ButtonLinkComponent extends ButtonBase implements OnChanges {
 
     ngOnChanges(changes) {
         this.onChanges(changes);
+
+        if (changes.hasButtonDisplay) {
+            this.buttonStyle['o-button-link'] = changes.hasButtonDisplay.currentValue;
+        }
     }
 }

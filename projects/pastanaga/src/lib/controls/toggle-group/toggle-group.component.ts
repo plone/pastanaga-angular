@@ -9,7 +9,7 @@ let nextId = 0;
     styleUrls: ['./toggle-group.component.scss'],
 })
 export class ToggleGroupComponent implements OnInit, OnChanges {
-    @Input() id: string;
+    @Input() id?: string;
     @Input() toggles: ToggleModel[] = [];
     @Output() onSelection: EventEmitter<ToggleModel[]> = new EventEmitter();
 

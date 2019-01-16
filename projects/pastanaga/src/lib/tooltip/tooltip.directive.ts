@@ -1,14 +1,12 @@
 import {
     ComponentRef,
     ComponentFactoryResolver,
-    ComponentFactory,
     Directive,
     HostListener,
     Input,
     ViewContainerRef,
     ElementRef,
     Renderer2,
-    ApplicationRef,
 } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
 
@@ -21,14 +19,14 @@ let nextId = 0;
     selector: '[paTooltip]'
 })
 export class TooltipDirective {
-    @Input('paTooltip') text: string;
+    @Input('paTooltip') text = '';
     @Input('paTooltipType') type = SYSTEM;
 
-    id: string;
+    id = '';
     isDisplayed = false;
-    rootParent: HTMLElement;
+    rootParent?: HTMLElement;
 
-    private component: ComponentRef<TooltipComponent>;
+    private component?: ComponentRef<TooltipComponent>;
 
     constructor(
         private element: ElementRef,
@@ -71,10 +69,12 @@ export class TooltipDirective {
     }
 
     show(x: number, y: number) {
-        this.component.instance.left = x || 0;
-        this.component.instance.top = y || 0;
-        this.component.instance.text = this.text;
-        this.component.instance.show();
+        if (!!this.component) {
+            this.component.instance.left = x || 0;
+            this.component.instance.top = y || 0;
+            this.component.instance.text = this.text;
+            this.component.instance.show();
+        }
     }
 
     createTooltip(x: number, y: number) {
@@ -126,17 +126,18 @@ export class TooltipDirective {
         return [position[0] - rootRect.left, position[1] - rootRect.top];
     }
 
-    getFixedRootParent(element: HTMLElement) {
+    getFixedRootParent(element: HTMLElement): HTMLElement {
         if (element.tagName === 'BODY') {
             return element;
         }
-        // an element with `position: fixed` will be positionned relatively to the viewport
+        // an element with `position: fixed` will be positioned relatively to the viewport
         // unless one of the ancestor has a property `transform`, `filter` or `perspective`
         const style = getComputedStyle(element);
         if (style.transform !== 'none' || style.perspective !== 'none' || style.filter !== 'none') {
             return element;
         } else {
-            return this.getFixedRootParent(element.parentElement);
+            const parent = element.parentElement;
+            return parent ? this.getFixedRootParent(parent) : element;
         }
     }
 }

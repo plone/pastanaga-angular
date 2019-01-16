@@ -8,40 +8,42 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 let nextId = 0;
 
 export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator {
-    @Input() id: string;
-    @Input() name: string;
-    @Input() value: string | number = '';
-    @Input() errorHelp: string;
-    @Input() errorMessage: string;
-    @Input() placeholder: string;
-    @Input() help: string;
+    @Input() id?: string;
+    @Input() name?: string;
+    @Input() value?: string | number = '';
+    @Input() errorHelp?: string;
+    @Input() errorMessage?: string;
+    @Input() placeholder?: string;
+    @Input() help?: string;
     @Input()
     get required(): boolean { return this._required; }
     set required(value: boolean) { this._required = coerceBooleanProperty(value); }
     protected _required = false;
-    @Input() pattern: RegExp;
-    @Input() min: number;
-    @Input() max: number;
+    @Input() pattern?: RegExp;
+    @Input() min?: number;
+    @Input() max?: number;
     @Input()
     get disabled(): boolean { return this._disabled; }
     set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
     protected _disabled = false;
-    @Input() isReadOnly: boolean;
-    @Input() isLabelHidden: boolean;
+    @Input() isReadOnly = false;
+    @Input() isLabelHidden = false;
 
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
-    helpId: string;
-    onChange: Function;
-    onTouched: Function;
+    @Output() enter: EventEmitter<any> = new EventEmitter();
+    @Output() blur: EventEmitter<any> = new EventEmitter();
+    helpId = '';
+    onChange?: Function;
+    onTouched?: Function;
     hasError = false;
     errors: { required: boolean, pattern: boolean, passwordStrength?: boolean, min?: boolean, max?: boolean } = {
         required: false,
         pattern: false,
     };
 
-    baseId: string;
-    type: string;
+    baseId = '';
+    type = '';
 
     debouncer: Subject<string> = new Subject();
 
@@ -52,7 +54,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     ngOnInit() {
         this.id = !!this.id ? `${this.id}-input` : `${this.baseId}-${nextId++}`;
         this.name = this.name || this.id;
-        if (this.help) {
+        if (!!this.help) {
             this.helpId = `${this.id}-help`;
         }
     }
@@ -60,10 +62,10 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     change(value: any) {
         this._validate(value);
         this.writeValue(value);
-        if (this.onChange) {
+        if (!!this.onChange) {
             this.onChange(value);
         }
-        if (this.onTouched) {
+        if (!!this.onTouched) {
             this.onTouched(value);
         }
     }
@@ -74,7 +76,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
             this._validate(value);
             this.writeValue(value);
             this.keyUp.emit(value);
-            if (this.onChange) {
+            if (!!this.onChange) {
                 this.onChange(value);
             }
         }
@@ -82,21 +84,25 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
 
     onBlur() {
         this._validate(this.value);
-        this.validate(null);
+        this.validate(<FormControl>{});
+        this.blur.emit(this.value);
     }
 
     _validate(value) {
         if (this.required) {
             this.errors.required = !value && value !== 0;
         }
-        if (this.pattern) {
-            this.errors.pattern = value && !this.pattern.test(value);
+        if (!!this.pattern && typeof value === 'string') {
+            this.errors.pattern = !!value && !this.pattern.test(value);
         }
-        if (this.type === 'number' && typeof this.min === 'number') {
-            this.errors.min = value < this.min;
-        }
-        if (this.type === 'number' && typeof this.max === 'number') {
-            this.errors.max = value > this.max;
+        if ((!!value || typeof value === 'number') && this.type === 'number') {
+            const numVal = typeof value === 'number' ? value : parseFloat(value);
+            if (typeof this.min === 'number') {
+                this.errors.min = numVal < this.min;
+            }
+            if (typeof this.max === 'number') {
+                this.errors.max = numVal > this.max;
+            }
         }
     }
 

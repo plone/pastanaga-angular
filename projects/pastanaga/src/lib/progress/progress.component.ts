@@ -6,20 +6,20 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
     styleUrls: ['./progress.component.scss'],
 })
 export class PastanagaProgressComponent implements OnInit, OnChanges {
-    @Input() value: number;
+    @Input() value?: number;
     @Input() isSecondary = false;
     @Input() isSmall = false;
-    @Input() maxValue: number;
+    @Input() maxValue?: number;
 
-    isIndeterminate: boolean;
-    percentValue: number;
+    isIndeterminate = false;
+    percentValue = 0;
 
     ngOnInit() {
         this.setIsIndeterminate();
     }
 
     ngOnChanges(changes) {
-        if (changes.maxValue && this.maxValue === 0) {
+        if (changes.maxValue && changes.maxValue.currentValue === 0) {
             throw new Error('maxValue cannot be 0');
         }
 
@@ -34,11 +34,13 @@ export class PastanagaProgressComponent implements OnInit, OnChanges {
     }
 
     private calculatePercentValue() {
-        const max = this.maxValue || 100;
-        this.percentValue = this.value * 100 / max;
+        if (typeof this.value === 'number') {
+            const max = this.maxValue || 100;
+            this.percentValue = this.value * 100 / max;
 
-        if (this.value > max) {
-            console.error(`Progress value is greater than the max value: ${this.value} > ${max}!`);
+            if (this.value > max) {
+                console.error(`Progress value is greater than the max value: ${this.value} > ${max}!`);
+            }
         }
     }
 }

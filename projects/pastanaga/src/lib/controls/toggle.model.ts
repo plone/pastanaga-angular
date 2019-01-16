@@ -1,13 +1,13 @@
 export class ToggleModel {
-    id: string;
-    label: string;
-    isSelected: boolean;
+    id?: string;
+    label = '';
+    isSelected = false;
     help?: string;
     imageUrl?: string;
 }
 
 export class ToggleDivider {
-    hasDivider: boolean;
-    isFirst: boolean;
-    isLast: boolean;
+    hasDivider = false;
+    isFirst = true;
+    isLast = false;
 }

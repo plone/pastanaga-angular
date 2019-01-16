@@ -9,31 +9,31 @@ let nextId = 0;
 })
 export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() type = 'checkbox';
-    @Input() help: string;
-    @Input() icon: string;
-    @Input() name: string;
-    @Input() subLabel: string;
-    @Input() isDisabled: boolean;
-    @Input() isSelected: boolean;
-    @Input() isIndeterminate: boolean;
-    @Input() isLabelHidden: boolean;
+    @Input() help?: string;
+    @Input() icon?: string;
+    @Input() name?: string;
+    @Input() subLabel?: string;
+    @Input() isDisabled = false;
+    @Input() isSelected = false;
+    @Input() isIndeterminate = false;
+    @Input() isLabelHidden = false;
     @Input() isBadgeVisible = false;
-    @Input() totalChildren: number;
-    @Input() selectedChildren: number;
+    @Input() totalChildren?: number;
+    @Input() selectedChildren?: number;
 
-    @Output() selection: EventEmitter<boolean> = new EventEmitter();
+    @Output() onSelection: EventEmitter<boolean> = new EventEmitter();
     // the following EventEmitters allow two way data-binding
     @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text') textElement: ElementRef;
-    @ViewChild('badge') badge: ElementRef;
-    @ViewChild('ellipsisText') ellipsisText: ElementRef;
+    @ViewChild('text') textElement?: ElementRef;
+    @ViewChild('badge') badge?: ElementRef;
+    @ViewChild('ellipsisText') ellipsisText?: ElementRef;
 
-    id: string;
-    helpId: string;
-    labelMaxWidth: { [key: string]: string };
-    hasEllipsis: boolean;
-    tooltipText: string;
+    id = '';
+    helpId = '';
+    labelMaxWidth: { [key: string]: string } = {};
+    hasEllipsis = false;
+    tooltipText = '';
 
     ngOnInit() {
         this.id = `field-${this.type}-${nextId++}`;
@@ -62,11 +62,11 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
         }
 
         this.isSelectedChange.emit(this.isSelected);
-        this.selection.emit(this.isSelected);
+        this.onSelection.emit(this.isSelected);
     }
 
     setLabelMaxWidth() {
-        if (this.badge) {
+        if (!!this.badge) {
             const badgeWidth = this.badge.nativeElement.getBoundingClientRect().width;
             this.labelMaxWidth = {'max-width': `calc(100% - ${badgeWidth}px - 12px)`};
             this.setEllipsis();
@@ -74,13 +74,15 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     setEllipsis() {
-        if (!this.isLabelHidden) {
-            this.hasEllipsis = this.ellipsisText.nativeElement.offsetWidth < this.ellipsisText.nativeElement.scrollWidth;
-        } else {
-            this.hasEllipsis = false;
-        }
-        if (this.hasEllipsis) {
-            this.tooltipText = this.ellipsisText.nativeElement.innerText;
+        if (!!this.ellipsisText) {
+            if (!this.isLabelHidden) {
+                this.hasEllipsis = this.ellipsisText.nativeElement.offsetWidth < this.ellipsisText.nativeElement.scrollWidth;
+            } else {
+                this.hasEllipsis = false;
+            }
+            if (this.hasEllipsis) {
+                this.tooltipText = this.ellipsisText.nativeElement.innerText;
+            }
         }
     }
 }
