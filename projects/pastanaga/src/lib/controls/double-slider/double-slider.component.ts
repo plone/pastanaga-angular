@@ -11,7 +11,6 @@ import {
     Output,
     ViewChild
 } from '@angular/core';
-import 'rxjs/add/operator/debounceTime';
 
 let nextId = 0;
 
