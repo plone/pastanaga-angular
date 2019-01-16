@@ -45,14 +45,14 @@ import { Subject } from 'rxjs';
 export class InputComponent extends TextfieldCommon
     implements OnInit, OnChanges, AfterViewChecked, OnDestroy {
     @Input() type = 'text';
-    @Input() hasFocus: boolean;
-    @Input() hasStrengthBar: boolean;
+    @Input() hasFocus = false;
+    @Input() hasStrengthBar = false;
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('dataInput') input: ElementRef;
+    @ViewChild('dataInput') input?: ElementRef;
 
-    passwordStrength: number;
+    passwordStrength = 0;
     autofilled = false;
     baseId = 'input';
     readonly stateChanges: Subject<void> = new Subject<void>();
@@ -73,20 +73,20 @@ export class InputComponent extends TextfieldCommon
         if (this.hasStrengthBar && this.type === 'password') {
             this.help = 'common.password-rules';
         }
-        if (this.help) {
+        if (!!this.help) {
             this.helpId = `${this.id}-help`;
         }
     }
 
     ngOnChanges(changes) {
-        if (!!changes.hasFocus && changes.hasFocus.currentValue === true) {
+        if (!!changes.hasFocus && changes.hasFocus.currentValue === true && !!this.input) {
             this.input.nativeElement.focus();
         }
         this.stateChanges.next();
     }
 
     ngAfterViewChecked() {
-        if (this._platform.isBrowser) {
+        if (this._platform.isBrowser && !!this.input) {
             this._autofillMonitor
                 .monitor(this.input.nativeElement)
                 .subscribe(event => {
@@ -94,9 +94,10 @@ export class InputComponent extends TextfieldCommon
                     this.stateChanges.next();
                 });
         }
-        if (this._platform.IOS) {
+        if (this._platform.IOS && !!this.input) {
+            const input = this.input;
             this.ngZone.runOutsideAngular(() => {
-                this.input.nativeElement.addEventListener(
+                input.nativeElement.addEventListener(
                     'keyup',
                     (event: Event) => {
                         const el = event.target as HTMLInputElement;
@@ -121,7 +122,7 @@ export class InputComponent extends TextfieldCommon
     ngOnDestroy() {
         this.stateChanges.complete();
 
-        if (this._platform.isBrowser) {
+        if (this._platform.isBrowser && !!this.input) {
           this._autofillMonitor.stopMonitoring(this.input.nativeElement);
         }
     }

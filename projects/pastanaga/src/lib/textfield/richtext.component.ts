@@ -10,26 +10,26 @@ import { ControlValueAccessor } from '@angular/forms';
 })
 export class RichtextComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy, AfterViewInit {
 
-    private lastViewModel: string;
+    private lastViewModel = '';
     private editor: any;
-    private active: boolean;
-    private htmlContent: string;
-    @Input() id: string;
-    @Input() name: string;
+    private active = false;
+    private htmlContent = '';
+    @Input() id?: string;
+    @Input() name?: string;
     @Input() value = '';
-    @Input() errorHelp: string;
-    @Input() placeholder: string;
-    @Input() help: string;
-    @Input() required: boolean;
-    @Input() pattern: RegExp;
-    @Input() disabled: boolean;
-    @Input() isReadOnly: boolean;
-    @Input() isLabelHidden: boolean;
+    @Input() errorHelp?: string;
+    @Input() placeholder?: string;
+    @Input() help?: string;
+    @Input() required = false;
+    @Input() pattern?: RegExp;
+    @Input() disabled = false;
+    @Input() isReadOnly = false;
+    @Input() isLabelHidden = false;
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
-    helpId: string;
-    onChange: any;
-    onTouched: any;
+    helpId = '';
+    onChange?: Function;
+    onTouched?: Function;
     errors = {
         required: false,
         pattern: false,

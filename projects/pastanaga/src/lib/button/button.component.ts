@@ -10,12 +10,11 @@ let nextId = 0;
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })
 export class ButtonComponent extends ButtonBase implements OnInit, OnChanges {
-    @Input() id: string;
-    @Input() active: boolean;
+    @Input() id?: string;
+    @Input() active = false;
     checkedType = 'button';
 
     ngOnInit() {
-        super.ngOnInit();
         this.id = !this.id ? `button-${nextId++}` : `${this.id}-button`;
     }
 

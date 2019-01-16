@@ -153,16 +153,20 @@
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('progresscircle')">Progress circle</div>
     <div *ngIf="sections.progresscircle">
-        <div>
-            <pa-spinner></pa-spinner>
-        </div>
-        <div>
-            <pa-spinner backgroundColor="#fff"></pa-spinner>
-        </div>
-        <div>
-            <pa-progress-circle [value]="progressValue"></pa-progress-circle>
-            <pa-progress-circle [value]="progressValue" [isLarge]="true"></pa-progress-circle>
-        </div>
+        <table border="none">
+            <tr>
+                <td><pa-spinner></pa-spinner></td>
+                <td><pa-spinner color="secondary"></pa-spinner></td>
+                <td><pa-progress-circle [value]="progressValue" [isLarge]="true"></pa-progress-circle></td>
+                <td><pa-progress-circle [value]="progressValue" [isLarge]="true" color="secondary"></pa-progress-circle></td>
+            </tr>
+            <tr>
+                <td><pa-spinner [isSmall]="true"></pa-spinner></td>
+                <td><pa-spinner [isSmall]="true" color="secondary"></pa-spinner></td>
+                <td><pa-progress-circle [value]="progressValue"></pa-progress-circle></td>
+                <td><pa-progress-circle [value]="progressValue" color="secondary"></pa-progress-circle></td>
+            </tr>
+        </table>
     </div>
 </div>
 <div class="example-box">

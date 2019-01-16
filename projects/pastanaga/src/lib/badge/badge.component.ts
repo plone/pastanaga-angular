@@ -8,30 +8,32 @@ import { BadgeModel } from './badge.model';
 })
 export class BadgeComponent implements AfterViewInit, OnChanges {
 
-    @Input() color: string;
-    @Input() hexaColor: string;
-    @Input() isAccented: boolean;
-    @Input() isSmall: boolean;
-    @Input() maxWidth: string;
-    @Input() value: number;
-    @Input() of: number;
-    @Input() buttons: BadgeModel[];
+    @Input() color?: string;
+    @Input() hexaColor?: string;
+    @Input() isAccented = false;
+    @Input() isSmall = false;
+    @Input() isError = false;
     @Input() canBeRemoved = false;
+    @Input() maxWidth?: string;
+    @Input() value?: number;
+    @Input() of?: number;
+    @Input() buttons?: BadgeModel[];
 
     @Output() remove: EventEmitter<null> = new EventEmitter();
     @Output() render: EventEmitter<ElementRef> = new EventEmitter();
 
-    colorClass: string;
-    colorStyle: {};
-    text: string;
+    colorClass = '';
+    colorStyle?: {};
+    text = '';
 
-    @ViewChild('textContent') textContent: ElementRef;
+    @ViewChild('textContent') textContent?: ElementRef;
 
     constructor(private elementRef: ElementRef) {}
 
     ngAfterViewInit() {
         if (!!this.maxWidth && !!this.textContent) {
-            setTimeout(() => this.text = this.textContent.nativeElement.textContent.trim());
+            const textContent = this.textContent;
+            setTimeout(() => this.text = textContent.nativeElement.textContent.trim());
         }
         this.render.emit(this.elementRef);
     }
@@ -42,8 +44,10 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
         }
 
         if (changes.hexaColor && changes.hexaColor.currentValue && !this.colorClass) {
-            this.colorStyle = {'background-color': changes.hexaColor.currentValue};
-            const luminance = this.calcLuminance(this.hexaColor);
+            this.colorStyle = {
+                'background-color': changes.hexaColor.currentValue
+            };
+            const luminance = this.calcLuminance(changes.hexaColor.currentValue);
             if (luminance < 0.61) {
                 this.colorStyle['color'] = '#fff';
             }

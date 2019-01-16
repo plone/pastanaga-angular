@@ -1,5 +1,5 @@
 <div class="pa-progress pa-progress-circle" role="progressbar" tabindex="0" aria-valuemin="0" aria-valuemax="100"
      [attr.aria-valuenow]="percentValue"
-     [class.pa-progress-large]="isLarge"><span class="pa-progress-circle-left"><span class="pa-progress-circle-bar"></span></span>
-    <span class="pa-progress-circle-right"><span class="pa-progress-circle-bar"></span></span>
+     [class.pa-progress-large]="isLarge"><span class="pa-progress-circle-left"><span class="pa-progress-circle-bar" [class.pa-secondary]="color === 'secondary'"></span></span>
+    <span class="pa-progress-circle-right"><span class="pa-progress-circle-bar" [class.pa-secondary]="color === 'secondary'"></span></span>
 </div>

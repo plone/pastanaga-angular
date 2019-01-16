@@ -1,48 +1,69 @@
-import { AfterContentInit, ElementRef, HostBinding, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {AfterContentInit, ElementRef, EventEmitter, HostBinding, Input, Output, SimpleChanges, ViewChild} from '@angular/core';
 
-export class ButtonBase implements OnInit, AfterContentInit {
-    @Input() color = 'primary';
-    @Input() size: string;
-    @Input() border: boolean;
-    @Input() disabled: boolean;
-    @Input() ariaLabel: string;
-    @Input() icon: string;
-    @Input() type: string;
-    @Input() ariaControls: string;
-    @Input() ariaExpanded: boolean;
+const COLORS = ['primary', 'secondary', 'destructive'];
+const SIZES = ['small', 'large'];
 
-    @ViewChild('text') textElement: ElementRef;
+export class ButtonBase implements AfterContentInit {
+    @Input() color: 'primary'|'secondary'|'destructive' = 'primary';
+    @Input() size: 'small'|'large'|'' = '';
+    @Input() border = false;
+    @Input() disabled = false;
+    @Input() ariaLabel = '';
+    @Input() icon = '';
+    @Input() type = '';
+    @Input() ariaControls = '';
+    @Input() ariaExpanded = false;
 
-    colorClass: string;
-    sizeClass: string;
-    hasBorder: boolean;
-    isDisabled: boolean;
-    buttonLabel: string;
+    @Output() hasFocus: EventEmitter<boolean> = new EventEmitter();
+
+    @ViewChild('text') textElement?: ElementRef;
+
+    buttonStyle = {
+        'pa-button': true,
+        'pa-button-primary': true,
+        'pa-button-secondary': false,
+        'pa-button-destructive': false,
+        'pa-button-small': false,
+        'pa-button-large': false,
+        'pa-button-accent': false,
+        'pa-button-link': false,
+        'active': false,
+    };
+    isDisabled = false;
+    buttonLabel = '';
 
     ngAfterContentInit() {
         setTimeout(() => {
-            this.buttonLabel = this.textElement.nativeElement.textContent.trim();
-            if (!this.ariaLabel) {
-                this.ariaLabel = this.buttonLabel;
+            if (!!this.textElement) {
+                this.buttonLabel = this.textElement.nativeElement.textContent.trim();
+                if (!this.ariaLabel) {
+                    this.ariaLabel = this.buttonLabel;
+                }
             }
         }, 0);
     }
 
-    ngOnInit() {
-        this.colorClass = this.getButtonClass(this.color);
-    }
-
     onChanges(changes: SimpleChanges) {
         if (changes.color && changes.color.currentValue) {
-            this.colorClass = this.getClassFromInput('color', this.color, ['primary', 'secondary', 'destructive']);
+            COLORS.forEach(color => {
+                const colorClass = this.getClassFromInput('color', color, COLORS);
+                this.buttonStyle[colorClass] = color === changes.color.currentValue;
+            });
         }
 
         if (changes.size && changes.size.currentValue) {
-            this.sizeClass = this.getClassFromInput('size', this.size, ['small', 'large']);
+            SIZES.forEach(size => {
+                const sizeClass = this.getClassFromInput('size', size, SIZES);
+                this.buttonStyle[sizeClass] = size === changes.size.currentValue;
+            });
         }
 
         if (changes.border) {
-            this.hasBorder = this.isPropertyLikeTrue('border');
+            this.buttonStyle['o-button-accent'] = this.isPropertyLikeTrue('border');
+        }
+
+        if (changes.active) {
+            this.buttonStyle['active'] = this.isPropertyLikeTrue('active');
         }
 
         if (changes.disabled) {
@@ -53,14 +74,14 @@ export class ButtonBase implements OnInit, AfterContentInit {
     getClassFromInput(property: string, value: string, possibleValues: string[]): string {
         if (possibleValues.indexOf(value) === -1) {
             console.error(`Invalid ${property}: ${value}. Possible values: ${possibleValues.join(', ')}.`);
-            return;
+            return '';
         }
 
         return this.getButtonClass(value);
     }
 
     getButtonClass(value: string) {
-        return `pa-button-${value}`;
+        return `o-button-${value}`;
     }
 
     isPropertyLikeTrue(property) {

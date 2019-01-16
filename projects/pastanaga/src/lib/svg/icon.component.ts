@@ -11,10 +11,10 @@ import { SvgLoader } from './svg-loader';
     encapsulation: ViewEncapsulation.None
 })
 export class IconComponent implements OnChanges {
-    @Input() name: string;
-    @Input() hidden: boolean;
+    @Input() name?: string;
+    @Input() hidden = false;
 
-    iconPath: string;
+    iconPath = '';
 
     constructor(
         private element: ElementRef,

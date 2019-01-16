@@ -7,9 +7,10 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class PastanagaProgressCircleComponent implements OnChanges{
     @Input() isLarge = false;
-    @Input() value: number;
+    @Input() value?: number;
+    @Input() color: 'primary'|'secondary' = 'primary';
 
-    percentValue: number;
+    percentValue = 0;
 
     ngOnChanges(changes) {
         if (changes.value && typeof changes.value.currentValue !== 'undefined') {
@@ -18,11 +19,13 @@ export class PastanagaProgressCircleComponent implements OnChanges{
     }
 
     private calculatePercentValue() {
-        const max = 100;
-        this.percentValue = this.value * 100 / max;
+        if (typeof this.value === 'number') {
+            const max = 100;
+            this.percentValue = this.value * 100 / max;
 
-        if (this.value > max) {
-            console.error(`Progress value is greater than the max value: ${this.value} > ${max}!`);
+            if (this.value > max) {
+                console.error(`Progress value is greater than the max value: ${this.value} > ${max}!`);
+            }
         }
     }
 }

@@ -1,6 +1,4 @@
-<a class="pa-button {{colorClass}} {{sizeClass}}"
-   [class.pa-button-accent]="hasBorder"
-   [class.pa-button-link]="!hasButtonDisplay"
+<a [ngClass]="buttonStyle"
    [attr.aria-label]="ariaLabel"
    [attr.aria-controls]="ariaControls"
    [attr.aria-expanded]="ariaExpanded"

@@ -9,19 +9,19 @@ let nextId = 0;
     styleUrls: ['../controls.scss', './toggle.component.scss']
 })
 export class ToggleComponent implements OnInit {
-    @Input() id: string;
-    @Input() imageUrl: string;
-    @Input() help: string;
-    @Input() divider: ToggleDivider;
-    @Input() isSelected: boolean;
-    @Input() isDisabled: boolean;
+    @Input() id?: string;
+    @Input() imageUrl?: string;
+    @Input() help?: string;
+    @Input() divider?: ToggleDivider;
+    @Input() isSelected = false;
+    @Input() isDisabled = false;
     @Input() yesLabel = 'common.yes';
     @Input() noLabel = 'common.no';
     @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text') textElement: ElementRef;
+    @ViewChild('text') textElement?: ElementRef;
 
-    helpId: string;
+    helpId = '';
 
     ngOnInit() {
         this.id = !this.id ? `field-toggle-${nextId++}` : `${this.id}-field-toggle`;

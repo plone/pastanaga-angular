@@ -1,20 +1,20 @@
 export class ControlModel {
-    label: string;
+    label = '';
     subLabel?: string;
     value?: string;
     id?: string;
-    ariaId?: string;
     help?: string;
     icon?: string;
-    isSelected?: boolean;
-    isDisabled?: boolean;
-    isFiltered?: boolean;
-    isIndeterminate?: boolean;
-    isExpanded?: boolean;
-    isHidden?: boolean;
+    isSelected = false;
+    isDisabled = false;
+    isFiltered = false;
+    isIndeterminate = false;
+    isExpanded = false;
+    isHidden = false;
+    isPrivate = false;
 
-    children?: ControlModel[];
+    children: ControlModel[] = [];
     totalChildren?: number;
     selectedChildren?: number;
-    areChildrenExpanded?: boolean;
+    areChildrenExpanded = false;
 }

@@ -1,6 +1,4 @@
-<button class="pa-button {{colorClass}} {{sizeClass}}"
-        [class.pa-button-accent]="hasBorder"
-        [class.pa-active]="active"
+<button [ngClass]="buttonStyle"
         [disabled]="isDisabled"
         [type]="checkedType"
         [id]="id"
