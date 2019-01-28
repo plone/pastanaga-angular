@@ -108,7 +108,7 @@
         display: inline-block;
         margin-bottom: .5rem;
         @include font-size(m,m,m);
-        text-transform: uppercase;
+        text-transform: var(--labels-text-transform);
         font-family: $font-family-base;
         font-weight: 300;
         color: $gray-black;

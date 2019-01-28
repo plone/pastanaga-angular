@@ -35,11 +35,18 @@ $b20: #88D0E0;    $t20: #8BDED9;    $j20: #8FCCBE;    $g20:#B3D4AA;    $l20:#CFD
 $b10: #B5E0EA;    $t10: #B7E8E4;    $j10: #B9DDD5;    $g10:#CDE1C8;    $l10:#DFE6CA;
 $b05: #DDEEF1;    $t05: #DEF0EF;    $j05: #DEECE9;    $g05:#E5EEE3;    $l05:#EDF1E5;
 
-$body-bg:                   $white !default;
-$body-color:                $gray-blacky !default;
-$link-color:                $blue !default;
+:root {
+    --body-bg: $white;
+    --body-color: $gray-blacky;
+    --link-color: $blue;
+    --link-hover-color: $blue-contrast;
+}
+
+$body-bg:                   var(--body-bg) !default;
+$body-color:                var(--body-color) !default;
+$link-color:                var(--link-color) !default;
 $link-decoration:           underline !default;
-$link-hover-color:          $blue-contrast !default;
+$link-hover-color:          var(--link-hover-color) !default;
 $link-hover-decoration:     underline !default;
 $text-muted:                $gray !default;
 $text-selection:            rgba($red-light,.35);
@@ -87,9 +94,16 @@ $rythm: (
 //#################
 //###   FONTS   ###
 //#################
-$font-family-sans-serif:      Poppins, Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:            $font-family-sans-serif !default;
+:root {
+    --font-family-sans-serif:       var(--custom-font-family-sans-serif, Poppins, Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
+    --font-family-monospace:        var(--custom-font-family-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    --font-family-base:             var(--font-family-sans-serif);
+    --font-size-base:               var(--custom-font-size-base, 0.875rem);
+}
+
+$font-family-sans-serif:      var(--font-family-sans-serif) !default;
+$font-family-monospace:       var(--font-family-monospace) !default;
+$font-family-base:            var(--font-family-base) !default;
 
 
 //$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
@@ -103,22 +117,22 @@ $font-weight-base:            $font-weight-light !default;
 
 
 // FONT SIZES
-$font-size-base:          0.875rem !default;   //14px
+$font-size-base:          var(--font-size-base) !default;   //14px
 $font-size: (
-        xxxs: ($font-size-base * (10/14)),   // ~10px - Corner case
-        xxs:  ($font-size-base * (11/14)),   // ~11px
-        xs:   ($font-size-base * (12/14)),   // ~12px - Small labels, tooltip, small buttons, th
-        s:    ($font-size-base * (13/14)),   // ~13px - Code (monospace 1px smaller)
+        xxxs: calc(#{$font-size-base} * 10/14),   // ~10px - Corner case
+        xxs:  calc(#{$font-size-base} * 11/14),   // ~11px
+        xs:   calc(#{$font-size-base} * 12/14),   // ~12px - Small labels, tooltip, small buttons, th
+        s:    calc(#{$font-size-base} * 13/14),   // ~13px - Code (monospace 1px smaller)
         m:    $font-size-base,                  //  14px - p, body
-        l:    ($font-size-base * (15/14)),   // ~15px - buttons, tabs
-        xl:   ($font-size-base * (16/14)),   // ~16px - breadcrumbs, section titles, document header
-        xxl:  ($font-size-base * (18/14)),   // ~18px - panels, dialog titles, main search
-        xxxl: ($font-size-base * (20/14)),   // ~20px - big buttons
+        l:    calc(#{$font-size-base} * 15/14),   // ~15px - buttons, tabs
+        xl:   calc(#{$font-size-base} * 16/14),   // ~16px - breadcrumbs, section titles, document header
+        xxl:  calc(#{$font-size-base} * 18/14),   // ~18px - panels, dialog titles, main search
+        xxxl: calc(#{$font-size-base} * 20/14),   // ~20px - big buttons
     //display sizes
-        d:    ($font-size-base * 1.7142),   // ~24px - empty screen titles
-        xd:   ($font-size-base * 2.5714),   // ~36px - big article promo title
-        xxd:  ($font-size-base * 3),        // ~42px - big section primi title
-        xxxd: ($font-size-base * 4.2857)    // ~60px - main hero claim
+        d:    calc(#{$font-size-base} * 1.7142),   // ~24px - empty screen titles
+        xd:   calc(#{$font-size-base} * 2.5714),   // ~36px - big article promo title
+        xxd:  calc(#{$font-size-base} * 3),        // ~42px - big section primi title
+        xxxd: calc(#{$font-size-base} * 4.2857)    // ~60px - main hero claim
 ) !default;
 @function size($tshirt-size) {
     @return map-get($font-size, $tshirt-size);
@@ -229,3 +243,10 @@ $zindex-modal-backdrop:    10040 !default;
 $zindex-modal:             10050 !default;
 $zindex-toast:             10060 !default;
 $zindex-tooltip:           10070 !default;
+
+
+//LABELS
+:root {
+    --labels-text-transform:    var(--custom-labels-text-transform, uppercase);
+}
+$labels-text-transform:    var(--labels-text-transform);

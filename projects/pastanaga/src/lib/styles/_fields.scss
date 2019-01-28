@@ -7,7 +7,7 @@ legend {
   padding: rythm(1) rythm(1.5);
   margin-left: - rythm(1.5);
   margin-right: - rythm(1.5);
-  text-transform: uppercase;
+  text-transform: var(--labels-text-transform);
 }
 
 .pa-field {
@@ -33,7 +33,7 @@ fieldset.pa-fieldset-group {
   & > legend {
     @include font-size(xs,xs,xs);
     margin-bottom: rythm(.75);
-    text-transform: uppercase;
+    text-transform: var(--labels-text-transform);
     margin-left: 0;
     margin-right: 0;
     background: none;

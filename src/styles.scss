@@ -1,6 +1,13 @@
 $font-path: '../projects/pastanaga/src/assets/fonts';
 @import "../projects/pastanaga/src/lib/styles/common-reset";
 
+// for custom theming, set CSS variables like this:
+// :root {
+//     --custom-font-size-base: 1.2rem;
+//     --custom-font-family-sans-serif: monospace;
+//     --custom-labels-text-transform: none;
+// }
+
 html, body {
     overflow: auto;
 }
