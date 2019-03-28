@@ -56,7 +56,7 @@
     &:active ~ .pa-field-control-resizer,
     &:focus ~ .pa-field-control-resizer {
         right: 2.5px;
-        border-top: 7px solid $blue-light;
+        border-top: 7px solid $control-border-color;
     }
     &:active ~ .pa-field-control-resizer::before,
     &:focus ~ .pa-field-control-resizer::before {
@@ -77,6 +77,6 @@
     &.pa-field-control-accent:focus ~ .pa-field-control-resizer,
     &.pa-field-control-accent:active ~ .pa-field-control-resizer::before,
     &.pa-field-control-accent:focus ~ .pa-field-control-resizer::before {
-        border-top-color: $blue-light;
+        border-top-color: $control-border-color;
     }
 }

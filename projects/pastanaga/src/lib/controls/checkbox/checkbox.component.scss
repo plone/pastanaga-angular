@@ -109,8 +109,8 @@
         }
         &:checked:active + .pa-field-label::before,
         &:checked:focus + .pa-field-label::before {
-            border: 1px solid $blue-light;
-            box-shadow: 0 0 0 1px $blue-light;
+            border: 1px solid $control-border-color;
+            box-shadow: 0 0 0 1px $control-border-color;
             transition: all .33s ease;
             background: $white-smoke;
         }

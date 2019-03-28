@@ -31,7 +31,7 @@
     height: 6px;
     border-radius: 50px;
 
-    background-color: $blue-light;
+    background-color: $control-border-color;
     box-sizing: border-box;
   }
 
@@ -41,7 +41,7 @@
 
   .pa-slider-thumb {
     cursor: pointer;
-    border: 1px solid $blue-light;
+    border: 1px solid $control-border-color;
     width: 16px;
     height: 16px;
     background-color: $white;
@@ -63,7 +63,7 @@
   .pa-slider-track {
     pointer-events: none;
     height: 100%;
-    background-color: $blue-dark;
+    background-color: $button-primary-active-color;
   }
 
   .pa-slider-output {

@@ -117,7 +117,7 @@
     float:right;
     margin-top: 1px;
     margin-right: rythm(1);
-    text-transform: uppercase;
+    text-transform: $labels-text-transform;
     color: $gray;
     position: relative;
     cursor: pointer;
