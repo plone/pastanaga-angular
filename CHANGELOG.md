@@ -1,3 +1,7 @@
+# 1.1.0 (2019-03-28)
+
+Theming: SCSS variable overloading
+
 # 1.0.1 (2019-01-16)
 
 Enforce strictNullChecks and strictPropertyInitialization
