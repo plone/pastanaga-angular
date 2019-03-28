@@ -5,3 +5,31 @@ https://plone.github.io/pastanaga-angular/dist/pastanaga-app/
 Provides the Pastanaga elements as Angular 6 components.
 
 See `src/app/app.component.ts` and `src/app/app.component.html` for usage examples.
+
+## Theming
+
+Note: we assume pastanaga-angular is provided as a [mr-developer](https://github.com/collective/mr-developer) dependency.
+
+Import the common reset in main app style:
+
+```
+@import './develop/pastanaga-angular/projects/pastanaga/src/lib/styles/common-reset';
+```
+
+If we want the default fonts, we need to import them like this:
+
+```
+@import "./develop/pastanaga-angular/projects/pastanaga/src/lib/styles/fonts";
+```
+
+The Pastanaga CSS can be overriden in the `src/pastanaga-overrides.scss` file.
+The file must be in the main app src folder and must be declared in `angular.json`:
+
+```
+"stylePreprocessorOptions": {
+    "includePaths": [
+    "src/pastanaga-overrides.scss"
+    ]
+},
+```
+
