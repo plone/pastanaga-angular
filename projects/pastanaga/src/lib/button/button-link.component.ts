@@ -8,6 +8,7 @@ import { ButtonBase } from './button-base';
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })
 export class ButtonLinkComponent extends ButtonBase implements OnChanges {
+    @Input() route?: string;
     @Input() hasButtonDisplay = false;
     @Output() clickEvent: EventEmitter<any> = new EventEmitter();
 
@@ -15,7 +16,7 @@ export class ButtonLinkComponent extends ButtonBase implements OnChanges {
         this.onChanges(changes);
 
         if (changes.hasButtonDisplay) {
-            this.buttonStyle['o-button-link'] = changes.hasButtonDisplay.currentValue;
+            this.buttonStyle['pa-button-link'] = changes.hasButtonDisplay.currentValue;
         }
     }
 }
