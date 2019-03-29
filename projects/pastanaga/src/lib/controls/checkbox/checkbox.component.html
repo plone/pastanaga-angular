@@ -8,7 +8,7 @@
            [indeterminate]="isIndeterminate"
            (change)="toggleCheckbox()">
     <label [ngStyle]="labelMaxWidth" class="pa-field-label pa-ellipsis" [for]="id" [paTooltip]="hasEllipsis ? tooltipText : null"><span translate class="pa-ellipsis-text" #ellipsisText [class.pa-sr]="isLabelHidden"><pa-icon *ngIf="icon" [name]="icon"></pa-icon><ng-content></ng-content> <small *ngIf="subLabel">{{ subLabel }}</small></span></label>
-    <output *ngIf="isBadgeVisible && selectedChildren > 0" #badge [for]="id"><pa-badge [value]="selectedChildren" [of]="totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge></output>
+    <output *ngIf="isBadgeVisible && !!selectedChildren && selectedChildren > 0" #badge [for]="id"><pa-badge [value]="selectedChildren" [of]="totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge></output>
 
     <small *ngIf="help" class="pa-field-help" [class.pa-sr]="isLabelHidden" [id]="helpId" translate>{{help}}</small>
 </div>
