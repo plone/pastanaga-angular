@@ -97,17 +97,17 @@
 }
 
 .pa-field input[type='range']:focus::-webkit-slider-runnable-track {
-    background: $blue-light;
+    background: $control-border-color;
 }
 
 .pa-field input[type='range']:focus::-moz-range-track {
-    background: $blue-light;
+    background: $control-border-color;
 }
 
 .pa-field input[type='range']::-webkit-slider-thumb {
     -webkit-box-shadow: 0;
     box-shadow: 0;
-    border: 1px solid $blue-light;
+    border: 1px solid $control-border-color;
     height: 18px;
     width: 18px;
     border-radius: 50%;
@@ -159,10 +159,10 @@
 
 .pa-field input[type='range']:active::-webkit-slider-thumb,
 .pa-field input[type='range']:focus::-webkit-slider-thumb {
-    border: 1px solid $blue-light;
-    -webkit-box-shadow: 0 0 0 1px $blue-light, inset 0 0 0 4.5px $white-smoke,
+    border: 1px solid $control-border-color;
+    -webkit-box-shadow: 0 0 0 1px $control-border-color, inset 0 0 0 4.5px $white-smoke,
         inset 0 0 0 10px $blue;
-    box-shadow: 0 0 0 1px $blue-light, inset 0 0 0 4.5px $white-smoke,
+    box-shadow: 0 0 0 1px $control-border-color, inset 0 0 0 4.5px $white-smoke,
         inset 0 0 0 10px $blue;
     -webkit-transition: all 0.175s ease;
     -o-transition: all 0.175s ease;
@@ -171,8 +171,8 @@
 
 .pa-field input[type='range']:active::-moz-range-thumb,
 .pa-field input[type='range']:focus::-moz-range-thumb {
-    border: 1px solid $blue-light;
-    box-shadow: 0 0 0 1px $blue-light, inset 0 0 0 4.5px $white-smoke,
+    border: 1px solid $control-border-color;
+    box-shadow: 0 0 0 1px $control-border-color, inset 0 0 0 4.5px $white-smoke,
         inset 0 0 0 10px $blue;
     -webkit-transition: all 0.175s ease;
     -o-transition: all 0.175s ease;

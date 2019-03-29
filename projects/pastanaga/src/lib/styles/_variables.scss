@@ -1,3 +1,4 @@
+@import 'src/pastanaga-overrides.scss';
 //==================
 //###   COLORS   ###
 
@@ -44,6 +45,27 @@ $link-hover-decoration:     underline !default;
 $text-muted:                $gray !default;
 $text-selection:            rgba($red-light,.35);
 
+// Buttons
+$button-default-color:                  $gray-black !default;
+$button-primary-color:                  $blue !default;
+$button-primary-active-color:           $blue-dark !default;
+$button-primary-active-background:      $blue-light !default;
+$button-primary-hover-color:            $blue-contrast !default;
+$button-secondary-color:                $brown !default;
+$button-secondary-active-color:         $brown-dark !default;
+$button-secondary-hover-color:          $brown-contrast !default;
+$button-destructive-color:              $red !default;
+$button-destructive-active-color:       $red-dark !default;
+$button-destructive-hover-color:        $red-contrast !default;
+$button-contrast-color:                 $white !default;
+$button-contrast-active-color:          $white-smoke !default;
+$button-contrast-hover-color:           $white-ghost !default;
+
+// Controls
+$legend-color:                          darken($green-dark,12) !default;
+$legend-background:                     $white-smoke !default;
+$control-border-color:                  $blue-light !default;
+$labels-text-transform:                 uppercase !default;
 
 // Shadows
 $shadow-none: none;
@@ -87,6 +109,7 @@ $rythm: (
 //#################
 //###   FONTS   ###
 //#################
+
 $font-family-sans-serif:      Poppins, Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
@@ -105,20 +128,20 @@ $font-weight-base:            $font-weight-light !default;
 // FONT SIZES
 $font-size-base:          0.875rem !default;   //14px
 $font-size: (
-        xxxs: ($font-size-base * (10/14)),   // ~10px - Corner case
-        xxs:  ($font-size-base * (11/14)),   // ~11px
-        xs:   ($font-size-base * (12/14)),   // ~12px - Small labels, tooltip, small buttons, th
-        s:    ($font-size-base * (13/14)),   // ~13px - Code (monospace 1px smaller)
+        xxxs: calc(#{$font-size-base} * 10/14),   // ~10px - Corner case
+        xxs:  calc(#{$font-size-base} * 11/14),   // ~11px
+        xs:   calc(#{$font-size-base} * 12/14),   // ~12px - Small labels, tooltip, small buttons, th
+        s:    calc(#{$font-size-base} * 13/14),   // ~13px - Code (monospace 1px smaller)
         m:    $font-size-base,                  //  14px - p, body
-        l:    ($font-size-base * (15/14)),   // ~15px - buttons, tabs
-        xl:   ($font-size-base * (16/14)),   // ~16px - breadcrumbs, section titles, document header
-        xxl:  ($font-size-base * (18/14)),   // ~18px - panels, dialog titles, main search
-        xxxl: ($font-size-base * (20/14)),   // ~20px - big buttons
+        l:    calc(#{$font-size-base} * 15/14),   // ~15px - buttons, tabs
+        xl:   calc(#{$font-size-base} * 16/14),   // ~16px - breadcrumbs, section titles, document header
+        xxl:  calc(#{$font-size-base} * 18/14),   // ~18px - panels, dialog titles, main search
+        xxxl: calc(#{$font-size-base} * 20/14),   // ~20px - big buttons
     //display sizes
-        d:    ($font-size-base * 1.7142),   // ~24px - empty screen titles
-        xd:   ($font-size-base * 2.5714),   // ~36px - big article promo title
-        xxd:  ($font-size-base * 3),        // ~42px - big section primi title
-        xxxd: ($font-size-base * 4.2857)    // ~60px - main hero claim
+        d:    calc(#{$font-size-base} * 1.7142),   // ~24px - empty screen titles
+        xd:   calc(#{$font-size-base} * 2.5714),   // ~36px - big article promo title
+        xxd:  calc(#{$font-size-base} * 3),        // ~42px - big section primi title
+        xxxd: calc(#{$font-size-base} * 4.2857)    // ~60px - main hero claim
 ) !default;
 @function size($tshirt-size) {
     @return map-get($font-size, $tshirt-size);
@@ -229,3 +252,4 @@ $zindex-modal-backdrop:    10040 !default;
 $zindex-modal:             10050 !default;
 $zindex-toast:             10060 !default;
 $zindex-tooltip:           10070 !default;
+

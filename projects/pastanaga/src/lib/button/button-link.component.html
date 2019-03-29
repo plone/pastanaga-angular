@@ -1,4 +1,6 @@
-<a [ngClass]="buttonStyle"
+<a [routerLink]="route"
+   [ngClass]="buttonStyle"
+   [class.pa-button-link]="!hasButtonDisplay"
    [attr.aria-label]="ariaLabel"
    [attr.aria-controls]="ariaControls"
    [attr.aria-expanded]="ariaExpanded"

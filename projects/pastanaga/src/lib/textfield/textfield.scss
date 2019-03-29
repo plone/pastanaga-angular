@@ -52,7 +52,7 @@
         &:not(:disabled):not(:read-only):active,
         &:not(:disabled):not(:read-only):focus {
             /* autoprefixer: off */
-            box-shadow: 0 2px 0 0px $blue-light;
+            box-shadow: 0 2px 0 0px $control-border-color;
             background-color: rgba($blue,.12);
         }
         // Firefox workaround
@@ -64,7 +64,7 @@
         &:not(:disabled):not(:-moz-read-only):active,
         &:not(:disabled):not(:-moz-read-only):focus {
             /* autoprefixer: off */
-            box-shadow: 0 2px 0 0px $blue-light;
+            box-shadow: 0 2px 0 0px $control-border-color;
             background-color: rgba($blue,.12);
         }
 
@@ -108,7 +108,7 @@
         display: inline-block;
         margin-bottom: .5rem;
         @include font-size(m,m,m);
-        text-transform: uppercase;
+        text-transform: $labels-text-transform;
         font-family: $font-family-base;
         font-weight: 300;
         color: $gray-black;

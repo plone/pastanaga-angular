@@ -18,45 +18,35 @@ pa-button {
     vertical-align: middle;
     border-radius: 10rem;
     font-family: $font-family-base;
-    text-transform: uppercase;
+    text-transform: $labels-text-transform;
     cursor: pointer;
     outline: 0;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: rgba(34, 151, 199, .25);
 
     &:hover {
-        //background: $azure-light;
-        //border-color: $azure-light;
-        background: rgba($gray-black, .05);
-        border-color: rgba($gray-black, .05);
+        background: rgba($button-default-color, .05);
+        border-color: rgba($button-default-color, .05);
         transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
     }
     &:active {
         transition: all .67s cubic-bezier(0.6, 1, 0.8, 1.4);
-        //background: $azure-dark;
-        //border-color: $azure-dark;
-        background: rgba($gray-black, .1);
-        border-color: rgba($gray-black, .1);
+        background: rgba($button-default-color, .1);
+        border-color: rgba($button-default-color, .1);
     }
     &.active {
-        //background: $azure-dark;
-        //border-color: $azure-dark;
-        background: rgba($blue-light, .25);
-        border-color: rgba($blue-light, .25);
+        background: rgba($button-primary-active-background, .25);
+        border-color: rgba($button-primary-active-background, .25);
         transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
-        //box-shadow: inset 0 0 0 1.5px rgba($blue,.25);
     }
     &:focus {
-        //background: $azure-light;
-        background: rgba($gray-black, .05);
+        background: rgba($button-default-color, .05);
     }
     &-wrapper {
         height: rythm(3);
         padding: rythm(.5) rythm(1.5);
         @include font-size(m, xl, l);
         display: inline-block;
-        /*position: relative;*/
-        /*vertical-align: middle;*/
         border-radius: 100px;
         position: relative;
     }
@@ -96,7 +86,7 @@ pa-button {
         }
         & .pa-avatar-abbr {
             cursor: pointer;
-            color: $brown;
+            color: $button-secondary-color;
         }
         &.pa-avatar-small {
             width: rythm(.25)*9;
@@ -108,21 +98,21 @@ pa-button {
         }
     }
     &#{&}-primary {
-        color: $blue;
+        color: $button-primary-color;
         &:hover {
-            color: $blue-contrast;
+            color: $button-primary-hover-color;
         }
         &:active {
-            color: $blue-dark;
+            color: $button-primary-active-color;
         }
     }
     &#{&}-secondary {
-        color: $brown;
+        color: $button-secondary-color;
         &:hover {
-            color: $brown-contrast;
+            color: $button-secondary-hover-color;
         }
         &:active {
-            color: $brown-dark;
+            color: $button-secondary-active-color;
         }
     }
     &#{&}-destructive {
@@ -132,6 +122,15 @@ pa-button {
         }
         &:active {
             color: $red-dark;
+        }
+    }
+    &#{&}-contrast {
+        color: $button-contrast-color;
+        &:hover {
+            color: $button-contrast-hover-color;
+        }
+        &:active {
+            color: $button-contrast-active-color;
         }
     }
     &#{&}-accent, &#{&}-accent:hover, &#{&}-accent:active {
@@ -145,23 +144,23 @@ pa-button {
     }
     &#{&}-accent#{&}-primary:hover {
         color: $white;
-        box-shadow: inset 0 0 0 1px $blue-contrast;
-        background-color: $blue-contrast;
+        box-shadow: inset 0 0 0 1px $button-primary-hover-color;
+        background-color: $button-primary-hover-color;
     }
     &#{&}-accent#{&}-primary:active {
         color: $white;
-        box-shadow: inset 0 0 0 1px $blue-dark;
-        background-color: $blue-dark;
+        box-shadow: inset 0 0 0 1px $button-primary-active-color;
+        background-color: $button-primary-active-color;
     }
     &#{&}-accent#{&}-secondary:hover {
         color: $white;
-        box-shadow: inset 0 0 0 1px $brown-contrast;
-        background-color: $brown-contrast;
+        box-shadow: inset 0 0 0 1px $button-secondary-hover-color;
+        background-color: $button-secondary-hover-color;
     }
     &#{&}-accent#{&}-secondary:active {
         color: $white;
-        box-shadow: inset 0 0 0 1px $brown-dark;
-        background-color: $brown-dark;
+        box-shadow: inset 0 0 0 1px $button-secondary-active-color;
+        background-color: $button-secondary-active-color;
     }
     &#{&}-accent#{&}-destructive:hover {
         color: $white;

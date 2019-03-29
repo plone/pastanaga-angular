@@ -1,10 +1,10 @@
 import {AfterContentInit, ElementRef, EventEmitter, HostBinding, Input, Output, SimpleChanges, ViewChild} from '@angular/core';
 
-const COLORS = ['primary', 'secondary', 'destructive'];
+const COLORS = ['primary', 'secondary', 'destructive', 'contrast'];
 const SIZES = ['small', 'large'];
 
 export class ButtonBase implements AfterContentInit {
-    @Input() color: 'primary'|'secondary'|'destructive' = 'primary';
+    @Input() color: 'primary'|'secondary'|'destructive'|'contrast' = 'primary';
     @Input() size: 'small'|'large'|'' = '';
     @Input() border = false;
     @Input() disabled = false;
@@ -59,7 +59,7 @@ export class ButtonBase implements AfterContentInit {
         }
 
         if (changes.border) {
-            this.buttonStyle['o-button-accent'] = this.isPropertyLikeTrue('border');
+            this.buttonStyle['pa-button-accent'] = this.isPropertyLikeTrue('border');
         }
 
         if (changes.active) {
@@ -81,7 +81,7 @@ export class ButtonBase implements AfterContentInit {
     }
 
     getButtonClass(value: string) {
-        return `o-button-${value}`;
+        return `pa-button-${value}`;
     }
 
     isPropertyLikeTrue(property) {
