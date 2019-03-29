@@ -22,7 +22,16 @@ If we want the default fonts, we need to import them like this:
 @import "./develop/pastanaga-angular/projects/pastanaga/src/lib/styles/fonts";
 ```
 
-The Pastanaga CSS can be overriden in the `src/pastanaga-overrides.scss` file.
+The Pastanaga CSS can be overriden in the `src/pastanaga-overrides.scss` file. Example:
+
+```
+$button-primary-color: $my-blue;
+$button-primary-active-color: $my-blue-dark;
+$button-primary-active-background: $my-blue-light;
+```
+
+(See `_variables.scss` to get the full list)
+
 The file must be in the main app src folder and must be declared in `angular.json`:
 
 ```
