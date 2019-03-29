@@ -125,12 +125,12 @@ pa-button {
         }
     }
     &#{&}-contrast {
-        color: $white;
+        color: $button-contrast-color;
         &:hover {
-            color: $white-ghost;
+            color: $button-contrast-hover-color;
         }
         &:active {
-            color: $white-smoke;
+            color: $button-contrast-active-color;
         }
     }
     &#{&}-accent, &#{&}-accent:hover, &#{&}-accent:active {
