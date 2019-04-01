@@ -10,7 +10,7 @@ import { ButtonBase } from './button-base';
 export class ButtonLinkComponent extends ButtonBase implements OnChanges {
     @Input() route?: string;
     @Input() hasButtonDisplay = false;
-    @Output() clickEvent: EventEmitter<any> = new EventEmitter();
+    @Output() onClick: EventEmitter<any> = new EventEmitter();
 
     ngOnChanges(changes) {
         this.onChanges(changes);

@@ -5,7 +5,7 @@
    [attr.aria-controls]="ariaControls"
    [attr.aria-expanded]="ariaExpanded"
    tabindex="0">
-    <span (click)="clickEvent.emit($event)" class="pa-button-wrapper" tabindex="-1" [class.inline]="!hasButtonDisplay">
+    <span (click)="onClick.emit($event)" class="pa-button-wrapper" tabindex="-1" [class.inline]="!hasButtonDisplay">
         <span #text class="pa-button-label" [class.pa-sr]="icon" translate><ng-content></ng-content></span>
         <pa-icon *ngIf="icon" [name]="icon" [hidden]="true"></pa-icon>
     </span>
