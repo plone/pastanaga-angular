@@ -43,7 +43,7 @@ $link-decoration:           underline !default;
 $link-hover-color:          $blue-contrast !default;
 $link-hover-decoration:     underline !default;
 $text-muted:                $gray !default;
-$text-selection:            rgba($red-light,.35);
+$text-selection:            rgba($red-light,.35) !default;
 
 // Buttons
 $button-default-color:                  $gray-black !default;
@@ -60,10 +60,14 @@ $button-destructive-hover-color:        $red-contrast !default;
 $button-contrast-color:                 $white !default;
 $button-contrast-active-color:          $white-smoke !default;
 $button-contrast-hover-color:           $white-ghost !default;
+$button-font-size:                      m !default;
+$button-small-font-size:                xxs !default;
 
 // Controls
 $legend-color:                          darken($green-dark,12) !default;
 $legend-background:                     $white-smoke !default;
+$legend-padding:                        rythm(1) rythm(1.5) !default;
+$legend-margin:                         0 (- rythm(1.5)) !default;
 $control-border-color:                  $blue-light !default;
 $labels-text-transform:                 uppercase !default;
 
