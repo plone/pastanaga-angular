@@ -1,3 +1,7 @@
+# 1.1.2 (2019-04-01)
+
+Restore `onClick` on pa-button-link (as default `click` gets skipped by routing)
+
 # 1.1.1 (2019-04-01)
 
 Theming: Fix overloading on button and legend styles
