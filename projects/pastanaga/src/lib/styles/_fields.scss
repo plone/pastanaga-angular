@@ -1,13 +1,12 @@
 @import "variables";
 
 legend {
-  @include font-size(xs,xs,xs);
-  color: $legend-color;
-  background: $legend-background;
-  padding: rythm(1) rythm(1.5);
-  margin-left: - rythm(1.5);
-  margin-right: - rythm(1.5);
-  text-transform: $labels-text-transform;
+    @include font-size(xs,xs,xs);
+    color: $legend-color;
+    background: $legend-background;
+    padding: $legend-padding;
+    margin: $legend-margin;
+    text-transform: $labels-text-transform;
 }
 
 .pa-field {

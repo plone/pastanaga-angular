@@ -45,7 +45,7 @@ pa-button {
     &-wrapper {
         height: rythm(3);
         padding: rythm(.5) rythm(1.5);
-        @include font-size(m, xl, l);
+        @include font-size($button-font-size, xl, l);
         display: inline-block;
         border-radius: 100px;
         position: relative;
@@ -116,12 +116,12 @@ pa-button {
         }
     }
     &#{&}-destructive {
-        color: $red;
-        &:hover {
-            color: $red-contrast;
-        }
+        color: $button-destructive-color;
         &:active {
-            color: $red-dark;
+            color: $button-destructive-active-color;
+        }
+        &:hover {
+            color: $button-destructive-hover-color;
         }
     }
     &#{&}-contrast {
@@ -177,7 +177,7 @@ pa-button {
         #{$root}-wrapper {
             height: rythm(2.5);
             padding: rythm(.5) rythm(1);
-            @include font-size(xxs, m, s);
+            @include font-size($button-small-font-size, m, s);
         }
         & svg {
             width: rythm(1.5);
