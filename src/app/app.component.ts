@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BadgeModel, ControlModel, Toaster, ToastModel, ToggleModel } from 'pastanaga-angular';
+import { BadgeModel, ControlModel, Toaster, ToastModel, ToggleModel } from '../../projects/pastanaga/src';
 
 @Component({
     selector: 'app-root',

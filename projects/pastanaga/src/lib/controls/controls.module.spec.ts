@@ -7,7 +7,8 @@ describe('ControlsModule', () => {
     controlsModule = new ControlsModule();
   });
 
-  it('should create an instance', () => {
+  it('should create an instance', done => {
     expect(controlsModule).toBeTruthy();
+    done();
   });
 });
