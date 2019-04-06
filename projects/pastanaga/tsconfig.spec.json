@@ -1,17 +1,29 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/spec",
+    "outDir": "../out-tsc/spec",
+    "baseUrl": "./",
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": ["es2015", "dom"],
     "types": [
       "jasmine",
       "node"
     ]
   },
-  "files": [
-    "src/test.ts"
-  ],
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
+  ],
+  "typeRoots": [
+    "./node_modules/@types"
+  ],
+  "types": [
+      "jasmine",
+      "core-js",
+      "node"
   ]
 }

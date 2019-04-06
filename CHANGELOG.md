@@ -1,3 +1,7 @@
+# 1.1.3 (2019-04-06)
+
+Setup Jest and use Travis
+
 # 1.1.2 (2019-04-01)
 
 Restore `onClick` on pa-button-link (as default `click` gets skipped by routing)

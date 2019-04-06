@@ -5,13 +5,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "build_lib": "ng build --prod pastanaga-angular",
     "postbuild_lib": "cp -R ./projects/pastanaga/src/lib/styles dist/pastanaga/lib/styles && cp -R ./projects/pastanaga/src/assets dist/pastanaga/lib/assets",
     "build_demo": "ng build --prod --base-href /pastanaga-angular/dist/pastanaga-app/",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "jest --no-cache",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand --ci",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -34,28 +35,34 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^7.0.3",
-    "@angular-devkit/build-ng-packagr": "~0.10.5",
     "@angular-devkit/build-angular": "~0.10.5",
-    "ng-packagr": "^4.4.0",
-    "tsickle": "0.33.1",
-    "tslib": "^1.7.1",
-    "typescript": "~3.1.6",
+    "@angular-devkit/build-ng-packagr": "~0.10.5",
     "@angular/cli": "~7.0.5",
+    "@angular/compiler-cli": "^7.0.3",
     "@angular/language-service": "^7.0.3",
     "@types/jasmine": "~2.8.11",
     "@types/jasminewd2": "~2.0.6",
+    "@types/jest": "^24.0.11",
     "@types/node": "~10.12.5",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~3.1.1",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.4",
-    "karma-jasmine": "~1.1.1",
-    "karma-jasmine-html-reporter": "^1.4.0",
-    "protractor": "~5.4.1",
+    "jest": "^24.7.1",
+    "jest-preset-angular": "^7.0.1",
+    "ng-packagr": "^4.4.0",
     "ts-node": "~7.0.1",
-    "tslint": "~5.11.0"
+    "tsickle": "0.33.1",
+    "tslib": "^1.7.1",
+    "tslint": "~5.11.0",
+    "typescript": "~3.1.6"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
