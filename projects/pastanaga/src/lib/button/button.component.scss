@@ -164,13 +164,13 @@ pa-button {
     }
     &#{&}-accent#{&}-destructive:hover {
         color: $white;
-        box-shadow: inset 0 0 0 1px $red-contrast;
-        background-color: $red-contrast;
+        box-shadow: inset 0 0 0 1px $button-destructive-hover-color;
+        background-color: $button-destructive-hover-color;
     }
     &#{&}-accent#{&}-destructive:active {
         color: $white;
-        box-shadow: inset 0 0 0 1px $red-dark;
-        background-color: $red-dark;
+        box-shadow: inset 0 0 0 1px $button-destructive-active-color;
+        background-color: $button-destructive-active-color;
     }
 
     &#{&}-small {
