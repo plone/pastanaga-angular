@@ -15,17 +15,10 @@ import {
     ToasterModule,
     TooltipModule
 } from '../../projects/pastanaga/src';
-import { Observable, of } from 'rxjs';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
-class CustomLoader implements TranslateLoader {
-    getTranslation(lang: string): Observable<any> {
-        return of({});
-    }
 }
 
 @NgModule({
@@ -33,7 +26,11 @@ class CustomLoader implements TranslateLoader {
         BrowserModule,
         FormsModule,
         TranslateModule.forRoot({
-            loader: {provide: TranslateLoader, useClass: CustomLoader}
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
         }),
 
         BadgeModule,
