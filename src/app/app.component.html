@@ -511,6 +511,7 @@
         </div>
         <div>
             <pa-badge [buttons]="badgeButtons">Badge with buttons</pa-badge>
+            <pa-badge [canBeRemoved]="true" (remove)="onButtonClick($event)">Badge with remove</pa-badge>
         </div>
         <div>
             <pa-badge maxWidth="100px">Badge with long text and ellipsis</pa-badge>

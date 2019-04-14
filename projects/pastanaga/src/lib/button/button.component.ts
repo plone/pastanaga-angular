@@ -27,7 +27,7 @@ export class ButtonComponent extends ButtonBase implements OnInit, OnChanges {
     }
 
     onClick($event) {
-        if (this.type !== 'submit') {
+        if (!!$event && this.type !== 'submit') {
             $event.preventDefault();
         }
     }
