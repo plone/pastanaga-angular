@@ -12,6 +12,7 @@
     "test": "jest --no-cache",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand --ci",
+    "get_version": "cat ./projects/pastanaga/package.json | grep version  | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g'",
     "lint": "ng lint"
   },
   "private": true,

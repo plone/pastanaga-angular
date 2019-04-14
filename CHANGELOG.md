@@ -1,3 +1,7 @@
+# 1.1.6 (2019-04-14)
+
+- Upgrade angular-svg-icon, add more tests
+
 # 1.1.5 (2019-04-08)
 
 Theming: Fix destructive color overwrite on accented buttons
