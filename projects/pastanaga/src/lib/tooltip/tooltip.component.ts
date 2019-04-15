@@ -18,6 +18,7 @@ export class TooltipComponent implements AfterViewInit {
     width = 0;
     left = 0;
     top = 0;
+    offset = 0;
 
     @ViewChild('tooltipText') tooltipText?: ElementRef;
 
@@ -51,9 +52,9 @@ export class TooltipComponent implements AfterViewInit {
 
     private getTopPosition(): number {
         if (this.isAction) {
-            return this.top + this.height + VERTICAL_SEPARATION_ACTION;
+            return this.top + this.height + VERTICAL_SEPARATION_ACTION + this.offset;
         } else {
-            return this.top + VERTICAL_SEPARATION;
+            return this.top + VERTICAL_SEPARATION + this.offset;
         }
     }
 

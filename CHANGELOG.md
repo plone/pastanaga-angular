@@ -1,3 +1,7 @@
+# 1.1.7 (2019-04-15)
+
+- Add an optional offset to tooltip top position
+
 # 1.1.6 (2019-04-14)
 
 - Upgrade angular-svg-icon, add more tests
