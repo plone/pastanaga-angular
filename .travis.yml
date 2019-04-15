@@ -14,7 +14,7 @@ notifications:
   email:
   - ebrehault@gmail.com
 before_deploy:
-  - export PACKAGE_VERSION=$(cat ./projects/pastanaga/package.json | grep version  | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g')
+  - export PACKAGE_VERSION=$(npm run get_version | tail -n 1)
   - git tag $PACKAGE_VERSION
 deploy:
   on:

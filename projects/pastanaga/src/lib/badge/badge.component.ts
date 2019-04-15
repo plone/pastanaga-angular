@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { BadgeModel } from './badge.model';
 
 @Component({
@@ -12,7 +12,6 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
     @Input() hexaColor?: string;
     @Input() isAccented = false;
     @Input() isSmall = false;
-    @Input() isError = false;
     @Input() canBeRemoved = false;
     @Input() maxWidth?: string;
     @Input() value?: number;
