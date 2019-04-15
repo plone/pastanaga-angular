@@ -50,14 +50,14 @@ export class TooltipDirective {
 
     @HostListener('mousemove', ['$event'])
     move(event: MouseEvent) {
-        if (this.text && this.isDisplayed && this.type === SYSTEM) {
+        if (!!this.text && this.isDisplayed && this.type === SYSTEM) {
             const position = this.getFixedPosition(event);
             this.show(position[0], position[1]);
         }
     }
 
     startDisplay(event: MouseEvent) {
-        if (this.text && !this.isDisplayed) {
+        if (!!this.text && !this.isDisplayed) {
             const position = this.getFixedPosition(event);
             if (!this.component) {
                 this.createTooltip(position[0], position[1]);
@@ -102,7 +102,7 @@ export class TooltipDirective {
     @HostListener('mouseleave')
     @HostListener('mousedown')
     hide(): void {
-        if (this.component) {
+        if (!!this.component) {
             this.component.instance.hide();
         }
         this.isDisplayed = false;
