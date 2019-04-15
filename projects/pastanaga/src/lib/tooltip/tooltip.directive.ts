@@ -9,6 +9,7 @@ import {
     Renderer2,
 } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 const SYSTEM = 'system';
 const ACTION = 'action';
@@ -21,6 +22,10 @@ let nextId = 0;
 export class TooltipDirective {
     @Input('paTooltip') text = '';
     @Input('paTooltipType') type = SYSTEM;
+    @Input()
+    get paTooltipOffset(): number { return this.offset; }
+    set paTooltipOffset(value: number) { this.offset = coerceNumberProperty(value); }
+    protected offset = 0;
 
     id = '';
     isDisplayed = false;
@@ -50,14 +55,14 @@ export class TooltipDirective {
 
     @HostListener('mousemove', ['$event'])
     move(event: MouseEvent) {
-        if (this.text && this.isDisplayed && this.type === SYSTEM) {
+        if (!!this.text && this.isDisplayed && this.type === SYSTEM) {
             const position = this.getFixedPosition(event);
             this.show(position[0], position[1]);
         }
     }
 
     startDisplay(event: MouseEvent) {
-        if (this.text && !this.isDisplayed) {
+        if (!!this.text && !this.isDisplayed) {
             const position = this.getFixedPosition(event);
             if (!this.component) {
                 this.createTooltip(position[0], position[1]);
@@ -89,6 +94,7 @@ export class TooltipDirective {
         this.component.instance.isAction = this.type === ACTION;
         this.component.instance.left = x || 0;
         this.component.instance.top = y || 0;
+        this.component.instance.offset = this.offset || 0;
         this.component.instance.width = this.element.nativeElement.clientWidth;
         this.component.instance.height = this.element.nativeElement.clientHeight;
 
@@ -102,7 +108,7 @@ export class TooltipDirective {
     @HostListener('mouseleave')
     @HostListener('mousedown')
     hide(): void {
-        if (this.component) {
+        if (!!this.component) {
             this.component.instance.hide();
         }
         this.isDisplayed = false;

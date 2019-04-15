@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 const VERTICAL_SEPARATION = 21;
 const VERTICAL_SEPARATION_ACTION = 3;
@@ -18,6 +18,7 @@ export class TooltipComponent implements AfterViewInit {
     width = 0;
     left = 0;
     top = 0;
+    offset = 0;
 
     @ViewChild('tooltipText') tooltipText?: ElementRef;
 
@@ -26,7 +27,7 @@ export class TooltipComponent implements AfterViewInit {
     }
 
     show() {
-        if (this.tooltipText) {
+        if (!!this.tooltipText) {
             this.tooltipText.nativeElement.style.left = this.getLeftPosition() + 'px';
             this.tooltipText.nativeElement.style.top = this.getTopPosition() + 'px';
             this.adjustPosition(); // once position set, check if too far horizontally or vertically
@@ -35,7 +36,7 @@ export class TooltipComponent implements AfterViewInit {
     }
 
     hide() {
-        if (this.tooltipText) {
+        if (!!this.tooltipText) {
             this.tooltipText.nativeElement.setAttribute('aria-expanded', false);
         }
     }
@@ -51,9 +52,9 @@ export class TooltipComponent implements AfterViewInit {
 
     private getTopPosition(): number {
         if (this.isAction) {
-            return this.top + this.height + VERTICAL_SEPARATION_ACTION;
+            return this.top + this.height + VERTICAL_SEPARATION_ACTION + this.offset;
         } else {
-            return this.top + VERTICAL_SEPARATION;
+            return this.top + VERTICAL_SEPARATION + this.offset;
         }
     }
 
