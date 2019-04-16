@@ -40,3 +40,5 @@ export * from './lib/tooltip/tooltip.module';
 export * from './lib/tooltip/tooltip.component';
 export * from './lib/tooltip/tooltip.directive';
 
+export * from './lib/expand/expand.component';
+export * from './lib/expand/expand.module';

@@ -1,0 +1,22 @@
+<button class="pa-expand-header" role="tab" [id]="id + '-tab'" [attr.aria-controls]="id + '-panel'" [attr.aria-expanded]="isOpen"
+    tabindex="0" (click)="togglePanel()">
+    <div class="pa-expand-header-wrapper" tabindex="-1">
+        <div [paTooltip]="isOpen ? toggleTooltip[1] : toggleTooltip[0]">
+            <div class="pa-expand-marker">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                    <polygon fill-rule="evenodd"
+                        points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414">
+                    </polygon>
+                </svg>
+            </div>
+        </div>
+        <div class="pa-expand-title"><ng-content select="expand-title"></ng-content></div>
+        <div class="pa-expand-description"><ng-content select="expand-description"></ng-content></div>
+    </div>
+</button>
+<div class="pa-expand-body" role="tabpanel" [attr.aria-labelledby]="id + '-tab'" [attr.aria-hidden]="!isOpen"
+    [id]="id + '-panel'" [@bodyExpansion]="isOpen ? 'expanded' : 'collapsed'" style="height: 0; visibility: hidden;">
+    <div class="pa-expand-body-wrapper">
+        <ng-content *ngIf="isOpen"></ng-content>
+    </div>
+</div>

@@ -13,7 +13,8 @@ import {
     ProgressModule,
     TextFieldModule,
     ToasterModule,
-    TooltipModule
+    TooltipModule,
+    ExpandModule
 } from '../../projects/pastanaga/src';
 
 // AoT requires an exported function for factories
@@ -40,6 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
         ToasterModule.forRoot(),
         TextFieldModule,
         TooltipModule,
+        ExpandModule,
     ],
     declarations: [
         AppComponent,

@@ -1,0 +1,11 @@
+@import "../styles/variables";
+
+.pa-expand-block {
+    background: $azure;
+    padding: 50px;
+}
+.pa-expand {
+    width: $w-dialog;
+    max-width: calc(100% - #{rythm(1)});
+    margin: 0 auto;
+}
