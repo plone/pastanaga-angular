@@ -69,7 +69,7 @@
         object-fit: contain;
         right: rythm(2);
         height: rythm(2);
-        fill: $blue;
+        fill: $link-color;
         & svg {
             width: rythm(2);
             height: rythm(2);
@@ -114,8 +114,5 @@
     &-header[aria-expanded="true"] + &-body {
         border-radius: 0 0 border-radius(m) border-radius(m);
         margin-bottom: 12px;
-    }
-    &.pa-expand-full {
-        width: 100%;
     }
 }

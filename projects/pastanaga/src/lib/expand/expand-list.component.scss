@@ -8,4 +8,7 @@
     width: $w-dialog;
     max-width: calc(100% - #{rythm(1)});
     margin: 0 auto;
+    &.pa-expand-full {
+        width: 100%;
+    }
 }
