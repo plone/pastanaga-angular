@@ -1,3 +1,7 @@
+# 1.2.0 (2019-04-16)
+
+- Expand/collapse section
+
 # 1.1.7 (2019-04-15)
 
 - Add an optional offset to tooltip top position

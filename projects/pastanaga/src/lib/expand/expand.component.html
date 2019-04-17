@@ -1,0 +1,18 @@
+<button class="pa-expand-header" role="tab" [id]="id + '-tab'" [attr.aria-controls]="id + '-panel'" [attr.aria-expanded]="isOpen"
+    tabindex="0" (click)="togglePanel()">
+    <div class="pa-expand-header-wrapper" tabindex="-1">
+        <div [paTooltip]="isOpen ? toggleTooltip[1] : toggleTooltip[0]">
+            <div class="pa-expand-marker">
+                <pa-icon name="down-key"></pa-icon>
+            </div>
+        </div>
+        <div class="pa-expand-title"><ng-content select="expand-title"></ng-content></div>
+        <div class="pa-expand-description"><ng-content select="expand-description"></ng-content></div>
+    </div>
+</button>
+<div class="pa-expand-body" role="tabpanel" [attr.aria-labelledby]="id + '-tab'" [attr.aria-hidden]="!isOpen"
+    [id]="id + '-panel'" [@bodyExpansion]="isOpen ? 'expanded' : 'collapsed'" style="height: 0; visibility: hidden;">
+    <div class="pa-expand-body-wrapper">
+        <ng-content *ngIf="isOpen"></ng-content>
+    </div>
+</div>

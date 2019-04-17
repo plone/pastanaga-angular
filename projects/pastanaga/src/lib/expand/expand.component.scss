@@ -1,0 +1,118 @@
+@import "../styles/variables";
+
+.pa-expand {
+    &-header {
+        background: $white;
+        border-radius: border-radius(m);
+        width: 100%;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        position: relative;
+        cursor: pointer;
+        transition: all .25s ease;
+        box-shadow: none;
+
+        &:hover {
+            box-shadow: $shadow-hover;
+            transition: all .25s ease;
+        }
+        &:hover + .pa-expand-body {
+            box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+            transition: all .25s ease;
+        }
+        &:active {
+            box-shadow: $shadow-pressed;
+            transition: all .25s ease;
+        }
+        &:active + .pa-expand-body {
+            box-shadow: 0 18px 36px 0 rgba(0, 0, 0, 0.15), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+            transition: all .25s ease;
+        }
+        &-wrapper {
+            border-radius: border-radius(m);
+            display: flex;
+            flex-flow: column;
+            align-content: center;
+            justify-content: center;
+            width: 100%;
+            height: rythm(1)*6;
+            padding: rythm(1) rythm(2);
+            position: relative;
+        }
+        @keyframes focus-ring {
+            from {box-shadow: 0 0 0 12px rgba(34,151,199,0);}
+            to {box-shadow: 0 0 0 3px rgba(34,151,199,.5);}
+        }
+        &:focus > &-wrapper {
+            outline: 0;
+            animation-name: focus-ring;
+            animation-duration: .33s;
+            box-shadow: 0 0 0 3px rgba(34,151,199,.5);
+            z-index: 1;
+        }
+        &:not(:-moz-focusring):focus > &-wrapper {
+            outline:0;
+        }
+        &::-moz-focus-inner, button::-moz-focus-outer {border:0;}
+        &:focus, &-wrapper:focus  {
+            outline: 0;
+        }
+    }
+    &-header[aria-expanded="true"] {
+        border-radius:  border-radius(m)  border-radius(m) 0 0;
+    }
+    &-marker {
+        transition: all .25s ease;
+        top: calc(50% - #{rythm(1)});
+        position:absolute;
+        object-fit: contain;
+        right: rythm(2);
+        height: rythm(2);
+        fill: $link-color;
+        & ::ng-deep svg {
+            width: rythm(2);
+            height: rythm(2);
+        }
+    }
+    &-header[aria-expanded="true"] &-marker {
+        transform: rotate(180deg);
+    }
+    &-title {
+        @include font-size(xs,m,xs);
+        font-weight: $font-weight-regular;
+        color: $gray-blacky;
+        text-transform: $labels-text-transform;
+        margin-right: rythm(3);
+
+    }
+    &-description {
+        @include font-size(m,m,m);
+        font-weight: $font-weight-light;
+        color: $gray;
+        margin-right: rythm(3);
+
+    }
+    &-body {
+        background: $white;
+        border-radius: border-radius(m);
+        width: 100%;
+        text-align: left;
+        border: 0;
+        display: flex;
+        position: relative;
+        margin-bottom: 3px;
+    }
+    &-body-wrapper {
+        padding: rythm(1) rythm(2);
+        width: 100%;
+    }
+    &-body[aria-hidden="true"] {
+        height: 0;
+        overflow: hidden;
+    }
+    &-header[aria-expanded="true"] + &-body {
+        border-radius: 0 0 border-radius(m) border-radius(m);
+        margin-bottom: 12px;
+    }
+}

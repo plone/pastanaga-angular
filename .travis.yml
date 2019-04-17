@@ -13,9 +13,9 @@ script:
 notifications:
   email:
   - ebrehault@gmail.com
-before_deploy:
-  - export PACKAGE_VERSION=$(npm run get_version | tail -n 1)
-  - git tag $PACKAGE_VERSION
 deploy:
   on:
-    tags: true
+    branch: master
+    condition: -z $(git tag --points-at $TRAVIS_COMMIT)
+    provider: script
+    script: $TRAVIS_BUILD_DIR/travis_release.sh
