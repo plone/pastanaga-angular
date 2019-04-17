@@ -1,8 +1,8 @@
 import { NgModule, Directive } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { ExpandComponent } from './expand.component';
 import { ExpandListComponent } from './expand-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from '../tooltip/tooltip.module';
 import { SvgModule } from '../svg/svg.module';
 
@@ -14,7 +14,7 @@ export class ExpandDescriptionDirective {}
 
 @NgModule({
     imports: [
-        BrowserAnimationsModule,
+        CommonModule,
         TooltipModule,
         SvgModule,
     ],

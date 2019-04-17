@@ -1,3 +1,7 @@
+# 1.2.1 (2019-04-16)
+
+- Fix Animation module import
+
 # 1.2.0 (2019-04-16)
 
 - Expand/collapse section

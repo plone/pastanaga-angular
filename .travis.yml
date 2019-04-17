@@ -14,8 +14,8 @@ notifications:
   email:
   - ebrehault@gmail.com
 deploy:
+  provider: script
+  script: $TRAVIS_BUILD_DIR/travis_release.sh
   on:
     branch: master
     condition: -z $(git tag --points-at $TRAVIS_COMMIT)
-    provider: script
-    script: $TRAVIS_BUILD_DIR/travis_release.sh
