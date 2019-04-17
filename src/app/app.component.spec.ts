@@ -11,6 +11,7 @@ import {
   ToasterModule,
   TooltipModule,
   TextFieldModule,
+  ExpandModule,
 } from '../../projects/pastanaga/src';
 import { Observable, of } from 'rxjs';
 
@@ -36,6 +37,7 @@ describe('AppComponent', () => {
         ToasterModule.forRoot(),
         TextFieldModule,
         TooltipModule,
+        ExpandModule,
     ],
       declarations: [
         AppComponent
