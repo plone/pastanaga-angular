@@ -4,6 +4,7 @@ import { ExpandComponent } from './expand.component';
 import { ExpandListComponent } from './expand-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from '../tooltip/tooltip.module';
+import { SvgModule } from '../svg/svg.module';
 
 @Directive({ selector: 'expand-title' })
 export class ExpandTitleDirective {}
@@ -15,6 +16,7 @@ export class ExpandDescriptionDirective {}
     imports: [
         BrowserAnimationsModule,
         TooltipModule,
+        SvgModule,
     ],
     exports: [
         ExpandComponent,

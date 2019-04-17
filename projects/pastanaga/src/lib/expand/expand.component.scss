@@ -70,7 +70,7 @@
         right: rythm(2);
         height: rythm(2);
         fill: $link-color;
-        & svg {
+        & ::ng-deep svg {
             width: rythm(2);
             height: rythm(2);
         }

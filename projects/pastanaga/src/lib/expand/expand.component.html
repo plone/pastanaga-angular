@@ -3,11 +3,7 @@
     <div class="pa-expand-header-wrapper" tabindex="-1">
         <div [paTooltip]="isOpen ? toggleTooltip[1] : toggleTooltip[0]">
             <div class="pa-expand-marker">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-                    <polygon fill-rule="evenodd"
-                        points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414">
-                    </polygon>
-                </svg>
+                <pa-icon name="down-key"></pa-icon>
             </div>
         </div>
         <div class="pa-expand-title"><ng-content select="expand-title"></ng-content></div>

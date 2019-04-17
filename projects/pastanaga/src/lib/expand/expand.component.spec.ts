@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
 import { ExpandTitleDirective, ExpandDescriptionDirective } from './expand.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from '../tooltip/tooltip.module';
-
+import { svgLoaderFactory } from '../test.utils';
+import { AngularSvgIconModule, SvgLoader } from 'angular-svg-icon';
+import { SvgModule } from '../svg/svg.module';
 @Component({
     selector: 'test',
     template: `
@@ -61,6 +63,13 @@ describe('BadgeComponent', () => {
                 CommonModule,
                 BrowserAnimationsModule,
                 TooltipModule,
+                SvgModule,
+                AngularSvgIconModule.forRoot({
+                    loader: {
+                        provide: SvgLoader,
+                        useFactory: svgLoaderFactory,
+                    }
+                }),
             ],
             declarations: [
                 ExpandComponent,
