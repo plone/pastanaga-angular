@@ -113,6 +113,6 @@
     }
     &-header[aria-expanded="true"] + &-body {
         border-radius: 0 0 border-radius(m) border-radius(m);
-        margin-bottom: 12px;
+        margin-bottom: rythm(1);
     }
 }
