@@ -12,3 +12,6 @@
         width: 100%;
     }
 }
+::ng-deep pa-expand ::ng-deep .pa-expand-header[aria-expanded="true"] {
+    margin-top: rythm(1);
+}
