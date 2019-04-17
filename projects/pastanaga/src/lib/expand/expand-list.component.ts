@@ -1,4 +1,5 @@
 import { Component, Input, HostListener } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-expand-list',
@@ -7,7 +8,10 @@ import { Component, Input, HostListener } from '@angular/core';
 })
 
 export class ExpandListComponent {
-    @Input() large = false;
+    @Input()
+    get large(): boolean { return this._large; }
+    set large(value: boolean) { this._large = coerceBooleanProperty(value); }
+    protected _large = false;
 
     @HostListener('keydown.arrowDown', ['$event'])
     focusOnNext($event: KeyboardEvent) {
@@ -37,7 +41,6 @@ export class ExpandListComponent {
         if (!element || element.tagName === 'PA-EXPAND') {
             return element;
         } else {
-            console.log(element.tagName);
             return this.getParentExpand(element.parentElement);
         }
     }
