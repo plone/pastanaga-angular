@@ -1,5 +1,8 @@
 @import "../styles/variables";
 
+:host {
+    display: block;
+}
 .pa-expand-block {
     background: $azure;
     padding: 50px;
@@ -11,7 +14,4 @@
     &.pa-expand-full {
         width: 100%;
     }
-}
-::ng-deep pa-expand ::ng-deep .pa-expand-header[aria-expanded="true"] {
-    margin-top: rythm(1);
 }

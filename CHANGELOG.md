@@ -1,3 +1,7 @@
+# 1.2.2 (2019-04-16)
+
+- Put shadow on expand component itself
+
 # 1.2.1 (2019-04-16)
 
 - Fix Animation module import

@@ -1,5 +1,12 @@
 @import "../styles/variables";
 
+:host {
+    display: block;
+    &:hover {
+        box-shadow: $shadow-hover;
+        transition: all .25s ease;
+    }
+}
 .pa-expand {
     &-header {
         background: $white;
@@ -13,14 +20,6 @@
         transition: all .25s ease;
         box-shadow: none;
 
-        &:hover {
-            box-shadow: $shadow-hover;
-            transition: all .25s ease;
-        }
-        &:hover + .pa-expand-body {
-            box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-            transition: all .25s ease;
-        }
         &:active {
             box-shadow: $shadow-pressed;
             transition: all .25s ease;
