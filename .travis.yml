@@ -3,19 +3,22 @@ node_js:
 - 10.15.0
 cache:
   directories:
-    - node_modules
+  - node_modules
 dist: trusty
 install:
-  - npm install
+- npm install
 script:
-  - npm test
-  - npm build
+- npm test
+- npm build
 notifications:
   email:
   - ebrehault@gmail.com
 deploy:
-  provider: script
-  script: $TRAVIS_BUILD_DIR/travis_release.sh
+  provider: releases
+  script: "$TRAVIS_BUILD_DIR/travis_release.sh"
   on:
     branch: master
-    condition: -z $(git tag --points-at $TRAVIS_COMMIT)
+    condition: "-z $(git tag --points-at $TRAVIS_COMMIT)"
+env:
+  global:
+    secure: eQP/bsedv8lpxLHt7xpKiR6prO8hvhRbntm7LgXvGVDWgpDiOHH4D6JvyybtXSqJQ+woNUdL6F6EZra4Q9Z8RsnNpH8mk4w1zIRrLSWaUEimEkPVXoLAegwB/sPt+S3Hg16S9CQz2absBEqeBMzYvXzcwqsXJN4M2jNMoU2IFw7dwXbp59UrwZIEX36fzWXHU4wB5ASw55aB8dvZ27FRwuoxgztf+SyYXFKsYEGmKYENDiQWSOymASxJkcA7Z4cTxK4dRRF+ApoN284cNr5XP2vfgpCHT4sd4AaBbxgxlYlTBmHt2GBuhdRhCukn6ii/1uLoBptoYMh2npwI5TPxidIFuoP+ETUkYjoOBDC7m55AQLwRZSNSRLIc6LG828CcdJL7ddqChlIWQExdeAqD3iIMNS62CeGNastP32eiALKLcLkzpW4h9YwOsFym+c6jGIg3K7G9OFKmYEFS1ZQvQasIuq7wCGBmfw7yL/wfF0lqRZ20IBdPBr1VO/mQMIB2mI4D3pksXjnWwnk6X7ZAYcg5zzf9TbVeRb4x6VGw8xch6GXDoc6WxSWE3wTPzj89oSHoxZses2QSOK5od/kIhctLyUYffmr/08rnW67niDGO7zNzPR9uKjBHAmYkiiTdoF1BXpoTVabUz1/QGVAlqJhOFcb0Wq3g1/KJKsiZU/o=
