@@ -6,14 +6,14 @@
     padding: rythm(.25) rythm(.5);
     margin-left: - rythm(.5);
     margin-right: rythm(1);
-    font-weight: $font-weight-light;
+    font-weight: $badge-font-weight;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
     overflow: hidden;
     @include border-radius(xs);
     color: $gray-blacky;
-    background-color: $azure-light;
+    background-color: $badge-background-color;
 
     // Empty badges collapse automatically
     &:empty {
@@ -71,26 +71,31 @@
 }
 
 .pa-badge-positive {
-    background-color: $green;
+    background-color: $positive-color;
     color: $white;
 }
 
 .pa-badge-destructive {
-    background-color: $red;
+    background-color: $destructive-color;
     color: $white;
 }
 
 .pa-badge-warning {
-    background-color: $ocher;
+    background-color: $warning-color;
     color: $white;
 }
 
 .pa-badge-secondary {
-    background-color: $brown;
+    background-color: $secondary-color;
     color: $white;
 }
 
 .pa-badge-primary {
-    background-color: $blue;
+    background-color: $primary-color;
     color: $white;
+}
+
+.pa-badge-error {
+    color: $error-color;
+    background: rgba($red, .05);
 }

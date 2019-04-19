@@ -44,17 +44,23 @@ $link-hover-color:          $blue-contrast !default;
 $link-hover-decoration:     underline !default;
 $text-muted:                $gray !default;
 $text-selection:            rgba($red-light,.35) !default;
+$primary-color:                  $blue !default;
+$secondary-color:                $brown !default;
+$destructive-color:              $red !default;
+$positive-color:                 $green !default;
+$warning-color:                  $ocher !default;
+$error-color:                    $red !default;
 
 // Buttons
 $button-default-color:                  $gray-black !default;
-$button-primary-color:                  $blue !default;
+$button-primary-color:                  $primary-color !default;
 $button-primary-active-color:           $blue-dark !default;
 $button-primary-active-background:      $blue-light !default;
 $button-primary-hover-color:            $blue-contrast !default;
-$button-secondary-color:                $brown !default;
+$button-secondary-color:                $secondary-color !default;
 $button-secondary-active-color:         $brown-dark !default;
 $button-secondary-hover-color:          $brown-contrast !default;
-$button-destructive-color:              $red !default;
+$button-destructive-color:              $destructive-color !default;
 $button-destructive-active-color:       $red-dark !default;
 $button-destructive-hover-color:        $red-contrast !default;
 $button-contrast-color:                 $white !default;
@@ -200,7 +206,9 @@ $headings-color:              inherit !default;
 $paragraph-margin-bottom:     rythm(1) !default;
 $dt-font-weight:              $font-weight-light !default;
 
-
+// BADGE
+$badge-font-weight: $font-weight-light !default;
+$badge-background-color: $azure-light !default;
 
 $rythm-base:    12px;
 

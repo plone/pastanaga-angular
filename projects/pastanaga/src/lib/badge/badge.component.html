@@ -1,6 +1,7 @@
 <span class="pa-badge {{colorClass}}"
       [class.pa-badge-accent]="isAccented"
       [class.pa-badge-small]="isSmall"
+      [class.pa-badge-error]="isError"
       [ngStyle]="colorStyle">
     <span *ngIf="!value"
           [class.pa-badge-ellipsis]="!!maxWidth"

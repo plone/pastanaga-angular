@@ -1,3 +1,7 @@
+# 1.2.3 (2019-04-19)
+
+- Support error badges, and improve pa-badge themability
+
 # 1.2.2 (2019-04-16)
 
 - Put shadow on expand component itself

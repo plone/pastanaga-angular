@@ -12,6 +12,7 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
     @Input() hexaColor?: string;
     @Input() isAccented = false;
     @Input() isSmall = false;
+    @Input() isError = false;
     @Input() canBeRemoved = false;
     @Input() maxWidth?: string;
     @Input() value?: number;
