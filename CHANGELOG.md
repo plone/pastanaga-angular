@@ -1,3 +1,7 @@
+# 1.2.4 (2019-04-29)
+
+- Add smaller button size named `tiny`
+
 # 1.2.3 (2019-04-19)
 
 - Support error badges, and improve pa-badge themability

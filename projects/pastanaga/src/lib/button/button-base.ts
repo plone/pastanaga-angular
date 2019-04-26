@@ -1,11 +1,11 @@
 import {AfterContentInit, ElementRef, EventEmitter, HostBinding, Input, Output, SimpleChanges, ViewChild} from '@angular/core';
 
 const COLORS = ['primary', 'secondary', 'destructive', 'contrast'];
-const SIZES = ['small', 'large'];
+const SIZES = ['tiny', 'small', 'large'];
 
 export class ButtonBase implements AfterContentInit {
     @Input() color: 'primary'|'secondary'|'destructive'|'contrast' = 'primary';
-    @Input() size: 'small'|'large'|'' = '';
+    @Input() size: 'tiny'|'small'|'large'|'' = '';
     @Input() border = false;
     @Input() disabled = false;
     @Input() ariaLabel = '';
