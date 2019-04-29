@@ -173,6 +173,21 @@ pa-button {
         background-color: $button-destructive-active-color;
     }
 
+    &#{&}-tiny {
+        #{$root}-wrapper {
+            height: rythm(1.5);
+            padding: rythm(.25) rythm(.5);
+            @include font-size($button-small-font-size, s, s);
+        }
+        & svg {
+            width: rythm(1);
+            height: rythm(1);
+            margin-left: -  rythm(.25);
+            margin-right: -  rythm(.25);
+            margin-top: - rythm(.25)/3;
+        }
+    }
+
     &#{&}-small {
         #{$root}-wrapper {
             height: rythm(2.5);
