@@ -1,3 +1,7 @@
+# 1.2.5 (2019-04-30)
+
+- Translate badges labels
+
 # 1.2.4 (2019-04-29)
 
 - Add smaller button size named `tiny`
