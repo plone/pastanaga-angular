@@ -1,3 +1,7 @@
+# 1.2.6 (2019-05-06)
+
+- Fix pa-expand style: don't display box shadow around header when expand is opened
+
 # 1.2.5 (2019-04-30)
 
 - Translate badges labels
