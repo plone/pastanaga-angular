@@ -47,6 +47,7 @@ export class InputComponent extends TextfieldCommon
     @Input() type = 'text';
     @Input() hasFocus = false;
     @Input() hasStrengthBar = false;
+    @Input() isLessen = false;
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 

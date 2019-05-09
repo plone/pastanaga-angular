@@ -1,5 +1,6 @@
 <div class="pa-field pa-field-select" [class.pa-field-error]="hasError || !!errorMessage">
     <select class="pa-field-control" [id]="id" [attr.disabled]="disabled ? true : null"
+            [class.pa-field-control-lessen]="isLessen"
             [required]="required"
             [attr.aria-describedby]="helpId" [attr.placeholder]="placeholder | translate"
             (change)="change($event.target.value)">

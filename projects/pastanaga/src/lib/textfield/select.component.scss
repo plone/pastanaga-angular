@@ -19,4 +19,7 @@
         box-shadow: 0 2px 0 0px $control-border-color;
         background-color: rgba($blue,.12);
     }
+    &.pa-field-control-lessen {
+        padding-right: rythm(2.5) !important;
+    }
 }

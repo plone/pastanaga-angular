@@ -29,6 +29,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewI
     @Input() disabled = false;
     @Input() required = false;
     @Input() isLabelHidden = false;
+    @Input() isLessen = false;
     @Output() onSelection: EventEmitter<any> = new EventEmitter();
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     helpId = '';
