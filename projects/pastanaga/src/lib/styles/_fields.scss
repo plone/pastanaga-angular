@@ -105,6 +105,26 @@ fieldset > pa-button.pa-field-button-right {
     }
 }
 
+//lessen
+.pa-field-control.pa-field-control-lessen {
+    padding: 15px 6px !important;
+    box-shadow: none !important;
+    background-color: transparent;
+    &:hover {
+        background-color: rgba($blue,.06);
+        box-shadow: none;
+        color: $blue-contrast;
+    }
+    &:active,
+    &:focus {
+        background-color: rgba($blue,.12);
+        box-shadow: none;
+    }
+}
+.pa-field-control.pa-field-control-lessen + label {
+    @extend .o-sr;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus

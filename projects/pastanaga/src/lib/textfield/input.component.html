@@ -1,5 +1,7 @@
 <div [class]="'pa-field pa-field-'+ type" [class.pa-field-error]="hasError || !!errorMessage">
     <input #dataInput class="pa-field-control"
+           [class.pa-field-control-readonly-lessen]="isReadOnly && isLessen"
+           [class.pa-field-control-lessen]="isLessen && !isReadOnly"
            [type]="type"
            [id]="id"
            [attr.aria-describedby]="helpId"

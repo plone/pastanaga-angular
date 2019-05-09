@@ -1,3 +1,7 @@
+# 1.2.7 (2019-05-09)
+
+- Support lessen style on input and select
+
 # 1.2.6 (2019-05-06)
 
 - Fix pa-expand style: don't display box shadow around header when expand is opened
