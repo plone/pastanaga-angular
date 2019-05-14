@@ -1,3 +1,7 @@
+# 1.2.8 (2019-05-14)
+
+- Removed font size changed when resizing the window
+
 # 1.2.7 (2019-05-09)
 
 - Support lessen style on input and select
