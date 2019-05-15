@@ -56,12 +56,6 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 // 2. As a best practice, apply a default `background-color`.
 // 3. Set an explicit initial text-align value so that we can later use the
 //    the `inherit` value on things like `<th>` elements.
-html {
-  @media (max-width: 991px) {
-    font-size: 1.16666666667rem;
-  }
-}
-
 body {
   margin: 0; // 1
   font-family: $font-family-base;
