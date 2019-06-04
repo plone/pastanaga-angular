@@ -1,3 +1,7 @@
+# 1.2.9 (2019-05-31)
+
+- Removed white space wraps in pa-button
+
 # 1.2.8 (2019-05-14)
 
 - Removed font size changed when resizing the window
