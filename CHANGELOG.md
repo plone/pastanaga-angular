@@ -1,3 +1,7 @@
+# 1.2.10 (2019-06-11)
+
+- Adjust pa-expand margin
+
 # 1.2.9 (2019-05-31)
 
 - Removed white space wraps in pa-button
