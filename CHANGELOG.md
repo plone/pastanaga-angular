@@ -1,3 +1,7 @@
+# 1.2.11 (2019-06-14)
+
+- Changed color of badge deletion button to secondary and verticaly aligned
+
 # 1.2.10 (2019-06-11)
 
 - Adjust pa-expand margin
