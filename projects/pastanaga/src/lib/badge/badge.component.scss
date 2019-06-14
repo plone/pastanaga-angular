@@ -19,9 +19,15 @@
     &:empty {
         display: none;
     }
-
+    &-value{
+        font-weight: 300;
+        color: $gray;
+    }
     & ::ng-deep pa-button button {
         margin: (- rythm(1)) (- rythm(.25));
+    }
+    & ::ng-deep .pa-button-wrapper {
+        margin-top: -4px;
     }
     & ::ng-deep pa-button:last-child button {
         margin-right: (- rythm(.5));
