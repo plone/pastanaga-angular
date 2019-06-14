@@ -4,13 +4,14 @@
       [class.pa-badge-error]="isError"
       [ngStyle]="colorStyle">
     <span *ngIf="!value"
+          class="pa-badge-value"
           [class.pa-badge-ellipsis]="!!maxWidth"
           [style.max-width]="maxWidth"
           [paTooltip]="text" #textContent translate><ng-content></ng-content></span>
     <pa-button *ngFor="let btn of buttons"
                  size="small" [icon]="btn.icon" [color]="btn.color" (click)="btn.onClick()">{{btn.name}}</pa-button>
     <pa-button *ngIf="canBeRemoved"
-                 size="small" icon="clear" (click)="remove.emit($event)">Remove</pa-button>
+                 size="small" icon="clear" color="secondary" (click)="remove.emit($event)">Remove</pa-button>
     <ng-container *ngIf="!!value || value === 0">{{ value | number }}<span *ngIf="of"><abbr title="of">/</abbr>{{ of | number }}</span></ng-container>
 </span>
 
