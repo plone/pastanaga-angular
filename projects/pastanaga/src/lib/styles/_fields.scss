@@ -122,7 +122,7 @@ fieldset > pa-button.pa-field-button-right {
     }
 }
 .pa-field-control.pa-field-control-lessen + label {
-    @extend .o-sr;
+    @extend .pa-sr;
 }
 
 input:-webkit-autofill,

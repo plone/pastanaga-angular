@@ -1,6 +1,10 @@
+# 1.2.12 (2019-06-15)
+
+- o-sr doesn't exists in pastanaga, pa-sr does
+
 # 1.2.11 (2019-06-14)
 
-- Changed color of badge deletion button to secondary and verticaly aligned
+- Changed color of badge deletion button to secondary and vertically aligned
 
 # 1.2.10 (2019-06-11)
 
