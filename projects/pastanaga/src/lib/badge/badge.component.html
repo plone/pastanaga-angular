@@ -5,6 +5,7 @@
       [ngStyle]="colorStyle">
     <span *ngIf="!value"
           class="pa-badge-value"
+          [ngStyle]="colorStyle"
           [class.pa-badge-ellipsis]="!!maxWidth"
           [style.max-width]="maxWidth"
           [paTooltip]="text" #textContent translate><ng-content></ng-content></span>
