@@ -51,7 +51,7 @@ export class InputComponent extends TextfieldCommon
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('dataInput') input?: ElementRef;
+    @ViewChild('dataInput', { static: true }) input?: ElementRef;
 
     passwordStrength = 0;
     autofilled = false;

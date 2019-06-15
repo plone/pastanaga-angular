@@ -17,7 +17,7 @@ export class ToastComponent implements OnInit {
     @Input() toast?: ToastModel;
     @Output() dismiss = new EventEmitter();
 
-    @ViewChild('toastContainer') toastContainer?: ElementRef;
+    @ViewChild('toastContainer', { static: true }) toastContainer?: ElementRef;
 
     ariaLabeledBy = '';
     parsedMessage?: SafeHtml;

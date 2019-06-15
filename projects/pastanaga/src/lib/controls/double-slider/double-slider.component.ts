@@ -42,13 +42,13 @@ export class DoubleSliderComponent implements AfterViewInit, OnInit, OnChanges, 
     thumbRealWidth = 0;
     helpId = '';
 
-    @ViewChild('slider') slider?: ElementRef;
-    @ViewChild('container') container?: ElementRef;
-    @ViewChild('track') track?: ElementRef;
-    @ViewChild('thumbLeft') thumbLeft?: ElementRef;
-    @ViewChild('thumbRight') thumbRight?: ElementRef;
-    @ViewChild('outputLeft') outputLeft?: ElementRef;
-    @ViewChild('outputRight') outputRight?: ElementRef;
+    @ViewChild('slider', { static: true }) slider?: ElementRef;
+    @ViewChild('container', { static: true }) container?: ElementRef;
+    @ViewChild('track', { static: true }) track?: ElementRef;
+    @ViewChild('thumbLeft', { static: true }) thumbLeft?: ElementRef;
+    @ViewChild('thumbRight', { static: true }) thumbRight?: ElementRef;
+    @ViewChild('outputLeft', { static: false }) outputLeft?: ElementRef;
+    @ViewChild('outputRight', { static: false }) outputRight?: ElementRef;
 
     ngAfterViewInit() {
         if (!!this.container) {

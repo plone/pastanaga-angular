@@ -8,7 +8,7 @@ import { BadgeModel, ControlModel, Toaster, ToastModel, ToggleModel } from '../.
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    @ViewChild('toastsContainer', {read: ViewContainerRef}) toastsContainer?: ViewContainerRef;
+    @ViewChild('toastsContainer', { read: ViewContainerRef, static: true }) toastsContainer?: ViewContainerRef;
 
     isStandaloneCheckboxSelected = false;
     standaloneSelection = false;
