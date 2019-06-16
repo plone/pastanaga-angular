@@ -6,7 +6,6 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     templateUrl: 'expand-list.component.html',
     styleUrls: ['./expand-list.component.scss']
 })
-
 export class ExpandListComponent {
     @Input()
     get large(): boolean { return this._large; }

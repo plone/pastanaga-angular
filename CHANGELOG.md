@@ -1,3 +1,7 @@
+# 1.2.13 (2019-06-16)
+
+- Add simple pagination component (displaying always all pages)
+
 # 1.2.12 (2019-06-15)
 
 - o-sr doesn't exists in pastanaga, pa-sr does
