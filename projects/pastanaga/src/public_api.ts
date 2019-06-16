@@ -42,3 +42,6 @@ export * from './lib/tooltip/tooltip.directive';
 
 export * from './lib/expand/expand.component';
 export * from './lib/expand/expand.module';
+
+export * from './lib/pagination/pagination.component';
+export * from './lib/pagination/pagination.module';

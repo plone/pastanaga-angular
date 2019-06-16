@@ -1,0 +1,38 @@
+<nav role="navigation" *ngIf="pages.length > 1">
+    <ul>
+        <li>
+            <a class="pa-pagination-link pa-button pa-button-primary pa-button-small" tabindex="0" [attr.aria-disabled]="page === pages[0]"
+               (click)="goToFirst()" paTooltip="common.previous" paTooltipType="action"><span class="pa-button-wrapper" tabindex="-1"><span class="pa-button-label pa-sr" translate>pagination.first-page</span>
+                    <pa-icon name="tab-backwards"></pa-icon>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a class="pa-pagination-link pa-button pa-button-primary pa-button-small" tabindex="0" [attr.aria-disabled]="page === pages[0]"
+               (click)="back()" paTooltip="common.previous" paTooltipType="action"><span class="pa-button-wrapper" tabindex="-1"><span class="pa-button-label pa-sr" translate>pagination.first-page</span>
+                    <pa-icon name="backspace"></pa-icon>
+                </span>
+            </a>
+        </li>
+        <li *ngFor="let p of pages">
+            <a class="pa-pagination-link pa-button pa-button-primary pa-button-small" tabindex="0" [attr.aria-current]="p === page"
+               (click)="goToPage(p)"><span class="pa-button-wrapper" tabindex="-1"><span class="pa-button-label">
+                    <span class="pa-sr" translate>{{p === page ? 'pagination.current-page' : 'pagination.go-to-page'}}</span> {{p}}</span></span>
+            </a>
+        </li>
+        <li>
+            <a class="pa-pagination-link pa-button pa-button-primary pa-button-small" tabindex="0" [attr.aria-disabled]="page === pages[pages.length - 1]"
+               (click)="next()" paTooltip="common.previous" paTooltipType="action"><span class="pa-button-wrapper" tabindex="-1"><span class="pa-button-label pa-sr" translate>pagination.last-page</span>
+                    <pa-icon name="confirm"></pa-icon>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a class="pa-pagination-link pa-button pa-button-primary pa-button-small" tabindex="0" [attr.aria-disabled]="page === pages[pages.length - 1]"
+               (click)="goToLast()" paTooltip="common.previous" paTooltipType="action"><span class="pa-button-wrapper" tabindex="-1"><span class="pa-button-label pa-sr" translate>pagination.last-page</span>
+                    <pa-icon name="tab"></pa-icon>
+                </span>
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,39 @@
+@import "../styles/variables";
+
+:host {
+    display: block;
+    margin-bottom: rythm(2.5);
+
+    ul {
+        list-style: none;
+        padding:0;
+        margin: 0 (- rythm(.5));
+    }
+    li {
+        display: inline-block;
+    }
+    .pa-pagination-link[aria-disabled="true"],
+    .pa-pagination-link[aria-disabled="true"]:hover,
+    .pa-pagination-link[aria-disabled="true"]:active,
+    .pa-pagination-link[aria-current="true"],
+    .pa-pagination-link[aria-current="true"]:hover,
+    .pa-pagination-link[aria-current="true"]:active {
+        color: $gray-pale;
+        cursor: default;
+        background: transparent;
+        pointer-events: none;
+    }
+    .pa-pagination-link[aria-current="true"],
+    .pa-pagination-link[aria-current="true"]:hover,
+    .pa-pagination-link[aria-current="true"]:active {
+        box-shadow: inset 0 0 0 2px currentColor;
+    }
+    .pa-pagination-separator {
+        color: $gray-pale;
+        font-weight: $font-weight-light;
+        font-size: 125%;
+        top: - rythm(.25);
+        padding: 0 rythm(.5);
+        position: relative;
+    }
+}
