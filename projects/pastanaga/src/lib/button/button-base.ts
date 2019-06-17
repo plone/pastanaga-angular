@@ -16,7 +16,7 @@ export class ButtonBase implements AfterContentInit {
 
     @Output() hasFocus: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text') textElement?: ElementRef;
+    @ViewChild('text', { static: true }) textElement?: ElementRef;
 
     buttonStyle = {
         'pa-button': true,

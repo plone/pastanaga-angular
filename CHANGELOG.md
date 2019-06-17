@@ -1,3 +1,7 @@
+# 1.3.0 (2019-06-17)
+
+- Upgrade to Angular 8
+
 # 1.2.13 (2019-06-16)
 
 - Add simple pagination component (displaying always all pages)

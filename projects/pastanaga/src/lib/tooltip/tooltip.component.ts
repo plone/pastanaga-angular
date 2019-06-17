@@ -20,7 +20,7 @@ export class TooltipComponent implements AfterViewInit {
     top = 0;
     offset = 0;
 
-    @ViewChild('tooltipText') tooltipText?: ElementRef;
+    @ViewChild('tooltipText', { static: false }) tooltipText?: ElementRef;
 
     ngAfterViewInit() {
         this.show();

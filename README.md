@@ -34,7 +34,7 @@ $button-primary-active-background: $my-blue-light;
 
 (See `_variables.scss` to get the full list)
 
-The file must be in the main app src folder and must be declared in `angular.json`:
+**BEFORE ANGULAR 8**: The file must be in the main app src folder and must be declared in `angular.json`:
 
 ```
 "stylePreprocessorOptions": {

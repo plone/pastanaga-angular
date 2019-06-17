@@ -19,7 +19,7 @@ export class ToggleComponent implements OnInit {
     @Input() noLabel = 'common.no';
     @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text') textElement?: ElementRef;
+    @ViewChild('text', { static: false }) textElement?: ElementRef;
 
     helpId = '';
 

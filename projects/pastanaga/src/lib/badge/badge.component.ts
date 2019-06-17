@@ -26,7 +26,7 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
     colorStyle?: {};
     text = '';
 
-    @ViewChild('textContent') textContent?: ElementRef;
+    @ViewChild('textContent', { static: false }) textContent?: ElementRef;
 
     constructor(private elementRef: ElementRef) {}
 
