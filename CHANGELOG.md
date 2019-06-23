@@ -1,3 +1,7 @@
+# 1.2.14 (2019-06-16)
+
+- Fix pagination for Guillotina 5
+
 # 1.2.13 (2019-06-16)
 
 - Add simple pagination component (displaying always all pages)

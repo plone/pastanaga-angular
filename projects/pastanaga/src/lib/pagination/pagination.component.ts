@@ -7,9 +7,9 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 })
 export class PaginationComponent implements OnChanges {
     @Input() total = 0;
-    @Input() page = 0;
     @Input() pageSize = 20;
     @Output() goTo: EventEmitter<number> = new EventEmitter<number>();
+    page = 1;
 
     pages: number[] = [];
 
@@ -20,23 +20,28 @@ export class PaginationComponent implements OnChanges {
     }
 
     back() {
-        this.goTo.emit(this.page - 1);
+        this.page -= 1;
+        this.goTo.emit(this.page);
     }
-
+    
     next() {
-        this.goTo.emit(this.page + 1);
+        this.page += 1;
+        this.goTo.emit(this.page);
     }
 
     goToPage(pageNumber: number) {
+        this.page = pageNumber;
         this.goTo.emit(pageNumber);
     }
 
     goToFirst() {
+        this.page = 0;
         this.goTo.emit(this.pages[0]);
     }
 
     goToLast() {
-        this.goTo.emit(this.pages[this.pages.length - 1]);
+        this.page = Math.ceil(this.total / this.pageSize);
+        this.goTo.emit(this.page);
     }
 
     private computePages() {
