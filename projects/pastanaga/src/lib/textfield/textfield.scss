@@ -18,7 +18,7 @@
     position: relative;
     margin-bottom: rythm(1.5);
 
-    // o-field-control
+    // pa-field-control
     .pa-field-control {
         display: block;
         width: calc(100% + 12px);
@@ -99,7 +99,7 @@
             transition: all 1s ease;
         }
     }
-    // o-field-label
+    // pa-field-label
     .pa-field-label {
         position: absolute;
         top: 0;
@@ -128,9 +128,11 @@
     }
     .pa-field-control:focus:not(:disabled):not(:read-only) + .pa-field-label,
     .pa-field-control:active:not(:disabled):not(:read-only) + .pa-field-label,
-    .pa-field-control:required + .pa-field-label,
+    .pa-field-control:required:valid + .pa-field-label,
     .pa-field-control:optional:not(:valid):not(:disabled):not(:read-only) + .pa-field-label,
-    .pa-field-control:optional:not(:placeholder-shown) + .pa-field-label,
+    .pa-field-control:optional:valid:not(:placeholder-shown)[placeholder] + .pa-field-label,
+    .pa-field-control.pa-field-control-filled + .pa-field-label,
+    .pa-field-control:-webkit-autofill + .pa-field-label,
     .pa-field-control.pa-field-control-placeholder-shown + .pa-field-label {
         /* autoprefixer: off */
         @include font-size(xs,xs,m);
