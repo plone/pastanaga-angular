@@ -50,6 +50,8 @@ $destructive-color:              $red !default;
 $positive-color:                 $green !default;
 $warning-color:                  $ocher !default;
 $error-color:                    $red !default;
+$error-contrast-color:           $red-contrast !default;
+$error-light-color:              $red-light !default;
 
 // Buttons
 $button-default-color:                  $gray-black !default;
@@ -75,7 +77,12 @@ $legend-background:                     $white-smoke !default;
 $legend-padding:                        rythm(1) rythm(1.5) !default;
 $legend-margin:                         0 (- rythm(1.5)) !default;
 $control-border-color:                  $blue-light !default;
+$control-box-shadow-color:              $gray !default;
+$control-box-shadow-accent-color:       $gray-dark !default;
+$control-placeholder-color:             $gray-light !default;
 $labels-text-transform:                 uppercase !default;
+$labels-color:                          $gray-black !default;
+$labels-required-color:                 $red-light !default;
 
 // Shadows
 $shadow-none: none;

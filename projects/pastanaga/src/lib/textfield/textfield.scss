@@ -22,16 +22,16 @@
     .pa-field-control {
         display: block;
         width: calc(100% + 12px);
-        padding: 24px 6px 6px;
-        margin-left: -6px;
-        margin-right: -6px;
+        padding: rythm(2) rythm(.5) rythm(.5);
+        margin-left: - rythm(.5);
+        margin-right: - rythm(.5);
         @include font-size(m,m,m);
         line-height: 1.25;
         color: $gray-black;
         background-color: transparent;
         border-radius: border-radius(s);
         border:0;
-        box-shadow: 0 7px 0 -6px $gray;
+        box-shadow: 0 7px 0 -6px $control-box-shadow-color;
         caret-color: $blue;
         transition: all .25s ease;
         font-weight: $font-weight-regular;
@@ -40,14 +40,14 @@
 
         &.pa-field-control-accent {
             background-color: rgba($blue, .06);
-            box-shadow: 0 200px 0 -200px $gray-dark;
+            box-shadow: 0 200px 0 -200px $control-box-shadow-accent-color;
             transition: all .5s ease;
         }
 
         &:not(:disabled):not(:read-only):hover {
             /* autoprefixer: off */
             cursor: pointer;
-            box-shadow: 0 2px 0 -1px $blue;
+            box-shadow: 0 2px 0 -1px $control-box-shadow-accent-color;
         }
         &:not(:disabled):not(:read-only):active,
         &:not(:disabled):not(:read-only):focus {
@@ -59,7 +59,7 @@
         &:not(:disabled):not(:-moz-read-only):hover {
             /* autoprefixer: off */
             cursor: pointer;
-            box-shadow: 0 2px 0 -1px $blue;
+            box-shadow: 0 2px 0 -1px $control-box-shadow-accent-color;
         }
         &:not(:disabled):not(:-moz-read-only):active,
         &:not(:disabled):not(:-moz-read-only):focus {
@@ -73,13 +73,13 @@
         }
         &::placeholder {
             font-weight: $font-weight-light;
-            color: $gray-light;
+            color: $control-placeholder-color;
             opacity: 0;
             transition: all 0s ease;
         }
         &::-moz-placeholder {
             font-weight: $font-weight-light;
-            color: $gray-light;
+            color: $control-placeholder-color;
             opacity: 0;
             transition: all 0s ease;
         }
@@ -111,14 +111,11 @@
         text-transform: $labels-text-transform;
         font-family: $font-family-base;
         font-weight: 300;
-        color: $gray-black;
+        color: $labels-color;
         transform: translateY(0);
         touch-action: none;
         user-select: none;
         pointer-events:none;
-        //NEW
-        //padding-left:6px;
-        //padding-right:6px;
     }
     .pa-field-control:hover + .pa-field-label,
     .pa-field-label:hover {
@@ -137,7 +134,6 @@
     .pa-field-control.pa-field-control-placeholder-shown + .pa-field-label {
         /* autoprefixer: off */
         @include font-size(xs,xs,m);
-        //font-size: 12px;
         transform: translateY(-33%);
         transition: all .33s ease;
     }
@@ -149,7 +145,6 @@
     .pa-field-control[type="search"].pa-field-control-placeholder-shown + .pa-field-label {
         /* autoprefixer: off */
         @include font-size(m,m,m);
-        //font-size: 14px;
         transform: translateY(0);
         opacity: 0;
         transition: opacity 0s ease;
@@ -195,7 +190,7 @@
     .pa-field-control:required:focus + .pa-field-label::after {
         content:"Required";
         font-size: 78.25%;
-        color: $red-light;
+        color: $labels-required-color;
         margin-left: 6px;
     }
     // disabled
@@ -295,6 +290,8 @@
         border-image-outset: 0px 0px 0px 0px;
         border-image-repeat: round round;
         border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
-
+    }
+    .pa-field-control-readonly-lessen {
+        background-image: none !important;
     }
 }
