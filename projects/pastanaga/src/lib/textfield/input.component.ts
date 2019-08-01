@@ -19,8 +19,7 @@ import {
     FormGroupDirective,
     NgForm,
 } from '@angular/forms';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { getSupportedInputTypes, Platform } from '@angular/cdk/platform';
+import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { TextfieldCommon } from './textfield.common';
 import { Subject } from 'rxjs';
@@ -42,18 +41,15 @@ import { Subject } from 'rxjs';
         },
     ],
 })
-export class InputComponent extends TextfieldCommon
-    implements OnInit, OnChanges, AfterViewChecked, OnDestroy {
+export class InputComponent extends TextfieldCommon implements OnInit, OnChanges, AfterViewChecked, OnDestroy {
     @Input() type = 'text';
     @Input() hasFocus = false;
-    @Input() hasStrengthBar = false;
     @Input() isLessen = false;
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
     @ViewChild('dataInput', { static: true }) input?: ElementRef;
 
-    passwordStrength = 0;
     autofilled = false;
     baseId = 'input';
     readonly stateChanges: Subject<void> = new Subject<void>();
@@ -71,9 +67,6 @@ export class InputComponent extends TextfieldCommon
 
     ngOnInit() {
         super.ngOnInit();
-        if (this.hasStrengthBar && this.type === 'password') {
-            this.help = 'common.password-rules';
-        }
         if (!!this.help) {
             this.helpId = `${this.id}-help`;
         }
@@ -131,39 +124,6 @@ export class InputComponent extends TextfieldCommon
     _validate(value) {
         super._validate(value);
 
-        if (this.hasStrengthBar && this.type === 'password') {
-            this.checkPasswordStrength(value);
-            this.errors.passwordStrength = this.passwordStrength < 4;
-        }
-
         this.errorList.emit(this.errors);
     }
-
-    /**
-     * rules:
-     *  - at least 10 characters
-     *  - at least 1 lowercase
-     *  - at least 1 uppercase
-     *  - at least 1 number
-     *  - at least 1 special character
-     * @param password
-     */
-    private checkPasswordStrength(password) {
-        const rules = [
-            password.length >= 10,
-            password.match(rulesRegexp.lowerCase) !== null,
-            password.match(rulesRegexp.upperCase) !== null,
-            password.match(rulesRegexp.number) !== null,
-            password.match(rulesRegexp.specialCharacter) !== null,
-        ];
-
-        this.passwordStrength = rules.filter(isRuleOk => isRuleOk).length;
-    }
 }
-
-const rulesRegexp = {
-    lowerCase: new RegExp(/[a-z]/),
-    upperCase: new RegExp(/[A-Z]/),
-    number: new RegExp(/[0-9]/),
-    specialCharacter: new RegExp(/[^\da-zA-Z]/),
-};
