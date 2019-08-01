@@ -1,3 +1,9 @@
+# 1.3.1 (2019-08-01)
+
+- Remove password strength from generic input
+- Add theming to inputs
+- Fix label sliding on input
+
 # 1.3.0 (2019-06-17)
 
 - Upgrade to Angular 8

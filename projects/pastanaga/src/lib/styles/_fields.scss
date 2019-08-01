@@ -60,28 +60,28 @@ fieldset > pa-button.pa-field-button-right {
     .pa-field-control:not(:disabled):not(:read-only):active,
     .pa-field-control:not(:disabled):not(:read-only):focus {
         /* autoprefixer: off */
-        background: rgba($red, .05) !important;
-        box-shadow: 0 2px 0 -1px $red-contrast !important;
-        caret-color: $red !important;
+        background: rgba($error-color, .05) !important;
+        box-shadow: 0 2px 0 -1px $error-contrast-color !important;
+        caret-color: $error-color !important;
     }
     .pa-field-control:not(:disabled):not(:read-only):hover {
         /* autoprefixer: off */
-        box-shadow: 0 2px 0 -1px $red-contrast !important;
+        box-shadow: 0 2px 0 -1px $error-contrast-color !important;
     }
     .pa-field-control:not(:disabled):not(:read-only):active,
     .pa-field-control:not(:disabled):not(:read-only):focus {
         /* autoprefixer: off */
-        box-shadow: 0 2px 0 0 $red-light !important;
+        box-shadow: 0 2px 0 0 $error-light-color !important;
     }
 
     .pa-field-control:hover + .pa-field-label,
     .pa-field-control:active + .pa-field-label,
     .pa-field-control:focus + .pa-field-label,
     .pa-field-label {
-        color: $red-contrast !important;
+        color: $error-contrast-color !important;
     }
     .pa-field-help-error {
-        color: $red-contrast;
+        color: $error-contrast-color;
     }
 
     // firefox workaround
@@ -90,18 +90,18 @@ fieldset > pa-button.pa-field-button-right {
     .pa-field-control:not(:disabled):not(:-moz-read-only):active,
     .pa-field-control:not(:disabled):not(:-moz-read-only):focus {
         /* autoprefixer: off */
-        background: rgba($red, .05) !important;
-        box-shadow: 0 7px 0 -6px $red !important;
-        caret-color: $red !important;
+        background: rgba($error-color, .05) !important;
+        box-shadow: 0 7px 0 -6px $error-color !important;
+        caret-color: $error-color !important;
     }
     .pa-field-control:not(:disabled):not(:-moz-read-only):hover {
         /* autoprefixer: off */
-        box-shadow: 0 2px 0 -1px $red-contrast !important;
+        box-shadow: 0 2px 0 -1px $error-contrast-color !important;
     }
     .pa-field-control:not(:disabled):not(:-moz-read-only):active,
     .pa-field-control:not(:disabled):not(:-moz-read-only):focus {
         /* autoprefixer: off */
-        box-shadow: 0 2px 0 0 $red-light !important;
+        box-shadow: 0 2px 0 0 $error-light-color !important;
     }
 }
 
