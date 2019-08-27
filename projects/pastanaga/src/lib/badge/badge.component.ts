@@ -1,21 +1,52 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    Output,
+    ViewChild
+} from '@angular/core';
 import { BadgeModel } from './badge.model';
 
 @Component({
     selector: 'pa-badge',
     templateUrl: './badge.component.html',
-    styleUrls: ['./badge.component.scss']
+    styleUrls: ['./badge.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BadgeComponent implements AfterViewInit, OnChanges {
+export class BadgeComponent implements AfterViewInit {
 
-    @Input() color?: string;
-    @Input() hexaColor?: string;
+    @Input() set color(value) {
+        this.colorClass = `pa-badge-${value}`;
+    }
+    @Input() set hexaColor(value) {
+        if (!this.colorClass) {
+            this.colorStyle = {
+                'background-color': value
+            };
+            const luminance = this.calcLuminance(value);
+            if (luminance < 0.61) {
+                this.colorStyle['color'] = '#fff';
+            }
+        }
+    }
     @Input() isAccented = false;
     @Input() isSmall = false;
     @Input() isError = false;
     @Input() canBeRemoved = false;
     @Input() maxWidth?: string;
-    @Input() value?: number;
+    @Input() set value(val) {
+        this._value = val;
+        // accented and small by default when badge of value kind
+        if (typeof this.isAccented === 'undefined') {
+            this.isAccented = true;
+        }
+        if (typeof this.isSmall === 'undefined') {
+            this.isSmall = true;
+        }
+    }
     @Input() of?: number;
     @Input() buttons?: BadgeModel[];
 
@@ -25,6 +56,7 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
     colorClass = '';
     colorStyle?: {};
     text = '';
+    _value?: number;
 
     @ViewChild('textContent', { static: false }) textContent?: ElementRef;
 
@@ -36,32 +68,6 @@ export class BadgeComponent implements AfterViewInit, OnChanges {
             setTimeout(() => this.text = textContent.nativeElement.textContent.trim());
         }
         this.render.emit(this.elementRef);
-    }
-
-    ngOnChanges(changes) {
-        if (changes.color && changes.color.currentValue) {
-            this.colorClass = `pa-badge-${changes.color.currentValue}`;
-        }
-
-        if (changes.hexaColor && changes.hexaColor.currentValue && !this.colorClass) {
-            this.colorStyle = {
-                'background-color': changes.hexaColor.currentValue
-            };
-            const luminance = this.calcLuminance(changes.hexaColor.currentValue);
-            if (luminance < 0.61) {
-                this.colorStyle['color'] = '#fff';
-            }
-        }
-
-        // accented and small by default when badge of value kind
-        if (changes.value && changes.value.currentValue) {
-            if (typeof this.isAccented === 'undefined') {
-                this.isAccented = true;
-            }
-            if (typeof this.isSmall === 'undefined') {
-                this.isSmall = true;
-            }
-        }
     }
 
 
