@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './button.component';
 import { ButtonLinkComponent } from './button-link.component';
 import { SvgModule } from '../svg/svg.module';
+import { TraversalModule } from 'angular-traversal';
 
 @NgModule({
     imports: [
@@ -13,6 +14,7 @@ import { SvgModule } from '../svg/svg.module';
         TranslateModule,
         SvgModule,
         RouterModule,
+        TraversalModule,
     ],
     declarations: [ButtonComponent, ButtonLinkComponent],
     exports: [ButtonComponent, ButtonLinkComponent],

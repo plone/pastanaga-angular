@@ -1,3 +1,7 @@
+# 1.3.4 (2019-09-04)
+
+- Support traversing on button link
+
 # 1.3.3 (2019-09-03)
 
 - Fix prod build: don't try to access protected property in template

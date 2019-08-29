@@ -1,4 +1,6 @@
-<a [routerLink]="route"
+<a href="#"
+   [routerLink]="!!route ? route : undefined"
+   [traverseTo]="!!traverseTo ? traverseTo : undefined"
    [ngClass]="buttonStyle"
    [class.pa-button-link]="!hasButtonDisplay"
    [attr.aria-label]="ariaLabel"

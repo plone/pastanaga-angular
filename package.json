@@ -29,6 +29,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "angular-svg-icon": "^7.2.1",
+    "angular-traversal": "^1.1.0",
     "core-js": "^2.6.9",
     "medium-editor": "~5.23.3",
     "rxjs": "~6.4.0",
