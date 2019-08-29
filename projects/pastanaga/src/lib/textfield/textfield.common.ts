@@ -31,7 +31,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
 
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
-    @Output() enter: EventEmitter<any> = new EventEmitter();
+    @Output() enter: EventEmitter<{event: KeyboardEvent, value: string}> = new EventEmitter();
     @Output() blur: EventEmitter<any> = new EventEmitter();
     helpId = '';
     onChange?: Function;
@@ -78,6 +78,10 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
             this.keyUp.emit(value);
             if (!!this.onChange) {
                 this.onChange(value);
+            }
+
+            if ($event.keyCode === keyCodes.enter) {
+                this.enter.emit({event: $event, value: value});
             }
         }
     }

@@ -23,6 +23,7 @@ import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { TextfieldCommon } from './textfield.common';
 import { Subject } from 'rxjs';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-input',
@@ -43,8 +44,14 @@ import { Subject } from 'rxjs';
 })
 export class InputComponent extends TextfieldCommon implements OnInit, OnChanges, AfterViewChecked, OnDestroy {
     @Input() type = 'text';
-    @Input() hasFocus = false;
-    @Input() isLessen = false;
+    @Input()
+    get hasFocus(): boolean { return this._hasFocus; }
+    set hasFocus(value: boolean) { this._hasFocus = coerceBooleanProperty(value); }
+    protected _hasFocus = false;
+    @Input()
+    get isLessen(): boolean { return this._isLessen; }
+    set isLessen(value: boolean) { this._isLessen = coerceBooleanProperty(value); }
+    protected _isLessen = false;
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
@@ -73,9 +80,6 @@ export class InputComponent extends TextfieldCommon implements OnInit, OnChanges
     }
 
     ngOnChanges(changes) {
-        if (!!changes.hasFocus && changes.hasFocus.currentValue === true && !!this.input) {
-            this.input.nativeElement.focus();
-        }
         this.stateChanges.next();
     }
 
@@ -110,6 +114,9 @@ export class InputComponent extends TextfieldCommon implements OnInit, OnChanges
                     },
                 );
             });
+        }
+        if (this._hasFocus && !!this.input) {
+            this.input.nativeElement.focus();
         }
     }
 
