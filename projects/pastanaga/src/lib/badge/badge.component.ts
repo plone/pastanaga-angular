@@ -50,7 +50,7 @@ export class BadgeComponent implements AfterViewInit {
     @Input() of?: number;
     @Input() buttons?: BadgeModel[];
 
-    @Output() remove: EventEmitter<null> = new EventEmitter();
+    @Output() remove: EventEmitter<MouseEvent> = new EventEmitter();
     @Output() render: EventEmitter<ElementRef> = new EventEmitter();
 
     colorClass = '';
