@@ -1,3 +1,7 @@
+# 1.3.3 (2019-09-03)
+
+- Fix prod build: don't try to access protected property in template
+
 # 1.3.2 (2019-09-03)
 
 - Improve performances by using setters instead of ngChanges on Input and badges

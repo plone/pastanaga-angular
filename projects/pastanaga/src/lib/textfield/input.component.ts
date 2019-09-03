@@ -51,7 +51,7 @@ export class InputComponent extends TextfieldCommon implements OnInit, OnChanges
     @Input()
     get isLessen(): boolean { return this._isLessen; }
     set isLessen(value: boolean) { this._isLessen = coerceBooleanProperty(value); }
-    protected _isLessen = false;
+    _isLessen = false;
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
