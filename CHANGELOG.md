@@ -1,3 +1,7 @@
+# 1.3.2 (2019-09-03)
+
+- Improve performances by using setters instead of ngChanges on Input and badges
+
 # 1.3.1 (2019-08-01)
 
 - Remove password strength from generic input
