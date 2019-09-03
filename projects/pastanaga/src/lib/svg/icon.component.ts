@@ -4,15 +4,45 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject } from '@angular/core';
 import { PLATFORM_ID } from '@angular/core';
 import { SvgLoader } from './svg-loader';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-icon',
     template: `<ng-content></ng-content>`,
+    styles: [`.pa-small {
+        width: 18px;
+        height: 18px;
+    }`],
     encapsulation: ViewEncapsulation.None
 })
-export class IconComponent implements OnChanges {
-    @Input() name?: string;
-    @Input() hidden = false;
+export class IconComponent {
+    @Input() set name(value: string) {
+        this.iconPath = `./assets/icons/${value}.svg`;
+        this.updateSvg();
+    }
+    @Input()
+    get hidden(): boolean { return this._hidden; }
+    set hidden(value: boolean) {
+        this._hidden = coerceBooleanProperty(value);
+        this.updateSvg();
+    }
+    _hidden = false;
+
+    @Input()
+    get small(): boolean { return this._small; }
+    set small(value: boolean) {
+        this._small = coerceBooleanProperty(value);
+        this.updateSvg();
+    }
+    _small = false;
+
+    @Input()
+    get color(): string { return this._color; }
+    set color(value: string) {
+        this._color = value;
+        this.updateSvg();
+    }
+    _color = '';
 
     iconPath = '';
 
@@ -23,13 +53,6 @@ export class IconComponent implements OnChanges {
         private svgLoader: SvgLoader,
         @Inject(PLATFORM_ID) protected platformId: Object
     ) {
-    }
-
-    ngOnChanges(changes) {
-        if (changes.name && changes.name.currentValue) {
-            this.iconPath = `./assets/icons/${this.name}.svg`;
-            this.updateSvg();
-        }
     }
 
     private updateSvg() {
@@ -46,8 +69,14 @@ export class IconComponent implements OnChanges {
 
     private setSvg(svg: SVGElement) {
         const icon = <SVGElement>svg.cloneNode(true);
-        if (typeof this.hidden !== 'undefined') {
-            this.renderer.setAttribute(icon, 'aria-hidden', this.hidden.toString());
+        if (typeof this._hidden !== 'undefined') {
+            this.renderer.setAttribute(icon, 'aria-hidden', this._hidden.toString());
+        }
+        if (this._small) {
+            this.renderer.setAttribute(icon, 'class', 'pa-small');
+        }
+        if (this.color) {
+            this.renderer.setAttribute(icon, 'style', `fill: ${this.color};`);
         }
 
         const elem = this.element.nativeElement;
