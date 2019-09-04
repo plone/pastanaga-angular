@@ -9,16 +9,17 @@
     -webkit-transform: rotate(-45deg);
     position: absolute;
     margin-top: -5px;
-    right: 7.5px;
+    right: -5.425px;
     pointer-events: none;
     z-index: 1;
     transition: all .33s ease;
 }
+
 .pa-field.pa-field-textarea .pa-field-control-resizer::before {
     content: "";
     height: 0px;
     width: 0px;
-    border-top: 4px solid white;
+    border-top: 4px solid $white;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     position: absolute;
@@ -42,8 +43,8 @@
 }
 
 .pa-field.pa-field-textarea .pa-field-control {
-    height: auto;
-    min-height: 45px;
+    height: 50px;
+    min-height: 50px;
     border-top:24px solid transparent;
     padding-top:0;
     resize: vertical;
@@ -51,19 +52,19 @@
     &:hover ~ .pa-field-control-resizer,
     &:active ~ .pa-field-control-resizer,
     &:focus ~ .pa-field-control-resizer {
-        right: 2.5px;
+        right: -10.425px;
     }
     &:active ~ .pa-field-control-resizer,
     &:focus ~ .pa-field-control-resizer {
-        right: 2.5px;
-        border-top: 7px solid $control-border-color;
+        right: -10.425px;
+        border-top: 7px solid $blue-light;
     }
     &:active ~ .pa-field-control-resizer::before,
     &:focus ~ .pa-field-control-resizer::before {
         opacity: 0;
     }
     &.pa-field-control-accent ~ .pa-field-control-resizer {
-        right: 2.5px;
+        right: -10.425px;
         border-top: 7px solid $sky-dark;
         margin-top: -6px;
     }
@@ -77,6 +78,16 @@
     &.pa-field-control-accent:focus ~ .pa-field-control-resizer,
     &.pa-field-control-accent:active ~ .pa-field-control-resizer::before,
     &.pa-field-control-accent:focus ~ .pa-field-control-resizer::before {
-        border-top-color: $control-border-color;
+        border-top-color: $blue-light;
     }
+}
+
+//error
+.pa-field.pa-field-textarea.pa-field-error .pa-field-control-resizer {
+    border-top: 7px solid $red;
+    right: -10.425px;
+}
+.pa-field.pa-field-textarea.pa-field-error :active ~ .pa-field-control-resizer,
+.pa-field.pa-field-textarea.pa-field-error :focus ~ .pa-field-control-resizer {
+    border-top: 7px solid $red-light;
 }

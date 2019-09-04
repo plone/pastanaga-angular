@@ -1,13 +1,16 @@
 <div class="pa-field pa-field-textarea" [class.pa-field-error]="hasError || !!errorMessage">
     <textarea class="pa-field-control" [id]="id" [attr.aria-describedby]="helpId"
               [attr.placeholder]="placeholder | translate"
+              [class.pa-field-control-placeholder-shown]="isPlaceholderShown"
+              [class.pa-field-control-filled]="!!value"
               [name]="name"
+              [value]="value"
               [readonly]="isReadOnly"
               [disabled]="disabled"
               [required]="required"
               (change)="change($event.target.value)"
               (keyup)="onKeyUp($event)"
-              (blur)="onBlur()">{{ value }}</textarea>
+              (blur)="onBlur()"></textarea>
     <label class="pa-field-label" [for]="id" [class.pa-sr]="isLabelHidden" translate><ng-content></ng-content></label>
     <div class="pa-field-control-resizer"></div>
     <small *ngIf="hasError && errorHelp" class="pa-field-help pa-field-help-error" translate>{{ errorHelp }}</small>
