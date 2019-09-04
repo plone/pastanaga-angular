@@ -1,3 +1,7 @@
+# 1.3.5 (2019-09-04)
+
+- pa-icon improvements: small, color, setters
+
 # 1.3.4 (2019-09-04)
 
 - Support traversing on button link
