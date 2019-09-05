@@ -1,3 +1,7 @@
+# 1.3.6 (2019-09-04)
+
+- Updating pa-textarea with latest changes on onna-textarea
+
 # 1.3.5 (2019-09-04)
 
 - pa-icon improvements: small, color, setters

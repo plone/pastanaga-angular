@@ -26,9 +26,18 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     get disabled(): boolean { return this._disabled; }
     set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
     protected _disabled = false;
-    @Input() isReadOnly = false;
-    @Input() isLabelHidden = false;
-
+    @Input()
+    get isReadOnly(): boolean { return this._readOnly; }
+    set isReadOnly(value: boolean) { this._readOnly = coerceBooleanProperty(value); }
+    protected _readOnly = false;
+    @Input()
+    get isLabelHidden(): boolean { return this._labelHidden; }
+    set isLabelHidden(value: boolean) { this._labelHidden = coerceBooleanProperty(value); }
+    protected _labelHidden = false;
+    @Input()
+    get isPlaceholderShown(): boolean { return this._placeholderShown; }
+    set isPlaceholderShown(value: boolean) { this._placeholderShown = coerceBooleanProperty(value); }
+    protected _placeholderShown = false;
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
     @Output() enter: EventEmitter<{event: KeyboardEvent, value: string}> = new EventEmitter();
@@ -79,7 +88,6 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
             if (!!this.onChange) {
                 this.onChange(value);
             }
-
             if ($event.keyCode === keyCodes.enter) {
                 this.enter.emit({event: $event, value: value});
             }
