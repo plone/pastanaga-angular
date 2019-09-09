@@ -11,6 +11,7 @@
         "experimentalDecorators": true,
         "strictNullChecks": true,
         "strictPropertyInitialization": true,
+        "resolveJsonModule": true,
         "target": "es5",
         "typeRoots": [
             "node_modules/@types"
