@@ -1,3 +1,7 @@
+# 1.3.7 (2019-09-09)
+
+- Add aria-label on remove button
+
 # 1.3.6 (2019-09-04)
 
 - Updating pa-textarea with latest changes on onna-textarea
