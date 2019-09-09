@@ -11,7 +11,7 @@
           [paTooltip]="text" #textContent translate><ng-content></ng-content></span>
     <pa-button *ngFor="let btn of buttons"
                  size="small" [icon]="btn.icon" [color]="btn.color" (click)="btn.onClick()">{{btn.name}}</pa-button>
-    <pa-button *ngIf="canBeRemoved"
+    <pa-button *ngIf="canBeRemoved" aria-label="Remove"
                  size="small" icon="clear" color="secondary" (click)="remove.emit($event)">Remove</pa-button>
     <ng-container *ngIf="!!_value || _value === 0">{{ _value | number }}<span *ngIf="of"><abbr title="of">/</abbr>{{ of | number }}</span></ng-container>
 </span>
