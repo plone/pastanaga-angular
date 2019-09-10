@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PastanagaProgressComponent } from './progress.component';
 import { PastanagaSpinnerComponent } from './spinner.component';
 import { PastanagaProgressCircleComponent } from './progress-circle.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from '../translate/translate.module';
 
 const COMPONENT_LIST = [PastanagaProgressComponent, PastanagaSpinnerComponent, PastanagaProgressCircleComponent];
 

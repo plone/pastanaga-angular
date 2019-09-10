@@ -6,8 +6,8 @@ import { TranslatePipe } from './translate.pipe';
 })
 export class TranslateDirective implements AfterViewChecked {
     key = '';
-    lastParams: any;
-    currentParams: any;
+    lastParams?: any;
+    currentParams?: any;
     @Input() set translate(key: string) {
         if (key) {
             this.key = key;
@@ -15,7 +15,7 @@ export class TranslateDirective implements AfterViewChecked {
         }
     }
     @Input() set translateParams(params: any) {
-        if (!this.compareObj(this.currentParams, params)) {
+        if (!!this.currentParams && !this.compareObj(this.currentParams, params)) {
             this.currentParams = params;
             this.checkNodes(true);
         }
@@ -67,7 +67,7 @@ export class TranslateDirective implements AfterViewChecked {
 
     updateValue(key: string, node: any) {
         if (key) {
-            if (node.lastKey === key && this.compareObj(this.lastParams, this.currentParams)) {
+            if (node.lastKey === key && !!this.lastParams && this.compareObj(this.lastParams, this.currentParams)) {
                 return;
             }
 
@@ -99,19 +99,18 @@ export class TranslateDirective implements AfterViewChecked {
     }
 
     compareObj(obj1: any, obj2: any) {
+        let equal = true;
         Object.entries(obj1).forEach(([key, value]) => {
-            let exists = false;
+            let exists = false; // check if the first property exist in obj2
             Object.entries(obj2).forEach(([key2, value2]) => {
-                if (key === key2) {
-                    if (value === value2) {
-                        exists = true;
-                    }
+                if (key === key2 && value === value2) { // if key and value are equals we set exists to true
+                    exists = true;
                 }
             });
-            if (!exists) {
-                return false;
+            if (!exists) {  // if not existe we set equal to false
+                equal = false;
             }
         });
-        return true;
+        return equal;
     }
 }

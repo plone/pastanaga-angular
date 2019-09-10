@@ -5,7 +5,7 @@ import { ButtonModule } from '../button/button.module';
 import { ToastComponent } from './toast.component';
 import { Toaster } from './toast.service';
 import { SvgModule } from '../svg/svg.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from '../translate/translate.module';
 
 @NgModule({
     imports: [CommonModule, TranslateModule, TooltipModule, ButtonModule, SvgModule],

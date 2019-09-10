@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BadgeComponent } from './badge.component';
 import { ButtonModule } from '../button/button.module';
 import { TooltipModule } from '../tooltip/tooltip.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from '../translate/translate.module';
 
 @NgModule({
     imports: [

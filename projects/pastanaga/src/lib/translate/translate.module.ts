@@ -6,6 +6,7 @@ import { TranslateDirective } from './translate.directive';
 @NgModule({
     imports: [CommonModule],
     exports: [TranslatePipe, TranslateDirective],
-    declarations: [TranslatePipe, TranslateDirective]
+    declarations: [TranslatePipe, TranslateDirective],
+    providers: [TranslatePipe]
 })
 export class TranslateModule { }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { ControlModel } from '../control.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { TranslatePipe } from '../../translate/translate.pipe';
 
 let nextId = 0;
 
@@ -38,7 +38,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     totalSelected = 0;
 
     constructor(
-        private translate: TranslateService,
+        private translate: TranslatePipe,
     ) {
     }
 
@@ -215,7 +215,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
 
     private sortCheckboxes(checkboxes: ControlModel[]): ControlModel[] {
         if (checkboxes && checkboxes.length > 0) {
-            this.translate.stream(checkboxes.map(checkbox => checkbox.label || '')).subscribe((labels => {
+            checkboxes.map(checkbox => this.translate.transform(checkbox.label || '')).forEach((labels => {
                 checkboxes = checkboxes.map(checkbox => {
                     checkbox.label = typeof labels[checkbox.label] === 'string' ? labels[checkbox.label] : checkbox.label;
                     return checkbox;
