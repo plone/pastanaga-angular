@@ -1,0 +1,18 @@
+{
+    "common": {
+        "close": "Close",
+        "loading": "Loading…",
+        "dismiss": "Dismiss",
+        "select-all": "Select all",
+        "deselect-all": "Deselect all",
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "reset": "Reset",
+        "yes": "Yes",
+        "no": "No"
+    },
+    "demo-page": {
+        "title": "Pastanaga usage examples"
+    }
+
+}

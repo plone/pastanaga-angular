@@ -10,6 +10,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "strictNullChecks": true,
+        "resolveJsonModule": true,
         "strictPropertyInitialization": true,
         "target": "es5",
         "typeRoots": [

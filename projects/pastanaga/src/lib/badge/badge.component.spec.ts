@@ -7,10 +7,10 @@ import {
 } from '../..';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AngularSvgIconModule, SvgLoader } from 'angular-svg-icon';
-import { FakeTranslateLoader, svgLoaderFactory } from '../test.utils';
-
+import { svgLoaderFactory } from '../test.utils';
+import { TranslateModule } from '../translate/translate.module';
+import * as en from './translateKeys.json';
 @Component({
     selector: 'test',
     template: `
@@ -101,15 +101,16 @@ describe('BadgeComponent', () => {
                 CommonModule,
                 ButtonModule,
                 TooltipModule,
-                TranslateModule.forRoot({
-                    loader: {provide: TranslateLoader, useClass: FakeTranslateLoader}
-                }),
+                TranslateModule,
                 AngularSvgIconModule.forRoot({
                     loader: {
                         provide: SvgLoader,
                         useFactory: svgLoaderFactory,
                     }
                 }),
+            ],
+            providers: [
+                {provide: 'en_US', useValue: {...en} as any}
             ],
             declarations: [
                 BadgeComponent,
@@ -122,7 +123,7 @@ describe('BadgeComponent', () => {
                 Test7Component,
                 Test8Component,
                 Test9Component,
-            ],
+            ]
         }).compileComponents();
     }));
     it('should emit when rendered', (done) => {

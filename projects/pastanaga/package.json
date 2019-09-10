@@ -6,7 +6,6 @@
         "@angular/cdk": "^8.0.1",
         "@angular/common": "^8.0.1",
         "@angular/core": "^8.0.1",
-        "@ngx-translate/core": "^11.0.1",
         "angular-svg-icon": "^7.2.1",
         "angular-traversal": "^1.1.0",
         "medium-editor": "^5.23.3"

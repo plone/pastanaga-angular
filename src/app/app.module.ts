@@ -3,9 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 import { AppComponent } from './app.component';
 import {
     BadgeModule,
@@ -15,9 +13,11 @@ import {
     TextFieldModule,
     ToasterModule,
     TooltipModule,
-    ExpandModule
+    ExpandModule,
+    TranslateModule
 } from '../../projects/pastanaga/src';
 
+import * as en from '../assets/i18n/en.json';
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,13 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient]
-            }
-        }),
+        TranslateModule,
 
         BadgeModule,
         ButtonModule,
@@ -48,7 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
     declarations: [
         AppComponent,
     ],
-    providers: [],
+    providers: [{provide: 'en_US', useValue: {...en} as any}],
     bootstrap: [AppComponent]
 })
 export class AppModule {

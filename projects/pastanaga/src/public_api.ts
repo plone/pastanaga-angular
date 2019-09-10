@@ -45,3 +45,7 @@ export * from './lib/expand/expand.module';
 
 export * from './lib/pagination/pagination.component';
 export * from './lib/pagination/pagination.module';
+
+export * from './lib/translate/translate.module';
+export * from './lib/translate/translate.pipe';
+export * from './lib/translate/translate.directive';

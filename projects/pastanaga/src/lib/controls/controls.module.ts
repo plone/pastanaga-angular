@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SvgModule } from '../svg/svg.module';
 import { BadgeModule } from '../badge/badge.module';
@@ -13,6 +12,7 @@ import { ToggleGroupComponent } from './toggle-group/toggle-group.component';
 import { SliderComponent } from './slider/slider.component';
 import { DoubleSliderComponent } from './double-slider/double-slider.component';
 import { CheckboxTreeComponent } from './checkbox-tree/checkbox-tree.component';
+import { TranslateModule } from '../translate/translate.module';
 
 @NgModule({
     imports: [

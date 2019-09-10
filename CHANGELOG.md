@@ -1,3 +1,7 @@
+# 1.3.8 (2019-09-09)
+
+- Created translate pipe and directive
+
 # 1.3.7 (2019-09-09)
 
 - Add aria-label on remove button
