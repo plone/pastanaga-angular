@@ -11,7 +11,7 @@ export class ButtonLinkComponent extends ButtonBase implements OnChanges {
     @Input() route?: string;
     @Input() traverseTo?: string;
     @Input() hasButtonDisplay = false;
-    @Output() onClick: EventEmitter<any> = new EventEmitter();
+    @Output() onClick: EventEmitter<MouseEvent> = new EventEmitter();
 
     ngOnChanges(changes) {
         this.onChanges(changes);
