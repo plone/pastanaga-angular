@@ -1,3 +1,7 @@
+# 1.3.9 (2019-09-10)
+
+- Better typings on button link event
+
 # 1.3.8 (2019-09-09)
 
 - Created translate pipe and directive
