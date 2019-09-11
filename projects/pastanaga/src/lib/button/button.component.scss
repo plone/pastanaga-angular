@@ -71,6 +71,9 @@ pa-button {
         margin-left: rythm(1) !important;
         margin-right: 0 !important;
     }
+    &-label.pa-with-icon {
+        padding-left: rythm(1.5)
+    }
     & .pa-avatar {
         fill: currentColor;
         width: rythm(3);
@@ -201,6 +204,9 @@ pa-button {
             margin-left: -  rythm(.5);
             margin-right: -  rythm(.5);
             margin-top: - rythm(.25)/2;
+        }
+        #{$root}-label.pa-with-icon {
+            padding-left: rythm(1)
         }
     }
 

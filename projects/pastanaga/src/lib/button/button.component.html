@@ -8,8 +8,8 @@
         tabindex="0"
         (click)="onClick($event)">
     <span class="pa-button-wrapper" tabindex="-1">
-        <span #text class="pa-button-label" [class.pa-sr]="icon" translate><ng-content></ng-content></span>
-        <pa-icon *ngIf="icon" [name]="icon" [hidden]="true"></pa-icon>
+        <pa-icon *ngIf="!!icon" [name]="icon" [hidden]="true"></pa-icon>
+        <span #text class="pa-button-label" [class.pa-sr]="!!icon && !_iconAndText" [class.pa-with-icon]="!!icon && _iconAndText" translate><ng-content></ng-content></span>
     </span>
 </button>
 
