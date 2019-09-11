@@ -1,3 +1,7 @@
+# 1.3.10 (2019-09-11)
+
+- Fix translate in tooltip
+
 # 1.3.9 (2019-09-10)
 
 - Better typings on button link event
