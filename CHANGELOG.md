@@ -1,3 +1,7 @@
+# 1.3.11 (2019-09-11)
+
+- Cleanup
+
 # 1.3.10 (2019-09-11)
 
 - Fix translate in tooltip
