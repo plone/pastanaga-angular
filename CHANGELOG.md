@@ -1,3 +1,7 @@
+# 1.3.13 (2019-09-11)
+
+- Support icon+text buttons
+
 # 1.3.12 (2019-09-11)
 
 - Fix the translate directive

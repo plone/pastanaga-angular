@@ -1,4 +1,5 @@
 import {AfterContentInit, ElementRef, EventEmitter, HostBinding, Input, Output, SimpleChanges, ViewChild} from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 const COLORS = ['primary', 'secondary', 'destructive', 'contrast'];
 const SIZES = ['tiny', 'small', 'large'];
@@ -13,10 +14,15 @@ export class ButtonBase implements AfterContentInit {
     @Input() type = '';
     @Input() ariaControls = '';
     @Input() ariaExpanded = false;
+    @Input()
+    get iconAndText(): boolean { return this._iconAndText; }
+    set iconAndText(value: boolean) { this._iconAndText = coerceBooleanProperty(value); }
 
     @Output() hasFocus: EventEmitter<boolean> = new EventEmitter();
 
     @ViewChild('text', { static: true }) textElement?: ElementRef;
+
+    _iconAndText = false;
 
     buttonStyle = {
         'pa-button': true,
