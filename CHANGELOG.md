@@ -1,3 +1,7 @@
+# 1.3.12 (2019-09-11)
+
+- Fix the translate directive
+
 # 1.3.11 (2019-09-11)
 
 - Cleanup
