@@ -10,7 +10,25 @@ import { Component } from '@angular/core';
 import { AngularSvgIconModule, SvgLoader } from 'angular-svg-icon';
 import { svgLoaderFactory } from '../test.utils';
 import { TranslateModule } from '../translate/translate.module';
-import * as en from './translateKeys.json';
+
+const en = {
+    'common': {
+        'close': 'Close',
+        'loading': 'Loading…',
+        'dismiss': 'Dismiss',
+        'select-all': 'Select all',
+        'deselect-all': 'Deselect all',
+        'expand': 'Expand',
+        'collapse': 'Collapse',
+        'reset': 'Reset',
+        'yes': 'Yes',
+        'no': 'No'
+    },
+    'demo-page': {
+        'title': 'Pastanaga usage examples'
+    }
+};
+
 @Component({
     selector: 'test',
     template: `
@@ -110,7 +128,7 @@ describe('BadgeComponent', () => {
                 }),
             ],
             providers: [
-                {provide: 'en_US', useValue: {...en} as any}
+                {provide: 'en_US', useValue: en}
             ],
             declarations: [
                 BadgeComponent,

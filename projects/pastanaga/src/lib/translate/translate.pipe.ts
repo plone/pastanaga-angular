@@ -6,9 +6,11 @@ export class TranslatePipe implements PipeTransform {
     lastKey?: string;
     lastParams?: string;
     value: string = '';
+
     constructor(
         @Inject('en_US') private translateKeys: any,
     ) {}
+
     transform(key: string, args?: any): any {
         // if we ask another time for the same key, return the last value
         if (key === this.lastKey && args === this.lastParams) {

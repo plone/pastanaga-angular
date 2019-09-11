@@ -12,7 +12,8 @@
         "no": "No"
     },
     "demo-page": {
-        "title": "Pastanaga usage examples"
+        "title": "Pastanaga usage examples",
+        "score": "{{points}} points of {{total}}"
     }
 
 }

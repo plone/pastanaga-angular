@@ -2,6 +2,16 @@
 
 <p>To display a section, click on its title</p>
 
+<div class="example-box">
+    <div class="example-box-header" (click)="toggleSection('translate')">Translate</div>
+
+    <div *ngIf="sections.translate">
+        <p>Using the directive: <span translate>demo-page.title</span></p>
+        <p>With parameters: <span translate [translateParams]="{points: 10, total: 25}">demo-page.score</span></p>
+        <p>Using the pipe: <span>{{ 'demo-page.title' | translate}}</span></p>
+        <p>With parameters: <span>{{ 'demo-page.score' | translate:{points: 10, total: 25} }}</span></p>
+    </div>
+</div>
 
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('expand')">Expand section</div>

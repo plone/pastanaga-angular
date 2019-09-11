@@ -15,20 +15,20 @@ describe('TranslateDirective', () => {
   });
 });
 
-describe('Testing compareObj method', () => {
+describe('Testing areEquals method', () => {
     it('Sending 2 objects with a different property should be false', () => {
       const directive = new TranslateDirective(new MockElementRef(), new TranslatePipe({}));
-      expect(directive.compareObj(obj1, obj2)).toBe(false);
+      expect(directive.areEquals(obj1, obj2)).toBe(false);
     });
 
     it('Sending 2 equal objects should be true', () => {
         const directive = new TranslateDirective(new MockElementRef(), new TranslatePipe({}));
-        expect(directive.compareObj(obj1, obj1)).toBe(true);
+        expect(directive.areEquals(obj1, obj1)).toBe(true);
     });
 
     it('Sending 2 objects with a different property value should be false', () => {
         const directive = new TranslateDirective(new MockElementRef(), new TranslatePipe({}));
-        expect(directive.compareObj(obj1, obj3)).toBe(false);
+        expect(directive.areEquals(obj1, obj3)).toBe(false);
     });
 
 });

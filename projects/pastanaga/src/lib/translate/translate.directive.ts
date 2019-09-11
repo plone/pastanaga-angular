@@ -15,7 +15,7 @@ export class TranslateDirective implements AfterViewChecked {
         }
     }
     @Input() set translateParams(params: any) {
-        if (!!this.currentParams && !this.compareObj(this.currentParams, params)) {
+        if (!this.areEquals(this.currentParams, params)) {
             this.currentParams = params;
             this.checkNodes(true);
         }
@@ -39,7 +39,7 @@ export class TranslateDirective implements AfterViewChecked {
             nodes = this.eltRef.nativeElement.childNodes;
         }
         for (let i = 0; i < nodes.length; ++i) {
-            let node: any = nodes[i];
+            const node: any = nodes[i];
             if (node.nodeType === 3) { // node type 3 is a text node
                 let key = '';
                 if (this.key) {
@@ -48,8 +48,8 @@ export class TranslateDirective implements AfterViewChecked {
                         node.lastKey = null;
                     }
                 } else {
-                    let content = this.getContent(node);
-                    let trimmedContent = content.trim();
+                    const content = this.getContent(node);
+                    const trimmedContent = content.trim();
                     if (trimmedContent.length) {
                         if (content !== node.currentValue) {
                             key = trimmedContent;
@@ -67,13 +67,13 @@ export class TranslateDirective implements AfterViewChecked {
 
     updateValue(key: string, node: any) {
         if (key) {
-            if (node.lastKey === key && !!this.lastParams && this.compareObj(this.lastParams, this.currentParams)) {
+            if (node.lastKey === key && !!this.lastParams && this.areEquals(this.lastParams, this.currentParams)) {
                 return;
             }
 
             this.lastParams = this.currentParams;
 
-            const translate = this.translatePipe.transform(key);
+            const translate = this.translatePipe.transform(key, this.currentParams);
             if (translate !== key) {
                 node.lastKey = key;
             }
@@ -98,19 +98,7 @@ export class TranslateDirective implements AfterViewChecked {
         }
     }
 
-    compareObj(obj1: any, obj2: any) {
-        let equal = true;
-        Object.entries(obj1).forEach(([key, value]) => {
-            let exists = false; // check if the first property exist in obj2
-            Object.entries(obj2).forEach(([key2, value2]) => {
-                if (key === key2 && value === value2) { // if key and value are equals we set exists to true
-                    exists = true;
-                }
-            });
-            if (!exists) {  // if not existe we set equal to false
-                equal = false;
-            }
-        });
-        return equal;
+    areEquals(obj1: any, obj2: any): boolean {
+        return JSON.stringify(obj1) === JSON.stringify(obj2);
     }
 }
