@@ -12,6 +12,9 @@ export class TranslatePipe implements PipeTransform {
     ) {}
 
     transform(key: string, args?: any): any {
+        if (!key) {
+            return '';
+        }
         // if we ask another time for the same key, return the last value
         if (key === this.lastKey && args === this.lastParams) {
             return this.value;
