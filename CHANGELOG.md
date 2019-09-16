@@ -1,3 +1,7 @@
+# 1.3.14 (2019-09-16)
+
+- Fix translate pipe when key is null
+
 # 1.3.13 (2019-09-11)
 
 - Support icon+text buttons
