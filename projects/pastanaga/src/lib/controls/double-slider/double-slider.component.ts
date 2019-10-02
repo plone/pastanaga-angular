@@ -9,7 +9,8 @@ import {
     OnDestroy,
     OnInit,
     Output,
-    ViewChild
+    ViewChild,
+    ChangeDetectionStrategy
 } from '@angular/core';
 
 let nextId = 0;
@@ -18,6 +19,7 @@ let nextId = 0;
     selector: 'pa-double-slider',
     templateUrl: './double-slider.component.html',
     styleUrls: ['../controls.scss', './double-slider.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DoubleSliderComponent implements AfterViewInit, OnInit, OnChanges, OnDestroy {
     @Input() id?: string;

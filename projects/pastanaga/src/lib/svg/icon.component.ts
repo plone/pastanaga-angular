@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, Renderer2, ViewEncapsulation, } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, Renderer2, ViewEncapsulation, ChangeDetectionStrategy, } from '@angular/core';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject } from '@angular/core';
@@ -13,6 +13,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
         width: 18px;
         height: 18px;
     }`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
 export class IconComponent {

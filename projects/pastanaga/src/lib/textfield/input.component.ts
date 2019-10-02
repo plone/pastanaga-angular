@@ -5,13 +5,13 @@ import {
     forwardRef,
     Input,
     NgZone,
-    OnChanges,
     OnInit,
     Optional,
     Output,
     ViewChild,
     AfterViewChecked,
     OnDestroy,
+    ChangeDetectionStrategy,
 } from '@angular/core';
 import {
     NG_VALUE_ACCESSOR,
@@ -22,7 +22,6 @@ import {
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { TextfieldCommon } from './textfield.common';
-import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
@@ -41,8 +40,9 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
             multi: true,
         },
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent extends TextfieldCommon implements OnInit, OnChanges, AfterViewChecked, OnDestroy {
+export class InputComponent extends TextfieldCommon implements OnInit, AfterViewChecked, OnDestroy {
     @Input() type = 'text';
     @Input()
     get hasFocus(): boolean { return this._hasFocus; }
@@ -59,7 +59,6 @@ export class InputComponent extends TextfieldCommon implements OnInit, OnChanges
 
     autofilled = false;
     baseId = 'input';
-    readonly stateChanges: Subject<void> = new Subject<void>();
 
     constructor(
         protected _platform: Platform,
@@ -79,17 +78,12 @@ export class InputComponent extends TextfieldCommon implements OnInit, OnChanges
         }
     }
 
-    ngOnChanges(changes) {
-        this.stateChanges.next();
-    }
-
     ngAfterViewChecked() {
         if (this._platform.isBrowser && !!this.input) {
             this._autofillMonitor
                 .monitor(this.input.nativeElement)
                 .subscribe(event => {
                     this.autofilled = event.isAutofilled;
-                    this.stateChanges.next();
                 });
         }
         if (this._platform.IOS && !!this.input) {
@@ -121,8 +115,6 @@ export class InputComponent extends TextfieldCommon implements OnInit, OnChanges
     }
 
     ngOnDestroy() {
-        this.stateChanges.complete();
-
         if (this._platform.isBrowser && !!this.input) {
           this._autofillMonitor.stopMonitoring(this.input.nativeElement);
         }

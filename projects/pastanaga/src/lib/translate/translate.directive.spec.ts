@@ -38,7 +38,7 @@ describe('Testing areEquals method', () => {
         expect(pipe.transform('close')).toBe('Close');
         expect(pipe.transform('cancel')).toBe('Cancel');
     });
-    it('should fall bacl to english if translation is missing', () => {
+    it('should fall back to english if translation is missing', () => {
         const pipe = new TranslatePipe('latin', {
             en_US: {close: 'Close', cancel: 'Cancel'},
             latin: {close: 'Claudere'},
