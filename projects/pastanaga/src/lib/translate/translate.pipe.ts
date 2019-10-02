@@ -1,17 +1,19 @@
 import { Pipe, PipeTransform, Inject } from '@angular/core';
 @Pipe({
-  name: 'translate'
+  name: 'translate',
+  pure: true,
 })
 export class TranslatePipe implements PipeTransform {
     lastKey?: string;
     lastParams?: string;
-    value: string = '';
+    value = '';
 
     constructor(
-        @Inject('en_US') private translateKeys: any,
+        @Inject('LANG') private lang: any,
+        @Inject('TRANSLATIONS') private translations: any,
     ) {}
 
-    transform(key: string, args?: any): any {
+    transform(key: string, args?: any): string {
         if (!key) {
             return '';
         }
@@ -20,22 +22,28 @@ export class TranslatePipe implements PipeTransform {
             return this.value;
         }
         const keys = !!key ? key.split('.') : [];
-        let value = !!this.translateKeys['default'] ? this.translateKeys['default'] : this.translateKeys;
+        this.value = this.lang === 'en_US' ? this.getValue(keys, 'en_US', this.translations) :
+            (this.getValue(keys, this.lang, this.translations) || this.getValue(keys, 'en_US', this.translations));
+        if (!!this.value && !!args) {
+            this.lastParams = args;
+            Object.keys(args).forEach(param => {
+                this.value = this.value.replace(`{{${param}}}`, args[param]);
+            });
+        }
+
+        return !!this.value ? this.value : key;
+    }
+
+    private getValue(keys: string[], lang: string, translations: any): string {
+        const translateKeys = translations[lang] || {};
+        let value = !!translateKeys['default'] ? translateKeys['default'] : translateKeys;
         keys.forEach(k => {
             value = value[k];
             if (!value) {
                 value = '';
             }
         });
-        this.value = value;
-        if (!!this.value && !!args) {
-            this.lastParams = args;
-            Object.keys(args).forEach(key => {
-                this.value = this.value.replace(`{{${key}}}`, args[key]);
-            });
-        }
-
-        return !!this.value ? this.value : key;
+        return value;
     }
 
 }

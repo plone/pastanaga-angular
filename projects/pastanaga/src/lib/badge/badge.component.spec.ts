@@ -128,7 +128,8 @@ describe('BadgeComponent', () => {
                 }),
             ],
             providers: [
-                {provide: 'en_US', useValue: en}
+                {provide: 'LANG', useValue: 'en_US'},
+                {provide: 'TRANSLATIONS', useValue: {'en_US': en}},
             ],
             declarations: [
                 BadgeComponent,

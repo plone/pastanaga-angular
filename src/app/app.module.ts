@@ -16,6 +16,7 @@ import {
 } from '../../projects/pastanaga/src';
 
 import * as en from '../assets/i18n/en.json';
+import * as la from '../assets/i18n/la.json';
 
 @NgModule({
     imports: [
@@ -36,7 +37,13 @@ import * as en from '../assets/i18n/en.json';
     declarations: [
         AppComponent,
     ],
-    providers: [{provide: 'en_US', useValue: {...en} as any}],
+    providers: [
+        {provide: 'LANG', useValue: 'en_US'},
+        {provide: 'TRANSLATIONS', useValue: {
+            'en_US': {...en} as any,
+            'latin': {...la} as any,
+        }},
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
