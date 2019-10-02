@@ -22,8 +22,7 @@
                    (click)="checkbox.isExpanded = !checkbox.isExpanded">{{!checkbox.children ? 'Loading' :
             !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
         </pa-button>
-        <pa-checkbox [type]="type"
-                     [icon]="checkbox.icon"
+        <pa-checkbox [icon]="checkbox.icon"
                      [help]="checkbox.help"
                      [isDisabled]="checkbox.isDisabled"
                      [isIndeterminate]="checkbox.isIndeterminate"

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { ToggleModel, ToggleDivider } from '../toggle.model';
 
 let nextId = 0;
@@ -7,6 +7,7 @@ let nextId = 0;
     selector: 'pa-toggle-group',
     templateUrl: './toggle-group.component.html',
     styleUrls: ['./toggle-group.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleGroupComponent implements OnInit, OnChanges {
     @Input() id?: string;

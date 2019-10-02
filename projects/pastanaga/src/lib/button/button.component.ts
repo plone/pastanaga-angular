@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonBase } from './button-base';
 
 let nextId = 0;
@@ -7,6 +7,7 @@ let nextId = 0;
     selector: 'pa-button',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })
 export class ButtonComponent extends ButtonBase implements OnInit, OnChanges {

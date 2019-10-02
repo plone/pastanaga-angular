@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ToggleDivider } from '../toggle.model';
 
 let nextId = 0;
@@ -6,7 +6,8 @@ let nextId = 0;
 @Component({
     selector: 'pa-toggle',
     templateUrl: './toggle.component.html',
-    styleUrls: ['../controls.scss', './toggle.component.scss']
+    styleUrls: ['../controls.scss', './toggle.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleComponent implements OnInit {
     @Input() id?: string;

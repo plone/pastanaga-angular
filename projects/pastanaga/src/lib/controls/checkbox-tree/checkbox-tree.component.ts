@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { ControlModel } from '../control.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslatePipe } from '../../translate/translate.pipe';
@@ -14,6 +14,7 @@ let nextId = 0;
         useExisting: forwardRef(() => CheckboxTreeComponent),
         multi: true,
     }],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnChanges {
     @Input() id?: string;

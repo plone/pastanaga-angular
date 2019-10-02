@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 const VERTICAL_SEPARATION = 21;
 const VERTICAL_SEPARATION_ACTION = 3;
@@ -8,6 +8,7 @@ const HORIZONTAL_SEPARATION = -3;
     selector: 'pa-tooltip-element',
     templateUrl: './tooltip.component.html',
     styleUrls: ['./tooltip.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TooltipComponent implements AfterViewInit {
     @Input() text?: string;
@@ -22,6 +23,8 @@ export class TooltipComponent implements AfterViewInit {
 
     @ViewChild('tooltipText', { static: false }) tooltipText?: ElementRef;
 
+    constructor(private changeDetector: ChangeDetectorRef) {}
+
     ngAfterViewInit() {
         this.show();
     }
@@ -32,12 +35,14 @@ export class TooltipComponent implements AfterViewInit {
             this.tooltipText.nativeElement.style.top = this.getTopPosition() + 'px';
             this.adjustPosition(); // once position set, check if too far horizontally or vertically
             this.tooltipText.nativeElement.setAttribute('aria-expanded', true);
+            this.changeDetector.detectChanges();
         }
     }
 
     hide() {
         if (!!this.tooltipText) {
             this.tooltipText.nativeElement.setAttribute('aria-expanded', false);
+            this.changeDetector.detectChanges();
         }
     }
 

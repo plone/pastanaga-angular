@@ -1,11 +1,23 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    ViewChild,
+    ChangeDetectionStrategy
+} from '@angular/core';
 
 let nextId = 0;
 
 @Component({
   selector: 'pa-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['../controls.scss', './checkbox.component.scss']
+  styleUrls: ['../controls.scss', './checkbox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() type = 'checkbox';

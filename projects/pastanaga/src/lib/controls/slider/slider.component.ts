@@ -1,4 +1,4 @@
-import {Component, Input, Output, OnInit, EventEmitter, SimpleChanges, OnChanges} from '@angular/core';
+import {Component, Input, Output, OnInit, EventEmitter, SimpleChanges, OnChanges, ChangeDetectionStrategy} from '@angular/core';
 
 let nextId = 0;
 
@@ -6,6 +6,7 @@ let nextId = 0;
     selector: 'pa-slider',
     templateUrl: './slider.component.html',
     styleUrls: ['../controls.scss', './slider.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SliderComponent implements OnInit, OnChanges {
     @Input() id?: string;

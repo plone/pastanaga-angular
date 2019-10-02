@@ -1,3 +1,8 @@
+# 1.3.15 (2019-10-02)
+
+- Support multiple languages with fallback to english
+- Use OnPush strategy
+
 # 1.3.14 (2019-09-16)
 
 - Fix translate pipe when key is null
