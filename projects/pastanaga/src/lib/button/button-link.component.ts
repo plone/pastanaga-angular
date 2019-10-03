@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ButtonBase } from './button-base';
 
 @Component({
@@ -13,6 +13,10 @@ export class ButtonLinkComponent extends ButtonBase implements OnChanges {
     @Input() traverseTo?: string;
     @Input() hasButtonDisplay = false;
     @Output() onClick: EventEmitter<MouseEvent> = new EventEmitter();
+
+    constructor(protected changeDetector: ChangeDetectorRef) {
+        super(changeDetector);
+    }
 
     ngOnChanges(changes) {
         this.onChanges(changes);

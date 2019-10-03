@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ButtonBase } from './button-base';
 
 let nextId = 0;
@@ -14,6 +14,10 @@ export class ButtonComponent extends ButtonBase implements OnInit, OnChanges {
     @Input() id?: string;
     @Input() active = false;
     checkedType = 'button';
+
+    constructor(protected changeDetector: ChangeDetectorRef) {
+        super(changeDetector);
+    }
 
     ngOnInit() {
         this.id = !this.id ? `button-${nextId++}` : `${this.id}-button`;

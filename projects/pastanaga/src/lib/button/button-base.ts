@@ -1,4 +1,4 @@
-import {AfterContentInit, ElementRef, EventEmitter, HostBinding, Input, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterContentInit, ElementRef, EventEmitter, HostBinding, Input, Output, SimpleChanges, ViewChild, ChangeDetectorRef, ViewRef} from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 const COLORS = ['primary', 'secondary', 'destructive', 'contrast'];
@@ -36,15 +36,14 @@ export class ButtonBase implements AfterContentInit {
         'active': false,
     };
     isDisabled = false;
-    buttonLabel = '';
+
+    constructor(protected changeDetector: ChangeDetectorRef) {}
 
     ngAfterContentInit() {
         setTimeout(() => {
-            if (!!this.textElement) {
-                this.buttonLabel = this.textElement.nativeElement.textContent.trim();
-                if (!this.ariaLabel) {
-                    this.ariaLabel = this.buttonLabel;
-                }
+            if (!!this.textElement && !this.ariaLabel && !!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
+                this.ariaLabel = this.textElement.nativeElement.textContent.trim();
+                this.changeDetector.detectChanges();
             }
         }, 0);
     }
