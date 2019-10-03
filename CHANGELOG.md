@@ -1,3 +1,7 @@
+# 1.3.16 (2019-10-03)
+
+-  use coerceBoolean in spinner
+
 # 1.3.15 (2019-10-02)
 
 - Support multiple languages with fallback to english
