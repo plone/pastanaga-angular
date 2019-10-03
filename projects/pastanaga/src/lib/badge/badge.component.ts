@@ -6,7 +6,9 @@ import {
     EventEmitter,
     Input,
     Output,
-    ViewChild
+    ViewChild,
+    ChangeDetectorRef,
+    ViewRef
 } from '@angular/core';
 import { BadgeModel } from './badge.model';
 
@@ -60,12 +62,20 @@ export class BadgeComponent implements AfterViewInit {
 
     @ViewChild('textContent', { static: false }) textContent?: ElementRef;
 
-    constructor(private elementRef: ElementRef) {}
+    constructor(
+        private elementRef: ElementRef,
+        private changeDetector: ChangeDetectorRef,
+    ) {}
 
     ngAfterViewInit() {
         if (!!this.maxWidth && !!this.textContent) {
             const textContent = this.textContent;
-            setTimeout(() => this.text = textContent.nativeElement.textContent.trim());
+            setTimeout(() => {
+                if (!!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
+                    this.text = textContent.nativeElement.textContent.trim();
+                    this.changeDetector.detectChanges();
+                }
+            });
         }
         this.render.emit(this.elementRef);
     }

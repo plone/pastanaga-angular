@@ -1,3 +1,7 @@
+# 1.3.17 (2019-10-03)
+
+- Fix change detection because of OnPush
+
 # 1.3.16 (2019-10-03)
 
 -  use coerceBoolean in spinner

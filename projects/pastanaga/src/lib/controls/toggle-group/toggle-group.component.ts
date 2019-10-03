@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ToggleModel, ToggleDivider } from '../toggle.model';
 
 let nextId = 0;
@@ -16,6 +16,8 @@ export class ToggleGroupComponent implements OnInit, OnChanges {
 
     isAllSelected = false;
     dividers: ToggleDivider[] = [];
+
+    constructor(private changeDetector: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.id = !this.id ? `fieldset-toggle-group-${nextId++}` : `${this.id}-fieldset-toggle-group`;
@@ -37,12 +39,17 @@ export class ToggleGroupComponent implements OnInit, OnChanges {
 
     toggleSelectAll() {
         this.isAllSelected = !this.isAllSelected;
-        this.toggles.forEach(toggle => toggle.isSelected = this.isAllSelected);
+        this.toggles = this.toggles.map(toggle => ({
+            ...toggle,
+            isSelected: this.isAllSelected,
+        }));
+        this.changeDetector.detectChanges();
         this.onSelection.emit(this.toggles);
     }
 
     toggleSelection(isSelected: boolean, toggle: ToggleModel) {
         toggle.isSelected = isSelected;
+        this.changeDetector.detectChanges();
         this.onSelection.emit(this.toggles);
     }
 }

@@ -12,7 +12,7 @@ export class PastanagaSpinnerComponent implements OnChanges {
     @Input()
     get small(): boolean { return this._small; }
     set small(value: boolean) { this._small = coerceBooleanProperty(value); }
-    protected _small = false;
+    _small = false;
 
     @Input() color: 'primary'|'secondary' = 'primary';
 

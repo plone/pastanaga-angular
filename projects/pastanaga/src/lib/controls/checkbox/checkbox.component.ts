@@ -8,7 +8,9 @@ import {
     OnInit,
     Output,
     ViewChild,
-    ChangeDetectionStrategy
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    ViewRef
 } from '@angular/core';
 
 let nextId = 0;
@@ -47,6 +49,8 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     hasEllipsis = false;
     tooltipText = '';
 
+    constructor(private changeDetector: ChangeDetectorRef) {}
+
     ngOnInit() {
         this.id = `field-${this.type}-${nextId++}`;
         this.name = this.name || this.id;
@@ -55,15 +59,30 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
 
     ngOnChanges(changes) {
         if (this.isBadgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
-            setTimeout(() => this.setLabelMaxWidth(), 0);
+            setTimeout(() => {
+                if (!!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
+                    this.setLabelMaxWidth();
+                    this.changeDetector.detach();
+                }
+            }, 0);
         }
     }
 
     ngAfterViewInit() {
         if (this.isBadgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
-            setTimeout(() => this.setLabelMaxWidth());
+            setTimeout(() => {
+                if (!!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
+                    this.setLabelMaxWidth();
+                    this.changeDetector.detach();
+                }
+            });
         } else {
-            setTimeout(() => this.setEllipsis());
+            setTimeout(() => {
+                if (!!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
+                    this.setEllipsis();
+                    this.changeDetector.detach();
+                }
+            });
         }
     }
 
