@@ -17,6 +17,10 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     encapsulation: ViewEncapsulation.None
 })
 export class IconComponent {
+    @Input() set path(value: string) {
+        this.iconPath = value;
+        this.updateSvg();
+    }
     @Input() set name(value: string) {
         this.iconPath = `./assets/icons/${value}.svg`;
         this.updateSvg();
