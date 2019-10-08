@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, Renderer2, ViewEncapsulation, ChangeDetectionStrategy, } from '@angular/core';
+import { Component, ElementRef, Input, Renderer2, ViewEncapsulation, ChangeDetectionStrategy, } from '@angular/core';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject } from '@angular/core';
@@ -61,14 +61,16 @@ export class IconComponent {
     }
 
     private updateSvg() {
-        if (isPlatformBrowser(this.platformId)) {
-            this.service.loadSvg(this.iconPath).subscribe(svg => {
-                this.setSvg(svg);
-            });
-        } else {
-            this.svgLoader.loadSvgFromSsr(this.iconPath, this.renderer).subscribe(svg => {
-                this.setSvg(svg);
-            });
+        if (!!this.iconPath) {
+            if (isPlatformBrowser(this.platformId)) {
+                this.service.loadSvg(this.iconPath).subscribe(svg => {
+                    this.setSvg(svg);
+                });
+            } else {
+                this.svgLoader.loadSvgFromSsr(this.iconPath, this.renderer).subscribe(svg => {
+                    this.setSvg(svg);
+                });
+            }
         }
     }
 
