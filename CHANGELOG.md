@@ -1,3 +1,7 @@
+# 1.3.18 (2019-10-08)
+
+- Removed translate directive from pa-badge
+
 # 1.3.17 (2019-10-03)
 
 - Fix change detection because of OnPush
