@@ -1,3 +1,7 @@
+# 1.3.21 (2019-10-10)
+
+- Resize textarea automatically
+
 # 1.3.20 (2019-10-10)
 
 - Changed replace function on translate pipe to globally
