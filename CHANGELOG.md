@@ -1,3 +1,8 @@
+# 1.3.19 (2019-10-10)
+
+- Add ability to provide icon full path
+- Prevent error if iconPath not defined
+
 # 1.3.18 (2019-10-08)
 
 - Removed translate directive from pa-badge
