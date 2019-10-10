@@ -1,3 +1,7 @@
+# 1.3.20 (2019-10-10)
+
+- Changed replace function on translate pipe to globally
+
 # 1.3.19 (2019-10-10)
 
 - Add ability to provide icon full path

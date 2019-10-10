@@ -27,7 +27,7 @@ export class TranslatePipe implements PipeTransform {
         if (!!this.value && !!args) {
             this.lastParams = args;
             Object.keys(args).forEach(param => {
-                this.value = this.value.replace(`{{${param}}}`, args[param]);
+                this.value = this.value.replace(new RegExp(`{{${param}}}`, 'g'), args[param]);
             });
         }
 
