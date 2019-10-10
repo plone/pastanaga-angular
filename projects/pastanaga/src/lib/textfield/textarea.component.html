@@ -1,5 +1,5 @@
 <div class="pa-field pa-field-textarea" [class.pa-field-error]="hasError || !!errorMessage">
-    <textarea class="pa-field-control" [id]="id" [attr.aria-describedby]="helpId"
+    <textarea class="pa-field-control" #element [id]="id" [attr.aria-describedby]="helpId"
               [attr.placeholder]="placeholder | translate"
               [class.pa-field-control-placeholder-shown]="isPlaceholderShown"
               [class.pa-field-control-filled]="!!value"
