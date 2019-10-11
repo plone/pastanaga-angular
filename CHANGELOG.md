@@ -1,3 +1,7 @@
+# 1.3.23 (2019-10-11)
+
+- Remove transition from buttons
+
 # 1.3.22 (2019-10-11)
 
 - Fix button-link
