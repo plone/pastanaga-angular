@@ -1,3 +1,7 @@
+# 1.3.24 (2019-10-11)
+
+- Make sure translate pipe returns a string
+
 # 1.3.23 (2019-10-11)
 
 - Remove transition from buttons

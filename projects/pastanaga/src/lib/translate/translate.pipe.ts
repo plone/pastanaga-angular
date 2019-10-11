@@ -43,7 +43,7 @@ export class TranslatePipe implements PipeTransform {
                 value = '';
             }
         });
-        return value;
+        return typeof value === 'string' ? value : keys.join('.');
     }
 
 }
