@@ -1,3 +1,7 @@
+# 1.3.22 (2019-10-11)
+
+- Fix button-link
+
 # 1.3.21 (2019-10-10)
 
 - Resize textarea automatically

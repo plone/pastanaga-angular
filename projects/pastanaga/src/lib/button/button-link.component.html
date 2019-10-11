@@ -1,14 +1,35 @@
-<a href="#"
-   [routerLink]="!!route ? route : undefined"
-   [traverseTo]="!!traverseTo ? traverseTo : undefined"
+<ng-template #label>
+    <span (click)="onClick.emit($event)" class="pa-button-wrapper" tabindex="-1" [class.inline]="!hasButtonDisplay">
+        <pa-icon *ngIf="icon" [name]="icon" [hidden]="true"></pa-icon>
+        <span #text class="pa-button-label" [class.pa-sr]="!!icon && !_iconAndText" [class.pa-with-icon]="!!icon && _iconAndText" translate><ng-content></ng-content></span>
+    </span>
+</ng-template>
+<a *ngIf="!!route && !traverseTo" href="#"
+   [routerLink]="route"
    [ngClass]="buttonStyle"
    [class.pa-button-link]="!hasButtonDisplay"
    [attr.aria-label]="ariaLabel"
    [attr.aria-controls]="ariaControls"
    [attr.aria-expanded]="ariaExpanded"
    tabindex="0">
-    <span (click)="onClick.emit($event)" class="pa-button-wrapper" tabindex="-1" [class.inline]="!hasButtonDisplay">
-        <pa-icon *ngIf="icon" [name]="icon" [hidden]="true"></pa-icon>
-        <span #text class="pa-button-label" [class.pa-sr]="!!icon && !_iconAndText" [class.pa-with-icon]="!!icon && _iconAndText" translate><ng-content></ng-content></span>
-    </span>
+    <ng-container *ngTemplateOutlet="label"></ng-container>
+</a>
+<a *ngIf="!!traverseTo" href="#"
+   [traverseTo]="traverseTo"
+   [ngClass]="buttonStyle"
+   [class.pa-button-link]="!hasButtonDisplay"
+   [attr.aria-label]="ariaLabel"
+   [attr.aria-controls]="ariaControls"
+   [attr.aria-expanded]="ariaExpanded"
+   tabindex="0">
+    <ng-container *ngTemplateOutlet="label"></ng-container>
+</a>
+<a *ngIf="!traverseTo && !route" href="#"
+   [ngClass]="buttonStyle"
+   [class.pa-button-link]="!hasButtonDisplay"
+   [attr.aria-label]="ariaLabel"
+   [attr.aria-controls]="ariaControls"
+   [attr.aria-expanded]="ariaExpanded"
+   tabindex="0">
+    <ng-container *ngTemplateOutlet="label"></ng-container>
 </a>
