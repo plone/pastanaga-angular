@@ -1,6 +1,6 @@
 ::ng-deep {
-    @import "../../../../../../../../node_modules/medium-editor/src/sass/medium-editor";
-    @import "../../../../../../../../node_modules/medium-editor/src/sass/themes/default";
+    @import "./node_modules/medium-editor/src/sass/medium-editor";
+    @import "./node_modules/medium-editor/src/sass/themes/default";
 }
 
 .me-editable {
