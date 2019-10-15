@@ -3,15 +3,15 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {
-  BadgeModule,
-  ButtonModule,
-  ControlsModule,
-  ProgressModule,
-  ToasterModule,
-  TooltipModule,
-  TextFieldModule,
-  ExpandModule,
-  TranslateModule,
+    BadgeModule,
+    ButtonModule,
+    ControlsModule,
+    ProgressModule,
+    ToasterModule,
+    TooltipModule,
+    TextFieldModule,
+    ExpandModule,
+    TranslateModule, RichtextModule,
 } from '../../projects/pastanaga/src';
 
 const en = {
@@ -47,6 +47,7 @@ describe('AppComponent', () => {
         TextFieldModule,
         TooltipModule,
         ExpandModule,
+        RichtextModule,
     ],
       declarations: [
         AppComponent
