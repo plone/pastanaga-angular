@@ -1,3 +1,7 @@
+# 1.3.25 (2019-10-15)
+
+- Move Richtext in its own module
+
 # 1.3.24 (2019-10-11)
 
 - Make sure translate pipe returns a string
