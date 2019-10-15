@@ -1,3 +1,7 @@
+# 1.3.26 (2019-10-15)
+
+- Fix path in demo app
+
 # 1.3.25 (2019-10-15)
 
 - Move Richtext in its own module
