@@ -6,7 +6,7 @@ import { ControlValueAccessor } from '@angular/forms';
 @Component({
     selector: 'pa-richtext',
     templateUrl: 'richtext.component.html',
-    styleUrls: ['textfield.scss', 'richtext.component.scss'],
+    styleUrls: ['../textfield/textfield.scss', 'richtext.component.scss'],
 })
 export class RichtextComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy, AfterViewInit {
 
