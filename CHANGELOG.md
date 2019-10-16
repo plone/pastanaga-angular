@@ -1,3 +1,7 @@
+# 1.3.29 (2019-10-16)
+
+- Fix button link reference to text content
+
 # 1.3.28 (2019-10-16)
 
 - Set proper class if input not empty

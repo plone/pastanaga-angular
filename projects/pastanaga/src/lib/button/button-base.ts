@@ -20,7 +20,7 @@ export class ButtonBase implements AfterContentInit {
 
     @Output() hasFocus: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text', { static: true }) textElement?: ElementRef;
+    @ViewChild('text', { static: false }) textElement?: ElementRef;
 
     _iconAndText = false;
 
