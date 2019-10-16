@@ -13,12 +13,16 @@ script:
 notifications:
   email:
   - ebrehault@gmail.com
+before_deploy:
+- git config --global user.email "build@travis-ci.com"
+- git config --global user.name "Travis CI"
+- export PACKAGE_VERSION=$(npm run get_version | tail -n 1)
+- echo "TAGGING $PACKAGE_VERSION..."
+- git tag $PACKAGE_VERSION -m "Version $PACKAGE_VERSION"
 deploy:
   provider: releases
-  script: "$TRAVIS_BUILD_DIR/travis_release.sh"
+  api_key:
+    secure: iez/Ji90Kb2DkfLqhNXHpZOWWDMhM+Mv3AZL/5ZXaAnANcW9UIIfIank90iQ0yyTtyZfSdio6uY40JQ3i+7t6K4qXKQZyl+RVro22RwLG//buZ5ZprLNHcgHexINHKwwZUgHqjtKinoPVk8v9S4us2J2VoN1JM8ICyrMZpbLw7xCCbggerZorVJCmmsQQFKSWE10ZibuXh4tGnEmn2CbpRlipe8EhlNdXM3z+3s+EpNqrO+26/vQuu3mtZGu4sDZyYVcVIL29ynAI2bBYGZodKfSUolArifBGbHLLhoQk3AviHF7+o66Zeuel3X9AlVyKIhqYebEVKHMbSqPzy6f94DrLTek6hBJXjt+6bbfPVrUt+XpbxdzHKaszINuNgLQFjNxO6wl+Cpjz12oYHbvhA93z6nGvF6nT6oKDka9RKL244LGderOTsNOJW37SmZSCq6tSwPUzKDWx5s8tDk/AErWKtvjWDjQPfZXrGJx1+ohgx8XkkzfMV7E2wogoS7tEaML5KMeRG4FB64hFDIBF14q5Laag8Yw4ghFLyERTtmF5thLbvRacNrl68Y8NbAu2BpMrxJQo46LNWILUbKzh5sr+byD3tzY+YvbNpugsdivmFf76aulcZSTKfix94hhYDDzuxsESiTTzGhjp3dn/mwCz1kmuSDmKWcU8Ipm3bg=
   on:
+    repo: plone/pastanaga-angular
     branch: master
-    condition: "-z $(git tag --points-at $TRAVIS_COMMIT)"
-env:
-  global:
-    secure: eQP/bsedv8lpxLHt7xpKiR6prO8hvhRbntm7LgXvGVDWgpDiOHH4D6JvyybtXSqJQ+woNUdL6F6EZra4Q9Z8RsnNpH8mk4w1zIRrLSWaUEimEkPVXoLAegwB/sPt+S3Hg16S9CQz2absBEqeBMzYvXzcwqsXJN4M2jNMoU2IFw7dwXbp59UrwZIEX36fzWXHU4wB5ASw55aB8dvZ27FRwuoxgztf+SyYXFKsYEGmKYENDiQWSOymASxJkcA7Z4cTxK4dRRF+ApoN284cNr5XP2vfgpCHT4sd4AaBbxgxlYlTBmHt2GBuhdRhCukn6ii/1uLoBptoYMh2npwI5TPxidIFuoP+ETUkYjoOBDC7m55AQLwRZSNSRLIc6LG828CcdJL7ddqChlIWQExdeAqD3iIMNS62CeGNastP32eiALKLcLkzpW4h9YwOsFym+c6jGIg3K7G9OFKmYEFS1ZQvQasIuq7wCGBmfw7yL/wfF0lqRZ20IBdPBr1VO/mQMIB2mI4D3pksXjnWwnk6X7ZAYcg5zzf9TbVeRb4x6VGw8xch6GXDoc6WxSWE3wTPzj89oSHoxZses2QSOK5od/kIhctLyUYffmr/08rnW67niDGO7zNzPR9uKjBHAmYkiiTdoF1BXpoTVabUz1/QGVAlqJhOFcb0Wq3g1/KJKsiZU/o=
