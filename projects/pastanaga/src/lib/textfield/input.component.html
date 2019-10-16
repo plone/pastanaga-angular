@@ -1,4 +1,6 @@
-<div [class]="'pa-field pa-field-'+ type" [class.pa-field-error]="hasError || !!errorMessage">
+<div [class]="'pa-field pa-field-'+ type"
+     [class.pa-field-error]="hasError || !!errorMessage"
+     [class.pa-accent]="_accent">
     <input #dataInput class="pa-field-control"
            [class.pa-field-control-readonly-lessen]="isReadOnly && _isLessen"
            [class.pa-field-control-lessen]="_isLessen && !isReadOnly"

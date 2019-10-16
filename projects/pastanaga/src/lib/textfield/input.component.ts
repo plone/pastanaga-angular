@@ -52,6 +52,10 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
     get isLessen(): boolean { return this._isLessen; }
     set isLessen(value: boolean) { this._isLessen = coerceBooleanProperty(value); }
     _isLessen = false;
+    @Input()
+    get accent(): boolean { return this._accent; }
+    set accent(value: boolean) { this._accent = coerceBooleanProperty(value); }
+    _accent = false;
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
