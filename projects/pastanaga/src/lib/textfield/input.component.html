@@ -2,6 +2,7 @@
      [class.pa-field-error]="hasError || !!errorMessage"
      [class.pa-accent]="_accent">
     <input #dataInput class="pa-field-control"
+           [class.pa-field-control-filled]="!!value || value === 0"
            [class.pa-field-control-readonly-lessen]="isReadOnly && _isLessen"
            [class.pa-field-control-lessen]="_isLessen && !isReadOnly"
            [type]="type"

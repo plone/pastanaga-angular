@@ -1,3 +1,7 @@
+# 1.3.28 (2019-10-16)
+
+- Set proper class if input not empty
+
 # 1.3.27 (2019-10-16)
 
 - Add accent style to inputs
