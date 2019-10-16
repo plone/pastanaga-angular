@@ -1,3 +1,7 @@
+# 1.3.27 (2019-10-16)
+
+- Add accent style to inputs
+
 # 1.3.26 (2019-10-15)
 
 - Fix path in demo app
