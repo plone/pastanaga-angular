@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SvgModule } from '../svg/svg.module';
 import { BadgeModule } from '../badge/badge.module';
@@ -17,7 +16,6 @@ import { TranslateModule } from '../translate/translate.module';
 @NgModule({
     imports: [
         CommonModule,
-        BrowserAnimationsModule,
         FormsModule,
         TranslateModule,
         BadgeModule,

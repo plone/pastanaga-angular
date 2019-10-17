@@ -9,7 +9,7 @@
            [id]="id"
            [attr.aria-describedby]="helpId"
            [attr.placeholder]="placeholder | translate"
-           [value]="value"
+           [value]="!!value || value === 0 ? value : ''"
            [readonly]="isReadOnly"
            [disabled]="disabled"
            [required]="required"

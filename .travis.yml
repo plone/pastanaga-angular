@@ -18,9 +18,10 @@ before_deploy:
 - git config --global user.name "Travis CI"
 - export PACKAGE_VERSION=$(npm run get_version | tail -n 1)
 - echo "TAGGING $PACKAGE_VERSION..."
-- git tag $PACKAGE_VERSION -m "Version $PACKAGE_VERSION"
+- git tag $PACKAGE_VERSION
 deploy:
   provider: releases
+  name: Build $(date +'%d.%m.%Y %R')
   api_key:
     secure: iez/Ji90Kb2DkfLqhNXHpZOWWDMhM+Mv3AZL/5ZXaAnANcW9UIIfIank90iQ0yyTtyZfSdio6uY40JQ3i+7t6K4qXKQZyl+RVro22RwLG//buZ5ZprLNHcgHexINHKwwZUgHqjtKinoPVk8v9S4us2J2VoN1JM8ICyrMZpbLw7xCCbggerZorVJCmmsQQFKSWE10ZibuXh4tGnEmn2CbpRlipe8EhlNdXM3z+3s+EpNqrO+26/vQuu3mtZGu4sDZyYVcVIL29ynAI2bBYGZodKfSUolArifBGbHLLhoQk3AviHF7+o66Zeuel3X9AlVyKIhqYebEVKHMbSqPzy6f94DrLTek6hBJXjt+6bbfPVrUt+XpbxdzHKaszINuNgLQFjNxO6wl+Cpjz12oYHbvhA93z6nGvF6nT6oKDka9RKL244LGderOTsNOJW37SmZSCq6tSwPUzKDWx5s8tDk/AErWKtvjWDjQPfZXrGJx1+ohgx8XkkzfMV7E2wogoS7tEaML5KMeRG4FB64hFDIBF14q5Laag8Yw4ghFLyERTtmF5thLbvRacNrl68Y8NbAu2BpMrxJQo46LNWILUbKzh5sr+byD3tzY+YvbNpugsdivmFf76aulcZSTKfix94hhYDDzuxsESiTTzGhjp3dn/mwCz1kmuSDmKWcU8Ipm3bg=
   on:
