@@ -1,6 +1,7 @@
 # 1.3.31 (2019-10-16)
 
 - Remove useless BrowserAnimationsModule
+- Do not display 'undefined' if no input value
 
 # 1.3.30 (2019-10-16)
 
