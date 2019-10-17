@@ -1,3 +1,7 @@
+# 1.3.31 (2019-10-16)
+
+- Remove useless BrowserAnimationsModule
+
 # 1.3.30 (2019-10-16)
 
 - Setup auto-tagging
