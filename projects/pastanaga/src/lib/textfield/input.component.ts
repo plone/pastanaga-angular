@@ -12,6 +12,8 @@ import {
     AfterViewChecked,
     OnDestroy,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    ViewRef,
 } from '@angular/core';
 import {
     NG_VALUE_ACCESSOR,
@@ -23,6 +25,8 @@ import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { TextfieldCommon } from './textfield.common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'pa-input',
@@ -56,6 +60,7 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
     get accent(): boolean { return this._accent; }
     set accent(value: boolean) { this._accent = coerceBooleanProperty(value); }
     _accent = false;
+    terminator = new Subject();
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
@@ -70,9 +75,15 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
         private _autofillMonitor: AutofillMonitor,
         @Optional() public _parentForm: NgForm,
         @Optional() public _parentFormGroup: FormGroupDirective,
+        private cdr: ChangeDetectorRef,
     ) {
         super();
         this.errors.passwordStrength = false;
+        this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => {
+            if (!(this.cdr as ViewRef).destroyed) {
+                this.cdr.detectChanges();
+            }
+        });
     }
 
     ngOnInit() {
@@ -119,6 +130,7 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
     }
 
     ngOnDestroy() {
+        this.terminator.next();
         if (this._platform.isBrowser && !!this.input) {
           this._autofillMonitor.stopMonitoring(this.input.nativeElement);
         }

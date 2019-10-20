@@ -1,3 +1,7 @@
+# 1.3.32 (2019-10-20)
+
+- Detect change when FormControl value changes
+
 # 1.3.31 (2019-10-16)
 
 - Remove useless BrowserAnimationsModule
