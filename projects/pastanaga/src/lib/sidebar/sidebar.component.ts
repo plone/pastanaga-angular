@@ -52,6 +52,15 @@ export class SidebarComponent implements OnInit, OnDestroy {
     get folded(): boolean { return this._folded; }
     private _folded = false;
 
+    @Input() set lockedOpen(value: boolean) {
+        this._lockedOpen = coerceBooleanProperty(value);
+        if (this._lockedOpen) {
+            this.open();
+        }
+    }
+    get lockedOpen(): boolean { return this._lockedOpen; }
+    private _lockedOpen = false;
+
     @Output() openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() foldedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 

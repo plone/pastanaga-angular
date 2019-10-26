@@ -1,7 +1,7 @@
 :host {
     position: relative;
     display: block;
-    padding: 24px;
+    padding: 24px 24px 24px calc(64px + 24px);
 
     .right-menu-button {
         position: absolute;
