@@ -247,4 +247,8 @@ export class AppComponent implements OnInit {
     openMenu(menuKey: string) {
         this.sidebarService.getSidebar(menuKey).toggleOpen();
     }
+
+    unFoldMenu(menuKey: string) {
+        this.sidebarService.getSidebar(menuKey).toggleFold();
+    }
 }

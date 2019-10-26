@@ -6,7 +6,12 @@
 <p>To display a section, click on its title</p>
 
 <pa-sidebar name="left-menu" folded noBackdrop lockedOpen>
-    <div style="background: white; height: 100vh">I am a folded left menu locked opened</div>
+    <div style="background: white; height: 100vh">
+        <pa-button style="margin: 6px;" icon="application" color="secondary" (click)="unFoldMenu('left-menu')"></pa-button>
+        <div>
+            I am a folded left menu locked opened
+        </div>
+    </div>
 </pa-sidebar>
 
 <pa-sidebar name="right-menu" position="right">

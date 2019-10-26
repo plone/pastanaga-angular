@@ -129,6 +129,13 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.cdr.markForCheck();
     }
 
+    toggleFold() {
+        this.folded = !this._folded;
+        this.enableAnimations();
+        this.foldedChanged.emit(this._folded);
+        this.cdr.markForCheck();
+    }
+
     private setupPosition() {
         if (this.position === 'left') {
             this.renderer.addClass(this.elementRef.nativeElement, 'left-positioned');
