@@ -32,6 +32,9 @@ pa-sidebar {
         top: 0;
         bottom: 0;
     }
+    &.locked-opened {
+        z-index: $zindex-modal-backdrop;
+    }
     &.animations-enabled {
         transition-property: transform, width, min-width, max-width;
         transition-duration: 150ms;
