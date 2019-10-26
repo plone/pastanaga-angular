@@ -2,6 +2,7 @@
  * Public API Surface of pastanaga
  */
 
+export { PastanagaService } from './lib/pastanaga.service';
 export * from './lib/badge/badge.module';
 export * from './lib/badge/badge.model';
 export * from './lib/badge/badge.component';
