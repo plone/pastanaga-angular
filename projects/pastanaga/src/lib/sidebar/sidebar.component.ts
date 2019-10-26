@@ -1,12 +1,129 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef, EventEmitter,
+    HostBinding,
+    Input,
+    OnDestroy,
+    OnInit, Output,
+    Renderer2,
+    ViewEncapsulation
+} from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { SidebarService } from './sidebar.service';
 
 @Component({
     selector: 'pa-sidebar',
-    templateUrl: 'sidebar.component.html'
+    templateUrl: 'sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
+export class SidebarComponent implements OnInit, OnDestroy {
+    @Input() name?: string;
+    @Input() position: 'left' | 'right' = 'left';
+    @Input() set noBackdrop(value: boolean) { this._noBackdrop = coerceBooleanProperty(value); }
+    get noBackdrop() { return this._noBackdrop; }
+    private _noBackdrop = false;
 
-export class SidebarComponent implements OnInit {
-    constructor() { }
+    @Output() opened: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    ngOnInit() { }
+    @HostBinding('class.open')
+    isOpen = false;
+
+    @HostBinding('class.animations-enabled')
+    private animationsEnabled = false;
+
+    private backdrop: HTMLElement | null = null;
+
+    constructor(
+        private elementRef: ElementRef,
+        private sidebarService: SidebarService,
+        private renderer: Renderer2,
+        private cdr: ChangeDetectorRef,
+    ) { }
+
+    ngOnInit(): void {
+        if (!this.name) {
+            throw new Error(`'name' input is required`);
+        }
+        this.sidebarService.register(this.name, this);
+
+        this.setupPosition();
+    }
+
+    ngOnDestroy(): void {
+        if (!!this.name) {
+            this.sidebarService.unregister(this.name);
+        }
+    }
+
+    toggleOpen() {
+        if (this.isOpen) {
+            this.close();
+        } else {
+            this.open();
+        }
+    }
+
+    open() {
+        if (this.isOpen) {
+            return;
+        }
+        this.enableAnimations();
+        this.isOpen = true;
+        if (!this._noBackdrop) {
+            this.showBackdrop();
+        }
+        this.opened.emit(this.isOpen);
+        this.cdr.markForCheck();
+    }
+
+    close() {
+        if (!this.isOpen) {
+            return;
+        }
+        this.enableAnimations();
+        this.isOpen = false;
+        if (!this._noBackdrop) {
+            this.hideBackdrop();
+        }
+        this.opened.emit(this.isOpen);
+        this.cdr.markForCheck();
+    }
+
+    private setupPosition() {
+        if (this.position === 'left') {
+            this.renderer.addClass(this.elementRef.nativeElement, 'left-positioned');
+        } else {
+            this.renderer.addClass(this.elementRef.nativeElement, 'right-positioned');
+        }
+    }
+
+    private enableAnimations() {
+        if (this.animationsEnabled) {
+            return;
+        }
+        this.animationsEnabled = true;
+        this.cdr.markForCheck();
+    }
+
+    private showBackdrop() {
+        this.backdrop = this.renderer.createElement('div');
+        if (!this.backdrop) {
+            throw new Error(`backdrop creation failed`);
+        }
+        this.backdrop.classList.add('pa-sidebar-overlay');
+        this.renderer.appendChild(this.elementRef.nativeElement.parentElement, this.backdrop);
+        this.backdrop.addEventListener('click', () => this.close());
+    }
+
+    private hideBackdrop() {
+        if (!!this.backdrop && !!this.backdrop.parentNode) {
+            this.backdrop.parentNode.removeChild(this.backdrop);
+            this.backdrop = null;
+            this.cdr.markForCheck();
+        }
+    }
 }

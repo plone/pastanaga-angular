@@ -12,7 +12,7 @@ import {
     ToasterModule,
     TooltipModule,
     ExpandModule,
-    TranslateModule
+    TranslateModule, SidebarModule
 } from '../../projects/pastanaga/src';
 
 import * as en from '../assets/i18n/en.json';
@@ -35,6 +35,7 @@ import { RichtextModule } from 'pastanaga-angular';
         TooltipModule,
         ExpandModule,
         RichtextModule,
+        SidebarModule,
     ],
     declarations: [
         AppComponent,

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { BadgeModel, ControlModel, Toaster, ToastModel, ToggleModel } from '../../projects/pastanaga/src';
+import { BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, ToggleModel } from '../../projects/pastanaga/src';
 
 @Component({
     selector: 'app-root',
@@ -8,6 +8,8 @@ import { BadgeModel, ControlModel, Toaster, ToastModel, ToggleModel } from '../.
 })
 export class AppComponent implements OnInit {
     @ViewChild('toastsContainer', { read: ViewContainerRef, static: true }) toastsContainer?: ViewContainerRef;
+
+    isRightMenuOpened = false;
 
     isStandaloneCheckboxSelected = false;
     standaloneSelection = false;
@@ -139,6 +141,7 @@ export class AppComponent implements OnInit {
 
     constructor(
         private toaster: Toaster,
+        private sidebarService: SidebarService,
     ) {
     }
 
@@ -239,5 +242,9 @@ export class AppComponent implements OnInit {
     toggleSection(id) {
         this.sections[id] = !this.sections[id];
         localStorage.setItem('sections', JSON.stringify(this.sections));
+    }
+
+    openMenu(menuKey: string) {
+        this.sidebarService.getSidebar(menuKey).toggleOpen();
     }
 }
