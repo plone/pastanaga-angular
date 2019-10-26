@@ -10,7 +10,7 @@ import {
     Renderer2,
     ViewEncapsulation
 } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -23,14 +23,40 @@ import { SidebarService } from './sidebar.service';
 export class SidebarComponent implements OnInit, OnDestroy {
     @Input() name?: string;
     @Input() position: 'left' | 'right' = 'left';
+
     @Input() set noBackdrop(value: boolean) { this._noBackdrop = coerceBooleanProperty(value); }
     get noBackdrop() { return this._noBackdrop; }
     private _noBackdrop = false;
 
-    @Output() opened: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Input() set foldedWidth(value: number) { this._foldedWidth = coerceNumberProperty(value); }
+    get foldedWidth(): number { return this._foldedWidth; }
+    private _foldedWidth = 64;
+
+    @Input() set folded(value: boolean) {
+        this._folded = coerceBooleanProperty(value);
+
+        const width = `${this._foldedWidth}px`;
+        if (this._folded) {
+            this.renderer.setStyle(this.elementRef.nativeElement, 'width', width);
+            this.renderer.setStyle(this.elementRef.nativeElement, 'min-width', width);
+            this.renderer.setStyle(this.elementRef.nativeElement, 'max-width', width);
+            this.renderer.addClass(this.elementRef.nativeElement, 'folded');
+        } else {
+            this.renderer.removeStyle(this.elementRef.nativeElement, 'width');
+            this.renderer.removeStyle(this.elementRef.nativeElement, 'min-width');
+            this.renderer.removeStyle(this.elementRef.nativeElement, 'max-width');
+            this.renderer.removeClass(this.elementRef.nativeElement, 'folded');
+        }
+        this.foldedChanged.emit(this._folded);
+    }
+    get folded(): boolean { return this._folded; }
+    private _folded = false;
+
+    @Output() openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() foldedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @HostBinding('class.open')
-    isOpen = false;
+    private isOpen = false;
 
     @HostBinding('class.animations-enabled')
     private animationsEnabled = false;
@@ -76,7 +102,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
         if (!this._noBackdrop) {
             this.showBackdrop();
         }
-        this.opened.emit(this.isOpen);
+        this.openedChanged.emit(this.isOpen);
         this.cdr.markForCheck();
     }
 
@@ -89,7 +115,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
         if (!this._noBackdrop) {
             this.hideBackdrop();
         }
-        this.opened.emit(this.isOpen);
+        this.openedChanged.emit(this.isOpen);
         this.cdr.markForCheck();
     }
 
@@ -117,6 +143,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.backdrop.classList.add('pa-sidebar-overlay');
         this.renderer.appendChild(this.elementRef.nativeElement.parentElement, this.backdrop);
         this.backdrop.addEventListener('click', () => this.close());
+        this.cdr.markForCheck();
     }
 
     private hideBackdrop() {

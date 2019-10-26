@@ -27,7 +27,11 @@ pa-sidebar {
     &.open {
         transform: translateX(0);
     }
-
+    &.folded {
+        position: absolute !important;
+        top: 0;
+        bottom: 0;
+    }
     &.animations-enabled {
         transition-property: transform, width, min-width, max-width;
         transition-duration: 150ms;
