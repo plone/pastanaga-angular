@@ -4,7 +4,7 @@
 
 https://plone.github.io/pastanaga-angular/dist/pastanaga-app/
 
-Provides the Pastanaga elements as Angular 6 components.
+Provides the Pastanaga elements as Angular components.
 
 See `src/app/app.component.ts` and `src/app/app.component.html` for usage examples.
 
