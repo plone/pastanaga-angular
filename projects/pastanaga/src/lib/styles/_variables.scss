@@ -84,6 +84,10 @@ $labels-text-transform:                 uppercase !default;
 $labels-color:                          $gray-black !default;
 $labels-required-color:                 $red-light !default;
 
+// Sidebar
+$sidebar-width:                         280px !default;
+$sidebar-backdrop-color:                rgba($gray-black, 0.6) !default;
+
 // Shadows
 $shadow-none: none;
 $shadow-pop: 0 1px 2px 0 rgba(0,0,0,0.15);

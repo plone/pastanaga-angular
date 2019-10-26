@@ -10,9 +10,9 @@ pa-sidebar {
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
+    width: $sidebar-width;
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
     z-index: $zindex-modal;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
 
@@ -36,7 +36,7 @@ pa-sidebar {
 }
 
 .pa-sidebar-overlay {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: $sidebar-backdrop-color;
     position: absolute;
     top: 0;
     bottom: 0;
