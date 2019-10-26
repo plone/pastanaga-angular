@@ -1,6 +1,25 @@
+<pa-button class="right-menu-button" icon="menu" color="secondary" border
+           (click)="openMenu('right-menu')">Menu</pa-button>
+
 <h1 translate>demo-page.title</h1>
 
 <p>To display a section, click on its title</p>
+
+<pa-sidebar name="left-menu" folded noBackdrop lockedOpen unfoldOnHover (foldedChanged)="isLeftMenuFolded = $event">
+    <div style="background: white; height: 100vh">
+        <ng-container *ngIf="!isLeftMenuFolded">
+            <pa-button color="secondary" (click)="toggleStayUnfolded('left-menu')">{{isLockedUnfolded ? 'Fold' : 'Stay unfolded'}}</pa-button>
+        </ng-container>
+        <div>
+            I am a folded left menu locked opened
+        </div>
+    </div>
+</pa-sidebar>
+
+<pa-sidebar name="right-menu" position="right">
+    <div style="background: white; height: 100vh">I am the right one</div>
+</pa-sidebar>
+
 
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('translate')">Translate</div>

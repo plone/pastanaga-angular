@@ -11,7 +11,9 @@ import {
     TooltipModule,
     TextFieldModule,
     ExpandModule,
-    TranslateModule, RichtextModule,
+    RichtextModule,
+    SidebarModule,
+    TranslateModule,
 } from '../../projects/pastanaga/src';
 
 const en = {
@@ -48,6 +50,7 @@ describe('AppComponent', () => {
         TooltipModule,
         ExpandModule,
         RichtextModule,
+        SidebarModule,
     ],
       declarations: [
         AppComponent

@@ -1,12 +1,18 @@
 :host {
+    position: relative;
     display: block;
-    padding: 24px;
+    padding: 24px 24px 24px calc(64px + 24px);
 
+    .right-menu-button {
+        position: absolute;
+        top: 21px;
+        right: 30px;
+    }
     .example-box {
         border: 3px solid #ddd;
         border-radius: 6px;
         padding: 36px 30px;
-        margin: 36px 30px;
+        margin: 36px 0;
         position: relative;
     }
     .example-box-header {

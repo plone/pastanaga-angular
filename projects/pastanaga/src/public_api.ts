@@ -2,6 +2,7 @@
  * Public API Surface of pastanaga
  */
 
+export { PastanagaService } from './lib/pastanaga.service';
 export * from './lib/badge/badge.module';
 export * from './lib/badge/badge.model';
 export * from './lib/badge/badge.component';
@@ -51,3 +52,7 @@ export * from './lib/pagination/pagination.module';
 export * from './lib/translate/translate.module';
 export * from './lib/translate/translate.pipe';
 export * from './lib/translate/translate.directive';
+
+export * from './lib/sidebar/module';
+export * from './lib/sidebar/sidebar.component';
+export * from './lib/sidebar/sidebar.service';
