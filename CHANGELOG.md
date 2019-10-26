@@ -1,3 +1,7 @@
+# 1.4.0 (2019-10-26)
+
+- Sidebar component
+
 # 1.3.32 (2019-10-20)
 
 - Detect change when FormControl value changes

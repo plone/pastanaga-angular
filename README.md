@@ -44,3 +44,23 @@ $button-primary-active-background: $my-blue-light;
 },
 ```
 
+## Components
+
+### Sidebar
+
+Sidebar component is a container positioned on the left or on the right of the screen.
+As it's just a container, any component added inside will have to be styled with a background color (supporting alpha as sidebar is fully transparent by default)
+
+You can have as many sidebars as you want in you application as soon as they all have an unique name.
+
+Sidebar can be closed or opened, but also folded or unfolded.
+
+By default, sidebar is 280px width but this size can be overwritten using `$sidebar-width` variable.
+
+When a sidebar is opened, a backdrop is displayed by default. `noBackdrop` attribute allows to have a sidebar opened without backdrop.
+
+When a sidebar is folded, it's possible to unfold it on hover with `unfoldOnHover` attribute.
+
+A sidebar can be locked in open position using `lockedOpen` attribute.
+
+Whenever `open` and `folded` states are changing, the corresponding events `openedChanged` and `foldedChanged` are sent.
