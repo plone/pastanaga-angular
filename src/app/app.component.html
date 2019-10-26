@@ -5,9 +5,11 @@
 
 <p>To display a section, click on its title</p>
 
-<pa-sidebar name="left-menu" folded noBackdrop lockedOpen>
+<pa-sidebar name="left-menu" folded noBackdrop lockedOpen unfoldOnHover (foldedChanged)="isLeftMenuFolded = $event">
     <div style="background: white; height: 100vh">
-        <pa-button style="margin: 6px;" icon="application" color="secondary" (click)="unFoldMenu('left-menu')"></pa-button>
+        <ng-container *ngIf="!isLeftMenuFolded">
+            <pa-button color="secondary" (click)="toggleStayUnfolded('left-menu')">{{isLockedUnfolded ? 'Fold' : 'Stay unfolded'}}</pa-button>
+        </ng-container>
         <div>
             I am a folded left menu locked opened
         </div>

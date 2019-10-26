@@ -3,7 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef, EventEmitter,
-    HostBinding,
+    HostBinding, HostListener,
     Input,
     OnDestroy,
     OnInit, Output,
@@ -23,6 +23,10 @@ import { SidebarService } from './sidebar.service';
 export class SidebarComponent implements OnInit, OnDestroy {
     @Input() name?: string;
     @Input() position: 'left' | 'right' = 'left';
+
+    @Input() set unfoldOnHover(value: boolean) { this._unfoldOnHover = coerceBooleanProperty(value); }
+    get unfoldOnHover() { return this._unfoldOnHover; }
+    private _unfoldOnHover = false;
 
     @Input() set noBackdrop(value: boolean) { this._noBackdrop = coerceBooleanProperty(value); }
     get noBackdrop() { return this._noBackdrop; }
@@ -92,6 +96,20 @@ export class SidebarComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         if (!!this.name) {
             this.sidebarService.unregister(this.name);
+        }
+    }
+
+    @HostListener('mouseenter')
+    onMouseEnter() {
+        if (this._unfoldOnHover) {
+            this.toggleFold();
+        }
+    }
+
+    @HostListener('mouseleave')
+    onMouseLeave() {
+        if (this._unfoldOnHover) {
+            this.toggleFold();
         }
     }
 

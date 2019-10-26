@@ -9,7 +9,8 @@ import { BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, ToggleMo
 export class AppComponent implements OnInit {
     @ViewChild('toastsContainer', { read: ViewContainerRef, static: true }) toastsContainer?: ViewContainerRef;
 
-    isRightMenuOpened = false;
+    isLeftMenuFolded = true;
+    isLockedUnfolded = false;
 
     isStandaloneCheckboxSelected = false;
     standaloneSelection = false;
@@ -248,7 +249,8 @@ export class AppComponent implements OnInit {
         this.sidebarService.getSidebar(menuKey).toggleOpen();
     }
 
-    unFoldMenu(menuKey: string) {
-        this.sidebarService.getSidebar(menuKey).toggleFold();
+    toggleStayUnfolded(menuKey: string) {
+        this.isLockedUnfolded = !this.isLockedUnfolded;
+        this.sidebarService.getSidebar(menuKey).unfoldOnHover = !this.isLockedUnfolded;
     }
 }
