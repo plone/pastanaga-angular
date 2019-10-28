@@ -1,3 +1,7 @@
+# 1.4.1 (2019-10-28)
+
+- Changed default tooltip delay time
+
 # 1.4.0 (2019-10-26)
 
 - Sidebar component
