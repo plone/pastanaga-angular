@@ -1,3 +1,7 @@
+# 1.4.2 (2019-10-31)
+
+- Recover buttons animations
+
 # 1.4.1 (2019-10-28)
 
 - Changed default tooltip delay time

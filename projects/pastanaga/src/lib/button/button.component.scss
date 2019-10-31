@@ -28,17 +28,17 @@ pa-button {
     &:hover {
         background: rgba($button-default-color, .05);
         border-color: rgba($button-default-color, .05);
-        //transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
     }
     &:active {
         background: rgba($button-default-color, .1);
         border-color: rgba($button-default-color, .1);
-        //transition: all .67s cubic-bezier(0.6, 1, 0.8, 1.4);
+        transition: all .67s cubic-bezier(0.6, 1, 0.8, 1.4);
     }
     &.active {
         background: rgba($button-primary-active-background, .25);
         border-color: rgba($button-primary-active-background, .25);
-        //transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all .33s cubic-bezier(0.4, 0, 0.2, 1);
     }
     &:focus {
         background: rgba($button-default-color, .05);
