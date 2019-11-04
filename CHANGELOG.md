@@ -1,3 +1,7 @@
+# 1.4.3 (2019-11-04)
+
+- Modified badge styles
+
 # 1.4.2 (2019-10-31)
 
 - Recover buttons animations
