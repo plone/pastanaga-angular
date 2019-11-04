@@ -2,7 +2,7 @@
 
 .pa-badge {
     display: inline-block;
-    @include font-size(m, l, m);
+    @include font-size(s, m, s);
     padding: rythm(.25) rythm(.5);
     margin-left: - rythm(.5);
     margin-right: rythm(1);
@@ -11,17 +11,13 @@
     white-space: nowrap;
     vertical-align: baseline;
     overflow: hidden;
-    @include border-radius(xs);
+    @include border-radius(s);
     color: $gray-blacky;
-    background-color: $badge-background-color;
+    background-color: $azure-dark;
 
     // Empty badges collapse automatically
     &:empty {
         display: none;
-    }
-    &-value{
-        font-weight: 300;
-        color: $gray;
     }
     & ::ng-deep pa-button button {
         margin: (- rythm(1)) (- rythm(.25));
