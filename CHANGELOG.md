@@ -1,3 +1,7 @@
+# 1.4.4 (2019-11-06)
+
+- Fix pa-badge: don't set hexaColor on undefined value
+
 # 1.4.3 (2019-11-04)
 
 - Modified badge styles

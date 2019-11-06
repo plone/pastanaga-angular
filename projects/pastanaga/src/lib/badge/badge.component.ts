@@ -21,16 +21,20 @@ import { BadgeModel } from './badge.model';
 export class BadgeComponent implements AfterViewInit {
 
     @Input() set color(value) {
-        this.colorClass = `pa-badge-${value}`;
+        if (!!value) {
+            this.colorClass = `pa-badge-${value}`;
+        }
     }
     @Input() set hexaColor(value) {
-        if (!this.colorClass) {
-            this.colorStyle = {
-                'background-color': value
-            };
-            const luminance = this.calcLuminance(value);
-            if (luminance < 0.61) {
-                this.colorStyle['color'] = '#fff';
+        if (!!value) {
+            if (!this.colorClass) {
+                this.colorStyle = {
+                    'background-color': value
+                };
+                const luminance = this.calcLuminance(value);
+                if (luminance < 0.61) {
+                    this.colorStyle['color'] = '#fff';
+                }
             }
         }
     }
