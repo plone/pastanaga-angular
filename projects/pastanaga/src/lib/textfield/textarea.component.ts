@@ -53,7 +53,7 @@ export class TextareaComponent extends TextfieldCommon implements OnInit {
                 }
                 return count + newLinesCount;
             }, 0);
-            if (linesCount < 6) {
+            if (linesCount < 5) {
                 this.renderer.setStyle(textarea,  'height', `${TEXTAREA_BASE_HEIGHT + (linesCount * 16)}px`);
             }
         }
