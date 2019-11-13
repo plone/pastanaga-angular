@@ -1,3 +1,7 @@
+# 1.4.6 (2019-11-13)
+
+- Accept empty translations
+
 # 1.4.5 (2019-11-11)
 
 - Limit textarea to five lines

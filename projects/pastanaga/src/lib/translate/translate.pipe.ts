@@ -6,7 +6,7 @@ import { Pipe, PipeTransform, Inject } from '@angular/core';
 export class TranslatePipe implements PipeTransform {
     lastKey?: string;
     lastParams?: string;
-    value = '';
+    value: string | undefined = '';
 
     constructor(
         @Inject('LANG') private lang: any,
@@ -19,31 +19,32 @@ export class TranslatePipe implements PipeTransform {
         }
         // if we ask another time for the same key, return the last value
         if (key === this.lastKey && args === this.lastParams) {
-            return this.value;
+            return this.value as string;
         }
         const keys = !!key ? key.split('.') : [];
         this.value = this.lang === 'en_US' ? this.getValue(keys, 'en_US', this.translations) :
             (this.getValue(keys, this.lang, this.translations) || this.getValue(keys, 'en_US', this.translations));
         if (!!this.value && !!args) {
             this.lastParams = args;
+            let value = this.value;
             Object.keys(args).forEach(param => {
-                this.value = this.value.replace(new RegExp(`{{${param}}}`, 'g'), args[param]);
+                value = value.replace(new RegExp(`{{${param}}}`, 'g'), args[param]);
             });
+            this.value = value;
         }
 
-        return !!this.value ? this.value : key;
+        return (!!this.value || this.value === '') ? this.value : key;
     }
 
-    private getValue(keys: string[], lang: string, translations: any): string {
+    private getValue(keys: string[], lang: string, translations: any): string | undefined {
         const translateKeys = translations[lang] || {};
         let value = !!translateKeys['default'] ? translateKeys['default'] : translateKeys;
         keys.forEach(k => {
-            value = value[k];
-            if (!value) {
-                value = '';
+            if (!!value) {
+                value = value[k];
             }
         });
-        return typeof value === 'string' ? value : keys.join('.');
+        return !value || typeof value === 'string' ? value : keys.join('.');
     }
 
 }
