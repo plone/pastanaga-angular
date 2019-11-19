@@ -39,6 +39,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     set isPlaceholderShown(value: boolean) { this._placeholderShown = coerceBooleanProperty(value); }
     protected _placeholderShown = false;
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
+    @Output() instantValueChange: EventEmitter<any> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
     @Output() enter: EventEmitter<{event: KeyboardEvent, value: string}> = new EventEmitter();
     @Output() blur: EventEmitter<any> = new EventEmitter();
@@ -142,6 +143,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
 
     writeValue(value: any) {
         this.value = value;
+        this.instantValueChange.emit(value);
         this.debouncer.next(value);
     }
 
