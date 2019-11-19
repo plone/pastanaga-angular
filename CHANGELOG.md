@@ -1,3 +1,7 @@
+# 1.4.7 (2019-11-19)
+
+- Emit instant changes from text inputs
+
 # 1.4.6 (2019-11-13)
 
 - Accept empty translations
