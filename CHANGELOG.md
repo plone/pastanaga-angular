@@ -1,3 +1,7 @@
+# 1.4.8 (2019-11-21)
+
+- Added AutoFocus Directive
+
 # 1.4.7 (2019-11-19)
 
 - Emit instant changes from text inputs

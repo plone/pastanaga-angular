@@ -56,3 +56,6 @@ export * from './lib/translate/translate.directive';
 export * from './lib/sidebar/module';
 export * from './lib/sidebar/sidebar.component';
 export * from './lib/sidebar/sidebar.service';
+
+export * from './lib/auto-focus/auto-focus.module';
+export * from './lib/auto-focus/auto-focus.directive';
