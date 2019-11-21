@@ -1,3 +1,7 @@
+# 1.4.9 (2019-11-21)
+
+- New folder icon
+
 # 1.4.8 (2019-11-21)
 
 - Added AutoFocus Directive
