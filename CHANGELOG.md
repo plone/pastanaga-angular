@@ -1,3 +1,7 @@
+# 1.4.10 (2019-11-21)
+
+- allow HTML in textarea help message
+
 # 1.4.9 (2019-11-21)
 
 - New folder icon

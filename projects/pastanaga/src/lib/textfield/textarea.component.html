@@ -15,5 +15,5 @@
     <div class="pa-field-control-resizer"></div>
     <small *ngIf="hasError && errorHelp" class="pa-field-help pa-field-help-error" translate>{{ errorHelp }}</small>
     <small *ngIf="!!errorMessage" class="pa-field-help pa-field-help-error">{{ errorMessage | translate }}</small>
-    <small *ngIf="help" class="pa-field-help" [id]="helpId">{{ help | translate }}</small>
+    <small *ngIf="help" class="pa-field-help" [id]="helpId" [innerHTML]="help | translate"></small>
 </div>
