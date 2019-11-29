@@ -1,3 +1,7 @@
+# 1.4.11 (2019-11-29)
+
+- Progress circle refactoring with better input name and better performances
+
 # 1.4.10 (2019-11-21)
 
 - allow HTML in textarea help message

@@ -1,31 +1,18 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-progress-circle',
     templateUrl: './progress-circle.component.html',
     styleUrls: ['./progress-circle.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PastanagaProgressCircleComponent implements OnChanges{
+export class PastanagaProgressCircleComponent {
     @Input() isLarge = false;
-    @Input() value?: number;
+    @Input() set percent (value: number) {
+        this.percentValue = Math.min(Math.ceil(coerceNumberProperty(value)), 100);
+    }
     @Input() color: 'primary'|'secondary' = 'primary';
 
     percentValue = 0;
-
-    ngOnChanges(changes) {
-        if (changes.value && typeof changes.value.currentValue !== 'undefined') {
-            this.calculatePercentValue();
-        }
-    }
-
-    private calculatePercentValue() {
-        if (typeof this.value === 'number') {
-            const max = 100;
-            this.percentValue = this.value * 100 / max;
-
-            if (this.value > max) {
-                console.error(`Progress value is greater than the max value: ${this.value} > ${max}!`);
-            }
-        }
-    }
 }
