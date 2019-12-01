@@ -1,3 +1,7 @@
+# 1.4.12 (2019-12-01)
+
+- Add MIT license file
+
 # 1.4.11 (2019-11-29)
 
 - Progress circle refactoring with better input name and better performances
