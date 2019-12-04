@@ -1,3 +1,7 @@
+# 1.4.13 (2019-12-04)
+
+- Update shades of gray
+
 # 1.4.12 (2019-12-01)
 
 - Add MIT license file
