@@ -1,3 +1,7 @@
+# 1.4.15 (2019-12-05)
+
+- Make disabled attribute input public 
+
 # 1.4.14 (2019-12-05)
 
 - Fix disabled attribute in input 
