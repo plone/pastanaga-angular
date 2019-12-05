@@ -1,6 +1,7 @@
 # 1.4.14 (2019-12-05)
 
-- Enabled undefined disabled input 
+- Fix disabled attribute in input 
+- Set tooltip type `action` by default
 
 # 1.4.13 (2019-12-04)
 

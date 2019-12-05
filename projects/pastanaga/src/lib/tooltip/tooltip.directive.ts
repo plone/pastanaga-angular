@@ -21,7 +21,7 @@ let nextId = 0;
 })
 export class TooltipDirective {
     @Input('paTooltip') text = '';
-    @Input('paTooltipType') type: 'system' | 'action' = SYSTEM;
+    @Input('paTooltipType') type: 'system' | 'action' = ACTION;
     @Input()
     get paTooltipOffset(): number { return this.offset; }
     set paTooltipOffset(value: number) { this.offset = coerceNumberProperty(value); }
