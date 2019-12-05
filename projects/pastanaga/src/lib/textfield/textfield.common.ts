@@ -25,7 +25,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     @Input()
     get disabled(): boolean { return this._disabled; }
     set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
-    protected _disabled = false;
+    public _disabled = false;
     @Input()
     get isReadOnly(): boolean { return this._readOnly; }
     set isReadOnly(value: boolean) { this._readOnly = coerceBooleanProperty(value); }
