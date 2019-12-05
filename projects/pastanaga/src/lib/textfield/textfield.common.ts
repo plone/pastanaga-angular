@@ -156,6 +156,6 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     }
 
     setDisabledState(disabled: boolean) {
-        this.disabled = disabled;
+        this._disabled = disabled;
     }
 }

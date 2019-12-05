@@ -1,3 +1,7 @@
+# 1.4.14 (2019-12-05)
+
+- Enabled undefined disabled input 
+
 # 1.4.13 (2019-12-04)
 
 - Update shades of gray
