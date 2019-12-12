@@ -28,6 +28,7 @@ export * from './lib/svg/svg.module';
 export * from './lib/svg/icon.component';
 
 export * from './lib/textfield/textfield.module';
+export * from './lib/textfield/textfield.common';
 export * from './lib/textfield/input.component';
 export * from './lib/textfield/select.component';
 

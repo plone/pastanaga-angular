@@ -41,6 +41,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     @Output() instantValueChange: EventEmitter<any> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
+    @Output() keyPress: EventEmitter<any> = new EventEmitter();
     @Output() enter: EventEmitter<{event: KeyboardEvent, value: string}> = new EventEmitter();
     @Output() blur: EventEmitter<any> = new EventEmitter();
     helpId = '';
