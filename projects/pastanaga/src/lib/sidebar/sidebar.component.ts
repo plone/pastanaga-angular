@@ -113,8 +113,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
         }
     }
 
-    toggleOpen() {
-        if (this.isOpen) {
+    toggleOpen(open?: boolean) {
+        const newState = open === undefined ? !this.isOpen : open;
+        if (!newState) {
             this.close();
         } else {
             this.open();
