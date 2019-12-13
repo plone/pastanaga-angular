@@ -8,7 +8,8 @@ import {
     OnDestroy,
     OnInit, Output,
     Renderer2,
-    ViewEncapsulation
+    ViewEncapsulation,
+    ViewRef
 } from '@angular/core';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { SidebarService } from './sidebar.service';
@@ -132,7 +133,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
             this.showBackdrop();
         }
         this.openedChanged.emit(this.isOpen);
-        this.cdr.markForCheck();
+        this.markForCheck();
     }
 
     close() {
@@ -145,14 +146,14 @@ export class SidebarComponent implements OnInit, OnDestroy {
             this.hideBackdrop();
         }
         this.openedChanged.emit(this.isOpen);
-        this.cdr.markForCheck();
+        this.markForCheck();
     }
 
     toggleFold() {
         this.folded = !this._folded;
         this.enableAnimations();
         this.foldedChanged.emit(this._folded);
-        this.cdr.markForCheck();
+        this.markForCheck();
     }
 
     private setupPosition() {
@@ -168,7 +169,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
             return;
         }
         this.animationsEnabled = true;
-        this.cdr.markForCheck();
     }
 
     private showBackdrop() {
@@ -179,14 +179,20 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.backdrop.classList.add('pa-sidebar-overlay');
         this.renderer.appendChild(this.elementRef.nativeElement.parentElement, this.backdrop);
         this.backdrop.addEventListener('click', () => this.close());
-        this.cdr.markForCheck();
     }
 
     private hideBackdrop() {
         if (!!this.backdrop && !!this.backdrop.parentNode) {
             this.backdrop.parentNode.removeChild(this.backdrop);
             this.backdrop = null;
-            this.cdr.markForCheck();
         }
+    }
+
+    private markForCheck() {
+        window.setTimeout(() => {
+            if (!(this.cdr as ViewRef).destroyed) {
+                this.cdr.markForCheck();
+            }
+        }, 0);
     }
 }

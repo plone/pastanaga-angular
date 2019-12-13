@@ -1,3 +1,7 @@
+# 1.4.18 (2019-12-13)
+
+- Fix markForCheck calls in side bar
+
 # 1.4.17 (2019-12-13)
 
 - Side bar: allow to pass explicit value to toggleOpen()

@@ -246,11 +246,14 @@ export class AppComponent implements OnInit {
     }
 
     openMenu(menuKey: string) {
-        this.sidebarService.getSidebar(menuKey).toggleOpen();
+        this.sidebarService.toggle(menuKey);
     }
 
     toggleStayUnfolded(menuKey: string) {
         this.isLockedUnfolded = !this.isLockedUnfolded;
-        this.sidebarService.getSidebar(menuKey).unfoldOnHover = !this.isLockedUnfolded;
+        const menu = this.sidebarService.getSidebar(menuKey);
+        if (!!menu) {
+            menu.unfoldOnHover = !this.isLockedUnfolded;
+        }
     }
 }

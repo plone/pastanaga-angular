@@ -21,10 +21,14 @@ export class SidebarService {
         delete this.registry[key];
     }
 
-    getSidebar(key: string): SidebarComponent {
-        if (!this.registry[key]) {
-            throw new Error(`Sidebar ${key} doesn't exist`);
-        }
+    getSidebar(key: string): SidebarComponent | undefined {
         return this.registry[key];
+    }
+
+    toggle(key: string, force?: boolean) {
+        const bar = this.getSidebar(key);
+        if (!!bar) {
+            bar.toggleOpen(force);
+        }
     }
 }
