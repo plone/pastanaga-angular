@@ -1,3 +1,7 @@
+# 1.4.17 (2019-12-13)
+
+- Added min-width to pa-badge
+
 # 1.4.16 (2019-12-12)
 
 - Export TextField common and added keypress event
