@@ -1,6 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastModel } from './toast.model';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { keyCodes } from '../keycodes.constant';
 
 const ARIA_KEY = 'pa-aria-';
@@ -20,12 +19,11 @@ export class ToastComponent implements OnInit {
     @ViewChild('toastContainer', { static: true }) toastContainer?: ElementRef;
 
     ariaLabeledBy = '';
-    parsedMessage?: SafeHtml;
+    parsedMessage = '';
     isSibling = false;
     isDismissed = false;
 
-    constructor(private sanitized: DomSanitizer) {
-    }
+    constructor() {}
 
     ngOnInit() {
         if (!!this.toast) {
@@ -67,7 +65,7 @@ export class ToastComponent implements OnInit {
         }
 
         if (parsedText) {
-            this.parsedMessage = this.sanitized.bypassSecurityTrustHtml(parsedText);
+            this.parsedMessage = parsedText;
         }
     }
 
