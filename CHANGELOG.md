@@ -1,3 +1,7 @@
+# 1.4.19 (2019-12-17)
+
+- Do not allow external Javascript in toaster messages
+
 # 1.4.18 (2019-12-13)
 
 - Fix markForCheck calls in side bar
