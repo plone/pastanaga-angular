@@ -1,3 +1,7 @@
+# 1.4.21 (2019-12-18)
+
+- remove default margin on small spinner
+
 # 1.4.20 (2019-12-18)
 
 - Remove transition from abbreviations
