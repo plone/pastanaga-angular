@@ -1,6 +1,6 @@
 {
     "name": "pastanaga-angular",
-    "version": "1.4.19",
+    "version": "1.4.20",
     "license": "MIT",
     "peerDependencies": {
         "@angular/cdk": "^8.0.1",

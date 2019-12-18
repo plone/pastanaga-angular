@@ -121,7 +121,6 @@ abbr, abbr[title], abbr[data-original-title] {
   background-size: 3px 1px;
   background-repeat: repeat-x;
   cursor: help;
-  transition: all .5s ease;
   &:hover {
     background-image: linear-gradient(to right, $gray-light 33%, rgba(255,255,255,0) 0%);
   }

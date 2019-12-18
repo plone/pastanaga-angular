@@ -1,3 +1,7 @@
+# 1.4.20 (2019-12-18)
+
+- Remove transition from abbreviations
+
 # 1.4.19 (2019-12-17)
 
 - Do not allow external Javascript in toaster messages
