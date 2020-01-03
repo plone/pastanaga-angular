@@ -11,7 +11,6 @@ import {
     TooltipModule,
     TextFieldModule,
     ExpandModule,
-    RichtextModule,
     SidebarModule,
     TranslateModule,
 } from '../../projects/pastanaga/src';
@@ -49,7 +48,6 @@ describe('AppComponent', () => {
         TextFieldModule,
         TooltipModule,
         ExpandModule,
-        RichtextModule,
         SidebarModule,
     ],
       declarations: [

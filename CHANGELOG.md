@@ -1,3 +1,7 @@
+# 1.5.0 (2020-01-03)
+
+- Remove the richtext field component and the dependency to Medium
+
 # 1.4.22 (2020-01-03)
 
 - To prevent XSS injection, remove HTML tags in text input by default
