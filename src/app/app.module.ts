@@ -17,7 +17,6 @@ import {
 
 import * as en from '../assets/i18n/en.json';
 import * as la from '../assets/i18n/la.json';
-import { RichtextModule } from 'pastanaga-angular';
 
 @NgModule({
     imports: [
@@ -34,7 +33,6 @@ import { RichtextModule } from 'pastanaga-angular';
         TextFieldModule,
         TooltipModule,
         ExpandModule,
-        RichtextModule,
         SidebarModule,
     ],
     declarations: [
