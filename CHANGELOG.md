@@ -1,3 +1,7 @@
+# 1.4.22 (2020-01-03)
+
+- To prevent XSS injection, remove HTML tags in text input by default
+
 # 1.4.21 (2019-12-18)
 
 - remove default margin on small spinner

@@ -28,6 +28,9 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+const HTML_TAG = new RegExp(/.?<.+>/g);
+const REPLACE_LT_GT = new RegExp(/[<>]/g);
+
 @Component({
     selector: 'pa-input',
     templateUrl: 'input.component.html',
@@ -60,6 +63,10 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
     get accent(): boolean { return this._accent; }
     set accent(value: boolean) { this._accent = coerceBooleanProperty(value); }
     _accent = false;
+    @Input()
+    get acceptHtmlTags(): boolean { return this._acceptHtmlTags; }
+    set acceptHtmlTags(value: boolean) { this._acceptHtmlTags = coerceBooleanProperty(value); }
+    _acceptHtmlTags = false;
     terminator = new Subject();
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
@@ -140,5 +147,12 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
         super._validate(value);
 
         this.errorList.emit(this.errors);
+    }
+
+    writeValue(value: string) {
+        if (!!value && !this._acceptHtmlTags && value.match(HTML_TAG)) {
+            value = value.replace(REPLACE_LT_GT, '');
+        }
+        super.writeValue(value);
     }
 }
