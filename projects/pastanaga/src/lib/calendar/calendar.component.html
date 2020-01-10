@@ -1,20 +1,35 @@
 <div>
     <header>
-        <h2>{{currentMonth.monthLabel}}</h2>
+        <pa-button *ngFor="let button of calendar.headerButtons" size="large"
+                   class="pa-calendar-label-button"
+                   (click)="changeView(button.view)">{{button.label}}</pa-button>
+        <div class="pa-calendar-navigation-buttons">
+            <pa-button icon="left-key" paTooltip="calendar.previous"
+                       (click)="goToPrevious()"></pa-button>
+            <pa-button icon="right-key" paTooltip="calendar.next"
+                       (click)="goToNext()"></pa-button>
+        </div>
     </header>
     <div class="pa-calendar-container">
-        <div class="pa-calendar-days pa-week-days">
-            <div class="pa-calendar-day">S</div>
-            <div class="pa-calendar-day">M</div>
-            <div class="pa-calendar-day">T</div>
-            <div class="pa-calendar-day">W</div>
-            <div class="pa-calendar-day">T</div>
-            <div class="pa-calendar-day">F</div>
-            <div class="pa-calendar-day">S</div>
+        <div class="pa-calendar-dates pa-week-days">
+            <ng-container *ngIf="view === 'day'">
+                <div class="pa-calendar-date pa-calendar-day">S</div>
+                <div class="pa-calendar-date pa-calendar-day">M</div>
+                <div class="pa-calendar-date pa-calendar-day">T</div>
+                <div class="pa-calendar-date pa-calendar-day">W</div>
+                <div class="pa-calendar-date pa-calendar-day">T</div>
+                <div class="pa-calendar-date pa-calendar-day">F</div>
+                <div class="pa-calendar-date pa-calendar-day">S</div>
+            </ng-container>
         </div>
-        <div class="pa-calendar-days">
-            <div *ngFor="let day of currentMonth.dates" class="pa-calendar-day"
-                 [class.disabled]="_noFuture && day.isFuture">{{day.date.getDate()}}</div>
+        <div class="pa-calendar-dates">
+            <pa-button *ngFor="let date of calendar.dates"
+                       class="pa-calendar-date pa-calendar-{{view}}"
+                       [disabled]="_noFuture && date.isFuture"
+                       [active]="date.isActive"
+                       (click)="selectDate(date)">
+                {{date.label}}
+            </pa-button>
         </div>
     </div>
     <footer></footer>

@@ -1,4 +1,8 @@
 {
+    "calendar": {
+        "next": "Next",
+        "previous": "Previous"
+    },
     "common": {
         "close": "Close",
         "loading": "Loading…",
