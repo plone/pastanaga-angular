@@ -1,0 +1,54 @@
+@import "../styles/variables";
+
+:host {
+    display: block;
+    width: rythm(1) * 25;
+    padding: rythm(1.5) rythm(.25)*5;
+    color: $blue;
+
+    header {
+        margin-bottom: rythm(1.5);
+
+        h2 {
+            text-transform: uppercase;
+            font-weight: $font-weight-regular;
+        }
+    }
+    .pa-calendar-container {
+        font-size: size(xs);
+
+        .pa-calendar-days {
+            display: flex;
+            flex-wrap: wrap;
+
+            .pa-calendar-day {
+                cursor: pointer;
+                text-align: center;
+                width: rythm(3);
+                height: rythm(3);
+                line-height: rythm(3);
+                margin-right: rythm(.25);
+
+                &:nth-child(7n) {
+                    margin-right: 0;
+                }
+
+                &.disabled {
+                    color: $gray-light;
+                    cursor: default;
+                }
+            }
+
+            &.pa-week-days {
+                border-bottom: 1px solid $gray-light;
+                margin-bottom: rythm(1);
+
+                .pa-calendar-day {
+                    cursor: default;
+                    height: auto;
+                    line-height: rythm(1.5);
+                }
+            }
+        }
+    }
+}

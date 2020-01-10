@@ -25,6 +25,9 @@
     <div class="example-box-header" (click)="toggleSection('calendar')">Calendar</div>
     <div *ngIf="sections.calendar">
         <pa-calendar></pa-calendar>
+
+        <legend>No future</legend>
+        <pa-calendar noFuture></pa-calendar>
     </div>
 </div>
 

@@ -1,3 +1,5 @@
+@import "../../projects/pastanaga/src/lib/styles/variables";
+
 :host {
     position: relative;
     display: block;
@@ -24,6 +26,10 @@
         margin: -36px -30px 6px;
         z-index: 9;
         cursor: pointer;
+    }
+    pa-calendar {
+        box-shadow: $shadow-dialog;
+        margin: rythm(2);
     }
     table {
         width: 100%;

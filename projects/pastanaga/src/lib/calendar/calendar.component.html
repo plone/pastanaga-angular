@@ -1,1 +1,21 @@
-TODO: calendar
+<div>
+    <header>
+        <h2>{{currentMonth.monthLabel}}</h2>
+    </header>
+    <div class="pa-calendar-container">
+        <div class="pa-calendar-days pa-week-days">
+            <div class="pa-calendar-day">S</div>
+            <div class="pa-calendar-day">M</div>
+            <div class="pa-calendar-day">T</div>
+            <div class="pa-calendar-day">W</div>
+            <div class="pa-calendar-day">T</div>
+            <div class="pa-calendar-day">F</div>
+            <div class="pa-calendar-day">S</div>
+        </div>
+        <div class="pa-calendar-days">
+            <div *ngFor="let day of currentMonth.dates" class="pa-calendar-day"
+                 [class.disabled]="_noFuture && day.isFuture">{{day.date.getDate()}}</div>
+        </div>
+    </div>
+    <footer></footer>
+</div>
