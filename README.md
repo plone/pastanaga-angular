@@ -51,7 +51,7 @@ $button-primary-active-background: $my-blue-light;
 Sidebar component is a container positioned on the left or on the right of the screen.
 As it's just a container, any component added inside will have to be styled with a background color (supporting alpha as sidebar is fully transparent by default)
 
-You can have as many sidebars as you want in you application as soon as they all have an unique name.
+You can have as many sidebars as you want in your application as soon as they all have an unique name.
 
 Sidebar can be closed or opened, but also folded or unfolded.
 

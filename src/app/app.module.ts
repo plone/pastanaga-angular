@@ -17,6 +17,7 @@ import {
 
 import * as en from '../assets/i18n/en.json';
 import * as la from '../assets/i18n/la.json';
+import { CalendarModule } from 'pastanaga-angular/lib/calendar/calendar.module';
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import * as la from '../assets/i18n/la.json';
         TooltipModule,
         ExpandModule,
         SidebarModule,
+        CalendarModule,
     ],
     declarations: [
         AppComponent,

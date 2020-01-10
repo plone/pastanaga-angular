@@ -8,6 +8,6 @@
         "@angular/core": "^8.0.1",
         "angular-svg-icon": "^7.2.1",
         "angular-traversal": "^1.1.0",
-        "medium-editor": "^5.23.3"
+        "date-fns": "^2.9.0"
     }
 }
