@@ -24,10 +24,16 @@
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('calendar')">Calendar</div>
     <div *ngIf="sections.calendar">
-        <pa-calendar></pa-calendar>
+        <p>Selected date: {{rangeSelection | json}}</p>
+        <pa-calendar [selection]="rangeSelection"
+                     [rangeStart]="!rangeSelection.start"
+                     [rangeEnd]="!!rangeSelection.start && !rangeSelection.end"
+                     [min]="rangeSelection.start"
+                     (select)="selectForRange($event)"></pa-calendar>
 
         <legend>No future</legend>
-        <pa-calendar noFuture></pa-calendar>
+        <p>Selected date: {{dateSelection}}</p>
+        <pa-calendar noFuture [selection]="dateSelection" (select)="dateSelection = $event"></pa-calendar>
     </div>
 </div>
 

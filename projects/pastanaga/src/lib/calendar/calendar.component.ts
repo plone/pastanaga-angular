@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { CalendarService } from './calendar.service';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { CalendarDate, CalendarView, ICalendar, IHeaderButtons } from './calendar.model';
+import { CalendarDate, CalendarView, ICalendar } from './calendar.model';
 
 
 
@@ -13,8 +13,42 @@ import { CalendarDate, CalendarView, ICalendar, IHeaderButtons } from './calenda
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent implements OnInit, OnDestroy {
+    @Input() set rangeStart(value) {
+        this._isRangeStart = coerceBooleanProperty(value);
+        if (this._isRangeStart) {
+            this.legend = 'calendar.select-start-date-legend';
+        }
+    }
+    _isRangeStart = false;
+
+    @Input() set rangeEnd(value) {
+        this._isRangeEnd = coerceBooleanProperty(value);
+        if (this._isRangeEnd) {
+            this.legend = 'calendar.select-end-date-legend';
+        }
+    }
+    _isRangeEnd = false;
+
+    @Input() set min(value: Date) {
+        if (!!value) {
+            this._min = value;
+            this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
+        }
+    }
+    _min?: Date;
+
+    @Input() set selection(value: {start?: Date, end?: Date} | Date) {
+        if (!!value) {
+            this._selection = value instanceof Date ? {start: value, end: value} : value;
+            this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
+        }
+    }
+    _selection: {start?: Date, end?: Date} = {};
+
     @Input() set noFuture(value) { this._noFuture = coerceBooleanProperty(value); }
     _noFuture = false;
+
+    @Output() select: EventEmitter<Date> = new EventEmitter<Date>();
 
     terminator: Subject<void> = new Subject<void>();
     calendar: ICalendar = {
@@ -22,8 +56,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
         dates: [],
         dateRef: new Date(),
     };
-    selectedRange: {start: Date, end: Date} = {start: new Date(), end: new Date()};
     view: CalendarView  = 'day';
+    legend = '';
+    refDate = new Date();
 
     constructor(
         private service: CalendarService,
@@ -31,7 +66,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.calendar = this.service.getMonth(this.calendar.dateRef, this.selectedRange);
+        this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
     }
 
     ngOnDestroy(): void {
@@ -39,47 +74,50 @@ export class CalendarComponent implements OnInit, OnDestroy {
     }
 
     goToPrevious() {
+        const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
         if (this.view === 'year') {
-            this.calendar = this.service.getPreviousYears(this.calendar.dateRef, this.selectedRange.start);
+            this.calendar = this.service.getPreviousYears(this.calendar.dateRef, ref, this._min);
         } else if (this.view === 'month') {
-            this.calendar = this.service.getPreviousMonths(this.calendar.dateRef, this.selectedRange.start);
+            this.calendar = this.service.getPreviousMonths(this.calendar.dateRef, ref, this._min);
         } else {
-            this.calendar = this.service.getPreviousMonth(this.calendar.dateRef, this.selectedRange);
+            this.calendar = this.service.getPreviousMonth(this.calendar.dateRef, this._selection, this._min);
         }
     }
 
     goToNext() {
+        const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
         if (this.view === 'year') {
-            this.calendar = this.service.getNextYears(this.calendar.dateRef, this.selectedRange.start);
+            this.calendar = this.service.getNextYears(this.calendar.dateRef, ref, this._min);
         } else if (this.view === 'month') {
-            this.calendar = this.service.getNextMonths(this.calendar.dateRef, this.selectedRange.start);
+            this.calendar = this.service.getNextMonths(this.calendar.dateRef, ref, this._min);
         } else {
-            this.calendar = this.service.getNextMonth(this.calendar.dateRef, this.selectedRange);
+            this.calendar = this.service.getNextMonth(this.calendar.dateRef, this._selection, this._min);
         }
     }
 
     changeView(newView: CalendarView) {
+        const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
         this.view = newView;
         if (this.view === 'year') {
-            this.calendar = this.service.getYears(this.calendar.dateRef, this.selectedRange.start);
+            this.calendar = this.service.getYears(this.calendar.dateRef, ref, this._min);
         } else if (this.view === 'month') {
-            this.calendar = this.service.getMonths(this.calendar.dateRef, this.selectedRange.start);
+            this.calendar = this.service.getMonths(this.calendar.dateRef, ref, this._min);
         } else {
-            this.calendar = this.service.getMonth(this.calendar.dateRef, this.selectedRange);
+            this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
         }
     }
 
     selectDate(selection: CalendarDate) {
+        const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
         if (this.view === 'year') {
             this.view = 'month';
-            this.calendar = this.service.getMonths(selection.date, this.selectedRange.start);
+            this.calendar = this.service.getMonths(selection.date, ref, this._min);
         } else if (this.view === 'month') {
             this.view = 'day';
-            this.calendar = this.service.getMonth(selection.date, this.selectedRange);
+            this.calendar = this.service.getMonth(selection.date, this._selection, this._min);
         } else {
-            this.selectedRange = {start: selection.date, end: selection.date};
-            this.calendar = this.service.getMonth(selection.date, this.selectedRange);
-            // TODO: range selection
+            this.calendar = this.service.getMonth(selection.date, this._selection, this._min);
+            this.select.emit(selection.date);
         }
     }
 }

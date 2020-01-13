@@ -2,14 +2,27 @@
 
 :host {
     display: block;
+    position: relative;
     width: rythm(1) * 25;
-    height: rythm(1) * 30;
+    min-height: rythm(1) * 30;
     padding: rythm(1.5) rythm(.25)*5;
     color: $blue;
+
+    legend {
+        background: none;
+        color: $gray-contrast;
+        height: rythm(1);
+        margin-bottom: rythm(1);
+        text-transform: none;
+    }
 
     header {
         margin-bottom: rythm(1.5);
         position: relative;
+
+        pa-button.pa-calendar-label-button:first-of-type {
+            margin-left: - rythm(.5);
+        }
 
         pa-button.pa-calendar-label-button ::ng-deep {
             .pa-button {
@@ -30,6 +43,23 @@
             top: - rythm(.5);
         }
     }
+
+    footer {
+        min-height: rythm(2.5);
+
+        pa-button {
+            float: right;
+
+            ::ng-deep .pa-button {
+                text-transform: none;
+
+                .pa-button-label {
+                    font-size: size(xs);
+                }
+            }
+        }
+    }
+
     .pa-calendar-container {
         font-size: size(xs);
 
@@ -49,6 +79,28 @@
                 &.pa-calendar-year {
                     margin: rythm(.25) rythm(.5) rythm(.25) 0;
                 }
+
+                &.pa-in-interval {
+                    background: $azure;
+
+                    &.pa-first-of-interval {
+                        border-bottom-left-radius: 50%;
+                        border-top-left-radius: 50%;
+                        width: rythm(3);
+                    }
+                    &.pa-last-of-interval {
+                        border-bottom-right-radius: 50%;
+                        border-top-right-radius: 50%;
+                        width: rythm(3);
+                    }
+                    &:not(.pa-last-of-interval):after {
+                        content: '';
+                        background: $azure;
+                        height: rythm(3);
+                        width: rythm(.25);
+                        position: absolute;
+                    }
+                }
             }
             .pa-calendar-day {
                 width: rythm(3);
@@ -62,10 +114,16 @@
 
             pa-button ::ng-deep .pa-button {
                 font-weight: $font-weight-regular;
+                height: rythm(3);
                 text-transform: none;
 
                 .pa-button-label {
                     font-size: size(xs);
+                }
+
+                &.active {
+                    background: $azure;
+                    border: 1px solid $blue;
                 }
             }
             pa-button.pa-calendar-day ::ng-deep .pa-button {

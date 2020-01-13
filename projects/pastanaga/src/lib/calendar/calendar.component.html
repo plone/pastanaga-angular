@@ -1,4 +1,5 @@
 <div>
+    <legend>{{legend | translate}}</legend>
     <header>
         <pa-button *ngFor="let button of calendar.headerButtons" size="large"
                    class="pa-calendar-label-button"
@@ -25,12 +26,17 @@
         <div class="pa-calendar-dates">
             <pa-button *ngFor="let date of calendar.dates"
                        class="pa-calendar-date pa-calendar-{{view}}"
-                       [disabled]="_noFuture && date.isFuture"
+                       [disabled]="(_noFuture && date.isFuture) || date.isDisabled"
+                       [class.pa-in-interval]="date.inInterval"
+                       [class.pa-first-of-interval]="date.firstOfInterval"
+                       [class.pa-last-of-interval]="date.lastOfInterval"
                        [active]="date.isActive"
                        (click)="selectDate(date)">
                 {{date.label}}
             </pa-button>
         </div>
     </div>
-    <footer></footer>
+    <footer>
+        <pa-button *ngIf="_isRangeEnd" size="small">calendar.no-end-button</pa-button>
+    </footer>
 </div>

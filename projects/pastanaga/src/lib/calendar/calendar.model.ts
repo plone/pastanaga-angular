@@ -10,6 +10,10 @@ export interface ICalendarDate {
     label: string;
     isFuture: boolean;
     isActive: boolean;
+    inInterval?: boolean;
+    isDisabled?: boolean;
+    firstOfInterval?: boolean;
+    lastOfInterval?: boolean;
 }
 
 export class CalendarDate implements ICalendarDate {
@@ -17,12 +21,20 @@ export class CalendarDate implements ICalendarDate {
     label: string;
     isFuture: boolean;
     isActive: boolean;
+    isDisabled: boolean;
+    inInterval: boolean;
+    firstOfInterval: boolean;
+    lastOfInterval: boolean;
 
     constructor(data: ICalendarDate) {
         this.date = data.date;
         this.label = data.label;
         this.isFuture = data.isFuture;
         this.isActive = data.isActive;
+        this.isDisabled = data.isDisabled || false;
+        this.inInterval = data.inInterval || false;
+        this.firstOfInterval = data.firstOfInterval || false;
+        this.lastOfInterval = data.lastOfInterval || false;
     }
 }
 

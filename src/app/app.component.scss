@@ -27,10 +27,15 @@
         z-index: 9;
         cursor: pointer;
     }
+
     pa-calendar {
         box-shadow: $shadow-dialog;
         margin: rythm(2);
     }
+    pa-date-range-picker {
+        margin: rythm(2);
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;

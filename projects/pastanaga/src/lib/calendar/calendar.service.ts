@@ -8,13 +8,14 @@ import {
     endOfMonth,
     endOfWeek,
     endOfYear,
-    format,
+    format, isBefore,
     isFuture,
     isSameDay,
     isSameMonth,
     isSameYear,
     isSaturday,
     isSunday,
+    isWithinInterval,
     startOfMonth,
     startOfWeek,
     startOfYear,
@@ -28,17 +29,17 @@ export class CalendarService {
     constructor() {
     }
 
-    getNextMonth(date: Date, selectedRange: { start: Date, end: Date }): ICalendar {
+    getNextMonth(date: Date, selectedRange: { start?: Date, end?: Date }, min?: Date): ICalendar {
         const nextDate = addMonths(date, 1);
-        return this.getMonth(nextDate, selectedRange);
+        return this.getMonth(nextDate, selectedRange, min);
     }
 
-    getPreviousMonth(date: Date, selectedRange: { start: Date, end: Date }): ICalendar {
+    getPreviousMonth(date: Date, selectedRange: { start?: Date, end?: Date }, min?: Date): ICalendar {
         const previousDate = subMonths(date, 1);
-        return this.getMonth(previousDate, selectedRange);
+        return this.getMonth(previousDate, selectedRange, min);
     }
 
-    getMonth(date: Date, selectedRange: { start: Date, end: Date }): ICalendar {
+    getMonth(date: Date, selectedRange: { start?: Date, end?: Date }, min?: Date): ICalendar {
         let start = startOfMonth(date);
         let end = endOfMonth(date);
         const dateRef = start;
@@ -54,7 +55,13 @@ export class CalendarService {
                 date: d,
                 label: `${d.getDate()}`,
                 isFuture: isFuture(d),
-                isActive: isSameDay(d, selectedRange.start) || isSameDay(d, selectedRange.end),
+                firstOfInterval: !!selectedRange.start && isSameDay(d, selectedRange.start),
+                lastOfInterval: !!selectedRange.end && isSameDay(d, selectedRange.end),
+                inInterval: !!selectedRange.start && !!selectedRange.end
+                    && isWithinInterval(d, {start: selectedRange.start, end: selectedRange.end}),
+                isActive: (!!selectedRange.start && isSameDay(d, selectedRange.start))
+                    || (!!selectedRange.end && isSameDay(d, selectedRange.end)),
+                isDisabled: !!min && isBefore(d, min),
             })),
             headerButtons: [
                 {label: format(date, 'MMMM'), view: 'month'},
@@ -63,17 +70,17 @@ export class CalendarService {
         };
     }
 
-    getPreviousMonths(date: Date, currentDate: Date): ICalendar {
+    getPreviousMonths(date: Date, currentDate: Date, min?: Date): ICalendar {
         const previousDate = subYears(date, 1);
-        return this.getMonths(previousDate, currentDate);
+        return this.getMonths(previousDate, currentDate, min);
     }
 
-    getNextMonths(date: Date, currentDate: Date): ICalendar {
+    getNextMonths(date: Date, currentDate: Date, min?: Date): ICalendar {
         const nextDate = addYears(date, 1);
-        return this.getMonths(nextDate, currentDate);
+        return this.getMonths(nextDate, currentDate, min);
     }
 
-    getMonths(date: Date, currentDate: Date): ICalendar {
+    getMonths(date: Date, currentDate: Date, min?: Date): ICalendar {
         const start = startOfYear(date);
         const end = endOfYear(date);
         return {
@@ -83,22 +90,23 @@ export class CalendarService {
                 label: format(d, 'MMMM'),
                 isFuture: isFuture(d),
                 isActive: isSameMonth(d, currentDate),
+                isDisabled: !!min && !isSameMonth(d, min) && isBefore(d, min),
             })),
             headerButtons: [{label: format(date, 'yyyy'), view: 'year'}],
         };
     }
 
-    getPreviousYears(date: Date, currentDate: Date): ICalendar {
+    getPreviousYears(date: Date, currentDate: Date, min?: Date): ICalendar {
         const previousDate = subYears(date, 20);
-        return this.getYears(previousDate, currentDate);
+        return this.getYears(previousDate, currentDate, min);
     }
 
-    getNextYears(date: Date, currentDate: Date): ICalendar {
+    getNextYears(date: Date, currentDate: Date, min?: Date): ICalendar {
         const nextDate = addYears(date, 20);
-        return this.getYears(nextDate, currentDate);
+        return this.getYears(nextDate, currentDate, min);
     }
 
-    getYears(date: Date, currentDate: Date): ICalendar {
+    getYears(date: Date, currentDate: Date, min?: Date): ICalendar {
         const start = subYears(date, 10);
         const end = addYears(date, 9);
         return {
@@ -108,6 +116,7 @@ export class CalendarService {
                 label: `${d.getFullYear()}`,
                 isFuture: isFuture(d),
                 isActive: isSameYear(d, currentDate),
+                isDisabled: !!min && !isSameYear(d, min) && isBefore(d, min),
             })),
             headerButtons: [{label: `${start.getFullYear()} - ${end.getFullYear()}`, view: 'day'}],
         };

@@ -1,7 +1,10 @@
 {
     "calendar": {
         "next": "Next",
-        "previous": "Previous"
+        "previous": "Previous",
+        "select-start-date-legend": "Select start date",
+        "select-end-date-legend": "Select end date",
+        "no-end-button": "No end date"
     },
     "common": {
         "close": "Close",

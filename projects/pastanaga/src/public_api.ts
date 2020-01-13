@@ -59,3 +59,8 @@ export * from './lib/sidebar/sidebar.service';
 
 export * from './lib/auto-focus/auto-focus.module';
 export * from './lib/auto-focus/auto-focus.directive';
+
+export * from './lib/calendar/calendar.module';
+export * from './lib/calendar/calendar.model';
+export * from './lib/calendar/calendar.component';
+export * from './lib/calendar/calendar.service';

@@ -6,18 +6,19 @@ import { AppComponent } from './app.component';
 import {
     BadgeModule,
     ButtonModule,
+    CalendarModule,
     ControlsModule,
+    ExpandModule,
     ProgressModule,
     TextFieldModule,
     ToasterModule,
     TooltipModule,
-    ExpandModule,
-    TranslateModule, SidebarModule
+    SidebarModule,
+    TranslateModule,
 } from '../../projects/pastanaga/src';
 
 import * as en from '../assets/i18n/en.json';
 import * as la from '../assets/i18n/la.json';
-import { CalendarModule } from 'pastanaga-angular/lib/calendar/calendar.module';
 
 @NgModule({
     imports: [
