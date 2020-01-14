@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { PopupService } from 'pastanaga-angular/lib/popup/popup.service';
+import { PopupService } from '../popup/popup.service';
 
 @Component({
     selector: 'pa-date-picker',

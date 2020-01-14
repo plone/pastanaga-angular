@@ -8,7 +8,7 @@ import {
     ChangeDetectorRef,
 } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
-import { PopupService } from 'pastanaga-angular/lib/popup/popup.service';
+import { PopupService } from '../popup/popup.service';
 
 
 @Component({
