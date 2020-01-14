@@ -26,6 +26,7 @@
         <div class="pa-calendar-dates">
             <pa-button *ngFor="let date of calendar.dates"
                        class="pa-calendar-date pa-calendar-{{view}}"
+                       [color]="date.isActive ? 'primary' : 'secondary'"
                        [disabled]="(_noFuture && date.isFuture) || date.isDisabled"
                        [class.pa-in-interval]="date.inInterval"
                        [class.pa-first-of-interval]="date.firstOfInterval"
@@ -37,6 +38,6 @@
         </div>
     </div>
     <footer>
-        <pa-button *ngIf="_isRangeEnd" size="small" (click)="noEnd()">calendar.no-end-button</pa-button>
+        <pa-button *ngIf="_isRangeEnd" size="small" color="secondary" (click)="noEnd()">calendar.no-end-button</pa-button>
     </footer>
 </div>
