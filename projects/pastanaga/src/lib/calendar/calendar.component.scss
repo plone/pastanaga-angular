@@ -1,10 +1,11 @@
 @import "../styles/variables";
+@import "calendar.variables";
 
 :host {
     display: block;
     position: relative;
-    width: rythm(1) * 25;
-    min-height: rythm(1) * 30;
+    width: $calendar-width;
+    min-height: $calendar-min-height;
     padding: rythm(1.5) rythm(.25)*5;
     color: $blue;
 
