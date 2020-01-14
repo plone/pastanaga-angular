@@ -30,10 +30,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
     _isRangeEnd = false;
 
     @Input() set min(value: Date) {
-        if (!!value) {
-            this._min = value;
-            this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
-        }
+        this._min = value;
+        this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
     }
     _min?: Date;
 

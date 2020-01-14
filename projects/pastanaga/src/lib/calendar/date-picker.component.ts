@@ -11,11 +11,20 @@ import { PopupService } from '../popup/popup.service';
 })
 export class DatePickerComponent extends PopupComponent {
 
-    @Input() set rangeStart(value) { this._rangeStart = coerceBooleanProperty(value); }
+    @Input() set rangeStart(value) {
+        this._rangeStart = coerceBooleanProperty(value);
+        this._dontCloseOnSelection = true;
+    }
     _rangeStart = false;
 
-    @Input() set rangeEnd(value) { this._rangeEnd = coerceBooleanProperty(value); }
+    @Input() set rangeEnd(value) {
+        this._rangeEnd = coerceBooleanProperty(value);
+        this._dontCloseOnSelection = false;
+    }
     _rangeEnd = false;
+
+    @Input() set dontCloseOnSelection(value) { this._dontCloseOnSelection = coerceBooleanProperty(value); }
+    _dontCloseOnSelection = false;
 
     @Input() min?: Date;
     @Input() selection?: {start?: Date, end?: Date} | Date;
@@ -35,7 +44,7 @@ export class DatePickerComponent extends PopupComponent {
     }
 
     onSelection(date: Date | null) {
-        if (!this._rangeStart) {
+        if (!this._dontCloseOnSelection) {
             this.close();
         }
         this.select.emit(date);
