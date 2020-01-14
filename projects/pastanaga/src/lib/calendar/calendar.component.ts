@@ -48,7 +48,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     @Input() set noFuture(value) { this._noFuture = coerceBooleanProperty(value); }
     _noFuture = false;
 
-    @Output() select: EventEmitter<Date> = new EventEmitter<Date>();
+    @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
 
     terminator: Subject<void> = new Subject<void>();
     calendar: ICalendar = {
@@ -119,5 +119,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
             this.calendar = this.service.getMonth(selection.date, this._selection, this._min);
             this.select.emit(selection.date);
         }
+    }
+
+    noEnd() {
+        this.select.emit(null);
     }
 }

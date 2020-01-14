@@ -64,6 +64,7 @@ export * from './lib/calendar/calendar.module';
 export * from './lib/calendar/calendar.model';
 export * from './lib/calendar/calendar.component';
 export * from './lib/calendar/calendar.service';
+export * from './lib/calendar/date-picker.component';
 
 export * from './lib/popup/popup.module';
 export * from './lib/popup/popup.directive';

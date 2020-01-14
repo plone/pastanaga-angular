@@ -24,6 +24,19 @@
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('calendar')">Calendar</div>
     <div *ngIf="sections.calendar">
+        <h3>
+            Date picker
+            <pa-button size="small" [paPopup]="datepicker" style="margin-left: 100px;">Open date picker</pa-button>
+        </h3>
+
+        <pa-date-picker #datepicker
+                        [selection]="rangeSelection"
+                        [rangeStart]="!rangeSelection.start"
+                        [rangeEnd]="!!rangeSelection.start && !rangeSelection.end"
+                        [min]="rangeSelection.start"
+                        (select)="selectForRange($event)"></pa-date-picker>
+
+        <h3>Calendar</h3>
         <p>Selected date: {{rangeSelection | json}}</p>
         <pa-calendar [selection]="rangeSelection"
                      [rangeStart]="!rangeSelection.start"
