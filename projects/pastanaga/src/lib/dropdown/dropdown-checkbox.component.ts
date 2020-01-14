@@ -15,7 +15,7 @@ export class DropdownCheckboxComponent {
     @Input() set checkboxes(values: ControlModel[]) {
         if (!!values) {
             this._checkboxes = values;
-            this.getlabels();
+            this.getLabels();
             this.setSelection();
         }
     }
@@ -43,7 +43,7 @@ export class DropdownCheckboxComponent {
 
     constructor(private changeDetector: ChangeDetectorRef) {}
 
-    getlabels() {
+    getLabels() {
         this.labels = (this.checkboxes || []).reduce((all, current) => {
             if (!!current.value) {
                 all[current.value] = current.label || current.value;

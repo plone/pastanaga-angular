@@ -11,7 +11,7 @@
     overflow-y: auto;
 
     &-wrapper {
-        padding: 6px 0;
+        padding: rythm(.5) 0;
         background: rgba($white, 0.975);
         @supports (-webkit-backdrop-filter: blur(9px)) {
             background: rgba($white, 0.9);
