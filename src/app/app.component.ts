@@ -268,4 +268,9 @@ export class AppComponent implements OnInit {
             menu.unfoldOnHover = !this.isLockedUnfolded;
         }
     }
+
+    hello() {
+        console.log(this);
+        console.log('Hello');
+    }
 }

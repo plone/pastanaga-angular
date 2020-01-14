@@ -1,0 +1,21 @@
+@import '../styles/variables';
+
+.pa-popup {
+    z-index: $zindex-fixed;
+    box-shadow: $shadow-pop;
+    border-radius: rythm(.25);
+    min-width: rythm(.5)*33;
+    max-width: rythm(1)*20;
+    max-height: rythm(1)*29;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &-wrapper {
+        padding: 6px 0;
+        background: rgba($white, 0.975);
+        @supports (-webkit-backdrop-filter: blur(9px)) {
+            background: rgba($white, 0.9);
+            -webkit-backdrop-filter: blur(9px);
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<div class="pa-popup" [hidden]="!isDisplayed" [ngStyle]="style">
+    <div class="pa-popup-wrapper">
+        <ul class="pa-dropdown-list" [attr.role]="role">
+            <ng-content></ng-content>
+        </ul>
+    </div>
+</div>

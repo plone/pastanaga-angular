@@ -1,0 +1,49 @@
+<pa-dropdown-separator *ngIf="hasSeparator"></pa-dropdown-separator>
+<li #listItem class="pa-dropdown-item" role="menuitem">
+    <a [class]="!!mode && mode !== 'default' ? 'pa-dropdown-link pa-dropdown-link-' + mode : 'pa-dropdown-link'"
+       [class.pa-dropdown-link-selected]="isSelected"
+       [class.pa-dropdown-link-disabled]="isDisabled"
+       (click)="click($event)" tabindex="0">
+        <span [class.submenu-opened]="subMenuOpen" class="pa-dropdown-link-wrapper" tabindex="-1">
+            <div class="pa-dropdown-flex">
+                <ng-template #labelContent><ng-content></ng-content></ng-template>
+                <ng-container *ngIf="!checkboxMode">
+                    <div class="pa-dropdown-flex-item" *ngIf="!!icon && !isIconOnRight" [paTooltip]="tooltip">
+                        <pa-icon *ngIf="icon && !isIconOnRight" [small]="isSmallIcon" [name]="icon"></pa-icon>
+                    </div>
+                    <div class="pa-dropdown-flex-item pa-dropdown-flex-item-push" translate>
+                        <ng-container *ngTemplateOutlet="labelContent"></ng-container>
+                    </div>
+                    <div class="pa-dropdown-flex-item" *ngIf="!!icon && isIconOnRight" [paTooltip]="tooltip">
+                        <pa-icon [small]="isSmallIcon" [name]="icon"></pa-icon>
+                    </div>
+                    <div *ngIf="subLevelItems" clas="pa-dropdown-flex-item">
+                        <pa-button color="secondary" icon="right-key"
+                                   (click)="clickSubMenu($event)"></pa-button>
+                    </div>
+                    <div class="pa-dropdown-flex-item" *ngIf="shortcut"><kbd>{{ shortcut }}</kbd></div>
+                </ng-container>
+                <div *ngIf="checkboxMode" class="o-field o-field-checkbox">
+                    <pa-checkbox noFocus
+                                 [icon]="icon"
+                                 [isSelected]="isSelected"
+                                 [isDisabled]="isDisabled"
+                                 (onSelection)="select($event)">
+                        <ng-container *ngTemplateOutlet="labelContent"></ng-container>
+                    </pa-checkbox>
+                </div>
+            </div>
+        </span>
+    </a>
+    <pa-dropdown *ngIf="subLevelItems?.length > 0" [id]="id + '-sublevels'">
+        <pa-dropdown-item *ngFor="let item of subLevelItems"
+                          [id]="item.id"
+                          [icon]="item.icon"
+                          [mode]="item.mode"
+                          [checkboxMode]="item.checkboxMode"
+                          [isSelected]="item.isSelected"
+                          (onSelection)="selectSubMenu(item)">
+            {{item.text | translate}}
+        </pa-dropdown-item>
+    </pa-dropdown>
+</li>
