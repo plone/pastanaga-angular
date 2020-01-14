@@ -107,8 +107,19 @@
         align-items: center;
         align-content: flex-start;
 
-        .pa-field-checkbox {
+        pa-checkbox {
             width: 100%;
+
+            ::ng-deep {
+                .pa-field {
+                    margin: rythm(0.25);
+
+                    .pa-field-label {
+                        margin-bottom: 0 !important;
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
     &-flex-item {
@@ -135,13 +146,6 @@
             font-weight: $font-weight-light;
             color: $gray;
         }
-    }
-
-    & ::ng-deep .pa-field {
-        margin: rythm(0.25);
-    }
-    & ::ng-deep .pa-field-control[type='checkbox'] + .pa-field-label {
-        margin-bottom: 0;
     }
 }
 .pa-dropdown-compressed .pa-dropdown-flex {

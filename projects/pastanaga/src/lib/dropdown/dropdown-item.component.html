@@ -23,15 +23,13 @@
                     </div>
                     <div class="pa-dropdown-flex-item" *ngIf="shortcut"><kbd>{{ shortcut }}</kbd></div>
                 </ng-container>
-                <div *ngIf="checkboxMode" class="pa-field pa-field-checkbox">
-                    <pa-checkbox noFocus
-                                 [icon]="icon"
-                                 [isSelected]="isSelected"
-                                 [isDisabled]="isDisabled"
-                                 (onSelection)="select($event)">
-                        <ng-container *ngTemplateOutlet="labelContent"></ng-container>
-                    </pa-checkbox>
-                </div>
+                <pa-checkbox *ngIf="checkboxMode" noFocus
+                             [icon]="icon"
+                             [isSelected]="isSelected"
+                             [isDisabled]="isDisabled"
+                             (onSelection)="select($event)">
+                    <ng-container *ngTemplateOutlet="labelContent"></ng-container>
+                </pa-checkbox>
             </div>
         </span>
     </a>
