@@ -19,8 +19,9 @@ interface RemoteClickParams {
 })
 export class PopupDirective implements OnInit {
     @Input() paPopup?: PopupComponent;
-    @Input() menuOnRight = false;
-    @Input() menuPosition?: PositionStyle;
+    @Input() set popupOnRight(value) { this._popupOnRight = coerceBooleanProperty(value); }
+    _popupOnRight = false;
+    @Input() popupPosition?: PositionStyle;
     @Input() set openedFromPopup(value) { this._openedFromPopup = coerceBooleanProperty(value); }
     rootParent?: HTMLElement;
     remoteElement?: HTMLElement;
@@ -45,7 +46,7 @@ export class PopupDirective implements OnInit {
             } else {
                 let position: PositionStyle;
                 if (!useLast || !this.service.lastPosition) {
-                    position = !isContextual && !!this.menuPosition ? this.menuPosition :
+                    position = !isContextual && !!this.popupPosition ? this.popupPosition :
                         this.getPosition(override, isContextual && $event);
                     this.service.lastPosition = position;
                 } else {
@@ -102,7 +103,7 @@ export class PopupDirective implements OnInit {
             position: 'absolute',
             top: top + 'px',
         };
-        if (this.menuOnRight || !!contextualEvent) {
+        if (this._popupOnRight || !!contextualEvent) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
         } else {
             position.right = Math.min(rootRect.right - rect.right + 3, window.innerWidth - 240) + 'px';

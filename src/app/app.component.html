@@ -99,7 +99,7 @@
             <pa-dropdown-item icon="delete" mode="destructive" (click)="hello()">Remove</pa-dropdown-item>
             <pa-dropdown-item icon="star" [isSelected]="true" (click)="hello()">Favorite</pa-dropdown-item>
         </pa-dropdown>
-        <pa-button [paPopup]="myMenuRight" [menuOnRight]="true">Open menu on right</pa-button>
+        <pa-button [paPopup]="myMenuRight" popupOnRight>Open menu on right</pa-button>
         <pa-dropdown #myMenuRight>
             <pa-dropdown-item icon="share" mode="primary" tooltip="Sharing with other users" (click)="hello()">Share
             </pa-dropdown-item>
