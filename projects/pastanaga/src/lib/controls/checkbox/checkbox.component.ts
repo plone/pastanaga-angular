@@ -12,6 +12,7 @@ import {
     ChangeDetectorRef,
     ViewRef
 } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
 
@@ -34,6 +35,8 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() isBadgeVisible = false;
     @Input() totalChildren?: number;
     @Input() selectedChildren?: number;
+    @Input() set noFocus(value) { this._noFocus = coerceBooleanProperty(value); }
+    _noFocus = false;
 
     @Output() onSelection: EventEmitter<boolean> = new EventEmitter();
     // the following EventEmitters allow two way data-binding
