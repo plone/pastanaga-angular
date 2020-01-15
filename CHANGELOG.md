@@ -1,3 +1,11 @@
+# 1.6.0 (2020-01-14)
+
+- Update checkbox style
+- Add popup directive and component
+- Add dropdown components
+- Add calendar and date picker components
+- Add utility methods for popup positioning and markForCheck/detectChange methods
+
 # 1.5.0 (2020-01-03)
 
 - Remove the richtext field component and the dependency to Medium

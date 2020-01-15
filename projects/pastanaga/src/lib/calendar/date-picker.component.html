@@ -1,0 +1,10 @@
+<div class="pa-popup" [hidden]="!isDisplayed" [ngStyle]="style">
+    <div class="pa-popup-wrapper">
+        <pa-calendar [selection]="selection"
+                     [noFuture]="_noFuture"
+                     [rangeStart]="_rangeStart"
+                     [rangeEnd]="_rangeEnd"
+                     [min]="min"
+                     (select)="onSelection($event)"></pa-calendar>
+    </div>
+</div>

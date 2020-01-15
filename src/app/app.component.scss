@@ -1,3 +1,5 @@
+@import "../../projects/pastanaga/src/lib/styles/variables";
+
 :host {
     position: relative;
     display: block;
@@ -25,6 +27,15 @@
         z-index: 9;
         cursor: pointer;
     }
+
+    pa-calendar {
+        box-shadow: $shadow-dialog;
+        margin: rythm(2);
+    }
+    pa-date-range-picker {
+        margin: rythm(2);
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -36,6 +47,9 @@
     th, td {
         border: 1px solid black;
         padding: 12px;
+    }
+    h3, h4 {
+        margin-top: 24px;
     }
     .checkoxes td {
         padding-left: 42px;

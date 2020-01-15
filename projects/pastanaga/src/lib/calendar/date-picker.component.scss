@@ -1,0 +1,10 @@
+@import "../styles/variables";
+@import "calendar.variables";
+
+:host {
+    .pa-popup {
+        min-width: $calendar-width;
+        max-width: none;
+        max-height: none;
+    }
+}

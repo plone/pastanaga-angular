@@ -1,0 +1,157 @@
+@import '../styles/variables';
+
+.pa-dropdown {
+    &-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    &-link {
+        display: block;
+        text-decoration: none;
+        text-align: left;
+        cursor: pointer;
+        &[aria-current] .pa-mainmenu-link-wrapper {
+            background: $azure;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+        &:focus {
+            box-shadow: none;
+            background: $sky;
+        }
+    }
+    &-link-wrapper {
+        font-weight: $font-weight-regular;
+        color: $gray-dark;
+        display: block;
+        transition: all 0.25s ease;
+        & pa-icon ::ng-deep svg {
+            fill: currentColor;
+            transition: all 0.25s ease;
+        }
+        & pa-icon ::ng-deep svg:not(.pa-small) {
+            width: rythm(2);
+            height: rythm(2);
+        }
+        &:hover {
+            background: $white-smoke;
+            color: $gray-blacky;
+            transition: all 0.25s ease;
+        }
+
+        &.submenu-opened{
+            background: $white-smoke;
+        }
+    }
+    &-link-selected .pa-dropdown-link-wrapper {
+        background: rgba($blue, 0.12);
+    }
+    &-link-selected:hover .pa-dropdown-link-wrapper {
+        background: rgba($blue, 0.12);
+    }
+    &-link-primary .pa-dropdown-link-wrapper {
+        color: $blue;
+    }
+    &-link-primary:hover .pa-dropdown-link-wrapper {
+        color: $blue-contrast;
+    }
+    &-link-secondary .pa-dropdown-link-wrapper {
+        color: $brown;
+    }
+    &-link-secondary:hover .pa-dropdown-link-wrapper {
+        color: $brown-contrast;
+    }
+    &-link-destructive .pa-dropdown-link-wrapper {
+        color: $red;
+    }
+    &-link-destructive:hover .pa-dropdown-link-wrapper {
+        color: $red-contrast;
+    }
+    &-link-disabled {
+        cursor: default;
+        .pa-dropdown-link-wrapper, &:hover .pa-dropdown-link-wrapper {
+            color: $gray-pale;
+        }
+    }
+    &-separator {
+        border-top: 1px solid $azure-dark;
+        margin: rythm(.5) 0;
+    }
+    &-group {
+        position: relative;
+    }
+    &-group ul {
+        padding: 0;
+        margin: 0;
+    }
+    &-group-header {
+        background: $white-smoke;
+        @include font-size(xs, xs, xs);
+        margin: 0;
+        padding: rythm(0.5) rythm(0.25) * 3;
+        color: $gray-contrast;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        user-select: none;
+    }
+    &-flex {
+        margin: auto rythm(.25)*3;
+        min-height: rythm(3.5);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: flex-start;
+
+        pa-checkbox {
+            width: 100%;
+
+            ::ng-deep {
+                .pa-field {
+                    margin: rythm(0.25);
+
+                    .pa-field-label {
+                        margin-bottom: 0 !important;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    &-flex-item {
+        flex-grow: 0;
+        flex-shring: 0;
+        line-height: 0;
+        margin-left: rythm(.5);
+
+        & kbd {
+            top: 0;
+            background: transparent;
+            color: $gray;
+        }
+    }
+    &-flex-item:first-child:not(.pa-dropdown-flex-item-push) {
+        margin-left: 0;
+    }
+    &-flex-item-push {
+        flex-grow: 1;
+        line-height: rythm(0.25) * 5;
+        font-weight: $font-weight-regular;
+        margin-top: 1px;
+        & small {
+            font-weight: $font-weight-light;
+            color: $gray;
+        }
+    }
+}
+.pa-dropdown-compressed .pa-dropdown-flex {
+    min-height: rythm(3);
+}
+.dropdown-item-type {
+    color: $gray;
+    font-weight: $font-weight-normal;
+}

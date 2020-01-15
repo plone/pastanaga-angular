@@ -1,0 +1,43 @@
+<div>
+    <legend>{{legend | translate}}</legend>
+    <header>
+        <pa-button *ngFor="let button of calendar.headerButtons" size="large"
+                   class="pa-calendar-label-button"
+                   (click)="changeView(button.view)">{{button.label}}</pa-button>
+        <div class="pa-calendar-navigation-buttons">
+            <pa-button icon="left-key" paTooltip="calendar.previous"
+                       (click)="goToPrevious()"></pa-button>
+            <pa-button icon="right-key" paTooltip="calendar.next"
+                       (click)="goToNext()"></pa-button>
+        </div>
+    </header>
+    <div class="pa-calendar-container">
+        <div class="pa-calendar-dates pa-week-days">
+            <ng-container *ngIf="view === calendarViews.day">
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.monday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.tuesday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.wednesday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.thursday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.friday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.saturday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.sunday</div>
+            </ng-container>
+        </div>
+        <div class="pa-calendar-dates">
+            <pa-button *ngFor="let date of calendar.dates"
+                       class="pa-calendar-date pa-calendar-{{view}}"
+                       [color]="date.isActive ? 'primary' : 'secondary'"
+                       [disabled]="(_noFuture && date.isFuture) || date.isDisabled"
+                       [class.pa-in-interval]="date.inInterval"
+                       [class.pa-first-of-interval]="date.firstOfInterval"
+                       [class.pa-last-of-interval]="date.lastOfInterval"
+                       [active]="date.isActive"
+                       (click)="selectDate(date)">
+                {{date.label}}
+            </pa-button>
+        </div>
+    </div>
+    <footer>
+        <pa-button *ngIf="_isRangeEnd" size="small" color="secondary" (click)="noEnd()">calendar.no-end-button</pa-button>
+    </footer>
+</div>

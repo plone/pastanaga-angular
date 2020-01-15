@@ -1,0 +1,34 @@
+<ng-container *ngIf="isDisabled">
+    <ng-container *ngIf="_values.length === 0">
+        <pa-badge class="no-permissions" [isSmall]="true">-</pa-badge>
+    </ng-container>
+    <ng-container *ngIf="_values.length > 0">
+        <pa-badge *ngFor="let value of _values"
+                  [isSmall]="true">{{ !!labels[value] ? (labels[value] | translate) : value }}</pa-badge>
+    </ng-container>
+</ng-container>
+<ng-container *ngIf="!isDisabled">
+    <div class="value-container" (click)="openMenu($event)">
+        <pa-icon [paPopup]="menu" #menuRef="paPopupRef" name="down-key" tabindex="0"
+                 (keydown)="onClickArrow($event)" (click)="onOpen.emit()"></pa-icon>
+        <div>
+            <ng-container *ngIf="_values.length === 0">
+                <pa-badge class="no-permissions" [isSmall]="true">-</pa-badge>
+            </ng-container>
+            <ng-container *ngIf="_values.length > 0">
+                <pa-badge *ngFor="let value of _values"
+                          [isSmall]="true">{{ !!labels[value] ? (labels[value] | translate) : value }}</pa-badge>
+            </ng-container>
+        </div>
+    </div>
+    <pa-dropdown #menu role="listbox" (onClose)="_onClose()">
+        <pa-dropdown-section [title]="label">
+            <ng-container *ngFor="let checkbox of _checkboxes">
+                <pa-dropdown-item [checkboxMode]="true"
+                                  [isSelected]="checkbox.isSelected"
+                                  [isDisabled]="checkbox.isDisabled"
+                                  (onSelection)="updateValue(checkbox, $event)">{{ checkbox.label }}</pa-dropdown-item>
+            </ng-container>
+        </pa-dropdown-section>
+    </pa-dropdown>
+</ng-container>

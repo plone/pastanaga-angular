@@ -1,0 +1,27 @@
+@import '../styles/variables';
+
+.value-container {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    pa-icon {
+        float: right;
+        ::ng-deep svg {
+            height: rythm(2);
+            width: rythm(2);
+            fill: $gray;
+        }
+    }
+    ::ng-deep .pa-badge {
+        margin-top: rythm(0.25);
+        position: relative;
+    }
+    & > div {
+        overflow: hidden;
+        padding-left: rythm(0.5);
+    }
+}
+
+.no-permissions ::ng-deep .pa-badge-small {
+    background: none;
+}

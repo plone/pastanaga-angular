@@ -22,6 +22,98 @@
 
 
 <div class="example-box">
+    <div class="example-box-header" (click)="toggleSection('calendar')">Calendar</div>
+    <div *ngIf="sections.calendar">
+        <h3>
+            Date picker
+            <pa-button size="small" [paPopup]="datepicker" style="margin-left: 100px;">Open date picker</pa-button>
+        </h3>
+
+        <pa-date-picker #datepicker
+                        [selection]="rangeSelection"
+                        [rangeStart]="!rangeSelection.start"
+                        [rangeEnd]="!!rangeSelection.start && !rangeSelection.end"
+                        [min]="rangeSelection.start"
+                        (select)="selectForRange($event)"></pa-date-picker>
+
+        <h3>Calendar</h3>
+        <p>Selected date: {{rangeSelection | json}}</p>
+        <pa-calendar [selection]="rangeSelection"
+                     [rangeStart]="!rangeSelection.start"
+                     [rangeEnd]="!!rangeSelection.start && !rangeSelection.end"
+                     [min]="rangeSelection.start"
+                     (select)="selectForRange($event)"></pa-calendar>
+
+        <legend>No future</legend>
+        <p>Selected date: {{dateSelection}}</p>
+        <pa-calendar noFuture [selection]="dateSelection" (select)="dateSelection = $event"></pa-calendar>
+    </div>
+</div>
+
+<div class="example-box">
+    <div class="example-box-header" (click)="toggleSection('dropdowns')">
+        Dropdown
+    </div>
+
+    <div *ngIf="sections.dropdowns">
+        <h4>Regular</h4>
+        <pa-dropdown [isAlwaysOn]="true">
+            <pa-dropdown-item icon="share" mode="primary" tooltip="Sharing with other users" (click)="hello()">Share
+            </pa-dropdown-item>
+            <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
+            <pa-dropdown-separator></pa-dropdown-separator>
+            <pa-dropdown-item (click)="hello()">Hello</pa-dropdown-item>
+            <pa-dropdown-item [isDisabled]="true" icon="share" (click)="hello()">Share</pa-dropdown-item>
+            <pa-dropdown-item icon="delete" mode="destructive" (click)="hello()">Remove</pa-dropdown-item>
+            <pa-dropdown-item icon="star" [isSelected]="true" (click)="hello()">Favorite</pa-dropdown-item>
+        </pa-dropdown>
+
+        <h4>With sections</h4>
+        <pa-dropdown [isAlwaysOn]="true" role="listbox">
+            <pa-dropdown-section title="My title">
+                <pa-dropdown-item icon="share" mode="primary" tooltip="Sharing with other users" (click)="hello()">
+                    Share
+                </pa-dropdown-item>
+                <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
+            </pa-dropdown-section>
+        </pa-dropdown>
+
+        <h4>With checkboxes</h4>
+        <pa-dropdown [isAlwaysOn]="true" role="listbox">
+            <pa-dropdown-section title="My title">
+                <pa-dropdown-item [checkboxMode]="true" (onSelection)="hello()">File</pa-dropdown-item>
+                <pa-dropdown-item [checkboxMode]="true" (onSelection)="hello()">Email</pa-dropdown-item>
+                <pa-dropdown-item [checkboxMode]="true" (onSelection)="hello()">Document</pa-dropdown-item>
+            </pa-dropdown-section>
+        </pa-dropdown>
+
+        <h4>Open from action</h4>
+        <pa-button [paPopup]="myMenu">Open menu</pa-button>
+        <pa-dropdown #myMenu>
+            <pa-dropdown-item icon="share" mode="primary" tooltip="Sharing with other users" (click)="hello()">Share
+            </pa-dropdown-item>
+            <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
+            <pa-dropdown-separator></pa-dropdown-separator>
+            <pa-dropdown-item (click)="hello()">Hello</pa-dropdown-item>
+            <pa-dropdown-item [isDisabled]="true" icon="share" (click)="hello()">Share</pa-dropdown-item>
+            <pa-dropdown-item icon="delete" mode="destructive" (click)="hello()">Remove</pa-dropdown-item>
+            <pa-dropdown-item icon="star" [isSelected]="true" (click)="hello()">Favorite</pa-dropdown-item>
+        </pa-dropdown>
+        <pa-button [paPopup]="myMenuRight" popupOnRight>Open menu on right</pa-button>
+        <pa-dropdown #myMenuRight>
+            <pa-dropdown-item icon="share" mode="primary" tooltip="Sharing with other users" (click)="hello()">Share
+            </pa-dropdown-item>
+            <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
+            <pa-dropdown-separator></pa-dropdown-separator>
+            <pa-dropdown-item (click)="hello()">Hello</pa-dropdown-item>
+            <pa-dropdown-item [isDisabled]="true" icon="share" (click)="hello()">Share</pa-dropdown-item>
+            <pa-dropdown-item icon="delete" mode="destructive" (click)="hello()">Remove</pa-dropdown-item>
+            <pa-dropdown-item icon="star" [isSelected]="true" (click)="hello()">Favorite</pa-dropdown-item>
+        </pa-dropdown>
+    </div>
+</div>
+
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('translate')">Translate</div>
 
     <div *ngIf="sections.translate">

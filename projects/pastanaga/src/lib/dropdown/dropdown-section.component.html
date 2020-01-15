@@ -1,0 +1,8 @@
+<li class="pa-dropdown-item" role="presentation">
+    <section class="pa-dropdown-group" role="group">
+        <h2 *ngIf="!!title" class="pa-dropdown-group-header" translate>{{ title }}</h2>
+        <ul role="presentation">
+            <ng-content></ng-content>
+        </ul>
+    </section>
+</li>

@@ -29,11 +29,13 @@
             transform: none !important;
             font-size: inherit !important;
             & > span {
-                margin-left: rythm(.5);
+                margin-left: rythm(2.5);
+                word-break: break-all;
+                display: block;
                 & > ::ng-deep pa-icon svg {
                     width: rythm(1.5);
                     height: rythm(1.5);
-                    margin-right: rythm(.5);
+                    margin-right: rythm(1);
                     line-height: 0;
                     display: inline;
                     fill: $gray-dark;
@@ -54,14 +56,15 @@
         }
         & + .pa-field-label::before {
             content: '';
-            margin-top: 1px;
+            margin-top: -1px;
             display: inline-block;
             vertical-align: text-top;
             width: rythm(1.5);
             height: rythm(1.5);
             background: $white;
             border: 1px solid $brown;
-            border-radius: 0;
+            border-radius: 3px;
+            position: absolute;
         }
         &:checked + .pa-field-label::before,
         &:indeterminate + .pa-field-label::before {
@@ -93,7 +96,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            margin-top: 1px;
+            margin-top: -1px;
             width: rythm(1.5);
             height: rythm(1.5);
             transition: all .175s ease-in;
@@ -104,7 +107,7 @@
         }
         &:checked + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23'+str_slice(#{$blue}, 2)+'" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
-            background-size: rythm(2) rythm(2);
+            background-size: rythm(1.5) rythm(1.5);
             opacity: 1;
         }
         &:checked:disabled + .pa-field-label::after {
@@ -114,11 +117,21 @@
         }
         &:indeterminate + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><polygon fill="%23'+str_slice(#{$blue}, 2)+'" fill-rule="evenodd" points="7 19 29 19 29 16 7 16"/></svg>');
-            background-size: rythm(2) rythm(2);
+            background-size: rythm(1.5) rythm(1.5);
             opacity: 1;
         }
         &:indeterminate:disabled + .pa-field-label::after {
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><polygon fill="%23'+str_slice(#{$gray-pale}, 2)+'" fill-rule="evenodd" points="7 19 29 19 29 16 7 16"/></svg>');
+            background-size: rythm(1.5) rythm(1.5);
+            opacity: 1;
+        }
+        &.pa-file-system:checked + .pa-field-label::after {
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23'+str_slice(#{$blue}, 2)+'" points="16.5 16 16.5 6.5 19.5 6.5 19.5 16 29 16 29 19 19.5 19 19.5 28.5 16.5 28.5 16.5 19 7 19 7 16"/></g></svg>');
+            background-size: rythm(1.5) rythm(1.5);
+            opacity: 1;
+        }
+        &.pa-file-system:checked:disabled + .pa-field-label::after {
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23'+str_slice(#{$gray-pale}, 2)+'" points="16.5 16 16.5 6.5 19.5 6.5 19.5 16 29 16 29 19 19.5 19 19.5 28.5 16.5 28.5 16.5 19 7 19 7 16"/></g></svg>');
             background-size: rythm(1.5) rythm(1.5);
             opacity: 1;
         }
@@ -132,13 +145,13 @@
         }
         &:checked:active + .pa-field-label::before,
         &:checked:focus + .pa-field-label::before {
-            border: 1px solid $control-border-color;
-            box-shadow: 0 0 0 1px $control-border-color;
+            border: 1px solid $blue-light;
+            box-shadow: 0 0 0 1px $blue-light;
             transition: all .33s ease;
             background: $white-smoke;
         }
         & ~ .pa-field-help {
-            margin-left: rythm(2);
+            margin-left: rythm(2.5);
             margin-top: - rythm(1);
             margin-bottom: rythm(.5);
             display: block;
@@ -183,7 +196,7 @@
 
 //Expandable
 .pa-field-group {
-    .pa-button {
+    .pa-button{
         float:left;
         margin: - rythm(.5) 0 - rythm(.5) - rythm(2.5);
         transform: rotate(0deg);
@@ -201,4 +214,10 @@
     &[aria-hidden="true"] {
         display: none;
     }
+}
+
+//compressed
+.pa-field.pa-field-checkbox.pa-field-compressed .pa-field-control + .pa-field-label,
+.pa-field.pa-field-radio.pa-field-compressed .pa-field-control + .pa-field-label {
+    margin-bottom: rythm(.5) !important;
 }

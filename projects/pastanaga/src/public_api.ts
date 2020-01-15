@@ -59,3 +59,19 @@ export * from './lib/sidebar/sidebar.service';
 
 export * from './lib/auto-focus/auto-focus.module';
 export * from './lib/auto-focus/auto-focus.directive';
+
+export * from './lib/calendar/calendar.module';
+export * from './lib/calendar/calendar.model';
+export * from './lib/calendar/calendar.component';
+export * from './lib/calendar/calendar.service';
+export * from './lib/calendar/date-picker.component';
+
+export * from './lib/popup/popup.module';
+export * from './lib/popup/popup.directive';
+export * from './lib/popup/popup.component';
+
+export * from './lib/dropdown/module';
+export * from './lib/dropdown/dropdown-item.component';
+export * from './lib/dropdown/dropdown-checkbox.component';
+export * from './lib/dropdown/dropdown-section.component';
+export * from './lib/dropdown/dropdown-separator.component';

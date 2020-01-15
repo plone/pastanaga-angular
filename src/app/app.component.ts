@@ -138,6 +138,10 @@ export class AppComponent implements OnInit {
     toastButtonColor = 'destructive';
     toastDelay = 0;
 
+    // Calendar
+    rangeSelection: {start?: Date, end?: Date} = {};
+    dateSelection: Date = new Date();
+
     sections: any = {};
 
     constructor(
@@ -160,6 +164,14 @@ export class AppComponent implements OnInit {
             this.sections = JSON.parse(savedSections);
         } else {
             this.sections = {text: true};
+        }
+    }
+
+    selectForRange(selectedDate: Date) {
+        if (!this.rangeSelection.start) {
+            this.rangeSelection = {...this.rangeSelection, start: selectedDate};
+        } else {
+            this.rangeSelection = {...this.rangeSelection, end: selectedDate};
         }
     }
 
@@ -255,5 +267,10 @@ export class AppComponent implements OnInit {
         if (!!menu) {
             menu.unfoldOnHover = !this.isLockedUnfolded;
         }
+    }
+
+    hello() {
+        console.log(this);
+        console.log('Hello');
     }
 }

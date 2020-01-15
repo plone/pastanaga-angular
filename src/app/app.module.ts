@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import {
     BadgeModule,
     ButtonModule,
+    CalendarModule,
     ControlsModule,
+    ExpandModule,
     ProgressModule,
     TextFieldModule,
     ToasterModule,
     TooltipModule,
-    ExpandModule,
-    TranslateModule, SidebarModule
+    SidebarModule,
+    TranslateModule, DropdownModule, PopupModule,
 } from '../../projects/pastanaga/src';
 
 import * as en from '../assets/i18n/en.json';
@@ -34,6 +36,9 @@ import * as la from '../assets/i18n/la.json';
         TooltipModule,
         ExpandModule,
         SidebarModule,
+        CalendarModule,
+        DropdownModule,
+        PopupModule,
     ],
     declarations: [
         AppComponent,

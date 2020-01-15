@@ -1,4 +1,18 @@
 {
+    "calendar": {
+        "next": "Next",
+        "previous": "Previous",
+        "select-start-date-legend": "Select start date",
+        "select-end-date-legend": "Select end date",
+        "no-end-button": "No end date",
+        "monday": "M",
+        "tuesday": "T",
+        "wednesday": "W",
+        "thursday": "T",
+        "friday": "F",
+        "saturday": "S",
+        "sunday": "S"
+    },
     "common": {
         "close": "Close",
         "loading": "Loading…",
