@@ -8,7 +8,8 @@ import {
     endOfMonth,
     endOfWeek,
     endOfYear,
-    format, isBefore,
+    format,
+    isBefore,
     isFuture,
     isSameDay,
     isSameMonth,
@@ -22,7 +23,7 @@ import {
     subMonths,
     subYears
 } from 'date-fns';
-import { CalendarDate, ICalendar, IHeaderButtons } from './calendar.model';
+import { CalendarDate, CalendarView, ICalendar } from './calendar.model';
 
 @Injectable({providedIn: 'root'})
 export class CalendarService {
@@ -64,8 +65,8 @@ export class CalendarService {
                 isDisabled: !!min && isBefore(d, min),
             })),
             headerButtons: [
-                {label: format(date, 'MMMM'), view: 'month'},
-                {label: format(date, 'yyyy'), view: 'year'},
+                {label: format(date, 'MMMM'), view: CalendarView.month},
+                {label: format(date, 'yyyy'), view: CalendarView.year},
             ],
         };
     }
@@ -92,7 +93,7 @@ export class CalendarService {
                 isActive: isSameMonth(d, currentDate),
                 isDisabled: !!min && !isSameMonth(d, min) && isBefore(d, min),
             })),
-            headerButtons: [{label: format(date, 'yyyy'), view: 'year'}],
+            headerButtons: [{label: format(date, 'yyyy'), view: CalendarView.year}],
         };
     }
 
@@ -118,7 +119,7 @@ export class CalendarService {
                 isActive: isSameYear(d, currentDate),
                 isDisabled: !!min && !isSameYear(d, min) && isBefore(d, min),
             })),
-            headerButtons: [{label: `${start.getFullYear()} - ${end.getFullYear()}`, view: 'day'}],
+            headerButtons: [{label: `${start.getFullYear()} - ${end.getFullYear()}`, view: CalendarView.day}],
         };
     }
 }

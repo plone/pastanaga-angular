@@ -78,7 +78,7 @@ export class PopupDirective implements OnInit {
             this.remoteElement = params.event.currentTarget as HTMLElement;
         }
         if (!params.useLastPosition && params.useRealComputedPosition && !!params.event.currentTarget) {
-            const position = getRealPosition(params.event.currentTarget as HTMLElement, false);
+            const position = getRealPosition(params.event.currentTarget as HTMLElement);
             params.override = {top: `${position.top}px`, left: `${position.left}px`};
         }
         this.onClick(params.event, params.override, params.isContextual, params.useLastPosition);

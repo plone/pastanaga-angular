@@ -5,7 +5,6 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CalendarDate, CalendarView, ICalendar } from './calendar.model';
 
 
-
 @Component({
     selector: 'pa-calendar',
     templateUrl: './calendar.component.html',
@@ -54,7 +53,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
         dates: [],
         dateRef: new Date(),
     };
-    view: CalendarView  = 'day';
+    calendarViews = CalendarView;
+    view: CalendarView  = CalendarView.day;
     legend = '';
     refDate = new Date();
 
@@ -73,9 +73,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     goToPrevious() {
         const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
-        if (this.view === 'year') {
+        if (this.view === CalendarView.year) {
             this.calendar = this.service.getPreviousYears(this.calendar.dateRef, ref, this._min);
-        } else if (this.view === 'month') {
+        } else if (this.view === CalendarView.month) {
             this.calendar = this.service.getPreviousMonths(this.calendar.dateRef, ref, this._min);
         } else {
             this.calendar = this.service.getPreviousMonth(this.calendar.dateRef, this._selection, this._min);
@@ -84,9 +84,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     goToNext() {
         const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
-        if (this.view === 'year') {
+        if (this.view === CalendarView.year) {
             this.calendar = this.service.getNextYears(this.calendar.dateRef, ref, this._min);
-        } else if (this.view === 'month') {
+        } else if (this.view === CalendarView.month) {
             this.calendar = this.service.getNextMonths(this.calendar.dateRef, ref, this._min);
         } else {
             this.calendar = this.service.getNextMonth(this.calendar.dateRef, this._selection, this._min);
@@ -96,9 +96,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
     changeView(newView: CalendarView) {
         const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
         this.view = newView;
-        if (this.view === 'year') {
+        if (this.view === CalendarView.year) {
             this.calendar = this.service.getYears(this.calendar.dateRef, ref, this._min);
-        } else if (this.view === 'month') {
+        } else if (this.view === CalendarView.month) {
             this.calendar = this.service.getMonths(this.calendar.dateRef, ref, this._min);
         } else {
             this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
@@ -107,11 +107,11 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     selectDate(selection: CalendarDate) {
         const ref: Date = this._selection && this._selection.start ? this._selection.start : this.refDate;
-        if (this.view === 'year') {
-            this.view = 'month';
+        if (this.view === CalendarView.year) {
+            this.view = CalendarView.month;
             this.calendar = this.service.getMonths(selection.date, ref, this._min);
-        } else if (this.view === 'month') {
-            this.view = 'day';
+        } else if (this.view === CalendarView.month) {
+            this.view = CalendarView.day;
             this.calendar = this.service.getMonth(selection.date, this._selection, this._min);
         } else {
             this.calendar = this.service.getMonth(selection.date, this._selection, this._min);

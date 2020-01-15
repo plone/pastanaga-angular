@@ -13,14 +13,14 @@
     </header>
     <div class="pa-calendar-container">
         <div class="pa-calendar-dates pa-week-days">
-            <ng-container *ngIf="view === 'day'">
-                <div class="pa-calendar-date pa-calendar-day">S</div>
-                <div class="pa-calendar-date pa-calendar-day">M</div>
-                <div class="pa-calendar-date pa-calendar-day">T</div>
-                <div class="pa-calendar-date pa-calendar-day">W</div>
-                <div class="pa-calendar-date pa-calendar-day">T</div>
-                <div class="pa-calendar-date pa-calendar-day">F</div>
-                <div class="pa-calendar-date pa-calendar-day">S</div>
+            <ng-container *ngIf="view === calendarViews.day">
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.monday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.tuesday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.wednesday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.thursday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.friday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.saturday</div>
+                <div class="pa-calendar-date pa-calendar-day" translate>calendar.sunday</div>
             </ng-container>
         </div>
         <div class="pa-calendar-dates">

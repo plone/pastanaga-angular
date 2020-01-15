@@ -1,4 +1,8 @@
-export type CalendarView = 'day' | 'month' | 'year';
+export enum CalendarView {
+    day = 'day',
+    month = 'month',
+    year = 'year',
+}
 
 export interface IHeaderButtons {
     label: string;

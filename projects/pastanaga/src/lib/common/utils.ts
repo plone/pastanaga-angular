@@ -37,7 +37,7 @@ export const getPositionnedParent = (element: HTMLElement): HTMLElement => {
     }
 };
 
-export const getRealPosition = (element: HTMLElement, ignoreSideMenu = true): {top: number, left: number} => {
+export const getRealPosition = (element: HTMLElement): {top: number, left: number} => {
     let tmp: HTMLElement | null = element;
     let tagName = tmp.tagName.toLowerCase();
     let top = 0;
@@ -45,14 +45,7 @@ export const getRealPosition = (element: HTMLElement, ignoreSideMenu = true): {t
 
     while (!!tmp && tagName !== 'body') {
         top += tmp.offsetTop;
-        if (ignoreSideMenu) {
-            left += tmp.offsetLeft;
-        } else {
-            const classes = tmp.getAttribute('class') || '';
-            if (!classes.includes('main-content') || !classes.includes('menu-open')) {
-                left += tmp.offsetLeft;
-            }
-        }
+        left += tmp.offsetLeft;
         tmp = tmp.offsetParent as HTMLElement;
         tagName = tmp.tagName.toLowerCase();
     }
