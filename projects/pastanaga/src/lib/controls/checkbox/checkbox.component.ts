@@ -9,8 +9,6 @@ import {
     Output,
     ViewChild,
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    ViewRef
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
@@ -52,8 +50,6 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     hasEllipsis = false;
     tooltipText = '';
 
-    constructor(private changeDetector: ChangeDetectorRef) {}
-
     ngOnInit() {
         this.id = `field-${this.type}-${nextId++}`;
         this.name = this.name || this.id;
@@ -62,30 +58,15 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
 
     ngOnChanges(changes) {
         if (this.isBadgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
-            setTimeout(() => {
-                if (!!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
-                    this.setLabelMaxWidth();
-                    this.changeDetector.detach();
-                }
-            }, 0);
+            setTimeout(() => this.setLabelMaxWidth(), 0);
         }
     }
 
     ngAfterViewInit() {
         if (this.isBadgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
-            setTimeout(() => {
-                if (!!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
-                    this.setLabelMaxWidth();
-                    this.changeDetector.detach();
-                }
-            });
+            setTimeout(() => this.setLabelMaxWidth());
         } else {
-            setTimeout(() => {
-                if (!!this.changeDetector && !(this.changeDetector as ViewRef).destroyed) {
-                    this.setEllipsis();
-                    this.changeDetector.detach();
-                }
-            });
+            setTimeout(() => this.setEllipsis());
         }
     }
 
