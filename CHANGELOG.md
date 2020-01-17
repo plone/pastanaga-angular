@@ -1,3 +1,7 @@
+# 1.7.1 (2020-01-28)
+
+- Fix right-positionned side-bar
+
 # 1.7.0 (2020-01-26)
 
 - Auto-release to NPM
