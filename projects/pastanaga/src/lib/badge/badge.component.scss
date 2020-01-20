@@ -2,7 +2,7 @@
 
 .pa-badge {
     display: inline-block;
-    @include font-size(s, m, s);
+    @include font-size(m, m, s);
     padding: rythm(.25) rythm(.5);
     margin-left: - rythm(.5);
     margin-right: rythm(1);
@@ -43,8 +43,8 @@
 }
 
 .pa-badge-small {
-    @include font-size(xs, m, xs);
-    padding: rythm(.25)/2 rythm(.25);
+    @include font-size(xs, xs, xs);
+    padding: rythm(.25);
     &.pa-badge-accent {
         padding-right: rythm(1.5)/3;
         padding-left: rythm(1.5)/3;
