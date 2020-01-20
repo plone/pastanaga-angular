@@ -1,3 +1,7 @@
+# 1.6.2 (2020-01-20)
+
+- Adjust badge sizes to base 12 system
+
 # 1.6.1 (2020-01-19)
 
 - Update the global pastanaga service with the new recent services
