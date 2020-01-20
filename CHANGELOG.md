@@ -1,3 +1,7 @@
+# 1.6.1 (2020-01-19)
+
+- Update the global pastanaga service with the new recent services
+
 # 1.6.0 (2020-01-14)
 
 - Update checkbox style
