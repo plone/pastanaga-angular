@@ -1,3 +1,8 @@
+# 1.6.3 (2020-01-21)
+
+- Moving attributes accessed to public on sidebar [bloodbare]
+- upgrading angular-traversal to 1.2.6 [mathilde-pellerin]
+
 # 1.6.2 (2020-01-20)
 
 - Adjust badge sizes to base 12 system
