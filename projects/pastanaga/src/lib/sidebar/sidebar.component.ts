@@ -65,16 +65,16 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
     get lockedOpen(): boolean { return this._lockedOpen; }
     @HostBinding('class.locked-opened')
-    private _lockedOpen = false;
+    public _lockedOpen = false;
 
     @Output() openedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() foldedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @HostBinding('class.open')
-    private isOpen = false;
+    public isOpen = false;
 
     @HostBinding('class.animations-enabled')
-    private animationsEnabled = false;
+    public animationsEnabled = false;
 
     private backdrop: HTMLElement | null = null;
 

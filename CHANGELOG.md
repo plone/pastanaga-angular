@@ -1,3 +1,5 @@
+- Moving attributes accessed to public on sidebar [bloodbare]
+
 # 1.6.2 (2020-01-20)
 
 - Adjust badge sizes to base 12 system
