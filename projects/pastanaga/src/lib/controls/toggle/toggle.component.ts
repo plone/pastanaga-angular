@@ -12,6 +12,7 @@ let nextId = 0;
 export class ToggleComponent implements OnInit {
     @Input() id?: string;
     @Input() imageUrl?: string;
+    @Input() imageBackground?: string;
     @Input() help?: string;
     @Input() divider?: ToggleDivider;
     @Input() isSelected = false;
