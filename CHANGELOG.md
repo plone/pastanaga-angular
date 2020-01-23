@@ -1,3 +1,7 @@
+# 1.6.4 (2020-01-23)
+
+- Improvements on toggle component [mathilde-pellerin] 
+
 # 1.6.3 (2020-01-21)
 
 - Moving attributes accessed to public on sidebar [bloodbare]
