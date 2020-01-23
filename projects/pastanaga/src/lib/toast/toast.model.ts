@@ -1,4 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
+import { ComponentFactory } from '@angular/core';
+import { ToastComponent } from './toast.component';
 
 export class ToastModel {
     onClick?: BehaviorSubject<string>;
@@ -29,6 +31,12 @@ export class ToastModel {
     // Tooltip leading icon.
     icon: string;
 
+    // class to be used for toast style
+    style: string;
+
+    componentFactory?: ComponentFactory<ToastComponent>;
+    componentData?: any;
+
     constructor(data: any) {
         // Avoids error when input is null
         data = data ? data : {};
@@ -42,6 +50,9 @@ export class ToastModel {
         this.buttons = data.buttons || [];
         this.closeable = data.closeable;
         this.translateParams = data.translateParams;
+        this.style = data.style;
+        this.componentFactory = data.componentFactory;
+        this.componentData = data.componentData;
 
         if (this.buttons.length > 0) {
             this.onClick = new BehaviorSubject('');

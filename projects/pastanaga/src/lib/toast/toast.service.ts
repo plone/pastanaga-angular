@@ -1,4 +1,4 @@
-import {ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef} from '@angular/core';
+import {ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef, ComponentFactory} from '@angular/core';
 import {ToastComponent} from './toast.component';
 import {ToastModel, ToastButtonModel} from './toast.model';
 
@@ -101,7 +101,9 @@ import {ToastModel, ToastButtonModel} from './toast.model';
  *      }
  *   });
  */
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class Toaster {
 
     private entryPoint?: ViewContainerRef;
@@ -178,7 +180,7 @@ export class Toaster {
         return typeof value === 'number';
     }
 
-    dismiss(toast: ToastModel, button: string) {
+    dismiss(toast: ToastModel, button?: string) {
         const index = this.getToastIndex(toast.key);
         if (index < 0) {
             // Return if the toast was already dismissed.
@@ -194,7 +196,7 @@ export class Toaster {
             setTimeout(() => toastComponentRef.destroy(), 500);
         }
 
-        if (button && toast.onClick) {
+        if (!!button && toast.onClick) {
             toast.onClick.next(button);
         }
     }
@@ -216,7 +218,8 @@ export class Toaster {
 
     private createToast(toast: ToastModel) {
         toast.key = 'toast' + this.toastCounter++;
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
+        const componentFactory: ComponentFactory<ToastComponent> = toast.componentFactory ? toast.componentFactory :
+        this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
         if (!!this.entryPoint && !!this.toasts) {
             const toastComponentRef: ComponentRef<ToastComponent> = this.entryPoint.createComponent(componentFactory, 0);
             (<ToastComponent>toastComponentRef.instance).toast = toast;
