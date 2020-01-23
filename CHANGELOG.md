@@ -1,3 +1,7 @@
+# 1.6.5 (2020-01-23)
+
+- Fix toaster
+
 # 1.6.4 (2020-01-23)
 
 - Improvements on toggle component [mathilde-pellerin] 

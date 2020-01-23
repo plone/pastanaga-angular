@@ -50,7 +50,7 @@ describe('AppComponent', () => {
                 DropdownModule,
                 PopupModule,
                 ProgressModule,
-                ToasterModule.forRoot(),
+                ToasterModule,
                 TextFieldModule,
                 TooltipModule,
                 ExpandModule,

@@ -31,7 +31,7 @@ import * as la from '../assets/i18n/la.json';
         ButtonModule,
         ControlsModule,
         ProgressModule,
-        ToasterModule.forRoot(),
+        ToasterModule,
         TextFieldModule,
         TooltipModule,
         ExpandModule,
