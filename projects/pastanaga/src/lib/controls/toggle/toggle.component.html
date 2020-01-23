@@ -9,7 +9,7 @@
            (change)="toggleSelection()">
     <span class="pa-field-control-thumb"> </span>
     <label class="pa-field-label" [for]="id">
-        <img *ngIf="imageUrl" [src]="imageUrl" alt="" role="presentation">
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="" role="presentation" [ngStyle]="{'background-color': imageBackground}">
         <span translate>
             <ng-content></ng-content>
         </span>
