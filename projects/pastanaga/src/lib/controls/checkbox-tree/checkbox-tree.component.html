@@ -5,43 +5,56 @@
                   [value]="totalSelected" [of]="totalCount"></pa-badge>
     </legend>
 
-    <pa-button *ngIf="!isChildren && isSelectAllVisible"
-               size="small" class="pa-field-button-right"
-               [color]="isAllSelected ? 'secondary' : 'primary'"
-               (click)="toggleSelectAll()">
-        {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
-    </pa-button>
-
-    <div class="pa-field-group" *ngFor="let checkbox of checkboxes">
-        <pa-button *ngIf="(!!checkbox.children && checkbox.children.length > 0) || (!checkbox.children && isAsync)"
-                   color="secondary" size="small"
-                   [icon]="!checkbox.children ? 'initiating' : 'right-key'"
-                   [disabled]="!checkbox.children"
-                   ariaControls="pa-expand-checkbox-{{checkbox.ariaId}}"
-                   [ariaExpanded]="checkbox.isExpanded"
-                   (click)="checkbox.isExpanded = !checkbox.isExpanded">{{!checkbox.children ? 'Loading' :
-            !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
+    <ng-container *ngIf="type === 'checkbox'">
+        <pa-button *ngIf="!isChildren && isSelectAllVisible"
+                   size="small" class="pa-field-button-right"
+                   [color]="isAllSelected ? 'secondary' : 'primary'"
+                   (click)="toggleSelectAll()">
+            {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
         </pa-button>
-        <pa-checkbox [icon]="checkbox.icon"
-                     [help]="checkbox.help"
-                     [isDisabled]="checkbox.isDisabled"
-                     [isIndeterminate]="checkbox.isIndeterminate"
-                     [isBadgeVisible]="isBadgeVisible && !!checkbox.children && checkbox.children.length > 0"
-                     [totalChildren]="checkbox.totalChildren"
-                     [selectedChildren]="checkbox.selectedChildren"
-                     [(isSelected)]="checkbox.isSelected"
-                     (selection)="toggleSelection($event, checkbox)">{{checkbox.label}}
-        </pa-checkbox>
-
-        <div class="pa-field-sublist" role="tabpanel"
-             [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.ariaId"
-             [attr.aria-hidden]="!checkbox.isExpanded">
-            <pa-checkbox-tree [doLoadChildren]="checkbox.isExpanded"
-                              [isChildren]="true"
-                              [checkboxes]="checkbox.children"
-                              [getChildren]="getChildren"
-                              (selection)="setParentState(checkbox)"></pa-checkbox-tree>
+    
+        <div class="pa-field-group" *ngFor="let checkbox of checkboxes">
+            <pa-button *ngIf="(!!checkbox.children && checkbox.children.length > 0) || (!checkbox.children && isAsync)"
+                       color="secondary" size="small"
+                       [icon]="!checkbox.children ? 'initiating' : 'right-key'"
+                       [disabled]="!checkbox.children"
+                       ariaControls="pa-expand-checkbox-{{checkbox.ariaId}}"
+                       [ariaExpanded]="checkbox.isExpanded"
+                       (click)="checkbox.isExpanded = !checkbox.isExpanded">{{!checkbox.children ? 'Loading' :
+                !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
+            </pa-button>
+            <pa-checkbox [icon]="checkbox.icon"
+                         [help]="checkbox.help"
+                         [isDisabled]="checkbox.isDisabled"
+                         [isIndeterminate]="checkbox.isIndeterminate"
+                         [isBadgeVisible]="isBadgeVisible && !!checkbox.children && checkbox.children.length > 0"
+                         [totalChildren]="checkbox.totalChildren"
+                         [selectedChildren]="checkbox.selectedChildren"
+                         [(isSelected)]="checkbox.isSelected"
+                         (onSelection)="toggleSelection($event, checkbox)">{{checkbox.label}}
+            </pa-checkbox>
+    
+            <div class="pa-field-sublist" role="tabpanel"
+                 [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.ariaId"
+                 [attr.aria-hidden]="!checkbox.isExpanded">
+                <pa-checkbox-tree [doLoadChildren]="checkbox.isExpanded"
+                                  [isChildren]="true"
+                                  [checkboxes]="checkbox.children"
+                                  [getChildren]="getChildren"
+                                  (selection)="setParentState(checkbox)"></pa-checkbox-tree>
+            </div>
         </div>
+    </ng-container>
 
+    <div class="pa-field-group" *ngIf="type === 'radio'">
+        <pa-checkbox *ngFor="let checkbox of checkboxes"
+                        [icon]="checkbox.icon"
+                        type="radio"
+                        [help]="checkbox.help"
+                        [isDisabled]="checkbox.isDisabled"
+                        [isBadgeVisible]="isBadgeVisible && !!checkbox.children && checkbox.children.length > 0"
+                        [(isSelected)]="checkbox.isSelected"
+                        (onSelection)="toggleRadioSelection(checkbox.value)">{{checkbox.label}}
+        </pa-checkbox>
     </div>
 </fieldset>
