@@ -149,8 +149,8 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
         this.errorList.emit(this.errors);
     }
 
-    writeValue(value: string) {
-        if (!!value && !this._acceptHtmlTags && value.match(HTML_TAG)) {
+    writeValue(value: string | number | undefined) {
+        if (!!value && typeof(value) === 'string' && !this._acceptHtmlTags && value.match(HTML_TAG)) {
             value = value.replace(REPLACE_LT_GT, '');
         }
         super.writeValue(value);

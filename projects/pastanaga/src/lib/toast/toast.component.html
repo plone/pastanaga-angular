@@ -7,7 +7,7 @@
             <pa-icon *ngIf="!!toast && !!toast.icon" [name]="toast.icon" [hidden]="true"></pa-icon>
 
             <div *ngIf="parsedMessage" [innerHTML]="parsedMessage" [id]="parsedMessage ? ariaLabeledBy : null"></div>
-            <ng-container *ngIf="!parsedMessage">
+            <ng-container *ngIf="!parsedMessage && !!toast">
                 {{toast.message | translate:toast.translateParams}}
             </ng-container>
         </h2>

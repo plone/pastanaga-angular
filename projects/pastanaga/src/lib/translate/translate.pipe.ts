@@ -13,7 +13,7 @@ export class TranslatePipe implements PipeTransform {
         @Inject('TRANSLATIONS') private translations: any,
     ) {}
 
-    transform(key: string, args?: any): string {
+    transform(key?: string, args?: any): string {
         if (!key) {
             return '';
         }
