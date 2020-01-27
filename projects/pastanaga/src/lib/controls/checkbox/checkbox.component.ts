@@ -9,8 +9,10 @@ import {
     Output,
     ViewChild,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { markForCheck } from '../../common/utils';
 
 let nextId = 0;
 
@@ -21,7 +23,7 @@ let nextId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
-    @Input() type = 'checkbox';
+    @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() help?: string;
     @Input() icon?: string;
     @Input() name?: string;
@@ -49,6 +51,8 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     labelMaxWidth: { [key: string]: string } = {};
     hasEllipsis = false;
     tooltipText = '';
+
+    constructor(private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.id = `field-${this.type}-${nextId++}`;
@@ -99,5 +103,6 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
                 this.tooltipText = this.ellipsisText.nativeElement.innerText;
             }
         }
+        markForCheck(this.cdr);
     }
 }

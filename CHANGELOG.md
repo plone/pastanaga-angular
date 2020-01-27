@@ -1,3 +1,8 @@
+# 1.7.0 (2020-01-26)
+
+- Auto-release to NPM
+- Support radio buttons in checkbox-tree (partially)
+
 # 1.6.5 (2020-01-23)
 
 - Fix toaster

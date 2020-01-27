@@ -19,6 +19,7 @@ let nextId = 0;
 export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnChanges {
     @Input() id?: string;
     @Input() checkboxes?: ControlModel[];
+    @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() getChildren?: Function;
     @Input() isChildren = false;
     @Input() doLoadChildren = true;
@@ -230,5 +231,13 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
         const aLabel = a.label || '';
         const bLabel = b.label || '';
         return aLabel.toLocaleLowerCase().localeCompare(bLabel.toLowerCase());
+    }
+
+    toggleRadioSelection(value: string) {
+        this.checkboxes = (this.checkboxes || []).map(ctl => ({
+            ...ctl,
+            isSelected: ctl.value === value,
+        }));
+        this.emitSelectionChanged();
     }
 }

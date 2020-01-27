@@ -10,18 +10,31 @@ See `src/app/app.component.ts` and `src/app/app.component.html` for usage exampl
 
 ## Theming
 
-Note: we assume pastanaga-angular is provided as a [mr-developer](https://github.com/collective/mr-developer) dependency.
+Declare the assets in `angular.json`:
 
+```
+    "assets": [
+        "src/favicon.ico",
+        "src/assets",
+        {
+            "glob": "**/*",
+            "input": "./node_modules/@guillotinaweb/pastanaga-angular/lib/assets", // when using NPM package
+            "input": "./src/develop/pastanaga-angular/projects/pastanaga/src/assets", // when using mrs-developer
+            "output": "assets"
+        }
+```
 Import the common reset in main app style:
 
 ```
-@import './develop/pastanaga-angular/projects/pastanaga/src/lib/styles/common-reset';
+@import "~@guillotinaweb/pastanaga-angular/lib/styles/common-reset"; // when using NPM package
+@import './develop/pastanaga-angular/projects/pastanaga/src/lib/styles/common-reset'; // when using mrs-developer
 ```
 
 If we want the default fonts, we need to import them like this:
 
 ```
-@import "./develop/pastanaga-angular/projects/pastanaga/src/lib/styles/fonts";
+@import "~@guillotinaweb/pastanaga-angular/lib/styles/fonts"; // when using NPM package
+@import "./develop/pastanaga-angular/projects/pastanaga/src/lib/styles/fonts"; // when using mrs-developer
 ```
 
 The Pastanaga CSS can be overriden in the `src/pastanaga-overrides.scss` file. Example:
@@ -39,7 +52,7 @@ $button-primary-active-background: $my-blue-light;
 ```
 "stylePreprocessorOptions": {
     "includePaths": [
-    "src/pastanaga-overrides.scss"
+        "src/pastanaga-overrides.scss"
     ]
 },
 ```
