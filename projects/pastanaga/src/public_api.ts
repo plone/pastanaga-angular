@@ -71,6 +71,7 @@ export * from './lib/calendar/date-picker.component';
 export * from './lib/popup/popup.module';
 export * from './lib/popup/popup.directive';
 export * from './lib/popup/popup.component';
+export * from './lib/popup/popup.service';
 
 export * from './lib/dropdown/module';
 export * from './lib/dropdown/dropdown-item.component';
