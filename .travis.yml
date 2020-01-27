@@ -23,6 +23,7 @@ before_deploy:
     export PACKAGE_VERSION=$(npm run get_version | tail -n 1) &&
     echo "TAGGING $PACKAGE_VERSION..." &&
     git tag $PACKAGE_VERSION;
+  fi
 deploy:
   - provider: releases
     name: Build $PACKAGE_VERSION
