@@ -26,7 +26,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Input() isAlwaysOn = false;
     @Input() parentElement?: any;
 
-    @Output() onClose: EventEmitter<void> = new EventEmitter();
+    @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
     isDisplayed = false;
     style?: any;
@@ -119,11 +119,11 @@ export class PopupComponent implements OnInit, OnDestroy {
         }
     }
 
-    close() {
+    close(byClickingOutside?: boolean) {
         if (!this.isAlwaysOn && this.isDisplayed) {
             this.isDisplayed = false;
             this.unlisten();
-            this.onClose.emit();
+            this.onClose.emit(byClickingOutside);
             markForCheck(this.cdr);
         }
     }
@@ -132,7 +132,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         if (!this.element.nativeElement.contains(event.target)
             && (!this.parentElement || !this.parentElement.contains(event.target))) {
             this.service.closeAllSubMenu.next();
-            this.close();
+            this.close(true);
         }
     }
 
