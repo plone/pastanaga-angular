@@ -1,3 +1,7 @@
+# 1.7.2 (2020-01-28)
+
+- Differentiate emitted event when dropdown closed by clicking outside
+
 # 1.7.1 (2020-01-28)
 
 - Fix right-positionned side-bar
