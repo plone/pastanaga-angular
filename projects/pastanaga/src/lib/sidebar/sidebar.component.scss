@@ -18,11 +18,19 @@ pa-sidebar {
 
     &.left-positioned {
         left: 0;
-        transform: translateX(-100%);
+        &:not(.open) {
+            width: 0 !important;
+            min-width: 0 !important;
+            transform: translateX(-100%);
+        }
     }
     &.right-positioned {
         right: 0;
-        transform: translateX(100%);
+        &:not(.open) {
+            width: 0 !important;
+            min-width: 0 !important;
+            transform: translateX(100%);
+        }
     }
     &.open {
         transform: translateX(0);
