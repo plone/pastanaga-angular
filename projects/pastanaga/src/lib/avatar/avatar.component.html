@@ -1,0 +1,32 @@
+<span *ngIf="!_isButton; else buttonAvatar" class="pa-avatar {{colorClass}} {{sizeClass}}"
+      [style.background-color]="_avatar.backgroundColor"
+      [paTooltip]="tooltip">
+    <img *ngIf="base64Image"
+         class="pa-avatar-img"
+         [src]="base64Image">
+    <abbr class="pa-avatar-abbr" [class.pa-avatar-color]="!!colorClass">{{initials}}</abbr>
+
+    <span *ngIf="_avatar.badgeIcon" class="pa-badge">
+        <span class="pa-badge-icon">
+            <pa-icon [name]="_avatar.badgeIcon" small></pa-icon>
+        </span>
+    </span>
+</span>
+
+<ng-template #buttonAvatar>
+    <a class="pa-button pa-button-avatar" tabindex="0" [paTooltip]="tooltip">
+        <span class="pa-button-wrapper" tabindex="-1">
+            <span class="pa-avatar {{colorClass}} {{sizeClass}}">
+                <img *ngIf="base64Image"
+                     class="pa-avatar-img"
+                     [src]="base64Image">
+                <abbr class="pa-avatar-abbr" [class.pa-avatar-color]="!!colorClass">{{initials}}</abbr>
+            </span>
+        </span>
+        <span *ngIf="_avatar.badgeIcon" class="pa-badge">
+            <span class="pa-badge-icon">
+                <pa-icon [name]="_avatar.badgeIcon" small></pa-icon>
+            </span>
+        </span>
+    </a>
+</ng-template>

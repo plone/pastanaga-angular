@@ -4,6 +4,7 @@ import { BadgeComponent } from './badge.component';
 import { ButtonModule } from '../button/button.module';
 import { TooltipModule } from '../tooltip/tooltip.module';
 import { TranslateModule } from '../translate/translate.module';
+import { AvatarModule } from '../avatar/avatar.module';
 
 @NgModule({
     imports: [
@@ -11,6 +12,7 @@ import { TranslateModule } from '../translate/translate.module';
         ButtonModule,
         TooltipModule,
         TranslateModule,
+        AvatarModule,
     ],
     declarations: [BadgeComponent],
     exports: [BadgeComponent],

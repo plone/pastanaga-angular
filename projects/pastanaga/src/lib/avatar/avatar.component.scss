@@ -1,0 +1,222 @@
+@import "../styles/variables";
+
+$avatar-blue: $b60;
+$avatar-teal: $t70;
+$avatar-jade: $j50;
+$avatar-green: $g60;
+$avatar-lime: $l80;
+$avatar-kaki: $k90;
+$avatar-yellow: #C08817;
+$avatar-orange: #DF6B1F;
+$avatar-salmon: $s90;
+$avatar-red: $r70;
+$avatar-crisom: $c40;
+$avatar-magenta: $m40;
+$avatar-violet: $v30;
+$avatar-indigo: $i30;
+$avatar-azure: $a50;
+
+.pa-avatar {
+    width: rythm(3);
+    height: rythm(3);
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    background: $azure-dark;
+    vertical-align: middle;
+
+    &.pa-avatar-small {
+        width: rythm(2);
+        height: rythm(2);
+
+        .pa-avatar-abbr {
+            @include font-size(m,xl,xxl);
+            line-height: calc(#{rythm(2)} + 1px);
+        }
+        .pa-badge {
+            left: rythm(1);
+            top: rythm(1);
+        }
+    }
+
+    .pa-avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .pa-avatar-abbr {
+        cursor: default;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        font-weight: $font-weight-light;
+        @include font-size(xxl, xd, xxl);
+        background-size: 0 0;
+        text-align: center;
+        text-transform: uppercase;
+        color: $gray-blacky;
+
+        &.pa-avatar-color {
+            color: $white;
+        }
+    }
+
+    .pa-avatar-img + .pa-avatar-abbr {
+        z-index: 2;
+        text-indent: rythm(3);
+        overflow: hidden;
+    }
+
+    .pa-badge {
+        position: relative;
+        left: rythm(2);
+        top: rythm(2);
+        background: $gray-light;
+        border-radius: 50%;
+        z-index: 1;
+
+        .pa-badge-icon {
+            @include font-size(xxs, xs, s);
+            padding: 0 calc(#{rythm(.25)} + 1px);
+
+            ::ng-deep svg {
+                height: rythm(1);
+                width: rythm(1);
+                fill: $white;
+            }
+        }
+    }
+
+    &.pa-avatar-blue {
+        background: $avatar-blue;
+    }
+    &.pa-avatar-teal {
+        background: $avatar-teal;
+    }
+    &.pa-avatar-jade {
+        background: $avatar-jade;
+    }
+    &.pa-avatar-green {
+        background: $avatar-green;
+    }
+    &.pa-avatar-lime {
+        background: $avatar-lime;
+    }
+    &.pa-avatar-kaki {
+        background: $avatar-kaki;
+    }
+    &.pa-avatar-yellow {
+        background: $avatar-yellow;
+    }
+    &.pa-avatar-orange {
+        background: $avatar-orange;
+    }
+    &.pa-avatar-salmon {
+        background: $avatar-salmon;
+    }
+    &.pa-avatar-red {
+        background: $avatar-red;
+    }
+    &.pa-avatar-crisom {
+        background: $avatar-crisom;
+    }
+    &.pa-avatar-magenta {
+        background: $avatar-magenta ;
+    }
+    &.pa-avatar-violet {
+        background: $avatar-violet;
+    }
+    &.pa-avatar-indigo {
+        background: $avatar-indigo;
+    }
+    &.pa-avatar-azure {
+        background: $avatar-azure;
+    }
+}
+
+.pa-button-avatar {
+    text-transform: none;
+
+    &:hover,
+    &:active {
+        background: none;
+    }
+    .pa-avatar {
+        fill: currentColor;
+        stroke: currentColor;
+        stroke-width: 0.0234375rem;
+        transition: background-color .25s ease;
+
+        &:hover {
+            background-color: darken($azure, 10%);
+        }
+
+        &.pa-avatar-small {
+            width: rythm(2);
+            height: rythm(2);
+        }
+        .pa-avatar-abbr {
+            cursor: pointer;
+            color: $brown;
+
+            &.pa-avatar-color {
+                color: $white;
+            }
+        }
+        &.pa-avatar-blue:hover {
+            background-color: darken($avatar-blue, 10%);
+        }
+        &.pa-avatar-teal:hover {
+            background-color: darken($avatar-teal, 10%);
+        }
+        &.pa-avatar-jade:hover {
+            background-color: darken($avatar-jade, 10%);
+        }
+        &.pa-avatar-green:hover {
+            background-color: darken($avatar-green, 10%);
+        }
+        &.pa-avatar-lime:hover {
+            background-color: darken($avatar-lime, 10%);
+        }
+        &.pa-avatar-kaki:hover {
+            background-color: darken($avatar-kaki, 10%);
+        }
+        &.pa-avatar-yellow:hover {
+            background-color: darken($avatar-yellow, 10%);
+        }
+        &.pa-avatar-orange:hover {
+            background-color: darken($avatar-orange, 10%);
+        }
+        &.pa-avatar-salmon:hover {
+            background-color: darken($avatar-salmon, 10%);
+        }
+        &.pa-avatar-red:hover {
+            background-color: darken($avatar-red, 10%);
+        }
+        &.pa-avatar-crisom:hover {
+            background-color: darken($avatar-crisom, 10%);
+        }
+        &.pa-avatar-magenta:hover {
+            background-color: darken($avatar-magenta, 10%);
+        }
+        &.pa-avatar-violet:hover {
+            background-color: darken($avatar-violet, 10%);
+        }
+        &.pa-avatar-indigo:hover {
+            background-color: darken($avatar-indigo, 10%);
+        }
+        &.pa-avatar-azure:hover {
+            background-color: darken($avatar-azure, 10%);
+        }
+    }
+}

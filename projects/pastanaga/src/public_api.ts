@@ -78,3 +78,7 @@ export * from './lib/dropdown/dropdown-item.component';
 export * from './lib/dropdown/dropdown-checkbox.component';
 export * from './lib/dropdown/dropdown-section.component';
 export * from './lib/dropdown/dropdown-separator.component';
+
+export * from './lib/avatar/avatar.model';
+export * from './lib/avatar/avatar.component';
+export * from './lib/avatar/avatar.module';

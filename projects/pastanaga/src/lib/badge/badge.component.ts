@@ -11,6 +11,7 @@ import {
     ViewRef
 } from '@angular/core';
 import { BadgeModel } from './badge.model';
+import { Avatar } from '../avatar/avatar.model';
 
 @Component({
     selector: 'pa-badge',
@@ -55,6 +56,12 @@ export class BadgeComponent implements AfterViewInit {
     }
     @Input() of?: number;
     @Input() buttons?: BadgeModel[];
+    @Input() set avatar(value: Avatar) {
+        if (!!value) {
+            this._avatar = value;
+        }
+    }
+    _avatar?: Avatar;
 
     @Output() remove: EventEmitter<MouseEvent> = new EventEmitter();
     @Output() render: EventEmitter<ElementRef> = new EventEmitter();

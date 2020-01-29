@@ -638,6 +638,33 @@
 </div>
 
 <div class="example-box">
+    <div class="example-box-header" (click)="toggleSection('avatar')">Avatars</div>
+
+    <div *ngIf="sections.avatar">
+        <p>
+            <pa-avatar *ngFor="let avatar of avatars; let i = index"
+                       size="small"
+                       [isButton]="i === avatars.length - 1"
+                       [avatar]="avatar"
+                       [src]="i === 5 ? './assets/ninja.svg' : null"></pa-avatar>
+        </p>
+        <p>
+            <pa-avatar *ngFor="let avatar of avatars; let i = index"
+                       [avatar]="avatar"
+                       [isButton]="i === avatars.length - 1"
+                       [src]="i === 5 ? './assets/ninja.svg' : null"></pa-avatar>
+        </p>
+        <p>
+            <pa-avatar *ngFor="let avatar of avatars; let i = index"
+                       [avatar]="avatar"
+                       [isButton]="i === avatars.length - 1"
+                       [tooltip]="avatar.username + ' is overriden'"
+                       [src]="i === 5 ? './assets/ninja.svg' : null"></pa-avatar>
+        </p>
+    </div>
+</div>
+
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('badges')">Badges</div>
 
     <div *ngIf="sections.badges">
@@ -669,6 +696,11 @@
         <div>
             <pa-badge [buttons]="badgeButtons">Badge with buttons</pa-badge>
             <pa-badge [canBeRemoved]="true" (remove)="onButtonClick($event)">Badge with remove</pa-badge>
+        </div>
+        <div>
+            <pa-badge *ngFor="let avatar of avatars; let i = index"
+                      [canBeRemoved]="i === avatars.length - 1"
+                      [avatar]="avatar">{{avatar.username}}</pa-badge>
         </div>
         <div>
             <pa-badge maxWidth="100px">Badge with long text and ellipsis</pa-badge>

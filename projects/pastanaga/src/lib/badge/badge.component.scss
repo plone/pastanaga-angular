@@ -40,6 +40,23 @@
     > .pa-badge-ellipsis {
         opacity: .8;
     }
+
+    &.pa-badge-avatar {
+        border-bottom-left-radius: rythm(1);
+        border-top-left-radius: rythm(1);
+        padding: 0 rythm(.25) 0 0;
+
+        pa-avatar {
+            margin-right: rythm(.5);
+        }
+
+        .pa-badge-value {
+            bottom: -1px;
+        }
+        pa-button ::ng-deep .pa-button {
+            margin-bottom: - rythm(.25)*5;
+        }
+    }
 }
 
 .pa-badge-small {
