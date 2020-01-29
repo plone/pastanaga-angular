@@ -1,15 +1,15 @@
 import { TestBed, async, tick, fakeAsync } from '@angular/core/testing';
 import { BadgeComponent } from './badge.component';
 import { BrowserModule, By } from '@angular/platform-browser';
-import {
-    ButtonModule,
-    TooltipModule,
-} from '../..';
+
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AngularSvgIconModule, SvgLoader } from 'angular-svg-icon';
 import { svgLoaderFactory } from '../test.utils';
 import { TranslateModule } from '../translate/translate.module';
+import { TooltipModule } from '../tooltip/tooltip.module';
+import { ButtonModule } from '../button/button.module';
+import { AvatarModule } from '../avatar/avatar.module';
 
 const en = {
     'common': {
@@ -118,6 +118,7 @@ describe('BadgeComponent', () => {
                 BrowserModule,
                 CommonModule,
                 ButtonModule,
+                AvatarModule,
                 TooltipModule,
                 TranslateModule,
                 AngularSvgIconModule.forRoot({

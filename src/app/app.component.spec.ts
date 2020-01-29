@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {
+    AvatarModule,
     BadgeModule,
     ButtonModule,
     CalendarModule,
@@ -43,6 +44,7 @@ describe('AppComponent', () => {
                 BrowserModule,
                 FormsModule,
                 TranslateModule,
+                AvatarModule,
                 BadgeModule,
                 ButtonModule,
                 CalendarModule,
