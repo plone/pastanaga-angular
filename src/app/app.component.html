@@ -698,6 +698,11 @@
             <pa-badge [canBeRemoved]="true" (remove)="onButtonClick($event)">Badge with remove</pa-badge>
         </div>
         <div>
+            <pa-badge *ngFor="let avatar of avatars; let i = index"
+                      [canBeRemoved]="i === avatars.length - 1"
+                      [avatar]="avatar">{{avatar.username}}</pa-badge>
+        </div>
+        <div>
             <pa-badge maxWidth="100px">Badge with long text and ellipsis</pa-badge>
         </div>
         <div>

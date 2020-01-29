@@ -2,7 +2,11 @@
       [class.pa-badge-accent]="isAccented"
       [class.pa-badge-small]="isSmall"
       [class.pa-badge-error]="isError"
+      [class.pa-badge-avatar]="!!_avatar"
       [ngStyle]="colorStyle">
+
+    <pa-avatar *ngIf="!!_avatar" [avatar]="_avatar" size="small"></pa-avatar>
+
     <span *ngIf="!_value"
           class="pa-badge-value"
           [ngStyle]="colorStyle"

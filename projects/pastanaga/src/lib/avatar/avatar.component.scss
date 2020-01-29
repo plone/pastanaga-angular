@@ -47,6 +47,7 @@ $avatar-azure: $a50;
         overflow: hidden;
         position: absolute;
         top: 0;
+        left: 0;
         z-index: 1;
     }
 
@@ -56,6 +57,7 @@ $avatar-azure: $a50;
         height: 100%;
         position: absolute;
         top: 0;
+        left: 0;
         display: inline-block;
         font-weight: $font-weight-light;
         @include font-size(xxl, xd, xxl);
