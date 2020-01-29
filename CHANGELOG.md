@@ -1,3 +1,8 @@
+# 1.8.0 (2020-01-29)
+
+- New avatar component
+- New optional avatar input to display avatar in a badge
+
 # 1.7.2 (2020-01-28)
 
 - Differentiate emitted event when dropdown closed by clicking outside
