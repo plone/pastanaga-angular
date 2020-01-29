@@ -14,7 +14,7 @@ import {
     ToasterModule,
     TooltipModule,
     SidebarModule,
-    TranslateModule, DropdownModule, PopupModule,
+    TranslateModule, DropdownModule, PopupModule, AvatarModule,
 } from '../../projects/pastanaga/src';
 
 import * as en from '../assets/i18n/en.json';
@@ -39,6 +39,7 @@ import * as la from '../assets/i18n/la.json';
         CalendarModule,
         DropdownModule,
         PopupModule,
+        AvatarModule,
     ],
     declarations: [
         AppComponent,
