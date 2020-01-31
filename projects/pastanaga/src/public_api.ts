@@ -12,6 +12,7 @@ export * from './lib/button/button.component';
 export * from './lib/button/button-link.component';
 
 export * from './lib/common/utils';
+export * from './lib/test.utils';
 
 export * from './lib/controls/controls.module';
 export * from './lib/controls/control.model';
