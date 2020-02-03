@@ -12,7 +12,7 @@ import {
     ChangeDetectorRef,
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { markForCheck } from '../../common/utils';
+import { detectChanges, markForCheck } from '../../common/utils';
 
 let nextId = 0;
 
@@ -79,7 +79,7 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
         if (this.type === 'checkbox' || !this.isSelected) {
             this.isSelected = !this.isSelected;
         }
-
+        markForCheck(this.cdr);
         this.isSelectedChange.emit(this.isSelected);
         this.onSelection.emit(this.isSelected);
     }
@@ -89,6 +89,7 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
             const badgeWidth = this.badge.nativeElement.getBoundingClientRect().width;
             this.labelMaxWidth = {'max-width': `calc(100% - ${badgeWidth}px - 12px)`};
             this.setEllipsis();
+            detectChanges(this.cdr);
         }
     }
 
@@ -103,6 +104,6 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
                 this.tooltipText = this.ellipsisText.nativeElement.innerText;
             }
         }
-        markForCheck(this.cdr);
+        detectChanges(this.cdr);
     }
 }

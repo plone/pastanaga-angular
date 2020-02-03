@@ -1,5 +1,6 @@
 <pa-button class="right-menu-button" icon="menu" color="secondary" border
-           (click)="openMenu('right-menu')">Menu</pa-button>
+           (click)="openMenu('right-menu')">Menu
+</pa-button>
 
 <h1 translate>demo-page.title</h1>
 
@@ -8,7 +9,8 @@
 <pa-sidebar name="left-menu" folded noBackdrop lockedOpen unfoldOnHover (foldedChanged)="isLeftMenuFolded = $event">
     <div style="background: white; height: 100vh">
         <ng-container *ngIf="!isLeftMenuFolded">
-            <pa-button color="secondary" (click)="toggleStayUnfolded('left-menu')">{{isLockedUnfolded ? 'Fold' : 'Stay unfolded'}}</pa-button>
+            <pa-button color="secondary"
+                       (click)="toggleStayUnfolded('left-menu')">{{isLockedUnfolded ? 'Fold' : 'Stay unfolded'}}</pa-button>
         </ng-container>
         <div>
             I am a folded left menu locked opened
@@ -20,6 +22,87 @@
     <div style="background: white; height: 100vh">I am the right one</div>
 </pa-sidebar>
 
+<div class="example-box">
+    <div class="example-box-header" (click)="toggleSection('checkbox')">Checkboxes</div>
+    <div *ngIf="sections.checkbox">
+        <table class="checkoxes">
+            <thead>
+            <tr>
+                <th>Checkboxes</th>
+                <th>2 way data-binding</th>
+                <th>selection</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
+                                 (onSelection)="standaloneSelection = $event">Standalone checkbox
+                    </pa-checkbox>
+                </td>
+                <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
+                <td>
+                    {{standaloneSelection}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-tree type="radio" [checkboxes]="simpleCheckboxes"
+                                      (selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)
+                    </pa-checkbox-tree>
+                </td>
+                <td>
+                    No two way data binding
+                </td>
+                <td>
+                    Selection: {{simpleCheckboxSelection | json}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-tree [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
+                                      (selection)="iconCheckboxSelection = $event">Icon checkbox group
+                    </pa-checkbox-tree>
+                </td>
+                <td>
+                    No two data binding
+                </td>
+                <td>
+                    <p>Selection: {{iconCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-tree [checkboxes]="helpCheckboxes"
+                                      [isCountVisible]="true"
+                                      (selection)="helpCheckboxSelection = $event">Help checkbox group
+                    </pa-checkbox-tree>
+                </td>
+                <td>
+                    No two way data binding
+                </td>
+                <td>
+                    <p>Selection: {{helpCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-tree [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">
+                        Nested
+                        checkbox group
+                    </pa-checkbox-tree>
+                </td>
+                <td>
+                    No two data binding
+                </td>
+                <td>
+                    <p>Selection: {{nestedCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('calendar')">Calendar</div>
@@ -133,11 +216,21 @@
             <pa-expand>
                 <expand-title>Title 1</expand-title>
                 <expand-description>with a description</expand-description>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus. Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus luctus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus.
+                    Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium
+                    enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit
+                    amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu
+                    tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus
+                    luctus.</p>
             </pa-expand>
             <pa-expand>
                 <expand-title>Title 2</expand-title>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus. Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus luctus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus.
+                    Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium
+                    enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit
+                    amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu
+                    tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus
+                    luctus.</p>
             </pa-expand>
         </pa-expand-list>
         <h4>Expand list large</h4>
@@ -145,18 +238,32 @@
             <pa-expand>
                 <expand-title>Title 1</expand-title>
                 <expand-description>with a description</expand-description>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus. Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus luctus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus.
+                    Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium
+                    enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit
+                    amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu
+                    tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus
+                    luctus.</p>
             </pa-expand>
             <pa-expand>
                 <expand-title>Title 2</expand-title>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus. Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus luctus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus.
+                    Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium
+                    enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit
+                    amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu
+                    tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus
+                    luctus.</p>
             </pa-expand>
         </pa-expand-list>
         <h4>Standalone</h4>
         <pa-expand [openOnInit]="true" [toggleTooltip]="['It will expand', 'It will collapse']">
             <expand-title>Title</expand-title>
             <expand-description>with a description</expand-description>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus. Nullam rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium enim. Sed maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit amet, iaculis ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu tortor. Ut rutrum hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus luctus.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur turpis ut pretium maximus. Nullam
+                rhoncus aliquam diam et eleifend. In at consequat justo, eu viverra dolor. Cras nec pretium enim. Sed
+                maximus eleifend enim eu facilisis. Curabitur id sapien dignissim, condimentum nunc sit amet, iaculis
+                ante. Vestibulum id lorem leo. Duis quis velit a diam sollicitudin feugiat sed eu tortor. Ut rutrum
+                hendrerit cursus. Suspendisse eleifend lacus eu quam gravida, eu aliquam lacus luctus.</p>
         </pa-expand>
     </div>
 </div>
@@ -312,16 +419,33 @@
     <div *ngIf="sections.progresscircle">
         <table border="none">
             <tr>
-                <td><pa-spinner></pa-spinner></td>
-                <td><pa-spinner color="secondary"></pa-spinner></td>
-                <td><pa-progress-circle [percent]="progressValue" [isLarge]="true"></pa-progress-circle></td>
-                <td><pa-progress-circle [percent]="progressValue" [isLarge]="true" color="secondary"></pa-progress-circle></td>
+                <td>
+                    <pa-spinner></pa-spinner>
+                </td>
+                <td>
+                    <pa-spinner color="secondary"></pa-spinner>
+                </td>
+                <td>
+                    <pa-progress-circle [percent]="progressValue" [isLarge]="true"></pa-progress-circle>
+                </td>
+                <td>
+                    <pa-progress-circle [percent]="progressValue" [isLarge]="true"
+                                        color="secondary"></pa-progress-circle>
+                </td>
             </tr>
             <tr>
-                <td><pa-spinner small></pa-spinner></td>
-                <td><pa-spinner small color="secondary"></pa-spinner></td>
-                <td><pa-progress-circle [percent]="progressValue"></pa-progress-circle></td>
-                <td><pa-progress-circle [percent]="progressValue" color="secondary"></pa-progress-circle></td>
+                <td>
+                    <pa-spinner small></pa-spinner>
+                </td>
+                <td>
+                    <pa-spinner small color="secondary"></pa-spinner>
+                </td>
+                <td>
+                    <pa-progress-circle [percent]="progressValue"></pa-progress-circle>
+                </td>
+                <td>
+                    <pa-progress-circle [percent]="progressValue" color="secondary"></pa-progress-circle>
+                </td>
             </tr>
         </table>
     </div>
@@ -329,94 +453,6 @@
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('controls')">Controls</div>
     <div *ngIf="sections.controls">
-        <table class="checkoxes">
-            <thead>
-            <tr>
-                <th>Checkboxes</th>
-                <th>2 way data-binding</th>
-                <th>selection</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"-->
-                                 <!--(selection)="standaloneSelection = $event">Standalone checkbox-->
-                    <!--</pa-checkbox>-->
-                <!--</td>-->
-                <!--<td>isSelected: {{isStandaloneCheckboxSelected}}</td>-->
-                <!--<td>-->
-                    <!--{{standaloneSelection}}-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<pa-checkbox-tree type="radio" [checkboxes]="simpleCheckboxes"-->
-                                       <!--(selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)-->
-                    <!--</pa-checkbox-tree>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<ul>-->
-                        <!--<li *ngFor="let checkbox of simpleCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>-->
-                    <!--</ul>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--Selection: {{simpleCheckboxSelection | json}}-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<pa-checkbox-tree [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"-->
-                                       <!--(selection)="iconCheckboxSelection = $event">Icon checkbox group-->
-                    <!--</pa-checkbox-tree>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<ul>-->
-                        <!--<li *ngFor="let checkbox of iconCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>-->
-                    <!--</ul>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<p>Selection: {{iconCheckboxSelection}}</p>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<pa-checkbox-tree [checkboxes]="helpCheckboxes"-->
-                                      <!--[isCountVisible]="true"-->
-                                      <!--(selection)="helpCheckboxSelection = $event">Help checkbox group-->
-                    <!--</pa-checkbox-tree>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<ul>-->
-                        <!--<li *ngFor="let checkbox of helpCheckboxes">{{checkbox.label}}: {{checkbox.isSelected}}</li>-->
-                    <!--</ul>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<p>Selection: {{helpCheckboxSelection}}</p>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <tr>
-                <td>
-                    <pa-checkbox-tree [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">Nested
-                        checkbox group
-                    </pa-checkbox-tree>
-                </td>
-                <td>
-                    <ul>
-                        <li *ngFor="let checkbox of nestedCheckboxes">
-                            {{checkbox.label}}: {{checkbox.isSelected}}
-                            <ul *ngIf="checkbox.children">
-                                <li *ngFor="let child of checkbox.children">{{child.label}}: {{child.isSelected}}</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </td>
-                <td>
-                    <p>Selection: {{nestedCheckboxSelection}}</p>
-                </td>
-            </tr>
-            </tbody>
-        </table>
 
         <table>
             <thead>
@@ -432,7 +468,8 @@
                     <pa-toggle [(isSelected)]="toggleSelection1">Simple toggle</pa-toggle>
                     <pa-toggle help="Some help" [(isSelected)]="toggleSelection2">Toggle with help (selected by default)
                     </pa-toggle>
-                    <pa-toggle imageUrl="./assets/ninja.svg" [(isSelected)]="toggleSelection3">Toggle with image</pa-toggle>
+                    <pa-toggle imageUrl="./assets/ninja.svg" [(isSelected)]="toggleSelection3">Toggle with image
+                    </pa-toggle>
 
                 </td>
                 <td>
@@ -446,7 +483,8 @@
             </tr>
             <tr>
                 <td>
-                    <pa-toggle-group [toggles]="toggleGroup1" (onSelection)="toggleGroupSelection1 = $event">Group of simple
+                    <pa-toggle-group [toggles]="toggleGroup1" (onSelection)="toggleGroupSelection1 = $event">Group of
+                        simple
                         toggles
                     </pa-toggle-group>
                 </td>
@@ -554,12 +592,14 @@
             <pa-button color="secondary" size="small" (click)="onButtonClick($event)">Secondary</pa-button>
             <pa-button color="destructive" size="small" (click)="onButtonClick($event)">Destructive</pa-button>
             <pa-button color="destructive" size="small" disabled (click)="onButtonClick($event)">Disabled</pa-button>
-            <pa-button color="primary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="primary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Primary
+            </pa-button>
             <pa-button color="secondary" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
             </pa-button>
             <pa-button color="destructive" size="small" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
             </pa-button>
-            <pa-button color="destructive" size="small" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
+            <pa-button color="destructive" size="small" [icon]="'delete'" disabled (click)="onButtonClick($event)">
+                Disabled
             </pa-button>
         </p>
 
@@ -579,12 +619,14 @@
             <pa-button color="secondary" size="large" (click)="onButtonClick($event)">Secondary</pa-button>
             <pa-button color="destructive" size="large" (click)="onButtonClick($event)">Destructive</pa-button>
             <pa-button color="destructive" size="large" disabled (click)="onButtonClick($event)">Disabled</pa-button>
-            <pa-button color="primary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Primary</pa-button>
+            <pa-button color="primary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Primary
+            </pa-button>
             <pa-button color="secondary" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Secondary
             </pa-button>
             <pa-button color="destructive" size="large" [icon]="'delete'" (click)="onButtonClick($event)">Destructive
             </pa-button>
-            <pa-button color="destructive" size="large" [icon]="'delete'" disabled (click)="onButtonClick($event)">Disabled
+            <pa-button color="destructive" size="large" [icon]="'delete'" disabled (click)="onButtonClick($event)">
+                Disabled
             </pa-button>
         </p>
 
@@ -592,14 +634,16 @@
             <pa-button color="primary" size="small" [border]="true" (click)="onButtonClick($event)">Primary</pa-button>
             <pa-button color="secondary" size="small" border (click)="onButtonClick($event)">Secondary</pa-button>
             <pa-button color="destructive" size="small" border (click)="onButtonClick($event)">Destructive</pa-button>
-            <pa-button color="destructive" size="small" border [disabled]="true" (click)="onButtonClick($event)">Disabled
+            <pa-button color="destructive" size="small" border [disabled]="true" (click)="onButtonClick($event)">
+                Disabled
             </pa-button>
             <pa-button color="primary" size="small" [icon]="'delete'" [border]="true" (click)="onButtonClick($event)">
                 Primary
             </pa-button>
             <pa-button color="secondary" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
             </pa-button>
-            <pa-button color="destructive" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
+            <pa-button color="destructive" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">
+                Destructive
             </pa-button>
             <pa-button color="destructive" size="small" [icon]="'delete'" border [disabled]="true"
                        (click)="onButtonClick($event)">Disabled
@@ -613,24 +657,30 @@
             <pa-button disabled="true" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
             <pa-button color="primary" [icon]="'delete'" border (click)="onButtonClick($event)">Primary</pa-button>
             <pa-button color="secondary" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary</pa-button>
-            <pa-button color="destructive" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive</pa-button>
-            <pa-button disabled="true" [icon]="'delete'" border="true" (click)="onButtonClick($event)">Disabled</pa-button>
+            <pa-button color="destructive" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
+            </pa-button>
+            <pa-button disabled="true" [icon]="'delete'" border="true" (click)="onButtonClick($event)">Disabled
+            </pa-button>
         </p>
 
         <p>
             <pa-button color="primary" size="large" border (click)="onButtonClick($event)">Primary</pa-button>
             <pa-button color="secondary" size="large" border (click)="onButtonClick($event)">Secondary</pa-button>
-            <pa-button color="destructive" size="large" border paTooltip="Try me" (click)="onButtonClick($event)">Tooltip on
+            <pa-button color="destructive" size="large" border paTooltip="Try me" (click)="onButtonClick($event)">
+                Tooltip on
                 me
             </pa-button>
-            <pa-button color="destructive" size="large" border disabled (click)="onButtonClick($event)">Disabled</pa-button>
+            <pa-button color="destructive" size="large" border disabled (click)="onButtonClick($event)">Disabled
+            </pa-button>
             <pa-button color="primary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Primary
             </pa-button>
             <pa-button color="secondary" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
             </pa-button>
-            <pa-button color="destructive" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">Destructive
+            <pa-button color="destructive" size="large" [icon]="'delete'" border (click)="onButtonClick($event)">
+                Destructive
             </pa-button>
-            <pa-button color="destructive" size="large" [icon]="'delete'" border disabled (click)="onButtonClick($event)">
+            <pa-button color="destructive" size="large" [icon]="'delete'" border disabled
+                       (click)="onButtonClick($event)">
                 Disabled
             </pa-button>
         </p>

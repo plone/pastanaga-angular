@@ -1,53 +1,55 @@
 <fieldset class="pa-fieldset-group" [id]="id">
-    <legend [class.pa-sr]="isChildren" [class.pa-select-all]="isSelectAllVisible">
+    <legend [class.pa-sr]="_isChildren" [class.pa-select-all]="isSelectAllVisible">
         <ng-content></ng-content>
         <pa-badge *ngIf="isCountVisible" [isSmall]="true" [isAccented]="true"
                   [value]="totalSelected" [of]="totalCount"></pa-badge>
     </legend>
 
     <ng-container *ngIf="type === 'checkbox'">
-        <pa-button *ngIf="!isChildren && isSelectAllVisible"
+        <pa-button *ngIf="!_isChildren && isSelectAllVisible"
                    size="small" class="pa-field-button-right"
                    [color]="isAllSelected ? 'secondary' : 'primary'"
                    (click)="toggleSelectAll()">
             {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
         </pa-button>
-    
-        <div class="pa-field-group" *ngFor="let checkbox of checkboxes">
+
+        <div class="pa-field-group" *ngFor="let checkbox of _checkboxes">
             <pa-button *ngIf="(!!checkbox.children && checkbox.children.length > 0) || (!checkbox.children && isAsync)"
                        color="secondary" size="small"
+                       id="pa-expand-checkbox-{{checkbox.id}}"
                        [icon]="!checkbox.children ? 'initiating' : 'right-key'"
                        [disabled]="!checkbox.children"
-                       ariaControls="pa-expand-checkbox-{{checkbox.ariaId}}"
+                       ariaControls="pa-expand-checkbox-{{checkbox.id}}"
                        [ariaExpanded]="checkbox.isExpanded"
-                       (click)="checkbox.isExpanded = !checkbox.isExpanded">{{!checkbox.children ? 'Loading' :
-                !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
+                       (click)="toggleCheckbox(checkbox)">
+                {{!checkbox.children ? 'Loading' : !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
             </pa-button>
-            <pa-checkbox [icon]="checkbox.icon"
+            <pa-checkbox [id]="checkbox.id"
+                         [icon]="checkbox.icon"
                          [help]="checkbox.help"
+                         [isSelected]="checkbox.isSelected"
                          [isDisabled]="checkbox.isDisabled"
                          [isIndeterminate]="checkbox.isIndeterminate"
                          [isBadgeVisible]="isBadgeVisible && !!checkbox.children && checkbox.children.length > 0"
                          [totalChildren]="checkbox.totalChildren"
                          [selectedChildren]="checkbox.selectedChildren"
-                         [(isSelected)]="checkbox.isSelected"
                          (onSelection)="toggleSelection($event, checkbox)">{{checkbox.label}}
             </pa-checkbox>
-    
+
             <div class="pa-field-sublist" role="tabpanel"
-                 [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.ariaId"
+                 [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.id"
                  [attr.aria-hidden]="!checkbox.isExpanded">
-                <pa-checkbox-tree [doLoadChildren]="checkbox.isExpanded"
-                                  [isChildren]="true"
+                <pa-checkbox-tree *ngIf="checkbox.isExpanded" isChildren
+                                  [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
-                                  [getChildren]="getChildren"
-                                  (selection)="setParentState(checkbox)"></pa-checkbox-tree>
+                                  [getChildren]="_getChildren"
+                                  (selection)="setParentState($event, checkbox)"></pa-checkbox-tree>
             </div>
         </div>
     </ng-container>
 
     <div class="pa-field-group" *ngIf="type === 'radio'">
-        <pa-checkbox *ngFor="let checkbox of checkboxes"
+        <pa-checkbox *ngFor="let checkbox of _checkboxes"
                         [icon]="checkbox.icon"
                         type="radio"
                         [help]="checkbox.help"
@@ -58,3 +60,4 @@
         </pa-checkbox>
     </div>
 </fieldset>
+

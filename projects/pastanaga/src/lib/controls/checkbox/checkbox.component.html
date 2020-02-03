@@ -24,7 +24,7 @@
             <small *ngIf="subLabel">{{ subLabel }}</small>
         </span>
     </label>
-    <output *ngIf="isBadgeVisible && !!selectedChildren && selectedChildren > 0" #badge [for]="id">
+    <output *ngIf="isBadgeVisible" #badge [for]="id">
         <pa-badge [value]="selectedChildren" [of]="totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge>
     </output>
 
