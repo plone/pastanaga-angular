@@ -1,3 +1,10 @@
+# 1.9.0 (2020-02-03)
+
+- Checkbox component:
+  - `onSelection` event emitter become `selection`
+- Checkbox tree component:
+  - Fix selection state to work properly with onPush strategy
+
 # 1.8.0 (2020-01-29)
 
 - New avatar component

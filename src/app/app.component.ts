@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Avatar, BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, ToggleModel } from '../../projects/pastanaga/src';
 import { of } from 'rxjs';
+import { getInitialTree } from '../../projects/pastanaga/src/lib/controls/checkbox-tree/checkbox-tree.test-data';
 
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
     contentType = contentType || '';
@@ -69,7 +70,10 @@ export class AppComponent implements OnInit {
         }),
         new ControlModel({
             label: 'checkbox 2', id: 'nested_2', value: 'nested_2', children: [
-                new ControlModel({label: 'checkbox 2.1', value: 'nested_2.1', id: 'nested_2.1'}),
+                new ControlModel({label: 'checkbox 2.1', value: 'nested_2.1', id: 'nested_2.1', children: [
+                    new ControlModel({label: 'checkbox 2.1.1', value: 'nested_2.1.1', id: 'nested_2.1.1'}),
+                    new ControlModel({label: 'checkbox 2.1.2', value: 'nested_2.1.2', id: 'nested_2.1.2'}),
+                ]}),
                 new ControlModel({label: 'checkbox 2.2', value: 'nested_2.2', id: 'nested_2.2'}),
                 new ControlModel({label: 'checkbox 2.0', value: 'nested_2.0', id: 'nested_2.0'}),
                 new ControlModel({label: 'Another checkbox 2.x', value: 'nested_2.3', id: 'nested_2.3'}),
@@ -82,6 +86,7 @@ export class AppComponent implements OnInit {
             ]
         }),
     ];
+    checkboxTree: ControlModel[] = getInitialTree();
 
     simpleCheckboxSelection: string[] = [];
     iconCheckboxSelection: string[] = [];

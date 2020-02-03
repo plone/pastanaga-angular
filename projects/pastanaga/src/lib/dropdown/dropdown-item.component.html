@@ -27,7 +27,7 @@
                              [icon]="icon"
                              [isSelected]="isSelected"
                              [isDisabled]="isDisabled"
-                             (onSelection)="select($event)">
+                             (selection)="select($event)">
                     <ng-container *ngTemplateOutlet="labelContent"></ng-container>
                 </pa-checkbox>
             </div>

@@ -37,7 +37,7 @@
             <tr>
                 <td>
                     <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
-                                 (onSelection)="standaloneSelection = $event">Standalone checkbox
+                                 (selection)="standaloneSelection = $event">Standalone checkbox
                     </pa-checkbox>
                 </td>
                 <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="iconCheckboxes" [isBadgeVisible]="true"
+                    <pa-checkbox-tree [checkboxes]="iconCheckboxes" badgeVisible
                                       (selection)="iconCheckboxSelection = $event">Icon checkbox group
                     </pa-checkbox-tree>
                 </td>
@@ -73,8 +73,7 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="helpCheckboxes"
-                                      [isCountVisible]="true"
+                    <pa-checkbox-tree [checkboxes]="helpCheckboxes" countVisible
                                       (selection)="helpCheckboxSelection = $event">Help checkbox group
                     </pa-checkbox-tree>
                 </td>
@@ -87,7 +86,8 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="nestedCheckboxes" (selection)="nestedCheckboxSelection = $event">
+                    <pa-checkbox-tree [checkboxes]="checkboxTree"
+                                      (selection)="nestedCheckboxSelection = $event">
                         Nested
                         checkbox group
                     </pa-checkbox-tree>

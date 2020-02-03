@@ -11,7 +11,7 @@ import {
 import { ControlModel } from '../control.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslatePipe } from '../../translate/translate.pipe';
-import { markForCheck } from 'pastanaga-angular/lib/common/utils';
+import { markForCheck } from '../../common/utils';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
@@ -31,9 +31,10 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     @Input() id?: string;
     @Input() set checkboxes(value) {
         if (!!value) {
-            const translatedCheckboxes = value.map(checkbox => ({
+            const translatedCheckboxes = value.map(checkbox => new ControlModel({
                 ...checkbox,
                 label: this.translate.transform(checkbox.label || ''),
+                selectedChildren: this.getChildrenCount(checkbox),
             }));
             this._checkboxes = this._shouldSort ? this.sortCheckboxes(translatedCheckboxes) : translatedCheckboxes;
         }
@@ -57,19 +58,26 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         }
         this._doLoadChildren = booleanValue;
     }
-    @Input() set shouldSort(value) {this._shouldSort = coerceBooleanProperty(value); }
-    @Input() isBadgeVisible = true;
-    @Input() isSelectAllVisible = true;
-    @Input() isCountVisible = false;
+    @Input() set shouldSort(value) { this._shouldSort = coerceBooleanProperty(value); }
+    @Input() set badgeVisible(value) { this._badgeVisible = coerceBooleanProperty(value); }
+    @Input() set selectAllVisible(value) { this._selectAllVisible = coerceBooleanProperty(value); }
+    @Input() set countVisible(value) {
+        this._countVisible = coerceBooleanProperty(value);
+        this.updateSelectionCount();
+    }
 
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() allSelected: EventEmitter<boolean> = new EventEmitter();
+    @Output() updatedTree: EventEmitter<ControlModel[]> = new EventEmitter<ControlModel[]>();
 
     _checkboxes: ControlModel[] = [];
     _getChildren?: Function;
     _isChildren = false;
     _doLoadChildren = true;
     _shouldSort = true;
+    _badgeVisible = true;
+    _selectAllVisible = true;
+    _countVisible = false;
 
     onChange: any;
     onTouched: any;
@@ -92,7 +100,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
 
     writeValue(value: any) {
         if (!!this._checkboxes) {
-            this._checkboxes = this._checkboxes.map(checkbox => ({...checkbox, isSelected: value === checkbox.value}));
+            this._checkboxes = this._checkboxes.map(checkbox => new ControlModel({...checkbox, isSelected: value === checkbox.value}));
         }
     }
 
@@ -107,12 +115,13 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     toggleSelectAll() {
         this.isAllSelected = !this.isAllSelected;
         this._checkboxes = this._checkboxes.map( checkbox => {
-            const updatedCheckbox = {
+            const updatedCheckbox = new ControlModel({
                 ...checkbox,
-                isSelected: this.isAllSelected,
+                isSelected: checkbox.isDisabled ? checkbox.isSelected : this.isAllSelected,
+                isIndeterminate: false,
                 children: this.getUpdatedChildrenSelection(this.isAllSelected, checkbox),
-            };
-            this.countChildren(updatedCheckbox);
+            });
+            updatedCheckbox.selectedChildren = this.getChildrenCount(updatedCheckbox);
             return updatedCheckbox;
         });
         this.updateSelectionCount();
@@ -121,10 +130,11 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
 
     toggleSelection(isSelected: boolean, checkbox: ControlModel) {
         checkbox.isSelected = isSelected;
+        checkbox.isIndeterminate = false;
         if (!!checkbox.children) {
             checkbox.children = this.getUpdatedChildrenSelection(isSelected, checkbox);
+            checkbox.selectedChildren = this.getChildrenCount(checkbox);
             markForCheck(this.cdr);
-            this.countChildren(checkbox);
         }
         this.updateAllSelected();
         this.emitSelectionChanged();
@@ -134,24 +144,24 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         return !checkbox.children ? [] : checkbox.children.map(child => {
             if (!!child.children) {
                 child.children = this.getUpdatedChildrenSelection(isSelected, child);
+                child.selectedChildren = this.getChildrenCount(child);
             }
-            return {...child, isSelected};
+            return new ControlModel({...child, isSelected, isIndeterminate: false});
         });
     }
 
-    setParentState(selection: string[], parent: ControlModel) {
-        parent.children = (parent.children || []).map(child => ({...child, isSelected: selection.includes(this.getCheckboxValue(child))}));
-
-        if (parent.children.every(child => child.isSelected)) {
+    setParentState(childrenTree: ControlModel[], parent: ControlModel) {
+        parent.children = childrenTree;
+        if (parent.children.every(child => child.isSelected && !child.isIndeterminate)) {
             parent.isSelected = true;
             parent.isIndeterminate = false;
         } else {
-            parent.isIndeterminate = parent.children.some(child => child.isSelected);
-            if (parent.children.every(child => !child.isSelected)) {
+            parent.isIndeterminate = parent.children.some(child => child.isSelected || child.isIndeterminate);
+            if (parent.isIndeterminate || parent.children.every(child => !child.isSelected)) {
                 parent.isSelected = false;
             }
         }
-        this.countChildren(parent);
+        parent.selectedChildren = this.getChildrenCount(parent);
 
         this.updateAllSelected();
         this.emitSelectionChanged();
@@ -163,16 +173,16 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         markForCheck(this.cdr);
     }
 
-    private countChildren(checkbox: ControlModel) {
-        checkbox.selectedChildren = checkbox.children.filter(child => child.isSelected).length;
-        markForCheck(this.cdr);
+    private getChildrenCount(checkbox: ControlModel): number {
+        return checkbox.children.filter(child => child.isSelected).length;
     }
 
     private updateSelectionCount() {
-        if (this.isCountVisible && !!this._checkboxes) {
+        if (this._countVisible && !!this._checkboxes) {
             this.totalCount = 0;
             this.totalSelected = 0;
             this.countThemAll(this._checkboxes);
+            markForCheck(this.cdr);
         }
     }
 
@@ -189,6 +199,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     private emitSelectionChanged() {
         this.selection.emit(this.getSelectedValues());
         this.allSelected.emit(this.isAllSelected);
+        this.updatedTree.emit(this._checkboxes);
     }
 
     private getSelectedValues(): string[] {
@@ -224,17 +235,6 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
             checkbox.children.every(child => this.areAllChildrenSelected(child));
     }
 
-    private setSelectionForAll(checkboxes: ControlModel[]) {
-        checkboxes.forEach(checkbox => {
-            checkbox.isSelected = this.isAllSelected;
-            checkbox.isIndeterminate = false;
-            if (!!checkbox.children) {
-                this.setSelectionForAll(checkbox.children);
-                this.countChildren(checkbox);
-            }
-        });
-    }
-
     private loadChildren() {
         if (this.isAsync && !!this._getChildren) {
             for (const checkbox of this._checkboxes) {
@@ -245,11 +245,11 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
                 this._getChildren(checkbox).subscribe(children => {
                     let selectedChildren = 0;
                     checkbox.children = children.map(child => {
-                        const updatedChild = {
+                        const updatedChild = new ControlModel({
                             ...child,
                             label: this.translate.transform(child.label || ''),
                             isSelected: checkbox.isSelected,
-                        };
+                        });
                         if (updatedChild.isSelected) {
                             selectedChildren++;
                         }
@@ -278,10 +278,21 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     }
 
     toggleRadioSelection(value: string) {
-        this._checkboxes = (this._checkboxes || []).map(ctl => ({
+        this._checkboxes = (this._checkboxes || []).map(ctl => new ControlModel({
             ...ctl,
             isSelected: ctl.value === value,
         }));
         this.emitSelectionChanged();
+    }
+
+    private getExpandedCheckboxes(checkboxes: ControlModel[]): ControlModel[] {
+        return checkboxes.map(checkbox => this.getUpdatedExpandedCheckbox(checkbox, true));
+    }
+
+    private getUpdatedExpandedCheckbox(checkbox: ControlModel, isExpanded: boolean): ControlModel {
+        if (!!checkbox.children && checkbox.children.length > 0) {
+            checkbox.children = checkbox.children.map(child => this.getUpdatedExpandedCheckbox(child, isExpanded));
+        }
+        return new ControlModel({...checkbox, isExpanded});
     }
 }

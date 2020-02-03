@@ -38,7 +38,7 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() set noFocus(value) { this._noFocus = coerceBooleanProperty(value); }
     _noFocus = false;
 
-    @Output() onSelection: EventEmitter<boolean> = new EventEmitter();
+    @Output() selection: EventEmitter<boolean> = new EventEmitter();
     // the following EventEmitters allow two way data-binding
     @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
 
@@ -81,7 +81,7 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
         }
         markForCheck(this.cdr);
         this.isSelectedChange.emit(this.isSelected);
-        this.onSelection.emit(this.isSelected);
+        this.selection.emit(this.isSelected);
     }
 
     setLabelMaxWidth() {

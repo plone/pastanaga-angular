@@ -55,9 +55,9 @@ export class ControlModel {
         this.children = data.children || [];
         if (typeof data.totalChildren === 'number') {
             this.totalChildren = data.totalChildren;
+        } else if (!!this.children) {
+            this.totalChildren = this.children.length;
         }
-        if (typeof data.selectedChildren === 'number') {
-            this.selectedChildren = data.selectedChildren;
-        }
+        this.selectedChildren = typeof data.selectedChildren === 'number' ? data.selectedChildren : 0;
     }
 }

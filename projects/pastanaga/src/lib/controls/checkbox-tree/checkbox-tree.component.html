@@ -1,13 +1,14 @@
 <fieldset class="pa-fieldset-group" [id]="id">
-    <legend [class.pa-sr]="_isChildren" [class.pa-select-all]="isSelectAllVisible">
+    <legend [class.pa-sr]="_isChildren" [class.pa-select-all]="_selectAllVisible">
         <ng-content></ng-content>
-        <pa-badge *ngIf="isCountVisible" [isSmall]="true" [isAccented]="true"
+        <pa-badge *ngIf="_countVisible" [isSmall]="true" [isAccented]="true"
                   [value]="totalSelected" [of]="totalCount"></pa-badge>
     </legend>
 
     <ng-container *ngIf="type === 'checkbox'">
-        <pa-button *ngIf="!_isChildren && isSelectAllVisible"
+        <pa-button *ngIf="!_isChildren && _selectAllVisible"
                    size="small" class="pa-field-button-right"
+                   id="checkbox-tree-select-all"
                    [color]="isAllSelected ? 'secondary' : 'primary'"
                    (click)="toggleSelectAll()">
             {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
@@ -30,10 +31,10 @@
                          [isSelected]="checkbox.isSelected"
                          [isDisabled]="checkbox.isDisabled"
                          [isIndeterminate]="checkbox.isIndeterminate"
-                         [isBadgeVisible]="isBadgeVisible && !!checkbox.children && checkbox.children.length > 0"
+                         [isBadgeVisible]="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
                          [totalChildren]="checkbox.totalChildren"
                          [selectedChildren]="checkbox.selectedChildren"
-                         (onSelection)="toggleSelection($event, checkbox)">{{checkbox.label}}
+                         (selection)="toggleSelection($event, checkbox)">{{checkbox.label}}
             </pa-checkbox>
 
             <div class="pa-field-sublist" role="tabpanel"
@@ -43,20 +44,20 @@
                                   [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
                                   [getChildren]="_getChildren"
-                                  (selection)="setParentState($event, checkbox)"></pa-checkbox-tree>
+                                  (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
             </div>
         </div>
     </ng-container>
 
     <div class="pa-field-group" *ngIf="type === 'radio'">
         <pa-checkbox *ngFor="let checkbox of _checkboxes"
-                        [icon]="checkbox.icon"
-                        type="radio"
-                        [help]="checkbox.help"
-                        [isDisabled]="checkbox.isDisabled"
-                        [isBadgeVisible]="isBadgeVisible && !!checkbox.children && checkbox.children.length > 0"
-                        [(isSelected)]="checkbox.isSelected"
-                        (onSelection)="toggleRadioSelection(checkbox.value)">{{checkbox.label}}
+                     [icon]="checkbox.icon"
+                     type="radio"
+                     [help]="checkbox.help"
+                     [isDisabled]="checkbox.isDisabled"
+                     [isBadgeVisible]="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
+                     [(isSelected)]="checkbox.isSelected"
+                     (selection)="toggleRadioSelection(checkbox.value)">{{checkbox.label}}
         </pa-checkbox>
     </div>
 </fieldset>
