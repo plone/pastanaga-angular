@@ -103,8 +103,7 @@ export class AppComponent implements OnInit {
             new ControlModel({id: 'sweden', label: 'Sweden'}),
         ]}),
     ];
-    checkboxTree: ControlModel[] = getInitialTree();
-    fileSystemTree: ControlModel[] = getInitialTree();
+    fileSystemTree: ControlModel[] = getInitialTree(false);
 
     simpleCheckboxSelection: string[] = [];
     iconCheckboxSelection: string[] = [];

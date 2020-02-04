@@ -40,13 +40,13 @@ export function getInitialGroupWithADisabled(): ControlModel[] {
         }),
     ];
 }
-export function getInitialTree(): ControlModel[] {
+export function getInitialTree(expanded = true): ControlModel[] {
     return [
         new ControlModel({
             id: ids.root1,
             label: 'Root 1',
             value: 'root-1',
-            isExpanded: true,
+            isExpanded: expanded,
             children: [
                 new ControlModel({
                     id: ids.child1,
@@ -58,7 +58,7 @@ export function getInitialTree(): ControlModel[] {
                     id: ids.child2,
                     label: 'Level 1.2',
                     value: 'level-1.2',
-                    isExpanded: true,
+                    isExpanded: expanded,
                     children: [
                         new ControlModel({
                             id: ids.subChild1,

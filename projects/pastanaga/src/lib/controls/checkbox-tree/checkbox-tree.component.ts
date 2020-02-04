@@ -219,6 +219,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
 
     toggleCheckbox(checkbox: ControlModel) {
         checkbox.isExpanded = !checkbox.isExpanded;
+        this.updatedTree.emit(this._checkboxes);
         markForCheck(this.cdr);
     }
 
