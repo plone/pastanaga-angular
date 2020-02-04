@@ -56,7 +56,8 @@
             <div class="pa-field-sublist" role="tabpanel"
                  [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.id"
                  [attr.aria-hidden]="!checkbox.isExpanded">
-                <pa-checkbox-tree *ngIf="checkbox.isExpanded" isChildren
+                <pa-checkbox-tree *ngIf="checkbox.isExpanded"
+                                  [_isChildren]="true"
                                   [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
                                   [getChildren]="_getChildren"

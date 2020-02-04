@@ -56,7 +56,6 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
             this._getChildren = value;
         }
     }
-    @Input() set isChildren(value) { this._isChildren = coerceBooleanProperty(value); }
     @Input() set doLoadChildren(value) {
         const booleanValue = coerceBooleanProperty(value);
         if (!this._doLoadChildren && booleanValue) {
@@ -71,6 +70,8 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         this._countVisible = coerceBooleanProperty(value);
         this.updateSelectionCount();
     }
+    // not meant to be used outside
+    @Input() _isChildren = false;
 
     /**
      * Mode defined checkbox tree global behaviour:
@@ -96,7 +97,6 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
 
     _checkboxes: ControlModel[] = [];
     _getChildren?: Function;
-    _isChildren = false;
     _doLoadChildren = true;
     _shouldSort = true;
     _badgeVisible = true;
