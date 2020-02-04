@@ -28,10 +28,11 @@
             <pa-checkbox [id]="checkbox.id"
                          [icon]="checkbox.icon"
                          [help]="checkbox.help"
-                         [isSelected]="checkbox.isSelected"
-                         [isDisabled]="checkbox.isDisabled"
-                         [isIndeterminate]="checkbox.isIndeterminate"
-                         [isBadgeVisible]="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
+                         [selected]="checkbox.isSelected"
+                         [disabled]="checkbox.isDisabled"
+                         [indeterminate]="checkbox.isIndeterminate"
+                         [squareCheck]="_fileSystem"
+                         [badgeVisible]="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
                          [totalChildren]="checkbox.totalChildren"
                          [selectedChildren]="checkbox.selectedChildren"
                          (selection)="toggleSelection($event, checkbox)">{{checkbox.label}}
@@ -44,6 +45,7 @@
                                   [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
                                   [getChildren]="_getChildren"
+                                  [fileSystem]="_fileSystem"
                                   (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
             </div>
         </div>
@@ -54,9 +56,9 @@
                      [icon]="checkbox.icon"
                      type="radio"
                      [help]="checkbox.help"
-                     [isDisabled]="checkbox.isDisabled"
-                     [isBadgeVisible]="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
-                     [(isSelected)]="checkbox.isSelected"
+                     [disabled]="checkbox.isDisabled"
+                     [badgeVisible]="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
+                     [(selected)]="checkbox.isSelected"
                      (selection)="toggleRadioSelection(checkbox.value)">{{checkbox.label}}
         </pa-checkbox>
     </div>

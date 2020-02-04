@@ -87,11 +87,13 @@ export class AppComponent implements OnInit {
         }),
     ];
     checkboxTree: ControlModel[] = getInitialTree();
+    fileSystemTree: ControlModel[] = getInitialTree();
 
     simpleCheckboxSelection: string[] = [];
     iconCheckboxSelection: string[] = [];
     helpCheckboxSelection: string[] = [];
     nestedCheckboxSelection: string[] = [];
+    fileSystemSelection: string[] = [];
 
     toggleSelection1 = false;
     toggleSelection2 = true;

@@ -36,7 +36,7 @@
             <tbody>
             <tr>
                 <td>
-                    <pa-checkbox icon="delete" help="Some help" [(isSelected)]="isStandaloneCheckboxSelected"
+                    <pa-checkbox icon="delete" help="Some help" [(selected)]="isStandaloneCheckboxSelected"
                                  (selection)="standaloneSelection = $event">Standalone checkbox
                     </pa-checkbox>
                 </td>
@@ -88,8 +88,7 @@
                 <td>
                     <pa-checkbox-tree [checkboxes]="checkboxTree"
                                       (selection)="nestedCheckboxSelection = $event">
-                        Nested
-                        checkbox group
+                        Nested checkbox group
                     </pa-checkbox-tree>
                 </td>
                 <td>
@@ -97,6 +96,20 @@
                 </td>
                 <td>
                     <p>Selection: {{nestedCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-tree [checkboxes]="fileSystemTree" fileSystem
+                                      (selection)="fileSystemSelection = $event">
+                        File system
+                    </pa-checkbox-tree>
+                </td>
+                <td>
+                    No two data binding
+                </td>
+                <td>
+                    <p>Selection: {{fileSystemSelection | json}}</p>
                 </td>
             </tr>
             </tbody>

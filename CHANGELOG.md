@@ -2,8 +2,12 @@
 
 - Checkbox component:
   - `onSelection` event emitter become `selection`
+  - add coerce boolean for all inputs
+  - rename boolean inputs removing `is` prefix (ie. isDisabled -> disabled) for better consistency between components
+  - add square check option (replace the check mark '✓' by a square '■' when selected)
 - Checkbox tree component:
   - Fix selection state to work properly with onPush strategy
+  - Add unit tests
 
 # 1.8.0 (2020-01-29)
 

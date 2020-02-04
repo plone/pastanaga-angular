@@ -66,6 +66,9 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         this.updateSelectionCount();
     }
 
+    @Input() set fileSystem(value) { this._fileSystem = coerceBooleanProperty(value); }
+    _fileSystem = false;
+
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() allSelected: EventEmitter<boolean> = new EventEmitter();
     @Output() updatedTree: EventEmitter<ControlModel[]> = new EventEmitter<ControlModel[]>();

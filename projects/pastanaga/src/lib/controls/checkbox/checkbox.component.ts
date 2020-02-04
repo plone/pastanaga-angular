@@ -28,23 +28,31 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() icon?: string;
     @Input() name?: string;
     @Input() subLabel?: string;
-    @Input() isDisabled = false;
-    @Input() isSelected = false;
-    @Input() isIndeterminate = false;
-    @Input() isLabelHidden = false;
-    @Input() isBadgeVisible = false;
     @Input() totalChildren?: number;
     @Input() selectedChildren?: number;
+    @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
+    @Input() set selected(value) { this._selected = coerceBooleanProperty(value); }
+    @Input() set indeterminate(value) { this._indeterminate = coerceBooleanProperty(value); }
+    @Input() set labelHidden(value) { this._labelHidden = coerceBooleanProperty(value); }
+    @Input() set badgeVisible(value) { this._badgeVisible = coerceBooleanProperty(value); }
     @Input() set noFocus(value) { this._noFocus = coerceBooleanProperty(value); }
-    _noFocus = false;
+    @Input() set squareCheck(value) { this._squareCheck = coerceBooleanProperty(value); }
 
     @Output() selection: EventEmitter<boolean> = new EventEmitter();
     // the following EventEmitters allow two way data-binding
-    @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
+    @Output() selectedChange: EventEmitter<boolean> = new EventEmitter();
 
     @ViewChild('text', { static: false }) textElement?: ElementRef;
     @ViewChild('badge', { static: false }) badge?: ElementRef;
     @ViewChild('ellipsisText', { static: true }) ellipsisText?: ElementRef;
+
+    _noFocus = false;
+    _indeterminate = false;
+    _disabled = false;
+    _selected = false;
+    _squareCheck = false;
+    _labelHidden = false;
+    _badgeVisible = false;
 
     id = '';
     helpId = '';
@@ -61,13 +69,13 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     ngOnChanges(changes) {
-        if (this.isBadgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
+        if (this._badgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
             setTimeout(() => this.setLabelMaxWidth(), 0);
         }
     }
 
     ngAfterViewInit() {
-        if (this.isBadgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
+        if (this._badgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
             setTimeout(() => this.setLabelMaxWidth());
         } else {
             setTimeout(() => this.setEllipsis());
@@ -76,12 +84,12 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
 
     toggleCheckbox() {
         // radio can't be unchecked by clicking on itself
-        if (this.type === 'checkbox' || !this.isSelected) {
-            this.isSelected = !this.isSelected;
+        if (this.type === 'checkbox' || !this._selected) {
+            this._selected = !this._selected;
         }
         markForCheck(this.cdr);
-        this.isSelectedChange.emit(this.isSelected);
-        this.selection.emit(this.isSelected);
+        this.selectedChange.emit(this._selected);
+        this.selection.emit(this._selected);
     }
 
     setLabelMaxWidth() {
@@ -95,7 +103,7 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
 
     setEllipsis() {
         if (!!this.ellipsisText) {
-            if (!this.isLabelHidden) {
+            if (!this._labelHidden) {
                 this.hasEllipsis = this.ellipsisText.nativeElement.offsetWidth < this.ellipsisText.nativeElement.scrollWidth;
             } else {
                 this.hasEllipsis = false;

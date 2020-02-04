@@ -3,14 +3,15 @@
      [class.pa-field-radio]="type === 'radio'">
     <input class="pa-field-control"
            [tabindex]="_noFocus ? -1 : null"
+           [class.pa-square-check]="_squareCheck"
            [type]="type"
            [id]="id"
            [name]="name"
            [attr.aria-describedby]="helpId"
-           [checked]="isSelected"
-           [attr.aria-checked]="isSelected"
-           [disabled]="isDisabled"
-           [indeterminate]="isIndeterminate"
+           [checked]="_selected"
+           [attr.aria-checked]="_selected"
+           [disabled]="_disabled"
+           [indeterminate]="_indeterminate"
            (change)="toggleCheckbox()">
     <label [ngStyle]="labelMaxWidth"
            class="pa-field-label pa-ellipsis"
@@ -18,16 +19,16 @@
            [paTooltip]="hasEllipsis ? tooltipText : null">
         <span translate class="pa-ellipsis-text"
               #ellipsisText
-              [class.pa-sr]="isLabelHidden">
+              [class.pa-sr]="_labelHidden">
             <pa-icon *ngIf="icon" [name]="icon"></pa-icon>
             <ng-content></ng-content>
             <small *ngIf="subLabel">{{ subLabel }}</small>
         </span>
     </label>
-    <output *ngIf="isBadgeVisible" #badge [for]="id">
+    <output *ngIf="_badgeVisible" #badge [for]="id">
         <pa-badge [value]="selectedChildren" [of]="totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge>
     </output>
 
-    <small *ngIf="help" class="pa-field-help" [class.pa-sr]="isLabelHidden" [id]="helpId" translate>{{help}}</small>
+    <small *ngIf="help" class="pa-field-help" [class.pa-sr]="_labelHidden" [id]="helpId" translate>{{help}}</small>
 </div>
 

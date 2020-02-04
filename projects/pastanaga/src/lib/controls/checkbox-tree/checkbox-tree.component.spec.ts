@@ -60,6 +60,21 @@ class TestNormalTree2Component extends BaseTestComponent {
     tree: ControlModel[] = getTreeAfterSelectingRoot1AndUnselectingSubChild1();
 }
 
+@Component({
+    selector: 'pa-test',
+    template: `
+        <pa-checkbox-tree [checkboxes]="tree" fileSystem
+                          (updatedTree)="tree = $event"
+                          (selection)="selection = $event"
+                          (allSelected)="allSelected = $event"></pa-checkbox-tree>
+    `
+})
+class TestFileSystemUncheckedTreeComponent {
+    tree: ControlModel[] = getInitialTree();
+    selection: string[] = [];
+    allSelected = false;
+}
+
 function getCheckboxSelector(id: string) {
     return `pa-checkbox[id="${id}"] .pa-field-control`;
 }
@@ -102,6 +117,7 @@ describe('CheckboxTree', () => {
                 TestCountVisibleGroupComponent,
                 TestNormalUncheckedTreeComponent,
                 TestNormalTree2Component,
+                TestFileSystemUncheckedTreeComponent,
                 CheckboxTreeComponent,
                 CheckboxComponent,
             ],
