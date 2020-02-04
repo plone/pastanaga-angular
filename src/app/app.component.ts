@@ -86,12 +86,30 @@ export class AppComponent implements OnInit {
             ]
         }),
     ];
+    categorizedGroup: ControlModel[] = [
+        new ControlModel({id: 'africa', label: 'Africa', children: [
+            new ControlModel({id: 'morocco', label: 'Morocco'}),
+            new ControlModel({id: 'tunisia', label: 'Tunisia'}),
+            new ControlModel({id: 'senegal', label: 'Senegal'}),
+        ]}),
+        new ControlModel({id: 'america', label: 'America', children: [
+            new ControlModel({id: 'canada', label: 'Canada'}),
+            new ControlModel({id: 'mexico', label: 'Mexico'}),
+            new ControlModel({id: 'brazil', label: 'Brazil'}),
+        ]}),
+        new ControlModel({id: 'europe', label: 'Europe', children: [
+            new ControlModel({id: 'catalonia', label: 'Catalonia'}),
+            new ControlModel({id: 'belgium', label: 'Belgium'}),
+            new ControlModel({id: 'sweden', label: 'Sweden'}),
+        ]}),
+    ];
     checkboxTree: ControlModel[] = getInitialTree();
     fileSystemTree: ControlModel[] = getInitialTree();
 
     simpleCheckboxSelection: string[] = [];
     iconCheckboxSelection: string[] = [];
     helpCheckboxSelection: string[] = [];
+    categorizedGroupSelection: string[] = [];
     nestedCheckboxSelection: string[] = [];
     fileSystemSelection: string[] = [];
 

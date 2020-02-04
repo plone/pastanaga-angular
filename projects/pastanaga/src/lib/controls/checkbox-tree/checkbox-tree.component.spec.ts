@@ -44,26 +44,41 @@ class TestCountVisibleGroupComponent extends BaseTestComponent {
                           (allSelected)="allSelected = $event"></pa-checkbox-tree>
     `
 })
-class TestNormalUncheckedTreeComponent extends BaseTestComponent {
+class TestCategorizedUncheckedTreeComponent extends BaseTestComponent {
     tree: ControlModel[] = getInitialTree();
 }
 @Component({
     selector: 'pa-test',
     template: `
         <pa-checkbox-tree [checkboxes]="tree"
+                          mode="nested"
                           (updatedTree)="tree = $event"
                           (selection)="selection = $event"
                           (allSelected)="allSelected = $event"></pa-checkbox-tree>
     `
 })
-class TestNormalTree2Component extends BaseTestComponent {
-    tree: ControlModel[] = getTreeAfterSelectingRoot1AndUnselectingSubChild1();
+class TestNestedUncheckedTreeComponent extends BaseTestComponent {
+    tree: ControlModel[] = getInitialTree();
+}
+@Component({
+    selector: 'pa-test',
+    template: `
+        <pa-checkbox-tree [checkboxes]="tree"
+                          mode="nested"
+                          (updatedTree)="tree = $event"
+                          (selection)="selection = $event"
+                          (allSelected)="allSelected = $event"></pa-checkbox-tree>
+    `
+})
+class TestNestedCheckedTreeComponent extends BaseTestComponent {
+    tree: ControlModel[] = getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1();
 }
 
 @Component({
     selector: 'pa-test',
     template: `
-        <pa-checkbox-tree [checkboxes]="tree" fileSystem
+        <pa-checkbox-tree [checkboxes]="tree"
+                          mode="fileSystem"
                           (updatedTree)="tree = $event"
                           (selection)="selection = $event"
                           (allSelected)="allSelected = $event"></pa-checkbox-tree>
@@ -115,8 +130,9 @@ describe('CheckboxTree', () => {
             ],
             declarations: [
                 TestCountVisibleGroupComponent,
-                TestNormalUncheckedTreeComponent,
-                TestNormalTree2Component,
+                TestCategorizedUncheckedTreeComponent,
+                TestNestedUncheckedTreeComponent,
+                TestNestedCheckedTreeComponent,
                 TestFileSystemUncheckedTreeComponent,
                 CheckboxTreeComponent,
                 CheckboxComponent,
@@ -128,7 +144,7 @@ describe('CheckboxTree', () => {
         }).compileComponents();
     }));
 
-    describe('count visible group', () => {
+    describe('with countVisible', () => {
         it(`should display badge with 0 selection by default`, () => {
             const fixture = TestBed.createComponent(TestCountVisibleGroupComponent);
             fixture.detectChanges();
@@ -165,17 +181,33 @@ describe('CheckboxTree', () => {
         });
     });
 
-    describe('normal checkbox tree', () => {
+    describe('with categorized mode', () => {
+        it(`should return only leaf selection`, () => {
+            const fixture = TestBed.createComponent(TestCategorizedUncheckedTreeComponent);
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getInitialTree());
+            expect(fixture.componentInstance.selection).toEqual([]);
+            expect(fixture.componentInstance.allSelected).toBe(false);
+
+            getRoot1Checkbox(fixture).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1());
+            expect(fixture.componentInstance.selection).toEqual([ids.child1, ids.subChild1, ids.subChild2]);
+            expect(fixture.componentInstance.allSelected).toBe(false);
+        });
+    });
+
+    describe('with nested mode', () => {
         it(`should render checkbox tree as it is passed`, () => {
-            const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
+            const fixture = TestBed.createComponent(TestNestedUncheckedTreeComponent);
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getInitialTree());
             expect(fixture.componentInstance.selection).toEqual([]);
             expect(fixture.componentInstance.allSelected).toBe(false);
         });
 
-        it(`should select all children when selecting a parent`, () => {
-            const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
+        it(`should select/unselect all children when selecting a parent`, () => {
+            const fixture = TestBed.createComponent(TestNestedUncheckedTreeComponent);
             fixture.detectChanges();
 
             getRoot1Checkbox(fixture).click();
@@ -183,33 +215,48 @@ describe('CheckboxTree', () => {
             expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1());
             expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
             expect(fixture.componentInstance.allSelected).toBe(false);
+
+            getRoot1Checkbox(fixture).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getInitialTree());
+            expect(fixture.componentInstance.selection).toEqual([]);
+            expect(fixture.componentInstance.allSelected).toBe(false);
         });
 
         it(`should have parent unchecked and with indeterminate state when parent is selected and some children are unselected`, () => {
-            const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
+            const fixture = TestBed.createComponent(TestNestedUncheckedTreeComponent);
             fixture.detectChanges();
 
             getRoot1Checkbox(fixture).click();
             fixture.detectChanges();
             fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.child1)).click();
             fixture.detectChanges();
-            expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1AndUnselectingChild1());
+            expect(fixture.componentInstance.tree).toEqual(getNestedTreeAfterSelectingRoot1AndUnselectingChild1());
             expect(fixture.componentInstance.selection).toEqual([ids.child2, ids.subChild1, ids.subChild2]);
         });
 
         it(`should have parent unchecked and with indeterminate state when parent is selected and some subchildren are unselected`, () => {
-            const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
+            const fixture = TestBed.createComponent(TestNestedUncheckedTreeComponent);
             fixture.detectChanges();
             getRoot1Checkbox(fixture).click();
             fixture.detectChanges();
             fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.subChild1)).click();
             fixture.detectChanges();
-            expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1AndUnselectingSubChild1());
+            expect(fixture.componentInstance.tree).toEqual(getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1());
             expect(fixture.componentInstance.selection).toEqual([ids.child1, ids.subChild2]);
         });
 
+        it(`should have parent unchecked with indeterminate state when parent is not selected and some children are selected `, () => {
+            const fixture = TestBed.createComponent(TestNestedUncheckedTreeComponent);
+            fixture.detectChanges();
+            fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.child1)).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getNestedTreeAfterSelectingChild1());
+            expect(fixture.componentInstance.selection).toEqual([ids.child1]);
+        });
+
         it(`should select all tree when clicking on select all button`, () => {
-            const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
+            const fixture = TestBed.createComponent(TestNestedUncheckedTreeComponent);
             fixture.detectChanges();
             getSelectAllButton(fixture).click();
             fixture.detectChanges();
@@ -218,9 +265,9 @@ describe('CheckboxTree', () => {
         });
 
         it(`should select all tree and remove indeterminate state when clicking on select all button`, () => {
-            const fixture = TestBed.createComponent(TestNormalTree2Component);
+            const fixture = TestBed.createComponent(TestNestedCheckedTreeComponent);
             fixture.detectChanges();
-            expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1AndUnselectingSubChild1());
+            expect(fixture.componentInstance.tree).toEqual(getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1());
             getSelectAllButton(fixture).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getAllTreeSelected());
@@ -228,150 +275,113 @@ describe('CheckboxTree', () => {
         });
 
         it(`should remove indeterminate state and select all children when selecting indeterminate parent`, () => {
-            const fixture = TestBed.createComponent(TestNormalTree2Component);
+            const fixture = TestBed.createComponent(TestNestedCheckedTreeComponent);
             fixture.detectChanges();
-            expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1AndUnselectingSubChild1());
+            expect(fixture.componentInstance.tree).toEqual(getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1());
 
             getRoot1Checkbox(fixture).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1());
             expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
         });
-
-        // it(`should have parent with indeterminate state when parent is unselected and some or all children are selected `, () => {
-        //     const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-        //     fixture.detectChanges();
-        //     const rootExpandButton = getRoot1ExpandButton(fixture);
-        //     rootExpandButton.click();
-        //     fixture.detectChanges();
-        //     fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.child1)).click();
-        //     fixture.detectChanges();
-        //     expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingChild1());
-        //     expect(fixture.componentInstance.selection).toMatchObject([ids.child1]);
-        //
-        //     fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.child2)).click();
-        //     fixture.detectChanges();
-        //     expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingAllChildren());
-        //     expect(fixture.componentInstance.selection).toMatchObject([ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
-        // });
     });
 
-    // describe('isFileSystem = true', () => {
-    //     it(`should render checkbox tree as it is passed`, () => {
-    //         const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getInitialTree());
-    //         expect(fixture.componentInstance.selection).toMatchObject([]);
-    //         expect(fixture.componentInstance.allSelected).toBe(false);
-    //     });
-    //
-    //     it(`should select/unselect all children when selecting a parent`, () => {
-    //         const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-    //         fixture.detectChanges();
-    //
-    //         const rootCheckbox = getRoot1Checkbox(fixture);
-    //         rootCheckbox.click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingRoot1());
-    //         expect(fixture.componentInstance.selection).toMatchObject([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
-    //         expect(fixture.componentInstance.allSelected).toBe(false);
-    //
-    //         rootCheckbox.click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getInitialTree());
-    //         expect(fixture.componentInstance.selection).toMatchObject([]);
-    //         expect(fixture.componentInstance.allSelected).toBe(false);
-    //     });
-    //
-    //     it(`should have parent with indeterminate state when parent is selected and some children are unselected`, () => {
-    //         const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-    //         fixture.detectChanges();
-    //
-    //         const rootCheckbox = getRoot1Checkbox(fixture);
-    //         const rootExpandButton = getRoot1ExpandButton(fixture);
-    //         rootCheckbox.click();
-    //         rootExpandButton.click();
-    //         fixture.detectChanges();
-    //         fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.child1)).click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingRoot1AndUnselectingChild1());
-    //         expect(fixture.componentInstance.selection).toMatchObject([ids.root1, ids.child2, ids.subChild1, ids.subChild2]);
-    //     });
-    //
-    //     it(`should have parent with indeterminate state when parent is selected and some subchildren are unselected`, fakeAsync(() => {
-    //         const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-    //         fixture.detectChanges();
-    //         const rootCheckbox = getRoot1Checkbox(fixture);
-    //         const rootExpandButton = getRoot1ExpandButton(fixture);
-    //         rootCheckbox.click();
-    //         rootExpandButton.click();
-    //         fixture.detectChanges();
-    //         tick();
-    //         getChildExpandButton(fixture).click();
-    //         fixture.detectChanges();
-    //         fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.subChild1)).click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingRoot1AndUnselectingSubChild1());
-    //         expect(fixture.componentInstance.selection).toMatchObject([ids.root1, ids.child1, ids.child2, ids.subChild2]);
-    //     }));
-    //
-    //     it(`should have parent with indeterminate state when parent is unselected and some or all children are selected `, () => {
-    //         const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-    //         fixture.detectChanges();
-    //         const rootExpandButton = getRoot1ExpandButton(fixture);
-    //         rootExpandButton.click();
-    //         fixture.detectChanges();
-    //         fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.child1)).click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingChild1());
-    //         expect(fixture.componentInstance.selection).toMatchObject([ids.child1]);
-    //
-    //         fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.child2)).click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingAllChildren());
-    //         expect(fixture.componentInstance.selection).toMatchObject([ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
-    //     });
-    //
-    //     it(`should have parent with indeterminate state when parent is unselected and some or all subchildren are selected `, fakeAsync(() => {
-    //         const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-    //         fixture.detectChanges();
-    //         const rootExpandButton = getRoot1ExpandButton(fixture);
-    //         rootExpandButton.click();
-    //         fixture.detectChanges();
-    //         tick();
-    //         getChildExpandButton(fixture).click();
-    //         fixture.detectChanges();
-    //         fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.subChild1)).click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingSubChild1());
-    //         expect(fixture.componentInstance.selection).toMatchObject([ids.subChild1]);
-    //
-    //         fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.subChild2)).click();
-    //         fixture.detectChanges();
-    //         expect(fixture.componentInstance.tree).toMatchObject(getTreeAfterSelectingSubChild1());
-    //         expect(fixture.componentInstance.selection).toMatchObject([ids.subChild1, ids.subChild2]);
-    //     }));
-    //
-    //     // it(`should have parent with selected state and 'select children' button visible if parent is selected and all children are unselected`, () => {
-    //     //
-    //     // });
-    //
-    //     // it(`should unselect all children but keep parent selected when clicking on remove children`, () => {
-    //     //     const fixture = TestBed.createComponent(TestNormalUncheckedTreeComponent);
-    //     //     fixture.detectChanges();
-    //     //
-    //     //     const rootCheckbox = fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.root1));
-    //     //     rootCheckbox.click();
-    //     //     fixture.detectChanges();
-    //     //     fixture.debugElement.nativeElement
-    //     //         .querySelector(`onna-checkbox[data-qa-id="${ids.root1}"] .o-field`)
-    //     //         .triggerEventHandler('mouseover', null);
-    //     //     fixture.detectChanges();
-    //     //     const toggleChildren = fixture.debugElement.nativeElement
-    //     //         .querySelector(`onna-checkbox[data-qa-id="${ids.root1}"] .o-checkbox-children-button`);
-    //     //     expect(toggleChildren).toBeDefined();
-    //     // });
-    // });
+    describe('with fileSystem mode', () => {
+        it(`should render checkbox tree as it is passed`, () => {
+            const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getInitialTree());
+            expect(fixture.componentInstance.selection).toEqual([]);
+            expect(fixture.componentInstance.allSelected).toBe(false);
+        });
+
+        it(`should select all children when selecting a parent but should not unselect children when unselecting parent`, () => {
+            const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+            fixture.detectChanges();
+            getRoot1Checkbox(fixture).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1());
+            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
+
+            getRoot1Checkbox(fixture).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterUnSelectingRoot1());
+            expect(fixture.componentInstance.selection).toEqual([ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
+        });
+
+        it(`should have parent with selected and indeterminate state when parent is selected and some children are unselected`, () => {
+            const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+            fixture.detectChanges();
+
+            getRoot1Checkbox(fixture).click();
+            fixture.detectChanges();
+            getCheckbox(fixture, ids.child1).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingRoot1AndUnselectingChild1());
+            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child2, ids.subChild1, ids.subChild2]);
+        });
+
+        it(`should have parent with selected and indeterminate state when parent is selected and some subchildren are unselected`, () => {
+            const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+            fixture.detectChanges();
+            getRoot1Checkbox(fixture).click();
+            fixture.detectChanges();
+            getCheckbox(fixture, ids.subChild1).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingRoot1AndUnselectingSubChild1());
+            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild2]);
+        });
+
+        it(`should have parent with indeterminate state when parent is unselected and some or all children are selected `, () => {
+            const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+            fixture.detectChanges();
+            getCheckbox(fixture, ids.child1).click();
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.tree).toEqual(getNestedTreeAfterSelectingChild1());
+            expect(fixture.componentInstance.selection).toEqual([ids.child1]);
+
+            getCheckbox(fixture, ids.child2).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingAllChildren());
+            expect(fixture.componentInstance.selection).toEqual([ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
+        });
+
+        it(`should have parent with indeterminate state when parent is unselected and some or all subchildren are selected `, () => {
+            const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+            fixture.detectChanges();
+            getCheckbox(fixture, ids.subChild1).click();
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingSubChild1());
+            expect(fixture.componentInstance.selection).toEqual([ids.subChild1]);
+
+            getCheckbox(fixture, ids.subChild2).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingSubChild2());
+            expect(fixture.componentInstance.selection).toEqual([ids.subChild1, ids.subChild2]);
+        });
+
+        // it(`should have parent with selected state and 'select children' button visible if parent is selected and all children are unselected`, () => {
+        //
+        // });
+
+        // it(`should unselect all children but keep parent selected when clicking on remove children`, () => {
+        //     const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+        //     fixture.detectChanges();
+        //
+        //     const rootCheckbox = fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.root1));
+        //     rootCheckbox.click();
+        //     fixture.detectChanges();
+        //     fixture.debugElement.nativeElement
+        //         .querySelector(`onna-checkbox[data-qa-id="${ids.root1}"] .o-field`)
+        //         .triggerEventHandler('mouseover', null);
+        //     fixture.detectChanges();
+        //     const toggleChildren = fixture.debugElement.nativeElement
+        //         .querySelector(`onna-checkbox[data-qa-id="${ids.root1}"] .o-checkbox-children-button`);
+        //     expect(toggleChildren).toBeDefined();
+        // });
+    });
 });
 
 
@@ -389,7 +399,13 @@ function getTreeAfterSelectingRoot1(): ControlModel[] {
     return tree;
 }
 
-function getTreeAfterSelectingRoot1AndUnselectingChild1(): ControlModel[] {
+function getFileSystemTreeAfterUnSelectingRoot1(): ControlModel[] {
+    const tree = getTreeAfterSelectingRoot1();
+    tree[0].isSelected = false;
+    return tree;
+}
+
+function getNestedTreeAfterSelectingRoot1AndUnselectingChild1(): ControlModel[] {
     const tree = getTreeAfterSelectingRoot1();
     tree[0].isSelected = false;
     tree[0].isIndeterminate = true;
@@ -399,7 +415,16 @@ function getTreeAfterSelectingRoot1AndUnselectingChild1(): ControlModel[] {
     return tree;
 }
 
-function getTreeAfterSelectingRoot1AndUnselectingSubChild1(): ControlModel[] {
+function getFileSystemTreeAfterSelectingRoot1AndUnselectingChild1(): ControlModel[] {
+    const tree = getTreeAfterSelectingRoot1();
+    tree[0].isIndeterminate = true;
+    tree[0].selectedChildren = 1;
+    tree[0].children[0].isSelected = false;
+    tree[0].children[1].selectedChildren = 2;
+    return tree;
+}
+
+function getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isSelected = false;
     tree[0].isIndeterminate = true;
@@ -413,27 +438,50 @@ function getTreeAfterSelectingRoot1AndUnselectingSubChild1(): ControlModel[] {
     return tree;
 }
 
-function getTreeAfterSelectingChild1(): ControlModel[] {
+function getFileSystemTreeAfterSelectingRoot1AndUnselectingSubChild1(): ControlModel[] {
+    const tree = getInitialTree();
+    tree[0].isSelected = true;
+    tree[0].isIndeterminate = true;
+    tree[0].selectedChildren = 2;
+    tree[0].children[0].isSelected = true;
+    tree[0].children[1].isSelected = true;
+    tree[0].children[1].isIndeterminate = true;
+    tree[0].children[1].selectedChildren = 1;
+    tree[0].children[1].children[0].isSelected = false;
+    tree[0].children[1].children[1].isSelected = true;
+    return tree;
+}
+
+function getNestedTreeAfterSelectingChild1(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isIndeterminate = true;
+    tree[0].selectedChildren = 1;
     tree[0].children[0].isSelected = true;
     return tree;
 }
 
-function getTreeAfterSelectingAllChildren(): ControlModel[] {
-    const tree = getTreeAfterSelectingChild1();
+function getFileSystemTreeAfterSelectingAllChildren(): ControlModel[] {
+    const tree = getNestedTreeAfterSelectingChild1();
+    tree[0].selectedChildren = 2;
     tree[0].children[1].isSelected = true;
     tree[0].children[1].children.forEach(subChild => subChild.isSelected = true);
+    tree[0].children[1].selectedChildren = 2;
     return tree;
 }
 
-function getTreeAfterSelectingSubChild1(): ControlModel[] {
+function getFileSystemTreeAfterSelectingSubChild1(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isIndeterminate = true;
     tree[0].children[1].isIndeterminate = true;
-    tree[0].children[1].children[0].isSelected = true;
     tree[0].children[1].selectedChildren = 1;
-    tree[0].children[1].totalChildren = 2;
+    tree[0].children[1].children[0].isSelected = true;
+    return tree;
+}
+
+function getFileSystemTreeAfterSelectingSubChild2(): ControlModel[] {
+    const tree = getFileSystemTreeAfterSelectingSubChild1();
+    tree[0].children[1].selectedChildren = 2;
+    tree[0].children[1].children[1].isSelected = true;
     return tree;
 }
 

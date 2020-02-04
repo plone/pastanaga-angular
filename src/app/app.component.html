@@ -86,9 +86,24 @@
             </tr>
             <tr>
                 <td>
+                    <pa-checkbox-tree [checkboxes]="categorizedGroup"
+                                      (selection)="categorizedGroupSelection = $event">
+                        Categorized checkboxes
+                    </pa-checkbox-tree>
+                </td>
+                <td>
+                    No two data binding
+                </td>
+                <td>
+                    <p>Selection: {{categorizedGroupSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <pa-checkbox-tree [checkboxes]="checkboxTree"
+                                      mode="nested"
                                       (selection)="nestedCheckboxSelection = $event">
-                        Nested checkbox group
+                        Nested checkbox tree
                     </pa-checkbox-tree>
                 </td>
                 <td>
@@ -100,7 +115,8 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="fileSystemTree" fileSystem
+                    <pa-checkbox-tree [checkboxes]="fileSystemTree"
+                                      mode="fileSystem"
                                       (selection)="fileSystemSelection = $event">
                         File system
                     </pa-checkbox-tree>

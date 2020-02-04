@@ -7,6 +7,8 @@
   - add square check option (replace the check mark '✓' by a square '■' when selected)
 - Checkbox tree component:
   - Fix selection state to work properly with onPush strategy
+  - Fix bugs on indeterminate state
+  - Add mode: categorized (by default), nested, fileSystem
   - Add unit tests
 
 # 1.8.0 (2020-01-29)

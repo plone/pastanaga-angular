@@ -31,7 +31,7 @@
                          [selected]="checkbox.isSelected"
                          [disabled]="checkbox.isDisabled"
                          [indeterminate]="checkbox.isIndeterminate"
-                         [squareCheck]="_fileSystem"
+                         [squareCheck]="mode === modes.fileSystem"
                          [badgeVisible]="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
                          [totalChildren]="checkbox.totalChildren"
                          [selectedChildren]="checkbox.selectedChildren"
@@ -45,7 +45,7 @@
                                   [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
                                   [getChildren]="_getChildren"
-                                  [fileSystem]="_fileSystem"
+                                  [mode]="mode"
                                   (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
             </div>
         </div>

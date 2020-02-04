@@ -16,6 +16,12 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
 
+export enum CheckboxTreeMode {
+    categorized = 'categorized',
+    nested = 'nested',
+    fileSystem = 'fileSystem',
+}
+
 @Component({
     selector: 'pa-checkbox-tree',
     templateUrl: './checkbox-tree.component.html',
@@ -66,8 +72,23 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         this.updateSelectionCount();
     }
 
-    @Input() set fileSystem(value) { this._fileSystem = coerceBooleanProperty(value); }
-    _fileSystem = false;
+    /**
+     * Mode defined checkbox tree global behaviour:
+     * - categorized (default):
+     *   - emitted selection contains only selected leaf
+     *   - selecting a parent automatically select its children
+     *   - selecting all children automatically select the parent
+     * - nested:
+     *   - emitted selection contains all selected nodes
+     *   - selecting a parent automatically select its children
+     *   - selecting all children automatically select the parent
+     * - fileSystem: a parent can have some inner content (like a folder can contain sub-folders but also some files)
+     *   - emitted selection contains all selected nodes
+     *   - selecting a parent does not select its children
+     *   - selecting all children does not select the parent
+     *   - a button allow to select/unselect all direct children of node
+     */
+    @Input() mode: CheckboxTreeMode = CheckboxTreeMode.categorized;
 
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() allSelected: EventEmitter<boolean> = new EventEmitter();
@@ -85,7 +106,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     onChange: any;
     onTouched: any;
 
-
+    modes = CheckboxTreeMode;
     isAllSelected = false;
     isAsync = false;
     totalCount = 0;
@@ -134,7 +155,9 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     toggleSelection(isSelected: boolean, checkbox: ControlModel) {
         checkbox.isSelected = isSelected;
         checkbox.isIndeterminate = false;
-        if (!!checkbox.children) {
+        // when file system, we automatically select children, but we don't automatically unselect them
+        const shouldUpdateChildren = !!checkbox.children && (isSelected || this.mode !== CheckboxTreeMode.fileSystem);
+        if (shouldUpdateChildren) {
             checkbox.children = this.getUpdatedChildrenSelection(isSelected, checkbox);
             checkbox.selectedChildren = this.getChildrenCount(checkbox);
             markForCheck(this.cdr);
@@ -155,13 +178,21 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
 
     setParentState(childrenTree: ControlModel[], parent: ControlModel) {
         parent.children = childrenTree;
-        if (parent.children.every(child => child.isSelected && !child.isIndeterminate)) {
-            parent.isSelected = true;
-            parent.isIndeterminate = false;
+        if (this.mode === CheckboxTreeMode.fileSystem) {
+            const allChildrenSelected = parent.children.every(child => child.isSelected);
+            const allChildrenUnSelected = parent.children.every(child => !child.isSelected);
+            parent.isIndeterminate = parent.children.some(child => child.isIndeterminate)
+                || (parent.isSelected && !allChildrenSelected && !allChildrenUnSelected)
+                || (!parent.isSelected && parent.children.some(child => child.isSelected));
         } else {
-            parent.isIndeterminate = parent.children.some(child => child.isSelected || child.isIndeterminate);
-            if (parent.isIndeterminate || parent.children.every(child => !child.isSelected)) {
-                parent.isSelected = false;
+            if (parent.children.every(child => child.isSelected && !child.isIndeterminate)) {
+                parent.isSelected = true;
+                parent.isIndeterminate = false;
+            } else {
+                parent.isIndeterminate = parent.children.some(child => child.isSelected || child.isIndeterminate);
+                if (parent.isIndeterminate || parent.children.every(child => !child.isSelected)) {
+                    parent.isSelected = false;
+                }
             }
         }
         parent.selectedChildren = this.getChildrenCount(parent);
@@ -214,7 +245,10 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     }
 
     private updateSelectedValues(checkbox: ControlModel, selectedValues: string[]) {
-        if (checkbox.isSelected) {
+        // by default selection contains only leaf (categorized tree)
+        // if nested or fileSystem tree, selection contains all selected nodes
+        const isCategorized = this.mode === CheckboxTreeMode.categorized;
+        if (checkbox.isSelected && (!isCategorized || !checkbox.children || checkbox.children.length === 0)) {
             selectedValues.push(this.getCheckboxValue(checkbox));
         }
         if (!!checkbox.children) {
@@ -286,16 +320,5 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
             isSelected: ctl.value === value,
         }));
         this.emitSelectionChanged();
-    }
-
-    private getExpandedCheckboxes(checkboxes: ControlModel[]): ControlModel[] {
-        return checkboxes.map(checkbox => this.getUpdatedExpandedCheckbox(checkbox, true));
-    }
-
-    private getUpdatedExpandedCheckbox(checkbox: ControlModel, isExpanded: boolean): ControlModel {
-        if (!!checkbox.children && checkbox.children.length > 0) {
-            checkbox.children = checkbox.children.map(child => this.getUpdatedExpandedCheckbox(child, isExpanded));
-        }
-        return new ControlModel({...checkbox, isExpanded});
     }
 }
