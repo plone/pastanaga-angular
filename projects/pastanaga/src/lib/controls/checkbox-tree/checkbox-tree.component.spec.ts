@@ -362,6 +362,22 @@ describe('CheckboxTree', () => {
             expect(fixture.componentInstance.selection).toEqual([ids.subChild1, ids.subChild2]);
         });
 
+        it(`should have parent indeterminate when unselecting all children but not subchildren`, () => {
+            const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
+            fixture.detectChanges();
+            getCheckbox(fixture, ids.child1).click();
+            getCheckbox(fixture, ids.child2).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingAllChildren());
+            expect(fixture.componentInstance.selection).toEqual([ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
+
+            getCheckbox(fixture, ids.child1).click();
+            getCheckbox(fixture, ids.child2).click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterUnSelectingAllChildrenButNotSubChildren());
+            expect(fixture.componentInstance.selection).toEqual([ids.subChild1, ids.subChild2]);
+        });
+
         // it(`should have parent with selected state and 'select children' button visible if parent is selected and all children are unselected`, () => {
         //
         // });
@@ -402,6 +418,7 @@ function getTreeAfterSelectingRoot1(): ControlModel[] {
 function getFileSystemTreeAfterUnSelectingRoot1(): ControlModel[] {
     const tree = getTreeAfterSelectingRoot1();
     tree[0].isSelected = false;
+    tree[0].isIndeterminate = true;
     return tree;
 }
 
@@ -466,6 +483,15 @@ function getFileSystemTreeAfterSelectingAllChildren(): ControlModel[] {
     tree[0].children[1].isSelected = true;
     tree[0].children[1].children.forEach(subChild => subChild.isSelected = true);
     tree[0].children[1].selectedChildren = 2;
+    return tree;
+}
+
+function getFileSystemTreeAfterUnSelectingAllChildrenButNotSubChildren(): ControlModel[] {
+    const tree = getFileSystemTreeAfterSelectingAllChildren();
+    tree[0].selectedChildren = 0;
+    tree[0].children[0].isSelected = false;
+    tree[0].children[1].isSelected = false;
+    tree[0].children[1].isIndeterminate = true;
     return tree;
 }
 

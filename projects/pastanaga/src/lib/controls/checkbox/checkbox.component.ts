@@ -4,7 +4,6 @@ import {
     ElementRef,
     EventEmitter,
     Input,
-    OnChanges,
     OnInit,
     Output,
     ViewChild,
@@ -22,19 +21,16 @@ let nextId = 0;
   styleUrls: ['../controls.scss', './checkbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
+export class CheckboxComponent implements OnInit, AfterViewInit {
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() help?: string;
     @Input() icon?: string;
     @Input() name?: string;
     @Input() subLabel?: string;
-    @Input() totalChildren?: number;
-    @Input() selectedChildren?: number;
     @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
     @Input() set selected(value) { this._selected = coerceBooleanProperty(value); }
     @Input() set indeterminate(value) { this._indeterminate = coerceBooleanProperty(value); }
     @Input() set labelHidden(value) { this._labelHidden = coerceBooleanProperty(value); }
-    @Input() set badgeVisible(value) { this._badgeVisible = coerceBooleanProperty(value); }
     @Input() set noFocus(value) { this._noFocus = coerceBooleanProperty(value); }
     @Input() set squareCheck(value) { this._squareCheck = coerceBooleanProperty(value); }
 
@@ -52,7 +48,6 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
     _selected = false;
     _squareCheck = false;
     _labelHidden = false;
-    _badgeVisible = false;
 
     id = '';
     helpId = '';
@@ -68,18 +63,19 @@ export class CheckboxComponent implements OnInit, OnChanges, AfterViewInit {
         this.helpId = `${this.id}-help`;
     }
 
-    ngOnChanges(changes) {
-        if (this._badgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
-            setTimeout(() => this.setLabelMaxWidth(), 0);
-        }
-    }
+    // FIXME: cleanup
+    // ngOnChanges(changes) {
+    //     if (this._badgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
+    //         setTimeout(() => this.setLabelMaxWidth(), 0);
+    //     }
+    // }
 
     ngAfterViewInit() {
-        if (this._badgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
-            setTimeout(() => this.setLabelMaxWidth());
-        } else {
+        // if (this._badgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
+        //     setTimeout(() => this.setLabelMaxWidth());
+        // } else {
             setTimeout(() => this.setEllipsis());
-        }
+        // }
     }
 
     toggleCheckbox() {

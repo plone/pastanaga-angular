@@ -3,14 +3,19 @@
 :host {
     display: block;
 
-    pa-badge {
-        display: inline-block;
-        position: relative;
-        top: 6px;
-        left: 12px;
+    legend {
+        pa-badge {
+            display: inline-block;
+            position: relative;
+            top: rythm(.5);
+            left: rythm(1);
+        }
     }
+
     .pa-field-group {
-        ::ng-deep pa-button {
+        position: relative;
+
+        ::ng-deep pa-button.pa-expand {
             display: inherit;
 
             .pa-button {
@@ -22,6 +27,27 @@
                 transform: rotate(90deg);
             }
         }
+
+        & > ::ng-deep pa-checkbox:not(:last-child) .pa-field,
+        & > ::ng-deep .pa-field-sublist:not(:last-child) {
+            margin-bottom: 0;
+        }
+
+        pa-checkbox ::ng-deep .pa-field-checkbox {
+            display: inline-block;
+        }
+
+        .pa-children-selection-button {
+            position: relative;
+            margin: 0 rythm(1);
+            top: -1px;
+        }
+
+        output {
+            position: absolute;
+            right: - rythm(1);
+            top: - rythm(.25);
+        }
     }
 
     .pa-field-sublist {
@@ -29,13 +55,6 @@
         padding: 0;
         list-style: none;
         display: block;
-    }
-
-    .pa-field-group {
-        & > ::ng-deep pa-checkbox:not(:last-child) .pa-field,
-        & > ::ng-deep .pa-field-sublist:not(:last-child) {
-            margin-bottom: 0;
-        }
     }
 
     .pa-field-group:not(:last-child) {

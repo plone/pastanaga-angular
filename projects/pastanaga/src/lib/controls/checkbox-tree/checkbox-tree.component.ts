@@ -112,6 +112,8 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     totalCount = 0;
     totalSelected = 0;
 
+    fileSystemButtonVisibility: {[checkboxId: string]: boolean} = {};
+
     constructor(
         private translate: TranslatePipe,
         private cdr: ChangeDetectorRef
@@ -154,7 +156,6 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
 
     toggleSelection(isSelected: boolean, checkbox: ControlModel) {
         checkbox.isSelected = isSelected;
-        checkbox.isIndeterminate = false;
         // when file system, we automatically select children, but we don't automatically unselect them
         const shouldUpdateChildren = !!checkbox.children && (isSelected || this.mode !== CheckboxTreeMode.fileSystem);
         if (shouldUpdateChildren) {
@@ -162,7 +163,17 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
             checkbox.selectedChildren = this.getChildrenCount(checkbox);
             markForCheck(this.cdr);
         }
+        checkbox.isIndeterminate = this.mode !== CheckboxTreeMode.fileSystem ? false : this.getIndeterminateForFileSystem(checkbox);
         this.updateAllSelected();
+        this.emitSelectionChanged();
+    }
+
+    toggleChildrenSelection(checkbox: ControlModel) {
+        const isSelected = (checkbox.selectedChildren || 0) < (checkbox.totalChildren || 0);
+        checkbox.children = this.getUpdatedChildrenSelection(isSelected, checkbox);
+        checkbox.selectedChildren = this.getChildrenCount(checkbox);
+        checkbox.isIndeterminate = this.getIndeterminateForFileSystem(checkbox);
+        markForCheck(this.cdr);
         this.emitSelectionChanged();
     }
 
@@ -179,11 +190,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     setParentState(childrenTree: ControlModel[], parent: ControlModel) {
         parent.children = childrenTree;
         if (this.mode === CheckboxTreeMode.fileSystem) {
-            const allChildrenSelected = parent.children.every(child => child.isSelected);
-            const allChildrenUnSelected = parent.children.every(child => !child.isSelected);
-            parent.isIndeterminate = parent.children.some(child => child.isIndeterminate)
-                || (parent.isSelected && !allChildrenSelected && !allChildrenUnSelected)
-                || (!parent.isSelected && parent.children.some(child => child.isSelected));
+            parent.isIndeterminate = this.getIndeterminateForFileSystem(parent);
         } else {
             if (parent.children.every(child => child.isSelected && !child.isIndeterminate)) {
                 parent.isSelected = true;
@@ -200,6 +207,14 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         this.updateAllSelected();
         this.emitSelectionChanged();
         markForCheck(this.cdr);
+    }
+
+    private getIndeterminateForFileSystem(parent: ControlModel) {
+        const allChildrenSelected = parent.children.every(child => child.isSelected);
+        const allChildrenUnSelected = parent.children.every(child => !child.isSelected);
+        return parent.children.some(child => child.isIndeterminate)
+            || (parent.isSelected && !allChildrenSelected && !allChildrenUnSelected)
+            || (!parent.isSelected && parent.children.some(child => child.isSelected));
     }
 
     toggleCheckbox(checkbox: ControlModel) {
@@ -320,5 +335,19 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
             isSelected: ctl.value === value,
         }));
         this.emitSelectionChanged();
+    }
+
+    onMouseOver(checkbox: ControlModel) {
+        if (this.mode === CheckboxTreeMode.fileSystem) {
+            this.fileSystemButtonVisibility[checkbox.id] = true;
+        }
+    }
+
+    onMouseLeave(checkbox: ControlModel) {
+        if (this.mode === CheckboxTreeMode.fileSystem) {
+            const children = checkbox.children || [];
+            // keep button visible when checkbox is selected while its children are not
+            this.fileSystemButtonVisibility[checkbox.id] = checkbox.isSelected && children.every(child => !child.isSelected);
+        }
     }
 }

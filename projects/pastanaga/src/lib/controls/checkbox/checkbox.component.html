@@ -25,9 +25,6 @@
             <small *ngIf="subLabel">{{ subLabel }}</small>
         </span>
     </label>
-    <output *ngIf="_badgeVisible" #badge [for]="id">
-        <pa-badge [value]="selectedChildren" [of]="totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge>
-    </output>
 
     <small *ngIf="help" class="pa-field-help" [class.pa-sr]="_labelHidden" [id]="helpId" translate>{{help}}</small>
 </div>

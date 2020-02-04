@@ -13,6 +13,10 @@
         "saturday": "S",
         "sunday": "S"
     },
+    "checkbox-tree": {
+        "add-children": "Add sublevels",
+        "remove-children": "Remove sublevels"
+    },
     "common": {
         "close": "Close",
         "loading": "Loading…",
@@ -29,5 +33,4 @@
         "title": "Pastanaga usage examples",
         "score": "{{points}} points of {{total}}"
     }
-
 }

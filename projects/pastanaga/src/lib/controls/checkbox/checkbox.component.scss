@@ -24,11 +24,6 @@
                 margin: 0 0 -1px rythm(.5) !important;
             }
         }
-        & + .pa-field-label + output {
-            position: absolute;
-            right: 0;
-            top: - rythm(.25);
-        }
 
         &:disabled + .pa-field-label {
             pa-icon.pa-label-icon ::ng-deep svg {
