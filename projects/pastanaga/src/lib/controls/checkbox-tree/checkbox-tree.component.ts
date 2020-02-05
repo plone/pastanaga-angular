@@ -321,11 +321,6 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
                     markForCheck(this.cdr);
                 });
             }
-        } else {
-            this._checkboxes.forEach(checkbox => {
-                checkbox.totalChildren = !!checkbox.children ? checkbox.children.length : 0;
-                checkbox.selectedChildren = !!checkbox.children ? checkbox.children.filter(child => child.isSelected).length : 0;
-            });
         }
         this.updateSelectionCount();
     }

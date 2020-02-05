@@ -15,8 +15,6 @@ export interface IControlModel {
     isPrivate?: boolean;
 
     children?: ControlModel[];
-    totalChildren?: number;
-    selectedChildren?: number;
 }
 
 export class ControlModel {
@@ -56,12 +54,8 @@ export class ControlModel {
         this.isPrivate = data.isPrivate || false;
 
         this.children = data.children || [];
-        if (typeof data.totalChildren === 'number') {
-            this.totalChildren = data.totalChildren;
-        } else if (!!this.children) {
-            this.totalChildren = this.children.length;
-        }
-        this.selectedChildren = typeof data.selectedChildren === 'number' ? data.selectedChildren : 0;
+        this.totalChildren = this.children.length;
+        this.selectedChildren = this.children.filter(child => child.isSelected).length;
     }
 }
 
