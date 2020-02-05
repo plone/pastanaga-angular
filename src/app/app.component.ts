@@ -61,28 +61,34 @@ export class AppComponent implements OnInit {
         new ControlModel({label: 'another checkbox', value: 'help_5', id: 'help_5', help: 'some help about another checkbox'}),
     ];
     nestedCheckboxes: ControlModel[] = [
-        new ControlModel({label: 'checkbox 1', id: 'nested_1', value: 'nested_1'}),
+        new ControlModel({label: 'checkbox 1', id: 'nested_1', value: 'nested_1', icon: 'user'}),
         new ControlModel({
-            label: 'checkbox 3', value: 'nested_3', id: 'nested_3', isSelected: true, children: [
-                new ControlModel({label: 'checkbox 3.2', value: 'nested_3.2', id: 'nested_3.2', isSelected: true}),
-                new ControlModel({label: 'checkbox 3.1', value: 'nested_3.1', id: 'nested_3.1', isSelected: true}),
+            label: 'checkbox 3', value: 'nested_3', id: 'nested_3', icon: 'user', isSelected: true, children: [
+                new ControlModel({label: 'checkbox 3.2', value: 'nested_3.2', id: 'nested_3.2', icon: 'folder', isSelected: true}),
+                new ControlModel({label: 'checkbox 3.1', value: 'nested_3.1', id: 'nested_3.1', icon: 'folder', isSelected: true}),
             ]
         }),
         new ControlModel({
-            label: 'checkbox 2', id: 'nested_2', value: 'nested_2', children: [
-                new ControlModel({label: 'checkbox 2.1', value: 'nested_2.1', id: 'nested_2.1', children: [
-                    new ControlModel({label: 'checkbox 2.1.1', value: 'nested_2.1.1', id: 'nested_2.1.1'}),
-                    new ControlModel({label: 'checkbox 2.1.2', value: 'nested_2.1.2', id: 'nested_2.1.2'}),
-                ]}),
-                new ControlModel({label: 'checkbox 2.2', value: 'nested_2.2', id: 'nested_2.2'}),
-                new ControlModel({label: 'checkbox 2.0', value: 'nested_2.0', id: 'nested_2.0'}),
-                new ControlModel({label: 'Another checkbox 2.x', value: 'nested_2.3', id: 'nested_2.3'}),
+            label: 'checkbox 2', id: 'nested_2', value: 'nested_2', icon: 'user', children: [
+                new ControlModel({
+                    label: 'checkbox 2.1 with a very long name to test ellipsis is working as it should',
+                    value: 'nested_2.1',
+                    id: 'nested_2.1',
+                    icon: 'folder',
+                    children: [
+                        new ControlModel({label: 'checkbox 2.1.1', value: 'nested_2.1.1', icon: 'folder', id: 'nested_2.1.1'}),
+                        new ControlModel({label: 'checkbox 2.1.2', value: 'nested_2.1.2', icon: 'folder', id: 'nested_2.1.2'}),
+                    ]
+                }),
+                new ControlModel({label: 'checkbox 2.2', value: 'nested_2.2', icon: 'folder', id: 'nested_2.2'}),
+                new ControlModel({label: 'checkbox 2.0', value: 'nested_2.0', icon: 'folder', id: 'nested_2.0'}),
+                new ControlModel({label: 'Another checkbox 2.x', value: 'nested_2.3', icon: 'folder', id: 'nested_2.3'}),
             ]
         }),
         new ControlModel({
-            label: 'checkbox 4', value: 'nested_4', id: 'nested_4', children: [
-                new ControlModel({label: 'checkbox 4.2', value: 'nested_4.2', id: 'nested_4.2'}),
-                new ControlModel({label: 'checkbox 4.1', value: 'nested_4.1', id: 'nested_4.1'}),
+            label: 'checkbox 4', value: 'nested_4', id: 'nested_4', icon: 'user', children: [
+                new ControlModel({label: 'checkbox 4.2', value: 'nested_4.2', icon: 'folder', id: 'nested_4.2'}),
+                new ControlModel({label: 'checkbox 4.1', value: 'nested_4.1', icon: 'folder', id: 'nested_4.1'}),
             ]
         }),
     ];

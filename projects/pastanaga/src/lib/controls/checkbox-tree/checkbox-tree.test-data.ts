@@ -44,7 +44,7 @@ export function getInitialTree(expanded = true): ControlModel[] {
     return [
         new ControlModel({
             id: ids.root1,
-            label: 'Root 1',
+            label: 'Root 1 with a very longer name to test ellipsis in checkbox tree',
             value: 'root-1',
             isExpanded: expanded,
             children: [

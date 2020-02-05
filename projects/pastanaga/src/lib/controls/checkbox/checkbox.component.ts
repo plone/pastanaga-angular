@@ -22,6 +22,7 @@ let nextId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent implements OnInit, AfterViewInit {
+    @Input() id?: string;
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() help?: string;
     @Input() icon?: string;
@@ -42,6 +43,7 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     @ViewChild('badge', { static: false }) badge?: ElementRef;
     @ViewChild('ellipsisText', { static: true }) ellipsisText?: ElementRef;
 
+    _id = '';
     _noFocus = false;
     _indeterminate = false;
     _disabled = false;
@@ -49,33 +51,25 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     _squareCheck = false;
     _labelHidden = false;
 
-    id = '';
     helpId = '';
-    labelMaxWidth: { [key: string]: string } = {};
+    extraStyle: { [key: string]: string } = {};
     hasEllipsis = false;
     tooltipText = '';
+    hasExtraWidth = false;
 
-    constructor(private cdr: ChangeDetectorRef) {}
+    constructor(
+        private cdr: ChangeDetectorRef,
+        public element: ElementRef,
+    ) {}
 
     ngOnInit() {
-        this.id = `field-${this.type}-${nextId++}`;
-        this.name = this.name || this.id;
-        this.helpId = `${this.id}-help`;
+        this._id = this.id ? this.id : `field-${this.type}-${nextId++}`;
+        this.name = this.name || this._id;
+        this.helpId = `${this._id}-help`;
     }
 
-    // FIXME: cleanup
-    // ngOnChanges(changes) {
-    //     if (this._badgeVisible && changes.selectedChildren && typeof changes.selectedChildren.currentValue === 'number') {
-    //         setTimeout(() => this.setLabelMaxWidth(), 0);
-    //     }
-    // }
-
     ngAfterViewInit() {
-        // if (this._badgeVisible && this.selectedChildren && typeof this.selectedChildren === 'number') {
-        //     setTimeout(() => this.setLabelMaxWidth());
-        // } else {
-            setTimeout(() => this.setEllipsis());
-        // }
+        setTimeout(() => this.setLabelMaxWidth());
     }
 
     toggleCheckbox() {
@@ -88,10 +82,22 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
         this.selection.emit(this._selected);
     }
 
-    setLabelMaxWidth() {
-        if (!!this.badge) {
-            const badgeWidth = this.badge.nativeElement.getBoundingClientRect().width;
-            this.labelMaxWidth = {'max-width': `calc(100% - ${badgeWidth}px - 12px)`};
+    setLabelMaxWidth(extraWidth?: number) {
+        if (!!extraWidth) {
+            this.hasExtraWidth = true;
+        }
+        if (this.hasExtraWidth && !extraWidth) {
+            // prevent checkbox inner call to overwrite style with extra width coming from parent
+            return;
+        }
+        const parent = this.element.nativeElement.parentElement;
+        if (!!parent) {
+            const parentWidth = parent.getBoundingClientRect().width;
+            let maxWidth = parentWidth - 24;
+            if (!!extraWidth) {
+                maxWidth = maxWidth - extraWidth;
+            }
+            this.extraStyle = {'max-width': `${maxWidth}px`};
             this.setEllipsis();
             detectChanges(this.cdr);
         }

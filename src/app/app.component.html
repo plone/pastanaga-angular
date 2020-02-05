@@ -25,7 +25,7 @@
 <div class="example-box">
     <div class="example-box-header" (click)="toggleSection('checkbox')">Checkboxes</div>
     <div *ngIf="sections.checkbox">
-        <table class="checkoxes">
+        <table class="checkboxes">
             <thead>
             <tr>
                 <th>Checkboxes</th>
@@ -36,7 +36,13 @@
             <tbody>
             <tr>
                 <td>
-                    <pa-checkbox icon="delete" help="Some help" [(selected)]="isStandaloneCheckboxSelected"
+                    <pa-checkbox icon="delete" help="Some help"
+                                 [(selected)]="isStandaloneCheckboxSelected"
+                                 (selection)="standaloneSelection = $event">Standalone checkbox with icon
+                    </pa-checkbox>
+                    <pa-checkbox icon="user"
+                                 subLabel="(sublabel)"
+                                 [(selected)]="isStandaloneCheckboxSelected"
                                  (selection)="standaloneSelection = $event">Standalone checkbox
                     </pa-checkbox>
                 </td>

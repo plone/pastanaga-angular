@@ -50,7 +50,7 @@
 
             <output *ngIf="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
                     [for]="checkbox.id">
-                <pa-badge [value]="checkbox.selectedChildren" [of]="checkbox.totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge>
+                <pa-badge [id]="checkbox.id" [value]="checkbox.selectedChildren" [of]="checkbox.totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge>
             </output>
 
             <div class="pa-field-sublist" role="tabpanel"
@@ -70,6 +70,7 @@
     <div class="pa-field-group" *ngIf="type === 'radio'">
         <pa-checkbox *ngFor="let checkbox of _checkboxes"
                      type="radio"
+                     [id]="checkbox.id"
                      [icon]="checkbox.icon"
                      [help]="checkbox.help"
                      [disabled]="checkbox.isDisabled"

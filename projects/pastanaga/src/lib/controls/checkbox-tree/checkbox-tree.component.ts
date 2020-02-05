@@ -6,13 +6,15 @@ import {
     OnInit,
     Output,
     ChangeDetectionStrategy,
-    ChangeDetectorRef
+    ChangeDetectorRef, ViewChildren, QueryList
 } from '@angular/core';
 import { ControlModel } from '../control.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslatePipe } from '../../translate/translate.pipe';
 import { markForCheck } from '../../common/utils';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { BadgeComponent } from '../../badge/badge.component';
 
 let nextId = 0;
 
@@ -48,6 +50,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         if (this._doLoadChildren) {
             this.loadChildren();
         }
+        this.computeCheckboxSizes();
     }
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() set getChildren(value) {
@@ -70,8 +73,6 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         this._countVisible = coerceBooleanProperty(value);
         this.updateSelectionCount();
     }
-    // not meant to be used outside
-    @Input() _isChildren = false;
 
     /**
      * Mode defined checkbox tree global behaviour:
@@ -91,9 +92,15 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
      */
     @Input() mode: CheckboxTreeMode = CheckboxTreeMode.categorized;
 
+    // not meant to be used outside
+    @Input() _isChildren = false;
+
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() allSelected: EventEmitter<boolean> = new EventEmitter();
     @Output() updatedTree: EventEmitter<ControlModel[]> = new EventEmitter<ControlModel[]>();
+
+    @ViewChildren(CheckboxComponent) checkboxComponents?: QueryList<CheckboxComponent>;
+    @ViewChildren(BadgeComponent) badgeComponents?: QueryList<BadgeComponent>;
 
     _checkboxes: ControlModel[] = [];
     _getChildren?: Function;
@@ -350,5 +357,25 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
             // keep button visible when checkbox is selected while its children are not
             this.fileSystemButtonVisibility[checkbox.id] = checkbox.isSelected && children.every(child => !child.isSelected);
         }
+    }
+
+    private computeCheckboxSizes() {
+        setTimeout(() => {
+            if (this._badgeVisible && !!this.checkboxComponents) {
+                const badges = this.badgeComponents || [] as BadgeComponent[];
+                this.checkboxComponents.forEach(checkboxComponent => {
+                    const id = checkboxComponent.id;
+                    const checkbox = this._checkboxes.find(item => item.id === id);
+                    if (!!checkbox && !!checkbox.totalChildren) {
+                        const badge = badges.find(b => b.id === id);
+                        if (!!badge) {
+                            const badgeWidth = badge.elementRef.nativeElement.getBoundingClientRect().width;
+                            const extraWidth = this.mode === CheckboxTreeMode.fileSystem ? badgeWidth + 124 : badgeWidth;
+                            checkboxComponent.setLabelMaxWidth(extraWidth);
+                        }
+                    }
+                });
+            }
+        }, 100);
     }
 }

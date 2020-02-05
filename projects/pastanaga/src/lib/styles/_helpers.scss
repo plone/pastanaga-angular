@@ -105,3 +105,19 @@ option.pa-hide {
     flex-wrap: nowrap;
 }
 
+//ellipsis
+.pa-ellipsis {
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+
+    &-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+

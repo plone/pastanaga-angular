@@ -91,7 +91,7 @@ class TestFileSystemUncheckedTreeComponent {
 }
 
 function getCheckboxSelector(id: string) {
-    return `pa-checkbox[id="${id}"] .pa-field-control`;
+    return `input[id="${id}"]`;
 }
 
 function getRoot1Checkbox(fixture: ComponentFixture<BaseTestComponent>) {
@@ -377,26 +377,6 @@ describe('CheckboxTree', () => {
             expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterUnSelectingAllChildrenButNotSubChildren());
             expect(fixture.componentInstance.selection).toEqual([ids.subChild1, ids.subChild2]);
         });
-
-        // it(`should have parent with selected state and 'select children' button visible if parent is selected and all children are unselected`, () => {
-        //
-        // });
-
-        // it(`should unselect all children but keep parent selected when clicking on remove children`, () => {
-        //     const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
-        //     fixture.detectChanges();
-        //
-        //     const rootCheckbox = fixture.debugElement.nativeElement.querySelector(getCheckboxSelector(ids.root1));
-        //     rootCheckbox.click();
-        //     fixture.detectChanges();
-        //     fixture.debugElement.nativeElement
-        //         .querySelector(`onna-checkbox[data-qa-id="${ids.root1}"] .o-field`)
-        //         .triggerEventHandler('mouseover', null);
-        //     fixture.detectChanges();
-        //     const toggleChildren = fixture.debugElement.nativeElement
-        //         .querySelector(`onna-checkbox[data-qa-id="${ids.root1}"] .o-checkbox-children-button`);
-        //     expect(toggleChildren).toBeDefined();
-        // });
     });
 });
 

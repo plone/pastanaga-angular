@@ -5,7 +5,7 @@
            [tabindex]="_noFocus ? -1 : null"
            [class.pa-square-check]="_squareCheck"
            [type]="type"
-           [id]="id"
+           [id]="_id"
            [name]="name"
            [attr.aria-describedby]="helpId"
            [checked]="_selected"
@@ -13,9 +13,9 @@
            [disabled]="_disabled"
            [indeterminate]="_indeterminate"
            (change)="toggleCheckbox()">
-    <label [ngStyle]="labelMaxWidth"
+    <label [ngStyle]="extraStyle"
            class="pa-field-label pa-ellipsis"
-           [for]="id"
+           [for]="_id"
            [paTooltip]="hasEllipsis ? tooltipText : null">
         <span translate class="pa-ellipsis-text"
               #ellipsisText

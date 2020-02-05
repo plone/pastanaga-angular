@@ -39,14 +39,14 @@
 
         .pa-children-selection-button {
             position: relative;
-            margin: 0 rythm(1);
+            margin: 0 rythm(.5);
             top: -1px;
         }
 
         output {
             position: absolute;
             right: - rythm(1);
-            top: - rythm(.25);
+            top: 0;
         }
     }
 
