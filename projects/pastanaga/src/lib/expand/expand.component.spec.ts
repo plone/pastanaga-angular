@@ -55,7 +55,7 @@ class Test2Component {
 class Test3Component {
 }
 
-describe('BadgeComponent', () => {
+describe('ExpandComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [

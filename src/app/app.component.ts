@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Avatar, BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, ToggleModel } from '../../projects/pastanaga/src';
 import { of } from 'rxjs';
-
+import { getInitialTree } from '../../projects/pastanaga/src/lib/controls/checkbox-tree/checkbox-tree.test-data';
+// tslint:disable:max-line-length
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
     contentType = contentType || '';
     sliceSize = sliceSize || 512;
@@ -41,52 +42,81 @@ export class AppComponent implements OnInit {
     standaloneSelection = false;
 
     simpleCheckboxes: ControlModel[] = [
-        <ControlModel>{label: 'checkbox 1', value: 'simple_1'},
-        <ControlModel>{label: 'checkbox 2', value: 'simple_2'},
-        <ControlModel>{label: 'checkbox 3', value: 'simple_3', isSelected: true},
-        <ControlModel>{label: 'checkbox 4', value: 'simple_4', isDisabled: true},
+        new ControlModel({label: 'checkbox 1', id: 'simple_1', value: 'simple_1'}),
+        new ControlModel({label: 'checkbox 2', id: 'simple_2', value: 'simple_2'}),
+        new ControlModel({label: 'checkbox 3', id: 'simple_3', value: 'simple_3', isSelected: true}),
+        new ControlModel({label: 'checkbox 4', id: 'simple_4', value: 'simple_4', isDisabled: true}),
     ];
     iconCheckboxes: ControlModel[] = [
-        <ControlModel>{label: 'checkbox 1', value: 'icon_1', icon: 'folder'},
-        <ControlModel>{label: 'checkbox 2', value: 'icon_2', icon: 'delete', isDisabled: true},
-        <ControlModel>{label: 'checkbox 3', value: 'icon_3', icon: 'inbox', isSelected: true},
-        <ControlModel>{label: 'checkbox 4', value: 'icon_4', icon: 'sent'},
+        new ControlModel({label: 'checkbox 1', id: 'icon_1', value: 'icon_1', icon: 'folder'}),
+        new ControlModel({label: 'checkbox 2', id: 'icon_2', value: 'icon_2', icon: 'delete', isDisabled: true}),
+        new ControlModel({label: 'checkbox 3', id: 'icon_3', value: 'icon_3', icon: 'inbox', isSelected: true}),
+        new ControlModel({label: 'checkbox 4', id: 'icon_4', value: 'icon_4', icon: 'sent'}),
     ];
     helpCheckboxes: ControlModel[] = [
-        <ControlModel>{label: 'checkbox 1', value: 'help_1', help: 'some help about checkbox 1'},
-        <ControlModel>{label: 'checkbox 4', value: 'help_4', help: 'some help about checkbox 4'},
-        <ControlModel>{label: 'checkbox 3', value: 'help_3', help: 'some help about checkbox 3', isSelected: true},
-        <ControlModel>{label: 'checkbox 2', value: 'help_2', help: 'some help about checkbox 2'},
-        <ControlModel>{label: 'another checkbox', value: 'help_5', help: 'some help about another checkbox'},
+        new ControlModel({label: 'checkbox 1', value: 'help_1', id: 'help_1', help: 'some help about checkbox 1', subLabel: '(sub label here)'}),
+        new ControlModel({label: 'checkbox 4', value: 'help_4', id: 'help_4', help: 'some help about checkbox 4', labelIcons: [{name: 'group', tooltip: 'label icon here'}]}),
+        new ControlModel({label: 'checkbox 3', value: 'help_3', id: 'help_3', help: 'some help about checkbox 3', isSelected: true}),
+        new ControlModel({label: 'checkbox 2', value: 'help_2', id: 'help_2', help: 'some help about checkbox 2'}),
+        new ControlModel({label: 'another checkbox', value: 'help_5', id: 'help_5', help: 'some help about another checkbox'}),
     ];
     nestedCheckboxes: ControlModel[] = [
-        <ControlModel>{label: 'checkbox 1', value: 'nested_1'},
-        <ControlModel>{
-            label: 'checkbox 3', value: 'nested_3', isSelected: true, children: [
-                {label: 'checkbox 3.1', value: 'nested_3.1', isSelected: true},
-                {label: 'checkbox 3.2', value: 'nested_3.2', isSelected: true},
+        new ControlModel({label: 'checkbox 1', id: 'nested_1', value: 'nested_1', icon: 'user'}),
+        new ControlModel({
+            label: 'checkbox 3', value: 'nested_3', id: 'nested_3', icon: 'user', isSelected: true, children: [
+                new ControlModel({label: 'checkbox 3.2', value: 'nested_3.2', id: 'nested_3.2', icon: 'folder', isSelected: true}),
+                new ControlModel({label: 'checkbox 3.1', value: 'nested_3.1', id: 'nested_3.1', icon: 'folder', isSelected: true}),
             ]
-        },
-        <ControlModel>{
-            label: 'checkbox 2', value: 'nested_2', children: [
-                {label: 'checkbox 2.1', value: 'nested_2.1'},
-                {label: 'checkbox 2.2', value: 'nested_2.2'},
-                {label: 'checkbox 2.0', value: 'nested_2.0'},
-                {label: 'Another checkbox 2.x', value: 'nested_2.3'},
+        }),
+        new ControlModel({
+            label: 'checkbox 2', id: 'nested_2', value: 'nested_2', icon: 'user', children: [
+                new ControlModel({
+                    label: 'checkbox 2.1 with a very long name to test ellipsis is working as it should',
+                    value: 'nested_2.1',
+                    id: 'nested_2.1',
+                    icon: 'folder',
+                    children: [
+                        new ControlModel({label: 'checkbox 2.1.1', value: 'nested_2.1.1', icon: 'folder', id: 'nested_2.1.1'}),
+                        new ControlModel({label: 'checkbox 2.1.2', value: 'nested_2.1.2', icon: 'folder', id: 'nested_2.1.2'}),
+                    ]
+                }),
+                new ControlModel({label: 'checkbox 2.2', value: 'nested_2.2', icon: 'folder', id: 'nested_2.2'}),
+                new ControlModel({label: 'checkbox 2.0', value: 'nested_2.0', icon: 'folder', id: 'nested_2.0'}),
+                new ControlModel({label: 'Another checkbox 2.x', value: 'nested_2.3', icon: 'folder', id: 'nested_2.3'}),
             ]
-        },
-        <ControlModel>{
-            label: 'checkbox 4', value: 'nested_4', children: [
-                {label: 'checkbox 4.1', value: 'nested_4.1'},
-                {label: 'checkbox 4.2', value: 'nested_4.2'},
+        }),
+        new ControlModel({
+            label: 'checkbox 4', value: 'nested_4', id: 'nested_4', icon: 'user', children: [
+                new ControlModel({label: 'checkbox 4.2', value: 'nested_4.2', icon: 'folder', id: 'nested_4.2'}),
+                new ControlModel({label: 'checkbox 4.1', value: 'nested_4.1', icon: 'folder', id: 'nested_4.1'}),
             ]
-        },
+        }),
     ];
+    categorizedGroup: ControlModel[] = [
+        new ControlModel({id: 'africa', label: 'Africa', children: [
+            new ControlModel({id: 'morocco', label: 'Morocco'}),
+            new ControlModel({id: 'tunisia', label: 'Tunisia'}),
+            new ControlModel({id: 'senegal', label: 'Senegal'}),
+        ]}),
+        new ControlModel({id: 'america', label: 'America', children: [
+            new ControlModel({id: 'canada', label: 'Canada'}),
+            new ControlModel({id: 'mexico', label: 'Mexico'}),
+            new ControlModel({id: 'brazil', label: 'Brazil'}),
+        ]}),
+        new ControlModel({id: 'europe', label: 'Europe', children: [
+            new ControlModel({id: 'catalonia', label: 'Catalonia'}),
+            new ControlModel({id: 'belgium', label: 'Belgium'}),
+            new ControlModel({id: 'sweden', label: 'Sweden'}),
+        ]}),
+    ];
+    fileSystemTree: ControlModel[] = getInitialTree(false);
 
     simpleCheckboxSelection: string[] = [];
     iconCheckboxSelection: string[] = [];
     helpCheckboxSelection: string[] = [];
+    categorizedGroupSelection: string[] = [];
     nestedCheckboxSelection: string[] = [];
+    fileSystemSelection: string[] = [];
 
     toggleSelection1 = false;
     toggleSelection2 = true;

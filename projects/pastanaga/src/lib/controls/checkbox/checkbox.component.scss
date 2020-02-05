@@ -24,11 +24,6 @@
                 margin: 0 0 -1px rythm(.5) !important;
             }
         }
-        & + .pa-field-label + output {
-            position: absolute;
-            right: 0;
-            top: - rythm(.25);
-        }
 
         &:disabled + .pa-field-label {
             pa-icon.pa-label-icon ::ng-deep svg {
@@ -43,11 +38,5 @@
                 margin-left: rythm(2.5) * 2 !important;
             }
         }
-    }
-
-    .pa-checkbox-children-button {
-        position: relative;
-        top: -1px;
-        left: rythm(.5);
     }
 }

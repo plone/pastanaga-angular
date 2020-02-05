@@ -8,6 +8,7 @@
         ],
         "module": "commonjs",
         "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
         "allowJs": true
     },
     "files": [],

@@ -1,9 +1,28 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    forwardRef,
+    Input,
+    OnInit,
+    Output,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef, ViewChildren, QueryList
+} from '@angular/core';
 import { ControlModel } from '../control.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslatePipe } from '../../translate/translate.pipe';
+import { markForCheck } from '../../common/utils';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { BadgeComponent } from '../../badge/badge.component';
 
 let nextId = 0;
+
+export enum CheckboxTreeMode {
+    categorized = 'categorized',
+    nested = 'nested',
+    fileSystem = 'fileSystem',
+}
 
 @Component({
     selector: 'pa-checkbox-tree',
@@ -16,31 +35,95 @@ let nextId = 0;
     }],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnChanges {
+export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     @Input() id?: string;
-    @Input() checkboxes?: ControlModel[];
+    @Input() set checkboxes(value) {
+        if (!!value) {
+            const translatedCheckboxes = value.map(checkbox => new ControlModel({
+                ...checkbox,
+                label: this.translate.transform(checkbox.label || ''),
+                selectedChildren: this.getChildrenCount(checkbox),
+            }));
+            this._checkboxes = this._shouldSort ? this.sortCheckboxes(translatedCheckboxes) : translatedCheckboxes;
+        }
+        this.updateSelectionCount();
+        if (this._doLoadChildren) {
+            this.loadChildren();
+        }
+        this.computeCheckboxSizes();
+    }
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
-    @Input() getChildren?: Function;
-    @Input() isChildren = false;
-    @Input() doLoadChildren = true;
-    @Input() shouldSort = true;
-    @Input() isBadgeVisible = true;
-    @Input() isSelectAllVisible = true;
-    @Input() isCountVisible = false;
+    @Input() set getChildren(value) {
+        this.isAsync = typeof value === 'function';
+        if (!!value) {
+            this._getChildren = value;
+        }
+    }
+    @Input() set doLoadChildren(value) {
+        const booleanValue = coerceBooleanProperty(value);
+        if (!this._doLoadChildren && booleanValue) {
+            this.loadChildren();
+        }
+        this._doLoadChildren = booleanValue;
+    }
+    @Input() set shouldSort(value) { this._shouldSort = coerceBooleanProperty(value); }
+    @Input() set badgeVisible(value) { this._badgeVisible = coerceBooleanProperty(value); }
+    @Input() set selectAllVisible(value) { this._selectAllVisible = coerceBooleanProperty(value); }
+    @Input() set countVisible(value) {
+        this._countVisible = coerceBooleanProperty(value);
+        this.updateSelectionCount();
+    }
+
+    /**
+     * Mode defined checkbox tree global behaviour:
+     * - categorized (default):
+     *   - emitted selection contains only selected leaf
+     *   - selecting a parent automatically select its children
+     *   - selecting all children automatically select the parent
+     * - nested:
+     *   - emitted selection contains all selected nodes
+     *   - selecting a parent automatically select its children
+     *   - selecting all children automatically select the parent
+     * - fileSystem: a parent can have some inner content (like a folder can contain sub-folders but also some files)
+     *   - emitted selection contains all selected nodes
+     *   - selecting a parent does not select its children
+     *   - selecting all children does not select the parent
+     *   - a button allow to select/unselect all direct children of node
+     */
+    @Input() mode: CheckboxTreeMode = CheckboxTreeMode.categorized;
+
+    // not meant to be used outside
+    @Input() _isChildren = false;
 
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() allSelected: EventEmitter<boolean> = new EventEmitter();
+    @Output() updatedTree: EventEmitter<ControlModel[]> = new EventEmitter<ControlModel[]>();
+
+    @ViewChildren(CheckboxComponent) checkboxComponents?: QueryList<CheckboxComponent>;
+    @ViewChildren(BadgeComponent) badgeComponents?: QueryList<BadgeComponent>;
+
+    _checkboxes: ControlModel[] = [];
+    _getChildren?: Function;
+    _doLoadChildren = true;
+    _shouldSort = true;
+    _badgeVisible = true;
+    _selectAllVisible = true;
+    _countVisible = false;
 
     onChange: any;
     onTouched: any;
 
+    modes = CheckboxTreeMode;
     isAllSelected = false;
     isAsync = false;
     totalCount = 0;
     totalSelected = 0;
 
+    fileSystemButtonVisibility: {[checkboxId: string]: boolean} = {};
+
     constructor(
         private translate: TranslatePipe,
+        private cdr: ChangeDetectorRef
     ) {
     }
 
@@ -48,27 +131,9 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
         this.id = !this.id ? `fieldset-checkbox-tree-${nextId++}` : `${this.id}-checkbox-tree`;
     }
 
-    ngOnChanges(changes) {
-        if (changes.getChildren) {
-            this.isAsync = typeof this.getChildren === 'function';
-        }
-
-        if (changes.checkboxes && changes.checkboxes.currentValue && this.doLoadChildren) {
-            if (this.shouldSort) {
-                this.checkboxes = this.sortCheckboxes(changes.checkboxes.currentValue);
-            }
-            this.updateSelectionCount();
-            this.loadChildren();
-        }
-
-        if (changes.doLoadChildren && changes.doLoadChildren.currentValue === true && !changes.doLoadChildren.previousValue) {
-            this.loadChildren();
-        }
-    }
-
     writeValue(value: any) {
-        if (!!this.checkboxes) {
-            this.checkboxes.forEach(checkbox => checkbox.isSelected = value.includes(checkbox.value));
+        if (!!this._checkboxes) {
+            this._checkboxes = this._checkboxes.map(checkbox => new ControlModel({...checkbox, isSelected: value === checkbox.value}));
         }
     }
 
@@ -82,52 +147,99 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
 
     toggleSelectAll() {
         this.isAllSelected = !this.isAllSelected;
+        this._checkboxes = this._checkboxes.map( checkbox => {
+            const updatedCheckbox = new ControlModel({
+                ...checkbox,
+                isSelected: checkbox.isDisabled ? checkbox.isSelected : this.isAllSelected,
+                isIndeterminate: false,
+                children: this.getUpdatedChildrenSelection(this.isAllSelected, checkbox),
+            });
+            updatedCheckbox.selectedChildren = this.getChildrenCount(updatedCheckbox);
+            return updatedCheckbox;
+        });
         this.updateSelectionCount();
-        if (!!this.checkboxes) {
-            this.setSelectionForAll(this.checkboxes);
-        }
         this.emitSelectionChanged();
     }
 
     toggleSelection(isSelected: boolean, checkbox: ControlModel) {
-        if (!!checkbox.children) {
-            checkbox.children.forEach(child => {
-                child.isSelected = isSelected;
-                if (!!child.children) {
-                    this.toggleSelection(isSelected, child);
-                }
-            });
-            this.countChildren(checkbox);
+        checkbox.isSelected = isSelected;
+        // when file system, we automatically select children, but we don't automatically unselect them
+        const shouldUpdateChildren = !!checkbox.children && (isSelected || this.mode !== CheckboxTreeMode.fileSystem);
+        if (shouldUpdateChildren) {
+            checkbox.children = this.getUpdatedChildrenSelection(isSelected, checkbox);
+            checkbox.selectedChildren = this.getChildrenCount(checkbox);
+            markForCheck(this.cdr);
         }
+        checkbox.isIndeterminate = this.mode !== CheckboxTreeMode.fileSystem ? false : this.getIndeterminateForFileSystem(checkbox);
         this.updateAllSelected();
         this.emitSelectionChanged();
     }
 
-    setParentState(parent: ControlModel) {
-        if (parent.children.every(child => child.isSelected)) {
-            parent.isSelected = true;
-            parent.isIndeterminate = false;
+    toggleChildrenSelection(checkbox: ControlModel) {
+        const isSelected = (checkbox.selectedChildren || 0) < (checkbox.totalChildren || 0);
+        checkbox.children = this.getUpdatedChildrenSelection(isSelected, checkbox);
+        checkbox.selectedChildren = this.getChildrenCount(checkbox);
+        checkbox.isIndeterminate = this.getIndeterminateForFileSystem(checkbox);
+        markForCheck(this.cdr);
+        this.emitSelectionChanged();
+    }
+
+    private getUpdatedChildrenSelection(isSelected: boolean, checkbox: ControlModel): ControlModel[] {
+        return !checkbox.children ? [] : checkbox.children.map(child => {
+            if (!!child.children) {
+                child.children = this.getUpdatedChildrenSelection(isSelected, child);
+                child.selectedChildren = this.getChildrenCount(child);
+            }
+            return new ControlModel({...child, isSelected, isIndeterminate: false});
+        });
+    }
+
+    setParentState(childrenTree: ControlModel[], parent: ControlModel) {
+        parent.children = childrenTree;
+        if (this.mode === CheckboxTreeMode.fileSystem) {
+            parent.isIndeterminate = this.getIndeterminateForFileSystem(parent);
         } else {
-            parent.isIndeterminate = parent.children.some(child => child.isSelected);
-            if (parent.children.every(child => !child.isSelected)) {
-                parent.isSelected = false;
+            if (parent.children.every(child => child.isSelected && !child.isIndeterminate)) {
+                parent.isSelected = true;
+                parent.isIndeterminate = false;
+            } else {
+                parent.isIndeterminate = parent.children.some(child => child.isSelected || child.isIndeterminate);
+                if (parent.isIndeterminate || parent.children.every(child => !child.isSelected)) {
+                    parent.isSelected = false;
+                }
             }
         }
-        this.countChildren(parent);
+        parent.selectedChildren = this.getChildrenCount(parent);
 
         this.updateAllSelected();
         this.emitSelectionChanged();
+        markForCheck(this.cdr);
     }
 
-    private countChildren(checkbox: ControlModel) {
-        checkbox.selectedChildren = checkbox.children.filter(child => child.isSelected).length;
+    private getIndeterminateForFileSystem(parent: ControlModel) {
+        const allChildrenSelected = parent.children.every(child => child.isSelected);
+        const allChildrenUnSelected = parent.children.every(child => !child.isSelected);
+        return parent.children.some(child => child.isIndeterminate)
+            || (parent.isSelected && !allChildrenSelected && !allChildrenUnSelected)
+            || (!parent.isSelected && parent.children.some(child => child.isSelected));
+    }
+
+    toggleCheckbox(checkbox: ControlModel) {
+        checkbox.isExpanded = !checkbox.isExpanded;
+        this.updatedTree.emit(this._checkboxes);
+        markForCheck(this.cdr);
+    }
+
+    private getChildrenCount(checkbox: ControlModel): number {
+        return checkbox.children.filter(child => child.isSelected).length;
     }
 
     private updateSelectionCount() {
-        if (this.isCountVisible && !!this.checkboxes) {
+        if (this._countVisible && !!this._checkboxes) {
             this.totalCount = 0;
             this.totalSelected = 0;
-            this.countThemAll(this.checkboxes);
+            this.countThemAll(this._checkboxes);
+            markForCheck(this.cdr);
         }
     }
 
@@ -144,28 +256,36 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     private emitSelectionChanged() {
         this.selection.emit(this.getSelectedValues());
         this.allSelected.emit(this.isAllSelected);
+        this.updatedTree.emit(this._checkboxes);
     }
 
     private getSelectedValues(): string[] {
         const selectedValues: string[] = [];
-        if (!!this.checkboxes) {
-            this.checkboxes.forEach(checkbox => this.updateSelectedValues(checkbox, selectedValues));
+        if (!!this._checkboxes) {
+            this._checkboxes.forEach(checkbox => this.updateSelectedValues(checkbox, selectedValues));
         }
         return selectedValues;
     }
 
-    private updateSelectedValues(checkbox, selectedValues: string[]) {
-        if (checkbox.isSelected) {
-            selectedValues.push(checkbox.value);
+    private updateSelectedValues(checkbox: ControlModel, selectedValues: string[]) {
+        // by default selection contains only leaf (categorized tree)
+        // if nested or fileSystem tree, selection contains all selected nodes
+        const isCategorized = this.mode === CheckboxTreeMode.categorized;
+        if (checkbox.isSelected && (!isCategorized || !checkbox.children || checkbox.children.length === 0)) {
+            selectedValues.push(this.getCheckboxValue(checkbox));
         }
         if (!!checkbox.children) {
             checkbox.children.forEach(child => this.updateSelectedValues(child, selectedValues));
         }
     }
 
+    private getCheckboxValue(checkbox: ControlModel): string {
+        return checkbox.value || checkbox.id;
+    }
+
     private updateAllSelected() {
-        if (!this.isChildren && !!this.checkboxes) {
-            this.isAllSelected = this.checkboxes.every(checkbox => this.areAllChildrenSelected(checkbox));
+        if (!this._isChildren && !!this._checkboxes) {
+            this.isAllSelected = this._checkboxes.every(checkbox => this.areAllChildrenSelected(checkbox));
         }
         this.updateSelectionCount();
     }
@@ -175,69 +295,87 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
             checkbox.children.every(child => this.areAllChildrenSelected(child));
     }
 
-    private setSelectionForAll(checkboxes: ControlModel[]) {
-        checkboxes.forEach(checkbox => {
-            checkbox.isSelected = this.isAllSelected;
-            checkbox.isIndeterminate = false;
-            if (!!checkbox.children) {
-                this.setSelectionForAll(checkbox.children);
-                this.countChildren(checkbox);
-            }
-        });
-    }
-
     private loadChildren() {
-        if (!!this.checkboxes) {
-            if (this.shouldSort) {
-                this.checkboxes = this.sortCheckboxes(this.checkboxes);
-            }
-            if (this.isAsync && !!this.getChildren) {
-                for (const checkbox of this.checkboxes) {
-                    if (!!checkbox.children) {
-                        continue;
-                    }
-
-                    this.getChildren(checkbox).subscribe(children => {
-                        let selectedChildren = 0;
-                        checkbox.children = children.map(child => {
-                            child.isSelected = checkbox.isSelected;
-                            if (child.isSelected) {
-                                selectedChildren++;
-                            }
-                            return child;
-                        });
-                        checkbox.totalChildren = children.length;
-                        checkbox.selectedChildren = selectedChildren;
-                    });
+        if (this.isAsync && !!this._getChildren) {
+            for (const checkbox of this._checkboxes) {
+                if (!!checkbox.children) {
+                    continue;
                 }
+
+                this._getChildren(checkbox).subscribe(children => {
+                    let selectedChildren = 0;
+                    checkbox.children = children.map(child => {
+                        const updatedChild = new ControlModel({
+                            ...child,
+                            label: this.translate.transform(child.label || ''),
+                            isSelected: checkbox.isSelected,
+                        });
+                        if (updatedChild.isSelected) {
+                            selectedChildren++;
+                        }
+                        return updatedChild;
+                    });
+                    checkbox.totalChildren = children.length;
+                    checkbox.selectedChildren = selectedChildren;
+                    markForCheck(this.cdr);
+                });
             }
-            this.updateSelectionCount();
+        } else {
+            this._checkboxes.forEach(checkbox => {
+                checkbox.totalChildren = !!checkbox.children ? checkbox.children.length : 0;
+                checkbox.selectedChildren = !!checkbox.children ? checkbox.children.filter(child => child.isSelected).length : 0;
+            });
         }
+        this.updateSelectionCount();
     }
 
     private sortCheckboxes(checkboxes: ControlModel[]): ControlModel[] {
-        if (checkboxes && checkboxes.length > 0) {
-            checkboxes.map(checkbox => this.translate.transform(checkbox.label || '')).forEach((labels => {
-                checkboxes = checkboxes.map(checkbox => {
-                    checkbox.label = typeof labels[checkbox.label] === 'string' ? labels[checkbox.label] : checkbox.label;
-                    return checkbox;
-                }).sort(this.alphabeticalSorting);
-            }));
-        }
-        return checkboxes;
-    }
-
-    private alphabeticalSorting(a, b) {
-        const aLabel = a.label || '';
-        const bLabel = b.label || '';
-        return aLabel.toLocaleLowerCase().localeCompare(bLabel.toLowerCase());
+        return checkboxes.sort((a, b) => {
+            const aLabel = a.label || '';
+            const bLabel = b.label || '';
+            return aLabel.toLowerCase().localeCompare(bLabel.toLowerCase());
+        });
     }
 
     toggleRadioSelection(value: string) {
-        this.checkboxes = (this.checkboxes || []).map(ctl => ({
+        this._checkboxes = (this._checkboxes || []).map(ctl => new ControlModel({
             ...ctl,
             isSelected: ctl.value === value,
         }));
         this.emitSelectionChanged();
+    }
+
+    onMouseOver(checkbox: ControlModel) {
+        if (this.mode === CheckboxTreeMode.fileSystem) {
+            this.fileSystemButtonVisibility[checkbox.id] = true;
+        }
+    }
+
+    onMouseLeave(checkbox: ControlModel) {
+        if (this.mode === CheckboxTreeMode.fileSystem) {
+            const children = checkbox.children || [];
+            // keep button visible when checkbox is selected while its children are not
+            this.fileSystemButtonVisibility[checkbox.id] = checkbox.isSelected && children.every(child => !child.isSelected);
+        }
+    }
+
+    private computeCheckboxSizes() {
+        setTimeout(() => {
+            if (this._badgeVisible && !!this.checkboxComponents) {
+                const badges = this.badgeComponents || [] as BadgeComponent[];
+                this.checkboxComponents.forEach(checkboxComponent => {
+                    const id = checkboxComponent.id;
+                    const checkbox = this._checkboxes.find(item => item.id === id);
+                    if (!!checkbox && !!checkbox.totalChildren) {
+                        const badge = badges.find(b => b.id === id);
+                        if (!!badge) {
+                            const badgeWidth = badge.elementRef.nativeElement.getBoundingClientRect().width;
+                            const extraWidth = this.mode === CheckboxTreeMode.fileSystem ? badgeWidth + 124 : badgeWidth;
+                            checkboxComponent.setLabelMaxWidth(extraWidth);
+                        }
+                    }
+                });
+            }
+        }, 100);
     }
 }

@@ -20,7 +20,7 @@ import { Avatar } from '../avatar/avatar.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeComponent implements AfterViewInit {
-
+    @Input() id = '';
     @Input() set color(value) {
         if (!!value) {
             this.colorClass = `pa-badge-${value}`;
@@ -74,7 +74,7 @@ export class BadgeComponent implements AfterViewInit {
     @ViewChild('textContent', { static: false }) textContent?: ElementRef;
 
     constructor(
-        private elementRef: ElementRef,
+        public elementRef: ElementRef,
         private changeDetector: ChangeDetectorRef,
     ) {}
 
