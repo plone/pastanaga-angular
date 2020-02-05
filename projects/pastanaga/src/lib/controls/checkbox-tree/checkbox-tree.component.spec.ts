@@ -206,6 +206,14 @@ describe('CheckboxTree', () => {
             expect(fixture.componentInstance.allSelected).toBe(false);
         });
 
+        it(`should emit selection on load`, () => {
+            const fixture = TestBed.createComponent(TestNestedCheckedTreeComponent);
+            fixture.detectChanges();
+            expect(fixture.componentInstance.tree).toEqual(getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1());
+            expect(fixture.componentInstance.selection).toEqual([ids.child1, ids.subChild2]);
+            expect(fixture.componentInstance.allSelected).toBe(false);
+        });
+
         it(`should select/unselect all children when selecting a parent`, () => {
             const fixture = TestBed.createComponent(TestNestedUncheckedTreeComponent);
             fixture.detectChanges();
@@ -366,6 +374,7 @@ describe('CheckboxTree', () => {
             const fixture = TestBed.createComponent(TestFileSystemUncheckedTreeComponent);
             fixture.detectChanges();
             getCheckbox(fixture, ids.child1).click();
+            fixture.detectChanges();
             getCheckbox(fixture, ids.child2).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingAllChildren());
@@ -385,9 +394,9 @@ function getTreeAfterSelectingRoot1(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isSelected = true;
     tree[0].selectedChildren = 2;
-    tree[0].children.forEach(child => {
+    (tree[0].children || []).forEach(child => {
         child.isSelected = true;
-        if (child.children.length > 0) {
+        if (!!child.children && child.children.length > 0) {
             child.children.forEach(subChild => subChild.isSelected = true);
             child.selectedChildren = 2;
         }
@@ -407,8 +416,10 @@ function getNestedTreeAfterSelectingRoot1AndUnselectingChild1(): ControlModel[] 
     tree[0].isSelected = false;
     tree[0].isIndeterminate = true;
     tree[0].selectedChildren = 1;
-    tree[0].children[0].isSelected = false;
-    tree[0].children[1].selectedChildren = 2;
+    if (!!tree[0].children) {
+        tree[0].children[0].isSelected = false;
+        tree[0].children[1].selectedChildren = 2;
+    }
     return tree;
 }
 
@@ -416,8 +427,10 @@ function getFileSystemTreeAfterSelectingRoot1AndUnselectingChild1(): ControlMode
     const tree = getTreeAfterSelectingRoot1();
     tree[0].isIndeterminate = true;
     tree[0].selectedChildren = 1;
-    tree[0].children[0].isSelected = false;
-    tree[0].children[1].selectedChildren = 2;
+    if (!!tree[0].children) {
+        tree[0].children[0].isSelected = false;
+        tree[0].children[1].selectedChildren = 2;
+    }
     return tree;
 }
 
@@ -426,12 +439,14 @@ function getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1(): ControlModel
     tree[0].isSelected = false;
     tree[0].isIndeterminate = true;
     tree[0].selectedChildren = 1;
-    tree[0].children[0].isSelected = true;
-    tree[0].children[1].isSelected = false;
-    tree[0].children[1].isIndeterminate = true;
-    tree[0].children[1].selectedChildren = 1;
-    tree[0].children[1].children[0].isSelected = false;
-    tree[0].children[1].children[1].isSelected = true;
+    if (!!tree[0].children && !!tree[0].children[1].children) {
+        tree[0].children[0].isSelected = true;
+        tree[0].children[1].isSelected = false;
+        tree[0].children[1].isIndeterminate = true;
+        tree[0].children[1].selectedChildren = 1;
+        tree[0].children[1].children[0].isSelected = false;
+        tree[0].children[1].children[1].isSelected = true;
+    }
     return tree;
 }
 
@@ -440,12 +455,14 @@ function getFileSystemTreeAfterSelectingRoot1AndUnselectingSubChild1(): ControlM
     tree[0].isSelected = true;
     tree[0].isIndeterminate = true;
     tree[0].selectedChildren = 2;
-    tree[0].children[0].isSelected = true;
-    tree[0].children[1].isSelected = true;
-    tree[0].children[1].isIndeterminate = true;
-    tree[0].children[1].selectedChildren = 1;
-    tree[0].children[1].children[0].isSelected = false;
-    tree[0].children[1].children[1].isSelected = true;
+    if (!!tree[0].children && !!tree[0].children[1].children) {
+        tree[0].children[0].isSelected = true;
+        tree[0].children[1].isSelected = true;
+        tree[0].children[1].isIndeterminate = true;
+        tree[0].children[1].selectedChildren = 1;
+        tree[0].children[1].children[0].isSelected = false;
+        tree[0].children[1].children[1].isSelected = true;
+    }
     return tree;
 }
 
@@ -453,41 +470,51 @@ function getNestedTreeAfterSelectingChild1(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isIndeterminate = true;
     tree[0].selectedChildren = 1;
-    tree[0].children[0].isSelected = true;
+    if (!!tree[0].children) {
+        tree[0].children[0].isSelected = true;
+    }
     return tree;
 }
 
 function getFileSystemTreeAfterSelectingAllChildren(): ControlModel[] {
     const tree = getNestedTreeAfterSelectingChild1();
     tree[0].selectedChildren = 2;
-    tree[0].children[1].isSelected = true;
-    tree[0].children[1].children.forEach(subChild => subChild.isSelected = true);
-    tree[0].children[1].selectedChildren = 2;
+    if (!!tree[0].children && !!tree[0].children[1].children) {
+        tree[0].children[1].isSelected = true;
+        tree[0].children[1].children.forEach(subChild => subChild.isSelected = true);
+        tree[0].children[1].selectedChildren = 2;
+    }
     return tree;
 }
 
 function getFileSystemTreeAfterUnSelectingAllChildrenButNotSubChildren(): ControlModel[] {
     const tree = getFileSystemTreeAfterSelectingAllChildren();
     tree[0].selectedChildren = 0;
-    tree[0].children[0].isSelected = false;
-    tree[0].children[1].isSelected = false;
-    tree[0].children[1].isIndeterminate = true;
+    if (!!tree[0].children) {
+        tree[0].children[0].isSelected = false;
+        tree[0].children[1].isSelected = false;
+        tree[0].children[1].isIndeterminate = true;
+    }
     return tree;
 }
 
 function getFileSystemTreeAfterSelectingSubChild1(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isIndeterminate = true;
-    tree[0].children[1].isIndeterminate = true;
-    tree[0].children[1].selectedChildren = 1;
-    tree[0].children[1].children[0].isSelected = true;
+    if (!!tree[0].children && !!tree[0].children[1].children) {
+        tree[0].children[1].isIndeterminate = true;
+        tree[0].children[1].selectedChildren = 1;
+        tree[0].children[1].children[0].isSelected = true;
+    }
     return tree;
 }
 
 function getFileSystemTreeAfterSelectingSubChild2(): ControlModel[] {
     const tree = getFileSystemTreeAfterSelectingSubChild1();
-    tree[0].children[1].selectedChildren = 2;
-    tree[0].children[1].children[1].isSelected = true;
+    if (!!tree[0].children && !!tree[0].children[1].children) {
+        tree[0].children[1].selectedChildren = 2;
+        tree[0].children[1].children[1].isSelected = true;
+    }
     return tree;
 }
 
@@ -495,11 +522,13 @@ function getAllTreeSelected(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isSelected = true;
     tree[0].selectedChildren = 2;
-    tree[0].children[0].isSelected = true;
-    tree[0].children[1].isSelected = true;
-    tree[0].children[1].selectedChildren = 2;
-    tree[0].children[1].children[0].isSelected = true;
-    tree[0].children[1].children[1].isSelected = true;
+    if (!!tree[0].children && !!tree[0].children[1].children) {
+        tree[0].children[0].isSelected = true;
+        tree[0].children[1].isSelected = true;
+        tree[0].children[1].selectedChildren = 2;
+        tree[0].children[1].children[0].isSelected = true;
+        tree[0].children[1].children[1].isSelected = true;
+    }
     tree[1].isSelected = true;
     return tree;
 }

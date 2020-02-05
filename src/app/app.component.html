@@ -58,7 +58,8 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree type="radio" [checkboxes]="simpleCheckboxes"
+                    <pa-checkbox-tree id="radioGroup"
+                                      type="radio" [checkboxes]="simpleCheckboxes"
                                       (selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)
                     </pa-checkbox-tree>
                 </td>
@@ -71,12 +72,13 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="iconCheckboxes" badgeVisible
+                    <pa-checkbox-tree id="badgeGroup"
+                                      [checkboxes]="iconCheckboxes" badgeVisible
                                       (selection)="iconCheckboxSelection = $event">Icon checkbox group
                     </pa-checkbox-tree>
                 </td>
                 <td>
-                    No two data binding
+                    No two way data binding
                 </td>
                 <td>
                     <p>Selection: {{iconCheckboxSelection | json}}</p>
@@ -84,7 +86,8 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="helpCheckboxes" countVisible
+                    <pa-checkbox-tree id="helpGroup"
+                                      [checkboxes]="helpCheckboxes" countVisible
                                       (selection)="helpCheckboxSelection = $event">Help checkbox group
                     </pa-checkbox-tree>
                 </td>
@@ -97,13 +100,30 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="categorizedGroup"
+                    <pa-checkbox-tree id="lazy"
+                                      [checkboxes]="lazyLoadedTree"
+                                      [getChildren]="getLazyTreeChildren"
+                                      (selection)="lazyCheckboxSelection = $event">
+                        Lazy loading tree
+                    </pa-checkbox-tree>
+                </td>
+                <td>
+                    No two way data binding
+                </td>
+                <td>
+                    <p>Selection: {{lazyCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pa-checkbox-tree id="categorized"
+                                      [checkboxes]="categorizedGroup"
                                       (selection)="categorizedGroupSelection = $event">
                         Categorized checkboxes
                     </pa-checkbox-tree>
                 </td>
                 <td>
-                    No two data binding
+                    No two way data binding
                 </td>
                 <td>
                     <p>Selection: {{categorizedGroupSelection | json}}</p>
@@ -111,14 +131,15 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="nestedCheckboxes"
+                    <pa-checkbox-tree id="nested"
+                                      [checkboxes]="nestedCheckboxes"
                                       mode="nested"
                                       (selection)="nestedCheckboxSelection = $event">
                         Nested checkbox tree
                     </pa-checkbox-tree>
                 </td>
                 <td>
-                    No two data binding
+                    No two way data binding
                 </td>
                 <td>
                     <p>Selection: {{nestedCheckboxSelection | json}}</p>
@@ -126,7 +147,8 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree [checkboxes]="fileSystemTree"
+                    <pa-checkbox-tree id="fileSystem"
+                                      [checkboxes]="fileSystemTree"
                                       mode="fileSystem"
                                       (selection)="fileSystemSelection = $event">
                         File system

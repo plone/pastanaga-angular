@@ -60,10 +60,11 @@
                  [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.id"
                  [attr.aria-hidden]="!checkbox.isExpanded">
                 <pa-checkbox-tree *ngIf="checkbox.isExpanded"
+                                  [id]="checkbox.id + '-child'"
                                   [_isChildren]="true"
                                   [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
-                                  [getChildren]="_getChildren"
+                                  [getChildren]="getChildren"
                                   [mode]="mode"
                                   (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
             </div>

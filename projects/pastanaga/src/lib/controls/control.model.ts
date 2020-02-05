@@ -1,4 +1,4 @@
-export interface IControlModel {
+export interface ControlModelData {
     id: string;
     label: string;
     subLabel?: string;
@@ -33,11 +33,11 @@ export class ControlModel {
     isHidden = false;
     isPrivate = false;
 
-    children: ControlModel[] = [];
+    children?: ControlModel[];
     totalChildren?: number;
     selectedChildren?: number;
 
-    constructor(data: IControlModel) {
+    constructor(data: ControlModelData) {
         this.id = data.id || '';
         this.label = data.label || '';
         this.subLabel = data.subLabel || '';
@@ -53,9 +53,11 @@ export class ControlModel {
         this.isHidden = data.isHidden || false;
         this.isPrivate = data.isPrivate || false;
 
-        this.children = data.children || [];
-        this.totalChildren = this.children.length;
-        this.selectedChildren = this.children.filter(child => child.isSelected).length;
+        this.children = data.children;
+        if (!!this.children) {
+            this.totalChildren = this.children.length;
+            this.selectedChildren = this.children.filter(child => child.isSelected).length;
+        }
     }
 }
 
