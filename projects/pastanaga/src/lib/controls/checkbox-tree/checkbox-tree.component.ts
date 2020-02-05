@@ -15,6 +15,7 @@ import { markForCheck } from '../../common/utils';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { BadgeComponent } from '../../badge/badge.component';
+import { Observable } from 'rxjs';
 
 let nextId = 0;
 
@@ -42,7 +43,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
             const translatedCheckboxes = value.map(checkbox => new ControlModel({
                 ...checkbox,
                 label: this.translate.transform(checkbox.label || ''),
-                selectedChildren: this.getChildrenCount(checkbox),
+                selectedChildren: this.getSelectedChildrenCount(checkbox),
             }));
             this._checkboxes = this._shouldSort ? this.sortCheckboxes(translatedCheckboxes) : translatedCheckboxes;
         }
@@ -103,7 +104,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     @ViewChildren(BadgeComponent) badgeComponents?: QueryList<BadgeComponent>;
 
     _checkboxes: ControlModel[] = [];
-    _getChildren?: Function;
+    _getChildren?: (control: ControlModel) => Observable<ControlModel[]>;
     _doLoadChildren = true;
     _shouldSort = true;
     _badgeVisible = true;
@@ -154,7 +155,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
                 isIndeterminate: false,
                 children: this.getUpdatedChildrenSelection(this.isAllSelected, checkbox),
             });
-            updatedCheckbox.selectedChildren = this.getChildrenCount(updatedCheckbox);
+            updatedCheckbox.selectedChildren = this.getSelectedChildrenCount(updatedCheckbox);
             return updatedCheckbox;
         });
         this.updateSelectionCount();
@@ -167,7 +168,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         const shouldUpdateChildren = !!checkbox.children && (isSelected || this.mode !== CheckboxTreeMode.fileSystem);
         if (shouldUpdateChildren) {
             checkbox.children = this.getUpdatedChildrenSelection(isSelected, checkbox);
-            checkbox.selectedChildren = this.getChildrenCount(checkbox);
+            checkbox.selectedChildren = this.getSelectedChildrenCount(checkbox);
             markForCheck(this.cdr);
         }
         checkbox.isIndeterminate = this.mode !== CheckboxTreeMode.fileSystem ? false : this.getIndeterminateForFileSystem(checkbox);
@@ -178,7 +179,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
     toggleChildrenSelection(checkbox: ControlModel) {
         const isSelected = (checkbox.selectedChildren || 0) < (checkbox.totalChildren || 0);
         checkbox.children = this.getUpdatedChildrenSelection(isSelected, checkbox);
-        checkbox.selectedChildren = this.getChildrenCount(checkbox);
+        checkbox.selectedChildren = this.getSelectedChildrenCount(checkbox);
         checkbox.isIndeterminate = this.getIndeterminateForFileSystem(checkbox);
         markForCheck(this.cdr);
         this.emitSelectionChanged();
@@ -188,7 +189,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         return !checkbox.children ? [] : checkbox.children.map(child => {
             if (!!child.children) {
                 child.children = this.getUpdatedChildrenSelection(isSelected, child);
-                child.selectedChildren = this.getChildrenCount(child);
+                child.selectedChildren = this.getSelectedChildrenCount(child);
             }
             return new ControlModel({...child, isSelected, isIndeterminate: false});
         });
@@ -209,7 +210,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
                 }
             }
         }
-        parent.selectedChildren = this.getChildrenCount(parent);
+        parent.selectedChildren = this.getSelectedChildrenCount(parent);
 
         this.updateAllSelected();
         this.emitSelectionChanged();
@@ -230,7 +231,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit {
         markForCheck(this.cdr);
     }
 
-    private getChildrenCount(checkbox: ControlModel): number {
+    private getSelectedChildrenCount(checkbox: ControlModel): number {
         return checkbox.children.filter(child => child.isSelected).length;
     }
 
