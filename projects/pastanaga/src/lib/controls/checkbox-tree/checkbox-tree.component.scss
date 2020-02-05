@@ -28,6 +28,7 @@
             }
         }
 
+        pa-checkbox.pa-checkbox-expanded ::ng-deep .pa-field,
         & > ::ng-deep pa-checkbox:not(:last-child) .pa-field,
         & > ::ng-deep .pa-field-sublist:not(:last-child) {
             margin-bottom: 0;

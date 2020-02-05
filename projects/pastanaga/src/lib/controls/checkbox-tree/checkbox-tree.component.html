@@ -28,7 +28,8 @@
                            (click)="toggleCheckbox(checkbox)">
                     {{!checkbox.children ? 'Loading' : !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
                 </pa-button>
-                <pa-checkbox [id]="checkbox.id"
+                <pa-checkbox [class.pa-checkbox-expanded]="checkbox.isExpanded"
+                             [id]="checkbox.id"
                              [icon]="checkbox.icon"
                              [help]="checkbox.help"
                              [subLabel]="checkbox.subLabel"
