@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Avatar, BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, ToggleModel } from '../../projects/pastanaga/src';
 import { of } from 'rxjs';
 import { getInitialTree } from '../../projects/pastanaga/src/lib/controls/checkbox-tree/checkbox-tree.test-data';
-
+// tslint:disable:max-line-length
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
     contentType = contentType || '';
     sliceSize = sliceSize || 512;
@@ -54,8 +54,8 @@ export class AppComponent implements OnInit {
         new ControlModel({label: 'checkbox 4', id: 'icon_4', value: 'icon_4', icon: 'sent'}),
     ];
     helpCheckboxes: ControlModel[] = [
-        new ControlModel({label: 'checkbox 1', value: 'help_1', id: 'help_1', help: 'some help about checkbox 1'}),
-        new ControlModel({label: 'checkbox 4', value: 'help_4', id: 'help_4', help: 'some help about checkbox 4'}),
+        new ControlModel({label: 'checkbox 1', value: 'help_1', id: 'help_1', help: 'some help about checkbox 1', subLabel: '(sub label here)'}),
+        new ControlModel({label: 'checkbox 4', value: 'help_4', id: 'help_4', help: 'some help about checkbox 4', labelIcons: [{name: 'group', tooltip: 'label icon here'}]}),
         new ControlModel({label: 'checkbox 3', value: 'help_3', id: 'help_3', help: 'some help about checkbox 3', isSelected: true}),
         new ControlModel({label: 'checkbox 2', value: 'help_2', id: 'help_2', help: 'some help about checkbox 2'}),
         new ControlModel({label: 'another checkbox', value: 'help_5', id: 'help_5', help: 'some help about another checkbox'}),

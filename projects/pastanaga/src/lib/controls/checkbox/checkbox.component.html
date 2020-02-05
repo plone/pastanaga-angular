@@ -23,6 +23,10 @@
             <pa-icon *ngIf="icon" [name]="icon"></pa-icon>
             <ng-content></ng-content>
             <small *ngIf="subLabel">{{ subLabel }}</small>
+            <pa-icon *ngFor="let icon of labelIcons"
+                     [name]="icon.name"
+                     [paTooltip]="icon.tooltip | translate"
+                     class="pa-label-icon"></pa-icon>
         </span>
     </label>
 

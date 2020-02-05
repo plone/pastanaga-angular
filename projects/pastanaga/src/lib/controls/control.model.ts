@@ -2,6 +2,7 @@ export interface IControlModel {
     id: string;
     label: string;
     subLabel?: string;
+    labelIcons?: LabelIcon[];
     value?: string;
     help?: string;
     icon?: string;
@@ -22,6 +23,7 @@ export class ControlModel {
     id = '';
     label = '';
     subLabel?: string;
+    labelIcons?: LabelIcon[];
     value?: string;
     help?: string;
     icon?: string;
@@ -41,6 +43,7 @@ export class ControlModel {
         this.id = data.id || '';
         this.label = data.label || '';
         this.subLabel = data.subLabel || '';
+        this.labelIcons = data.labelIcons;
         this.value = data.value || '';
         this.help = data.help || '';
         this.icon = data.icon || '';
@@ -59,5 +62,15 @@ export class ControlModel {
             this.totalChildren = this.children.length;
         }
         this.selectedChildren = typeof data.selectedChildren === 'number' ? data.selectedChildren : 0;
+    }
+}
+
+export class LabelIcon {
+    name: string;
+    tooltip: string;
+
+    constructor(data) {
+        this.name = data.name;
+        this.tooltip = data.tooltip;
     }
 }

@@ -45,6 +45,11 @@
                                  [(selected)]="isStandaloneCheckboxSelected"
                                  (selection)="standaloneSelection = $event">Standalone checkbox
                     </pa-checkbox>
+                    <pa-checkbox icon="channel"
+                                 [labelIcons]="[{name: 'group', tooltip: 'shared'}]"
+                                 [(selected)]="isStandaloneCheckboxSelected"
+                                 (selection)="standaloneSelection = $event">Standalone checkbox
+                    </pa-checkbox>
                 </td>
                 <td>isSelected: {{isStandaloneCheckboxSelected}}</td>
                 <td>

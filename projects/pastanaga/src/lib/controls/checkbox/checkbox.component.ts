@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges, markForCheck } from '../../common/utils';
+import { LabelIcon } from '../control.model';
 
 let nextId = 0;
 
@@ -28,6 +29,7 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     @Input() icon?: string;
     @Input() name?: string;
     @Input() subLabel?: string;
+    @Input() labelIcons?: LabelIcon[];
     @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
     @Input() set selected(value) { this._selected = coerceBooleanProperty(value); }
     @Input() set indeterminate(value) { this._indeterminate = coerceBooleanProperty(value); }
