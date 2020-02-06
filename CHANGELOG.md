@@ -1,3 +1,10 @@
+# 1.9.1 (2020-02-07)
+
+- Fixes on checkbox tree: [mathilde-pellerin]
+    - fix lazy loading
+    - style when last checkbox has children expanded
+    - better typing
+
 # 1.9.0 (2020-02-05)
 
 - Checkbox component:
