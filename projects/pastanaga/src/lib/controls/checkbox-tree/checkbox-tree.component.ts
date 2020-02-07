@@ -206,17 +206,8 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
         // copy children state without changing object ref to prevent having an infinite loop of children/parent change detection
         if (!!parent.children) {
             parent.children.forEach((child, i) => {
-                const childModel = childrenTree[i];
-                if (!!childModel) {
-                    child.label = childModel.label;
-                    child.isSelected = childModel.isSelected;
-                    child.isDisabled = childModel.isDisabled;
-                    child.isFiltered = childModel.isFiltered;
-                    child.isIndeterminate = childModel.isIndeterminate;
-                    child.isExpanded = childModel.isExpanded;
-                    child.children = childModel.children;
-                    child.selectedChildren = childModel.selectedChildren;
-                    child.totalChildren = childModel.totalChildren;
+                if (!!parent.children && childrenTree[i]) {
+                    parent.children[i] = new ControlModel({...childrenTree[i]});
                 }
             });
         }
