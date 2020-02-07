@@ -53,7 +53,7 @@ export class DropdownCheckboxComponent {
     }
 
     setSelection() {
-        this._checkboxes = this._checkboxes.map(checkbox => ({
+        this._checkboxes = this._checkboxes.map(checkbox => new ControlModel({
             ...checkbox,
             isSelected: !!checkbox.value && this._values.includes(checkbox.value),
         }));

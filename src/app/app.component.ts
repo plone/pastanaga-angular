@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Avatar, BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, ToggleModel } from '../../projects/pastanaga/src';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { getInitialTree } from '../../projects/pastanaga/src/lib/controls/checkbox-tree/checkbox-tree.test-data';
+import { delay } from 'rxjs/operators';
 // tslint:disable:max-line-length
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
     contentType = contentType || '';
@@ -60,6 +61,12 @@ export class AppComponent implements OnInit {
         new ControlModel({label: 'checkbox 2', value: 'help_2', id: 'help_2', help: 'some help about checkbox 2'}),
         new ControlModel({label: 'another checkbox', value: 'help_5', id: 'help_5', help: 'some help about another checkbox'}),
     ];
+    lazyLoadedTree: ControlModel[] = [
+        new ControlModel({ id: 'parent1', value: '1', label: 'parent 1', isSelected: false }),
+        new ControlModel({ id: 'parent2', value: '2', label: 'parent 2', isSelected: false }),
+        new ControlModel({ id: 'parent3', value: '3', label: 'parent 3', isSelected: false }),
+        new ControlModel({ id: 'parent4', value: '4', label: 'parent 4', isSelected: false }),
+    ];
     nestedCheckboxes: ControlModel[] = [
         new ControlModel({label: 'checkbox 1', id: 'nested_1', value: 'nested_1', icon: 'user'}),
         new ControlModel({
@@ -110,10 +117,12 @@ export class AppComponent implements OnInit {
         ]}),
     ];
     fileSystemTree: ControlModel[] = getInitialTree(false);
+    updatedTree: ControlModel[] = [];
 
     simpleCheckboxSelection: string[] = [];
     iconCheckboxSelection: string[] = [];
     helpCheckboxSelection: string[] = [];
+    lazyCheckboxSelection: string[] = [];
     categorizedGroupSelection: string[] = [];
     nestedCheckboxSelection: string[] = [];
     fileSystemSelection: string[] = [];
@@ -342,4 +351,29 @@ export class AppComponent implements OnInit {
         console.log(this);
         console.log('Hello');
     }
+
+    getLazyTreeChildren(checkbox: ControlModel): Observable<ControlModel[]> {
+        const parentValue: number = parseInt(checkbox.value || '0', 10);
+        const noChildren = !!checkbox.value && ((checkbox.value.length === 1 && parentValue % 2 === 0) || checkbox.value.length > 1);
+        const children: ControlModel[] = noChildren ? [] : [
+            new ControlModel({
+                id: `child-of-${checkbox.id}-1`,
+                value: (parentValue + 1).toString(),
+                label: `Child ${parentValue}-1`,
+            }),
+            new ControlModel({
+                id: `child-of-${checkbox.id}-2`,
+                value: (parentValue + 2).toString(),
+                label: `Child ${parentValue}-2`,
+            }),
+            new ControlModel({
+                id: `child-of-${checkbox.id}-3`,
+                value: (parentValue + 3).toString(),
+                label: `Child ${parentValue}-3`,
+            }),
+        ];
+        return of(children).pipe(delay(100));
+    }
 }
+
+
