@@ -1,0 +1,22 @@
+<!--<div class="pa-popup" [hidden]="!isDisplayed" [ngStyle]="style">
+    <div class="pa-popup-wrapper">
+        <pa-calendar [selection]="selection"
+                     [noFuture]="_noFuture"
+                     [rangeStart]="_rangeStart"
+                     [rangeEnd]="_rangeEnd"
+                     [min]="min"
+                     (select)="onSelection($event)"></pa-calendar>
+    </div>
+</div>-->
+
+<div class="pa-date-input"><pa-input>Choose date</pa-input>
+    <pa-button size="small" icon="calendar" [paPopup]="datepicker">O</pa-button>
+
+
+
+    <pa-date-picker #datepicker
+                        [selection]="rangeSelection"
+                        (select)="selectForRange($event)"></pa-date-picker>
+</div>
+
+

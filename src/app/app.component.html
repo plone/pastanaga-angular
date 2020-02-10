@@ -181,6 +181,9 @@
                         [min]="rangeSelection.start"
                         (select)="selectForRange($event)"></pa-date-picker>
 
+
+        <h3>Date input</h3>
+        <pa-date-input [rangeSelection]="rangeSelection"></pa-date-input>
         <h3>Calendar</h3>
         <p>Selected date: {{rangeSelection | json}}</p>
         <pa-calendar [selection]="rangeSelection"

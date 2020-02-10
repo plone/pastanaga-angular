@@ -1,0 +1,41 @@
+@import "../styles/variables";
+@import "calendar.variables";
+
+:host {
+    .pa-popup {
+        min-width: $calendar-width;
+        max-width: none;
+        max-height: none;
+    }
+
+    .pa-date-input {
+        background: $sky;
+        width: 250px;
+        display: flex;
+        align-items: center;
+        border-radius: rythm(.25);
+    }
+
+    pa-input {
+        width: 100% !important;
+        display: flex;
+    }
+
+    pa-button {
+        display: flex;
+        margin-left: -rythm(.5);
+    }
+
+    pa-input ::ng-deep .pa-field-text{
+        padding-left: rythm(.5);
+        width: 100% !important;
+        margin: 0;
+    }
+    pa-input ::ng-deep .pa-field-control {
+        width: 100% !important;
+        margin: 0px !important;
+    }
+    pa-input ::ng-deep .pa-field-label {
+        text-transform: none !important;
+    }
+}

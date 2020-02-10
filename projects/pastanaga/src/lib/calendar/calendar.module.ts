@@ -6,6 +6,9 @@ import { TranslateModule } from '../translate/translate.module';
 import { CalendarComponent } from './calendar.component';
 import { DatePickerComponent } from './date-picker.component';
 import { PopupModule } from '../popup/popup.module';
+import { DateInputComponent } from './date-input.component';
+import { TextFieldModule } from '../textfield/textfield.module';
+
 
 @NgModule({
     imports: [
@@ -14,9 +17,10 @@ import { PopupModule } from '../popup/popup.module';
         PopupModule,
         TooltipModule,
         TranslateModule,
+        TextFieldModule,
     ],
-    exports: [CalendarComponent, DatePickerComponent],
-    declarations: [CalendarComponent, DatePickerComponent],
+    exports: [CalendarComponent, DatePickerComponent, DateInputComponent],
+    declarations: [CalendarComponent, DatePickerComponent, DateInputComponent],
 })
 export class CalendarModule {
 }
