@@ -1,3 +1,8 @@
+# 1.9.3 (2020-02-11)
+
+### Bug fixes
+- **Textarea component:** Fix textarea readonly padding [barcafa]
+
 # 1.9.2 (2020-02-11) [mathilde-pellerin]
 
 ### Bug fixes
