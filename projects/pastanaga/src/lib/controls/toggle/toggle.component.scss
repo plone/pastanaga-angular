@@ -186,5 +186,15 @@
         .pa-field-control ~ .pa-field-help {
             margin: 0;
         }
+
+        &.has-image {
+            .pa-field-control-thumb {
+                margin-top: rythm(1);
+            }
+
+            .pa-field-control ~ .pa-field-output {
+                margin-top: rythm(.5);
+            }
+        }
     }
 }

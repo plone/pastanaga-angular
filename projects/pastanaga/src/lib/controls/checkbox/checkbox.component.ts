@@ -42,7 +42,6 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     @Output() selectedChange: EventEmitter<boolean> = new EventEmitter();
 
     @ViewChild('text', { static: false }) textElement?: ElementRef;
-    @ViewChild('badge', { static: false }) badge?: ElementRef;
     @ViewChild('ellipsisText', { static: true }) ellipsisText?: ElementRef;
 
     _id = '';
