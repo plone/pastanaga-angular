@@ -1,6 +1,10 @@
 # 1.9.2 (2020-02-11) [mathilde-pellerin]
 
-- Improve changelog structure by adding **Bug fixes**, **Features** and **Breaking changes** section (starting at version 1.9.0)
+### Bug fixes
+- **Toggle component:** Vertically align toggle element when there is an image 
+
+### Improvements
+- Improve changelog structure by adding **Bug fixes**, **Features**/**Improvements** and **Breaking changes** sections (starting at version 1.9.0)
 
 # 1.9.1 (2020-02-07) [mathilde-pellerin]
 

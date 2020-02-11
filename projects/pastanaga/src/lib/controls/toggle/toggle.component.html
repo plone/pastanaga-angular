@@ -1,7 +1,8 @@
 <div class="pa-field pa-field-toggle"
      [class.pa-field-divider]="divider && divider.hasDivider"
      [class.first-in-group]="divider && divider.isFirst"
-     [class.last-in-group]="divider && divider.isLast">
+     [class.last-in-group]="divider && divider.isLast"
+     [class.has-image]="!!imageUrl">
     <input class="pa-field-control" type="checkbox" [id]="id" [attr.aria-describedby]="helpId"
            [checked]="isSelected"
            [attr.aria-checked]="isSelected"
@@ -18,5 +19,5 @@
         <!-- Important to keep the label without any space between the span to not break the animation between yes and no -->
         <label role="presentation" [for]="id"><span class="o-field-output-checked" *ngIf="isSelected" translate>{{ yesLabel }}</span><span class="pa-field-output-unchecked" *ngIf="!isSelected" translate>{{ noLabel }}</span></label>
     </output>
-    <small *ngIf="!imageUrl && !!help" class="pa-field-help" [id]="helpId" [innerHtml]="help|translate">{{help}}</small>
+    <small *ngIf="!imageUrl && !!help" class="pa-field-help" [id]="helpId" [innerHtml]="help | translate">{{help}}</small>
 </div>
