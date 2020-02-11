@@ -1,24 +1,47 @@
-# 1.9.1 (2020-02-07)
+# 1.9.2 (2020-02-11) [mathilde-pellerin]
 
-- Fixes on checkbox tree: [mathilde-pellerin]
-    - fix lazy loading
-    - style when last checkbox has children expanded
-    - better typing
+- Improve changelog structure by adding **Bug fixes**, **Features** and **Breaking changes** section (starting at version 1.9.0)
 
-# 1.9.0 (2020-02-05)
+# 1.9.1 (2020-02-07) [mathilde-pellerin]
 
-- Checkbox component:
-  - `onSelection` event emitter become `selection`
-  - add coerce boolean for all inputs
-  - rename boolean inputs removing `is` prefix (ie. isDisabled -> disabled) for better consistency between components
-  - add square check option (replace the check mark '✓' by a square '■' when selected)
-- Checkbox tree component:
+### Bug fixes
+- **Checkbox tree component:** 
+  - fix lazy loading
+  - style when last checkbox has children expanded
+  - better typing
+
+# 1.9.0 (2020-02-05) [mathilde-pellerin]
+
+### Bug fixes
+
+- **Checkbox tree component:**
   - Fix selection state to work properly with onPush strategy
   - Fix bugs on indeterminate state
   - Fix ellipsis
+
+### Features
+
+- **Checkbox tree component:**
   - Add mode: categorized (by default), nested, fileSystem
-  - Add sublabels and label icons
+  - Add `subLabels` and `labelIcons` optional inputs
   - Add unit tests
+- **Checkbox component:**
+  - add coerce boolean for all inputs
+  - add `squareCheck` optional input (replace the check mark '✓' by a square '■' when selected)
+
+### BREAKING CHANGES
+
+- **Checkbox component:**
+  - `onSelection` event emitter become `selection`
+  - rename boolean inputs removing `is` prefix for better consistency between components:
+    - `isDisabled` -> `disabled`
+    - `isSelected` -> `selected`
+    - `isIndeterminate` -> `indeterminate`
+    - `isLabelHidden` -> `labelHidden`
+  - remove some inputs which were used only by checkbox tree (now checkbox tree is managing them itself)
+    - `totalChildren`
+    - `selectedChildren`
+    - `isBadgeVisible`
 
 # 1.8.0 (2020-01-29)
 
