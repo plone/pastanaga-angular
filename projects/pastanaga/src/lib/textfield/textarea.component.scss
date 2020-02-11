@@ -49,6 +49,10 @@
     padding-top:0;
     resize: vertical;
 
+    &:read-only {
+        padding-top: 0;
+    }
+
     &:hover ~ .pa-field-control-resizer,
     &:active ~ .pa-field-control-resizer,
     &:focus ~ .pa-field-control-resizer {
