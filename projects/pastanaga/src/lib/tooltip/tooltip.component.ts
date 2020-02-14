@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { markForCheck } from '../common/utils';
 
 const VERTICAL_SEPARATION = 21;
 const VERTICAL_SEPARATION_ACTION = 3;
@@ -23,7 +24,7 @@ export class TooltipComponent implements AfterViewInit {
 
     @ViewChild('tooltipText', { static: false }) tooltipText?: ElementRef;
 
-    constructor(private changeDetector: ChangeDetectorRef) {}
+    constructor(private cdr: ChangeDetectorRef) {}
 
     ngAfterViewInit() {
         this.show();
@@ -35,14 +36,14 @@ export class TooltipComponent implements AfterViewInit {
             this.tooltipText.nativeElement.style.top = this.getTopPosition() + 'px';
             this.adjustPosition(); // once position set, check if too far horizontally or vertically
             this.tooltipText.nativeElement.setAttribute('aria-expanded', true);
-            this.changeDetector.detectChanges();
+            markForCheck(this.cdr);
         }
     }
 
     hide() {
         if (!!this.tooltipText) {
             this.tooltipText.nativeElement.setAttribute('aria-expanded', false);
-            this.changeDetector.detectChanges();
+            markForCheck(this.cdr);
         }
     }
 
