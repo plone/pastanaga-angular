@@ -208,7 +208,7 @@
             <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
             <pa-dropdown-separator></pa-dropdown-separator>
             <pa-dropdown-item (click)="hello()">Hello</pa-dropdown-item>
-            <pa-dropdown-item [isDisabled]="true" icon="share" (click)="hello()">Share</pa-dropdown-item>
+            <pa-dropdown-item disabled icon="share" (click)="hello()">Share</pa-dropdown-item>
             <pa-dropdown-item icon="delete" mode="destructive" (click)="hello()">Remove</pa-dropdown-item>
             <pa-dropdown-item icon="star" [isSelected]="true" (click)="hello()">Favorite</pa-dropdown-item>
         </pa-dropdown>
@@ -240,7 +240,7 @@
             <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
             <pa-dropdown-separator></pa-dropdown-separator>
             <pa-dropdown-item (click)="hello()">Hello</pa-dropdown-item>
-            <pa-dropdown-item [isDisabled]="true" icon="share" (click)="hello()">Share</pa-dropdown-item>
+            <pa-dropdown-item disabled icon="share" (click)="hello()">Share</pa-dropdown-item>
             <pa-dropdown-item icon="delete" mode="destructive" (click)="hello()">Remove</pa-dropdown-item>
             <pa-dropdown-item icon="star" [isSelected]="true" (click)="hello()">Favorite</pa-dropdown-item>
         </pa-dropdown>
@@ -251,7 +251,7 @@
             <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
             <pa-dropdown-separator></pa-dropdown-separator>
             <pa-dropdown-item (click)="hello()">Hello</pa-dropdown-item>
-            <pa-dropdown-item [isDisabled]="true" icon="share" (click)="hello()">Share</pa-dropdown-item>
+            <pa-dropdown-item disabled icon="share" (click)="hello()">Share</pa-dropdown-item>
             <pa-dropdown-item icon="delete" mode="destructive" (click)="hello()">Remove</pa-dropdown-item>
             <pa-dropdown-item icon="star" [isSelected]="true" (click)="hello()">Favorite</pa-dropdown-item>
         </pa-dropdown>
@@ -329,80 +329,269 @@
         </pa-expand>
     </div>
 </div>
-
 <div class="example-box">
-    <div class="example-box-header" (click)="toggleSection('text')">Text fields</div>
+    <div class="example-box-header" (click)="toggleSection('textfields')">
+        Text fields
+    </div>
 
-    <div *ngIf="sections.text">
+    <div *ngIf="sections.textfields">
         <h4>Text input</h4>
         <div>
             <form>
                 <fieldset>
-                    <legend>Simple text</legend>
-                    <pa-input>Your name</pa-input>
-                    <legend>Text with value</legend>
-                    <pa-input name="firstname" value="James">Your firstname</pa-input>
-                    <legend>Text with help</legend>
-                    <pa-input help="Only actual super power, e.g. Batman does not have any super power">Your super power
-                    </pa-input>
-                    <legend>Disabled text</legend>
-                    <pa-input disabled value="Rintintin">Your pet name</pa-input>
-                    <legend>Read-only text</legend>
-                    <pa-input [isReadOnly]="true" value="Justin Bieber">Your favorite singer</pa-input>
-                    <legend>Text with placeholder</legend>
-                    <pa-input placeholder="Gotham, …">City</pa-input>
-                    <legend>Text with error message</legend>
-                    <pa-input value="Backend developer" errorHelp="This is not a decent job">Your job</pa-input>
-                    <legend>Text with model binding</legend>
-                    <pa-input [(ngModel)]="repeat" name="repeat">Repeat after me</pa-input>
-                    <small class="pa-field-help">You said: {{ repeat }}</small>
-                    <legend>Text with valueChange</legend>
-                    <pa-input [value]="repeatAgain" name="repeat-again" (valueChange)="onRepeat($event)">Repeat again
-                    </pa-input>
-                    <small class="pa-field-help">You said: {{ repeatAgain }}</small>
-                    <legend>Text with keyUp</legend>
-                    <pa-input [value]="word" name="spell" (keyUp)="onSpell($event)">Spell it</pa-input>
-                    <small class="pa-field-help">You said: {{ word }}</small>
-                    <legend>Required text</legend>
-                    <pa-input name="title" required #title
-                              [errorHelp]="title.errors.required ? 'Title is required' : null">Title
-                    </pa-input>
-                    <legend>Pattern checking</legend>
-                    <pa-input name="version" [pattern]="versionFormat" #version placeholder="1.0.3"
-                              [errorHelp]="version.errors.pattern ? 'Version must be x.x.x' : null">Version
-                    </pa-input>
+                    <legend>All possible text inputs</legend>
+                    <div class="⅓">
+                        <p>Default</p>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-1" help="Text field help">Text field without placeholder
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-2" help="Text field help" placeholder="Text field…">Text field with
+                            hidden placeholder
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-3" help="Text field help" placeholder="Text field…"
+                                  [isPlaceholderShown]="true">Text field with visible placeholder
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-4" help="Text field help" placeholder="Text field…"
+                                  [value]="repeat">Text field with a value
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-4bis" help="Text field help (lessen)" placeholder="Text field…"
+                                  [value]="repeat" [isLessen]="true">Text field lessen
+                        </pa-input>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-1-bis" help="Text field help" accent>Text field without
+                            placeholder
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-5" help="Text field help" placeholder="Text field…"
+                                  accent>Text field accent
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-6" help="Text field help" placeholder="Text field…"
+                                  accent [isPlaceholderShown]="true">Text field accent with visible
+                            placeholder
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-7" help="Text field help" placeholder="Text field…"
+                                  accent [value]="repeat">Text field with a value
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-7bis" help="Text field help (lessen)" placeholder="Text field…"
+                                  accent [value]="repeat" [isLessen]="true">Text field with accent and
+                            lessen
+                        </pa-input>
+                    </div>
+
+                    <div class="⅓">
+                        <p>Readonly</p>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-8" help="Read-only text field help"
+                                  placeholder="Read-only text field…" [isReadOnly]="true">Read-only text field
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-9" help="Read-only text field help"
+                                  placeholder="Read-only text field…" [isReadOnly]="true" [isPlaceholderShown]="true">
+                            Read-only text field with visible placeholder
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-10" help="Read-only text field help"
+                                  placeholder="Read-only text field…" [isReadOnly]="true" [value]="repeat">Read-only
+                            text field with value
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-10bis" help="Read-only text field help (lessen)"
+                                  placeholder="Read-only text field…" [isReadOnly]="true" [value]="repeat"
+                                  [isLessen]="true">Read-only text field with lessen
+                        </pa-input>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-11" help="Read-only text field help"
+                                  placeholder="Read-only text field…" [isReadOnly]="true" accent>Read-only
+                            text field with accent
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-12" help="Read-only text field help"
+                                  placeholder="Read-only text field…" [isReadOnly]="true" accent
+                                  [isPlaceholderShown]="true">Read-only text field with accent and visible placeholder
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-13" help="Read-only text field help"
+                                  placeholder="Read-only text field…" [isReadOnly]="true" accent
+                                  [value]="repeat">Read-only text field with accent and value
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-13bis" help="Read-only text field help (lessen)"
+                                  placeholder="Read-only text field…" [isReadOnly]="true" accent
+                                  [value]="repeat" [isLessen]="true">Read-only text field with accent and lessen
+                        </pa-input>
+                    </div>
+                    <div class="⅓">
+                        <p>Disabled</p>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-14" help="Disabled text field help"
+                                  placeholder="Disabled text field…" disabled>Disabled text field
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-15" help="Disabled text field help"
+                                  placeholder="Disabled text field…" disabled isPlaceholderShown>
+                            Disabled text field with placeholder shown
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-16" help="Disabled text field help"
+                                  placeholder="Disabled text field…" disabled [value]="repeat">Disabled
+                            text field with value
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-16bis" help="Disabled text field help (lessen)"
+                                  placeholder="Disabled text field…" disabled [value]="repeat"
+                                  [isLessen]="true">Disabled text field with lessen
+                        </pa-input>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-17" help="Disabled text field help"
+                                  placeholder="Disabled text field…" disabled accent>Disabled
+                            text field with accent
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-18" help="Disabled text field help"
+                                  placeholder="Disabled text field…" disabled accent
+                                  isPlaceholderShown>Disabled text field with accent and placeholder shown
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-19" help="Disabled text field help"
+                                  placeholder="Disabled text field…" disabled accent
+                                  [value]="repeat">Disabled text field with accent and value
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-19bis" help="Disabled text field help (lessen)"
+                                  placeholder="Disabled text field…" disabled accent
+                                  [value]="repeat" [isLessen]="true">Disabled text field with accent and lessen
+                        </pa-input>
+                    </div>
+                    <br><br>
+
+                    <legend>Other inputs using text as reference: Email, Password, Number, Tel, URL</legend>
+                    <div class="⅓">
+                        <p>Other textual fields</p>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-21" help="Email field help" placeholder="Email field…"
+                                  type="email">Email field
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-22" help="Password field help" placeholder="Password field…"
+                                  type="password">Password field
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-23" help="Number field help" placeholder="Number field…"
+                                  type="number" min="0" max="200">Number field
+                        </pa-input>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-24" help="Tel field help" placeholder="Tel field…" type="tel">Tel
+                            field
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-25" help="URL field help" placeholder="URL field…" type="url">URL
+                            field
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-26" help="Email field help" placeholder="Email field…" type="email"
+                                  errorMessage="Error message">Email field
+                        </pa-input>
+                    </div>
+                    <br><br>
+                    <p>Search</p>
+                    <div class="⅓">
+                        <p>Not in system textual fields potentially usable</p>
+                    </div>
+                    <div class="⅓">
+                        <pa-input id="some-dumb-id-27" help="Search field help" placeholder="Search field…"
+                                  type="search">Search field
+                        </pa-input>
+
+                        <pa-input id="some-dumb-id-28" help="Search field help" placeholder="Search field…"
+                                  type="search" accent>Search field with accent
+                        </pa-input>
+                    </div>
+                    <div class="⅓">
+                        <pa-textarea id="some-dumb-id-29" help="Textarea field help"
+                                     placeholder="Textarea field placeholder…">Textarea field
+                        </pa-textarea>
+                    </div>
+                    <br><br>
                 </fieldset>
             </form>
         </div>
-        <h4>Other input types</h4>
-        <div>
-            <fieldset>
-                <legend>Number</legend>
-                <pa-input type="number" value="20">Your age</pa-input>
-                <legend>Email</legend>
-                <pa-input type="email" value="eric@pa.com">Your email</pa-input>
-                <legend>Phone</legend>
-                <pa-input type="tel">Your phone</pa-input>
-                <legend>Password</legend>
-                <pa-input type="password">Your password</pa-input>
-            </fieldset>
-        </div>
+
         <h4>Select</h4>
         <div>
-            <pa-select placeholder="Choose a credit card…" help="5% discount for visa" label="Credit card"
-                       (onSelection)="displaySelection($event)">
-                <option *ngFor="let option of options"
-                        [value]="option.id"
-                        [disabled]="!!option.disabled">{{ option.name }}
-                </option>
+            <pa-select placeholder="Choose a credit card…" help="5% discount for visa"
+                       (onSelection)="displaySelection($event)" label="Credit card">
+                <option *ngFor="let option of options" [value]="option.id">{{
+                    option.name
+                    }}</option>
             </pa-select>
-            <small class="pa-field-help">{{ selection }}</small>
+            <p>{{ selection }}</p>
             <pa-select placeholder="Pick a country" label="Your country">
-                <option *ngFor="let option of optionsCountries"
-                        [value]="option.id"
-                        [disabled]="!!option.disabled">{{ option.name }}
-                </option>
+                <option *ngFor="let option of optionsCountries" [value]="option.id" [attr.selected]="option.selected"
+                        [disabled]="option.disabled">{{ option.name }}</option>
             </pa-select>
+        </div>
+
+        <h4>Validation</h4>
+        <div>
+            <form #f="ngForm">
+                <pa-input [pattern]="onlyLetters" errorHelp="Only letters" name="movie" ngModel>Favorite movie
+                </pa-input>
+                <pa-textarea required name="movie" ngModel>Why?</pa-textarea>
+                <pa-select label="Color" required placeholder="Pick a color" name="color" ngModel>
+                    <option value="blue">Blue</option>
+                    <option value="orange">Orange</option>
+                    <option value="girafe">Girafe</option>
+                </pa-select>
+                <pa-button [disabled]="!f.touched || f.invalid">Vote</pa-button>
+            </form>
+        </div>
+        <h4>Icons</h4>
+        <div>
+            <!--            <form>-->
+            <!--                <fieldset>-->
+            <!--                    <legend>Simple Icon (clickable)</legend>-->
+            <!--                    <pa-input-icon iconName="confirm">-->
+            <!--                        <pa-input name="name">Name</pa-input>-->
+            <!--                    </pa-input-icon>-->
+
+            <!--                    <legend>Simple Icon (not clickable)</legend>-->
+            <!--                    <pa-input-icon iconName="clear" [disabled]="true">-->
+            <!--                        <pa-input name="surname">Surname</pa-input>-->
+            <!--                    </pa-input-icon>-->
+
+            <!--                    <legend>Simple Icon (spinner)</legend>-->
+            <!--                    <pa-input-icon iconName="spinner">-->
+            <!--                        <pa-input name="spinning">Spinning forever...</pa-input>-->
+            <!--                    </pa-input-icon>-->
+
+            <!--                    <legend>Input Validation (Synchronous)</legend>-->
+            <!--                    <pa-input-validation [customValidators]="validators1">-->
+            <!--                        <pa-input name="favPokemon" required [validateOnChange]="false">Favourite Pokemon-->
+            <!--                        </pa-input>-->
+            <!--                    </pa-input-validation>-->
+
+            <!--                    <legend>ABC Validation (Asynchronous)</legend>-->
+            <!--                    <pa-input-validation [asyncValidators]="validators2">-->
+            <!--                        <pa-input name="abc" required [validateOnChange]="false">ABC Words here!-->
+            <!--                        </pa-input>-->
+            <!--                    </pa-input-validation>-->
+            <!--                </fieldset>-->
+            <!--            </form>-->
         </div>
     </div>
 </div>
