@@ -53,15 +53,20 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
     @Input()
     get hasFocus(): boolean { return this._hasFocus; }
     set hasFocus(value: boolean) { this._hasFocus = coerceBooleanProperty(value); }
-    protected _hasFocus = false;
     @Input()
     get acceptHtmlTags(): boolean { return this._acceptHtmlTags; }
     set acceptHtmlTags(value: boolean) { this._acceptHtmlTags = coerceBooleanProperty(value); }
-    _acceptHtmlTags = false;
+    @Input()
+    get noAutoComplete(): boolean { return this._noAutoComplete; }
+    set noAutoComplete(value: boolean) { this._noAutoComplete = coerceBooleanProperty(value); }
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
     @ViewChild('dataInput', { static: true }) input?: ElementRef;
+
+    _hasFocus = false;
+    _acceptHtmlTags = false;
+    _noAutoComplete = false;
 
     autofilled = false;
     baseId = 'input';
