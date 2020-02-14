@@ -38,12 +38,6 @@
         -webkit-appearance: none;
         text-overflow: ellipsis;
 
-        &.pa-field-control-accent {
-            background-color: rgba($blue, .06);
-            box-shadow: 0 200px 0 -200px $control-box-shadow-accent-color;
-            transition: all .5s ease;
-        }
-
         &:not(:disabled):not(:read-only):hover {
             /* autoprefixer: off */
             cursor: pointer;
@@ -117,10 +111,7 @@
         user-select: none;
         pointer-events:none;
     }
-    .pa-field-control:hover + .pa-field-label,
-    .pa-field-label:hover {
-        color: $blue;
-    }
+
     .pa-field-control:not(:disabled):not(:read-only):focus + .pa-field-label,
     .pa-field-control:not(:disabled):not(:read-only):active + .pa-field-label {
         /* autoprefixer: off */
@@ -198,7 +189,7 @@
     // disabled
     .pa-field-control:disabled {
         box-shadow: none;
-        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23' + str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
         background-size: 6px 1px;
         background-repeat: repeat-x;
         background-position: bottom left;
@@ -222,7 +213,7 @@
     .pa-field-control:read-only:not(select) {
         /* autoprefixer: off */
         box-shadow: none;
-        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23' + str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
         background-repeat: repeat-x;
         background-position: bottom left;
         background-color: transparent;
@@ -241,21 +232,12 @@
             color: $gray;
         }
     }
-    .pa-field-control.pa-field-control-accent:read-only:not(select) {
-        /* autoprefixer: off */
-        background-image: none;
-        box-shadow: none;
-        border-image-slice: 15 15 15 15 fill;
-        border-image-width: 10px 10px 10px 10px;
-        border-image-outset: 0px 0px 0px 0px;
-        border-image-repeat: round round;
-        border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
-    }
+
     // Firefox workaround
     .pa-field-control:-moz-read-only:not(select) {
         /* autoprefixer: off */
         box-shadow: none;
-        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="3" viewBox="0 0 12 3"><circle cx="1.5" cy="1.5" r="1.5" fill="%23' + str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"/></svg>');
         background-repeat: repeat-x;
         background-position: bottom left;
         background-color: transparent;
@@ -274,25 +256,7 @@
             color: $gray;
         }
     }
-    .pa-field-control.pa-field-control-accent:-moz-read-only:not(select) {
-        /* autoprefixer: off */
-        background-image: none;
-        box-shadow: none;
-        border-image-slice: 15 15 15 15 fill;
-        border-image-width: 10px 10px 10px 10px;
-        border-image-outset: 0px 0px 0px 0px;
-        border-image-repeat: round round;
-        border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
-    }
-    .pa-field-control.pa-field-control-accent:disabled {
-        background-image: none;
-        box-shadow: none;
-        border-image-slice: 15 15 15 15 fill;
-        border-image-width: 10px 10px 10px 10px;
-        border-image-outset: 0px 0px 0px 0px;
-        border-image-repeat: round round;
-        border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
-    }
+
     .pa-field-control-readonly-lessen {
         background-image: none !important;
     }
@@ -311,7 +275,7 @@
             border-image-width: 10px 10px 10px 10px;
             border-image-outset: 0px 0px 0px 0px;
             border-image-repeat: round round;
-            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
+            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23' + str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
         }
         .pa-field-control:-moz-read-only:not(select):not(.pa-select-dropdown) {
             /* autoprefixer: off */
@@ -321,7 +285,7 @@
             border-image-width: 10px 10px 10px 10px;
             border-image-outset: 0px 0px 0px 0px;
             border-image-repeat: round round;
-            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
+            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23' + str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
         }
         .pa-field-control:disabled {
             background-image: none;
@@ -330,7 +294,7 @@
             border-image-width: 10px 10px 10px 10px;
             border-image-outset: 0px 0px 0px 0px;
             border-image-repeat: round round;
-            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23'+str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
+            border-image-source: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="%23' + str_slice(#{$gray-light}, 2)+'" fill-rule="evenodd"><circle cx="18" cy="1" r="1"/><circle cx="23" cy="1" r="1"/><circle cx="35" cy="18" r="1"/><circle cx="35" cy="13" r="1"/><circle cx="35" cy="8" r="1"/><circle cx="35" cy="3" r="1"/><circle cx="35" cy="23" r="1"/><circle cx="18" cy="35" r="1"/><circle cx="23" cy="35" r="1"/><circle cx="28" cy="1" r="1"/><circle cx="33" cy="1" r="1"/><circle cx="28" cy="35" r="1"/><circle cx="33" cy="35" r="1"/><circle cx="13" cy="35" r="1"/><circle cx="8" cy="35" r="1"/><circle cx="3" cy="35" r="1"/><circle cx="1" cy="18" r="1"/><circle cx="1" cy="23" r="1"/><circle cx="35" cy="28" r="1"/><circle cx="1" cy="28" r="1"/><circle cx="35" cy="33" r="1"/><circle cx="1" cy="33" r="1"/><circle cx="1" cy="13" r="1"/><circle cx="1" cy="8" r="1"/><circle cx="1" cy="3" r="1"/><circle cx="13" cy="1" r="1"/><circle cx="8" cy="1" r="1"/><circle cx="3" cy="1" r="1"/></g></svg>');
         }
         .pa-field-label {
             color: $blue;

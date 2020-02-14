@@ -13,6 +13,11 @@
     }
 }
 
+:host-context(.pa-field-button-group) {
+    .pa-progress-circle-spinner.pa-progress-small {
+        margin: 10px 8px;
+    }
+}
 
 .pa-progress-circle-spinner,
 .pa-progress-circle-spinner::before,

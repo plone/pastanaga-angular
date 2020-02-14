@@ -3,8 +3,9 @@
      [class.pa-accent]="_accent">
     <input #dataInput class="pa-field-control"
            [class.pa-field-control-filled]="!!value || value === 0"
-           [class.pa-field-control-readonly-lessen]="isReadOnly && _isLessen"
-           [class.pa-field-control-lessen]="_isLessen && !isReadOnly"
+           [class.pa-field-control-readonly-lessen]="_readOnly && _isLessen"
+           [class.pa-field-control-lessen]="_isLessen && !_readOnly"
+           [class.pa-field-control-placeholder-shown]="_placeholderShown"
            [type]="type"
            [id]="id"
            [attr.aria-describedby]="helpId"
