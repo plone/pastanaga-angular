@@ -1,0 +1,13 @@
+<div class="pa-field-button-group">
+    <ng-content></ng-content>
+    <div class="pa-field">
+        <pa-button *ngIf="iconName !== 'spinner'; else showSpinner"
+                   size="small"
+                   [icon]="iconName"
+                   [color]="iconColor"
+                   [disabled]="_disabled"
+                   [paTooltip]="iconTooltip" paTooltipType="action"
+                   (click)="onIconClick()"></pa-button>
+        <ng-template #showSpinner><pa-spinner small color="secondary"></pa-spinner></ng-template>
+    </div>
+</div>
