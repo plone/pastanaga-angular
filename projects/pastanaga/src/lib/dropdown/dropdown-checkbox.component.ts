@@ -3,6 +3,7 @@ import { keyCodes } from '../keycodes.constant';
 import { ControlModel } from '../controls/control.model';
 import { PopupDirective } from '../popup/popup.directive';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { markForCheck } from '../common/utils';
 
 @Component({
     selector: 'pa-dropdown-checkbox',
@@ -41,7 +42,7 @@ export class DropdownCheckboxComponent {
 
     labels: {[value: string]: string} = {};
 
-    constructor(private changeDetector: ChangeDetectorRef) {}
+    constructor(private cdr: ChangeDetectorRef) {}
 
     getLabels() {
         this.labels = (this.checkboxes || []).reduce((all, current) => {
@@ -73,7 +74,7 @@ export class DropdownCheckboxComponent {
     }
 
     _onClose() {
-        this.changeDetector.detectChanges();
+        markForCheck(this.cdr);
         this.onClose.emit();
     }
 

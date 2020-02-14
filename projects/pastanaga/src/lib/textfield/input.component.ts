@@ -13,7 +13,6 @@ import {
     OnDestroy,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
-    ViewRef,
 } from '@angular/core';
 import {
     NG_VALUE_ACCESSOR,
@@ -27,6 +26,7 @@ import { TextfieldCommon } from './textfield.common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { detectChanges } from '../common/utils';
 
 const HTML_TAG = new RegExp(/.?<.+>/g);
 const REPLACE_LT_GT = new RegExp(/[<>]/g);
@@ -86,11 +86,7 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
     ) {
         super();
         this.errors.passwordStrength = false;
-        this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => {
-            if (!(this.cdr as ViewRef).destroyed) {
-                this.cdr.detectChanges();
-            }
-        });
+        this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => detectChanges(this.cdr));
     }
 
     ngOnInit() {
