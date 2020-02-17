@@ -9,11 +9,9 @@
     </div>
 </div>-->
 
-<div class="pa-date-input"><pa-input>Choose date</pa-input>
+<div class="pa-date-input">
+    <pa-input [(ngModel)]="dateInput">Choose date</pa-input>
     <pa-button size="small" icon="calendar" [paPopup]="datepicker">O</pa-button>
-
-
-
     <pa-date-picker #datepicker
                         [selection]="rangeSelection"
                         (select)="selectForRange($event)"></pa-date-picker>

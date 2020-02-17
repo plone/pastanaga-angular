@@ -11,6 +11,8 @@ import { PopupService } from '../popup/popup.service';
 })
 export class DateInputComponent extends PopupComponent {
 
+    dateInput = "";
+
     @Input() rangeSelection: any;
 
     @Input() set rangeStart(value) {
@@ -68,7 +70,12 @@ export class DateInputComponent extends PopupComponent {
         }
     }
 
-    private selectForRange(event) {
-        console.log('event: ', event);
+    private selectForRange(date: Date) {
+        const dd = date.getDate();
+        const mm = date.getMonth() + 1;
+        const yyyy = date.getFullYear();
+        console.log('event: ', date);
+        this.dateInput = dd + '/' + mm + '/' + yyyy;
+        this.cdr.markForCheck();
     }
 }

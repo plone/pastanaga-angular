@@ -34,6 +34,17 @@
     pa-input ::ng-deep .pa-field-control {
         width: 100% !important;
         margin: 0px !important;
+        box-shadow: none !important;
+        cursor: default !important;
+
+        &:hover {
+            box-shadow: none !important;
+        }
+
+        &:focus {
+            box-shadow: none !important;
+            background: none !important;
+        }
     }
     pa-input ::ng-deep .pa-field-label {
         text-transform: none !important;

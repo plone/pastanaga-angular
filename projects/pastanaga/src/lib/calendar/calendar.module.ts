@@ -8,6 +8,7 @@ import { DatePickerComponent } from './date-picker.component';
 import { PopupModule } from '../popup/popup.module';
 import { DateInputComponent } from './date-input.component';
 import { TextFieldModule } from '../textfield/textfield.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { TextFieldModule } from '../textfield/textfield.module';
         TooltipModule,
         TranslateModule,
         TextFieldModule,
+        FormsModule,
     ],
     exports: [CalendarComponent, DatePickerComponent, DateInputComponent],
     declarations: [CalendarComponent, DatePickerComponent, DateInputComponent],
