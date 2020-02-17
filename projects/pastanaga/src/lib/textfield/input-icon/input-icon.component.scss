@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+
+.pa-field-button-group {
+    display: flex;
+    position: relative;
+
+    > .pa-field:not(:first-child) {
+        position: absolute;
+        right: 0;
+        margin-bottom: 0;
+        padding: rythm(.5) 0;
+    }
+
+    ::ng-deep pa-input {
+        width: 100%;
+    }
+}

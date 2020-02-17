@@ -24,7 +24,6 @@ import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { TextfieldCommon } from './textfield.common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { detectChanges } from '../common/utils';
 
@@ -54,24 +53,20 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
     @Input()
     get hasFocus(): boolean { return this._hasFocus; }
     set hasFocus(value: boolean) { this._hasFocus = coerceBooleanProperty(value); }
-    protected _hasFocus = false;
-    @Input()
-    get isLessen(): boolean { return this._isLessen; }
-    set isLessen(value: boolean) { this._isLessen = coerceBooleanProperty(value); }
-    _isLessen = false;
-    @Input()
-    get accent(): boolean { return this._accent; }
-    set accent(value: boolean) { this._accent = coerceBooleanProperty(value); }
-    _accent = false;
     @Input()
     get acceptHtmlTags(): boolean { return this._acceptHtmlTags; }
     set acceptHtmlTags(value: boolean) { this._acceptHtmlTags = coerceBooleanProperty(value); }
-    _acceptHtmlTags = false;
-    terminator = new Subject();
+    @Input()
+    get noAutoComplete(): boolean { return this._noAutoComplete; }
+    set noAutoComplete(value: boolean) { this._noAutoComplete = coerceBooleanProperty(value); }
 
     @Output() errorList: EventEmitter<any> = new EventEmitter();
 
     @ViewChild('dataInput', { static: true }) input?: ElementRef;
+
+    _hasFocus = false;
+    _acceptHtmlTags = false;
+    _noAutoComplete = false;
 
     autofilled = false;
     baseId = 'input';
@@ -85,7 +80,6 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
         private cdr: ChangeDetectorRef,
     ) {
         super();
-        this.errors.passwordStrength = false;
         this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => detectChanges(this.cdr));
     }
 
@@ -150,5 +144,12 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
             value = value.replace(REPLACE_LT_GT, '');
         }
         super.writeValue(value);
+    }
+
+    reset() {
+        if (!!this.input) {
+            this.input.nativeElement.value = '';
+            this.value = '';
+        }
     }
 }

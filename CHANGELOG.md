@@ -1,3 +1,17 @@
+# 1.10.0 (2020-02-14)
+
+### Bug fixes
+- **Input component**: Do not break if input value is a number [mathilde-pellerin]
+
+### Features
+- New `password-input` component [mathilde-pellerin]
+- New `input-icon` component [mathilde-pellerin]
+
+### Improvements
+- **Input and textarea component**: Add focus event triggered by input and textarea [mathilde-pellerin]
+- **Input component**: Allow to disable autocomplete with `noAutoComplete` option [mathilde-pellerin]
+- Update demo app to have a clearer view of inputs different states [mathilde-pellerin]
+
 # 1.9.4 (2020-02-14)
 
 ### Improvements

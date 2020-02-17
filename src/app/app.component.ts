@@ -205,7 +205,7 @@ export class AppComponent implements OnInit {
         {id: 'de', name: 'Andorra', selected: true},
     ];
     versionFormat = new RegExp(/^[0-9]+\.[0-9]+\.[0-9]+$/);
-
+    onlyLetters = new RegExp(/^[a-zA-Z]+$/);
 
     progressValue = 0;
     progressValue2 = 0;
@@ -294,15 +294,6 @@ export class AppComponent implements OnInit {
 
     onButtonClick($event) {
         console.log('Click on button!', $event);
-    }
-
-
-    onRepeat(value) {
-        this.repeatAgain = value;
-    }
-
-    onSpell(value) {
-        this.word = value;
     }
 
     openToast() {

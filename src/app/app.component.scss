@@ -92,4 +92,23 @@
     pa-checkbox-tree {
         max-width: 400px;
     }
+
+    .½ {
+        width: 50%;
+        margin: -1px;
+        display:inline-block;
+        border: 1px solid #eee;
+        padding: rythm(1);
+        height: 108px;
+        vertical-align: top;
+    }
+    .⅓ {
+        height: 460px;
+        width: 33.34%;
+        margin: -1px -2px;
+        display:inline-block;
+        border: 1px solid #eee;
+        padding: rythm(1);
+        vertical-align: top;
+    }
 }

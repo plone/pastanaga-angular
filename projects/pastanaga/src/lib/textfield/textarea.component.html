@@ -10,7 +10,8 @@
               [required]="required"
               (change)="change($event.target.value)"
               (keyup)="onKeyUp($event)"
-              (blur)="onBlur()"></textarea>
+              (blur)="onBlur()"
+              (focus)="focus.emit($event)"></textarea>
     <label class="pa-field-label" [for]="id" [class.pa-sr]="isLabelHidden" translate><ng-content></ng-content></label>
     <div class="pa-field-control-resizer"></div>
     <small *ngIf="hasError && errorHelp" class="pa-field-help pa-field-help-error" translate>{{ errorHelp }}</small>

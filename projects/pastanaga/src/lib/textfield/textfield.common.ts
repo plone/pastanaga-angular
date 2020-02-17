@@ -1,13 +1,22 @@
 import { ControlValueAccessor, FormControl, Validator } from '@angular/forms';
-import { EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { keyCodes } from '../keycodes.constant';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
 
-export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator {
+
+export interface InputErrors {
+    required: boolean;
+    pattern: boolean;
+    passwordStrength?: boolean;
+    min?: boolean;
+    max?: boolean;
+}
+
+export class TextfieldCommon implements ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() id?: string;
     @Input() name?: string;
     @Input() value?: string | number = '';
@@ -15,40 +24,52 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     @Input() errorMessage?: string;
     @Input() placeholder?: string;
     @Input() help?: string;
-    @Input()
-    get required(): boolean { return this._required; }
-    set required(value: boolean) { this._required = coerceBooleanProperty(value); }
-    protected _required = false;
     @Input() pattern?: RegExp;
     @Input() min?: number;
     @Input() max?: number;
     @Input()
+    get required(): boolean { return this._required; }
+    set required(value: boolean) { this._required = coerceBooleanProperty(value); }
+    @Input()
     get disabled(): boolean { return this._disabled; }
     set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
-    public _disabled = false;
     @Input()
     get isReadOnly(): boolean { return this._readOnly; }
     set isReadOnly(value: boolean) { this._readOnly = coerceBooleanProperty(value); }
-    protected _readOnly = false;
     @Input()
     get isLabelHidden(): boolean { return this._labelHidden; }
     set isLabelHidden(value: boolean) { this._labelHidden = coerceBooleanProperty(value); }
-    protected _labelHidden = false;
     @Input()
     get isPlaceholderShown(): boolean { return this._placeholderShown; }
     set isPlaceholderShown(value: boolean) { this._placeholderShown = coerceBooleanProperty(value); }
-    protected _placeholderShown = false;
+    @Input()
+    get isLessen(): boolean { return this._isLessen; }
+    set isLessen(value: boolean) { this._isLessen = coerceBooleanProperty(value); }
+    @Input()
+    get accent(): boolean { return this._accent; }
+    set accent(value: boolean) { this._accent = coerceBooleanProperty(value); }
+
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     @Output() instantValueChange: EventEmitter<any> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
     @Output() keyPress: EventEmitter<any> = new EventEmitter();
     @Output() enter: EventEmitter<{event: KeyboardEvent, value: string}> = new EventEmitter();
     @Output() blur: EventEmitter<any> = new EventEmitter();
+    @Output() focus: EventEmitter<any> = new EventEmitter();
+
+    _required = false;
+    _disabled = false;
+    _readOnly = false;
+    _labelHidden = false;
+    _placeholderShown = false;
+    _isLessen = false;
+    _accent = false;
+
     helpId = '';
     onChange?: Function;
     onTouched?: Function;
     hasError = false;
-    errors: { required: boolean, pattern: boolean, passwordStrength?: boolean, min?: boolean, max?: boolean } = {
+    errors: InputErrors = {
         required: false,
         pattern: false,
     };
@@ -57,9 +78,13 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     type = '';
 
     debouncer: Subject<string> = new Subject();
+    terminator: Subject<void> = new Subject();
 
     constructor() {
-        this.debouncer.pipe(debounceTime(500)).subscribe(value => this.valueChange.emit(value));
+        this.debouncer.pipe(
+            takeUntil(this.terminator),
+            debounceTime(500),
+        ).subscribe(value => this.valueChange.emit(value));
     }
 
     ngOnInit() {
@@ -68,6 +93,10 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
         if (!!this.help) {
             this.helpId = `${this.id}-help`;
         }
+    }
+
+    ngOnDestroy(): void {
+        this.terminator.next();
     }
 
     change(value: any) {
@@ -103,7 +132,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, Validator 
     }
 
     _validate(value) {
-        if (this.required) {
+        if (this._required) {
             this.errors.required = !value && value !== 0;
         }
         if (!!this.pattern && typeof value === 'string') {

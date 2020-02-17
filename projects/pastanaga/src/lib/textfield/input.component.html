@@ -3,19 +3,22 @@
      [class.pa-accent]="_accent">
     <input #dataInput class="pa-field-control"
            [class.pa-field-control-filled]="!!value || value === 0"
-           [class.pa-field-control-readonly-lessen]="isReadOnly && _isLessen"
-           [class.pa-field-control-lessen]="_isLessen && !isReadOnly"
+           [class.pa-field-control-readonly-lessen]="_readOnly && _isLessen"
+           [class.pa-field-control-lessen]="_isLessen && !_readOnly"
+           [class.pa-field-control-placeholder-shown]="_placeholderShown"
            [type]="type"
            [id]="id"
            [attr.aria-describedby]="helpId"
-           [attr.placeholder]="placeholder | translate"
+           [attr.placeholder]="(placeholder || '') | translate"
            [value]="!!value || value === 0 ? value : ''"
-           [readonly]="isReadOnly"
+           [readonly]="_readOnly"
            [disabled]="_disabled"
-           [required]="required"
+           [required]="_required"
+           [attr.autocomplete]="_noAutoComplete ? 'off' : undefined"
            (change)="change($event.target.value)"
            (keyup)="onKeyUp($event)"
            (blur)="onBlur()"
+           (focus)="focus.emit($event)"
     >
     <label class="pa-field-label" [for]="id" [class.pa-sr]="isLabelHidden" translate><ng-content></ng-content></label>
     <small *ngIf="hasError && errorHelp" class="pa-field-help pa-field-help-error">{{ errorHelp | translate }}</small>
