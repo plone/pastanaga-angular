@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ButtonBase } from './button-base';
 
 let nextId = 0;
@@ -10,10 +10,8 @@ let nextId = 0;
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })
-export class ButtonComponent extends ButtonBase implements OnInit, OnChanges {
+export class ButtonComponent extends ButtonBase implements OnInit {
     @Input() id?: string;
-    @Input() active = false;
-    checkedType = 'button';
 
     constructor(protected changeDetector: ChangeDetectorRef) {
         super(changeDetector);
@@ -21,14 +19,6 @@ export class ButtonComponent extends ButtonBase implements OnInit, OnChanges {
 
     ngOnInit() {
         this.id = !this.id ? `button-${nextId++}` : `${this.id}-button`;
-    }
-
-    ngOnChanges(changes) {
-        this.onChanges(changes);
-
-        if (changes.type && ['button', 'submit', 'reset'].indexOf(changes.type.currentValue) !== -1) {
-            this.checkedType = this.type;
-        }
     }
 
     onClick($event) {

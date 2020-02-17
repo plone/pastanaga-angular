@@ -1,34 +1,82 @@
-import {AfterContentInit, ElementRef, EventEmitter, HostBinding, Input, Output, SimpleChanges, ViewChild, ChangeDetectorRef, ViewRef} from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectorRef,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
+    Input,
+    Output,
+    ViewChild,
+    ViewRef
+} from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 const COLORS = ['primary', 'secondary', 'destructive', 'contrast'];
 const SIZES = ['tiny', 'small', 'large'];
 
 export class ButtonBase implements AfterContentInit {
-    @Input() color: 'primary'|'secondary'|'destructive'|'contrast' = 'primary';
-    @Input() size: 'tiny'|'small'|'large'|'' = '';
-    @Input() border = false;
-    @Input() disabled = false;
+    @Input() set color(value: 'primary' | 'secondary' | 'destructive' | 'contrast') {
+        if (!!value) {
+            COLORS.forEach(color => {
+                const colorClass = this.getClassFromInput('color', color, COLORS);
+                this.buttonStyle[colorClass] = color === value;
+            });
+        }
+    }
+
+    @Input() set size(value: 'tiny' | 'small' | 'large' | '') {
+        if (!!value) {
+            SIZES.forEach(size => {
+                const sizeClass = this.getClassFromInput('size', size, SIZES);
+                this.buttonStyle[sizeClass] = size === value;
+            });
+        }
+    }
+
+    @Input() set border(value) {
+        this.buttonStyle['pa-button-accent'] = coerceBooleanProperty(value);
+    }
+
+    @Input() set disabled(value) {
+        this.isDisabled = coerceBooleanProperty(value);
+    }
+
+    @Input() set active(value) {
+        this.buttonStyle['active'] = coerceBooleanProperty(value);
+    }
+
     @Input() ariaLabel = '';
     @Input() icon = '';
-    @Input() type = '';
+    @Input() set type(value) {
+        if (!!value && ['button', 'submit', 'reset'].indexOf(value) !== -1) {
+            this.checkedType = value;
+        }
+    }
     @Input() ariaControls = '';
     @Input() ariaExpanded = false;
+
     @Input()
-    get iconAndText(): boolean { return this._iconAndText; }
-    set iconAndText(value: boolean) { this._iconAndText = coerceBooleanProperty(value); }
+    get iconAndText(): boolean {
+        return this._iconAndText;
+    }
+
+    set iconAndText(value: boolean) {
+        this._iconAndText = coerceBooleanProperty(value);
+    }
 
     @Output() hasFocus: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text', { static: false }) textElement?: ElementRef;
+    @ViewChild('text', {static: false}) textElement?: ElementRef;
 
     _iconAndText = false;
+    checkedType = 'button';
 
     buttonStyle = {
         'pa-button': true,
         'pa-button-primary': true,
         'pa-button-secondary': false,
         'pa-button-destructive': false,
+        'pa-button-contrast': false,
         'pa-button-small': false,
         'pa-button-large': false,
         'pa-button-accent': false,
@@ -37,7 +85,8 @@ export class ButtonBase implements AfterContentInit {
     };
     isDisabled = false;
 
-    constructor(protected changeDetector: ChangeDetectorRef) {}
+    constructor(protected changeDetector: ChangeDetectorRef) {
+    }
 
     ngAfterContentInit() {
         setTimeout(() => {
@@ -46,34 +95,6 @@ export class ButtonBase implements AfterContentInit {
                 this.changeDetector.detectChanges();
             }
         }, 0);
-    }
-
-    onChanges(changes: SimpleChanges) {
-        if (changes.color && changes.color.currentValue) {
-            COLORS.forEach(color => {
-                const colorClass = this.getClassFromInput('color', color, COLORS);
-                this.buttonStyle[colorClass] = color === changes.color.currentValue;
-            });
-        }
-
-        if (changes.size && changes.size.currentValue) {
-            SIZES.forEach(size => {
-                const sizeClass = this.getClassFromInput('size', size, SIZES);
-                this.buttonStyle[sizeClass] = size === changes.size.currentValue;
-            });
-        }
-
-        if (changes.border) {
-            this.buttonStyle['pa-button-accent'] = this.isPropertyLikeTrue('border');
-        }
-
-        if (changes.active) {
-            this.buttonStyle['active'] = this.isPropertyLikeTrue('active');
-        }
-
-        if (changes.disabled) {
-            this.isDisabled = this.isPropertyLikeTrue('disabled');
-        }
     }
 
     getClassFromInput(property: string, value: string, possibleValues: string[]): string {
@@ -87,10 +108,6 @@ export class ButtonBase implements AfterContentInit {
 
     getButtonClass(value: string) {
         return `pa-button-${value}`;
-    }
-
-    isPropertyLikeTrue(property) {
-        return typeof this[property] !== 'undefined' && this[property] !== null && this[property] !== false;
     }
 
     @HostBinding('style.pointer-events')
