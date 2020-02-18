@@ -17,22 +17,24 @@ const SIZES = ['tiny', 'small', 'large'];
 export class ButtonBase implements AfterContentInit {
     @Input() set color(value: 'primary' | 'secondary' | 'destructive' | 'contrast') {
         if (!!value) {
+            const buttonStyles = {...this.buttonStyle};
             COLORS.forEach(color => {
                 const colorClass = this.getClassFromInput('color', color, COLORS);
-                this.buttonStyle[colorClass] = color === value;
+                buttonStyles[colorClass] = color === value;
             });
+            this.buttonStyle = buttonStyles;
         }
     }
-
     @Input() set size(value: 'tiny' | 'small' | 'large' | '') {
         if (!!value) {
+            const buttonStyles = {...this.buttonStyle};
             SIZES.forEach(size => {
                 const sizeClass = this.getClassFromInput('size', size, SIZES);
-                this.buttonStyle[sizeClass] = size === value;
+                buttonStyles[sizeClass] = size === value;
             });
+            this.buttonStyle = buttonStyles;
         }
     }
-
     @Input() set border(value) {
         this.buttonStyle['pa-button-accent'] = coerceBooleanProperty(value);
     }
@@ -44,7 +46,6 @@ export class ButtonBase implements AfterContentInit {
     @Input() set active(value) {
         this.buttonStyle['active'] = coerceBooleanProperty(value);
     }
-
     @Input() ariaLabel = '';
     @Input() icon = '';
     @Input() set type(value) {
@@ -54,12 +55,10 @@ export class ButtonBase implements AfterContentInit {
     }
     @Input() ariaControls = '';
     @Input() ariaExpanded = false;
-
     @Input()
     get iconAndText(): boolean {
         return this._iconAndText;
     }
-
     set iconAndText(value: boolean) {
         this._iconAndText = coerceBooleanProperty(value);
     }
