@@ -6,7 +6,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ContextMenuItem } from './context-menu.model';
 import { DropdownComponent } from './dropdown.component';
 import { PopupService } from '../popup/popup.service';
-import { getFixedRootParent } from '../common/utils';
+import { getFixedRootParent, Icon } from '../common/utils';
 
 let nextId = 0;
 
@@ -19,7 +19,13 @@ export class DropdownItemComponent implements Highlightable, OnInit, OnDestroy {
     disabled?: boolean | undefined;
     @Input() id?: string;
     @Input() tooltip?: string;
-    @Input() icon?: string;
+    @Input() set icon(value: string | Icon) {
+        if (!!value && typeof value === 'string') {
+            this._iconName = value;
+        } else {
+            this._icon = value as {path: string, backgroundColor: string};
+        }
+    }
     @Input() set smallIcon(value) { this.isSmallIcon = coerceBooleanProperty(value); }
     isSmallIcon = false;
     @Input() set iconOnRight(value) { this.isIconOnRight = coerceBooleanProperty(value); }
@@ -31,6 +37,7 @@ export class DropdownItemComponent implements Highlightable, OnInit, OnDestroy {
     @Input() isDisabled = false;
     @Input() hasSeparator = false;
     @Input() subLevelItems?: ContextMenuItem[];
+    @Input() subLabel?: string;
 
     @Output() onClick: EventEmitter<MouseEvent> = new EventEmitter();
     @Output() onEnter: EventEmitter<KeyboardEvent> = new EventEmitter();
@@ -39,6 +46,9 @@ export class DropdownItemComponent implements Highlightable, OnInit, OnDestroy {
 
     @ViewChild('listItem', { static: true }) listItem?: ElementRef;
     @ViewChild(DropdownComponent, { static: true}) subMenu?: DropdownComponent;
+
+    _iconName = '';
+    _icon?: Icon;
 
     subMenuOpen = false;
     terminator = new Subject<void>();

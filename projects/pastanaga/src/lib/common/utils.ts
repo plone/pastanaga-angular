@@ -1,5 +1,15 @@
 import { ChangeDetectorRef, ViewRef } from '@angular/core';
 
+export class Icon {
+    path: string;
+    backgroundColor: string;
+
+    constructor(data) {
+        this.path = data.path;
+        this.backgroundColor = data.backgroundColor;
+    }
+}
+
 export class PositionStyle {
     position?: string;
     left?: string;

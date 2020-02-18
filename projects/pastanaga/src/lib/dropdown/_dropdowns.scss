@@ -117,6 +117,14 @@
                     .pa-field-label {
                         margin-bottom: 0 !important;
                         width: 100%;
+
+                        &.pa-field-with-help .pa-ellipsis-text {
+                            margin-top: - rythm(.5);
+                        }
+                    }
+                    .pa-field-help {
+                        margin-bottom: 0 !important;
+                        margin-top: - rythm(.5) !important;
                     }
                 }
             }
