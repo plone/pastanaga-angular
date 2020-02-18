@@ -15,6 +15,7 @@
            [disabled]="_disabled"
            [required]="_required"
            [attr.autocomplete]="_noAutoComplete ? 'off' : undefined"
+           [attr.maxlength] = "maxCharacters"
            (change)="change($event.target.value)"
            (keyup)="onKeyUp($event)"
            (blur)="onBlur()"

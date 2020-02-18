@@ -1,20 +1,20 @@
-<!--<div class="pa-popup" [hidden]="!isDisplayed" [ngStyle]="style">
-    <div class="pa-popup-wrapper">
-        <pa-calendar [selection]="selection"
-                     [noFuture]="_noFuture"
-                     [rangeStart]="_rangeStart"
-                     [rangeEnd]="_rangeEnd"
-                     [min]="min"
-                     (select)="onSelection($event)"></pa-calendar>
-    </div>
-</div>-->
-
-<div class="pa-date-input">
-    <pa-input [(ngModel)]="dateInput">Choose date</pa-input>
-    <pa-button size="small" icon="calendar" [paPopup]="datepicker">O</pa-button>
+<div class="pa-date-input" [class.pa-date-error]="dateError">
+    <pa-input [(ngModel)]="dateInput"
+        [placeholder]="datePlaceholder"
+        (valueChange)="checkTypedDate($event)"
+        [class.pa-field-label-error]="dateError"
+        [maxCharacters]="10">
+        <ng-content></ng-content>
+    </pa-input>
+    <pa-button size="small" icon="event" [paPopup]="datepicker"
+    [class.pa-button-error]="dateError"></pa-button>
     <pa-date-picker #datepicker
-                        [selection]="rangeSelection"
-                        (select)="selectForRange($event)"></pa-date-picker>
+                        [selection]="currentDate"
+                        (select)="selectDate($event)"></pa-date-picker>
 </div>
-
-
+<div *ngIf="dateError"class="pa-date-input-error">
+    Invalid date (mm/dd/yyyy)
+</div>
+<div *ngIf="dateHelp !== '' && !dateError && !isValidDate"class="pa-date-input-help">
+    {{dateHelp}}
+</div>
