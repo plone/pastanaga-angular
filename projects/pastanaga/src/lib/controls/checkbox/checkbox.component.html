@@ -15,6 +15,7 @@
            (change)="toggleCheckbox()">
     <label [ngStyle]="extraStyle"
            class="pa-field-label pa-ellipsis"
+           [class.pa-field-with-help]="!!help"
            [for]="_id"
            [paTooltip]="hasEllipsis ? tooltipText : null">
         <span translate class="pa-ellipsis-text"

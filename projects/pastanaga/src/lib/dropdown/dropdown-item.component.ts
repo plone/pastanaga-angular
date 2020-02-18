@@ -31,6 +31,7 @@ export class DropdownItemComponent implements Highlightable, OnInit, OnDestroy {
     @Input() isDisabled = false;
     @Input() hasSeparator = false;
     @Input() subLevelItems?: ContextMenuItem[];
+    @Input() subLabel?: string;
 
     @Output() onClick: EventEmitter<MouseEvent> = new EventEmitter();
     @Output() onEnter: EventEmitter<KeyboardEvent> = new EventEmitter();

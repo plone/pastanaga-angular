@@ -25,6 +25,7 @@
                 </ng-container>
                 <pa-checkbox *ngIf="checkboxMode" noFocus
                              [icon]="icon"
+                             [help]="subLabel"
                              [selected]="isSelected"
                              [disabled]="isDisabled"
                              (selection)="select($event)">
