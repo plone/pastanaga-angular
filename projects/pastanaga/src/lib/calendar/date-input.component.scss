@@ -95,4 +95,12 @@
     pa-button.pa-button-error ::ng-deep svg {
         fill: $red-contrast !important;
     }
+
+    pa-date-picker {
+        position: relative;
+
+        & ::ng-deep .pa-popup {
+            top: rythm(.5) !important;
+        }
+    }
 }

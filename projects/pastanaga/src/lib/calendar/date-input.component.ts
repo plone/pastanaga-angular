@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
 import { PopupService } from '../popup/popup.service';
+import { markForCheck } from '../common/utils';
 
 @Component({
     selector: 'pa-date-input',
@@ -49,7 +50,7 @@ export class DateInputComponent extends PopupComponent {
         if (this.dateInput === '') {
             this.dateInput = mm + '/' + dd + '/' + yyyy; // American date format
         }
-        this.cdr.markForCheck();
+        markForCheck(this.cdr);
         this.select.emit(this.currentDate);
     }
 
