@@ -14,6 +14,7 @@ export class DateInputComponent extends PopupComponent {
     dateError = false;
     isValidDate = false;
     currentDate: Date = new Date();
+    focused = false;
 
     @Input() dateHelp: string = '';
     @Input() datePlaceholder: string = 'mm/dd/yyyy';
@@ -88,5 +89,13 @@ export class DateInputComponent extends PopupComponent {
             const year = Number(brokenDate[2]);
             return (year % 4 === 0) && ((year % 100 !== 0) || (year % 100 === 0 && year % 400 === 0));
         }
+    }
+
+    onFocus() {
+        this.focused = true;
+    }
+
+    onBlur() {
+        this.focused = false;
     }
 }

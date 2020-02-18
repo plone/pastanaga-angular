@@ -1,7 +1,11 @@
-<div class="pa-date-input" [class.pa-date-error]="dateError">
+<div class="pa-date-input" 
+    [class.pa-date-error]="dateError"
+    [class.input-focused]="focused">
     <pa-input [(ngModel)]="dateInput"
         [placeholder]="datePlaceholder"
         (valueChange)="checkTypedDate($event)"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
         [class.pa-field-label-error]="dateError"
         [maxCharacters]="10">
         <ng-content></ng-content>

@@ -18,6 +18,14 @@
         &.pa-date-error {
             background: $c10;
         }
+
+        &.input-focused {
+            box-shadow: 0 2px 0 0px $blue-light !important;
+
+            &.pa-date-error {
+                box-shadow: 0 2px 0 0px $red-contrast !important;
+            }
+        }
     }
 
     .pa-date-input-help {
