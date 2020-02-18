@@ -3,6 +3,12 @@
 .pa-field {
     position: relative;
 
+    pa-icon.pa-icon-block {
+        position: absolute;
+        top: -1px;
+        left: rythm(2);
+    }
+
     // Controls: Checkboxes, radios, toggles, ranges
     &-control[type="checkbox"],
     &-control[type="radio"] {
@@ -23,6 +29,12 @@
                 width: rythm(1) !important;
                 margin: 0 0 -1px rythm(.5) !important;
             }
+
+            &.pa-field-with-icon {
+                & > span {
+                    margin-left: rythm(4) !important;
+                }
+            }
         }
 
         &:disabled + .pa-field-label {
@@ -34,8 +46,9 @@
         & ~ .pa-field-help {
             margin-left: rythm(2.5);
 
+            &.pa-field-with-icon,
             &.pa-icon {
-                margin-left: rythm(2.5) * 2 !important;
+                margin-left: rythm(4) !important;
             }
         }
     }

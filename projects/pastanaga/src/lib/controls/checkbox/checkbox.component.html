@@ -1,6 +1,8 @@
 <div class="pa-field"
      [class.pa-field-checkbox]="type === 'checkbox'"
      [class.pa-field-radio]="type === 'radio'">
+
+    <pa-icon *ngIf="!!_icon" [icon]="_icon" small class="pa-icon-block"></pa-icon>
     <input class="pa-field-control"
            [tabindex]="_noFocus ? -1 : null"
            [class.pa-square-check]="_squareCheck"
@@ -16,12 +18,13 @@
     <label [ngStyle]="extraStyle"
            class="pa-field-label pa-ellipsis"
            [class.pa-field-with-help]="!!help"
+           [class.pa-field-with-icon]="!!_icon"
            [for]="_id"
            [paTooltip]="hasEllipsis ? tooltipText : null">
         <span translate class="pa-ellipsis-text"
               #ellipsisText
               [class.pa-sr]="_labelHidden">
-            <pa-icon *ngIf="icon" [name]="icon"></pa-icon>
+            <pa-icon *ngIf="!!_iconName" [name]="_iconName"></pa-icon>
             <ng-content></ng-content>
             <small *ngIf="subLabel">{{ subLabel }}</small>
             <pa-icon *ngFor="let icon of labelIcons"
@@ -31,6 +34,8 @@
         </span>
     </label>
 
-    <small *ngIf="help" class="pa-field-help" [class.pa-sr]="_labelHidden" [id]="helpId" translate>{{help}}</small>
+    <small *ngIf="help" class="pa-field-help pa-ellipsis-text"
+           [class.pa-field-with-icon]="!!_icon"
+           [class.pa-sr]="_labelHidden" [id]="helpId" translate>{{help}}</small>
 </div>
 

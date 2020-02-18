@@ -1,0 +1,13 @@
+@import "../styles/variables";
+
+.pa-small {
+    width: rythm(1.5);
+    height: rythm(1.5);
+}
+.pa-medium {
+    width: rythm(2);
+    height: rythm(2);
+}
+.pa-border {
+    border-radius: rythm(.25);
+}

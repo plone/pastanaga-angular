@@ -11,7 +11,7 @@ import {
     ChangeDetectorRef,
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { detectChanges, markForCheck } from '../../common/utils';
+import { detectChanges, Icon, markForCheck } from '../../common/utils';
 import { LabelIcon } from '../control.model';
 
 let nextId = 0;
@@ -26,7 +26,13 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     @Input() id?: string;
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() help?: string;
-    @Input() icon?: string;
+    @Input() set icon(value: string | Icon) {
+        if (!!value && typeof value === 'string') {
+            this._iconName = value;
+        } else {
+            this._icon = value as {path: string, backgroundColor: string};
+        }
+    }
     @Input() name?: string;
     @Input() subLabel?: string;
     @Input() labelIcons?: LabelIcon[];
@@ -51,6 +57,8 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     _selected = false;
     _squareCheck = false;
     _labelHidden = false;
+    _iconName = '';
+    _icon?: Icon;
 
     helpId = '';
     extraStyle: { [key: string]: string } = {};

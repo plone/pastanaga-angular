@@ -8,14 +8,14 @@
             <div class="pa-dropdown-flex">
                 <ng-template #labelContent><ng-content></ng-content></ng-template>
                 <ng-container *ngIf="!checkboxMode">
-                    <div class="pa-dropdown-flex-item" *ngIf="!!icon && !isIconOnRight" [paTooltip]="tooltip">
-                        <pa-icon *ngIf="icon && !isIconOnRight" [small]="isSmallIcon" [name]="icon"></pa-icon>
+                    <div class="pa-dropdown-flex-item" *ngIf="!!_iconName && !isIconOnRight" [paTooltip]="tooltip">
+                        <pa-icon *ngIf="_iconName && !isIconOnRight" [small]="isSmallIcon" [name]="_iconName"></pa-icon>
                     </div>
                     <div class="pa-dropdown-flex-item pa-dropdown-flex-item-push" translate>
                         <ng-container *ngTemplateOutlet="labelContent"></ng-container>
                     </div>
-                    <div class="pa-dropdown-flex-item" *ngIf="!!icon && isIconOnRight" [paTooltip]="tooltip">
-                        <pa-icon [small]="isSmallIcon" [name]="icon"></pa-icon>
+                    <div class="pa-dropdown-flex-item" *ngIf="!!_iconName && isIconOnRight" [paTooltip]="tooltip">
+                        <pa-icon [small]="isSmallIcon" [name]="_iconName"></pa-icon>
                     </div>
                     <div *ngIf="subLevelItems" clas="pa-dropdown-flex-item">
                         <pa-button color="secondary" icon="right-key"
@@ -24,7 +24,7 @@
                     <div class="pa-dropdown-flex-item" *ngIf="shortcut"><kbd>{{ shortcut }}</kbd></div>
                 </ng-container>
                 <pa-checkbox *ngIf="checkboxMode" noFocus
-                             [icon]="icon"
+                             [icon]="_iconName || _icon"
                              [help]="subLabel"
                              [selected]="isSelected"
                              [disabled]="isDisabled"
