@@ -23,7 +23,7 @@ export class DropdownItemComponent implements Highlightable, OnInit, OnDestroy {
         if (!!value && typeof value === 'string') {
             this._iconName = value;
         } else {
-            this._icon = value as {path: string, backgroundColor: string};
+            this._icon = value as Icon;
         }
     }
     @Input() set smallIcon(value) { this.isSmallIcon = coerceBooleanProperty(value); }

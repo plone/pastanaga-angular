@@ -30,7 +30,7 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
         if (!!value && typeof value === 'string') {
             this._iconName = value;
         } else {
-            this._icon = value as {path: string, backgroundColor: string};
+            this._icon = value as Icon;
         }
     }
     @Input() name?: string;
