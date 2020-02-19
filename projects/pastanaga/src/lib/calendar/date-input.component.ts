@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { markForCheck } from '../common/utils';
 import { TextfieldCommon } from '../textfield/textfield.common';
 import { format, isValid, isToday, isYesterday, getMonth } from 'date-fns';
@@ -21,6 +21,8 @@ export class DateInputComponent extends TextfieldCommon {
     @Input() errorMessage: string = 'Invalid date (mm/dd/yyyy)';
 
     @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
+
+    @ViewChild('datePickerPopup', { static: false }) datePicker;
 
     constructor(
         public cdr: ChangeDetectorRef,
@@ -66,5 +68,11 @@ export class DateInputComponent extends TextfieldCommon {
 
     onFocus(focused: boolean) {
         this.focused = focused;
+    }
+
+    iconClick($event: MouseEvent) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.datePicker.remoteClick({ignoreRemote: true});
     }
 }

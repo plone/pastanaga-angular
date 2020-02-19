@@ -18,7 +18,7 @@ export class InputIconComponent {
 
     @Output() iconClick = new EventEmitter<void>();
 
-    onIconClick() {
-        this.iconClick.emit();
+    onIconClick(event: void | undefined) {
+        this.iconClick.emit(event);
     }
 }

@@ -8,7 +8,7 @@
         max-height: none;
     }
 
-    .pa-date-input {
+    pa-input-icon {
         background: $sky;
         width: 250px;
         display: flex;
@@ -17,6 +17,10 @@
 
         &.pa-date-error {
             background: $c10;
+
+            & ::ng-deep pa-button ::ng-deep svg {
+                fill: $red-contrast !important;
+            }
         }
 
         &.input-focused {
@@ -44,6 +48,16 @@
         margin-top: rythm(.5);
         padding-left: rythm(.5);
     }
+
+    pa-input-icon ::ng-deep {
+        & .pa-field {
+            align-self: center;
+        }
+
+        & .pa-field-button-group {
+            width: 100%;
+        }
+    } 
 
     pa-input {
         width: 100% !important;
@@ -91,10 +105,6 @@
             background: rgba(236, 77, 148, 0.35) !important;
         }
     } 
-
-    pa-button.pa-button-error ::ng-deep svg {
-        fill: $red-contrast !important;
-    }
 
     pa-date-picker {
         position: relative;

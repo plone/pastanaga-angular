@@ -1,26 +1,28 @@
-<div class="pa-date-input" 
-    [class.pa-date-error]="!isValidDate && dateInput !== ''"
-    [class.input-focused]="focused">
-    <pa-input [(ngModel)]="dateInput"
-        [placeholder]="datePlaceholder"
-        (valueChange)="checkTypedDate($event)"
-        (focus)="onFocus(true)"
-        (blur)="onFocus(false)"
-        [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
-        [maxCharacters]="10"
-        id="date-input">
-        <ng-content></ng-content>
-    </pa-input>
-    <pa-button size="small" icon="event" [paPopup]="datepicker"
-    [class.pa-button-error]="!isValidDate && dateInput !== ''"></pa-button>
-</div>
-<!--<pa-input-icon iconName="event" [paPopup]="datepicker"><ng-content></ng-content></pa-input-icon>-->
-<pa-date-picker #datepicker
-                        [selection]="currentDate"
-                        (select)="selectDate($event)"></pa-date-picker>
-<div *ngIf="!isValidDate && dateInput !== ''"class="pa-date-input-error">
+<pa-input-icon iconName="event"
+               [class.pa-date-error]="!isValidDate && dateInput !== ''"
+               [class.input-focused]="focused"
+               (iconClick)="iconClick($event)">
+               <pa-input [(ngModel)]="dateInput"
+                         [placeholder]="datePlaceholder"
+                         (valueChange)="checkTypedDate($event)"
+                         (focus)="onFocus(true)"
+                         (blur)="onFocus(false)"
+                         [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
+                         [maxCharacters]="10"
+                         id="date-input">
+                         <ng-content></ng-content>
+               </pa-input>
+</pa-input-icon>
+<span [hidden]="true"
+      #datePickerPopup="paPopupRef"
+      [paPopup]="datePicker"
+      [popupPosition]="{position: 'absolute', right: '51px', top: '36px'}"></span>
+<pa-date-picker #datePicker 
+                [selection]="currentDate"
+                (select)="selectDate($event)"></pa-date-picker>
+<div *ngIf="!isValidDate && dateInput !== ''" class="pa-date-input-error">
     {{errorMessage}}
 </div>
-<div *ngIf="dateHelp !== '' && dateInput === ''"class="pa-date-input-help">
+<div *ngIf="dateHelp !== '' && dateInput === ''" class="pa-date-input-help">
     {{dateHelp}}
 </div>

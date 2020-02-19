@@ -7,7 +7,7 @@
                    [color]="iconColor"
                    [disabled]="_disabled"
                    [paTooltip]="iconTooltip" paTooltipType="action"
-                   (click)="onIconClick()"></pa-button>
+                   (click)="onIconClick($event)"></pa-button>
         <ng-template #showSpinner><pa-spinner small color="secondary"></pa-spinner></ng-template>
     </div>
 </div>
