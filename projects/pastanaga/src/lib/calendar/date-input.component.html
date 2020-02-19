@@ -9,7 +9,7 @@
                          (blur)="onFocus(false)"
                          [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
                          [maxCharacters]="10"
-                         id="date-input">
+                         [id]="inputId">
                          <ng-content></ng-content>
                </pa-input>
 </pa-input-icon>
@@ -19,7 +19,9 @@
       [popupPosition]="{position: 'absolute', right: '51px', top: '36px'}"></span>
 <pa-date-picker #datePicker 
                 [selection]="currentDate"
-                (select)="selectDate($event)"></pa-date-picker>
+                (select)="selectDate($event)"
+                [noFuture]="_noFuture"
+                [min]="minDate"></pa-date-picker>
 <div *ngIf="!isValidDate && dateInput !== ''" class="pa-date-input-error">
     {{errorMessage}}
 </div>

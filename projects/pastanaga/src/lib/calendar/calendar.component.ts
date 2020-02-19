@@ -37,7 +37,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     @Input() set selection(value: {start?: Date, end?: Date} | Date) {
         if (!!value) {
             this._selection = value instanceof Date ? {start: value, end: value} : value;
-            this.calendar = this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
+            this.calendar = value instanceof Date ? this.service.getMonth(value, this._selection, this._min) : this.service.getMonth(this.calendar.dateRef, this._selection, this._min);
         }
     }
     _selection: {start?: Date, end?: Date} = {};

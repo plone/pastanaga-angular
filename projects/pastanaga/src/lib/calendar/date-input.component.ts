@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
 import { markForCheck } from '../common/utils';
 import { TextfieldCommon } from '../textfield/textfield.common';
 import { format, isValid, isToday, isYesterday, getMonth } from 'date-fns';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-date-input',
@@ -10,24 +11,37 @@ import { format, isValid, isToday, isYesterday, getMonth } from 'date-fns';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateInputComponent extends TextfieldCommon {
+    
+    @Input() dateHelp: string = '';
+    @Input() datePlaceholder: string = 'mm/dd/yyyy';
+    @Input() errorMessage: string = 'Invalid date (mm/dd/yyyy)';
+    @Input() inputId: string = '';
+    @Input() minDate?: Date;
+    @Input() selection?: Date;
+
+    @Input() set noFuture(value) { this._noFuture = coerceBooleanProperty(value); }
+    _noFuture = false;
+
+    @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
+
+    @ViewChild('datePickerPopup', { static: false }) datePicker;
 
     dateInput = '';
     isValidDate = true;
     currentDate: Date = new Date();
     focused = false;
 
-    @Input() dateHelp: string = '';
-    @Input() datePlaceholder: string = 'mm/dd/yyyy';
-    @Input() errorMessage: string = 'Invalid date (mm/dd/yyyy)';
-
-    @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
-
-    @ViewChild('datePickerPopup', { static: false }) datePicker;
-
     constructor(
         public cdr: ChangeDetectorRef,
     ) {
         super();
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        if (!!this.selection) {
+            this.selectDate(this.selection);
+        }
     }
 
     selectDate(date: Date) {
