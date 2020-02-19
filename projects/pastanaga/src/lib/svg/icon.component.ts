@@ -5,7 +5,7 @@ import { Inject } from '@angular/core';
 import { PLATFORM_ID } from '@angular/core';
 import { SvgLoader } from './svg-loader';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Icon } from '../common/utils';
+import { Icon, IconSize } from '../common/utils';
 
 @Component({
     selector: 'pa-icon',
@@ -19,7 +19,8 @@ export class IconComponent {
         if (!!value) {
             this.iconPath = value.path;
             this.iconBackground = value.backgroundColor;
-            this._medium = true;
+            this._medium = value.size === IconSize.MEDIUM;
+            this._small = value.size === IconSize.SMALL;
             this._border = true;
             this.updateSvg();
         }

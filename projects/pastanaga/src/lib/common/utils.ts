@@ -1,12 +1,20 @@
 import { ChangeDetectorRef, ViewRef } from '@angular/core';
 
+export enum IconSize {
+    SMALL = 'SMALL',
+    MEDIUM = 'MEDIUM',
+    LARGE = 'LARGE',
+}
+
 export class Icon {
     path: string;
     backgroundColor: string;
+    size: IconSize;
 
     constructor(data) {
         this.path = data.path;
-        this.backgroundColor = data.backgroundColor;
+        this.backgroundColor = data.backgroundColor || '';
+        this.size = data.size || IconSize.MEDIUM;
     }
 }
 

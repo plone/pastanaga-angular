@@ -1,3 +1,11 @@
+# 1.10.2 (2020-02-19)
+
+### Bug fixes
+- **Button-link component**: Fix button link rendering when displayed as button [ebrehault]
+
+### Improvements
+- **Icon component**: Allow to create a large icon via the icon property [ebrehault]
+
 # 1.10.1 (2020-02-18)
 
 ### Improvements
