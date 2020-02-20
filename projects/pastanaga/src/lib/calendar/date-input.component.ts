@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { markForCheck } from '../common/utils';
 import { TextfieldCommon } from '../textfield/textfield.common';
-import { format, isValid, isToday, isYesterday, getMonth, isExists, isSameMonth, startOfYesterday } from 'date-fns';
+import { format, isValid, isToday, isYesterday, getMonth, startOfYesterday } from 'date-fns';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
@@ -10,8 +10,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     styleUrls: ['../popup/_popup.scss', './date-input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DateInputComponent extends TextfieldCommon {
-    
+export class DateInputComponent extends TextfieldCommon implements OnInit {
     @Input() dateHelp = '';
     @Input() datePlaceholder = 'mm/dd/yyyy';
     @Input() errorMessage = 'Invalid date (mm/dd/yyyy)';
@@ -56,7 +55,7 @@ export class DateInputComponent extends TextfieldCommon {
     }
 
     checkTypedDate(date: string) {
-        if (date !== ''){
+        if (date !== '') {
             const typedDate = new Date(date);
             this.isValidDate = true;
             if (date.toLowerCase() === 'today') {
@@ -68,7 +67,8 @@ export class DateInputComponent extends TextfieldCommon {
                 if (this.isValidDate) {
                     const brokenDate = date.split('/');
                     if (brokenDate[0] === '2' || brokenDate[0] === '02') {
-                        this.isValidDate = getMonth(typedDate) === 1; // If the date is 29 of february of non leap year or 30-31, month will be 2
+                        // If the date is 29 of february of non leap year or 30-31, month will be 2
+                        this.isValidDate = getMonth(typedDate) === 1;
                     }
                 }
                 if (this.isValidDate) {
