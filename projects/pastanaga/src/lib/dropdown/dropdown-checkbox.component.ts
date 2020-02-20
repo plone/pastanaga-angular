@@ -20,19 +20,14 @@ export class DropdownCheckboxComponent {
             this.setSelection();
         }
     }
-    _checkboxes: ControlModel[] = [];
-
     @Input() set values(values: string[]) {
         if (!!values) {
             this._values = values;
             this.setSelection();
         }
     }
-    _values: string[] = [];
-
     @Input() label?: string;
     @Input() set disabled(value) { this.isDisabled = coerceBooleanProperty(value); }
-    isDisabled = false;
 
     @Output() valuesChange: EventEmitter<string[]> = new EventEmitter();
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
@@ -40,12 +35,15 @@ export class DropdownCheckboxComponent {
 
     @ViewChild('menuRef', { read: PopupDirective, static: false }) menuRef?: PopupDirective;
 
+    _checkboxes: ControlModel[] = [];
+    _values: string[] = [];
+    isDisabled = false;
     labels: {[value: string]: string} = {};
 
     constructor(private cdr: ChangeDetectorRef) {}
 
     getLabels() {
-        this.labels = (this.checkboxes || []).reduce((all, current) => {
+        this.labels = (this._checkboxes || []).reduce((all, current) => {
             if (!!current.value) {
                 all[current.value] = current.label || current.value;
             }
