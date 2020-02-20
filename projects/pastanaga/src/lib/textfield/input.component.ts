@@ -50,6 +50,7 @@ const REPLACE_LT_GT = new RegExp(/[<>]/g);
 })
 export class InputComponent extends TextfieldCommon implements OnInit, AfterViewChecked, OnDestroy {
     @Input() type = 'text';
+    @Input() maxCharacters?: number;
     @Input()
     get hasFocus(): boolean { return this._hasFocus; }
     set hasFocus(value: boolean) { this._hasFocus = coerceBooleanProperty(value); }

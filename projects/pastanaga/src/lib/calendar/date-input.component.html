@@ -1,0 +1,25 @@
+<pa-input-icon iconName="event"
+               [class.pa-date-error]="!isValidDate && dateInput !== ''"
+               (iconClick)="iconClick($event)">
+               <pa-input [(ngModel)]="dateInput"
+                         [placeholder]="datePlaceholder"
+                         (valueChange)="checkTypedDate($event)"
+                         [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
+                         [maxCharacters]="10"
+                         [id]="id"
+                         [errorMessage]="!isValidDate && dateInput !== '' ? errorMessage : ''"
+                         [help]="dateHelp !== '' && dateInput === '' ? dateHelp : ''"
+                         [accent]="_accent"
+                         [isLessen]="_isLessen">
+                         <ng-content></ng-content>
+               </pa-input>
+</pa-input-icon>
+<span [hidden]="true"
+      #datePickerPopup="paPopupRef"
+      [paPopup]="datePicker"
+      [popupPosition]="{position: 'absolute', left: '0', top: '0'}"></span>
+<pa-date-picker #datePicker 
+                [selection]="currentDate"
+                (select)="selectDate($event)"
+                [noFuture]="_noFuture"
+                [min]="minDate"></pa-date-picker>

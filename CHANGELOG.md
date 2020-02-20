@@ -1,3 +1,11 @@
+# 1.11.0 (2020-02-20)
+
+### Bug fixes
+- **Calendar component**: Updating month page when passed date is not a range [raul-onna]
+
+### Features
+- New `date-input` component [raul-onna]
+
 # 1.10.2 (2020-02-19)
 
 ### Bug fixes

@@ -111,4 +111,8 @@
         padding: rythm(1);
         vertical-align: top;
     }
+
+    pa-date-input ::ng-deep pa-input-icon {
+        width: 250px;
+    }
 }
