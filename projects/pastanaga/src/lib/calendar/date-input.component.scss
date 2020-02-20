@@ -45,7 +45,7 @@
     }
 
     pa-input:not(.pa-field-label-error) ::ng-deep .pa-field-control::selection {
-        background: rgba(34, 128, 160, 0.35) !important;
+        background: rgba($blue, 0.35) !important;
     }
     
     pa-date-picker {
