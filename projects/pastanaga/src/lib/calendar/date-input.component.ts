@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { markForCheck } from '../common/utils';
 import { TextfieldCommon } from '../textfield/textfield.common';
-import { format, isValid, isToday, isYesterday, getMonth } from 'date-fns';
+import { format, isValid, isToday, isYesterday, getMonth, isExists, isSameMonth, startOfYesterday } from 'date-fns';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
@@ -12,15 +12,19 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 })
 export class DateInputComponent extends TextfieldCommon {
     
-    @Input() dateHelp: string = '';
-    @Input() datePlaceholder: string = 'mm/dd/yyyy';
-    @Input() errorMessage: string = 'Invalid date (mm/dd/yyyy)';
-    @Input() inputId: string = '';
+    @Input() dateHelp = '';
+    @Input() datePlaceholder = 'mm/dd/yyyy';
+    @Input() errorMessage = 'Invalid date (mm/dd/yyyy)';
+    @Input() id = '';
     @Input() minDate?: Date;
     @Input() selection?: Date;
 
     @Input() set noFuture(value) { this._noFuture = coerceBooleanProperty(value); }
     _noFuture = false;
+    @Input() set accent(value) { this._accent = coerceBooleanProperty(value); }
+    _accent = false;
+    @Input() set isLessen(value) { this._isLessen = coerceBooleanProperty(value); }
+    _isLessen = false;
 
     @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
 
@@ -28,8 +32,7 @@ export class DateInputComponent extends TextfieldCommon {
 
     dateInput = '';
     isValidDate = true;
-    currentDate: Date = new Date();
-    focused = false;
+    currentDate = new Date();
 
     constructor(
         public cdr: ChangeDetectorRef,
@@ -59,9 +62,7 @@ export class DateInputComponent extends TextfieldCommon {
             if (date.toLowerCase() === 'today') {
                 this.currentDate = new Date();
             } else if (date.toLowerCase() === 'yesterday') {
-                let yesterday = new Date();
-                yesterday.setDate(yesterday.getDate() - 1);
-                this.currentDate = yesterday;
+                this.currentDate = startOfYesterday();
             } else {
                 this.isValidDate = date.length >= 8 && isValid(typedDate);
                 if (this.isValidDate) {
@@ -77,11 +78,9 @@ export class DateInputComponent extends TextfieldCommon {
             if (this.isValidDate) {
                 this.select.emit(this.currentDate);
             }
+        } else {
+            this.select.emit(undefined);
         }
-    }
-
-    onFocus(focused: boolean) {
-        this.focused = focused;
     }
 
     iconClick($event: MouseEvent) {

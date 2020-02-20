@@ -9,106 +9,49 @@
     }
 
     pa-input-icon {
-        background: $sky;
         display: flex;
         align-items: center;
         border-radius: rythm(.25);
 
-        &.pa-date-error {
-            background: $c10;
-
-            & ::ng-deep pa-button ::ng-deep svg {
-                fill: $red-contrast !important;
-            }
+        &.pa-date-error ::ng-deep pa-button ::ng-deep svg {
+            fill: $red-contrast !important;
         }
 
-        &.input-focused {
-            box-shadow: 0 2px 0 0px $blue-light !important;
-
-            &.pa-date-error {
-                box-shadow: 0 2px 0 0px $red-contrast !important;
-            }
-        }
-    }
-
-    .pa-date-input-help {
-        @include font-size(xs, s, xs);
-        color: $gray;
-        font-weight: $font-weight-light;
-        display: block;
-        margin-top: rythm(.5);
-        padding-left: rythm(.5);
-    }
-    .pa-date-input-error {
-        @include font-size(xs, s, xs);
-        color: $red-contrast;
-        font-weight: $font-weight-light;
-        display: block;
-        margin-top: rythm(.5);
-        padding-left: rythm(.5);
-    }
-
-    pa-input-icon ::ng-deep {
-        & .pa-field {
-            align-self: center;
-        }
-
-        & .pa-field-button-group {
+        ::ng-deep .pa-field-button-group {
             width: 100%;
-        }
-    } 
 
-    pa-input {
-        width: 100% !important;
-        display: flex;
-    }
-
-    pa-button {
-        display: flex;
-        margin-left: -rythm(.5);
-    }
-
-    pa-input ::ng-deep .pa-field-text{
-        padding-left: rythm(.5);
-        width: 100% !important;
-        margin: 0;
-    }
-    pa-input ::ng-deep .pa-field-control {
-        width: 100% !important;
-        margin: 0px !important;
-        box-shadow: none !important;
-        cursor: default !important;
-
-        &:hover {
-            box-shadow: none !important;
-        }
-
-        &:focus {
-            box-shadow: none !important;
-            background: none !important;
-        }
-
-        &::selection {
-            background: rgba(34, 128, 160, 0.35) !important;
+            > .pa-field {
+                top: rythm(.25);
+            }
         }
     }
-    pa-input ::ng-deep .pa-field-label {
-        text-transform: none !important;
-        color: $blue !important;
-    }
-    pa-input.pa-field-label-error ::ng-deep {
-        & .pa-field-label {
-            color: $red-contrast !important;
-        }
-        & .pa-field-control::selection {
-            background: rgba(236, 77, 148, 0.35) !important;
-        }
-    } 
 
+    pa-input ::ng-deep {
+        .pa-field-label,
+        .pa-field-help {
+            padding-left: rythm(.5) !important;
+            text-transform: none !important;
+        }
+        
+        .pa-field-text {
+            width: 100% !important;
+            margin: 0;
+        }
+
+        .pa-field-control {
+            width: 100% !important;
+            margin: 0px !important;
+        }
+    }
+
+    pa-input:not(.pa-field-label-error) ::ng-deep .pa-field-control::selection {
+        background: rgba(34, 128, 160, 0.35) !important;
+    }
+    
     pa-date-picker {
         position: relative;
 
-        & ::ng-deep .pa-popup {
+        ::ng-deep .pa-popup {
             top: rythm(.5) !important;
         }
     }

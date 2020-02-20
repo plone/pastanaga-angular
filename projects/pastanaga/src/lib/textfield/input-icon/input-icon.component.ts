@@ -16,9 +16,9 @@ export class InputIconComponent {
     get disabled() { return this._disabled; }
     _disabled = false;
 
-    @Output() iconClick = new EventEmitter<void>();
+    @Output() iconClick = new EventEmitter<MouseEvent>();
 
-    onIconClick(event: void | undefined) {
+    onIconClick(event: MouseEvent) {
         this.iconClick.emit(event);
     }
 }

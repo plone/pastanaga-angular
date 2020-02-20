@@ -1,15 +1,16 @@
 <pa-input-icon iconName="event"
                [class.pa-date-error]="!isValidDate && dateInput !== ''"
-               [class.input-focused]="focused"
                (iconClick)="iconClick($event)">
                <pa-input [(ngModel)]="dateInput"
                          [placeholder]="datePlaceholder"
                          (valueChange)="checkTypedDate($event)"
-                         (focus)="onFocus(true)"
-                         (blur)="onFocus(false)"
                          [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
                          [maxCharacters]="10"
-                         [id]="inputId">
+                         [id]="id"
+                         [errorMessage]="!isValidDate && dateInput !== '' ? errorMessage : ''"
+                         [help]="dateHelp !== '' && dateInput === '' ? dateHelp : ''"
+                         [accent]="_accent"
+                         [isLessen]="_isLessen">
                          <ng-content></ng-content>
                </pa-input>
 </pa-input-icon>
@@ -22,9 +23,3 @@
                 (select)="selectDate($event)"
                 [noFuture]="_noFuture"
                 [min]="minDate"></pa-date-picker>
-<div *ngIf="!isValidDate && dateInput !== ''" class="pa-date-input-error">
-    {{errorMessage}}
-</div>
-<div *ngIf="dateHelp !== '' && dateInput === ''" class="pa-date-input-help">
-    {{dateHelp}}
-</div>

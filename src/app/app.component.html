@@ -185,7 +185,8 @@
         <h3>Date input</h3>
         <pa-date-input dateHelp="Insert a valid date"
                        datePlaceholder="mm/dd/yyyy"
-                       inputId="date-input-id">Choose date</pa-date-input>
+                       id="date-input-id"
+                       accent>Choose date</pa-date-input>
         <h3>Calendar</h3>
         <p>Selected date: {{rangeSelection | json}}</p>
         <pa-calendar [selection]="rangeSelection"
