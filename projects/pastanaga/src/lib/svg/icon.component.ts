@@ -21,6 +21,9 @@ export class IconComponent {
             this.iconBackground = value.backgroundColor;
             this._medium = value.size === IconSize.MEDIUM;
             this._small = value.size === IconSize.SMALL;
+            this._large = value.size === IconSize.LARGE;
+            this._color = value.fillColor;
+            this._padding = value.padding;
             this._border = true;
             this.updateSvg();
         }
@@ -58,7 +61,9 @@ export class IconComponent {
     _hidden = false;
     _small = false;
     _medium = false;
+    _large = false;
     _color = '';
+    _padding = '';
     iconPath = '';
     iconBackground = '';
 
@@ -97,15 +102,20 @@ export class IconComponent {
             classes.push('pa-small');
         } else if (this._medium) {
             classes.push('pa-medium');
+        } else if (this._large) {
+            classes.push('pa-large');
         }
         if (this._border) {
             classes.push('pa-border');
         }
-        if (this.color) {
+        if (this._color) {
             styles.push(`fill: ${this.color};`);
         }
         if (this.iconBackground) {
             styles.push(`background: ${this.iconBackground};`);
+        }
+        if (this._padding) {
+            styles.push(`padding: ${this._padding}`);
         }
         this.renderer.setAttribute(icon, 'class', classes.join(' '));
         this.renderer.setAttribute(icon, 'style', styles.join(' '));

@@ -10,10 +10,14 @@ export class Icon {
     path: string;
     backgroundColor: string;
     size: IconSize;
+    fillColor: string;
+    padding: string;
 
     constructor(data) {
         this.path = data.path;
         this.backgroundColor = data.backgroundColor || '';
+        this.fillColor = data.fillColor || '';
+        this.padding = data.padding || '';
         this.size = data.size || IconSize.MEDIUM;
     }
 }
