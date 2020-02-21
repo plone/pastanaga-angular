@@ -17,7 +17,7 @@ import { Icon, IconSize } from '../common/utils';
 export class IconComponent {
     @Input() set icon(value: Icon) {
         if (!!value) {
-            this.iconPath = value.path;
+            this.iconPath = value.name ? this.getIconPathFromName(value.name) : value.path;
             this.iconBackground = value.backgroundColor;
             this._medium = value.size === IconSize.MEDIUM;
             this._small = value.size === IconSize.SMALL;
@@ -33,9 +33,10 @@ export class IconComponent {
         this.updateSvg();
     }
     @Input() set name(value: string) {
-        this.iconPath = `./assets/icons/${value}.svg`;
+        this.iconPath = this.getIconPathFromName(value);
         this.updateSvg();
     }
+
     @Input()
     get hidden(): boolean { return this._hidden; }
     set hidden(value: boolean) {
@@ -122,5 +123,9 @@ export class IconComponent {
         const elem = this.element.nativeElement;
         elem.innerHTML = '';
         this.renderer.appendChild(elem, icon);
+    }
+
+    private getIconPathFromName(name: string) {
+        return `./assets/icons/${name}.svg`;
     }
 }
