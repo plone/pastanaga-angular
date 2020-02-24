@@ -49,8 +49,8 @@ export class DoubleSliderComponent implements AfterViewInit, OnInit, OnChanges, 
     @ViewChild('track', { static: true }) track?: ElementRef;
     @ViewChild('thumbLeft', { static: true }) thumbLeft?: ElementRef;
     @ViewChild('thumbRight', { static: true }) thumbRight?: ElementRef;
-    @ViewChild('outputLeft', { static: false }) outputLeft?: ElementRef;
-    @ViewChild('outputRight', { static: false }) outputRight?: ElementRef;
+    @ViewChild('outputLeft') outputLeft?: ElementRef;
+    @ViewChild('outputRight') outputRight?: ElementRef;
 
     ngAfterViewInit() {
         if (!!this.container) {

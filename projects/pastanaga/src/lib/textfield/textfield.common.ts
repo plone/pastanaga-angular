@@ -1,5 +1,5 @@
 import { ControlValueAccessor, FormControl, Validator } from '@angular/forms';
-import { EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { EventEmitter, Input, OnDestroy, OnInit, Output, Directive } from '@angular/core';
 import { keyCodes } from '../keycodes.constant';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
@@ -16,6 +16,7 @@ export interface InputErrors {
     max?: boolean;
 }
 
+@Directive()
 export class TextfieldCommon implements ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() id?: string;
     @Input() name?: string;

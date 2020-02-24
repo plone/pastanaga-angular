@@ -18,6 +18,7 @@ import {
     TooltipModule,
     TranslateModule,
 } from '../../projects/pastanaga/src';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 const en = {
     'common': {
@@ -57,6 +58,7 @@ describe('AppComponent', () => {
                 TooltipModule,
                 ExpandModule,
                 SidebarModule,
+                AngularSvgIconModule.forRoot(),
             ],
             declarations: [
                 AppComponent

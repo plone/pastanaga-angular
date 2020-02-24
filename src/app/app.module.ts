@@ -19,6 +19,7 @@ import {
 
 import * as en from '../assets/i18n/en.json';
 import * as la from '../assets/i18n/la.json';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import * as la from '../assets/i18n/la.json';
         BrowserAnimationsModule,
         FormsModule,
         TranslateModule,
+        AngularSvgIconModule.forRoot(),
 
         BadgeModule,
         ButtonModule,

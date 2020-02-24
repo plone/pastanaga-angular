@@ -47,7 +47,7 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     // the following EventEmitters allow two way data-binding
     @Output() selectedChange: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text', { static: false }) textElement?: ElementRef;
+    @ViewChild('text') textElement?: ElementRef;
     @ViewChild('ellipsisText', { static: true }) ellipsisText?: ElementRef;
 
     _id = '';

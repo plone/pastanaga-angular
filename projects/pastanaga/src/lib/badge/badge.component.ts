@@ -71,7 +71,7 @@ export class BadgeComponent implements AfterViewInit {
     text = '';
     _value?: number;
 
-    @ViewChild('textContent', { static: false }) textContent?: ElementRef;
+    @ViewChild('textContent') textContent?: ElementRef;
 
     constructor(
         public elementRef: ElementRef,

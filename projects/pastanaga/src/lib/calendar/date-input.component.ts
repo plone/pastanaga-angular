@@ -26,7 +26,7 @@ export class DateInputComponent extends TextfieldCommon implements OnInit {
 
     @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
 
-    @ViewChild('datePickerPopup', { static: false }) datePicker;
+    @ViewChild('datePickerPopup') datePicker;
 
     dateInput = '';
     isValidDate = true;
