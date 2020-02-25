@@ -51,7 +51,7 @@ $button-primary-active-background: $my-blue-light;
 
 ### Icons
 
-In order to be able to use the `<pa-icon>` component, we msut call the `forRoot()` method from AngularSvgIconModule:
+In order to be able to use the `<pa-icon>` component, we must call the `forRoot()` method from AngularSvgIconModule:
 
 ```typescript
 @NgModule({

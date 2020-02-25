@@ -157,9 +157,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/pastanaga/ng-package.prod.json"
-            ,              "tsConfig": "projects/pastanaga/tsconfig.lib.prod.json"
-}
+              "project": "projects/pastanaga/ng-package.prod.json",
+              "tsConfig": "projects/pastanaga/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
