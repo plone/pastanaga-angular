@@ -83,3 +83,7 @@ export class ToastButtonModel {
         this.tooltip = data.tooltip;
     }
 }
+
+export const getToastCloseButton = (): ToastButtonModel => {
+    return new ToastButtonModel({ icon: 'clear', color: 'secondary', tooltip: 'common.close', text: 'common.close' });
+};
