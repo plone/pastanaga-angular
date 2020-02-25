@@ -17,10 +17,13 @@ import { Icon, IconSize } from '../common/utils';
 export class IconComponent {
     @Input() set icon(value: Icon) {
         if (!!value) {
-            this.iconPath = value.path;
+            this.iconPath = value.name ? this.getIconPathFromName(value.name) : value.path;
             this.iconBackground = value.backgroundColor;
             this._medium = value.size === IconSize.MEDIUM;
             this._small = value.size === IconSize.SMALL;
+            this._large = value.size === IconSize.LARGE;
+            this._color = value.fillColor;
+            this._padding = value.padding;
             this._border = true;
             this.updateSvg();
         }
@@ -30,9 +33,10 @@ export class IconComponent {
         this.updateSvg();
     }
     @Input() set name(value: string) {
-        this.iconPath = `./assets/icons/${value}.svg`;
+        this.iconPath = this.getIconPathFromName(value);
         this.updateSvg();
     }
+
     @Input()
     get hidden(): boolean { return this._hidden; }
     set hidden(value: boolean) {
@@ -58,7 +62,9 @@ export class IconComponent {
     _hidden = false;
     _small = false;
     _medium = false;
+    _large = false;
     _color = '';
+    _padding = '';
     iconPath = '';
     iconBackground = '';
 
@@ -97,20 +103,29 @@ export class IconComponent {
             classes.push('pa-small');
         } else if (this._medium) {
             classes.push('pa-medium');
+        } else if (this._large) {
+            classes.push('pa-large');
         }
         if (this._border) {
             classes.push('pa-border');
         }
-        if (this.color) {
+        if (this._color) {
             styles.push(`fill: ${this.color};`);
         }
         if (this.iconBackground) {
             styles.push(`background: ${this.iconBackground};`);
+        }
+        if (this._padding) {
+            styles.push(`padding: ${this._padding}`);
         }
         this.renderer.setAttribute(icon, 'class', classes.join(' '));
         this.renderer.setAttribute(icon, 'style', styles.join(' '));
         const elem = this.element.nativeElement;
         elem.innerHTML = '';
         this.renderer.appendChild(elem, icon);
+    }
+
+    private getIconPathFromName(name: string) {
+        return `./assets/icons/${name}.svg`;
     }
 }

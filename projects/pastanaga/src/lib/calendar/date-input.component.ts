@@ -11,7 +11,6 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateInputComponent extends TextfieldCommon implements OnInit {
-    @Input() dateHelp = '';
     @Input() datePlaceholder = 'mm/dd/yyyy';
     @Input() errorMessage = 'Invalid date (mm/dd/yyyy)';
     @Input() id = '';

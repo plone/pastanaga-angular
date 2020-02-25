@@ -1,3 +1,12 @@
+# 1.11.1 (2020-02-25)
+
+### Bug fixes
+- **dropdown-checkbox component**: fix displayed values [mathilde-pellerin]
+- **icon component**: add optional color and padding in icon model [mathilde-pellerin]
+- **icon component**: large size is 30px [mathilde-pellerin]
+- **icon component**: add name support in icon model [mathilde-pellerin]
+- **date-input component**: use help Input from TextFieldCommon [mathilde-pellerin]
+
 # 1.11.0 (2020-02-20)
 
 ### Bug fixes
