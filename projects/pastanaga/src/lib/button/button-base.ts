@@ -1,19 +1,10 @@
-import {
-    AfterContentInit,
-    ChangeDetectorRef,
-    ElementRef,
-    EventEmitter,
-    HostBinding,
-    Input,
-    Output,
-    ViewChild,
-    ViewRef
-} from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild, ViewRef, Directive } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 const COLORS = ['primary', 'secondary', 'destructive', 'contrast'];
 const SIZES = ['tiny', 'small', 'large'];
 
+@Directive()
 export class ButtonBase implements AfterContentInit {
     @Input() set color(value: 'primary' | 'secondary' | 'destructive' | 'contrast') {
         if (!!value) {
@@ -65,7 +56,7 @@ export class ButtonBase implements AfterContentInit {
 
     @Output() hasFocus: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text', {static: false}) textElement?: ElementRef;
+    @ViewChild('text') textElement?: ElementRef;
 
     _iconAndText = false;
     checkedType = 'button';

@@ -13,12 +13,12 @@ export class ButtonLinkComponent extends ButtonBase {
     @Input() route?: string;
     @Input() traverseTo?: string;
     @Input() set hasButtonDisplay(value) {
-        this._hasButtonDisplay = coerceBooleanProperty(value);
+        this.buttonStyle['pa-button-link'] = !coerceBooleanProperty(value);
     }
     @Output() onClick: EventEmitter<MouseEvent> = new EventEmitter();
-    _hasButtonDisplay = false;
 
     constructor(protected changeDetector: ChangeDetectorRef) {
         super(changeDetector);
+        this.buttonStyle['pa-button-link'] = true;
     }
 }

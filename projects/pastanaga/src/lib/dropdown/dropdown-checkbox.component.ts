@@ -33,7 +33,7 @@ export class DropdownCheckboxComponent {
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
     @Output() onClose: EventEmitter<void> = new EventEmitter();
 
-    @ViewChild('menuRef', { read: PopupDirective, static: false }) menuRef?: PopupDirective;
+    @ViewChild('menuRef', { read: PopupDirective }) menuRef?: PopupDirective;
 
     _checkboxes: ControlModel[] = [];
     _values: string[] = [];

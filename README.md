@@ -47,17 +47,20 @@ $button-primary-active-background: $my-blue-light;
 
 (See `_variables.scss` to get the full list)
 
-**BEFORE ANGULAR 8**: The file must be in the main app src folder and must be declared in `angular.json`:
-
-```
-"stylePreprocessorOptions": {
-    "includePaths": [
-        "src/pastanaga-overrides.scss"
-    ]
-},
-```
-
 ## Components
+
+### Icons
+
+In order to be able to use the `<pa-icon>` component, we must call the `forRoot()` method from AngularSvgIconModule:
+
+```typescript
+@NgModule({
+    imports: [
+        AngularSvgIconModule.forRoot(),
+        ...
+    ]
+})
+```
 
 ### Sidebar
 

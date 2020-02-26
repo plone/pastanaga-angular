@@ -22,7 +22,7 @@ export class TooltipComponent implements AfterViewInit {
     top = 0;
     offset = 0;
 
-    @ViewChild('tooltipText', { static: false }) tooltipText?: ElementRef;
+    @ViewChild('tooltipText') tooltipText?: ElementRef;
 
     constructor(private cdr: ChangeDetectorRef) {}
 
