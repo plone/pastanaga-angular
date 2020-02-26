@@ -26,33 +26,7 @@
         }
     }
 
-    pa-input ::ng-deep {
-        .pa-field-label,
-        .pa-field-help {
-            padding-left: rythm(.5) !important;
-            text-transform: none !important;
-        }
-        
-        .pa-field-text {
-            width: 100% !important;
-            margin: 0;
-        }
-
-        .pa-field-control {
-            width: 100% !important;
-            margin: 0px !important;
-        }
-    }
-
-    pa-input:not(.pa-field-label-error) ::ng-deep .pa-field-control::selection {
-        background: rgba($blue, 0.35) !important;
-    }
-    
     pa-date-picker {
         position: relative;
-
-        ::ng-deep .pa-popup {
-            top: rythm(.5) !important;
-        }
     }
 }

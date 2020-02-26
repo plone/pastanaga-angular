@@ -1,5 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { markForCheck } from '../common/utils';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output, SimpleChanges,
+    ViewChild
+} from '@angular/core';
+import { markForCheck, PositionStyle } from '../common/utils';
 import { TextfieldCommon } from '../textfield/textfield.common';
 import { format, isValid, isToday, isYesterday, getMonth, startOfYesterday } from 'date-fns';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -10,7 +20,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     styleUrls: ['../popup/_popup.scss', './date-input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DateInputComponent extends TextfieldCommon implements OnInit {
+export class DateInputComponent extends TextfieldCommon implements OnInit, OnChanges {
     @Input() datePlaceholder = 'mm/dd/yyyy';
     @Input() errorMessage = 'Invalid date (mm/dd/yyyy)';
     @Input() id = '';
@@ -31,6 +41,7 @@ export class DateInputComponent extends TextfieldCommon implements OnInit {
     dateInput = '';
     isValidDate = true;
     currentDate = new Date();
+    datePickerPosition: PositionStyle = {position: 'absolute', left: '0', top: '0'};
 
     constructor(
         public cdr: ChangeDetectorRef,
@@ -45,6 +56,13 @@ export class DateInputComponent extends TextfieldCommon implements OnInit {
         }
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.help) {
+            const top = !!changes.help.currentValue ? '-33px' : '0';
+            this.datePickerPosition = {...this.datePickerPosition, top};
+        }
+    }
+
     selectDate(date: Date) {
         this.currentDate = date;
         this.isValidDate = true;
@@ -54,9 +72,9 @@ export class DateInputComponent extends TextfieldCommon implements OnInit {
     }
 
     checkTypedDate(date: string) {
+        this.isValidDate = true;
         if (date !== '') {
             const typedDate = new Date(date);
-            this.isValidDate = true;
             if (date.toLowerCase() === 'today') {
                 this.currentDate = new Date();
             } else if (date.toLowerCase() === 'yesterday') {

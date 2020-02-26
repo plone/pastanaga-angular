@@ -3,6 +3,7 @@
                (iconClick)="iconClick($event)">
                <pa-input [(ngModel)]="dateInput"
                          [placeholder]="datePlaceholder"
+                         [debounceDuration]="1000"
                          (valueChange)="checkTypedDate($event)"
                          [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
                          [maxCharacters]="10"
@@ -17,7 +18,7 @@
 <span [hidden]="true"
       #datePickerPopup="paPopupRef"
       [paPopup]="datePicker"
-      [popupPosition]="{position: 'absolute', left: '0', top: '0'}"></span>
+      [popupPosition]="datePickerPosition"></span>
 <pa-date-picker #datePicker 
                 [selection]="currentDate"
                 (select)="selectDate($event)"
