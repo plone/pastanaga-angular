@@ -1,3 +1,14 @@
+# 1.12.1 (2020-02-26)
+
+### Bug fixes
+
+- **date-input**: fix calendar positioning [mathilde-pellerin]
+- **date-input**: give more time to enter a valid date and reset error state when new value [mathilde-pellerin]
+
+### Improvements
+
+- **Toast**: utility method to get a default toast close button [mathilde-pellerin]
+
 # 1.12.0 (2020-02-24)
 
 ### Breaking change
