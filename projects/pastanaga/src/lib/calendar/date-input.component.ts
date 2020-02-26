@@ -72,9 +72,9 @@ export class DateInputComponent extends TextfieldCommon implements OnInit, OnCha
     }
 
     checkTypedDate(date: string) {
+        this.isValidDate = true;
         if (date !== '') {
             const typedDate = new Date(date);
-            this.isValidDate = true;
             if (date.toLowerCase() === 'today') {
                 this.currentDate = new Date();
             } else if (date.toLowerCase() === 'yesterday') {

@@ -3,6 +3,7 @@
                (iconClick)="iconClick($event)">
                <pa-input [(ngModel)]="dateInput"
                          [placeholder]="datePlaceholder"
+                         [debounceDuration]="1000"
                          (valueChange)="checkTypedDate($event)"
                          [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
                          [maxCharacters]="10"
