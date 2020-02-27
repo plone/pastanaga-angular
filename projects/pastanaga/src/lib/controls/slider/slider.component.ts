@@ -5,7 +5,7 @@ let nextId = 0;
 @Component({
     selector: 'pa-slider',
     templateUrl: './slider.component.html',
-    styleUrls: ['../controls.scss', './slider.component.scss'],
+    styleUrls: ['./slider.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SliderComponent implements OnInit, OnChanges {

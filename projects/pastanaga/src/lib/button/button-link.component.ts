@@ -5,7 +5,6 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 @Component({
     selector: 'pa-button-link',
     templateUrl: './button-link.component.html',
-    styleUrls: ['./button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })

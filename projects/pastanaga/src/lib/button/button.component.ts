@@ -6,7 +6,6 @@ let nextId = 0;
 @Component({
     selector: 'pa-button',
     templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })

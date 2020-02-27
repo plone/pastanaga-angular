@@ -18,7 +18,7 @@ let nextId = 0;
 @Component({
     selector: 'pa-double-slider',
     templateUrl: './double-slider.component.html',
-    styleUrls: ['../controls.scss', './double-slider.component.scss'],
+    styleUrls: ['./double-slider.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DoubleSliderComponent implements AfterViewInit, OnInit, OnChanges, OnDestroy {

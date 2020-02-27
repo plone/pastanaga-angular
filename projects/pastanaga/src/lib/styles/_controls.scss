@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@import "variables";
 
 .pa-field.pa-field-checkbox,
 .pa-field.pa-field-radio,
@@ -32,7 +32,7 @@
                 margin-left: rythm(2.5);
                 word-break: break-all;
                 display: block;
-                & > ::ng-deep pa-icon svg {
+                & > pa-icon svg {
                     width: rythm(1.5);
                     height: rythm(1.5);
                     margin-right: rythm(1);
@@ -74,7 +74,7 @@
             color: $gray-pale;
             cursor: default;
 
-            ::ng-deep pa-icon svg {
+            pa-icon svg {
                 opacity: .5;
             }
         }
@@ -196,28 +196,6 @@
         -ms-transform: none !important;
         transform: none !important;
         font-size: inherit !important;
-    }
-}
-
-//Expandable
-.pa-field-group {
-    .pa-button{
-        float:left;
-        margin: - rythm(.5) 0 - rythm(.5) - rythm(2.5);
-        transform: rotate(0deg);
-    }
-    .pa-button[aria-expanded="true"] {
-        transform: rotate(90deg);
-    }
-}
-.pa-field-sublist {
-    margin-left: 30px;
-    padding: 0;
-    list-style:none;
-    display: block;
-
-    &[aria-hidden="true"] {
-        display: none;
     }
 }
 

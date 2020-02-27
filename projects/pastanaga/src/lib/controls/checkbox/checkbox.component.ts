@@ -19,7 +19,7 @@ let nextId = 0;
 @Component({
   selector: 'pa-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['../controls.scss', './checkbox.component.scss'],
+  styleUrls: ['./checkbox.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent implements OnInit, AfterViewInit {

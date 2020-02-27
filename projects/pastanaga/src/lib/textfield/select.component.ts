@@ -6,7 +6,7 @@ let nextId = 0;
 @Component({
     selector: 'pa-select',
     templateUrl: 'select.component.html',
-    styleUrls: ['textfield.scss', 'select.component.scss'],
+    styleUrls: ['select.component.scss'],
     providers: [{
         provide: NG_VALUE_ACCESSOR,
         useExisting: forwardRef(() => SelectComponent),
