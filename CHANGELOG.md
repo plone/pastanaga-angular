@@ -1,3 +1,9 @@
+# 1.12.2 (2020-02-27)
+
+### Improvements
+
+- **styles**: move common styles into globally imported style to avoid massive CSS duplication in resulting bundles [ebrehault]
+
 # 1.12.1 (2020-02-26)
 
 ### Bug fixes

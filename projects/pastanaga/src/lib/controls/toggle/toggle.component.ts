@@ -6,7 +6,7 @@ let nextId = 0;
 @Component({
     selector: 'pa-toggle',
     templateUrl: './toggle.component.html',
-    styleUrls: ['../controls.scss', './toggle.component.scss'],
+    styleUrls: ['./toggle.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleComponent implements OnInit {

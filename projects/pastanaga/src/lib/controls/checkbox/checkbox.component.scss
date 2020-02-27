@@ -15,9 +15,6 @@
         & + .pa-field-label {
             height: rythm(1.5);
 
-            & > span {
-                margin-left: rythm(1);
-            }
             small {
                 color: $gray-dark;
                 margin-left: rythm(0.5);
