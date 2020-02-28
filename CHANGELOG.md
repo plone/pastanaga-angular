@@ -1,3 +1,8 @@
+# 1.12.3 (2020-02-28)
+
+### Bug fix
+- **calendar**: set sunday as first day of the week [mathilde-pellerin]
+
 # 1.12.2 (2020-02-27)
 
 ### Improvements
