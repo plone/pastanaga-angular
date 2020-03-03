@@ -1,3 +1,8 @@
+# 1.12.4 (2020-03-03)
+
+### Improvements
+- **Icon model**: Add `IconData` interface to type expected data for Icon constructor [mathilde-pellerin]
+
 # 1.12.3 (2020-02-28)
 
 ### Bug fix
