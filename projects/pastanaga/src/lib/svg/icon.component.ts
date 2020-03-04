@@ -81,7 +81,7 @@ export class IconComponent {
         if (!!this.iconPath) {
             if (isPlatformBrowser(this.platformId)) {
                 this.service.loadSvg(this.iconPath).subscribe(svg => {
-                    this.setSvg(svg);
+                    this.setSvg(svg.cloneNode(true) as SVGElement);
                 });
             } else {
                 this.svgLoader.loadSvgFromSsr(this.iconPath, this.renderer).subscribe(svg => {
@@ -91,8 +91,7 @@ export class IconComponent {
         }
     }
 
-    private setSvg(svg: SVGElement) {
-        const icon = <SVGElement>svg.cloneNode(true);
+    private setSvg(icon: SVGElement) {	
         if (typeof this._hidden !== 'undefined') {
             this.renderer.setAttribute(icon, 'aria-hidden', this._hidden.toString());
         }
