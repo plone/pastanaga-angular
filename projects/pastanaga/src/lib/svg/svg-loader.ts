@@ -5,6 +5,7 @@ import { Injectable, Renderer2 } from '@angular/core';
 @Injectable()
 export class SvgLoader implements SvgLoaderInterface {
     loadSvgFromSsr(iconPath: string, renderer: Renderer2): Observable<SVGElement> {
+        console.error('You must provide a SSR implementation');
         return of(<SVGElement>{});
     }
 }

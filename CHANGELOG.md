@@ -1,3 +1,8 @@
+# 1.12.5 (2020-03-04)
+
+### Bug fix
+- Fix Angular Universal related problems
+
 # 1.12.4 (2020-03-03)
 
 ### Improvements
