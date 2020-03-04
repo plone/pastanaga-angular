@@ -65,6 +65,7 @@
                                   [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
                                   [getChildren]="getChildren"
+                                  [shouldSort]="_shouldSort"
                                   [mode]="mode"
                                   (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
             </div>
