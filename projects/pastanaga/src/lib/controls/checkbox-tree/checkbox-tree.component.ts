@@ -335,6 +335,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
                     });
                     checkbox.totalChildren = children.length;
                     checkbox.selectedChildren = selectedChildren;
+                    markForCheck(this.cdr);
                 })));
             }
 
