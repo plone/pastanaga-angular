@@ -44,6 +44,7 @@
                 <pa-button *ngIf="mode === modes.fileSystem && !!checkbox.children && checkbox.children.length > 0"
                            size="tiny"
                            class="pa-children-selection-button"
+                           [disabled]="_disableToggleChildren"
                            [hidden]="!fileSystemButtonVisibility[checkbox.id]"
                            [color]="checkbox.selectedChildren < checkbox.totalChildren ? 'primary' : 'secondary'"
                            (click)="toggleChildrenSelection(checkbox)">
@@ -65,7 +66,9 @@
                                   [doLoadChildren]="checkbox.isExpanded"
                                   [checkboxes]="checkbox.children"
                                   [getChildren]="getChildren"
+                                  [shouldSort]="_shouldSort"
                                   [mode]="mode"
+                                  (isLoadingChildren)="_disableToggleChildren = $event"
                                   (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
             </div>
         </div>

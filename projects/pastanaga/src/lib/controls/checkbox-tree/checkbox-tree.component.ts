@@ -76,6 +76,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     @Output() childrenSelection: EventEmitter<{parentId: string, isSelected: boolean}> = new EventEmitter();
     @Output() allSelected: EventEmitter<boolean> = new EventEmitter();
     @Output() updatedTree: EventEmitter<ControlModel[]> = new EventEmitter<ControlModel[]>();
+    @Output() isLoadingChildren: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @ViewChildren(CheckboxComponent) checkboxComponents?: QueryList<CheckboxComponent>;
     @ViewChildren(BadgeComponent) badgeComponents?: QueryList<BadgeComponent>;
@@ -96,8 +97,8 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     totalSelected = 0;
 
     fileSystemButtonVisibility: {[checkboxId: string]: boolean} = {};
-    isLoadingChildren = false;
-    isSizeComputed = false;
+    _isLoadingChildren = false;
+    _disableToggleChildren = false;
 
     constructor(
         private translate: TranslatePipe,
@@ -312,8 +313,9 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     }
 
     private loadChildren() {
-        if (this.isAsync && !!this.getChildren && !this.isLoadingChildren) {
-            this.isLoadingChildren = true;
+        if (this.isAsync && !!this.getChildren && !this._isLoadingChildren) {
+            this._isLoadingChildren = true;
+            this.isLoadingChildren.emit(this._isLoadingChildren);
             const requests: Observable<ControlModel[]>[] = [];
             for (const checkbox of this._checkboxes) {
                 if (!!checkbox.children) {
@@ -335,14 +337,21 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
                     });
                     checkbox.totalChildren = children.length;
                     checkbox.selectedChildren = selectedChildren;
+                    markForCheck(this.cdr);
                 })));
             }
 
-            forkJoin(requests).subscribe(() => {
-                markForCheck(this.cdr);
-                this.emitSelectionChanged();
-                this.isLoadingChildren = false;
-            });
+            if (requests.length === 0) {
+                this._isLoadingChildren = false;
+                this.isLoadingChildren.emit(this._isLoadingChildren);
+            } else {
+                forkJoin(requests).subscribe(() => {
+                    markForCheck(this.cdr);
+                    this.emitSelectionChanged();
+                    this._isLoadingChildren = false;
+                    this.isLoadingChildren.emit(this._isLoadingChildren);
+                });
+            }
         }
         this.updateSelectionCount();
     }
