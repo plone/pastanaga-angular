@@ -1,7 +1,14 @@
+# 1.12.6 (2020-03-05)
+
+### Bug fixes
+- **Checkbox tree**: prevent toggling children while they're loading [mathilde-pellerin]
+- **Checkbox tree**: update expand button icon when loading children [mathilde-pellerin]
+- **Checkbox tree**: children tree should inherit shouldSort option [mathilde-pellerin]
+
 # 1.12.5 (2020-03-04)
 
 ### Bug fix
-- Fix Angular Universal related problems
+- Fix Angular Universal related problems [ebrehault]
 
 # 1.12.4 (2020-03-03)
 
