@@ -1,3 +1,10 @@
+# 1.12.7 (2020-03-06)
+
+### Bug fixes
+- Make sure placeholder is displayed in select when no value [ebrehault]
+- Fix focus for Chrome [ebrehault]
+- Fix checked icon in password rules [ebrehault]
+
 # 1.12.6 (2020-03-05)
 
 ### Bug fixes
