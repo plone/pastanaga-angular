@@ -75,7 +75,9 @@ body {
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
-
+:focus:not(:focus-visible) {
+    outline: none;
+}
 
 // Content grouping
 //
