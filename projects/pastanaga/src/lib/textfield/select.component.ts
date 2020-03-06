@@ -54,6 +54,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewI
         setTimeout(() => {
             if (!!this.value) {
                 this.element.nativeElement.querySelector('select').value = this.value;
+                this.isPlaceHolderSelected = this.value === '__PLACEHOLDER__';
             } else if (!!this.placeholder) {
                 this.element.nativeElement.querySelector('select').value = '__PLACEHOLDER__';
                 this.isPlaceHolderSelected = true;
@@ -83,6 +84,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewI
 
     change(value: any) {
         this.value = value;
+        this.isPlaceHolderSelected = value === '__PLACEHOLDER__';
         this.valueChange.emit(value);
         this.onSelection.emit(value);
         if (this.onChange) {
