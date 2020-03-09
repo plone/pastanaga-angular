@@ -8,6 +8,7 @@
     <pa-button *ngIf="type === 'checkbox' && _selectAllVisible"
                size="small" class="pa-field-button-right"
                id="checkbox-group-select-all"
+               [disabled]="_disabled"
                [color]="_isAllSelected ? 'secondary' : 'primary'"
                (click)="toggleSelectAll()">
         {{_isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
@@ -20,7 +21,7 @@
                  [help]="checkbox.help"
                  [subLabel]="checkbox.subLabel"
                  [labelIcons]="checkbox.labelIcons"
-                 [disabled]="checkbox.isDisabled"
+                 [disabled]="checkbox.isDisabled || _disabled"
                  [(selected)]="checkbox.isSelected"
                  (selection)="toggleSelection(checkbox.value)">{{checkbox.label}}
     </pa-checkbox>

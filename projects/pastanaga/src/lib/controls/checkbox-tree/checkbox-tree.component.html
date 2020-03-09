@@ -8,6 +8,7 @@
     <pa-button *ngIf="!_isChildren && _selectAllVisible"
                size="small" class="pa-field-button-right"
                id="checkbox-tree-select-all"
+               [disabled]="_disabled"
                [color]="isAllSelected ? 'secondary' : 'primary'"
                (click)="toggleSelectAll()">
         {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
@@ -21,7 +22,7 @@
                        class="pa-expand"
                        color="secondary" size="small"
                        [icon]="!checkbox.children ? 'initiating' : 'right-key'"
-                       [disabled]="!checkbox.children"
+                       [disabled]="!checkbox.children || _disabled"
                        ariaControls="pa-expand-checkbox-{{checkbox.id}}"
                        [ariaExpanded]="checkbox.isExpanded"
                        (click)="toggleCheckbox(checkbox)">
@@ -34,7 +35,7 @@
                          [subLabel]="checkbox.subLabel"
                          [labelIcons]="checkbox.labelIcons"
                          [selected]="checkbox.isSelected"
-                         [disabled]="checkbox.isDisabled"
+                         [disabled]="checkbox.isDisabled || _disabled"
                          [indeterminate]="checkbox.isIndeterminate"
                          [squareCheck]="mode === modes.fileSystem"
                          (selection)="toggleSelection($event, checkbox)">{{checkbox.label}}
@@ -43,7 +44,7 @@
             <pa-button *ngIf="mode === modes.fileSystem && !!checkbox.children && checkbox.children.length > 0"
                        size="tiny"
                        class="pa-children-selection-button"
-                       [disabled]="_disableToggleChildren"
+                       [disabled]="_disableToggleChildren || _disabled"
                        [hidden]="!fileSystemButtonVisibility[checkbox.id]"
                        [color]="checkbox.selectedChildren < checkbox.totalChildren ? 'primary' : 'secondary'"
                        (click)="toggleChildrenSelection(checkbox)">
@@ -67,6 +68,7 @@
                               [getChildren]="getChildren"
                               [shouldSort]="_shouldSort"
                               [mode]="mode"
+                              [disabled]="_disabled"
                               (isLoadingChildren)="_disableToggleChildren = $event"
                               (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
         </div>

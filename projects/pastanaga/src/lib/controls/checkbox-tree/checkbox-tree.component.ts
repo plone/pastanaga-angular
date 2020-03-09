@@ -43,6 +43,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     @Input() checkboxes?: ControlModel[];
     @Input() getChildren?: (control: ControlModel) => Observable<ControlModel[]>;
     @Input() doLoadChildren = true;
+    @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
     @Input() set shouldSort(value) { this._shouldSort = coerceBooleanProperty(value); }
     @Input() set badgeVisible(value) { this._badgeVisible = coerceBooleanProperty(value); }
     @Input() set selectAllVisible(value) { this._selectAllVisible = coerceBooleanProperty(value); }
@@ -86,6 +87,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     _badgeVisible = true;
     _selectAllVisible = true;
     _countVisible = false;
+    _disabled = false;
 
     onChange: any;
     onTouched: any;
