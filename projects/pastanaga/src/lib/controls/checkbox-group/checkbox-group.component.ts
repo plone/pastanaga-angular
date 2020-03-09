@@ -25,9 +25,11 @@ export class CheckboxGroupComponent implements OnInit {
         this.totalCount = this._checkboxes.length;
         this.updateSelectionCount();
     }
+    @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
     @Input() set shouldSort(value) { this._shouldSort = coerceBooleanProperty(value); }
     @Input() set selectAllVisible(value) { this._selectAllVisible = coerceBooleanProperty(value); }
     @Input() set countVisible(value) { this._countVisible = coerceBooleanProperty(value); }
+    @Input() set noSelectAll(value) { this._selectAllVisible = !coerceBooleanProperty(value); }
 
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
 
@@ -35,6 +37,7 @@ export class CheckboxGroupComponent implements OnInit {
     _shouldSort = true;
     _selectAllVisible = true;
     _countVisible = false;
+    _disabled = false;
 
     _isAllSelected = false;
     totalCount = 0;
