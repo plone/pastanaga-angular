@@ -1,3 +1,10 @@
+# 1.13.1 (2020-03-09)
+
+### Improvements
+- **Checkbox tree**: add `disabled` option to disable the whole tree
+- **Checkbox group**: add `disabled` option to disabled the whole group
+- **Checkbox group**: Add `noSelectAll` option to remove select all button
+
 # 1.13.0 (2020-03-09)
 
 ### Features
