@@ -5,85 +5,71 @@
                   [value]="totalSelected" [of]="totalCount"></pa-badge>
     </legend>
 
-    <ng-container *ngIf="type === 'checkbox'">
-        <pa-button *ngIf="!_isChildren && _selectAllVisible"
-                   size="small" class="pa-field-button-right"
-                   id="checkbox-tree-select-all"
-                   [color]="isAllSelected ? 'secondary' : 'primary'"
-                   (click)="toggleSelectAll()">
-            {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
-        </pa-button>
+    <pa-button *ngIf="!_isChildren && _selectAllVisible"
+               size="small" class="pa-field-button-right"
+               id="checkbox-tree-select-all"
+               [color]="isAllSelected ? 'secondary' : 'primary'"
+               (click)="toggleSelectAll()">
+        {{isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
+    </pa-button>
 
-        <div class="pa-field-group" *ngFor="let checkbox of _checkboxes">
-            <div (mouseover)="onMouseOver(checkbox)"
-                 (mouseleave)="onMouseLeave(checkbox)">
-                <pa-button *ngIf="(!!checkbox.children && checkbox.children.length > 0) || (!checkbox.children && isAsync)"
-                           id="pa-expand-checkbox-{{checkbox.id}}"
-                           class="pa-expand"
-                           color="secondary" size="small"
-                           [icon]="!checkbox.children ? 'initiating' : 'right-key'"
-                           [disabled]="!checkbox.children"
-                           ariaControls="pa-expand-checkbox-{{checkbox.id}}"
-                           [ariaExpanded]="checkbox.isExpanded"
-                           (click)="toggleCheckbox(checkbox)">
-                    {{!checkbox.children ? 'Loading' : !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
-                </pa-button>
-                <pa-checkbox [class.pa-checkbox-expanded]="checkbox.isExpanded"
-                             [id]="checkbox.id"
-                             [icon]="checkbox.icon"
-                             [help]="checkbox.help"
-                             [subLabel]="checkbox.subLabel"
-                             [labelIcons]="checkbox.labelIcons"
-                             [selected]="checkbox.isSelected"
-                             [disabled]="checkbox.isDisabled"
-                             [indeterminate]="checkbox.isIndeterminate"
-                             [squareCheck]="mode === modes.fileSystem"
-                             (selection)="toggleSelection($event, checkbox)">{{checkbox.label}}
-                </pa-checkbox>
+    <div class="pa-field-group" *ngFor="let checkbox of _checkboxes">
+        <div (mouseover)="onMouseOver(checkbox)"
+             (mouseleave)="onMouseLeave(checkbox)">
+            <pa-button *ngIf="(!!checkbox.children && checkbox.children.length > 0) || (!checkbox.children && isAsync)"
+                       id="pa-expand-checkbox-{{checkbox.id}}"
+                       class="pa-expand"
+                       color="secondary" size="small"
+                       [icon]="!checkbox.children ? 'initiating' : 'right-key'"
+                       [disabled]="!checkbox.children"
+                       ariaControls="pa-expand-checkbox-{{checkbox.id}}"
+                       [ariaExpanded]="checkbox.isExpanded"
+                       (click)="toggleCheckbox(checkbox)">
+                {{!checkbox.children ? 'Loading' : !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
+            </pa-button>
+            <pa-checkbox [class.pa-checkbox-expanded]="checkbox.isExpanded"
+                         [id]="checkbox.id"
+                         [icon]="checkbox.icon"
+                         [help]="checkbox.help"
+                         [subLabel]="checkbox.subLabel"
+                         [labelIcons]="checkbox.labelIcons"
+                         [selected]="checkbox.isSelected"
+                         [disabled]="checkbox.isDisabled"
+                         [indeterminate]="checkbox.isIndeterminate"
+                         [squareCheck]="mode === modes.fileSystem"
+                         (selection)="toggleSelection($event, checkbox)">{{checkbox.label}}
+            </pa-checkbox>
 
-                <pa-button *ngIf="mode === modes.fileSystem && !!checkbox.children && checkbox.children.length > 0"
-                           size="tiny"
-                           class="pa-children-selection-button"
-                           [disabled]="_disableToggleChildren"
-                           [hidden]="!fileSystemButtonVisibility[checkbox.id]"
-                           [color]="checkbox.selectedChildren < checkbox.totalChildren ? 'primary' : 'secondary'"
-                           (click)="toggleChildrenSelection(checkbox)">
-                    {{checkbox.selectedChildren < checkbox.totalChildren ? 'checkbox-tree.add-children' : 'checkbox-tree.remove-children'}}
-                </pa-button>
-            </div>
-
-            <output *ngIf="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
-                    [for]="checkbox.id">
-                <pa-badge [id]="checkbox.id" [value]="checkbox.selectedChildren" [of]="checkbox.totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge>
-            </output>
-
-            <div class="pa-field-sublist" role="tabpanel"
-                 [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.id"
-                 [attr.aria-hidden]="!checkbox.isExpanded">
-                <pa-checkbox-tree *ngIf="checkbox.isExpanded"
-                                  [id]="checkbox.id + '-child'"
-                                  [_isChildren]="true"
-                                  [doLoadChildren]="checkbox.isExpanded"
-                                  [checkboxes]="checkbox.children"
-                                  [getChildren]="getChildren"
-                                  [shouldSort]="_shouldSort"
-                                  [mode]="mode"
-                                  (isLoadingChildren)="_disableToggleChildren = $event"
-                                  (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
-            </div>
+            <pa-button *ngIf="mode === modes.fileSystem && !!checkbox.children && checkbox.children.length > 0"
+                       size="tiny"
+                       class="pa-children-selection-button"
+                       [disabled]="_disableToggleChildren"
+                       [hidden]="!fileSystemButtonVisibility[checkbox.id]"
+                       [color]="checkbox.selectedChildren < checkbox.totalChildren ? 'primary' : 'secondary'"
+                       (click)="toggleChildrenSelection(checkbox)">
+                {{checkbox.selectedChildren < checkbox.totalChildren ? 'checkbox-tree.add-children' : 'checkbox-tree.remove-children'}}
+            </pa-button>
         </div>
-    </ng-container>
 
-    <div class="pa-field-group" *ngIf="type === 'radio'">
-        <pa-checkbox *ngFor="let checkbox of _checkboxes"
-                     type="radio"
-                     [id]="checkbox.id"
-                     [icon]="checkbox.icon"
-                     [help]="checkbox.help"
-                     [disabled]="checkbox.isDisabled"
-                     [(selected)]="checkbox.isSelected"
-                     (selection)="toggleRadioSelection(checkbox.value)">{{checkbox.label}}
-        </pa-checkbox>
+        <output *ngIf="_badgeVisible && !!checkbox.children && checkbox.children.length > 0"
+                [for]="checkbox.id">
+            <pa-badge [id]="checkbox.id" [value]="checkbox.selectedChildren" [of]="checkbox.totalChildren" [isAccented]="true" [isSmall]="true"></pa-badge>
+        </output>
+
+        <div class="pa-field-sublist" role="tabpanel"
+             [attr.aria-labelledby]="'pa-expand-checkbox-' + checkbox.id"
+             [attr.aria-hidden]="!checkbox.isExpanded">
+            <pa-checkbox-tree *ngIf="checkbox.isExpanded"
+                              [id]="checkbox.id + '-child'"
+                              [_isChildren]="true"
+                              [doLoadChildren]="checkbox.isExpanded"
+                              [checkboxes]="checkbox.children"
+                              [getChildren]="getChildren"
+                              [shouldSort]="_shouldSort"
+                              [mode]="mode"
+                              (isLoadingChildren)="_disableToggleChildren = $event"
+                              (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
+        </div>
     </div>
 </fieldset>
 

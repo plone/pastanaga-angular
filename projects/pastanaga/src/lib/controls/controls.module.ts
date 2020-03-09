@@ -12,6 +12,7 @@ import { SliderComponent } from './slider/slider.component';
 import { DoubleSliderComponent } from './double-slider/double-slider.component';
 import { CheckboxTreeComponent } from './checkbox-tree/checkbox-tree.component';
 import { TranslateModule } from '../translate/translate.module';
+import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.component';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { TranslateModule } from '../translate/translate.module';
     ],
     declarations: [
         CheckboxComponent,
+        CheckboxGroupComponent,
         CheckboxTreeComponent,
         DoubleSliderComponent,
         SliderComponent,
@@ -33,6 +35,7 @@ import { TranslateModule } from '../translate/translate.module';
     ],
     exports: [
         CheckboxComponent,
+        CheckboxGroupComponent,
         CheckboxTreeComponent,
         DoubleSliderComponent,
         SliderComponent,

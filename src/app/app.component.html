@@ -58,10 +58,11 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree id="radioGroup"
-                                      type="radio" [checkboxes]="simpleCheckboxes"
-                                      (selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)
-                    </pa-checkbox-tree>
+                    <pa-checkbox-group id="radioGroup"
+                                       type="radio"
+                                       [checkboxes]="simpleCheckboxes"
+                                       (selection)="simpleCheckboxSelection = $event">Simple radio group (without badge)
+                    </pa-checkbox-group>
                 </td>
                 <td>
                     No two way data binding
@@ -72,10 +73,10 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree id="badgeGroup"
-                                      [checkboxes]="iconCheckboxes" badgeVisible
-                                      (selection)="iconCheckboxSelection = $event">Icon checkbox group
-                    </pa-checkbox-tree>
+                    <pa-checkbox-group id="badgeGroup"
+                                       [checkboxes]="iconCheckboxes" badgeVisible
+                                       (selection)="iconCheckboxSelection = $event">Icon checkbox group
+                    </pa-checkbox-group>
                 </td>
                 <td>
                     No two way data binding
@@ -86,10 +87,10 @@
             </tr>
             <tr>
                 <td>
-                    <pa-checkbox-tree id="helpGroup"
-                                      [checkboxes]="helpCheckboxes" countVisible
-                                      (selection)="helpCheckboxSelection = $event">Help checkbox group
-                    </pa-checkbox-tree>
+                    <pa-checkbox-group id="helpGroup"
+                                       [checkboxes]="helpCheckboxes" countVisible
+                                       (selection)="helpCheckboxSelection = $event">Help checkbox group
+                    </pa-checkbox-group>
                 </td>
                 <td>
                     No two way data binding

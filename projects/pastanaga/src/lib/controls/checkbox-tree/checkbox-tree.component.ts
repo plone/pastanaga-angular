@@ -17,6 +17,7 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { BadgeComponent } from '../../badge/badge.component';
 import { forkJoin, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { getCheckboxValue, sortCheckboxes } from '../checkbox.utils';
 
 let nextId = 0;
 
@@ -40,7 +41,6 @@ export enum CheckboxTreeMode {
 export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnChanges {
     @Input() id?: string;
     @Input() checkboxes?: ControlModel[];
-    @Input() type: 'checkbox' | 'radio' = 'checkbox';
     @Input() getChildren?: (control: ControlModel) => Observable<ControlModel[]>;
     @Input() doLoadChildren = true;
     @Input() set shouldSort(value) { this._shouldSort = coerceBooleanProperty(value); }
@@ -121,7 +121,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
                 label: this.translate.transform(checkbox.label || ''),
                 selectedChildren: this.getSelectedChildrenCount(checkbox),
             }));
-            this._checkboxes = this._shouldSort ? this.sortCheckboxes(translatedCheckboxes) : translatedCheckboxes;
+            this._checkboxes = this._shouldSort ? sortCheckboxes(translatedCheckboxes) : translatedCheckboxes;
             if (this.doLoadChildren) {
                 this.loadChildren();
             }
@@ -289,15 +289,11 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
         // if nested or fileSystem tree, selection contains all selected nodes
         const isCategorized = this.mode === CheckboxTreeMode.categorized;
         if (checkbox.isSelected && (!isCategorized || !checkbox.children || checkbox.children.length === 0)) {
-            selectedValues.push(this.getCheckboxValue(checkbox));
+            selectedValues.push(getCheckboxValue(checkbox));
         }
         if (!!checkbox.children) {
             checkbox.children.forEach(child => this.updateSelectedValues(child, selectedValues));
         }
-    }
-
-    private getCheckboxValue(checkbox: ControlModel): string {
-        return checkbox.value || checkbox.id;
     }
 
     private updateAllSelected() {
@@ -354,22 +350,6 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
             }
         }
         this.updateSelectionCount();
-    }
-
-    private sortCheckboxes(checkboxes: ControlModel[]): ControlModel[] {
-        return checkboxes.sort((a, b) => {
-            const aLabel = a.label || '';
-            const bLabel = b.label || '';
-            return aLabel.toLowerCase().localeCompare(bLabel.toLowerCase());
-        });
-    }
-
-    toggleRadioSelection(value: string) {
-        this._checkboxes = (this._checkboxes || []).map(ctl => new ControlModel({
-            ...ctl,
-            isSelected: ctl.value === value,
-        }));
-        this.emitSelectionChanged();
     }
 
     onMouseOver(checkbox: ControlModel) {
