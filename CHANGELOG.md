@@ -1,3 +1,11 @@
+# 1.13.0 (2020-03-09)
+
+### Features
+- New `checkbox-group` component [mathilde-pellerin]
+
+### Breaking changes
+- **Checkbox tree** doesn't have a `type` input anymore: use `checkbox-group` with type radio instead
+
 # 1.12.7 (2020-03-06)
 
 ### Bug fixes

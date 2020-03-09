@@ -1,0 +1,27 @@
+<fieldset class="pa-fieldset-group" [id]="id">
+    <legend>
+        <ng-content></ng-content>
+        <pa-badge *ngIf="_countVisible" [isSmall]="true" [isAccented]="true"
+                  [value]="totalSelected" [of]="totalCount"></pa-badge>
+    </legend>
+
+    <pa-button *ngIf="type === 'checkbox' && _selectAllVisible"
+               size="small" class="pa-field-button-right"
+               id="checkbox-group-select-all"
+               [color]="_isAllSelected ? 'secondary' : 'primary'"
+               (click)="toggleSelectAll()">
+        {{_isAllSelected ? 'common.deselect-all' : 'common.select-all'}}
+    </pa-button>
+
+    <pa-checkbox *ngFor="let checkbox of _checkboxes"
+                 [type]="type"
+                 [id]="checkbox.id"
+                 [icon]="checkbox.icon"
+                 [help]="checkbox.help"
+                 [subLabel]="checkbox.subLabel"
+                 [labelIcons]="checkbox.labelIcons"
+                 [disabled]="checkbox.isDisabled"
+                 [(selected)]="checkbox.isSelected"
+                 (selection)="toggleSelection(checkbox.value)">{{checkbox.label}}
+    </pa-checkbox>
+</fieldset>

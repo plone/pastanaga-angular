@@ -18,6 +18,7 @@ export * from './lib/controls/controls.module';
 export * from './lib/controls/control.model';
 export * from './lib/controls/checkbox/checkbox.component';
 export * from './lib/controls/checkbox-tree/checkbox-tree.component';
+export * from './lib/controls/checkbox-group/checkbox-group.component';
 export * from './lib/controls/double-slider/double-slider.component';
 export * from './lib/controls/slider/slider.component';
 export * from './lib/controls/toggle.model';

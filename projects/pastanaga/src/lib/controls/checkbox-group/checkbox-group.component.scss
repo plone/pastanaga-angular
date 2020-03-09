@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+:host {
+    position: relative;
+
+    legend {
+        pa-badge {
+            display: inline-block;
+            position: relative;
+            top: rythm(.5);
+            left: rythm(1);
+        }
+    }
+}
