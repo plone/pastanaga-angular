@@ -62,6 +62,9 @@
     ],
     "testPathIgnorePatterns": [
       "/node_modules/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "pastanaga-angular": "<rootDir>/projects/pastanaga/src"
+    }
   }
 }

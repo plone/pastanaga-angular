@@ -1,3 +1,8 @@
+# 1.13.3 (2020-03-10)
+
+### Improvements
+- Move demo page from app to a module so it can be imported from another app [mathilde-pellerin]
+
 # 1.13.2 (2020-03-10)
 
 ### Improvements
