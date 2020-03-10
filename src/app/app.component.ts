@@ -3,6 +3,8 @@ import { Avatar, BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, 
 import { Observable, of } from 'rxjs';
 import { getInitialTree } from '../../projects/pastanaga/src/lib/controls/checkbox-tree/checkbox-tree.test-data';
 import { delay } from 'rxjs/operators';
+import * as packageFile from '../../projects/pastanaga/package.json';
+
 // tslint:disable:max-line-length
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
     contentType = contentType || '';
@@ -221,6 +223,7 @@ export class AppComponent implements OnInit {
     dateSelection: Date = new Date();
 
     sections: any = {};
+    version = '';
 
     constructor(
         private toaster: Toaster,
@@ -229,6 +232,9 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.version = packageFile['version'];
+        console.log(`Version ${this.version}`);
+
         // Register the toast container.
         if (!!this.toastsContainer) {
             this.toaster.registerContainer(this.toastsContainer);

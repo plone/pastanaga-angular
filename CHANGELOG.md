@@ -1,9 +1,15 @@
+# 1.13.2 (2020-03-10)
+
+### Improvements
+- Update travis configuration to automatically update the demo page every time we merge on master branch. [mathilde-pellerin]
+- Display version number in demo page [mathilde-pellerin]
+
 # 1.13.1 (2020-03-09)
 
 ### Improvements
-- **Checkbox tree**: add `disabled` option to disable the whole tree
-- **Checkbox group**: add `disabled` option to disabled the whole group
-- **Checkbox group**: Add `noSelectAll` option to remove select all button
+- **Checkbox tree**: add `disabled` option to disable the whole tree [mathilde-pellerin]
+- **Checkbox group**: add `disabled` option to disabled the whole group [mathilde-pellerin]
+- **Checkbox group**: Add `noSelectAll` option to remove select all button [mathilde-pellerin]
 
 # 1.13.0 (2020-03-09)
 
