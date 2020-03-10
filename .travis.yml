@@ -11,6 +11,7 @@ install:
 script:
 - npm test
 - npm run build_lib
+- npm run build_demo
 notifications:
   email:
   - ebrehault@gmail.com
