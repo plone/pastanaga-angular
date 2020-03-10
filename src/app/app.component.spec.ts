@@ -1,24 +1,6 @@
 import { async, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import {
-    AvatarModule,
-    BadgeModule,
-    ButtonModule,
-    CalendarModule,
-    ControlsModule,
-    DropdownModule,
-    ExpandModule,
-    PopupModule,
-    ProgressModule,
-    SidebarModule,
-    TextFieldModule,
-    ToasterModule,
-    TooltipModule,
-    TranslateModule,
-} from '../../projects/pastanaga/src';
-import { AngularSvgIconModule } from 'angular-svg-icon';
+import { DemoModule } from './demo/demo.module';
 
 const en = {
     'common': {
@@ -42,23 +24,7 @@ describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                BrowserModule,
-                FormsModule,
-                TranslateModule,
-                AvatarModule,
-                BadgeModule,
-                ButtonModule,
-                CalendarModule,
-                ControlsModule,
-                DropdownModule,
-                PopupModule,
-                ProgressModule,
-                ToasterModule,
-                TextFieldModule,
-                TooltipModule,
-                ExpandModule,
-                SidebarModule,
-                AngularSvgIconModule.forRoot(),
+                DemoModule,
             ],
             declarations: [
                 AppComponent
