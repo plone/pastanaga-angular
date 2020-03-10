@@ -25,20 +25,28 @@ before_deploy:
     git tag $PACKAGE_VERSION;
   fi
 deploy:
-  - provider: releases
-    name: Build $PACKAGE_VERSION
-    api_key:
-      secure: iez/Ji90Kb2DkfLqhNXHpZOWWDMhM+Mv3AZL/5ZXaAnANcW9UIIfIank90iQ0yyTtyZfSdio6uY40JQ3i+7t6K4qXKQZyl+RVro22RwLG//buZ5ZprLNHcgHexINHKwwZUgHqjtKinoPVk8v9S4us2J2VoN1JM8ICyrMZpbLw7xCCbggerZorVJCmmsQQFKSWE10ZibuXh4tGnEmn2CbpRlipe8EhlNdXM3z+3s+EpNqrO+26/vQuu3mtZGu4sDZyYVcVIL29ynAI2bBYGZodKfSUolArifBGbHLLhoQk3AviHF7+o66Zeuel3X9AlVyKIhqYebEVKHMbSqPzy6f94DrLTek6hBJXjt+6bbfPVrUt+XpbxdzHKaszINuNgLQFjNxO6wl+Cpjz12oYHbvhA93z6nGvF6nT6oKDka9RKL244LGderOTsNOJW37SmZSCq6tSwPUzKDWx5s8tDk/AErWKtvjWDjQPfZXrGJx1+ohgx8XkkzfMV7E2wogoS7tEaML5KMeRG4FB64hFDIBF14q5Laag8Yw4ghFLyERTtmF5thLbvRacNrl68Y8NbAu2BpMrxJQo46LNWILUbKzh5sr+byD3tzY+YvbNpugsdivmFf76aulcZSTKfix94hhYDDzuxsESiTTzGhjp3dn/mwCz1kmuSDmKWcU8Ipm3bg=
-    on:
-      repo: plone/pastanaga-angular
-      branch: master
-  - provider: npm
-    edge: true
-    email: ebrehault@gmail.com
-    skip_cleanup: true
-    api_key:
-      secure: darUwSHoMztOZEVPezttX+QckHdGxLmKzERFYcla7u6JC0FjCVYKp4OMDARxXnnK878JEQMcHGUj5Bp6A8msdfSH+su1O2LhZY0iYxgrqIrP8tl8rDO2sHs9n2Tg7/ZMNIS6VWKjzE5QBfow4UKqRNbUL7i9qZs69Cdh3EZsg5nSrviRMrsrgPwRL5SubCDNeGPitOLLJxWWxfoOrP3i/2sYmJEz/dIUJNA/nriu6H0k4I9niXdh9rE6Bm3mts0IT9xSC1LPwrDZBwj56Z/wfg6EgCytsAuOuxkrcVkHImgMw4rgW8KTFG3vcCrq9/v6a5JwwP3H1I3QRH26rif5s2wdu2Ph3dOzRzefNgYbcgfTeTGLGOKU48ilYtSe3XUu7htgj2WP1yLX3pJydtljCMJzz5/RJYmxYRKGFIGNEcjf2J/mJPNrzqW2nKsvo3YFPko1wn4ZYEq+RYDbF2/Gg2PrkeD0dOP7Snp5ARNR05aeWRj0AHduEFhXzN5CStvTh+X2YwLrxnkDNUs74XF68wkeeF0ICjl7CnM8/yTS6kY02m4izCdrnNM5qpjvHjyCRuhWiR6Fptp30x/qpYMw32b1/SRjJnD/acNGoEjpwKN/hjTZyMtd8huXEmRLMfhoJer0s+kTq8bx7ET0UGAQGEz9Xft+BWNVotYVvl0StfM=
-    on:
-      tags: true
-      repo: plone/pastanaga-angular
-      branch: master
+    - provider: releases
+      name: Build $PACKAGE_VERSION
+      api_key:
+          secure: iez/Ji90Kb2DkfLqhNXHpZOWWDMhM+Mv3AZL/5ZXaAnANcW9UIIfIank90iQ0yyTtyZfSdio6uY40JQ3i+7t6K4qXKQZyl+RVro22RwLG//buZ5ZprLNHcgHexINHKwwZUgHqjtKinoPVk8v9S4us2J2VoN1JM8ICyrMZpbLw7xCCbggerZorVJCmmsQQFKSWE10ZibuXh4tGnEmn2CbpRlipe8EhlNdXM3z+3s+EpNqrO+26/vQuu3mtZGu4sDZyYVcVIL29ynAI2bBYGZodKfSUolArifBGbHLLhoQk3AviHF7+o66Zeuel3X9AlVyKIhqYebEVKHMbSqPzy6f94DrLTek6hBJXjt+6bbfPVrUt+XpbxdzHKaszINuNgLQFjNxO6wl+Cpjz12oYHbvhA93z6nGvF6nT6oKDka9RKL244LGderOTsNOJW37SmZSCq6tSwPUzKDWx5s8tDk/AErWKtvjWDjQPfZXrGJx1+ohgx8XkkzfMV7E2wogoS7tEaML5KMeRG4FB64hFDIBF14q5Laag8Yw4ghFLyERTtmF5thLbvRacNrl68Y8NbAu2BpMrxJQo46LNWILUbKzh5sr+byD3tzY+YvbNpugsdivmFf76aulcZSTKfix94hhYDDzuxsESiTTzGhjp3dn/mwCz1kmuSDmKWcU8Ipm3bg=
+      on:
+          repo: plone/pastanaga-angular
+          branch: master
+    - provider: npm
+      edge: true
+      email: ebrehault@gmail.com
+      skip_cleanup: true
+      api_key:
+          secure: darUwSHoMztOZEVPezttX+QckHdGxLmKzERFYcla7u6JC0FjCVYKp4OMDARxXnnK878JEQMcHGUj5Bp6A8msdfSH+su1O2LhZY0iYxgrqIrP8tl8rDO2sHs9n2Tg7/ZMNIS6VWKjzE5QBfow4UKqRNbUL7i9qZs69Cdh3EZsg5nSrviRMrsrgPwRL5SubCDNeGPitOLLJxWWxfoOrP3i/2sYmJEz/dIUJNA/nriu6H0k4I9niXdh9rE6Bm3mts0IT9xSC1LPwrDZBwj56Z/wfg6EgCytsAuOuxkrcVkHImgMw4rgW8KTFG3vcCrq9/v6a5JwwP3H1I3QRH26rif5s2wdu2Ph3dOzRzefNgYbcgfTeTGLGOKU48ilYtSe3XUu7htgj2WP1yLX3pJydtljCMJzz5/RJYmxYRKGFIGNEcjf2J/mJPNrzqW2nKsvo3YFPko1wn4ZYEq+RYDbF2/Gg2PrkeD0dOP7Snp5ARNR05aeWRj0AHduEFhXzN5CStvTh+X2YwLrxnkDNUs74XF68wkeeF0ICjl7CnM8/yTS6kY02m4izCdrnNM5qpjvHjyCRuhWiR6Fptp30x/qpYMw32b1/SRjJnD/acNGoEjpwKN/hjTZyMtd8huXEmRLMfhoJer0s+kTq8bx7ET0UGAQGEz9Xft+BWNVotYVvl0StfM=
+      on:
+          tags: true
+          repo: plone/pastanaga-angular
+          branch: master
+    - provider: pages
+        skip_cleanup: true
+        api_key:
+            secure: jOJ/zye7f2pWi4NU8HdD+91pBPiki19Hysx7PAs/PaGFeeMmpgara7bS5w00OIo7qCcm+KSYBt13ZO6W3lFkFAeytrnkh1oI6xRHz2T2Z3aeu6uptOaGg5rqYsIU2by9H0RFqUIojmJPR9ch/bzEhR0hBTiv8dn9PbktleM5Uzfw7d+YOMU30ubmI2C/Eps21qLA+iXFNemcuyKbKZoXUzQ78gww20A/11oLBqK7kJaAb1g8DtGpPuKQuOvQQKywM3XGK9i6XmTadb3yYRVGD1gbWk0AaSIjLerJDdwaEiy1265BMqmsCkAxxfc7dXpR44UIW3j3eMewk4EKeinMtr2Bfyj2mCDWsQC/+sbacqjXTMr1ABcMcSOsZyptBUo6MJIkbLMpSqcA9IK4Cb+0s50qmWoKufihp6EZ7ZpKtmHiCpl86eUl2F2/e+m+IH8aUPh/mhlCshZ8FLyGbqcQFAO9lbpryJmEUyysvUbu5+nGSt6X5dWTiZThDTl+qO2+KitOZaByAliqjpHPMr1ZbT6D4awI/agO7dMo5GXRMDmJoa/EZOrq/qS4CerEVosC+RcecNhsTcwh2thR1MgA9DUAv6iRpMD4ivfchUzpTCrqlrx0vr2OwP0C0NjuRvacW69Ws3srNcA8p3jgA/01LIWzpx93G2tJmriPt9WCU8A=
+        keep_history: true
+        on:
+            repo: plone/pastanaga-angular
+            branch: master
