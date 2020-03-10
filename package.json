@@ -8,7 +8,7 @@
     "build": "ng build --prod",
     "build_lib": "ng build --prod pastanaga-angular",
     "postbuild_lib": "cp -R ./projects/pastanaga/src/lib/styles dist/pastanaga/lib/styles && cp -R ./projects/pastanaga/src/assets dist/pastanaga/lib/assets",
-    "build_demo": "ng build --prod --base-href /pastanaga-angular/dist/pastanaga-app/",
+    "build_demo": "ng build --prod --base-href /pastanaga-angular",
     "test": "jest --no-cache",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand --ci",
