@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.com/plone/pastanaga-angular.svg?branch=master)](https://travis-ci.com/plone/pastanaga-angular)
 
+Demo:
 https://plone.github.io/pastanaga-angular/dist/pastanaga-app/
 
 Provides the Pastanaga elements as Angular components.
