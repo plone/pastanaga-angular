@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Avatar, BadgeModel, ControlModel, SidebarService, Toaster, ToastModel, ToggleModel } from 'pastanaga-angular';
-import { getInitialTree } from 'pastanaga-angular/lib/controls/checkbox-tree/checkbox-tree.test-data';
+import { Avatar, BadgeModel, ControlModel, getInitialTree, SidebarService, Toaster, ToastModel, ToggleModel } from 'pastanaga-angular';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import * as packageFile from '../../../projects/pastanaga/package.json';
