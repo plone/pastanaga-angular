@@ -3,6 +3,7 @@
 ### Improvements
 - Update travis configuration to automatically update the demo page every time we merge on master branch. [mathilde-pellerin]
 - Display version number in demo page [mathilde-pellerin]
+- Create git tag only if not existing [mathilde-pellerin]
 
 # 1.13.1 (2020-03-09)
 
