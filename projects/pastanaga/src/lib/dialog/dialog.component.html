@@ -1,0 +1,64 @@
+<div class="pa-dialog-backdrop" tabindex="0"
+     #dialogContainer
+     [class.pa-dialog-blocking]="config.blocking"
+     (click)="outsideClick($event)">
+    <dialog class="pa-dialog" role="dialog"
+            [class.in]="!closing"
+            [class.out]="closing"
+            [class.off]="off"
+            [class.pa-dialog-presentation]="presentationMode"
+            [attr.aria-labelledby]="'dialog-' + id + '-title'"
+            [attr.aria-describedby]="'dialog-' + id + '-description'"
+    >
+        <header class="pa-dialog-header">
+            <pa-button *ngIf="config.withCloseButton" class="pa-dialog-close"
+                       color="secondary"
+                       icon="clear"
+                       paTooltip="common.close"
+                       paTooltipType="action"
+                       (click)="close(false)">common.close</pa-button>
+
+            <pa-button *ngIf="displayBackButton" class="pa-dialog-back"
+                       icon="backspace"
+                       paTooltip="common.back" paTooltipType="action"
+                       (click)="back.emit()">common.back</pa-button>
+
+            <h2 class="pa-dialog-title pa-ellipsis-text"
+                [id]="'dialog-' + id + '-title'"
+                [class.pa-space-for-back]="displayBackButton">
+                <ng-content select="pa-dialog-title"></ng-content>
+            </h2>
+        </header>
+
+        <div class="pa-dialog-band" role="presentation"
+             #image
+             [hidden]="!_hasImage"
+             [class.pa-dialog-band-compressed]="_isSmallImage"
+             [style.background-color]="config.bandColor">
+            <ng-content select="pa-dialog-image"></ng-content>
+        </div>
+
+        <div class="pa-dialog-band-presentation" *ngIf="presentationMode"
+             [style.background-color]="config.bandColor"></div>
+
+        <section class="pa-dialog-body pa-content-shadow"
+                 #body
+                 [class.pa-content-shadow-top]="_isContentShadowTop"
+                 [class.pa-content-shadow-bottom]="_isContentShadowBottom"
+                 [class.no-footer]="!_hasFooter"
+                 (scroll)="_scroll.next($event)">
+            <ng-content></ng-content>
+        </section>
+
+        <footer class="pa-dialog-footer" [hidden]="!_hasFooter">
+            <div class="pa-dialog-footer-wrapper" #footer>
+                <ng-content select="pa-dialog-footer"></ng-content>
+            </div>
+            <div class="pa-steps-indicator-container" *ngIf="!!_indicators">
+                <div class="pa-step-indicator"
+                     *ngFor="let indicator of _indicators"
+                     [class.pa-selected]="indicator === activeStep"></div>
+            </div>
+        </footer>
+    </dialog>
+</div>

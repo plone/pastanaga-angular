@@ -27,7 +27,7 @@ export * from './lib/controls/toggle/toggle.component';
 export * from './lib/controls/toggle-group/toggle-group.component';
 
 export * from './lib/progress/progress.module';
-export * from  './lib/progress/progress.component';
+export * from './lib/progress/progress.component';
 
 export * from './lib/svg/svg.module';
 export * from './lib/svg/icon.component';
@@ -87,3 +87,10 @@ export * from './lib/dropdown/dropdown-separator.component';
 export * from './lib/avatar/avatar.model';
 export * from './lib/avatar/avatar.component';
 export * from './lib/avatar/avatar.module';
+
+export * from './lib/dialog/base-dialog.component';
+export * from './lib/dialog/dialog.component';
+export * from './lib/dialog/dialog.model';
+export * from './lib/dialog/dialog.module';
+export * from './lib/dialog/dialog.directives';
+export * from './lib/dialog/dialog.service';

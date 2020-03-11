@@ -1,0 +1,307 @@
+@import "./variables";
+
+
+.pa-dialog-backdrop {
+    z-index: $zindex-modal-backdrop;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &.pa-dialog-blocking {
+        background-color: transparentize($gray-blacky, .5);
+    }
+}
+
+.pa-dialog {
+    color: $gray;
+    z-index: $zindex-modal;
+    width: $w-dialog;
+    height: $h-dialog;
+    max-height: calc(100vh - #{rythm(5)});
+    max-width: calc(100vw - #{rythm(5)});
+    position: fixed;
+    top: calc(50vh - #{rythm(2)});
+    left: calc(50vw - #{rythm(2)});
+    transform: translateX(-50%) translateY(-50%);
+    box-shadow: $shadow-blocking, 0 0 0 10000px rgba($white-smoke, .8);
+    border: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    border-radius: border-radius(m);
+    margin: rythm(2);
+    background: $white;
+    @supports (-webkit-backdrop-filter:blur(9px)) {
+        background: rgba($white, .9);
+        -webkit-backdrop-filter: blur(9px);
+    }
+    display: flex;
+    flex: 1 1 0%;
+    flex-flow: column nowrap;
+    place-content: stretch flex-start;
+    align-items: stretch;
+    transition: all .25s ease;
+    @media (max-width: $bp-tablet) {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        max-width: 100vw;
+    }
+
+    &-header {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+        height: rythm(1)*6;
+        flex-basis: rythm(1)*6;
+        position: relative;
+        justify-content: center;
+        padding: rythm(2) rythm(3);
+
+        & > pa-button {
+            position: absolute;
+            top: rythm(1.5);
+
+            &.pa-dialog-close {
+                right: rythm(1.5);
+            }
+
+            &.pa-dialog-back {
+                left: rythm(1.5);
+            }
+        }
+    }
+
+    &-title {
+        @include font-size(xxl, xl, xl);
+        font-weight: $font-weight-light;
+        margin: 0;
+        padding: 0;
+        color: $gray-black;
+
+        svg { //icons next to the title
+            width: rythm(2);
+            height: rythm(2);
+            fill: $gray-contrast;
+            vertical-align: middle;
+            margin-left: - rythm(.5);
+            margin-right: rythm(.5);
+            line-height: 0;
+        }
+
+        &.pa-space-for-back {
+            padding-left: rythm(3);
+        }
+    }
+
+    &-band {
+        background: $azure-dark;
+        height: $h-band;
+        min-height: $h-small-band;
+        height: $h-band;
+        width: 100%;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        transition: all .25s ease;
+
+        img,
+        svg {
+            user-select: none;
+            user-drag: none;
+            -webkit-user-drag: none;
+            min-width: 100px;
+            max-height: 100px;
+            transform: scale(1, 1);
+            transition: all .25s ease;
+        }
+    }
+
+    &-band.pa-dialog-band-compressed {
+        height: $h-small-band;
+        transition: all .25s ease;
+
+        img, svg {
+            transform: scale(.75, .75);
+            transition: all .25s ease;
+        }
+    }
+
+    &-note {
+        font-size: size(m);
+        color: $gray;
+    }
+
+    &-body {
+        width: 100%;
+        padding: rythm(2) rythm(3);
+        height: calc(100% - #{$h-dialog-footer});
+        overflow-y: auto;
+
+        &.no-footer {
+            height: 100%;
+        }
+    }
+
+    &-band + &-body {
+        height: calc(100% - #{$h-dialog-footer} - #{$h-band});
+
+        &.no-footer {
+            height: calc(100% - #{$h-band});
+        }
+    }
+
+    &-band-compressed + &-body {
+        height: calc(100% - #{$h-dialog-footer} - #{$h-small-band});
+
+        &.no-footer {
+            height: calc(100% - #{$h-small-band});
+        }
+    }
+
+    &-footer {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+        height: rythm(1)*7;
+        flex-basis: rythm(1)*7;
+        position: absolute;
+        bottom: 0;
+        justify-content: center;
+        padding: rythm(2) rythm(3);
+        background-color: $white;
+    }
+
+    &-footer-wrapper {
+        width: 100%;
+        text-align: center;
+
+        pa-button:not(:only-of-type):not(:last-child) {
+            float: left;
+        }
+
+        pa-button:not(:only-of-type):last-child {
+            float: right;
+        }
+    }
+
+    & .pa-badge {
+        left: rythm(2.5);
+        top: rythm(2.5);
+    }
+
+    &.pa-dialog-presentation {
+        width: $w-presentation-dialog;
+        height: $h-presentation-dialog;
+
+        .pa-dialog-band {
+            display: none !important;
+        }
+
+        .pa-dialog-body {
+            height: calc(100% - #{$h-dialog-footer}) !important;
+
+            &.no-footer {
+                height: 100% !important;
+            }
+        }
+        .pa-dialog-band-presentation {
+            height: rythm(.25);
+        }
+    }
+}
+
+.pa-dialog-cover {
+    height: rythm(1)*100;
+    width: rythm(1)*75;
+}
+
+
+@keyframes dialog-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(400%) scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+}
+
+@keyframes dialog-in-content {
+    0% {
+        opacity: 0;
+        transform: translateY(rythm(1));
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(rythm(1));
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes dialog-out {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(100%) scale(0);
+    }
+}
+
+@keyframes dialog-out-content {
+    0% {
+        opacity: 1;
+        transform: translateY(rythm(1));
+
+    }
+    25% {
+        opacity: 0;
+        transform: translateY(rythm(1));
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+
+    }
+}
+
+.pa-dialog.in {
+    animation-name: dialog-in;
+    animation-duration: .75s;
+
+    .pa-dialog-header,
+    .pa-dialog-band,
+    .pa-dialog-body,
+    .pa-dialog-footer {
+        animation-name: dialog-in-content;
+        animation-duration: 1.25s;
+    }
+}
+
+.pa-dialog.off {
+    display: none;
+}
+
+.pa-dialog.out {
+    animation-name: dialog-out;
+    animation-duration: .75s;
+
+    .pa-dialog-header,
+    .pa-dialog-band,
+    .pa-dialog-body,
+    .pa-dialog-footer {
+        animation-name: dialog-out-content;
+        animation-duration: 1.25s;
+    }
+}
