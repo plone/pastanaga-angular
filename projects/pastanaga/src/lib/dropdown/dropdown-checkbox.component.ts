@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
-import { keyCodes } from '../keycodes.constant';
+import { keyboardKeys } from '../keycodes.constant';
 import { ControlModel } from '../controls/control.model';
 import { PopupDirective } from '../popup/popup.directive';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -77,7 +77,7 @@ export class DropdownCheckboxComponent {
     }
 
     onClickArrow($event: KeyboardEvent) {
-        if ($event.keyCode === keyCodes.enter) {
+        if ($event.key === keyboardKeys.enter) {
             const element = $event.srcElement as HTMLElement;
             if (!!element.parentElement) {
                 element.parentElement.click();

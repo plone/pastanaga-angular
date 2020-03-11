@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastModel } from './toast.model';
-import { keyCodes } from '../keycodes.constant';
+import { keyboardKeys } from '../keycodes.constant';
 
 const ARIA_KEY = 'pa-aria-';
 const DELAY = 5000;
@@ -80,7 +80,7 @@ export class ToastComponent implements OnInit {
             return;
         }
 
-        if ($event.which === keyCodes.esc || $event.keyCode === keyCodes.esc) {
+        if ($event.key === keyboardKeys.esc) {
             this.handleDismiss();
         }
     }
