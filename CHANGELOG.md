@@ -1,3 +1,8 @@
+# 1.14.0 (2020-03-11)
+
+### Feature
+- Allow to override default translations with specific ones [ebrehault]
+
 # 1.13.3 (2020-03-10)
 
 ### Improvements

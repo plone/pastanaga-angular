@@ -81,3 +81,104 @@ When a sidebar is folded, it's possible to unfold it on hover with `unfoldOnHove
 A sidebar can be locked in open position using `lockedOpen` attribute.
 
 Whenever `open` and `folded` states are changing, the corresponding events `openedChanged` and `foldedChanged` are sent.
+
+## i18n
+
+Pastanaga allows to manage translation.
+
+Each supported language is a JSON file where translated strings are handled in nested dictionaries:
+```json
+{
+    "calendar": {
+        "next": "Next",
+        "previous": "Previous",
+        "select-start-date-legend": "Select start date",
+        "select-end-date-legend": "Select end date",
+        "no-end-button": "No end date",
+        "days": {
+            "monday": "M",
+            "tuesday": "T",
+            "wednesday": "W",
+            "thursday": "T",
+            "friday": "F",
+            "saturday": "S",
+            "sunday": "S"
+        }
+    },
+    "common": {
+        "close": "Close",
+        "loading": "Loading…"
+    }
+}
+```
+
+Translations must be provided in the main app module:
+```typescript
+import * as en from '../assets/i18n/en.json';
+import * as la from '../assets/i18n/la.json';
+
+@NgModule({
+    ...
+    providers: [
+        {provide: 'TRANSLATIONS', useValue: {
+            'en_US': {...en},
+            'latin': {...la},
+        }},
+```
+
+The current language is expected to be provided too, it can be hard-coded:
+```typescript
+{provide: 'LANG', useValue: 'en_US'},
+```
+or computed, depending on the needs.
+
+Translations can be applied using a directive:
+```html
+<span translate>demo-page.title</span>
+```
+or a pipe:
+```html
+{{ "demo-page.title" | translate }}
+```
+
+Translations support parameters
+```json
+{ "demo-page": {"score": "{{points}} points of {{total}}"} }
+```
+
+```html
+<span translate [translateParams]="{points: 10, total: 25}">demo-page.score</span>
+```
+or
+```html
+{{ "demo-page.score" | translate:{points: 10, total: 25} }}
+```
+
+It can also be used as a service:
+```typescript
+import { TranslatePipe } from 'pastanaga-angular';
+...
+
+    constructor(
+        private translate: TranslatePipe
+    ) {}
+
+    someMethod() {
+        this.message = this.translate.transform('demo-page.title');
+        this.scoreMessage = this.translate.transform('demo-page.score', {points: 10, total: 25});
+}
+```
+
+Translations can be overriden. For instance, several applications might use the same internal library which comes with its translation, but in some cases, some of those translations must be different in the two apps.
+
+The different JSON files can be merged in a single one by using `mergeTranslations`. It takes a list of translations ordered by priority (the last ones override the first ones):
+
+```typescript
+import { mergeTranslations } from 'pastanaga-angular';
+...
+
+        {provide: 'TRANSLATIONS', useValue: {
+            'en_US': mergeTranslations([{...en}, {...app1Specific}]),
+            'latin': {...la},
+        }},
+```
