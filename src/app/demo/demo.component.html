@@ -270,10 +270,36 @@
     <div class="example-box-header" (click)="toggleSection('translate')">Translate</div>
 
     <div *ngIf="sections.translate">
-        <p>Using the directive: <span translate>demo-page.title</span></p>
-        <p>With parameters: <span translate [translateParams]="{points: 10, total: 25}">demo-page.score</span></p>
-        <p>Using the pipe: <span>{{ 'demo-page.title' | translate}}</span></p>
-        <p>With parameters: <span>{{ 'demo-page.score' | translate:{points: 10, total: 25} }}</span></p>
+        <h3>Using the directive</h3>
+        <div>
+            <code>&lt;span translate&gt;demo-page.title&lt;/span&gt;</code>
+            <span translate>demo-page.title</span>
+        </div>
+        <h3>With parameters</h3>
+        <div>
+            <code>&lt;span translate [translateParams]=&quot;&#123;points: 10, total: 25&#125;&quot;&gt;demo-page.score&lt;/span&gt;</code>
+            <span translate [translateParams]="{points: 10, total: 25}">demo-page.score</span>
+        </div>
+        <h3>Using the pipe</h3>
+        <div>
+            <code [innerHTML]="'&lt;span&gt;{<!-->{ &quot;demo-page.title&quot; | translate }<!-->}&lt;/span&gt;'"></code>
+            <span>{{ 'demo-page.title' | translate}}</span>
+        </div>
+        <h3>Pipe with parameters</h3>
+        <div>
+            <code [innerHTML]="'{<!-->{ &quot;demo-page.score&quot; | translate:{points: 10, total: 25} }<!-->}'"></code>
+            <span>{{ 'demo-page.score' | translate:{points: 10, total: 25} }}</span>
+        </div>
+        <h3>From a secondary translation file</h3>
+        <div>
+            <code>&lt;span translate&gt;other.test&lt;/span&gt;</code>
+            <span translate>other.test</span>
+        </div>
+        <h3>Overrided by a secondary translation file</h3>
+        <div>
+            <code>&lt;span translate&gt;common.yes&lt;/span&gt;</code>
+            <span translate>common.yes</span>
+        </div>
     </div>
 </div>
 

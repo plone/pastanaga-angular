@@ -5,3 +5,10 @@ $font-path: '../projects/pastanaga/src/assets/fonts';
 html, body {
     overflow: auto;
 }
+
+code {
+    display: block;
+    padding: rythm(1);
+    background-color: $azure;
+    margin: rythm(1) 0;
+}
