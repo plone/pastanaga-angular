@@ -1,8 +1,20 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Avatar, BadgeModel, ControlModel, getInitialTree, SidebarService, Toaster, ToastModel, ToggleModel } from 'pastanaga-angular';
+import {
+    Avatar,
+    BadgeModel,
+    ControlModel, DialogConfig,
+    DialogService,
+    getInitialTree,
+    SidebarService,
+    Toaster,
+    ToastModel,
+    ToggleModel
+} from 'pastanaga-angular';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import * as packageFile from '../../../projects/pastanaga/package.json';
+import { MultipleScreensDialogComponent } from './multiple-screens-dialog.component';
+import { OneScreenDialogComponent } from './one-screen-dialog.component';
 
 // tslint:disable:max-line-length
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
@@ -245,6 +257,7 @@ export class DemoComponent implements OnInit {
     constructor(
         private toaster: Toaster,
         private sidebarService: SidebarService,
+        private dialogService: DialogService,
     ) {
     }
 
@@ -387,4 +400,18 @@ export class DemoComponent implements OnInit {
         return of(children).pipe(delay(100));
     }
 
+    openNonBlockingDialog() {
+        this.dialogService.openDialog(OneScreenDialogComponent, new DialogConfig({blocking: false}))
+            .onClose.subscribe(data => console.log('Dialog closed', data));
+    }
+
+    openColoredDialog() {
+        this.dialogService.openDialog(MultipleScreensDialogComponent, new DialogConfig({bandColor: '#2FB4CF'}))
+            .onClose.subscribe(data => console.log('Dialog closed', data));
+    }
+
+    openNoCloseDialog() {
+        this.dialogService.openDialog(OneScreenDialogComponent, new DialogConfig({withCloseButton: false}))
+            .onClose.subscribe(data => console.log('Dialog closed', data));
+    }
 }
