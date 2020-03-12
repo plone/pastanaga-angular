@@ -24,6 +24,24 @@
 </pa-sidebar>
 
 <div class="example-box">
+    <div class="example-box-header" (click)="toggleSection('dialogs')">Dialogs</div>
+    <div *ngIf="sections.dialogs">
+        <div>
+            <h3>Non blocking dialog with close button and default band color</h3>
+            <pa-button border small (click)="openNonBlockingDialog()">Open</pa-button>
+        </div>
+        <div>
+            <h3>Blocking dialog with close button, custom band color and several steps (last one in presentation mode)</h3>
+            <pa-button border small (click)="openColoredDialog()">Open</pa-button>
+        </div>
+        <div>
+            <h3>Blocking dialog without close button</h3>
+            <pa-button border small (click)="openNoCloseDialog()">Open</pa-button>
+        </div>
+    </div>
+</div>
+
+<div class="example-box">
     <div class="example-box-header" (click)="toggleSection('checkbox')">Checkboxes</div>
     <div *ngIf="sections.checkbox">
         <table class="checkboxes">

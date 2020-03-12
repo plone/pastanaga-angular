@@ -1,0 +1,20 @@
+@import '../styles/variables';
+
+
+.pa-steps-indicator-container {
+    text-align: center;
+    margin-top: 1px;
+
+    .pa-step-indicator {
+        border-radius: 50%;
+        background: $gray-pale;
+        height: rythm(.5);
+        width: rythm(.5);
+        display: inline-block;
+        margin: 0 rythm(.25);;
+
+        &.pa-selected {
+            background: $gray-light;
+        }
+    }
+}

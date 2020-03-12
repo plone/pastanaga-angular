@@ -1,9 +1,11 @@
-export const keyCodes = {
-    enter: 13,
-    esc: 27,
-    tab: 9,
+export const keyboardKeys = {
+    enter: 'Enter',
+    space: ' ',
+    backspace: 'Backspace',
+    esc: 'Escape',
+    tab: 'Tab'
 };
 
 export const mouseCodes = {
     left: 0,
-}
+};

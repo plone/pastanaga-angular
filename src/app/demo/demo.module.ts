@@ -8,17 +8,19 @@ import {
     AvatarModule,
     BadgeModule,
     ButtonModule, CalendarModule,
-    ControlsModule, DropdownModule, ExpandModule, PopupModule,
+    ControlsModule, DialogModule, DropdownModule, ExpandModule, PopupModule,
     ProgressModule, SidebarModule,
     TextFieldModule,
     ToasterModule, TooltipModule,
     TranslateModule
 } from 'pastanaga-angular';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { MultipleScreensDialogComponent } from './multiple-screens-dialog.component';
+import { OneScreenDialogComponent } from './one-screen-dialog.component';
 
 
 @NgModule({
-    declarations: [DemoComponent],
+    declarations: [DemoComponent, MultipleScreensDialogComponent, OneScreenDialogComponent],
     imports: [
         CommonModule,
 
@@ -41,6 +43,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
         DropdownModule,
         PopupModule,
         AvatarModule,
+        DialogModule,
     ],
     exports: [DemoComponent]
 })

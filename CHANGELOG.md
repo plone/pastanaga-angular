@@ -1,3 +1,14 @@
+# 1.15.0 (2020-03-12)
+
+### Feature
+- Dialog component and associated service [mathilde-pellerin]
+
+### Improvement
+- set strict compilation [mathilde-pellerin]
+
+### Breaking changes
+- Replace deprecated `KeyboardEvent.codes` by `KeyboardEvent.keys` [mathilde-pellerin]
+
 # 1.14.1 (2020-03-12)
 
 ### Bug fix

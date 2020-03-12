@@ -1,6 +1,6 @@
 import { ControlValueAccessor, FormControl, Validator } from '@angular/forms';
 import { EventEmitter, Input, OnDestroy, OnInit, Output, Directive } from '@angular/core';
-import { keyCodes } from '../keycodes.constant';
+import { keyboardKeys } from '../keycodes.constant';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -113,7 +113,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, OnDestroy,
     }
 
     onKeyUp($event) {
-        if ($event.keyCode !== keyCodes.tab) {
+        if ($event.key !== keyboardKeys.tab) {
             const value = $event.target.value;
             this._validate(value);
             this.writeValue(value);
@@ -121,7 +121,7 @@ export class TextfieldCommon implements ControlValueAccessor, OnInit, OnDestroy,
             if (!!this.onChange) {
                 this.onChange(value);
             }
-            if ($event.keyCode === keyCodes.enter) {
+            if ($event.key === keyboardKeys.enter) {
                 this.enter.emit({event: $event, value: value});
             }
         }
