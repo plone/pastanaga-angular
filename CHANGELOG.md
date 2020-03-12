@@ -1,3 +1,8 @@
+# 1.14.1 (2020-03-12)
+
+### Bug fix
+- **Checkbox group**: make sure checkboxes are updated after the options are passed [ebrehault]
+
 # 1.14.0 (2020-03-11)
 
 ### Feature
