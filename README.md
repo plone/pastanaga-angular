@@ -182,3 +182,7 @@ import { mergeTranslations } from 'pastanaga-angular';
             'latin': {...la},
         }},
 ```
+
+## Dialog component
+
+See [dialog documentation](./src/develop/pastanaga-angular/projects/pastanaga/src/lib/dialog/README.md)
