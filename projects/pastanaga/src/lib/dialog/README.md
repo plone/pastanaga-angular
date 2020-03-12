@@ -94,6 +94,20 @@ export class CallerComponent {
 }
 ```
 
+You can also add a class in your dialog template:
+```html
+<pa-dialog class="change-password-dialog">
+...
+</pa-dialog>
+```
+and override band color directly in your stylesheet:
+```css
+.change-password-dialog .pa-dialog-band,
+.change-password-dialog .pa-dialog-band-presentation {
+    background: #97b67e;
+}
+```
+
 ### Close button
 
 By default, the dialog has a close button in the header. It is possible to remove it by passing the following:
@@ -165,6 +179,28 @@ export class SomeDialogComponent implements IDialog {
 }
 ``` 
 
+### Global configuration
+It is also possible to dynamically update any property set in the configuration.
+
+- One by one:
+```typescript
+export class SomeDialogComponent implements IDialog, OnInit {
+    ngOnInit() {
+        this.dialog.config.withCloseButton = false;    
+    }
+}
+
+``` 
+
+- Or all at once:
+```typescript
+export class SomeDialogComponent implements IDialog, OnInit {
+    ngOnInit() {
+        this.dialog.config = new DialogConfig({withCloseButton: false, blocking: false});
+    }
+}
+```
+
 ## Closing behavior
 
 ### Collect data returned by the dialog
@@ -188,3 +224,42 @@ export class SomeDialogComponent implements IDialog {
     }
 }
 ```
+
+## Pass data to the dialog
+Sometimes, the caller of a dialog needs to pass some data to it. To do so, simply add them to the DialogRef when opening the dialog:
+```typescript
+export class CallerComponent {
+    open() {
+        const dialogRef = this.dialogService.openDialog(SomeDialogComponent);
+        dialogRef['document'] = myDoc;
+        dialogRef['user'] = myUser;
+    }
+}
+```
+The dialog can access the DialogRef as well, for example in `ngOnInit`:
+```typescript
+export class SomeDialogComponent implements IDialog {
+    ngOnInit() {
+        this.document = this.dialog.ref['document'];
+        this.user = this.dialog.ref['user'];
+    }
+}
+```
+
+## Key binding
+By default, on a dialog with close button, ESC key will close the dialog.
+
+If we need to bind the ENTER key to something, we can use the `onEnter` property of our `DialogRef`:
+
+```typescript
+export class SomeDialogComponent implements IDialog {
+    ngOnInit() {
+        this.dialog.onEnter = this.edit.bind(this);
+    }
+
+    edit() {
+        this.dialog.close({whatever: true, answer: 42});
+    }
+}
+```
+

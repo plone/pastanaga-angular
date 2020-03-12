@@ -3,7 +3,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component, ElementRef,
-    EventEmitter, Input,
+    EventEmitter,
     OnDestroy,
     OnInit,
     Output,
@@ -12,7 +12,7 @@ import {
 import { BaseDialogComponent } from './base-dialog.component';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
-import { markForCheck } from 'pastanaga-angular/lib/common/utils';
+import { markForCheck } from '../common/utils';
 
 
 @Component({
