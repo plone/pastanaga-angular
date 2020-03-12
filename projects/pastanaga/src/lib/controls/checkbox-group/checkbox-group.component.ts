@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlModel } from '../control.model';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { TranslatePipe } from '../../translate/translate.pipe';
@@ -12,19 +12,10 @@ let nextId = 0;
     styleUrls: ['./checkbox-group.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxGroupComponent implements OnInit {
+export class CheckboxGroupComponent implements OnInit, OnChanges {
     @Input() id?: string;
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
-    @Input() set checkboxes(value: ControlModel[]) {
-        const translatedCheckboxes = value.map(checkbox => new ControlModel({
-            ...checkbox,
-            label: this.translate.transform(checkbox.label || ''),
-        }));
-        this._checkboxes = this._shouldSort ? sortCheckboxes(translatedCheckboxes) : translatedCheckboxes;
-        this._isAllSelected = this._checkboxes.every(checkbox => checkbox.isSelected);
-        this.totalCount = this._checkboxes.length;
-        this.updateSelectionCount();
-    }
+    @Input() checkboxes?: ControlModel[]
     @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
     @Input() set shouldSort(value) { this._shouldSort = coerceBooleanProperty(value); }
     @Input() set selectAllVisible(value) { this._selectAllVisible = coerceBooleanProperty(value); }
@@ -51,6 +42,20 @@ export class CheckboxGroupComponent implements OnInit {
 
     ngOnInit() {
         this.id = !this.id ? `fieldset-checkbox-group-${nextId++}` : `${this.id}-checkbox-group`;
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (!!changes.checkboxes) {
+            const values: ControlModel[] = changes.checkboxes.currentValue || [];
+            const translatedCheckboxes = values.map(checkbox => new ControlModel({
+                ...checkbox,
+                label: this.translate.transform(checkbox.label || ''),
+            }));
+            this._checkboxes = this._shouldSort ? sortCheckboxes(translatedCheckboxes) : translatedCheckboxes;
+            this._isAllSelected = this._checkboxes.every(checkbox => checkbox.isSelected);
+            this.totalCount = this._checkboxes.length;
+            this.updateSelectionCount();
+        }
     }
 
     toggleSelection(value: string) {
