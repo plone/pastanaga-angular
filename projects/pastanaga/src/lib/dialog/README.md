@@ -2,7 +2,7 @@
 
 ## Basic usage
 
-The component to display a dialog must implement `IDialog` interface and have a `DialogComponent` component in its template.
+The component to display a dialog must implement `IDialog` interface and have a `<pa-dialog>` component in its template.
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
