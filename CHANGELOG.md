@@ -1,3 +1,8 @@
+# 1.16.0 (2020-03-17)
+
+### Feature
+- **Filtered checkbox group**: allow text filtering, directory filtering (A, B, C, …), and use CDK virtual scroll [ebrehault]
+
 # 1.15.2 (2020-03-16)
 
 ### Bug fix

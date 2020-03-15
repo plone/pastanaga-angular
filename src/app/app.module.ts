@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
-import * as en from '../assets/i18n/en.json';
+import * as enDemo from '../assets/i18n/en.json';
 import * as custom from '../assets/i18n/custom-en.json';
 import * as la from '../assets/i18n/la.json';
 import { DemoModule } from './demo/demo.module';
-import { mergeTranslations } from 'pastanaga-angular';
+import { mergeTranslations, I18N_EN } from 'pastanaga-angular';
 
 @NgModule({
     imports: [
@@ -17,7 +17,7 @@ import { mergeTranslations } from 'pastanaga-angular';
     providers: [
         {provide: 'LANG', useValue: 'en_US'},
         {provide: 'TRANSLATIONS', useValue: {
-            'en_US': mergeTranslations([{...en}, {...custom}]),
+            'en_US': mergeTranslations([I18N_EN, {...enDemo['default']}, {...custom['default']}]),
             'latin': {...la},
         }},
     ],

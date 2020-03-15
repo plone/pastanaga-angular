@@ -1,0 +1,51 @@
+@import "../../styles/variables";
+
+:host {
+    pa-button {
+        margin-top: - rythm(.5);
+        height: rythm(1.5);
+    }
+}
+
+.dictionary-entry {
+    margin: 0;
+    padding: 0;
+    color: $blue;
+    font-size: rythm(1);
+    font-weight: $font-weight-regular;
+    width: rythm(1.5);
+    height: rythm(1.5);
+    display: inline-block;
+    border-radius: rythm(1);
+    line-height: rythm(1.5);
+    text-align: center
+}
+.directory-container {
+    text-align: center;
+    margin-bottom: rythm(1);
+    cursor: default;
+    white-space: nowrap;
+    font-size: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.dictionary-entry:hover {
+    cursor: pointer;
+    color: $blue-dark;
+    border-color: $white-smoke;
+    background-color: $white-smoke;
+}
+
+.dictionary-entry-disabled {
+    color: $gray-pale;
+}
+
+.dictionary-entry-disabled:hover {
+    cursor: not-allowed;
+    color: $gray-pale;
+    border-color: $white;
+    background-color: $white;
+}
+.dictionary-entry-selected {
+    box-shadow: inset 0 0 0 1px $blue;
+}

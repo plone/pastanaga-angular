@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SvgModule } from '../svg/svg.module';
 import { BadgeModule } from '../badge/badge.module';
@@ -13,6 +14,8 @@ import { DoubleSliderComponent } from './double-slider/double-slider.component';
 import { CheckboxTreeComponent } from './checkbox-tree/checkbox-tree.component';
 import { TranslateModule } from '../translate/translate.module';
 import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.component';
+import { FilteredCheckboxGroupComponent } from './filtered-checkbox-group/filtered-checkbox-group.component';
+import { DirectoryComponent } from './filtered-checkbox-group/directory.component';
 
 @NgModule({
     imports: [
@@ -23,12 +26,15 @@ import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.componen
         ButtonModule,
         SvgModule,
         TooltipModule,
+        ScrollingModule,
     ],
     declarations: [
         CheckboxComponent,
         CheckboxGroupComponent,
         CheckboxTreeComponent,
+        DirectoryComponent,
         DoubleSliderComponent,
+        FilteredCheckboxGroupComponent,
         SliderComponent,
         ToggleComponent,
         ToggleGroupComponent,
@@ -37,7 +43,9 @@ import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.componen
         CheckboxComponent,
         CheckboxGroupComponent,
         CheckboxTreeComponent,
+        DirectoryComponent,
         DoubleSliderComponent,
+        FilteredCheckboxGroupComponent,
         SliderComponent,
         ToggleComponent,
         ToggleGroupComponent,

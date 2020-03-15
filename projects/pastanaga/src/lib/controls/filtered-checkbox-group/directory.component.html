@@ -1,0 +1,14 @@
+<div class="directory-container">
+    <ng-container *ngFor="let letter of directory; let i = index">
+        <span class="dictionary-entry"
+              [class.dictionary-entry-disabled]="labelMap && !labelMap[letter].length"
+              [class.dictionary-entry-selected]="_selectedLetter === letter"
+              (click)="onFilter(letter)">{{letter}}</span>
+    </ng-container>
+    <pa-button icon="circle-dismiss"
+               size="small"
+               paTooltip="pastanaga.clear"
+               paTooltipType="action"
+               [disabled]="!_selectedLetter"
+               (click)="dismissSelection()">pastanaga.dismiss</pa-button>
+</div>

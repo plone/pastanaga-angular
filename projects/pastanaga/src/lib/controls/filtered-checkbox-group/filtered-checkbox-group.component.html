@@ -1,0 +1,46 @@
+<pa-directory *ngIf="totalCount > _directoryThreshold"
+              [values]="filtered"
+              (selected)="directorySelection($event)"></pa-directory>
+<div class="filter-container"
+     *ngIf="totalCount > _filterThreshold">
+    <input [placeholder]="_filterPlaceholder | translate"
+           (keyup)="keyUp.next($event.target.value)"
+           [value]="filter">
+    <pa-icon name="search"></pa-icon>
+</div>
+<fieldset class="pa-fieldset-group"
+          [id]="id">
+    <legend>
+        <span>
+            <ng-container *ngIf="totalSelected > 0">{{'pastanaga.selected-count' | translate:{count: totalSelected} }}</ng-container>
+            <ng-content></ng-content>
+        </span>
+        <ng-container *ngIf="isFiltered"><span translate>pastanaga.filtered</span>
+            <pa-badge [value]="totalFiltered"
+                      [of]="totalCount"
+                      [isAccented]="true"
+                      [isSmall]="true"></pa-badge>
+        </ng-container>
+        <div class="button-container">
+            <pa-button class="select-all"
+                       size="small"
+                       color="secondary"
+                       (click)="toggleSelectAll()">
+                {{selectAllLabel}}
+            </pa-button>
+        </div>
+    </legend>
+
+    <cdk-virtual-scroll-viewport [itemSize]="30">
+        <pa-checkbox *cdkVirtualFor="let checkbox of filtered; trackBy: trackById"
+                     [id]="checkbox.id"
+                     [icon]="checkbox.icon"
+                     [help]="checkbox.help"
+                     [subLabel]="checkbox.subLabel"
+                     [labelIcons]="checkbox.labelIcons"
+                     [disabled]="checkbox.isDisabled || _disabled"
+                     [(selected)]="checkbox.isSelected"
+                     (selection)="toggleSelection()">{{checkbox.label}}
+        </pa-checkbox>
+    </cdk-virtual-scroll-viewport>
+</fieldset>
