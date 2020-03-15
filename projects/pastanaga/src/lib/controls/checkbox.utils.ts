@@ -1,4 +1,4 @@
-import { ControlModel } from 'pastanaga-angular';
+import { ControlModel } from './control.model';
 
 export const sortCheckboxes = (checkboxes: ControlModel[]): ControlModel[] => {
     return checkboxes.sort((a, b) => {
