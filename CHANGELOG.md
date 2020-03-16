@@ -1,3 +1,8 @@
+# 1.15.2 (2020-03-16)
+
+### Bug fix
+- **Dialog**: Tick the app when closing a dialog so the created DOM element is properly removed [ebrehault]
+
 # 1.15.1 (2020-03-15)
 
 - Fix import
