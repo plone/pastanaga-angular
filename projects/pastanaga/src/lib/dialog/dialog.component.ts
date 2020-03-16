@@ -58,9 +58,9 @@ export class DialogComponent extends BaseDialogComponent implements OnInit, Afte
     _scroll: Subject<any> = new Subject();
 
     constructor(
-        private cdr: ChangeDetectorRef,
+        protected cdr: ChangeDetectorRef,
     ) {
-        super();
+        super(cdr);
     }
 
     ngOnInit(): void {

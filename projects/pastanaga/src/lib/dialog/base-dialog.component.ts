@@ -1,6 +1,7 @@
-import { AfterContentInit, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterContentInit, ElementRef, EventEmitter, Input, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { DialogConfig, DialogRef } from './dialog.model';
 import { keyboardKeys } from '../keycodes.constant';
+import { markForCheck, detectChanges } from '../common/utils';
 
 
 /**
@@ -27,6 +28,8 @@ export class BaseDialogComponent implements AfterContentInit {
     config: DialogConfig = new DialogConfig();
     protected _onKeyDown = this.onKeyDown.bind(this);
 
+    constructor(protected cdr: ChangeDetectorRef) {}
+
     ngAfterContentInit(): void {
         document.addEventListener('keydown', this._onKeyDown);
     }
@@ -34,11 +37,13 @@ export class BaseDialogComponent implements AfterContentInit {
     close(data?: any) {
         this.closing = true;
         document.removeEventListener('keydown', this._onKeyDown);
+        detectChanges(this.cdr);
         setTimeout(() => {
+            this.off = true;
+            detectChanges(this.cdr);
             if (!!this.ref) {
                 this.ref.onClose.emit(data);
             }
-            this.off = true;
         }, 700);
     }
 
