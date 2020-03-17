@@ -1,7 +1,7 @@
 <pa-directory *ngIf="totalCount > _directoryThreshold"
               [values]="filtered"
               (selected)="directorySelection($event)"></pa-directory>
-<div class="filter-container"
+<div class="pa-filter-container"
      *ngIf="totalCount > _filterThreshold">
     <input [placeholder]="_filterPlaceholder | translate"
            (keyup)="keyUp.next($event.target.value)"

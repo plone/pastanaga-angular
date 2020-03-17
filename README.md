@@ -183,7 +183,7 @@ import { mergeTranslations, I18N_EN } from 'pastanaga-angular';
         }},
 ```
 
-Note: to support JSOn import, we need to add `"resolveJsonModule": true` in the tsconfig.json `compilerOptions`. Resulting objects will contain their data in a `default` entry, so we must write `{...en['default']}`.
+Note: to support JSON import, we need to add `"resolveJsonModule": true` in the tsconfig.json `compilerOptions`. Resulting objects will contain their data in a `default` entry, so we must write `{...en['default']}`.
 
 ## Dialog component
 

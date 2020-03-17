@@ -26,14 +26,14 @@ export class DirectoryComponent {
     constructor(private cdr: ChangeDetectorRef) {}
 
     createMap() {
-        const map: {[key: string]: any[]} = {'#': []};
+        const map: {[key: string]: string[]} = {};
         this.directory.forEach(letter => map[letter] = []);
 
         if (!!this._values) {
             this._values.forEach(value => {
                 const firstCharIndex = !!value.label ? value.label.search(firstLetterRegExp) : -1;
-                const letter = firstCharIndex !== -1 && value.label.substr(firstCharIndex, 1).toUpperCase();
-                if (!!letter && map[letter]) {
+                const letter = firstCharIndex !== -1 ? value.label.substr(firstCharIndex, 1).toUpperCase() : '';
+                if (!!letter && !!map[letter]) {
                     map[letter].push(value.label);
                 } else {
                     map['#'].push(value.label);
@@ -43,7 +43,7 @@ export class DirectoryComponent {
         this.labelMap = map;
     }
 
-    onFilter(letter) {
+    onFilter(letter: string) {
         if (!!this._values) {
             if (this._selectedLetter === letter) {
                 this.dismissSelection();
