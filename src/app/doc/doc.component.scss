@@ -1,0 +1,24 @@
+@import "../../../projects/pastanaga/src/lib/styles/variables";
+
+:host {
+    $menu-width: 240px;
+    pa-sidebar {
+        box-shadow: none;
+        background: $azure;
+
+        min-width: $menu-width;
+        width: $menu-width;
+        max-width: $menu-width;
+    }
+
+    nav {
+        ul {
+            list-style: none;
+            padding: rythm(2.5);
+        }
+    }
+
+    .doc-content {
+        margin-left: $menu-width;
+    }
+}

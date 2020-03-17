@@ -6,10 +6,12 @@ import * as custom from '../assets/i18n/custom-en.json';
 import * as la from '../assets/i18n/la.json';
 import { DemoModule } from './demo/demo.module';
 import { mergeTranslations, I18N_EN } from 'pastanaga-angular';
+import { DocModule } from './doc/doc.module';
 
 @NgModule({
     imports: [
         DemoModule,
+        DocModule,
     ],
     declarations: [
         AppComponent,
