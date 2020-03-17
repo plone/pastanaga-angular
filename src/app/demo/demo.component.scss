@@ -59,6 +59,10 @@
   }
 
   .checkboxes td {
+    &:first-child {
+      width: 50%;
+      vertical-align: top;
+    }
     padding-left: 42px;
   }
 

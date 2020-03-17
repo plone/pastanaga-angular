@@ -120,6 +120,22 @@
             </tr>
             <tr>
                 <td>
+                    <pa-filtered-checkbox-group id="helpFilteredGroup"
+                                                [checkboxes]="filteredCheckboxes"
+                                                [shouldSort]="false"
+                                                (selection)="filteredCheckboxSelection = $event">
+                        Filtered checkbox group with virtual scroll
+                    </pa-filtered-checkbox-group>
+                </td>
+                <td>
+                    Two way data binding is supported
+                </td>
+                <td>
+                    <p>Selection: {{filteredCheckboxSelection | json}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <pa-checkbox-tree id="lazy"
                                       [checkboxes]="lazyLoadedTree"
                                       [getChildren]="getLazyTreeChildren"
@@ -316,7 +332,7 @@
         <h3>Overrided by a secondary translation file</h3>
         <div>
             <code>&lt;span translate&gt;common.yes&lt;/span&gt;</code>
-            <span translate>common.yes</span>
+            <span translate>pastanaga.common.yes</span>
         </div>
     </div>
 </div>

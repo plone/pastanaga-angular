@@ -86,6 +86,11 @@ export class DemoComponent implements OnInit {
         new ControlModel({label: 'checkbox 2', value: 'help_2', id: 'help_2', help: 'some help about checkbox 2'}),
         new ControlModel({label: 'another checkbox', value: 'help_5', id: 'help_5', help: 'some help about another checkbox'}),
     ];
+    filteredCheckboxes: ControlModel[] = Array.from({length: 200}, (x, i) => new ControlModel({
+        label: ['A', 'B', 'C', 'D', 'E'][i % 5] + ' ' + i,
+        value: 'f_' + i,
+        id: 'f_' + i,
+    }));
     lazyLoadedTree: ControlModel[] = [
         new ControlModel({id: 'parent1', value: '1', label: 'parent 1', isSelected: false}),
         new ControlModel({id: 'parent2', value: '2', label: 'parent 2', isSelected: false}),
@@ -153,6 +158,7 @@ export class DemoComponent implements OnInit {
     simpleCheckboxSelection: string[] = [];
     iconCheckboxSelection: string[] = [];
     helpCheckboxSelection: string[] = [];
+    filteredCheckboxSelection: string[] = [];
     lazyCheckboxSelection: string[] = [];
     categorizedGroupSelection: string[] = [];
     nestedCheckboxSelection: string[] = [];

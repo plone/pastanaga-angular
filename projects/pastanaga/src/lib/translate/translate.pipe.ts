@@ -38,7 +38,7 @@ export class TranslatePipe implements PipeTransform {
 
     private getValue(keys: string[], lang: string, translations: any): string | undefined {
         const translateKeys = translations[lang] || {};
-        let value = !!translateKeys['default'] ? translateKeys['default'] : translateKeys;
+        let value = translateKeys;
         keys.forEach(k => {
             if (!!value) {
                 value = value[k];

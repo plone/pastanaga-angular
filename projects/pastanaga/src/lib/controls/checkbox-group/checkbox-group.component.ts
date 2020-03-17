@@ -15,7 +15,7 @@ let nextId = 0;
 export class CheckboxGroupComponent implements OnInit, OnChanges {
     @Input() id?: string;
     @Input() type: 'checkbox' | 'radio' = 'checkbox';
-    @Input() checkboxes?: ControlModel[]
+    @Input() checkboxes?: ControlModel[];
     @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
     @Input() set shouldSort(value) { this._shouldSort = coerceBooleanProperty(value); }
     @Input() set selectAllVisible(value) { this._selectAllVisible = coerceBooleanProperty(value); }

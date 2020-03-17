@@ -86,7 +86,7 @@ Whenever `open` and `folded` states are changing, the corresponding events `open
 
 Pastanaga allows to manage translation.
 
-Each supported language is a JSON file where translated strings are handled in nested dictionaries:
+Each supported language is a JSON file (or a TypeScript exporting a dictionary) where translated strings are handled in nested dictionaries:
 ```json
 {
     "calendar": {
@@ -121,8 +121,8 @@ import * as la from '../assets/i18n/la.json';
     ...
     providers: [
         {provide: 'TRANSLATIONS', useValue: {
-            'en_US': {...en},
-            'latin': {...la},
+            'en_US': {...en['default']},
+            'latin': {...la['default']},
         }},
 ```
 
@@ -174,14 +174,16 @@ Translations can be overriden. For instance, several applications might use the 
 The different JSON files can be merged in a single one by using `mergeTranslations`. It takes a list of translations ordered by priority (the last ones override the first ones):
 
 ```typescript
-import { mergeTranslations } from 'pastanaga-angular';
+import { mergeTranslations, I18N_EN } from 'pastanaga-angular';
 ...
 
         {provide: 'TRANSLATIONS', useValue: {
-            'en_US': mergeTranslations([{...en}, {...app1Specific}]),
+            'en_US': mergeTranslations([I18N_EN, {...app1Specific['default']}]),
             'latin': {...la},
         }},
 ```
+
+Note: to support JSON import, we need to add `"resolveJsonModule": true` in the tsconfig.json `compilerOptions`. Resulting objects will contain their data in a `default` entry, so we must write `{...en['default']}`.
 
 ## Dialog component
 
