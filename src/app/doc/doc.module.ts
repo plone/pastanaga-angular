@@ -14,8 +14,10 @@ import {
     DocPageUsageDirective
 } from './doc-page.directives';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { DocMenuComponent } from './doc-menu.component';
 
 const COMPONENTS = [
+    DocMenuComponent,
     DocPageComponent,
     DocPageTitleDirective,
     DocPageDescriptionDirective,

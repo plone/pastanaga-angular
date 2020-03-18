@@ -5,6 +5,7 @@ import { TranslateDocComponent } from './doc/translate-doc/translate-doc.compone
 import { Traverser } from 'angular-traversal';
 import { WelcomePageComponent } from './doc/welcome-page/welcome-page.component';
 import { DemoComponent } from './demo/demo.component';
+import { IDocMenuSection } from './doc/doc-menu.component';
 
 @Component({
     selector: 'app-root',
@@ -13,10 +14,7 @@ import { DemoComponent } from './demo/demo.component';
 })
 export class AppComponent implements OnInit {
     isOldDemo = true;
-    menu: {
-        title: string,
-        pages: {view: string, title: string, type: Type<any>}[]
-    }[] = [
+    menu: IDocMenuSection[] = [
         {
             title: 'Atoms',
             pages: [
