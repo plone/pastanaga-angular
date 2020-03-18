@@ -1,1 +1,25 @@
-<pa-demo></pa-demo>
+<pa-sidebar noBackdrop lockedOpen name="doc-menu" [hidden]="isOldDemo">
+    <a href="#" traverseTo="/@@welcome">
+        <img src="/assets/p-angular.svg" alt="Pastanaga Angular Logo">
+    </a>
+
+    <nav>
+        <div *ngFor="let section of menu" class="pa-doc-menu-section">
+            <div class="pa-doc-menu-title">{{section.title}}</div>
+            <ul>
+                <li *ngFor="let page of section.pages"><a [traverseTo]="'/@@' + page.view" href="#">{{page.title}}</a></li>
+            </ul>
+        </div>
+        <div class="pa-doc-menu-section">
+            <div class="pa-doc-menu-title">Other</div>
+            <ul>
+                <li><a href="#" [traverseTo]="'/'">Back to old demo</a></li>
+                <li><a href="https://github.com/plone/pastanaga-angular" target="_blank">Pastanaga on Github</a></li>
+            </ul>
+        </div>
+    </nav>
+</pa-sidebar>
+
+<div [class.doc-content]="!isOldDemo">
+    <traverser-outlet></traverser-outlet>
+</div>

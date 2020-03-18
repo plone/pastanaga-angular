@@ -1,0 +1,49 @@
+@import "../../projects/pastanaga/src/lib/styles/variables";
+
+:host {
+    $menu-width: 240px;
+    pa-sidebar {
+        box-shadow: none;
+        background: $azure;
+        padding: rythm(2.5);
+
+        min-width: $menu-width;
+        width: $menu-width;
+        max-width: $menu-width;
+
+        a img {
+            width: 100%;
+            margin-bottom: rythm(2.5);
+        }
+
+        nav {
+            .pa-doc-menu-section {
+                margin-bottom: rythm(2.5);
+
+                .pa-doc-menu-title {
+                    font-weight: $font-weight-bold;
+                    font-size: rythm(1);
+                    color: $gray-contrast;
+                }
+                ul {
+                    list-style: none;
+                    padding: 0;
+
+                    li {
+                        margin-bottom: rythm(.5);
+                    }
+                    li > a {
+                        @include font-size(m, s, m);
+                        text-decoration: none;
+                        color: $gray-blacky;
+                    }
+                }
+            }
+        }
+    }
+
+    .doc-content {
+        margin-left: $menu-width;
+        padding: rythm(2.5) rythm(5)*2;
+    }
+}

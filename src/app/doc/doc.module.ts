@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DocComponent } from './doc.component';
 import { AvatarModule, ButtonModule, SidebarModule } from 'pastanaga-angular';
 import { TraversalModule } from 'angular-traversal';
 import { TranslateDocComponent } from './translate-doc/translate-doc.component';
@@ -17,7 +16,6 @@ import {
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const COMPONENTS = [
-    DocComponent,
     DocPageComponent,
     DocPageTitleDirective,
     DocPageDescriptionDirective,

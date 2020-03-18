@@ -5,16 +5,20 @@ import * as enDemo from '../assets/i18n/en.json';
 import * as custom from '../assets/i18n/custom-en.json';
 import * as la from '../assets/i18n/la.json';
 import { DemoModule } from './demo/demo.module';
-import { mergeTranslations, I18N_EN } from 'pastanaga-angular';
+import { mergeTranslations, I18N_EN, SidebarModule } from 'pastanaga-angular';
 import { DocModule } from './doc/doc.module';
-import { Marker, Normalizer, Resolver } from 'angular-traversal';
+import { Marker, Normalizer, Resolver, TraversalModule } from 'angular-traversal';
 import { DocResolver } from './doc/doc.resolver';
 import { DocMarker } from './doc/doc.marker';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
         DemoModule,
         DocModule,
+        TraversalModule,
+        SidebarModule,
+        CommonModule,
     ],
     declarations: [
         AppComponent,

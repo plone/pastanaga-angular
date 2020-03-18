@@ -17,6 +17,7 @@ import {
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MultipleScreensDialogComponent } from './multiple-screens-dialog.component';
 import { OneScreenDialogComponent } from './one-screen-dialog.component';
+import { TraversalModule } from 'angular-traversal';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { OneScreenDialogComponent } from './one-screen-dialog.component';
         PopupModule,
         AvatarModule,
         DialogModule,
+        TraversalModule,
     ],
     exports: [DemoComponent]
 })

@@ -5,6 +5,6 @@ import { Observable, of } from 'rxjs';
 @Injectable()
 export class DocResolver extends Resolver {
     resolve(path: string, view: string, queryString?: string): Observable<any> {
-        return of({path});
+        return of({path, view});
     }
 }
