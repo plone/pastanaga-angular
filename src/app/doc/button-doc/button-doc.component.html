@@ -1,12 +1,9 @@
-<h1>Buttons</h1>
+<pa-doc-page>
+    <pa-doc-page-title>Buttons</pa-doc-page-title>
 
-<section>
-    <p>Buttons can contains text, icon or both.</p>
-</section>
+    <pa-doc-page-description>Buttons can contains text, icon or both.</pa-doc-page-description>
 
-<section class="pa-examples">
-    <h2>Examples</h2>
-    <p>
+    <pa-doc-page-examples>
         <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary</pa-button>
         <pa-button color="secondary" size="small" (click)="onButtonClick($event)">Secondary</pa-button>
         <pa-button color="destructive" size="small" (click)="onButtonClick($event)">Destructive</pa-button>
@@ -15,8 +12,9 @@
         <pa-button color="secondary" size="small" icon="delete" (click)="onButtonClick($event)">Secondary</pa-button>
         <pa-button color="destructive" size="small" icon="delete" (click)="onButtonClick($event)">Destructive</pa-button>
         <pa-button color="destructive" size="small" icon="delete" disabled (click)="onButtonClick($event)">Disabled</pa-button>
-    </p>
-    <p>
+    </pa-doc-page-examples>
+
+    <pa-doc-page-examples>
         <pa-button color="primary" size="small" [border]="true" (click)="onButtonClick($event)">Primary</pa-button>
         <pa-button color="secondary" size="small" border (click)="onButtonClick($event)">Secondary</pa-button>
         <pa-button color="destructive" size="small" border (click)="onButtonClick($event)">Destructive</pa-button>
@@ -34,36 +32,33 @@
         <pa-button color="destructive" size="small" [icon]="'delete'" border [disabled]="true"
                    (click)="onButtonClick($event)">Disabled
         </pa-button>
-    </p>
-</section>
+    </pa-doc-page-examples>
 
+    <pa-doc-page-usage>
+        <dl>
+            <dt>size</dt>
+            <dd>tiny | small | large <small>(default)</small></dd>
 
-<section>
-    <h2>Usage</h2>
-    <dl>
-        <dt>size</dt>
-        <dd>tiny | small | large <small>(default)</small></dd>
+            <dt>color</dt>
+            <dd>primary <small>(default)</small> | secondary | destructive | contrast</dd>
 
-        <dt>color</dt>
-        <dd>primary <small>(default)</small> | secondary | destructive | contrast</dd>
+            <dt>border</dt>
+            <dd>boolean <small>(optional)</small></dd>
+        </dl>
 
-        <dt>border</dt>
-        <dd>boolean <small>(optional)</small></dd>
-    </dl>
+        <dl>
+            <dt>icon</dt>
+            <dd>icon name <small>display an icon, text will be hidden</small></dd>
+            <dt>iconAndText</dt>
+            <dd>boolean <small>(optional, display both icon and text)</small></dd>
 
-    <dl>
-        <dt>icon</dt>
-        <dd>icon name <small>display an icon, text will be hidden</small></dd>
-        <dt>iconAndText</dt>
-        <dd>boolean <small>(optional, display both icon and text)</small></dd>
+            <dt>disabled</dt>
+            <dd>boolean <small>(optional, transform the avatar into a button)</small></dd>
+        </dl>
+    </pa-doc-page-usage>
 
-        <dt>disabled</dt>
-        <dd>boolean <small>(optional, transform the avatar into a button)</small></dd>
-    </dl>
-</section>
+    <pa-doc-page-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-doc-page-code>
+</pa-doc-page>
 
-<section>
-    <h2>Code</h2>
-    <p>List of avatars:</p>
-    <pre><code>{{code}}</code></pre>
-</section>

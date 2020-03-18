@@ -1,0 +1,52 @@
+@import "../../../projects/pastanaga/src/lib/styles/variables";
+
+pa-doc-page {
+    h1  {
+        font-size: rythm(4);
+        line-height: rythm(4);
+    }
+
+    h1,
+    section h2 {
+        margin-bottom: rythm(2.5);
+    }
+
+    section {
+        margin-bottom: rythm(4);
+
+        h2 {
+            font-size: rythm(3);
+            line-height: rythm(3);
+        }
+    }
+
+    pa-doc-page-usage dl {
+        display: flex;
+        font-weight: $font-weight-regular;
+        flex-wrap: wrap;
+
+        dt {
+            flex: 1 0 20%;
+            min-width: 200px;
+            font-weight: 500;
+        }
+        dd {
+            flex: 1 0 80%;
+
+            small {
+                color: $gray-light;
+            }
+        }
+    }
+
+    pa-doc-page-examples {
+        display: block;
+        margin-bottom: rythm(1);
+
+        > * {
+            margin-right: rythm(2.5);
+        }
+    }
+}
+
+

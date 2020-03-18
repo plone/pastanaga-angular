@@ -1,40 +1,35 @@
-<h1>Avatars</h1>
+<pa-doc-page>
+    <pa-doc-page-title>Avatars</pa-doc-page-title>
 
-<section>
-    <p>You can use an Avatar to represent a user or a group. Avatars with no image have an auto assigned background color.</p>
-</section>
+    <pa-doc-page-description>You can use an Avatar to represent a user or a group. Avatars with no image have an auto assigned background color.</pa-doc-page-description>
 
-<section class="pa-examples">
-    <h2>Examples</h2>
-    <p>
+    <pa-doc-page-examples>
         <pa-avatar *ngFor="let avatar of avatars; let i = index"
                    [size]="i < 6 ? 'small' : 'regular'"
                    [isButton]="i === avatars.length - 1"
                    [avatar]="avatar"
                    [src]="i === 5 ? './assets/ninja.svg' : null"></pa-avatar>
-    </p>
-</section>
+    </pa-doc-page-examples>
 
-<section>
-    <h2>Usage</h2>
-    <dl>
-        <dt>size</dt>
-        <dd>small | regular <small>(default)</small></dd>
-    </dl>
-    <dl>
-        <dt>avatar</dt>
-        <dd>model</dd>
+    <pa-doc-page-usage>
+        <dl>
+            <dt>size</dt>
+            <dd>small | regular <small>(default)</small></dd>
+        </dl>
+        <dl>
+            <dt>avatar</dt>
+            <dd>model</dd>
 
-        <dt>isButton</dt>
-        <dd>boolean <small>(optional, transform the avatar into a button)</small></dd>
-    </dl>
-</section>
+            <dt>isButton</dt>
+            <dd>boolean <small>(optional, transform the avatar into a button)</small></dd>
+        </dl>
+    </pa-doc-page-usage>
 
-<section>
-    <h2>Code</h2>
-    <p>List of avatars:</p>
-    <pre><code>{{model}}</code></pre>
+    <pa-doc-page-code>
+        <p>List of avatars:</p>
+        <pre><code>{{model}}</code></pre>
 
-    <p>Template:</p>
-    <pre><code>{{code}}</code></pre>
-</section>
+        <p>Template:</p>
+        <pre><code>{{code}}</code></pre>
+    </pa-doc-page-code>
+</pa-doc-page>

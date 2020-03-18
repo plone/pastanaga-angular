@@ -6,6 +6,27 @@ import { TraversalModule } from 'angular-traversal';
 import { TranslateDocComponent } from './translate-doc/translate-doc.component';
 import { AvatarDocComponent } from './avatar-doc/avatar-doc.component';
 import { ButtonDocComponent } from './button-doc/button-doc.component';
+import { DocPageComponent } from './doc-page.component';
+import {
+    DocPageCodeDirective,
+    DocPageDescriptionDirective,
+    DocPageExamplesDirective,
+    DocPageTitleDirective,
+    DocPageUsageDirective
+} from './doc-page.directives';
+
+const COMPONENTS = [
+    DocComponent,
+    DocPageComponent,
+    DocPageTitleDirective,
+    DocPageDescriptionDirective,
+    DocPageExamplesDirective,
+    DocPageUsageDirective,
+    DocPageCodeDirective,
+    TranslateDocComponent,
+    AvatarDocComponent,
+    ButtonDocComponent,
+];
 
 @NgModule({
     imports: [
@@ -15,18 +36,8 @@ import { ButtonDocComponent } from './button-doc/button-doc.component';
         AvatarModule,
         ButtonModule,
     ],
-    declarations: [
-        DocComponent,
-        TranslateDocComponent,
-        AvatarDocComponent,
-        ButtonDocComponent,
-    ],
-    exports: [
-        DocComponent,
-        TranslateDocComponent,
-        AvatarDocComponent,
-        ButtonDocComponent,
-    ]
+    declarations: COMPONENTS,
+    exports: COMPONENTS,
 })
 export class DocModule {
 }
