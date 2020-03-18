@@ -14,6 +14,7 @@ import {
     DocPageTitleDirective,
     DocPageUsageDirective
 } from './doc-page.directives';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const COMPONENTS = [
     DocComponent,
@@ -26,6 +27,7 @@ const COMPONENTS = [
     TranslateDocComponent,
     AvatarDocComponent,
     ButtonDocComponent,
+    WelcomePageComponent,
 ];
 
 @NgModule({
