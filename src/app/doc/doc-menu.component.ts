@@ -13,5 +13,5 @@ export interface IDocMenuSection {
 })
 export class DocMenuComponent {
     @Input() menu: IDocMenuSection[] = [];
-    @Input() logo = '/assets/p-angular.svg';
+    @Input() logo = './assets/p-angular.svg';
 }
