@@ -420,4 +420,9 @@ export class DemoComponent implements OnInit {
         this.dialogService.openDialog(OneScreenDialogComponent, new DialogConfig({withCloseButton: false}))
             .onClose.subscribe(data => console.log('Dialog closed', data));
     }
+
+    openBasicConfirmation() {
+        this.dialogService.openConfirm('Do you like pastanaga?', 'Both buttons will close the confirmation, returning true if you confirm')
+            .onClose.subscribe(confirmed => console.log(`Confirmed: ${confirmed}`));
+    }
 }

@@ -1,6 +1,7 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector, Type } from '@angular/core';
 import { DialogConfig, DialogRef } from './dialog.model';
 import { IDialog } from './base-dialog.component';
+import { BasicConfirmDialogComponent } from 'pastanaga-angular/lib/dialog/basic-confirm-dialog.component';
 
 @Injectable({providedIn: 'root'})
 export class DialogService {
@@ -59,6 +60,13 @@ export class DialogService {
             this.freezeBackground(false);
             this.hasDialogOpened = false;
         }
+    }
+
+    openConfirm(title: string, description?: string): DialogRef {
+        const dialogRef = this.openDialog(BasicConfirmDialogComponent);
+        dialogRef['title'] = title;
+        dialogRef['description'] = description;
+        return dialogRef;
     }
 
     setFocusToActiveDialog() {
