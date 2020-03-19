@@ -1,0 +1,8 @@
+@import "../../projects/pastanaga/src/lib/styles/variables";
+
+:host {
+    .doc-content {
+        margin-left: 240px;
+        padding: rythm(2.5) rythm(5)*2;
+    }
+}

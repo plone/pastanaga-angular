@@ -1,3 +1,12 @@
+# 1.16.1 (2020-03-18)
+
+### Improvements
+- Add developer documentation link in dialog demo
+- Starting to implement a better documentation app (work in progress):
+    - **doc-page** component to easily write clean documentation
+    - **doc-menu** to navigate through documentation pages
+    - New demo accessible from the old one
+
 # 1.16.0 (2020-03-17)
 
 ### Feature

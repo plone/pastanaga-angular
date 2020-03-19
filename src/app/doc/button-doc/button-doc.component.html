@@ -1,0 +1,64 @@
+<pa-doc-page>
+    <pa-doc-page-title>Buttons</pa-doc-page-title>
+
+    <pa-doc-page-description>Buttons can contains text, icon or both.</pa-doc-page-description>
+
+    <pa-doc-page-examples>
+        <pa-button [ariaLabel]="'someAria'" color="primary" size="small" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="small" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="small" (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button color="destructive" size="small" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+        <pa-button color="primary" size="small" icon="delete" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="small" icon="delete" (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="small" icon="delete" (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button color="destructive" size="small" icon="delete" disabled (click)="onButtonClick($event)">Disabled</pa-button>
+    </pa-doc-page-examples>
+
+    <pa-doc-page-examples>
+        <pa-button color="primary" size="small" [border]="true" (click)="onButtonClick($event)">Primary</pa-button>
+        <pa-button color="secondary" size="small" border (click)="onButtonClick($event)">Secondary</pa-button>
+        <pa-button color="destructive" size="small" border (click)="onButtonClick($event)">Destructive</pa-button>
+        <pa-button color="destructive" size="small" border [disabled]="true" (click)="onButtonClick($event)">
+            Disabled
+        </pa-button>
+        <pa-button color="primary" size="small" [icon]="'delete'" [border]="true" (click)="onButtonClick($event)">
+            Primary
+        </pa-button>
+        <pa-button color="secondary" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">Secondary
+        </pa-button>
+        <pa-button color="destructive" size="small" [icon]="'delete'" border (click)="onButtonClick($event)">
+            Destructive
+        </pa-button>
+        <pa-button color="destructive" size="small" [icon]="'delete'" border [disabled]="true"
+                   (click)="onButtonClick($event)">Disabled
+        </pa-button>
+    </pa-doc-page-examples>
+
+    <pa-doc-page-usage>
+        <dl>
+            <dt>size</dt>
+            <dd>tiny | small | large <small>(default)</small></dd>
+
+            <dt>color</dt>
+            <dd>primary <small>(default)</small> | secondary | destructive | contrast</dd>
+
+            <dt>border</dt>
+            <dd>boolean <small>(optional)</small></dd>
+        </dl>
+
+        <dl>
+            <dt>icon</dt>
+            <dd>icon name <small>display an icon, text will be hidden</small></dd>
+            <dt>iconAndText</dt>
+            <dd>boolean <small>(optional, display both icon and text)</small></dd>
+
+            <dt>disabled</dt>
+            <dd>boolean <small>(optional, transform the avatar into a button)</small></dd>
+        </dl>
+    </pa-doc-page-usage>
+
+    <pa-doc-page-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-doc-page-code>
+</pa-doc-page>
+

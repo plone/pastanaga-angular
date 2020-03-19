@@ -1,1 +1,5 @@
-<pa-demo></pa-demo>
+<pa-doc-menu [hidden]="isOldDemo" [menu]="menu"></pa-doc-menu>
+
+<div [class.doc-content]="!isOldDemo">
+    <traverser-outlet></traverser-outlet>
+</div>

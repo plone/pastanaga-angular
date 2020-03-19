@@ -1,0 +1,31 @@
+<h1>
+    <ng-content select="pa-doc-page-title"></ng-content>
+</h1>
+
+<section>
+    <p><ng-content select="pa-doc-page-description"></ng-content></p>
+</section>
+
+<section  [hidden]="!_hasExamples">
+    <h2>Examples</h2>
+    <div #examples>
+        <ng-content select="pa-doc-page-examples"></ng-content>
+    </div>
+
+</section>
+
+<section [hidden]="!_hasUsage">
+    <h2>Usage</h2>
+    <div #usage>
+        <ng-content select="pa-doc-page-usage"></ng-content>
+    </div>
+
+</section>
+
+<section [hidden]="!_hasCode">
+    <h2>Code</h2>
+    <div #code>
+        <ng-content select="pa-doc-page-code"></ng-content>
+    </div>
+
+</section>
