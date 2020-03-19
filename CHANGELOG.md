@@ -1,8 +1,14 @@
+# 1.16.2 (2020-03-19)
+
+### Improvements
+- **Checkbox group**: support `isHidden` to hide an entry [ebrehault]
+- **Filtered checkbox group**: allow to display only the selected entries [ebrehault]
+
 # 1.16.1 (2020-03-18)
 
 ### Improvements
-- Add developer documentation link in dialog demo
-- Starting to implement a better documentation app (work in progress):
+- Add developer documentation link in dialog demo [mathilde-pellerin]
+- Starting to implement a better documentation app (work in progress): [mathilde-pellerin]
     - **doc-page** component to easily write clean documentation
     - **doc-menu** to navigate through documentation pages
     - New demo accessible from the old one

@@ -22,6 +22,7 @@
                  [subLabel]="checkbox.subLabel"
                  [labelIcons]="checkbox.labelIcons"
                  [disabled]="checkbox.isDisabled || _disabled"
+                 [hidden]="checkbox.isHidden"
                  [(selected)]="checkbox.isSelected"
                  (selection)="toggleSelection(checkbox.value)">{{checkbox.label}}
     </pa-checkbox>
