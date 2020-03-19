@@ -11,9 +11,13 @@
             top: rythm(.25);
             left: rythm(1.5);
         }
-        & > span {
+        .counts-and-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .total {
             display: inline-block;
-            margin-top: rythm(.25) * 3;
+            margin-top: rythm(.25)*3;
         }
     }
 
@@ -70,10 +74,6 @@
                 }
             }
         }
-    }
-
-    .button-container {
-        float: right;
     }
 
     .cdk-virtual-scroll-viewport {
