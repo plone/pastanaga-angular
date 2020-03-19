@@ -1,3 +1,8 @@
+# 1.17.0 (2020-03-19)
+
+### Feature
+- **Confirm dialog** component with basic confirm which can be opened directly from dialogService [mathilde-pellerin] 
+
 # 1.16.2 (2020-03-19)
 
 ### Improvements
