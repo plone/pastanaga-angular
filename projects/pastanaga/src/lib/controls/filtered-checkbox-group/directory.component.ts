@@ -16,10 +16,11 @@ export class DirectoryComponent {
         this._values = values;
         this.createMap();
     }
+    @Input() set selectedLetter(value: string) { this._selectedLetter = value; }
+    _selectedLetter = '';
     directory = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
                  'V', 'W', 'X', 'Y', 'Z'];
     labelMap?: { [key: string]: string[] };
-    _selectedLetter = '';
     _values: ControlModel[] = [];
     @Output() selected: EventEmitter<{letter: string, selection: string[]}> = new EventEmitter();
 

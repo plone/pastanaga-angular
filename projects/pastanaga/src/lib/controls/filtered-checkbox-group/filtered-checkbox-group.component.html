@@ -1,33 +1,43 @@
 <pa-directory *ngIf="totalCount > _directoryThreshold"
-              [values]="filtered"
+              [values]="_checkboxes"
+              [(selectedLetter)]="selectedLetter"
               (selected)="directorySelection($event)"></pa-directory>
 <div class="pa-filter-container"
      *ngIf="totalCount > _filterThreshold">
     <input [placeholder]="_filterPlaceholder | translate"
            (keyup)="keyUp.next($event.target.value)"
-           [value]="filter">
+           [(value)]="filter">
     <pa-icon name="search"></pa-icon>
 </div>
 <fieldset class="pa-fieldset-group"
           [id]="id">
     <legend>
-        <span>
-            <ng-container *ngIf="totalSelected > 0">{{'pastanaga.selected-count' | translate:{count: totalSelected} }}</ng-container>
+        <div>
             <ng-content></ng-content>
-        </span>
-        <ng-container *ngIf="isFiltered"><span translate>pastanaga.filtered</span>
-            <pa-badge [value]="totalFiltered"
-                      [of]="totalCount"
-                      [isAccented]="true"
-                      [isSmall]="true"></pa-badge>
-        </ng-container>
-        <div class="button-container">
-            <pa-button class="select-all"
-                       size="small"
-                       color="secondary"
-                       (click)="toggleSelectAll()">
-                {{selectAllLabel}}
-            </pa-button>
+        </div>
+        <div class="counts-and-actions">
+            <div>
+                <div class="total">
+                    <ng-container *ngIf="totalSelected > 0">{{'pastanaga.selected-count' | translate:{count: totalSelected} }}</ng-container>
+                    <ng-container *ngIf="!viewAll || totalSelected > 0">
+                        <a href="#" (click)="viewSelected($event)" translate>{{viewAll ? 'pastanaga.view-selected' : 'pastanaga.view-all'}}</a>.&nbsp;
+                    </ng-container>
+                </div>
+                <ng-container *ngIf="isFiltered && viewAll"><span translate>pastanaga.filtered</span>
+                    <pa-badge [value]="totalFiltered"
+                              [of]="totalCount"
+                              [isAccented]="true"
+                              [isSmall]="true"></pa-badge>
+                </ng-container>
+            </div>
+            <div *ngIf="viewAll">
+                <pa-button class="select-all"
+                           size="small"
+                           color="secondary"
+                           (click)="toggleSelectAll()">
+                    {{selectAllLabel}}
+                </pa-button>
+            </div>
         </div>
     </legend>
 

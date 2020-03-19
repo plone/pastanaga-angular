@@ -57,6 +57,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     totalFiltered = 0;
     filter = '';
     selectAllLabel = '';
+    viewAll = true;
     keyUp: Subject<string> = new Subject();
     terminator = new Subject();
     @ViewChild(CdkVirtualScrollViewport, { static: true }) scrollViewport?: CdkVirtualScrollViewport;
@@ -72,7 +73,6 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
         this.keyUp.pipe(
             takeUntil(this.terminator),
             debounceTime(500),
-            distinctUntilChanged()
         ).subscribe(term => {
             this.filter = term;
             this.filterByTerm();
@@ -150,10 +150,27 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     }
 
     private applyFilter() {
-        this.filtered = this._checkboxes.filter(ctl => (!this.filter && !this.selectedLetter) || ctl.isFiltered);
+        this.filtered = this._checkboxes.filter(ctl =>
+            (ctl.isFiltered || (!this.filter && !this.selectedLetter)) && // we keep filtered ones only, or all if no current filtering
+            (this.viewAll || ctl.isSelected) // but when viewing selected only, we just keep selected ones
+        );
         this.totalFiltered = this.filtered.length;
         this.isFiltered = this.totalFiltered < (this._checkboxes || []).length;
         this.updateSelectionCount();
         markForCheck(this.cdr);
+    }
+
+    viewSelected(event: MouseEvent) {
+        event.preventDefault();
+        this.viewAll = !this.viewAll;
+        if (!this.viewAll) {
+            this.filter = '';
+            this.selectedLetter = '';
+            this._checkboxes = (this._checkboxes || []).map(ctl => ({
+                ...ctl,
+                isFiltered: true,
+            }));
+        }
+        this.applyFilter();
     }
 }

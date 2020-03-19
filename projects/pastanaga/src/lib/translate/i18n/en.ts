@@ -24,7 +24,7 @@ export const I18N_EN: TranslationEntries = {
         edit: 'Edit',
         expand: 'Expand',
         filter: 'Filter…',
-        filtered: '. Filtered',
+        filtered: 'Filtered',
         finish: 'Finish',
         from: 'From',
         loading: 'Loading…',
