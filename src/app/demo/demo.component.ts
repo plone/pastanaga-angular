@@ -265,7 +265,6 @@ export class DemoComponent implements OnInit {
         private sidebarService: SidebarService,
         private dialogService: DialogService,
     ) {
-        console.log(`Demo page constructor`);
     }
 
     ngOnInit() {
