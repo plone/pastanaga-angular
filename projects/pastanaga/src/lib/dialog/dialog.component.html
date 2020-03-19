@@ -14,13 +14,13 @@
             <pa-button *ngIf="config.withCloseButton" class="pa-dialog-close"
                        color="secondary"
                        icon="clear"
-                       paTooltip="common.close"
+                       paTooltip="pastanaga.close"
                        paTooltipType="action"
                        (click)="close(false)">common.close</pa-button>
 
             <pa-button *ngIf="displayBackButton" class="pa-dialog-back"
                        icon="backspace"
-                       paTooltip="common.back" paTooltipType="action"
+                       paTooltip="pastanaga.back" paTooltipType="action"
                        (click)="back.emit()">common.back</pa-button>
 
             <h2 class="pa-dialog-title pa-ellipsis-text"
