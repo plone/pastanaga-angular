@@ -150,8 +150,10 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     }
 
     private applyFilter() {
-        this.filtered = this._checkboxes.filter(ctl => ((!this.filter && !this.selectedLetter) || ctl.isFiltered) &&
-            (this.viewAll || ctl.isSelected));
+        this.filtered = this._checkboxes.filter(ctl =>
+            (ctl.isFiltered || (!this.filter && !this.selectedLetter)) && // we keep filtered ones only, or all if no current filtering
+            (this.viewAll || ctl.isSelected) // but when viewing selected only, we just keep selected ones
+        );
         this.totalFiltered = this.filtered.length;
         this.isFiltered = this.totalFiltered < (this._checkboxes || []).length;
         this.updateSelectionCount();
