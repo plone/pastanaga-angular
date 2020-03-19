@@ -18,10 +18,11 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MultipleScreensDialogComponent } from './multiple-screens-dialog.component';
 import { OneScreenDialogComponent } from './one-screen-dialog.component';
 import { TraversalModule } from 'angular-traversal';
+import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog.component';
 
 
 @NgModule({
-    declarations: [DemoComponent, MultipleScreensDialogComponent, OneScreenDialogComponent],
+    declarations: [DemoComponent, MultipleScreensDialogComponent, OneScreenDialogComponent, ConfirmDeleteDialogComponent],
     imports: [
         CommonModule,
 
