@@ -1,3 +1,8 @@
+# 1.17.2 (2020-03-20)
+
+### Bugfix
+- **Checkbox**: fix alignments [ebrehault]
+
 # 1.17.1 (2020-03-20)
 
 ### Bugfix
