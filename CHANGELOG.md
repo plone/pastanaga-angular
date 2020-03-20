@@ -1,3 +1,8 @@
+# 1.17.3 (2020-03-20)
+
+### Improvement
+- **Checkbox group**: support 2-way data binding [ebrehault]
+
 # 1.17.2 (2020-03-20)
 
 ### Bugfix
