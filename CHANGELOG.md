@@ -1,3 +1,8 @@
+# 1.17.1 (2020-03-20)
+
+### Bugfix
+- **Dialog service**: fix bad import [mathilde-pellerin]
+
 # 1.17.0 (2020-03-19)
 
 ### Feature
