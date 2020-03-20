@@ -95,3 +95,5 @@ export * from './lib/dialog/dialog.model';
 export * from './lib/dialog/dialog.module';
 export * from './lib/dialog/dialog.directives';
 export * from './lib/dialog/dialog.service';
+export * from './lib/dialog/confirm-dialog.component';
+export * from './lib/dialog/basic-confirm-dialog.component';

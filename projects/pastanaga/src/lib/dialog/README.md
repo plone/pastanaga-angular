@@ -1,8 +1,21 @@
-# Dialog component and service
+# Dialog components and service
+
+Pastanaga provides different kind of dialogs:
+- **regular** dialog is a large dialog containing:
+    - a header composed of a title and an optional color band containing an image
+    - a custom body
+    - an optional footer
+- **confirm** dialog is a small dialog containing:
+    - a title
+    - an optional description
+    - a footer with two buttons by default (cancel and confirm)
+
+You can either use them, or create your own dialog kind as you wish.
 
 ## Basic usage
 
-The component to display a dialog must implement `IDialog` interface and have a `<pa-dialog>` component in its template.
+The component to display a dialog must implement `IDialog` interface and have a `<pa-dialog>` or `<pa-confirm-dialog>` component in its template.
+It could also be your own custom dialog component, as soon as it extends `BaseDialogComponent`.
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -30,9 +43,21 @@ export class CallerComponent {
         this.dialogService.openDialog(SomeDialogComponent);
     }
 }
-``` 
+```
+
+`DialogService` provides also a method allowing to directly open a basic confirm dialog. It takes a mandatory title and an optional description parameters:
+```typescript
+export class CallerComponent {
+
+    actionRequiringAConfirm() {
+        this.dialogService.openConfirm('Are you sure you want to do this?', `Don't be scared, everything is fine`);
+    }
+}
+```
 
 ## Dialog content
+
+### Regular dialog
 
 The entire component template must be wrapped in a `<pa-dialog></pa-dialog>` tag.
 
@@ -63,10 +88,54 @@ None of those directives are mandatory.
 
 The rest of the template will be displayed in the dialog body section.
 
+### Confirm dialog
+
+The entire component template must be wrapped in a `<pa-confirm-dialog></pa-confirm-dialog>` tag.
+
+It must contain a `pa-confirm-title` directive:
+
+```html
+<pa-confirm-title>Would you like to continue this Pastanaga tour?</pa-confirm-title>
+```
+
+It might also contain a `pa-confirm-description` directive allowing to add a description to your confirm:
+```html
+<pa-confirm-description>It's an awesome UI component library containing all you need</pa-confirm-description>
+```
+
+By default, confirm dialogs have two buttons: 
+- a primary accented confirm button
+- a secondary cancel button
+
+You can provide your own buttons by using a `pa-confirm-actions` directive:
+```html
+<pa-confirm-actions>
+    <pa-button id="pa-confirm-cancel-button"
+               icon="clear"
+               color="secondary"
+               size="large"
+               paTooltip="pastanaga.cancel"
+               paTooltipType="action"
+               (click)="close(false)">
+        {{'pastanaga.cancel' | translate}}
+    </pa-button>
+    <pa-button id="pa-confirm-delete-button"
+               border
+               icon="delete"
+               color="destructive"
+               size="large"
+               paTooltip="pastanaga.delete"
+               paTooltipType="action"
+               (click)="close(true)">
+        {{'pastanaga.delete' | translate}}
+    </pa-button>
+</pa-confirm-actions>
+```
+
 ## Configuration
 
 `openDialog` method takes two parameters: the component implementing `IDialog` and an optional configuration object (`DialogConfig`).
-By default, the dialog is blocking and has a close button. It also have a grey band color by default. 
+By default, the dialog is blocking and has a close button. Regular dialog also has a grey band color by default. 
 The configuration object allows to change these default behaviors.
 
 ### Blocking / non-blocking
@@ -110,7 +179,7 @@ and override band color directly in your stylesheet:
 
 ### Close button
 
-By default, the dialog has a close button in the header. It is possible to remove it by passing the following:
+By default, regular dialog has a close button in the header. It is possible to remove it by passing the following:
 ```typescript
 export class CallerComponent {
     open() {
@@ -126,10 +195,11 @@ In the previous chapter, we saw how `DialogCongig` allowed to configure the dial
 These configuration properties are meant to be set once for all, that's why we can set them up when opening the dialog.
 But some behaviors may require to change dynamically depending the dialog state. 
 
-As we explained in the beginning, a dialog must implement `IDialog` interface and have a `DialogComponent` component in its template.
+As we explained in the beginning, a dialog must implement `IDialog` interface and have a component extanding `BaseDialogComponent` in its template.
 `IDialog` interface require our component to have a `dialog` property, usually instantiated using a `@ViewChild` annotation.
 This `dialog` property can be used to dynamically configure the dialog.
 
+Following paragraphs go through regular dialog configurable properties. 
 
 ### Band size
 By default, band is big (150px height) and will be reduced when scrolling down.
@@ -213,7 +283,12 @@ export class CallerComponent {
     }
 }
 ```
-Default close button and clicking outside the dialog are simply returning `false`. 
+On regular dialog, default close button and clicking outside the dialog are simply returning `false`.
+
+On confirm dialog:
+- default cancel button and clicking outside the dialog return `false`
+- default confirm button returns `true`
+
 
 ### Close the dialog programmatically
 The dialog can be closed programmatically through its `dialog` property:

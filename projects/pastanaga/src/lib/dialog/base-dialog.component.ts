@@ -1,4 +1,4 @@
-import { AfterContentInit, ElementRef, EventEmitter, Input, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { AfterContentInit, ElementRef, EventEmitter, Input, Output, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
 import { DialogConfig, DialogRef } from './dialog.model';
 import { keyboardKeys } from '../keycodes.constant';
 import { markForCheck, detectChanges } from '../common/utils';
@@ -16,7 +16,7 @@ export interface IDialog {
     dialog: BaseDialogComponent | undefined;
 }
 
-export class BaseDialogComponent implements AfterContentInit {
+export class BaseDialogComponent implements OnInit, AfterContentInit {
     @Output() onEnter: EventEmitter<void> = new EventEmitter();
 
     @ViewChild('dialogContainer', { static: true }) dialogContainer?: ElementRef;
@@ -29,6 +29,13 @@ export class BaseDialogComponent implements AfterContentInit {
     protected _onKeyDown = this.onKeyDown.bind(this);
 
     constructor(protected cdr: ChangeDetectorRef) {}
+
+    ngOnInit(): void {
+        if (!!this.ref) {
+            this.id = this.ref.id;
+            this.config = this.ref.config;
+        }
+    }
 
     ngAfterContentInit(): void {
         document.addEventListener('keydown', this._onKeyDown);

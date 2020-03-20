@@ -15,6 +15,7 @@ import { delay } from 'rxjs/operators';
 import * as packageFile from '../../../projects/pastanaga/package.json';
 import { MultipleScreensDialogComponent } from './multiple-screens-dialog.component';
 import { OneScreenDialogComponent } from './one-screen-dialog.component';
+import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog.component';
 
 // tslint:disable:max-line-length
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
@@ -419,5 +420,14 @@ export class DemoComponent implements OnInit {
     openNoCloseDialog() {
         this.dialogService.openDialog(OneScreenDialogComponent, new DialogConfig({withCloseButton: false}))
             .onClose.subscribe(data => console.log('Dialog closed', data));
+    }
+
+    openBasicConfirmation() {
+        this.dialogService.openConfirm('Do you like pastanaga?', 'Both buttons will close the confirmation, returning true if you confirm')
+            .onClose.subscribe(confirmed => console.log(`Confirmed: ${confirmed}`));
+    }
+
+    openDeleteConfirmation() {
+        this.dialogService.openDialog(ConfirmDeleteDialogComponent).onClose.subscribe(confirmed => console.log(`Confirmed: ${confirmed}`));
     }
 }

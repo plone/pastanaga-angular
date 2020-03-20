@@ -1,0 +1,48 @@
+<div class="pa-dialog-backdrop" tabindex="0"
+     #dialogContainer
+     [class.pa-dialog-blocking]="config.blocking"
+     (click)="outsideClick($event)">
+    <dialog class="pa-dialog pa-confirm" role="dialog"
+            [class.in]="!closing"
+            [class.out]="closing"
+            [attr.aria-labelledby]="'confirm-' + id + '-title'"
+            [attr.aria-describedby]="'confirm-' + id + '-description'"
+    >
+        <header class="pa-confirm-header">
+            <h2 class="pa-confirm-title" [id]="'confirm-' + id + '-title'">
+                <ng-content select="pa-confirm-title"></ng-content>
+            </h2>
+            <p class="pa-confirm-description" [id]="'confirm-' + id + '-description'">
+                <ng-content select="pa-confirm-description"></ng-content>
+            </p>
+        </header>
+        <footer class="pa-confirm-footer">
+            <div #confirmActions class="pa-confirm-footer-wrapper"
+                 [hidden]="!_hasCustomActions">
+                <ng-content select="pa-confirm-actions"></ng-content>
+            </div>
+            <div class="pa-confirm-footer-wrapper"
+                 *ngIf="!_hasCustomActions">
+                <pa-button id="pa-confirm-cancel-button"
+                           icon="clear"
+                           color="secondary"
+                           size="large"
+                           paTooltip="pastanaga.cancel"
+                           paTooltipType="action"
+                           (click)="close(false)">
+                    {{'pastanaga.cancel' | translate}}
+                </pa-button>
+                <pa-button id="pa-confirm-confirm-button"
+                           border
+                           icon="confirm"
+                           color="primary"
+                           size="large"
+                           paTooltip="pastanaga.confirm"
+                           paTooltipType="action"
+                           (click)="close(true)">
+                    {{'pastanaga.confirm' | translate}}
+                </pa-button>
+            </div>
+        </footer>
+    </dialog>
+</div>

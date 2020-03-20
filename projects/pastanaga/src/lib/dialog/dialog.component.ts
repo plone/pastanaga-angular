@@ -64,10 +64,7 @@ export class DialogComponent extends BaseDialogComponent implements OnInit, Afte
     }
 
     ngOnInit(): void {
-        if (!!this.ref) {
-            this.id = this.ref.id;
-            this.config = this.ref.config;
-        }
+        super.ngOnInit();
         this._scroll.pipe(
             takeUntil(this.closed),
             debounceTime(20),

@@ -43,6 +43,14 @@
             <h3>Blocking dialog without close button</h3>
             <pa-button border small (click)="openNoCloseDialog()">Open</pa-button>
         </div>
+        <div>
+            <h3>Basic confirmation dialog</h3>
+            <pa-button border small (click)="openBasicConfirmation()">Open</pa-button>
+        </div>
+        <div>
+            <h3>Custom delete confirmation dialog</h3>
+            <pa-button border small color="destructive" (click)="openDeleteConfirmation()">Open</pa-button>
+        </div>
     </div>
 </div>
 

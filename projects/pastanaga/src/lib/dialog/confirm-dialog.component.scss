@@ -1,0 +1,88 @@
+@import '../styles/variables';
+
+.pa-dialog.pa-confirm {
+    top: 50%;
+    padding: rythm(1.5) rythm(2);
+    height: auto;
+    width: calc(50% - #{rythm(2)*2});
+    max-width: $w-dialog;
+    flex-flow: row nowrap;
+    place-content: stretch space-between;
+
+    .pa-confirm-header {
+        display: flex;
+        flex-flow: column;
+        position: relative;
+        justify-content: center;
+    }
+
+    .pa-confirm-title {
+        @include font-size(xxl, xl, xl);
+        font-weight: $font-weight-light;
+        margin: 0 0 rythm(.5);
+        padding: 0;
+        color: $gray-blacky;
+    }
+
+    .pa-confirm-description {
+        color: $gray;
+        margin: 0;
+        @include font-size(xs, m, xs);
+    }
+
+    .pa-confirm-footer {
+        display: flex;
+        align-items: center;
+
+        .pa-confirm-footer-wrapper {
+            padding: rythm(1) rythm(.5);
+            white-space: nowrap;
+
+            pa-button {
+                margin-left: rythm(0.5);
+            }
+        }
+
+        & button + button {
+            margin-left: rythm(1);
+        }
+    }
+
+    // Animations
+    &.in {
+        animation-name: dialog-in;
+        animation-duration: .75s;
+        animation-iteration-count: 1;
+
+        .pa-confirmation-header,
+        .pa-confirmation-footer {
+            animation-name: dialog-in-content;
+            animation-duration: 1.25s;
+            animation-iteration-count: 1;
+        }
+    }
+
+    &.out {
+        animation-name: confirmation-out;
+        animation-duration: .75s;
+        animation-iteration-count: 1;
+
+        .pa-confirmation-header,
+        .pa-confirmation-footer {
+            animation-name: dialog-out-content;
+            animation-duration: 1.25s;
+            animation-iteration-count: 1;
+        }
+    }
+}
+
+@keyframes confirmation-out {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-75%) scale(0);
+    }
+}
