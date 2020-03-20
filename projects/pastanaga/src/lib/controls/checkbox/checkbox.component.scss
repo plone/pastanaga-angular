@@ -43,9 +43,9 @@
         & ~ .pa-field-help {
             margin-left: rythm(2.5);
 
-            &.pa-field-with-icon,
-            &.pa-icon {
-                margin-left: rythm(4) !important;
+            &.pa-field-with-icon {
+                margin-left: rythm(5) !important;
+                padding-left: rythm(1) / 3;
             }
         }
     }

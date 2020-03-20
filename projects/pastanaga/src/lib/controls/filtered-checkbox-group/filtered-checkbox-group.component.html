@@ -12,32 +12,32 @@
 <fieldset class="pa-fieldset-group"
           [id]="id">
     <legend>
-        <div>
+        <div class="label">
             <ng-content></ng-content>
-        </div>
-        <div class="counts-and-actions">
             <div>
-                <div class="total">
-                    <ng-container *ngIf="totalSelected > 0">{{'pastanaga.selected-count' | translate:{count: totalSelected} }}</ng-container>
-                    <ng-container *ngIf="!viewAll || totalSelected > 0">
-                        <a href="#" (click)="viewSelected($event)" translate>{{viewAll ? 'pastanaga.view-selected' : 'pastanaga.view-all'}}</a>.&nbsp;
+                <div>
+                    <div class="total">
+                        <ng-container *ngIf="totalSelected > 0">{{'pastanaga.selected-count' | translate:{count: totalSelected} }}</ng-container>
+                        <ng-container *ngIf="!viewAll || totalSelected > 0">
+                            <a href="#" (click)="viewSelected($event)" translate>{{viewAll ? 'pastanaga.view-selected' : 'pastanaga.view-all'}}</a>.&nbsp;
+                        </ng-container>
+                    </div>
+                    <ng-container *ngIf="isFiltered && viewAll"><span translate>pastanaga.filtered</span>
+                        <pa-badge [value]="totalFiltered"
+                                  [of]="totalCount"
+                                  [isAccented]="true"
+                                  [isSmall]="true"></pa-badge>
                     </ng-container>
                 </div>
-                <ng-container *ngIf="isFiltered && viewAll"><span translate>pastanaga.filtered</span>
-                    <pa-badge [value]="totalFiltered"
-                              [of]="totalCount"
-                              [isAccented]="true"
-                              [isSmall]="true"></pa-badge>
-                </ng-container>
             </div>
-            <div *ngIf="viewAll">
-                <pa-button class="select-all"
-                           size="small"
-                           color="secondary"
-                           (click)="toggleSelectAll()">
-                    {{selectAllLabel}}
-                </pa-button>
-            </div>
+        </div>
+        <div *ngIf="viewAll">
+            <pa-button class="select-all"
+                       size="small"
+                       color="secondary"
+                       (click)="toggleSelectAll()">
+                {{selectAllLabel}}
+            </pa-button>
         </div>
     </legend>
 

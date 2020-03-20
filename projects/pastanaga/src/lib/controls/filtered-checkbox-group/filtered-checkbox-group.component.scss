@@ -5,15 +5,16 @@
     display: block;
 
     legend {
+        display: flex;
+        justify-content: space-between;
         pa-badge {
             display: inline-block;
             position: relative;
             top: rythm(.25);
             left: rythm(1.5);
         }
-        .counts-and-actions {
-            display: flex;
-            justify-content: space-between;
+        .label {
+            padding-top: rythm(.25)*3;
         }
         .total {
             display: inline-block;
