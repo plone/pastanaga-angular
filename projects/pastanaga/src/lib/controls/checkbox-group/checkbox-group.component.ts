@@ -22,6 +22,7 @@ export class CheckboxGroupComponent implements OnInit, OnChanges {
     @Input() set countVisible(value) { this._countVisible = coerceBooleanProperty(value); }
     @Input() set noSelectAll(value) { this._selectAllVisible = !coerceBooleanProperty(value); }
 
+    @Output() checkboxesChange: EventEmitter<ControlModel[]> = new EventEmitter();
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
 
     _checkboxes: ControlModel[] = [];
@@ -86,5 +87,6 @@ export class CheckboxGroupComponent implements OnInit, OnChanges {
     private emitSelectionChanged() {
         const selectedValues = (this._checkboxes || []).filter(control => control.isSelected).map(control => getCheckboxValue(control));
         this.selection.emit(selectedValues);
+        this.checkboxesChange.emit(this._checkboxes);
     }
 }
