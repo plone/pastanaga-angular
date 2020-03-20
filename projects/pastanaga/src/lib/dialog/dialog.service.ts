@@ -1,7 +1,7 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector, Type } from '@angular/core';
 import { DialogConfig, DialogRef } from './dialog.model';
 import { IDialog } from './base-dialog.component';
-import { BasicConfirmDialogComponent } from 'pastanaga-angular/lib/dialog/basic-confirm-dialog.component';
+import { BasicConfirmDialogComponent } from './basic-confirm-dialog.component';
 
 @Injectable({providedIn: 'root'})
 export class DialogService {
