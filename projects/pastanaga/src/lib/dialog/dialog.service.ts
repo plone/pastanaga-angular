@@ -50,8 +50,9 @@ export class DialogService {
     closeDialog(ref: DialogRef) {
         const index = this.dialogs.findIndex(dialog => dialog.instance.dialog.ref.id === ref.id);
         if (index >= 0) {
-            this.dialogs[index].destroy();
-            this.appRef.tick();
+            const ref = this.dialogs[index];
+            this.appRef.detachView(ref.hostView);
+            ref.destroy();
             this.dialogs.splice(index, 1);
             if (this.dialogs.length > 0) {
                 this.dialogs[this.dialogs.length - 1].instance.dialog.ref.isLast = true;

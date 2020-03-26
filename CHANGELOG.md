@@ -1,3 +1,8 @@
+# 1.17.6 (2020-03-26)
+
+### Bugfix
+- **Dialog**: do not use tick(), just detach the dialog view properly [ebrehault]
+
 # 1.17.5 (2020-03-26)
 
 ### Bugfix
