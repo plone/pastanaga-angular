@@ -1,3 +1,11 @@
+# 1.17.4 (2020-03-26)
+
+### Improvement
+- **Select**: Use getters & setters [niglesias]
+
+### Bugfix
+- **Select**: Added onChanges to set proper value [niglesias]
+
 # 1.17.3 (2020-03-20)
 
 ### Improvement
