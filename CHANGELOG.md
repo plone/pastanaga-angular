@@ -1,3 +1,8 @@
+# 1.17.5 (2020-03-26)
+
+### Bugfix
+- **Dialog**: Avoid recursive call to tick() when closing [ebrehault]
+
 # 1.17.4 (2020-03-26)
 
 ### Improvement

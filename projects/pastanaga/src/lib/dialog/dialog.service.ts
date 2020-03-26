@@ -2,6 +2,7 @@ import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef
 import { DialogConfig, DialogRef } from './dialog.model';
 import { IDialog } from './base-dialog.component';
 import { BasicConfirmDialogComponent } from './basic-confirm-dialog.component';
+import { take } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class DialogService {
@@ -30,7 +31,7 @@ export class DialogService {
         // pass config and manage the component
         const ref = new DialogRef({id: this.counter, config});
         this.counter++;
-        ref.onClose.subscribe(() => this.closeDialog(ref));
+        ref.onClose.pipe(take(1)).subscribe(() => this.closeDialog(ref));
         if (!dialogComponentRef.instance.dialog) {
             console.error('The dialog component must be wrapped in a <pa-dialog> tag.');
         } else {
