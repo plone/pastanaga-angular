@@ -1,4 +1,4 @@
-import {ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef, ComponentFactory} from '@angular/core';
+import {ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef, ComponentFactory, NgZone} from '@angular/core';
 import {ToastComponent} from './toast.component';
 import {ToastModel, ToastButtonModel} from './toast.model';
 
@@ -111,7 +111,10 @@ export class Toaster {
 
     private toastCounter = 0;
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(
+        private componentFactoryResolver: ComponentFactoryResolver,
+        private zone: NgZone,
+    ) {
         this.toasts = [];
     }
 
@@ -193,7 +196,9 @@ export class Toaster {
             this.toasts.splice(index, 1);
             this.toasts.forEach((message, i) => message.instance.isSibling = i > 0);
             toastComponentRef.instance.isDismissed = true;
-            setTimeout(() => toastComponentRef.destroy(), 500);
+            setTimeout(() => {
+                this.zone.run(() => toastComponentRef.destroy());
+            }, 500);
         }
 
         if (!!button && toast.onClick) {
@@ -217,18 +222,20 @@ export class Toaster {
     }
 
     private createToast(toast: ToastModel) {
-        toast.key = 'toast' + this.toastCounter++;
-        const componentFactory: ComponentFactory<ToastComponent> = toast.componentFactory ? toast.componentFactory :
-        this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
-        if (!!this.entryPoint && !!this.toasts) {
-            const toastComponentRef: ComponentRef<ToastComponent> = this.entryPoint.createComponent(componentFactory, 0);
-            (<ToastComponent>toastComponentRef.instance).toast = toast;
-            (<ToastComponent>toastComponentRef.instance).isSibling = this.toasts.length > 0;
-            (<ToastComponent>toastComponentRef.instance).dismiss.subscribe(
-                toastToDismiss => this.dismiss(toastToDismiss.toast, toastToDismiss.button)
-            );
-
-            this.toasts.push(toastComponentRef);
-        }
+        this.zone.run(() => {
+            toast.key = 'toast' + this.toastCounter++;
+            const componentFactory: ComponentFactory<ToastComponent> = toast.componentFactory ? toast.componentFactory :
+            this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
+            if (!!this.entryPoint && !!this.toasts) {
+                const toastComponentRef: ComponentRef<ToastComponent> = this.entryPoint.createComponent(componentFactory, 0);
+                (<ToastComponent>toastComponentRef.instance).toast = toast;
+                (<ToastComponent>toastComponentRef.instance).isSibling = this.toasts.length > 0;
+                (<ToastComponent>toastComponentRef.instance).dismiss.subscribe(
+                    toastToDismiss => this.dismiss(toastToDismiss.toast, toastToDismiss.button)
+                );
+    
+                this.toasts.push(toastComponentRef);
+            }
+        });
     }
 }
