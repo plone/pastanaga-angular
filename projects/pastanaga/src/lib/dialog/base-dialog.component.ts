@@ -42,16 +42,18 @@ export class BaseDialogComponent implements OnInit, AfterContentInit {
     }
 
     close(data?: any) {
-        this.closing = true;
-        document.removeEventListener('keydown', this._onKeyDown);
-        detectChanges(this.cdr);
-        setTimeout(() => {
-            this.off = true;
+        if (!this.closing) {
+            this.closing = true;
+            document.removeEventListener('keydown', this._onKeyDown);
             detectChanges(this.cdr);
-            if (!!this.ref) {
-                this.ref.onClose.emit(data);
-            }
-        }, 700);
+            setTimeout(() => {
+                this.off = true;
+                detectChanges(this.cdr);
+                if (!!this.ref) {
+                    this.ref.onClose.emit(data);
+                }
+            }, 700);
+        }
     }
 
     outsideClick($event) {

@@ -1,8 +1,8 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector, Type } from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector, Type, NgZone } from '@angular/core';
 import { DialogConfig, DialogRef } from './dialog.model';
 import { IDialog } from './base-dialog.component';
 import { BasicConfirmDialogComponent } from './basic-confirm-dialog.component';
-import { take } from 'rxjs/operators';
+import { take, filter, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class DialogService {
@@ -15,6 +15,7 @@ export class DialogService {
         private componentFactoryResolver: ComponentFactoryResolver,
         private appRef: ApplicationRef,
         private injector: Injector,
+        private zone: NgZone,
     ) {
     }
 
@@ -50,13 +51,17 @@ export class DialogService {
     closeDialog(ref: DialogRef) {
         const index = this.dialogs.findIndex(dialog => dialog.instance.dialog.ref.id === ref.id);
         if (index >= 0) {
-            const ref = this.dialogs[index];
-            this.appRef.detachView(ref.hostView);
-            ref.destroy();
-            this.dialogs.splice(index, 1);
-            if (this.dialogs.length > 0) {
-                this.dialogs[this.dialogs.length - 1].instance.dialog.ref.isLast = true;
-            }
+            this.zone.run(() => {
+                const ref = this.dialogs[index];
+                const domElement = (ref.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+                this.appRef.detachView(ref.hostView);
+                document.body.removeChild(domElement);
+                ref.destroy();
+                this.dialogs.splice(index, 1);
+                if (this.dialogs.length > 0) {
+                    this.dialogs[this.dialogs.length - 1].instance.dialog.ref.isLast = true;
+                }
+            });
         }
         if (this.dialogs.length === 0) {
             this.freezeBackground(false);

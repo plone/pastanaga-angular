@@ -1,3 +1,8 @@
+# 1.17.7 (2020-03-26)
+
+### Bugfix
+- **Dialog and toaster**: use zone to avoid conflict between dialog and toasts [ebrehault]
+
 # 1.17.6 (2020-03-26)
 
 ### Bugfix
