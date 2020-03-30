@@ -1,3 +1,5 @@
+# 1.17.8 (2020-03-30)
+
 ### Bugfix
 - **Confirm dialog**: use innerHtml for basic confirm title and description to display basic formatting [mathilde-pellerin]
 
