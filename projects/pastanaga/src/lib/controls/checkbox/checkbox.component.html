@@ -36,6 +36,7 @@
 
     <small *ngIf="help" class="pa-field-help pa-ellipsis-text"
            [class.pa-field-with-icon]="!!_iconName"
+           [class.pa-field-with-icon-block]="!!_icon"
            [class.pa-sr]="_labelHidden" [id]="helpId" translate>{{help}}</small>
 </div>
 

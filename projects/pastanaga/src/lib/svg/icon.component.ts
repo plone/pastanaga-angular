@@ -91,7 +91,7 @@ export class IconComponent {
         }
     }
 
-    private setSvg(icon: SVGElement) {	
+    private setSvg(icon: SVGElement) {
         if (typeof this._hidden !== 'undefined') {
             this.renderer.setAttribute(icon, 'aria-hidden', this._hidden.toString());
         }
