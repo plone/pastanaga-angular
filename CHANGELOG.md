@@ -1,3 +1,8 @@
+# 1.17.9 (2020-03-30)
+
+### Bugfix
+- **Checkbox**: Fix checkbox help alignment when having icon block [mathide-pellerin]
+
 # 1.17.8 (2020-03-30)
 
 ### Bugfix
