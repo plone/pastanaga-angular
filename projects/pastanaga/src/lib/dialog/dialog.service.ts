@@ -2,7 +2,7 @@ import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef
 import { DialogConfig, DialogRef } from './dialog.model';
 import { IDialog } from './base-dialog.component';
 import { BasicConfirmDialogComponent } from './basic-confirm-dialog.component';
-import { take, filter, tap } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class DialogService {
