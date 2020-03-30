@@ -1,4 +1,4 @@
 <pa-confirm-dialog>
-    <pa-confirm-title>{{title}}</pa-confirm-title>
-    <pa-confirm-description *ngIf="!!description">{{description}}</pa-confirm-description>
+    <pa-confirm-title [innerHTML]="title"></pa-confirm-title>
+    <pa-confirm-description *ngIf="!!description" [innerHTML]="description"></pa-confirm-description>
 </pa-confirm-dialog>
