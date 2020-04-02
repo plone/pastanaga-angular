@@ -338,3 +338,11 @@ export class SomeDialogComponent implements IDialog {
 }
 ```
 
+## Refresh
+After changing some values of the dialog outside of it, you will need to reflect those changes.
+
+```typescript
+this.dialog.displayBackButton = true;
+```
+
+In order to trigger markForCheck within the dialog you will need to use `refresh`.

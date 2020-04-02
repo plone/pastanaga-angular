@@ -91,6 +91,10 @@ export class DialogComponent extends BaseDialogComponent implements OnInit, Afte
         this.closed.next();
     }
 
+    refresh() {
+        markForCheck(this.cdr);
+    }
+
     private onScroll($event) {
         if ($event.target.scrollTop !== 0 || !this._staySmall) {
             const scrollTop = $event.target.scrollTop;
