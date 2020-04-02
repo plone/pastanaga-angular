@@ -1,3 +1,8 @@
+# 1.17.10 (2020-04-02)
+
+### Bugfix
+- **Dialog**: Added refresh method for dialog [barcafa]
+
 # 1.17.9 (2020-03-30)
 
 ### Bugfix
