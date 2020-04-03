@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { PopupService } from './popup.service';
 import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common/utils';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
 
@@ -22,11 +23,12 @@ let nextId = 0;
 })
 export class PopupComponent implements OnInit, OnDestroy {
     @Input() id?: string;
-    @Input() isAlwaysOn = false;
+    @Input() set isAlwaysOn(value) { this._isAlwaysOn = coerceBooleanProperty(value); }
     @Input() parentElement?: any;
 
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
+    _isAlwaysOn = false;
     isDisplayed = false;
     style?: any;
     handlers: Function[] = [];
@@ -48,7 +50,7 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.id = !this.id ? `dropdown-${nextId++}` : `${this.id}-dropdown`;
-        this.isDisplayed = this.isAlwaysOn;
+        this.isDisplayed = this._isAlwaysOn;
     }
 
     ngOnDestroy() {
@@ -61,7 +63,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         }
         this.style = style;
         this.isDisplayed = true;
-        if (!this.isAlwaysOn) {
+        if (!this._isAlwaysOn) {
             this.handlers.push(this.renderer.listen('document', 'click', (event) => this.onOutsideClick(event)));
             this.handlers.push(this.renderer.listen('document', 'keyup.esc', () => this.close()));
         }
@@ -119,7 +121,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     close(byClickingOutside?: boolean) {
-        if (!this.isAlwaysOn && this.isDisplayed) {
+        if (!this._isAlwaysOn && this.isDisplayed) {
             this.isDisplayed = false;
             this.unlisten();
             this.onClose.emit(byClickingOutside);
