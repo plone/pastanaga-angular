@@ -7,11 +7,11 @@ pa-doc-page {
     }
 
     h1,
-    section h2 {
+    section.doc-section h2 {
         margin-bottom: rythm(2.5);
     }
 
-    section {
+    section.doc-section {
         margin-bottom: rythm(4);
 
         h2 {
