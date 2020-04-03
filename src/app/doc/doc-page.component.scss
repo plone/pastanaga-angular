@@ -36,6 +36,12 @@ pa-doc-page {
             small {
                 color: $gray-light;
             }
+            code {
+                display: inline;
+                background: none;
+                margin: 0;
+                padding: 0 rythm(.25);
+            }
         }
     }
 
