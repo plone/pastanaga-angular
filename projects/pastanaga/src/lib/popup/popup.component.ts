@@ -18,7 +18,6 @@ let nextId = 0;
 @Component({
     selector: 'pa-popup',
     templateUrl: './popup.component.html',
-    styleUrls: ['./_popup.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopupComponent implements OnInit, OnDestroy {
