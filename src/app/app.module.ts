@@ -11,10 +11,12 @@ import { Marker, Normalizer, Resolver, TraversalModule } from 'angular-traversal
 import { DocResolver } from './doc/doc.resolver';
 import { DocMarker } from './doc/doc.marker';
 import { CommonModule } from '@angular/common';
+import { PaDocPagesModule } from './doc/doc-pages.module';
 
 @NgModule({
     imports: [
         DemoModule,
+        PaDocPagesModule,
         PaDocModule,
         TraversalModule,
         SidebarModule,

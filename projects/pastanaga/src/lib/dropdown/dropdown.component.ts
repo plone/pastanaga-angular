@@ -14,7 +14,6 @@ import { PopupService } from '../popup/popup.service';
 @Component({
     selector: 'pa-dropdown',
     templateUrl: './dropdown.component.html',
-    styleUrls: ['./_dropdowns.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownComponent extends PopupComponent implements OnInit, OnDestroy {

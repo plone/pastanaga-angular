@@ -7,7 +7,7 @@
 
 ## Improvements
 
-- Move popup.scss to common style so it can be used anywhere [mathide-pellerin]
+- Move popup.scss and dropdown.scss to common style so it can be used anywhere [mathide-pellerin]
 - Separate doc components from doc pages [mathide-pellerin]
 - Adapt code tag style in doc usage section [mathide-pellerin]
 - coerce boolean on popup isAlwaysOn property [mathide-pellerin]

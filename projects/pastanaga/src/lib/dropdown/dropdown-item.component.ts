@@ -13,7 +13,6 @@ let nextId = 0;
 @Component({
     selector: 'pa-dropdown-item',
     templateUrl: './dropdown-item.component.html',
-    styleUrls: ['./_dropdowns.scss'],
 })
 export class DropdownItemComponent implements Highlightable, OnInit, OnDestroy {
     disabled?: boolean | undefined;

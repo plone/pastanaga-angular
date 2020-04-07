@@ -1,4 +1,4 @@
-@import '../styles/variables';
+@import 'variables';
 
 .pa-dropdown {
     &-list {
@@ -27,11 +27,11 @@
         color: $gray-dark;
         display: block;
         transition: all 0.25s ease;
-        & pa-icon ::ng-deep svg {
+        & pa-icon svg {
             fill: currentColor;
             transition: all 0.25s ease;
         }
-        & pa-icon ::ng-deep svg:not(.pa-small) {
+        & pa-icon svg:not(.pa-small) {
             width: rythm(2);
             height: rythm(2);
         }
@@ -110,22 +110,20 @@
         pa-checkbox {
             width: 100%;
 
-            ::ng-deep {
-                .pa-field {
-                    margin: rythm(0.25);
+            .pa-field {
+                margin: rythm(0.25);
 
-                    .pa-field-label {
-                        margin-bottom: 0 !important;
-                        width: 100%;
+                .pa-field-label {
+                    margin-bottom: 0 !important;
+                    width: 100%;
 
-                        &.pa-field-with-help .pa-ellipsis-text {
-                            margin-top: - rythm(.5);
-                        }
+                    &.pa-field-with-help .pa-ellipsis-text {
+                        margin-top: - rythm(.5);
                     }
-                    .pa-field-help {
-                        margin-bottom: 0 !important;
-                        margin-top: - rythm(.5) !important;
-                    }
+                }
+                .pa-field-help {
+                    margin-bottom: 0 !important;
+                    margin-top: - rythm(.5) !important;
                 }
             }
         }
