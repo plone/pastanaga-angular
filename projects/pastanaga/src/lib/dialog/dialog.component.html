@@ -30,9 +30,10 @@
             </h2>
         </header>
 
-        <div class="pa-dialog-band" role="presentation"
+        <div role="presentation"
              #image
              [hidden]="!_hasImage"
+             [class.pa-dialog-band]="_hasImage"
              [class.pa-dialog-band-compressed]="_isSmallImage"
              [style.background-color]="config.bandColor">
             <ng-content select="pa-dialog-image"></ng-content>

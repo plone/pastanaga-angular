@@ -1,3 +1,17 @@
+# 1.17.11 (2020-04-06)
+
+### Bugfixes
+
+- dialog: don't apply band style when there is no band [mathide-pellerin]
+- Prevent doc page style to leak on component inside them [mathide-pellerin]
+
+## Improvements
+
+- Move popup.scss and dropdown.scss to common style so it can be used anywhere [mathide-pellerin]
+- Separate doc components from doc pages [mathide-pellerin]
+- Adapt code tag style in doc usage section [mathide-pellerin]
+- coerce boolean on popup isAlwaysOn property [mathide-pellerin]
+
 # 1.17.10 (2020-04-02)
 
 ### Bugfix

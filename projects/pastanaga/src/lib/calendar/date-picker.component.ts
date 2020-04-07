@@ -6,7 +6,7 @@ import { PopupService } from '../popup/popup.service';
 @Component({
     selector: 'pa-date-picker',
     templateUrl: './date-picker.component.html',
-    styleUrls: ['../popup/_popup.scss', './date-picker.component.scss'],
+    styleUrls: ['./date-picker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerComponent extends PopupComponent {

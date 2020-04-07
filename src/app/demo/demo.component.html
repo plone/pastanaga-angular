@@ -257,7 +257,7 @@
 
     <div *ngIf="sections.dropdowns">
         <h4>Regular</h4>
-        <pa-dropdown [isAlwaysOn]="true">
+        <pa-dropdown isAlwaysOn>
             <pa-dropdown-item icon="share" mode="primary" tooltip="Sharing with other users" (click)="hello()">Share
             </pa-dropdown-item>
             <pa-dropdown-item icon="save" shortcut="⌘S" (click)="hello()">Save</pa-dropdown-item>
@@ -269,7 +269,7 @@
         </pa-dropdown>
 
         <h4>With sections</h4>
-        <pa-dropdown [isAlwaysOn]="true" role="listbox">
+        <pa-dropdown isAlwaysOn role="listbox">
             <pa-dropdown-section title="My title">
                 <pa-dropdown-item icon="share" mode="primary" tooltip="Sharing with other users" (click)="hello()">
                     Share
@@ -279,7 +279,7 @@
         </pa-dropdown>
 
         <h4>With checkboxes</h4>
-        <pa-dropdown [isAlwaysOn]="true" role="listbox">
+        <pa-dropdown isAlwaysOn role="listbox">
             <pa-dropdown-section title="My title">
                 <pa-dropdown-item [checkboxMode]="true" (onSelection)="hello()">File</pa-dropdown-item>
                 <pa-dropdown-item [checkboxMode]="true" (onSelection)="hello()">Email</pa-dropdown-item>

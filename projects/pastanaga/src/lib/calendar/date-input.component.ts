@@ -17,7 +17,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 @Component({
     selector: 'pa-date-input',
     templateUrl: './date-input.component.html',
-    styleUrls: ['../popup/_popup.scss', './date-input.component.scss'],
+    styleUrls: ['./date-input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateInputComponent extends TextfieldCommon implements OnInit, OnChanges {
