@@ -1,20 +1,20 @@
 @import "../../../projects/pastanaga/src/lib/styles/variables";
 
 pa-doc-page {
-    h1  {
+    .doc-page-title  {
         font-size: rythm(4);
         line-height: rythm(4);
     }
 
-    h1,
-    section.doc-section h2 {
+    .doc-page-title,
+    .doc-section-title {
         margin-bottom: rythm(2.5);
     }
 
     section.doc-section {
         margin-bottom: rythm(4);
 
-        h2 {
+        .doc-section-title {
             font-size: rythm(3);
             line-height: rythm(3);
         }

@@ -1,3 +1,8 @@
+# 1.17.12 (2020-04-09)
+
+### Bugfix
+- Prevent doc page style to leak on component inside them again [mathide-pellerin]
+
 # 1.17.11 (2020-04-06)
 
 ### Bugfixes

@@ -1,4 +1,4 @@
-<h1>
+<h1 class="doc-page-title">
     <ng-content select="pa-doc-page-title"></ng-content>
 </h1>
 
@@ -7,7 +7,7 @@
 </section>
 
 <section class="doc-section"  [hidden]="!_hasExamples">
-    <h2>Examples</h2>
+    <h2 class="doc-section-title">Examples</h2>
     <div #examples>
         <ng-content select="pa-doc-page-examples"></ng-content>
     </div>
@@ -15,7 +15,7 @@
 </section>
 
 <section class="doc-section" [hidden]="!_hasUsage">
-    <h2>Usage</h2>
+    <h2 class="doc-section-title">Usage</h2>
     <div #usage>
         <ng-content select="pa-doc-page-usage"></ng-content>
     </div>
@@ -23,7 +23,7 @@
 </section>
 
 <section class="doc-section" [hidden]="!_hasCode">
-    <h2>Code</h2>
+    <h2 class="doc-section-title">Code</h2>
     <div #code>
         <ng-content select="pa-doc-page-code"></ng-content>
     </div>
