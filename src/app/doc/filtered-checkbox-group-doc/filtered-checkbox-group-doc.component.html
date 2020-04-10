@@ -1,0 +1,53 @@
+<pa-doc-page>
+    <pa-doc-page-title>Filtered checkbox group</pa-doc-page-title>
+
+    <pa-doc-page-description>Checkbox group filtered by input text and grouping letters.</pa-doc-page-description>
+
+    <pa-doc-page-examples>
+        <pa-filtered-checkbox-group id="filteredCheckboxGroup"
+                                    [checkboxes]="filteredCheckboxes"
+                                    (selection)="filteredCheckboxSelection = $event">
+            Checkbox group with virtual scroll
+        </pa-filtered-checkbox-group>
+    </pa-doc-page-examples>
+
+    <pa-doc-page-usage>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>checkboxes</dt>
+            <dd>List of checkboxes (ControlModel)</dd>
+
+            <dt>directoryThreshold</dt>
+            <dd>Number of checkboxes required to display the letters <small>(100 by default)</small></dd>
+
+            <dt>disabled</dt>
+            <dd>Set disabled state on both filter and checkboxes</dd>
+
+            <dt>filterPlaceholder</dt>
+            <dd>Placeholder to be displayed in the filter input <small>("Filter…" by default)</small></dd>
+
+            <dt>filterThreshold</dt>
+            <dd>Number of checkboxes required to display the filter input <small>(20 by default)</small></dd>
+
+            <dt>id</dt>
+            <dd>Id used for the component <small>(optional, an id will be generated if none is provided)</small></dd>
+
+            <dt>shouldSort</dt>
+            <dd>Sort checkboxes alphabetically by their label<small>(true by default)</small></dd>
+        </dl>
+
+        <h3>Outputs</h3>
+        <dl>
+            <dt>selection</dt>
+            <dd>Emit the list of selected value (id if the checkbox doesn't have a value)</dd>
+
+            <dt>checkboxesChange</dt>
+            <dd>Emit the list of updated checkboxes <small>(allow two data-binding on checkboxes input)</small></dd>
+        </dl>
+
+    </pa-doc-page-usage>
+
+    <pa-doc-page-code>
+        <pre><code>{{codeSample}}</code></pre>
+    </pa-doc-page-code>
+</pa-doc-page>

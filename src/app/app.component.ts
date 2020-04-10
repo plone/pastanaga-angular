@@ -6,6 +6,7 @@ import { Traverser } from 'angular-traversal';
 import { WelcomePageComponent } from './doc/welcome-page/welcome-page.component';
 import { DemoComponent } from './demo/demo.component';
 import { IDocMenuSection } from './doc/doc-menu.component';
+import { FilteredCheckboxGroupDocComponent } from './doc/filtered-checkbox-group-doc/filtered-checkbox-group-doc.component';
 
 @Component({
     selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
             title: 'Components',
             pages: [
                 {view: 'avatar', title: 'Avatars', type: AvatarDocComponent},
+                {view: 'filteredCheckboxGroup', title: 'Filtered checkbox group', type: FilteredCheckboxGroupDocComponent},
             ]
         },
         {

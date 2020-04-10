@@ -1,12 +1,12 @@
 <pa-directory *ngIf="totalCount > _directoryThreshold"
               [values]="_checkboxes"
-              [(selectedLetter)]="selectedLetter"
+              [selectedLetter]="selectedLetter"
               (selected)="directorySelection($event)"></pa-directory>
 <div class="pa-filter-container"
      *ngIf="totalCount > _filterThreshold">
     <input [placeholder]="_filterPlaceholder | translate"
            (keyup)="keyUp.next($event.target.value)"
-           [(value)]="filter">
+           [value]="filter">
     <pa-icon name="search"></pa-icon>
 </div>
 <fieldset class="pa-fieldset-group"
