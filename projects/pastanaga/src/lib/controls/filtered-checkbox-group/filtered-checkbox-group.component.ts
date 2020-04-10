@@ -17,7 +17,7 @@ import { sortCheckboxes, getCheckboxValue } from '../checkbox.utils';
 import { ControlModel } from '../control.model';
 import { TranslatePipe } from '../../translate/translate.pipe';
 import { Subject } from 'rxjs';
-import { takeUntil, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 import { markForCheck } from '../../common/utils';
 
 let nextId = 0;
@@ -64,8 +64,8 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     trackById = (a, b) => (a.id === b.id);
 
     constructor(
-        private translate: TranslatePipe,
-        private cdr: ChangeDetectorRef,
+        protected translate: TranslatePipe,
+        protected cdr: ChangeDetectorRef,
     ) {}
 
     ngOnInit() {
