@@ -1,3 +1,11 @@
+# 1.17.13 (2020-04-10)
+
+### Improvements
+- **Filtered checkbox group**:
+  - Don't use unexisting two way data-binding in filtered checkbox group template [mathide-pellerin]
+  - Allow the usage of `FilteredCheckboxGroupComponent` as base class by setting its constructor properties `protected` [mathide-pellerin]
+  - Add Doc page for `FilteredCheckboxGroupComponent` [mathide-pellerin]
+
 # 1.17.12 (2020-04-09)
 
 ### Bugfix
