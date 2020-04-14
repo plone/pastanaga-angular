@@ -1,3 +1,8 @@
+# 1.17.15 (2020-04-14)
+
+### Improvement
+- Dialog: change default dialog size to 600x720 [mathilde-pellerin]
+
 # 1.17.14 (2020-04-14)
 
 ### Bugfix
