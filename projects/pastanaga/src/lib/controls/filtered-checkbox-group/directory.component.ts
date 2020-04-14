@@ -10,13 +10,14 @@ const firstLetterRegExp = new RegExp('[a-zA-Z]');
     styleUrls: ['./directory.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class DirectoryComponent {
     @Input() set values(values: ControlModel[]) {
         this._values = values;
         this.createMap();
     }
-    @Input() set selectedLetter(value: string) { this._selectedLetter = value; }
+    @Input() set selectedLetter(value: string) {
+        this._selectedLetter = value;
+    }
     _selectedLetter = '';
     directory = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
                  'V', 'W', 'X', 'Y', 'Z'];
