@@ -1,3 +1,8 @@
+# 1.17.16 (2020-04-14)
+
+### Bugfix
+- Do not focus on input after every view check [ebrehault]
+
 # 1.17.15 (2020-04-14)
 
 ### Improvement
