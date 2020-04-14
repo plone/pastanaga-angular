@@ -52,22 +52,22 @@
         background: rgba($blue, 0.12);
     }
     &-link-primary .pa-dropdown-link-wrapper {
-        color: $blue;
+        color: $primary-color;
     }
     &-link-primary:hover .pa-dropdown-link-wrapper {
-        color: $blue-contrast;
+        color: $button-primary-hover-color;
     }
     &-link-secondary .pa-dropdown-link-wrapper {
-        color: $brown;
+        color: $secondary-color;
     }
     &-link-secondary:hover .pa-dropdown-link-wrapper {
-        color: $brown-contrast;
+        color: $button-secondary-hover-color;
     }
     &-link-destructive .pa-dropdown-link-wrapper {
-        color: $red;
+        color: $destructive-color;
     }
     &-link-destructive:hover .pa-dropdown-link-wrapper {
-        color: $red-contrast;
+        color: $button-destructive-hover-color;
     }
     &-link-disabled {
         cursor: default;
