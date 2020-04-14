@@ -9,7 +9,7 @@ import {
     Optional,
     Output,
     ViewChild,
-    AfterViewChecked,
+    AfterViewInit,
     OnDestroy,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -48,7 +48,7 @@ const REPLACE_LT_GT = new RegExp(/[<>]/g);
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent extends TextfieldCommon implements OnInit, AfterViewChecked, OnDestroy {
+export class InputComponent extends TextfieldCommon implements OnInit, AfterViewInit, OnDestroy {
     @Input() type = 'text';
     @Input() maxCharacters?: number;
     @Input()
@@ -91,7 +91,7 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
         }
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewInit() {
         if (this._platform.isBrowser && !!this.input) {
             this._autofillMonitor
                 .monitor(this.input.nativeElement)
