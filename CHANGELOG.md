@@ -1,3 +1,8 @@
+# 1.17.14 (2020-04-14)
+
+### Bugfix
+- Use primary colors on dropdown [barcafa]
+
 # 1.17.13 (2020-04-10)
 
 ### Improvements
