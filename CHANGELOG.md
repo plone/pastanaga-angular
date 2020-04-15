@@ -1,3 +1,8 @@
+# 1.17.17 (2020-04-15)
+
+### Bugfix
+- Fix select field label position [ebrehault]
+
 # 1.17.16 (2020-04-14)
 
 ### Bugfix
