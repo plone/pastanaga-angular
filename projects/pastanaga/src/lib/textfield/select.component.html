@@ -1,6 +1,7 @@
 <div class="pa-field pa-field-select" [class.pa-field-error]="hasError || !!errorMessage">
     <select class="pa-field-control" [id]="id" [attr.disabled]="_disabled ? true : null"
             [class.pa-field-control-lessen]="_lessen"
+            [class.pa-field-control-filled]="!!value || value === 0"
             [class.pa-field-control-readonly-lessen]="_lessen && _readOnly"
             [class.pa-field-control-accent]="_accent"
             [attr.readonly]="_readOnly"
