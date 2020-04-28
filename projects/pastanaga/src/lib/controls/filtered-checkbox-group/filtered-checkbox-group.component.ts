@@ -28,7 +28,6 @@ let nextId = 0;
     styleUrls: ['./filtered-checkbox-group.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDestroy {
     @Input() id?: string;
     @Input() checkboxes?: ControlModel[];
@@ -46,6 +45,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() checkboxesChange: EventEmitter<ControlModel[]> = new EventEmitter();
 
+    _id = '';
     _checkboxes: ControlModel[] = [];
     isFiltered = false;
     isAllSelected = false;
@@ -69,7 +69,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     ) {}
 
     ngOnInit() {
-        this.id = !this.id ? `fieldset-filtered-checkbox-group-${nextId++}` : `${this.id}-filtered-checkbox-group`;
+        this._id = !this.id ? `fieldset-filtered-checkbox-group-${nextId++}` : `${this.id}-filtered-checkbox-group`;
         this.keyUp.pipe(
             takeUntil(this.terminator),
             debounceTime(500),
@@ -117,7 +117,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
         this.emitSelectionChanged();
     }
 
-    private updateSelectionCount() {
+    protected updateSelectionCount() {
         this.totalSelected = this._checkboxes.filter(control => control.isSelected).length;
         const label = 'pastanaga.' + (this.isAllSelected ? 'deselect' : 'select') + '-' + (this.isFiltered ? 'filtered' : 'all');
         this.selectAllLabel = this.translate.transform(label);
@@ -129,7 +129,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
         this.checkboxesChange.emit(this._checkboxes);
     }
 
-    private filterByTerm() {
+    protected filterByTerm() {
         const term = (this.filter || '').toLocaleLowerCase();
         this.selectedLetter = '';
         this._checkboxes = (this._checkboxes || []).map(ctl => ({
@@ -149,7 +149,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
         this.applyFilter();
     }
 
-    private applyFilter() {
+    protected applyFilter() {
         this.filtered = this._checkboxes.filter(ctl =>
             (ctl.isFiltered || (!this.filter && !this.selectedLetter)) && // we keep filtered ones only, or all if no current filtering
             (this.viewAll || ctl.isSelected) // but when viewing selected only, we just keep selected ones
