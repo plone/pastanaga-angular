@@ -45,6 +45,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     @Output() selection: EventEmitter<string[]> = new EventEmitter();
     @Output() checkboxesChange: EventEmitter<ControlModel[]> = new EventEmitter();
 
+    _id = '';
     _checkboxes: ControlModel[] = [];
     isFiltered = false;
     isAllSelected = false;
@@ -68,7 +69,7 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
     ) {}
 
     ngOnInit() {
-        this.id = !this.id ? `fieldset-filtered-checkbox-group-${nextId++}` : `${this.id}-filtered-checkbox-group`;
+        this._id = !this.id ? `fieldset-filtered-checkbox-group-${nextId++}` : `${this.id}-filtered-checkbox-group`;
         this.keyUp.pipe(
             takeUntil(this.terminator),
             debounceTime(500),
