@@ -1,3 +1,10 @@
+# 1.17.18 (2020-04-28)
+
+### Improvements
+- **Filtered checkbox group**: [mathilde-pellerin]
+    - Make filtered checkbox group extendable
+    - Don't override id input
+
 # 1.17.17 (2020-04-15)
 
 ### Bugfix
