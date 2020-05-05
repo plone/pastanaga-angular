@@ -103,7 +103,7 @@ export class DialogComponent extends BaseDialogComponent implements OnInit, Afte
             this._isContentShadowBottom = $event.target.scrollHeight - $event.target.clientHeight - scrollTop > 20;
             markForCheck(this.cdr);
             setTimeout(() => {
-                this._staySmall = scrollTop === 0;
+                this._staySmall = $event.target.scrollTop === 0;
                 markForCheck(this.cdr);
             });
         }
