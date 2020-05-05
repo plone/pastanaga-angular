@@ -1,3 +1,8 @@
+# 1.17.19 (2020-05-05)
+
+### Bugfix
+- **Dialog**: fix band size on scroll 
+
 # 1.17.18 (2020-04-28)
 
 ### Improvements
