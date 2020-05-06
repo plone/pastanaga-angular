@@ -1,3 +1,8 @@
+# 1.17.21 (2020-05-06)
+
+### Bug fix
+- **Translare**: don't try to encode HTML tags in translation parameters when not a string [mathilde-pellerin]
+
 # 1.17.20 (2020-05-06)
 
 ### Security fix

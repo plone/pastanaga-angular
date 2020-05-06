@@ -31,8 +31,11 @@ export class TranslatePipe implements PipeTransform {
             this.lastParams = args;
             let value = this.value;
             Object.keys(args).forEach(param => {
-                const encodedStr = !!args[param] ? args[param].replace(HTML_TAG_DELIMITERS, c => '&#' + c.charCodeAt(0) + ';') : '';
-                value = value.replace(new RegExp(`{{${param}}}`, 'g'), encodedStr);
+                let paramValue = args[param];
+                if (typeof paramValue === 'string') {
+                    paramValue = paramValue.replace(HTML_TAG_DELIMITERS, c => '&#' + c.charCodeAt(0) + ';');
+                }
+                value = value.replace(new RegExp(`{{${param}}}`, 'g'), paramValue);
             });
             this.value = value;
         }
