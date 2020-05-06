@@ -1,3 +1,8 @@
+# 1.17.20 (2020-05-06)
+
+### Security fix
+- **Translate**: encode HTML tags in translation parameters to avoid HTML injection [ebrehault]
+
 # 1.17.19 (2020-05-05)
 
 ### Bugfix
