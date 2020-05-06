@@ -1,4 +1,7 @@
 import { Pipe, PipeTransform, Inject } from '@angular/core';
+
+const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
+
 @Pipe({
   name: 'translate',
   pure: true,
@@ -28,7 +31,8 @@ export class TranslatePipe implements PipeTransform {
             this.lastParams = args;
             let value = this.value;
             Object.keys(args).forEach(param => {
-                value = value.replace(new RegExp(`{{${param}}}`, 'g'), args[param]);
+                const encodedStr = !!args[param] ? args[param].replace(HTML_TAG_DELIMITERS, c => '&#' + c.charCodeAt(0) + ';') : '';
+                value = value.replace(new RegExp(`{{${param}}}`, 'g'), encodedStr);
             });
             this.value = value;
         }
