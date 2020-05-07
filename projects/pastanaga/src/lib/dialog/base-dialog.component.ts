@@ -80,4 +80,8 @@ export class BaseDialogComponent implements OnInit, AfterContentInit {
             $event.stopPropagation();
         }
     }
+
+    refresh() {
+        markForCheck(this.cdr);
+    }
 }
