@@ -1,3 +1,8 @@
+# 1.17.22 (2020-05-07)
+
+### Bug fix
+- **Dialog**: detect change when opening a confirm dialog [ebrehault]
+
 # 1.17.21 (2020-05-06)
 
 ### Bug fix
