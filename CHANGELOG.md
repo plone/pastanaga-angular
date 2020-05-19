@@ -1,3 +1,8 @@
+# 1.18.0 (2020-05-19)
+
+### Breaking change
+- **Button**: remove `pa-button-link` (to remove dependency to @angular/router and angular-traversal) [ebrehault]
+
 # 1.17.22 (2020-05-07)
 
 ### Bug fix

@@ -9,7 +9,7 @@ export * from './lib/badge/badge.component';
 
 export * from './lib/button/button.module';
 export * from './lib/button/button.component';
-export * from './lib/button/button-link.component';
+export * from './lib/button/button-base';
 
 export * from './lib/common/utils';
 export * from './lib/test.utils';
