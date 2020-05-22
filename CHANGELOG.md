@@ -1,3 +1,8 @@
+# 1.18.1 (2020-05-22)
+
+### Bug fix
+- **Textarea**: fix missing default accent for textarea [barcafa]
+
 # 1.18.0 (2020-05-19)
 
 ### Breaking change

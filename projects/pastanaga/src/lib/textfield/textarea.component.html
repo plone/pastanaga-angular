@@ -1,4 +1,4 @@
-<div class="pa-field pa-field-textarea" [class.pa-field-error]="hasError || !!errorMessage">
+<div class="pa-field pa-field-textarea" [class.pa-accent]="_accent" [class.pa-field-error]="hasError || !!errorMessage">
     <textarea class="pa-field-control" #element [id]="id" [attr.aria-describedby]="helpId"
               [attr.placeholder]="placeholder | translate"
               [class.pa-field-control-placeholder-shown]="isPlaceholderShown"
