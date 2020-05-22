@@ -233,6 +233,7 @@ export class Toaster {
                 (<ToastComponent>toastComponentRef.instance).dismiss.subscribe(
                     toastToDismiss => this.dismiss(toastToDismiss.toast, toastToDismiss.button)
                 );
+                (<ToastComponent>toastComponentRef.instance).refresh();
     
                 this.toasts.push(toastComponentRef);
             }

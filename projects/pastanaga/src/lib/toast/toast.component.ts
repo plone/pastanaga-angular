@@ -1,6 +1,7 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ToastModel } from './toast.model';
 import { keyboardKeys } from '../keycodes.constant';
+import { markForCheck } from '../common/utils';
 
 const ARIA_KEY = 'pa-aria-';
 const DELAY = 5000;
@@ -9,7 +10,8 @@ const HAS_LINK = /.*(\[(.+)\|(.+)\]).*/g;
 @Component({
     selector: 'pa-toast',
     templateUrl: './toast.component.html',
-    styleUrls: ['./toast.component.scss']
+    styleUrls: ['./toast.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastComponent implements OnInit {
 
@@ -23,7 +25,7 @@ export class ToastComponent implements OnInit {
     isSibling = false;
     isDismissed = false;
 
-    constructor() {}
+    constructor(protected cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         if (!!this.toast) {
@@ -83,5 +85,9 @@ export class ToastComponent implements OnInit {
         if ($event.key === keyboardKeys.esc) {
             this.handleDismiss();
         }
+    }
+
+    refresh() {
+        markForCheck(this.cdr);
     }
 }
