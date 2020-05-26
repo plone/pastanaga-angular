@@ -1,3 +1,8 @@
+# 1.18.2 (2020-05-26)
+
+### Improvements
+- Expose Toaster and Dialog services in Pastanaga service [ebrehault]
+
 # 1.18.1 (2020-05-22)
 
 ### Bug fix
