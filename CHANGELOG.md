@@ -1,3 +1,8 @@
+# 1.18.3 (2020-05-28)
+
+### Bug fix
+- **Toaster**: detect change after instantiation [ebrehault]
+
 # 1.18.2 (2020-05-26)
 
 ### Improvements
