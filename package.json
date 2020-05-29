@@ -49,7 +49,7 @@
     "mrs-developer": "^1.1.3",
     "ng-packagr": "^9.0.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
+    "tslint": "~6.1.0",
     "typescript": "~3.7.5"
   },
   "jest": {
