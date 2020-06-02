@@ -1,18 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Marker, Normalizer, Resolver, TraversalModule } from 'angular-traversal';
 
 import { AppComponent } from './app.component';
-import { PastanagaAngularModule } from '../../../pastanaga-angular/src/lib/pastanaga-angular.module';
+import { AppResolver } from './app.resolver';
+import { AppMarker } from './app.marker';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { PaDemoModule } from './demo/demo.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+    declarations: [
+        AppComponent,
+        WelcomePageComponent,
+    ],
     imports: [
         BrowserModule,
-        PastanagaAngularModule
+        TraversalModule,
+        PaDemoModule,
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [
+        {provide: Marker, useClass: AppMarker},
+        {provide: Resolver, useClass: AppResolver},
+        {provide: Normalizer},
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

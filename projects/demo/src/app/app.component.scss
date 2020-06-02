@@ -1,0 +1,8 @@
+@import "../../../pastanaga-angular/src/lib/styles/variables";
+
+:host {
+    .view-container {
+        margin-left: rhythm(20);
+        padding: rhythm(1.5) rhythm(10) rhythm(2.5) rhythm(10);
+    }
+}

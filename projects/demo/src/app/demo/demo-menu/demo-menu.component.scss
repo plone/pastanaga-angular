@@ -1,0 +1,48 @@
+@import "../../../../../pastanaga-angular/src/lib/styles/variables";
+
+
+// FIXME: color tokens
+$menu-width: rhythm(20);
+.demo-menu-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    background: $color-neutral-lighter;
+    min-width: $menu-width;
+    width: $menu-width;
+    max-width: $menu-width;
+
+    height: 100vh;
+    padding: rhythm(2.5);
+
+    a img {
+        width: 100%;
+        margin-bottom: rhythm(2.5);
+    }
+
+    nav {
+        .pa-doc-menu-section {
+            margin-bottom: rhythm(2.5);
+
+            .pa-doc-menu-title {
+                font-weight: $font-weight-bold;
+                font-size: rhythm(1);
+                color: $color-text-title-default;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: rhythm(.5);
+                }
+                li > a {
+                    text-decoration: none;
+                    color: $color-neutral-dark;
+                }
+            }
+        }
+    }
+}

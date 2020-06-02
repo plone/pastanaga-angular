@@ -15,8 +15,11 @@
         "url": "https://github.com/guillotinaweb/pastanaga-angular/issues"
     },
     "peerDependencies": {
+        "@angular/cdk": "^9.2.4",
         "@angular/common": "^9.1.9",
-        "@angular/core": "^9.1.9"
+        "@angular/core": "^9.1.9",
+        "angular-svg-icon": "^9.2.0",
+        "date-fns": "^2.14.0"
     },
     "publishConfig": {
         "access": "public"

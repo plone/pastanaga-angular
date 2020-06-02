@@ -1,27 +1,65 @@
-# PastanagaAngular
+# Pastanaga Angular Components
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+[![Build Status](https://travis-ci.com/plone/pastanaga-angular.svg?branch=master)](https://travis-ci.com/plone/pastanaga-angular)
 
-## Development server
+Provides Pastanaga elements as Angular components.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+See https://plone.github.io/pastanaga-angular for usage example and developer guide.
 
-## Code scaffolding
+## Theming
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Core style and assets
+In your application project, declare Pastanaga assets in `angular.json`:
+- when using npm package:
+```json
+"assets": [
+    "src/favicon.ico",
+    "src/assets",
+    {
+        "glob": "**/*",
+        "input": "./node_modules/@guillotinaweb/pastanaga-angular/assets",
+        "output": "assets"
+    }
+]
+```
+- when using mrs-developer:
+```json
+"assets": [
+    "src/favicon.ico",
+    "src/assets",
+    {
+        "glob": "**/*",
+        "input": "./src/develop/pastanaga-angular/projects/pastanaga-angular/assets",
+        "output": "assets"
+    }
+]
+```
 
-## Build
+Import Pastanaga core style in main app style (usually `src/styles.scss`):
+- when using npm package:
+```scss
+@import "~@guillotinaweb/pastanaga-angular/lib/styles/core";
+```
+- when using mrs-developer
+```scss
+@import "./develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/core";
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Fonts
 
-## Running unit tests
+To use Pastanaga fonts in your application, declare font-path and import fonts in main app style:
+ 
+- when using npm package:
+```scss
+$font-path: '~@guillotinaweb/pastanaga-angular/lib/styles/fonts';
+@import "~@guillotinaweb/pastanaga-angular/lib/styles/fonts";
+```
+- when using mrs-developer
+```scss
+$font-path: './develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/fonts';
+@import "./develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/fonts";
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Overriding theme
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+// TODO

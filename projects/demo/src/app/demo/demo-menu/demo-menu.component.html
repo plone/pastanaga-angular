@@ -1,0 +1,20 @@
+<div class="demo-menu-sidebar">
+    <a href="#" traverseTo="@@welcome" tabindex="-1">
+        <img [src]="logo" alt="Logo" tabindex="0">
+    </a>
+
+    <nav>
+        <div *ngFor="let section of menu" class="pa-doc-menu-section">
+            <div class="pa-doc-menu-title">{{section.title}}</div>
+            <ul>
+                <li *ngFor="let page of section.pages"><a [traverseTo]="'/@@' + page.view" href="#">{{page.title}}</a></li>
+            </ul>
+        </div>
+        <div class="pa-doc-menu-section">
+            <div class="pa-doc-menu-title">Other</div>
+            <ul>
+                <li><a href="https://github.com/plone/pastanaga-angular" target="_blank">Pastanaga on Github</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>

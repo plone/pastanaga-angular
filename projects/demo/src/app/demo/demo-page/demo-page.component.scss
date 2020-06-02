@@ -1,0 +1,55 @@
+@import "../../../../../pastanaga-angular/src/lib/styles/variables";
+
+pa-demo-page {
+    .doc-page-title {
+        @include font-size(dsmall);
+        font-weight: $font-weight-thin;
+    }
+
+    .doc-page-title,
+    .doc-section-title {
+        margin-bottom: rhythm(2.5);
+    }
+
+    section.doc-section {
+        margin-bottom: rhythm(4);
+
+        .doc-section-title {
+            @include font-size(dxsmall);
+        }
+    }
+
+    pa-demo-usage dl {
+        display: flex;
+        flex-wrap: wrap;
+        font-weight: $font-weight-normal;
+
+        dt {
+            flex: 1 0 20%;
+            min-width: rhythm(17);
+            font-weight: $font-weight-strong;
+        }
+        dd {
+            flex: 1 0 80%;
+
+            small {
+                color: $color-neutral-light;
+            }
+            code {
+                display: inline;
+                background: none;
+                margin: 0;
+                padding: 0 rhythm(.25);
+            }
+        }
+    }
+
+    pa-demo-examples {
+        display: block;
+        margin-bottom: rhythm(1);
+
+        > * {
+            margin-right: rhythm(2.5);
+        }
+    }
+}
