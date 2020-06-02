@@ -1,0 +1,24 @@
+{
+    "name": "@guillotinaweb/pastanaga-angular",
+    "description": "Provides Pastanaga UI elements as Angular components",
+    "version": "2.0.0",
+    "license": "MIT",
+    "keywords": [
+        "angular",
+        "pastanaga"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/guillotinaweb/pastanaga-angular"
+    },
+    "bugs": {
+        "url": "https://github.com/guillotinaweb/pastanaga-angular/issues"
+    },
+    "peerDependencies": {
+        "@angular/common": "^9.1.9",
+        "@angular/core": "^9.1.9"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
