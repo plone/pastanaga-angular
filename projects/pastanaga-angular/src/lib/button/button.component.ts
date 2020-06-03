@@ -40,7 +40,7 @@ export class ButtonComponent implements AfterContentInit, OnInit {
             this._type = value;
         }
     }
-    @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
+    @Input() set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
 
     @ViewChild('textContainer') textContainer?: ElementRef;
 

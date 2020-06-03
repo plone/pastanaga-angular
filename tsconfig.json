@@ -3,6 +3,13 @@
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist/out-tsc",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "resolveJsonModule": true,
         "sourceMap": true,
         "declaration": false,
         "downlevelIteration": true,
@@ -10,9 +17,6 @@
         "esModuleInterop": true,
         "module": "esnext",
         "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "strictNullChecks": true,
-        "strictPropertyInitialization": true,
         "importHelpers": true,
         "target": "es2015",
         "lib": [
