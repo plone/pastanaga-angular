@@ -10,6 +10,9 @@ import {
 } from './demo.directives';
 import { DemoMenuComponent } from './demo-menu/demo-menu.component';
 import { TraversalModule } from 'angular-traversal';
+import { ButtonPageComponent } from './button-page/button-page.component';
+import { ButtonModule } from '../../../../pastanaga-angular/src';
+
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -19,12 +22,16 @@ const COMPONENTS = [
     DemoExamplesDirective,
     DemoUsageDirective,
     DemoCodeDirective,
+
+    ButtonPageComponent,
 ];
 
 @NgModule({
     imports: [
         CommonModule,
-        TraversalModule
+        TraversalModule,
+
+        ButtonModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

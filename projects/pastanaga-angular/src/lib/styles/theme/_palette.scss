@@ -23,7 +23,7 @@ $white: #fff;
 
 $obsidian: $gray30; $midnight: $blue30; $velvet:     $red30;    $maple: $yellow30;      $bottle: $green30;
                     $twilight: $blue40; $wine:       $red40;    $gold:  $yellow40;      $nopal:  $green40;
-$carbon: $gray50;   $ocean:    $blue50; $gazpacho:   $red50;                            $basil:  $green50;
+$carbon: $gray50;   $ocean:    $blue50; $gazpacho:   $red50;    $mango: $yellow50;                       $basil:  $green50;
                     $sky:      $blue60; $scarlet:    $red60;    $cava:  $yellow60;      $grass:  $green60;
 $panot: $gray70;    $sail:     $blue70; $watermelon: $red70;    $honey: $yellow70;      $mint:   $green70;
                     $mist:     $blue80; $rose:       $red80;    $cream: $yellow80;
@@ -32,34 +32,45 @@ $air: $gray95;      $steam:    $blue95;
 
 
 // General tokens
-$color-neutral-darker: $tapenade !default;
-$color-neutral-dark: $obsidian !default;
+$color-neutral-darker:  $tapenade !default;
+$color-neutral-dark:    $obsidian !default;
 $color-neutral-regular: $carbon !default;
-$color-neutral-light: $panot !default;
+$color-neutral-light:   $panot !default;
 $color-neutral-lighter: $salt !default;
+$color-neutral-faded:   $air !default;
 
-$color-semantic-informative: $sky !default;
-$color-semantic-success: $nopal !default;
-$color-semantic-warning: $gold !default;
-$color-semantic-critical: $wine !default;
+$color-primary-darker:  $midnight !default;
+$color-primary-dark:    $twilight !default;
+$color-primary-regular: $ocean !default;
+$color-primary-light:   $sky !default;
+$color-primary-lighter: $sail !default;
+$color-primary-pale:    $mist !default;
+$color-primary-faded:   $steam !default;
 
-// Background
-$color-background-body: $white !default;
+$color-critical-darker:     $velvet !default;
+$color-critical-dark:       $wine !default;
+$color-critical-regular:    $gazpacho !default;
+$color-critical-light:      $scarlet !default;
+$color-critical-lighter:    $watermelon !default;
+$color-critical-pale:       $rose !default;
 
-// Text
-$color-text-body-accent: $color-neutral-darker;
-$color-text-body-regular: $color-neutral-dark;
-$color-text-body-dim: $color-neutral-regular;
-$color-text-body-disabled: $color-neutral-light;
+$color-support1-darker:     $maple !default;
+$color-support1-dark:       $gold !default;
+$color-support1-regular:    $mango !default;
+$color-support1-light:      $cava !default;
+$color-support1-lighter:    $honey !default;
+$color-support1-pale:       $cream !default;
 
-$color-text-body-informative: $color-semantic-informative;
-$color-text-body-success: $color-semantic-success;
-$color-text-body-warning: $color-semantic-warning;
-$color-text-body-critical: $color-semantic-critical;
+$color-support2-darker:     $bottle !default;
+$color-support2-dark:       $nopal !default;
+$color-support2-regular:    $basil !default;
+$color-support2-light:      $grass !default;
+$color-support2-lighter:    $mint !default;
 
-$color-text-link-regular: $ocean;
-$color-text-link-regular-hover: $twilight;
+$color-semantic-informative:    $sky !default;
+$color-semantic-success:        $nopal !default;
+$color-semantic-warning:        $gold !default;
+$color-semantic-critical:       $wine !default;
 
-$color-text-title-default: $color-neutral-darker;
 
 

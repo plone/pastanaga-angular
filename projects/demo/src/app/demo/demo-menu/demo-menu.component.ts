@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, Type } from '@angular/core';
 
 
-export interface IDocMenuSection {
+export interface IDemoMenuSection {
     title: string;
     pages: {view: string, title: string, type: Type<any>}[];
 }
@@ -13,7 +13,7 @@ export interface IDocMenuSection {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DemoMenuComponent implements OnInit {
-    @Input() menu: IDocMenuSection[] = [];
+    @Input() menu: IDemoMenuSection[] = [];
     @Input() logo = './assets/p-angular.svg';
 
     constructor() {

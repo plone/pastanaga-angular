@@ -1,0 +1,20 @@
+@import "palette";
+
+// Background
+$color-background-body: $white !default;
+
+// Text
+$color-text-body-accent: $color-neutral-darker;
+$color-text-body-regular: $color-neutral-dark;
+$color-text-body-dim: $color-neutral-regular;
+$color-text-body-disabled: $color-neutral-light;
+
+$color-text-body-informative: $color-semantic-informative;
+$color-text-body-success: $color-semantic-success;
+$color-text-body-warning: $color-semantic-warning;
+$color-text-body-critical: $color-semantic-critical;
+
+$color-text-link-regular: $ocean;
+$color-text-link-regular-hover: $twilight;
+
+$color-text-title-default: $color-neutral-darker;

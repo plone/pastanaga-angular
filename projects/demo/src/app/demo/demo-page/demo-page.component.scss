@@ -3,7 +3,6 @@
 pa-demo-page {
     .doc-page-title {
         @include font-size(dsmall);
-        font-weight: $font-weight-thin;
     }
 
     .doc-page-title,
@@ -50,6 +49,10 @@ pa-demo-page {
 
         > * {
             margin-right: rhythm(2.5);
+        }
+
+        .configuration {
+            margin-top: rhythm(2.5);
         }
     }
 }

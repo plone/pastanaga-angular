@@ -1,0 +1,212 @@
+@import "variables";
+
+.pa-button {
+    background: transparent;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: 0;
+    white-space: nowrap;
+    border: none;
+    border-radius: $border-radius;
+
+
+    &.pa-xsmall {
+        @include font-size(xs);
+        padding: rhythm(.5) rhythm(.75);
+    }
+    &.pa-small {
+        @include font-size(s);
+        padding: calc(#{rhythm(.75)} - 1px) rhythm(1);
+    }
+    &.pa-medium {
+        @include font-size(m);
+        padding: rhythm(1);
+    }
+    &.pa-large {
+        @include font-size(l);
+        padding: rhythm(1.25) rhythm(2);
+    }
+
+    &.pa-primary {
+        &.pa-accent {
+            color: $color-text-button-primary-accent;
+            background: $color-background-button-primary-accent;
+            border: $border-button-primary-accent;
+
+            &:hover {
+                color: $color-text-button-primary-accent-hover;
+                background: $color-background-button-primary-accent-hover;
+                border: $border-button-primary-accent-hover;
+            }
+            &:active {
+                color: $color-text-button-primary-accent-active;
+                background: $color-background-button-primary-accent-active;
+                border: $border-button-primary-accent-active;
+            }
+        }
+
+        &.pa-regular {
+            color: $color-text-button-primary-regular;
+            background: $color-background-button-primary-regular;
+            border: $border-button-primary-regular;
+
+            &:hover {
+                color: $color-text-button-primary-regular-hover;
+                background: $color-background-button-primary-regular-hover;
+                border: $border-button-primary-regular-hover;
+            }
+            &:active {
+                color: $color-text-button-primary-regular-active;
+                background: $color-background-button-primary-regular-active;
+                border: $border-button-primary-regular-active;
+            }
+        }
+
+        &.pa-dim {
+            color: $color-text-button-primary-dim;
+            background: $color-background-button-primary-dim;
+            border: $border-button-primary-dim;
+
+            &:hover {
+                color: $color-text-button-primary-dim-hover;
+                background: $color-background-button-primary-dim-hover;
+                border: $border-button-primary-dim-hover;
+            }
+            &:active {
+                color: $color-text-button-primary-dim-active;
+                background: $color-background-button-primary-dim-active;
+                border: $border-button-primary-dim-active;
+            }
+        }
+    }
+
+    &.pa-secondary {
+        &.pa-accent {
+            color: $color-text-button-secondary-accent;
+            background: $color-background-button-secondary-accent;
+            border: $border-button-secondary-accent;
+
+            &:hover {
+                color: $color-text-button-secondary-accent-hover;
+                background: $color-background-button-secondary-accent-hover;
+                border: $border-button-secondary-accent-hover;
+            }
+            &:active {
+                color: $color-text-button-secondary-accent-active;
+                background: $color-background-button-secondary-accent-active;
+                border: $border-button-secondary-accent-active;
+            }
+        }
+
+        &.pa-regular {
+            color: $color-text-button-secondary-regular;
+            background: $color-background-button-secondary-regular;
+            border: $border-button-secondary-regular;
+
+            &:hover {
+                color: $color-text-button-secondary-regular-hover;
+                background: $color-background-button-secondary-regular-hover;
+                border: $border-button-secondary-regular-hover;
+            }
+            &:active {
+                color: $color-text-button-secondary-regular-active;
+                background: $color-background-button-secondary-regular-active;
+                border: $border-button-secondary-regular-active;
+            }
+        }
+
+        &.pa-dim {
+            color: $color-text-button-secondary-dim;
+            background: $color-background-button-secondary-dim;
+            border: $border-button-secondary-dim;
+
+            &:hover {
+                color: $color-text-button-secondary-dim-hover;
+                background: $color-background-button-secondary-dim-hover;
+                border: $border-button-secondary-dim-hover;
+            }
+            &:active {
+                color: $color-text-button-secondary-dim-active;
+                background: $color-background-button-secondary-dim-active;
+                border: $border-button-secondary-dim-active;
+            }
+        }
+    }
+
+    &.pa-critical {
+        &.pa-accent {
+            color: $color-text-button-critical-accent;
+            background: $color-background-button-critical-accent;
+            border: $border-button-critical-accent;
+
+            &:hover {
+                color: $color-text-button-critical-accent-hover;
+                background: $color-background-button-critical-accent-hover;
+                border: $border-button-critical-accent-hover;
+            }
+            &:active {
+                color: $color-text-button-critical-accent-active;
+                background: $color-background-button-critical-accent-active;
+                border: $border-button-critical-accent-active;
+            }
+        }
+
+        &.pa-regular {
+            color: $color-text-button-critical-regular;
+            background: $color-background-button-critical-regular;
+            border: $border-button-critical-regular;
+
+            &:hover {
+                color: $color-text-button-critical-regular-hover;
+                background: $color-background-button-critical-regular-hover;
+                border: $border-button-critical-regular-hover;
+            }
+            &:active {
+                color: $color-text-button-critical-regular-active;
+                background: $color-background-button-critical-regular-active;
+                border: $border-button-critical-regular-active;
+            }
+        }
+
+        &.pa-dim {
+            color: $color-text-button-critical-dim;
+            background: $color-background-button-critical-dim;
+            border: $border-button-critical-dim;
+
+            &:hover {
+                color: $color-text-button-critical-dim-hover;
+                background: $color-background-button-critical-dim-hover;
+                border: $border-button-critical-dim-hover;
+            }
+            &:active {
+                color: $color-text-button-critical-dim-active;
+                background: $color-background-button-critical-dim-active;
+                border: $border-button-critical-dim-active;
+            }
+        }
+    }
+
+    &:disabled {
+        &.pa-accent {
+            color: $color-text-button-accent-disabled;
+            background: $color-background-button-accent-disabled;
+            border: $border-button-accent-disabled;
+        }
+        &.pa-regular {
+            color: $color-text-button-regular-disabled;
+            background: $color-background-button-regular-disabled;
+            border: $border-button-regular-disabled;
+        }
+        &.pa-dim {
+            color: $color-text-button-dim-disabled;
+            background: $color-background-button-dim-disabled;
+            border: $border-button-dim-disabled;
+        }
+    }
+
+    .pa-button-wrapper {
+        // FIXME: is this class needed?
+    }
+}

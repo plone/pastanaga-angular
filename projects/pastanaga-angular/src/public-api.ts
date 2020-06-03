@@ -3,5 +3,8 @@
  */
 
 export * from './lib/pastanaga.service';
-export * from './lib/pastanaga-angular.component';
-export * from './lib/pastanaga-angular.module';
+
+export * from './lib/common';
+
+export * from './lib/button/button.module';
+export * from './lib/button/button.component';

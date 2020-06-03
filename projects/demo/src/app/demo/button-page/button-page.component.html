@@ -1,0 +1,56 @@
+<pa-demo-page>
+    <pa-demo-title>Buttons</pa-demo-title>
+
+    <pa-demo-description>Buttons can contain text, icon or both.</pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-button [kind]="selectedKind"
+                   [size]="selectedSize"
+                   [weight]="selectedWeight"
+                   [disabled]="disabledState"
+        >text</pa-button>
+
+        <div class="configuration">
+            <h3>Configuration options</h3>
+            <div>
+                <select name="kind" id="kind" [value]="selectedKind" (change)="updateKind($event.target.value)">
+                    <option [disabled]="!!selectedKind" [selected]="!selectedKind">Select a kind</option>
+                    <option value="primary">primary</option>
+                    <option value="secondary">secondary</option>
+                    <option value="critical">critical</option>
+                </select>
+            </div>
+
+            <div>
+                <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
+                    <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
+                    <option value="xsmall">xsmall</option>
+                    <option value="small">small</option>
+                    <option value="medium">medium</option>
+                    <option value="large">large</option>
+                </select>
+            </div>
+
+            <div>
+                <select name="weight" id="weight" [value]="selectedWeight" (change)="updateWeight($event.target.value)">
+                    <option [disabled]="!!selectedWeight" [selected]="!selectedWeight">Select a weight</option>
+                    <option value="accent">accent</option>
+                    <option value="regular">regular</option>
+                    <option value="dim">dim</option>
+                </select>
+            </div>
+            <div>
+                <input id="disabled" type="checkbox" [checked]="disabledState" (change)="disabledState = !disabledState">
+                <label for="disabled">Disabled state</label>
+            </div>
+        </div>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        TODO
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        TODO
+    </pa-demo-code>
+</pa-demo-page>

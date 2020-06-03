@@ -81,8 +81,10 @@ body {
 // By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
     // TODO: setup default margin bottom with spacing from theme
+    margin-top: 0;
+    font-family: inherit;
+    font-weight: $font-weight-title;
 }
 
 // Reset margins on paragraphs
