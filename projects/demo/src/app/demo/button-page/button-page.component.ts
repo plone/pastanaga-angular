@@ -7,8 +7,8 @@ import { Kind, Size, Weight } from '../../../../../pastanaga-angular/src';
 })
 export class ButtonPageComponent implements OnInit {
     selectedSize: Size = Size.medium;
-    selectedWeight: Weight = Weight.regular;
-    selectedKind: Kind = Kind.secondary;
+    selectedWeight: Weight = Weight.accent;
+    selectedKind: Kind = Kind.primary;
     disabledState = false;
 
     constructor() {

@@ -1,0 +1,7 @@
+@import "palette";
+@import "spacing";
+
+$shadow-level0: none;
+$shadow-level1: 0px 1px rhythm(.75) rgba($color-neutral-darker, 0.12), 0px 0px 4px rgba($color-neutral-darker, 0.1);
+$shadow-level2: 0px rhythm(.5) rhythm(1.5) rgba($color-neutral-darker, 0.18), 0px 0px 4px rgba($color-neutral-darker, 0.1);
+$shadow-level3: 0px rhythm(1) rhythm(3) rgba($color-neutral-darker, 0.24), 0px 0px 4px rgba($color-neutral-darker, 0.1);

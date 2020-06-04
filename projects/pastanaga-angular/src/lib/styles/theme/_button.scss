@@ -1,4 +1,10 @@
 @import "palette";
+@import "spacing";
+@import "shadows";
+
+//=====================================
+// COLORS
+//=====================================
 
 //
 // text
@@ -94,10 +100,10 @@ $color-background-button-accent-disabled:         $color-neutral-faded !default;
 $color-background-button-regular-disabled:        transparent !default;
 $color-background-button-dim-disabled:            transparent !default;
 
+//=====================================
+// BORDERS
+//=====================================
 
-//
-// border
-//
 // primary
 $border-button-primary-accent:          none !default;
 $border-button-primary-accent-hover:    none !default;
@@ -141,3 +147,20 @@ $border-button-critical-dim-active:   none !default;
 $border-button-accent-disabled: none !default;
 $border-button-regular-disabled: 1px solid $color-neutral-lighter !default;
 $border-button-dim-disabled: none !default;
+
+// radius
+$border-button-radius: 100px !default;
+
+
+//=====================================
+// SPACING and SHADOWS
+//=====================================
+
+$padding-button-xsmall: rhythm(.25) rhythm(.5) !default;
+$padding-button-small: rhythm(.5) rhythm(1) !default;
+$padding-button-medium: rhythm(.5) rhythm(1.5) !default;
+$padding-button-large: rhythm(.5) rhythm(2) !default;
+
+$shadow-button-accent-hover: $shadow-level0 !default;
+$shadow-button-regular-hover: $shadow-level0 !default;
+$shadow-button-dim-hover: $shadow-level0 !default;

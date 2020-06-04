@@ -9,24 +9,27 @@
     outline: 0;
     white-space: nowrap;
     border: none;
-    border-radius: $border-radius;
+    border-radius: $border-button-radius;
 
 
     &.pa-xsmall {
         @include font-size(xs);
-        padding: rhythm(.5) rhythm(.75);
+        padding: $padding-button-xsmall;
     }
+
     &.pa-small {
         @include font-size(s);
-        padding: calc(#{rhythm(.75)} - 1px) rhythm(1);
+        padding: $padding-button-small;
     }
+
     &.pa-medium {
         @include font-size(m);
-        padding: rhythm(1);
+        padding: $padding-button-medium;
     }
+
     &.pa-large {
         @include font-size(l);
-        padding: rhythm(1.25) rhythm(2);
+        padding: $padding-button-large;
     }
 
     &.pa-primary {
@@ -40,6 +43,7 @@
                 background: $color-background-button-primary-accent-hover;
                 border: $border-button-primary-accent-hover;
             }
+
             &:active {
                 color: $color-text-button-primary-accent-active;
                 background: $color-background-button-primary-accent-active;
@@ -57,6 +61,7 @@
                 background: $color-background-button-primary-regular-hover;
                 border: $border-button-primary-regular-hover;
             }
+
             &:active {
                 color: $color-text-button-primary-regular-active;
                 background: $color-background-button-primary-regular-active;
@@ -74,6 +79,7 @@
                 background: $color-background-button-primary-dim-hover;
                 border: $border-button-primary-dim-hover;
             }
+
             &:active {
                 color: $color-text-button-primary-dim-active;
                 background: $color-background-button-primary-dim-active;
@@ -93,6 +99,7 @@
                 background: $color-background-button-secondary-accent-hover;
                 border: $border-button-secondary-accent-hover;
             }
+
             &:active {
                 color: $color-text-button-secondary-accent-active;
                 background: $color-background-button-secondary-accent-active;
@@ -110,6 +117,7 @@
                 background: $color-background-button-secondary-regular-hover;
                 border: $border-button-secondary-regular-hover;
             }
+
             &:active {
                 color: $color-text-button-secondary-regular-active;
                 background: $color-background-button-secondary-regular-active;
@@ -127,6 +135,7 @@
                 background: $color-background-button-secondary-dim-hover;
                 border: $border-button-secondary-dim-hover;
             }
+
             &:active {
                 color: $color-text-button-secondary-dim-active;
                 background: $color-background-button-secondary-dim-active;
@@ -146,6 +155,7 @@
                 background: $color-background-button-critical-accent-hover;
                 border: $border-button-critical-accent-hover;
             }
+
             &:active {
                 color: $color-text-button-critical-accent-active;
                 background: $color-background-button-critical-accent-active;
@@ -163,6 +173,7 @@
                 background: $color-background-button-critical-regular-hover;
                 border: $border-button-critical-regular-hover;
             }
+
             &:active {
                 color: $color-text-button-critical-regular-active;
                 background: $color-background-button-critical-regular-active;
@@ -180,6 +191,7 @@
                 background: $color-background-button-critical-dim-hover;
                 border: $border-button-critical-dim-hover;
             }
+
             &:active {
                 color: $color-text-button-critical-dim-active;
                 background: $color-background-button-critical-dim-active;
@@ -194,15 +206,40 @@
             background: $color-background-button-accent-disabled;
             border: $border-button-accent-disabled;
         }
+
         &.pa-regular {
             color: $color-text-button-regular-disabled;
             background: $color-background-button-regular-disabled;
             border: $border-button-regular-disabled;
         }
+
         &.pa-dim {
             color: $color-text-button-dim-disabled;
             background: $color-background-button-dim-disabled;
             border: $border-button-dim-disabled;
+        }
+    }
+
+    &:hover {
+        &.pa-accent {
+            box-shadow: $shadow-button-accent-hover;
+            &:active {
+                box-shadow: none;
+            }
+        }
+
+        &.pa-regular {
+            box-shadow: $shadow-button-regular-hover;
+            &:active {
+                box-shadow: none;
+            }
+        }
+
+        &.pa-dim {
+            box-shadow: $shadow-button-dim-hover;
+            &:active {
+                box-shadow: none;
+            }
         }
     }
 
