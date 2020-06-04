@@ -11,7 +11,9 @@ import {
 import { DemoMenuComponent } from './demo-menu/demo-menu.component';
 import { TraversalModule } from 'angular-traversal';
 import { ButtonPageComponent } from './button-page/button-page.component';
-import { ButtonModule } from '../../../../pastanaga-angular/src';
+import { IconPageComponent } from './icon-page/icon-page.component';
+
+import { PaButtonModule, PaIconModule } from '../../../../pastanaga-angular/src';
 
 
 const COMPONENTS = [
@@ -24,6 +26,7 @@ const COMPONENTS = [
     DemoCodeDirective,
 
     ButtonPageComponent,
+    IconPageComponent,
 ];
 
 @NgModule({
@@ -31,7 +34,8 @@ const COMPONENTS = [
         CommonModule,
         TraversalModule,
 
-        ButtonModule,
+        PaButtonModule,
+        PaIconModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

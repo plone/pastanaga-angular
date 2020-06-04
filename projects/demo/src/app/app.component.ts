@@ -3,6 +3,7 @@ import { Traverser } from 'angular-traversal';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
 import { ButtonPageComponent } from './demo/button-page/button-page.component';
+import { IconPageComponent } from './demo/icon-page/icon-page.component';
 
 @Component({
     selector: 'app-root',
@@ -11,6 +12,12 @@ import { ButtonPageComponent } from './demo/button-page/button-page.component';
 })
 export class AppComponent {
     menu: IDemoMenuSection[] = [
+        {
+            title: 'Atoms',
+            pages: [
+                {view: 'icon', title: 'Icons', type: IconPageComponent},
+            ]
+        },
         {
             title: 'Components',
             pages: [

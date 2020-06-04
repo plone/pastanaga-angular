@@ -1,0 +1,63 @@
+<pa-demo-page>
+    <pa-demo-title>Icons</pa-demo-title>
+
+    <pa-demo-description>Here the list of all icons available in Pastanaga</pa-demo-description>
+
+    <pa-demo-examples>
+        <div class="pa-demo-example-configuration">
+            <label for="size">Size:</label>
+            <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
+                <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
+                <option value="xsmall" [selected]="selectedSize === 'xsmall'">xsmall</option>
+                <option value="small" [selected]="selectedSize === 'small'">small</option>
+                <option value="medium" [selected]="selectedSize === 'medium'">medium</option>
+                <option value="large" [selected]="selectedSize === 'large'">large</option>
+            </select>
+            <label for="color">Color:</label>
+            <select name="color" id="color" [value]="selectedColor" (change)="updateColor($event.target.value)">
+                <option [disabled]="!!selectedColor" [selected]="!selectedColor">Select a color</option>
+                <option value="none" [selected]="!selectedColor">None</option>
+                <option value="#0047FF" [selected]="selectedColor === '#0047FF'">Blue</option>
+            </select>
+            <label for="background">Background:</label>
+            <select name="background" id="background" [value]="selectedBackground" (change)="updateBackground($event.target.value)">
+                <option [disabled]="!!selectedBackground" [selected]="!selectedBackground">Select a background color</option>
+                <option value="none" [selected]="!selectedBackground">None</option>
+                <option value="#FFA100" [selected]="selectedBackground === '#FFA100'">Yellow</option>
+            </select>
+        </div>
+
+        <div class="icon-list-container">
+            <div  *ngFor="let iconName of icons" class="icon-container">
+                <pa-icon [name]="iconName" [size]="selectedSize" [color]="selectedColor" [background]="selectedBackground"></pa-icon>
+                <span>{{iconName}}</span>
+            </div>
+        </div>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <p>
+            You must fill one of the following properties: <code>name</code> or <code>path</code>.
+        </p>
+        <dl>
+            <dt>name</dt>
+            <dd>Name of the svg icon. Will be resolved as <code>{{nameResolvedExample}}</code>. <small>(optional)</small></dd>
+
+            <dt>path</dt>
+            <dd>Path of the icon. <small>(optional)</small></dd>
+
+            <dt>size</dt>
+            <dd>Size to be applied: xsmall | small | medium | large. <small>(default: medium)</small></dd>
+
+            <dt>color</dt>
+            <dd>Color to apply to the icon (works only with svg icons). <small>(optional)</small></dd>
+
+            <dt>background</dt>
+            <dd>Background color to apply to the icon <small>(optional)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{codeExample}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

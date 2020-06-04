@@ -41,12 +41,12 @@ $color-text-button-critical-accent-hover:       $color-text-button-critical-acce
 $color-text-button-critical-accent-active:      $color-text-button-critical-accent !default;
 
 $color-text-button-critical-regular:            $color-critical-dark !default;
-$color-text-button-critical-regular-hover:      $color-critical-darker !default;
-$color-text-button-critical-regular-active:     $white !default;
+$color-text-button-critical-regular-hover:      $color-critical-dark !default;
+$color-text-button-critical-regular-active:     $color-critical-darker !default;
 
 $color-text-button-critical-dim:                $color-critical-dark !default;
 $color-text-button-critical-dim-hover:          $color-critical-darker !default;
-$color-text-button-critical-dim-active:         $white !default;
+$color-text-button-critical-dim-active:         $color-critical-darker !default;
 
 // disabled
 $color-text-button-accent-disabled:         $color-neutral-light !default;
@@ -58,8 +58,8 @@ $color-text-button-dim-disabled:            $color-neutral-light !default;
 //
 //primary
 $color-background-button-primary-accent:        $color-primary-regular !default;
-$color-background-button-primary-accent-hover:  $color-primary-dark !default;
-$color-background-button-primary-accent-active: $color-primary-darker !default;
+$color-background-button-primary-accent-hover:  $color-primary-regular !default;
+$color-background-button-primary-accent-active: $color-primary-dark !default;
 
 $color-background-button-primary-regular:           transparent !default;
 $color-background-button-primary-regular-hover:     $color-primary-faded !default;
@@ -84,16 +84,16 @@ $color-background-button-secondary-dim-active:      $color-neutral-light !defaul
 
 // critical
 $color-background-button-critical-accent:           $color-critical-dark !default;
-$color-background-button-critical-accent-hover:     $color-critical-darker !default;
-$color-background-button-critical-accent-active:    $color-neutral-darker !default;
+$color-background-button-critical-accent-hover:     $color-critical-dark !default;
+$color-background-button-critical-accent-active:    $color-critical-darker !default;
 
 $color-background-button-critical-regular:          transparent !default;
-$color-background-button-critical-regular-hover:    $color-neutral-faded !default;
-$color-background-button-critical-regular-active:   $color-neutral-darker !default;
+$color-background-button-critical-regular-hover:    $color-critical-faded !default;
+$color-background-button-critical-regular-active:   $color-critical-pale !default;
 
 $color-background-button-critical-dim:          transparent !default;
-$color-background-button-critical-dim-hover:    $color-neutral-faded !default;
-$color-background-button-critical-dim-active:   $color-neutral-darker !default;
+$color-background-button-critical-dim-hover:    $color-critical-faded !default;
+$color-background-button-critical-dim-active:   $color-critical-pale !default;
 
 // disabled
 $color-background-button-accent-disabled:         $color-neutral-faded !default;
@@ -136,8 +136,8 @@ $border-button-critical-accent-hover:    none !default;
 $border-button-critical-accent-active:   none !default;
 
 $border-button-critical-regular:        1px solid $color-critical-regular;
-$border-button-critical-regular-hover:  1px solid $color-neutral-faded;
-$border-button-critical-regular-active: 1px solid $color-neutral-darker;
+$border-button-critical-regular-active: $border-button-critical-regular;
+$border-button-critical-regular-hover:  $border-button-critical-regular;
 
 $border-button-critical-dim:          none !default;
 $border-button-critical-dim-hover:    none !default;

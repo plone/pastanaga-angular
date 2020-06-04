@@ -6,14 +6,15 @@
         "ng": "ng",
         "start": "ng serve",
         "build:lib": "ng build --prod",
-        "build:demo": "ng build demo --prod --base-href /pastanaga-angular/2.x",
-        "build": "npm run build:lib && npm run build:demo",
+        "build:demo": "ng build demo --prod --base-href /pastanaga-angular/",
+        "build": "npm run icon_list && npm run build:lib && npm run build:demo",
         "lint": "ng lint",
         "test:lib": "jest --config ./projects/pastanaga-angular/jest.config.js",
         "test:demo": "jest --config ./projects/demo/jest.config.js",
         "test": "npm run test:lib && npm run test:demo",
         "test:ci": "jest --config ./projects/pastanaga-angular/jest.config.js --runInBand --ci",
-        "get_version": "cat ./projects/pastanaga/package.json | grep version  | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'"
+        "get_version": "cat ./projects/pastanaga/package.json | grep version  | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
+        "icon_list": "python -c 'import os, json; print json.dumps(os.listdir(\"projects/pastanaga-angular/src/assets/icons\"));' > projects/demo/src/icons.json"
     },
     "private": true,
     "dependencies": {

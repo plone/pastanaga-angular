@@ -1,0 +1,28 @@
+@import "projects/pastanaga-angular/src/lib/styles/variables";
+
+.pa-demo-example-configuration {
+    label {
+        margin-right: rhythm(.5);
+
+        &:not(:first-of-type) {
+            margin-left: rhythm(1.5);
+        }
+    }
+}
+
+.icon-list-container {
+    background: $color-neutral-faded;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: rhythm(27);
+    overflow: auto;
+
+    .icon-container {
+        width: rhythm(10);
+        height: rhythm(5);
+        margin: rhythm(1.5) 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}

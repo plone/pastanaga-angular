@@ -1,10 +1,8 @@
 @import "../../../../../pastanaga-angular/src/lib/styles/variables";
 
-
-// FIXME: color tokens
 $menu-width: rhythm(20);
 .demo-menu-sidebar {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
@@ -14,7 +12,6 @@ $menu-width: rhythm(20);
     width: $menu-width;
     max-width: $menu-width;
 
-    height: 100vh;
     padding: rhythm(2.5);
 
     a img {

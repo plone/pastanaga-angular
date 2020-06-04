@@ -7,6 +7,7 @@ import { AppResolver } from './app.resolver';
 import { AppMarker } from './app.marker';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PaDemoModule } from './demo/demo.module';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { PaDemoModule } from './demo/demo.module';
     imports: [
         BrowserModule,
         TraversalModule,
+        AngularSvgIconModule.forRoot(),
         PaDemoModule,
     ],
     providers: [

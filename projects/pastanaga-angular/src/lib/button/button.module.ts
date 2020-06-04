@@ -10,5 +10,5 @@ import { ButtonComponent } from './button.component';
     declarations: [ButtonComponent],
     exports: [ButtonComponent],
 })
-export class ButtonModule {
+export class PaButtonModule {
 }
