@@ -7,12 +7,31 @@
         <pa-button [kind]="selectedKind"
                    [size]="selectedSize"
                    [weight]="selectedWeight"
-                   [disabled]="disabledState"
-        >text</pa-button>
+                   [disabled]="disabledState">
+            Value
+        </pa-button>
 
-        <div class="configuration">
+        <pa-button icon="search"
+                   iconAndText
+                   [kind]="selectedKind"
+                   [size]="selectedSize"
+                   [weight]="selectedWeight"
+                   [disabled]="disabledState">
+            Value
+        </pa-button>
+
+        <pa-button icon="search"
+                   [kind]="selectedKind"
+                   [size]="selectedSize"
+                   [weight]="selectedWeight"
+                   [disabled]="disabledState">
+            Value
+        </pa-button>
+
+        <div class="pa-demo-example-configuration">
             <h3>Configuration options</h3>
             <div>
+                <label for="kind">Kind:</label>
                 <select name="kind" id="kind" [value]="selectedKind" (change)="updateKind($event.target.value)">
                     <option [disabled]="!!selectedKind" [selected]="!selectedKind">Select a kind</option>
                     <option value="primary">primary</option>
@@ -22,6 +41,7 @@
             </div>
 
             <div>
+                <label for="size">Size:</label>
                 <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
                     <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
                     <option value="xsmall">xsmall</option>
@@ -32,6 +52,7 @@
             </div>
 
             <div>
+                <label for="weight">Weight:</label>
                 <select name="weight" id="weight" [value]="selectedWeight" (change)="updateWeight($event.target.value)">
                     <option [disabled]="!!selectedWeight" [selected]="!selectedWeight">Select a weight</option>
                     <option value="accent">accent</option>
@@ -47,10 +68,35 @@
     </pa-demo-examples>
 
     <pa-demo-usage>
-        TODO
+        <h3>Inputs</h3>
+        <dl>
+            <dt>disabled</dt>
+            <dd>Set disabled state</dd>
+
+            <dt>icon</dt>
+            <dd>Icon name to be used. Button text will be hidden but accessible by screen reader.</dd>
+
+            <dt>iconAndText</dt>
+            <dd>Display icon and text together <small>(default: false)</small></dd>
+
+            <dt>id</dt>
+            <dd>Button's id <small>(optional, an id will be generated if none is provided)</small></dd>
+
+            <dt>kind</dt>
+            <dd>primary | secondary | critical <small>(default: secondary)</small></dd>
+
+            <dt>size</dt>
+            <dd>xsmall | small | medium | large <small>(default: medium)</small></dd>
+
+            <dt>type</dt>
+            <dd>button | submit | reset <small>(default: button)</small></dd>
+
+            <dt>weight</dt>
+            <dd>accent | regular | dim <small>(default: regular)</small></dd>
+        </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
-        TODO
+        <pre><code>{{codeExample}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

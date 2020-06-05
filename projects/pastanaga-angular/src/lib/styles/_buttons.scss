@@ -9,27 +9,50 @@
     outline: 0;
     white-space: nowrap;
     border: none;
-    border-radius: $border-button-radius;
+    border-radius: $border-radius-button;
 
+    svg {
+        fill: currentColor;
+    }
 
     &.pa-xsmall {
         @include font-size(xs);
         padding: $padding-button-xsmall;
+
+        &.pa-button-icon {
+            border-radius: $border-radius-button-icon-xsmall;
+            padding: $padding-button-icon-xsmall;
+        }
     }
 
     &.pa-small {
         @include font-size(s);
         padding: $padding-button-small;
+
+        &.pa-button-icon {
+            border-radius: $border-radius-button-icon-small;
+            padding: $padding-button-icon-small;
+        }
     }
 
     &.pa-medium {
         @include font-size(m);
         padding: $padding-button-medium;
+
+        &.pa-button-icon {
+            border-radius: $border-radius-button-icon-medium;
+            padding: $padding-button-icon-medium;
+        }
     }
 
     &.pa-large {
         @include font-size(l);
         padding: $padding-button-large;
+
+        &.pa-button-icon {
+            border-radius: $border-radius-button-icon-large;
+            padding: $padding-button-icon-large;
+        }
     }
 
     &.pa-primary {
@@ -243,7 +266,7 @@
         }
     }
 
-    .pa-button-wrapper {
-        // FIXME: is this class needed?
+    &:focus  {
+        box-shadow: 0 0 0 rhythm(.25) rgba($color-primary-pale, .6);
     }
 }

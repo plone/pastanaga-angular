@@ -1,4 +1,5 @@
 <button class="pa-button pa-{{_kind}} pa-{{_weight}} pa-{{_size}}"
+        [class.pa-button-icon]="!!_icon && !_iconAndText"
         tabindex="0"
         [id]="_id"
         [disabled]="_disabled"
@@ -6,6 +7,9 @@
         [attr.aria-label]="_ariaLabel"
 >
     <span class="pa-button-wrapper" tabindex="-1">
-        <span #textContainer class="pa-button-label"><ng-content></ng-content></span>
+        <pa-icon *ngIf="!!_icon" [name]="_icon" [size]="_iconSize"></pa-icon>
+        <span #textContainer class="pa-button-label"
+              [class.pa-sr]="!!_icon && !_iconAndText"
+        ><ng-content></ng-content></span>
     </span>
 </button>

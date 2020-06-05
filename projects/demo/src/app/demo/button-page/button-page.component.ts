@@ -10,6 +10,29 @@ export class ButtonPageComponent implements OnInit {
     selectedWeight: Weight = Weight.accent;
     selectedKind: Kind = Kind.primary;
     disabledState = false;
+    codeExample = `<pa-button [kind]="selectedKind"
+           [size]="selectedSize"
+           [weight]="selectedWeight"
+           [disabled]="disabledState">
+    Value
+</pa-button>
+
+<pa-button icon="search"
+           iconAndText
+           [kind]="selectedKind"
+           [size]="selectedSize"
+           [weight]="selectedWeight"
+           [disabled]="disabledState">
+    Value
+</pa-button>
+
+<pa-button icon="search"
+           [kind]="selectedKind"
+           [size]="selectedSize"
+           [weight]="selectedWeight"
+           [disabled]="disabledState">
+    Value
+</pa-button>`;
 
     constructor() {
     }

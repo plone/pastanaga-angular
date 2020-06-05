@@ -8,7 +8,7 @@ import {
     OnInit,
     ViewChild
 } from '@angular/core';
-import { detectChanges, Kind, markForCheck, Size, Weight } from '../common';
+import { detectChanges, Kind, Size, Weight } from '../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
@@ -28,6 +28,16 @@ export class ButtonComponent implements AfterContentInit, OnInit {
     @Input() set size(value: Size) {
         if (!!value) {
             this._size = value;
+            switch (this._size) {
+                case Size.large:
+                case Size.medium:
+                    this._iconSize = Size.medium;
+                    break;
+                case Size.small:
+                case Size.xsmall:
+                    this._iconSize = Size.small;
+                    break;
+            }
         }
     }
     @Input() set weight(value: Weight) {
@@ -41,6 +51,9 @@ export class ButtonComponent implements AfterContentInit, OnInit {
         }
     }
     @Input() set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
+    @Input() set icon(value: string) { this._icon = value || ''; }
+    @Input() set iconAndText(value: boolean) { this._iconAndText = coerceBooleanProperty(value); }
+
 
     @ViewChild('textContainer') textContainer?: ElementRef;
 
@@ -49,6 +62,9 @@ export class ButtonComponent implements AfterContentInit, OnInit {
     _kind: Kind = Kind.secondary;
     _size: Size = Size.medium;
     _weight: Weight = Weight.regular;
+    _icon = '';
+    _iconSize: Size = Size.medium;
+    _iconAndText = false;
 
     // state
     _disabled = false;
