@@ -194,15 +194,16 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
     }
 
     private getUpdatedChildrenSelection(isSelected: boolean, checkbox: ControlModel): ControlModel[] | undefined {
-        if (!!checkbox.children) {
-            return checkbox.children.map(child => {
-                if (!!child.children) {
-                    child.children = this.getUpdatedChildrenSelection(isSelected, child);
-                    child.selectedChildren = this.getSelectedChildrenCount(child);
-                }
-                return new ControlModel({...child, isSelected, isIndeterminate: false});
-            });
+        if (!checkbox.children) {
+            return;
         }
+        return checkbox.children.map(child => {
+            if (!!child.children) {
+                child.children = this.getUpdatedChildrenSelection(isSelected, child);
+                child.selectedChildren = this.getSelectedChildrenCount(child);
+            }
+            return new ControlModel({...child, isSelected, isIndeterminate: false});
+        });
     }
 
     setParentState(childrenTree: ControlModel[], parent: ControlModel) {

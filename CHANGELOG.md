@@ -1,3 +1,8 @@
+# 1.18.4 (2020-06-08)
+
+### Improvements
+- No implicit return [ebrehault]
+
 # 1.18.3 (2020-05-28)
 
 ### Bug fix
