@@ -30,3 +30,5 @@ $rhythm: (
 @function rhythm($spacer-size) {
     @return map-get($rhythm, $spacer-size);
 }
+
+$border-radius-default: rhythm(.25) !default;

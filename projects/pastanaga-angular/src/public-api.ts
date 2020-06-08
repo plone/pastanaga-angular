@@ -14,4 +14,8 @@ export * from './lib/icon/icon.component';
 export * from './lib/icon/svg-loader.interface';
 export * from './lib/icon/svg-loader';
 
+export * from './lib/textfield/text-field.module';
+export * from './lib/textfield/base-text-field';
+export * from './lib/textfield/input/input.component';
+
 

@@ -1,0 +1,126 @@
+<pa-demo-page>
+    <pa-demo-title>Inputs</pa-demo-title>
+    <pa-demo-description>Basic input field</pa-demo-description>
+
+    <pa-demo-examples>
+        <form #demoForm="ngForm">
+            <pa-input required
+                      ngModel
+                      placeholder="Placeholder"
+                      id="demo"
+                      name="demo"
+                      [disabled]="disabledState"
+                      [readonly]="readOnlyState"
+                      [errorMessages]="errorMessages"
+                      [errorMessage]="customError"
+            >
+                Label
+            </pa-input>
+        </form>
+
+        <div class="pa-demo-example-configuration">
+            <div>
+                <input id="disabled" type="checkbox" [checked]="disabledState" (change)="disabledState = !disabledState">
+                <label for="disabled">Disabled state</label>
+            </div>
+            <div>
+                <input id="readonly" type="checkbox" [checked]="readOnlyState" (change)="readOnlyState = !readOnlyState">
+                <label for="readonly">Readonly state</label>
+            </div>
+            <div>
+                <pa-button size="small" weight="accent"
+                           (click)="toggleCustomErrorMessage()">
+                    {{!!customError ? 'Reset custom error' : 'Set custom error message'}}
+                </pa-button>
+            </div>
+        </div>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3>Inputs</h3>
+        <h4>Inherited from <code>BaseTextField</code></h4>
+        <dl>
+            <dt>debounceDuration</dt>
+            <dd>Duration (in milliseconds) used to debounce values emitted by <code>valueChange</code> <small>(default: 500ms)</small></dd>
+
+            <dt>disabled</dt>
+            <dd>Set disabled state <small>(default: false)</small></dd>
+
+            <dt>errorMessage</dt>
+            <dd>Error message to display when field validation is done externally. Will override internal validation error if any. <small>(optional)</small></dd>
+
+            <dt>errorMessages</dt>
+            <dd>Map of all possible internal error messages (like <code>required</code>) <small>(optional: by default field will have the error state without any message displayed)</small></dd>
+
+            <dt>id</dt>
+            <dd>Field's id <small>(optional, an id will be generated if none is provided)</small></dd>
+
+            <dt>name</dt>
+            <dd>Field's name <small>(optional, id will be used if none provided)</small></dd>
+
+            <dt>placeholder</dt>
+            <dd>Field's placeholder <small>(optional)</small></dd>
+
+            <dt>readonly</dt>
+            <dd>Set readonly state <small>(default: false)</small></dd>
+
+            <dt>required</dt>
+            <dd>Set required state for validation purpose <small>(default: false)</small></dd>
+
+            <dt>value</dt>
+            <dd>Field's value</dd>
+        </dl>
+        <h4>Specific to <code>InputComponent</code></h4>
+        <dl>
+            <dt>acceptHtmlTags</dt>
+            <dd>Allow to render/enter HTML tags in the field. Enabling this can have an impact on the security of your app, to be use with caution. <small>(default: false)</small></dd>
+
+            <dt>hasFocus</dt>
+            <dd>Set to true to give focus on the input by default <small>(default: false)</small></dd>
+
+            <dt>max</dt>
+            <dd>Max value available for input of type number <small>(optional)</small></dd>
+
+            <dt>maxlength</dt>
+            <dd>Max number of characters allowed for input of type text <small>(optional)</small></dd>
+
+            <dt>min</dt>
+            <dd>Min value available for input of type number <small>(optional)</small></dd>
+
+            <dt>noAutoComplete</dt>
+            <dd>Set autocomplete attribute to <code>off</code><small>(default: false)</small></dd>
+
+            <dt>type</dt>
+            <dd>Input type: text | number <small>(default: text)</small></dd>
+        </dl>
+
+        <h3>Outputs</h3>
+        <h4>Inherited from <code>BaseTextField</code></h4>
+        <dl>
+            <dt>blur</dt>
+            <dd>Emit current value on blur</dd>
+
+            <dt>enter</dt>
+            <dd>Emit <code>KeyboardEvent</code> and <code>string</code> value when pressing enter</dd>
+
+            <dt>focus</dt>
+            <dd>Emit <code>FocusEvent</code> on focus</dd>
+
+            <dt>instantValueChange</dt>
+            <dd>Emit value as soon as it changes</dd>
+
+            <dt>keyUp</dt>
+            <dd>Emit <code>string</code> value on key up event</dd>
+
+            <dt>valueChange</dt>
+            <dd>Emit current value after a debounce time defined by <code>debounceDuration</code> input</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <h3>HTML</h3>
+        <pre><code>{{htmlExample}}</code></pre>
+        <h3>Typescript</h3>
+        <pre><code>{{tsExample}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

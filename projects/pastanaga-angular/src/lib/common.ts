@@ -1,5 +1,13 @@
 import { ChangeDetectorRef, ViewRef } from '@angular/core';
 
+export const Keys = {
+    enter: 'Enter',
+    space: ' ',
+    backspace: 'Backspace',
+    esc: 'Escape',
+    tab: 'Tab'
+};
+
 export enum Size {
     xsmall = 'xsmall',
     small = 'small',

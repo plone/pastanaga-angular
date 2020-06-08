@@ -4,6 +4,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
 import { ButtonPageComponent } from './demo/button-page/button-page.component';
 import { IconPageComponent } from './demo/icon-page/icon-page.component';
+import { InputPageComponent } from './demo/input-page/input-page.component';
 
 @Component({
     selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
             title: 'Components',
             pages: [
                 {view: 'button', title: 'Buttons', type: ButtonPageComponent},
+                {view: 'input', title: 'Inputs', type: InputPageComponent},
             ]
         }
     ];

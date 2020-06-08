@@ -1,0 +1,53 @@
+@import "palette";
+@import "spacing";
+
+//=====================================
+// COLORS
+//=====================================
+//
+// label
+//
+$color-text-field-label-regular:        $color-neutral-regular !default;
+$color-text-field-label-regular-active:  $color-primary-regular !default;
+$color-text-field-label-disabled:       $color-neutral-light !default;
+$color-text-field-label-error:          $color-critical-regular !default;
+
+//
+// control
+//
+$color-text-field-control-regular:      $color-neutral-darker !default;
+$color-text-field-control-disabled:     $color-neutral-light !default;
+
+$color-caret-field-control-active:      $color-primary-regular !default;
+$color-caret-field-control-error:       $color-critical-regular !default;
+
+//
+// placeholder
+//
+$color-text-field-control-placeholder-regular: $color-neutral-regular !default;
+
+$color-background-field-regular: $white !default;
+
+//=====================================
+// BORDERS
+//=====================================
+$border-width-regular: 1px !default;
+$border-width-active: 2px !default;
+
+$border-field-regular: 1px solid $color-neutral-regular !default;
+$border-field-regular-hover: $border-width-active solid $color-neutral-regular !default;
+$border-field-regular-active: $border-width-active solid $color-primary-regular !default;
+
+$border-field-error: 1px solid $color-critical-regular !default;
+$border-field-error-hover: $border-width-active solid $color-critical-regular !default;
+$border-field-error-active: $border-width-active solid $color-critical-regular !default;
+
+$border-field-disabled: 1px solid $color-neutral-light !default;
+$border-field-readonly: 1px dashed $color-neutral-light !default;
+
+$border-radius-field: $border-radius-default !default;
+
+//=====================================
+// SPACING and SHADOWS
+//=====================================
+$padding-field-control: rhythm(1) !default;

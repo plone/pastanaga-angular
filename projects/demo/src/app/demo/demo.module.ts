@@ -13,7 +13,9 @@ import { TraversalModule } from 'angular-traversal';
 import { ButtonPageComponent } from './button-page/button-page.component';
 import { IconPageComponent } from './icon-page/icon-page.component';
 
-import { PaButtonModule, PaIconModule } from '../../../../pastanaga-angular/src';
+import { PaButtonModule, PaIconModule, PaTextFieldModule } from '../../../../pastanaga-angular/src';
+import { InputPageComponent } from './input-page/input-page.component';
+import { FormsModule } from '@angular/forms';
 
 
 const COMPONENTS = [
@@ -27,15 +29,18 @@ const COMPONENTS = [
 
     ButtonPageComponent,
     IconPageComponent,
+    InputPageComponent,
 ];
 
 @NgModule({
     imports: [
         CommonModule,
         TraversalModule,
+        FormsModule,
 
         PaButtonModule,
         PaIconModule,
+        PaTextFieldModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

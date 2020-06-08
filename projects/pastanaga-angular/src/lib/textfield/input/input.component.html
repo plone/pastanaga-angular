@@ -1,0 +1,29 @@
+<div class="pa-field"
+     [class.pa-field-error]="_hasError || !!_errorMessage"
+>
+    <input #inputElement
+           class="pa-field-control"
+           [class.pa-field-control-filled]="!!_value || _value === 0"
+           [id]="_id"
+           [name]="_name"
+           [type]="type"
+           [value]="_value"
+           [disabled]="_disabled"
+           [readonly]="_readonly"
+           [required]="_required"
+           [attr.placeholder]="_placeholder"
+           [attr.autocomplete]="_noAutoComplete ? 'off' : undefined"
+           [attr.maxlength]="maxlength"
+           [attr.aria-label]="_label"
+           (change)="change($event.target.value)"
+           (keyup)="onKeyUp($event)"
+           (blur)="onBlur()"
+           (focus)="onFocus($event)"
+    >
+    <label #labelElement
+           class="pa-field-label"
+           [for]="_id"
+           aria-hidden="true"
+    ><ng-content></ng-content></label>
+    <small *ngIf="_errorMessage" class="pa-field-help pa-field-help-error">{{_errorMessage}}</small>
+</div>
