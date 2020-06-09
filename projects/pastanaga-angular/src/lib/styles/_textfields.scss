@@ -4,6 +4,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
+    margin-bottom: $margin-bottom-field;
 
     .pa-field-label {
         position: absolute;
@@ -111,6 +112,7 @@
 
     .pa-field-help {
         @include font-size(xs);
+        color: $color-text-field-control-help-regular;
 
         &.pa-field-help-error {
             color: $color-text-field-label-error;

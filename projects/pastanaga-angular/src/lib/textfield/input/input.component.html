@@ -15,6 +15,9 @@
            [attr.autocomplete]="_noAutoComplete ? 'off' : undefined"
            [attr.maxlength]="maxlength"
            [attr.aria-label]="_label"
+           [attr.aria-disabled]="_disabled"
+           [attr.aria-readonly]="_readonly"
+           [attr.aria-required]="_required"
            (change)="change($event.target.value)"
            (keyup)="onKeyUp($event)"
            (blur)="onBlur()"
@@ -25,5 +28,8 @@
            [for]="_id"
            aria-hidden="true"
     ><ng-content></ng-content></label>
-    <small *ngIf="_errorMessage" class="pa-field-help pa-field-help-error">{{_errorMessage}}</small>
+    <small *ngIf="_errorMessage || _help"
+           class="pa-field-help"
+           [class.pa-field-help-error]="!!_errorMessage"
+           [innerHTML]="_errorMessage || _help"></small>
 </div>

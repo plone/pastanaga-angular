@@ -59,6 +59,9 @@ export class BaseTextField implements AfterContentInit, ControlValueAccessor, On
     get placeholder(): string { return this._placeholder; };
     set placeholder(value: string) { this._placeholder = value || ''; };
     @Input()
+    get help(): string { return this._help; };
+    set help(value: string) { this._help = value || ''; };
+    @Input()
     get value(): string | number { return this._value; }
     set value(value: string | number) { this._value = !!value || value === 0 ? value : ''; }
     @Input()
@@ -90,6 +93,7 @@ export class BaseTextField implements AfterContentInit, ControlValueAccessor, On
 
     _label = '';
     _placeholder = '';
+    _help = '';
     _hasError = false;
     _errors: InputErrors = {
         required: false,

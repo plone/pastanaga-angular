@@ -17,14 +17,13 @@ $color-text-field-label-error:          $color-critical-regular !default;
 //
 $color-text-field-control-regular:      $color-neutral-darker !default;
 $color-text-field-control-disabled:     $color-neutral-light !default;
+$color-text-field-control-placeholder-regular: $color-neutral-regular !default;
+$color-text-field-control-help-regular: $color-neutral-regular !default;
 
 $color-caret-field-control-active:      $color-primary-regular !default;
 $color-caret-field-control-error:       $color-critical-regular !default;
 
-//
-// placeholder
-//
-$color-text-field-control-placeholder-regular: $color-neutral-regular !default;
+
 
 $color-background-field-regular: $white !default;
 
@@ -51,3 +50,4 @@ $border-radius-field: $border-radius-default !default;
 // SPACING and SHADOWS
 //=====================================
 $padding-field-control: rhythm(1) !default;
+$margin-bottom-field:   rhythm(2) !default;

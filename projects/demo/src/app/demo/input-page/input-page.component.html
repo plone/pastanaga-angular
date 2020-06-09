@@ -16,6 +16,18 @@
             >
                 Label
             </pa-input>
+            <pa-input required
+                      ngModel
+                      placeholder="Placeholder"
+                      help="Field help text message"
+                      id="demo-help"
+                      [disabled]="disabledState"
+                      [readonly]="readOnlyState"
+                      [errorMessages]="errorMessages"
+                      [errorMessage]="customError"
+            >
+                Field with help
+            </pa-input>
         </form>
 
         <div class="pa-demo-example-configuration">
