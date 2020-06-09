@@ -1,12 +1,22 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, PLATFORM_ID, Renderer2, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    Inject,
+    Input,
+    PLATFORM_ID,
+    Renderer2,
+    ViewEncapsulation
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { SvgLoader } from './svg-loader';
-import { Size } from '../common';
+import { detectChanges, markForCheck, Size } from '../common';
 
 @Component({
     selector: 'pa-icon',
-    template: `<ng-content></ng-content>`,
+    templateUrl: './icon.component.html',
     styleUrls: ['./icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
@@ -14,8 +24,9 @@ import { Size } from '../common';
 export class IconComponent {
     @Input() set name(value: string) {
         if (!!value) {
-            this._path = this.getIconPathFromName(value);
-            this.updateSvg();
+            this._name = value;
+            this._spritePath = `assets/icons-sprite.svg#${this._name}`;
+            this.updateStyle();
         }
     }
     @Input() set path(value: string) {
@@ -37,10 +48,14 @@ export class IconComponent {
         this.updateSvg();
     }
 
+    _name = '';
+    _spritePath = '';
     _path = '';
     _size: Size = Size.medium;
     _color = '';
     _background = '';
+    _styles = '';
+    _classes = '';
 
     constructor(
         private element: ElementRef,
@@ -48,6 +63,7 @@ export class IconComponent {
         private service: SvgIconRegistryService,
         private svgLoader: SvgLoader,
         @Inject(PLATFORM_ID) protected platformId: Object,
+        private cdr: ChangeDetectorRef,
     ) {
     }
 
@@ -62,25 +78,34 @@ export class IconComponent {
                     this.setSvg(svg);
                 });
             }
+        } else {
+            this.updateStyle();
         }
     }
 
     private setSvg(icon: SVGElement) {
+        this.updateStyle();
+        this.renderer.setAttribute(icon, 'class', this._classes);
+        this.renderer.setAttribute(icon, 'style', this._styles);
+        const elem = this.element.nativeElement;
+        elem.innerHTML = '';
+        this.renderer.appendChild(elem, icon);
+    }
+
+    private updateStyle() {
         const classes: string[] = [`pa-${this._size}`];
         const styles: string[] = [];
 
         if (this._color) {
             styles.push(`fill: ${this._color};`);
         }
+
         if (this._background) {
             styles.push(`background: ${this._background};`);
         }
-
-        this.renderer.setAttribute(icon, 'class', classes.join(' '));
-        this.renderer.setAttribute(icon, 'style', styles.join(' '));
-        const elem = this.element.nativeElement;
-        elem.innerHTML = '';
-        this.renderer.appendChild(elem, icon);
+        this._classes = classes.join(' ');
+        this._styles = styles.join(' ');
+        detectChanges(this.cdr);
     }
 
     private getIconPathFromName(name: string) {

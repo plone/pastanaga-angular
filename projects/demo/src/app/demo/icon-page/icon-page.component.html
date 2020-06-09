@@ -27,8 +27,17 @@
             </select>
         </div>
 
+        <h3>Icon from path</h3>
         <div class="icon-list-container">
-            <div  *ngFor="let iconName of icons" class="icon-container">
+            <div class="icon-container">
+                <pa-icon path="assets/ninja.svg" [size]="selectedSize" [color]="selectedColor" [background]="selectedBackground"></pa-icon>
+                <span>assets/ninja.svg</span>
+            </div>
+        </div>
+
+        <h3>Icons from icons-sprite.svg</h3>
+        <div class="icon-list-container">
+            <div *ngFor="let iconName of icons" class="icon-container">
                 <pa-icon [name]="iconName" [size]="selectedSize" [color]="selectedColor" [background]="selectedBackground"></pa-icon>
                 <span>{{iconName}}</span>
             </div>
@@ -41,7 +50,7 @@
         </p>
         <dl>
             <dt>name</dt>
-            <dd>Name of the svg icon. Will be resolved as <code>{{nameResolvedExample}}</code>. <small>(optional)</small></dd>
+            <dd>Icon id to be found in svg sprite. Will be resolved as <code>{{nameResolvedExample}}</code>. <small>(optional)</small></dd>
 
             <dt>path</dt>
             <dd>Path of the icon. <small>(optional)</small></dd>

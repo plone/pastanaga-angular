@@ -5,7 +5,7 @@ export class BaseIconPageComponent {
     selectedSize: Size = Size.medium;
     selectedColor?: string;
     selectedBackground?: string;
-    nameResolvedExample = './assets/icons/${name}.svg';
+    nameResolvedExample = 'assets/icons-sprite.svg#${name}';
     codeExample = `<pa-icon [name]="iconName" [size]="selectedSize" [color]="selectedColor" [background]="selectedBackground"></pa-icon>
 
 <pa-icon name="heart"></pa-icon>

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-// @ts-ignore
 import ICON_LIST from '../../../icons.json';
 import { BaseIconPageComponent } from './base-icon-page.component';
 
@@ -11,7 +10,7 @@ import { BaseIconPageComponent } from './base-icon-page.component';
 export class IconPageComponent extends BaseIconPageComponent implements OnInit {
 
     ngOnInit(): void {
-        this.icons = ICON_LIST.map((icon: string) => icon.substring(0, icon.lastIndexOf('.')));
+        this.icons = ICON_LIST;
     }
 
 }
