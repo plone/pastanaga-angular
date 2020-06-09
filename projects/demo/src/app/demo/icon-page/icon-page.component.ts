@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+// @ts-ignore
 import ICON_LIST from '../../../icons.json';
 import { BaseIconPageComponent } from './base-icon-page.component';
 

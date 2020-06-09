@@ -4,7 +4,9 @@ $spacer: .75rem !default; // 1 unit - 12px - 0.75rem
 $rhythm: (
     0: 0,
     .25: ($spacer * .25),   //   .25 unit -   3px -  0.1875 rem
+    .33: ($spacer * 1/3),   //   1/3 unit -   4px -  0.2475 rem
     .5: ($spacer * .5),     //   .5  unit -   6px -  0.375  rem
+    .67: ($spacer * 2/3),   //   2/3 unit -   8px -  0.50   rem
     .75: ($spacer * .75),   //   .75 unit -   9px -  0.5625 rem
     1: $spacer,             //  1    unit -  12px -  0.75   rem
     1.25: ($spacer * 1.25), //  1.25 unit -  15px -  0.9375 rem
