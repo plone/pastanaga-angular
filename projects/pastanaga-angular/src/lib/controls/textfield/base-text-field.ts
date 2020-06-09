@@ -13,9 +13,8 @@ import {
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { detectChanges, Keys } from '../common';
-
-let nextId = 0;
+import { detectChanges, Keys } from '../../common';
+import { BaseControl } from '../base-control';
 
 export interface InputErrors {
     required: boolean;
@@ -47,9 +46,7 @@ export class ErrorMessages {
     }
 }
 
-export class BaseTextField implements AfterContentInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
-    @Input() id?: string;
-    @Input() name?: string;
+export class BaseTextField extends BaseControl implements AfterContentInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() debounceDuration = 500;
     @Input() errorMessages?: ErrorMessages;
     @Input()
@@ -59,14 +56,8 @@ export class BaseTextField implements AfterContentInit, ControlValueAccessor, On
     get placeholder(): string { return this._placeholder; };
     set placeholder(value: string) { this._placeholder = value || ''; };
     @Input()
-    get help(): string { return this._help; };
-    set help(value: string) { this._help = value || ''; };
-    @Input()
     get value(): string | number { return this._value; }
     set value(value: string | number) { this._value = !!value || value === 0 ? value : ''; }
-    @Input()
-    get disabled(): boolean { return this._disabled; }
-    set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
     @Input()
     get readonly(): boolean { return this._readonly; }
     set readonly(value: boolean) { this._readonly = coerceBooleanProperty(value); }
@@ -83,17 +74,12 @@ export class BaseTextField implements AfterContentInit, ControlValueAccessor, On
 
     @ViewChild('labelElement') label?: ElementRef;
 
-    _id = '';
-    _name = '';
     _value: string | number = '';
     _fieldType = 'textfield';
-    _disabled = false;
     _readonly = false;
     _required = false;
 
-    _label = '';
     _placeholder = '';
-    _help = '';
     _hasError = false;
     _errors: InputErrors = {
         required: false,
@@ -106,11 +92,11 @@ export class BaseTextField implements AfterContentInit, ControlValueAccessor, On
     onValidatorChange?: Function;
 
     debouncer: Subject<string> = new Subject();
-    terminator: Subject<void> = new Subject();
 
     constructor(
         protected cdr: ChangeDetectorRef,
         ) {
+        super();
         this.debouncer.pipe(
             takeUntil(this.terminator),
             debounceTime(this.debounceDuration),
@@ -118,8 +104,7 @@ export class BaseTextField implements AfterContentInit, ControlValueAccessor, On
     }
 
     ngOnInit(): void {
-        this._id = !this.id ? `${this._fieldType}-${nextId++}` : `${this.id}-${this._fieldType}`;
-        this._name = this.name || this._id;
+        super.ngOnInit();
     }
 
     ngAfterContentInit() {
@@ -132,7 +117,7 @@ export class BaseTextField implements AfterContentInit, ControlValueAccessor, On
     }
 
     ngOnDestroy(): void {
-        this.terminator.next();
+        super.ngOnDestroy();
     }
 
     change(value: any) {

@@ -18,6 +18,8 @@
            [attr.aria-disabled]="_disabled"
            [attr.aria-readonly]="_readonly"
            [attr.aria-required]="_required"
+           [attr.aria-describedby]="_helpId"
+           [attr.aria-errormessage]="_helpId"
            (change)="change($event.target.value)"
            (keyup)="onKeyUp($event)"
            (blur)="onBlur()"
@@ -30,6 +32,7 @@
     ><ng-content></ng-content></label>
     <small *ngIf="_errorMessage || _help"
            class="pa-field-help"
+           [id]="_helpId"
            [class.pa-field-help-error]="!!_errorMessage"
            [innerHTML]="_errorMessage || _help"></small>
 </div>

@@ -20,7 +20,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { takeUntil } from 'rxjs/operators';
-import { detectChanges } from '../../common';
+import { detectChanges } from '../../../common';
 
 const HTML_TAG = new RegExp(/.?<.+>/g);
 const REPLACE_LT_GT = new RegExp(/[<>]/g);
