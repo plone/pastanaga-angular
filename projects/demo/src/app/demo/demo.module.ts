@@ -17,6 +17,8 @@ import { PaButtonModule, PaIconModule, PaTextFieldModule, PaTogglesModule } from
 import { InputPageComponent } from './input-page/input-page.component';
 import { FormsModule } from '@angular/forms';
 import { CheckboxPageComponent } from './checkbox-page/checkbox-page.component';
+import { BaseTextfieldComponent } from './common-doc/base-textfield/base-textfield.component';
+import { BaseControlComponent } from './common-doc/base-control/base-control.component';
 
 
 const COMPONENTS = [
@@ -27,6 +29,9 @@ const COMPONENTS = [
     DemoExamplesDirective,
     DemoUsageDirective,
     DemoCodeDirective,
+
+    BaseControlComponent,
+    BaseTextfieldComponent,
 
     ButtonPageComponent,
     CheckboxPageComponent,

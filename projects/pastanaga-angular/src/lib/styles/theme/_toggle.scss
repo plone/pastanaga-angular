@@ -1,0 +1,29 @@
+@import "palette";
+@import "spacing";
+
+//=====================================
+// BORDERS
+//=====================================
+
+$border-toggle-unselected:          1px solid $color-neutral-light !default;
+$border-toggle-unselected-hover:    1px solid $color-neutral-darker !default;
+$border-toggle-selected:            none !default;
+$border-toggle-selected-hover:      none !default;
+$border-toggle-disabled:            1px solid $color-neutral-lighter !default;
+
+//=====================================
+// COLORS
+//=====================================
+
+// Background
+$color-background-toggle-selected:        $color-primary-regular !default;
+$color-background-toggle-selected-hover:  $color-primary-dark !default;
+$color-background-toggle-disabled:        $color-neutral-faded !default;
+
+// Check
+$color-check-toggle:    $white !default;
+
+//=====================================
+// SPACING
+//=====================================
+$size-toggle:   rhythm(1.5) !default;

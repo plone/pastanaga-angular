@@ -61,8 +61,7 @@
                 </select>
             </div>
             <div>
-                <input id="disabled" type="checkbox" [checked]="disabledState" (change)="disabledState = !disabledState">
-                <label for="disabled">Disabled state</label>
+                <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
             </div>
         </div>
     </pa-demo-examples>

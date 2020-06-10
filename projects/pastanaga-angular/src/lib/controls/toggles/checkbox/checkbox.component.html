@@ -1,8 +1,11 @@
-<div class="pa-controls">
-    <input class="pa-controls-control"
+<div class="pa-toggle">
+    <input class="pa-toggle-control"
            [id]="_id"
            [name]="_name"
            [type]="_type"
+           [disabled]="_disabled"
+           [checked]="_selected"
+           (change)="toggleCheckbox()"
     >
-    <label [for]="_id" class="pa-controls-label"></label>
+    <label [for]="_id" class="pa-toggle-label"><ng-content></ng-content></label>
 </div>

@@ -4,11 +4,38 @@
     <pa-demo-description>Simple checkbox component</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-checkbox></pa-checkbox>
+        <pa-checkbox [type]="selectedType"
+                     [disabled]="disabledState">Label</pa-checkbox>
+
+        <div class="pa-demo-example-configuration">
+            <h3>Configuration options</h3>
+            <label for="type">Type:</label>
+            <select name="type" id="type" [value]="selectedType" (change)="updateType($event.target.value)">
+                <option [disabled]="!!selectedType" [selected]="!selectedType">Select a type</option>
+                <option value="checkbox" [selected]="selectedType === 'checkbox'">Checkbox</option>
+                <option value="radio" [selected]="selectedType === 'radio'">Radio</option>
+            </select>
+            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+        </div>
     </pa-demo-examples>
 
     <pa-demo-usage>
-        TODO
+        <pa-demo-base-control></pa-demo-base-control>
+
+        <h3>Specific to <code>CheckboxComponent</code></h3>
+        <h4>Inputs</h4>
+        <dl>
+            <dt>selected</dt>
+            <dd>Set checked state <small>(default: false)</small></dd>
+            <dt>type</dt>
+            <dd>checkbox | radio <small>(default: checkbox)</small></dd>
+        </dl>
+
+        <h4>Outputs</h4>
+        <dl>
+            <dt>selectedChange</dt>
+            <dd>Emit checked state when it changes <small>(allow two-way data binding on selected attribute)</small></dd>
+        </dl>
     </pa-demo-usage>
 
     <pa-demo-code>

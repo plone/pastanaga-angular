@@ -28,7 +28,6 @@ const REPLACE_LT_GT = new RegExp(/[<>]/g);
 @Component({
     selector: 'pa-input',
     templateUrl: './input.component.html',
-    styleUrls: ['./input.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

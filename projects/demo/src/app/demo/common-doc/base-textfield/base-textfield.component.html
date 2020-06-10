@@ -1,0 +1,44 @@
+<pa-demo-base-control></pa-demo-base-control>
+
+<h3>Inherited from <code>BaseTextField</code></h3>
+<h4>Inputs</h4>
+<dl>
+    <dt>debounceDuration</dt>
+    <dd>Duration (in milliseconds) used to debounce values emitted by <code>valueChange</code> <small>(default: 500ms)</small></dd>
+
+    <dt>errorMessage</dt>
+    <dd>Error message to display when field validation is done externally. Will override internal validation error if any. <small>(optional)</small></dd>
+
+    <dt>errorMessages</dt>
+    <dd>Map of all possible internal error messages (like <code>required</code>) <small>(optional: by default field will have the error state without any message displayed)</small></dd>
+
+    <dt>placeholder</dt>
+    <dd>Field's placeholder <small>(optional)</small></dd>
+
+    <dt>readonly</dt>
+    <dd>Set readonly state <small>(default: false)</small></dd>
+
+    <dt>value</dt>
+    <dd>Field's value</dd>
+</dl>
+
+<h4>Outputs</h4>
+<dl>
+    <dt>blur</dt>
+    <dd>Emit current value on blur</dd>
+
+    <dt>enter</dt>
+    <dd>Emit <code>KeyboardEvent</code> and <code>string</code> value when pressing enter</dd>
+
+    <dt>focus</dt>
+    <dd>Emit <code>FocusEvent</code> on focus</dd>
+
+    <dt>instantValueChange</dt>
+    <dd>Emit value as soon as it changes</dd>
+
+    <dt>keyUp</dt>
+    <dd>Emit <code>string</code> value on key up event</dd>
+
+    <dt>valueChange</dt>
+    <dd>Emit current value after a debounce time defined by <code>debounceDuration</code> input</dd>
+</dl>

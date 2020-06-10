@@ -5,6 +5,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxPageComponent implements OnInit {
+    disabledState = false;
+    selectedType = 'checkbox';
 
     constructor() {
     }
@@ -12,4 +14,7 @@ export class CheckboxPageComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    updateType(value: string) {
+        this.selectedType = value;
+    }
 }
