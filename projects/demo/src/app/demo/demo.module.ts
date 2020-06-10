@@ -6,14 +6,15 @@ import {
     DemoDescriptionDirective,
     DemoExamplesDirective,
     DemoTitleDirective,
-    DemoUsageDirective
+    DemoUsageDirective,
 } from './demo.directives';
 import { DemoMenuComponent } from './demo-menu/demo-menu.component';
 import { TraversalModule } from 'angular-traversal';
 import { ButtonPageComponent } from './button-page/button-page.component';
 import { IconPageComponent } from './icon-page/icon-page.component';
+import { TranslatePageComponent } from './translate-page/translate-page.component';
 
-import { PaButtonModule, PaIconModule, PaTextFieldModule, PaTogglesModule } from '../../../../pastanaga-angular/src';
+import { PaButtonModule, PaIconModule, PaTextFieldModule, PaTogglesModule, PaTranslateModule } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './input-page/input-page.component';
 import { FormsModule } from '@angular/forms';
 import { CheckboxPageComponent } from './checkbox-page/checkbox-page.component';
@@ -37,6 +38,7 @@ const COMPONENTS = [
     CheckboxPageComponent,
     IconPageComponent,
     InputPageComponent,
+    TranslatePageComponent,
 ];
 
 @NgModule({
@@ -49,6 +51,7 @@ const COMPONENTS = [
         PaIconModule,
         PaTextFieldModule,
         PaTogglesModule,
+        PaTranslateModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

@@ -6,6 +6,7 @@ import { ButtonPageComponent } from './demo/button-page/button-page.component';
 import { IconPageComponent } from './demo/icon-page/icon-page.component';
 import { InputPageComponent } from './demo/input-page/input-page.component';
 import { CheckboxPageComponent } from './demo/checkbox-page/checkbox-page.component';
+import { TranslatePageComponent } from './demo/translate-page/translate-page.component';
 
 @Component({
     selector: 'app-root',
@@ -27,7 +28,13 @@ export class AppComponent {
                 {view: 'checkbox', title: 'Checkboxes', type: CheckboxPageComponent},
                 {view: 'input', title: 'Inputs', type: InputPageComponent},
             ]
-        }
+        },
+        {
+            title: 'Utilities',
+            pages: [
+                {view: 'translate', title: 'Translate', type: TranslatePageComponent},
+            ]
+        },
     ];
 
     constructor(private traverser: Traverser) {

@@ -1,0 +1,72 @@
+<pa-demo-page>
+    <pa-demo-title>Translate</pa-demo-title>
+
+    <pa-demo-description>Pastanaga allows to manage translation.</pa-demo-description>
+
+    <pa-demo-usage>
+        <h3>Providing the translations</h3>
+        <p>Each supported language is a JSON file where translated strings are handled in nested dictionaries:</p>
+        <pa-demo-code>
+            <pre>
+                <code>{{translations}}</code>
+            </pre>
+        </pa-demo-code>
+
+        <p>Translations must be provided in the main app module:</p>
+        <pa-demo-code>
+            <pre>
+                <code>{{appModule}}</code>
+            </pre>
+        </pa-demo-code>
+
+        <p>
+            We can cascade several translations using the <code>mergeTranslations</code> method:
+        </p>
+        <pre>
+            <code>{{concatTranslations}}</code>
+        </pre>
+
+        <h3>Using the directive</h3>
+        <div>
+            <code>&lt;span translate&gt;demo-page.title&lt;/span&gt;</code>
+            <p>
+                <span translate>demo-page.title</span>
+            </p>
+        </div>
+        <h3>With parameters</h3>
+        <div>
+            <code>&lt;span translate [translateParams]=&quot;&#123;points: 10, total: 25&#125;&quot;&gt;demo-page.score&lt;/span&gt;</code>
+            <p>
+                <span translate [translateParams]="{points: 10, total: 25}">demo-page.score</span>
+            </p>
+        </div>
+        <h3>Using the pipe</h3>
+        <div>
+            <code [innerHTML]="'&lt;span&gt;{<!-->{ &quot;demo-page.title&quot; | translate }<!-->}&lt;/span&gt;'"></code>
+            <p>
+                <span>{{ 'demo-page.title' | translate}}</span>
+            </p>
+        </div>
+        <h3>Pipe with parameters</h3>
+        <div>
+            <code [innerHTML]="'{<!-->{ &quot;demo-page.score&quot; | translate:{points: 10, total: 25} }<!-->}'"></code>
+            <p>
+                <span>{{ 'demo-page.score' | translate:{points: 10, total: 25} }}</span>
+            </p>
+        </div>
+        <h3>From a secondary translation file</h3>
+        <div>
+            <code>&lt;span translate&gt;other.test&lt;/span&gt;</code>
+            <p>
+                <span translate>other.test</span>
+            </p>
+        </div>
+        <h3>Overrided by a secondary translation file</h3>
+        <div>
+            <code>&lt;span translate&gt;common.yes&lt;/span&gt;</code>
+            <p>
+                <span translate>common.yes</span>
+            </p>
+        </div>
+    </pa-demo-usage>
+</pa-demo-page>
