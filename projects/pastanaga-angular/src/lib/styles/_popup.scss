@@ -1,0 +1,17 @@
+@import 'variables';
+
+.pa-popup {
+    z-index: $zindex-popup;
+    box-shadow: $shadow-level1;
+    border-radius: $border-radius-default;
+    min-width: rhythm(16);
+    max-width: rhythm(20);
+    max-height: rhythm(29);
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .pa-popup-wrapper {
+        padding: rhythm(1) 0;
+        background: $white;
+    }
+}

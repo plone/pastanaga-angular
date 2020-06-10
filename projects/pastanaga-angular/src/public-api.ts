@@ -21,6 +21,10 @@ export * from './lib/icon/icon.component';
 export * from './lib/icon/svg-loader.interface';
 export * from './lib/icon/svg-loader';
 
+export * from './lib/popup/popup.component';
+export * from './lib/popup/popup.directive';
+export * from './lib/popup/popup.module';
+export * from './lib/popup/popup.service';
 
 export * from './lib/translate/translate.module';
 export * from './lib/translate/translate.pipe';
