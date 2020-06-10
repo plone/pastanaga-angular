@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ErrorMessages } from '../../../../../pastanaga-angular/src';
+import { ErrorMessages } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     selector: 'pa-demo-input-page',

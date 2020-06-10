@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Traverser } from 'angular-traversal';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
-import { ButtonPageComponent } from './demo/button-page/button-page.component';
-import { IconPageComponent } from './demo/icon-page/icon-page.component';
-import { InputPageComponent } from './demo/input-page/input-page.component';
-import { CheckboxPageComponent } from './demo/checkbox-page/checkbox-page.component';
-import { TranslatePageComponent } from './demo/translate-page/translate-page.component';
+import { ButtonPageComponent } from './demo/pages/button-page/button-page.component';
+import { IconPageComponent } from './demo/pages/icon-page/icon-page.component';
+import { InputPageComponent } from './demo/pages/input-page/input-page.component';
+import { CheckboxPageComponent } from './demo/pages/checkbox-page/checkbox-page.component';
+import { TranslatePageComponent } from './demo/pages/translate-page/translate-page.component';
+import { PopupPageComponent } from './demo/pages/popup-page/popup-page.component';
 
 @Component({
     selector: 'app-root',
@@ -24,9 +25,10 @@ export class AppComponent {
         {
             title: 'Components',
             pages: [
-                {view: 'button', title: 'Buttons', type: ButtonPageComponent},
-                {view: 'checkbox', title: 'Checkboxes', type: CheckboxPageComponent},
-                {view: 'input', title: 'Inputs', type: InputPageComponent},
+                {view: 'button', title: 'Button', type: ButtonPageComponent},
+                {view: 'checkbox', title: 'Checkbox', type: CheckboxPageComponent},
+                {view: 'input', title: 'Input', type: InputPageComponent},
+                {view: 'popup', title: 'Popup', type: PopupPageComponent},
             ]
         },
         {

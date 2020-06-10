@@ -1,4 +1,4 @@
-import { Size } from '../../../../../pastanaga-angular/src';
+import { Size } from '../../../../../../pastanaga-angular/src';
 
 export class BaseIconPageComponent {
     icons: string[] = [];

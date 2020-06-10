@@ -10,16 +10,24 @@ import {
 } from './demo.directives';
 import { DemoMenuComponent } from './demo-menu/demo-menu.component';
 import { TraversalModule } from 'angular-traversal';
-import { ButtonPageComponent } from './button-page/button-page.component';
-import { IconPageComponent } from './icon-page/icon-page.component';
-import { TranslatePageComponent } from './translate-page/translate-page.component';
+import { ButtonPageComponent } from './pages/button-page/button-page.component';
+import { IconPageComponent } from './pages/icon-page/icon-page.component';
+import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
 
-import { PaButtonModule, PaIconModule, PaTextFieldModule, PaTogglesModule, PaTranslateModule } from '../../../../pastanaga-angular/src';
-import { InputPageComponent } from './input-page/input-page.component';
+import {
+    PaButtonModule,
+    PaIconModule,
+    PaPopupModule,
+    PaTextFieldModule,
+    PaTogglesModule,
+    PaTranslateModule
+} from '../../../../pastanaga-angular/src';
+import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule } from '@angular/forms';
-import { CheckboxPageComponent } from './checkbox-page/checkbox-page.component';
-import { BaseTextfieldComponent } from './common-doc/base-textfield/base-textfield.component';
-import { BaseControlComponent } from './common-doc/base-control/base-control.component';
+import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
+import { BaseTextfieldComponent } from './pages/common-doc/base-textfield/base-textfield.component';
+import { BaseControlComponent } from './pages/common-doc/base-control/base-control.component';
+import { PopupPageComponent } from './pages/popup-page/popup-page.component';
 
 
 const COMPONENTS = [
@@ -38,6 +46,7 @@ const COMPONENTS = [
     CheckboxPageComponent,
     IconPageComponent,
     InputPageComponent,
+    PopupPageComponent,
     TranslatePageComponent,
 ];
 
@@ -49,6 +58,7 @@ const COMPONENTS = [
 
         PaButtonModule,
         PaIconModule,
+        PaPopupModule,
         PaTextFieldModule,
         PaTogglesModule,
         PaTranslateModule,

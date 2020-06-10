@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Kind, Size, Weight } from '../../../../../pastanaga-angular/src';
+import { Kind, Size, Weight } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     templateUrl: './button-page.component.html',
