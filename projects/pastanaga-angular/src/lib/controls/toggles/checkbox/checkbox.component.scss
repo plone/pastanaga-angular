@@ -13,6 +13,7 @@
 
         &:focus {
             outline: 0;
+            box-shadow: $shadow-focus;
         }
         &:not(:disabled):hover {
             border: $border-toggle-unselected-hover;

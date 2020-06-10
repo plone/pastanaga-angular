@@ -5,6 +5,7 @@
            [type]="_type"
            [disabled]="_disabled"
            [checked]="_selected"
+           [attr.aria-checked]="_selected"
            (change)="toggleCheckbox()"
     >
     <label [for]="_id" class="pa-toggle-label"><ng-content></ng-content></label>

@@ -32,14 +32,8 @@
         </form>
 
         <div class="pa-demo-example-configuration">
-            <div>
-                <input id="disabled" type="checkbox" [checked]="disabledState" (change)="disabledState = !disabledState">
-                <label for="disabled">Disabled state</label>
-            </div>
-            <div>
-                <input id="readonly" type="checkbox" [checked]="readOnlyState" (change)="readOnlyState = !readOnlyState">
-                <label for="readonly">Readonly state</label>
-            </div>
+            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+            <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
             <div>
                 <pa-button size="small" weight="accent"
                            (click)="toggleCustomErrorMessage()">

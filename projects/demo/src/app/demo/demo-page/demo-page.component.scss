@@ -49,7 +49,7 @@ pa-demo-page {
         display: block;
         margin-bottom: rhythm(1);
 
-        > *:not(:last-child) {
+        > *:not(.icon-list-container):not(:last-child) {
             margin-right: rhythm(2.5);
         }
 

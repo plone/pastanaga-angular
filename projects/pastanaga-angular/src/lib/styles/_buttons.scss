@@ -267,6 +267,6 @@
     }
 
     &:focus  {
-        box-shadow: 0 0 0 rhythm(.25) rgba($color-primary-pale, .6);
+        box-shadow: $shadow-focus;
     }
 }
