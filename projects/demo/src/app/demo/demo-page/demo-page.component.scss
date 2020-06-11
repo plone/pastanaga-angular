@@ -56,19 +56,19 @@ pa-demo-page {
         h3 {
             margin: rhythm(2.5) 0 rhythm(.5);
         }
+    }
 
-        .pa-demo-example-configuration {
-            margin-top: rhythm(2.5);
+    .pa-demo-example-configuration {
+        margin-top: rhythm(2.5);
 
-            label {
-                margin-right: rhythm(.5);
-            }
-            select {
-                margin-bottom: rhythm(.5);
-            }
-            div {
-                margin: rhythm(.5) 0;
-            }
+        label {
+            margin-right: rhythm(.5);
+        }
+        select {
+            margin-bottom: rhythm(.5);
+        }
+        div {
+            margin: rhythm(.5) 0;
         }
     }
 

@@ -25,25 +25,27 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Input() id?: string;
     @Input() companionElement?: any;
     @Input()
-    get isAlwaysOn(): boolean { return this._isAlwaysOn; }
-    set isAlwaysOn(value: boolean) { this._isAlwaysOn = coerceBooleanProperty(value); }
+    get stayVisible(): boolean { return this._stayVisible; }
+    set stayVisible(value: boolean) { this._stayVisible = coerceBooleanProperty(value); }
 
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
     _id = '';
-    _isAlwaysOn = false;
+    _stayVisible = false;
     _isDisplayed = false;
     _style?: any;
     _handlers: Function[] = [];
 
+    _popupType = 'popup';
+
     constructor(
-        public service: PopupService,
+        public popupService: PopupService,
         public renderer: Renderer2,
         public element: ElementRef,
         public cdr: ChangeDetectorRef,
     ) {
-        this.service.closeAllPopups.subscribe(() => this.close());
-        this.service.closeAllButId.subscribe((id) => {
+        this.popupService.closeAllPopups.subscribe(() => this.close());
+        this.popupService.closeAllButId.subscribe((id) => {
             if (id !== this._id) {
                 this.close();
             }
@@ -51,8 +53,8 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this._id = !this.id ? `popup-${nextId++}` : `${this.id}-popup`;
-        this._isDisplayed = this._isAlwaysOn;
+        this._id = !this.id ? `${this._popupType}-${nextId++}` : `${this.id}-${this._popupType}`;
+        this._isDisplayed = this._stayVisible;
     }
 
     ngOnDestroy() {
@@ -61,11 +63,11 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     show(style: PositionStyle, hasSubLevel = false) {
         if (!hasSubLevel) {
-            this.service.closeAllButId.next(this.id);
+            this.popupService.closeAllButId.next(this.id);
         }
         this._style = style;
         this._isDisplayed = true;
-        if (!this._isAlwaysOn) {
+        if (!this._stayVisible) {
             this._handlers.push(this.renderer.listen('document', 'click', (event) => this.onOutsideClick(event)));
             this._handlers.push(this.renderer.listen('document', 'keyup.esc', () => this.close()));
         }
@@ -122,7 +124,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     close(byClickingOutside?: boolean) {
-        if (!this._isAlwaysOn && this._isDisplayed) {
+        if (!this._stayVisible && this._isDisplayed) {
             this._isDisplayed = false;
             this.unListen();
             this.onClose.emit(byClickingOutside);
@@ -133,7 +135,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     onOutsideClick(event: MouseEvent) {
         if (!this.element.nativeElement.contains(event.target)
             && (!this.companionElement || !this.companionElement.contains(event.target))) {
-            this.service.closeAllSubMenu.next();
+            this.popupService.closeAllSubMenu.next();
             this.close(true);
         }
     }

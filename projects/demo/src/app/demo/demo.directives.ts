@@ -9,6 +9,9 @@ export class DemoDescriptionDirective {}
 @Directive({ selector: 'pa-demo-examples' })
 export class DemoExamplesDirective {}
 
+@Directive({ selector: 'pa-demo-configuration' })
+export class DemoConfigurationDirective {}
+
 @Directive({ selector: 'pa-demo-usage' })
 export class DemoUsageDirective {}
 

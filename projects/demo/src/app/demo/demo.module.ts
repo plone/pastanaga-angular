@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DemoPageComponent } from './demo-page/demo-page.component';
 import {
     DemoCodeDirective,
+    DemoConfigurationDirective,
     DemoDescriptionDirective,
     DemoExamplesDirective,
     DemoTitleDirective,
@@ -17,6 +18,7 @@ import { TranslatePageComponent } from './pages/translate-page/translate-page.co
 import {
     PaButtonModule,
     PaIconModule,
+    PaMenuModule,
     PaPopupModule,
     PaTextFieldModule,
     PaTogglesModule,
@@ -29,6 +31,7 @@ import { BaseTextfieldComponent } from './pages/common-doc/base-textfield/base-t
 import { BaseControlComponent } from './pages/common-doc/base-control/base-control.component';
 import { PopupPageComponent } from './pages/popup-page/popup-page.component';
 import { BasicPopupComponent } from './pages/popup-page/basic-popup.component';
+import { MenuPageComponent } from './pages/menu-page/menu-page.component';
 
 
 const COMPONENTS = [
@@ -39,6 +42,7 @@ const COMPONENTS = [
     DemoExamplesDirective,
     DemoUsageDirective,
     DemoCodeDirective,
+    DemoConfigurationDirective,
 
     BaseControlComponent,
     BaseTextfieldComponent,
@@ -47,6 +51,7 @@ const COMPONENTS = [
     CheckboxPageComponent,
     IconPageComponent,
     InputPageComponent,
+    MenuPageComponent,
     PopupPageComponent,
     BasicPopupComponent,
     TranslatePageComponent,
@@ -60,6 +65,7 @@ const COMPONENTS = [
 
         PaButtonModule,
         PaIconModule,
+        PaMenuModule,
         PaPopupModule,
         PaTextFieldModule,
         PaTogglesModule,

@@ -6,18 +6,16 @@
     <pa-demo-examples>
         <pa-checkbox [type]="selectedType"
                      [disabled]="disabledState">Label</pa-checkbox>
-
-        <div class="pa-demo-example-configuration">
-            <h3>Configuration options</h3>
-            <label for="type">Type:</label>
-            <select name="type" id="type" [value]="selectedType" (change)="updateType($event.target.value)">
-                <option [disabled]="!!selectedType" [selected]="!selectedType">Select a type</option>
-                <option value="checkbox" [selected]="selectedType === 'checkbox'">Checkbox</option>
-                <option value="radio" [selected]="selectedType === 'radio'">Radio</option>
-            </select>
-            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
-        </div>
     </pa-demo-examples>
+    <pa-demo-configuration>
+        <label for="type">Type:</label>
+        <select name="type" id="type" [value]="selectedType" (change)="updateType($event.target.value)">
+            <option [disabled]="!!selectedType" [selected]="!selectedType">Select a type</option>
+            <option value="checkbox" [selected]="selectedType === 'checkbox'">Checkbox</option>
+            <option value="radio" [selected]="selectedType === 'radio'">Radio</option>
+        </select>
+        <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+    </pa-demo-configuration>
 
     <pa-demo-usage>
         <pa-demo-base-control></pa-demo-base-control>

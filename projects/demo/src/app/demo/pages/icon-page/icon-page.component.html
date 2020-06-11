@@ -4,29 +4,6 @@
     <pa-demo-description>Here the list of all icons available in Pastanaga</pa-demo-description>
 
     <pa-demo-examples>
-        <div class="pa-demo-example-configuration">
-            <label for="size">Size:</label>
-            <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
-                <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
-                <option value="xsmall" [selected]="selectedSize === 'xsmall'">xsmall</option>
-                <option value="small" [selected]="selectedSize === 'small'">small</option>
-                <option value="medium" [selected]="selectedSize === 'medium'">medium</option>
-                <option value="large" [selected]="selectedSize === 'large'">large</option>
-            </select>
-            <label for="color">Color:</label>
-            <select name="color" id="color" [value]="selectedColor" (change)="updateColor($event.target.value)">
-                <option [disabled]="!!selectedColor" [selected]="!selectedColor">Select a color</option>
-                <option value="none" [selected]="!selectedColor">None</option>
-                <option value="#0047FF" [selected]="selectedColor === '#0047FF'">Blue</option>
-            </select>
-            <label for="background">Background:</label>
-            <select name="background" id="background" [value]="selectedBackground" (change)="updateBackground($event.target.value)">
-                <option [disabled]="!!selectedBackground" [selected]="!selectedBackground">Select a background color</option>
-                <option value="none" [selected]="!selectedBackground">None</option>
-                <option value="#FFA100" [selected]="selectedBackground === '#FFA100'">Yellow</option>
-            </select>
-        </div>
-
         <h3>Icon from path</h3>
         <div class="icon-list-container">
             <div class="icon-container">
@@ -43,6 +20,37 @@
             </div>
         </div>
     </pa-demo-examples>
+
+    <pa-demo-configuration>
+        <div>
+            <label for="size">Size:</label>
+            <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
+                <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
+                <option value="xsmall" [selected]="selectedSize === 'xsmall'">xsmall</option>
+                <option value="small" [selected]="selectedSize === 'small'">small</option>
+                <option value="medium" [selected]="selectedSize === 'medium'">medium</option>
+                <option value="large" [selected]="selectedSize === 'large'">large</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="color">Color:</label>
+            <select name="color" id="color" [value]="selectedColor" (change)="updateColor($event.target.value)">
+                <option [disabled]="!!selectedColor" [selected]="!selectedColor">Select a color</option>
+                <option value="none" [selected]="!selectedColor">None</option>
+                <option value="#0047FF" [selected]="selectedColor === '#0047FF'">Blue</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="background">Background:</label>
+            <select name="background" id="background" [value]="selectedBackground" (change)="updateBackground($event.target.value)">
+                <option [disabled]="!!selectedBackground" [selected]="!selectedBackground">Select a background color</option>
+                <option value="none" [selected]="!selectedBackground">None</option>
+                <option value="#FFA100" [selected]="selectedBackground === '#FFA100'">Yellow</option>
+            </select>
+        </div>
+    </pa-demo-configuration>
 
     <pa-demo-usage>
         <p>

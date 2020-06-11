@@ -21,6 +21,11 @@ export * from './lib/icon/icon.component';
 export * from './lib/icon/svg-loader.interface';
 export * from './lib/icon/svg-loader';
 
+export * from './lib/menu/menu.module';
+export * from './lib/menu/menu.component';
+export * from './lib/menu/menu-item/menu-item.component.js';
+export * from './lib/menu/menu-separator/menu-separator.component';
+
 export * from './lib/popup/popup.component';
 export * from './lib/popup/popup.directive';
 export * from './lib/popup/popup.module';

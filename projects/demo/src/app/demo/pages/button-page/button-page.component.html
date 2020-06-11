@@ -37,43 +37,42 @@
             Value
         </pa-button>
 
-        <div class="pa-demo-example-configuration">
-            <h3>Configuration options</h3>
-            <div>
-                <label for="kind">Kind:</label>
-                <select name="kind" id="kind" [value]="selectedKind" (change)="updateKind($event.target.value)">
-                    <option [disabled]="!!selectedKind" [selected]="!selectedKind">Select a kind</option>
-                    <option value="primary">primary</option>
-                    <option value="secondary">secondary</option>
-                    <option value="critical">critical</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="size">Size:</label>
-                <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
-                    <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
-                    <option value="xsmall">xsmall</option>
-                    <option value="small">small</option>
-                    <option value="medium">medium</option>
-                    <option value="large">large</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="weight">Weight:</label>
-                <select name="weight" id="weight" [value]="selectedWeight" (change)="updateWeight($event.target.value)">
-                    <option [disabled]="!!selectedWeight" [selected]="!selectedWeight">Select a weight</option>
-                    <option value="accent">accent</option>
-                    <option value="regular">regular</option>
-                    <option value="dim">dim</option>
-                </select>
-            </div>
-            <div>
-                <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
-            </div>
-        </div>
     </pa-demo-examples>
+    <pa-demo-configuration>
+        <div>
+            <label for="kind">Kind:</label>
+            <select name="kind" id="kind" [value]="selectedKind" (change)="updateKind($event.target.value)">
+                <option [disabled]="!!selectedKind" [selected]="!selectedKind">Select a kind</option>
+                <option value="primary">primary</option>
+                <option value="secondary">secondary</option>
+                <option value="critical">critical</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="size">Size:</label>
+            <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
+                <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
+                <option value="xsmall">xsmall</option>
+                <option value="small">small</option>
+                <option value="medium">medium</option>
+                <option value="large">large</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="weight">Weight:</label>
+            <select name="weight" id="weight" [value]="selectedWeight" (change)="updateWeight($event.target.value)">
+                <option [disabled]="!!selectedWeight" [selected]="!selectedWeight">Select a weight</option>
+                <option value="accent">accent</option>
+                <option value="regular">regular</option>
+                <option value="dim">dim</option>
+            </select>
+        </div>
+        <div>
+            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+        </div>
+    </pa-demo-configuration>
 
     <pa-demo-usage>
         <h3>Inputs</h3>

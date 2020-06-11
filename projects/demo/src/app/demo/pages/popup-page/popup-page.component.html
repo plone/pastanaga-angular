@@ -17,14 +17,10 @@
     <pa-demo-examples>
         <pa-button [paPopup]="myPopup" [popupOnRight]="popupOnRight" size="small">Open popup</pa-button>
         <pa-demo-basic-popup #myPopup></pa-demo-basic-popup>
-
-        <div class="pa-demo-example-configuration">
-            <h3>Configuration options</h3>
-            <div>
-                <pa-checkbox id="popupOnRight" [(selected)]="popupOnRight">Open popup on right</pa-checkbox>
-            </div>
-        </div>
     </pa-demo-examples>
+    <pa-demo-configuration>
+        <pa-checkbox id="popupOnRight" [(selected)]="popupOnRight">Open popup on right</pa-checkbox>
+    </pa-demo-configuration>
 
     <pa-demo-usage>
         <h2>PopupComponent</h2>
@@ -34,7 +30,7 @@
             <dd>Popup's id <small>(optional, an id will be generated if none is provided)</small></dd>
             <dt>companionElement</dt>
             <dd>When clicking on the companion element – which is outside the popup – the popup won’t close. It offers external interactions (like filtering the popup content for example)<small>(optional)</small></dd>
-            <dt>isAlwaysOn</dt>
+            <dt>stayVisible</dt>
             <dd>Keep the popup visible when set to true <small>(default: false)</small></dd>
         </dl>
         <h3>Outputs</h3>

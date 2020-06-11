@@ -8,6 +8,7 @@ import { InputPageComponent } from './demo/pages/input-page/input-page.component
 import { CheckboxPageComponent } from './demo/pages/checkbox-page/checkbox-page.component';
 import { TranslatePageComponent } from './demo/pages/translate-page/translate-page.component';
 import { PopupPageComponent } from './demo/pages/popup-page/popup-page.component';
+import { MenuPageComponent } from './demo/pages/menu-page/menu-page.component';
 
 @Component({
     selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent {
                 {view: 'button', title: 'Button', type: ButtonPageComponent},
                 {view: 'checkbox', title: 'Checkbox', type: CheckboxPageComponent},
                 {view: 'input', title: 'Input', type: InputPageComponent},
+                {view: 'menu', title: 'Menu', type: MenuPageComponent},
                 {view: 'popup', title: 'Popup', type: PopupPageComponent},
             ]
         },

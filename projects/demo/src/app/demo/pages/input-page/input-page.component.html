@@ -30,19 +30,17 @@
                 Field with help
             </pa-input>
         </form>
-
-        <div class="pa-demo-example-configuration">
-            <h3>Configuration options</h3>
-            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
-            <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
-            <div>
-                <pa-button size="small" weight="accent"
-                           (click)="toggleCustomErrorMessage()">
-                    {{!!customError ? 'Reset custom error' : 'Set custom error message'}}
-                </pa-button>
-            </div>
-        </div>
     </pa-demo-examples>
+    <pa-demo-configuration>
+        <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+        <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
+        <div>
+            <pa-button size="small" weight="accent"
+                       (click)="toggleCustomErrorMessage()">
+                {{!!customError ? 'Reset custom error' : 'Set custom error message'}}
+            </pa-button>
+        </div>
+    </pa-demo-configuration>
 
     <pa-demo-usage>
         <pa-demo-base-textfield></pa-demo-base-textfield>

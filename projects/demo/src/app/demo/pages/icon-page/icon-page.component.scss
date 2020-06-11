@@ -1,15 +1,4 @@
 // We can't import variables here if we want to be able to use those demo pages in other applications
-
-.pa-demo-example-configuration {
-    label {
-        margin-right: 6px;
-
-        &:not(:first-of-type) {
-            margin-left: 18px;
-        }
-    }
-}
-
 .icon-list-container {
     background: #F1F3F4;
     display: flex;
