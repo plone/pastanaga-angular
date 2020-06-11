@@ -1,0 +1,11 @@
+@import "../styles/variables";
+
+.pa-popup-wrapper {
+    padding: 0;
+    max-width: rhythm(20);
+}
+.pa-menu {
+    list-style: none;
+    padding: rhythm(.25) 0;
+    margin: 0;
+}

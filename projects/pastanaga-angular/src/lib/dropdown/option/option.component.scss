@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.pa-menu-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: $padding-menu-option;
+
+    &:hover {
+        background-color: $color-background-menu-option-hover;
+    }
+    &:active {
+        background-color: $color-background-menu-option-active;
+    }
+    &:focus {
+        outline: 0;
+        box-shadow: $shadow-focus;
+    }
+
+    &.pa-menu-item-destructive {
+        color: $color-text-menu-option-destructive;
+    }
+
+    pa-icon {
+        margin-right: rhythm(1);
+
+        &::ng-deep svg {
+            fill: currentColor;
+        }
+    }
+}

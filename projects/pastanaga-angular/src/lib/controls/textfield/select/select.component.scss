@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+
+.pa-select {
+    position: relative;
+
+    .pa-select-input-container {
+        position: relative;
+
+        .pa-select-chevron {
+            position: absolute;
+            right: rhythm(.5);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    pa-dropdown ::ng-deep .pa-popup-wrapper {
+        max-width: none;
+        width: 100%;
+    }
+}

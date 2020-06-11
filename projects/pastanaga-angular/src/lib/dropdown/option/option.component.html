@@ -1,0 +1,9 @@
+<li class="pa-menu-item" role="menuitem"
+    tabindex="0"
+    [class.pa-menu-item-destructive]="_destructive"
+    (click)="onSelect($event)"
+    (keyup.enter)="onSelect($event)"
+>
+    <pa-icon *ngIf="!!_glyph" [name]="_glyph"></pa-icon>
+    <ng-content></ng-content>
+</li>

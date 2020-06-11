@@ -1,0 +1,17 @@
+@import "palette";
+@import "spacing";
+
+//=====================================
+// COLORS
+//=====================================
+$color-text-menu-option-header: $color-neutral-regular !default;
+$color-text-menu-option-destructive: $color-critical-regular !default;
+$color-background-menu-option-hover: $color-neutral-faded !default;
+$color-background-menu-option-active: $color-neutral-light !default;
+
+$color-border-menu-separator: $color-neutral-faded !default;
+
+//=====================================
+// SPACING
+//=====================================
+$padding-menu-option: rhythm(1) rhythm(2) !default;

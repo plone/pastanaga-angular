@@ -46,7 +46,7 @@ export class ErrorMessages {
     }
 }
 
-export class BaseTextField extends BaseControl implements AfterContentInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
+export class BaseTextField extends BaseControl implements AfterContentInit, OnInit, OnDestroy {
     @Input() debounceDuration = 500;
     @Input() errorMessages?: ErrorMessages;
     @Input()
@@ -72,7 +72,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, Cont
     @Output() blur: EventEmitter<string | number> = new EventEmitter();
     @Output() focus: EventEmitter<FocusEvent> = new EventEmitter();
 
-    @ViewChild('labelElement') label?: ElementRef;
+    @ViewChild('labelElement') labelElement?: ElementRef;
 
     _value: string | number = '';
     _fieldType = 'textfield';
@@ -95,7 +95,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, Cont
 
     constructor(
         protected cdr: ChangeDetectorRef,
-        ) {
+    ) {
         super();
         this.debouncer.pipe(
             takeUntil(this.terminator),
@@ -109,8 +109,8 @@ export class BaseTextField extends BaseControl implements AfterContentInit, Cont
 
     ngAfterContentInit() {
         setTimeout(() => {
-            if (!!this.label) {
-                this._label = this.label.nativeElement.textContent.trim();
+            if (!!this.labelElement) {
+                this._label = this.labelElement.nativeElement.textContent.trim();
                 detectChanges(this.cdr);
             }
         }, 0);

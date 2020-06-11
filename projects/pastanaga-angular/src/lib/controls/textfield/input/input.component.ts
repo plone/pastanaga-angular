@@ -15,12 +15,12 @@ import {
     NgForm,
     Validator
 } from '@angular/forms';
-import { BaseTextField } from '../base-text-field';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { takeUntil } from 'rxjs/operators';
 import { detectChanges } from '../../../common';
+import { BaseTextField } from '../base-text-field';
 
 const HTML_TAG = new RegExp(/.?<.+>/g);
 const REPLACE_LT_GT = new RegExp(/[<>]/g);

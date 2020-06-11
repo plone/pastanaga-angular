@@ -1,0 +1,78 @@
+<pa-demo-page>
+    <pa-demo-title>Dropdown</pa-demo-title>
+    <pa-demo-description>
+        <p>
+            Dropdown component allows to display a list of options in a popup.
+            It can be used to build a contextual menu for example.
+        </p>
+        <p>
+            <code>PaDropdownModule</code> contains every thing you need to build your dropdown:
+        </p>
+        <ul>
+            <li><code>DropdownComponent</code>: brings the popup behaviour and is mainly a wrapper for the list of options using the following components</li>
+            <li><code>OptionHeaderComponent</code>: header allowing to group options</li>
+            <li><code>OptionComponent</code>: option item</li>
+            <li><code>SeparatorComponent</code>: option separator</li>
+        </ul>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <div>
+            <pa-dropdown stayVisible>
+                <pa-option-header>Menu list header</pa-option-header>
+                <pa-option glyph="settings" id="menu-item-1" (select)="onSelect($event)">Menu list item 1</pa-option>
+                <pa-option glyph="settings" id="menu-item-2" (select)="onSelect($event)">Menu list item 2</pa-option>
+                <pa-option glyph="settings" id="menu-item-3" (select)="onSelect($event)">Menu list item 3</pa-option>
+                <pa-separator></pa-separator>
+                <pa-option glyph="delete" destructive id="menu-item-destructive" (select)="onSelect($event)">Menu item destructive</pa-option>
+            </pa-dropdown>
+        </div>
+
+
+        <div>
+            <pa-button icon="ellipsis-vertical" size="small"
+                       [paPopup]="contextualMenu"></pa-button>
+
+            <pa-dropdown #contextualMenu>
+                <pa-option (select)="onSelect($event)">Menu list item 1</pa-option>
+                <pa-option (select)="onSelect($event)">Menu list item 1</pa-option>
+                <pa-option (select)="onSelect($event)">Menu list item 3</pa-option>
+                <pa-separator></pa-separator>
+                <pa-option destructive dontCloseOnSelect (select)="onSelect($event)">Menu item destructive</pa-option>
+            </pa-dropdown>
+        </div>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h2><code>DropdownComponent</code></h2>
+        <p>Brings the popup behaviour and is mainly a wrapper for the list of options. It works with <code>ng-content</code>.</p>
+
+        <h3>Inputs</h3>
+        <dl>
+            <dt>role</dt>
+            <dd>listbox | menu <small>(default: menu)</small></dd>
+        </dl>
+        <br>
+        <h2><code>OptionComponent</code></h2>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>destructive</dt>
+            <dd>Set destructive color <small>(default: false)</small></dd>
+            <dt>glyph</dt>
+            <dd>Glyph name to be used for <code>pa-icon</code> <small>(optional)</small></dd>
+            <dt>id</dt>
+            <dd>Menu item's id <small>(optional, an id will be generated if none is provided)</small></dd>
+            <dt>dontCloseOnSelect</dt>
+            <dd>Don't close the menu when selecting this item <small>(default: false – by default selecting an option is closing the menu)</small></dd>
+        </dl>
+        <h3>Outputs</h3>
+        <dl>
+            <dt>select</dt>
+            <dd>Event emitted when clicking or pressing enter on the item.</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{codeExample}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

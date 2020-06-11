@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.pa-option-header {
+    @include font-size(s);
+    font-weight: $font-weight-menu-header;
+    color: $color-text-menu-option-header;
+    padding: $padding-menu-option;
+    text-transform: uppercase;
+
+}

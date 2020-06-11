@@ -1,0 +1,28 @@
+<div class="pa-select">
+    <div class="pa-select-input-container">
+        <pa-input #dropdownInput
+                  [id]="_id"
+                  [help]="_help"
+                  [disabled]="_disabled"
+                  [debounceDuration]="debounceDuration"
+                  [errorMessages]="errorMessages"
+                  [errorMessage]="_errorMessage"
+                  [placeholder]="_placeholder"
+                  [value]="_value"
+                  [readonly]="_readonly"
+                  [required]="_required"
+                  [paPopup]="dropdownOptions"
+                  [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '48px'}"
+        >{{_label}}</pa-input>
+        <pa-icon class="pa-select-chevron" name="chevron-down"></pa-icon>
+    </div>
+
+    <pa-dropdown #dropdownOptions
+                 role="listbox"
+                 [companionElement]="dropdownInput">
+        <ng-content></ng-content>
+        <ng-container ></ng-container>
+    </pa-dropdown>
+</div>
+
+
