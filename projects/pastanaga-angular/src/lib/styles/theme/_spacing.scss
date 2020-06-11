@@ -34,3 +34,11 @@ $rhythm: (
 }
 
 $border-radius-default: rhythm(.25) !default;
+
+// layout
+$tiny        : 480px !default;
+$small       : 576px !default;
+$medium      : 768px !default;
+$large       : 1280px !default;
+$cols        : 12 !default;
+$grid-gutters: 12px !default;
