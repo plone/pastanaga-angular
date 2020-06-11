@@ -12,7 +12,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { SvgLoader } from './svg-loader';
-import { detectChanges, Size } from '../common';
+import { detectChanges, markForCheck, Size } from '../common';
 
 @Component({
     selector: 'pa-icon',
@@ -105,6 +105,6 @@ export class IconComponent {
         }
         this._classes = classes.join(' ');
         this._styles = styles.join(' ');
-        detectChanges(this.cdr);
+        markForCheck(this.cdr);
     }
 }
