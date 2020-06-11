@@ -28,6 +28,7 @@ import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.compo
 import { BaseTextfieldComponent } from './pages/common-doc/base-textfield/base-textfield.component';
 import { BaseControlComponent } from './pages/common-doc/base-control/base-control.component';
 import { PopupPageComponent } from './pages/popup-page/popup-page.component';
+import { BasicPopupComponent } from './pages/popup-page/basic-popup.component';
 
 
 const COMPONENTS = [
@@ -47,6 +48,7 @@ const COMPONENTS = [
     IconPageComponent,
     InputPageComponent,
     PopupPageComponent,
+    BasicPopupComponent,
     TranslatePageComponent,
 ];
 

@@ -1,16 +1,61 @@
 <pa-demo-page>
     <pa-demo-title>Popup</pa-demo-title>
-    <pa-demo-description>Component to be used by any component needing a popup behaviour.</pa-demo-description>
+    <pa-demo-description>
+        <p>
+            Pastanaga provides a component and a directive allowing to give a popup behaviour to any component.
+        </p>
+        <ul>
+            <li>
+                <code>PopupComponent</code>: Component to be extended by any component needing a popup behaviour.
+            </li>
+            <li>
+                <code>PopupDirective</code>: Directive allowing to open a popup by clicking on the element it belongs to
+            </li>
+        </ul>
+    </pa-demo-description>
 
     <pa-demo-examples>
-        TODO
+        <pa-button [paPopup]="myPopup" [popupOnRight]="popupOnRight" size="small">Open popup</pa-button>
+        <pa-demo-basic-popup #myPopup></pa-demo-basic-popup>
+
+        <div class="pa-demo-example-configuration">
+            <h3>Configuration options</h3>
+            <div>
+                <pa-checkbox id="popupOnRight" [(selected)]="popupOnRight">Open popup on right</pa-checkbox>
+            </div>
+        </div>
     </pa-demo-examples>
 
     <pa-demo-usage>
-        TODO
+        <h2>PopupComponent</h2>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>id</dt>
+            <dd>Popup's id <small>(optional, an id will be generated if none is provided)</small></dd>
+            <dt>companionElement</dt>
+            <dd>When clicking on the companion element – which is outside the popup – the popup won’t close. It offers external interactions (like filtering the popup content for example)<small>(optional)</small></dd>
+            <dt>isAlwaysOn</dt>
+            <dd>Keep the popup visible when set to true <small>(default: false)</small></dd>
+        </dl>
+        <h3>Outputs</h3>
+        <dl>
+            <dt>onClose</dt>
+            <dd>Event emitted whenever the popup is closed</dd>
+        </dl>
+
+        <h2>PopupDirective</h2>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>paPopup</dt>
+            <dd>Popup to open when clicking on the element carrying the directive</dd>
+            <dt>popupPosition</dt>
+            <dd>Position style to be used on the popup <small>(optional: by default the popup is positioned on top of the element carrying the directive)</small></dd>
+            <dt>popupOnRight</dt>
+            <dd>Set the popup on the right of the element carrying the directive <small>(default: false)</small></dd>
+        </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
-        <pre><code>TODO</code></pre>
+        <pre><code>{{example}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

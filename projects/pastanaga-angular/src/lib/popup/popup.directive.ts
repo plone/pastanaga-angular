@@ -4,15 +4,6 @@ import { PopupComponent } from './popup.component';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
 
-interface RemoteClickParams {
-    event: MouseEvent;
-    override?: PositionStyle;
-    isContextual?: boolean;
-    ignoreRemote?: boolean;
-    useLastPosition?: boolean;
-    useRealComputedPosition?: boolean;
-}
-
 @Directive({
     selector: '[paPopup]',
     exportAs: 'paPopupRef',
@@ -23,15 +14,11 @@ export class PopupDirective implements OnInit {
     @Input()
     get popupOnRight(): boolean { return this._popupOnRight; }
     set popupOnRight(value: boolean) { this._popupOnRight = coerceBooleanProperty(value); }
-    @Input()
-    get openedFromPopup(): boolean { return this._openedFromPopup; }
-    set openedFromPopup(value: boolean) { this._openedFromPopup = coerceBooleanProperty(value); }
 
     _rootParent?: HTMLElement;
     _remoteElement?: HTMLElement;
 
     _popupOnRight = false;
-    _openedFromPopup = false;
 
     constructor(
         private element: ElementRef,
@@ -46,7 +33,7 @@ export class PopupDirective implements OnInit {
     onClick($event: MouseEvent, override?: PositionStyle, isContextual?: boolean, useLast?: boolean) {
         const menu = this.paPopup;
         if (!!menu) {
-            if (menu._isDisplayed && !this._openedFromPopup) {
+            if (menu._isDisplayed) {
                 menu.close();
             } else {
                 let position: PositionStyle;

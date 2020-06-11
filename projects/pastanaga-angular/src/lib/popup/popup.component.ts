@@ -23,7 +23,7 @@ let nextId = 0;
 })
 export class PopupComponent implements OnInit, OnDestroy {
     @Input() id?: string;
-    @Input() parentElement?: any;
+    @Input() companionElement?: any;
     @Input()
     get isAlwaysOn(): boolean { return this._isAlwaysOn; }
     set isAlwaysOn(value: boolean) { this._isAlwaysOn = coerceBooleanProperty(value); }
@@ -132,7 +132,7 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     onOutsideClick(event: MouseEvent) {
         if (!this.element.nativeElement.contains(event.target)
-            && (!this.parentElement || !this.parentElement.contains(event.target))) {
+            && (!this.companionElement || !this.companionElement.contains(event.target))) {
             this.service.closeAllSubMenu.next();
             this.close(true);
         }

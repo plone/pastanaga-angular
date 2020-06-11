@@ -8,7 +8,7 @@ import { PopupService } from './popup/popup.service';
 export class PastanagaService {
 
   constructor(
-      public popup: PopupService,
+      public popupService: PopupService,
       public translate: TranslatePipe,
   ) { }
 }

@@ -61,7 +61,7 @@ export class ButtonComponent implements AfterContentInit, OnInit {
     _type: 'button' | 'submit' | 'reset' = 'button';
     _kind: Kind = Kind.secondary;
     _size: Size = Size.medium;
-    _weight: Weight = Weight.regular;
+    _weight: Weight = Weight.accent;
     _icon = '';
     _iconSize: Size = Size.medium;
     _iconAndText = false;
