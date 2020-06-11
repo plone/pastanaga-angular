@@ -49,4 +49,8 @@ export class ButtonPageComponent implements OnInit {
     updateWeight(value: string) {
         this.selectedWeight = value as Weight;
     }
+
+    clickOn($event: MouseEvent) {
+        console.log(`Clicked on button`, $event);
+    }
 }

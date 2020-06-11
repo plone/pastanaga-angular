@@ -90,4 +90,16 @@ export class ButtonComponent implements AfterContentInit, OnInit {
         this._id = !this.id ? `button-${nextId++}` : `${this.id}-button`;
     }
 
+    onClick($event: MouseEvent) {
+        if (!!$event && this._type !== 'submit') {
+            $event.preventDefault();
+        }
+    }
+
+    clickOnWrapper($event: MouseEvent) {
+        if (this._disabled) {
+            $event.preventDefault();
+            $event.stopPropagation();
+        }
+    }
 }

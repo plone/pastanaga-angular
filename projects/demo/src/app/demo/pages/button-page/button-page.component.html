@@ -4,27 +4,36 @@
     <pa-demo-description>Buttons can contain text, icon or both.</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-button [kind]="selectedKind"
+        <pa-button id="text"
+                   [kind]="selectedKind"
                    [size]="selectedSize"
                    [weight]="selectedWeight"
-                   [disabled]="disabledState">
+                   [disabled]="disabledState"
+                   (click)="clickOn($event)"
+        >
             Value
         </pa-button>
 
-        <pa-button icon="search"
+        <pa-button id="text-icon"
+                   icon="search"
                    iconAndText
                    [kind]="selectedKind"
                    [size]="selectedSize"
                    [weight]="selectedWeight"
-                   [disabled]="disabledState">
+                   [disabled]="disabledState"
+                   (click)="clickOn($event)"
+        >
             Value
         </pa-button>
 
-        <pa-button icon="search"
+        <pa-button id="icon"
+                   icon="search"
                    [kind]="selectedKind"
                    [size]="selectedSize"
                    [weight]="selectedWeight"
-                   [disabled]="disabledState">
+                   [disabled]="disabledState"
+                   (click)="clickOn($event)"
+        >
             Value
         </pa-button>
 
