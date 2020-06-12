@@ -4,6 +4,7 @@
     "license": "MIT",
     "scripts": {
         "ng": "ng",
+        "prestart": "npm run icon_list",
         "start": "ng serve",
         "build:lib": "ng build --prod",
         "build:demo": "ng build demo --prod --base-href /pastanaga-angular/",
@@ -14,7 +15,8 @@
         "test": "npm run test:lib && npm run test:demo",
         "test:ci": "jest --config ./projects/pastanaga-angular/jest.config.js --runInBand --ci",
         "get_version": "cat ./projects/pastanaga/package.json | grep version  | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
-        "icon_list": "python -c \"import json; import xml.dom.minidom; print json.dumps([el.getAttribute('id') for el in xml.dom.minidom.parseString(open('projects/pastanaga-angular/src/assets/icons-sprite.svg').read()).getElementsByTagName('symbol')])\" > projects/demo/src/icons.json"
+        "preicon_list": "cp projects/pastanaga-angular/src/assets/glyphs-sprite.svg projects/demo/src/assets",
+        "icon_list": "python -c \"import json; import xml.dom.minidom; print json.dumps([el.getAttribute('id') for el in xml.dom.minidom.parseString(open('projects/pastanaga-angular/src/assets/glyphs-sprite.svg').read()).getElementsByTagName('symbol')])\" > projects/demo/src/assets/glyphs.json"
     },
     "private": true,
     "dependencies": {

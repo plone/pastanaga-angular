@@ -12,7 +12,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { SvgLoader } from './svg-loader';
-import { detectChanges, markForCheck, Size } from '../common';
+import { markForCheck, Size } from '../common';
 
 @Component({
     selector: 'pa-icon',
@@ -25,7 +25,7 @@ export class IconComponent {
     @Input() set name(value: string) {
         if (!!value) {
             this._name = value;
-            this._spritePath = `assets/icons-sprite.svg#${this._name}`;
+            this._spritePath = `assets/glyphs-sprite.svg#${this._name}`;
             this.updateStyle();
         }
     }
