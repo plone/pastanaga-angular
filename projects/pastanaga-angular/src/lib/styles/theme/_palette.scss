@@ -1,77 +1,53 @@
 // Colors palette
 
-// all shades
-// grays            // blues            // reds                 // yellows              // greens
-$black: #000;
-$gray5: #0A0910;    $blue5:  #080712;   $red5: #1A0600;         $yellow5: #1A0900;      $green5: #061309;
-                    $blue10: #0E0D26;   $red10: #330A00;        $yellow10: #331600;     $green10: #0D2611;
-$gray20: #292A3D;   $blue20: #131553;   $red20: #660F00;        $yellow20: #663100;     $green20: #194D20;
-$gray30: #404359;   $blue30: #132186;   $red30: #990F00;        $yellow30: #995200;     $green30: #26732E;
-$gray40: #595E73;   $blue40: #0D31BF;   $red40: #CC0A00;        $yellow40: #CC7700;     $green40: #33993A;
-$gray50: #737A8C;   $blue50: #0047FF;   $red50: #ED0100;        $yellow50: #FFA100;     $green50: #40BF44;
-$gray60: #8F96A3;   $blue60: #337EFF;   $red60: #FF333D;        $yellow60: #FEBA2C;     $green60: #66CC66;
-$gray70: #ABB2BA;   $blue70: #66ABFF;   $red70: #FF6675;        $yellow70: #FFD666;     $green70: #8FD98C;
-$gray80: #C7CCD1;   $blue80: #99CFFF;   $red80: #FF99A8;        $yellow80: #FFE999;     $green80: #B6E6B3;
-$gray90: #E3E6E8;   $blue90: #CCEBFF;   $red90: #FFCCD6;        $yellow90: #FFF7CC;     $green90: #DBF2D9;
-$gray95: #F1F3F4;   $blue95: #E5F6FF;   $red95: #FFE5EB;        $yellow95: #FFFCE5;     $green95: #EEF9EC;
+// Grays
+$black:     #000;
+$carbon:    #6C7080;
+$panot:     #C2CBD6;
+$salt:      #E3E7EB;
+$air:       #F2F5F7;
+$white:     #fff;
 
-$white: #fff;
-
-// meaningful names
-// grays            // blues            // reds                 // yellows              // greens
-                    $tapenade: $blue10;
-
-$obsidian: $gray30; $midnight: $blue30; $velvet:     $red30;    $maple: $yellow30;      $bottle: $green30;
-                    $twilight: $blue40; $wine:       $red40;    $gold:  $yellow40;      $nopal:  $green40;
-$carbon: $gray50;   $ocean:    $blue50; $gazpacho:   $red50;    $mango: $yellow50;      $basil:  $green50;
-                    $sky:      $blue60; $scarlet:    $red60;    $cava:  $yellow60;      $grass:  $green60;
-$panot: $gray70;    $sail:     $blue70; $watermelon: $red70;    $honey: $yellow70;      $mint:   $green70;
-                    $mist:     $blue80; $rose:       $red80;    $cream: $yellow80;
-$salt: $gray90;
-$air: $gray95;      $steam:    $blue95; $blossom:    $red95;
-
+// Blues                // Reds                     // Yellows
+$tapenade:  #001530;
+$midnight:  #132086;    $velvet:        #990F00;    $maple: #866213;
+$twilight:  #0D31BF;    $wine:          #CC0A00;    $gold:  #BF870D;
+$ocean:     #0047FF;    $gazpacho:      #ED0100;    $cava:  #FEBA2C;
+$sky:       #337EFF;    $watermelon:    #FF6666;    $honey: #FFCF66;
+$sail:      #66ABFF;    $scarlet:       #FF9999;    $cream: #FFDF99;
+$mist:      #99CFFF;    $rose:          #FFCCCC;
+$steam:     #E5F6FF;    $blossom:       #FFE5E5;
 
 // General tokens
-$color-neutral-darker:  $tapenade !default;
-$color-neutral-dark:    $obsidian !default;
-$color-neutral-regular: $carbon !default;
-$color-neutral-light:   $panot !default;
-$color-neutral-lighter: $salt !default;
-$color-neutral-faded:   $air !default;
+$color-neutral-primary-darkest:     $tapenade !default;
+$color-neutral-primary-regular:     $carbon !default;
+$color-neutral-primary-lighter:     $panot !default;
+$color-neutral-primary-pale:        $salt !default;
+$color-neutral-primary-faded:       $air !default;
+$color-neutral-primary-lightest:    $white !default;
 
-$color-primary-darker:  $midnight !default;
-$color-primary-dark:    $twilight !default;
-$color-primary-regular: $ocean !default;
-$color-primary-light:   $sky !default;
-$color-primary-lighter: $sail !default;
-$color-primary-pale:    $mist !default;
-$color-primary-faded:   $steam !default;
+$color-accent-primary-darker:  $midnight !default;
+$color-accent-primary-dark:    $twilight !default;
+$color-accent-primary-regular: $ocean !default;
+$color-accent-primary-light:   $sky !default;
+$color-accent-primary-lighter: $sail !default;
+$color-accent-primary-pale:    $mist !default;
+$color-accent-primary-faded:   $steam !default;
 
-$color-critical-darker:     $velvet !default;
-$color-critical-dark:       $wine !default;
-$color-critical-regular:    $gazpacho !default;
-$color-critical-light:      $scarlet !default;
-$color-critical-lighter:    $watermelon !default;
-$color-critical-pale:       $rose !default;
-$color-critical-faded:      $blossom !default;
+$color-accent-secondary-darker:     $velvet !default;
+$color-accent-secondary-dark:       $wine !default;
+$color-accent-secondary-regular:    $gazpacho !default;
+$color-accent-secondary-light:      $scarlet !default;
+$color-accent-secondary-lighter:    $watermelon !default;
+$color-accent-secondary-pale:       $rose !default;
+$color-accent-secondary-faded:      $blossom !default;
 
-$color-support1-darker:     $maple !default;
-$color-support1-dark:       $gold !default;
-$color-support1-regular:    $mango !default;
-$color-support1-light:      $cava !default;
-$color-support1-lighter:    $honey !default;
-$color-support1-pale:       $cream !default;
+$color-accent-tertiary-darker:  $maple !default;
+$color-accent-tertiary-dark:    $gold !default;
+$color-accent-tertiary-regular: $cava !default;
+$color-accent-tertiary-light:   $honey !default;
+$color-accent-tertiary-lighter: $cream !default;
 
-$color-support2-darker:     $bottle !default;
-$color-support2-dark:       $nopal !default;
-$color-support2-regular:    $basil !default;
-$color-support2-light:      $grass !default;
-$color-support2-lighter:    $mint !default;
-
-$color-semantic-informative:    $sky !default;
-$color-semantic-success:        $nopal !default;
-$color-semantic-warning:        $gold !default;
-$color-semantic-critical:       $wine !default;
 
 
 

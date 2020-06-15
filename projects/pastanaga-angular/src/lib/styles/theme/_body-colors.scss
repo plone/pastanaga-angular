@@ -4,17 +4,11 @@
 $color-background-body: $white !default;
 
 // Text
-$color-text-accent: $color-neutral-darker;
-$color-text-regular: $color-neutral-dark;
-$color-text-dim: $color-neutral-regular;
-$color-text-disabled: $color-neutral-light;
+$color-text-accent: $color-neutral-primary-darkest;
+$color-text-dim: $color-neutral-primary-regular;
+$color-text-disabled: $color-neutral-primary-lighter;
 
-$color-text-informative: $color-semantic-informative;
-$color-text-success: $color-semantic-success;
-$color-text-warning: $color-semantic-warning;
-$color-text-critical: $color-semantic-critical;
+$color-text-link-regular: $color-accent-primary-regular;
+$color-text-link-regular-hover: $color-accent-primary-dark;
 
-$color-text-link-regular: $ocean;
-$color-text-link-regular-hover: $twilight;
-
-$color-text-title-default: $color-neutral-darker;
+$color-text-title-default: $color-neutral-primary-darkest;

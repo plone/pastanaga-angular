@@ -5,20 +5,20 @@
 // BORDERS
 //=====================================
 
-$border-toggle-unselected:          1px solid $color-neutral-light !default;
-$border-toggle-unselected-hover:    1px solid $color-neutral-darker !default;
+$border-toggle-unselected:          1px solid $color-neutral-primary-lighter !default;
+$border-toggle-unselected-hover:    1px solid $color-neutral-primary-darkest !default;
 $border-toggle-selected:            none !default;
 $border-toggle-selected-hover:      none !default;
-$border-toggle-disabled:            1px solid $color-neutral-lighter !default;
+$border-toggle-disabled:            1px solid $color-neutral-primary-pale !default;
 
 //=====================================
 // COLORS
 //=====================================
 
 // Background
-$color-background-toggle-selected:        $color-primary-regular !default;
-$color-background-toggle-selected-hover:  $color-primary-dark !default;
-$color-background-toggle-disabled:        $color-neutral-faded !default;
+$color-background-toggle-selected: $color-accent-primary-regular !default;
+$color-background-toggle-selected-hover: $color-accent-primary-dark !default;
+$color-background-toggle-disabled: $color-neutral-primary-faded !default;
 
 // Check
 $color-check-toggle:    $white !default;

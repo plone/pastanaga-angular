@@ -4,14 +4,14 @@
 //=====================================
 // COLORS
 //=====================================
-$color-text-menu-option-header: $color-neutral-regular !default;
-$color-text-menu-option-destructive: $color-critical-regular !default;
-$color-text-menu-option-disabled: $color-neutral-light !default;
-$color-background-menu-option-hover: $color-neutral-faded !default;
-$color-background-menu-option-active: $color-neutral-light !default;
+$color-text-menu-option-header: $color-neutral-primary-regular !default;
+$color-text-menu-option-destructive: $color-accent-secondary-regular !default;
+$color-text-menu-option-disabled: $color-neutral-primary-lighter !default;
+$color-background-menu-option-hover: $color-neutral-primary-faded !default;
+$color-background-menu-option-active: $color-neutral-primary-lighter !default;
 $color-background-menu-option-disabled: $white !default;
 
-$color-border-menu-separator: $color-neutral-faded !default;
+$color-border-menu-separator: $color-neutral-primary-faded !default;
 
 //=====================================
 // SPACING

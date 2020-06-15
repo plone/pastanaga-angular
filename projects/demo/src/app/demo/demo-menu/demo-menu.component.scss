@@ -7,7 +7,7 @@ $menu-width: rhythm(20);
     top: 0;
     bottom: 0;
 
-    background: $color-neutral-lighter;
+    background: $color-neutral-primary-pale;
     min-width: $menu-width;
     width: $menu-width;
     max-width: $menu-width;
@@ -37,7 +37,7 @@ $menu-width: rhythm(20);
                 }
                 li > a {
                     text-decoration: none;
-                    color: $color-neutral-dark;
+                    color: $color-neutral-primary-darkest;
                 }
             }
         }
