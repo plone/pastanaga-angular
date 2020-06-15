@@ -33,6 +33,8 @@ import { PopupPageComponent } from './pages/popup-page/popup-page.component';
 import { BasicPopupComponent } from './pages/popup-page/basic-popup.component';
 import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
 import { SelectPageComponent } from './pages/select-page/select-page.component';
+import { GridPageComponent } from './pages/grid-page/grid-page.component';
+import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
 
 
 const COMPONENTS = [
@@ -57,6 +59,8 @@ const COMPONENTS = [
     PopupPageComponent,
     BasicPopupComponent,
     TranslatePageComponent,
+    GridPageComponent,
+    TabsPageComponent,
 ];
 
 @NgModule({

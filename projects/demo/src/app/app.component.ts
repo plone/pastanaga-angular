@@ -10,6 +10,8 @@ import { TranslatePageComponent } from './demo/pages/translate-page/translate-pa
 import { PopupPageComponent } from './demo/pages/popup-page/popup-page.component';
 import { DropdownPageComponent } from './demo/pages/dropdown-page/dropdown-page.component';
 import { SelectPageComponent } from './demo/pages/select-page/select-page.component';
+import { GridPageComponent } from './demo/pages/grid-page/grid-page.component';
+import { TabsPageComponent } from './demo/pages/tabs-page/tabs-page.component';
 
 @Component({
     selector: 'app-root',
@@ -22,7 +24,7 @@ export class AppComponent {
             title: 'Atoms',
             pages: [
                 {view: 'icon', title: 'Icons', type: IconPageComponent},
-            ]
+            ],
         },
         {
             title: 'Components',
@@ -33,13 +35,20 @@ export class AppComponent {
                 {view: 'input', title: 'Input', type: InputPageComponent},
                 {view: 'popup', title: 'Popup', type: PopupPageComponent},
                 {view: 'select', title: 'Select', type: SelectPageComponent},
-            ]
+            ],
+        },
+        {
+            title: 'Style',
+            pages: [
+                {view: 'grid', title: 'Grid', type: GridPageComponent},
+                {view: 'tabs', title: 'Tabs', type: TabsPageComponent},
+            ],
         },
         {
             title: 'Utilities',
             pages: [
                 {view: 'translate', title: 'Translate', type: TranslatePageComponent},
-            ]
+            ],
         },
     ];
 
