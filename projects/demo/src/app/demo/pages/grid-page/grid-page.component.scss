@@ -1,5 +1,7 @@
+@import "../../../../../../pastanaga-angular/src/lib/styles/variables";
+
 [class^="grid-"] > div {
-    border: 1px dashed;
+    border: 1px dashed $color-neutral-primary-lighter;
 }
 
 pa-demo-examples code {

@@ -35,13 +35,13 @@ export class AppComponent {
                 {view: 'input', title: 'Input', type: InputPageComponent},
                 {view: 'popup', title: 'Popup', type: PopupPageComponent},
                 {view: 'select', title: 'Select', type: SelectPageComponent},
+                {view: 'tabs', title: 'Tabs', type: TabsPageComponent},
             ],
         },
         {
             title: 'Style',
             pages: [
                 {view: 'grid', title: 'Grid', type: GridPageComponent},
-                {view: 'tabs', title: 'Tabs', type: TabsPageComponent},
             ],
         },
         {

@@ -35,6 +35,7 @@ import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.compo
 import { SelectPageComponent } from './pages/select-page/select-page.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
+import { PaTabsModule } from 'projects/pastanaga-angular/src/lib/tabs/tabs.module';
 
 
 const COMPONENTS = [
@@ -76,6 +77,7 @@ const COMPONENTS = [
         PaTextFieldModule,
         PaTogglesModule,
         PaTranslateModule,
+        PaTabsModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,
