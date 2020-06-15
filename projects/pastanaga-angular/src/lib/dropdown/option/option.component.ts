@@ -22,6 +22,9 @@ export class OptionComponent implements OnInit {
     set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
     get disabled(): boolean { return this._disabled; }
     @Input()
+    set selected(value: boolean) { this._selected = coerceBooleanProperty(value); }
+    get selected(): boolean { return this._selected; }
+    @Input()
     set dontCloseOnSelect(value: boolean) { this._dontCloseOnSelect = coerceBooleanProperty(value); }
     get dontCloseOnSelect(): boolean { return this._dontCloseOnSelect; }
 
@@ -30,6 +33,7 @@ export class OptionComponent implements OnInit {
     _id = '';
     _glyph = '';
     _disabled = false;
+    _selected = false;
     _destructive = false;
     _dontCloseOnSelect = false;
 

@@ -31,6 +31,7 @@
             <pa-option *ngIf="option.type === _types.option && !option.filtered"
                        [id]="option.id"
                        [disabled]="option.disabled"
+                       [selected]="option.selected"
                        [destructive]="option.destructive"
                        [dontCloseOnSelect]="option.dontCloseOnSelect"
                        [glyph]="option.glyph"

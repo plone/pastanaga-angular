@@ -41,26 +41,26 @@
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-select label="Kind" [value]="selectedKind">
-                <pa-option (select)="selectedKind = kind.primary">primary</pa-option>
-                <pa-option (select)="selectedKind = kind.secondary">secondary</pa-option>
-                <pa-option (select)="selectedKind = kind.critical">critical</pa-option>
+                <pa-option [selected]="selectedKind === kind.primary" (select)="selectedKind = kind.primary">primary</pa-option>
+                <pa-option [selected]="selectedKind === kind.secondary" (select)="selectedKind = kind.secondary">secondary</pa-option>
+                <pa-option [selected]="selectedKind === kind.critical" (select)="selectedKind = kind.critical">critical</pa-option>
             </pa-select>
         </div>
 
         <div class="pa-demo-configuration-field">
             <pa-select label="Size" [value]="selectedSize">
-                <pa-option (select)="selectedSize = size.xsmall">xsmall</pa-option>
-                <pa-option (select)="selectedSize = size.small">small</pa-option>
-                <pa-option (select)="selectedSize = size.medium">medium</pa-option>
-                <pa-option (select)="selectedSize = size.large">large</pa-option>
+                <pa-option [selected]="selectedSize === size.xsmall" (select)="selectedSize = size.xsmall">xsmall</pa-option>
+                <pa-option [selected]="selectedSize === size.small" (select)="selectedSize = size.small">small</pa-option>
+                <pa-option [selected]="selectedSize === size.medium" (select)="selectedSize = size.medium">medium</pa-option>
+                <pa-option [selected]="selectedSize === size.large" (select)="selectedSize = size.large">large</pa-option>
             </pa-select>
         </div>
 
         <div class="pa-demo-configuration-field">
             <pa-select label="Weight" [value]="selectedWeight">
-                <pa-option (select)="selectedWeight = weight.accent">accent</pa-option>
-                <pa-option (select)="selectedWeight = weight.regular">regular</pa-option>
-                <pa-option (select)="selectedWeight = weight.dim">dim</pa-option>
+                <pa-option [selected]="selectedWeight === weight.accent" (select)="selectedWeight = weight.accent">accent</pa-option>
+                <pa-option [selected]="selectedWeight === weight.regular" (select)="selectedWeight = weight.regular">regular</pa-option>
+                <pa-option [selected]="selectedWeight === weight.dim" (select)="selectedWeight = weight.dim">dim</pa-option>
             </pa-select>
         </div>
         <div class="pa-demo-configuration-field">

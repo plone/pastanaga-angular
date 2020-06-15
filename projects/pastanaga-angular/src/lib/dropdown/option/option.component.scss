@@ -10,7 +10,8 @@
         &:hover {
             background-color: $color-background-menu-option-hover;
         }
-        &:active {
+        &:active,
+        &.pa-option-selected{
             background-color: $color-background-menu-option-active;
         }
         &:focus {
