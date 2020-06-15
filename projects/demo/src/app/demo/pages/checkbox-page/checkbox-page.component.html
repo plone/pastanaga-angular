@@ -4,17 +4,14 @@
     <pa-demo-description>Simple checkbox component</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-checkbox [type]="selectedType"
-                     [disabled]="disabledState">Label</pa-checkbox>
+        <pa-checkbox [disabled]="disabledState">Checkbox label</pa-checkbox>
+        <pa-checkbox type="radio"
+                     [disabled]="disabledState">Radio label</pa-checkbox>
     </pa-demo-examples>
     <pa-demo-configuration>
-        <label for="type">Type:</label>
-        <select name="type" id="type" [value]="selectedType" (change)="updateType($event.target.value)">
-            <option [disabled]="!!selectedType" [selected]="!selectedType">Select a type</option>
-            <option value="checkbox" [selected]="selectedType === 'checkbox'">Checkbox</option>
-            <option value="radio" [selected]="selectedType === 'radio'">Radio</option>
-        </select>
-        <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+        </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>

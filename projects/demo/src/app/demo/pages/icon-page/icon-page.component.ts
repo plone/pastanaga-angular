@@ -9,7 +9,6 @@ import { BaseIconPageComponent } from './base-icon-page.component';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconPageComponent extends BaseIconPageComponent implements OnInit {
-
     ngOnInit(): void {
         this.icons = ICON_LIST;
     }

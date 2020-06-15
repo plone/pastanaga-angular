@@ -6,6 +6,9 @@ import { Kind, Size, Weight } from '../../../../../../pastanaga-angular/src';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonPageComponent implements OnInit {
+    kind = Kind;
+    weight = Weight;
+    size = Size;
     selectedSize: Size = Size.medium;
     selectedWeight: Weight = Weight.accent;
     selectedKind: Kind = Kind.primary;
@@ -38,16 +41,6 @@ export class ButtonPageComponent implements OnInit {
     }
 
     ngOnInit(): void {
-    }
-
-    updateKind(value: string) {
-        this.selectedKind = value as Kind;
-    }
-    updateSize(value: string) {
-        this.selectedSize = value as Size;
-    }
-    updateWeight(value: string) {
-        this.selectedWeight = value as Weight;
     }
 
     clickOn($event: MouseEvent) {

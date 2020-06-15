@@ -39,37 +39,31 @@
 
     </pa-demo-examples>
     <pa-demo-configuration>
-        <div>
-            <label for="kind">Kind:</label>
-            <select name="kind" id="kind" [value]="selectedKind" (change)="updateKind($event.target.value)">
-                <option [disabled]="!!selectedKind" [selected]="!selectedKind">Select a kind</option>
-                <option value="primary">primary</option>
-                <option value="secondary">secondary</option>
-                <option value="critical">critical</option>
-            </select>
+        <div class="pa-demo-configuration-field">
+            <pa-select label="Kind" [value]="selectedKind">
+                <pa-option (select)="selectedKind = kind.primary">primary</pa-option>
+                <pa-option (select)="selectedKind = kind.secondary">secondary</pa-option>
+                <pa-option (select)="selectedKind = kind.critical">critical</pa-option>
+            </pa-select>
         </div>
 
-        <div>
-            <label for="size">Size:</label>
-            <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
-                <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
-                <option value="xsmall">xsmall</option>
-                <option value="small">small</option>
-                <option value="medium">medium</option>
-                <option value="large">large</option>
-            </select>
+        <div class="pa-demo-configuration-field">
+            <pa-select label="Size" [value]="selectedSize">
+                <pa-option (select)="selectedSize = size.xsmall">xsmall</pa-option>
+                <pa-option (select)="selectedSize = size.small">small</pa-option>
+                <pa-option (select)="selectedSize = size.medium">medium</pa-option>
+                <pa-option (select)="selectedSize = size.large">large</pa-option>
+            </pa-select>
         </div>
 
-        <div>
-            <label for="weight">Weight:</label>
-            <select name="weight" id="weight" [value]="selectedWeight" (change)="updateWeight($event.target.value)">
-                <option [disabled]="!!selectedWeight" [selected]="!selectedWeight">Select a weight</option>
-                <option value="accent">accent</option>
-                <option value="regular">regular</option>
-                <option value="dim">dim</option>
-            </select>
+        <div class="pa-demo-configuration-field">
+            <pa-select label="Weight" [value]="selectedWeight">
+                <pa-option (select)="selectedWeight = weight.accent">accent</pa-option>
+                <pa-option (select)="selectedWeight = weight.regular">regular</pa-option>
+                <pa-option (select)="selectedWeight = weight.dim">dim</pa-option>
+            </pa-select>
         </div>
-        <div>
+        <div class="pa-demo-configuration-field">
             <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
         </div>
     </pa-demo-configuration>

@@ -61,14 +61,8 @@ pa-demo-page {
     .pa-demo-example-configuration {
         margin-top: rhythm(2.5);
 
-        label {
-            margin-right: rhythm(.5);
-        }
-        select {
+        .pa-demo-configuration-field {
             margin-bottom: rhythm(.5);
-        }
-        div {
-            margin: rhythm(.5) 0;
         }
     }
 

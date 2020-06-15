@@ -1,10 +1,13 @@
 import { Size } from '../../../../../../pastanaga-angular/src';
 
 export class BaseIconPageComponent {
+    size = Size;
     icons: string[] = [];
     selectedSize: Size = Size.medium;
-    selectedColor?: string;
-    selectedBackground?: string;
+    selectedColor = 'none';
+    selectedBackground = 'none';
+    _selectedColor?: string;
+    _selectedBackground?: string;
     nameResolvedExample = 'assets/icons-sprite.svg#${name}';
     codeExample = `<pa-icon [name]="iconName" [size]="selectedSize" [color]="selectedColor" [background]="selectedBackground"></pa-icon>
 
@@ -16,15 +19,13 @@ export class BaseIconPageComponent {
     constructor() {
     }
 
-    updateSize(value: string) {
-        this.selectedSize = value as Size;
-    }
-
     updateColor(value: string) {
-        this.selectedColor = value === 'none' ? undefined : value;
+        this.selectedColor = value !== 'none' ? 'Blue' : value;
+        this._selectedColor = value === 'none' ? undefined : value;
     }
 
     updateBackground(value: string) {
-        this.selectedBackground = value === 'none' ? undefined : value;
+        this.selectedBackground = value !== 'none' ? 'Yellow' : value;
+        this._selectedBackground = value === 'none' ? undefined : value;
     }
 }

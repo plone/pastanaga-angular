@@ -15,40 +15,32 @@
         <h3>Icons from glyphs-sprite.svg</h3>
         <div class="icon-list-container">
             <div *ngFor="let iconName of icons" class="icon-container">
-                <pa-icon [name]="iconName" [size]="selectedSize" [color]="selectedColor" [background]="selectedBackground"></pa-icon>
+                <pa-icon [name]="iconName" [size]="selectedSize" [color]="_selectedColor" [background]="_selectedBackground"></pa-icon>
                 <span>{{iconName}}</span>
             </div>
         </div>
     </pa-demo-examples>
 
     <pa-demo-configuration>
-        <div>
-            <label for="size">Size:</label>
-            <select name="size" id="size" [value]="selectedSize" (change)="updateSize($event.target.value)">
-                <option [disabled]="!!selectedSize" [selected]="!selectedSize">Select a size</option>
-                <option value="xsmall" [selected]="selectedSize === 'xsmall'">xsmall</option>
-                <option value="small" [selected]="selectedSize === 'small'">small</option>
-                <option value="medium" [selected]="selectedSize === 'medium'">medium</option>
-                <option value="large" [selected]="selectedSize === 'large'">large</option>
-            </select>
+        <div class="pa-demo-configuration-field">
+            <pa-select label="Size" [value]="selectedSize">
+                <pa-option (select)="selectedSize = size.xsmall">xsmall</pa-option>
+                <pa-option (select)="selectedSize = size.small">small</pa-option>
+                <pa-option (select)="selectedSize = size.medium">medium</pa-option>
+                <pa-option (select)="selectedSize = size.large">large</pa-option>
+            </pa-select>
         </div>
-
-        <div>
-            <label for="color">Color:</label>
-            <select name="color" id="color" [value]="selectedColor" (change)="updateColor($event.target.value)">
-                <option [disabled]="!!selectedColor" [selected]="!selectedColor">Select a color</option>
-                <option value="none" [selected]="!selectedColor">None</option>
-                <option value="#0047FF" [selected]="selectedColor === '#0047FF'">Blue</option>
-            </select>
+        <div class="pa-demo-configuration-field">
+            <pa-select label="Color" [value]="selectedColor">
+                <pa-option (select)="updateColor('none')">None</pa-option>
+                <pa-option (select)="updateColor('#0047FF')">Blue</pa-option>
+            </pa-select>
         </div>
-
-        <div>
-            <label for="background">Background:</label>
-            <select name="background" id="background" [value]="selectedBackground" (change)="updateBackground($event.target.value)">
-                <option [disabled]="!!selectedBackground" [selected]="!selectedBackground">Select a background color</option>
-                <option value="none" [selected]="!selectedBackground">None</option>
-                <option value="#FFA100" [selected]="selectedBackground === '#FFA100'">Yellow</option>
-            </select>
+        <div class="pa-demo-configuration-field">
+            <pa-select label="Background" [value]="selectedBackground">
+                <pa-option (select)="updateBackground('none')">None</pa-option>
+                <pa-option (select)="updateBackground('#FFA100')">Yellow</pa-option>
+            </pa-select>
         </div>
     </pa-demo-configuration>
 

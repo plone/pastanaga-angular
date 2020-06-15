@@ -36,8 +36,12 @@
         ></pa-select>
     </pa-demo-examples>
     <pa-demo-configuration>
-        <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
-        <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
+        </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
