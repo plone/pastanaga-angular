@@ -34,6 +34,10 @@ export * from './lib/popup/popup.directive';
 export * from './lib/popup/popup.module';
 export * from './lib/popup/popup.service';
 
+export * from './lib/tabs/tabs.module';
+export * from './lib/tabs/tabs-list.component';
+export * from './lib/tabs/tab-item.component';
+
 export * from './lib/translate/translate.module';
 export * from './lib/translate/translate.pipe';
 export * from './lib/translate/translate.directive';
