@@ -1,6 +1,7 @@
-<li class="pa-menu-item" role="menuitem"
-    tabindex="0"
-    [class.pa-menu-item-destructive]="_destructive"
+<li class="pa-option" role="menuitem"
+    [class.pa-option-destructive]="_destructive"
+    [class.pa-option-disabled]="_disabled"
+    [tabindex]="_disabled ? -1 : 0"
     (click)="onSelect($event)"
     (keyup.enter)="onSelect($event)"
 >

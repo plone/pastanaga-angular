@@ -8,8 +8,8 @@ import { InputPageComponent } from './demo/pages/input-page/input-page.component
 import { CheckboxPageComponent } from './demo/pages/checkbox-page/checkbox-page.component';
 import { TranslatePageComponent } from './demo/pages/translate-page/translate-page.component';
 import { PopupPageComponent } from './demo/pages/popup-page/popup-page.component';
-import { DropdownPageComponent } from './demo/pages/menu-page/dropdown-page.component';
-import { SelectPageComponent } from './demo/pages/dropdown-page/select-page.component';
+import { DropdownPageComponent } from './demo/pages/dropdown-page/dropdown-page.component';
+import { SelectPageComponent } from './demo/pages/select-page/select-page.component';
 
 @Component({
     selector: 'app-root',

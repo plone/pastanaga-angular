@@ -10,6 +10,7 @@ export * from './lib/button/button.module';
 export * from './lib/button/button.component';
 
 export * from './lib/controls/base-control';
+export * from './lib/controls/control.model';
 export * from './lib/controls/textfield/base-text-field';
 export * from './lib/controls/textfield/text-field.module';
 export * from './lib/controls/textfield/select/select.component';

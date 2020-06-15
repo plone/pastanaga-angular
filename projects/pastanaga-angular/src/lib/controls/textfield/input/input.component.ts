@@ -72,6 +72,7 @@ export class InputComponent extends BaseTextField implements AfterViewInit, Cont
         protected ngZone: NgZone,
         protected cdr: ChangeDetectorRef,
         private autofillMonitor: AutofillMonitor,
+        public element: ElementRef,
     ) {
         super(cdr);
         this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => detectChanges(this.cdr));

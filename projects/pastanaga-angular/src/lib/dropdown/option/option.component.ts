@@ -19,6 +19,9 @@ export class OptionComponent implements OnInit {
     set destructive(value: boolean) { this._destructive = coerceBooleanProperty(value); }
     get destructive(): boolean { return this._destructive; }
     @Input()
+    set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
+    get disabled(): boolean { return this._disabled; }
+    @Input()
     set dontCloseOnSelect(value: boolean) { this._dontCloseOnSelect = coerceBooleanProperty(value); }
     get dontCloseOnSelect(): boolean { return this._dontCloseOnSelect; }
 
@@ -26,6 +29,7 @@ export class OptionComponent implements OnInit {
 
     _id = '';
     _glyph = '';
+    _disabled = false;
     _destructive = false;
     _dontCloseOnSelect = false;
 
@@ -39,10 +43,15 @@ export class OptionComponent implements OnInit {
     }
 
     onSelect($event: MouseEvent | KeyboardEvent) {
-        this.select.emit($event);
+        if (!this._disabled) {
+            this.select.emit($event);
 
-        if (!this._dontCloseOnSelect) {
-            this.popupService.closeAllPopups.next();
+            if (!this._dontCloseOnSelect) {
+                this.popupService.closeAllPopups.next();
+            }
+        } else {
+            $event.stopPropagation();
+            $event.preventDefault();
         }
     }
 }

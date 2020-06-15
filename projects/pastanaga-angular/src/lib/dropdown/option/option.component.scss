@@ -1,24 +1,33 @@
 @import "../../styles/variables";
 
-.pa-menu-item {
+.pa-option {
     cursor: pointer;
     display: flex;
     align-items: center;
     padding: $padding-menu-option;
 
-    &:hover {
-        background-color: $color-background-menu-option-hover;
-    }
-    &:active {
-        background-color: $color-background-menu-option-active;
+    &:not(.pa-option-disabled) {
+        &:hover {
+            background-color: $color-background-menu-option-hover;
+        }
+        &:active {
+            background-color: $color-background-menu-option-active;
+        }
+        &:focus {
+            box-shadow: $shadow-focus;
+        }
     }
     &:focus {
         outline: 0;
-        box-shadow: $shadow-focus;
     }
 
-    &.pa-menu-item-destructive {
+    &.pa-option-destructive {
         color: $color-text-menu-option-destructive;
+    }
+    &.pa-option-disabled {
+        cursor: default;
+        color: $color-text-menu-option-disabled;
+        background-color: $color-background-menu-option-disabled;
     }
 
     pa-icon {

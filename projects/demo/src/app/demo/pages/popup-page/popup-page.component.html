@@ -26,10 +26,14 @@
         <h2>PopupComponent</h2>
         <h3>Inputs</h3>
         <dl>
+            <dt>dontAdjustPosition</dt>
+            <dd>Keep default popup position even if there is not enough space to display it entirely. <small>(default: false)</small></dd>
             <dt>id</dt>
             <dd>Popup's id <small>(optional, an id will be generated if none is provided)</small></dd>
             <dt>companionElement</dt>
-            <dd>When clicking on the companion element – which is outside the popup – the popup won’t close. It offers external interactions (like filtering the popup content for example)<small>(optional)</small></dd>
+            <dd>When clicking on the companion element – which is outside the popup and must be an HTML element – the popup won’t close. It offers external interactions (like filtering the popup content for example). <small>(optional)</small>
+                <br>When companionElement is an angular component, you must provide its nativeElement, <i>eg.</i> <code>[companionElement]="somePaInput.element.nativeElement"</code>
+                </dd>
             <dt>stayVisible</dt>
             <dd>Keep the popup visible when set to true <small>(default: false)</small></dd>
         </dl>
@@ -39,11 +43,14 @@
             <dd>Event emitted whenever the popup is closed</dd>
         </dl>
 
+        <br>
         <h2>PopupDirective</h2>
         <h3>Inputs</h3>
         <dl>
             <dt>paPopup</dt>
             <dd>Popup to open when clicking on the element carrying the directive</dd>
+            <dt>popupDisabled</dt>
+            <dd>Don't open popup when clicking on the element carrying the directive</dd>
             <dt>popupPosition</dt>
             <dd>Position style to be used on the popup <small>(optional: by default the popup is positioned on top of the element carrying the directive)</small></dd>
             <dt>popupOnRight</dt>

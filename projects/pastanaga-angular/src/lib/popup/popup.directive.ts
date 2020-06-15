@@ -14,9 +14,13 @@ export class PopupDirective implements OnInit {
     @Input()
     get popupOnRight(): boolean { return this._popupOnRight; }
     set popupOnRight(value: boolean) { this._popupOnRight = coerceBooleanProperty(value); }
+    @Input()
+    get popupDisabled(): boolean { return this._disabled; }
+    set popupDisabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
 
     _rootParent?: HTMLElement;
     _remoteElement?: HTMLElement;
+    _disabled = false;
 
     _popupOnRight = false;
 
@@ -31,20 +35,22 @@ export class PopupDirective implements OnInit {
 
     @HostListener('click', ['$event'])
     onClick($event: MouseEvent, override?: PositionStyle, isContextual?: boolean, useLast?: boolean) {
-        const menu = this.paPopup;
-        if (!!menu) {
-            if (menu._isDisplayed) {
-                menu.close();
-            } else {
-                let position: PositionStyle;
-                if (!useLast || !this.service.lastPosition) {
-                    position = !isContextual && !!this.popupPosition ? this.popupPosition :
-                        this.getPosition(override, isContextual && $event);
-                    this.service.lastPosition = position;
+        if (!this._disabled) {
+            const menu = this.paPopup;
+            if (!!menu) {
+                if (menu._isDisplayed) {
+                    menu.close();
                 } else {
-                    position = this.service.lastPosition;
+                    let position: PositionStyle;
+                    if (!useLast || !this.service.lastPosition) {
+                        position = !isContextual && !!this.popupPosition ? this.popupPosition :
+                            this.getPosition(override, isContextual && $event);
+                        this.service.lastPosition = position;
+                    } else {
+                        position = this.service.lastPosition;
+                    }
+                    menu.show(position);
                 }
-                menu.show(position);
             }
         }
         if ($event instanceof MouseEvent) {

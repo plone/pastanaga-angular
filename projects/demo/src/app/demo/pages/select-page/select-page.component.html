@@ -1,0 +1,70 @@
+<pa-demo-page>
+    <pa-demo-title>Select</pa-demo-title>
+
+    <pa-demo-description>
+        <p>Component providing a dropdown of options.</p>
+        <p>It can be used by declaring the options directly in the template like you would do with a basic HTML select,
+            or by passing the options list through <code>options</code> attribute. Passing the list of options as an attribute
+            allows to filter options when user is typing.
+        </p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-select label="Select with options passed through template"
+                   placeholder="Placeholder"
+                   [value]="selectedValue1"
+                   [disabled]="disabledState"
+                   [readonly]="readOnlyState"
+        >
+            <pa-option-header>Users</pa-option-header>
+            <pa-option (select)="selectedValue1 = 'User 1'">User 1</pa-option>
+            <pa-option (select)="selectedValue1 = 'User 2'">User 2</pa-option>
+            <pa-option (select)="selectedValue1 = 'User 3'">User 3</pa-option>
+            <pa-option-header>Groups</pa-option-header>
+            <pa-option (select)="selectedValue1 = 'Group 1'">Group 1</pa-option>
+            <pa-option (select)="selectedValue1 = 'Group 2'">Group 2</pa-option>
+            <pa-option (select)="selectedValue1 = 'Group 3'">Group 3</pa-option>
+        </pa-select>
+
+        <pa-select label="Select with options passed as parameter"
+                   placeholder="Placeholder"
+                   [options]="options"
+                   [value]="selectedValue2"
+                   [disabled]="disabledState"
+                   [readonly]="readOnlyState"
+                   (select)="onSelect($event)"
+        ></pa-select>
+    </pa-demo-examples>
+    <pa-demo-configuration>
+        <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+        <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
+    </pa-demo-configuration>
+
+    <pa-demo-usage>
+        <pa-demo-base-textfield></pa-demo-base-textfield>
+
+        <br>
+        <h2>Specific to <code>SelectComponent</code></h2>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>label</dt>
+            <dd>Field's label</dd>
+            <dt>options</dt>
+            <dd>Option list to be displayed in the dropdown <small>(optional)</small></dd>
+        </dl>
+        <h3>Outputs</h3>
+        <dl>
+            <dt>select</dt>
+            <dd>Emit both the event and the option when clicking (or pressing enter) on an option</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        You can declare the options directly in the template:
+        <pre><code>{{exampleInTemplate}}</code></pre>
+
+        Or you can pass the options as a parameter:
+        <pre><code>{{exampleWithInputHtml}}</code></pre>
+        <pre><code>{{exampleWithInputTs}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

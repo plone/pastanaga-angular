@@ -31,8 +31,8 @@ import { BaseTextfieldComponent } from './pages/common-doc/base-textfield/base-t
 import { BaseControlComponent } from './pages/common-doc/base-control/base-control.component';
 import { PopupPageComponent } from './pages/popup-page/popup-page.component';
 import { BasicPopupComponent } from './pages/popup-page/basic-popup.component';
-import { DropdownPageComponent } from './pages/menu-page/dropdown-page.component';
-import { SelectPageComponent } from './pages/dropdown-page/select-page.component';
+import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
+import { SelectPageComponent } from './pages/select-page/select-page.component';
 
 
 const COMPONENTS = [

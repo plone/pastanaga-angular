@@ -21,7 +21,7 @@
             <pa-dropdown stayVisible>
                 <pa-option-header>Menu list header</pa-option-header>
                 <pa-option glyph="settings" id="menu-item-1" (select)="onSelect($event)">Menu list item 1</pa-option>
-                <pa-option glyph="settings" id="menu-item-2" (select)="onSelect($event)">Menu list item 2</pa-option>
+                <pa-option disabled glyph="settings" id="menu-item-2" (select)="onSelect($event)">Menu list item 2</pa-option>
                 <pa-option glyph="settings" id="menu-item-3" (select)="onSelect($event)">Menu list item 3</pa-option>
                 <pa-separator></pa-separator>
                 <pa-option glyph="delete" destructive id="menu-item-destructive" (select)="onSelect($event)">Menu item destructive</pa-option>
@@ -58,17 +58,19 @@
         <dl>
             <dt>destructive</dt>
             <dd>Set destructive color <small>(default: false)</small></dd>
+            <dt>disabled</dt>
+            <dd>Set disabled state <small>(default: false)</small></dd>
             <dt>glyph</dt>
             <dd>Glyph name to be used for <code>pa-icon</code> <small>(optional)</small></dd>
             <dt>id</dt>
-            <dd>Menu item's id <small>(optional, an id will be generated if none is provided)</small></dd>
+            <dd>Option's id <small>(optional, an id will be generated if none is provided)</small></dd>
             <dt>dontCloseOnSelect</dt>
             <dd>Don't close the menu when selecting this item <small>(default: false – by default selecting an option is closing the menu)</small></dd>
         </dl>
         <h3>Outputs</h3>
         <dl>
             <dt>select</dt>
-            <dd>Event emitted when clicking or pressing enter on the item.</dd>
+            <dd>Event emitted when clicking (or pressing enter) on the option.</dd>
         </dl>
     </pa-demo-usage>
 

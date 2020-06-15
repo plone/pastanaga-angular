@@ -27,6 +27,9 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Input()
     get stayVisible(): boolean { return this._stayVisible; }
     set stayVisible(value: boolean) { this._stayVisible = coerceBooleanProperty(value); }
+    @Input()
+    get dontAdjustPosition(): boolean { return  this._dontAdjustPosition; }
+    set dontAdjustPosition(value: boolean) { this._dontAdjustPosition = coerceBooleanProperty(value); }
 
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
@@ -35,6 +38,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     _isDisplayed = false;
     _style?: any;
     _handlers: Function[] = [];
+    _dontAdjustPosition = false;
 
     _popupType = 'popup';
 
@@ -74,7 +78,7 @@ export class PopupComponent implements OnInit, OnDestroy {
 
         markForCheck(this.cdr);
         window.setTimeout(() => {
-            if (!this.adjustPosition()) {
+            if (!this._dontAdjustPosition && !this.adjustPosition()) {
                 const interval = window.setInterval(() => {
                     if (this.adjustPosition()) {
                         window.clearInterval(interval);

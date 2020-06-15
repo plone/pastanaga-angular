@@ -5,12 +5,17 @@
 
     .pa-select-input-container {
         position: relative;
+        color: $color-text-field-control-regular;
 
         .pa-select-chevron {
             position: absolute;
             right: rhythm(.5);
             top: 50%;
             transform: translateY(-50%);
+        }
+
+        &.pa-disabled {
+            color: $color-text-field-control-disabled;
         }
     }
 

@@ -1,5 +1,6 @@
 <div class="pa-select">
-    <div class="pa-select-input-container">
+    <div class="pa-select-input-container"
+         [class.pa-disabled]="_disabled">
         <pa-input #dropdownInput
                   [id]="_id"
                   [help]="_help"
@@ -13,15 +14,29 @@
                   [required]="_required"
                   [paPopup]="dropdownOptions"
                   [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '48px'}"
+                  [popupDisabled]="_disabled"
+                  (valueChange)="filterOptions($event)"
         >{{_label}}</pa-input>
         <pa-icon class="pa-select-chevron" name="chevron-down"></pa-icon>
     </div>
 
     <pa-dropdown #dropdownOptions
                  role="listbox"
-                 [companionElement]="dropdownInput">
+                 dontAdjustPosition
+                 [companionElement]="dropdownInput.element.nativeElement">
         <ng-content></ng-content>
-        <ng-container ></ng-container>
+        <ng-container *ngFor="let option of _options">
+            <pa-option-header *ngIf="option.type === _types.header">{{option.label}}</pa-option-header>
+            <pa-separator *ngIf="option.type === _types.separator"></pa-separator>
+            <pa-option *ngIf="option.type === _types.option && !option.filtered"
+                       [id]="option.id"
+                       [disabled]="option.disabled"
+                       [destructive]="option.destructive"
+                       [dontCloseOnSelect]="option.dontCloseOnSelect"
+                       [glyph]="option.glyph"
+                       (select)="onSelect($event, option)"
+            >{{option.label}}</pa-option>
+        </ng-container>
     </pa-dropdown>
 </div>
 
