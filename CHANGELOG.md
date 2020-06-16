@@ -1,3 +1,8 @@
+# 1.18.5 (2020-06-17)
+
+### Improvements
+- ***Checkbox-tree***: Set `loadOnExpandOnly` in true to load children only when the user expands the tree [niglesias]
+
 # 1.18.4 (2020-06-08)
 
 ### Improvements

@@ -32,6 +32,7 @@ export class ControlModel {
     isExpanded = false;
     isHidden = false;
     isPrivate = false;
+    isLoadingChildren = false;
 
     children?: ControlModel[];
     totalChildren?: number;
