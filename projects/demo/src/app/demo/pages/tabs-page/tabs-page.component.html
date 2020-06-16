@@ -1,15 +1,16 @@
 <pa-demo-page>
     <pa-demo-title>Tabs</pa-demo-title>
     <pa-demo-description>
+        Simple horizontal tabs.
     </pa-demo-description>
 
     <pa-demo-examples>
         <pa-tabs>
-            <pa-tab (activate)="selectedTab = 'info'"
+            <pa-tab (click)="selectedTab = 'info'"
                     [active]="selectedTab === 'info'">Info</pa-tab>
-            <pa-tab (activate)="selectedTab = 'settings'"
+            <pa-tab (click)="selectedTab = 'settings'"
                     [active]="selectedTab === 'settings'">Settings</pa-tab>
-            <pa-tab (activate)="selectedTab = 'notifications'"
+            <pa-tab (click)="selectedTab = 'notifications'"
                     [active]="selectedTab === 'notifications'">Notifications</pa-tab>
         </pa-tabs>
         <section id="panel-info"
@@ -25,6 +26,18 @@
             Some notifications
         </section>
     </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3><code>pa-tabs</code></h3>
+        <p>
+            <code>pa-tabs</code> does not have any input/output, it just allows to declare a list of <code>pa-tab</code>.
+        </p>
+        <h3><code>pa-tab</code></h3>
+        <dl>
+            <dt>[active]</dt>
+            <dd>Allow to set the activate state.</dd>
+        </dl>
+    </pa-demo-usage>
 
     <pa-demo-code>
         <pre><code>{{ codeExample }}</code></pre>

@@ -11,7 +11,5 @@ export class TabItemComponent {
     set active(isActive: boolean) { this._active = isActive; }
     _active = false;
 
-    @Output() public activate: EventEmitter<boolean> = new EventEmitter();
-
     @HostBinding('class.active') get valid() { return this._active; }
 }

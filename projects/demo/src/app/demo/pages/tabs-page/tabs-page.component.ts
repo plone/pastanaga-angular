@@ -8,11 +8,11 @@ export class TabsPageComponent {
 
     codeExample = `
 <pa-tabs>
-    <pa-tab (activate)="selectedTab = 'info'"
+    <pa-tab (click)="selectedTab = 'info'"
             [active]="selectedTab === 'info'">Info</pa-tab>
-    <pa-tab (activate)="selectedTab = 'settings'"
+    <pa-tab (click)="selectedTab = 'settings'"
             [active]="selectedTab === 'settings'">Settings</pa-tab>
-    <pa-tab (activate)="selectedTab = 'notifications'"
+    <pa-tab (click)="selectedTab = 'notifications'"
             [active]="selectedTab === 'notifications'">Notifications</pa-tab>
 </pa-tabs>
 <section id="panel-info"
