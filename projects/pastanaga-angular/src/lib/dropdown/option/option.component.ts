@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from '../../popup/popup.service';
 
-let nextId = 0;
-
 @Component({
     selector: 'pa-option',
     templateUrl: './option.component.html',
@@ -11,7 +9,6 @@ let nextId = 0;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionComponent implements OnInit {
-    @Input() id?: string;
     @Input()
     set glyph(value: string) { this._glyph = value || ''; }
     get glyph(): string { return this._glyph; }
@@ -30,7 +27,6 @@ export class OptionComponent implements OnInit {
 
     @Output() select: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
 
-    _id = '';
     _glyph = '';
     _disabled = false;
     _selected = false;
@@ -43,7 +39,6 @@ export class OptionComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this._id = !this.id ? `menu-item-${nextId++}` : `${this.id}-menu-item`;
     }
 
     onSelect($event: MouseEvent | KeyboardEvent) {

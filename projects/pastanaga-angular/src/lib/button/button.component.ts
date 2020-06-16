@@ -11,15 +11,12 @@ import {
 import { detectChanges, Kind, Size, Weight } from '../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
-let nextId = 0;
-
 @Component({
     selector: 'pa-button',
     templateUrl: './button.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent implements AfterContentInit, OnInit {
-    @Input() id?: string;
     @Input() set kind(value: Kind) {
         if (!!value) {
             this._kind = value;
@@ -57,7 +54,6 @@ export class ButtonComponent implements AfterContentInit, OnInit {
 
     @ViewChild('textContainer') textContainer?: ElementRef;
 
-    _id = '';
     _type: 'button' | 'submit' | 'reset' = 'button';
     _kind: Kind = Kind.secondary;
     _size: Size = Size.medium;
@@ -87,7 +83,6 @@ export class ButtonComponent implements AfterContentInit, OnInit {
     }
 
     ngOnInit(): void {
-        this._id = !this.id ? `button-${nextId++}` : `${this.id}-button`;
     }
 
     onClick($event: MouseEvent) {

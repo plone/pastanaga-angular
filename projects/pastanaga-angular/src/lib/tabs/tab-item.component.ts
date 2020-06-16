@@ -6,10 +6,11 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, HostBi
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabItemComponent {
-    @Input() public set active(isActive: boolean) {
-        this._active = isActive;
-    }
-    public _active = false;
+    @Input()
+    get active(): boolean { return this._active; }
+    set active(isActive: boolean) { this._active = isActive; }
+    _active = false;
+
     @Output() public activate: EventEmitter<boolean> = new EventEmitter();
 
     @HostBinding('class.active') get valid() { return this._active; }
