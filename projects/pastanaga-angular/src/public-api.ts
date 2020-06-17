@@ -34,6 +34,13 @@ export * from './lib/popup/popup.directive';
 export * from './lib/popup/popup.module';
 export * from './lib/popup/popup.service';
 
+export * from './lib/table/table.module';
+export * from './lib/table/table-cell.component';
+export * from './lib/table/table-row-header.component';
+export * from './lib/table/table-row.component';
+export * from './lib/table/table.component';
+export * from './lib/table/table.directives';
+
 export * from './lib/tabs/tabs.module';
 export * from './lib/tabs/tabs-list.component';
 export * from './lib/tabs/tab-item.component';

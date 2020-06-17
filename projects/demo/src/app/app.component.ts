@@ -12,6 +12,7 @@ import { DropdownPageComponent } from './demo/pages/dropdown-page/dropdown-page.
 import { SelectPageComponent } from './demo/pages/select-page/select-page.component';
 import { GridPageComponent } from './demo/pages/grid-page/grid-page.component';
 import { TabsPageComponent } from './demo/pages/tabs-page/tabs-page.component';
+import { TablePageComponent } from './demo/pages/table-page/table-page.component';
 
 @Component({
     selector: 'app-root',
@@ -35,6 +36,7 @@ export class AppComponent {
                 {view: 'input', title: 'Input', type: InputPageComponent},
                 {view: 'popup', title: 'Popup', type: PopupPageComponent},
                 {view: 'select', title: 'Select', type: SelectPageComponent},
+                {view: 'tables', title: 'Tables', type: TablePageComponent},
                 {view: 'tabs', title: 'Tabs', type: TabsPageComponent},
             ],
         },

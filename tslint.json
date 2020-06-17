@@ -28,6 +28,7 @@
       true,
       140
     ],
+    "member-access": false,
     "member-ordering": [
       true,
       {

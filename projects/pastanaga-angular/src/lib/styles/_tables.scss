@@ -1,0 +1,69 @@
+@import "./variables";
+
+.pa-table-grid {
+    display: grid;
+    grid-template-columns: minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px;
+}
+.pa-table-grid--head {
+    display: contents;
+} 
+.pa-table-grid--head .pa-table-grid--header {
+    background: $color-background-table-header;
+    position: sticky;
+    top: 0;
+    font-weight: $font-weight-text-table-header;
+}
+.pa-table-grid--body {
+    display: contents;
+} 
+.pa-table-grid--body .pa-table-grid--row:hover .pa-table-grid--header,
+.pa-table-grid--body .pa-table-grid--row:hover .pa-table-grid--cell {
+    background: $color-background-table-row-hover;
+}
+.pa-table-grid--row {
+    display: contents;
+}
+
+.pa-table-grid--head .pa-table-grid--header {
+    border-bottom: 1px $color-border-table-header solid;
+    padding: rhythm(1.5) rhythm(0.75);
+    font-size: size(xs);
+    text-transform: uppercase;
+    color: $color-text-table-header;
+}
+.pa-table-grid--body .pa-table-grid--header {
+    border-bottom:1px $color-border-table-row solid;
+    padding: rhythm(1.5) rhythm(0.75);
+    background:$color-background-table-row;
+}
+.pa-table-grid--cell {
+    border-bottom:1px $color-border-table-row solid;
+    padding: rhythm(1.5) rhythm(0.75);
+    background:$color-background-table-row;
+    color: $color-text-table-row;
+}
+.pa-table-grid--head .pa-table-grid--row > :first-child  {
+    z-index: 2;
+}
+.pa-table-grid--row .pa-table-grid--row-header {
+    grid-column: 1 / -1;
+    font-weight: $font-weight-text-table-header-row;
+    font-size: size(xs);
+    background: $color-background-table-header-row;
+    color: $color-text-table-header-row;
+    margin-top: -1px;
+    padding: rhythm(0.33) rhythm(0.75);
+    border-top: 1px solid $color-border-table-header-row;
+    position: sticky;
+    top: rhythm(4);
+    z-index: 3;
+}
+
+.pa-table-grid--row.clickable {
+    cursor: pointer;
+}
+
+// ignore Angular components
+pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell {
+    display: contents;
+}

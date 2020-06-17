@@ -1,0 +1,10 @@
+<div class="pa-table-grid">
+    <div *ngIf="!_noHeader" class="pa-table-grid--head">
+        <div class="pa-table-grid--row">
+            <ng-content select="pa-table-header"></ng-content>
+        </div>
+    </div>
+    <div class="pa-table-grid--body">
+        <ng-content></ng-content>
+    </div>
+</div>

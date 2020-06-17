@@ -1,0 +1,101 @@
+<pa-demo-page>
+    <pa-demo-title>Tables</pa-demo-title>
+
+    <pa-demo-description>Allows to use Pastanaga table style (based on <code>display: grid</code>).</pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-table>
+            <pa-table-header>
+                <pa-table-cell header>Name</pa-table-cell>
+                <pa-table-cell header>Tags</pa-table-cell>
+                <pa-table-cell header>Shared with</pa-table-cell>
+                <pa-table-cell header>Last updated</pa-table-cell>
+                <pa-table-cell header>Size</pa-table-cell>
+                <pa-table-cell header>…</pa-table-cell>
+            </pa-table-header>
+            <pa-table-row-header>Today</pa-table-row-header>
+            <pa-table-row (click)="clickRow()" clickable>
+                <pa-table-cell header>My_text_file.txt</pa-table-cell>
+                <pa-table-cell>Bonjour, Occitania, França, Jenesepas</pa-table-cell>
+                <pa-table-cell>(AC) | (GD)</pa-table-cell>
+                <pa-table-cell>Today, 9:45 AM</pa-table-cell>
+                <pa-table-cell>100 MB</pa-table-cell>
+                <pa-table-cell>···</pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell header>contract.pdf</pa-table-cell>
+                <pa-table-cell>Occitania</pa-table-cell>
+                <pa-table-cell>(AC)</pa-table-cell>
+                <pa-table-cell>1/2/2010</pa-table-cell>
+                <pa-table-cell>15 KB</pa-table-cell>
+                <pa-table-cell>···</pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell header>pelican-svgrepo-com.svg</pa-table-cell>
+                <pa-table-cell></pa-table-cell>
+                <pa-table-cell>(EB)</pa-table-cell>
+                <pa-table-cell>12/31/2007</pa-table-cell>
+                <pa-table-cell>100 bytes</pa-table-cell>
+                <pa-table-cell>···</pa-table-cell>
+            </pa-table-row>
+            <pa-table-row-header>Yesterday</pa-table-row-header>
+            <pa-table-row>
+                <pa-table-cell header>Channel #general - 2020-01-23 (UTC).htm</pa-table-cell>
+                <pa-table-cell></pa-table-cell>
+                <pa-table-cell>(EB) | (MP) (NI) (AC) (GD) (+3)</pa-table-cell>
+                <pa-table-cell>Yesterday, 12:56 PM</pa-table-cell>
+                <pa-table-cell>234.54 TB</pa-table-cell>
+                <pa-table-cell>···</pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell header>Channel #big-important-things - 2020-01-23 (UTC).htm</pa-table-cell>
+                <pa-table-cell></pa-table-cell>
+                <pa-table-cell>(EB)</pa-table-cell>
+                <pa-table-cell>4/10/2020</pa-table-cell>
+                <pa-table-cell>24.56 MB</pa-table-cell>
+                <pa-table-cell>···</pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell header>document.pdf</pa-table-cell>
+                <pa-table-cell>[França X]</pa-table-cell>
+                <pa-table-cell>(EB)</pa-table-cell>
+                <pa-table-cell>11/11/2011</pa-table-cell>
+                <pa-table-cell>3.56 MB</pa-table-cell>
+                <pa-table-cell>···</pa-table-cell>
+            </pa-table-row>
+        </pa-table>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3><code>pa-table</code></h3>
+        <p> It can contain <code>pa-table-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></p>
+        <dl>
+            <dt>noHeader</dt>
+            <dd>If true, table header is not displayed. <small>(optional)</small></dd>
+        </dl>
+
+        <h3><code>pa-table-header</code></h3>
+        <p> It can contain <code>pa-table-cell</code></p>
+
+        <h3><code>pa-table-row</code></h3>
+        <p> It can contain <code>pa-table-cell</code></p>
+        <dl>
+            <dt>clickable</dt>
+            <dd>If true, hovering the row will display a pointer cursor. <small>(optional)</small></dd>
+        </dl>
+
+        <h3><code>pa-table-row-header</code></h3>
+        <p>It renders as a full width row, display a label. Free content.</p>
+
+        <h3><code>pa-table-cell</code></h3>
+        <p>It renders as a cell. Free content.</p>
+        <dl>
+            <dt>header</dt>
+            <dd>If true, cell is rendered as a header cell. <small>(optional)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{ code }}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>
