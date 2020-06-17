@@ -20,6 +20,11 @@
 .pa-table-grid--body .pa-table-grid--row:hover .pa-table-grid--cell {
     background: $color-background-table-row-hover;
 }
+.pa-table-grid--body .pa-table-grid--row:active .pa-table-grid--header,
+.pa-table-grid--body .pa-table-grid--row:active .pa-table-grid--cell {
+    background: $color-background-table-row-active;
+}
+
 .pa-table-grid--row {
     display: contents;
 }
