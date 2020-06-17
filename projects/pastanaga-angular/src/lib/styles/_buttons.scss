@@ -169,58 +169,58 @@
             }
         }
 
-        &.pa-critical {
+        &.pa-destructive {
             &.pa-accent {
-                color: $color-text-button-critical-accent;
-                background: $color-background-button-critical-accent;
-                border: $border-button-critical-accent;
+                color: $color-text-button-destructive-accent;
+                background: $color-background-button-destructive-accent;
+                border: $border-button-destructive-accent;
 
                 &:hover {
-                    color: $color-text-button-critical-accent-hover;
-                    background: $color-background-button-critical-accent-hover;
-                    border: $border-button-critical-accent-hover;
+                    color: $color-text-button-destructive-accent-hover;
+                    background: $color-background-button-destructive-accent-hover;
+                    border: $border-button-destructive-accent-hover;
                 }
 
                 &:active {
-                    color: $color-text-button-critical-accent-active;
-                    background: $color-background-button-critical-accent-active;
-                    border: $border-button-critical-accent-active;
+                    color: $color-text-button-destructive-accent-active;
+                    background: $color-background-button-destructive-accent-active;
+                    border: $border-button-destructive-accent-active;
                 }
             }
 
             &.pa-regular {
-                color: $color-text-button-critical-regular;
-                background: $color-background-button-critical-regular;
-                border: $border-button-critical-regular;
+                color: $color-text-button-destructive-regular;
+                background: $color-background-button-destructive-regular;
+                border: $border-button-destructive-regular;
 
                 &:hover {
-                    color: $color-text-button-critical-regular-hover;
-                    background: $color-background-button-critical-regular-hover;
-                    border: $border-button-critical-regular-hover;
+                    color: $color-text-button-destructive-regular-hover;
+                    background: $color-background-button-destructive-regular-hover;
+                    border: $border-button-destructive-regular-hover;
                 }
 
                 &:active {
-                    color: $color-text-button-critical-regular-active;
-                    background: $color-background-button-critical-regular-active;
-                    border: $border-button-critical-regular-active;
+                    color: $color-text-button-destructive-regular-active;
+                    background: $color-background-button-destructive-regular-active;
+                    border: $border-button-destructive-regular-active;
                 }
             }
 
             &.pa-dim {
-                color: $color-text-button-critical-dim;
-                background: $color-background-button-critical-dim;
-                border: $border-button-critical-dim;
+                color: $color-text-button-destructive-dim;
+                background: $color-background-button-destructive-dim;
+                border: $border-button-destructive-dim;
 
                 &:hover {
-                    color: $color-text-button-critical-dim-hover;
-                    background: $color-background-button-critical-dim-hover;
-                    border: $border-button-critical-dim-hover;
+                    color: $color-text-button-destructive-dim-hover;
+                    background: $color-background-button-destructive-dim-hover;
+                    border: $border-button-destructive-dim-hover;
                 }
 
                 &:active {
-                    color: $color-text-button-critical-dim-active;
-                    background: $color-background-button-critical-dim-active;
-                    border: $border-button-critical-dim-active;
+                    color: $color-text-button-destructive-dim-active;
+                    background: $color-background-button-destructive-dim-active;
+                    border: $border-button-destructive-dim-active;
                 }
             }
         }

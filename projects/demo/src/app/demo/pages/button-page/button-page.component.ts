@@ -3,6 +3,7 @@ import { Kind, Size, Weight } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     templateUrl: './button-page.component.html',
+    styleUrls: ['./button-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonPageComponent implements OnInit {
@@ -10,8 +11,6 @@ export class ButtonPageComponent implements OnInit {
     weight = Weight;
     size = Size;
     selectedSize: Size = Size.medium;
-    selectedWeight: Weight = Weight.accent;
-    selectedKind: Kind = Kind.primary;
     disabledState = false;
     codeExample = `<pa-button [kind]="selectedKind"
            [size]="selectedSize"

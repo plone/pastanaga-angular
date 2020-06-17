@@ -35,18 +35,18 @@ $color-text-button-secondary-dim:           $color-neutral-primary-darkest !defa
 $color-text-button-secondary-dim-hover:     $color-neutral-primary-darkest !default;
 $color-text-button-secondary-dim-active:    $color-neutral-primary-darkest !default;
 
-// critical
-$color-text-button-critical-accent:             $color-neutral-primary-lightest !default;
-$color-text-button-critical-accent-hover:       $color-neutral-primary-lightest !default;
-$color-text-button-critical-accent-active:      $color-neutral-primary-lightest !default;
+// destructive
+$color-text-button-destructive-accent:             $color-neutral-primary-lightest !default;
+$color-text-button-destructive-accent-hover:       $color-neutral-primary-lightest !default;
+$color-text-button-destructive-accent-active:      $color-neutral-primary-lightest !default;
 
-$color-text-button-critical-regular:        $color-accent-secondary-dark !default;
-$color-text-button-critical-regular-hover:  $color-accent-secondary-dark !default;
-$color-text-button-critical-regular-active: $color-accent-secondary-darker !default;
+$color-text-button-destructive-regular:        $color-accent-secondary-dark !default;
+$color-text-button-destructive-regular-hover:  $color-accent-secondary-dark !default;
+$color-text-button-destructive-regular-active: $color-accent-secondary-darker !default;
 
-$color-text-button-critical-dim:        $color-accent-secondary-dark !default;
-$color-text-button-critical-dim-hover:  $color-accent-secondary-darker !default;
-$color-text-button-critical-dim-active: $color-accent-secondary-darker !default;
+$color-text-button-destructive-dim:        $color-accent-secondary-dark !default;
+$color-text-button-destructive-dim-hover:  $color-accent-secondary-darker !default;
+$color-text-button-destructive-dim-active: $color-accent-secondary-darker !default;
 
 // disabled
 $color-text-button-accent-disabled:     $color-neutral-primary-lighter !default;
@@ -82,18 +82,18 @@ $color-background-button-secondary-dim:         transparent !default;
 $color-background-button-secondary-dim-hover:   $color-neutral-primary-faded !default;
 $color-background-button-secondary-dim-active:  $color-neutral-primary-lighter !default;
 
-// critical
-$color-background-button-critical-accent:           $color-accent-secondary-dark !default;
-$color-background-button-critical-accent-hover:     $color-accent-secondary-dark !default;
-$color-background-button-critical-accent-active:    $color-accent-secondary-darker !default;
+// destructive
+$color-background-button-destructive-accent:           $color-accent-secondary-dark !default;
+$color-background-button-destructive-accent-hover:     $color-accent-secondary-dark !default;
+$color-background-button-destructive-accent-active:    $color-accent-secondary-darker !default;
 
-$color-background-button-critical-regular:          transparent !default;
-$color-background-button-critical-regular-hover:    $color-accent-secondary-faded !default;
-$color-background-button-critical-regular-active:   $color-accent-secondary-pale !default;
+$color-background-button-destructive-regular:          transparent !default;
+$color-background-button-destructive-regular-hover:    $color-accent-secondary-faded !default;
+$color-background-button-destructive-regular-active:   $color-accent-secondary-pale !default;
 
-$color-background-button-critical-dim:          transparent !default;
-$color-background-button-critical-dim-hover:    $color-accent-secondary-faded !default;
-$color-background-button-critical-dim-active:   $color-accent-secondary-pale !default;
+$color-background-button-destructive-dim:          transparent !default;
+$color-background-button-destructive-dim-hover:    $color-accent-secondary-faded !default;
+$color-background-button-destructive-dim-active:   $color-accent-secondary-pale !default;
 
 // disabled
 $color-background-button-accent-disabled:   $color-neutral-primary-faded !default;
@@ -130,18 +130,18 @@ $border-button-secondary-dim:          none !default;
 $border-button-secondary-dim-hover:    none !default;
 $border-button-secondary-dim-active:   none !default;
 
-// critical
-$border-button-critical-accent:          none !default;
-$border-button-critical-accent-hover:    none !default;
-$border-button-critical-accent-active:   none !default;
+// destructive
+$border-button-destructive-accent:          none !default;
+$border-button-destructive-accent-hover:    none !default;
+$border-button-destructive-accent-active:   none !default;
 
-$border-button-critical-regular:        1px solid $color-accent-secondary-regular;
-$border-button-critical-regular-active: $border-button-critical-regular;
-$border-button-critical-regular-hover:  $border-button-critical-regular;
+$border-button-destructive-regular:        1px solid $color-accent-secondary-regular;
+$border-button-destructive-regular-active: $border-button-destructive-regular;
+$border-button-destructive-regular-hover: $border-button-destructive-regular;
 
-$border-button-critical-dim:          none !default;
-$border-button-critical-dim-hover:    none !default;
-$border-button-critical-dim-active:   none !default;
+$border-button-destructive-dim:          none !default;
+$border-button-destructive-dim-hover:    none !default;
+$border-button-destructive-dim-active:   none !default;
 
 // disabled
 $border-button-accent-disabled:     none !default;

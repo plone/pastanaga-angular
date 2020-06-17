@@ -24,7 +24,7 @@ export enum Weight {
 export enum Kind {
     primary = 'primary',
     secondary = 'secondary',
-    critical = 'critical',
+    destructive = 'destructive',
 }
 
 export class PositionStyle {

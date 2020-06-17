@@ -4,63 +4,207 @@
     <pa-demo-description>Buttons can contain text, icon or both.</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-button id="text"
-                   [kind]="selectedKind"
-                   [size]="selectedSize"
-                   [weight]="selectedWeight"
-                   [disabled]="disabledState"
-                   (click)="clickOn($event)"
-        >
-            Value
-        </pa-button>
+        <div class="grid-4 has-gutter">
+            <div></div>
+            <div class="justify-center">Primary</div>
+            <div class="justify-center">Secondary</div>
+            <div class="justify-center">Destructive</div>
 
-        <pa-button id="text-icon"
-                   icon="search"
-                   iconAndText
-                   [kind]="selectedKind"
-                   [size]="selectedSize"
-                   [weight]="selectedWeight"
-                   [disabled]="disabledState"
-                   (click)="clickOn($event)"
-        >
-            Value
-        </pa-button>
+            <div class="align-center">Accent</div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.primary"
+                            [weight]="weight.accent"
+                            [size]="selectedSize"
+                            [disabled]="disabledState"
+                            (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.primary"
+                           [weight]="weight.accent"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.primary"
+                           [weight]="weight.accent"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.secondary"
+                            [weight]="weight.accent"
+                            [size]="selectedSize"
+                            [disabled]="disabledState"
+                            (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.secondary"
+                           [weight]="weight.accent"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.secondary"
+                           [weight]="weight.accent"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.destructive"
+                            [weight]="weight.accent"
+                            [size]="selectedSize"
+                            [disabled]="disabledState"
+                            (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.destructive"
+                           [weight]="weight.accent"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.destructive"
+                           [weight]="weight.accent"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+            <div class="align-center">Regular</div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.primary"
+                            [weight]="weight.regular"
+                            [size]="selectedSize"
+                            [disabled]="disabledState"
+                            (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.primary"
+                           [weight]="weight.regular"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.primary"
+                           [weight]="weight.regular"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.secondary"
+                            [weight]="weight.regular"
+                            [size]="selectedSize"
+                            [disabled]="disabledState"
+                            (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.secondary"
+                           [weight]="weight.regular"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.secondary"
+                           [weight]="weight.regular"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.destructive"
+                            [weight]="weight.regular"
+                            [size]="selectedSize"
+                            [disabled]="disabledState"
+                            (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.destructive"
+                           [weight]="weight.regular"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.destructive"
+                           [weight]="weight.regular"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
 
-        <pa-button id="icon"
-                   icon="search"
-                   [kind]="selectedKind"
-                   [size]="selectedSize"
-                   [weight]="selectedWeight"
-                   [disabled]="disabledState"
-                   (click)="clickOn($event)"
-        >
-            Value
-        </pa-button>
+            <div class="align-center">Dim</div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.primary"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.primary"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.primary"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.secondary"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.secondary"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.secondary"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+            <div class="button-cell">
+                <pa-button [kind]="kind.destructive"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           iconAndText
+                           [kind]="kind.destructive"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                           [kind]="kind.destructive"
+                           [weight]="weight.dim"
+                           [size]="selectedSize"
+                           [disabled]="disabledState"
+                           (click)="clickOn($event)">Value</pa-button>
+            </div>
+        </div>
+
 
     </pa-demo-examples>
     <pa-demo-configuration>
-        <div class="pa-demo-configuration-field">
-            <pa-select label="Kind" [value]="selectedKind">
-                <pa-option [selected]="selectedKind === kind.primary" (select)="selectedKind = kind.primary">primary</pa-option>
-                <pa-option [selected]="selectedKind === kind.secondary" (select)="selectedKind = kind.secondary">secondary</pa-option>
-                <pa-option [selected]="selectedKind === kind.critical" (select)="selectedKind = kind.critical">critical</pa-option>
-            </pa-select>
-        </div>
-
         <div class="pa-demo-configuration-field">
             <pa-select label="Size" [value]="selectedSize">
                 <pa-option [selected]="selectedSize === size.xsmall" (select)="selectedSize = size.xsmall">xsmall</pa-option>
                 <pa-option [selected]="selectedSize === size.small" (select)="selectedSize = size.small">small</pa-option>
                 <pa-option [selected]="selectedSize === size.medium" (select)="selectedSize = size.medium">medium</pa-option>
                 <pa-option [selected]="selectedSize === size.large" (select)="selectedSize = size.large">large</pa-option>
-            </pa-select>
-        </div>
-
-        <div class="pa-demo-configuration-field">
-            <pa-select label="Weight" [value]="selectedWeight">
-                <pa-option [selected]="selectedWeight === weight.accent" (select)="selectedWeight = weight.accent">accent</pa-option>
-                <pa-option [selected]="selectedWeight === weight.regular" (select)="selectedWeight = weight.regular">regular</pa-option>
-                <pa-option [selected]="selectedWeight === weight.dim" (select)="selectedWeight = weight.dim">dim</pa-option>
             </pa-select>
         </div>
         <div class="pa-demo-configuration-field">
@@ -81,7 +225,7 @@
             <dd>Display icon and text together <small>(default: false)</small></dd>
 
             <dt>kind</dt>
-            <dd>primary | secondary | critical <small>(default: secondary)</small></dd>
+            <dd>primary | secondary | destructive <small>(default: secondary)</small></dd>
 
             <dt>size</dt>
             <dd>xsmall | small | medium | large <small>(default: medium)</small></dd>
