@@ -26,7 +26,7 @@ export * from './lib/icon/svg-loader';
 export * from './lib/dropdown/dropdown.module';
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/dropdown/option-header/option-header.component';
-export * from './lib/dropdown/option/option.component.js';
+export * from './lib/dropdown/option/option.component';
 export * from './lib/dropdown/separator/separator.component';
 
 export * from './lib/popup/popup.component';
