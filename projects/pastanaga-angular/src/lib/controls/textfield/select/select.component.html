@@ -9,7 +9,7 @@
                   [errorMessages]="errorMessages"
                   [errorMessage]="_errorMessage"
                   [placeholder]="_placeholder"
-                  [value]="_value"
+                  [value]="_displayValue"
                   [readonly]="_readonly"
                   [required]="_required"
                   [paPopup]="dropdownOptions"
@@ -35,7 +35,7 @@
                        [destructive]="option.destructive"
                        [dontCloseOnSelect]="option.dontCloseOnSelect"
                        [glyph]="option.glyph"
-                       (select)="onSelect($event, option)"
+                       (selectOption)="onSelect($event, option)"
             >{{option.label}}</pa-option>
         </ng-container>
     </pa-dropdown>

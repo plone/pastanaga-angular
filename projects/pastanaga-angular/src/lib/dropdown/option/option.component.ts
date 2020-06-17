@@ -1,6 +1,16 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy, ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output
+} from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from '../../popup/popup.service';
+import { markForCheck } from '../../common';
 
 @Component({
     selector: 'pa-option',
@@ -8,7 +18,10 @@ import { PopupService } from '../../popup/popup.service';
     styleUrls: ['./option.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OptionComponent implements OnInit {
+export class OptionComponent implements AfterContentInit, OnInit {
+    @Input()
+    set value(value: string) { this._value = value || ''; }
+    get value(): string { return this._value; }
     @Input()
     set glyph(value: string) { this._glyph = value || ''; }
     get glyph(): string { return this._glyph; }
@@ -25,25 +38,34 @@ export class OptionComponent implements OnInit {
     set dontCloseOnSelect(value: boolean) { this._dontCloseOnSelect = coerceBooleanProperty(value); }
     get dontCloseOnSelect(): boolean { return this._dontCloseOnSelect; }
 
-    @Output() select: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
+    @Output() selectOption: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
+
+    text = '';
 
     _glyph = '';
+    _value = '';
     _disabled = false;
     _selected = false;
     _destructive = false;
     _dontCloseOnSelect = false;
 
     constructor(
+        private element: ElementRef,
         private popupService: PopupService,
+        private cdr: ChangeDetectorRef,
     ) {
     }
 
     ngOnInit(): void {
     }
 
+    ngAfterContentInit() {
+        this.text = this.element.nativeElement.textContent.trim();
+    }
+
     onSelect($event: MouseEvent | KeyboardEvent) {
         if (!this._disabled) {
-            this.select.emit($event);
+            this.selectOption.emit($event);
 
             if (!this._dontCloseOnSelect) {
                 this.popupService.closeAllPopups.next();
@@ -52,5 +74,9 @@ export class OptionComponent implements OnInit {
             $event.stopPropagation();
             $event.preventDefault();
         }
+    }
+
+    refresh() {
+        markForCheck(this.cdr);
     }
 }

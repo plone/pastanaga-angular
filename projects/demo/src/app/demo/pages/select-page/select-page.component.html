@@ -10,30 +10,45 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-select label="Select with options passed through template"
-                   placeholder="Placeholder"
-                   [value]="selectedValue1"
-                   [disabled]="disabledState"
-                   [readonly]="readOnlyState"
-        >
-            <pa-option-header>Users</pa-option-header>
-            <pa-option (select)="selectedValue1 = 'User 1'">User 1</pa-option>
-            <pa-option (select)="selectedValue1 = 'User 2'">User 2</pa-option>
-            <pa-option (select)="selectedValue1 = 'User 3'">User 3</pa-option>
-            <pa-option-header>Groups</pa-option-header>
-            <pa-option (select)="selectedValue1 = 'Group 1'">Group 1</pa-option>
-            <pa-option (select)="selectedValue1 = 'Group 2'">Group 2</pa-option>
-            <pa-option (select)="selectedValue1 = 'Group 3'">Group 3</pa-option>
-        </pa-select>
+        <div class="cols">
+            <div class="row">
+                <div class="col1">
+                    <pa-select label="Select with options passed through template"
+                               placeholder="Placeholder"
+                               [(value)]="selectedValue1"
+                               [disabled]="disabledState"
+                               [readonly]="readOnlyState"
+                    >
+                        <pa-option-header>Users</pa-option-header>
+                        <pa-option value="user1">User 1</pa-option>
+                        <pa-option value="user2">User 2</pa-option>
+                        <pa-option value="user3">User 3</pa-option>
+                        <pa-option-header>Groups</pa-option-header>
+                        <pa-option value="group1" disabled>Group 1</pa-option>
+                        <pa-option value="group2">Group 2</pa-option>
+                        <pa-option value="group3">Group 3</pa-option>
+                    </pa-select>
+                </div>
+                <div class="col2">
+                    <p>Selected value: {{selectedValue1}}</p>
+                </div>
+            </div>
 
-        <pa-select label="Select with options passed as parameter"
-                   placeholder="Placeholder"
-                   [options]="options"
-                   [value]="selectedValue2"
-                   [disabled]="disabledState"
-                   [readonly]="readOnlyState"
-                   (select)="onSelect($event)"
-        ></pa-select>
+            <div class="row">
+                <div class="col1">
+                    <pa-select label="Select with options passed as parameter"
+                               placeholder="Placeholder"
+                               [options]="options"
+                               [(value)]="selectedValue2"
+                               [disabled]="disabledState"
+                               [readonly]="readOnlyState"
+                    ></pa-select>
+                </div>
+                <div class="col2">
+                    <p>Selected value: {{selectedValue2}}</p>
+                </div>
+            </div>
+        </div>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
@@ -54,12 +69,7 @@
             <dt>label</dt>
             <dd>Field's label</dd>
             <dt>options</dt>
-            <dd>Option list to be displayed in the dropdown <small>(optional)</small></dd>
-        </dl>
-        <h3>Outputs</h3>
-        <dl>
-            <dt>select</dt>
-            <dd>Emit both the event and the option when clicking (or pressing enter) on an option</dd>
+            <dd>Option list to be displayed in the dropdown <small>(optional: can be set directly in the DOM)</small></dd>
         </dl>
     </pa-demo-usage>
 

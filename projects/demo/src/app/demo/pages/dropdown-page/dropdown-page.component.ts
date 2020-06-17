@@ -16,11 +16,11 @@ export class DropdownPageComponent implements OnInit {
 
 <pa-dropdown #contextualMenu>
     <pa-option-header>Menu list header</pa-option-header>
-    <pa-option (select)="onSelect($event)">Menu list item 1</pa-option>
-    <pa-option (select)="onSelect($event)">Menu list item 1</pa-option>
-    <pa-option (select)="onSelect($event)">Menu list item 3</pa-option>
+    <pa-option (selectOption)="onSelect($event)">Menu list item 1</pa-option>
+    <pa-option (selectOption)="onSelect($event)">Menu list item 1</pa-option>
+    <pa-option (selectOption)="onSelect($event)">Menu list item 3</pa-option>
     <pa-separator></pa-separator>
-    <pa-option destructive dontCloseOnSelect (select)="onSelect($event)">Menu item destructive</pa-option>
+    <pa-option destructive dontCloseOnSelect (selectOption)="onSelect($event)">Menu item destructive</pa-option>
 </pa-dropdown>`;
 
     constructor() {

@@ -32,5 +32,6 @@ export class BaseControl implements OnInit, OnDestroy{
 
     ngOnDestroy(): void {
         this.terminator.next();
+        this.terminator.complete();
     }
 }

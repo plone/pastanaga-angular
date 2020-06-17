@@ -201,10 +201,10 @@
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-select label="Size" [value]="selectedSize">
-                <pa-option [selected]="selectedSize === size.xsmall" (select)="selectedSize = size.xsmall">xsmall</pa-option>
-                <pa-option [selected]="selectedSize === size.small" (select)="selectedSize = size.small">small</pa-option>
-                <pa-option [selected]="selectedSize === size.medium" (select)="selectedSize = size.medium">medium</pa-option>
-                <pa-option [selected]="selectedSize === size.large" (select)="selectedSize = size.large">large</pa-option>
+                <pa-option [selected]="selectedSize === size.xsmall" (selectOption)="selectedSize = size.xsmall">xsmall</pa-option>
+                <pa-option [selected]="selectedSize === size.small" (selectOption)="selectedSize = size.small">small</pa-option>
+                <pa-option [selected]="selectedSize === size.medium" (selectOption)="selectedSize = size.medium">medium</pa-option>
+                <pa-option [selected]="selectedSize === size.large" (selectOption)="selectedSize = size.large">large</pa-option>
             </pa-select>
         </div>
         <div class="pa-demo-configuration-field">

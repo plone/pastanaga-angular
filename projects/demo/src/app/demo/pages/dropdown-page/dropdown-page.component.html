@@ -20,11 +20,11 @@
         <div>
             <pa-dropdown stayVisible>
                 <pa-option-header>Menu list header</pa-option-header>
-                <pa-option glyph="settings" id="menu-item-1" (select)="onSelect($event)">Menu list item 1</pa-option>
-                <pa-option disabled glyph="settings" id="menu-item-2" (select)="onSelect($event)">Menu list item 2</pa-option>
-                <pa-option glyph="settings" id="menu-item-3" (select)="onSelect($event)">Menu list item 3</pa-option>
+                <pa-option glyph="settings" id="menu-item-1" (selectOption)="onSelect($event)">Menu list item 1</pa-option>
+                <pa-option disabled glyph="settings" id="menu-item-2" (selectOption)="onSelect($event)">Menu list item 2</pa-option>
+                <pa-option glyph="settings" id="menu-item-3" (selectOption)="onSelect($event)">Menu list item 3</pa-option>
                 <pa-separator></pa-separator>
-                <pa-option glyph="delete" destructive id="menu-item-destructive" (select)="onSelect($event)">Menu item destructive</pa-option>
+                <pa-option glyph="delete" destructive id="menu-item-destructive" (selectOption)="onSelect($event)">Menu item destructive</pa-option>
             </pa-dropdown>
         </div>
 
@@ -34,11 +34,11 @@
                        [paPopup]="contextualMenu"></pa-button>
 
             <pa-dropdown #contextualMenu>
-                <pa-option (select)="onSelect($event)">Menu list item 1</pa-option>
-                <pa-option (select)="onSelect($event)">Menu list item 1</pa-option>
-                <pa-option (select)="onSelect($event)">Menu list item 3</pa-option>
+                <pa-option (selectOption)="onSelect($event)">Menu list item 1</pa-option>
+                <pa-option (selectOption)="onSelect($event)">Menu list item 1</pa-option>
+                <pa-option (selectOption)="onSelect($event)">Menu list item 3</pa-option>
                 <pa-separator></pa-separator>
-                <pa-option destructive dontCloseOnSelect (select)="onSelect($event)">Menu item destructive</pa-option>
+                <pa-option destructive dontCloseOnSelect (selectOption)="onSelect($event)">Menu item destructive</pa-option>
             </pa-dropdown>
         </div>
     </pa-demo-examples>
@@ -67,7 +67,7 @@
         </dl>
         <h3>Outputs</h3>
         <dl>
-            <dt>select</dt>
+            <dt>selectOption</dt>
             <dd>Event emitted when clicking (or pressing enter) on the option.</dd>
         </dl>
     </pa-demo-usage>
