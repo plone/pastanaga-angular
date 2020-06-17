@@ -21,12 +21,12 @@
                        id="pa-expand-checkbox-{{checkbox.id}}"
                        class="pa-expand"
                        color="secondary" size="small"
-                       [icon]="!checkbox.children ? 'initiating' : 'right-key'"
-                       [disabled]="!checkbox.children || _disabled"
+                       [icon]="(!checkbox.children && !_loadOnExpandOnly) || checkbox.isLoadingChildren  ? 'initiating' : 'right-key'"
+                       [disabled]="(!checkbox.children && !_loadOnExpandOnly) || checkbox.isLoadingChildren || _disabled"
                        ariaControls="pa-expand-checkbox-{{checkbox.id}}"
                        [ariaExpanded]="checkbox.isExpanded"
                        (click)="toggleCheckbox(checkbox)">
-                {{!checkbox.children ? 'Loading' : !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
+                {{(!checkbox.children && !_loadOnExpandOnly) || checkbox.isLoadingChildren ? 'Loading' : !checkbox.isExpanded ? 'Expand' : 'Collapse'}}
             </pa-button>
             <pa-checkbox [class.pa-checkbox-expanded]="checkbox.isExpanded"
                          [id]="checkbox.id"
@@ -63,6 +63,7 @@
             <pa-checkbox-tree *ngIf="checkbox.isExpanded"
                               [id]="checkbox.id + '-child'"
                               [_isChildren]="true"
+                              [loadOnExpandOnly]="_loadOnExpandOnly"
                               [doLoadChildren]="checkbox.isExpanded"
                               [checkboxes]="checkbox.children"
                               [getChildren]="getChildren"
@@ -74,4 +75,3 @@
         </div>
     </div>
 </fieldset>
-
