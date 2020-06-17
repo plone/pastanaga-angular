@@ -1,10 +1,11 @@
 @import "../../../../../../pastanaga-angular/src/lib/styles/variables";
 
 [class^="grid-"] > div {
-    border: 1px dashed $color-neutral-primary-lighter;
+    background-color: $cava;
+    color: $white;
+    padding: rhythm(0.25);
 }
 
 pa-demo-examples code {
-    display: block;
-    margin: 12px 0;
+    margin: rhythm(1) 0;
 }
