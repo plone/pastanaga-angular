@@ -14,12 +14,15 @@
         fill: currentColor;
     }
 
+    &.pa-button-icon {
+        border-radius: 50%;
+    }
+
     &.pa-xsmall {
         @include font-size(xs);
         padding: $padding-button-xsmall;
 
         &.pa-button-icon {
-            border-radius: $border-radius-button-icon-xsmall;
             padding: $padding-button-icon-xsmall;
         }
     }
@@ -29,7 +32,6 @@
         padding: $padding-button-small;
 
         &.pa-button-icon {
-            border-radius: $border-radius-button-icon-small;
             padding: $padding-button-icon-small;
         }
     }
@@ -39,7 +41,6 @@
         padding: $padding-button-medium;
 
         &.pa-button-icon {
-            border-radius: $border-radius-button-icon-medium;
             padding: $padding-button-icon-medium;
         }
     }
@@ -49,9 +50,12 @@
         padding: $padding-button-large;
 
         &.pa-button-icon {
-            border-radius: $border-radius-button-icon-large;
             padding: $padding-button-icon-large;
         }
+    }
+
+    &.pa-regular {
+        margin: -1px;
     }
 
     &:not(:disabled) {
