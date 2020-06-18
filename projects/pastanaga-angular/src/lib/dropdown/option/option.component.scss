@@ -6,6 +6,9 @@
     align-items: center;
     padding: $padding-menu-option;
 
+    &[hidden] {
+        display: none;
+    }
     &:not(.pa-option-disabled) {
         &:hover {
             background-color: $color-background-menu-option-hover;

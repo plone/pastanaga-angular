@@ -9,13 +9,13 @@
                   [errorMessages]="errorMessages"
                   [errorMessage]="_errorMessage"
                   [placeholder]="_placeholder"
-                  [value]="_value"
+                  [value]="_displayValue"
                   [readonly]="_readonly"
                   [required]="_required"
                   [paPopup]="dropdownOptions"
                   [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '48px'}"
                   [popupDisabled]="_disabled"
-                  (valueChange)="filterOptions($event)"
+                  (instantValueChange)="filterOptions($event)"
         >{{_label}}</pa-input>
         <pa-icon class="pa-select-chevron" name="chevron-down"></pa-icon>
     </div>
@@ -35,7 +35,7 @@
                        [destructive]="option.destructive"
                        [dontCloseOnSelect]="option.dontCloseOnSelect"
                        [glyph]="option.glyph"
-                       (select)="onSelect($event, option)"
+                       (selectOption)="selectListOption($event, option)"
             >{{option.label}}</pa-option>
         </ng-container>
     </pa-dropdown>
