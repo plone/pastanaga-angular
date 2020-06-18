@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from '../../popup/popup.service';
-import { markForCheck } from '../../common';
+import { detectChanges, markForCheck } from '../../common';
 
 @Component({
     selector: 'pa-option',
@@ -41,6 +41,7 @@ export class OptionComponent implements AfterContentInit, OnInit {
     @Output() selectOption: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
 
     text = '';
+    _hidden = false;
 
     _glyph = '';
     _value = '';
@@ -77,6 +78,6 @@ export class OptionComponent implements AfterContentInit, OnInit {
     }
 
     refresh() {
-        markForCheck(this.cdr);
+        detectChanges(this.cdr);
     }
 }

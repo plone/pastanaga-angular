@@ -79,7 +79,7 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
         super.ngOnDestroy();
     }
 
-    onSelect(event: MouseEvent | KeyboardEvent, selectedOption: OptionModel) {
+    selectListOption(event: MouseEvent | KeyboardEvent, selectedOption: OptionModel) {
         if (!selectedOption.disabled) {
             this._options = this._options.map(option => {
                 return option.type === ControlType.option ? {
@@ -92,23 +92,23 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
     }
 
     filterOptions(inputValue: string | number) {
-        // FIXME
-        // const value = `${inputValue}`;
-        // if (value.length > 0) {
-        //     this._value = value;
-        //     if (this._options.length > 0) {
-        //         const value = this._value.toLocaleLowerCase();
-        //         this._options = this._options.map(option => {
-        //             const newOption = {...option};
-        //             if (option.type === ControlType.option) {
-        //                 (newOption as OptionModel).filtered = !(option as OptionModel).label.toLocaleLowerCase().includes(value)
-        //             }
-        //             return newOption;
-        //         });
-        //     }
-        // } else {
-        //     this.resetFilter();
-        // }
+        const value = `${inputValue}`.toLocaleLowerCase();
+        if (!!this.optionComponents && this.optionComponents.length > 0) {
+            this.optionComponents.forEach(option => {
+                option._hidden = !option.text.toLocaleLowerCase().includes(value);
+                option.refresh();
+            });
+        }
+        if (this._options.length > 0) {
+            this._options = this._options.map(option => {
+                const newOption = {...option};
+                if (option.type === ControlType.option) {
+                    (newOption as OptionModel).filtered = !(option as OptionModel).label.toLocaleLowerCase().includes(value);
+                }
+                return newOption;
+            });
+            markForCheck(this.cdr);
+        }
     }
 
     private selectNgContentOption(selectedOption: OptionComponent) {
@@ -125,10 +125,24 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
         this._displayValue = display;
         this._value = value;
         this.valueChange.emit(this._value);
+        this.resetFilter();
     }
 
     private resetFilter() {
-        this._value = '';
-        this._options = this._options.map(option => option.type === ControlType.option ? ({...option, filtered: false}) : option);
+        if (!!this.optionComponents) {
+            this.optionComponents.forEach(option => {
+                option._hidden = false;
+                option.refresh();
+            });
+        }
+        if (this._options.length > 0) {
+            this._options = this._options.map(option => {
+                const newOption = {...option};
+                if (option.type === ControlType.option) {
+                    (newOption as OptionModel).filtered = false;
+                }
+                return newOption;
+            });
+        }
     }
 }
