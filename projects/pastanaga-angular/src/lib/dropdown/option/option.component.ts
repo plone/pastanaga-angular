@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from '../../popup/popup.service';
-import { detectChanges, markForCheck } from '../../common';
+import { markForCheck } from '../../common';
 
 @Component({
     selector: 'pa-option',
@@ -78,6 +78,6 @@ export class OptionComponent implements AfterContentInit, OnInit {
     }
 
     refresh() {
-        detectChanges(this.cdr);
+        markForCheck(this.cdr);
     }
 }

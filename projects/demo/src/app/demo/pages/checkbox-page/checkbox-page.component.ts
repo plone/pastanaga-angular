@@ -6,7 +6,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class CheckboxPageComponent implements OnInit {
     disabledState = false;
-    selectedType = 'checkbox';
     code = `<pa-checkbox [disabled]="disabledState">Checkbox label</pa-checkbox>
 <pa-checkbox type="radio"
              [disabled]="disabledState">Radio label</pa-checkbox>`;

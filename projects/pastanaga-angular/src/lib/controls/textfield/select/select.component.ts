@@ -4,18 +4,16 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
-    EventEmitter,
     Input,
     OnDestroy,
     OnInit,
-    Output,
     QueryList
 } from '@angular/core';
 import { BaseTextField } from '../base-text-field';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { takeUntil } from 'rxjs/operators';
-import { detectChanges, markForCheck } from '../../../common';
+import { markForCheck } from '../../../common';
 
 @Component({
     selector: 'pa-select',
@@ -60,7 +58,7 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
 
     ngAfterContentInit() {
         super.ngAfterContentInit();
-        if (!!this.optionComponents) {
+        if (!!this.optionComponents && this.optionComponents.length > 0) {
             this.optionComponents.forEach(option => option.selectOption.pipe(
                 takeUntil(this.terminator)
             ).subscribe(() => this.selectNgContentOption(option)));

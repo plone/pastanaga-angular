@@ -1,4 +1,4 @@
-import { ControlValueAccessor, FormControl, ValidationErrors, Validator } from '@angular/forms';
+import { FormControl, ValidationErrors } from '@angular/forms';
 import {
     AfterContentInit,
     ChangeDetectorRef,
@@ -53,8 +53,8 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     get errorMessage(): string { return this._errorMessage; }
     set errorMessage(value: string) { this._errorMessage = value; }
     @Input()
-    get placeholder(): string { return this._placeholder; };
-    set placeholder(value: string) { this._placeholder = value || ''; };
+    get placeholder(): string { return this._placeholder; }
+    set placeholder(value: string) { this._placeholder = value || ''; }
     @Input()
     get value(): string | number { return this._value; }
     set value(value: string | number) { this._value = !!value || value === 0 ? value : ''; }
@@ -69,8 +69,8 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     @Output() instantValueChange: EventEmitter<string | number> = new EventEmitter();
     @Output() keyUp: EventEmitter<string> = new EventEmitter();
     @Output() enter: EventEmitter<{event: KeyboardEvent, value: string}> = new EventEmitter();
-    @Output() blur: EventEmitter<string | number> = new EventEmitter();
-    @Output() focus: EventEmitter<FocusEvent> = new EventEmitter();
+    @Output() blurring: EventEmitter<string | number> = new EventEmitter();
+    @Output() focusing: EventEmitter<FocusEvent> = new EventEmitter();
 
     @ViewChild('labelElement') labelElement?: ElementRef;
 
@@ -87,9 +87,11 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     };
     _errorMessage = '';
 
+    // tslint:disable:ban-types
     onChange?: Function;
     onTouched?: Function;
     onValidatorChange?: Function;
+    // tslint:enable:ban-types
 
     debouncer: Subject<string> = new Subject();
 
@@ -122,7 +124,6 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     change(value: any) {
         this._validate(value);
-        this.writeValue(value);
         if (!!this.onChange) {
             this.onChange(value);
         }
@@ -133,7 +134,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     onKeyUp($event: KeyboardEvent) {
         if ($event.key !== Keys.tab && !!$event.target) {
-            const value = (<HTMLInputElement>$event.target).value;
+            const value = ($event.target as HTMLInputElement).value;
             this._validate(value);
             this.writeValue(value);
             this.keyUp.emit(value);
@@ -141,21 +142,22 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
                 this.onChange(value);
             }
             if ($event.key === Keys.enter) {
-                this.enter.emit({event: $event, value: value});
+                this.enter.emit({event: $event, value});
             }
         }
     }
 
     onBlur() {
         this._validate(this.value);
-        this.validate(<FormControl>{});
-        this.blur.emit(this.value);
+        this.validate({} as FormControl);
+        this.blurring.emit(this.value);
     }
 
     onFocus($event: FocusEvent) {
-        this.focus.emit($event);
+        this.focusing.emit($event);
     }
 
+    // tslint:disable:ban-types
     registerOnChange(handler: any): void {
         this.onTouched = (handler as Function);
     }
@@ -167,6 +169,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     registerOnValidatorChange(handler: () => void): void {
         this.onValidatorChange = (handler as Function);
     }
+    // tslint:enable:ban-types
 
     setDisabledState(isDisabled: boolean): void {
         this._disabled = isDisabled;
