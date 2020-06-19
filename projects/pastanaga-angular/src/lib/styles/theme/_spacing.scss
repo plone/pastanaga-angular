@@ -23,6 +23,7 @@ $rhythm: (
     6.5: ($spacer * 6.5),   //  6.5  unit -  78px -  4.875  rem
     7: ($spacer * 7),       //  7    unit -  84px -  5.25   rem
     7.5: ($spacer * 7.5),   //  7.5  unit -  90px -  5.625  rem
+    8: ($spacer * 8),       // 8     unit -  96px - 7.5     rem
     10: ($spacer * 10),     // 10    unit - 120px - 7.5     rem
     17: ($spacer * 17),     // 17    unit - 204px - 12.75   rem
     20: ($spacer * 20),     // 20    unit - 240px - 15      rem
@@ -36,9 +37,9 @@ $rhythm: (
 $border-radius-default: rhythm(.25) !default;
 
 // layout
-$tiny        : 480px !default;
-$small       : 576px !default;
-$medium      : 768px !default;
-$large       : 1280px !default;
-$cols        : 12 !default;
+$size-viewport-tiny        : 480px !default;
+$size-viewport-small       : 576px !default;
+$size-viewport-medium      : 768px !default;
+$size-viewport-large       : 1280px !default;
+$grid-cols        : 12 !default;
 $grid-gutters: 12px !default;
