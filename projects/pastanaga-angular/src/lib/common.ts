@@ -33,6 +33,7 @@ export class PositionStyle {
     right?: string;
     top?: string;
     bottom?: string;
+    width?: string;
 }
 
 export const markForCheck = (cdr: ChangeDetectorRef) => {

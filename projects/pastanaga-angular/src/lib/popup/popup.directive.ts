@@ -18,6 +18,9 @@ export class PopupDirective implements OnInit {
     get popupOnTop(): boolean { return this._popupOnTop; }
     set popupOnTop(value: boolean) { this._popupOnTop = coerceBooleanProperty(value); }
     @Input()
+    get sameWidth(): boolean { return this._sameWidth; }
+    set sameWidth(value: boolean) { this._sameWidth = coerceBooleanProperty(value); }
+    @Input()
     get popupDisabled(): boolean { return this._disabled; }
     set popupDisabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
 
@@ -27,6 +30,7 @@ export class PopupDirective implements OnInit {
 
     _popupOnRight = false;
     _popupOnTop = false;
+    _sameWidth = false;
 
     constructor(
         private element: ElementRef,
@@ -83,6 +87,7 @@ export class PopupDirective implements OnInit {
             position: 'absolute',
             top: !this.popupOnTop ? top + 'px' : undefined,
             bottom: this.popupOnTop ? bottom + 'px' : undefined,
+            width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
         if (this._popupOnRight || !!contextualEvent) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';

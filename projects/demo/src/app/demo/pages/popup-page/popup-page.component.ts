@@ -10,6 +10,7 @@ export class PopupPageComponent implements OnInit {
 
     popupOnRight = false;
     popupOnTop = false;
+    sameWidth = false;
 
     constructor() {
     }
