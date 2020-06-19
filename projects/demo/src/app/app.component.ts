@@ -13,6 +13,7 @@ import { SelectPageComponent } from './demo/pages/select-page/select-page.compon
 import { GridPageComponent } from './demo/pages/grid-page/grid-page.component';
 import { TabsPageComponent } from './demo/pages/tabs-page/tabs-page.component';
 import { TablePageComponent } from './demo/pages/table-page/table-page.component';
+import { TextareaPageComponent } from './demo/pages/text-area-page/textarea-page.component';
 
 @Component({
     selector: 'app-root',
@@ -38,6 +39,7 @@ export class AppComponent {
                 {view: 'select', title: 'Select', type: SelectPageComponent},
                 {view: 'tables', title: 'Tables', type: TablePageComponent},
                 {view: 'tabs', title: 'Tabs', type: TabsPageComponent},
+                {view: 'textarea', title: 'Tabs', type: TextareaPageComponent},
             ],
         },
         {

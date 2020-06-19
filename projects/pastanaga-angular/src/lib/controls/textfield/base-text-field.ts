@@ -74,6 +74,9 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     @ViewChild('labelElement') labelElement?: ElementRef;
 
+    HTML_TAG = new RegExp(/.?<.+>/g);
+    REPLACE_LT_GT = new RegExp(/[<>]/g);
+
     _value: string | number = '';
     _fieldType = 'textfield';
     _readonly = false;
@@ -214,6 +217,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     writeValue(value: any): void {
         this.value = value;
         this.instantValueChange.emit(value);
+        this.cdr.markForCheck();
         this.debouncer.next(value);
     }
 

@@ -38,6 +38,7 @@ import { SelectPageComponent } from './pages/select-page/select-page.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
+import { TextareaPageComponent } from './pages/text-area-page/textarea-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -64,6 +65,7 @@ const COMPONENTS = [
     GridPageComponent,
     TabsPageComponent,
     TablePageComponent,
+    TextareaPageComponent,
 ];
 
 @NgModule({
