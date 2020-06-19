@@ -15,11 +15,16 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-button [paPopup]="myPopup" [popupOnRight]="popupOnRight" size="small">Open popup</pa-button>
+        <pa-button [paPopup]="myPopup" [popupOnRight]="popupOnRight" [popupOnTop]="popupOnTop" size="small">Open popup</pa-button>
         <pa-demo-basic-popup #myPopup></pa-demo-basic-popup>
     </pa-demo-examples>
     <pa-demo-configuration>
-        <pa-checkbox id="popupOnRight" [(selected)]="popupOnRight">Open popup on right</pa-checkbox>
+        <p>
+            <pa-checkbox id="popupOnRight" [(selected)]="popupOnRight">Open popup on right</pa-checkbox>
+        </p>
+        <p>
+            <pa-checkbox id="popupOnTop" [(selected)]="popupOnTop">Open popup on top</pa-checkbox>
+        </p>
     </pa-demo-configuration>
 
     <pa-demo-usage>
@@ -55,6 +60,8 @@
             <dd>Position style to be used on the popup <small>(optional: by default the popup is positioned on top of the element carrying the directive)</small></dd>
             <dt>popupOnRight</dt>
             <dd>Set the popup on the right of the element carrying the directive <small>(default: false)</small></dd>
+            <dt>popupOnTop</dt>
+            <dd>Set the popup on the top of the element carrying the directive <small>(default: false)</small></dd>
         </dl>
     </pa-demo-usage>
 

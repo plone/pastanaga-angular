@@ -15,6 +15,9 @@ export class PopupDirective implements OnInit {
     get popupOnRight(): boolean { return this._popupOnRight; }
     set popupOnRight(value: boolean) { this._popupOnRight = coerceBooleanProperty(value); }
     @Input()
+    get popupOnTop(): boolean { return this._popupOnTop; }
+    set popupOnTop(value: boolean) { this._popupOnTop = coerceBooleanProperty(value); }
+    @Input()
     get popupDisabled(): boolean { return this._disabled; }
     set popupDisabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
 
@@ -23,6 +26,7 @@ export class PopupDirective implements OnInit {
     _disabled = false;
 
     _popupOnRight = false;
+    _popupOnTop = false;
 
     constructor(
         private element: ElementRef,
@@ -72,11 +76,13 @@ export class PopupDirective implements OnInit {
             this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
         }
         const rootRect = this._rootParent.getBoundingClientRect();
-        const top =  rect.top - rootRect.top + this._rootParent.scrollTop;
+        const top = rect.top - rootRect.top + this._rootParent.scrollTop;
+        const bottom = window.innerHeight - rect.top - window.pageYOffset;
 
         let position: PositionStyle = {
             position: 'absolute',
-            top: top + 'px',
+            top: !this.popupOnTop ? top + 'px' : undefined,
+            bottom: this.popupOnTop ? bottom + 'px' : undefined,
         };
         if (this._popupOnRight || !!contextualEvent) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
