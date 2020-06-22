@@ -9,10 +9,13 @@ export const Keys = {
 };
 
 export enum Size {
+    xxsmall = 'xxsmall',
     xsmall = 'xsmall',
     small = 'small',
     medium = 'medium',
     large = 'large',
+    xlarge = 'xlarge',
+    xxlarge = 'xxlarge',
 }
 
 export enum Weight {

@@ -23,6 +23,7 @@ import { markForCheck, Size } from '../common';
 })
 export class IconComponent {
     @Input() set name(value: string) {
+        console.log('icon got name', value);
         if (!!value) {
             this._name = value;
             this._spritePath = `assets/glyphs-sprite.svg#${this._name}`;

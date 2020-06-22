@@ -1,0 +1,121 @@
+@import "./variables";
+
+abbr[title], acronym[title] {
+    border-bottom: none;
+    text-decoration: none;
+}
+
+@mixin full-size-circle() {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+@mixin flex-content-aligned() {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pa-avatar {
+    position: relative;
+    display: flex;
+    width: rhythm($avatar-default-rhythm);
+    height: rhythm($avatar-default-rhythm);
+
+    &.pa-avatar-large {
+        width: rhythm($avatar-large-rhythm);
+        height: rhythm($avatar-large-rhythm);
+        .pa-avatar-default .pa-avatar-initials {
+            @include font-size($avatar-large-text-size);
+        }
+        .pa-avatar-user-icon {
+            width: rhythmRatio($avatar-large-rhythm, $avatar-icon-size-ratio);
+            height: rhythmRatio($avatar-large-rhythm, $avatar-icon-size-ratio);
+        }
+        .pa-avatar-icon-alt {
+            @include font-size($avatar-icon-alt-font-size);
+            font-weight: $avatar-icon-alt-font-weight;
+        }
+    }
+
+    .pa-avatar-icon {
+        @include full-size-circle();
+        @include flex-content-aligned();
+        background: $avatar-icon-default-background;
+    }
+
+    .pa-avatar-img {
+        @include full-size-circle();
+        object-fit: cover;
+    }
+
+    .pa-avatar-default {
+        display: inline-flex;
+        @include full-size-circle();
+        .pa-avatar-initials {
+            @include font-size($avatar-default-text-size);
+            margin: auto;
+            color: $avatar-initials-color;
+            font-weight: $avatar-initials-font-weight;
+            text-transform: uppercase;
+        }
+        &.pa-avatar-blue {
+            background: $avatar-blue;
+        }
+        &.pa-avatar-teal {
+            background: $avatar-teal;
+        }
+        &.pa-avatar-jade {
+            background: $avatar-jade;
+        }
+        &.pa-avatar-green {
+            background: $avatar-green;
+        }
+        &.pa-avatar-lime {
+            background: $avatar-lime;
+        }
+        &.pa-avatar-kaki {
+            background: $avatar-kaki;
+        }
+        &.pa-avatar-yellow {
+            background: $avatar-yellow;
+        }
+        &.pa-avatar-orange {
+            background: $avatar-orange;
+        }
+        &.pa-avatar-salmon {
+            background: $avatar-salmon;
+        }
+        &.pa-avatar-red {
+            background: $avatar-red;
+        }
+        &.pa-avatar-crisom {
+            background: $avatar-crisom;
+        }
+        &.pa-avatar-magenta {
+            background: $avatar-magenta ;
+        }
+        &.pa-avatar-violet {
+            background: $avatar-violet;
+        }
+        &.pa-avatar-indigo {
+            background: $avatar-indigo;
+        }
+        &.pa-avatar-azure {
+            background: $avatar-azure;
+        }
+    }
+
+    .pa-avatar-user-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        @include flex-content-aligned();
+        width: rhythmRatio($avatar-default-rhythm, $avatar-icon-size-ratio);
+        height: rhythmRatio($avatar-default-rhythm, $avatar-icon-size-ratio);
+        border-radius: 50%;
+        background: $avatar-icon-default-background;
+    }
+}

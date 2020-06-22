@@ -24,7 +24,7 @@ import {
     PaTogglesModule,
     PaTranslateModule,
     PaTabsModule,
-    PaTableModule,
+    PaTableModule, PaAvatarModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule } from '@angular/forms';
@@ -39,6 +39,7 @@ import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
 import { TextareaPageComponent } from './pages/text-area-page/textarea-page.component';
+import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -53,6 +54,7 @@ const COMPONENTS = [
     BaseControlComponent,
     BaseTextfieldComponent,
 
+    AvatarPageComponent,
     ButtonPageComponent,
     CheckboxPageComponent,
     SelectPageComponent,
@@ -74,6 +76,7 @@ const COMPONENTS = [
         TraversalModule,
         FormsModule,
 
+        PaAvatarModule,
         PaButtonModule,
         PaIconModule,
         PaDropdownModule,

@@ -1,0 +1,88 @@
+<pa-demo-page>
+    <pa-demo-title>Avatar</pa-demo-title>
+
+    <pa-demo-description>You can use an Avatar to represent a user or a group. Avatars with no image have an auto assigned background color.</pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-avatar
+            [userId]="userId"
+            [userName]="userName"
+            [image]="image"
+            [alternateText]="alternateText"
+            [backgroundColor]="backgroundColor"
+            [large]="isLarge"
+            [icon]="icon"
+            [iconColor]="iconColor"
+            [iconBackgroundColor]="iconBackgroundColor"
+        ></pa-avatar>
+    </pa-demo-examples>
+
+    <pa-demo-configuration>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="userNameTrigger" [(selected)]="hasUserName" (selectedChange)="toggleUserName($event)">userName: John Doe</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="userIdTrigger" [(selected)]="hasUserId" (selectedChange)="toggleUserId($event)">userId: 1234567</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="imageTrigger" [(selected)]="hasImage" (selectedChange)="toggleImage($event)">Image</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="backgroundColorTrigger" [(selected)]="hasBackgroundColor" (selectedChange)="toggleBackgroundColor($event)">Background color #FBC452</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="largeTrigger" [(selected)]="isLarge">large</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="iconTrigger" [(selected)]="hasIcon" (selectedChange)="toggleIcon($event)">Icon camera (will be full-size when no userName or image is provided)</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="iconColorTrigger" [(selected)]="hasIconColor" (selectedChange)="toggleIconColor($event)">Icon Color {{iconColor}}</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="iconBackgroundColorTrigger" [(selected)]="hasIconBackgroundColor" (selectedChange)="toggleIconBackgroundColor($event)">Icon background color #0047FF</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="alternateTextTrigger" [(selected)]="hasAlternateText" (selectedChange)="toggleAlternateText($event)">Alt text for image or icon (only displayed for large icon avatar)</pa-checkbox>
+        </div>
+    </pa-demo-configuration>
+
+    <pa-demo-usage>
+        <h3>Inputs</h3>
+
+        <dl>
+            <dt>userId</dt>
+            <dd>Used to generate a background color when no image or backgroundColor is provided.</dd>
+
+            <dt>userName</dt>
+            <dd>Used to generate Displayed initials and a background color when no image or backgroundColor is provided.</dd>
+
+            <dt>backgroundColor</dt>
+            <dd>Specifies the hexa background color to use when no image is provided. Generated backgroundColor will then be override.</dd>
+
+            <dt>image</dt>
+            <dd>Observable of blob. Provides the image to the component. Once an image is provided, generated initials and backgroundColor are not displayed.</dd>
+
+            <dt>large</dt>
+            <dd>Toggles avatar display size.</dd>
+
+            <dt>icon</dt>
+            <dd>Icon name to be used. When an image or a userName is provided, the icon will be displayed on the bottom right corner of the avatar. Otherwise, the icon will be displayed as an avatar himself.</dd>
+
+            <dt>iconColor</dt>
+            <dd>Hexa color of the icon.</dd>
+
+            <dt>iconBackgroundColor</dt>
+            <dd>Hexa color of icon's background.</dd>
+
+            <dt>alternateText</dt>
+            <dd>The text used to fill alt property of the image. When Avatar is displayed as an Icon, and the size is large, this text can also provide a label to the icon.</dd>
+
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+
+</pa-demo-page>

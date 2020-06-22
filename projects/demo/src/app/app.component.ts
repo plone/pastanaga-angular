@@ -14,6 +14,7 @@ import { GridPageComponent } from './demo/pages/grid-page/grid-page.component';
 import { TabsPageComponent } from './demo/pages/tabs-page/tabs-page.component';
 import { TablePageComponent } from './demo/pages/table-page/table-page.component';
 import { TextareaPageComponent } from './demo/pages/text-area-page/textarea-page.component';
+import { AvatarPageComponent } from './demo/pages/avatar-page/avatar-page.component';
 
 @Component({
     selector: 'app-root',
@@ -31,6 +32,7 @@ export class AppComponent {
         {
             title: 'Components',
             pages: [
+                {view: 'avatar', title: 'Avatar', type: AvatarPageComponent},
                 {view: 'button', title: 'Button', type: ButtonPageComponent},
                 {view: 'checkbox', title: 'Checkbox', type: CheckboxPageComponent},
                 {view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent},
