@@ -6,6 +6,9 @@ export * from './lib/pastanaga.service';
 
 export * from './lib/common';
 
+export * from './lib/avatar/avatar.module';
+export * from './lib/avatar/avatar.component';
+
 export * from './lib/button/button.module';
 export * from './lib/button/button.component';
 

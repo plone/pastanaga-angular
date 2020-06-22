@@ -22,9 +22,6 @@ import { takeUntil } from 'rxjs/operators';
 import { detectChanges } from '../../../common';
 import { BaseTextField } from '../base-text-field';
 
-const HTML_TAG = new RegExp(/.?<.+>/g);
-const REPLACE_LT_GT = new RegExp(/[<>]/g);
-
 @Component({
     selector: 'pa-input',
     templateUrl: './input.component.html',
@@ -139,8 +136,8 @@ export class InputComponent extends BaseTextField implements AfterViewInit, Cont
     }
 
     writeValue(value: string | number | undefined) {
-        if (!!value && typeof(value) === 'string' && !this._acceptHtmlTags && value.match(HTML_TAG)) {
-            value = value.replace(REPLACE_LT_GT, '');
+        if (!!value && typeof(value) === 'string' && !this._acceptHtmlTags && value.match(this.HTML_TAG)) {
+            value = value.replace(this.REPLACE_LT_GT, '');
         }
 
         super.writeValue(value);

@@ -16,6 +16,7 @@ import { IconPageComponent } from './pages/icon-page/icon-page.component';
 import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
 
 import {
+    PaAvatarModule,
     PaButtonModule,
     PaIconModule,
     PaDropdownModule,
@@ -38,6 +39,8 @@ import { SelectPageComponent } from './pages/select-page/select-page.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
+import { TextareaPageComponent } from './pages/text-area-page/textarea-page.component';
+import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -52,6 +55,7 @@ const COMPONENTS = [
     BaseControlComponent,
     BaseTextfieldComponent,
 
+    AvatarPageComponent,
     ButtonPageComponent,
     CheckboxPageComponent,
     SelectPageComponent,
@@ -64,6 +68,7 @@ const COMPONENTS = [
     GridPageComponent,
     TabsPageComponent,
     TablePageComponent,
+    TextareaPageComponent,
 ];
 
 @NgModule({
@@ -72,6 +77,7 @@ const COMPONENTS = [
         TraversalModule,
         FormsModule,
 
+        PaAvatarModule,
         PaButtonModule,
         PaIconModule,
         PaDropdownModule,
