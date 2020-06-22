@@ -1,9 +1,5 @@
 @import "./variables";
 
-abbr[title], acronym[title] {
-    border-bottom: none;
-    text-decoration: none;
-}
 
 @mixin full-size-circle() {
     width: 100%;
@@ -19,6 +15,12 @@ abbr[title], acronym[title] {
 }
 
 .pa-avatar {
+
+    abbr[title], acronym[title] {
+        border-bottom: none;
+        text-decoration: none;
+    }
+
     position: relative;
     display: flex;
     width: rhythm($avatar-default-rhythm);

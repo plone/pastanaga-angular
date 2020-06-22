@@ -16,6 +16,7 @@ import { IconPageComponent } from './pages/icon-page/icon-page.component';
 import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
 
 import {
+    PaAvatarModule,
     PaButtonModule,
     PaIconModule,
     PaDropdownModule,
@@ -24,7 +25,7 @@ import {
     PaTogglesModule,
     PaTranslateModule,
     PaTabsModule,
-    PaTableModule, PaAvatarModule,
+    PaTableModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule } from '@angular/forms';

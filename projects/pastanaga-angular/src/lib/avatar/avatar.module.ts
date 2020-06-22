@@ -4,13 +4,13 @@ import { AvatarComponent } from './avatar.component';
 import { PaIconModule } from '../icon/icon.module';
 
 
-
 @NgModule({
-  declarations: [AvatarComponent],
-  exports: [AvatarComponent],
-  imports: [
-    CommonModule,
-      PaIconModule
-  ]
+    declarations: [AvatarComponent],
+    exports: [AvatarComponent],
+    imports: [
+        CommonModule,
+        PaIconModule
+    ]
 })
-export class PaAvatarModule {}
+export class PaAvatarModule {
+}

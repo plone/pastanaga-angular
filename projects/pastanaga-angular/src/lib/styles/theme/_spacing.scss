@@ -38,6 +38,7 @@ $rhythm: (
 @function rhythmRatio($spacer-size, $ratio) {
     @return map-get($rhythm, $spacer-size) / $ratio;
 }
+
 $border-radius-default: rhythm(.25) !default;
 
 // layout
