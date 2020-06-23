@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 
 export class TablePageComponent {
     code = `
-<pa-table>
+<pa-table columns="repeat(6, 1fr)">
     <pa-table-header>
         <pa-table-cell header>Name</pa-table-cell>
         <pa-table-cell header>Tags</pa-table-cell>
