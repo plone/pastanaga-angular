@@ -1,4 +1,4 @@
-<div class="pa-table-grid">
+<div class="pa-table-grid" [style.grid-template-columns]="_columns">
     <div *ngIf="!_noHeader" class="pa-table-grid--head">
         <div class="pa-table-grid--row">
             <ng-content select="pa-table-header"></ng-content>

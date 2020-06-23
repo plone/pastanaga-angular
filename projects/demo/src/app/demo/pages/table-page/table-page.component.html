@@ -4,7 +4,7 @@
     <pa-demo-description>Allows to use Pastanaga table style (based on <code>display: grid</code>).</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-table>
+        <pa-table columns="minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px">
             <pa-table-header>
                 <pa-table-cell header>Name</pa-table-cell>
                 <pa-table-cell header>Tags</pa-table-cell>
@@ -69,6 +69,10 @@
     <pa-demo-usage>
         <h3><code>pa-table</code></h3>
         <p> It can contain <code>pa-table-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></p>
+        <dl>
+            <dt>columns</dt>
+            <dd>Define the <code>grid-template-columns</code> CSS attribute value. <small>(optional, default is <code>auto</code>)</small></dd>
+        </dl>
         <dl>
             <dt>noHeader</dt>
             <dd>If true, table header is not displayed. <small>(optional)</small></dd>

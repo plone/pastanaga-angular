@@ -26,6 +26,7 @@ import {
     PaTranslateModule,
     PaTabsModule,
     PaTableModule,
+    PaDateTimeModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
 import { TextareaPageComponent } from './pages/text-area-page/textarea-page.component';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
+import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -69,6 +71,7 @@ const COMPONENTS = [
     TabsPageComponent,
     TablePageComponent,
     TextareaPageComponent,
+    DateTimePageComponent,
 ];
 
 @NgModule({
@@ -87,6 +90,7 @@ const COMPONENTS = [
         PaTranslateModule,
         PaTabsModule,
         PaTableModule,
+        PaDateTimeModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

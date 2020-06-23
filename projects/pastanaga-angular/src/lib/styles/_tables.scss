@@ -2,7 +2,6 @@
 
 .pa-table-grid {
     display: grid;
-    grid-template-columns: minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px;
 }
 .pa-table-grid--head {
     display: contents;
@@ -64,7 +63,7 @@
     z-index: 3;
 }
 
-.pa-table-grid--row.clickable {
+.pa-table-grid .clickable {
     cursor: pointer;
 }
 

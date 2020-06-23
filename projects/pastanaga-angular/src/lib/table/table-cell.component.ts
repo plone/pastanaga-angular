@@ -12,4 +12,9 @@ export class TableCellComponent {
     get header(): boolean { return this._header; }
     set header(value: boolean) { this._header = coerceBooleanProperty(value); }
     _header = false;
+
+    @Input()
+    get clickable(): boolean { return this._clickable; }
+    set clickable(value: boolean) { this._clickable = coerceBooleanProperty(value); }
+    _clickable = false;
 }

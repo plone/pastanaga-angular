@@ -21,16 +21,20 @@ export * from './lib/controls/textfield/input/input.component';
 export * from './lib/controls/toggles/toggles.module';
 export * from './lib/controls/toggles/checkbox/checkbox.component';
 
-export * from './lib/icon/icon.module';
-export * from './lib/icon/icon.component';
-export * from './lib/icon/svg-loader.interface';
-export * from './lib/icon/svg-loader';
+export * from './lib/datetime/datetime.component';
+export * from './lib/datetime/datetime.module';
+export * from './lib/datetime/datetime.service';
 
 export * from './lib/dropdown/dropdown.module';
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/dropdown/option-header/option-header.component';
 export * from './lib/dropdown/option/option.component';
 export * from './lib/dropdown/separator/separator.component';
+
+export * from './lib/icon/icon.module';
+export * from './lib/icon/icon.component';
+export * from './lib/icon/svg-loader.interface';
+export * from './lib/icon/svg-loader';
 
 export * from './lib/popup/popup.component';
 export * from './lib/popup/popup.directive';
