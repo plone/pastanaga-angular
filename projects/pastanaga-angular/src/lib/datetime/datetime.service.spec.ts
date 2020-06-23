@@ -1,4 +1,4 @@
-import { DatePipe, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 
@@ -15,7 +15,6 @@ describe('DateTimeService', () => {
     describe('en-US locale', () => {
         beforeEach(() => {
             service = new DateTimeService(
-                new DatePipe('en-US'),
                 new TranslatePipe('en-US', {'en-US': mockTranslateEn}),
                 'en-US',
             );
@@ -264,7 +263,6 @@ describe('DateTimeService', () => {
         beforeEach(() => {
             registerLocaleData(localeFr, 'fr-FR');
             service = new DateTimeService(
-                new DatePipe('fr-FR'),
                 new TranslatePipe('fr-FR', {'fr-FR': mockTranslateFr}),
                 'fr-FR',
             );

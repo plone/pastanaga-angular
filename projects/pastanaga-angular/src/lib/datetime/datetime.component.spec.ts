@@ -1,11 +1,10 @@
-import { DatePipe } from '@angular/common';
 import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TranslatePipe } from '../translate/translate.pipe';
 import { DateTimeComponent } from './datetime.component';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 import { dates, mockTranslateEn } from './test-data';
-import { TranslatePipe } from '../translate/translate.pipe';
 
 describe('DateTimeComponent', () => {
     let component: DateTimeComponent;
@@ -17,7 +16,6 @@ describe('DateTimeComponent', () => {
             declarations: [DateTimeComponent],
             providers: [
                 DateTimeService,
-                DatePipe,
                 TranslatePipe,
                 {provide: 'LANG', useValue: 'en_US'},
                 {provide: 'TRANSLATIONS', useValue: {'en_US': {...mockTranslateEn} as any}},

@@ -64,7 +64,6 @@ export class DateTimeService {
     numericalFormat: string;
 
     constructor(
-        private ngDate: DatePipe,
         private translate: TranslatePipe,
         @Inject( LOCALE_ID ) private locale: string,
     ) {
@@ -75,7 +74,7 @@ export class DateTimeService {
             return acc;
         }, {});
         this.strings.next(new StringMap(values));
-        this.localeDatePipe = new DatePipe(this.locale);
+        this.localeDatePipe = new DatePipe(this.locale || 'en');
         this.numericalFormat = getLocaleDateFormat( this.locale, FormatWidth.Short);
     }
 
@@ -173,7 +172,7 @@ export class DateTimeService {
             pattern = `d'<sup>${ordinal}</sup>' MMMM yyyy, '${this.getFormattedTime(timestamp, displaySeconds, useTags)}'`;
         }
 
-        return this.transform(timestamp, pattern, true);
+        return this.transform(timestamp, pattern);
     }
 
     private getBeforeYesterdayAsNumericalDate(timestamp: string, displaySeconds?: boolean, useTags = true, displayTime = true) {
@@ -210,10 +209,10 @@ export class DateTimeService {
         return this.transform(timestamp, pattern);
     }
 
-    private transform(timestamp: string, pattern: string, locale = false): string | null {
-        const cacheKey = (locale && 'LOCAL-') + timestamp + pattern;
+    private transform(timestamp: string, pattern: string): string | null {
+        const cacheKey = 'LOCAL-' + timestamp + pattern;
         if (!this.cache[cacheKey]) {
-            this.cache[cacheKey] = locale ? this.localeDatePipe.transform(timestamp, pattern) : this.ngDate.transform(timestamp, pattern);
+            this.cache[cacheKey] = this.localeDatePipe.transform(timestamp, pattern);
         }
         return this.cache[cacheKey];
     }
