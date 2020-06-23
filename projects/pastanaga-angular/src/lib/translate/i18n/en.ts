@@ -13,6 +13,13 @@ export const I18N_EN: TranslationEntries = {
         connect: 'Connect',
         continue: 'Continue',
         create: 'Create',
+        datetime: {
+            'a-few-seconds-ago': 'A few seconds ago',
+            minutesAgo: '{{minutes}} minutes ago',
+            'one-minute-ago': '1 minute ago',
+            today: 'Today',
+            yesterday: 'Yesterday',
+        },
         delete: 'Delete',
         'deselect-all': 'Deselect all',
         'deselect-filtered': 'Deselect filtered',
@@ -51,6 +58,6 @@ export const I18N_EN: TranslationEntries = {
         'view-selected': 'View selection',
         'view-all': 'View all',
         yes: 'Yes',
-        'unexpected-error': 'Unexpected error'
+        'unexpected-error': 'Unexpected error',
     },
 };

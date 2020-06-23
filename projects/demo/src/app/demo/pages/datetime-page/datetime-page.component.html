@@ -1,0 +1,131 @@
+<pa-demo-page>
+    <pa-demo-title>Date/time</pa-demo-title>
+
+    <pa-demo-description>Date/time formatting component, based on app locale.</pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-table columns="repeat(4, 1fr)">
+            <pa-table-header>
+                <pa-table-cell header>Human</pa-table-cell>
+                <pa-table-cell header>Numerical</pa-table-cell>
+                <pa-table-cell header>Mixed</pa-table-cell>
+                <pa-table-cell header>Absolute</pa-table-cell>
+            </pa-table-header>
+            <pa-table-row>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="todayAm" format="human"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="todayAm" format="numerical"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="todayAm" format="mixed"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="todayAm" format="absolute"></pa-datetime>
+                </pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="yesterdayPm" format="human"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="yesterdayPm" format="numerical"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="yesterdayPm" format="mixed"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="yesterdayPm" format="absolute"></pa-datetime>
+                </pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="fewSecondsAgo" format="human"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="fewSecondsAgo" format="numerical"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="fewSecondsAgo" format="mixed"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="fewSecondsAgo" format="absolute"></pa-datetime>
+                </pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="tenMinutesAgo" format="human"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="tenMinutesAgo" format="numerical"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="tenMinutesAgo" format="mixed"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="tenMinutesAgo" format="absolute"></pa-datetime>
+                </pa-table-cell>
+            </pa-table-row>
+            <pa-table-row>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="aDate" format="human"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="aDate" format="numerical"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="aDate" format="mixed"></pa-datetime>
+                </pa-table-cell>
+                <pa-table-cell>
+                    <pa-datetime [datetime]="aDate" format="absolute"></pa-datetime>
+                </pa-table-cell>
+            </pa-table-row>
+        </pa-table>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <dl>
+            <dt>datetime</dt>
+            <dd>String. The date/time to display, in ISO format.</dd>
+
+            <dt>format</dt>
+            <dd>
+                String <small>(optional, default <code>human</code>)</small>
+                <ul>
+                    <li>human
+                        <ul>
+                            <li>format date before yesterday as full sentence like 'December 31st 2017, 7:12PM'</li>
+                            <li>format today/yesterday like 'Today, 8:13AM'</li>
+                        </ul>
+                    </li>
+                    <li>numerical
+                        <ul>
+                            <li>format date before yesterday as numerical date without time like '12/31/2017'</li>
+                            <li>format today/yesterday with time like 'Today, 8:13AM'</li>
+                        </ul>
+                    </li>
+                    <li>mixed
+                        <ul>
+                            <li>format date before yesterday as human date like 'December 31st 2017, 7:12PM'</li>
+                            <li>format today/yesterday as human date like 'Today, 8:13AM'</li>
+                            <li>format few seconds/minutes ago as relative time like 'A few seconds ago' or '10 minutes ago'</li>
+                        </ul>
+                    </li>
+                    <li>absolute
+                        <ul>
+                            <li>format all dates as numerical date with time like '12/31/2017, 7:12PM'</li>
+                        </ul>
+                    </li>
+                </ul>
+            </dd>
+
+            <dt>displaySeconds</dt>
+            <dd>Boolean. Display seconds <small>(optional)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>
