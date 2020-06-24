@@ -19,7 +19,8 @@
     }
 
     &.pa-xsmall {
-        @include font-size(xs);
+        font-size: size(xs);
+        line-height: rhythm(2);
         padding: $padding-button-xsmall;
 
         &.pa-button-icon {
@@ -28,7 +29,8 @@
     }
 
     &.pa-small {
-        @include font-size(s);
+        font-size: size(s);
+        line-height: rhythm(2);
         padding: $padding-button-small;
 
         &.pa-button-icon {
@@ -37,7 +39,8 @@
     }
 
     &.pa-medium {
-        @include font-size(m);
+        font-size: size(m);
+        line-height: rhythm(2.5);
         padding: $padding-button-medium;
 
         &.pa-button-icon {
@@ -46,7 +49,8 @@
     }
 
     &.pa-large {
-        @include font-size(l);
+        font-size: size(l);
+        line-height: rhythm(4);
         padding: $padding-button-large;
 
         &.pa-button-icon {
