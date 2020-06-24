@@ -43,7 +43,7 @@ export class AppComponent {
                 {view: 'select', title: 'Select', type: SelectPageComponent},
                 {view: 'tables', title: 'Tables', type: TablePageComponent},
                 {view: 'tabs', title: 'Tabs', type: TabsPageComponent},
-                {view: 'textarea', title: 'Tabs', type: TextareaPageComponent},
+                {view: 'textarea', title: 'Textarea', type: TextareaPageComponent},
             ],
         },
         {

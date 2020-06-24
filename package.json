@@ -11,6 +11,7 @@
         "build": "npm run icon_list && npm run build:lib && npm run build:demo",
         "lint": "ng lint",
         "test:lib": "jest --config ./projects/pastanaga-angular/jest.config.js",
+        "test:lib:watch": "jest --watch --config ./projects/pastanaga-angular/jest.config.js",
         "test:demo": "jest --config ./projects/demo/jest.config.js",
         "test": "npm run test:lib && npm run test:demo",
         "test:ci": "jest --config ./projects/pastanaga-angular/jest.config.js --runInBand --ci",
