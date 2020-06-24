@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Kind, Size, Weight } from '../../../../../../pastanaga-angular/src';
+import { Kind, Size, Aspect } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     templateUrl: './button-page.component.html',
@@ -8,13 +8,13 @@ import { Kind, Size, Weight } from '../../../../../../pastanaga-angular/src';
 })
 export class ButtonPageComponent implements OnInit {
     kind = Kind;
-    weight = Weight;
+    aspect = Aspect;
     size = Size;
     selectedSize: Size = Size.medium;
     disabledState = false;
     codeExample = `<pa-button [kind]="selectedKind"
            [size]="selectedSize"
-           [weight]="selectedWeight"
+           [aspect]="selectedAspect"
            [disabled]="disabledState">
     Value
 </pa-button>
@@ -23,7 +23,7 @@ export class ButtonPageComponent implements OnInit {
            iconAndText
            [kind]="selectedKind"
            [size]="selectedSize"
-           [weight]="selectedWeight"
+           [aspect]="selectedAspect"
            [disabled]="disabledState">
     Value
 </pa-button>
@@ -31,7 +31,7 @@ export class ButtonPageComponent implements OnInit {
 <pa-button icon="search"
            [kind]="selectedKind"
            [size]="selectedSize"
-           [weight]="selectedWeight"
+           [aspect]="selectedAspect"
            [disabled]="disabledState">
     Value
 </pa-button>`;

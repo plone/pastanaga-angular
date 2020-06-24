@@ -18,10 +18,10 @@ export enum Size {
     xxlarge = 'xxlarge',
 }
 
-export enum Weight {
-    accent = 'accent',
+export enum Aspect {
+    solid = 'solid',
     regular = 'regular',
-    dim = 'dim',
+    basic = 'basic',
 }
 
 export enum Kind {

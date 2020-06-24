@@ -1,3 +1,4 @@
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -6,15 +7,14 @@ import {
     ElementRef,
     Input,
     OnInit,
-    ViewChild
+    ViewChild,
 } from '@angular/core';
-import { detectChanges, Kind, Size, Weight } from '../common';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Aspect, detectChanges, Kind, Size } from '../common';
 
 @Component({
     selector: 'pa-button',
     templateUrl: './button.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent implements AfterContentInit, OnInit {
     @Input() set kind(value: Kind) {
@@ -37,9 +37,9 @@ export class ButtonComponent implements AfterContentInit, OnInit {
             }
         }
     }
-    @Input() set weight(value: Weight) {
+    @Input() set aspect(value: Aspect) {
         if (!!value) {
-            this._weight = value;
+            this._aspect = value;
         }
     }
     @Input() set type(value: 'button' | 'submit' | 'reset') {
@@ -51,13 +51,12 @@ export class ButtonComponent implements AfterContentInit, OnInit {
     @Input() set icon(value: string) { this._icon = value || ''; }
     @Input() set iconAndText(value: boolean) { this._iconAndText = coerceBooleanProperty(value); }
 
-
     @ViewChild('textContainer') textContainer?: ElementRef;
 
     _type: 'button' | 'submit' | 'reset' = 'button';
     _kind: Kind = Kind.secondary;
     _size: Size = Size.medium;
-    _weight: Weight = Weight.accent;
+    _aspect: Aspect = Aspect.solid;
     _icon = '';
     _iconSize: Size = Size.medium;
     _iconAndText = false;
