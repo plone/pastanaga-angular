@@ -14,8 +14,7 @@ describe('ButtonComponent', () => {
                 PaIconModule,
             ],
             declarations: [ButtonComponent],
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

@@ -50,17 +50,17 @@ export class AvatarComponent {
         this._iconAvatarSize = this._isLarge ? Size.xxlarge : Size.medium;
     }
 
-    @Input() icon: string | undefined;
-    @Input() iconColor: string | undefined;
-    @Input() iconBackgroundColor: string | undefined;
-    @Input() alternateText: string | undefined;
+    @Input() icon?: string;
+    @Input() iconColor?: string;
+    @Input() iconBackgroundColor?: string;
+    @Input() alternateText?: string;
 
-    _userId: string | undefined;
-    _userName: string | undefined;
-    _initials: string = ' ? ';
-    _colorClass: string | undefined;
-    _backgroundColor: string | undefined;
-    _isLarge: boolean = false;
+    _userId?: string;
+    _userName?: string;
+    _initials = ' ? ';
+    _colorClass?: string;
+    _backgroundColor?: string;
+    _isLarge = false;
     _base64Image?: string;
     _iconSize = Size.xxsmall;
     _iconAvatarSize = Size.medium;

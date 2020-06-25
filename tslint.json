@@ -11,6 +11,7 @@
       ]
     },
     "array-type": false,
+    "arrow-parens": false,
     "arrow-return-shorthand": true,
     "curly": true,
     "deprecation": {
@@ -62,6 +63,7 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
+    "ordered-imports": false,
     "quotemark": [
       true,
       "single"

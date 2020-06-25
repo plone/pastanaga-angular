@@ -106,12 +106,12 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
     _acceptHtmlTags = false;
     _autofilled = false;
     _autoHeight = false;
-    _charWidth: number = 0;
+    _charWidth = 0;
     _hasFocus = false;
     _noAutoComplete = false;
     _resizable = true;
-    _rows: number = 1;
-    _defaultRows: number = 1;
+    _rows = 1;
+    _defaultRows = 1;
 
     resizeTrigger: Subject<string | number> | undefined;
 
@@ -187,7 +187,7 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
     private autoResize(text: string | number | undefined) {
         if (!!this.textarea && typeof (text) === 'string' && this._charWidth > 0) {
             const elementWidth = this.textarea.nativeElement.getBoundingClientRect()['width'];
-            const charsByRow = elementWidth / this._charWidth;
+            const charsByRow = Math.max(elementWidth / this._charWidth, 1);
 
             const textLines = text.split('\n');
             const rows = textLines.reduce((totalRows, line) => {
@@ -211,7 +211,7 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
         if (!!this.textarea) {
             const font = window.getComputedStyle(this.textarea.nativeElement).getPropertyValue('font');
             const canvas = document.createElement('canvas');
-            let context = canvas.getContext('2d');
+            const context = canvas.getContext('2d');
             if (context && !!font) {
                 context.font = font;
                 this._charWidth = context.measureText('_').width;
@@ -223,7 +223,7 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
         if (!this.resizeTrigger) {
             this.resizeTrigger = new Subject<any>();
             this.instantValueChange.pipe(takeUntil(this.terminator))
-                .subscribe((value) => {
+            .subscribe((value) => {
                     this.resizeTrigger?.next(value);
                 });
             this.resizeTrigger.pipe(takeUntil(this.terminator))
