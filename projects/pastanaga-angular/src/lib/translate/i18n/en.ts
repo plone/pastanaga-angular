@@ -41,6 +41,7 @@ export const I18N_EN: TranslationEntries = {
         next: 'Next',
         never: 'Never',
         no: 'No',
+        of: 'Of',
         off: 'Off',
         on: 'On',
         previous: 'Previous',
