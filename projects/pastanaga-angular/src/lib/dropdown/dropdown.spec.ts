@@ -24,7 +24,7 @@ export class TestComponent {
     stayVisible = false;
 }
 
-describe('Popup', () => {
+describe('Dropdown', () => {
     let component: TestComponent;
     let fixture: ComponentFixture<TestComponent>;
 
@@ -47,22 +47,13 @@ describe('Popup', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-
-    it('should be hidden by default', () => {
+    it('should be hidden by default and render options, headers and separators', () => {
         expect(fixture.debugElement.query(By.css('.pa-popup')).properties.hidden).toBe(true);
         component.dropdown?.show({});
         fixture.detectChanges();
         expect(fixture.debugElement.query(By.css('.pa-popup')).properties.hidden).toBe(false);
-    });
-
-    it('should render options, headers and separators', () => {
-        component.stayVisible = true;
-        fixture.detectChanges();
         expect(fixture.debugElement.queryAll(By.css('.pa-option')).length).toBe(4);
         expect(fixture.debugElement.queryAll(By.css('.pa-option-header')).length).toBe(1);
         expect(fixture.debugElement.queryAll(By.css('.pa-separator')).length).toBe(1);
-    }, 20000);
+    });
 });

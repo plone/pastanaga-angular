@@ -1,7 +1,7 @@
 language: node_js
 version: 1.0
 node_js:
-- 10.15.0
+- 12.4.0
 cache:
   directories:
   - node_modules
@@ -9,7 +9,7 @@ dist: trusty
 install:
 - npm install
 script:
-- npm test
+- npm run test:ci
 - npm run build:lib
 - npm run build:demo
 notifications:
