@@ -6,10 +6,10 @@
 //=====================================
 
 $border-toggle-unselected:          1px solid $color-neutral-primary-lighter !default;
-$border-toggle-unselected-hover:    1px solid $color-neutral-primary-darkest !default;
+$border-toggle-unselected-hover:    1px solid $color-neutral-primary-regular !default;
 $border-toggle-selected:            none !default;
 $border-toggle-selected-hover:      none !default;
-$border-toggle-disabled:            1px solid $color-neutral-primary-pale !default;
+$border-toggle-disabled:            1px solid $color-neutral-secondary-regular !default;
 
 //=====================================
 // COLORS
@@ -18,7 +18,7 @@ $border-toggle-disabled:            1px solid $color-neutral-primary-pale !defau
 // Background
 $color-background-toggle-selected: $color-accent-primary-regular !default;
 $color-background-toggle-selected-hover: $color-accent-primary-dark !default;
-$color-background-toggle-disabled: $color-neutral-primary-faded !default;
+$color-background-toggle-disabled: $color-neutral-secondary-light !default;
 
 // Check
 $color-check-toggle:    $white !default;

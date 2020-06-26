@@ -21,7 +21,7 @@ pa-demo-page {
     pa-demo-usage {
         code {
             display: inline;
-            background: $color-neutral-primary-faded;
+            background: $color-neutral-secondary-light;
             margin: 0;
             padding: 0 rhythm(.25);
         }
@@ -69,7 +69,7 @@ pa-demo-page {
     pa-demo-code code {
         display: block;
         padding: rhythm(1);
-        background-color: $color-neutral-primary-pale;
+        background-color: $color-neutral-secondary-regular;
         margin: rhythm(1) 0;
     }
 }
