@@ -1,15 +1,5 @@
 import { FormControl, ValidationErrors } from '@angular/forms';
-import {
-    AfterContentInit,
-    ChangeDetectorRef,
-    ElementRef,
-    EventEmitter,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    ViewChild
-} from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, Directive } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -46,6 +36,7 @@ export class ErrorMessages {
     }
 }
 
+@Directive()
 export class BaseTextField extends BaseControl implements AfterContentInit, OnInit, OnDestroy {
     @Input() debounceDuration = 500;
     @Input() errorMessages?: ErrorMessages;

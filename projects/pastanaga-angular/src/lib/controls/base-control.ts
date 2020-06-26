@@ -1,9 +1,10 @@
-import { Input, OnDestroy, OnInit } from '@angular/core';
+import { Input, OnDestroy, OnInit, Directive } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 
 let nextId = 0;
 
+@Directive()
 export class BaseControl implements OnInit, OnDestroy{
     @Input() id?: string;
     @Input() name?: string;

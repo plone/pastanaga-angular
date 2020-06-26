@@ -27,7 +27,7 @@ import { I18N_EN, mergeTranslations } from 'projects/pastanaga-angular/src';
     providers: [
         {provide: Marker, useClass: AppMarker},
         {provide: Resolver, useClass: AppResolver},
-        {provide: Normalizer},
+        Normalizer,
         {provide: 'LANG', useValue: 'en_US'},
         {provide: 'TRANSLATIONS', useValue: {
             en_US: mergeTranslations([I18N_EN, {...(enDemo as any).default}, {...(custom as any).default}]),
