@@ -19,12 +19,12 @@ $mist:      #99CFFF;    $rose:          #FFCCCC;
 $steam:     #E5F6FF;    $blossom:       #FFE5E5;
 
 // General tokens
-$color-neutral-primary-darkest:     $tapenade !default;
-$color-neutral-primary-regular:     $carbon !default;
+$color-neutral-primary-regular:     $tapenade !default;
+$color-neutral-primary-light:       $carbon !default;
 $color-neutral-primary-lighter:     $panot !default;
-$color-neutral-primary-pale:        $salt !default;
-$color-neutral-primary-faded:       $air !default;
-$color-neutral-primary-lightest:    $white !default;
+$color-neutral-secondary-regular:   $salt !default;
+$color-neutral-secondary-light:     $air !default;
+$color-neutral-secondary-lighter:   $white !default;
 
 $color-accent-primary-darker:  $midnight !default;
 $color-accent-primary-dark:    $twilight !default;
