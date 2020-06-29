@@ -61,6 +61,9 @@ export class DateInputComponent extends TextfieldCommon implements OnInit, OnCha
             const top = !!changes.help.currentValue ? '-33px' : '0';
             this.datePickerPosition = {...this.datePickerPosition, top};
         }
+        if (changes.selection && changes.selection.currentValue) { 
+            this.selectDate(changes.selection.currentValue);
+        }
     }
 
     selectDate(date: Date) {
