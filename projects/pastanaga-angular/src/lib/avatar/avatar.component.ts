@@ -39,6 +39,15 @@ export class AvatarComponent {
     }
 
     @Input()
+    set imageSrc(value: string) {
+        if (!!value) {
+            this._base64Image = value;
+        } else {
+            this._base64Image = undefined;
+        }
+    }
+
+    @Input()
     set backgroundColor(value: string) {
         this._backgroundColor = value;
     }
