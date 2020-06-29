@@ -1,4 +1,4 @@
-import { AfterContentInit, ElementRef, EventEmitter, Input, Output, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
+import { AfterContentInit, ElementRef, EventEmitter, Input, Output, ViewChild, ChangeDetectorRef, OnInit, Directive } from '@angular/core';
 import { DialogConfig, DialogRef } from './dialog.model';
 import { keyboardKeys } from '../keycodes.constant';
 import { markForCheck, detectChanges } from '../common/utils';
@@ -16,6 +16,7 @@ export interface IDialog {
     dialog: BaseDialogComponent | undefined;
 }
 
+@Directive()
 export class BaseDialogComponent implements OnInit, AfterContentInit {
     @Output() onEnter: EventEmitter<void> = new EventEmitter();
 

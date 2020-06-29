@@ -1,36 +1,26 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
+  It is not intended to be used to perform a compilation.
+
+  To learn more about this file see: https://angular.io/config/solution-tsconfig.
+*/
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./dist/out-tsc",
-        "sourceMap": true,
-        "declaration": false,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "strictNullChecks": true,
-        "resolveJsonModule": true,
-        "strictPropertyInitialization": true,
-        "target": "es5",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2017",
-            "dom"
-        ],
-        "paths": {
-            "pastanaga-angular": [
-                "projects/pastanaga/src"
-            ],
-            "pastanaga-angular/*": [
-                "projects/pastanaga/src/*"
-            ]
-        }
+  "files": [],
+  "references": [
+    {
+      "path": "./src/tsconfig.app.json"
     },
-    "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true,
-        "strictInjectionParameters": true
+    {
+      "path": "./src/tsconfig.spec.json"
+    },
+    {
+      "path": "./e2e/tsconfig.e2e.json"
+    },
+    {
+      "path": "./projects/pastanaga/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/pastanaga/tsconfig.spec.json"
     }
+  ]
 }
