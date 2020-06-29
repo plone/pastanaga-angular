@@ -1,3 +1,8 @@
+# 1.18.6 (2020-06-29)
+
+### Bug fix
+- **Date Input**: enable to initialize with a selected date [luispalomo]
+
 # 1.18.5 (2020-06-17)
 
 ### Improvements
