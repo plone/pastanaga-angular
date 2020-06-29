@@ -33,7 +33,7 @@ import { PaDocPagesModule } from './doc/doc-pages.module';
         }},
         { provide: Resolver, useClass: DocResolver },
         { provide: Marker, useClass: DocMarker },
-        { provide: Normalizer}
+        Normalizer,
     ],
     bootstrap: [AppComponent]
 })
