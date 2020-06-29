@@ -115,6 +115,9 @@
     display: grid;
     justify-items: center;
 }
+.self-end {
+    justify-self: end
+}
 .justify-right {
     display: grid;
     justify-items: right;
