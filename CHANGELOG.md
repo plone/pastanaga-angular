@@ -1,3 +1,8 @@
+# 1.18.8 (2020-06-30)
+
+### Bug fix
+- **Checkbox** Added translation to subLabel [niglesias]
+
 # 1.18.7 (2020-06-29)
 
 ### Improvements
