@@ -26,7 +26,7 @@
               [class.pa-sr]="_labelHidden">
             <pa-icon *ngIf="!!_iconName" [name]="_iconName"></pa-icon>
             <ng-content></ng-content>
-            <small *ngIf="subLabel">{{ subLabel }}</small>
+            <small *ngIf="subLabel">{{ subLabel | translate }}</small>
             <pa-icon *ngFor="let icon of labelIcons"
                      [name]="icon.name"
                      [paTooltip]="icon.tooltip | translate"
