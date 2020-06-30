@@ -40,7 +40,7 @@ import { BaseTextField } from '../base-text-field';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent extends BaseTextField implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
-    @Input() type: 'text' | 'number' = 'text';
+    @Input() type: 'text' | 'number' | 'password' = 'text';
     @Input() min?: number;
     @Input() max?: number;
     @Input() maxlength?: number;
