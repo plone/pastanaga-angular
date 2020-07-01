@@ -29,7 +29,7 @@ import {
     PaDateTimeModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
 import { BaseTextfieldComponent } from './pages/common-doc/base-textfield/base-textfield.component';
 import { BaseControlComponent } from './pages/common-doc/base-control/base-control.component';
@@ -43,6 +43,7 @@ import { TablePageComponent } from './pages/table-page/table-page.component';
 import { TextareaPageComponent } from './pages/text-area-page/textarea-page.component';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
+import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -58,20 +59,21 @@ const COMPONENTS = [
     BaseTextfieldComponent,
 
     AvatarPageComponent,
+    BasicPopupComponent,
     ButtonPageComponent,
     CheckboxPageComponent,
-    SelectPageComponent,
+    DateTimePageComponent,
+    DropdownPageComponent,
+    GridPageComponent,
     IconPageComponent,
     InputPageComponent,
-    DropdownPageComponent,
     PopupPageComponent,
-    BasicPopupComponent,
-    TranslatePageComponent,
-    GridPageComponent,
+    SelectPageComponent,
     TabsPageComponent,
     TablePageComponent,
+    TogglePageComponent,
     TextareaPageComponent,
-    DateTimePageComponent,
+    TranslatePageComponent,
 ];
 
 @NgModule({
@@ -79,6 +81,7 @@ const COMPONENTS = [
         CommonModule,
         TraversalModule,
         FormsModule,
+        ReactiveFormsModule,
 
         PaAvatarModule,
         PaButtonModule,
