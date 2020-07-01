@@ -1,0 +1,82 @@
+@import "../../../styles/variables";
+
+.pa-field {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .pa-toggle-label-container {
+        display: flex;
+        flex-direction: column;
+        margin: auto 0;
+        .pa-field-label {
+            position: inherit;
+        }
+    }
+}
+
+.pa-toggle-container {
+    position: relative;
+    width: rhythm(4);
+    height: rhythm(2);
+    box-sizing: border-box;
+
+    input {
+        outline: 0;
+    }
+
+    .pa-toggle-checkbox {
+        width: rhythm(4);
+        height: rhythm(2);
+        opacity: 0;
+    }
+
+    .pa-toggle-slider {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-transition: .3s;
+        transition: .3s;
+        border-radius: rhythm(2);
+        background: $color-neutral-secondary-regular;
+        cursor: pointer;
+        &:before {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            transition: 0.3s;
+            top: 8.33%;
+            right: 54.17%;
+            bottom: 8.33%;
+            left: 4.17%;
+            box-shadow: $shadow-pill;
+            background-color: $color-neutral-secondary-lighter;
+        }
+    }
+
+    &.checked {
+        .pa-toggle-slider {
+            background: $color-accent-primary-regular;
+            &:before {
+                -webkit-transform: translateX(rhythm(2));
+                -ms-transform: translateX(rhythm(2));
+                transform: translateX(rhythm(2));
+            }
+        }
+    }
+
+    &.focused {
+        outline: thin solid $color-outline;
+    }
+
+    &.disabled {
+        .pa-toggle-slider {
+            cursor: default;
+            background: $color-neutral-primary-lighter;
+            &:before {
+                background-color: $color-neutral-secondary-regular;
+            }
+        }
+    }
+}

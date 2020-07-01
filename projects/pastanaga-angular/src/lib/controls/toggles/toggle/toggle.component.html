@@ -1,0 +1,36 @@
+<div class="pa-field">
+    <div class="pa-toggle-label-container" *ngIf="_hasLabel || _help?.length">
+        <label #label [for]="_id"
+               class="pa-field-label"
+               aria-hidden="true"
+        >
+            <ng-content></ng-content>
+        </label>
+
+        <small *ngIf="_help"
+               class="pa-field-help"
+               [id]="_helpId"
+               [innerHTML]="_help"
+        ></small>
+    </div>
+    <div
+        class="pa-toggle-container"
+        [ngClass]="{checked: _checked, focused: _hasFocus, disabled: _disabled}"
+        (click)="updateState()"
+    >
+        <input #inputElement
+               type="checkbox"
+               class="toggle-checkbox"
+               [id]="_id"
+               [name]="_name"
+               [disabled]="_disabled"
+               [attr.aria-label]="_label"
+               [attr.aria-disabled]="_disabled"
+               [attr.aria-checked]="_checked"
+               [value]="_checked"
+               (blur)="onBlur()"
+               (focus)="onFocus()"
+        >
+        <span class="pa-toggle-slider"></span>
+    </div>
+</div>

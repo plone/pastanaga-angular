@@ -1,0 +1,53 @@
+<pa-demo-page>
+    <pa-demo-title>Toggle</pa-demo-title>
+    <pa-demo-description>Pa field (with label and help) for a checkbox with a "slide toggle" design.</pa-demo-description>
+
+    <pa-demo-examples>
+        <h4>Using ngModel ({{firstToggle}})</h4>
+        <pa-toggle
+            id="firstToggle"
+            name="firstToggle"
+            [(ngModel)]="firstToggle"
+            [hasFocus]="focusedFirstToggle"
+            [disabled]="disabled"
+        ></pa-toggle>
+
+        <h4>Using formControl ({{form.value.toggle}})</h4>
+        <form [formGroup]="form">
+            <pa-toggle
+                id="toggle"
+                name="toggle"
+                formControlName="toggle"
+                help="help text"
+                [hasFocus]="focusedToggle"
+            >Label</pa-toggle>
+        </form>
+    </pa-demo-examples>
+    <pa-demo-configuration>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="focusFirstTrigger" [(selected)]="focusedFirstToggle">Focused state On first toggle</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="focusTrigger" [(selected)]="focusedToggle">Focused state On Second toggle</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="disabledTrigger" [(selected)]="disabled" (selectedChange)="toggleDisabled()">Toggle disabled</pa-checkbox>
+        </div>
+    </pa-demo-configuration>
+
+    <pa-demo-usage>
+        <pa-demo-base-control></pa-demo-base-control>
+
+        <br>
+        <h2>Specific to <code>ToggleComponent</code></h2>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>hasFocus</dt>
+            <dd>Set to true to give focus on the input by default <small>(default: false)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>
