@@ -29,7 +29,7 @@ export class TogglePageComponent {
         id="toggle"
         name="toggle"
         formControlName="toggle"
-        [help]="'help text'"
+        help="help text"
         [hasFocus]="focusedToggle"
     >Label</pa-toggle>
 </form>
