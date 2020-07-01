@@ -7,10 +7,13 @@
         <pa-checkbox [disabled]="disabledState">Checkbox label</pa-checkbox>
         <pa-checkbox type="radio"
                      [disabled]="disabledState">Radio label</pa-checkbox>
+        <form [formGroup]="form">
+            <pa-checkbox formControlName="checkbox">Using reactive form</pa-checkbox>
+        </form>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+            <pa-checkbox id="disabled" [(selected)]="disabledState" (selectedChange)="disableForm()">Disabled state</pa-checkbox>
         </div>
     </pa-demo-configuration>
 

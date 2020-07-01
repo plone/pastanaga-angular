@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    EventEmitter,
+    EventEmitter, forwardRef,
     Input,
     OnDestroy,
     OnInit,
@@ -10,16 +10,24 @@ import {
 } from '@angular/core';
 import { BaseControl } from '../../base-control';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { markForCheck } from '../../../common';
+import { detectChanges, markForCheck } from '../../../common';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 @Component({
     selector: 'pa-checkbox',
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CheckboxComponent),
+            multi: true,
+        }
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy {
+export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy, ControlValueAccessor {
     @Input()
     get type(): 'checkbox' | 'radio' { return this._type; }
     set type(value: 'checkbox' | 'radio') {
@@ -36,6 +44,9 @@ export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy 
     _fieldType = 'checkbox';
     _type: 'checkbox' | 'radio' = 'checkbox';
     _selected = false;
+
+    onChange: Function = () => {};
+    onTouched: Function = () => {};
 
     constructor(
         protected cdr: ChangeDetectorRef,
@@ -58,5 +69,22 @@ export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy 
         }
         markForCheck(this.cdr);
         this.selectedChange.emit(this._selected);
+    }
+
+    registerOnChange(handler: any): void {
+        this.onChange = (handler as Function);
+    }
+
+    registerOnTouched(handler: any): void {
+        this.onTouched = (handler as Function);
+    }
+
+    setDisabledState(isDisabled: boolean): void {
+        this._disabled = isDisabled;
+        detectChanges(this.cdr);
+    }
+
+    writeValue(obj: any) {
+        this._selected = coerceBooleanProperty(obj);
     }
 }
