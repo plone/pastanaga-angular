@@ -117,7 +117,6 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     }
 
     change(value: any) {
-        this._validate(value);
         if (!!this.onChange) {
             this.onChange(value);
         }

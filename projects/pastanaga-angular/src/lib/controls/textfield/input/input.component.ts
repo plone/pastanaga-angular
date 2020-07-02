@@ -121,7 +121,7 @@ export class InputComponent extends BaseTextField implements AfterViewInit, Cont
         }
     }
 
-    _validate(value: string | number) {
+    _validate(value: string | number | undefined) {
         super._validate(value);
 
         if ((!!value || typeof value === 'number') && this.type === 'number') {
@@ -139,7 +139,7 @@ export class InputComponent extends BaseTextField implements AfterViewInit, Cont
         if (!!value && typeof(value) === 'string' && !this._acceptHtmlTags && value.match(this.HTML_TAG)) {
             value = value.replace(this.REPLACE_LT_GT, '');
         }
-
         super.writeValue(value);
+        this._validate(value);
     }
 }
