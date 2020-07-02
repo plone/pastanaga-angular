@@ -87,11 +87,10 @@ export class AvatarPageComponent implements OnInit {
     }
 
     toggleIcon(event: boolean) {
-        this.icon = event? 'camera': undefined;
+        this.icon = event ? 'camera' : undefined;
     }
 
     toggleIconColor(event: boolean) {
-        // TODO: handle undefined
         this.iconColor = event ? '#99CFFF' : '#001530';
     }
 

@@ -46,8 +46,8 @@ export class ToggleComponent extends BaseControl implements OnChanges, OnInit, A
     // wait until <ng-content> rendering to set this to false
     _hasLabel = true;
 
-    onChange: Function = () => {};
-    onTouched: Function = () => {};
+    onChange: () => void = () => {};
+    onTouched: () => void = () => {};
 
     constructor(private cdr: ChangeDetectorRef) {
         super();
@@ -68,7 +68,7 @@ export class ToggleComponent extends BaseControl implements OnChanges, OnInit, A
     }
 
     ngAfterViewInit() {
-        if(this._hasFocus && !!this.input) {
+        if (this._hasFocus && !!this.input) {
             this.input.nativeElement.focus();
         }
         if (!!this.label) {
@@ -86,8 +86,8 @@ export class ToggleComponent extends BaseControl implements OnChanges, OnInit, A
     updateState() {
         if (!this._disabled) {
             const nextState = !this._checked;
-            this.onChange(nextState);
-            this.onTouched(nextState);
+            this.onChange();
+            this.onTouched();
             this.writeValue(nextState);
         }
     }
@@ -101,11 +101,11 @@ export class ToggleComponent extends BaseControl implements OnChanges, OnInit, A
     }
 
     registerOnChange(handler: any): void {
-        this.onChange = (handler as Function);
+        this.onChange = handler;
     }
 
     registerOnTouched(handler: any): void {
-        this.onTouched = (handler as Function);
+        this.onTouched = handler;
     }
 
     setDisabledState(isDisabled: boolean): void {
@@ -115,6 +115,7 @@ export class ToggleComponent extends BaseControl implements OnChanges, OnInit, A
 
     writeValue(obj: any) {
         this._checked = coerceBooleanProperty(obj);
+        detectChanges(this.cdr);
     }
 
 }
