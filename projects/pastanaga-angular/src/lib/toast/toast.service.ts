@@ -17,14 +17,14 @@ export class ToastService {
 
     private renderer: Renderer2;
     private toastContainer?: HTMLElement;
-
-    toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
+    private toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
 
     constructor(
         private resolver: ComponentFactoryResolver,
         private rendererFactory: RendererFactory2,
         private appRef: ApplicationRef,
         private injector: Injector) {
+
         this.renderer = rendererFactory.createRenderer(null, null);
     }
 
@@ -44,9 +44,9 @@ export class ToastService {
         this.open(message, 'error', config);
     }
 
-    open(message: string, type?: ToastType, config?: ToastConfig) {
+    private open(message: string, type: ToastType, config?: ToastConfig) {
         const id = `pa-toast-${nextId++}`;
-        const toast: ComponentRef<ToastComponent> = this.createToast(id, message, type || 'info', config);
+        const toast: ComponentRef<ToastComponent> = this.createToast(id, message, type, config);
 
         this.appRef.attachView(toast.hostView);
         this.toastMap.set(id, toast);
@@ -54,6 +54,7 @@ export class ToastService {
         if (!this.toastContainer) {
             this.toastContainer = this.createContainer();
         }
+
         this.renderer.setAttribute(toast.location.nativeElement, "role", "alert");
         this.renderer.appendChild(
             this.toastContainer,
