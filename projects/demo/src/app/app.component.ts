@@ -18,6 +18,7 @@ import { AvatarPageComponent } from './demo/pages/avatar-page/avatar-page.compon
 import { DateTimePageComponent } from './demo/pages/datetime-page/datetime-page.component';
 import { TogglePageComponent } from './demo/pages/toggle-page/toggle-page.component';
 import { ToastPageComponent } from './demo/pages/toast-page/toast-page.component';
+import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.component';
 
 @Component({
     selector: 'app-root',
@@ -48,6 +49,7 @@ export class AppComponent {
                 {view: 'textarea', title: 'Textarea', type: TextareaPageComponent},
                 {view: 'toast', title: 'Toast', type: ToastPageComponent},
                 {view: 'toggle', title: 'Toggle', type: TogglePageComponent},
+                {view: 'tooltip', title: 'Tooltip', type: TooltipPageComponent},
             ],
         },
         {
