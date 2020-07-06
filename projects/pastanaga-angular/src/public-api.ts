@@ -52,6 +52,8 @@ export * from './lib/tabs/tabs.module';
 export * from './lib/tabs/tabs-list.component';
 export * from './lib/tabs/tab-item.component';
 
+export * from './lib/toast/toast.module'
+
 export * from './lib/translate/translate.module';
 export * from './lib/translate/translate.pipe';
 export * from './lib/translate/translate.directive';

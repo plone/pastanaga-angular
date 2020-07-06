@@ -1,0 +1,45 @@
+<pa-demo-page>
+    <pa-demo-title>Toast</pa-demo-title>
+    <pa-demo-description>Service to render toasts.</pa-demo-description>
+
+    <pa-demo-examples>
+
+    </pa-demo-examples>
+    <pa-demo-configuration>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="openInfo()">Default info toast</pa-button>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="openWarn()">Warn toast</pa-button>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="openSuccess()">Success toast</pa-button>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="openError()">Error toast</pa-button>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="openIconToast()">Toast with icon</pa-button>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="openButtonToast()">Toast with button</pa-button>
+        </div>
+    </pa-demo-configuration>
+
+    <pa-demo-usage>
+        <h2><code>ToastConfig</code></h2>
+        <dl>
+            <dt>buttonLabel</dt>
+            <dd>label for the button if needed<small>(optional)</small></dd>
+            <dt>action</dt>
+            <dd>callback function to execute when button is clicked<small>(optional)</small></dd>
+            <dt>icon</dt>
+            <dd>name of the icon to use<small>(optional)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{importCode}}</code></pre>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>
