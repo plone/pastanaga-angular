@@ -1,0 +1,28 @@
+<pa-demo-page>
+    <pa-demo-title>Tooltip</pa-demo-title>
+    <pa-demo-description>Directive that adds tooltip to any element.</pa-demo-description>
+
+    <pa-demo-examples>
+
+       <pa-button paTooltip="This button has action tooltip">Hover me 2 seconds</pa-button>
+       <pa-button paTooltip="This button has system tooltip" paTooltipType="system">Following mouse</pa-button>
+       <pa-button paTooltip="This tooltip has offset" [paTooltipOffset]="-40">With -40px offset</pa-button>
+
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <dl>
+            <dt>paTooltip</dt>
+            <dd>the text to display</dd>
+            <dt>paTooltipType</dt>
+            <dd><code>'action'</code> tooltip appears after 2 sec hover and is positioned relatively to targetted content, whereas <code>'system'</code> tooltip appears faster and follows the mouse <small>(default: action)</small></dd>
+            <dt>paTooltipOffset</dt>
+            <dd>number value to shift the position of the tooltip</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{importCode}}</code></pre>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

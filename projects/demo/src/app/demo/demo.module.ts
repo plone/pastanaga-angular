@@ -46,6 +46,8 @@ import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
 import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 import { ToastPageComponent } from './pages/toast-page/toast-page.component';
+import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
+import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -76,6 +78,7 @@ const COMPONENTS = [
     ToastPageComponent,
     TogglePageComponent,
     TextareaPageComponent,
+    TooltipPageComponent,
     TranslatePageComponent,
 ];
 
@@ -97,6 +100,7 @@ const COMPONENTS = [
         PaTranslateModule,
         PaTabsModule,
         PaTableModule,
+        PaTooltipModule,
         PaDateTimeModule,
     ],
     declarations: COMPONENTS,
