@@ -27,6 +27,7 @@ import {
     PaTabsModule,
     PaTableModule,
     PaDateTimeModule,
+    PaToastModule
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -44,6 +45,7 @@ import { TextareaPageComponent } from './pages/text-area-page/textarea-page.comp
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
 import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
+import { ToastPageComponent } from './pages/toast-page/toast-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -71,6 +73,7 @@ const COMPONENTS = [
     SelectPageComponent,
     TabsPageComponent,
     TablePageComponent,
+    ToastPageComponent,
     TogglePageComponent,
     TextareaPageComponent,
     TranslatePageComponent,
@@ -89,6 +92,7 @@ const COMPONENTS = [
         PaDropdownModule,
         PaPopupModule,
         PaTextFieldModule,
+        PaToastModule,
         PaTogglesModule,
         PaTranslateModule,
         PaTabsModule,

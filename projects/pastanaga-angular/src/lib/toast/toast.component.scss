@@ -1,0 +1,36 @@
+@import "../styles/variables";
+
+:host {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 0 auto;
+    box-shadow: $shadow-modal;
+    min-width: 30%;
+    padding: rhythm(1);
+    background: $white;
+    -webkit-animation: toastin .5s;
+    animation: toastin .5s;
+}
+@-webkit-keyframes toastin {
+    from {max-height: 0}
+    to {max-height: 100%}
+}
+
+@keyframes toastin {
+    from {max-height: 0}
+    to {max-height: 100%}
+}
+
+.pa-toast-warning {
+    color: $color-accent-tertiary-regular;
+}
+
+.pa-toast-success {
+    color: $color-accent-primary-regular;
+}
+
+.pa-toast-error {
+    color: $color-accent-secondary-regular;
+}
