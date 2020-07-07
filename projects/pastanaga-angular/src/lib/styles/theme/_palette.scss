@@ -14,8 +14,8 @@ $midnight:  #132086;    $velvet:        #990F00;    $maple: #866213;
 $twilight:  #0D31BF;    $wine:          #CC0A00;    $gold:  #BF870D;
 $ocean:     #0047FF;    $gazpacho:      #ED0100;    $cava:  #FEBA2C;
                           $watermelon:    #FF6666;    $honey: #FFCF66;
-$sail:      #66ABFF;                                  $cream: #FFDF99;
-$mist:      #99CFFF;    $rose:          #FFCCCC;
+$sail:      #66ABFF;                                  $cream: #FFE6B2;
+$mist:      #99CFFF;    $rose:          #FFCCCC;    $dawn:  #FFF6E0;
 $steam:     #E5F6FF;    $blossom:       #FFE5E5;
 
 // General tokens
@@ -40,11 +40,12 @@ $color-accent-secondary-light:      $watermelon !default;
 $color-accent-secondary-lighter:       $rose !default;
 $color-accent-secondary-lightest:      $blossom !default;
 
-$color-accent-tertiary-darker:  $maple !default;
-$color-accent-tertiary-dark:    $gold !default;
-$color-accent-tertiary-regular: $cava !default;
-$color-accent-tertiary-light:   $honey !default;
-$color-accent-tertiary-lighter: $cream !default;
+$color-accent-tertiary-darker:   $maple !default;
+$color-accent-tertiary-dark:     $gold !default;
+$color-accent-tertiary-default:  $cava !default;
+$color-accent-tertiary-light:    $honey !default;
+$color-accent-tertiary-lighter:  $cream !default;
+$color-accent-tertiary-lightest: $cream !default;
 
 
 
