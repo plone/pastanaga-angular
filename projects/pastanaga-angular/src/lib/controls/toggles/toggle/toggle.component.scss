@@ -57,7 +57,7 @@
 
     &.checked {
         .pa-toggle-slider {
-            background: $color-accent-primary-regular;
+            background: $color-accent-primary-default;
             &:before {
                 -webkit-transform: translateX(rhythm(2));
                 -ms-transform: translateX(rhythm(2));

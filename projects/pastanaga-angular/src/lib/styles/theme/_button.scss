@@ -14,7 +14,7 @@ $color-text-button-primary-solid:              $color-neutral-primary-lightest !
 $color-text-button-primary-solid-hover:        $color-neutral-primary-lightest !default;
 $color-text-button-primary-solid-active:       $color-neutral-primary-lightest !default;
 
-$color-text-button-primary-regular:         $color-accent-primary-regular !default;
+$color-text-button-primary-regular:         $color-accent-primary-default !default;
 $color-text-button-primary-regular-hover:   $color-accent-primary-dark !default;
 $color-text-button-primary-regular-active:  $color-accent-primary-darker !default;
 
@@ -57,17 +57,17 @@ $color-text-button-basic-disabled:        $color-neutral-secondary-light !defaul
 // background
 //
 // primary
-$color-background-button-primary-solid:        $color-accent-primary-regular !default;
-$color-background-button-primary-solid-hover:  $color-accent-primary-regular !default;
+$color-background-button-primary-solid:        $color-accent-primary-default !default;
+$color-background-button-primary-solid-hover:  $color-accent-primary-default !default;
 $color-background-button-primary-solid-active: $color-accent-primary-dark !default;
 
 $color-background-button-primary-regular:           transparent !default;
-$color-background-button-primary-regular-hover:     $color-accent-primary-faded !default;
-$color-background-button-primary-regular-active:    $color-accent-primary-pale !default;
+$color-background-button-primary-regular-hover:     $color-accent-primary-lightest !default;
+$color-background-button-primary-regular-active:    $color-accent-primary-lighter !default;
 
 $color-background-button-primary-basic:           transparent !default;
-$color-background-button-primary-basic-hover:     $color-accent-primary-faded !default;
-$color-background-button-primary-basic-active:    $color-accent-primary-pale !default;
+$color-background-button-primary-basic-hover:     $color-accent-primary-lightest !default;
+$color-background-button-primary-basic-active:    $color-accent-primary-lighter !default;
 
 // secondary
 $color-background-button-secondary-solid:          $color-neutral-secondary-lighter !default;
@@ -109,7 +109,7 @@ $border-button-primary-solid:          none !default;
 $border-button-primary-solid-hover:    none !default;
 $border-button-primary-solid-active:   none !default;
 
-$border-button-primary-regular:         1px solid $color-accent-primary-regular;
+$border-button-primary-regular:         1px solid $color-accent-primary-default;
 $border-button-primary-regular-hover:   $border-button-primary-regular;
 $border-button-primary-regular-active:  $border-button-primary-regular;
 
