@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { TabItemComponent } from './tab-item.component';
 import { TabsListComponent } from './tabs-list.component';
+import { PaIconModule } from '../icon/icon.module';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, PaIconModule],
     exports: [TabsListComponent, TabItemComponent],
     declarations: [TabsListComponent, TabItemComponent],
     providers: [],

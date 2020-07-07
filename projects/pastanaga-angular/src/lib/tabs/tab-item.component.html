@@ -5,6 +5,9 @@
             [attr.aria-expanded]="_active"
             tabindex="0">
         <div class="pa-tabs-link-wrapper"
-             tabindex="-1"><ng-content></ng-content></div>
+             tabindex="-1">
+            <ng-content></ng-content>
+            <pa-icon *ngIf="!!icon" [name]="icon"></pa-icon>
+        </div>
     </button>
 </li>
