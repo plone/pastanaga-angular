@@ -1,6 +1,6 @@
 {
     "name": "@guillotinaweb/pastanaga-angular",
-    "version": "1.18.8",
+    "version": "1.18.9",
     "license": "MIT",
     "description": "Provides the Pastanaga UI elements as Angular components",
     "keywords": [
@@ -24,7 +24,7 @@
     "publishConfig": {
         "access": "public"
     },
-  "dependencies": {
-    "tslib": "^2.0.0"
-  }
+    "dependencies": {
+        "tslib": "^2.0.0"
+    }
 }

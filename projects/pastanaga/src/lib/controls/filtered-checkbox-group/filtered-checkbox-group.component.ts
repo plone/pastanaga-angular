@@ -134,7 +134,8 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
         this.selectedLetter = '';
         this._checkboxes = (this._checkboxes || []).map(ctl => ({
             ...ctl,
-            isFiltered: !term || ctl.label.toLocaleLowerCase().includes(term),
+            isFiltered: !term || ctl.label.toLocaleLowerCase().includes(term) ||
+                (!!ctl.subLabel && ctl.subLabel.toLocaleLowerCase().includes(term)),
         }));
         this.applyFilter();
     }
