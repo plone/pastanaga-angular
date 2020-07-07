@@ -10,7 +10,7 @@
 $color-text-field-label-regular: $color-neutral-secondary-default !default;
 $color-text-field-label-regular-active: $color-accent-primary-default !default;
 $color-text-field-label-disabled: $color-neutral-secondary-light !default;
-$color-text-field-label-error: $color-accent-secondary-regular !default;
+$color-text-field-label-error: $color-accent-secondary-default !default;
 
 //
 // control
@@ -21,7 +21,7 @@ $color-text-field-control-placeholder-regular: $color-neutral-secondary-default 
 $color-text-field-control-help-regular: $color-neutral-secondary-default !default;
 
 $color-caret-field-control-active: $color-accent-primary-default !default;
-$color-caret-field-control-error: $color-accent-secondary-regular !default;
+$color-caret-field-control-error: $color-accent-secondary-default !default;
 
 $color-outline: $color-accent-primary-lighter !default;
 
@@ -38,9 +38,9 @@ $border-field-regular: 1px solid $color-neutral-secondary-default !default;
 $border-field-regular-hover: $border-width-active solid $color-neutral-secondary-default !default;
 $border-field-regular-active: $border-width-active solid $color-accent-primary-default !default;
 
-$border-field-error: 1px solid $color-accent-secondary-regular !default;
-$border-field-error-hover: $border-width-active solid $color-accent-secondary-regular !default;
-$border-field-error-active: $border-width-active solid $color-accent-secondary-regular !default;
+$border-field-error: 1px solid $color-accent-secondary-default !default;
+$border-field-error-hover: $border-width-active solid $color-accent-secondary-default !default;
+$border-field-error-active: $border-width-active solid $color-accent-secondary-default !default;
 
 $border-field-disabled: 1px solid $color-neutral-secondary-light !default;
 $border-field-readonly: 1px dashed $color-neutral-secondary-light !default;

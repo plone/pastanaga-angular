@@ -14,7 +14,7 @@ $midnight:  #132086;    $velvet:        #990F00;    $maple: #866213;
 $twilight:  #0D31BF;    $wine:          #CC0A00;    $gold:  #BF870D;
 $ocean:     #0047FF;    $gazpacho:      #ED0100;    $cava:  #FEBA2C;
                           $watermelon:    #FF6666;    $honey: #FFCF66;
-$sail:      #66ABFF;    $scarlet:       #FF9999;    $cream: #FFDF99;
+$sail:      #66ABFF;                                  $cream: #FFDF99;
 $mist:      #99CFFF;    $rose:          #FFCCCC;
 $steam:     #E5F6FF;    $blossom:       #FFE5E5;
 
@@ -35,11 +35,10 @@ $color-accent-primary-lightest:   $steam !default;
 
 $color-accent-secondary-darker:     $velvet !default;
 $color-accent-secondary-dark:       $wine !default;
-$color-accent-secondary-regular:    $gazpacho !default;
-$color-accent-secondary-light:      $scarlet !default;
-$color-accent-secondary-lighter:    $watermelon !default;
-$color-accent-secondary-pale:       $rose !default;
-$color-accent-secondary-faded:      $blossom !default;
+$color-accent-secondary-default:    $gazpacho !default;
+$color-accent-secondary-light:      $watermelon !default;
+$color-accent-secondary-lighter:       $rose !default;
+$color-accent-secondary-lightest:      $blossom !default;
 
 $color-accent-tertiary-darker:  $maple !default;
 $color-accent-tertiary-dark:    $gold !default;

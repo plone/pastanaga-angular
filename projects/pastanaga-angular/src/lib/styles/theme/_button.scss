@@ -88,12 +88,12 @@ $color-background-button-destructive-solid-hover:     $color-accent-secondary-da
 $color-background-button-destructive-solid-active:    $color-accent-secondary-darker !default;
 
 $color-background-button-destructive-regular:          transparent !default;
-$color-background-button-destructive-regular-hover:    $color-accent-secondary-faded !default;
-$color-background-button-destructive-regular-active:   $color-accent-secondary-pale !default;
+$color-background-button-destructive-regular-hover:    $color-accent-secondary-lightest !default;
+$color-background-button-destructive-regular-active:   $color-accent-secondary-lighter !default;
 
 $color-background-button-destructive-basic:          transparent !default;
-$color-background-button-destructive-basic-hover:    $color-accent-secondary-faded !default;
-$color-background-button-destructive-basic-active:   $color-accent-secondary-pale !default;
+$color-background-button-destructive-basic-hover:    $color-accent-secondary-lightest !default;
+$color-background-button-destructive-basic-active:   $color-accent-secondary-lighter !default;
 
 // disabled
 $color-background-button-solid-disabled:   $color-neutral-secondary-lightest !default;
@@ -135,7 +135,7 @@ $border-button-destructive-solid:          none !default;
 $border-button-destructive-solid-hover:    none !default;
 $border-button-destructive-solid-active:   none !default;
 
-$border-button-destructive-regular:        1px solid $color-accent-secondary-regular;
+$border-button-destructive-regular:        1px solid $color-accent-secondary-default;
 $border-button-destructive-regular-active: $border-button-destructive-regular;
 $border-button-destructive-regular-hover: $border-button-destructive-regular;
 
