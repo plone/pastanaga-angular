@@ -1,3 +1,9 @@
+# 1.18.9 (2020-07-06)
+
+### Improvements
+
+- **Filtered checkboxes**: Filter on sublabel if defined [ebrehault]
+
 # 1.18.8 (2020-06-30)
 
 ### Bug fix
