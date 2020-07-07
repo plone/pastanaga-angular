@@ -13,40 +13,39 @@ $tapenade:  #001530;
 $midnight:  #132086;    $velvet:        #990F00;    $maple: #866213;
 $twilight:  #0D31BF;    $wine:          #CC0A00;    $gold:  #BF870D;
 $ocean:     #0047FF;    $gazpacho:      #ED0100;    $cava:  #FEBA2C;
-$sky:       #337EFF;    $watermelon:    #FF6666;    $honey: #FFCF66;
-$sail:      #66ABFF;    $scarlet:       #FF9999;    $cream: #FFDF99;
-$mist:      #99CFFF;    $rose:          #FFCCCC;
+                          $watermelon:    #FF6666;    $honey: #FFCF66;
+$sail:      #66ABFF;                                  $cream: #FFE6B2;
+$mist:      #99CFFF;    $rose:          #FFCCCC;    $dawn:  #FFF6E0;
 $steam:     #E5F6FF;    $blossom:       #FFE5E5;
 
 // General tokens
-$color-neutral-primary-regular:     $tapenade !default;
-$color-neutral-primary-light:       $carbon !default;
-$color-neutral-primary-lighter:     $panot !default;
-$color-neutral-secondary-regular:   $salt !default;
-$color-neutral-secondary-light:     $air !default;
-$color-neutral-secondary-lighter:   $white !default;
+$color-neutral-primary-default:     $tapenade !default;
+$color-neutral-secondary-default:   $carbon !default;
+$color-neutral-secondary-light:     $panot !default;
+$color-neutral-secondary-lighter:   $salt !default;
+$color-neutral-secondary-lightest:  $air !default;
+$color-neutral-primary-lightest:    $white !default;
 
-$color-accent-primary-darker:  $midnight !default;
-$color-accent-primary-dark:    $twilight !default;
-$color-accent-primary-regular: $ocean !default;
-$color-accent-primary-light:   $sky !default;
-$color-accent-primary-lighter: $sail !default;
-$color-accent-primary-pale:    $mist !default;
-$color-accent-primary-faded:   $steam !default;
+$color-accent-primary-darker:     $midnight !default;
+$color-accent-primary-dark:       $twilight !default;
+$color-accent-primary-default:    $ocean !default;
+$color-accent-primary-light:      $sail !default;
+$color-accent-primary-lighter:    $mist !default;
+$color-accent-primary-lightest:   $steam !default;
 
 $color-accent-secondary-darker:     $velvet !default;
 $color-accent-secondary-dark:       $wine !default;
-$color-accent-secondary-regular:    $gazpacho !default;
-$color-accent-secondary-light:      $scarlet !default;
-$color-accent-secondary-lighter:    $watermelon !default;
-$color-accent-secondary-pale:       $rose !default;
-$color-accent-secondary-faded:      $blossom !default;
+$color-accent-secondary-default:    $gazpacho !default;
+$color-accent-secondary-light:      $watermelon !default;
+$color-accent-secondary-lighter:       $rose !default;
+$color-accent-secondary-lightest:      $blossom !default;
 
-$color-accent-tertiary-darker:  $maple !default;
-$color-accent-tertiary-dark:    $gold !default;
-$color-accent-tertiary-regular: $cava !default;
-$color-accent-tertiary-light:   $honey !default;
-$color-accent-tertiary-lighter: $cream !default;
+$color-accent-tertiary-darker:   $maple !default;
+$color-accent-tertiary-dark:     $gold !default;
+$color-accent-tertiary-default:  $cava !default;
+$color-accent-tertiary-light:    $honey !default;
+$color-accent-tertiary-lighter:  $cream !default;
+$color-accent-tertiary-lightest: $cream !default;
 
 
 

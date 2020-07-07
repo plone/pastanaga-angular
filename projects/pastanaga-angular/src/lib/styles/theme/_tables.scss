@@ -1,15 +1,15 @@
 @import "palette";
 
-$color-text-table-header:               $color-neutral-primary-light;
+$color-text-table-header:               $color-neutral-secondary-default;
 $font-weight-text-table-header:         $font-weight-bold;
-$color-background-table-header:         $color-neutral-secondary-light;
-$color-border-table-header:             $color-neutral-secondary-light;
-$color-text-table-row:                  $color-neutral-primary-regular;
-$color-border-table-row:                $color-neutral-secondary-light;
-$color-background-table-row:            $color-neutral-secondary-lighter;
-$color-background-table-row-hover:      $color-neutral-secondary-light;
-$color-background-table-row-active:     $color-neutral-secondary-regular;
-$color-text-table-header-row:           $color-neutral-primary-light;
-$color-background-table-header-row:     $color-neutral-secondary-light;
-$color-border-table-header-row:         $color-neutral-secondary-light;
+$color-background-table-header:         $color-neutral-secondary-lightest;
+$color-border-table-header:             $color-neutral-secondary-lightest;
+$color-text-table-row:                  $color-neutral-primary-default;
+$color-border-table-row:                $color-neutral-secondary-lightest;
+$color-background-table-row:            $color-neutral-primary-lightest;
+$color-background-table-row-hover:      $color-neutral-secondary-lightest;
+$color-background-table-row-active:     $color-neutral-secondary-lighter;
+$color-text-table-header-row:           $color-neutral-secondary-default;
+$color-background-table-header-row:     $color-neutral-secondary-lightest;
+$color-border-table-header-row:         $color-neutral-secondary-lightest;
 $font-weight-text-table-header-row:     $font-weight-thin;

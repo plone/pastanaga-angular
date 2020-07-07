@@ -39,7 +39,7 @@
         -webkit-transition: .3s;
         transition: .3s;
         border-radius: rhythm(2);
-        background: $color-neutral-secondary-regular;
+        background: $color-neutral-secondary-lighter;
         cursor: pointer;
         &:before {
             content: "";
@@ -51,13 +51,13 @@
             bottom: 8.33%;
             left: 4.17%;
             box-shadow: $shadow-pill;
-            background-color: $color-neutral-secondary-lighter;
+            background-color: $color-neutral-primary-lightest;
         }
     }
 
     &.checked {
         .pa-toggle-slider {
-            background: $color-accent-primary-regular;
+            background: $color-accent-primary-default;
             &:before {
                 -webkit-transform: translateX(rhythm(2));
                 -ms-transform: translateX(rhythm(2));
@@ -73,9 +73,9 @@
     &.disabled {
         .pa-toggle-slider {
             cursor: default;
-            background: $color-neutral-primary-lighter;
+            background: $color-neutral-secondary-light;
             &:before {
-                background-color: $color-neutral-secondary-regular;
+                background-color: $color-neutral-secondary-lighter;
             }
         }
     }
