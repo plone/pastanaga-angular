@@ -10,9 +10,9 @@
 // text
 //
 //primary
-$color-text-button-primary-solid:              $color-neutral-secondary-lighter !default;
-$color-text-button-primary-solid-hover:        $color-neutral-secondary-lighter !default;
-$color-text-button-primary-solid-active:       $color-neutral-secondary-lighter !default;
+$color-text-button-primary-solid:              $color-neutral-primary-lightest !default;
+$color-text-button-primary-solid-hover:        $color-neutral-primary-lightest !default;
+$color-text-button-primary-solid-active:       $color-neutral-primary-lightest !default;
 
 $color-text-button-primary-regular:         $color-accent-primary-regular !default;
 $color-text-button-primary-regular-hover:   $color-accent-primary-dark !default;
@@ -23,22 +23,22 @@ $color-text-button-primary-basic-hover:   $color-accent-primary-darker !default;
 $color-text-button-primary-basic-active:  $color-accent-primary-darker !default;
 
 // secondary
-$color-text-button-secondary-solid:        $color-neutral-primary-regular !default;
-$color-text-button-secondary-solid-hover:  $color-neutral-primary-regular !default;
-$color-text-button-secondary-solid-active: $color-neutral-primary-regular !default;
+$color-text-button-secondary-solid:        $color-neutral-primary-default !default;
+$color-text-button-secondary-solid-hover:  $color-neutral-primary-default !default;
+$color-text-button-secondary-solid-active: $color-neutral-primary-default !default;
 
-$color-text-button-secondary-regular:           $color-neutral-primary-regular !default;
-$color-text-button-secondary-regular-hover:     $color-neutral-primary-regular !default;
-$color-text-button-secondary-regular-active:    $color-neutral-primary-regular !default;
+$color-text-button-secondary-regular:           $color-neutral-primary-default !default;
+$color-text-button-secondary-regular-hover:     $color-neutral-primary-default !default;
+$color-text-button-secondary-regular-active:    $color-neutral-primary-default !default;
 
-$color-text-button-secondary-basic:           $color-neutral-primary-regular !default;
-$color-text-button-secondary-basic-hover:     $color-neutral-primary-regular !default;
-$color-text-button-secondary-basic-active:    $color-neutral-primary-regular !default;
+$color-text-button-secondary-basic:           $color-neutral-primary-default !default;
+$color-text-button-secondary-basic-hover:     $color-neutral-primary-default !default;
+$color-text-button-secondary-basic-active:    $color-neutral-primary-default !default;
 
 // destructive
-$color-text-button-destructive-solid:             $color-neutral-secondary-lighter !default;
-$color-text-button-destructive-solid-hover:       $color-neutral-secondary-lighter !default;
-$color-text-button-destructive-solid-active:      $color-neutral-secondary-lighter !default;
+$color-text-button-destructive-solid:             $color-neutral-primary-lightest !default;
+$color-text-button-destructive-solid-hover:       $color-neutral-primary-lightest !default;
+$color-text-button-destructive-solid-active:      $color-neutral-primary-lightest !default;
 
 $color-text-button-destructive-regular:        $color-accent-secondary-dark !default;
 $color-text-button-destructive-regular-hover:  $color-accent-secondary-dark !default;
@@ -49,9 +49,9 @@ $color-text-button-destructive-basic-hover:  $color-accent-secondary-darker !def
 $color-text-button-destructive-basic-active: $color-accent-secondary-darker !default;
 
 // disabled
-$color-text-button-solid-disabled:     $color-neutral-primary-lighter !default;
-$color-text-button-regular-disabled:    $color-neutral-primary-lighter !default;
-$color-text-button-basic-disabled:        $color-neutral-primary-lighter !default;
+$color-text-button-solid-disabled:     $color-neutral-secondary-light !default;
+$color-text-button-regular-disabled:    $color-neutral-secondary-light !default;
+$color-text-button-basic-disabled:        $color-neutral-secondary-light !default;
 
 //
 // background
@@ -70,17 +70,17 @@ $color-background-button-primary-basic-hover:     $color-accent-primary-faded !d
 $color-background-button-primary-basic-active:    $color-accent-primary-pale !default;
 
 // secondary
-$color-background-button-secondary-solid:          $color-neutral-secondary-regular !default;
-$color-background-button-secondary-solid-hover:    $color-neutral-primary-lighter !default;
-$color-background-button-secondary-solid-active:   $color-neutral-primary-light !default;
+$color-background-button-secondary-solid:          $color-neutral-secondary-lighter !default;
+$color-background-button-secondary-solid-hover:    $color-neutral-secondary-light !default;
+$color-background-button-secondary-solid-active:   $color-neutral-secondary-default !default;
 
 $color-background-button-secondary-regular:         transparent !default;
-$color-background-button-secondary-regular-hover:   $color-neutral-secondary-light !default;
-$color-background-button-secondary-regular-active:  $color-neutral-primary-lighter !default;
+$color-background-button-secondary-regular-hover:   $color-neutral-secondary-lightest !default;
+$color-background-button-secondary-regular-active:  $color-neutral-secondary-light !default;
 
 $color-background-button-secondary-basic:         transparent !default;
-$color-background-button-secondary-basic-hover:   $color-neutral-secondary-light !default;
-$color-background-button-secondary-basic-active:  $color-neutral-primary-lighter !default;
+$color-background-button-secondary-basic-hover:   $color-neutral-secondary-lightest !default;
+$color-background-button-secondary-basic-active:  $color-neutral-secondary-light !default;
 
 // destructive
 $color-background-button-destructive-solid:           $color-accent-secondary-dark !default;
@@ -96,7 +96,7 @@ $color-background-button-destructive-basic-hover:    $color-accent-secondary-fad
 $color-background-button-destructive-basic-active:   $color-accent-secondary-pale !default;
 
 // disabled
-$color-background-button-solid-disabled:   $color-neutral-secondary-light !default;
+$color-background-button-solid-disabled:   $color-neutral-secondary-lightest !default;
 $color-background-button-regular-disabled:  transparent !default;
 $color-background-button-basic-disabled:      transparent !default;
 
@@ -122,7 +122,7 @@ $border-button-secondary-solid:          none !default;
 $border-button-secondary-solid-hover:    none !default;
 $border-button-secondary-solid-active:   none !default;
 
-$border-button-secondary-regular:         1px solid $color-neutral-primary-light;
+$border-button-secondary-regular:         1px solid $color-neutral-secondary-default;
 $border-button-secondary-regular-hover:   $border-button-secondary-regular;
 $border-button-secondary-regular-active:  $border-button-secondary-regular;
 
@@ -145,7 +145,7 @@ $border-button-destructive-basic-active:   none !default;
 
 // disabled
 $border-button-solid-disabled:     none !default;
-$border-button-regular-disabled:    1px solid $color-neutral-secondary-regular !default;
+$border-button-regular-disabled:    1px solid $color-neutral-secondary-lighter !default;
 $border-button-basic-disabled:        none !default;
 
 // radius

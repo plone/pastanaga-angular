@@ -11,8 +11,8 @@
     box-shadow: $shadow-tooltip;
     border-radius: 1px;
     padding: rhythm(.75);
-    background: $color-neutral-primary-regular;
-    color: $color-neutral-secondary-lighter;
+    background: $color-neutral-primary-default;
+    color: $color-neutral-primary-lightest;
     @include font-size(xs);
     white-space: nowrap;
     pointer-events: none;
@@ -32,7 +32,7 @@
 
 @supports (-webkit-backdrop-filter: blur(3px)) {
     .pa-tooltip, .pa-tooltip-system {
-        background: $color-neutral-primary-lighter;
+        background: $color-neutral-secondary-light;
         -webkit-backdrop-filter: blur(3px);
     }
 }
@@ -41,7 +41,7 @@
     top: 0;
     margin-left: rhythm(.5);
     margin-right: - rhythm(.25);
-    color: $color-neutral-secondary-lighter;
+    color: $color-neutral-primary-lightest;
     line-height: 0;
 }
 

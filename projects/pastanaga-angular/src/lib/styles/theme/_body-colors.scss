@@ -4,11 +4,11 @@
 $color-background-body: $white !default;
 
 // Text
-$color-text-accent: $color-neutral-primary-regular;
-$color-text-dim: $color-neutral-primary-light;
-$color-text-disabled: $color-neutral-primary-lighter;
+$color-text-accent: $color-neutral-primary-default;
+$color-text-dim: $color-neutral-secondary-default;
+$color-text-disabled: $color-neutral-secondary-light;
 
 $color-text-link-regular: $color-accent-primary-regular;
 $color-text-link-regular-hover: $color-accent-primary-dark;
 
-$color-text-title-default: $color-neutral-primary-regular;
+$color-text-title-default: $color-neutral-primary-default;
