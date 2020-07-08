@@ -2,17 +2,17 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    EventEmitter, forwardRef,
+    EventEmitter,
+    forwardRef,
     Input,
     OnDestroy,
     OnInit,
-    Output
+    Output,
 } from '@angular/core';
 import { BaseControl } from '../../base-control';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges, markForCheck } from '../../../common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
 
 @Component({
     selector: 'pa-checkbox',
@@ -23,21 +23,27 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => CheckboxComponent),
             multi: true,
-        }
+        },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy, ControlValueAccessor {
     @Input()
-    get type(): 'checkbox' | 'radio' { return this._type; }
+    get type(): 'checkbox' | 'radio' {
+        return this._type;
+    }
     set type(value: 'checkbox' | 'radio') {
         if (!!value) {
             this._type = value;
         }
     }
     @Input()
-    get selected(): boolean { return this._selected; }
-    set selected(value: boolean) { this._selected = coerceBooleanProperty(value); }
+    get selected(): boolean {
+        return this._selected;
+    }
+    set selected(value: boolean) {
+        this._selected = coerceBooleanProperty(value);
+    }
 
     @Output() selectedChange: EventEmitter<boolean> = new EventEmitter();
 
@@ -48,9 +54,7 @@ export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy,
     onChange: Function = () => {};
     onTouched: Function = () => {};
 
-    constructor(
-        protected cdr: ChangeDetectorRef,
-    ) {
+    constructor(protected cdr: ChangeDetectorRef) {
         super();
     }
 
@@ -72,11 +76,11 @@ export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy,
     }
 
     registerOnChange(handler: any): void {
-        this.onChange = (handler as Function);
+        this.onChange = handler as Function;
     }
 
     registerOnTouched(handler: any): void {
-        this.onTouched = (handler as Function);
+        this.onTouched = handler as Function;
     }
 
     setDisabledState(isDisabled: boolean): void {

@@ -70,8 +70,13 @@ export const dates = {
         humanFr: `Hier, ${amHours}:${amMinutes}`,
         numericalFr: `Hier, ${amHours}:${amMinutes}`,
         mixedFr: `Hier, ${amHours}:${amMinutes}`,
-        absoluteEn: `${getFormattedMonth(yesterdayAm)}/${yesterdayAm.getDate()}/${yesterdayAm.getFullYear()}, ${amHours}:${amMinutes} <abbr title="Ante Meridiem">AM</abbr>`,
-        absoluteFr: `${yesterdayAm.getDate()}/${getFormattedMonth(yesterdayAm, true)}/${yesterdayAm.getFullYear()}, ${amHours}:${amMinutes}`,
+        absoluteEn: `${getFormattedMonth(
+            yesterdayAm
+        )}/${yesterdayAm.getDate()}/${yesterdayAm.getFullYear()}, ${amHours}:${amMinutes} <abbr title="Ante Meridiem">AM</abbr>`,
+        absoluteFr: `${yesterdayAm.getDate()}/${getFormattedMonth(
+            yesterdayAm,
+            true
+        )}/${yesterdayAm.getFullYear()}, ${amHours}:${amMinutes}`,
     },
     yesterdayPM: {
         timestamp: yesterdayPm.toISOString(),
@@ -81,8 +86,13 @@ export const dates = {
         humanFr: `Hier, ${pmHours}:${pmMinutes}`,
         numericalFr: `Hier, ${pmHours}:${pmMinutes}`,
         mixedFr: `Hier, ${pmHours}:${pmMinutes}`,
-        absoluteEn: `${getFormattedMonth(yesterdayPm)}/${yesterdayPm.getDate()}/${yesterdayPm.getFullYear()}, ${pmHours - 12}:${pmMinutes} <abbr title="Post Meridiem">PM</abbr>`,
-        absoluteFr: `${yesterdayPm.getDate()}/${getFormattedMonth(yesterdayPm, true)}/${yesterdayPm.getFullYear()}, ${pmHours}:${pmMinutes}`,
+        absoluteEn: `${getFormattedMonth(yesterdayPm)}/${yesterdayPm.getDate()}/${yesterdayPm.getFullYear()}, ${
+            pmHours - 12
+        }:${pmMinutes} <abbr title="Post Meridiem">PM</abbr>`,
+        absoluteFr: `${yesterdayPm.getDate()}/${getFormattedMonth(
+            yesterdayPm,
+            true
+        )}/${yesterdayPm.getFullYear()}, ${pmHours}:${pmMinutes}`,
     },
     todayAM: {
         timestamp: todayAm.toISOString(),
@@ -90,8 +100,13 @@ export const dates = {
         numericalEn: `Today, ${amHours}:${amMinutes} <abbr title="Ante Meridiem">AM</abbr>`,
         humanFr: `Aujourd'hui, ${amHours}:${amMinutes}`,
         numericalFr: `Aujourd'hui, ${amHours}:${amMinutes}`,
-        absoluteEn: `${todayAm.getMonth() + 1}/${todayAm.getDate()}/${todayAm.getFullYear()}, ${amHours}:${amMinutes} <abbr title="Ante Meridiem">AM</abbr>`,
-        absoluteFr: `${todayAm.getDate()}/${getFormattedMonth(todayAm, true)}/${todayAm.getFullYear()}, ${amHours}:${amMinutes}`,
+        absoluteEn: `${
+            todayAm.getMonth() + 1
+        }/${todayAm.getDate()}/${todayAm.getFullYear()}, ${amHours}:${amMinutes} <abbr title="Ante Meridiem">AM</abbr>`,
+        absoluteFr: `${todayAm.getDate()}/${getFormattedMonth(
+            todayAm,
+            true
+        )}/${todayAm.getFullYear()}, ${amHours}:${amMinutes}`,
     },
     todayPM: {
         timestamp: todayPm.toISOString(),
@@ -99,8 +114,13 @@ export const dates = {
         numericalEn: `Today, ${pmHours - 12}:${pmMinutes} <abbr title="Post Meridiem">PM</abbr>`,
         humanFr: `Aujourd'hui, ${pmHours}:${pmMinutes}`,
         numericalFr: `Aujourd'hui, ${pmHours}:${pmMinutes}`,
-        absoluteEn: `${todayPm.getMonth() + 1}/${todayPm.getDate()}/${todayPm.getFullYear()}, ${pmHours - 12}:${pmMinutes} <abbr title="Post Meridiem">PM</abbr>`,
-        absoluteFr: `${todayPm.getDate()}/${getFormattedMonth(todayPm, true)}/${todayPm.getFullYear()}, ${pmHours}:${pmMinutes}`,
+        absoluteEn: `${todayPm.getMonth() + 1}/${todayPm.getDate()}/${todayPm.getFullYear()}, ${
+            pmHours - 12
+        }:${pmMinutes} <abbr title="Post Meridiem">PM</abbr>`,
+        absoluteFr: `${todayPm.getDate()}/${getFormattedMonth(
+            todayPm,
+            true
+        )}/${todayPm.getFullYear()}, ${pmHours}:${pmMinutes}`,
     },
     fewSecondsAgo: {
         timestamp: fewSecondsAgo.toISOString(),
@@ -122,11 +142,11 @@ export const dates = {
 export const mockTranslateEn = {
     pastanaga: {
         datetime: {
-            'today': 'Today',
-            'yesterday': 'Yesterday',
+            today: 'Today',
+            yesterday: 'Yesterday',
             'a-few-seconds-ago': 'A few seconds ago',
             'one-minute-ago': '1 minute ago',
-            'minutesAgo': '{{minutes}} minutes ago',
+            minutesAgo: '{{minutes}} minutes ago',
         },
     },
 };
@@ -134,11 +154,11 @@ export const mockTranslateEn = {
 export const mockTranslateFr = {
     pastanaga: {
         datetime: {
-            'today': `Aujourd'hui`,
-            'yesterday': 'Hier',
+            today: `Aujourd'hui`,
+            yesterday: 'Hier',
             'a-few-seconds-ago': 'Il y a quelques secondes',
             'one-minute-ago': 'Il y a 1 minute',
-            'minutesAgo': 'Il y a {{minutes}} minutes',
+            minutesAgo: 'Il y a {{minutes}} minutes',
         },
     },
 };

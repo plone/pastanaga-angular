@@ -1,6 +1,7 @@
 import {
     ApplicationRef,
-    ComponentFactoryResolver, ComponentRef,
+    ComponentFactoryResolver,
+    ComponentRef,
     Injectable,
     Injector,
     Renderer2,
@@ -12,9 +13,8 @@ import { ToastConfig, ToastType } from './toast.model';
 
 let nextId = 0;
 
-@Injectable({providedIn: PaToastModule})
+@Injectable({ providedIn: PaToastModule })
 export class ToastService {
-
     private renderer: Renderer2;
     private toastContainer?: HTMLElement;
     private toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
@@ -23,8 +23,8 @@ export class ToastService {
         private resolver: ComponentFactoryResolver,
         private rendererFactory: RendererFactory2,
         private appRef: ApplicationRef,
-        private injector: Injector) {
-
+        private injector: Injector
+    ) {
         this.renderer = rendererFactory.createRenderer(null, null);
     }
 
@@ -55,10 +55,8 @@ export class ToastService {
             this.toastContainer = this.createContainer();
         }
 
-        this.renderer.setAttribute(toast.location.nativeElement, "role", "alert");
-        this.renderer.appendChild(
-            this.toastContainer,
-            toast.location.nativeElement);
+        this.renderer.setAttribute(toast.location.nativeElement, 'role', 'alert');
+        this.renderer.appendChild(this.toastContainer, toast.location.nativeElement);
     }
 
     private createToast(id: string, message: string, type: ToastType, config?: ToastConfig) {
@@ -80,10 +78,7 @@ export class ToastService {
     private createContainer(): HTMLElement {
         const container = document.createElement('div');
         container.className = 'pa-toast-container';
-        this.renderer.appendChild(
-            document.body,
-            container
-        );
+        this.renderer.appendChild(document.body, container);
         return container;
     }
 
@@ -101,10 +96,7 @@ export class ToastService {
     }
 
     private removeContainer() {
-        this.renderer.removeChild(
-            document.body,
-            this.toastContainer
-        );
+        this.renderer.removeChild(document.body, this.toastContainer);
         this.toastContainer = undefined;
     }
 }

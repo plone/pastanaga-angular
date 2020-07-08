@@ -47,9 +47,15 @@ export class ButtonComponent implements AfterContentInit, OnInit {
             this._type = value;
         }
     }
-    @Input() set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
-    @Input() set icon(value: string) { this._icon = value || ''; }
-    @Input() set iconAndText(value: boolean) { this._iconAndText = coerceBooleanProperty(value); }
+    @Input() set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
+    @Input() set icon(value: string) {
+        this._icon = value || '';
+    }
+    @Input() set iconAndText(value: boolean) {
+        this._iconAndText = coerceBooleanProperty(value);
+    }
 
     @ViewChild('textContainer') textContainer?: ElementRef;
 
@@ -67,10 +73,7 @@ export class ButtonComponent implements AfterContentInit, OnInit {
     // accessibility
     _ariaLabel = '';
 
-    constructor(
-        protected cdr: ChangeDetectorRef,
-    ) {
-    }
+    constructor(protected cdr: ChangeDetectorRef) {}
 
     ngAfterContentInit() {
         setTimeout(() => {
@@ -81,8 +84,7 @@ export class ButtonComponent implements AfterContentInit, OnInit {
         }, 0);
     }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     onClick($event: MouseEvent) {
         if (!!$event && this._type !== 'submit') {

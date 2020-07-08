@@ -7,4 +7,4 @@ import { DateTimeComponent } from './datetime.component';
     exports: [DateTimeComponent],
     declarations: [DateTimeComponent],
 })
-export class PaDateTimeModule { }
+export class PaDateTimeModule {}

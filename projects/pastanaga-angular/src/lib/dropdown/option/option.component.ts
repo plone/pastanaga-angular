@@ -1,12 +1,13 @@
 import {
     AfterContentInit,
-    ChangeDetectionStrategy, ChangeDetectorRef,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     EventEmitter,
     Input,
     OnInit,
-    Output
+    Output,
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from '../../popup/popup.service';
@@ -20,23 +21,47 @@ import { markForCheck } from '../../common';
 })
 export class OptionComponent implements AfterContentInit, OnInit {
     @Input()
-    set value(value: string) { this._value = value || ''; }
-    get value(): string { return this._value; }
+    set value(value: string) {
+        this._value = value || '';
+    }
+    get value(): string {
+        return this._value;
+    }
     @Input()
-    set glyph(value: string) { this._glyph = value || ''; }
-    get glyph(): string { return this._glyph; }
+    set glyph(value: string) {
+        this._glyph = value || '';
+    }
+    get glyph(): string {
+        return this._glyph;
+    }
     @Input()
-    set destructive(value: boolean) { this._destructive = coerceBooleanProperty(value); }
-    get destructive(): boolean { return this._destructive; }
+    set destructive(value: boolean) {
+        this._destructive = coerceBooleanProperty(value);
+    }
+    get destructive(): boolean {
+        return this._destructive;
+    }
     @Input()
-    set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
-    get disabled(): boolean { return this._disabled; }
+    set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
+    get disabled(): boolean {
+        return this._disabled;
+    }
     @Input()
-    set selected(value: boolean) { this._selected = coerceBooleanProperty(value); }
-    get selected(): boolean { return this._selected; }
+    set selected(value: boolean) {
+        this._selected = coerceBooleanProperty(value);
+    }
+    get selected(): boolean {
+        return this._selected;
+    }
     @Input()
-    set dontCloseOnSelect(value: boolean) { this._dontCloseOnSelect = coerceBooleanProperty(value); }
-    get dontCloseOnSelect(): boolean { return this._dontCloseOnSelect; }
+    set dontCloseOnSelect(value: boolean) {
+        this._dontCloseOnSelect = coerceBooleanProperty(value);
+    }
+    get dontCloseOnSelect(): boolean {
+        return this._dontCloseOnSelect;
+    }
 
     @Output() selectOption: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
 
@@ -50,15 +75,9 @@ export class OptionComponent implements AfterContentInit, OnInit {
     _destructive = false;
     _dontCloseOnSelect = false;
 
-    constructor(
-        private element: ElementRef,
-        private popupService: PopupService,
-        private cdr: ChangeDetectorRef,
-    ) {
-    }
+    constructor(private element: ElementRef, private popupService: PopupService, private cdr: ChangeDetectorRef) {}
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     ngAfterContentInit() {
         this.text = this.element.nativeElement.textContent.trim();

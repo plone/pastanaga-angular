@@ -27,15 +27,8 @@ describe('SelectComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                ...TESTING_IMPORTS,
-                PaIconModule,
-                PaDropdownModule,
-                PaPopupModule,
-            ],
-            providers: [
-                ...TESTING_PROVIDERS,
-            ],
+            imports: [...TESTING_IMPORTS, PaIconModule, PaDropdownModule, PaPopupModule],
+            providers: [...TESTING_PROVIDERS],
             declarations: [SelectComponent, InputComponent, TestComponent],
         }).compileComponents();
     }));
@@ -52,9 +45,15 @@ describe('SelectComponent', () => {
 
     it('should set value to selected option at init', () => {
         component.options = [
-            new ControlModel({id: 'option1', type: ControlType.option, value: '1', label: 'Option 1'}),
-            new ControlModel({id: 'option2', type: ControlType.option, value: '2', label: 'Option 2', selected: true}),
-            new ControlModel({id: 'option3', type: ControlType.option, value: '3', label: 'Option 3'}),
+            new ControlModel({ id: 'option1', type: ControlType.option, value: '1', label: 'Option 1' }),
+            new ControlModel({
+                id: 'option2',
+                type: ControlType.option,
+                value: '2',
+                label: 'Option 2',
+                selected: true,
+            }),
+            new ControlModel({ id: 'option3', type: ControlType.option, value: '3', label: 'Option 3' }),
         ];
         fixture.detectChanges();
         expect(component.value).toEqual('2');
@@ -62,9 +61,9 @@ describe('SelectComponent', () => {
 
     it('should filter options', () => {
         component.options = [
-            new ControlModel({id: 'option1', type: ControlType.option, value: '1', label: 'Batman'}),
-            new ControlModel({id: 'option2', type: ControlType.option, value: '2', label: 'Robin', selected: true}),
-            new ControlModel({id: 'option3', type: ControlType.option, value: '3', label: 'Flash'}),
+            new ControlModel({ id: 'option1', type: ControlType.option, value: '1', label: 'Batman' }),
+            new ControlModel({ id: 'option2', type: ControlType.option, value: '2', label: 'Robin', selected: true }),
+            new ControlModel({ id: 'option3', type: ControlType.option, value: '3', label: 'Flash' }),
         ];
         fixture.detectChanges();
         const input = fixture.debugElement.query(By.css('input'));

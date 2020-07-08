@@ -6,7 +6,7 @@ import {
     Input,
     OnDestroy,
     OnInit,
-    Renderer2
+    Renderer2,
 } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
 import { PopupService } from '../popup/popup.service';
@@ -19,8 +19,12 @@ import { PopupService } from '../popup/popup.service';
 })
 export class DropdownComponent extends PopupComponent implements OnInit, OnDestroy {
     @Input()
-    set role(value: 'listbox' | 'menu') { this._role = value || 'menu'; }
-    get role(): 'listbox' | 'menu' { return this._role; }
+    set role(value: 'listbox' | 'menu') {
+        this._role = value || 'menu';
+    }
+    get role(): 'listbox' | 'menu' {
+        return this._role;
+    }
 
     _role: 'listbox' | 'menu' = 'menu';
     _popupType = 'dropdown';
@@ -29,7 +33,7 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
         public popupService: PopupService,
         public renderer: Renderer2,
         public element: ElementRef,
-        public cdr: ChangeDetectorRef,
+        public cdr: ChangeDetectorRef
     ) {
         super(popupService, renderer, element, cdr);
     }

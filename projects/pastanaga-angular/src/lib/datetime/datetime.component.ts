@@ -1,12 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 
-const formats = [
-    DATE_FORMAT.human,
-    DATE_FORMAT.numerical,
-    DATE_FORMAT.mixed,
-    DATE_FORMAT.absolute,
-];
+const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical, DATE_FORMAT.mixed, DATE_FORMAT.absolute];
 
 @Component({
     selector: 'pa-datetime',
@@ -19,9 +14,7 @@ export class DateTimeComponent implements OnChanges {
 
     formattedTime = '';
 
-    constructor(
-        private service: DateTimeService,
-    ) {}
+    constructor(private service: DateTimeService) {}
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.format && changes.format.currentValue && formats.indexOf(changes.format.currentValue) === -1) {

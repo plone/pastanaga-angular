@@ -9,7 +9,11 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 })
 export class TableRowComponent {
     @Input()
-    get clickable(): boolean { return this._clickable; }
-    set clickable(value: boolean) { this._clickable = coerceBooleanProperty(value); }
+    get clickable(): boolean {
+        return this._clickable;
+    }
+    set clickable(value: boolean) {
+        this._clickable = coerceBooleanProperty(value);
+    }
     _clickable = false;
 }

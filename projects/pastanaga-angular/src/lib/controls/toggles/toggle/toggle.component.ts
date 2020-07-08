@@ -1,13 +1,16 @@
 import {
     AfterViewInit,
-    ChangeDetectionStrategy, ChangeDetectorRef,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     forwardRef,
-    Input, OnChanges,
+    Input,
+    OnChanges,
     OnDestroy,
-    OnInit, SimpleChanges,
-    ViewChild
+    OnInit,
+    SimpleChanges,
+    ViewChild,
 } from '@angular/core';
 import { BaseControl } from '../../base-control';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -23,12 +26,12 @@ import { detectChanges, markForCheck } from '../../../common';
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => ToggleComponent),
             multi: true,
-        }
+        },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToggleComponent extends BaseControl implements OnChanges, OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
-
+export class ToggleComponent extends BaseControl
+    implements OnChanges, OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
     @Input()
     get hasFocus(): boolean {
         return this._hasFocus;
@@ -117,5 +120,4 @@ export class ToggleComponent extends BaseControl implements OnChanges, OnInit, A
         this._checked = coerceBooleanProperty(obj);
         detectChanges(this.cdr);
     }
-
 }

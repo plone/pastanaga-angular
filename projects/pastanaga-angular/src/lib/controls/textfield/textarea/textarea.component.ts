@@ -2,14 +2,24 @@ import {
     AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
-    Component, ElementRef,
-    forwardRef, Input,
+    Component,
+    ElementRef,
+    forwardRef,
+    Input,
     NgZone,
     OnDestroy,
     OnInit,
-    Optional, ViewChild
+    Optional,
+    ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormGroupDirective, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgForm, Validator } from '@angular/forms';
+import {
+    ControlValueAccessor,
+    FormGroupDirective,
+    NG_VALIDATORS,
+    NG_VALUE_ACCESSOR,
+    NgForm,
+    Validator,
+} from '@angular/forms';
 import { BaseTextField } from '../base-text-field';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
@@ -17,7 +27,6 @@ import { takeUntil } from 'rxjs/operators';
 import { detectChanges } from '../../../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
-
 
 @Component({
     selector: 'pa-textarea',
@@ -37,8 +46,8 @@ import { Subject } from 'rxjs';
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextareaComponent extends BaseTextField implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
-
+export class TextareaComponent extends BaseTextField
+    implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() maxlength?: number;
 
     @Input()
@@ -62,7 +71,6 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
         } else {
             this.terminateAutoResizing();
         }
-
     }
 
     @Input()
@@ -101,7 +109,7 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
         this._defaultRows = value;
     }
 
-    @ViewChild('textareaElement', {static: true}) textarea?: ElementRef;
+    @ViewChild('textareaElement', { static: true }) textarea?: ElementRef;
 
     _acceptHtmlTags = false;
     _autofilled = false;
@@ -122,7 +130,7 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
         protected ngZone: NgZone,
         protected cdr: ChangeDetectorRef,
         private autofillMonitor: AutofillMonitor,
-        public element: ElementRef,
+        public element: ElementRef
     ) {
         super(cdr);
         this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => detectChanges(this.cdr));
@@ -136,29 +144,22 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
         if (this.platform.isBrowser && !!this.textarea) {
             this.autofillMonitor
                 .monitor(this.textarea.nativeElement)
-                .subscribe(event => this._autofilled = event.isAutofilled);
+                .subscribe((event) => (this._autofilled = event.isAutofilled));
         }
         if (this.platform.IOS && !!this.textarea) {
             const input = this.textarea;
             this.ngZone.runOutsideAngular(() => {
-                input.nativeElement.addEventListener(
-                    'keyup',
-                    (event: Event) => {
-                        const element = event.target as HTMLInputElement;
-                        if (
-                            !element.value &&
-                            !element.selectionStart &&
-                            !element.selectionEnd
-                        ) {
-                            // Note: Just setting `0, 0` doesn't fix the issue. Setting
-                            // `1, 1` fixes it for the first time that you type text and
-                            // then hold delete. Toggling to `1, 1` and then back to
-                            // `0, 0` seems to completely fix it.
-                            element.setSelectionRange(1, 1);
-                            element.setSelectionRange(0, 0);
-                        }
-                    },
-                );
+                input.nativeElement.addEventListener('keyup', (event: Event) => {
+                    const element = event.target as HTMLInputElement;
+                    if (!element.value && !element.selectionStart && !element.selectionEnd) {
+                        // Note: Just setting `0, 0` doesn't fix the issue. Setting
+                        // `1, 1` fixes it for the first time that you type text and
+                        // then hold delete. Toggling to `1, 1` and then back to
+                        // `0, 0` seems to completely fix it.
+                        element.setSelectionRange(1, 1);
+                        element.setSelectionRange(0, 0);
+                    }
+                });
             });
         }
         this.handleFocus();
@@ -177,7 +178,7 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
     }
 
     writeValue(value: string | number | undefined) {
-        if (!!value && typeof (value) === 'string' && !this._acceptHtmlTags && value.match(this.HTML_TAG)) {
+        if (!!value && typeof value === 'string' && !this._acceptHtmlTags && value.match(this.HTML_TAG)) {
             value = value.replace(this.REPLACE_LT_GT, '');
         }
 
@@ -185,7 +186,7 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
     }
 
     private autoResize(text: string | number | undefined) {
-        if (!!this.textarea && typeof (text) === 'string' && this._charWidth > 0) {
+        if (!!this.textarea && typeof text === 'string' && this._charWidth > 0) {
             const elementWidth = this.textarea.nativeElement.getBoundingClientRect()['width'];
             const charsByRow = Math.max(elementWidth / this._charWidth, 1);
 
@@ -222,16 +223,14 @@ export class TextareaComponent extends BaseTextField implements AfterViewInit, C
     private setupAutoResizing() {
         if (!this.resizeTrigger) {
             this.resizeTrigger = new Subject<any>();
-            this.instantValueChange.pipe(takeUntil(this.terminator))
-            .subscribe((value) => {
-                    this.resizeTrigger?.next(value);
-                });
-            this.resizeTrigger.pipe(takeUntil(this.terminator))
-                .subscribe((value) => {
-                    if (this._resizable) {
-                        this.autoResize(value);
-                    }
-                });
+            this.instantValueChange.pipe(takeUntil(this.terminator)).subscribe((value) => {
+                this.resizeTrigger?.next(value);
+            });
+            this.resizeTrigger.pipe(takeUntil(this.terminator)).subscribe((value) => {
+                if (this._resizable) {
+                    this.autoResize(value);
+                }
+            });
         }
     }
 

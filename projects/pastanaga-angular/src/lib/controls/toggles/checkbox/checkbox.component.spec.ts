@@ -5,9 +5,8 @@ import { By } from '@angular/platform-browser';
 import { CheckboxComponent } from './checkbox.component';
 
 @Component({
-    template: `
-<pa-checkbox id="control1" [(selected)]="selected"></pa-checkbox>
-<pa-checkbox id="control2" type="radio"></pa-checkbox>`,
+    template: ` <pa-checkbox id="control1" [(selected)]="selected"></pa-checkbox>
+        <pa-checkbox id="control2" type="radio"></pa-checkbox>`,
 })
 export class TestComponent {
     selected = false;
@@ -19,8 +18,7 @@ describe('CheckboxComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-            ],
+            imports: [],
             declarations: [CheckboxComponent, TestComponent],
         }).compileComponents();
     }));

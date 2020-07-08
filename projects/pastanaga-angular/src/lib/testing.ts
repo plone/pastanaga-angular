@@ -5,17 +5,11 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 class SvgTestLoader implements SvgLoader {
-
     getSvg(url: string): Observable<string> {
         return of('');
     }
 }
 
-export const TESTING_IMPORTS = [
-    BrowserModule,
-    AngularSvgIconModule.forRoot(),
-];
+export const TESTING_IMPORTS = [BrowserModule, AngularSvgIconModule.forRoot()];
 
-export const TESTING_PROVIDERS = [
-    { provide: SvgLoader, useClass: SvgTestLoader },
-];
+export const TESTING_PROVIDERS = [{ provide: SvgLoader, useClass: SvgTestLoader }];

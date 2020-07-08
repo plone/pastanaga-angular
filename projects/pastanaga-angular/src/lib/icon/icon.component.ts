@@ -7,7 +7,7 @@ import {
     Input,
     PLATFORM_ID,
     Renderer2,
-    ViewEncapsulation
+    ViewEncapsulation,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
@@ -19,7 +19,7 @@ import { markForCheck, Size } from '../common';
     templateUrl: './icon.component.html',
     styleUrls: ['./icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent {
     @Input() set name(value: string) {
@@ -63,18 +63,17 @@ export class IconComponent {
         private service: SvgIconRegistryService,
         private svgLoader: SvgLoader,
         @Inject(PLATFORM_ID) protected platformId: Object,
-        private cdr: ChangeDetectorRef,
-    ) {
-    }
+        private cdr: ChangeDetectorRef
+    ) {}
 
     private updateSvg() {
         if (!!this._path) {
             if (isPlatformBrowser(this.platformId)) {
-                this.service.loadSvg(this._path).subscribe(svg => {
+                this.service.loadSvg(this._path).subscribe((svg) => {
                     this.setSvg(svg.cloneNode(true) as SVGElement);
                 });
             } else {
-                this.svgLoader.loadSvgFromSsr(this._path, this.renderer).subscribe(svg => {
+                this.svgLoader.loadSvgFromSsr(this._path, this.renderer).subscribe((svg) => {
                     this.setSvg(svg);
                 });
             }

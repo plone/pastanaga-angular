@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    Input,
+    ViewChild,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+} from '@angular/core';
 import { detectChanges, markForCheck } from '../common';
 
 const VERTICAL_SEPARATION = 21;
@@ -50,7 +58,7 @@ export class TooltipComponent implements AfterViewInit {
     private getLeftPosition(): number {
         if (this.isAction && !!this.tooltipText) {
             const tooltipWidth = this.tooltipText.nativeElement.offsetWidth;
-            return this.left + (this.width / 2) - (tooltipWidth / 2);
+            return this.left + this.width / 2 - tooltipWidth / 2;
         } else {
             return this.left + HORIZONTAL_SEPARATION;
         }

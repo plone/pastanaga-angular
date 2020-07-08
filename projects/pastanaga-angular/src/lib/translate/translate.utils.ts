@@ -15,4 +15,4 @@ export const mergeTranslations = (translations: TranslationEntries[]): Translati
     return translations.reduce((all, current) => {
         return deepMerge(all, current);
     }, {} as TranslationEntries);
-}
+};

@@ -5,5 +5,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     templateUrl: 'tabs-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsListComponent {
-}
+export class TabsListComponent {}

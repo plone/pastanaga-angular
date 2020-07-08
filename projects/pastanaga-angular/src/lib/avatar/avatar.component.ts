@@ -4,14 +4,12 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Observable } from 'rxjs';
 import { detectChanges, Size } from '../common';
 
-
 @Component({
     selector: 'pa-avatar',
     templateUrl: './avatar.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
-
     @Input() set userId(value: string) {
         this._userId = value;
         this.assignColorClass();
@@ -74,19 +72,20 @@ export class AvatarComponent {
     _iconSize = Size.xxsmall;
     _iconAvatarSize = Size.medium;
 
-    constructor(
-        private cdr: ChangeDetectorRef,
-    ) {
-    }
+    constructor(private cdr: ChangeDetectorRef) {}
 
     loadImage(obs: Observable<Blob>) {
         obs.subscribe((blob: Blob) => {
             if (blob.size > 0) {
                 const reader = new FileReader();
-                reader.addEventListener('load', () => {
-                    this._base64Image = (reader.result as string);
-                    detectChanges(this.cdr);
-                }, false);
+                reader.addEventListener(
+                    'load',
+                    () => {
+                        this._base64Image = reader.result as string;
+                        detectChanges(this.cdr);
+                    },
+                    false
+                );
                 reader.readAsDataURL(blob);
             } else {
                 this._base64Image = '';

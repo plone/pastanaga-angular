@@ -7,10 +7,5 @@ import { TranslatePipe } from './translate/translate.pipe';
     providedIn: 'root',
 })
 export class PastanagaService {
-
-    constructor(
-        public popupService: PopupService,
-        public translate: TranslatePipe,
-        public datetime: DateTimeService,
-    ) { }
+    constructor(public popupService: PopupService, public translate: TranslatePipe, public datetime: DateTimeService) {}
 }

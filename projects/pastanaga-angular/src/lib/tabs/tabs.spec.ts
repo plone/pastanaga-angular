@@ -8,13 +8,14 @@ import { PaIconModule } from '../..';
 
 @Component({
     template: `<pa-tabs #tabs>
-    <pa-tab #tab1 (click)="selectedTab = 'info'"
-            [active]="selectedTab === 'info'">Info</pa-tab>
-    <pa-tab #tab2 id="settings" (click)="selectedTab = 'settings'"
-            [active]="selectedTab === 'settings'">Settings</pa-tab>
-    <pa-tab #tab3 (click)="selectedTab = 'notifications'"
-            [active]="selectedTab === 'notifications'">Notifications</pa-tab>
-</pa-tabs>`,
+        <pa-tab #tab1 (click)="selectedTab = 'info'" [active]="selectedTab === 'info'">Info</pa-tab>
+        <pa-tab #tab2 id="settings" (click)="selectedTab = 'settings'" [active]="selectedTab === 'settings'"
+            >Settings</pa-tab
+        >
+        <pa-tab #tab3 (click)="selectedTab = 'notifications'" [active]="selectedTab === 'notifications'"
+            >Notifications</pa-tab
+        >
+    </pa-tabs>`,
 })
 export class TestComponent {
     @ViewChild('tab1') tab1?: TabItemComponent;
@@ -29,9 +30,7 @@ describe('Tabs', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                PaIconModule
-            ],
+            imports: [PaIconModule],
             declarations: [TabsListComponent, TabItemComponent, TestComponent],
         }).compileComponents();
     }));

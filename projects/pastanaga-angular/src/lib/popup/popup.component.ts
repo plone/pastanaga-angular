@@ -8,7 +8,7 @@ import {
     OnDestroy,
     OnInit,
     Output,
-    Renderer2
+    Renderer2,
 } from '@angular/core';
 import { PopupService } from './popup.service';
 import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common';
@@ -25,11 +25,19 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Input() id?: string;
     @Input() companionElement?: any;
     @Input()
-    get stayVisible(): boolean { return this._stayVisible; }
-    set stayVisible(value: boolean) { this._stayVisible = coerceBooleanProperty(value); }
+    get stayVisible(): boolean {
+        return this._stayVisible;
+    }
+    set stayVisible(value: boolean) {
+        this._stayVisible = coerceBooleanProperty(value);
+    }
     @Input()
-    get dontAdjustPosition(): boolean { return  this._dontAdjustPosition; }
-    set dontAdjustPosition(value: boolean) { this._dontAdjustPosition = coerceBooleanProperty(value); }
+    get dontAdjustPosition(): boolean {
+        return this._dontAdjustPosition;
+    }
+    set dontAdjustPosition(value: boolean) {
+        this._dontAdjustPosition = coerceBooleanProperty(value);
+    }
 
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
 
@@ -46,7 +54,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         public popupService: PopupService,
         public renderer: Renderer2,
         public element: ElementRef,
-        public cdr: ChangeDetectorRef,
+        public cdr: ChangeDetectorRef
     ) {
         this.popupService.closeAllPopups.subscribe(() => this.close());
         this.popupService.closeAllButId.subscribe((id) => {
@@ -99,7 +107,10 @@ export class PopupComponent implements OnInit, OnDestroy {
             // menu is still empty
             return false;
         }
-        const {bottom, right} = getVirtualScrollParentPosition(element) || {bottom: window.innerHeight, right: window.innerWidth};
+        const { bottom, right } = getVirtualScrollParentPosition(element) || {
+            bottom: window.innerHeight,
+            right: window.innerWidth,
+        };
         const diffX = rect.left + rect.width - right;
         if (diffX > 0) {
             element.style.left = `calc(${element.style.left} - ${diffX}px)`;
@@ -137,15 +148,17 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     onOutsideClick(event: MouseEvent) {
-        if (!this.element.nativeElement.contains(event.target)
-            && (!this.companionElement || !this.companionElement.contains(event.target))) {
+        if (
+            !this.element.nativeElement.contains(event.target) &&
+            (!this.companionElement || !this.companionElement.contains(event.target))
+        ) {
             this.popupService.closeAllSubMenu.next();
             this.close(true);
         }
     }
 
     unListen() {
-        this._handlers.forEach(fn => fn());
+        this._handlers.forEach((fn) => fn());
         this._handlers = [];
     }
 }

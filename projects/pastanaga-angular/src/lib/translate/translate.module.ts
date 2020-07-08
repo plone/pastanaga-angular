@@ -9,4 +9,4 @@ import { TranslateDirective } from './translate.directive';
     declarations: [TranslatePipe, TranslateDirective],
     providers: [TranslatePipe],
 })
-export class PaTranslateModule { }
+export class PaTranslateModule {}

@@ -7,8 +7,8 @@ import { By } from '@angular/platform-browser';
 
 @Component({
     template: `<span id="outside"></span>
-    <span id="myButton" [paPopup]="myPopup">Open popup</span>
-    <pa-popup #myPopup></pa-popup>`,
+        <span id="myButton" [paPopup]="myPopup">Open popup</span>
+        <pa-popup #myPopup></pa-popup>`,
 })
 export class TestComponent {
     @ViewChild('myPopup') popup?: PopupComponent;
@@ -20,8 +20,7 @@ describe('Popup', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-            ],
+            imports: [],
             declarations: [PopupComponent, PopupDirective, TestComponent],
         }).compileComponents();
     }));

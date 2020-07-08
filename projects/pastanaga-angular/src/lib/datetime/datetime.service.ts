@@ -30,18 +30,18 @@ export enum DATE_FORMAT {
 }
 
 export class StringMap {
-    today: { key: string, value: string };
-    yesterday: { key: string, value: string };
-    fewSecondsAgo: { key: string, value: string };
-    oneMinuteAgo: { key: string, value: string };
-    minutesAgo: { key: string, value: string };
+    today: { key: string; value: string };
+    yesterday: { key: string; value: string };
+    fewSecondsAgo: { key: string; value: string };
+    oneMinuteAgo: { key: string; value: string };
+    minutesAgo: { key: string; value: string };
 
-    constructor(translateMap?: {[key: string]: string}) {
-        this.today = {key: 'pastanaga.datetime.today', value: ''};
-        this.yesterday = {key: 'pastanaga.datetime.yesterday', value: ''};
-        this.fewSecondsAgo = {key: 'pastanaga.datetime.a-few-seconds-ago', value: ''};
-        this.oneMinuteAgo = {key: 'pastanaga.datetime.one-minute-ago', value: ''};
-        this.minutesAgo = {key: 'pastanaga.datetime.minutesAgo', value: ''};
+    constructor(translateMap?: { [key: string]: string }) {
+        this.today = { key: 'pastanaga.datetime.today', value: '' };
+        this.yesterday = { key: 'pastanaga.datetime.yesterday', value: '' };
+        this.fewSecondsAgo = { key: 'pastanaga.datetime.a-few-seconds-ago', value: '' };
+        this.oneMinuteAgo = { key: 'pastanaga.datetime.one-minute-ago', value: '' };
+        this.minutesAgo = { key: 'pastanaga.datetime.minutesAgo', value: '' };
 
         if (translateMap) {
             this.today.value = translateMap[this.today.key];
@@ -57,25 +57,21 @@ export class StringMap {
     providedIn: 'root',
 })
 export class DateTimeService {
-
     strings: ReplaySubject<StringMap> = new ReplaySubject(1);
     localeDatePipe: DatePipe;
     cache: { [key: string]: string | null } = {};
     numericalFormat: string;
 
-    constructor(
-        private translate: TranslatePipe,
-        @Inject( LOCALE_ID ) private locale: string,
-    ) {
+    constructor(private translate: TranslatePipe, @Inject(LOCALE_ID) private locale: string) {
         const stringMap = new StringMap();
         const stringKeys: string[] = Object.values(stringMap).map((item) => item.key);
-        const values = stringKeys.reduce((acc: {[key: string]: string}, key) => {
+        const values = stringKeys.reduce((acc: { [key: string]: string }, key) => {
             acc[key] = this.translate.transform(key);
             return acc;
         }, {});
         this.strings.next(new StringMap(values));
         this.localeDatePipe = new DatePipe(this.locale || 'en');
-        this.numericalFormat = getLocaleDateFormat( this.locale, FormatWidth.Short);
+        this.numericalFormat = getLocaleDateFormat(this.locale, FormatWidth.Short);
     }
 
     /**
@@ -86,7 +82,12 @@ export class DateTimeService {
      * @param displaySeconds: false by default
      * @param useTags: use <abbr title="${meridian}"></abbr> tags for the time. true by default
      */
-    getFormattedDate(timestamp: string, format: DATE_FORMAT, displaySeconds?: boolean, useTags = true): Observable<string | null> {
+    getFormattedDate(
+        timestamp: string,
+        format: DATE_FORMAT,
+        displaySeconds?: boolean,
+        useTags = true
+    ): Observable<string | null> {
         if (format === DATE_FORMAT.human || format === DATE_FORMAT.numerical) {
             return this.getRelativeFormattedDate(timestamp, format, displaySeconds, useTags);
         } else if (format === DATE_FORMAT.mixed) {
@@ -98,26 +99,33 @@ export class DateTimeService {
         }
     }
 
-    getRelativeFormattedDate(timestamp: string, format: string, displaySeconds?: boolean, useTags = true): Observable<string | null> {
+    getRelativeFormattedDate(
+        timestamp: string,
+        format: string,
+        displaySeconds?: boolean,
+        useTags = true
+    ): Observable<string | null> {
         const date = new Date(timestamp);
-        return this.strings.pipe(map((strings) => {
-            if (isToday(date)) {
-                return `${strings.today.value}, ${this.getFormattedTime(timestamp, displaySeconds, useTags)}`;
-            } else if (isYesterday(date)) {
-                return `${strings.yesterday.value}, ${this.getFormattedTime(timestamp, displaySeconds, useTags)}`;
-            } else {
-                return format === DATE_FORMAT.human ?
-                    this.getBeforeYesterdayAsHumanDate(timestamp, displaySeconds, useTags) :
-                    this.getBeforeYesterdayAsNumericalDate(timestamp, displaySeconds, useTags, false);
-            }
-        }));
+        return this.strings.pipe(
+            map((strings) => {
+                if (isToday(date)) {
+                    return `${strings.today.value}, ${this.getFormattedTime(timestamp, displaySeconds, useTags)}`;
+                } else if (isYesterday(date)) {
+                    return `${strings.yesterday.value}, ${this.getFormattedTime(timestamp, displaySeconds, useTags)}`;
+                } else {
+                    return format === DATE_FORMAT.human
+                        ? this.getBeforeYesterdayAsHumanDate(timestamp, displaySeconds, useTags)
+                        : this.getBeforeYesterdayAsNumericalDate(timestamp, displaySeconds, useTags, false);
+                }
+            })
+        );
     }
 
     getMixedFormattedDate(timestamp: string, displaySeconds?: boolean, useTags = true): Observable<string | null> {
         const dateFromTimestamp = new Date(timestamp);
         const distanceFromNowInSeconds = this.getDistanceFromNowInSeconds(dateFromTimestamp);
 
-        if (distanceFromNowInSeconds > (30 * 60)) {
+        if (distanceFromNowInSeconds > 30 * 60) {
             return this.getRelativeFormattedDate(timestamp, DATE_FORMAT.human, displaySeconds, useTags);
         } else {
             return this.getFormattedRelativeTime(distanceFromNowInSeconds);
@@ -125,17 +133,18 @@ export class DateTimeService {
     }
 
     getFormattedRelativeTime(distanceFromNowInSeconds: number): Observable<string> {
-        return this.strings.pipe(map((strings) => {
-            if (distanceFromNowInSeconds < 60) {
-                return strings.fewSecondsAgo.value;
-            } else if (distanceFromNowInSeconds < 120) {
-                return strings.oneMinuteAgo.value;
-            } else {
-                const minutes: string = Math.ceil(distanceFromNowInSeconds / 60).toString(10);
-                return strings.minutesAgo.value.replace('{{minutes}}', minutes);
-            }
-        }));
-
+        return this.strings.pipe(
+            map((strings) => {
+                if (distanceFromNowInSeconds < 60) {
+                    return strings.fewSecondsAgo.value;
+                } else if (distanceFromNowInSeconds < 120) {
+                    return strings.oneMinuteAgo.value;
+                } else {
+                    const minutes: string = Math.ceil(distanceFromNowInSeconds / 60).toString(10);
+                    return strings.minutesAgo.value.replace('{{minutes}}', minutes);
+                }
+            })
+        );
     }
 
     getDistanceFromNowInSeconds(datetime: Date): number {
@@ -152,9 +161,9 @@ export class DateTimeService {
     getOrdinalSuffixEnglish(timestamp: string): string {
         const suffixes = ['th', 'st', 'nd', 'rd'];
         const day = new Date(timestamp).getDate();
-        const relevantDigits = (day < 30) ? day % 20 : day % 30;
+        const relevantDigits = day < 30 ? day % 20 : day % 30;
 
-        return (relevantDigits <= 3) ? suffixes[relevantDigits] : suffixes[0];
+        return relevantDigits <= 3 ? suffixes[relevantDigits] : suffixes[0];
     }
 
     getMeridianString(timestamp: string): string {
@@ -167,15 +176,28 @@ export class DateTimeService {
         const ordinal = this.getOrdinalSuffixEnglish(timestamp);
         let pattern = `d MMMM yyyy, '${this.getFormattedTime(timestamp, displaySeconds, useTags)}'`;
         if (this.locale === 'en-US' || this.locale === 'en') {
-            pattern = `MMMM d'<sup>${ordinal}</sup>' yyyy, '${this.getFormattedTime(timestamp, displaySeconds, useTags)}'`;
+            pattern = `MMMM d'<sup>${ordinal}</sup>' yyyy, '${this.getFormattedTime(
+                timestamp,
+                displaySeconds,
+                useTags
+            )}'`;
         } else if (this.locale.startsWith('en-')) {
-            pattern = `d'<sup>${ordinal}</sup>' MMMM yyyy, '${this.getFormattedTime(timestamp, displaySeconds, useTags)}'`;
+            pattern = `d'<sup>${ordinal}</sup>' MMMM yyyy, '${this.getFormattedTime(
+                timestamp,
+                displaySeconds,
+                useTags
+            )}'`;
         }
 
         return this.transform(timestamp, pattern);
     }
 
-    private getBeforeYesterdayAsNumericalDate(timestamp: string, displaySeconds?: boolean, useTags = true, displayTime = true) {
+    private getBeforeYesterdayAsNumericalDate(
+        timestamp: string,
+        displaySeconds?: boolean,
+        useTags = true,
+        displayTime = true
+    ) {
         let pattern = `d/MM/yyyy`;
 
         if (this.locale === 'en-US' || this.locale === 'en') {
@@ -195,7 +217,9 @@ export class DateTimeService {
         let pattern: string;
 
         if (useTags) {
-            pattern = displaySeconds ? `h:mm:ss '<abbr title="${meridian}">'a'</abbr>'` : `h:mm '<abbr title="${meridian}">'a'</abbr>'`;
+            pattern = displaySeconds
+                ? `h:mm:ss '<abbr title="${meridian}">'a'</abbr>'`
+                : `h:mm '<abbr title="${meridian}">'a'</abbr>'`;
         } else {
             pattern = displaySeconds ? `h:mm:ss a` : `h:mm a`;
         }
