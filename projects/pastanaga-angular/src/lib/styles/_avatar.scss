@@ -121,3 +121,9 @@
         background: $avatar-icon-default-background;
     }
 }
+@media (max-width: $size-viewport-small) {
+    .pa-avatar.pa-avatar-large {
+        width: rhythm(8);
+        height: rhythm(8);
+    }
+}
