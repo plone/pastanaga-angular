@@ -8,8 +8,7 @@ describe('InputComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-            ],
+            imports: [],
             declarations: [InputComponent],
         }).compileComponents();
     }));
@@ -49,11 +48,15 @@ describe('InputComponent', () => {
     });
 
     it('should not accept html tags unless we ask so', () => {
-        component.onKeyUp({target: {value: '<a href="#">Click here, it is safe</a>'}} as unknown as KeyboardEvent);
+        component.onKeyUp(({
+            target: { value: '<a href="#">Click here, it is safe</a>' },
+        } as unknown) as KeyboardEvent);
         fixture.detectChanges();
-        expect(component.value).toBe('a href=\"#\"Click here, it is safe/a');
+        expect(component.value).toBe('a href="#"Click here, it is safe/a');
         component.acceptHtmlTags = true;
-        component.onKeyUp({target: {value: '<a href="#">Click here, it is safe</a>'}} as unknown as KeyboardEvent);
+        component.onKeyUp(({
+            target: { value: '<a href="#">Click here, it is safe</a>' },
+        } as unknown) as KeyboardEvent);
         fixture.detectChanges();
         expect(component.value).toBe('<a href="#">Click here, it is safe</a>');
     });

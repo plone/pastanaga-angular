@@ -6,5 +6,4 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class TableRowHeaderComponent {
-}
+export class TableRowHeaderComponent {}

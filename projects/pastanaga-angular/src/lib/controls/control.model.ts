@@ -59,7 +59,7 @@ export class OptionModel extends ControlModel {
     dontCloseOnSelect: boolean;
 
     constructor(data: IOptionModel) {
-        super({...data, type: ControlType.option});
+        super({ ...data, type: ControlType.option });
         this.destructive = data.destructive || false;
         this.dontCloseOnSelect = data.dontCloseOnSelect || false;
     }
@@ -69,7 +69,7 @@ export class OptionHeaderModel extends BaseControlModel {
     id: string;
     label: string;
 
-    constructor(data: {id: string, label: string}) {
+    constructor(data: { id: string; label: string }) {
         super(ControlType.header);
         this.id = data.id;
         this.label = data.label;

@@ -12,17 +12,33 @@ export class PopupDirective implements OnInit {
     @Input() paPopup?: PopupComponent;
     @Input() popupPosition?: PositionStyle;
     @Input()
-    get popupOnRight(): boolean { return this._popupOnRight; }
-    set popupOnRight(value: boolean) { this._popupOnRight = coerceBooleanProperty(value); }
+    get popupOnRight(): boolean {
+        return this._popupOnRight;
+    }
+    set popupOnRight(value: boolean) {
+        this._popupOnRight = coerceBooleanProperty(value);
+    }
     @Input()
-    get popupOnTop(): boolean { return this._popupOnTop; }
-    set popupOnTop(value: boolean) { this._popupOnTop = coerceBooleanProperty(value); }
+    get popupOnTop(): boolean {
+        return this._popupOnTop;
+    }
+    set popupOnTop(value: boolean) {
+        this._popupOnTop = coerceBooleanProperty(value);
+    }
     @Input()
-    get sameWidth(): boolean { return this._sameWidth; }
-    set sameWidth(value: boolean) { this._sameWidth = coerceBooleanProperty(value); }
+    get sameWidth(): boolean {
+        return this._sameWidth;
+    }
+    set sameWidth(value: boolean) {
+        this._sameWidth = coerceBooleanProperty(value);
+    }
     @Input()
-    get popupDisabled(): boolean { return this._disabled; }
-    set popupDisabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
+    get popupDisabled(): boolean {
+        return this._disabled;
+    }
+    set popupDisabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
 
     _rootParent?: HTMLElement;
     _remoteElement?: HTMLElement;
@@ -32,10 +48,7 @@ export class PopupDirective implements OnInit {
     _popupOnTop = false;
     _sameWidth = false;
 
-    constructor(
-        private element: ElementRef,
-        private service: PopupService,
-    ) {}
+    constructor(private element: ElementRef, private service: PopupService) {}
 
     ngOnInit() {
         this.element.nativeElement.setAttribute('aria-haspopup', true);
@@ -51,8 +64,10 @@ export class PopupDirective implements OnInit {
                 } else {
                     let position: PositionStyle;
                     if (!useLast || !this.service.lastPosition) {
-                        position = !isContextual && !!this.popupPosition ? this.popupPosition :
-                            this.getPosition(override, isContextual && $event);
+                        position =
+                            !isContextual && !!this.popupPosition
+                                ? this.popupPosition
+                                : this.getPosition(override, isContextual && $event);
                         this.service.lastPosition = position;
                     } else {
                         position = this.service.lastPosition;
@@ -70,12 +85,14 @@ export class PopupDirective implements OnInit {
     getPosition(override?: PositionStyle, contextualEvent?: MouseEvent | false): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
         const clickedElement: HTMLElement = this._remoteElement || directiveElement;
-        const rect = contextualEvent ? {
-            top: contextualEvent.y,
-            bottom: contextualEvent.y,
-            left: contextualEvent.x,
-            right: contextualEvent.x,
-        } : clickedElement.getBoundingClientRect();
+        const rect = contextualEvent
+            ? {
+                  top: contextualEvent.y,
+                  bottom: contextualEvent.y,
+                  left: contextualEvent.x,
+                  right: contextualEvent.x,
+              }
+            : clickedElement.getBoundingClientRect();
         if (!this._rootParent) {
             this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
         }

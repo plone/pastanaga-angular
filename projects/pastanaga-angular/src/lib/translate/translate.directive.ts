@@ -2,7 +2,7 @@ import { Directive, ElementRef, Input, AfterViewChecked } from '@angular/core';
 import { TranslatePipe } from './translate.pipe';
 
 @Directive({
-    selector: '[translate]'
+    selector: '[translate]',
 })
 export class TranslateDirective implements AfterViewChecked {
     key = '';
@@ -20,11 +20,7 @@ export class TranslateDirective implements AfterViewChecked {
             this.checkNodes(true);
         }
     }
-    constructor (
-        private eltRef: ElementRef,
-        private translatePipe: TranslatePipe
-    ) {
-    }
+    constructor(private eltRef: ElementRef, private translatePipe: TranslatePipe) {}
 
     ngAfterViewChecked() {
         this.checkNodes();
@@ -40,7 +36,8 @@ export class TranslateDirective implements AfterViewChecked {
         }
         for (let i = 0; i < nodes.length; ++i) {
             const node: any = nodes[i];
-            if (node.nodeType === 3) { // node type 3 is a text node
+            if (node.nodeType === 3) {
+                // node type 3 is a text node
                 let key = '';
                 if (this.key) {
                     key = this.key;
@@ -80,7 +77,7 @@ export class TranslateDirective implements AfterViewChecked {
             if (!node.originalContent) {
                 node.originalContent = this.getContent(node);
             }
-            node.currentValue = !!translate ? translate : (node.originalContent || key);
+            node.currentValue = !!translate ? translate : node.originalContent || key;
             // we replace in the original content to preserve spaces that we might have trimmed
             this.setContent(node, this.key ? node.currentValue : node.originalContent.replace(key, node.currentValue));
         }

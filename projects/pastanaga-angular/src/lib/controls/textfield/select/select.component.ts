@@ -7,7 +7,7 @@ import {
     Input,
     OnDestroy,
     OnInit,
-    QueryList
+    QueryList,
 } from '@angular/core';
 import { BaseTextField } from '../base-text-field';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
@@ -19,36 +19,39 @@ import { markForCheck } from '../../../common';
     selector: 'pa-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent extends BaseTextField implements AfterContentInit, OnInit, OnDestroy {
     @Input()
-    get label(): string { return this._label || ''; }
-    set label(value: string) { this._label = value; }
+    get label(): string {
+        return this._label || '';
+    }
+    set label(value: string) {
+        this._label = value;
+    }
     @Input()
-    get options(): (OptionModel | OptionSeparator | OptionHeaderModel)[] { return this._options; }
+    get options(): (OptionModel | OptionSeparator | OptionHeaderModel)[] {
+        return this._options;
+    }
     set options(value: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
         this._options = value;
         const selectedOption: OptionModel | undefined = this._options.find(
-            option => option.type === ControlType.option && (option as OptionModel).selected
-        ) as (OptionModel | undefined);
+            (option) => option.type === ControlType.option && (option as OptionModel).selected
+        ) as OptionModel | undefined;
         if (selectedOption) {
             this.updateValue(selectedOption.value, selectedOption.label);
         }
     }
 
     /** All of the defined select options. */
-    @ContentChildren(OptionComponent, {descendants: true}) optionComponents?: QueryList<OptionComponent>;
-
+    @ContentChildren(OptionComponent, { descendants: true }) optionComponents?: QueryList<OptionComponent>;
 
     _fieldType = 'dropdown';
     _options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
     _types = ControlType;
     _displayValue = '';
 
-    constructor(
-        protected cdr: ChangeDetectorRef,
-    ) {
+    constructor(protected cdr: ChangeDetectorRef) {
         super(cdr);
     }
 
@@ -59,13 +62,13 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
     ngAfterContentInit() {
         super.ngAfterContentInit();
         if (!!this.optionComponents && this.optionComponents.length > 0) {
-            this.optionComponents.forEach(option => option.selectOption.pipe(
-                takeUntil(this.terminator)
-            ).subscribe(() => this.selectNgContentOption(option)));
+            this.optionComponents.forEach((option) =>
+                option.selectOption.pipe(takeUntil(this.terminator)).subscribe(() => this.selectNgContentOption(option))
+            );
 
             // Setup initial selected option if any
             if (!!this._value) {
-                const selected = this.optionComponents.find(option => option.value === this._value);
+                const selected = this.optionComponents.find((option) => option.value === this._value);
                 if (!!selected) {
                     this.selectNgContentOption(selected);
                 }
@@ -79,11 +82,13 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
 
     selectListOption(event: MouseEvent | KeyboardEvent, selectedOption: OptionModel) {
         if (!selectedOption.disabled) {
-            this._options = this._options.map(option => {
-                return option.type === ControlType.option ? {
-                    ...option,
-                    selected: (option as OptionModel).id === selectedOption.id,
-                } : option;
+            this._options = this._options.map((option) => {
+                return option.type === ControlType.option
+                    ? {
+                          ...option,
+                          selected: (option as OptionModel).id === selectedOption.id,
+                      }
+                    : option;
             });
             this.updateValue(selectedOption.value, selectedOption.label);
         }
@@ -92,16 +97,18 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
     filterOptions(inputValue: string | number) {
         const value = `${inputValue}`.toLocaleLowerCase();
         if (!!this.optionComponents && this.optionComponents.length > 0) {
-            this.optionComponents.forEach(option => {
+            this.optionComponents.forEach((option) => {
                 option._hidden = !option.text.toLocaleLowerCase().includes(value);
                 option.refresh();
             });
         }
         if (this._options.length > 0) {
-            this._options = this._options.map(option => {
-                const newOption = {...option};
+            this._options = this._options.map((option) => {
+                const newOption = { ...option };
                 if (option.type === ControlType.option) {
-                    (newOption as OptionModel).filtered = !(option as OptionModel).label.toLocaleLowerCase().includes(value);
+                    (newOption as OptionModel).filtered = !(option as OptionModel).label
+                        .toLocaleLowerCase()
+                        .includes(value);
                 }
                 return newOption;
             });
@@ -111,7 +118,7 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
 
     private selectNgContentOption(selectedOption: OptionComponent) {
         if (!!this.optionComponents) {
-            this.optionComponents.forEach(option => {
+            this.optionComponents.forEach((option) => {
                 option._selected = option.value === selectedOption.value;
                 option.refresh();
             });
@@ -128,14 +135,14 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
 
     private resetFilter() {
         if (!!this.optionComponents) {
-            this.optionComponents.forEach(option => {
+            this.optionComponents.forEach((option) => {
                 option._hidden = false;
                 option.refresh();
             });
         }
         if (this._options.length > 0) {
-            this._options = this._options.map(option => {
-                const newOption = {...option};
+            this._options = this._options.map((option) => {
+                const newOption = { ...option };
                 if (option.type === ControlType.option) {
                     (newOption as OptionModel).filtered = false;
                 }

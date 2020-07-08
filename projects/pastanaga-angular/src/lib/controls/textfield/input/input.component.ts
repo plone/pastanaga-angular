@@ -1,11 +1,16 @@
 import {
     AfterViewInit,
-    ChangeDetectionStrategy, ChangeDetectorRef,
-    Component, ElementRef,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
     forwardRef,
-    Input, NgZone,
+    Input,
+    NgZone,
     OnDestroy,
-    OnInit, Optional, ViewChild,
+    OnInit,
+    Optional,
+    ViewChild,
 } from '@angular/core';
 import {
     ControlValueAccessor,
@@ -13,7 +18,7 @@ import {
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
     NgForm,
-    Validator
+    Validator,
 } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
@@ -39,20 +44,33 @@ import { BaseTextField } from '../base-text-field';
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent extends BaseTextField implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
+export class InputComponent extends BaseTextField
+    implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() type: 'text' | 'number' | 'password' = 'text';
     @Input() min?: number;
     @Input() max?: number;
     @Input() maxlength?: number;
     @Input()
-    get acceptHtmlTags(): boolean { return this._acceptHtmlTags; }
-    set acceptHtmlTags(value: boolean) { this._acceptHtmlTags = coerceBooleanProperty(value); }
+    get acceptHtmlTags(): boolean {
+        return this._acceptHtmlTags;
+    }
+    set acceptHtmlTags(value: boolean) {
+        this._acceptHtmlTags = coerceBooleanProperty(value);
+    }
     @Input()
-    get hasFocus(): boolean { return this._hasFocus; }
-    set hasFocus(value: boolean) { this._hasFocus = coerceBooleanProperty(value); }
+    get hasFocus(): boolean {
+        return this._hasFocus;
+    }
+    set hasFocus(value: boolean) {
+        this._hasFocus = coerceBooleanProperty(value);
+    }
     @Input()
-    get noAutoComplete(): boolean { return this._noAutoComplete; }
-    set noAutoComplete(value: boolean) { this._noAutoComplete = coerceBooleanProperty(value); }
+    get noAutoComplete(): boolean {
+        return this._noAutoComplete;
+    }
+    set noAutoComplete(value: boolean) {
+        this._noAutoComplete = coerceBooleanProperty(value);
+    }
 
     @ViewChild('inputElement', { static: true }) input?: ElementRef;
 
@@ -69,12 +87,11 @@ export class InputComponent extends BaseTextField implements AfterViewInit, Cont
         protected ngZone: NgZone,
         protected cdr: ChangeDetectorRef,
         private autofillMonitor: AutofillMonitor,
-        public element: ElementRef,
+        public element: ElementRef
     ) {
         super(cdr);
         this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => detectChanges(this.cdr));
     }
-
 
     ngOnInit(): void {
         super.ngOnInit();
@@ -84,29 +101,22 @@ export class InputComponent extends BaseTextField implements AfterViewInit, Cont
         if (this.platform.isBrowser && !!this.input) {
             this.autofillMonitor
                 .monitor(this.input.nativeElement)
-                .subscribe(event => this._autofilled = event.isAutofilled);
+                .subscribe((event) => (this._autofilled = event.isAutofilled));
         }
         if (this.platform.IOS && !!this.input) {
             const input = this.input;
             this.ngZone.runOutsideAngular(() => {
-                input.nativeElement.addEventListener(
-                    'keyup',
-                    (event: Event) => {
-                        const element = event.target as HTMLInputElement;
-                        if (
-                            !element.value &&
-                            !element.selectionStart &&
-                            !element.selectionEnd
-                        ) {
-                            // Note: Just setting `0, 0` doesn't fix the issue. Setting
-                            // `1, 1` fixes it for the first time that you type text and
-                            // then hold delete. Toggling to `1, 1` and then back to
-                            // `0, 0` seems to completely fix it.
-                            element.setSelectionRange(1, 1);
-                            element.setSelectionRange(0, 0);
-                        }
-                    },
-                );
+                input.nativeElement.addEventListener('keyup', (event: Event) => {
+                    const element = event.target as HTMLInputElement;
+                    if (!element.value && !element.selectionStart && !element.selectionEnd) {
+                        // Note: Just setting `0, 0` doesn't fix the issue. Setting
+                        // `1, 1` fixes it for the first time that you type text and
+                        // then hold delete. Toggling to `1, 1` and then back to
+                        // `0, 0` seems to completely fix it.
+                        element.setSelectionRange(1, 1);
+                        element.setSelectionRange(0, 0);
+                    }
+                });
             });
         }
         if (this._hasFocus && !!this.input) {
@@ -136,7 +146,7 @@ export class InputComponent extends BaseTextField implements AfterViewInit, Cont
     }
 
     writeValue(value: string | number | undefined) {
-        if (!!value && typeof(value) === 'string' && !this._acceptHtmlTags && value.match(this.HTML_TAG)) {
+        if (!!value && typeof value === 'string' && !this._acceptHtmlTags && value.match(this.HTML_TAG)) {
             value = value.replace(this.REPLACE_LT_GT, '');
         }
         super.writeValue(value);

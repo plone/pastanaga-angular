@@ -11,12 +11,8 @@ describe('IconComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                ...TESTING_IMPORTS,
-            ],
-            providers: [
-                ...TESTING_PROVIDERS,
-            ],
+            imports: [...TESTING_IMPORTS],
+            providers: [...TESTING_PROVIDERS],
             declarations: [IconComponent],
         }).compileComponents();
     }));
@@ -34,7 +30,9 @@ describe('IconComponent', () => {
     it('should set the proper sprite', () => {
         component.name = 'plus';
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('svg use')).attributes['xlink:href']).toEqual('assets/glyphs-sprite.svg#plus');
+        expect(fixture.debugElement.query(By.css('svg use')).attributes['xlink:href']).toEqual(
+            'assets/glyphs-sprite.svg#plus'
+        );
     });
 
     it('should set the proper size', () => {

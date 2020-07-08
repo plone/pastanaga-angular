@@ -7,11 +7,7 @@ import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { PaIconModule } from '../icon/icon.module';
 
 @Component({
-    template: `<pa-avatar #avatar
-    [userId]="userId"
-    [userName]="userName"
-    [icon]="icon"
-></pa-avatar>`,
+    template: `<pa-avatar #avatar [userId]="userId" [userName]="userName" [icon]="icon"></pa-avatar>`,
 })
 export class TestComponent {
     userId = '';
@@ -26,13 +22,8 @@ describe('AvatarComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                ...TESTING_IMPORTS,
-                PaIconModule,
-            ],
-            providers: [
-                ...TESTING_PROVIDERS,
-            ],
+            imports: [...TESTING_IMPORTS, PaIconModule],
+            providers: [...TESTING_PROVIDERS],
             declarations: [AvatarComponent, TestComponent],
         }).compileComponents();
     }));
@@ -50,7 +41,9 @@ describe('AvatarComponent', () => {
     it('should set an avatar color', () => {
         component.userId = 'user1';
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-avatar-default')).properties.className).toContain('pa-avatar-lime');
+        expect(fixture.debugElement.query(By.css('.pa-avatar-default')).properties.className).toContain(
+            'pa-avatar-lime'
+        );
     });
 
     it('should set user initials', () => {

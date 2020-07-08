@@ -10,12 +10,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class TableComponent {
     @Input()
-    get noHeader(): boolean { return this._noHeader; }
-    set noHeader(value: boolean) { this._noHeader = coerceBooleanProperty(value); }
+    get noHeader(): boolean {
+        return this._noHeader;
+    }
+    set noHeader(value: boolean) {
+        this._noHeader = coerceBooleanProperty(value);
+    }
     _noHeader = false;
 
     @Input()
-    get columns(): string { return this._columns; }
+    get columns(): string {
+        return this._columns;
+    }
     set columns(value: string) {
         this._columns = value;
         this._columnsStyle = this.santizer.bypassSecurityTrustStyle(this._columns);

@@ -3,14 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button.component';
 import { PaIconModule } from '../icon/icon.module';
 
-
 @NgModule({
-    imports: [
-        CommonModule,
-        PaIconModule,
-    ],
+    imports: [CommonModule, PaIconModule],
     declarations: [ButtonComponent],
     exports: [ButtonComponent],
 })
-export class PaButtonModule {
-}
+export class PaButtonModule {}

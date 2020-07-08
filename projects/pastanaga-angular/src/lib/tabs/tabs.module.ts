@@ -11,4 +11,4 @@ import { PaIconModule } from '../icon/icon.module';
     declarations: [TabsListComponent, TabItemComponent],
     providers: [],
 })
-export class PaTabsModule { }
+export class PaTabsModule {}

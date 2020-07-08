@@ -17,8 +17,8 @@ describe('DateTimeComponent', () => {
             providers: [
                 DateTimeService,
                 TranslatePipe,
-                {provide: 'LANG', useValue: 'en_US'},
-                {provide: 'TRANSLATIONS', useValue: {'en_US': {...mockTranslateEn} as any}},
+                { provide: 'LANG', useValue: 'en_US' },
+                { provide: 'TRANSLATIONS', useValue: { en_US: { ...mockTranslateEn } as any } },
             ],
         });
         fixture = TestBed.createComponent(DateTimeComponent);
@@ -34,7 +34,7 @@ describe('DateTimeComponent', () => {
         component.datetime = dates.beforeYesterdayPM.timestamp;
 
         component.ngOnChanges({
-            datetime: new SimpleChange(null, component.datetime, true)
+            datetime: new SimpleChange(null, component.datetime, true),
         });
         fixture.detectChanges();
         expect(span.innerHTML).toBe(dates.beforeYesterdayPM.humanEn);

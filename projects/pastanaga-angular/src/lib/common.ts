@@ -5,7 +5,7 @@ export const Keys = {
     space: ' ',
     backspace: 'Backspace',
     esc: 'Escape',
-    tab: 'Tab'
+    tab: 'Tab',
 };
 
 export enum Size {
@@ -64,7 +64,7 @@ export const getPositionedParent = (element: HTMLElement): HTMLElement => {
     }
 };
 
-export const getRealPosition = (element: HTMLElement): {top: number, left: number} => {
+export const getRealPosition = (element: HTMLElement): { top: number; left: number } => {
     let tmp: HTMLElement | null = element;
     let tagName = tmp.tagName.toLowerCase();
     let top = 0;
@@ -77,13 +77,17 @@ export const getRealPosition = (element: HTMLElement): {top: number, left: numbe
         tagName = tmp.tagName.toLowerCase();
     }
 
-    return {top, left};
+    return { top, left };
 };
 
-export const getVirtualScrollParentPosition = (element: HTMLElement): {bottom: number, right: number} | null => {
+export const getVirtualScrollParentPosition = (element: HTMLElement): { bottom: number; right: number } | null => {
     let tmp: HTMLElement = element;
 
-    while (!!tmp && tmp.tagName.toLowerCase() !== 'body' && tmp.tagName.toLowerCase() !== 'cdk-virtual-scroll-viewport') {
+    while (
+        !!tmp &&
+        tmp.tagName.toLowerCase() !== 'body' &&
+        tmp.tagName.toLowerCase() !== 'cdk-virtual-scroll-viewport'
+    ) {
         tmp = tmp.offsetParent as HTMLElement;
     }
 

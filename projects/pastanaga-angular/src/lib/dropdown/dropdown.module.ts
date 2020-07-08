@@ -11,14 +11,8 @@ import { OptionHeaderComponent } from './option-header/option-header.component';
 const COMPONENTS = [DropdownComponent, OptionHeaderComponent, OptionComponent, SeparatorComponent];
 
 @NgModule({
-    imports: [
-        CommonModule,
-
-        PaIconModule,
-        PaPopupModule,
-    ],
+    imports: [CommonModule, PaIconModule, PaPopupModule],
     declarations: COMPONENTS,
     exports: COMPONENTS,
 })
-export class PaDropdownModule {
-}
+export class PaDropdownModule {}

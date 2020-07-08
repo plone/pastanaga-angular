@@ -7,27 +7,25 @@ import { TableCellComponent } from './table-cell.component';
 import { TableRowComponent } from './table-row.component';
 import { TableComponent } from './table.component';
 
-
 @Component({
-    template: `
-<pa-table [columns]="columns" #table [noHeader]="noHeader">
-    <pa-table-header #header>
-        <pa-table-cell header clickable id="header-cell-1">Name</pa-table-cell>
-        <pa-table-cell header id="header-cell-2">Tags</pa-table-cell>
-        <pa-table-cell header>Size</pa-table-cell>
-    </pa-table-header>
-    <pa-table-row-header>Today</pa-table-row-header>
-    <pa-table-row clickable id="row-1">
-        <pa-table-cell header id="cell-1">My_text_file.txt</pa-table-cell>
-        <pa-table-cell id="cell-2">Bonjour, Occitania, França, Jenesepas</pa-table-cell>
-        <pa-table-cell>100 MB</pa-table-cell>
-    </pa-table-row>
-    <pa-table-row id="row-2">
-        <pa-table-cell header>My_text_file.txt</pa-table-cell>
-        <pa-table-cell>Bonjour, Occitania, França, Jenesepas</pa-table-cell>
-        <pa-table-cell>100 MB</pa-table-cell>
-    </pa-table-row>
-</pa-table>`,
+    template: ` <pa-table [columns]="columns" #table [noHeader]="noHeader">
+        <pa-table-header #header>
+            <pa-table-cell header clickable id="header-cell-1">Name</pa-table-cell>
+            <pa-table-cell header id="header-cell-2">Tags</pa-table-cell>
+            <pa-table-cell header>Size</pa-table-cell>
+        </pa-table-header>
+        <pa-table-row-header>Today</pa-table-row-header>
+        <pa-table-row clickable id="row-1">
+            <pa-table-cell header id="cell-1">My_text_file.txt</pa-table-cell>
+            <pa-table-cell id="cell-2">Bonjour, Occitania, França, Jenesepas</pa-table-cell>
+            <pa-table-cell>100 MB</pa-table-cell>
+        </pa-table-row>
+        <pa-table-row id="row-2">
+            <pa-table-cell header>My_text_file.txt</pa-table-cell>
+            <pa-table-cell>Bonjour, Occitania, França, Jenesepas</pa-table-cell>
+            <pa-table-cell>100 MB</pa-table-cell>
+        </pa-table-row>
+    </pa-table>`,
 })
 export class TestComponent {
     @ViewChild('table') table?: TableComponent;
@@ -42,8 +40,7 @@ describe('Table', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-            ],
+            imports: [],
             declarations: [
                 TableComponent,
                 TableRowComponent,
@@ -73,10 +70,14 @@ describe('Table', () => {
     });
 
     it('should set grid-template-columns css attribute', () => {
-        expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual('repeat(3, 1fr)');
+        expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual(
+            'repeat(3, 1fr)'
+        );
         component.columns = '60px 50px 40px';
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual('60px 50px 40px');
+        expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual(
+            '60px 50px 40px'
+        );
     });
 
     it('should set the clickable class on rows', () => {
@@ -85,8 +86,12 @@ describe('Table', () => {
     });
 
     it('should set the clickable class on headers', () => {
-        expect(fixture.debugElement.query(By.css('#header-cell-1 .pa-table-grid--header')).classes.clickable).toBe(true);
-        expect(fixture.debugElement.query(By.css('#header-cell-2 .pa-table-grid--header')).classes.clickable).toBe(false);
+        expect(fixture.debugElement.query(By.css('#header-cell-1 .pa-table-grid--header')).classes.clickable).toBe(
+            true
+        );
+        expect(fixture.debugElement.query(By.css('#header-cell-2 .pa-table-grid--header')).classes.clickable).toBe(
+            false
+        );
     });
 
     it('should support regular cells and header cells', () => {

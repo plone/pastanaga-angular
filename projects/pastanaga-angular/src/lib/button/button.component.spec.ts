@@ -10,9 +10,7 @@ describe('ButtonComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                PaIconModule,
-            ],
+            imports: [PaIconModule],
             declarations: [ButtonComponent],
         }).compileComponents();
     }));

@@ -18,14 +18,18 @@ const ACTION = 'action';
 let nextId = 0;
 
 @Directive({
-    selector: '[paTooltip]'
+    selector: '[paTooltip]',
 })
 export class TooltipDirective {
     @Input('paTooltip') text = '';
     @Input('paTooltipType') type: 'system' | 'action' = ACTION;
     @Input()
-    get paTooltipOffset(): number { return this.offset; }
-    set paTooltipOffset(value: number) { this.offset = coerceNumberProperty(value); }
+    get paTooltipOffset(): number {
+        return this.offset;
+    }
+    set paTooltipOffset(value: number) {
+        this.offset = coerceNumberProperty(value);
+    }
     protected offset = 0;
 
     id = '';
@@ -38,7 +42,7 @@ export class TooltipDirective {
         private element: ElementRef,
         private viewContainerRef: ViewContainerRef,
         private resolver: ComponentFactoryResolver,
-        private renderer: Renderer2,
+        private renderer: Renderer2
     ) {}
 
     @HostListener('focusin', ['$event'])
@@ -86,9 +90,7 @@ export class TooltipDirective {
     createTooltip(x: number, y: number) {
         this.id = `pa-tooltip-${nextId++}`;
         this.element.nativeElement.setAttribute('aria-describedby', this.id);
-        const factory = this.resolver.resolveComponentFactory(
-            TooltipComponent,
-        );
+        const factory = this.resolver.resolveComponentFactory(TooltipComponent);
         this.component = this.viewContainerRef.createComponent(factory);
         this.component.instance.id = this.id;
         this.component.instance.text = this.text;
@@ -99,11 +101,8 @@ export class TooltipDirective {
         this.component.instance.width = this.element.nativeElement.clientWidth;
         this.component.instance.height = this.element.nativeElement.clientHeight;
 
-        this.renderer.appendChild(
-            this.viewContainerRef.element.nativeElement,
-            this.component.location.nativeElement,
-        );
-        markForCheck(this.component.instance.cdr)
+        this.renderer.appendChild(this.viewContainerRef.element.nativeElement, this.component.location.nativeElement);
+        markForCheck(this.component.instance.cdr);
     }
 
     @HostListener('focusout')

@@ -3,18 +3,15 @@ import { Pipe, PipeTransform, Inject } from '@angular/core';
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
 
 @Pipe({
-  name: 'translate',
-  pure: true,
+    name: 'translate',
+    pure: true,
 })
 export class TranslatePipe implements PipeTransform {
     lastKey?: string;
     lastParams?: string;
     value: string | undefined = '';
 
-    constructor(
-        @Inject('LANG') private lang: any,
-        @Inject('TRANSLATIONS') private translations: any,
-    ) {}
+    constructor(@Inject('LANG') private lang: any, @Inject('TRANSLATIONS') private translations: any) {}
 
     transform(key?: string, args?: any): string {
         if (!key) {
@@ -25,33 +22,34 @@ export class TranslatePipe implements PipeTransform {
             return this.value as string;
         }
         const keys = !!key ? key.split('.') : [];
-        this.value = this.lang === 'en_US' ? this.getValue(keys, 'en_US', this.translations) :
-            (this.getValue(keys, this.lang, this.translations) || this.getValue(keys, 'en_US', this.translations));
+        this.value =
+            this.lang === 'en_US'
+                ? this.getValue(keys, 'en_US', this.translations)
+                : this.getValue(keys, this.lang, this.translations) || this.getValue(keys, 'en_US', this.translations);
         if (!!this.value && !!args) {
             this.lastParams = args;
             let value = this.value;
-            Object.keys(args).forEach(param => {
+            Object.keys(args).forEach((param) => {
                 let paramValue = args[param];
                 if (typeof paramValue === 'string') {
-                    paramValue = paramValue.replace(HTML_TAG_DELIMITERS, c => '&#' + c.charCodeAt(0) + ';');
+                    paramValue = paramValue.replace(HTML_TAG_DELIMITERS, (c) => '&#' + c.charCodeAt(0) + ';');
                 }
                 value = value.replace(new RegExp(`{{${param}}}`, 'g'), paramValue);
             });
             this.value = value;
         }
 
-        return (!!this.value || this.value === '') ? this.value : key;
+        return !!this.value || this.value === '' ? this.value : key;
     }
 
     private getValue(keys: string[], lang: string, translations: any): string | undefined {
         const translateKeys = translations[lang] || {};
         let value = translateKeys;
-        keys.forEach(k => {
+        keys.forEach((k) => {
             if (!!value) {
                 value = value[k];
             }
         });
         return !value || typeof value === 'string' ? value : keys.join('.');
     }
-
 }

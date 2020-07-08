@@ -1,5 +1,16 @@
 import { FormControl, ValidationErrors } from '@angular/forms';
-import { AfterContentInit, ChangeDetectorRef, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, Directive } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectorRef,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    ViewChild,
+    Directive,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -41,25 +52,45 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     @Input() debounceDuration = 500;
     @Input() errorMessages?: ErrorMessages;
     @Input()
-    get errorMessage(): string { return this._errorMessage; }
-    set errorMessage(value: string) { this._errorMessage = value; }
+    get errorMessage(): string {
+        return this._errorMessage;
+    }
+    set errorMessage(value: string) {
+        this._errorMessage = value;
+    }
     @Input()
-    get placeholder(): string { return this._placeholder; }
-    set placeholder(value: string) { this._placeholder = value || ''; }
+    get placeholder(): string {
+        return this._placeholder;
+    }
+    set placeholder(value: string) {
+        this._placeholder = value || '';
+    }
     @Input()
-    get value(): string | number { return this._value; }
-    set value(value: string | number) { this._value = !!value || value === 0 ? value : ''; }
+    get value(): string | number {
+        return this._value;
+    }
+    set value(value: string | number) {
+        this._value = !!value || value === 0 ? value : '';
+    }
     @Input()
-    get readonly(): boolean { return this._readonly; }
-    set readonly(value: boolean) { this._readonly = coerceBooleanProperty(value); }
+    get readonly(): boolean {
+        return this._readonly;
+    }
+    set readonly(value: boolean) {
+        this._readonly = coerceBooleanProperty(value);
+    }
     @Input()
-    get required(): boolean { return this._required; }
-    set required(value: boolean) { this._required = coerceBooleanProperty(value); }
+    get required(): boolean {
+        return this._required;
+    }
+    set required(value: boolean) {
+        this._required = coerceBooleanProperty(value);
+    }
 
     @Output() valueChange: EventEmitter<string | number> = new EventEmitter();
     @Output() instantValueChange: EventEmitter<string | number> = new EventEmitter();
     @Output() keyUp: EventEmitter<string> = new EventEmitter();
-    @Output() enter: EventEmitter<{event: KeyboardEvent, value: string}> = new EventEmitter();
+    @Output() enter: EventEmitter<{ event: KeyboardEvent; value: string }> = new EventEmitter();
     @Output() blurring: EventEmitter<string | number> = new EventEmitter();
     @Output() focusing: EventEmitter<FocusEvent> = new EventEmitter();
 
@@ -89,14 +120,11 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     debouncer: Subject<string> = new Subject();
 
-    constructor(
-        protected cdr: ChangeDetectorRef,
-    ) {
+    constructor(protected cdr: ChangeDetectorRef) {
         super();
-        this.debouncer.pipe(
-            takeUntil(this.terminator),
-            debounceTime(this.debounceDuration),
-        ).subscribe(value => this.valueChange.emit(value));
+        this.debouncer
+            .pipe(takeUntil(this.terminator), debounceTime(this.debounceDuration))
+            .subscribe((value) => this.valueChange.emit(value));
     }
 
     ngOnInit(): void {
@@ -135,7 +163,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
                 this.onChange(value);
             }
             if ($event.key === Keys.enter) {
-                this.enter.emit({event: $event, value});
+                this.enter.emit({ event: $event, value });
             }
         }
     }
@@ -152,15 +180,15 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     // tslint:disable:ban-types
     registerOnChange(handler: any): void {
-        this.onTouched = (handler as Function);
+        this.onTouched = handler as Function;
     }
 
     registerOnTouched(handler: any): void {
-        this.onChange = (handler as Function);
+        this.onChange = handler as Function;
     }
 
     registerOnValidatorChange(handler: () => void): void {
-        this.onValidatorChange = (handler as Function);
+        this.onValidatorChange = handler as Function;
     }
     // tslint:enable:ban-types
 
@@ -175,16 +203,16 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
         }
         const _errors: any = {};
         if (this._errors.required) {
-            _errors.required = {valid: false};
+            _errors.required = { valid: false };
         }
         if (this._errors.pattern) {
-            _errors.pattern = {valid: false};
+            _errors.pattern = { valid: false };
         }
         if (this._errors.min) {
-            _errors.min = {valid: false};
+            _errors.min = { valid: false };
         }
         if (this._errors.max) {
-            _errors.max = {valid: false};
+            _errors.max = { valid: false };
         }
         this._hasError = true;
         return _errors;
@@ -210,5 +238,4 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
         this.cdr.markForCheck();
         this.debouncer.next(value);
     }
-
 }

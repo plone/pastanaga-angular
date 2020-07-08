@@ -10,11 +10,10 @@ const DEFAULT_DELAY = 5000;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastComponent implements OnInit {
-
     @Input()
     set id(value: string) {
         this._id = value;
-    };
+    }
 
     @Input() message = '';
 
@@ -29,8 +28,7 @@ export class ToastComponent implements OnInit {
             this._actionButtonLabel = value.buttonLabel;
             this._icon = value.icon;
         }
-    };
-
+    }
 
     @Output() dismiss = new EventEmitter<string>();
 
@@ -40,8 +38,7 @@ export class ToastComponent implements OnInit {
     _action?: () => any;
     _class = '';
 
-    constructor() {
-    }
+    constructor() {}
 
     ngOnInit(): void {
         this.setupAutoClause();
@@ -57,5 +54,4 @@ export class ToastComponent implements OnInit {
         }
         this.dismiss.emit(this._id);
     }
-
 }

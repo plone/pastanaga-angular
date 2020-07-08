@@ -7,16 +7,9 @@ import { PaPopupModule } from '../../popup/popup.module';
 import { PaDropdownModule } from '../../dropdown/dropdown.module';
 import { TextareaComponent } from './textarea/textarea.component';
 
-
 @NgModule({
     declarations: [SelectComponent, InputComponent, TextareaComponent],
-    imports: [
-        CommonModule,
-        PaIconModule,
-        PaDropdownModule,
-        PaPopupModule,
-    ],
-    exports: [SelectComponent, InputComponent, TextareaComponent]
+    imports: [CommonModule, PaIconModule, PaDropdownModule, PaPopupModule],
+    exports: [SelectComponent, InputComponent, TextareaComponent],
 })
-export class PaTextFieldModule {
-}
+export class PaTextFieldModule {}

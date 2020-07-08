@@ -1,6 +1,6 @@
 export interface ToastConfig {
     buttonLabel?: string;
-    action? : () => any;
+    action?: () => any;
     icon?: string;
 }
 

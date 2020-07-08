@@ -9,15 +9,18 @@ import { PaIconModule } from '../icon/icon.module';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 
 @Component({
-    template: `
-<pa-dropdown [stayVisible]="stayVisible" #dropdown>
-    <pa-option-header>Menu list header</pa-option-header>
-    <pa-option glyph="settings" id="menu-item-1" (selectOption)="onSelect($event)">Menu list item 1</pa-option>
-    <pa-option disabled glyph="settings" id="menu-item-2" (selectOption)="onSelect($event)">Menu list item 2</pa-option>
-    <pa-option glyph="settings" id="menu-item-3" (selectOption)="onSelect($event)">Menu list item 3</pa-option>
-    <pa-separator></pa-separator>
-    <pa-option glyph="delete" destructive id="menu-item-destructive" (selectOption)="onSelect($event)">Menu item destructive</pa-option>
-</pa-dropdown>`,
+    template: ` <pa-dropdown [stayVisible]="stayVisible" #dropdown>
+        <pa-option-header>Menu list header</pa-option-header>
+        <pa-option glyph="settings" id="menu-item-1" (selectOption)="onSelect($event)">Menu list item 1</pa-option>
+        <pa-option disabled glyph="settings" id="menu-item-2" (selectOption)="onSelect($event)"
+            >Menu list item 2</pa-option
+        >
+        <pa-option glyph="settings" id="menu-item-3" (selectOption)="onSelect($event)">Menu list item 3</pa-option>
+        <pa-separator></pa-separator>
+        <pa-option glyph="delete" destructive id="menu-item-destructive" (selectOption)="onSelect($event)"
+            >Menu item destructive</pa-option
+        >
+    </pa-dropdown>`,
 })
 export class TestComponent {
     @ViewChild('dropdown') dropdown?: DropdownComponent;
@@ -30,14 +33,15 @@ describe('Dropdown', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                ...TESTING_IMPORTS,
-                PaIconModule,
+            imports: [...TESTING_IMPORTS, PaIconModule],
+            providers: [...TESTING_PROVIDERS],
+            declarations: [
+                DropdownComponent,
+                OptionHeaderComponent,
+                OptionComponent,
+                SeparatorComponent,
+                TestComponent,
             ],
-            providers: [
-                ...TESTING_PROVIDERS,
-            ],
-            declarations: [DropdownComponent, OptionHeaderComponent, OptionComponent, SeparatorComponent, TestComponent],
         }).compileComponents();
     }));
 

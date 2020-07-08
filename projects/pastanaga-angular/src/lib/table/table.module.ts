@@ -10,7 +10,13 @@ import { TableRowHeaderComponent } from './table-row-header.component';
 @NgModule({
     imports: [CommonModule],
     exports: [TableComponent, TableRowComponent, TableCellComponent, TableRowHeaderComponent, TableHeaderDirective],
-    declarations: [TableComponent, TableRowComponent, TableCellComponent, TableRowHeaderComponent, TableHeaderDirective],
+    declarations: [
+        TableComponent,
+        TableRowComponent,
+        TableCellComponent,
+        TableRowHeaderComponent,
+        TableHeaderDirective,
+    ],
     providers: [],
 })
-export class PaTableModule { }
+export class PaTableModule {}
