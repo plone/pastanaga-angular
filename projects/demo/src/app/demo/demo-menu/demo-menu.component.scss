@@ -20,6 +20,9 @@ $menu-width: rhythm(20);
     }
 
     nav {
+        overflow-y: auto;
+        max-height: calc(100% - #{rhythm(5)});
+
         .pa-doc-menu-section {
             margin-bottom: rhythm(2.5);
 
