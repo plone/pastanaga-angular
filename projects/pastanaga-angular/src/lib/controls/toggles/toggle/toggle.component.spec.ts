@@ -67,20 +67,18 @@ describe('ToggleComponent', () => {
 
 
     it('should apply modelChange', fakeAsync(() => {
+        // model -> view
         fixture.componentInstance.checked = true;
         fixture.detectChanges();
         tick();
-
-        // model -> view
         const input = fixture.debugElement.query(By.css('#toggle1 input'));
         expect(input.nativeElement.value).toEqual("true")
         expect(fixture.componentInstance.toggle?._checked).toEqual(true);
         expect(fixture.componentInstance.checked).toEqual(true);
 
+        // view -> model
         fixture.debugElement.query(By.css('#toggle1 .pa-toggle-container')).nativeElement.click();
         fixture.detectChanges();
-
-        // view -> model
         expect(input.nativeElement.value).toEqual("false");
         expect(fixture.componentInstance.toggle?._checked).toEqual(false);
         expect(fixture.componentInstance.checked).toEqual(false);
