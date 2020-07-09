@@ -132,7 +132,7 @@ export class TextareaComponent extends BaseTextField
         private autofillMonitor: AutofillMonitor,
         public element: ElementRef
     ) {
-        super(cdr);
+        super(cdr, element);
         this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => detectChanges(this.cdr));
     }
 

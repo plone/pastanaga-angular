@@ -89,7 +89,7 @@ export class InputComponent extends BaseTextField
         private autofillMonitor: AutofillMonitor,
         public element: ElementRef
     ) {
-        super(cdr);
+        super(cdr, element);
         this.valueChange.pipe(takeUntil(this.terminator)).subscribe(() => detectChanges(this.cdr));
     }
 
@@ -134,7 +134,7 @@ export class InputComponent extends BaseTextField
     _validate(value: string | number | undefined) {
         super._validate(value);
 
-        if ((!!value || typeof value === 'number') && this.type === 'number') {
+        if (!this.isUntouched() && (!!value || typeof value === 'number') && this.type === 'number') {
             const numVal = typeof value === 'number' ? value : parseFloat(value);
             if (typeof this.min === 'number') {
                 this._errors.min = numVal < this.min;
