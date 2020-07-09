@@ -120,7 +120,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     debouncer: Subject<string> = new Subject();
 
-    constructor(protected cdr: ChangeDetectorRef) {
+    constructor(protected cdr: ChangeDetectorRef, public element?: ElementRef) {
         super();
         this.debouncer
             .pipe(takeUntil(this.terminator), debounceTime(this.debounceDuration))
@@ -197,6 +197,9 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     }
 
     validate(control: FormControl): ValidationErrors | null {
+        if (!control.touched) {
+            return null;
+        }
         if (!this._errors.required && !this._errors.pattern && !this._errors.min && !this._errors.max) {
             this._hasError = false;
             return null;
@@ -219,6 +222,10 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     }
 
     _validate(value: string | number | undefined) {
+        if (this.isUntouched()) {
+            return;
+        }
+
         if (this._required) {
             this._errors.required = !value && value !== 0;
         }
@@ -237,5 +244,11 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
         this.instantValueChange.emit(value);
         this.cdr.markForCheck();
         this.debouncer.next(value);
+    }
+
+    protected isUntouched() {
+        return !!this.element && !!this.element.nativeElement
+            && !!this.element.nativeElement.classList
+            && this.element.nativeElement.classList.contains('ng-untouched');
     }
 }
