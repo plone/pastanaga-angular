@@ -200,7 +200,6 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
         if (!control.touched) {
             return null;
         }
-        console.log('BaseTextfield validate control', control);
         if (!this._errors.required && !this._errors.pattern && !this._errors.min && !this._errors.max) {
             this._hasError = false;
             return null;
