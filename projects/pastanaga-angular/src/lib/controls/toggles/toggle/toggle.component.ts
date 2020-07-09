@@ -49,7 +49,7 @@ export class ToggleComponent extends BaseControl
     // wait until <ng-content> rendering to set this to false
     _hasLabel = true;
 
-    onChange: () => void = () => {};
+    onChange: (change?: any) => void = () => {};
     onTouched: () => void = () => {};
 
     constructor(private cdr: ChangeDetectorRef) {
@@ -64,6 +64,9 @@ export class ToggleComponent extends BaseControl
                 this.input.nativeElement.blur();
             }
         }
+        if (changes.help && !this._hasLabel) {
+            this.updateLabelDisplay();
+        }
     }
 
     ngOnInit(): void {
@@ -75,10 +78,11 @@ export class ToggleComponent extends BaseControl
             this.input.nativeElement.focus();
         }
         if (!!this.label) {
-            const textLabel = this.label.nativeElement.textContent.trim();
-            this._hasLabel = textLabel.length;
             this._label = this.label.nativeElement.textContent.trim();
-            markForCheck(this.cdr);
+            // avoid expressionChanged after it was checked since _hasLabel is true by default
+            setTimeout(() => {
+                this.updateLabelDisplay();
+            });
         }
     }
 
@@ -86,11 +90,16 @@ export class ToggleComponent extends BaseControl
         super.ngOnDestroy();
     }
 
+    updateLabelDisplay() {
+        this._hasLabel = this._label.length > 0 || this._help.length > 0;
+        markForCheck(this.cdr);
+    }
+
     updateState() {
         if (!this._disabled) {
             const nextState = !this._checked;
-            this.onChange();
             this.onTouched();
+            this.onChange(nextState);
             this.writeValue(nextState);
         }
     }
