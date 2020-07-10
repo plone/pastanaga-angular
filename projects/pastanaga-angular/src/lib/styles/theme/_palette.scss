@@ -1,51 +1,66 @@
 // Colors palette
 
 // Grays
-$black:     #000;
-$carbon:    #6C7080;
-$panot:     #C2CBD6;
-$salt:      #E3E7EB;
-$air:       #F2F5F7;
-$white:     #fff;
+$_black:   #000;
+$_dolphin: hsl(207,17,58);
+$_silver:  hsl(207,17,80);
+$_smoke:   hsl(207,17,91);
+$_snow:    hsl(207,17,96);
+$_air:     #fff;
 
-// Blues                // Reds                     // Yellows
-$tapenade:  #001530;
-$midnight:  #132086;    $velvet:        #990F00;    $maple: #866213;
-$twilight:  #0D31BF;    $wine:          #CC0A00;    $gold:  #BF870D;
-$ocean:     #0047FF;    $gazpacho:      #ED0100;    $cava:  #FEBA2C;
-                          $watermelon:    #FF6666;    $honey: #FFCF66;
-$sail:      #66ABFF;                                  $cream: #FFE6B2;
-$mist:      #99CFFF;    $rose:          #FFCCCC;    $dawn:  #FFF6E0;
-$steam:     #E5F6FF;    $blossom:       #FFE5E5;
+// Blues
+$_denim:     hsl(207,90,7);
+$_royal:     hsl(207,90,31);
+$_sapphire:  hsl(207,90,43);
+$_cobalt:    hsl(207,90,55);
+$_azure:     hsl(207,90,73);
+$_sky:       hsl(207,90,85);
+$_arctic:    hsl(207,90,92);
+
+// Reds
+$_wine:      hsl(7,90,35);
+$_candy:     hsl(7,90,43);
+$_rose:      hsl(7,90,59);
+$_poppy:     hsl(7,90,78);
+$_flamingo:  hsl(7,90,89);
+$_ballet:    hsl(7,90,95);
+
+// Teal
+$_puya:      hsl(175,60,23);
+$_peacock:   hsl(175,60,31);
+$_turquoise: hsl(175,60,40);
+$_tiffany:   hsl(175,60,66);
+$_spa:       hsl(175,60,83);
+$_aqua:      hsl(175,60,90);
 
 // General tokens
-$color-neutral-primary-default:     $tapenade !default;
-$color-neutral-secondary-default:   $carbon !default;
-$color-neutral-secondary-light:     $panot !default;
-$color-neutral-secondary-lighter:   $salt !default;
-$color-neutral-secondary-lightest:  $air !default;
-$color-neutral-primary-lightest:    $white !default;
+$color-neutral-primary-default: $_denim !default;
+$color-neutral-secondary-default: $_dolphin !default;
+$color-neutral-secondary-light: $_silver !default;
+$color-neutral-secondary-lighter: $_smoke !default;
+$color-neutral-secondary-lightest: $_snow !default;
+$color-neutral-primary-lightest: $_air !default;
 
-$color-accent-primary-darker:     $midnight !default;
-$color-accent-primary-dark:       $twilight !default;
-$color-accent-primary-default:    $ocean !default;
-$color-accent-primary-light:      $sail !default;
-$color-accent-primary-lighter:    $mist !default;
-$color-accent-primary-lightest:   $steam !default;
+$color-accent-primary-darker: $_royal !default;
+$color-accent-primary-dark: $_sapphire !default;
+$color-accent-primary-default: $_cobalt !default;
+$color-accent-primary-light: $_azure !default;
+$color-accent-primary-lighter: $_sky !default;
+$color-accent-primary-lightest: $_arctic !default;
 
-$color-accent-secondary-darker:     $velvet !default;
-$color-accent-secondary-dark:       $wine !default;
-$color-accent-secondary-default:    $gazpacho !default;
-$color-accent-secondary-light:      $watermelon !default;
-$color-accent-secondary-lighter:       $rose !default;
-$color-accent-secondary-lightest:      $blossom !default;
+$color-accent-secondary-darker: $_wine !default;
+$color-accent-secondary-dark: $_candy !default;
+$color-accent-secondary-default: $_rose !default;
+$color-accent-secondary-light: $_poppy !default;
+$color-accent-secondary-lighter: $_flamingo !default;
+$color-accent-secondary-lightest: $_ballet !default;
 
-$color-accent-tertiary-darker:   $maple !default;
-$color-accent-tertiary-dark:     $gold !default;
-$color-accent-tertiary-default:  $cava !default;
-$color-accent-tertiary-light:    $honey !default;
-$color-accent-tertiary-lighter:  $cream !default;
-$color-accent-tertiary-lightest: $dawn !default;
+$color-accent-tertiary-darker: $_puya !default;
+$color-accent-tertiary-dark: $_peacock !default;
+$color-accent-tertiary-default: $_turquoise !default;
+$color-accent-tertiary-light: $_tiffany !default;
+$color-accent-tertiary-lighter: $_spa !default;
+$color-accent-tertiary-lightest: $_aqua !default;
 
 
 

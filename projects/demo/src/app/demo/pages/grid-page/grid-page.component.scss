@@ -1,8 +1,8 @@
 @import "../../../../../../pastanaga-angular/src/lib/styles/variables";
 
 [class^="grid-"] > div {
-    background-color: $cava;
-    color: $white;
+    background-color: $color-accent-tertiary-default;
+    color: $color-neutral-primary-lightest;
     padding: rhythm(0.25);
 }
 

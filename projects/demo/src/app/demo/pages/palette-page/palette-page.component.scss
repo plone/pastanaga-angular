@@ -1,0 +1,98 @@
+@import "../../../../../../pastanaga-angular/src/lib/styles/variables";
+
+.grid-8 {
+    grid-gap: 1px;
+    background-color: $color-neutral-secondary-lightest;
+    border: 1px solid $color-neutral-secondary-lightest;
+    & > div {
+        background-color: $color-neutral-primary-lightest;
+        display: grid;
+        justify-items: center;
+        padding: rhythm(1);
+        height: 100%;
+        small {
+            text-transform: uppercase;
+        }
+        & > div {
+            display: grid;
+            align-items: center;
+        }
+    }
+}
+[class*="color-"] {
+    height: rhythm(4);
+    width: rhythm(4);
+    border-radius: rhythm(2);
+}
+.color-neutral-primary-default {
+    background-color: $color-neutral-primary-default;
+}
+.color-neutral-primary-lightest {
+    background-color: $color-neutral-primary-lightest;
+}
+.color-neutral-secondary-default {
+    background-color: $color-neutral-secondary-default;
+}
+.color-neutral-secondary-light {
+    background-color: $color-neutral-secondary-light;
+}
+.color-neutral-secondary-lighter {
+    background-color: $color-neutral-secondary-lighter;
+}
+.color-neutral-secondary-lightest {
+    background-color: $color-neutral-secondary-lightest;
+}
+.color-accent-primary-darker {
+    background-color: $color-accent-primary-darker;
+}
+.color-accent-primary-dark {
+    background-color: $color-accent-primary-dark;
+}
+.color-accent-primary-default {
+    background-color: $color-accent-primary-default;
+}
+.color-accent-primary-light {
+    background-color: $color-accent-primary-light;
+}
+.color-accent-primary-lighter {
+    background-color: $color-accent-primary-lighter;
+}
+.color-accent-primary-lightest {
+    background-color: $color-accent-primary-lightest;
+}
+.color-accent-secondary-darker {
+    background-color: $color-accent-secondary-darker;
+}
+.color-accent-secondary-dark {
+    background-color: $color-accent-secondary-dark;
+}
+.color-accent-secondary-default {
+    background-color: $color-accent-secondary-default;
+}
+.color-accent-secondary-light {
+    background-color: $color-accent-secondary-light;
+}
+.color-accent-secondary-lighter {
+    background-color: $color-accent-secondary-lighter;
+}
+.color-accent-secondary-lightest {
+    background-color: $color-accent-secondary-lightest;
+}
+.color-accent-tertiary-darker {
+    background-color: $color-accent-tertiary-darker;
+}
+.color-accent-tertiary-dark {
+    background-color: $color-accent-tertiary-dark;
+}
+.color-accent-tertiary-default {
+    background-color: $color-accent-tertiary-default;
+}
+.color-accent-tertiary-light {
+    background-color: $color-accent-tertiary-light;
+}
+.color-accent-tertiary-lighter {
+    background-color: $color-accent-tertiary-lighter;
+}
+.color-accent-tertiary-lightest {
+    background-color: $color-accent-tertiary-lightest;
+}

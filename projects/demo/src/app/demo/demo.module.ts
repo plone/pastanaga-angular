@@ -27,7 +27,7 @@ import {
     PaTabsModule,
     PaTableModule,
     PaDateTimeModule,
-    PaToastModule
+    PaToastModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -48,6 +48,7 @@ import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 import { ToastPageComponent } from './pages/toast-page/toast-page.component';
 import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
+import { PalettePageComponent } from './pages/palette-page/palette-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -71,6 +72,7 @@ const COMPONENTS = [
     GridPageComponent,
     IconPageComponent,
     InputPageComponent,
+    PalettePageComponent,
     PopupPageComponent,
     SelectPageComponent,
     TabsPageComponent,
@@ -106,5 +108,4 @@ const COMPONENTS = [
     declarations: COMPONENTS,
     exports: COMPONENTS,
 })
-export class PaDemoModule {
-}
+export class PaDemoModule {}
