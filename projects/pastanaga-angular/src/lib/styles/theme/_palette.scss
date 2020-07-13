@@ -6,7 +6,7 @@ $_dolphin: hsl(207,17,58);
 $_silver:  hsl(207,17,80);
 $_smoke:   hsl(207,17,91);
 $_snow:    hsl(207,17,96);
-$_air:     #fff;
+$_white:   #fff;
 
 // Blues
 $_denim:     hsl(207,90,7);
@@ -39,7 +39,7 @@ $color-neutral-secondary-default: $_dolphin !default;
 $color-neutral-secondary-light: $_silver !default;
 $color-neutral-secondary-lighter: $_smoke !default;
 $color-neutral-secondary-lightest: $_snow !default;
-$color-neutral-primary-lightest: $_air !default;
+$color-neutral-primary-lightest: $_white !default;
 
 $color-accent-primary-darker: $_royal !default;
 $color-accent-primary-dark: $_sapphire !default;
