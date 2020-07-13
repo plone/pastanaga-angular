@@ -57,6 +57,11 @@ export class AvatarComponent {
         this._iconAvatarSize = this._isLarge ? Size.xxlarge : Size.medium;
     }
 
+    @Input() set autoBackground(value: boolean)  {
+        this._autoBackground = coerceBooleanProperty(value);
+        this.assignColorClass();
+    }
+
     @Input() icon?: string;
     @Input() iconColor?: string;
     @Input() iconBackgroundColor?: string;
@@ -71,6 +76,7 @@ export class AvatarComponent {
     _base64Image?: string;
     _iconSize = Size.xxsmall;
     _iconAvatarSize = Size.medium;
+    _autoBackground = false;
 
     constructor(private cdr: ChangeDetectorRef) {}
 
@@ -95,7 +101,11 @@ export class AvatarComponent {
     }
 
     private assignColorClass() {
-        const id = !!this._userId ? this._userId : this._userName ? this._userName : this._initials;
-        this._colorClass = `pa-avatar-${getAvatarColor(id)}`;
+        let colorClass = 'default';
+        if (this._autoBackground) {
+            const id = !!this._userId ? this._userId : this._userName ? this._userName : this._initials;
+            colorClass = getAvatarColor(id);
+        }
+        this._colorClass = `pa-avatar-${colorClass}`;
     }
 }

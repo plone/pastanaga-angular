@@ -56,10 +56,10 @@
     .pa-avatar-default {
         display: inline-flex;
         @include full-size-circle();
+        background: $color-neutral-secondary-light;
         .pa-avatar-initials {
             @include font-size($avatar-default-text-size);
             margin: auto;
-            color: $avatar-initials-color;
             font-weight: $avatar-initials-font-weight;
             text-transform: uppercase;
         }
@@ -107,6 +107,26 @@
         }
         &.pa-avatar-azure {
             background: $avatar-azure;
+        }
+
+        &.pa-avatar-blue,
+        &.pa-avatar-teal,
+        &.pa-avatar-jade,
+        &.pa-avatar-green,
+        &.pa-avatar-lime,
+        &.pa-avatar-kaki,
+        &.pa-avatar-yellow,
+        &.pa-avatar-orange,
+        &.pa-avatar-salmon,
+        &.pa-avatar-red,
+        &.pa-avatar-crisom,
+        &.pa-avatar-magenta,
+        &.pa-avatar-violet,
+        &.pa-avatar-indigo,
+        &.pa-avatar-azure {
+            .pa-avatar-initials {
+                color: $avatar-initials-color;
+            }
         }
     }
 
