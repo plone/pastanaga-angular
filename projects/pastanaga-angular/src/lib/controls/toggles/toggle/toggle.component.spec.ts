@@ -66,8 +66,10 @@ describe('ToggleComponent', () => {
     });
 
 
-    it('should apply modelChange', fakeAsync(() => {
+    it('should apply modelChange to view', fakeAsync(() => {
         // model -> view
+        fixture.detectChanges();
+        tick();
         fixture.componentInstance.checked = true;
         fixture.detectChanges();
         tick();
@@ -76,15 +78,23 @@ describe('ToggleComponent', () => {
         expect(fixture.componentInstance.toggle?._checked).toEqual(true);
         expect(fixture.componentInstance.checked).toEqual(true);
 
-        // view -> model
-        fixture.debugElement.query(By.css('#toggle1 .pa-toggle-container')).nativeElement.click();
+    }));
+
+    it('should apply view Change to model', fakeAsync(() => {
         fixture.detectChanges();
-        expect(input.nativeElement.value).toEqual("false");
-        expect(fixture.componentInstance.toggle?._checked).toEqual(false);
-        expect(fixture.componentInstance.checked).toEqual(false);
+        tick();
+        const input = fixture.debugElement.query(By.css('#toggle1 input'));
+        input.nativeElement.click();
+        fixture.detectChanges();
+        tick();
+        expect(input.nativeElement.value).toEqual("true");
+        expect(fixture.componentInstance.toggle?._checked).toEqual(true);
+        expect(fixture.componentInstance.checked).toEqual(true);
     }));
 
     it('should apply formControl change', fakeAsync(() => {
+        fixture.detectChanges();
+        tick();
         fixture.componentInstance.form.patchValue({checked: true});
         fixture.detectChanges();
         tick();
@@ -96,10 +106,11 @@ describe('ToggleComponent', () => {
         expect(fixture.componentInstance.form.value.checked).toEqual(true);
         expect(fixture.componentInstance.form.pristine).toEqual(true);
 
+        // view -> model
         fixture.debugElement.query(By.css('#form .pa-toggle-container')).nativeElement.click();
         fixture.detectChanges();
+        tick();
 
-        // view -> model
         expect(input.nativeElement.value).toEqual("false");
         expect(fixture.componentInstance.toggleForm?._checked).toEqual(false);
         expect(fixture.componentInstance.form.value.checked).toEqual(false);

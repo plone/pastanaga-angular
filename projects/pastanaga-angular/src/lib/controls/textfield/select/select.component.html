@@ -17,7 +17,7 @@
                   [popupDisabled]="_disabled"
                   (instantValueChange)="filterOptions($event)"
         >{{_label}}</pa-input>
-        <pa-icon class="pa-select-chevron" name="chevron-down"></pa-icon>
+        <pa-icon class="pa-select-chevron" name="chevron-down" (click)="toggleDropdown()"></pa-icon>
     </div>
 
     <pa-dropdown #dropdownOptions

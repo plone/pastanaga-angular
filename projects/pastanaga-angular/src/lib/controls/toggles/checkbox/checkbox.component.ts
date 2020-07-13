@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { BaseControl } from '../../base-control';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { detectChanges, markForCheck } from '../../../common';
+import { detectChanges } from '../../../common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -71,7 +71,8 @@ export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy,
         if (this._type === 'checkbox' || !this._selected) {
             this._selected = !this._selected;
         }
-        markForCheck(this.cdr);
+        this.onChange(this._selected);
+        this.onTouched();
         this.selectedChange.emit(this._selected);
     }
 
@@ -90,5 +91,6 @@ export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy,
 
     writeValue(obj: any) {
         this._selected = coerceBooleanProperty(obj);
+        detectChanges(this.cdr);
     }
 }
