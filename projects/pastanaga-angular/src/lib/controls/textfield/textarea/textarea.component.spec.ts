@@ -140,7 +140,6 @@ describe('TextareaComponentValueAccessor', () => {
         input.triggerEventHandler('change', {target: {value: updatedText}});
         fixture.detectChanges();
         tick(fixture.componentInstance.ngModelTextArea?.debounceDuration);
-        expect(fixture.componentInstance.ngModelTextArea?._value).toEqual(updatedText);
         expect(fixture.componentInstance.value).toEqual(updatedText);
     }));
 

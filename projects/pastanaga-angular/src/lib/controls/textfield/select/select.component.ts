@@ -14,7 +14,7 @@ import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '..
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { takeUntil } from 'rxjs/operators';
 import { markForCheck } from '../../../common';
-import { DropdownComponent } from '../../../..';
+import { DropdownComponent } from '../../../dropdown/dropdown.component';
 
 @Component({
     selector: 'pa-select',
