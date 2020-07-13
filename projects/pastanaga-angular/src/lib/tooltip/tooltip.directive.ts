@@ -70,7 +70,7 @@ export class TooltipDirective {
         if (!!this.text && !this.isDisplayed) {
             const position = this.getFixedPosition(event);
             if (!this.component) {
-                this.createTooltip(position[0], position[1]);
+                this.createTooltip(position[0], position[1], position[2], position[3]);
             } else {
                 this.show(position[0], position[1]);
             }
@@ -87,7 +87,7 @@ export class TooltipDirective {
         }
     }
 
-    createTooltip(x: number, y: number) {
+    createTooltip(x: number, y: number, width: number, height: number) {
         this.id = `pa-tooltip-${nextId++}`;
         this.element.nativeElement.setAttribute('aria-describedby', this.id);
         const factory = this.resolver.resolveComponentFactory(TooltipComponent);
@@ -98,8 +98,8 @@ export class TooltipDirective {
         this.component.instance.left = x || 0;
         this.component.instance.top = y || 0;
         this.component.instance.offset = this.offset || 0;
-        this.component.instance.width = this.element.nativeElement.clientWidth;
-        this.component.instance.height = this.element.nativeElement.clientHeight;
+        this.component.instance.width = width;
+        this.component.instance.height = height;
 
         this.renderer.appendChild(this.viewContainerRef.element.nativeElement, this.component.location.nativeElement);
         markForCheck(this.component.instance.cdr);
@@ -115,22 +115,22 @@ export class TooltipDirective {
         this.isDisplayed = false;
     }
 
-    getFixedPosition(event: MouseEvent): [number, number] {
-        let position: [number, number];
+    getFixedPosition(event: MouseEvent): [number, number, number, number] {
+        const rect = this.element.nativeElement.getBoundingClientRect();
+        let position: [number, number, number, number];
         if (this.type === ACTION) {
-            const rect = this.element.nativeElement.getBoundingClientRect();
-            position = [rect.left, rect.top];
+            position = [rect.left, rect.top, rect.width, rect.height];
         } else if (event.type === 'focusin') {
             const rect = this.element.nativeElement.getBoundingClientRect();
-            position = [rect.right, rect.bottom];
+            position = [rect.right, rect.bottom, rect.width, rect.height];
         } else {
-            position = [event.pageX, event.pageY];
+            position = [event.pageX, event.pageY, rect.width, rect.height];
         }
         if (!this.rootParent) {
             this.rootParent = this.getFixedRootParent(this.element.nativeElement);
         }
         const rootRect = this.rootParent.getBoundingClientRect();
-        return [position[0] - rootRect.left, position[1] - rootRect.top];
+        return [position[0] - rootRect.left, position[1] - rootRect.top, position[2], position[3]];
     }
 
     getFixedRootParent(element: HTMLElement): HTMLElement {
