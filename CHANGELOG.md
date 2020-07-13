@@ -1,3 +1,8 @@
+# 1.18.10 (2020-07-13)
+
+### Improvements
+Update readme now pastanaga 2.0 is released and deployed in place of pastanaga 1.x demo. 
+
 # 1.18.9 (2020-07-06)
 
 ### Improvements

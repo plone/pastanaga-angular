@@ -2,8 +2,13 @@
 
 [![Build Status](https://travis-ci.com/plone/pastanaga-angular.svg?branch=master)](https://travis-ci.com/plone/pastanaga-angular)
 
+## Pastanaga 2.0 is now released
+For now, it's still living on its own branch: [origin/2.x](https://github.com/plone/pastanaga-angular/tree/2.x)
+
 Demo:
 https://plone.github.io/pastanaga-angular
+
+## Pastanaga 1.x
 
 Provides the Pastanaga elements as Angular components.
 
