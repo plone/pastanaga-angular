@@ -7,7 +7,7 @@ import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { PaIconModule } from '../icon/icon.module';
 
 @Component({
-    template: `<pa-avatar #avatar [userId]="userId" [userName]="userName" [icon]="icon"></pa-avatar>`,
+    template: `<pa-avatar #avatar [userId]="userId" [userName]="userName" [icon]="icon" [autoBackground]="true"></pa-avatar>`,
 })
 export class TestComponent {
     userId = '';
