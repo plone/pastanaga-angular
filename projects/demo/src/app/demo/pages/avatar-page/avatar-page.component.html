@@ -55,36 +55,35 @@
         <h3>Inputs</h3>
 
         <dl>
-            <dt>userId</dt>
-            <dd>Used to generate a background color when no image or backgroundColor is provided.</dd>
-
-            <dt>userName</dt>
-            <dd>Used to generate Displayed initials and a background color when no image or backgroundColor is provided.</dd>
-
-            <dt>backgroundColor</dt>
-            <dd>Specifies the hexa background color to use when no image is provided. Generated backgroundColor will then be override.</dd>
-
-            <dt>image</dt>
-            <dd>Observable of blob. Provides the image to the component. Once an image is provided, generated initials and backgroundColor are not displayed.</dd>
-
-            <dt>large</dt>
-            <dd>Toggles avatar display size.</dd>
+            <dt>alternateText</dt>
+            <dd>The text used to fill alt property of the image. When Avatar is displayed as an Icon, and the size is large, this text can also provide a label to the icon. <small>(optional)</small></dd>
 
             <dt>autoBackground</dt>
-            <dd>Let component choose initial's background color according to userName or userId.</dd>
+            <dd>Let component choose initial's background color according to userName or userId. <small>false by default</small></dd>
+
+            <dt>backgroundColor</dt>
+            <dd>Hexadecimal value to be used as background color when no <code>image</code> is provided. If <code>autoBackground</code> is true, <code>backgroundColor</code> overrides the generated one. <small>(optional)</small></dd>
 
             <dt>icon</dt>
-            <dd>Icon name to be used. When an image or a userName is provided, the icon will be displayed on the bottom right corner of the avatar. Otherwise, the icon will be displayed as an avatar himself.</dd>
-
-            <dt>iconColor</dt>
-            <dd>Hexa color of the icon.</dd>
+            <dd>Icon name to be used. When an image or a userName is provided, the icon will be displayed on the bottom right corner of the avatar. Otherwise, the icon will be displayed as an avatar itself. <small>(optional)</small></dd>
 
             <dt>iconBackgroundColor</dt>
-            <dd>Hexa color of icon's background.</dd>
+            <dd>Hexadecimal color of icon's background. <small>(optional)</small></dd>
 
-            <dt>alternateText</dt>
-            <dd>The text used to fill alt property of the image. When Avatar is displayed as an Icon, and the size is large, this text can also provide a label to the icon.</dd>
+            <dt>iconColor</dt>
+            <dd>Hexadecimal color of the icon. <small>(optional)</small></dd>
 
+            <dt>image</dt>
+            <dd>Provides to be displayed as avatar. Expect an observable of blob. Once an image is provided, generated initials and backgroundColor are not displayed anymore. <small>(optional)</small></dd>
+
+            <dt>large</dt>
+            <dd>Display large avatar <small>false by default</small></dd>
+
+            <dt>userId</dt>
+            <dd>Used to generate a background color when no <code>image</code> or <code>backgroundColor</code> is provided. <small>(optional)</small></dd>
+
+            <dt>userName</dt>
+            <dd>Used to generate displayed initials and a background color when no <code>image</code> or <code>backgroundColor</code> is provided. <small>(optional)</small></dd>
         </dl>
     </pa-demo-usage>
 
