@@ -42,6 +42,7 @@ export class AvatarPageComponent implements OnInit {
     iconBackgroundColor: string | undefined  = undefined;
     isLarge = false;
     alternateText: string | undefined;
+    autoBackground = false;
 
     // configuration
     hasUserName = false;
@@ -60,6 +61,7 @@ export class AvatarPageComponent implements OnInit {
     [alternateText]="alternateText"
     [backgroundColor]="backgroundColor"
     [large]="isLarge"
+    [autoBackground]="autoBackground"
     [icon]="icon"
     [iconColor]="iconColor"
     [iconBackgroundColor]="iconBackgroundColor"
