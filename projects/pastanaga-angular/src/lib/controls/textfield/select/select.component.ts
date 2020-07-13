@@ -3,17 +3,18 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    ContentChildren, ElementRef,
     Input,
     OnDestroy,
     OnInit,
-    QueryList,
+    QueryList, ViewChild,
 } from '@angular/core';
 import { BaseTextField } from '../base-text-field';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { takeUntil } from 'rxjs/operators';
 import { markForCheck } from '../../../common';
+import { DropdownComponent } from '../../../dropdown/dropdown.component';
 
 @Component({
     selector: 'pa-select',
@@ -43,6 +44,8 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
         }
     }
 
+    @ViewChild('dropdownInput', {read: ElementRef}) input?: ElementRef;
+    @ViewChild('dropdownOptions') dropdown?: DropdownComponent;
     /** All of the defined select options. */
     @ContentChildren(OptionComponent, { descendants: true }) optionComponents?: QueryList<OptionComponent>;
 
@@ -113,6 +116,18 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
                 return newOption;
             });
             markForCheck(this.cdr);
+        }
+    }
+
+    toggleDropdown() {
+        if (!!this.input && !!this.dropdown) {
+            if (this.dropdown._isDisplayed) {
+                this.dropdown.close();
+            } else {
+                // show dropdown via input click to use positioning of paPopup directive
+                // paPopup will listen to click and close itself immediately if we dont wait for a tick
+                setTimeout(() => this.input?.nativeElement.click(), 0);
+            }
         }
     }
 

@@ -16,20 +16,23 @@
     <div
         class="pa-toggle-container"
         [ngClass]="{checked: _checked, focused: _hasFocus, disabled: _disabled}"
-        (click)="updateState()"
+        (click)="updateState(!_checked)"
     >
         <input #inputElement
                type="checkbox"
                class="toggle-checkbox"
+               ngModel="_checked"
                [id]="_id"
                [name]="_name"
                [disabled]="_disabled"
+               [checked]="_checked"
+               [value]="_checked"
                [attr.aria-label]="_label"
                [attr.aria-disabled]="_disabled"
                [attr.aria-checked]="_checked"
-               [value]="_checked"
                (blur)="onBlur()"
                (focus)="onFocus()"
+               (ngModelChange)="updateState(_checked)"
         >
         <span class="pa-toggle-slider"></span>
     </div>

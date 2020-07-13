@@ -95,12 +95,11 @@ export class ToggleComponent extends BaseControl
         markForCheck(this.cdr);
     }
 
-    updateState() {
-        if (!this._disabled) {
-            const nextState = !this._checked;
+    updateState(event: any) {
+        if (!this._disabled && event !== this._checked ) {
+            this._checked= !this._checked;
+            this.onChange(this._checked);
             this.onTouched();
-            this.onChange(nextState);
-            this.writeValue(nextState);
         }
     }
 
