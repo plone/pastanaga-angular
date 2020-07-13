@@ -8,7 +8,7 @@
         "start": "ng serve",
         "deploy": "npm run icon_list && ng deploy --base-href=/pastanaga-angular/",
         "build:lib": "ng build --prod",
-        "build:demo": "ng build demo --prod --base-href /pastanaga-angular/",
+        "build:demo": "npm run icon_list && ng build demo --prod --base-href /pastanaga-angular/",
         "build": "npm run icon_list && npm run build:lib && npm run build:demo",
         "lint": "ng lint",
         "test:lib": "jest --config ./projects/pastanaga-angular/jest.config.js",

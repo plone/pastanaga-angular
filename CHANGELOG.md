@@ -1,3 +1,8 @@
+# 2.0.1 (2020-07-13)
+
+### Improvements
+- Auto tag and deploy when merging on 2.x branch
+
 # 2.0.0 (2020-07-13)
 
 New major version of Pastanaga where almost all components have been re-written for a better theme management.
