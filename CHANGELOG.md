@@ -1,3 +1,8 @@
+# 1.18.11 (2020-07-13)
+
+### Improvements
+Prevent 1.x branch to be deployed on merge, so we always keep 2.x branch online.
+
 # 1.18.10 (2020-07-13)
 
 ### Improvements
