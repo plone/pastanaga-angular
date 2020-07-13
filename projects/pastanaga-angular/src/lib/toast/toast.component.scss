@@ -2,7 +2,7 @@
 
 :host {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
     margin: 0 auto;
@@ -12,6 +12,9 @@
     background: $color-neutral-primary-lightest;
     -webkit-animation: toastin .5s;
     animation: toastin .5s;
+}
+pa-icon {
+    margin-right: rhythm(1);
 }
 @-webkit-keyframes toastin {
     from {max-height: 0}
