@@ -1,5 +1,9 @@
 @import "variables";
 
+pa-button:focus {
+    outline: 0;
+}
+
 .pa-button {
     background: transparent;
     display: inline-block;
