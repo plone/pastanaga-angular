@@ -47,11 +47,11 @@
             position: absolute;
             border-radius: 50%;
             transition: 0.3s;
-            top: 8.33%;
-            right: 54.17%;
-            bottom: 8.33%;
-            left: 4.17%;
-            box-shadow: $shadow-pill;
+            top: rhythm(.25);
+            right: rhythm(2.25);
+            bottom: rhythm(.25);
+            left: rhythm(.25);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
             background-color: $color-neutral-primary-lightest;
         }
     }
