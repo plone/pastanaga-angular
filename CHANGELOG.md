@@ -1,3 +1,8 @@
+# 2.0.2 (2020-07-15)
+
+### Improvements
+- Style changes for components states (checkbox, buttons, tabs, text-field, toggle)
+
 # 2.0.1 (2020-07-13)
 
 ### Improvements
