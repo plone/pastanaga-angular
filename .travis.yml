@@ -49,7 +49,7 @@ jobs:
         skip_cleanup: true
         github_token: $GITHUB_TOKEN
         keep_history: true
-        local_dir: dist/pastanaga-app
+        local_dir: dist/demo
         on:
           repo: plone/pastanaga-angular
           branch: 2.x
