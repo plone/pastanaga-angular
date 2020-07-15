@@ -13,7 +13,6 @@
 
         &:focus {
             outline: 0;
-            box-shadow: $shadow-focus;
         }
         &:not(:disabled):hover {
             border: $border-toggle-unselected-hover;
@@ -27,6 +26,10 @@
             &:not(:disabled):hover {
                 border: $border-toggle-selected-hover;
                 background-color: $color-background-toggle-selected-hover;
+            }
+            &:disabled {
+                background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(#{$color-check-toggle-disabled}, 2) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
+                border: $border-toggle-unselected;
             }
         }
         &:disabled {
@@ -42,6 +45,10 @@
 
             &:checked {
                 background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" fill-rule="evenodd"/></svg>');
+                &:disabled {
+                    border: $border-toggle-selected;
+                    background-color: $color-check-toggle-disabled;
+                }
             }
         }
     }
