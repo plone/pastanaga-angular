@@ -1,7 +1,7 @@
 # 2.0.1 (2020-07-13)
 
 ### Improvements
-- Auto tag and deploy when merging on 2.x branch
+- Auto tag, deploy GitHub Pages, and release on NPM when merging on 2.x branch
 
 # 2.0.0 (2020-07-13)
 
