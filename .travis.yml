@@ -9,7 +9,7 @@ install:
 - npm install
 script:
 - npm run test:ci
-- npm run build:demo
+- npm run build_demo
 notifications:
   email:
   - ebrehault@gmail.com
@@ -30,7 +30,7 @@ jobs:
           tags: true
     - stage: NPM release
       if: tag IS present
-      before_deploy: npm run build && cd dist/pastanaga-angular
+      before_deploy: npm run build_lib && cd dist/pastanaga
       deploy:
         provider: npm
         edge: true
