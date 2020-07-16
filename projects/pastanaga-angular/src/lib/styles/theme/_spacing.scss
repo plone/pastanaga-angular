@@ -48,5 +48,10 @@ $size-viewport-tiny        : 480px !default;
 $size-viewport-small       : 576px !default;
 $size-viewport-medium      : 768px !default;
 $size-viewport-large       : 1280px !default;
-$grid-cols        : 12 !default;
-$grid-gutters: 12px !default;
+
+$grid-cols:     12 !default;
+$grid-gutters:  12px !default;
+
+// headings spacing
+$margin-bottom-title:       rhythm(2) !default;
+$margin-bottom-paragraph:   rhythm(1) !default;

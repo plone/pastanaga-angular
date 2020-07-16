@@ -1,3 +1,8 @@
+# 2.0.4 NOT RELEASED YET
+
+### Improvements
+- Add default title and paragraph spacing to pastanaga theme
+
 # 2.0.3 (2020-07-15)
 
 ### Bugfixes
