@@ -1,3 +1,11 @@
+# 2.0.3 (2020-07-15)
+
+### Bugfixes
+- split pastanaga overrides in two distinct files so overriding color palette works properly on components like button
+
+### Improvements
+- keep shadow tokens generic
+
 # 2.0.2 (2020-07-15)
 
 ### Improvements

@@ -1,15 +1,19 @@
 @import "theme/palette";
+@import "theme/shadows";
 @import "theme/spacing";
 @import "theme/typography";
-@import "theme/body-colors";
 @import "theme/z-index";
-@import "theme/avatar";
 
+@import "pastanaga-core-overrides.scss";
+
+@import "theme/avatar";
+@import "theme/body-colors";
 @import "theme/button";
 @import "theme/menu";
+@import "theme/tables";
+@import "theme/tabs";
 @import "theme/textfield";
 @import "theme/toggle";
-@import "theme/tabs";
-@import "theme/tables";
+@import "theme/tooltip";
 
-@import "src/pastanaga-overrides.scss";
+@import "pastanaga-component-overrides.scss";
