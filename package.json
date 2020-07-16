@@ -7,7 +7,7 @@
         "prestart": "npm run icon_list",
         "start": "ng serve",
         "deploy": "npm run icon_list && ng deploy --base-href=/pastanaga-angular/",
-        "build:demo": "npm run icon_list && ng build demo --prod --base-href /pastanaga-angular/",
+        "build:demo": "npm run icon_list && ng build demo --prod --base-href /pastanaga-angular/ && cp ./dist/demo/index.html ./dist/demo/404.html",
         "build": "ng build --prod",
         "lint": "ng lint",
         "test:lib": "jest --config ./projects/pastanaga-angular/jest.config.js",
