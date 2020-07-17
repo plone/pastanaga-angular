@@ -6,7 +6,7 @@ pa-button:focus {
 
 .pa-button {
     background: transparent;
-    display: inline-block;
+    display: inline-flex;
     padding: 0;
     margin: 0;
     outline: 0;
@@ -14,8 +14,17 @@ pa-button:focus {
     border: none;
     border-radius: $border-radius-button;
 
+    .pa-button-wrapper {
+        display: inline-flex;
+        align-items: center
+    }
+
     svg {
+        display: block;
         fill: currentColor;
+    }
+    .pa-icon-text {
+        margin-right: rhythm(.5);
     }
 
     &.pa-button-icon {

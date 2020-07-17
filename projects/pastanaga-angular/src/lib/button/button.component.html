@@ -7,7 +7,11 @@
         (click)="onClick($event)"
 >
     <span class="pa-button-wrapper" tabindex="-1" (click)="clickOnWrapper($event)">
-        <pa-icon *ngIf="!!_icon" [name]="_icon" [size]="_iconSize"></pa-icon>
+        <pa-icon *ngIf="!!_icon"
+                 [name]="_icon"
+                 [size]="_iconSize"
+                 [class.pa-icon-text]="_iconAndText"
+        ></pa-icon>
         <span #textContainer class="pa-button-label"
               [class.pa-sr]="!!_icon && !_iconAndText"
         ><ng-content></ng-content></span>

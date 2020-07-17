@@ -161,11 +161,11 @@ $padding-button-small:  rhythm(.5) rhythm(1) !default;
 $padding-button-medium: rhythm(.5) rhythm(1.5) !default;
 $padding-button-large:  rhythm(.5) rhythm(2) !default;
 
-$padding-button-icon-xsmall:    rhythm(.25) rhythm(.5) !default;
-$padding-button-icon-small:     rhythm(.5) rhythm(.75) !default;
-$padding-button-icon-medium:    rhythm(.5) rhythm(.75) !default;
-$padding-button-icon-large:     rhythm(.5) rhythm(1.5) !default;
+$padding-button-icon-xsmall:    rhythm(.5) !default;
+$padding-button-icon-small:     rhythm(.75) !default;
+$padding-button-icon-medium:    rhythm(.75) !default;
+$padding-button-icon-large:     rhythm(1.5) !default;
 
 $shadow-button-solid-hover:    $shadow-level0 !default;
-$shadow-button-regular-hover:   $shadow-level0 !default;
-$shadow-button-basic-hover:       $shadow-level0 !default;
+$shadow-button-regular-hover:  $shadow-level0 !default;
+$shadow-button-basic-hover:    $shadow-level0 !default;
