@@ -1,26 +1,38 @@
+# 2.1.0 (2020-07-20)
+
+### Improvements
+**Theme**
+- Typography: new font-size and line-height maps for small screens [mpellerin42]
+
+### Breaking changes
+**Theme**
+- renaming shadows' variable [mpellerin42]
+- better variables to manage breakpoints [mpellerin42]
+- renaming typography mixins to be more relevant: `size` now applies `font-size` and `line-height` [mpellerin42]
+
 # 2.0.4 (2020-07-17)
 
 ### Improvements
-- Add default title and paragraph spacing to pastanaga theme
-- **Button**: style improvements (better alignment)
+- Add default title and paragraph spacing to pastanaga theme [mpellerin42]
+- **Button**: style improvements (better alignment) [mpellerin42]
 
 # 2.0.3 (2020-07-15)
 
 ### Bugfixes
-- split pastanaga overrides in two distinct files so overriding color palette works properly on components like button
+- split pastanaga overrides in two distinct files so overriding color palette works properly on components like button [mpellerin42]
 
 ### Improvements
-- keep shadow tokens generic
+- keep shadow tokens generic [mpellerin42]
 
 # 2.0.2 (2020-07-15)
 
 ### Improvements
-- Style changes for components states (checkbox, buttons, tabs, text-field, toggle)
+- Style changes for components states (checkbox, buttons, tabs, text-field, toggle) [julienCarret]
 
 # 2.0.1 (2020-07-13)
 
 ### Improvements
-- Auto tag, deploy GitHub Pages, and release on NPM when merging on 2.x branch
+- Auto tag, deploy GitHub Pages, and release on NPM when merging on 2.x branch [ebrehault]
 
 # 2.0.0 (2020-07-13)
 
@@ -58,6 +70,11 @@ All components are now tested and documented.
 - toast component, model and service
 - tooltip component and directive
 - translate directive, model, pipe and service
+
+### Contributors:
+- [ebrehault]
+- [julienCarret]
+- [mpellerin42]
 
 # 1.18.9 (2020-07-06)
 
@@ -118,7 +135,7 @@ All components are now tested and documented.
 # 1.17.21 (2020-05-06)
 
 ### Bug fix
-- **Translare**: don't try to encode HTML tags in translation parameters when not a string [mathilde-pellerin]
+- **Translare**: don't try to encode HTML tags in translation parameters when not a string [mpellerin42]
 
 # 1.17.20 (2020-05-06)
 
@@ -133,7 +150,7 @@ All components are now tested and documented.
 # 1.17.18 (2020-04-28)
 
 ### Improvements
-- **Filtered checkbox group**: [mathilde-pellerin]
+- **Filtered checkbox group**: [mpellerin42]
     - Make filtered checkbox group extendable
     - Don't override id input
 
@@ -150,7 +167,7 @@ All components are now tested and documented.
 # 1.17.15 (2020-04-14)
 
 ### Improvement
-- Dialog: change default dialog size to 600x720 [mathilde-pellerin]
+- Dialog: change default dialog size to 600x720 [mpellerin42]
 
 # 1.17.14 (2020-04-14)
 
@@ -197,7 +214,7 @@ All components are now tested and documented.
 # 1.17.8 (2020-03-30)
 
 ### Bugfix
-- **Confirm dialog**: use innerHtml for basic confirm title and description to display basic formatting [mathilde-pellerin]
+- **Confirm dialog**: use innerHtml for basic confirm title and description to display basic formatting [mpellerin42]
 
 # 1.17.7 (2020-03-26)
 
@@ -235,12 +252,12 @@ All components are now tested and documented.
 # 1.17.1 (2020-03-20)
 
 ### Bugfix
-- **Dialog service**: fix bad import [mathilde-pellerin]
+- **Dialog service**: fix bad import [mpellerin42]
 
 # 1.17.0 (2020-03-19)
 
 ### Feature
-- **Confirm dialog** component with basic confirm which can be opened directly from dialogService [mathilde-pellerin] 
+- **Confirm dialog** component with basic confirm which can be opened directly from dialogService [mpellerin42] 
 
 # 1.16.2 (2020-03-19)
 
@@ -251,8 +268,8 @@ All components are now tested and documented.
 # 1.16.1 (2020-03-18)
 
 ### Improvements
-- Add developer documentation link in dialog demo [mathilde-pellerin]
-- Starting to implement a better documentation app (work in progress): [mathilde-pellerin]
+- Add developer documentation link in dialog demo [mpellerin42]
+- Starting to implement a better documentation app (work in progress): [mpellerin42]
     - **doc-page** component to easily write clean documentation
     - **doc-menu** to navigate through documentation pages
     - New demo accessible from the old one
@@ -274,13 +291,13 @@ All components are now tested and documented.
 # 1.15.0 (2020-03-12)
 
 ### Feature
-- Dialog component and associated service [mathilde-pellerin]
+- Dialog component and associated service [mpellerin42]
 
 ### Improvement
-- set strict compilation [mathilde-pellerin]
+- set strict compilation [mpellerin42]
 
 ### Breaking changes
-- Replace deprecated `KeyboardEvent.codes` by `KeyboardEvent.keys` [mathilde-pellerin]
+- Replace deprecated `KeyboardEvent.codes` by `KeyboardEvent.keys` [mpellerin42]
 
 # 1.14.1 (2020-03-12)
 
@@ -295,27 +312,27 @@ All components are now tested and documented.
 # 1.13.3 (2020-03-10)
 
 ### Improvements
-- Move demo page from app to a module so it can be imported from another app [mathilde-pellerin]
+- Move demo page from app to a module so it can be imported from another app [mpellerin42]
 
 # 1.13.2 (2020-03-10)
 
 ### Improvements
-- Update travis configuration to automatically update the demo page every time we merge on master branch. [mathilde-pellerin]
-- Display version number in demo page [mathilde-pellerin]
-- Create git tag only if not existing [mathilde-pellerin]
-- Change demo URL to be https://plone.github.io/pastanaga-angular [mathilde-pellerin]
+- Update travis configuration to automatically update the demo page every time we merge on master branch. [mpellerin42]
+- Display version number in demo page [mpellerin42]
+- Create git tag only if not existing [mpellerin42]
+- Change demo URL to be https://plone.github.io/pastanaga-angular [mpellerin42]
 
 # 1.13.1 (2020-03-09)
 
 ### Improvements
-- **Checkbox tree**: add `disabled` option to disable the whole tree [mathilde-pellerin]
-- **Checkbox group**: add `disabled` option to disabled the whole group [mathilde-pellerin]
-- **Checkbox group**: Add `noSelectAll` option to remove select all button [mathilde-pellerin]
+- **Checkbox tree**: add `disabled` option to disable the whole tree [mpellerin42]
+- **Checkbox group**: add `disabled` option to disabled the whole group [mpellerin42]
+- **Checkbox group**: Add `noSelectAll` option to remove select all button [mpellerin42]
 
 # 1.13.0 (2020-03-09)
 
 ### Features
-- New `checkbox-group` component [mathilde-pellerin]
+- New `checkbox-group` component [mpellerin42]
 
 ### Breaking changes
 - **Checkbox tree** doesn't have a `type` input anymore: use `checkbox-group` with type radio instead
@@ -330,9 +347,9 @@ All components are now tested and documented.
 # 1.12.6 (2020-03-05)
 
 ### Bug fixes
-- **Checkbox tree**: prevent toggling children while they're loading [mathilde-pellerin]
-- **Checkbox tree**: update expand button icon when loading children [mathilde-pellerin]
-- **Checkbox tree**: children tree should inherit shouldSort option [mathilde-pellerin]
+- **Checkbox tree**: prevent toggling children while they're loading [mpellerin42]
+- **Checkbox tree**: update expand button icon when loading children [mpellerin42]
+- **Checkbox tree**: children tree should inherit shouldSort option [mpellerin42]
 
 # 1.12.5 (2020-03-04)
 
@@ -342,12 +359,12 @@ All components are now tested and documented.
 # 1.12.4 (2020-03-03)
 
 ### Improvements
-- **Icon model**: Add `IconData` interface to type expected data for Icon constructor [mathilde-pellerin]
+- **Icon model**: Add `IconData` interface to type expected data for Icon constructor [mpellerin42]
 
 # 1.12.3 (2020-02-28)
 
 ### Bug fix
-- **calendar**: set sunday as first day of the week [mathilde-pellerin]
+- **calendar**: set sunday as first day of the week [mpellerin42]
 
 # 1.12.2 (2020-02-27)
 
@@ -359,12 +376,12 @@ All components are now tested and documented.
 
 ### Bug fixes
 
-- **date-input**: fix calendar positioning [mathilde-pellerin]
-- **date-input**: give more time to enter a valid date and reset error state when new value [mathilde-pellerin]
+- **date-input**: fix calendar positioning [mpellerin42]
+- **date-input**: give more time to enter a valid date and reset error state when new value [mpellerin42]
 
 ### Improvements
 
-- **Toast**: utility method to get a default toast close button [mathilde-pellerin]
+- **Toast**: utility method to get a default toast close button [mpellerin42]
 
 # 1.12.0 (2020-02-24)
 
@@ -374,11 +391,11 @@ All components are now tested and documented.
 # 1.11.1 (2020-02-25)
 
 ### Bug fixes
-- **dropdown-checkbox component**: fix displayed values [mathilde-pellerin]
-- **icon component**: add optional color and padding in icon model [mathilde-pellerin]
-- **icon component**: large size is 30px [mathilde-pellerin]
-- **icon component**: add name support in icon model [mathilde-pellerin]
-- **date-input component**: use help Input from TextFieldCommon [mathilde-pellerin]
+- **dropdown-checkbox component**: fix displayed values [mpellerin42]
+- **icon component**: add optional color and padding in icon model [mpellerin42]
+- **icon component**: large size is 30px [mpellerin42]
+- **icon component**: add name support in icon model [mpellerin42]
+- **date-input component**: use help Input from TextFieldCommon [mpellerin42]
 
 # 1.11.0 (2020-02-20)
 
@@ -399,26 +416,26 @@ All components are now tested and documented.
 # 1.10.1 (2020-02-18)
 
 ### Improvements
-- **Button component**: Support coerceBoolean on all button properties [mathilde-pellerin]
-- **Icon component**: Support icon as object with icon path and background [mathilde-pellerin]
-- **Icon component**: Better management of classes and styles [mathilde-pellerin]
-- **Checkbox component**: Add optional icon block to checkbox [mathilde-pellerin]
-- **Dropdown item component**: dropdown items in checkbox mode now support subLabel displayed as checkbox help [mathilde-pellerin]
-- **Dropdown item component**: support icon for checkbox mode [mathilde-pellerin]
+- **Button component**: Support coerceBoolean on all button properties [mpellerin42]
+- **Icon component**: Support icon as object with icon path and background [mpellerin42]
+- **Icon component**: Better management of classes and styles [mpellerin42]
+- **Checkbox component**: Add optional icon block to checkbox [mpellerin42]
+- **Dropdown item component**: dropdown items in checkbox mode now support subLabel displayed as checkbox help [mpellerin42]
+- **Dropdown item component**: support icon for checkbox mode [mpellerin42]
 
 # 1.10.0 (2020-02-14)
 
 ### Bug fixes
-- **Input component**: Do not break if input value is a number [mathilde-pellerin]
+- **Input component**: Do not break if input value is a number [mpellerin42]
 
 ### Features
-- New `password-input` component [mathilde-pellerin]
-- New `input-icon` component [mathilde-pellerin]
+- New `password-input` component [mpellerin42]
+- New `input-icon` component [mpellerin42]
 
 ### Improvements
-- **Input and textarea component**: Add focus event triggered by input and textarea [mathilde-pellerin]
-- **Input component**: Allow to disable autocomplete with `noAutoComplete` option [mathilde-pellerin]
-- Update demo app to have a clearer view of inputs different states [mathilde-pellerin]
+- **Input and textarea component**: Add focus event triggered by input and textarea [mpellerin42]
+- **Input component**: Allow to disable autocomplete with `noAutoComplete` option [mpellerin42]
+- Update demo app to have a clearer view of inputs different states [mpellerin42]
 
 # 1.9.4 (2020-02-14)
 
@@ -433,7 +450,7 @@ All components are now tested and documented.
 # 1.9.2 (2020-02-11)
 
 ### Bug fixes
-- **Toggle component:** Vertically align toggle element when there is an image [mathilde-pellerin] 
+- **Toggle component:** Vertically align toggle element when there is an image [mpellerin42] 
 
 ### Improvements
 - Improve changelog structure by adding **Bug fixes**, **Features**/**Improvements** and **Breaking changes** sections (starting at version 1.9.0)
@@ -441,7 +458,7 @@ All components are now tested and documented.
 # 1.9.1 (2020-02-07)
 
 ### Bug fixes
-- **Checkbox tree component:** [mathilde-pellerin] 
+- **Checkbox tree component:** [mpellerin42] 
   - fix lazy loading
   - style when last checkbox has children expanded
   - better typing
@@ -450,24 +467,24 @@ All components are now tested and documented.
 
 ### Bug fixes
 
-- **Checkbox tree component:** [mathilde-pellerin]
+- **Checkbox tree component:** [mpellerin42]
   - Fix selection state to work properly with onPush strategy
   - Fix bugs on indeterminate state
   - Fix ellipsis
 
 ### Features
 
-- **Checkbox tree component:** [mathilde-pellerin]
+- **Checkbox tree component:** [mpellerin42]
   - Add mode: categorized (by default), nested, fileSystem
   - Add `subLabels` and `labelIcons` optional inputs
   - Add unit tests
-- **Checkbox component:** [mathilde-pellerin]
+- **Checkbox component:** [mpellerin42]
   - add coerce boolean for all inputs
   - add `squareCheck` optional input (replace the check mark '✓' by a square '■' when selected)
 
 ### BREAKING CHANGES
 
-- **Checkbox component:** [mathilde-pellerin]
+- **Checkbox component:** [mpellerin42]
   - `onSelection` event emitter become `selection`
   - rename boolean inputs removing `is` prefix for better consistency between components:
     - `isDisabled` -> `disabled`
@@ -503,12 +520,12 @@ All components are now tested and documented.
 
 # 1.6.4 (2020-01-23)
 
-- Improvements on toggle component [mathilde-pellerin] 
+- Improvements on toggle component [mpellerin42] 
 
 # 1.6.3 (2020-01-21)
 
 - Moving attributes accessed to public on sidebar [bloodbare]
-- upgrading angular-traversal to 1.2.6 [mathilde-pellerin]
+- upgrading angular-traversal to 1.2.6 [mpellerin42]
 
 # 1.6.2 (2020-01-20)
 
