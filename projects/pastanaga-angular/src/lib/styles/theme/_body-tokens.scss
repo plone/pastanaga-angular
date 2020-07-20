@@ -1,0 +1,34 @@
+@import "palette";
+@import "typography";
+
+//=====================================
+// COLORS
+//=====================================
+// Background
+$color-background-body: $color-neutral-primary-lightest !default;
+
+// Text
+$color-text-accent: $color-neutral-primary-default !default;
+$color-text-dim: $color-neutral-secondary-default !default;
+$color-text-disabled: $color-neutral-secondary-light !default;
+
+// Links
+$color-text-link-regular: $color-accent-primary-default !default;
+$color-text-link-regular-hover: $color-accent-primary-dark !default;
+
+$color-text-title-default: $color-neutral-primary-default !default;
+
+//=====================================
+// TYPOGRAPHY
+//=====================================
+$font-weight-body:  $font-weight-thin !default;
+$font-weight-title: $font-weight-thin !default;
+$font-weight-dt:    $font-weight-thin !default;
+$font-weight-dd:    $font-weight-thin !default;
+$font-weight-label: $font-weight-semi-bold !default;
+$font-weight-placeholder: $font-weight-thin !default;
+$font-weight-menu-header: $font-weight-semi-bold !default;
+$font-weight-link:  $font-weight-semi-bold !default;
+
+$text-decoration-link:          none !default;
+$text-decoration-link-hover:    underline !default;

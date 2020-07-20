@@ -1,8 +1,14 @@
+# 2.1.1 (2020-07-20)
+
+### Bugfix
+- **Theme**: add missing `!default` in typography variables [mpellerin42]
+- **Theme**: add overridable theme for links [mpellerin42]
+
 # 2.1.0 (2020-07-20)
 
 ### Improvements
-**Theme**
-- Typography: new font-size and line-height maps for small screens [mpellerin42]
+
+- **Theme - Typography**: new font-size and line-height maps for small screens [mpellerin42]
 
 ### Breaking changes
 **Theme**
