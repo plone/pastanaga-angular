@@ -2,7 +2,7 @@
 
 .pa-popup {
     z-index: $z-index-popup;
-    box-shadow: $shadow-level1;
+    box-shadow: $shadow-default;
     border-radius: $border-radius-default;
     min-width: rhythm(16);
     max-height: rhythm(29);
