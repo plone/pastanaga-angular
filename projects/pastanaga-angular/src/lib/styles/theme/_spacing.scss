@@ -44,10 +44,12 @@ $rhythm: (
 $border-radius-default: rhythm(.25) !default;
 
 // layout
-$size-viewport-tiny        : 480px !default;
-$size-viewport-small       : 576px !default;
-$size-viewport-medium      : 768px !default;
-$size-viewport-large       : 1280px !default;
+$size-viewport-small-max   : 319px !default;
+$size-viewport-small-min   : 320px !default;
+$size-viewport-medium-max  : 599px !default;
+$size-viewport-medium-min  : 600px !default;
+$size-viewport-large-max   : 1024px !default;
+$size-viewport-large-min   : 1025px !default;
 
 $grid-cols:     12 !default;
 $grid-gutters:  12px !default;
