@@ -32,7 +32,7 @@ pa-button:focus {
     }
 
     &.pa-xsmall {
-        font-size: size(xs);
+        font-size: font-size(xs);
         line-height: rhythm(2);
         padding: $padding-button-xsmall;
 
@@ -42,7 +42,7 @@ pa-button:focus {
     }
 
     &.pa-small {
-        font-size: size(s);
+        font-size: font-size(s);
         line-height: rhythm(2);
         padding: $padding-button-small;
 
@@ -52,7 +52,7 @@ pa-button:focus {
     }
 
     &.pa-medium {
-        font-size: size(m);
+        font-size: font-size(m);
         line-height: rhythm(2.5);
         padding: $padding-button-medium;
 
@@ -62,7 +62,7 @@ pa-button:focus {
     }
 
     &.pa-large {
-        font-size: size(l);
+        font-size: font-size(l);
         line-height: rhythm(4);
         padding: $padding-button-large;
 

@@ -7,7 +7,7 @@
 // classic Grid
 [class*=" grid-"],
 [class^="grid-"] {
-    @media (min-width: $size-viewport-tiny) {
+    @media (min-width: $size-viewport-small-min) {
         display: grid;
         grid-auto-flow: dense;
 
@@ -21,7 +21,7 @@
 // autogrid
 .autogrid,
 .grid {
-    @media (min-width: $size-viewport-tiny) {
+    @media (min-width: $size-viewport-small-min) {
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: 1fr;
@@ -54,7 +54,7 @@
 /* intermediate breakpoints */
 // -small-X suffix means "X columns when < medium screen"
 // example : .grid-4-small-2 will be 1 column (< tiny) then 2 columns (< medium) then 4 columns
-@media (min-width: $size-viewport-tiny) and (max-width: ($size-viewport-medium - 1)) {
+@media (min-width: $size-viewport-small-min) and (max-width: $size-viewport-medium-max) {
     @for $i from 1 through 4 {
         [class*="grid-"][class*="-small-#{$i}"] {
             grid-template-columns: repeat(#{$i}, 1fr);
@@ -130,7 +130,7 @@
 /* large screens */
 /* ------------- */
 
-@media (min-width: $size-viewport-large) {
+@media (min-width: $size-viewport-large-max) {
     /* layouts for large screens */
     .large-hidden {
         display: none !important;
@@ -192,7 +192,7 @@
 /* medium screens */
 /* -------------- */
 
-@media (min-width: $size-viewport-medium) and (max-width: ($size-viewport-large - 1)) {
+@media (min-width: $size-viewport-medium-min) and (max-width: $size-viewport-large-max) {
     /* layouts for medium screens */
     .medium-hidden {
         display: none !important;
@@ -254,7 +254,7 @@
 /* small screens */
 /* ------------- */
 
-@media (min-width: $size-viewport-small) and (max-width: ($size-viewport-medium - 1)) {
+@media (min-width: $size-viewport-small-min) and (max-width: $size-viewport-medium-max) {
     /* layouts for small screens */
     .small-hidden {
         display: none !important;
@@ -321,7 +321,7 @@
 /* tiny screens */
 /* ------------ */
 
-@media (max-width: $size-viewport-small - 1) {
+@media (max-width: $size-viewport-small-max) {
     /* quick small resolution reset */
     .mod,
     .col,

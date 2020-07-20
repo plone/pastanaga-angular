@@ -53,7 +53,7 @@
         }
     }
     .pa-toggle-label {
-        @include font-size(s);
+        @include size(s);
         font-weight: $font-weight-label;
         margin-left: rhythm(1);
     }

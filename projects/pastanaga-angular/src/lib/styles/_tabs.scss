@@ -18,7 +18,7 @@ pa-tab {
 
 .pa-tabs-link {
     width: 100%;
-    @include font-size(xs);
+    @include size(xs);
     text-transform: uppercase;
     color: $color-text-tab-link;
     border: 0;
