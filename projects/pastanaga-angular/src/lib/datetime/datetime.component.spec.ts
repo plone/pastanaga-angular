@@ -66,21 +66,21 @@ describe('DateTimeComponent', () => {
         expect(span.innerHTML).toBe(dates.beforeYesterdayPM.numericalWithSec);
     });
 
-    it('should display date in absolute', () => {
+    it('should display date in human date only', () => {
         component.datetime = dates.beforeYesterdayPM.timestamp;
-        component.format = DATE_FORMAT.absolute;
+        component.dateOnly = true;
 
         component.ngOnChanges({
             datetime: new SimpleChange(null, component.datetime, true),
-            format: new SimpleChange(null, component.format, true),
+            dateOnly: new SimpleChange(null, component.dateOnly, true),
         });
         fixture.detectChanges();
-        expect(span.innerHTML).toBe(dates.beforeYesterdayPM.absoluteEn);
+        expect(span.innerHTML).toBe(dates.beforeYesterdayPM.humanDateOnlyEn);
     });
 
-    it('should display date in absolute with seconds', () => {
+    it('should display date with seconds', () => {
         component.datetime = dates.beforeYesterdayPM.timestamp;
-        component.format = DATE_FORMAT.absolute;
+        component.format = DATE_FORMAT.numerical;
         component.displaySeconds = true;
 
         component.ngOnChanges({
@@ -89,30 +89,6 @@ describe('DateTimeComponent', () => {
             displaySeconds: new SimpleChange(null, component.displaySeconds, true),
         });
         fixture.detectChanges();
-        expect(span.innerHTML).toBe(dates.beforeYesterdayPM.absoluteWithSec);
-    });
-
-    it('should display date in mixed when date is one minute ago', () => {
-        component.datetime = dates.oneMinutesAgo.timestamp;
-        component.format = DATE_FORMAT.mixed;
-
-        component.ngOnChanges({
-            datetime: new SimpleChange(null, component.datetime, true),
-            format: new SimpleChange(null, component.format, true),
-        });
-        fixture.detectChanges();
-        expect(span.innerHTML).toBe(dates.oneMinutesAgo.relativeEn);
-    });
-
-    it('should display date in mixed when date is ten minutes ago', () => {
-        component.datetime = dates.tenMinutesAgo.timestamp;
-        component.format = DATE_FORMAT.mixed;
-
-        component.ngOnChanges({
-            datetime: new SimpleChange(null, component.datetime, true),
-            format: new SimpleChange(null, component.format, true),
-        });
-        fixture.detectChanges();
-        expect(span.innerHTML).toBe(dates.tenMinutesAgo.relativeEn);
+        expect(span.innerHTML).toBe(dates.beforeYesterdayPM.numericalWithSec);
     });
 });

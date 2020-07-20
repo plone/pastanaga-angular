@@ -1,3 +1,9 @@
+# 2.2.0 (2020-07-20)
+
+### Breaking changes
+**Date/time**
+- Date/time now supports two formats (`human` and `numerical`), and a `dateOnly` attribute [ebrehault]
+
 # 2.1.1 (2020-07-20)
 
 ### Bugfix
