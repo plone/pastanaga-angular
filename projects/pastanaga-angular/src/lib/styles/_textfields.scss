@@ -8,7 +8,7 @@
 
     .pa-field-label {
         position: absolute;
-        @include font-size(m);
+        @include size(m);
         font-weight: $font-weight-label;
         background: $color-background-field-regular;
         color: $color-text-field-label-regular;
@@ -22,7 +22,7 @@
     }
 
     .pa-field-control {
-        @include font-size(m);
+        @include size(m);
         background: $color-background-field-regular;
         color: $color-text-field-control-regular;
         caret-color: $color-caret-field-control-active;
@@ -111,7 +111,7 @@
     }
 
     .pa-field-help {
-        @include font-size(xs);
+        @include size(xs);
         color: $color-text-field-control-help-regular;
 
         &.pa-field-help-error {

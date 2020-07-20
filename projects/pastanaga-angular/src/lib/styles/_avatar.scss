@@ -30,14 +30,14 @@
         width: rhythm($avatar-large-rhythm);
         height: rhythm($avatar-large-rhythm);
         .pa-avatar-default .pa-avatar-initials {
-            @include font-size($avatar-large-text-size);
+            @include size($avatar-large-text-size);
         }
         .pa-avatar-user-icon {
             width: rhythmRatio($avatar-large-rhythm, $avatar-icon-size-ratio);
             height: rhythmRatio($avatar-large-rhythm, $avatar-icon-size-ratio);
         }
         .pa-avatar-icon-alt {
-            @include font-size($avatar-icon-alt-font-size);
+            @include size($avatar-icon-alt-font-size);
             font-weight: $avatar-icon-alt-font-weight;
         }
     }
@@ -58,7 +58,7 @@
         @include full-size-circle();
         background: $color-neutral-secondary-light;
         .pa-avatar-initials {
-            @include font-size($avatar-default-text-size);
+            @include size($avatar-default-text-size);
             margin: auto;
             font-weight: $avatar-initials-font-weight;
             text-transform: uppercase;

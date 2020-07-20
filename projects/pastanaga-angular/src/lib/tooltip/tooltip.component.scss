@@ -13,7 +13,7 @@
     padding: rhythm(.75);
     background: $color-neutral-primary-default;
     color: $color-neutral-primary-lightest;
-    @include font-size(xs);
+    @include size(xs);
     white-space: nowrap;
     pointer-events: none;
 

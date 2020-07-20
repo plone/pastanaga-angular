@@ -5,7 +5,7 @@
 }
 .pa-table-grid--head {
     display: contents;
-} 
+}
 .pa-table-grid--head .pa-table-grid--header {
     background: $color-background-table-header;
     position: sticky;
@@ -14,7 +14,7 @@
 }
 .pa-table-grid--body {
     display: contents;
-} 
+}
 .pa-table-grid--body .pa-table-grid--row:hover .pa-table-grid--header,
 .pa-table-grid--body .pa-table-grid--row:hover .pa-table-grid--cell {
     background: $color-background-table-row-hover;
@@ -31,7 +31,7 @@
 .pa-table-grid--head .pa-table-grid--header {
     border-bottom: 1px $color-border-table-header solid;
     padding: rhythm(1.5) rhythm(0.75);
-    font-size: size(xs);
+    font-size: font-size(xs);
     text-transform: uppercase;
     color: $color-text-table-header;
 }
@@ -52,7 +52,7 @@
 .pa-table-grid--row .pa-table-grid--row-header {
     grid-column: 1 / -1;
     font-weight: $font-weight-text-table-header-row;
-    font-size: size(xs);
+    font-size: font-size(xs);
     background: $color-background-table-header-row;
     color: $color-text-table-header-row;
     margin-top: -1px;

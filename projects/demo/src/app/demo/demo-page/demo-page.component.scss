@@ -2,7 +2,7 @@
 
 pa-demo-page {
     .doc-page-title {
-        @include font-size(dsmall);
+        @include size(dsmall);
     }
 
     .doc-page-title,
@@ -14,7 +14,7 @@ pa-demo-page {
         margin-bottom: rhythm(4);
 
         .doc-section-title {
-            @include font-size(dxsmall);
+            @include size(dxsmall);
         }
     }
 
@@ -33,7 +33,7 @@ pa-demo-page {
             dt {
                 flex: 1 0 20%;
                 min-width: rhythm(16);
-                font-weight: $font-weight-strong;
+                font-weight: $font-weight-semi-bold;
             }
             dd {
                 flex: 1 0 80%;
