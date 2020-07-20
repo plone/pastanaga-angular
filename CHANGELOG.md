@@ -2,6 +2,7 @@
 
 ### Bugfix
 - **Theme**: add missing `!default` in typography variables [mpellerin42]
+- **Theme**: add overridable theme for links [mpellerin42]
 
 # 2.1.0 (2020-07-20)
 
