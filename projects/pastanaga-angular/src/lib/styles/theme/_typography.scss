@@ -55,6 +55,41 @@ $line-height: (
     line-height: line-height($size);
 }
 
+$font-size-small: (
+    xs: ($font-size-base * .625),       // 10px - 0.625 rem
+    l:  ($font-size-base * 1.25),       // 20px - 1.25 rem
+    // display
+    dxsmall:  ($font-size-base * 1.75), // 28px - 1.75 rem
+    dsmall:  ($font-size-base * 2.25),  // 36px - 2.25 rem
+    dmedium:  ($font-size-base * 4),    // 64px - 4 rem
+) !default;
+@function font-size-small($t-shirt-size) {
+    @return map-get($font-size-small, $t-shirt-size)
+}
+
+$line-height-small: (
+    xs: ($font-size-base * 0.875),      // 14px - 0.875 rem
+    l:  ($font-size-base * 1.5),        // 24px - 1.5 rem
+    // display
+    dxsmall: ($font-size-base * 2),     // 32px - 2 rem
+    dsmall:  ($font-size-base * 2.75),  // 44px - 2.75 rem
+    dmedium: ($font-size-base * 3.5),   // 56px - 3.5 rem
+) !default;
+@function line-height-small($t-shirt-size) {
+    @return map-get($line-height-small, $t-shirt-size)
+}
+
+@mixin size-small($size) {
+    font-size: font-size-small($size);
+    line-height: line-height-small($size);
+}
+@mixin font-size-small($size) {
+    font-size: font-size-small($size);
+}
+@mixin line-height-small($size) {
+    line-height: line-height-small($size);
+}
+
 
 // TOKENS
 
