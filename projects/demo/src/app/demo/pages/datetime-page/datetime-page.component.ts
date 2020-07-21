@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { startOfYear } from 'date-fns';
 
 @Component({
     templateUrl: 'datetime-page.component.html',
@@ -9,26 +10,35 @@ export class DateTimePageComponent {
     fewSecondsAgo: Date;
     tenMinutesAgo: Date;
     aDate: Date;
-    code = `<pa-datetime datetime="2010-10-20" format="mixed"></pa-datetime>`;
+    oneMinuteAgo: Date;
+    thisYear: Date;
+    code = `<pa-datetime datetime="2010-10-20" format="numerical" dateOnly></pa-datetime>`;
 
     constructor() {
-        const amHours = 9;
-        const amMinutes = 45;
-        this.todayAm = new Date();
-        this.todayAm.setHours(9);
-        this.todayAm.setMinutes(45);
+        const todayAm = new Date();
+        todayAm.setHours(9);
+        todayAm.setMinutes(45);
+        this.todayAm = todayAm;
 
-        this.yesterdayPm = new Date();
-        this.yesterdayPm.setDate(this.todayAm.getDate() - 1);
-        this.yesterdayPm.setHours(18);
-        this.yesterdayPm.setMinutes(7);
+        const yesterdayPm = new Date();
+        yesterdayPm.setDate(todayAm.getDate() - 1);
+        yesterdayPm.setHours(18);
+        yesterdayPm.setMinutes(7);
+        this.yesterdayPm = yesterdayPm;
 
-        this.fewSecondsAgo = new Date();
-        this.fewSecondsAgo.setSeconds(this.fewSecondsAgo.getSeconds() - 30);
+        const fewSecondsAgo = new Date();
+        fewSecondsAgo.setSeconds(fewSecondsAgo.getSeconds() - 30);
+        this.fewSecondsAgo = fewSecondsAgo;
 
-        this.tenMinutesAgo = new Date();
-        this.tenMinutesAgo.setMinutes(this.tenMinutesAgo.getMinutes() - 9);
+        const oneMinuteAgo = new Date();
+        oneMinuteAgo.setSeconds(oneMinuteAgo.getSeconds() - 60);
+        this.oneMinuteAgo = oneMinuteAgo;
 
+        const tenMinutesAgo = new Date();
+        tenMinutesAgo.setMinutes(tenMinutesAgo.getMinutes() - 10);
+        this.tenMinutesAgo = tenMinutesAgo;
+
+        this.thisYear = startOfYear(todayAm);
         this.aDate = new Date('1974-10-20');
     }
 }

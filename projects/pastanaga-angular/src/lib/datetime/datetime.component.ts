@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
-const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical, DATE_FORMAT.mixed, DATE_FORMAT.absolute];
+const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical];
 
 @Component({
     selector: 'pa-datetime',
@@ -10,7 +11,16 @@ const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical, DATE_FORMAT.mixed, DA
 export class DateTimeComponent implements OnChanges {
     @Input() datetime?: string;
     @Input() format = DATE_FORMAT.human;
-    @Input() displaySeconds = false;
+    @Input()
+    set dateOnly(value: boolean) {
+        this._dateOnly = coerceBooleanProperty(value);
+    }
+    _dateOnly = false;
+    @Input()
+    set displaySeconds(value: boolean) {
+        this._displaySeconds = coerceBooleanProperty(value);
+    }
+    _displaySeconds = false;
 
     formattedTime = '';
 
@@ -24,7 +34,7 @@ export class DateTimeComponent implements OnChanges {
 
         if (changes.datetime && changes.datetime.currentValue) {
             this.service
-                .getFormattedDate(changes.datetime.currentValue, this.format, this.displaySeconds)
+                .getFormattedDate(changes.datetime.currentValue, this.format, this._dateOnly, this._displaySeconds)
                 .subscribe((formattedDate) => {
                     if (!!formattedDate) {
                         this.formattedTime = formattedDate;
