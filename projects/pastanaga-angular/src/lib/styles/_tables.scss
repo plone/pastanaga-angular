@@ -26,6 +26,8 @@
 
 .pa-table-grid--row {
     display: contents;
+    font-size: $font-size-table-row;
+    font-weight: $font-weight-table-row;
 }
 
 .pa-table-grid--head .pa-table-grid--header {

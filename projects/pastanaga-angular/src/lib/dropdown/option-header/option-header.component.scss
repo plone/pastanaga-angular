@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 .pa-option-header {
-    @include size(s);
+    @include size(xs);
     font-weight: $font-weight-menu-header;
     color: $color-text-menu-option-header;
     padding: $padding-menu-option;

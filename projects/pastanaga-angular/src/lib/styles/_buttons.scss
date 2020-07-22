@@ -293,4 +293,16 @@ pa-button:focus {
     &:focus  {
         box-shadow: $shadow-focus;
     }
+
+    &.pa-solid .pa-button-label {
+        font-weight: $font-weight-button-label-solid;
+    }
+
+    &.pa-regular .pa-button-label {
+        font-weight: $font-weight-button-label-regular;
+    }
+
+    &.pa-basic .pa-button-label {
+        font-weight: $font-weight-button-label-basic;
+    }
 }
