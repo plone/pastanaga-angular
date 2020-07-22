@@ -2,6 +2,7 @@
 
 .pa-toggle {
     display: flex;
+    align-items: center;
 
     .pa-toggle-control {
         -webkit-appearance: none;
@@ -53,7 +54,7 @@
         }
     }
     .pa-toggle-label {
-        @include size(s);
+        @include size(m);
         font-weight: $font-weight-label;
         margin-left: rhythm(1);
     }

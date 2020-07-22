@@ -1,6 +1,7 @@
 @import "palette";
 @import "spacing";
 @import "shadows";
+@import "typography";
 
 //=====================================
 // COLORS
@@ -109,9 +110,9 @@ $border-button-primary-solid:          none !default;
 $border-button-primary-solid-hover:    none !default;
 $border-button-primary-solid-active:   none !default;
 
-$border-button-primary-regular:         1px solid $color-accent-primary-default;
-$border-button-primary-regular-hover:   $border-button-primary-regular;
-$border-button-primary-regular-active:  $border-button-primary-regular;
+$border-button-primary-regular:         1px solid $color-accent-primary-default !default;
+$border-button-primary-regular-hover:   $border-button-primary-regular !default;
+$border-button-primary-regular-active:  $border-button-primary-regular !default;
 
 $border-button-primary-basic:          none !default;
 $border-button-primary-basic-hover:    none !default;
@@ -122,9 +123,9 @@ $border-button-secondary-solid:          none !default;
 $border-button-secondary-solid-hover:    none !default;
 $border-button-secondary-solid-active:   none !default;
 
-$border-button-secondary-regular:         1px solid $color-neutral-secondary-default;
-$border-button-secondary-regular-hover:   $border-button-secondary-regular;
-$border-button-secondary-regular-active:  $border-button-secondary-regular;
+$border-button-secondary-regular:         1px solid $color-neutral-secondary-default !default;
+$border-button-secondary-regular-hover:   $border-button-secondary-regular !default;
+$border-button-secondary-regular-active:  $border-button-secondary-regular !default;
 
 $border-button-secondary-basic:          none !default;
 $border-button-secondary-basic-hover:    none !default;
@@ -135,9 +136,9 @@ $border-button-destructive-solid:          none !default;
 $border-button-destructive-solid-hover:    none !default;
 $border-button-destructive-solid-active:   none !default;
 
-$border-button-destructive-regular:        1px solid $color-accent-secondary-default;
-$border-button-destructive-regular-active: $border-button-destructive-regular;
-$border-button-destructive-regular-hover: $border-button-destructive-regular;
+$border-button-destructive-regular:        1px solid $color-accent-secondary-default !default;
+$border-button-destructive-regular-active: $border-button-destructive-regular !default;
+$border-button-destructive-regular-hover: $border-button-destructive-regular !default;
 
 $border-button-destructive-basic:          none !default;
 $border-button-destructive-basic-hover:    none !default;
@@ -169,3 +170,10 @@ $padding-button-icon-large:     rhythm(1.5) !default;
 $shadow-button-solid-hover: $shadow-small !default;
 $shadow-button-regular-hover: $shadow-small !default;
 $shadow-button-basic-hover: $shadow-small !default;
+
+//=====================================
+// LABELS
+//=====================================
+$font-weight-button-label-solid: $font-weight-semi-bold !default;
+$font-weight-button-label-regular: $font-weight-semi-bold !default;
+$font-weight-button-label-basic: $font-weight-bold !default;

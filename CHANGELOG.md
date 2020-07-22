@@ -1,3 +1,9 @@
+# 2.2.1 (2020-07-22)
+
+### Bugfix
+- **Theme**: updated font-sizes and weights [julienCarret]
+
+
 # 2.2.0 (2020-07-20)
 
 ### Breaking changes
