@@ -1,0 +1,36 @@
+<div class="pa-modal-backdrop"
+     tabindex="0"
+     #modalContainer
+     [class.pa-modal-blocking]="config.blocking"
+     (click)="outsideClick($event)"
+>
+    <dialog class="pa-modal"
+            role="dialog"
+            [class.in]="!closing"
+            [class.out]="closing"
+            [attr.aria-labelledby]="'dialog-' + id + '-title'"
+            [attr.aria-describedby]="'dialog-' + id + '-description'"
+    >
+        <header class="pa-dialog-header">
+            <div #image
+                 role="presentation"
+                 [hidden]="!_hasImage"
+            >
+                <ng-content select="pa-modal-image"></ng-content>
+            </div>
+
+            <h5 [id]="'dialog-' + id + '-title'">
+                <ng-content select="pa-modal-title"></ng-content>
+            </h5>
+        </header>
+
+        <div class="pa-dialog-description"
+             [id]="'dialog-' + id + '-description'">
+            <ng-content select="pa-modal-description"></ng-content>
+        </div>
+
+        <footer class="pa-dialog-footer">
+            <ng-content select="pa-modal-footer"></ng-content>
+        </footer>
+    </dialog>
+</div>

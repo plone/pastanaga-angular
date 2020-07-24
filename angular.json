@@ -5,9 +5,15 @@
     "projects": {
         "pastanaga-angular": {
             "projectType": "library",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss",
+                    "changeDetection": "OnPush"
+                }
+            },
             "root": "projects/pastanaga-angular",
             "sourceRoot": "projects/pastanaga-angular/src",
-            "prefix": "lib",
+            "prefix": "pa",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
@@ -42,7 +48,7 @@
             },
             "root": "projects/demo",
             "sourceRoot": "projects/demo/src",
-            "prefix": "app",
+            "prefix": "pa-demo",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
