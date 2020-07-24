@@ -4,14 +4,14 @@
      [class.pa-modal-blocking]="config.blocking"
      (click)="outsideClick($event)"
 >
-    <dialog class="pa-modal"
+    <dialog class="pa-modal pa-dialog"
             role="dialog"
             [class.in]="!closing"
             [class.out]="closing"
             [attr.aria-labelledby]="'dialog-' + id + '-title'"
             [attr.aria-describedby]="'dialog-' + id + '-description'"
     >
-        <header class="pa-dialog-header">
+        <header class="pa-modal-header">
             <div #image
                  role="presentation"
                  [hidden]="!_hasImage"
@@ -19,18 +19,16 @@
                 <ng-content select="pa-modal-image"></ng-content>
             </div>
 
-            <h5 [id]="'dialog-' + id + '-title'">
+            <h4 [id]="'dialog-' + id + '-title'">
                 <ng-content select="pa-modal-title"></ng-content>
-            </h5>
+            </h4>
         </header>
 
-        <div class="pa-dialog-description"
+        <div class="pa-modal-description"
              [id]="'dialog-' + id + '-description'">
             <ng-content select="pa-modal-description"></ng-content>
         </div>
 
-        <footer class="pa-dialog-footer">
-            <ng-content select="pa-modal-footer"></ng-content>
-        </footer>
+        <ng-content select="pa-modal-footer"></ng-content>
     </dialog>
 </div>

@@ -12,11 +12,13 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PaDemoModule } from './demo/demo.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { I18N_EN, mergeTranslations } from 'projects/pastanaga-angular/src';
+import { ModalPageComponent } from './pages/modal-page/modal-page.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         WelcomePageComponent,
+        ModalPageComponent,
     ],
     imports: [
         BrowserModule,

@@ -20,6 +20,7 @@ import { TogglePageComponent } from './demo/pages/toggle-page/toggle-page.compon
 import { ToastPageComponent } from './demo/pages/toast-page/toast-page.component';
 import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.component';
 import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
+import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
 
 @Component({
     selector: 'app-root',
@@ -29,10 +30,12 @@ import { PalettePageComponent } from './demo/pages/palette-page/palette-page.com
 export class AppComponent {
     menu: IDemoMenuSection[] = [
         {
-            title: 'Atoms',
+            title: 'Core',
             pages: [
                 { view: 'icon', title: 'Icons', type: IconPageComponent },
                 { view: 'palette', title: 'Palette', type: PalettePageComponent },
+                { view: 'grid', title: 'Grid', type: GridPageComponent },
+                { view: 'translate', title: 'Translate', type: TranslatePageComponent },
             ],
         },
         {
@@ -42,6 +45,7 @@ export class AppComponent {
                 { view: 'button', title: 'Button', type: ButtonPageComponent },
                 { view: 'datetime', title: 'Date/time', type: DateTimePageComponent },
                 { view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent },
+                { view: 'modal', title: 'Modal', type: ModalPageComponent },
                 { view: 'popup', title: 'Popup', type: PopupPageComponent },
                 { view: 'tables', title: 'Tables', type: TablePageComponent },
                 { view: 'tabs', title: 'Tabs', type: TabsPageComponent },
@@ -58,14 +62,6 @@ export class AppComponent {
                 { view: 'textarea', title: 'Textarea', type: TextareaPageComponent },
                 { view: 'toggle', title: 'Toggle', type: TogglePageComponent },
             ],
-        },
-        {
-            title: 'Style',
-            pages: [{ view: 'grid', title: 'Grid', type: GridPageComponent }],
-        },
-        {
-            title: 'Utilities',
-            pages: [{ view: 'translate', title: 'Translate', type: TranslatePageComponent }],
         },
     ];
 

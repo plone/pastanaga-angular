@@ -36,6 +36,13 @@ export * from './lib/icon/icon.component';
 export * from './lib/icon/svg-loader.interface';
 export * from './lib/icon/svg-loader';
 
+export * from './lib/modal/base-modal.component';
+export * from './lib/modal/modal.directive';
+export * from './lib/modal/modal.model';
+export * from './lib/modal/modal.module';
+export * from './lib/modal/modal.service';
+export * from './lib/modal/dialog/dialog.component';
+
 export * from './lib/popup/popup.component';
 export * from './lib/popup/popup.directive';
 export * from './lib/popup/popup.module';

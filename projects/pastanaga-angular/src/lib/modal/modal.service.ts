@@ -63,7 +63,6 @@ export class ModalService {
         if (index > -1) {
             this.zone.run(() => {
                 const componentRef = this.modals[index];
-                this.appRef.detachView(componentRef.hostView);
                 document.body.removeChild(componentRef.location.nativeElement);
                 componentRef.destroy();
                 this.modals.splice(index, 1);

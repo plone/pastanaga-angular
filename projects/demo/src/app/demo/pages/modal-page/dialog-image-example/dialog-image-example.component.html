@@ -1,0 +1,9 @@
+<pa-dialog>
+    <pa-modal-image><img src="assets/ninja.svg" alt="ninja"></pa-modal-image>
+    <pa-modal-title>Dialog title</pa-modal-title>
+    <pa-modal-description>Dialog description</pa-modal-description>
+    <pa-modal-footer>
+        <pa-button kind="secondary" (click)="modal?.close('from secondary')">Secondary CTA</pa-button>
+        <pa-button kind="primary" (click)="modal?.close('from primary')">Primary CTA</pa-button>
+    </pa-modal-footer>
+</pa-dialog>

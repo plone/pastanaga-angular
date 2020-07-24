@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaButtonModule } from '../button/button.module';
-import { PaTooltipModule } from '../tooltip/tootip.module';
 import {
+    ModalContentDirective,
     ModalDescriptionDirective,
     ModalFooterDirective,
     ModalImageDirective,
@@ -14,12 +13,13 @@ const COMPONENTS_AND_DIRECTIVES = [
     DialogComponent,
     ModalTitleDirective,
     ModalDescriptionDirective,
+    ModalContentDirective,
     ModalImageDirective,
     ModalFooterDirective,
 ];
 
 @NgModule({
-    imports: [CommonModule, PaButtonModule, PaTooltipModule],
+    imports: [CommonModule],
     declarations: COMPONENTS_AND_DIRECTIVES,
     exports: COMPONENTS_AND_DIRECTIVES,
 })

@@ -1,6 +1,7 @@
 import {
     AfterContentInit,
     ChangeDetectorRef,
+    Directive,
     ElementRef,
     EventEmitter,
     OnInit,
@@ -22,6 +23,7 @@ export interface IModal {
     modal: BaseModalComponent | undefined;
 }
 
+@Directive()
 export class BaseModalComponent implements OnInit, AfterContentInit {
     @Output() onEnter: EventEmitter<void> = new EventEmitter();
 
