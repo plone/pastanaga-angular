@@ -2,7 +2,6 @@ import {
     ApplicationRef,
     ComponentFactoryResolver,
     ComponentRef,
-    EmbeddedViewRef,
     Injectable,
     Injector,
     NgZone,

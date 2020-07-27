@@ -26,7 +26,7 @@ export interface IModal {
 export class BaseModalComponent implements AfterViewInit {
     @Output() onEnter: EventEmitter<void> = new EventEmitter();
 
-    @ViewChild('modalContainer', { static: true }) modalContainer?: ElementRef;
+    @ViewChild('modalContainer') modalContainer?: ElementRef;
 
     ref?: ModalRef;
     closing = false;

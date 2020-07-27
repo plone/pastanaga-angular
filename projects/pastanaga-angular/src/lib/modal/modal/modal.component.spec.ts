@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalComponent } from './modal.component';
+import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../testing';
+import { PaButtonModule } from '../../button/button.module';
 
 describe('ModalComponent', () => {
     let component: ModalComponent;
@@ -8,6 +10,8 @@ describe('ModalComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            imports: [...TESTING_IMPORTS, PaButtonModule],
+            providers: [...TESTING_PROVIDERS],
             declarations: [ModalComponent],
         }).compileComponents();
     }));
