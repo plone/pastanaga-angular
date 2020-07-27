@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
 
 @Component({
@@ -8,12 +8,4 @@ import { BaseModalComponent } from '../base-modal.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class ModalComponent extends BaseModalComponent implements OnInit, AfterContentInit {
-    ngOnInit(): void {
-        super.ngOnInit();
-    }
-
-    ngAfterContentInit() {
-        super.ngAfterContentInit();
-    }
-}
+export class ModalComponent extends BaseModalComponent implements AfterViewInit {}

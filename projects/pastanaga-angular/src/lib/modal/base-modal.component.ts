@@ -1,10 +1,9 @@
 import {
-    AfterContentInit,
+    AfterViewInit,
     ChangeDetectorRef,
     Directive,
     ElementRef,
     EventEmitter,
-    OnInit,
     Output,
     ViewChild,
 } from '@angular/core';
@@ -24,7 +23,7 @@ export interface IModal {
 }
 
 @Directive()
-export class BaseModalComponent implements OnInit, AfterContentInit {
+export class BaseModalComponent implements AfterViewInit {
     @Output() onEnter: EventEmitter<void> = new EventEmitter();
 
     @ViewChild('modalContainer', { static: true }) modalContainer?: ElementRef;
@@ -39,15 +38,12 @@ export class BaseModalComponent implements OnInit, AfterContentInit {
 
     constructor(protected cdr: ChangeDetectorRef) {}
 
-    ngAfterContentInit(): void {
-        document.addEventListener('keydown', this._onKeyDown);
-    }
-
-    ngOnInit() {
+    ngAfterViewInit() {
         if (!!this.ref) {
             this.id = this.ref.id;
             this.config = this.ref.config;
         }
+        document.addEventListener('keydown', this._onKeyDown);
     }
 
     close(data?: any) {
@@ -78,6 +74,10 @@ export class BaseModalComponent implements OnInit, AfterContentInit {
         if (!!this.modalContainer) {
             this.modalContainer.nativeElement.focus();
         }
+    }
+
+    refresh() {
+        detectChanges(this.cdr);
     }
 
     protected onKeyDown($event: KeyboardEvent) {

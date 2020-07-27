@@ -1,9 +1,8 @@
 import {
-    AfterContentInit,
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    OnInit,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
@@ -16,18 +15,15 @@ import { BaseModalComponent } from '../base-modal.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class DialogComponent extends BaseModalComponent implements OnInit, AfterContentInit {
-    @ViewChild('image', { read: ElementRef, static: true }) image?: ElementRef;
+export class DialogComponent extends BaseModalComponent implements AfterViewInit {
+    @ViewChild('image', { read: ElementRef }) image?: ElementRef;
     _hasImage = false;
 
-    ngOnInit(): void {
-        super.ngOnInit();
-    }
-
-    ngAfterContentInit() {
-        super.ngAfterContentInit();
+    ngAfterViewInit() {
+        super.ngAfterViewInit();
 
         this._hasImage = !!this.image && this.image.nativeElement.children.length > 0;
         this.setFocus();
+        this.refresh();
     }
 }

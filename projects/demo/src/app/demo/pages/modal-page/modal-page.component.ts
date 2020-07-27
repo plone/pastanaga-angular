@@ -42,14 +42,10 @@ export class CallerComponent {
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class OwnModalComponent extends BaseModalComponent implements OnInit, AfterContentInit {
+export class OwnModalComponent extends BaseModalComponent implements AfterViewInit {
 
-    ngOnInit(): void {
-        super.ngOnInit();
-    }
-
-    ngAfterContentInit() {
-        super.ngAfterContentInit();
+    ngAfterViewInit(): void {
+        super.ngAfterViewInit();
     }
 }`;
     customModalTemplate = `<div class="pa-modal-backdrop"
