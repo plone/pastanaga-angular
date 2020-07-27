@@ -17,8 +17,8 @@ import { take } from 'rxjs/operators';
 export class ModalService {
     hasModalOpened = false;
 
-    private modals: ComponentRef<any>[] = [];
-    private counter = 0;
+    modals: ComponentRef<any>[] = [];
+    counter = 0;
 
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
