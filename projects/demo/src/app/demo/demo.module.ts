@@ -53,6 +53,7 @@ import { PalettePageComponent } from './pages/palette-page/palette-page.componen
 import { ModalPageComponent } from './pages/modal-page/modal-page.component';
 import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
+import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -68,6 +69,7 @@ const COMPONENTS = [
     BaseTextfieldComponent,
     DialogExampleComponent,
     DialogImageExampleComponent,
+    ModalExampleComponent,
 
     AvatarPageComponent,
     BasicPopupComponent,

@@ -97,6 +97,7 @@
 
     .pa-modal-header,
     .pa-modal-description,
+    pa-modal-content,
     pa-modal-footer {
         animation-name: modal-in-content;
         animation-duration: 1.25s;
@@ -113,6 +114,7 @@
 
     .pa-modal-header,
     .pa-modal-description,
+    pa-modal-content,
     pa-modal-footer {
         animation-name: modal-out-content;
         animation-duration: 1.25s;

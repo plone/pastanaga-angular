@@ -1,0 +1,29 @@
+@import "../../styles/variables";
+
+.pa-modal {
+    min-width: rhythm(48);
+    position: relative;
+    padding: rhythm(2.5) rhythm(4);
+
+    .pa-close-button {
+        position: absolute;
+        top: rhythm(1);
+        right: rhythm(1);
+    }
+
+    .pa-modal-description {
+        @include font-size(s);
+        @include line-height(m);
+        color: $color-neutral-secondary-default;
+    }
+
+    pa-modal-content {
+        margin-top: rhythm(1.5);
+    }
+
+    pa-modal-footer {
+        margin-top: rhythm(2.5);
+        display: flex;
+        justify-content: space-between;
+    }
+}

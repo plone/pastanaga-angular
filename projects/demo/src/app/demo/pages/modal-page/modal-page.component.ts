@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ModalService } from '../../../../../../pastanaga-angular/src';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './dialog-image-example/dialog-image-example.component';
+import { ModalExampleComponent } from './modal-example/modal-example.component';
 
 @Component({
     templateUrl: './modal-page.component.html',
@@ -78,5 +79,9 @@ export class OwnModalComponent extends BaseModalComponent implements OnInit, Aft
 
     openImageDialog() {
         this.modalService.openModal(DialogImageExampleComponent).onClose.subscribe(console.log);
+    }
+
+    openModal() {
+        this.modalService.openModal(ModalExampleComponent).onClose.subscribe(console.log);
     }
 }

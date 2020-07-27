@@ -8,9 +8,12 @@ import {
     ModalTitleDirective,
 } from './modal.directive';
 import { DialogComponent } from './dialog/dialog.component';
+import { ModalComponent } from './modal/modal.component';
+import { PaButtonModule } from '../button/button.module';
 
 const COMPONENTS_AND_DIRECTIVES = [
     DialogComponent,
+    ModalComponent,
     ModalTitleDirective,
     ModalDescriptionDirective,
     ModalContentDirective,
@@ -19,7 +22,7 @@ const COMPONENTS_AND_DIRECTIVES = [
 ];
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, PaButtonModule],
     declarations: COMPONENTS_AND_DIRECTIVES,
     exports: COMPONENTS_AND_DIRECTIVES,
 })
