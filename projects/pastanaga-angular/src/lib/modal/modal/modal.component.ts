@@ -8,4 +8,11 @@ import { BaseModalComponent } from '../base-modal.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class ModalComponent extends BaseModalComponent implements AfterViewInit {}
+export class ModalComponent extends BaseModalComponent implements AfterViewInit {
+    ngAfterViewInit() {
+        if (!!this.ref) {
+            this.ref.config.withCloseButton = true;
+        }
+        super.ngAfterViewInit();
+    }
+}

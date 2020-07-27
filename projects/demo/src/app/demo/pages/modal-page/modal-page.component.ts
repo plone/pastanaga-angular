@@ -66,6 +66,52 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
         <ng-content select="pa-modal-footer"></ng-content>
     </dialog>
 </div>`;
+    openModalConfig = `export class CallerComponent {
+    open() {
+        this.pastanaga.modalService.openModal(DialogExampleComponent, new ModalConfig({blocking: false}));
+    }
+}`;
+    modalCloseButtonSetup = `export class ModalComponent extends BaseModalComponent implements AfterViewInit {
+    ngAfterViewInit() {
+        if (!!this.ref) {
+            this.ref.config.withCloseButton = true;
+        }
+        super.ngAfterViewInit();
+    }
+}
+`;
+    collectDataOnClose = `export class CallerComponent {
+    open() {
+        this.pastanaga.modalService.openModal(DialogExampleComponent).onClose.subscribe(data => console.log('Modal closed', data));
+    }
+}`;
+    closingProgrammatically = `export class SomeDialogComponent implements IModal {
+    closeDialog() {
+        this.modal.close({whatever: true, answer: 42});
+    }
+}`;
+    passingDataToModal = `export class CallerComponent {
+    open() {
+        const modalRef = this.pastanaga.modalService.openModal(SomeDialogComponent);
+        modalRef['document'] = myDoc;
+        modalRef['user'] = myUser;
+    }
+}`;
+    accessingModalData = `export class SomeDialogComponent implements IModal {
+    ngOnInit() {
+        this.document = this.modal.ref['document'];
+        this.user = this.modal.ref['user'];
+    }
+}`;
+    onEnterBinding = `export class SomeDialogComponent implements IModal {
+    ngOnInit() {
+        this.modal.onEnter = this.edit.bind(this);
+    }
+
+    edit() {
+        this.modal.close({whatever: true, answer: 42});
+    }
+}`;
 
     constructor(private modalService: ModalService) {}
 

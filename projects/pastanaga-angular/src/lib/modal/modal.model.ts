@@ -11,7 +11,7 @@ export class ModalConfig {
 
     constructor(data?: IModalConfig) {
         this.blocking = !!data && typeof data.blocking === 'boolean' ? data.blocking : true;
-        this.withCloseButton = !!data && typeof data.withCloseButton === 'boolean' ? data.withCloseButton : true;
+        this.withCloseButton = !!data && typeof data.withCloseButton === 'boolean' ? data.withCloseButton : false;
     }
 }
 
