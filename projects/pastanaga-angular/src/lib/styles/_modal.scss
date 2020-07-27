@@ -1,0 +1,128 @@
+@import "variables";
+
+.pa-modal-backdrop{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-index-modal-backdrop;
+
+    &.pa-modal-blocking {
+        background-color: rgba($color-neutral-primary-default, .5);
+    }
+}
+
+.pa-modal {
+    border: 0;
+    display: flex;
+    flex: 1 1 0;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    overflow-y: auto;
+
+    box-shadow: $shadow-default;
+    margin: 0;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: $z-index-modal;
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .pa-modal {
+        max-height: 70vh;
+    }
+}
+
+//=====================================
+// Modal animation
+//=====================================
+
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(400%) scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+}
+
+@keyframes modal-in-content {
+    0% {
+        opacity: 0;
+        transform: translateY(rhythm(1));
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(rhythm(1));
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes modal-out {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(100%) scale(0);
+    }
+}
+
+@keyframes modal-out-content {
+    0% {
+        opacity: 1;
+        transform: translateY(rhythm(1));
+
+    }
+    25% {
+        opacity: 0;
+        transform: translateY(rhythm(1));
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+
+    }
+}
+
+.pa-modal.in {
+    animation-name: modal-in;
+    animation-duration: .75s;
+
+    .pa-modal-header,
+    .pa-modal-description,
+    pa-modal-content,
+    pa-modal-footer {
+        animation-name: modal-in-content;
+        animation-duration: 1.25s;
+    }
+}
+
+.pa-modal.off {
+    display: none;
+}
+
+.pa-modal.out {
+    animation-name: modal-out;
+    animation-duration: .75s;
+
+    .pa-modal-header,
+    .pa-modal-description,
+    pa-modal-content,
+    pa-modal-footer {
+        animation-name: modal-out-content;
+        animation-duration: 1.25s;
+    }
+}

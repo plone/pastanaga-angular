@@ -32,6 +32,10 @@ $rhythm: (
     20: ($spacer * 20),     //  20   unit - 240px -  15     rem
     23: ($spacer * 23),     //  23   unit - 276px -  17.25  rem
     25: ($spacer * 25),     //  25   unit - 300px -  18.75  rem
+    28: ($spacer * 28),     //  28   unit - 336px -  21     rem
+    32: ($spacer * 32),     //  32   unit - 384px -  24     rem
+    34: ($spacer * 34),     //  34   unit - 408px -  25.5   rem
+    48: ($spacer * 48),     //  48   unit - 576px -  36     rem
 ) !default;
 
 @function rhythm($spacer-size) {

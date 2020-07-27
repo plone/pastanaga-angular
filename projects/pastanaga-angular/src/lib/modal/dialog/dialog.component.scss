@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.pa-dialog {
+    text-align: center;
+    min-width: rhythm(28);
+    max-width: rhythm(32);
+
+    .pa-modal-header {
+        h4 {
+            margin-bottom: rhythm(.75);
+        }
+        img {
+            width: rhythm(7.5);
+        }
+    }
+
+    .pa-modal-description {
+        @include font-size(s);
+        @include line-height(m);
+        color: $color-neutral-secondary-default;
+    }
+
+    pa-modal-footer {
+        margin-top: rhythm(3.5);
+        display: flex;
+        justify-content: space-between;
+
+        pa-button:not(:last-of-type) {
+            margin-right: rhythm(1);
+        }
+    }
+}

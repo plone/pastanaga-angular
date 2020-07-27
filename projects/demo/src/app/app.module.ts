@@ -14,27 +14,21 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { I18N_EN, mergeTranslations } from 'projects/pastanaga-angular/src';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        WelcomePageComponent,
-    ],
-    imports: [
-        BrowserModule,
-        TraversalModule,
-        AngularSvgIconModule.forRoot(),
-        PaDemoModule,
-    ],
+    declarations: [AppComponent, WelcomePageComponent],
+    imports: [BrowserModule, TraversalModule, AngularSvgIconModule.forRoot(), PaDemoModule],
     providers: [
-        {provide: Marker, useClass: AppMarker},
-        {provide: Resolver, useClass: AppResolver},
+        { provide: Marker, useClass: AppMarker },
+        { provide: Resolver, useClass: AppResolver },
         Normalizer,
-        {provide: 'LANG', useValue: 'en_US'},
-        {provide: 'TRANSLATIONS', useValue: {
-            en_US: mergeTranslations([I18N_EN, {...(enDemo as any).default}, {...(custom as any).default}]),
-            latin: {...la},
-        }},
+        { provide: 'LANG', useValue: 'en_US' },
+        {
+            provide: 'TRANSLATIONS',
+            useValue: {
+                en_US: mergeTranslations([I18N_EN, { ...(enDemo as any).default }, { ...(custom as any).default }]),
+                latin: { ...la },
+            },
+        },
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

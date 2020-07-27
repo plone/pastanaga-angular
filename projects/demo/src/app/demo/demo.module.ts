@@ -28,6 +28,7 @@ import {
     PaTableModule,
     PaDateTimeModule,
     PaToastModule,
+    PaModalModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -49,6 +50,10 @@ import { ToastPageComponent } from './pages/toast-page/toast-page.component';
 import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
 import { PalettePageComponent } from './pages/palette-page/palette-page.component';
+import { ModalPageComponent } from './pages/modal-page/modal-page.component';
+import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
+import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
+import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -62,6 +67,9 @@ const COMPONENTS = [
 
     BaseControlComponent,
     BaseTextfieldComponent,
+    DialogExampleComponent,
+    DialogImageExampleComponent,
+    ModalExampleComponent,
 
     AvatarPageComponent,
     BasicPopupComponent,
@@ -72,6 +80,7 @@ const COMPONENTS = [
     GridPageComponent,
     IconPageComponent,
     InputPageComponent,
+    ModalPageComponent,
     PalettePageComponent,
     PopupPageComponent,
     SelectPageComponent,
@@ -104,6 +113,7 @@ const COMPONENTS = [
         PaTableModule,
         PaTooltipModule,
         PaDateTimeModule,
+        PaModalModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,
