@@ -19,16 +19,22 @@
     flex: 1 1 0;
     flex-flow: column nowrap;
     align-items: stretch;
+    overflow-y: auto;
 
     box-shadow: $shadow-default;
     margin: 0;
-    max-height: 70vh;
 
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     z-index: $z-index-modal;
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .pa-modal {
+        max-height: 70vh;
+    }
 }
 
 //=====================================
