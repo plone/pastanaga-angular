@@ -1,3 +1,9 @@
+# 2.3.2 (2020-07-28)
+
+### Bugfix
+
+-   **Textfield**: detect text input autofill properly [ebrehault]
+
 # 2.3.1 (2020-07-28)
 
 ### Improvements
