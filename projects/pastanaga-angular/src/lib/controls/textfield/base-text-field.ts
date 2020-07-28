@@ -51,6 +51,7 @@ export class ErrorMessages {
 export class BaseTextField extends BaseControl implements AfterContentInit, OnInit, OnDestroy {
     @Input() debounceDuration = 500;
     @Input() errorMessages?: ErrorMessages;
+    @Input() pattern?: RegExp;
     @Input()
     get errorMessage(): string {
         return this._errorMessage;
@@ -230,6 +231,10 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
             this._errors.required = !value && value !== 0;
         }
 
+        if (!!this.pattern && typeof value === 'string') {
+            this._errors.pattern = !!value && !this.pattern.test(value);
+        }
+
         if (!!this.errorMessages) {
             const messages: ErrorMessages = this.errorMessages;
             this._errorMessage = Object.entries(this._errors)
@@ -247,8 +252,11 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     }
 
     protected isUntouched() {
-        return !!this.element && !!this.element.nativeElement
-            && !!this.element.nativeElement.classList
-            && this.element.nativeElement.classList.contains('ng-untouched');
+        return (
+            !!this.element &&
+            !!this.element.nativeElement &&
+            !!this.element.nativeElement.classList &&
+            this.element.nativeElement.classList.contains('ng-untouched')
+        );
     }
 }
