@@ -1,10 +1,17 @@
+# 2.3.1 (2020-07-28)
+
+### Improvements
+
+-   **Textfield**: `pattern` property to validate value against regexp [ebrehault]
+
 # 2.3.0 (2020-07-27)
 
 ### Feature
-- **Modal** components and associated service: [mpellerin42]
-    - provides a service to manage all modals of an application
-    - provides dialog and modal components
-    - provides everything needed to create custom modals
+
+-   **Modal** components and associated service: [mpellerin42]
+    -   provides a service to manage all modals of an application
+    -   provides dialog and modal components
+    -   provides everything needed to create custom modals
 
 # 2.2.1 (2020-07-22)
 

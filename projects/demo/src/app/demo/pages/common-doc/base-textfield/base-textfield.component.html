@@ -13,11 +13,17 @@
     <dt>errorMessages</dt>
     <dd>Map of all possible internal error messages (like <code>required</code>) <small>(optional: by default field will have the error state without any message displayed)</small></dd>
 
+    <dt>pattern</dt>
+    <dd><code>RegExp</code> object. Allows to validate field value according a regular expression</dd>
+    
     <dt>placeholder</dt>
     <dd>Field's placeholder <small>(optional)</small></dd>
 
     <dt>readonly</dt>
-    <dd>Set readonly state <small>(default: false)</small></dd>
+    <dd>Sets readonly state <small>(default: false)</small></dd>
+
+    <dt>required</dt>
+    <dd>Sets required state <small>(default: false)</small></dd>
 
     <dt>value</dt>
     <dd>Field's value</dd>
@@ -26,20 +32,20 @@
 <h3>Outputs</h3>
 <dl>
     <dt>blurring</dt>
-    <dd>Emit current value on blur</dd>
+    <dd>Emits current value on blur</dd>
 
     <dt>enter</dt>
-    <dd>Emit <code>KeyboardEvent</code> and <code>string</code> value when pressing enter</dd>
+    <dd>Emits <code>KeyboardEvent</code> and <code>string</code> value when pressing enter</dd>
 
     <dt>focusing</dt>
-    <dd>Emit <code>FocusEvent</code> on focus</dd>
+    <dd>Emits <code>FocusEvent</code> on focus</dd>
 
     <dt>instantValueChange</dt>
-    <dd>Emit value as soon as it changes</dd>
+    <dd>Emits value as soon as it changes</dd>
 
     <dt>keyUp</dt>
-    <dd>Emit <code>string</code> value on key up event</dd>
+    <dd>Emits <code>string</code> value on key up event</dd>
 
     <dt>valueChange</dt>
-    <dd>Emit current value after a debounce time defined by <code>debounceDuration</code> input</dd>
+    <dd>Emits current value after a debounce time defined by <code>debounceDuration</code> input</dd>
 </dl>
