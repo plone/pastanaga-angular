@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ModalService } from './modal.service';
-import { BaseModalComponent, IModal } from './base-modal.component';
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { IModal } from './base-modal.component';
+import { Component, ViewChild } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { PaModalModule } from './modal.module';
-import { ModalConfig, PaButtonModule } from '../..';
-import { TestDialogImageComponent } from './dialog/dialog.component.spec';
+import { ModalConfig } from './modal.model';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({
