@@ -104,6 +104,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
     _fieldType = 'textfield';
     _readonly = false;
     _required = false;
+    _autofilled = false;
 
     _placeholder = '';
     _hasError = false;
@@ -228,7 +229,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
         }
 
         if (this._required) {
-            this._errors.required = !value && value !== 0;
+            this._errors.required = !this._autofilled && !value && value !== 0;
         }
 
         if (!!this.pattern && typeof value === 'string') {
@@ -253,6 +254,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     protected isUntouched() {
         return (
+            !this._autofilled &&
             !!this.element &&
             !!this.element.nativeElement &&
             !!this.element.nativeElement.classList &&

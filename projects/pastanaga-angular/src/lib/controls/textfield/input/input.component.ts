@@ -30,6 +30,7 @@ import { BaseTextField } from '../base-text-field';
 @Component({
     selector: 'pa-input',
     templateUrl: './input.component.html',
+    styleUrls: ['./input.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -72,12 +73,11 @@ export class InputComponent extends BaseTextField
         this._noAutoComplete = coerceBooleanProperty(value);
     }
 
-    @ViewChild('inputElement', { static: true }) input?: ElementRef;
+    @ViewChild('inputElement', { static: true }) input?: ElementRef<HTMLInputElement>;
 
     _fieldType = 'input';
     _hasFocus = false;
     _noAutoComplete = false;
-    _autofilled = false;
     _acceptHtmlTags = false;
 
     constructor(
@@ -99,9 +99,13 @@ export class InputComponent extends BaseTextField
 
     ngAfterViewInit(): void {
         if (this.platform.isBrowser && !!this.input) {
-            this.autofillMonitor
-                .monitor(this.input.nativeElement)
-                .subscribe((event) => (this._autofilled = event.isAutofilled));
+            const element = this.input.nativeElement;
+            this.autofillMonitor.monitor(element).subscribe((event) => {
+                this._autofilled = event.isAutofilled;
+                if (this._autofilled) {
+                    this._validate(undefined);
+                }
+            });
         }
         if (this.platform.IOS && !!this.input) {
             const input = this.input;
