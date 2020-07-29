@@ -1,6 +1,6 @@
 {
     "name": "pastanaga-angular",
-    "version": "2.3.0",
+    "version": "0.0.0",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
@@ -8,7 +8,7 @@
         "start": "ng serve",
         "deploy": "npm run icon_list && ng deploy --base-href=/pastanaga-angular/",
         "build:demo": "npm run icon_list && ng build demo --prod --base-href /pastanaga-angular/ && cp ./dist/demo/index.html ./dist/demo/404.html",
-        "build": "ng build --prod && cp ./README.md ./dist/pastanaga-angular",
+        "build": "cp src/pastanaga*.scss . && ng build --prod && cp ./README.md ./dist/pastanaga-angular && rm pastanaga*.scss",
         "lint": "ng lint",
         "test:lib": "jest --config ./projects/pastanaga-angular/jest.config.js",
         "test:lib:watch": "jest --watch --config ./projects/pastanaga-angular/jest.config.js",

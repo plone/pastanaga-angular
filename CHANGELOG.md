@@ -1,3 +1,9 @@
+# 2.3.3 (2020-07-29)
+
+### Bugfix
+
+-   **Textfield**: fix input validation [ebrehault]
+
 # 2.3.2 (2020-07-28)
 
 ### Bugfix

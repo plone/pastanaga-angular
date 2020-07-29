@@ -172,7 +172,6 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
 
     onBlur() {
         this._validate(this.value);
-        this.validate({} as FormControl);
         this.blurring.emit(this.value);
     }
 
@@ -203,7 +202,6 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
             return null;
         }
         if (!this._errors.required && !this._errors.pattern && !this._errors.min && !this._errors.max) {
-            this._hasError = false;
             return null;
         }
         const _errors: any = {};
@@ -219,12 +217,12 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
         if (this._errors.max) {
             _errors.max = { valid: false };
         }
-        this._hasError = true;
         return _errors;
     }
 
     _validate(value: string | number | undefined) {
         if (this.isUntouched()) {
+            this._hasError = false;
             return;
         }
 
@@ -243,6 +241,7 @@ export class BaseTextField extends BaseControl implements AfterContentInit, OnIn
                 .map(([key, validity]) => (messages as any)[key])
                 .join(', ');
         }
+        this._hasError = this._errors.required || this._errors.pattern || !!this._errors.min || !!this._errors.max;
     }
 
     writeValue(value: any): void {
