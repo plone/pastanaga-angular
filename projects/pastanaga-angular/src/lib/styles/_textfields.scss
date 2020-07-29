@@ -64,6 +64,7 @@
         }
 
         &.pa-field-control-filled,
+        &.cdk-text-field-autofilled,
         &:not(:disabled):not(:read-only):focus,
         &:not(:disabled):not(:read-only):active {
             &~.pa-field-label {

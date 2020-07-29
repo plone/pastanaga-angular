@@ -3,6 +3,7 @@
     <pa-demo-description>Basic input field</pa-demo-description>
 
     <pa-demo-examples>
+        <h3>Basic form</h3>
         <form #demoForm="ngForm">
             <pa-input required
                       ngModel
@@ -29,6 +30,35 @@
             >
                 Field with help
             </pa-input>
+        </form>
+        <h3>Login form</h3>
+        <form #loginForm="ngForm">
+            <pa-input required
+                      ngModel
+                      placeholder="Email"
+                      id="email"
+                      name="email"
+                      [disabled]="disabledState"
+                      [readonly]="readOnlyState"
+                      [errorMessages]="errorMessages"
+                      [errorMessage]="customError"
+            >
+                Email
+            </pa-input>
+            <pa-input required
+                      ngModel
+                      placeholder="Password"
+                      id="password"
+                      name="password"
+                      type="password"
+                      [disabled]="disabledState"
+                      [readonly]="readOnlyState"
+                      [errorMessages]="errorMessages"
+                      [errorMessage]="customError"
+            >
+                Password
+            </pa-input>
+            <pa-button kind="primary" [disabled]="loginForm.invalid">Login</pa-button>
         </form>
     </pa-demo-examples>
     <pa-demo-configuration>
