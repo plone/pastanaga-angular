@@ -1,3 +1,10 @@
+# 2.3.4 (2020-07-30)
+
+### Bugfix
+
+-   **Breakpoint**: fixed desktop breakpoint [jcarret]
+-   **Toggle**: hide checkbox input [jcarret]
+
 # 2.3.3 (2020-07-29)
 
 ### Bugfix
