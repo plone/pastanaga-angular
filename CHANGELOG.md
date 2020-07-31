@@ -1,3 +1,9 @@
+# 2.3.6 (2020-07-31)
+
+### Bugfix
+
+-   **Avatar**: fixed initials display for large [jcarret]
+
 # 2.3.5 (2020-07-31)
 
 ### Improvements

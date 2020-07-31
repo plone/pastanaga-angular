@@ -11,7 +11,8 @@ export class TabsPageComponent {
     <pa-tab (click)="selectedTab = 'info'"
             [active]="selectedTab === 'info'">Info</pa-tab>
     <pa-tab (click)="selectedTab = 'settings'"
-            [active]="selectedTab === 'settings'">Settings</pa-tab>
+            [active]="selectedTab === 'settings'"
+            icon="settings">Settings</pa-tab>
     <pa-tab (click)="selectedTab = 'notifications'"
             [active]="selectedTab === 'notifications'">Notifications</pa-tab>
 </pa-tabs>
