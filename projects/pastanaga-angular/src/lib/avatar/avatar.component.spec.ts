@@ -7,7 +7,13 @@ import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { PaIconModule } from '../icon/icon.module';
 
 @Component({
-    template: `<pa-avatar #avatar [userId]="userId" [userName]="userName" [icon]="icon" [autoBackground]="true"></pa-avatar>`,
+    template: `<pa-avatar
+        #avatar
+        [userId]="userId"
+        [userName]="userName"
+        [icon]="icon"
+        [autoBackground]="true"
+    ></pa-avatar>`,
 })
 export class TestComponent {
     userId = '';
@@ -41,7 +47,7 @@ describe('AvatarComponent', () => {
     it('should set an avatar color', () => {
         component.userId = 'user1';
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-avatar-default')).properties.className).toContain(
+        expect(fixture.debugElement.query(By.css('.pa-avatar-initials')).properties.className).toContain(
             'pa-avatar-lime'
         );
     });

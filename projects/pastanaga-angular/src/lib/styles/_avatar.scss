@@ -15,52 +15,70 @@
 }
 
 .pa-avatar {
-
-    abbr[title], acronym[title] {
-        border-bottom: none;
-        text-decoration: none;
-    }
-
     position: relative;
     display: flex;
-    width: rhythm($avatar-default-rhythm);
-    height: rhythm($avatar-default-rhythm);
+    width: $size-avatar-small;
+    height: $size-avatar-small;
+    border-radius: 50%;
 
-    &.pa-avatar-large {
-        width: rhythm($avatar-large-rhythm);
-        height: rhythm($avatar-large-rhythm);
-        .pa-avatar-default .pa-avatar-initials {
-            @include size($avatar-large-text-size);
-        }
-        .pa-avatar-user-icon {
-            width: rhythmRatio($avatar-large-rhythm, $avatar-icon-size-ratio);
-            height: rhythmRatio($avatar-large-rhythm, $avatar-icon-size-ratio);
-        }
-        .pa-avatar-icon-alt {
-            @include size($avatar-icon-alt-font-size);
-            font-weight: $avatar-icon-alt-font-weight;
-        }
-    }
-
-    .pa-avatar-icon {
+    .pa-avatar-no-info-icon {
         @include full-size-circle();
         @include flex-content-aligned();
-        background: $avatar-icon-default-background;
+        background: $background-color-avatar-icon-default;
     }
 
-    .pa-avatar-img {
+    .pa-avatar-user-img {
         @include full-size-circle();
         object-fit: cover;
     }
 
-    .pa-avatar-default {
+    .pa-avatar-user-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        @include flex-content-aligned();
+        width: rhythm(1.25);
+        height: rhythm(1.25);
+        border-radius: 50%;
+        background: $background-color-avatar-icon-default;
+    }
+
+    .pa-avatar-initials {
+        border-bottom: none;
+        text-decoration: none;
+        width: rhythm(2.5);
+    }
+
+    &.pa-avatar-large {
+        width: $size-avatar-large-mobile;
+        height: $size-avatar-large-mobile;
+        .pa-avatar-no-info-icon-alt {
+            @include size(xs);
+            font-weight: $font-weight-avatar-icon-alt;
+        }
+        .pa-avatar-user-icon {
+            width: rhythm(3.5);
+            height: rhythm(3.5);
+        }
+        .pa-avatar-initials {
+            width: rhythm(3.5);
+            span {
+                @include size(dsmall);
+            }
+        }
+    }
+    &.pa-avatar-active {
+        box-shadow: $shadow-focus;
+    }
+
+    .pa-avatar-initials {
         display: inline-flex;
         @include full-size-circle();
         background: $color-neutral-secondary-light;
-        .pa-avatar-initials {
-            @include size($avatar-default-text-size);
+        span {
+            @include size(m);
             margin: auto;
-            font-weight: $avatar-initials-font-weight;
+            font-weight: $font-weight-avatar-initials;
             text-transform: uppercase;
         }
         &.pa-avatar-blue {
@@ -124,26 +142,18 @@
         &.pa-avatar-violet,
         &.pa-avatar-indigo,
         &.pa-avatar-azure {
-            .pa-avatar-initials {
-                color: $avatar-initials-color;
+            span {
+                color: $font-color-avatar-initials;
             }
         }
     }
 
-    .pa-avatar-user-icon {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        @include flex-content-aligned();
-        width: rhythmRatio($avatar-default-rhythm, $avatar-icon-size-ratio);
-        height: rhythmRatio($avatar-default-rhythm, $avatar-icon-size-ratio);
-        border-radius: 50%;
-        background: $avatar-icon-default-background;
-    }
+
 }
-@media (max-width: $size-viewport-medium-max) {
+
+@media (min-width: $size-viewport-medium-min) {
     .pa-avatar.pa-avatar-large {
-        width: rhythm(8);
-        height: rhythm(8);
+        width: $size-avatar-large-desktop;
+        height: $size-avatar-large-desktop;
     }
 }

@@ -10,6 +10,7 @@
         margin: auto 0;
         .pa-field-label {
             position: inherit;
+            max-width: 100%;
         }
     }
 }
@@ -68,8 +69,8 @@
         }
     }
 
-    &.focused {
-        outline: thin solid $color-outline;
+    &.focused .pa-toggle-slider {
+        box-shadow: $shadow-focus;
     }
 
     &.disabled {

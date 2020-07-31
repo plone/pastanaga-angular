@@ -1,42 +1,39 @@
-<span class="pa-avatar" [class.pa-avatar-large]="_isLarge">
+<span class="pa-avatar" [class.pa-avatar-large]="_isLarge" [class.pa-avatar-active]="active">
 
     <ng-container *ngIf="!_userName && !_base64Image && !!icon; else userAvatar">
-        <span class="pa-avatar-icon" [style.background]="iconBackgroundColor">
-            <pa-icon
-                [name]="icon"
-                [color]="iconColor"
-                [size]="_iconAvatarSize"
-                [style.background]="iconBackgroundColor"
+        <span class="pa-avatar-no-info-icon" [style.background]="iconBackgroundColor">
+            <pa-icon [name]="icon"
+                     [color]="iconColor"
+                     [size]="_iconAvatarSize"
+                     [style.background]="iconBackgroundColor"
             ></pa-icon>
             <span *ngIf="!!alternateText && _isLarge" [style.color]="iconColor"
-                  class="pa-avatar-icon-alt"
-            >
-                {{alternateText}}
-            </span>
+                  class="pa-avatar-no-info-icon-alt"
+            >{{alternateText}}</span>
         </span>
     </ng-container>
 
     <ng-template #userAvatar>
         <ng-container *ngIf="_base64Image; else avatarInitials">
-            <img [src]="_base64Image" class="pa-avatar-img" [attr.alt]="alternateText">
+            <img [src]="_base64Image" class="pa-avatar-user-img" [attr.alt]="alternateText">
         </ng-container>
 
         <ng-container *ngIf="icon">
             <pa-icon class="pa-avatar-user-icon"
-                [name]="icon"
-                [color]="iconColor"
-                [size]="_iconSize"
-                [style.background]="iconBackgroundColor"
+                     [name]="icon"
+                     [color]="iconColor"
+                     [size]="_iconSize"
+                     [style.background]="iconBackgroundColor"
             ></pa-icon>
         </ng-container>
     </ng-template>
     <ng-template #avatarInitials>
         <abbr
             [attr.title]="_userName"
-            class="pa-avatar-default {{_colorClass}}"
+            class="pa-avatar-initials {{_colorClass}}"
             [style.backgroundColor]="_backgroundColor"
         >
-            <span class="pa-avatar-initials">{{_initials}}</span>
+            <span>{{_initials}}</span>
         </abbr>
     </ng-template>
 </span>

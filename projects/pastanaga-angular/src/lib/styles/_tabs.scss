@@ -2,11 +2,16 @@
 
 .pa-tabs-list {
     list-style: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     white-space: nowrap;
-    display: flex;
-    position: relative;
+
+    li {
+        border-bottom: 1px solid $color-neutral-secondary-light;
+    }
 }
 
 pa-tab {
@@ -18,46 +23,19 @@ pa-tab {
 
 .pa-tabs-link {
     width: 100%;
-    @include size(xs);
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
-    color: $color-text-tab-link;
+    @include font-size(m);
+    @include line-height(l);
+    font-weight: $font-weight-regular;
+    color: $color-neutral-primary-default;
     border: 0;
-    padding: rhythm(.25) 0;
+    padding: 0;
     background: transparent;
-    transition: all .25s ease;
-
-    &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        background: $color-tab-slider;
-        height: 1px;
-        bottom: 0;
-        z-index: 0;
-    }
 
     &:hover:not([aria-expanded="true"]) {
         color: $color-text-tab-link;
         cursor: pointer;
         background: $color-background-tab-link-hover;
         transition: all .25s ease;
-    }
-
-    &[aria-expanded="true"] {
-        color: $color-text-tab-link;
-        cursor: default;
-    }
-
-    &-wrapper {
-        margin: rhythm(.25);
-        padding: rhythm(.75);
-        z-index: 1;
-        position: relative;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
     }
 
     &:not(:-moz-focusring):focus > &-wrapper {
@@ -71,61 +49,120 @@ pa-tab {
     &:focus, &-wrapper:focus {
         outline: 0;
     }
+
     &:focus:not([aria-expanded="true"]) {
-        outline: thin solid $color-outline;
+        box-shadow: $shadow-focus;
     }
 }
 
-.pa-tabs-slider {
-    background: $color-tab-slider-active;
-    height: rhythm(.25);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    transition: left .25s ease;
+.pa-tabs-link-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    margin: rhythm(.25);
+    padding: rhythm(.75);
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-pa-tab:nth-child(1):nth-last-child(3) ~ .pa-tabs-slider,
-pa-tab:nth-child(2):nth-last-child(2) ~ .pa-tabs-slider,
-pa-tab:nth-child(3):nth-last-child(1) ~ .pa-tabs-slider {
-    width: 50%;
-}
+@media (min-width: $size-viewport-medium-min) {
+    .pa-tabs-list {
+        flex-direction: row;
 
-pa-tab:nth-child(1):nth-last-child(4) ~ .pa-tabs-slider,
-pa-tab:nth-child(2):nth-last-child(3) ~ .pa-tabs-slider,
-pa-tab:nth-child(3):nth-last-child(2) ~ .pa-tabs-slider,
-pa-tab:nth-child(4):nth-last-child(1) ~ .pa-tabs-slider {
-    width: 33.33333333333%;
-}
+        li {
+            border: 0;
+        }
+    }
+    .pa-tabs-link {
+        @include size(xs);
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        color: $color-text-tab-link;
+        padding: rhythm(.25) 0;
+        transition: all .25s ease;
 
-pa-tab:nth-child(1):nth-last-child(5) ~ .pa-tabs-slider,
-pa-tab:nth-child(2):nth-last-child(4) ~ .pa-tabs-slider,
-pa-tab:nth-child(3):nth-last-child(3) ~ .pa-tabs-slider,
-pa-tab:nth-child(4):nth-last-child(2) ~ .pa-tabs-slider,
-pa-tab:nth-child(5):nth-last-child(1) ~ .pa-tabs-slider {
-    width: 25%;
-}
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background: $color-tab-slider;
+            height: 1px;
+            bottom: 0;
+            z-index: 0;
+        }
 
-pa-tab.active:nth-child(2):nth-last-child(2) ~ .pa-tabs-slider {
-    left: 50%;
-}
 
-pa-tab.active:nth-child(2):nth-last-child(3) ~ .pa-tabs-slider {
-    left: 33.33333333333%;
-}
+        &[aria-expanded="true"] {
+            color: $color-neutral-primary-default;
+            cursor: default;
+        }
 
-pa-tab.active:nth-child(3):nth-last-child(2) ~ .pa-tabs-slider {
-    left: 66.66666666667%;
-}
+        &-wrapper {
+            margin: rhythm(.25);
+            padding: rhythm(.75);
+            z-index: 1;
+            position: relative;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    .pa-tabs-slider {
+        background: $color-tab-slider-active;
+        height: rhythm(.25);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        transition: left .25s ease;
+    }
 
-pa-tab.active:nth-child(2):nth-last-child(4) ~ .pa-tabs-slider {
-    left: 25%;
-}
+    pa-tab:nth-child(1):nth-last-child(3) ~ .pa-tabs-slider,
+    pa-tab:nth-child(2):nth-last-child(2) ~ .pa-tabs-slider,
+    pa-tab:nth-child(3):nth-last-child(1) ~ .pa-tabs-slider {
+        width: 50%;
+    }
 
-pa-tab.active:nth-child(3):nth-last-child(3) ~ .pa-tabs-slider {
-    left: 50%;
-}
+    pa-tab:nth-child(1):nth-last-child(4) ~ .pa-tabs-slider,
+    pa-tab:nth-child(2):nth-last-child(3) ~ .pa-tabs-slider,
+    pa-tab:nth-child(3):nth-last-child(2) ~ .pa-tabs-slider,
+    pa-tab:nth-child(4):nth-last-child(1) ~ .pa-tabs-slider {
+        width: 33.33333333333%;
+    }
 
-pa-tab.active:nth-child(4):nth-last-child(2) ~ .pa-tabs-slider {
-    left: 75%;
+    pa-tab:nth-child(1):nth-last-child(5) ~ .pa-tabs-slider,
+    pa-tab:nth-child(2):nth-last-child(4) ~ .pa-tabs-slider,
+    pa-tab:nth-child(3):nth-last-child(3) ~ .pa-tabs-slider,
+    pa-tab:nth-child(4):nth-last-child(2) ~ .pa-tabs-slider,
+    pa-tab:nth-child(5):nth-last-child(1) ~ .pa-tabs-slider {
+        width: 25%;
+    }
+
+    pa-tab.active:nth-child(2):nth-last-child(2) ~ .pa-tabs-slider {
+        left: 50%;
+    }
+
+    pa-tab.active:nth-child(2):nth-last-child(3) ~ .pa-tabs-slider {
+        left: 33.33333333333%;
+    }
+
+    pa-tab.active:nth-child(3):nth-last-child(2) ~ .pa-tabs-slider {
+        left: 66.66666666667%;
+    }
+
+    pa-tab.active:nth-child(2):nth-last-child(4) ~ .pa-tabs-slider {
+        left: 25%;
+    }
+
+    pa-tab.active:nth-child(3):nth-last-child(3) ~ .pa-tabs-slider {
+        left: 50%;
+    }
+
+    pa-tab.active:nth-child(4):nth-last-child(2) ~ .pa-tabs-slider {
+        left: 75%;
+    }
 }
