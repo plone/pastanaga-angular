@@ -57,7 +57,7 @@ export class AvatarComponent {
         this._iconAvatarSize = this._isLarge ? Size.xxlarge : Size.medium;
     }
 
-    @Input() set autoBackground(value: boolean)  {
+    @Input() set autoBackground(value: boolean) {
         this._autoBackground = coerceBooleanProperty(value);
         this.assignColorClass();
     }
@@ -66,6 +66,7 @@ export class AvatarComponent {
     @Input() iconColor?: string;
     @Input() iconBackgroundColor?: string;
     @Input() alternateText?: string;
+    @Input() active = false;
 
     _userId?: string;
     _userName?: string;

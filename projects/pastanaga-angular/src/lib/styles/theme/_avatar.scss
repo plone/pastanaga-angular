@@ -1,4 +1,5 @@
 @import "palette";
+@import "spacing";
 @import "typography";
 
 $avatar-blue:       #179fbd !default;
@@ -17,12 +18,9 @@ $avatar-violet:     #9489CE !default;
 $avatar-indigo:     #7A92C5 !default;
 $avatar-azure:      #219ACE !default;
 
-$avatar-default-rhythm:             3.5 !default;
-$avatar-default-text-size:          m !default;
-$avatar-large-rhythm:               11 !default;
-$avatar-large-text-size:            dsmall !default;
-$avatar-icon-size-ratio:            3.25 !default;
-$avatar-icon-alt-font-size:         xs !default;
+$avatar-large-size-mobile:          rhythm(8.75) !default;
+$avatar-large-size-desktop:         rhythm(11) !default;
+$avatar-small-size:                 rhythm(2.5) !default;
 $avatar-icon-default-background:    $color-neutral-secondary-lightest !default;
 $avatar-icon-alt-font-weight: $font-weight-semi-bold !default;
 $avatar-initials-font-weight:       $font-weight-thin !default;
