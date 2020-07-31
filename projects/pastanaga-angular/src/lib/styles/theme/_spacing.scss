@@ -11,6 +11,7 @@ $rhythm: (
     1: $spacer,             //  1    unit -  12px -  0.75   rem
     1.25: ($spacer * 1.25), //  1.25 unit -  15px -  0.9375 rem
     1.5: ($spacer * 1.5),   //  1.5  unit -  18px -  1.125  rem
+    1.75: ($spacer * 1.75), //  1.75 unit -  21px -  1.3125 rem
     2: ($spacer * 2),       //  2    unit -  24px -  1.5    rem
     2.25: ($spacer * 2.25), //  2.25 unit -  27px -  1.6875 rem
     2.5: ($spacer * 2.5),   //  2.5  unit -  30px -  1.875  rem
@@ -26,13 +27,17 @@ $rhythm: (
     7.5: ($spacer * 7.5),   //  7.5  unit -  90px -  5.625  rem
     8: ($spacer * 8),       //  8    unit -  96px -  6      rem
     8.75: ($spacer * 8.75), //  8.75 unit - 105px -  6.562  rem
+    9: ($spacer * 9),       //  9    unit - 108px -  6.75   rem
     10: ($spacer * 10),     //  10   unit - 120px -  7.5    rem
     11: ($spacer * 11),     //  11   unit - 132px -  8.25   rem
     12: ($spacer * 12),     //  12   unit - 144px -  9      rem
+    15: ($spacer * 15),     //  15   unit - 180px -  11.25  rem
     16: ($spacer * 16),     //  16   unit - 192px -  11.75  rem
     17: ($spacer * 17),     //  17   unit - 204px -  12.75  rem
     18: ($spacer * 18),     //  18   unit - 216px -  13.5   rem
+    19: ($spacer * 19),     //  19   unit - 228px -  14.25  rem
     20: ($spacer * 20),     //  20   unit - 240px -  15     rem
+    21: ($spacer * 21),     //  21   unit - 252px -  15.75  rem
     23: ($spacer * 23),     //  23   unit - 276px -  17.25  rem
     25: ($spacer * 25),     //  25   unit - 300px -  18.75  rem
     28: ($spacer * 28),     //  28   unit - 336px -  21     rem
