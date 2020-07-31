@@ -18,10 +18,10 @@ $avatar-violet:     #9489CE !default;
 $avatar-indigo:     #7A92C5 !default;
 $avatar-azure:      #219ACE !default;
 
-$avatar-large-size-mobile:          rhythm(8.75) !default;
-$avatar-large-size-desktop:         rhythm(11) !default;
-$avatar-small-size:                 rhythm(2.5) !default;
-$avatar-icon-default-background:    $color-neutral-secondary-lightest !default;
-$avatar-icon-alt-font-weight: $font-weight-semi-bold !default;
-$avatar-initials-font-weight:       $font-weight-thin !default;
-$avatar-initials-color:             $color-neutral-primary-lightest !default;
+$size-avatar-large-mobile:                  rhythm(8.75) !default;
+$size-avatar-large-desktop:                 rhythm(11) !default;
+$size-avatar-small:                         rhythm(2.5) !default;
+$background-color-avatar-icon-default:      $color-neutral-secondary-lightest !default;
+$font-weight-avatar-icon-alt:               $font-weight-semi-bold !default;
+$font-weight-avatar-initials:               $font-weight-thin !default;
+$font-color-avatar-initials:                $color-neutral-primary-lightest !default;
