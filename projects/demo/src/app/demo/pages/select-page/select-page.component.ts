@@ -1,22 +1,22 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { OptionHeaderModel, OptionModel, OptionSeparator, } from '../../../../../../pastanaga-angular/src';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     templateUrl: './select-page.component.html',
     styleUrls: ['./select-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectPageComponent implements OnInit {
+export class SelectPageComponent {
     selectedValue1 = 'user2';
     selectedValue2 = '';
     options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
-        new OptionHeaderModel({id: 'audio', label: 'Audio'}),
-        new OptionModel({id: 'file1', label: 'Audio 1', value: 'audio1', glyph: 'audio'}),
-        new OptionModel({id: 'file2', label: 'Audio 2', value: 'audio2', glyph: 'audio', disabled: true}),
-        new OptionModel({id: 'file3', label: 'Audio 3', value: 'audio3', glyph: 'audio', selected: true}),
-        new OptionHeaderModel({id: 'image', label: 'Images'}),
-        new OptionModel({id: 'file4', label: 'Image 1', value: 'image1', glyph: 'image'}),
-        new OptionModel({id: 'file5', label: 'Image 2', value: 'image2', glyph: 'image'}),
+        new OptionHeaderModel({ id: 'audio', label: 'Audio' }),
+        new OptionModel({ id: 'file1', label: 'Audio 1', value: 'audio1', glyph: 'audio' }),
+        new OptionModel({ id: 'file2', label: 'Audio 2', value: 'audio2', glyph: 'audio', disabled: true }),
+        new OptionModel({ id: 'file3', label: 'Audio 3', value: 'audio3', glyph: 'audio', selected: true }),
+        new OptionHeaderModel({ id: 'image', label: 'Images' }),
+        new OptionModel({ id: 'file4', label: 'Image 1', value: 'image1', glyph: 'image' }),
+        new OptionModel({ id: 'file5', label: 'Image 2', value: 'image2', glyph: 'image' }),
         new OptionSeparator(),
         new OptionModel({
             id: 'delete',
@@ -24,7 +24,7 @@ export class SelectPageComponent implements OnInit {
             value: 'delete',
             glyph: 'delete',
             dontCloseOnSelect: true,
-            destructive: true
+            destructive: true,
         }),
     ];
     disabledState = false;
@@ -53,7 +53,7 @@ export class SelectPageComponent implements OnInit {
            [disabled]="disabledState"
            [readonly]="readOnlyState"
            (selectOption)="onSelect($event)"
-></pa-select>`
+></pa-select>`;
     exampleWithInputTs = `options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
     new OptionHeaderModel({id: 'audio', label: 'Audio'}),
     new OptionModel({id: 'file1', label: 'Audio 1', value: 'audio1', glyph: 'audio'}),
@@ -72,10 +72,4 @@ export class SelectPageComponent implements OnInit {
         destructive: true
     }),
 ];`;
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
 }

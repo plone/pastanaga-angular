@@ -16,9 +16,6 @@ export class BaseIconPageComponent {
 <pa-icon path="./assets/dialog/heart-band.png"></pa-icon>
 `;
 
-    constructor() {
-    }
-
     updateColor(value: string) {
         this.selectedColor = value !== 'none' ? 'Blue' : value;
         this._selectedColor = value === 'none' ? undefined : value;

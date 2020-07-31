@@ -1,7 +1,7 @@
 <pa-demo-page>
     <pa-demo-title>Tabs</pa-demo-title>
     <pa-demo-description>
-        Simple horizontal tabs.
+        Simple horizontal tabs on tablet and desktops, vertical tabs on mobiles.
     </pa-demo-description>
 
     <pa-demo-examples>
@@ -9,7 +9,7 @@
             <pa-tab (click)="selectedTab = 'info'"
                     [active]="selectedTab === 'info'">Info</pa-tab>
             <pa-tab (click)="selectedTab = 'settings'"
-                    [active]="selectedTab === 'settings'">Settings</pa-tab>
+                    [active]="selectedTab === 'settings'" icon="settings">Settings</pa-tab>
             <pa-tab (click)="selectedTab = 'notifications'"
                     [active]="selectedTab === 'notifications'">Notifications</pa-tab>
         </pa-tabs>
@@ -36,6 +36,10 @@
         <dl>
             <dt>active</dt>
             <dd>Set active state.</dd>
+        </dl>
+        <dl>
+            <dt>icon</dt>
+            <dd>name of the icon to add to the tab item</dd>
         </dl>
     </pa-demo-usage>
 

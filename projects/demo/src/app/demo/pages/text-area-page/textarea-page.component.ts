@@ -1,13 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ErrorMessages } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     selector: 'app-text-area-page',
     templateUrl: './textarea-page.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextareaPageComponent implements OnInit {
-
+export class TextareaPageComponent {
     autoHeightState = false;
     disabledState = false;
     filledLongState = false;
@@ -18,9 +17,10 @@ export class TextareaPageComponent implements OnInit {
     value: string | undefined;
 
     shortText = 'A short text already filled';
-    longText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    longText =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-    errorMessages: ErrorMessages = new ErrorMessages({required: 'Field required'});
+    errorMessages: ErrorMessages = new ErrorMessages({ required: 'Field required' });
     customError = '';
 
     tsExample = `errorMessages: ErrorMessages = new ErrorMessages({required: 'Field required'});`;
@@ -42,12 +42,6 @@ export class TextareaPageComponent implements OnInit {
             Label
     </pa-textarea>
 </form>`;
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
 
     externalValueChange(addText: boolean, text: string) {
         this.value = addText ? text : undefined;

@@ -15,6 +15,7 @@
             [iconColor]="iconColor"
             [iconBackgroundColor]="iconBackgroundColor"
             [autoBackground]="autoBackground"
+            [active]="isActive"
         ></pa-avatar>
     </pa-demo-examples>
 
@@ -49,12 +50,18 @@
         <div class="pa-demo-configuration-field">
             <pa-checkbox id="autoColorTrigger" [(selected)]="autoBackground">Let component choose background color according to userName or userId</pa-checkbox>
         </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="activeTrigger" [(selected)]="isActive">Set as Active</pa-checkbox>
+        </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
         <h3>Inputs</h3>
 
         <dl>
+            <dt>active</dt>
+            <dd>Adds an outline-like border to the component to simulate a focused or active button</dd>
+
             <dt>alternateText</dt>
             <dd>The text used to fill alt property of the image. When Avatar is displayed as an Icon, and the size is large, this text can also provide a label to the icon. <small>(optional)</small></dd>
 
@@ -84,6 +91,7 @@
 
             <dt>userName</dt>
             <dd>Used to generate displayed initials and a background color when no <code>image</code> or <code>backgroundColor</code> is provided. <small>(optional)</small></dd>
+
         </dl>
     </pa-demo-usage>
 
