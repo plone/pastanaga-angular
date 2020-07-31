@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 // tslint:disable:max-line-length
@@ -31,7 +31,7 @@ const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => 
     selector: 'app-avatar-page',
     templateUrl: './avatar-page.component.html',
 })
-export class AvatarPageComponent implements OnInit {
+export class AvatarPageComponent {
     // avatar values
     userName: string | undefined;
     userId: string | undefined;
@@ -68,9 +68,6 @@ export class AvatarPageComponent implements OnInit {
     [autoBackground]="autoBackground"
     [active]="isActive"
 ></pa-avatar>`;
-    constructor() {}
-
-    ngOnInit(): void {}
 
     toggleUserName(event: boolean) {
         this.userName = event ? 'John Doe' : undefined;

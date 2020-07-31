@@ -1,16 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'pa-demo-menu-page',
     templateUrl: './dropdown-page.component.html',
-    styles: [`
-        pa-demo-examples {
-            display: flex;
-        }
-    `],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styles: [
+        `
+            pa-demo-examples {
+                display: flex;
+            }
+        `,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownPageComponent implements OnInit {
+export class DropdownPageComponent {
     codeExample = `<pa-button icon="ellipsis-vertical" size="small"
            [paPopup]="contextualMenu"></pa-button>
 
@@ -22,12 +24,6 @@ export class DropdownPageComponent implements OnInit {
     <pa-separator></pa-separator>
     <pa-option destructive dontCloseOnSelect (selectOption)="onSelect($event)">Menu item destructive</pa-option>
 </pa-dropdown>`;
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
 
     onSelect($event: MouseEvent | KeyboardEvent) {
         console.log(`Selected menu:`, $event);

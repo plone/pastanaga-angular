@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Kind, Size, Aspect } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     templateUrl: './button-page.component.html',
     styleUrls: ['./button-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonPageComponent implements OnInit {
+export class ButtonPageComponent {
     kind = Kind;
     aspect = Aspect;
     size = Size;
@@ -35,12 +35,6 @@ export class ButtonPageComponent implements OnInit {
            [disabled]="disabledState">
     Value
 </pa-button>`;
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
 
     clickOn($event: MouseEvent) {
         console.log(`Clicked on button`, $event);

@@ -1,14 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     templateUrl: './checkbox-page.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxPageComponent {
-
     form: FormGroup = new FormGroup({
-       checkbox: new FormControl()
+        checkbox: new FormControl(),
     });
 
     disabledState = false;

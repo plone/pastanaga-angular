@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastService } from '../../../../../../pastanaga-angular/src/lib/toast/toast.service';
 
 @Component({
     templateUrl: './toast-page.component.html',
 })
-export class ToastPageComponent implements OnInit {
-
+export class ToastPageComponent {
     importCode = `imports: [
     PaToastModule,
 ]`;
@@ -28,11 +27,7 @@ this.toaster.openInfo('An info message with button', {
         });
 `;
 
-    constructor(private toaster: ToastService) {
-    }
-
-    ngOnInit(): void {
-    }
+    constructor(private toaster: ToastService) {}
 
     openInfo() {
         this.toaster.openInfo('This is the default toast.');
@@ -51,7 +46,7 @@ this.toaster.openInfo('An info message with button', {
     }
 
     openIconToast() {
-        this.toaster.openInfo('An info message with icon', {icon: 'warning'});
+        this.toaster.openInfo('An info message with icon', { icon: 'warning' });
     }
 
     openButtonToast() {
@@ -59,7 +54,7 @@ this.toaster.openInfo('An info message with button', {
             buttonLabel: 'undo',
             action: () => {
                 console.log('Undo was triggered');
-            }
+            },
         });
     }
 }
