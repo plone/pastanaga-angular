@@ -1,37 +1,51 @@
 <pa-demo-page>
     <pa-demo-title>Toggle</pa-demo-title>
-    <pa-demo-description>Pa field (with label and help) for a checkbox with a "slide toggle" design.</pa-demo-description>
+    <pa-demo-description>Pa field (with label and help) for a checkbox with a "slide toggle" design.
+    </pa-demo-description>
 
     <pa-demo-examples>
-        <h4>Using ngModel ({{firstToggle}})</h4>
-        <pa-toggle
-            id="firstToggle"
-            name="firstToggle"
-            [(ngModel)]="firstToggle"
-            [hasFocus]="focusedFirstToggle"
-            [disabled]="disabled"
-        ></pa-toggle>
+        <h4>Using ngModel</h4>
+        <div class="grid-3 has-gutter">
+            <div class="col-1">
+                <pa-toggle id="firstToggle"
+                           name="firstToggle"
+                           [(ngModel)]="firstToggle"
+                           [hasFocus]="focusedFirstToggle"
+                           [disabled]="disabled"
+                ></pa-toggle></div>
+            <div class="col-2">Value: {{firstToggle}}</div>
+        </div>
 
-        <h4>Using formControl ({{form.value.toggle}})</h4>
+        <h4>Using formControl</h4>
         <form [formGroup]="form">
-            <pa-toggle
-                id="toggle"
-                name="toggle"
-                formControlName="toggle"
-                help="help text"
-                [hasFocus]="focusedToggle"
-            >Label</pa-toggle>
+            <div class="grid-3 has-gutter">
+                <div class="col-1">
+                    <pa-toggle
+                        id="toggle"
+                        name="toggle"
+                        formControlName="toggle"
+                        help="help text"
+                        [hasFocus]="focusedToggle"
+                    >Label
+                    </pa-toggle></div>
+                <div class="col-2">
+                    Value: {{form.value.toggle}}
+                </div>
+            </div>
         </form>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="focusFirstTrigger" [(selected)]="focusedFirstToggle">Focused state On first toggle</pa-checkbox>
+            <pa-checkbox id="focusFirstTrigger" [(selected)]="focusedFirstToggle">Focused state On first toggle
+            </pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
             <pa-checkbox id="focusTrigger" [(selected)]="focusedToggle">Focused state On Second toggle</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabledTrigger" [(selected)]="disabled" (selectedChange)="toggleDisabled()">Toggle disabled</pa-checkbox>
+            <pa-checkbox id="disabledTrigger" [(selected)]="disabled" (selectedChange)="toggleDisabled()">Toggle
+                disabled
+            </pa-checkbox>
         </div>
     </pa-demo-configuration>
 

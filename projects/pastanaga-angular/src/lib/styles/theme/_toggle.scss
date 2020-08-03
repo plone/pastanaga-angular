@@ -1,5 +1,6 @@
 @import "palette";
 @import "spacing";
+@import "typography";
 
 //=====================================
 // BORDERS
@@ -28,3 +29,9 @@ $color-check-toggle-disabled: $color-neutral-secondary-light !default;
 // SPACING
 //=====================================
 $size-toggle-checkbox:   rhythm(1.5) !default;
+
+//=====================================
+// TYPOGRAPHY
+//=====================================
+$font-size-checkbox-label: font-size(s);
+$line-height-checkbox-label: line-height(m);
