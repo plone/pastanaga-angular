@@ -9,6 +9,7 @@ import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../../../
 export class SelectPageComponent {
     selectedValue1 = 'user2';
     selectedValue2 = '';
+    selectedValue3 = '';
     options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
         new OptionHeaderModel({ id: 'audio', label: 'Audio' }),
         new OptionModel({ id: 'file1', label: 'Audio 1', value: 'audio1', glyph: 'audio' }),
