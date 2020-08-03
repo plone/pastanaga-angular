@@ -1,3 +1,8 @@
+# 2.3.7 not released yet
+
+### Bugfix
+- **pa-option**: set display pa-option element with display block so e2e tool can click on it [mpellerin42] 
+
 # 2.3.6 (2020-07-31)
 
 ### Bugfix
