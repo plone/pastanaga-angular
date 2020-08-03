@@ -70,7 +70,7 @@
         &:not(:disabled):not(:read-only):focus,
         &:not(:disabled):not(:read-only):active {
             &~.pa-field-label {
-                transform: scale(.75) translateY(- rhythm(3)) translateX(- rhythm(.25));
+                transform: scale(.8) translateY(-2rem) translateX(-.25rem);
                 padding: 0 rhythm(.5);
             }
         }
@@ -116,6 +116,7 @@
     .pa-field-help {
         @include size(xs);
         color: $color-text-field-control-help-regular;
+        margin-top: rhythm(.25);
 
         &.pa-field-help-error {
             color: $color-text-field-label-error;
