@@ -1,3 +1,11 @@
+# 2.3.8 (not released yet)
+
+### Bugfixes
+- **Checkbox**: ability to navigate through checkboxes from keyboard + visible focus state [mpellerin42]
+
+### Improvements
+- **Input**: help/error message spacing [mpellerin42]
+
 # 2.3.7 (2020-08-03)
 
 ### Bugfix
