@@ -1,8 +1,11 @@
-# 2.3.7 (not released yet)
+# 2.3.7 (2020-08-03)
 
 ### Bugfix
 - **pa-option**: set display pa-option element with display block so e2e tool can click on it [mpellerin42] 
 - **pa-select**: prevent autocomplete on select [mpellerin42]
+
+### Improvements
+- **Input**: update input size to be the same as medium button [mpellerin42]
 
 # 2.3.6 (2020-07-31)
 
