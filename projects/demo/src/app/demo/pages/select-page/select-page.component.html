@@ -48,6 +48,27 @@
                     <p>Selected value: {{selectedValue2}}</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col1">
+                    <pa-select label="Select with no option preselected"
+                               placeholder="Placeholder"
+                               [(value)]="selectedValue3"
+                               [disabled]="disabledState"
+                               [readonly]="readOnlyState">
+                        <pa-option-header>Users</pa-option-header>
+                        <pa-option value="user1">User 1</pa-option>
+                        <pa-option value="user2">User 2</pa-option>
+                        <pa-option value="user3">User 3</pa-option>
+                        <pa-option-header>Groups</pa-option-header>
+                        <pa-option value="group1" disabled>Group 1</pa-option>
+                        <pa-option value="group2">Group 2</pa-option>
+                        <pa-option value="group3">Group 3</pa-option>
+                    </pa-select>
+                </div>
+                <div class="col2">
+                    <p>Selected value: {{selectedValue3}}</p>
+                </div>
+            </div>
         </div>
     </pa-demo-examples>
     <pa-demo-configuration>
