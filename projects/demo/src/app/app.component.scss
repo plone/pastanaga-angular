@@ -2,7 +2,30 @@
 
 :host {
     .view-container {
-        margin-left: rhythm(20);
+        margin-left: 0;
+        padding: rhythm(1.5);
+    }
+
+    pa-demo-menu {
+        display: none;
+    }
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    :host {
+        pa-demo-menu {
+            display: block;
+        }
+
+        .view-container {
+            margin-left: rhythm(20);
+            padding: rhythm(1.5) rhythm(3) rhythm(2.5) rhythm(3);
+        }
+    }
+}
+
+@media (min-width: $size-viewport-large-min) {
+    .view-container {
         padding: rhythm(1.5) rhythm(10) rhythm(2.5) rhythm(10);
     }
 }
