@@ -12,6 +12,8 @@ export * from './lib/avatar/avatar.component';
 export * from './lib/button/button.module';
 export * from './lib/button/button.component';
 
+export * from './lib/breakpoint-observer/breakpoint.observer';
+
 export * from './lib/controls/base-control';
 export * from './lib/controls/control.model';
 export * from './lib/controls/textfield/base-text-field';

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, HostBinding } from '@angular/core';
 
 @Component({
     selector: 'pa-tab',
@@ -13,7 +13,6 @@ export class TabItemComponent {
     set active(isActive: boolean) {
         this._active = isActive;
     }
-    @Input() icon?: string;
     _active = false;
 
     @HostBinding('class.active') get valid() {

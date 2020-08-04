@@ -1,3 +1,19 @@
+# 2.4.0 (2020-08-04)
+
+### Bugfixes
+- **Checkbox**: ability to navigate through checkboxes from keyboard + visible focus state [mpellerin42]
+- **Tabs**: [mpellerin42]
+    - Center tab's text on desktop
+    - Fix hover/focus state
+
+### Improvements
+- **Input**: help/error message spacing [mpellerin42]
+- **Tabs**: Display chevron icon on mobile, no icon on tablet/desktop [mpellerin42]
+- **Demo**: Responsive demo app [mpellerin42]
+
+### Feature
+- **BreakpointObserver**: service allowing to know current viewport size [mpellerin42]
+
 # 2.3.7 (2020-08-03)
 
 ### Bugfix

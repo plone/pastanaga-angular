@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Traverser } from 'angular-traversal';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
@@ -21,6 +21,8 @@ import { ToastPageComponent } from './demo/pages/toast-page/toast-page.component
 import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.component';
 import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
+import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
+import { markForCheck, PastanagaService, ViewportSize } from '../../../pastanaga-angular/src';
 
 @Component({
     selector: 'app-root',
@@ -35,6 +37,7 @@ export class AppComponent {
                 { view: 'icon', title: 'Icons', type: IconPageComponent },
                 { view: 'palette', title: 'Palette', type: PalettePageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
+                { view: 'breakpoint', title: 'Breakpoint Observer', type: BreakpointPageComponent },
                 { view: 'translate', title: 'Translate', type: TranslatePageComponent },
             ],
         },
@@ -64,9 +67,19 @@ export class AppComponent {
             ],
         },
     ];
+    _isMobile = false;
+    _isMenuVisible = false;
 
-    constructor(private traverser: Traverser) {
+    constructor(private traverser: Traverser, private pastanaga: PastanagaService, private cdr: ChangeDetectorRef) {
+        this.pastanaga.breakpointObserver.currentMinSize.subscribe((viewportSize) => {
+            this._isMobile = viewportSize === ViewportSize.small;
+            markForCheck(this.cdr);
+        });
         traverser.addView('view', '', WelcomePageComponent);
         this.menu.forEach((section) => section.pages.forEach((page) => traverser.addView(page.view, '', page.type)));
+    }
+
+    toggleMenu() {
+        this._isMenuVisible = !this._isMenuVisible;
     }
 }

@@ -1,13 +1,19 @@
 @import "../../../styles/variables";
 
 .pa-toggle {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+
+    &:focus-within {
+        box-shadow: $shadow-focus;
+        outline: 0;
+    }
 
     .pa-toggle-control {
         -webkit-appearance: none;
         border: $border-toggle-unselected;
         border-radius: $border-radius-default;
+        cursor: pointer;
         margin: 0;
         height: $size-toggle-checkbox;
         width: $size-toggle-checkbox;
@@ -54,7 +60,9 @@
         }
     }
     .pa-toggle-label {
-        @include size(m);
+        cursor: pointer;
+        font-size: $font-size-checkbox-label;
+        line-height: $line-height-checkbox-label;
         font-weight: $font-weight-label;
         margin-left: rhythm(1);
     }

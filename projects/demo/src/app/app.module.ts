@@ -11,11 +11,11 @@ import { AppMarker } from './app.marker';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PaDemoModule } from './demo/demo.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { I18N_EN, mergeTranslations } from 'projects/pastanaga-angular/src';
+import { I18N_EN, mergeTranslations, PaButtonModule } from 'projects/pastanaga-angular/src';
 
 @NgModule({
     declarations: [AppComponent, WelcomePageComponent],
-    imports: [BrowserModule, TraversalModule, AngularSvgIconModule.forRoot(), PaDemoModule],
+    imports: [BrowserModule, TraversalModule, AngularSvgIconModule.forRoot(), PaDemoModule, PaButtonModule],
     providers: [
         { provide: Marker, useClass: AppMarker },
         { provide: Resolver, useClass: AppResolver },

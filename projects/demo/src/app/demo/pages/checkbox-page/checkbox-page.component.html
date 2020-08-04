@@ -4,13 +4,18 @@
     <pa-demo-description>Simple checkbox component</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-checkbox [disabled]="disabledState">Checkbox label</pa-checkbox>
-        <pa-checkbox type="radio"
-                     [disabled]="disabledState">Radio label</pa-checkbox>
-        <form [formGroup]="form">
+        <div>
+            <pa-checkbox [disabled]="disabledState">Checkbox label</pa-checkbox>
+        </div>
+        <div>
+            <pa-checkbox type="radio"
+                          [disabled]="disabledState">Radio label</pa-checkbox>
+        </div>
+        <div><form [formGroup]="form">
             <pa-checkbox formControlName="checkbox">Using reactive form</pa-checkbox>
-        </form>
+        </form></div>
     </pa-demo-examples>
+
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-checkbox id="disabled" [(selected)]="disabledState" (selectedChange)="disableForm()">Disabled state</pa-checkbox>

@@ -1,0 +1,30 @@
+<pa-demo-page>
+    <pa-demo-title>Breakpoint observer</pa-demo-title>
+
+    <pa-demo-description>
+        <p>Pastanaga theme provides some breakpoints variables so you can easily manage your responsive layouts.
+            As layout can not always be managed entirely through css, Pastanaga provides also a <code>BreakpointObserver</code>
+            service allowing to watch viewport current min/max size.</p>
+    </pa-demo-description>
+
+    <pa-demo-usage>
+        <h3><code>ViewportSize</code></h3>
+        <p>enum containing viewport sizes supported by Pastanaga (corresponding to the ones defined in our css):</p>
+        <pa-demo-code>
+            <pre><code>{{viewportSize}}</code></pre>
+        </pa-demo-code>
+
+        <h3><code>BreakpointObserver</code></h3>
+        <p>Provides two observers:</p>
+        <dl>
+            <dt>currentMinSize</dt>
+            <dd>Observable returning <code>ViewportSize</code> corresponding to the current <code>min-width</code> from css media query</dd>
+            <dt>currentMaxSize</dt>
+            <dd>Observable returning <code>ViewportSize</code> corresponding to the current <code>max-width</code> from css media query</dd>
+        </dl>
+        <p>Example of usage in a component:</p>
+        <pa-demo-code>
+            <pre><code>{{currentMinSizeUsage}}</code></pre>
+        </pa-demo-code>
+    </pa-demo-usage>
+</pa-demo-page>

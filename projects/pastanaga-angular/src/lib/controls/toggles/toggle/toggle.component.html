@@ -13,10 +13,9 @@
                [innerHTML]="_help"
         ></small>
     </div>
-    <div
-        class="pa-toggle-container"
-        [ngClass]="{checked: _checked, focused: _hasFocus, disabled: _disabled}"
-        (click)="updateState(!_checked)"
+    <div class="pa-toggle-container"
+         [ngClass]="{checked: _checked, focused: _hasFocus, disabled: _disabled}"
+         (click)="updateState(!_checked)"
     >
         <input #inputElement
                type="checkbox"

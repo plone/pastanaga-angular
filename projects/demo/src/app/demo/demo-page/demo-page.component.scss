@@ -24,6 +24,7 @@ pa-demo-page {
             background: $color-neutral-secondary-lightest;
             margin: 0;
             padding: 0 rhythm(.25);
+            overflow: auto;
         }
 
         dl {
@@ -71,5 +72,6 @@ pa-demo-page {
         padding: rhythm(1);
         background-color: $color-neutral-secondary-lighter;
         margin: rhythm(1) 0;
+        overflow: auto;
     }
 }
