@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { TabsListComponent } from './tabs-list.component';
 import { TabItemComponent } from './tab-item.component';
 import { PaIconModule } from '../..';
+import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 
 @Component({
     template: `<pa-tabs #tabs>
@@ -30,7 +31,8 @@ describe('Tabs', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [PaIconModule],
+            imports: [...TESTING_IMPORTS, PaIconModule],
+            providers: [...TESTING_PROVIDERS],
             declarations: [TabsListComponent, TabItemComponent, TestComponent],
         }).compileComponents();
     }));
