@@ -21,6 +21,7 @@ import { ToastPageComponent } from './demo/pages/toast-page/toast-page.component
 import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.component';
 import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
+import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
 
 @Component({
     selector: 'app-root',
@@ -35,6 +36,7 @@ export class AppComponent {
                 { view: 'icon', title: 'Icons', type: IconPageComponent },
                 { view: 'palette', title: 'Palette', type: PalettePageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
+                { view: 'breakpoint', title: 'Breakpoint Observer', type: BreakpointPageComponent },
                 { view: 'translate', title: 'Translate', type: TranslatePageComponent },
             ],
         },

@@ -54,6 +54,7 @@ import { ModalPageComponent } from './pages/modal-page/modal-page.component';
 import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
 import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
+import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -73,6 +74,7 @@ const COMPONENTS = [
 
     AvatarPageComponent,
     BasicPopupComponent,
+    BreakpointPageComponent,
     ButtonPageComponent,
     CheckboxPageComponent,
     DateTimePageComponent,

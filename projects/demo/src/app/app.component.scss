@@ -25,7 +25,9 @@
 }
 
 @media (min-width: $size-viewport-large-min) {
-    .view-container {
-        padding: rhythm(1.5) rhythm(10) rhythm(2.5) rhythm(10);
+    :host {
+        .view-container {
+            padding: rhythm(1.5) rhythm(10) rhythm(2.5) rhythm(10);
+        }
     }
 }

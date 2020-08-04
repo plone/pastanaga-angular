@@ -1,4 +1,4 @@
-# 2.3.8 (2020-08-04)
+# 2.4.0 (2020-08-04)
 
 ### Bugfixes
 - **Checkbox**: ability to navigate through checkboxes from keyboard + visible focus state [mpellerin42]
@@ -9,6 +9,9 @@
 ### Improvements
 - **Input**: help/error message spacing [mpellerin42]
 - **Tabs**: Display chevron icon on mobile, no icon on tablet/desktop [mpellerin42]
+
+### Feature
+- **BreakpointObserver**: service allowing to know current viewport size [mpellerin42]
 
 # 2.3.7 (2020-08-03)
 
