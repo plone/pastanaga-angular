@@ -14,6 +14,6 @@ export class PastanagaService {
         public translate: TranslatePipe,
         public datetime: DateTimeService,
         public modalService: ModalService,
-        public breakpointObserver: BreakpointObserver
+        public breakpoint: BreakpointObserver
     ) {}
 }

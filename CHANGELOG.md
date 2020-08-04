@@ -1,3 +1,8 @@
+# 2.4.1 (not released yet)
+
+### Improvements
+- **PastanagaService**: rename `breakpointObserver` to `breakpoint` [mpellerin42]
+
 # 2.4.0 (2020-08-04)
 
 ### Bugfixes

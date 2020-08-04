@@ -71,7 +71,7 @@ export class AppComponent {
     _isMenuVisible = false;
 
     constructor(private traverser: Traverser, private pastanaga: PastanagaService, private cdr: ChangeDetectorRef) {
-        this.pastanaga.breakpointObserver.currentMinSize.subscribe((viewportSize) => {
+        this.pastanaga.breakpoint.currentMinSize.subscribe((viewportSize) => {
             this._isMobile = viewportSize === ViewportSize.small;
             markForCheck(this.cdr);
         });

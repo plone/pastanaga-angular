@@ -11,7 +11,7 @@ export class BreakpointPageComponent {
     large = 1024,
 }`;
     currentMinSizeUsage = `ngOnInit(): void {
-    this.pastanaga.breakpointObserver.currentMinSize
+    this.pastanaga.breakpoint.currentMinSize
         .pipe(takeUntil(this.terminator))
         .subscribe((viewportSize: ViewportSize) => {
             this._isDesktop = viewportSize === ViewportSize.large;
