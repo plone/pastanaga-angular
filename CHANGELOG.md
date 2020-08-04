@@ -9,6 +9,7 @@
 ### Improvements
 - **Input**: help/error message spacing [mpellerin42]
 - **Tabs**: Display chevron icon on mobile, no icon on tablet/desktop [mpellerin42]
+- **Demo**: Responsive demo app [mpellerin42]
 
 ### Feature
 - **BreakpointObserver**: service allowing to know current viewport size [mpellerin42]
