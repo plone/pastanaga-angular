@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     templateUrl: 'tabs-page.component.html',
+    styleUrls: ['./tabs-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsPageComponent {
     selectedTab = 'info';
@@ -11,8 +13,7 @@ export class TabsPageComponent {
     <pa-tab (click)="selectedTab = 'info'"
             [active]="selectedTab === 'info'">Info</pa-tab>
     <pa-tab (click)="selectedTab = 'settings'"
-            [active]="selectedTab === 'settings'"
-            icon="settings">Settings</pa-tab>
+            [active]="selectedTab === 'settings'">Settings</pa-tab>
     <pa-tab (click)="selectedTab = 'notifications'"
             [active]="selectedTab === 'notifications'">Notifications</pa-tab>
 </pa-tabs>

@@ -1,0 +1,11 @@
+@import "variables";
+
+.tab-content {
+    display: none;
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .tab-content {
+        display: block;
+    }
+}

@@ -1,10 +1,14 @@
-# 2.3.8 (not released yet)
+# 2.3.8 (2020-08-04)
 
 ### Bugfixes
 - **Checkbox**: ability to navigate through checkboxes from keyboard + visible focus state [mpellerin42]
+- **Tabs**: [mpellerin42]
+    - Center tab's text on desktop
+    - Fix hover/focus state
 
 ### Improvements
 - **Input**: help/error message spacing [mpellerin42]
+- **Tabs**: Display chevron icon on mobile, no icon on tablet/desktop [mpellerin42]
 
 # 2.3.7 (2020-08-03)
 
