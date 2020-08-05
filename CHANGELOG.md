@@ -1,4 +1,7 @@
-# 2.4.1 (not released yet)
+# 2.4.1 (2020-08-05)
+
+### Bugfixes
+- **Select**: adjust dropdown position to match new input's size set in version 2.3.7 [mpellerin42]
 
 ### Improvements
 - **PastanagaService**: rename `breakpointObserver` to `breakpoint` [mpellerin42]
