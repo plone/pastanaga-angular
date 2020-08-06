@@ -1,9 +1,7 @@
 @import "variables";
 
 .pa-field {
-    display: flex;
     position: relative;
-    flex-direction: column;
     margin-bottom: $margin-bottom-field;
 
     .pa-field-label {
@@ -33,6 +31,7 @@
         padding: $padding-field-control-top $padding-field-control-left;
         outline: none;
         margin: $border-width-active - $border-width-regular;
+        width: calc(100% - #{$border-width-regular});
 
         -webkit-appearance: none;
 

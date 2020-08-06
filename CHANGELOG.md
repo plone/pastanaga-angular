@@ -1,3 +1,8 @@
+# 2.4.2 (2020-08-06)
+
+### Bugfixes
+- **Select**: prevent weird blinking of input right border on hover [mpellerin42]
+
 # 2.4.1 (2020-08-05)
 
 ### Bugfixes

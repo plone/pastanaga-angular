@@ -8,6 +8,7 @@
         color: $color-text-field-control-regular;
 
         .pa-select-chevron {
+            cursor: pointer;
             position: absolute;
             right: rhythm(.5);
             top: 50%;
@@ -18,8 +19,9 @@
             color: $color-text-field-control-disabled;
         }
     }
-
-    pa-dropdown ::ng-deep .pa-popup-wrapper {
+}
+:host ::ng-deep {
+    .pa-select pa-dropdown .pa-popup-wrapper {
         max-width: none;
         width: 100%;
     }
