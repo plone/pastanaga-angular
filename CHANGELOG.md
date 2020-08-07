@@ -1,3 +1,8 @@
+# 2.4.3 (Not released yet)
+
+### Bugfixes
+- **Button**: Fix large icon button style [mpellerin42]
+
 # 2.4.2 (2020-08-06)
 
 ### Bugfixes
