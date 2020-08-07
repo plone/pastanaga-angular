@@ -27,6 +27,8 @@ export class ButtonComponent implements AfterContentInit, OnInit {
             this._size = value;
             switch (this._size) {
                 case Size.large:
+                    this._iconSize = Size.large;
+                    break;
                 case Size.medium:
                     this._iconSize = Size.medium;
                     break;
