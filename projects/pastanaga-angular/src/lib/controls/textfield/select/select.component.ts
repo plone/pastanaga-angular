@@ -3,11 +3,15 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChildren, ElementRef,
+    ContentChildren,
+    ElementRef,
+    EventEmitter,
     Input,
     OnDestroy,
     OnInit,
-    QueryList, ViewChild,
+    Output,
+    QueryList,
+    ViewChild,
 } from '@angular/core';
 import { BaseTextField } from '../base-text-field';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
@@ -44,7 +48,9 @@ export class SelectComponent extends BaseTextField implements AfterContentInit, 
         }
     }
 
-    @ViewChild('dropdownInput', {read: ElementRef}) input?: ElementRef;
+    @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+    @ViewChild('dropdownInput', { read: ElementRef }) input?: ElementRef;
     @ViewChild('dropdownOptions') dropdown?: DropdownComponent;
     /** All of the defined select options. */
     @ContentChildren(OptionComponent, { descendants: true }) optionComponents?: QueryList<OptionComponent>;

@@ -1,7 +1,11 @@
-# 2.4.3 (Not released yet)
+# 2.4.3 (2020-08-11)
 
 ### Bugfixes
 - **Button**: Fix large icon button style [mpellerin42]
+
+### Improvements
+- **Popup**: add `onOpen` event emitter to `PopupComponent` [mpellerin42]
+- **Select**: add `expanded` event emitter to `SelectComponent` [mpellerin42]
 
 # 2.4.2 (2020-08-06)
 

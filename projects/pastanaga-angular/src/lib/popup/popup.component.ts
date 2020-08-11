@@ -40,6 +40,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
+    @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
     _id = '';
     _stayVisible = false;
@@ -79,6 +80,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         }
         this._style = style;
         this._isDisplayed = true;
+        this.onOpen.emit();
         if (!this._stayVisible) {
             this._handlers.push(this.renderer.listen('document', 'click', (event) => this.onOutsideClick(event)));
             this._handlers.push(this.renderer.listen('document', 'keyup.esc', () => this.close()));
