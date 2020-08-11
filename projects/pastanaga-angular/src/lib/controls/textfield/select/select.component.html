@@ -24,6 +24,8 @@
     <pa-dropdown #dropdownOptions
                  role="listbox"
                  dontAdjustPosition
+                 (onClose)="expanded.emit(false)"
+                 (onOpen)="expanded.emit(true)"
                  [companionElement]="dropdownInput.element.nativeElement">
         <ng-content></ng-content>
         <ng-container *ngFor="let option of _options">
