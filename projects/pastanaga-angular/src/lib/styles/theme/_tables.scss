@@ -5,15 +5,15 @@ $color-text-table-header:               $color-neutral-secondary-default !defaul
 $font-weight-text-table-header:         $font-weight-bold !default;
 $font-size-table-row:                   font-size(s) !default;
 $font-weight-table-row:                 $font-weight-regular !default;
-$color-background-table-header:         $color-neutral-secondary-lightest !default;
-$color-border-table-header:             $color-neutral-secondary-lightest !default;
+$color-background-table-header: $color-neutral-primary-lighter !default;
+$color-border-table-header: $color-neutral-primary-lighter !default;
 $color-text-table-row:                  $color-neutral-primary-default !default;
-$color-border-table-row:                $color-neutral-secondary-lightest !default;
+$color-border-table-row: $color-neutral-primary-lighter !default;
 $color-background-table-row:            $color-neutral-primary-lightest !default;
-$color-background-table-row-hover:      $color-neutral-secondary-lightest !default;
+$color-background-table-row-hover: $color-neutral-primary-lighter !default;
 $color-background-table-row-active:     $color-neutral-secondary-lighter !default;
 $color-text-table-header-row:           $color-neutral-secondary-default !default;
-$color-background-table-header-row:     $color-neutral-secondary-lightest !default;
-$color-border-table-header-row:         $color-neutral-secondary-lightest !default;
+$color-background-table-header-row: $color-neutral-primary-lighter !default;
+$color-border-table-header-row: $color-neutral-primary-lighter !default;
 $font-weight-text-table-header-row:     $font-weight-thin !default;
 
