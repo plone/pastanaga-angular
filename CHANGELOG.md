@@ -1,3 +1,14 @@
+# 2.4.4 (2020-08-14)
+
+### Improvements
+
+- **Colors**: New lighter gray for `$color-neutral-secondary-lightest`, previous one is now `$color-neutral-primary-lighter` [mpellerin42]
+- **Icons**: Add icon name as accessibility title in pa-icon's SVGs [mpellerin42]
+- **Dropdown option**: Differentiating selected state from active one with a new background color and a check icon [mpellerin42] 
+
+### Bugfixes
+- Fix demo tests setup so unit tests don't fail [mpellerin42]
+
 # 2.4.3 (2020-08-11)
 
 ### Bugfixes
