@@ -2,8 +2,8 @@
 
 .grid-8 {
     grid-gap: 1px;
-    background-color: $color-neutral-secondary-lightest;
-    border: 1px solid $color-neutral-secondary-lightest;
+    background-color: $color-neutral-primary-lighter;
+    border: 1px solid $color-neutral-primary-lighter;
     & > div {
         background-color: $color-neutral-primary-lightest;
         display: grid;
@@ -26,6 +26,9 @@
 }
 .color-neutral-primary-default {
     background-color: $color-neutral-primary-default;
+}
+.color-neutral-primary-lighter {
+    background-color: $color-neutral-primary-lighter;
 }
 .color-neutral-primary-lightest {
     background-color: $color-neutral-primary-lightest;

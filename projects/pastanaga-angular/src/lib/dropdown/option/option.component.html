@@ -9,4 +9,5 @@
 >
     <pa-icon *ngIf="!!_glyph" [name]="_glyph"></pa-icon>
     <ng-content></ng-content>
+    <pa-icon *ngIf="_selected" class="pa-option-selected-icon" name="check"></pa-icon>
 </li>

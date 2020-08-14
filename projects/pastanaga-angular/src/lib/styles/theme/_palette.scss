@@ -6,6 +6,7 @@ $_dolphin: hsl(207,17,58);
 $_silver:  hsl(207,17,80);
 $_smoke:   hsl(207,17,91);
 $_snow:    hsl(207,17,96);
+$_steam:   hsl(207,17,98);
 $_white:   #fff;
 
 // Blues
@@ -34,12 +35,13 @@ $_spa:       hsl(175,60,83);
 $_aqua:      hsl(175,60,90);
 
 // General tokens
-$color-neutral-primary-default: $_denim !default;
-$color-neutral-secondary-default: $_dolphin !default;
-$color-neutral-secondary-light: $_silver !default;
-$color-neutral-secondary-lighter: $_smoke !default;
-$color-neutral-secondary-lightest: $_snow !default;
-$color-neutral-primary-lightest: $_white !default;
+$color-neutral-primary-default:     $_denim !default;
+$color-neutral-primary-lighter:     $_snow !default;
+$color-neutral-primary-lightest:    $_white !default;
+$color-neutral-secondary-default:   $_dolphin !default;
+$color-neutral-secondary-light:     $_silver !default;
+$color-neutral-secondary-lighter:   $_smoke !default;
+$color-neutral-secondary-lightest:  $_steam !default;
 
 $color-accent-primary-darker: $_royal !default;
 $color-accent-primary-dark: $_sapphire !default;

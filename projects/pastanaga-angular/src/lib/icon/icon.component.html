@@ -1,5 +1,6 @@
 <ng-container *ngIf="!!_name">
     <svg [attr.class]="_classes" [style]="_styles">
+        <title>{{_name}}</title>
         <use [attr.xlink:href]="_spritePath"></use>
     </svg>
 </ng-container>

@@ -4,7 +4,7 @@
     @include size(xs);
     font-weight: $font-weight-menu-header;
     color: $color-text-menu-option-header;
-    padding: $padding-menu-option;
+    padding: $padding-menu-option-top $padding-menu-option-side;
     text-transform: uppercase;
 
 }
