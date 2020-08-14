@@ -8,7 +8,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: $padding-menu-option;
+    padding: $padding-menu-option-top $padding-menu-option-side;
 
     &[hidden] {
         display: none;
@@ -17,9 +17,11 @@
         &:hover {
             background-color: $color-background-menu-option-hover;
         }
-        &:active,
-        &.pa-option-selected{
+        &:active {
             background-color: $color-background-menu-option-active;
+        }
+        &.pa-option-selected{
+            background-color: $color-background-menu-option-selected;
         }
         &:focus {
             box-shadow: $shadow-focus;
@@ -38,11 +40,16 @@
         background-color: $color-background-menu-option-disabled;
     }
 
-    pa-icon {
+    pa-icon:not(.pa-option-selected-icon) {
         margin-right: rhythm(1);
 
         &::ng-deep svg {
             fill: currentColor;
         }
+    }
+    pa-icon.pa-option-selected-icon {
+        position: absolute;
+        right: $padding-menu-option-side;
+        color: $color-accent-primary-default;
     }
 }
