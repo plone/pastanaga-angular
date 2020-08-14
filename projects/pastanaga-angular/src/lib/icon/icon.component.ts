@@ -31,6 +31,7 @@ export class IconComponent {
     }
     @Input() set path(value: string) {
         this._path = value;
+        this._accessibilityName = value.substring(value.lastIndexOf('/') + 1, value.indexOf('.svg'));
         this.updateSvg();
     }
     @Input() set size(value: Size) {
@@ -49,6 +50,7 @@ export class IconComponent {
     }
 
     _name = '';
+    _accessibilityName = '';
     _spritePath = '';
     _path = '';
     _size: Size = Size.medium;
@@ -84,6 +86,9 @@ export class IconComponent {
 
     private setSvg(icon: SVGElement) {
         this.updateStyle();
+        const accessibilityTitle = this.renderer.createElement('title');
+        this.renderer.appendChild(accessibilityTitle, this.renderer.createText(this._accessibilityName));
+        this.renderer.insertBefore(icon, accessibilityTitle, icon.firstChild);
         this.renderer.setAttribute(icon, 'class', this._classes);
         this.renderer.setAttribute(icon, 'style', this._styles);
         const elem = this.element.nativeElement;
