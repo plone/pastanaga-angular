@@ -1,3 +1,8 @@
+# 2.4.5 (not released yet)
+
+### Improvements
+- **modal**: Use a token for modal box-shadow [mpellerin42]
+
 # 2.4.4 (2020-08-14)
 
 ### Improvements
