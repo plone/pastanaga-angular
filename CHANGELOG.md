@@ -1,7 +1,10 @@
 # 2.4.5 (not released yet)
 
+### Bugfixes
+- **Toasts**: export toast service and models [mpellerin42]
+
 ### Improvements
-- **modal**: Use a token for modal box-shadow [mpellerin42]
+- **Modal**: Use a token for modal box-shadow [mpellerin42]
 
 # 2.4.4 (2020-08-14)
 
