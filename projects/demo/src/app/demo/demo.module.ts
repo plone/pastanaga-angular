@@ -29,6 +29,7 @@ import {
     PaDateTimeModule,
     PaToastModule,
     PaModalModule,
+    PaPocInputModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +55,7 @@ import { ModalPageComponent } from './pages/modal-page/modal-page.component';
 import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
 import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
+import { PocInputPageComponent } from './pages/poc-input-page/poc-input-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -91,6 +93,7 @@ const COMPONENTS = [
     TextareaPageComponent,
     TooltipPageComponent,
     TranslatePageComponent,
+    PocInputPageComponent,
 ];
 
 @NgModule({
@@ -114,6 +117,7 @@ const COMPONENTS = [
         PaTooltipModule,
         PaDateTimeModule,
         PaModalModule,
+        PaPocInputModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

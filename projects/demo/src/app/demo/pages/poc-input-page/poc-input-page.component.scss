@@ -1,0 +1,29 @@
+pa-demo-examples {
+    display: flex;
+}
+.example-config {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.example-items {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    overflow-y: scroll;
+.example-item {
+    display: flex;
+    flex-direction: column;
+
+    .example-display {
+    }
+    .example-control {
+        .field {
+            color: green;
+        }
+        .value {
+            color: blue;
+        }
+    }
+}
+}

@@ -21,6 +21,7 @@ import { ToastPageComponent } from './demo/pages/toast-page/toast-page.component
 import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.component';
 import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
+import { PocInputPageComponent } from './demo/pages/poc-input-page/poc-input-page.component';
 
 @Component({
     selector: 'app-root',
@@ -61,6 +62,7 @@ export class AppComponent {
                 { view: 'select', title: 'Select', type: SelectPageComponent },
                 { view: 'textarea', title: 'Textarea', type: TextareaPageComponent },
                 { view: 'toggle', title: 'Toggle', type: TogglePageComponent },
+                { view: 'poc', title: 'Poc Input', type: PocInputPageComponent },
             ],
         },
     ];

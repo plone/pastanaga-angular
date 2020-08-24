@@ -1,0 +1,33 @@
+<div class="pa-field" [class.pa-field-error]="control.invalid || !!errorMessage">
+    <input #input
+           class="pa-field-control"
+           [class.pa-field-control-filled]="!!_value || _value === 0"
+           [(ngModel)]="_value"
+           [ngModelOptions]="{standalone: standalone}"
+           [id]="_id"
+           [name]="_name"
+           [type]="type"
+           [disabled]="_disabled"
+           [attr.maxlength]="_maxLength"
+           [attr.aria-label]="_label"
+           [attr.placeholder]="_placeholder"
+           [readonly]="_readonly"
+           [required]="_required"
+
+           (input)="onChange($event.target.value)"
+           (blur)="onTouched()"
+           (keyup)="onKeyUp($event)"
+           (focus)="onFocus($event)"
+    >
+
+    <label #label
+           class="pa-field-label"
+           [for]="id"
+    ><ng-content></ng-content></label>
+
+    <small *ngIf="_error || errorMessage || _help"
+           class="pa-field-help"
+           [id]="_helpId"
+           [class.pa-field-help-error]="!!_error || errorMessage"
+           [innerHTML]="errorMessage || _error || _help"></small>
+</div>
