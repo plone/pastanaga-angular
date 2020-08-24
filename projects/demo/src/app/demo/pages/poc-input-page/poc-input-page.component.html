@@ -1,0 +1,505 @@
+<pa-demo-page>
+    <pa-demo-title>Inputs</pa-demo-title>
+    <pa-demo-description>Basic input field
+        <p>NB: accept Html tags is not supported yet</p>
+        <p>TODO: what if we don't provide a name...</p>
+        <p>TODO: are changes of validators visible in parent ?</p>
+        <p>TODO: how to check noAutoComplete ? ?</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+
+
+        <div class="example-items">
+            <div class="example-item">
+                <div class="example-display">
+                    <h5>Standalone Text Input <code>[value]="" (valueChange)=""</code></h5>
+                    <pa-poc-input
+                        id="standAloneTextWithValue"
+                        name="standAloneTextWithValue"
+                        type="text"
+                        placeholder="The placeholder"
+                        help="this is a help"
+                        [value]="valueText"
+                        [readonly]="readonly"
+                        [disabled]="disabled"
+                        [hasFocus]="focused === 'standaloneText'"
+                        [noAutoComplete]="noAutoComplete"
+                        [required]="required"
+                        [maxlength]="maxLength"
+                        [pattern]="regex"
+                        [errorMessage]="customErrorMessage"
+                        [errorMessages]="errorMessages"
+                        (valueChange)="onStandaloneTextChange($event)"
+                        (debouncedValueChange)="onDebouncedStandaloneTextChange($event)"
+                        (keyUp)="onStandaloneTextKeyUp($event)"
+                        (enter)="onStandaloneTextEnter($event)"
+                        (blurring)="onStandaloneTextBlur($event)"
+                        (focusing)="onStandaloneTextFocus($event)"
+                    >Standalone text
+                    </pa-poc-input>
+                </div>
+                <div class="example-control">
+                    <h5>Component state</h5>
+                    <ul>
+                        <li><span class="field">[value]</span>="<span class="value">{{valueText}}</span>"</li>
+                        <li><span class="field">valueChange</span>="<span
+                            class="value">{{_standaloneTextChanged}}</span>"
+                        </li>
+                        <li><span class="field">debouncedValueChange</span>="<span
+                            class="value">{{_standaloneDebouncedTextChanged}}</span>"
+                        </li>
+                        <li><span class="field">KeyUp</span>="<span class="value">{{_standaloneTextKeyUp}}</span>"
+                        </li>
+                        <li><span class="field">Enter</span>="<span class="value">{{_standaloneTextEnter}}</span>"
+                        </li>
+                        <li><span class="field">Blur</span>="<span class="value">{{_standaloneTextBlur}}</span>"
+                        </li>
+                        <li><span class="field">Focus</span>="<span class="value">{{_standaloneTextFocus}}</span>"
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="example-item">
+
+                <div class="example-display">
+                    <h5>Standalone Number Input <code>[value]="" (valueChange)=""</code></h5>
+                    <pa-poc-input
+                        id="standAloneNumberWithValue"
+                        name="standAloneNumberWithValue"
+                        type="number"
+                        placeholder="The placeholder"
+                        help="this is a help"
+                        [value]="valueNumber"
+                        [readonly]="readonly"
+                        [disabled]="disabled"
+                        [hasFocus]="focused === 'standaloneNumber'"
+                        [min]="min"
+                        [max]="max"
+                        [required]="required"
+                        [errorMessage]="customErrorMessage"
+                        [errorMessages]="errorMessages"
+                        (valueChange)="onStandaloneNumberChange($event)"
+                        (debouncedValueChange)="onStandaloneNumberDebouncedChange($event)"
+                        (keyUp)="onStandaloneNumberKeyUp($event)"
+                        (enter)="onStandaloneNumberEnter($event)"
+                        (blurring)="onStandaloneNumberBlur($event)"
+                        (focusing)="onStandaloneNumberFocus($event)"
+                    >Standalone Number
+                    </pa-poc-input>
+                </div>
+                <div class="example-control">
+                    <h5>Component state</h5>
+                    <ul>
+                        <li><span class="field">[value]</span>="<span class="value">{{valueNumber}}</span>"
+                        </li>
+                        <li><span class="field">valueChange</span>="<span
+                            class="value">{{_standaloneNumberChanged}}</span>"
+                        </li>
+                        <li><span class="field">debouncedValueChange</span>="<span
+                            class="value">{{_standaloneNumberDebouncedChange}}</span>"
+                        </li>
+                        <li><span class="field">KeyUp</span>="<span
+                            class="value">{{_standaloneNumberKeyUp}}</span>"
+                        </li>
+                        <li><span class="field">Enter</span>="<span
+                            class="value">{{_standaloneNumberEnter}}</span>"
+                        </li>
+                        <li><span class="field">Blur</span>="<span class="value">{{_standaloneNumberBlur}}</span>"
+                        </li>
+                        <li><span class="field">Focus</span>="<span
+                            class="value">{{_standaloneNumberFocus}}</span>"
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-item">
+                <p>Using ngModel, input does not need to be inside a form but will be processed by angular as if it was.
+                    valueChange and blurring won't be triggered, use ngModelChange touched event is not forwarded</p>
+                <p>This example illustrate usage of <code>[(ngModel)]="..."</code> with an additional angular Validator email</p>
+                <div class="example-display">
+                    <pa-poc-input
+                        id="standAloneTextWithNgModel"
+                        name="standAloneTextWithNgModel"
+                        type="text"
+                        placeholder="The placeholder"
+                        help="this is a help"
+                        [(ngModel)]="ngModelText"
+                        email
+                        [readonly]="readonly"
+                        [disabled]="disabled"
+                        [hasFocus]="focused === 'ngModelText'"
+                        [noAutoComplete]="noAutoComplete"
+                        [required]="required"
+                        [maxlength]="maxLength"
+                        [pattern]="regex"
+                        [errorMessages]="errorMessages"
+                        [errorMessage]="customErrorMessage"
+                        (valueChange)="onNgModelChange($event)"
+                        (debouncedValueChange)="onNgModelDebouncedChange($event)"
+                        (keyUp)="onNgModelKeyUp($event)"
+                        (enter)="onNgModelEnter($event)"
+                        (blurring)="onNgModelBlur($event)"
+                        (focusing)="onNgModelFocus($event)"
+                    >NgModel text</pa-poc-input>
+                </div>
+                <div class="example-control">
+                    <h5>Component state</h5>
+                    <ul>
+                        <li><span class="field">[(value)]</span>="<span class="value">{{ngModelText}}</span>"
+                        </li>
+                        <li><span class="field">valueChange</span>="<span
+                            class="value">{{_ngModelChanged}}</span>"
+                        </li>
+                        <li><span class="field">debouncedValueChange</span>="<span
+                            class="value">{{_ngModelDebouncedChange}}</span>"
+                        </li>
+                        <li><span class="field">KeyUp</span>="<span class="value">{{_ngModelKeyUp}}</span>"
+                        </li>
+                        <li><span class="field">Enter</span>="<span class="value">{{_ngModelEnter}}</span>"
+                        </li>
+                        <li><span class="field">Blur</span>="<span class="value">{{_ngModelBlur}}</span>"
+                        </li>
+                        <li><span class="field">Focus</span>="<span class="value">{{_ngModelFocus}}</span>"
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-item">
+                <p>Inside a template driven form, using ngModel</p>
+                <div class="example-display">
+                    <form (ngSubmit)="submitTemplateDriven()">
+                        <pa-poc-input
+                            id="templateDrivenText"
+                            name="text"
+                            type="text"
+                            email
+                            placeholder="The placeholder"
+                            help="this is a help"
+                            [(ngModel)]="templateDriven.text"
+                            [hasFocus]="focused === 'templateDrivenText'"
+                            [readonly]="readonly"
+                            [disabled]="disabled"
+                            [noAutoComplete]="noAutoComplete"
+                            [required]="required"
+                            [maxlength]="maxLength"
+                            [pattern]="regex"
+                            [errorMessages]="errorMessages"
+                            [errorMessage]="customErrorMessage"
+                            (valueChange)="onTemplateTextChange($event)"
+                            (debouncedValueChange)="onTemplateTextDebouncedChange($event)"
+                            (keyUp)="onTemplateTextKeyUp($event)"
+                            (enter)="onTemplateTextEnter($event)"
+                            (blurring)="onTemplateTextBlur($event)"
+                            (focusing)="onTemplateTextFocus($event)"
+                        >Template driven text</pa-poc-input>
+
+                        <pa-poc-input
+                            id="templateDrivenNumber"
+                            name="number"
+                            type="number"
+                            placeholder="The placeholder"
+                            help="this is a help"
+                            [(ngModel)]="templateDriven.number"
+                            [readonly]="readonly"
+                            [disabled]="disabled"
+                            [hasFocus]="focused === 'templateDrivenNumber'"
+                            [noAutoComplete]="noAutoComplete"
+                            [required]="required"
+                            [min]="min"
+                            [max]="max"
+                            [errorMessages]="errorMessages"
+                            [errorMessage]="customErrorMessage"
+                            (valueChange)="onTemplateNumberChange($event)"
+                            (debouncedValueChange)="onTemplateNumberDebouncedChange($event)"
+                            (keyUp)="onTemplateNumberKeyUp($event)"
+                            (enter)="onTemplateNumberEnter($event)"
+                            (blurring)="onTemplateNumberBlur($event)"
+                            (focusing)="onTemplateNumberFocus($event)"
+                        >Template driven number</pa-poc-input>
+
+                    </form>
+                </div>
+                <div class="example-control">
+                    <h5>Component state</h5>
+                    <ul>
+                        <li><span class="field">[(value)]</span>="<span class="value">{{templateDriven.text}}</span>"
+                        </li>
+                        <li><span class="field">valueChange</span>="<span
+                            class="value">{{_templateTextChanged}}</span>"
+                        </li>
+                        <li><span class="field">debouncedValueChange</span>="<span
+                            class="value">{{_templateTextDebouncedChange}}</span>"
+                        </li>
+                        <li><span class="field">KeyUp</span>="<span class="value">{{_templateTextKeyUp}}</span>"
+                        </li>
+                        <li><span class="field">Enter</span>="<span class="value">{{_templateTextEnter}}</span>"
+                        </li>
+                        <li><span class="field">Blur</span>="<span class="value">{{_templateTextBlur}}</span>"
+                        </li>
+                        <li><span class="field">Focus</span>="<span class="value">{{_templateTextFocus}}</span>"
+                        </li>
+                        <li><hr></li>
+                        <li><span class="field">[(value)]</span>="<span class="value">{{templateDriven.number}}</span>"
+                        </li>
+                        <li><span class="field">valueChange</span>="<span
+                            class="value">{{_templateNumberChanged}}</span>"
+                        </li>
+                        <li><span class="field">debouncedValueChange</span>="<span
+                            class="value">{{_templateNumberDebouncedChange}}</span>"
+                        </li>
+                        <li><span class="field">KeyUp</span>="<span class="value">{{_templateNumberKeyUp}}</span>"
+                        </li>
+                        <li><span class="field">Enter</span>="<span class="value">{{_templateNumberEnter}}</span>"
+                        </li>
+                        <li><span class="field">Blur</span>="<span class="value">{{_templateNumberBlur}}</span>"
+                        </li>
+                        <li><span class="field">Focus</span>="<span class="value">{{_templateNumberFocus}}</span>"
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-item">
+                <p>Inside a reactive form, using formControlName</p>
+                <div class="example-display">
+                    <form [formGroup]="form" (ngSubmit)="submitReactive()">
+                        <pa-poc-input
+                            id="reactiveText"
+                            name="text"
+                            type="text"
+                            email
+                            placeholder="The placeholder"
+                            help="this is a help"
+                            formControlName="text"
+                            [hasFocus]="focused === 'reactiveText'"
+                            [readonly]="readonly"
+                            [disabled]="disabled"
+                            [noAutoComplete]="noAutoComplete"
+                            [required]="required"
+                            [maxlength]="maxLength"
+                            [pattern]="regex"
+                            [errorMessages]="errorMessages"
+                            [errorMessage]="customErrorMessage"
+                            (valueChange)="onReactiveTextChange($event)"
+                            (debouncedValueChange)="onReactiveTextDebouncedChange($event)"
+                            (keyUp)="onReactiveTextKeyUp($event)"
+                            (enter)="onReactiveTextEnter($event)"
+                            (blurring)="onReactiveTextBlur($event)"
+                            (focusing)="onReactiveTextFocus($event)"
+                        >Reactive text</pa-poc-input>
+
+                        <pa-poc-input
+                            id="reactiveNumber"
+                            name="number"
+                            type="number"
+                            placeholder="The placeholder"
+                            help="this is a help"
+                            formControlName="number"
+                            [readonly]="readonly"
+                            [disabled]="disabled"
+                            [hasFocus]="focused === 'reactiveNumber'"
+                            [noAutoComplete]="noAutoComplete"
+                            [required]="required"
+                            [min]="min"
+                            [max]="max"
+                            [errorMessages]="errorMessages"
+                            [errorMessage]="customErrorMessage"
+                            (valueChange)="onReactiveNumberChange($event)"
+                            (debouncedValueChange)="onReactiveNumberDebouncedChange($event)"
+                            (keyUp)="onReactiveNumberKeyUp($event)"
+                            (enter)="onReactiveNumberEnter($event)"
+                            (blurring)="onReactiveNumberBlur($event)"
+                            (focusing)="onReactiveNumberFocus($event)"
+                        >Reactive number</pa-poc-input>
+
+                    </form>
+                </div>
+                <div class="example-control">
+                    <h5>Component state</h5>
+                    <ul>
+                        <li><span class="field">[(value)]</span>="<span class="value">{{form.value.text}}</span>"
+                        </li>
+                        <li><span class="field">valueChange</span>="<span
+                            class="value">{{_reactiveTextChanged}}</span>"
+                        </li>
+                        <li><span class="field">debouncedValueChange</span>="<span
+                            class="value">{{_reactiveTextDebouncedChange}}</span>"
+                        </li>
+                        <li><span class="field">KeyUp</span>="<span class="value">{{_reactiveTextKeyUp}}</span>"
+                        </li>
+                        <li><span class="field">Enter</span>="<span class="value">{{_reactiveTextEnter}}</span>"
+                        </li>
+                        <li><span class="field">Blur</span>="<span class="value">{{_reactiveTextBlur}}</span>"
+                        </li>
+                        <li><span class="field">Focus</span>="<span class="value">{{_reactiveTextFocus}}</span>"
+                        </li>
+                        <li><hr></li>
+                        <li><span class="field">[(value)]</span>="<span class="value">{{form.value.number}}</span>"
+                        </li>
+                        <li><span class="field">valueChange</span>="<span
+                            class="value">{{_reactiveNumberChanged}}</span>"
+                        </li>
+                        <li><span class="field">debouncedValueChange</span>="<span
+                            class="value">{{_reactiveNumberDebouncedChange}}</span>"
+                        </li>
+                        <li><span class="field">KeyUp</span>="<span class="value">{{_reactiveNumberKeyUp}}</span>"
+                        </li>
+                        <li><span class="field">Enter</span>="<span class="value">{{_reactiveNumberEnter}}</span>"
+                        </li>
+                        <li><span class="field">Blur</span>="<span class="value">{{_reactiveNumberBlur}}</span>"
+                        </li>
+                        <li><span class="field">Focus</span>="<span class="value">{{_reactiveNumberFocus}}</span>"
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="example-config">
+            <pa-checkbox [(selected)]="readonly">readonly {{readonly}}</pa-checkbox>
+            <pa-checkbox [(selected)]="disabled">disabled {{disabled}}</pa-checkbox>
+            <pa-checkbox [(selected)]="noAutoComplete">noAutoComplete {{noAutoComplete}}</pa-checkbox>
+            <pa-checkbox [(selected)]="required">required {{required}}</pa-checkbox>
+            <pa-checkbox [selected]="!!maxLength" (selectedChange)="toggleMaxLength()">
+                maxLength {{maxLength}}</pa-checkbox>
+            <pa-checkbox [selected]="!!min" (selectedChange)="toggleMin()">
+                min {{min}}</pa-checkbox>
+            <pa-checkbox [selected]="!!max" (selectedChange)="toggleMax()">
+                max {{max}}</pa-checkbox>
+            <pa-checkbox [selected]="!!regex" (selectedChange)="toggleRegexPattern()">
+                regexPattern {{!!regex ? '.?bla.?' : ''}}</pa-checkbox>
+            <pa-checkbox [selected]="errorMessages" (selectedChange)="toggleErrorMessages()">provided
+                ErrorMessages {{errorMessages | json}}</pa-checkbox>
+            <pa-checkbox [selected]="!!customErrorMessage" (selectedChange)="toggleCustomErrorMessage()">
+                errorMessage {{customErrorMessage}}</pa-checkbox>
+            <pa-select label="Focus field" [(value)]="focused">
+                <pa-option value="standaloneText">standalone text</pa-option>
+                <pa-option value="standaloneNumber">standalone number</pa-option>
+                <pa-option value="ngModelText">ngModel validator</pa-option>
+                <pa-option value="templateDrivenText">templateDriven text</pa-option>
+                <pa-option value="templateDrivenNumber">templateDriven number</pa-option>
+                <pa-option value="reactiveText">reactive text</pa-option>
+                <pa-option value="reactiveNumber">reactive number</pa-option>
+            </pa-select>
+        </div>
+    </pa-demo-examples>
+    <pa-demo-configuration>
+        <!--        <div class="pa-demo-configuration-field">-->
+        <!--            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>-->
+        <!--        </div>-->
+        <!--        <div class="pa-demo-configuration-field">-->
+        <!--            <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>-->
+        <!--        </div>-->
+        <!--        <div class="pa-demo-configuration-field">-->
+        <!--            <pa-button size="small" aspect="solid"-->
+        <!--                       (click)="toggleCustomErrorMessage()">-->
+        <!--                {{!!customError ? 'Reset custom error' : 'Set custom error message'}}-->
+        <!--            </pa-button>-->
+        <!--        </div>-->
+    </pa-demo-configuration>
+
+    <pa-demo-usage>
+        <br>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>disabled</dt>
+            <dd>Set disabled state <small>(default: false)</small></dd>
+
+            <dt>help</dt>
+            <dd>Field's help <small>(optional)</small></dd>
+
+            <dt>id</dt>
+            <dd>Field's id <small>(optional, an id will be generated if none is provided)</small></dd>
+
+            <dt>name</dt>
+            <dd>Field's name <small>(optional, id will be used if none provided)</small></dd>
+        </dl>
+        <br>
+        <dl>
+            <dt>debounceDuration</dt>
+            <dd>Duration (in milliseconds) used to debounce values emitted by <code>valueChange</code> <small>(default:
+                500ms)</small></dd>
+
+            <dt>errorMessage</dt>
+            <dd>Error message to display when field validation is done externally. Will override internal validation
+                error if any. <small>(optional)</small></dd>
+
+            <dt>errorMessages</dt>
+            <dd>Map of all possible internal error messages (like <code>required</code>) <small>(optional: by default
+                field will have the error state without any message displayed)</small></dd>
+
+            <dt>pattern</dt>
+            <dd><code>RegExp</code> object. Allows to validate field value according a regular expression</dd>
+
+            <dt>placeholder</dt>
+            <dd>Field's placeholder <small>(optional)</small></dd>
+
+            <dt>readonly</dt>
+            <dd>Sets readonly state <small>(default: false)</small></dd>
+
+            <dt>required</dt>
+            <dd>Sets required state <small>(default: false)</small></dd>
+
+            <dt>value</dt>
+            <dd>Field's value</dd>
+        </dl>
+        <br>
+        <dl>
+            <dt>acceptHtmlTags</dt>
+            <dd>Allow to render/enter HTML tags in the field. Enabling this can have an impact on the security of your
+                app, to be use with caution. <small>(default: false)</small></dd>
+
+            <dt>hasFocus</dt>
+            <dd>Set to true to give focus on the input by default <small>(default: false)</small></dd>
+
+            <dt>max</dt>
+            <dd>Max value available for input of type number <small>(optional)</small></dd>
+
+            <dt>maxlength</dt>
+            <dd>Max number of characters allowed for input of type text <small>(optional)</small></dd>
+
+            <dt>min</dt>
+            <dd>Min value available for input of type number <small>(optional)</small></dd>
+
+            <dt>noAutoComplete</dt>
+            <dd>Set autocomplete attribute to <code>off</code> <small>(default: false)</small></dd>
+
+            <dt>type</dt>
+            <dd>Input type: text | number <small>(default: text)</small></dd>
+        </dl>
+        <br>
+        <br>
+
+        <h3>Outputs</h3>
+        <dl>
+            <dt>blurring</dt>
+            <dd>Emits current value on blur</dd>
+
+            <dt>enter</dt>
+            <dd>Emits <code>KeyboardEvent</code> and <code>string</code> value when pressing enter</dd>
+
+            <dt>focusing</dt>
+            <dd>Emits <code>FocusEvent</code> on focus</dd>
+
+            <dt>instantValueChange</dt>
+            <dd>Emits value as soon as it changes</dd>
+
+            <dt>keyUp</dt>
+            <dd>Emits <code>string</code> value on key up event</dd>
+
+            <dt>valueChange</dt>
+            <dd>Emits current value after a debounce time defined by <code>debounceDuration</code> input</dd>
+        </dl>
+
+
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <h3>HTML</h3>
+        <!--        <pre><code>{{htmlExample}}</code></pre>-->
+        <h3>Typescript</h3>
+        <!--        <pre><code>{{tsExample}}</code></pre>-->
+    </pa-demo-code>
+</pa-demo-page>

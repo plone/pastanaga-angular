@@ -23,6 +23,7 @@ import { PalettePageComponent } from './demo/pages/palette-page/palette-page.com
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
 import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
 import { markForCheck, PastanagaService } from '../../../pastanaga-angular/src';
+import { PocInputPageComponent } from './demo/pages/poc-input-page/poc-input-page.component';
 
 @Component({
     selector: 'app-root',
@@ -64,6 +65,7 @@ export class AppComponent {
                 { view: 'select', title: 'Select', type: SelectPageComponent },
                 { view: 'textarea', title: 'Textarea', type: TextareaPageComponent },
                 { view: 'toggle', title: 'Toggle', type: TogglePageComponent },
+                { view: 'poc', title: 'Poc Input', type: PocInputPageComponent },
             ],
         },
     ];
