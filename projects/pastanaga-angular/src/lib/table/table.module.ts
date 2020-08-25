@@ -6,16 +6,25 @@ import { TableComponent } from './table.component';
 import { TableHeaderDirective } from './table.directives';
 import { TableRowComponent } from './table-row/table-row.component';
 import { TableRowHeaderComponent } from './table-row-header/table-row-header.component';
+import { TableCellMenuComponent } from './table-cell-menu/table-cell-menu.component';
 
 @NgModule({
     imports: [CommonModule],
-    exports: [TableComponent, TableRowComponent, TableCellComponent, TableRowHeaderComponent, TableHeaderDirective],
+    exports: [
+        TableComponent,
+        TableRowComponent,
+        TableCellComponent,
+        TableRowHeaderComponent,
+        TableHeaderDirective,
+        TableCellMenuComponent,
+    ],
     declarations: [
         TableComponent,
         TableRowComponent,
         TableCellComponent,
         TableRowHeaderComponent,
         TableHeaderDirective,
+        TableCellMenuComponent,
     ],
     providers: [],
 })

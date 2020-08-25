@@ -53,6 +53,7 @@ export * from './lib/popup/popup.service';
 
 export * from './lib/table/table.module';
 export * from './lib/table/table-cell/table-cell.component';
+export * from './lib/table/table-cell-menu/table-cell-menu.component';
 export * from './lib/table/table-row-header/table-row-header.component';
 export * from './lib/table/table-row/table-row.component';
 export * from './lib/table/table.component';
