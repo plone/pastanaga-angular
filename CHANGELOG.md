@@ -5,6 +5,10 @@
 
 ### Improvements
 - **Modal**: Use a token for modal box-shadow [mpellerin42]
+- **Table**: [mpellerin42]
+    - Better component structure: one folder by component
+    - Differentiate hover background from header one
+    - New table-cell-menu component to manage row menu button style
 
 # 2.4.4 (2020-08-14)
 

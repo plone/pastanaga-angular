@@ -2,74 +2,104 @@
 
 .pa-table-grid {
     display: grid;
+
+    .clickable {
+        cursor: pointer;
+    }
 }
 .pa-table-grid--head {
     display: contents;
-}
-.pa-table-grid--head .pa-table-grid--header {
-    background: $color-background-table-header;
-    position: sticky;
-    top: 0;
-    font-weight: $font-weight-text-table-header;
+
+    .pa-table-grid--header {
+        position: sticky;
+        top: 0;
+        padding: rhythm(1.5) rhythm(0.75);
+
+        background: $color-background-table-header;
+        border-bottom: 1px $color-border-table-header solid;
+        color: $color-text-table-header;
+        font-size: font-size(xs);
+        font-weight: $font-weight-text-table-header;
+        text-transform: uppercase;
+    }
+    .pa-table-grid--row > :first-child  {
+        z-index: 2;
+    }
 }
 .pa-table-grid--body {
     display: contents;
-}
-.pa-table-grid--body .pa-table-grid--row:hover .pa-table-grid--header,
-.pa-table-grid--body .pa-table-grid--row:hover .pa-table-grid--cell {
-    background: $color-background-table-row-hover;
-}
-.pa-table-grid--body .pa-table-grid--row:active .pa-table-grid--header,
-.pa-table-grid--body .pa-table-grid--row:active .pa-table-grid--cell {
-    background: $color-background-table-row-active;
+
+    .pa-table-grid--header {
+        border-bottom: 1px $color-border-table-row solid;
+        padding: rhythm(1.5) rhythm(0.75);
+        background:$color-background-table-row;
+    }
+
+    .pa-table-grid--row:hover .pa-table-grid--header,
+    .pa-table-grid--row:hover .pa-table-grid--cell {
+        background: $color-background-table-row-hover;
+    }
+    .pa-table-grid--row:hover .pa-table-grid--menu-cell pa-button {
+        opacity: 1;
+    }
+
+    /*
+     * FIXME: when table-grid-cell contains a button and you click on it, currently the whole line has the active state.
+     * We need to find a way of preventing that.
+     */
+    .pa-table-grid--row:active .pa-table-grid--header,
+    .pa-table-grid--row:active .pa-table-grid--cell {
+        background: $color-background-table-row-active;
+    }
 }
 
 .pa-table-grid--row {
     display: contents;
     font-size: $font-size-table-row;
     font-weight: $font-weight-table-row;
+
+    .pa-table-grid--row-header {
+        grid-column: 1 / -1;
+        font-weight: $font-weight-text-table-header-row;
+        font-size: font-size(xs);
+        background: $color-background-table-header-row;
+        color: $color-text-table-header-row;
+        margin-top: -1px;
+        padding: rhythm(0.33) rhythm(0.75);
+        border-top: 1px solid $color-border-table-header-row;
+        position: sticky;
+        top: rhythm(4);
+        z-index: 3;
+    }
 }
 
-.pa-table-grid--head .pa-table-grid--header {
-    border-bottom: 1px $color-border-table-header solid;
-    padding: rhythm(1.5) rhythm(0.75);
-    font-size: font-size(xs);
-    text-transform: uppercase;
-    color: $color-text-table-header;
-}
-.pa-table-grid--body .pa-table-grid--header {
-    border-bottom:1px $color-border-table-row solid;
-    padding: rhythm(1.5) rhythm(0.75);
-    background:$color-background-table-row;
-}
 .pa-table-grid--cell {
-    border-bottom:1px $color-border-table-row solid;
+    border-bottom: 1px $color-border-table-row solid;
     padding: rhythm(1.5) rhythm(0.75);
-    background:$color-background-table-row;
+    background: $color-background-table-row;
     color: $color-text-table-row;
 }
-.pa-table-grid--head .pa-table-grid--row > :first-child  {
-    z-index: 2;
-}
-.pa-table-grid--row .pa-table-grid--row-header {
-    grid-column: 1 / -1;
-    font-weight: $font-weight-text-table-header-row;
-    font-size: font-size(xs);
-    background: $color-background-table-header-row;
-    color: $color-text-table-header-row;
-    margin-top: -1px;
-    padding: rhythm(0.33) rhythm(0.75);
-    border-top: 1px solid $color-border-table-header-row;
-    position: sticky;
-    top: rhythm(4);
-    z-index: 3;
+
+.pa-table-grid--menu-cell {
+    text-align: center;
+
+    &:not(.pa-table-grid--header) pa-button {
+        opacity: 0;
+    }
+    .pa-button {
+        background: $color-background-table-menu-button !important;
+
+        &:hover {
+            background: $color-background-table-menu-button-hover !important;
+        }
+        &:active {
+            background: $color-background-table-menu-button-active !important;
+        }
+    }
 }
 
-.pa-table-grid .clickable {
-    cursor: pointer;
-}
 
 // ignore Angular components
-pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell {
+pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell, pa-table-cell-menu {
     display: contents;
 }

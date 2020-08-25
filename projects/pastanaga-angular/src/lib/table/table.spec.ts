@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { TableHeaderDirective } from './table.directives';
-import { TableRowHeaderComponent } from './table-row-header.component';
-import { TableCellComponent } from './table-cell.component';
-import { TableRowComponent } from './table-row.component';
+import { TableRowHeaderComponent } from './table-row-header/table-row-header.component';
+import { TableCellComponent } from './table-cell/table-cell.component';
+import { TableRowComponent } from './table-row/table-row.component';
 import { TableComponent } from './table.component';
 
 @Component({
