@@ -1,21 +1,21 @@
-<div class="pa-field" [class.pa-field-error]="control.invalid || !!errorMessage">
+<div class="pa-field" [class.pa-field-error]="internalControl.dirty && internalControl.invalid">
     <input #input
            class="pa-field-control"
-           [class.pa-field-control-filled]="!!_value || _value === 0"
-           [(ngModel)]="_value"
-           [ngModelOptions]="{standalone: standalone}"
+           [class.pa-field-control-filled]="!!internalModel || internalModel === 0"
+           [(ngModel)]="internalModel"
+           [ngModelOptions]="{standalone: isStandalone}"
            [id]="_id"
            [name]="_name"
            [type]="type"
            [disabled]="_disabled"
-           [attr.maxlength]="_maxLength"
+           [attr.maxlength]="maxlength"
            [attr.aria-label]="_label"
-           [attr.placeholder]="_placeholder"
+           [attr.placeholder]="placeholder"
            [readonly]="_readonly"
-           [required]="_required"
+           [required]="required"
 
            (input)="onChange($event.target.value)"
-           (blur)="onTouched()"
+           (blur)="onBlur()"
            (keyup)="onKeyUp($event)"
            (focus)="onFocus($event)"
     >
@@ -25,9 +25,9 @@
            [for]="id"
     ><ng-content></ng-content></label>
 
-    <small *ngIf="_error || errorMessage || _help"
+    <small *ngIf="_errorHelp || help"
            class="pa-field-help"
            [id]="_helpId"
-           [class.pa-field-help-error]="!!_error || errorMessage"
-           [innerHTML]="errorMessage || _error || _help"></small>
+           [class.pa-field-help-error]="!!_errorHelp "
+           [innerHTML]="_errorHelp || help"></small>
 </div>

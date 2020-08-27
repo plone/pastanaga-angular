@@ -20,6 +20,7 @@ import {
     AbstractControl,
     ControlValueAccessor,
     FormControl,
+    FormControlName,
     NgControl,
     ValidationErrors,
     Validator,
@@ -29,13 +30,20 @@ import {
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
-import { detectChanges, Keys, markForCheck } from '../common';
-import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
-import { ErrorMessages, InputErrors } from '../..';
+import { Keys, markForCheck } from '../common';
+import { merge, Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { ErrorMessages } from '../..';
 
 let nextId = 0;
 
+/**
+ * Due to standalone usage specifications, the local state of the component
+ * is split into two synchronized references:
+ * - the model (ngModel) responsible of the value hold by the component and used in the template
+ * - the control (formControl) responsible for validation and state management
+ * both references must be kept in sync
+ */
 @Component({
     selector: 'pa-poc-input',
     templateUrl: './poc-input.component.html',
@@ -44,97 +52,80 @@ let nextId = 0;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PocInputComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy, ControlValueAccessor, Validator {
+    /**** from BaseControl ****/
     @Input() id?: string;
     @Input() name?: string;
-    @Input() type: 'text' | 'number' | 'password' | 'email' = 'text';
-    @Input()
-    get placeholder(): string {
-        return this._placeholder;
-    }
-    set placeholder(value: string) {
-        this._placeholder = value || '';
-    }
-    @Input()
-    get help(): string {
-        return this._help;
-    }
-    set help(value: string) {
-        this._help = value || '';
-    }
-    /**
-     * CAUTION: only use when not using ngModel or formControls
-     */
-    @Input()
-    set value(value: string | number) {
-        if (!this.standalone) {
-            console.warn('Do not use value property and ngModel or form control at the same time');
-        }
-        this._value = !!value || value === 0 ? value : '';
+    @Input() help: string = '';
+
+    @Input() set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
     }
 
-    // Field state
-    @Input()
-    get readonly(): boolean {
-        return this._readonly;
-    }
-    set readonly(value: boolean) {
-        this._readonly = coerceBooleanProperty(value);
-    }
-    @Input()
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
-        this._disabled = coerceBooleanProperty(value);
-    }
-    @Input()
-    get hasFocus(): boolean {
-        return this._hasFocus;
-    }
-    set hasFocus(value: boolean) {
-        this._hasFocus = coerceBooleanProperty(value);
-        if (this._hasFocus && !!this.input) {
-            this.input.nativeElement.focus();
-        }
-    }
-    @Input()
-    get noAutoComplete(): boolean {
-        return this._noAutoComplete;
-    }
-    set noAutoComplete(value: boolean) {
-        this._noAutoComplete = coerceBooleanProperty(value);
-    }
-    @Input() debounceDuration = 500;
 
-    // Validation
-    @Input()
-    set required(value: boolean | undefined) {
-        // NB: undefined must be considered as a valid value
-        // so that parent's required validator won't be erased by an undefined
-        this._required = value;
+    /**** from BaseTextField ****/
+    @Input() set value(value: string | number) {
+        if (!this.isStandalone) {
+            console.warn('Do not use value property and ngModel or form control at the same time');
+        }
+        this.internalPatchValue(value);
     }
-    @Input()
-    set min(value: number | undefined) {
-        this._min = value;
+
+    @Input() set debounceDuration(value: number | undefined) {
+        this._debouncedTime = value || 500;
+        this.debounceTimeChanged.next();
+        this.initDebounce();
     }
-    @Input()
-    set max(value: number | undefined) {
-        this._max = value;
+
+    @Input() placeholder: string = '';
+
+    @Input() set readonly(value: boolean) {
+        this._readonly = coerceBooleanProperty(value);
     }
-    @Input()
-    set maxlength(value: number | undefined) {
-        this._maxLength = value;
-    }
-    @Input()
-    set pattern(value: RegExp | undefined) {
-        this._pattern = value;
+
+    get readonly(): boolean {
+        return this._readonly;
     }
 
     @Input() errorMessages?: ErrorMessages;
     /**
-     * Manual error messaging
+     * Manual error messaging: a manual 'always false' validator
+     * is added to internal form control
      */
     @Input() errorMessage?: string;
+    @Input() required?: boolean;
+    @Input() pattern?: RegExp | string;
+
+    /**** from InputComponent ****/
+    @Input() type: 'text' | 'number' | 'password' | 'email' = 'text';
+
+    @Input() set noAutoComplete(value: boolean) {
+        this._noAutoComplete = coerceBooleanProperty(value);
+    }
+
+    get noAutoComplete(): boolean {
+        return this._noAutoComplete;
+    }
+
+    @Input() set hasFocus(value: boolean) {
+        this._hasFocus = coerceBooleanProperty(value);
+        if (this._hasFocus && !!this.input && this.isActive()) {
+            this.input.nativeElement.focus();
+        }
+    }
+
+    get hasFocus(): boolean {
+        return this._hasFocus;
+    }
+
+    @Input() min?: number;
+    @Input() max?: number;
+    @Input() maxlength?: number;
+    @Input() updateValidatorEvent?: boolean;
+
+    /*** ***/
 
     @ViewChild('input') input?: ElementRef;
     @ViewChild('label') labelElement?: ElementRef;
@@ -143,77 +134,77 @@ export class PocInputComponent implements OnChanges, OnInit, AfterViewInit, OnDe
     @Output() focusing: EventEmitter<FocusEvent> = new EventEmitter();
     @Output() keyUp: EventEmitter<any> = new EventEmitter();
     @Output() enter: EventEmitter<{ event: KeyboardEvent; value: any }> = new EventEmitter();
-    // Stand alone only, use angular touched property and ngModelChange instead
+    // Stand alone only
     @Output() valueChange: EventEmitter<string | number> = new EventEmitter();
     @Output() blurring: EventEmitter<string | number> = new EventEmitter();
 
+    /*** localHtmlState ***/
     _id = '';
     _name = '';
     _fieldType = 'input';
-    _placeholder = '';
-    _label = '';
     _helpId = '';
-    _help = '';
-    _value?: string | number = '';
-
+    _label = '';
     _hasFocus = false;
-    _disabled = false;
     _readonly = false;
     _noAutoComplete = false;
-
-    /**
-     * autofilled is set according to browser in the afterViewInit lifeCycle
-     */
     _autofilled = false;
+    _disabled = false;
 
-    _required?: boolean;
-    _min?: number;
-    _max?: number;
-    _pattern?: RegExp;
-    _maxLength?: number;
-    _error?: string;
+    /*** internal state ***/
+    internalModel?: string | number = '';
+    internalControl: AbstractControl = new FormControl();
+    isStandalone = true;
+    isFormControl = false;
 
-    debouncer: Subject<any> = new Subject();
+    _debouncedTime = 500;
+    debounceTimeChanged: Subject<void> = new Subject();
+    debouncedChange: Observable<any> = new Subject();
     terminator: Subject<void> = new Subject();
 
-    // additional
-    standalone = true;
-    control: AbstractControl = new FormControl();
+    /**** Local form Validation ****/
+    _errorHelp?: string;
+    parentValidator?: ValidatorFn | null = null;
+    parentAsyncValidator: any;
+    forceErrorValidator?: ValidatorFn;
+    requiredValidator?: ValidatorFn;
+    patternValidator?: ValidatorFn;
+    minValidator?: ValidatorFn;
+    maxValidator?: ValidatorFn;
+    maxlengthValidator?: ValidatorFn;
 
     /**
-     *
-     * @param selfControl (superClass of ngModel and formControl)
-     * prevents localControl from being override by angular,
-     * provides NG_VALUE_ACCESSOR and NG_VALIDATORS
+     * NgControl is a superClass of ngModel and formControl
+     * and prevents local form control from being override by angular,
      */
     constructor(
-        @Optional() @Self() public selfControl: NgControl,
-        protected platform: Platform,
-        protected ngZone: NgZone,
-        protected cdr: ChangeDetectorRef,
-        private autofillMonitor: AutofillMonitor,
-        public element: ElementRef
+        @Optional() @Self() public parentControl: NgControl,
+        private platform: Platform,
+        private ngZone: NgZone,
+        private cdr: ChangeDetectorRef,
+        private autofillMonitor: AutofillMonitor
     ) {
-        if (!!this.selfControl) {
-            this.selfControl.valueAccessor = this;
+        if (!!this.parentControl) {
+            this.parentControl.valueAccessor = this;
         }
-        this.debouncer
-            .pipe(takeUntil(this.terminator), debounceTime(this.debounceDuration))
-            .subscribe((value) => this.debouncedValueChange.emit(value));
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.required || changes.min || changes.max || changes.maxlength || changes.pattern) {
-            this.updateValidators();
+        if (changes.updateValidatorEvent) {
+            this.refreshParentValidator();
+            this.updateValidation();
         }
-        if (changes.errorMessages) {
-            this.control.updateValueAndValidity();
+        if (this.isAnInternalValidatorChange(changes)) {
+            this.refreshInternalValidators();
+            this.updateValidation();
+        }
+        if (changes.errorMessages && this.internalControl.dirty) {
+            this.internalControl.updateValueAndValidity();
         }
     }
 
     ngOnInit(): void {
         this.setIds();
-        this.initFormControl();
+        this.setupInternalFormControl();
     }
 
     ngAfterViewInit(): void {
@@ -222,8 +213,8 @@ export class PocInputComponent implements OnChanges, OnInit, AfterViewInit, OnDe
             this.autofillMonitor.monitor(element).subscribe((event) => {
                 this._autofilled = event.isAutofilled;
                 if (this._autofilled) {
-                    this.writeValue(undefined);
-                    //this.control.updateValueAndValidity();
+                    this.writeValue(null);
+                    this.internalControl.updateValueAndValidity();
                 }
             });
         }
@@ -256,62 +247,88 @@ export class PocInputComponent implements OnChanges, OnInit, AfterViewInit, OnDe
     ngOnDestroy() {
         this.terminator.next();
         this.terminator.complete();
+        this.debounceTimeChanged.complete();
     }
 
     /**
      * ONLY FOR ngModel and formControls
+     * write value is updating local formControl
+     * so we need to maintain local model and repaint the component
      * @param val
      */
     writeValue(val: any): void {
-        if (!!this.input && !this.standalone) {
-            this.input.nativeElement.value = val;
+        if (!!this.input && !this.isStandalone) {
+            // prevent debouncedValueChange from being triggered as change comes from parent
+            this.debounceTimeChanged.next();
+            this.internalModel = val;
+            markForCheck(this.cdr);
+            this.initDebounce();
         }
     }
+
     registerOnChange(fn: any): void {
         this.onChange = fn;
     }
+
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
-    setDisabledState?(isDisabled: boolean): void {
+
+    setDisabledState(isDisabled: boolean): void {
         this._disabled = isDisabled;
+        if (this.isStandalone) {
+            if (isDisabled) {
+                this.internalControl.disable();
+            } else {
+                this.internalControl.enable();
+            }
+        }
+        markForCheck(this.cdr);
     }
 
     /**
-     * NB: will be override by angular if not standalone
-     * @param event
+     * NB: will be override by Control Value Accessor
+     * the the content of this method is only processed
+     * when the component is standalone
      */
     onChange(event: any) {
-        console.log('onChange', event, this._value);
-        if (this.control.pristine) {
-            this.control.markAsDirty();
+        if (this.internalControl.pristine) {
+            this.internalControl.markAsDirty();
         }
-        this.control.patchValue(this._value);
-        this.valueChange.emit(this._value);
+        this.internalControl.patchValue(this.internalModel);
+        this.valueChange.emit(this.internalModel);
     }
 
     /**
-     * NB: will be override by Angular if not standalone
+     * NB: will be override by Control Value Accessor
+     * the the content of this method is only processed
+     * when the component is standalone
      */
     onTouched() {
-        this.control.markAsTouched();
-        this.blurring.emit(this._value);
+        this.internalControl.markAsTouched();
+        this.internalControl.updateValueAndValidity();
+    }
+
+    onBlur() {
+        if (this.isStandalone) {
+            this.onTouched();
+        }
+        this.blurring.emit(this.internalModel);
     }
 
     onKeyUp(event: any) {
-        if (event.key !== Keys.tab && !!event.target) {
-            this.keyUp.emit(this._value);
+        if (this.isActive() && event.key !== Keys.tab && !!event.target) {
+            this.keyUp.emit(this.internalModel);
             if (event.key === Keys.enter) {
-                this.enter.emit({ event: event, value: this._value });
-            } else {
-                this.debouncer.next(this._value);
+                this.enter.emit({ event: event, value: this.internalModel });
             }
         }
     }
 
     onFocus(event: any) {
-        console.log('onFocus');
-        this.focusing.emit(event);
+        if (this.isActive()) {
+            this.focusing.emit(event);
+        }
     }
 
     /**
@@ -320,18 +337,9 @@ export class PocInputComponent implements OnChanges, OnInit, AfterViewInit, OnDe
      *
      * ONLY FOR ngModel & formControls
      * @param c
+     * TODO: try to remove this
      */
     validate(c: AbstractControl): ValidationErrors {
-        // TODO check that
-        console.log('doing something ?');
-        // const validators: ValidatorFn[] = [];
-        // if (this.required) {
-        //     validators.push(Validators.required);
-        // }
-        // if (this.pattern) {
-        //     validators.push(Validators.pattern(this.pattern));
-        // }
-
         return [];
     }
 
@@ -341,100 +349,157 @@ export class PocInputComponent implements OnChanges, OnInit, AfterViewInit, OnDe
         this._helpId = `${this._id}-help`;
     }
 
-    initFormControl() {
-        if (!!this.selfControl && !!this.selfControl.control) {
-            this.control = this.selfControl.control;
-            this.standalone = false;
+    setupInternalFormControl() {
+        // ngModels will have a formControl attached by angular
+        this.isStandalone = !this.parentControl || !this.parentControl.control;
+        this.isFormControl = !!this.parentControl && this.parentControl instanceof FormControlName;
+
+        if (!this.isStandalone && this.parentControl.control) {
+            this.internalControl = this.parentControl.control;
         }
-        console.log('standalone ?', this.standalone);
-        this.updateValidators();
+        this.refreshParentValidator();
+        this.updateValidation();
         this.trackValidation();
+        this.initDebounce();
     }
 
+    initDebounce() {
+        // wait for inner state to be stable before subscribing to changes
+        setTimeout(() => {
+            this.internalControl.valueChanges
+                .pipe(
+                    debounceTime(this._debouncedTime),
+                    distinctUntilChanged(),
+                    takeUntil(merge(this.debounceTimeChanged, this.terminator))
+                )
+                .subscribe((value) => this.debouncedValueChange.emit(value));
+        });
+    }
+
+    internalPatchValue(value: string | number) {
+        // prevent debouncedValueChange from being triggered when changes come from parent
+        this.debounceTimeChanged.next();
+        this.internalModel = !!value || value === 0 ? value : '';
+        const shouldUpdateValidation = this.internalControl.dirty;
+        this.internalControl.patchValue(this.internalModel, { emitEvent: shouldUpdateValidation });
+        this.initDebounce();
+    }
+
+    isActive(): boolean {
+        const inactive = this.disabled || this.readonly || this.internalControl.disabled;
+        return !inactive;
+    }
+
+    refreshParentValidator() {
+        if (!this.isStandalone) {
+            if (this.isFormControl) {
+                this.parentValidator = this.parentControl?.control?.validator;
+                this.parentAsyncValidator = this.parentControl?.control?.asyncValidator;
+            } else {
+                this.parentValidator = this.parentControl?.validator;
+                this.parentAsyncValidator = this.parentControl?.asyncValidator;
+            }
+        }
+    }
+
+    refreshInternalValidators() {
+        this.forceErrorValidator = !!this.errorMessage ? this.buildForceErrorValidator(this.errorMessage) : undefined;
+        this.requiredValidator = !!this.required ? Validators.required : undefined;
+        this.patternValidator = !!this.pattern ? Validators.pattern(this.pattern) : undefined;
+        this.minValidator = !!this.min ? Validators.min(this.min) : undefined;
+        this.maxValidator = !!this.max ? Validators.max(this.max) : undefined;
+        this.maxlengthValidator = !!this.maxlength ? Validators.maxLength(this.maxlength) : undefined;
+    }
     /**
      * Merge control's validators with current inner validation configuration
      * NB: validators from parent component should be preserved unless it is explicitly set to false
+     *
      */
-    updateValidators() {
-        let currentValidator: any = !!this.control.validator ? this.control.validator : {};
+    updateValidation() {
+        // DO NOT OVERRIDE Validators before onInit TODO: checkThat
+        if (this.parentControl && this.internalControl !== this.parentControl.control) {
+            return;
+        }
         const validators = [];
 
-        // TODO: test the undefined
-        if (this._required && !currentValidator.required) {
-            validators.push(Validators.required);
-        } else if (!this._required && currentValidator.required) {
-            delete currentValidator.required;
+        if (!!this.forceErrorValidator) {
+            validators.push(this.forceErrorValidator);
+        }
+        if (!!this.requiredValidator) {
+            validators.push(this.requiredValidator);
+        }
+        if (!!this.patternValidator) {
+            validators.push(this.patternValidator);
+        }
+        if (!!this.minValidator) {
+            validators.push(this.minValidator);
+        }
+        if (!!this.maxValidator) {
+            validators.push(this.maxValidator);
+        }
+        if (!!this.maxlengthValidator) {
+            validators.push(this.maxlengthValidator);
         }
 
-        if (this._pattern && !currentValidator.pattern) {
-            validators.push(Validators.pattern(this._pattern));
-        } else if (!this._pattern && currentValidator.pattern) {
-            delete currentValidator.pattern;
+        if (!!this.parentValidator) {
+            validators.push(this.parentValidator);
         }
 
-        if (this._maxLength && !currentValidator.maxLength) {
-            validators.push(Validators.maxLength(this._maxLength));
-        } else if (!this._maxLength && currentValidator.maxLength) {
-            delete currentValidator.maxLength;
+        this.internalControl.clearValidators();
+        this.internalControl.setErrors(null, { emitEvent: false });
+        this.internalControl.setValidators(validators);
+        if (this.parentAsyncValidator) {
+            this.internalControl.setAsyncValidators(this.parentAsyncValidator);
         }
-
-        if (this._min && !currentValidator.min) {
-            validators.push(Validators.min(this._min));
-        } else if (!this._min && currentValidator.min) {
-            delete currentValidator.min;
-        }
-
-        if (this._max && !currentValidator.max) {
-            validators.push(Validators.max(this._max));
-        } else if (!this._max && currentValidator.max) {
-            delete currentValidator.max;
-        }
-
-        if (Object.keys(currentValidator).length > 0) {
-            validators.push(currentValidator);
-        }
-        console.log('validator array', validators);
-
-        // console.log('updating validators / controls_validator', this.control.validator);
-        this.control.clearValidators();
-        this.control.setErrors(null, { emitEvent: false });
-        this.control.setValidators(validators);
-
-        console.log('Now control is', this.control);
-        if (this.control.dirty) {
-            this.control.updateValueAndValidity();
+        if (this.internalControl.dirty) {
+            this.internalControl.updateValueAndValidity();
         }
     }
 
     trackValidation() {
-        this.control.statusChanges.pipe(takeUntil(this.terminator)).subscribe((status) => {
-            // , this.control, this.control.value, this._value,
-            console.log('status changed', status);
-            if (this.control.pristine) {
-                return;
-            }
-            if (status === 'INVALID') {
-                this.buildError();
-            } else {
-                this._error = undefined;
-            }
+        this.internalControl.statusChanges.pipe(takeUntil(this.terminator)).subscribe((status) => {
+            this._errorHelp = this.internalControl.dirty && status === 'INVALID' ? this.buildErrorMessage() : undefined;
+            markForCheck(this.cdr);
         });
     }
-    buildError() {
-        if (!!this.errorMessages && this.control.errors) {
-            const messages: any = this.errorMessages;
-            const errors = this.control.errors;
-            this._error = Object.keys(errors).reduce((agg, key) => {
-                if (!!messages[key]) {
-                    return [agg, messages[key]].join(', ');
-                }
+    /**
+     * Concat all error messages, either from input messages or from the value provided by validators
+     */
+    buildErrorMessage(): string {
+        let errorHelp = '';
+        if (this.internalControl.errors) {
+            const messages: any = this.errorMessages || {};
+            const errors = this.internalControl.errors;
+            const displayedErrorMessage = Object.keys(errors).reduce((agg, key) => {
+                // precedence of validator's message over internal messages
                 if (typeof errors[key] === 'string') {
                     return [agg, errors[key]].join(', ');
                 }
+                if (!!messages[key]) {
+                    return [agg, messages[key]].join(', ');
+                }
                 return agg;
             }, '');
-        } else {
-            markForCheck(this.cdr);
+            // remove first ', '
+            errorHelp = displayedErrorMessage.length > 0 ? displayedErrorMessage.substr(2) : displayedErrorMessage;
         }
+        return errorHelp;
+    }
+
+    buildForceErrorValidator(message: string): ValidatorFn {
+        return (): { [key: string]: any } | null => {
+            return { customError: message };
+        };
+    }
+
+    private isAnInternalValidatorChange(changes: SimpleChanges) {
+        return (
+            changes.required ||
+            changes.min ||
+            changes.max ||
+            changes.maxlength ||
+            changes.pattern ||
+            changes.errorMessage
+        );
     }
 }
