@@ -1,29 +1,39 @@
 pa-demo-examples {
     display: flex;
+    flex-direction: column;
+    margin-bottom: 20rem;
 }
-.example-config {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.example-items {
-    display: flex;
-    flex-direction: column;
-    height: 60vh;
-    overflow-y: scroll;
-.example-item {
-    display: flex;
-    flex-direction: column;
 
-    .example-display {
-    }
-    .example-control {
-        .field {
-            color: green;
-        }
-        .value {
-            color: blue;
-        }
+pa-button {
+    margin-bottom: 1rem;
+}
+
+.use-case-selector {
+    display: flex;
+
+    pa-select {
+        flex: 1;
     }
 }
+
+.use-case {
+    display: flex;
+    flex-direction: column;
+}
+
+.in-action {
+    display: flex;
+
+    .poc-example, .state-info {
+        flex: 1;
+    }
+}
+
+.config {
+    display: flex;
+    flex-direction: column;
+}
+
+:host ::ng-deep .pa-toggle .pa-toggle-label {
+    width: 60%;
 }
