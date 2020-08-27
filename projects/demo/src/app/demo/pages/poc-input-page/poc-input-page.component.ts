@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-poc-input',
@@ -7,272 +7,455 @@ import { FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./poc-input-page.component.scss'],
 })
 export class PocInputPageComponent {
-    // configuration
-    readonly = false;
+    detailedDescription = false;
+    seeCode = false;
+    currentUseCase = 'A';
+    currentFeatureGroup = 'A';
+
+    useCaseAACode = `<pa-poc-input
+    [value]="value"
+    [help]="textHelp"
+    [disabled]="disabled"
+    (valueChange)="onTextValueChange($event)"
+ ></pa-poc-input>`;
+
+    idText?: string;
+    nameText?: string;
+    helpText?: string;
     disabled = false;
-    noAutoComplete = false;
+    valueText?: any;
+    valueNumber?: any;
+    receivedText?: any;
+    receivedDebouncedText?: any;
+    receivedKeyUpText?: any;
+    receivedEnterText?: any;
+    receivedBlurText?: any;
+    receivedFocusText?: any;
+
+    useCaseABCode = `<pa-poc-input
+    [value]="value"
+    [debounceDuration]="debounceDuration"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+    (valueChange)="onTextValueChange($event)"
+ ></pa-poc-input>`;
+
+    debounceDuration?: any;
+    placeholder?: any;
+    readonly = false;
+
+    useCaseACCode = `<pa-poc-input
+    [value]="value"
+    [errorMessage] = "errorMessage"
+    [pattern] = "pattern"
+    [required] = "required"
+    [errorMessages]="errorMessages"
+    (valueChange)="onTextValueChange($event)"
+ ></pa-poc-input>`;
+
+    pattern?: any;
     required = false;
-    maxLength?: number;
-    min?: number;
-    max?: number;
-    regex?: RegExp;
-    customErrorMessage?: string;
+    errorMessage?: any;
     errorMessages?: any;
 
-    focused = '';
+    useCaseADCode = `<pa-poc-input
+    [type]="type"
+    [value]="value"
+    [hasFocus] = "hasFocus"
+    [noAutoComplete] = "noAutoComplete"
+    (valueChange)="onTextValueChange($event)"
+ ></pa-poc-input>`;
 
-    // values
-    valueText = '';
-    valueNumber?: number;
-    ngModelText?: string;
-    templateDriven = {
-        text: undefined,
-        number: undefined,
-    };
-    // TODO add custom Validators like modulo on number and length is pair on text
-    form = new FormGroup({
+    type? = 'email';
+    hasFocus = false;
+    noAutoComplete = false;
+
+    useCaseAECode = `<pa-poc-input
+    type="number"
+    [value]="value"
+    [min]="min"
+    [max]="max"
+    [maxlength]="maxlength"
+    (valueChange)="onTextValueChange($event)"
+ ></pa-poc-input>`;
+
+    min?: number;
+    max?: number;
+    maxlength?: number;
+
+    useCaseBACode = `<pa-poc-input
+    [(ngModel)]="value"
+    [help]="textHelp"
+    [disabled]="disabled"
+ ></pa-poc-input>`;
+
+    receivedNgModelChange?: any;
+    useCaseBBCode = `<pa-poc-input
+    [(ngModel)]="value"
+    [debounceDuration]="debounceDuration"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+ ></pa-poc-input>`;
+
+    useCaseBCCode = `<pa-poc-input
+    [(ngModel)]="value"
+    [errorMessage] = "errorMessage"
+    [pattern] = "pattern"
+    [required] = "required"
+    [errorMessages]="errorMessages"
+ ></pa-poc-input>`;
+
+    useCaseBDCode = `<pa-poc-input
+    [type]="type"
+    [(ngModel)]="value"
+    [hasFocus] = "hasFocus"
+    [noAutoComplete] = "noAutoComplete"
+ ></pa-poc-input>`;
+
+    useCaseBECode = `<pa-poc-input
+    type="number"
+    [(ngModel)]="value"
+    [min]="min"
+    [max]="max"
+    [maxlength]="maxlength"
+    (valueChange)="onTextValueChange($event)"
+ ></pa-poc-input>`;
+
+    useCaseBFCode = `<form #form="ngForm"
+    (ngSubmit)="submitTemplateDriven()">
+        <pa-poc-input
+        type="email"
+        name="name"
+        [(ngModel)]="valueText"
+        email
+        [pattern]="pattern"
+        [errorMessages]="errorMessages"
+     ></pa-poc-input>
+ </form>`;
+
+    useCaseBGCode = `<pa-poc-input
+    type="email"
+    name="name"
+    [(ngModel)]="valueText"
+    email
+    [pattern]="pattern"
+    [errorMessages]="errorMessages"
+ ></pa-poc-input>`;
+
+    submitted?: any;
+
+    submitTemplateDriven() {
+        console.log('submitting', this.valueText);
+        this.submitted = this.valueText;
+    }
+
+    reactive = new FormGroup({
+        text: new FormControl(),
+    });
+
+    useCaseCACode = `
+reactive = new FormGroup({
+        text: new FormControl(),
+    });
+
+<form [formGroup]="reactive" (ngSubmit)="submitReactive()">
+    <pa-poc-input
+    formControlName="text"
+    [help]="textHelp"
+ ></pa-poc-input></form>`;
+
+    useCaseCBCode = `
+reactive = new FormGroup({
+        text: new FormControl(),
+    });
+
+<form [formGroup]="reactive" (ngSubmit)="submitReactive()">
+    <pa-poc-input
+    formControlName="text"
+    [debounceDuration]="debounceDuration"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+ ></pa-poc-input></form>`;
+
+    useCaseCCCode = `
+reactive = new FormGroup({
+        text: new FormControl(),
+    });
+
+<form [formGroup]="reactive" (ngSubmit)="submitReactive()">
+    <pa-poc-input
+    formControlName="text"
+    [pattern]="pattern"
+    [required]="required"
+    [errorMessages]="errorMessages"
+ ></pa-poc-input></form>`;
+
+    useCaseCDCode = `
+reactive = new FormGroup({
+        text: new FormControl(),
+    });
+
+<form [formGroup]="reactive" (ngSubmit)="submitReactive()">
+    <pa-poc-input
+    formControlName="text"
+    [hasFocus]="hasFocus"
+    [noAutoComplete]="noAutoComplete"
+ ></pa-poc-input></form>`;
+
+    useCaseCECode = `
+reactive = new FormGroup({
         text: new FormControl(),
         number: new FormControl(),
     });
 
-    // received values
-    _standaloneTextChanged?: any;
-    _standaloneDebouncedTextChanged?: any;
-    _standaloneTextKeyUp?: any;
-    _standaloneTextEnter?: any;
-    _standaloneTextBlur?: any;
-    _standaloneTextFocus?: any;
+<form [formGroup]="reactive" (ngSubmit)="submitReactive()">
+    <pa-poc-input
+    formControlName="text"
+    [maxlength]="maxlength"
+    ></pa-poc-input>
+    <pa-poc-input
+    type="number"
+    formControlName="number"
+    [min]="min"
+    [max]="max"
+    [maxlength]="maxlength"
+    ></pa-poc-input>
+ </form>`;
 
-    _standaloneNumberChanged?: any;
-    _standaloneNumberDebouncedChange?: any;
-    _standaloneNumberKeyUp?: any;
-    _standaloneNumberEnter?: any;
-    _standaloneNumberBlur?: any;
-    _standaloneNumberFocus?: any;
+    reactive2 = new FormGroup({
+        text: new FormControl(),
+        number: new FormControl(),
+    });
 
-    _ngModelChanged?: any;
-    _ngModelDebouncedChange?: any;
-    _ngModelKeyUp?: any;
-    _ngModelEnter?: any;
-    _ngModelBlur?: any;
-    _ngModelFocus?: any;
+    useCaseCHCode = `
+    form = new FormGroup({
+        text: new FormControl(null, [Validators.required, Validators.email]),
+    });
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <pa-poc-input
+    formControlName="text"
+    [errorMessage]="errorMessage"
+    [errorMessages]="errorMessages"
+ ></pa-poc-input></form>`;
 
-    _templateTextChanged?: any;
-    _templateTextDebouncedChange?: any;
-    _templateTextKeyUp?: any;
-    _templateTextEnter?: any;
-    _templateTextBlur?: any;
-    _templateTextFocus?: any;
+    validated = new FormGroup({
+        text: new FormControl('', [Validators.required, Validators.email]),
+    });
 
-    _templateNumberChanged?: any;
-    _templateNumberDebouncedChange?: any;
-    _templateNumberKeyUp?: any;
-    _templateNumberEnter?: any;
-    _templateNumberBlur?: any;
-    _templateNumberFocus?: any;
+    useCaseCICode = `
+    form = new FormGroup({
+        text: new FormControl(null, [Validators.required]),
+    });
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <pa-poc-input
+    type="email"
+    email
+    [pattern]="pattern"
+    formControlName="text"
+    [errorMessage]="errorMessage"
+    [errorMessages]="errorMessages"
+ ></pa-poc-input></form>`;
 
-    _reactiveTextChanged?: any;
-    _reactiveTextDebouncedChange?: any;
-    _reactiveTextKeyUp?: any;
-    _reactiveTextEnter?: any;
-    _reactiveTextBlur?: any;
-    _reactiveTextFocus?: any;
+    mixedValidation = new FormGroup({
+        text: new FormControl('', [Validators.required]),
+    });
 
-    _reactiveNumberChanged?: any;
-    _reactiveNumberDebouncedChange?: any;
-    _reactiveNumberKeyUp?: any;
-    _reactiveNumberEnter?: any;
-    _reactiveNumberBlur?: any;
-    _reactiveNumberFocus?: any;
+    useCaseCJCode = `
+    form = new FormGroup({
+        text: new FormControl(null, [Validators.required]),
+    });
+    changeValidators() {
+    const control = this.form.contols['text];
+    control.clearValidators();
+    control.setValidators([Validators.required, Validators.email]);
+    control.updateValueAndValidity();
+    }
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <pa-poc-input
+    type="email"
+    [pattern]="pattern"
+    formControlName="text"
+    [errorMessage]="errorMessage"
+    [errorMessages]="errorMessages"
+ ></pa-poc-input></form>`;
 
-    // Controls
-    toggleMaxLength() {
-        if (!!this.maxLength) {
-            this.maxLength = undefined;
+    dynamicValidation = new FormGroup({
+        text: new FormControl('', [Validators.required]),
+    });
+    has2Validation = false;
+
+    changeDynnamicValidation() {
+        const control = this.dynamicValidation.controls['text'];
+        control.clearValidators();
+        if (this.has2Validation) {
+            control.setValidators([Validators.required]);
         } else {
-            this.maxLength = 10;
+            control.setValidators([Validators.required, Validators.email]);
         }
+        control.updateValueAndValidity();
+        this.has2Validation = !this.has2Validation;
+        this.updateValidatorEvent = !this.updateValidatorEvent;
     }
-    toggleMin() {
-        if (!!this.min) {
-            this.min = undefined;
+
+    updateValidatorEvent?: boolean;
+
+    changeValueText() {
+        this.valueText = !!this.valueText ? undefined : 'defaultText';
+    }
+
+    changeIdText() {
+        this.idText = !!this.idText ? undefined : 'idText';
+    }
+
+    changeNameText() {
+        this.nameText = !!this.nameText ? undefined : 'nameText';
+    }
+
+    changeHelpText() {
+        this.helpText = !!this.helpText ? undefined : 'This is the help';
+    }
+
+    changeDebounceDuration() {
+        this.debounceDuration = !!this.debounceDuration ? undefined : 100;
+    }
+
+    changePlaceholder() {
+        this.placeholder = !!this.placeholder ? undefined : 'The placeholder';
+    }
+
+    changeErrorMessage() {
+        this.errorMessage = !!this.errorMessage ? undefined : 'Externally added error message';
+    }
+
+    changePattern() {
+        this.pattern = !!this.pattern ? undefined : new RegExp('.?bla.?');
+    }
+
+    changeErrorMessages() {
+        this.errorMessages = !!this.errorMessages
+            ? undefined
+            : {
+                  required: 'this field is required',
+                  pattern: 'this field is not matching regex',
+                  min: 'value is too low',
+                  max: 'value is too high',
+                  email: 'invalid email',
+                  maxlength: 'too many chars',
+              };
+    }
+
+    changeMin() {
+        this.min = !!this.min ? undefined : 1;
+    }
+
+    changeMax() {
+        this.max = !!this.max ? undefined : 100;
+    }
+
+    changeMaxlength() {
+        this.maxlength = !!this.maxlength ? undefined : 2;
+    }
+
+    changeValueNumber() {
+        this.valueNumber = !!this.valueNumber ? undefined : 7;
+    }
+
+    setReactiveText() {
+        const text = !!this.reactive.value.text ? null : 'defaultText';
+        this.reactive.setValue({ text: text });
+    }
+
+    patchReactiveText() {
+        const text = !!this.reactive.value.text ? null : 'defaultText';
+        this.reactive.controls['text'].patchValue(text);
+    }
+
+    patchReactiveTextNoEvent() {
+        const text = !!this.reactive.value.text ? null : 'defaultText';
+        this.reactive.controls['text'].patchValue(text, { emitEvent: false });
+    }
+
+    toggleReactiveDisable() {
+        if (this.reactive.disabled) {
+            this.reactive.enable();
         } else {
-            this.min = 10;
+            this.reactive.disable();
         }
-    }
-    toggleMax() {
-        if (!!this.max) {
-            this.max = undefined;
-        } else {
-            this.max = 20;
-        }
-    }
-    toggleRegexPattern() {
-        if (!!this.regex) {
-            this.regex = undefined;
-        } else {
-            this.regex = new RegExp('.?bla.?');
-        }
-    }
-    toggleErrorMessages() {
-        if (!!this.errorMessages) {
-            this.errorMessages = undefined;
-        } else {
-            this.errorMessages = {
-                required: 'this filed is required',
-                pattern: 'this field is not valid',
-                min: 'value is too low',
-                max: 'value is too high',
-            };
-        }
-    }
-    toggleCustomErrorMessage() {
-        if (!!this.customErrorMessage) {
-            this.customErrorMessage = undefined;
-        } else {
-            this.customErrorMessage = 'external error message';
-        }
-    }
-
-    // event check
-    onStandaloneTextChange(event: any) {
-        this._standaloneTextChanged = event;
-    }
-    onDebouncedStandaloneTextChange(event: any) {
-        this._standaloneDebouncedTextChanged = event;
-    }
-    onStandaloneTextKeyUp(event: any) {
-        this._standaloneTextKeyUp = event;
-    }
-    onStandaloneTextEnter(event: any) {
-        this._standaloneTextEnter = `${event.event} / ${event.value}`;
-    }
-    onStandaloneTextBlur(event: any) {
-        this._standaloneTextBlur = event;
-    }
-    onStandaloneTextFocus(event: any) {
-        this._standaloneTextFocus = event;
-    }
-
-    onStandaloneNumberChange(event: any) {
-        this._standaloneNumberChanged = event;
-    }
-    onStandaloneNumberDebouncedChange(event: any) {
-        this._standaloneNumberDebouncedChange = event;
-    }
-    onStandaloneNumberKeyUp(event: any) {
-        this._standaloneNumberKeyUp = event;
-    }
-    onStandaloneNumberEnter(event: any) {
-        this._standaloneNumberEnter = event;
-    }
-    onStandaloneNumberBlur(event: any) {
-        this._standaloneNumberBlur = event;
-    }
-    onStandaloneNumberFocus(event: any) {
-        this._standaloneNumberFocus = event;
-    }
-
-    onNgModelChange(event: any) {
-        this._ngModelChanged = event;
-    }
-    onNgModelDebouncedChange(event: any) {
-        this._ngModelDebouncedChange = event;
-    }
-    onNgModelKeyUp(event: any) {
-        this._ngModelKeyUp = event;
-    }
-    onNgModelEnter(event: any) {
-        this._ngModelEnter = event;
-    }
-    onNgModelBlur(event: any) {
-        this._ngModelBlur = event;
-    }
-    onNgModelFocus(event: any) {
-        this._ngModelFocus = event;
-    }
-
-    onTemplateTextChange(event: any) {
-        this._templateTextChanged = event;
-    }
-    onTemplateTextDebouncedChange(event: any) {
-        this._templateTextDebouncedChange = event;
-    }
-    onTemplateTextKeyUp(event: any) {
-        this._templateTextKeyUp = event;
-    }
-    onTemplateTextEnter(event: any) {
-        this._templateTextEnter = event;
-    }
-    onTemplateTextBlur(event: any) {
-        this._templateTextBlur = event;
-    }
-    onTemplateTextFocus(event: any) {
-        this._templateTextFocus = event;
-    }
-
-    onTemplateNumberChange(event: any) {
-        this._templateNumberChanged = event;
-    }
-    onTemplateNumberDebouncedChange(event: any) {
-        this._templateNumberDebouncedChange = event;
-    }
-    onTemplateNumberKeyUp(event: any) {
-        this._templateNumberKeyUp = event;
-    }
-    onTemplateNumberEnter(event: any) {
-        this._templateNumberEnter = event;
-    }
-    onTemplateNumberBlur(event: any) {
-        this._templateNumberBlur = event;
-    }
-    onTemplateNumberFocus(event: any) {
-        this._templateNumberFocus = event;
-    }
-
-    onReactiveTextChange(event: any) {
-        this._reactiveTextChanged = event;
-    }
-    onReactiveTextDebouncedChange(event: any) {
-        this._reactiveTextDebouncedChange = event;
-    }
-    onReactiveTextKeyUp(event: any) {
-        this._reactiveTextKeyUp = event;
-    }
-    onReactiveTextEnter(event: any) {
-        this._reactiveTextEnter = event;
-    }
-    onReactiveTextBlur(event: any) {
-        this._reactiveTextBlur = event;
-    }
-    onReactiveTextFocus(event: any) {
-        this._reactiveTextFocus = event;
-    }
-
-    onReactiveNumberChange(event: any) {
-        this._reactiveNumberChanged = event;
-    }
-    onReactiveNumberDebouncedChange(event: any) {
-        this._reactiveNumberDebouncedChange = event;
-    }
-    onReactiveNumberKeyUp(event: any) {
-        this._reactiveNumberKeyUp = event;
-    }
-    onReactiveNumberEnter(event: any) {
-        this._reactiveNumberEnter = event;
-    }
-    onReactiveNumberBlur(event: any) {
-        this._reactiveNumberBlur = event;
-    }
-    onReactiveNumberFocus(event: any) {
-        this._reactiveNumberFocus = event;
-    }
-
-    submitTemplateDriven() {
-        console.log('submitting', this.templateDriven);
     }
 
     submitReactive() {
-        console.log('reactive', this.form.value);
+        console.log('reactive', this.reactive.value);
+        this.submitted = this.reactive.value;
+    }
+
+    resetReactive() {
+        this.reactive.reset();
+    }
+
+    patchReactive2Text() {
+        const text = !!this.reactive2.value.text ? null : 'defaultText';
+        this.reactive2.controls['text'].patchValue(text);
+    }
+
+    patchReactive2Number() {
+        const number = !!this.reactive2.value.number ? null : 300;
+        this.reactive2.controls['number'].patchValue(number);
+    }
+
+    submitReactive2() {
+        console.log('reactive', this.reactive2.value);
+        this.submitted = this.reactive2.value;
+    }
+
+    submitValidated() {
+        console.log('reactive', this.validated.value);
+        this.submitted = this.validated.value;
+    }
+
+    setValidatedText() {
+        const text = !!this.validated.value.text ? null : 'defaultText';
+        this.validated.setValue({ text: text });
+    }
+
+    patchValidatedText() {
+        const text = !!this.validated.value.text ? null : 'defaultText';
+        this.validated.controls['text'].patchValue(text);
+    }
+
+    patchValidatedTextNoEvent() {
+        const text = !!this.validated.value.text ? null : 'defaultText';
+        this.validated.controls['text'].patchValue(text, { emitEvent: false });
+    }
+
+    resetValidated() {
+        this.validated.reset();
+    }
+
+    submitMixedValidation() {
+        console.log('reactive', this.mixedValidation.value);
+        this.submitted = this.mixedValidation.value;
+    }
+
+    patchMixedValidationText() {
+        const text = !!this.mixedValidation.value.text ? null : 'defaultText';
+        this.mixedValidation.controls['text'].patchValue(text);
+    }
+
+    resetMixedValidation() {
+        this.mixedValidation.reset();
+    }
+
+    submitDynamicValidation() {
+        console.log('reactive', this.dynamicValidation.value);
+        this.submitted = this.dynamicValidation.value;
+    }
+
+    patchDynamicValidationText() {
+        const text = !!this.dynamicValidation.value.text ? null : 'defaultText';
+        this.dynamicValidation.controls['text'].patchValue(text);
+    }
+
+    resetDynamicValidation() {
+        this.dynamicValidation.reset();
     }
 }
