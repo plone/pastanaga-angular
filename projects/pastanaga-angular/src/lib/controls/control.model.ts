@@ -12,7 +12,7 @@ export interface IControlModel {
     label: string;
     value: string;
     help?: string;
-    glyph?: string;
+    icon?: string;
     selected?: boolean;
     disabled?: boolean;
     filtered?: boolean;
@@ -36,7 +36,7 @@ export class ControlModel extends BaseControlModel {
     label: string;
     value: string;
     help?: string;
-    glyph?: string;
+    icon?: string;
     selected: boolean;
     disabled: boolean;
     filtered: boolean;
@@ -47,7 +47,7 @@ export class ControlModel extends BaseControlModel {
         this.label = data.label;
         this.value = data.value;
         this.help = data.help || '';
-        this.glyph = data.glyph || '';
+        this.icon = data.icon || '';
         this.selected = data.selected || false;
         this.disabled = data.disabled || false;
         this.filtered = data.filtered || false;

@@ -1,4 +1,9 @@
-# 2.4.5 (not released yet)
+# 2.5.0 (2020-09-01)
+
+### Breaking changes
+We found out `glyph` was not very intuitive to use, so we changed it for `icon` in all components and models: [mpellerin42]
+- **control model**: in `IControlModel`, and `ControlModel`
+- **option component**: impact **select component** as well
 
 ### Bugfixes
 - **Toasts**: export toast service and models [mpellerin42]

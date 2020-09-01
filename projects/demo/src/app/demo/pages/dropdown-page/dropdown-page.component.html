@@ -20,11 +20,11 @@
         <div>
             <pa-dropdown stayVisible>
                 <pa-option-header>Dropdown header</pa-option-header>
-                <pa-option glyph="settings" id="menu-item-1" (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
-                <pa-option disabled glyph="settings" id="menu-item-2" (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
-                <pa-option glyph="settings" id="menu-item-3" (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
+                <pa-option icon="settings" id="menu-item-1" (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
+                <pa-option disabled icon="settings" id="menu-item-2" (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
+                <pa-option icon="settings" id="menu-item-3" (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
                 <pa-separator></pa-separator>
-                <pa-option glyph="delete" destructive id="menu-item-destructive" (selectOption)="onSelect($event)">Dropdown item destructive</pa-option>
+                <pa-option icon="delete" destructive id="menu-item-destructive" (selectOption)="onSelect($event)">Dropdown item destructive</pa-option>
             </pa-dropdown>
         </div>
 
@@ -60,8 +60,8 @@
             <dd>Set destructive color <small>(default: false)</small></dd>
             <dt>disabled</dt>
             <dd>Set disabled state <small>(default: false)</small></dd>
-            <dt>glyph</dt>
-            <dd>Glyph name to be used for <code>pa-icon</code> <small>(optional)</small></dd>
+            <dt>icon</dt>
+            <dd>Icon name to be used for <code>pa-icon</code> <small>(optional)</small></dd>
             <dt>dontCloseOnSelect</dt>
             <dd>Don't close the menu when selecting this item <small>(default: false – by default selecting an option is closing the menu)</small></dd>
         </dl>

@@ -28,11 +28,11 @@ export class OptionComponent implements AfterContentInit, OnInit {
         return this._value;
     }
     @Input()
-    set glyph(value: string) {
-        this._glyph = value || '';
+    set icon(value: string) {
+        this._icon = value || '';
     }
-    get glyph(): string {
-        return this._glyph;
+    get icon(): string {
+        return this._icon;
     }
     @Input()
     set destructive(value: boolean) {
@@ -68,7 +68,7 @@ export class OptionComponent implements AfterContentInit, OnInit {
     text = '';
     _hidden = false;
 
-    _glyph = '';
+    _icon = '';
     _value = '';
     _disabled = false;
     _selected = false;
