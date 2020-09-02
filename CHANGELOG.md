@@ -1,3 +1,11 @@
+# 2.5.1 (2020-09-02)
+
+### Bugfixes
+- **Breakpoints**: [mpellerin42]
+    - removing small breakpoint
+    - fixing large breakpoint variables
+    - adding xLarge breakpoint
+
 # 2.5.0 (2020-09-01)
 
 ### Breaking changes

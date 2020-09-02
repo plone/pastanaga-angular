@@ -3,14 +3,15 @@ import { fromEvent, Observable } from 'rxjs';
 import { distinctUntilChanged, shareReplay, startWith, map } from 'rxjs/operators';
 
 export enum ViewportSize {
-    small = 320,
+    small = 0,
     medium = 600,
-    large = 1024,
+    large = 1025,
+    xLarge = 1470,
 }
 
 export namespace ViewportSize {
     export function values(): ViewportSize[] {
-        return [ViewportSize.small, ViewportSize.medium, ViewportSize.large];
+        return [ViewportSize.small, ViewportSize.medium, ViewportSize.large, ViewportSize.xLarge];
     }
 }
 
@@ -46,6 +47,6 @@ export class BreakpointObserver {
             const query = `(max-width: ${size - 1}px)`;
             return window.matchMedia(query).matches;
         });
-        return matchingSizes[0] || ViewportSize.large;
+        return matchingSizes[0] || ViewportSize.xLarge;
     }
 }

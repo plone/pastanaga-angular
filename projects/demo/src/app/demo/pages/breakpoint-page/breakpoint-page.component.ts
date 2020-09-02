@@ -6,9 +6,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class BreakpointPageComponent {
     viewportSize = `export enum ViewportSize {
-    small = 320,
+    small = 0,
     medium = 600,
-    large = 1024,
+    large = 1025,
+    xLarge = 1470,
 }`;
     currentMinSizeUsage = `ngOnInit(): void {
     this.pastanaga.breakpoint.currentMinSize
