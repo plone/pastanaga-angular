@@ -1,32 +1,44 @@
-import { Component, ViewChild } from '@angular/core';
-import { InputFieldComponent } from './input-field.component';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { InputFieldComponent } from '../input-field.component';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import {
     clearFakeAsyncZone,
     initTest,
     thenErrorIsDisplayed,
     thenErrorIsNotDisplayed,
-    thenFieldControlHasAutoComplete,
-    thenFieldControlHasDescribedBy,
-    thenFieldControlHasId,
-    thenFieldControlHasName,
-    thenFieldControlHasPlaceholder,
-    thenFieldControlHasType,
-    thenFieldControlHasValue,
-    thenFieldControlIsDisabled,
-    thenFieldControlIsReadonly,
-    thenFieldControlIsRequired,
     thenFormFieldHasError,
-    thenFormFieldHasHelp,
     thenFormFieldHasNoError,
-    trackFieldControlFocusEvent,
-    whenParentSets,
-    whenUserBlurControl,
-    whenUserFocusControl,
     whenUserInputs,
-    whenUserKeyUp,
-} from '../form-field-test.utils.spec';
-import { Keys } from '../../common';
+} from '../../form-field-test.utils.spec';
+import {
+    testAutocomplete,
+    testDebounce,
+    testDescribedBy,
+    testDisabled,
+    testErrorMessage,
+    testErrorMessages,
+    testFocus,
+    testHelp,
+    testHtmlTags,
+    testId,
+    testKeyup,
+    testKeyupTab,
+    testMax,
+    testMaxlength,
+    testMin,
+    testName,
+    testNoErrorForPristine,
+    testOnBlur,
+    testOnEnter,
+    testOnFocus,
+    testPattern,
+    testPlaceholder,
+    testReadonly,
+    testRequired,
+    testShowAllErrors,
+    testType,
+    testWriteValueDoNotEmit,
+} from './common-behaviors.spec';
 
 @Component({
     template: ` <pa-input-field
@@ -59,6 +71,7 @@ import { Keys } from '../../common';
         (enter)="onEnter($event)"
         (focusing)="onFocusing($event)"
         (blurring)="onBlurring($event)"
+        (ngModelChange)="onNgModelChange($event)"
         >Label
     </pa-input-field>`,
 })
@@ -99,6 +112,8 @@ export class TestComponent {
     onFocusing(event: FocusEvent) {}
 
     onBlurring(event: any) {}
+
+    onNgModelChange(event: any) {}
 }
 
 describe('InputFieldComponent ngModel', () => {
@@ -109,312 +124,169 @@ describe('InputFieldComponent ngModel', () => {
         fixture = initTest(TestComponent);
     }));
 
-    it('should assign id', fakeAsync(() => {
+    it('should assign id', fakeAsync(() => testId(fixture, nextId)));
+
+    it('should assign name', fakeAsync(() => testName(fixture, nextId)));
+
+    it('should assign help', fakeAsync(() => testHelp(fixture)));
+
+    it('should assign describedBy', fakeAsync(() => testDescribedBy(fixture, nextId)));
+
+    it('should assign readonly', fakeAsync(() => testReadonly(fixture)));
+
+    it('should focus field', fakeAsync(() => testFocus(fixture)));
+
+    it('should apply disabled state', fakeAsync(() => testDisabled(fixture)));
+
+    it('should apply showAllErrors', fakeAsync(() => testShowAllErrors(fixture)));
+
+    it('should display errorMessages', fakeAsync(() => testErrorMessages(fixture)));
+
+    it('should not show errors when pristine', fakeAsync(() => testNoErrorForPristine(fixture)));
+
+    it('should apply errorMessage', fakeAsync(() => testErrorMessage(fixture)));
+
+    it('should assign value without emitting', fakeAsync(() => testWriteValueDoNotEmit(fixture)));
+
+    it('should assign type', fakeAsync(() => testType(fixture)));
+
+    it('should assign placeholder', fakeAsync(() => testPlaceholder(fixture)));
+
+    it('should validate required', fakeAsync(() => testRequired(fixture)));
+
+    it('should validate pattern', fakeAsync(() => testPattern(fixture)));
+
+    it('should validate min', fakeAsync(() => testMin(fixture)));
+
+    it('should validate max', fakeAsync(() => testMax(fixture)));
+
+    it('should validate maxlength', fakeAsync(() => testMaxlength(fixture)));
+
+    it('should assign noAutoComplete', fakeAsync(() => testAutocomplete(fixture)));
+
+    it('should apply acceptHtmlTags', fakeAsync(() => testHtmlTags(fixture)));
+
+    it('should change debounceDuration', fakeAsync(() => testDebounce(fixture)));
+
+    it('should propagate keyUp', fakeAsync(() => testKeyup(fixture)));
+
+    it('should not propagate keyUp for tab', fakeAsync(() => testKeyupTab(fixture)));
+
+    it('should propagate enter keyUp', fakeAsync(() => testOnEnter(fixture)));
+
+    it('should propagate focus', fakeAsync(() => testOnFocus(fixture)));
+
+    it('should propagate blur', fakeAsync(() => testOnBlur(fixture)));
+
+    it('should provide ngModelChange', fakeAsync(() => {
         clearFakeAsyncZone(fixture);
-        whenParentSets('id', undefined, fixture);
-        thenFieldControlHasId(fixture, `input-${nextId}`);
-
-        whenParentSets('id', 'testId', fixture);
-        thenFieldControlHasId(fixture, 'testId-input');
-    }));
-
-    it('should assign name', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('name', undefined, fixture);
-        thenFieldControlHasName(fixture, `input-${nextId}`);
-
-        whenParentSets('name', 'testName', fixture);
-        thenFieldControlHasName(fixture, null);
-    }));
-
-    it('should assign help', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenParentSets('help', undefined, fixture);
-        thenFormFieldHasHelp(fixture, undefined);
-
-        whenParentSets('help', 'help test', fixture);
-        thenFormFieldHasHelp(fixture, 'help test');
-    }));
-
-    it('should assign describedBy', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenParentSets('describedBy', undefined, fixture);
-        thenFieldControlHasDescribedBy(fixture, '');
-
-        whenParentSets('help', 'testHelp', fixture);
-        thenFieldControlHasDescribedBy(fixture, `input-${nextId}-help`);
-
-        whenParentSets('help', undefined, fixture);
-        whenParentSets('describedBy', 'described-by-test', fixture);
-        thenFieldControlHasDescribedBy(fixture, 'described-by-test');
-    }));
-
-    it('should assign readonly', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenParentSets('readonly', true, fixture);
-        thenFieldControlIsReadonly(fixture, true);
-
-        whenParentSets('readonly', false, fixture);
-        thenFieldControlIsReadonly(fixture, false);
-    }));
-
-    it('should focus field', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        const spyFocused = trackFieldControlFocusEvent(fixture);
-        whenParentSets('hasFocus', true, fixture);
-        expect(spyFocused).toHaveBeenCalled();
-    }));
-
-    it('should apply disabled state', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenParentSets('disabled', true, fixture);
-        thenFieldControlIsDisabled(fixture, true);
-
-        whenParentSets('disabled', false, fixture);
-        thenFieldControlIsDisabled(fixture, false);
-    }));
-
-    it('should apply showAllErrors', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenParentSets('showAllErrors', true, fixture);
-        whenParentSets(
-            'errorMessages',
-            {
-                maxlength: 'wrong length',
-                pattern: 'wrong pattern',
-            },
-            fixture
-        );
-        whenParentSets('pattern', 'test', fixture);
-        whenParentSets('maxlength', 2, fixture);
-        whenUserInputs(fixture, 'no match for all validators');
-        thenErrorIsDisplayed(fixture, 'wrong length, wrong pattern');
-
-        whenParentSets('showAllErrors', false, fixture);
-        thenErrorIsDisplayed(fixture, 'wrong length');
-    }));
-
-    it('should display errorMessages', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenParentSets('showAllErrors', true, fixture);
-        whenParentSets('pattern', 'test', fixture);
-        whenParentSets('maxlength', 2, fixture);
-        whenUserInputs(fixture, 'no match for all validators');
-        thenFormFieldHasError(fixture);
-        thenErrorIsNotDisplayed(fixture);
-
-        whenParentSets(
-            'errorMessages',
-            {
-                maxlength: 'wrong length',
-                pattern: 'wrong pattern',
-            },
-            fixture
-        );
-        thenErrorIsDisplayed(fixture, 'wrong length, wrong pattern');
-    }));
-
-    it('should not show errors when pristine', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('pattern', 'test', fixture);
-        whenParentSets('value', 'wrong', fixture);
-        thenErrorIsNotDisplayed(fixture);
-    }));
-
-    it('should apply errorMessage', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenUserInputs(fixture, 'make component dirty');
-        whenParentSets('errorMessage', 'test error message', fixture);
-        thenFormFieldHasError(fixture);
-        thenErrorIsDisplayed(fixture, 'test error message');
-
-        whenParentSets('errorMessage', undefined, fixture);
-        thenFormFieldHasNoError(fixture);
-        thenErrorIsNotDisplayed(fixture);
-    }));
-
-    it('should assign value without emitting', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        jest.spyOn(fixture.componentInstance, 'onValueChange');
-        whenParentSets('value', 'test', fixture);
-        thenFieldControlHasValue(fixture, 'test');
-        expect(fixture.componentInstance.onValueChange).toHaveReturnedTimes(0);
-    }));
-
-    it('should assign type', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('type', 'number', fixture);
-        thenFieldControlHasType(fixture, 'number');
-        whenParentSets('type', 'email', fixture);
-        thenFieldControlHasType(fixture, 'email');
-    }));
-
-    it('should assign placeholder', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('placeholder', 'a placeholder', fixture);
-        thenFieldControlHasPlaceholder(fixture, 'a placeholder');
-    }));
-
-    it('should validate required', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenUserInputs(fixture, 'make component dirty');
-
-        whenParentSets('required', true, fixture);
-        thenFieldControlIsRequired(fixture, true);
-
-        whenUserInputs(fixture, '');
-        thenFormFieldHasError(fixture);
-
-        whenParentSets('required', false, fixture);
-        thenFieldControlIsRequired(fixture, false);
-        thenFormFieldHasNoError(fixture);
-    }));
-
-    it('should validate pattern', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenUserInputs(fixture, 'make component dirty');
-
-        whenParentSets('pattern', 'test', fixture);
-        thenFormFieldHasError(fixture);
-
-        whenUserInputs(fixture, 'test');
-        thenFormFieldHasNoError(fixture);
-    }));
-
-    it('should validate min', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('type', 'number', fixture);
-        whenUserInputs(fixture, 5);
-
-        whenParentSets('min', 7, fixture);
-        thenFormFieldHasError(fixture);
-
-        whenParentSets('min', undefined, fixture);
-        thenFormFieldHasNoError(fixture);
-    }));
-
-    it('should validate max', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('type', 'number', fixture);
-        whenUserInputs(fixture, 5);
-
-        whenParentSets('max', 3, fixture);
-        thenFormFieldHasError(fixture);
-
-        whenParentSets('max', undefined, fixture);
-        thenFormFieldHasNoError(fixture);
-    }));
-
-    it('should validate maxlength', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenUserInputs(fixture, 'a long text');
-
-        whenParentSets('maxlength', 3, fixture);
-        thenFormFieldHasError(fixture);
-
-        whenParentSets('maxlength', undefined, fixture);
-        thenFormFieldHasNoError(fixture);
-    }));
-
-    it('should assign noAutoComplete', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('noAutoComplete', true, fixture);
-        thenFieldControlHasAutoComplete(fixture, 'off');
-        whenParentSets('noAutoComplete', false, fixture);
-        thenFieldControlHasAutoComplete(fixture, null);
-    }));
-
-    it('should apply acceptHtmlTags', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('acceptHtmlTags', false, fixture);
-        whenUserInputs(fixture, '<div>');
-        thenFieldControlHasValue(fixture, 'div');
-
-        whenParentSets('value', '<span>', fixture);
-        thenFieldControlHasValue(fixture, 'span');
-
-        whenParentSets('acceptHtmlTags', true, fixture);
-        whenUserInputs(fixture, '<h1>');
-        thenFieldControlHasValue(fixture, '<h1>');
-
-        whenParentSets('value', '<h2>', fixture);
-        thenFieldControlHasValue(fixture, '<h2>');
-    }));
-
-    it('should change debounceDuration', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        whenParentSets('debounceDuration', 50, fixture);
-        const spy = jest.spyOn(fixture.componentInstance, 'onDebouncedValueChange');
-        whenUserInputs(fixture, 'test 50ms');
-        expect(spy).toHaveReturnedTimes(0);
-        tick(50);
-        expect(spy).toHaveReturnedTimes(1); // spy returns twice when eventEmitter triggers once
-        expect(spy).toHaveBeenCalledWith('test 50ms');
-
-        whenParentSets('debounceDuration', undefined, fixture);
-        whenUserInputs(fixture, 'test default 500ms');
+        const spy = jest.spyOn(fixture.componentInstance, 'onNgModelChange');
+        whenUserInputs(fixture, 'a user input');
         expect(spy).toHaveReturnedTimes(1);
-        tick(50);
-        expect(spy).toHaveReturnedTimes(1);
-        tick(450);
-        expect(spy).toHaveReturnedTimes(2);
-        expect(spy).toHaveBeenCalledWith('test default 500ms');
+        expect(spy).toHaveBeenCalledWith('a user input');
     }));
-
-    it('should propagate keyUp', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        const spy = jest.spyOn(fixture.componentInstance, 'onKeyup');
-        whenUserKeyUp(fixture, 'test', undefined);
-        expect(spy).toHaveReturnedTimes(1);
-        expect(spy).toHaveBeenCalledWith('test');
-    }));
-
-    it('should not propagate keyUp for tab', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        const spy = jest.spyOn(fixture.componentInstance, 'onKeyup');
-        whenUserKeyUp(fixture, 'test', Keys.tab);
-        expect(spy).toHaveReturnedTimes(0);
-    }));
-
-    it('should propagate enter keyUp', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        const spyEnter = jest.spyOn(fixture.componentInstance, 'onEnter');
-        whenUserKeyUp(fixture, 'test', Keys.enter);
-        expect(spyEnter).toHaveReturnedTimes(1);
-    }));
-
-    it('should not propagate change when component is not active', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        const spyOnChange = jest.spyOn(fixture.componentInstance, 'onValueChange');
-        whenParentSets('readonly', true, fixture);
-        whenUserInputs(fixture, 'test');
-        expect(spyOnChange).toHaveReturnedTimes(0);
-        whenParentSets('readonly', false, fixture);
-        whenParentSets('disabled', true, fixture);
-        whenUserInputs(fixture, 'test');
-        expect(spyOnChange).toHaveReturnedTimes(0);
-    }));
-
-    it('should propagate focus', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        const spy = jest.spyOn(fixture.componentInstance, 'onFocusing');
-        whenUserFocusControl(fixture);
-        expect(spy).toHaveReturnedTimes(1);
-    }));
-
-    it('should propagate blur', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-        const spy = jest.spyOn(fixture.componentInstance, 'onBlurring');
-        whenUserBlurControl(fixture);
-        expect(spy).toHaveReturnedTimes(1);
-    }));
-    // TODO add test mixed internal and angular validators
 });
-// TODO add test ngModel in a form
+
+@Component({
+    template: ` <pa-input-field
+        #paInput
+        [(ngModel)]="value"
+        type="email"
+        name="name"
+        email
+        [pattern]="pattern"
+        [errorMessages]="errorMessages"
+        [debounceDuration]="debounceDuration"
+        >Label
+    </pa-input-field>`,
+})
+export class TestMixedValidationComponent {
+    @ViewChild('paInput') paField?: InputFieldComponent;
+
+    value = '';
+    pattern = new RegExp('.?test.?');
+    errorMessages = {
+        pattern: 'pattern error',
+        email: 'email error',
+    };
+    // avoid debouncing for most tests
+    debounceDuration? = 0;
+}
+describe('InputFieldComponent ngModel mixed validation', () => {
+    let fixture: ComponentFixture<TestMixedValidationComponent>;
+    beforeEach(async(() => {
+        fixture = initTest(TestMixedValidationComponent);
+    }));
+    it('should display errorMessages for all validators', fakeAsync(() => {
+        clearFakeAsyncZone(fixture);
+
+        whenUserInputs(fixture, 'no match for all validators');
+        thenFormFieldHasError(fixture);
+        thenErrorIsDisplayed(fixture, 'email error, pattern error');
+
+        whenUserInputs(fixture, 'email@invalid.com');
+        thenFormFieldHasError(fixture);
+        thenErrorIsDisplayed(fixture, 'pattern error');
+
+        whenUserInputs(fixture, 'email@test.com');
+        thenFormFieldHasNoError(fixture);
+        thenErrorIsNotDisplayed(fixture);
+    }));
+});
+
+export function thenFormHasStatus(fixture: ComponentFixture<any>, status: string) {
+    expect(fixture.componentInstance.form.form.status).toEqual(status);
+}
+
+export function thenFormHasValue(fixture: ComponentFixture<any>, value: any) {
+    expect(fixture.componentInstance.form.form.value).toEqual(value);
+}
+
+@Component({
+    template: ` <form #form="ngForm">
+        <pa-input-field
+            #paInput
+            [(ngModel)]="value"
+            type="email"
+            name="name"
+            email
+            [pattern]="pattern"
+            [errorMessages]="errorMessages"
+            [debounceDuration]="debounceDuration"
+            >Label
+        </pa-input-field>
+    </form>`,
+})
+export class TestFormComponent {
+    @ViewChild('paInput') paField?: InputFieldComponent;
+    @ViewChild('form') form?: ElementRef;
+
+    value = '';
+    pattern = new RegExp('.?test.?');
+    errorMessages = {
+        pattern: 'pattern error',
+        email: 'email error',
+    };
+    // avoid debouncing for most tests
+    debounceDuration? = 0;
+}
+describe('InputFieldComponent ngModel in a form', () => {
+    let fixture: ComponentFixture<TestFormComponent>;
+    beforeEach(async(() => {
+        fixture = initTest(TestFormComponent);
+    }));
+    it('should interact with a form', fakeAsync(() => {
+        clearFakeAsyncZone(fixture);
+
+        whenUserInputs(fixture, 'no match for all validators');
+        thenFormFieldHasError(fixture);
+        thenErrorIsDisplayed(fixture, 'email error, pattern error');
+        thenFormHasStatus(fixture, 'INVALID');
+
+        whenUserInputs(fixture, 'email@test.com');
+        thenFormFieldHasNoError(fixture);
+        thenErrorIsNotDisplayed(fixture);
+        thenFormHasStatus(fixture, 'VALID');
+        thenFormHasValue(fixture, { name: 'email@test.com' });
+    }));
+});

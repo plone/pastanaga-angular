@@ -237,7 +237,6 @@ export abstract class FormFieldBase implements OnChanges, OnInit, OnDestroy, Con
         this._formControlChanged.complete();
     }
 
-    // CVA
     /**
      * ONLY FOR ngModel and formControls
      * write value is updating local formControl
