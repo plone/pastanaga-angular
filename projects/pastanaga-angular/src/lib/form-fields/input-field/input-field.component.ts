@@ -20,7 +20,7 @@ import { NgControl, ValidatorFn, Validators } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
-import { Keys, markForCheck } from '../../common';
+import { detectChanges, Keys, markForCheck } from '../../common';
 import { merge, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { FormFieldBase } from '../form-field-base';
@@ -205,7 +205,7 @@ export class InputFieldComponent extends FormFieldBase implements OnChanges, OnI
         if (this._hasDebounce) {
             this.initDebounce();
         }
-        markForCheck(this.cdr);
+        detectChanges(this.cdr);
     };
 
     listInternalValidators = (): ValidatorFn[] => {
