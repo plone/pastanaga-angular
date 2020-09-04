@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PocInputComponent } from './poc-input.component';
+import { InputFieldComponent } from './input-field/input-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [CommonModule, FormsModule, ReactiveFormsModule],
-    declarations: [PocInputComponent],
-    exports: [PocInputComponent],
+    declarations: [InputFieldComponent],
+    exports: [InputFieldComponent],
 })
-export class PaPocInputModule {}
+export class PaInputFieldModule {}

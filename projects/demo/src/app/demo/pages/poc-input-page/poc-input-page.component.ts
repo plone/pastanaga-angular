@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'pa-demo-poc-input',
@@ -10,14 +11,14 @@ export class PocInputPageComponent {
     detailedDescription = false;
     seeCode = false;
     currentUseCase = 'A';
-    currentFeatureGroup = 'A';
+    currentFeatureGroup = 'C';
 
-    useCaseAACode = `<pa-poc-input
+    useCaseAACode = `<pa-input-field
     [value]="value"
     [help]="textHelp"
     [disabled]="disabled"
     (valueChange)="onTextValueChange($event)"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
     idText?: string;
     nameText?: string;
@@ -32,122 +33,117 @@ export class PocInputPageComponent {
     receivedBlurText?: any;
     receivedFocusText?: any;
 
-    useCaseABCode = `<pa-poc-input
+    useCaseABCode = `<pa-input-field
     [value]="value"
     [debounceDuration]="debounceDuration"
     [placeholder]="placeholder"
     [readonly]="readonly"
     (valueChange)="onTextValueChange($event)"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
     debounceDuration?: any;
     placeholder?: any;
     readonly = false;
 
-    useCaseACCode = `<pa-poc-input
+    useCaseACCode = `<pa-input-field
     [value]="value"
     [errorMessage] = "errorMessage"
     [pattern] = "pattern"
     [required] = "required"
     [errorMessages]="errorMessages"
     (valueChange)="onTextValueChange($event)"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
     pattern?: any;
     required = false;
     errorMessage?: any;
     errorMessages?: any;
 
-    useCaseADCode = `<pa-poc-input
+    useCaseADCode = `<pa-input-field
     [type]="type"
     [value]="value"
     [hasFocus] = "hasFocus"
     [noAutoComplete] = "noAutoComplete"
     (valueChange)="onTextValueChange($event)"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
-    type? = 'email';
+    type = 'email';
     hasFocus = false;
     noAutoComplete = false;
 
-    useCaseAECode = `<pa-poc-input
+    useCaseAECode = `<pa-input-field
     type="number"
     [value]="value"
     [min]="min"
     [max]="max"
     [maxlength]="maxlength"
     (valueChange)="onTextValueChange($event)"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
     min?: number;
     max?: number;
     maxlength?: number;
 
-    useCaseBACode = `<pa-poc-input
+    useCaseBACode = `<pa-input-field
     [(ngModel)]="value"
     [help]="textHelp"
     [disabled]="disabled"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
     receivedNgModelChange?: any;
-    useCaseBBCode = `<pa-poc-input
+    useCaseBBCode = `<pa-input-field
     [(ngModel)]="value"
     [debounceDuration]="debounceDuration"
     [placeholder]="placeholder"
     [readonly]="readonly"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
-    useCaseBCCode = `<pa-poc-input
+    useCaseBCCode = `<pa-input-field
     [(ngModel)]="value"
     [errorMessage] = "errorMessage"
     [pattern] = "pattern"
     [required] = "required"
     [errorMessages]="errorMessages"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
-    useCaseBDCode = `<pa-poc-input
+    useCaseBDCode = `<pa-input-field
     [type]="type"
     [(ngModel)]="value"
     [hasFocus] = "hasFocus"
     [noAutoComplete] = "noAutoComplete"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
-    useCaseBECode = `<pa-poc-input
+    useCaseBECode = `<pa-input-field
     type="number"
     [(ngModel)]="value"
     [min]="min"
     [max]="max"
     [maxlength]="maxlength"
     (valueChange)="onTextValueChange($event)"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
     useCaseBFCode = `<form #form="ngForm"
     (ngSubmit)="submitTemplateDriven()">
-        <pa-poc-input
+        <pa-input-field
         type="email"
         name="name"
         [(ngModel)]="valueText"
         email
         [pattern]="pattern"
         [errorMessages]="errorMessages"
-     ></pa-poc-input>
+     ></pa-input-field>
  </form>`;
 
-    useCaseBGCode = `<pa-poc-input
+    useCaseBGCode = `<pa-input-field
     type="email"
     name="name"
     [(ngModel)]="valueText"
     email
     [pattern]="pattern"
     [errorMessages]="errorMessages"
- ></pa-poc-input>`;
+ ></pa-input-field>`;
 
     submitted?: any;
-
-    submitTemplateDriven() {
-        console.log('submitting', this.valueText);
-        this.submitted = this.valueText;
-    }
 
     reactive = new FormGroup({
         text: new FormControl(),
@@ -159,10 +155,10 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-poc-input
+    <pa-input-field
     formControlName="text"
     [help]="textHelp"
- ></pa-poc-input></form>`;
+ ></pa-input-field></form>`;
 
     useCaseCBCode = `
 reactive = new FormGroup({
@@ -170,12 +166,12 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-poc-input
+    <pa-input-field
     formControlName="text"
     [debounceDuration]="debounceDuration"
     [placeholder]="placeholder"
     [readonly]="readonly"
- ></pa-poc-input></form>`;
+ ></pa-input-field></form>`;
 
     useCaseCCCode = `
 reactive = new FormGroup({
@@ -183,12 +179,12 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-poc-input
+    <pa-input-field
     formControlName="text"
     [pattern]="pattern"
     [required]="required"
     [errorMessages]="errorMessages"
- ></pa-poc-input></form>`;
+ ></pa-input-field></form>`;
 
     useCaseCDCode = `
 reactive = new FormGroup({
@@ -196,11 +192,11 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-poc-input
+    <pa-input-field
     formControlName="text"
     [hasFocus]="hasFocus"
     [noAutoComplete]="noAutoComplete"
- ></pa-poc-input></form>`;
+ ></pa-input-field></form>`;
 
     useCaseCECode = `
 reactive = new FormGroup({
@@ -209,17 +205,17 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-poc-input
+    <pa-input-field
     formControlName="text"
     [maxlength]="maxlength"
-    ></pa-poc-input>
-    <pa-poc-input
+    ></pa-input-field>
+    <pa-input-field
     type="number"
     formControlName="number"
     [min]="min"
     [max]="max"
     [maxlength]="maxlength"
-    ></pa-poc-input>
+    ></pa-input-field>
  </form>`;
 
     reactive2 = new FormGroup({
@@ -232,11 +228,11 @@ reactive = new FormGroup({
         text: new FormControl(null, [Validators.required, Validators.email]),
     });
     <form [formGroup]="form" (ngSubmit)="submit()">
-    <pa-poc-input
+    <pa-input-field
     formControlName="text"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-poc-input></form>`;
+ ></pa-input-field></form>`;
 
     validated = new FormGroup({
         text: new FormControl('', [Validators.required, Validators.email]),
@@ -247,14 +243,14 @@ reactive = new FormGroup({
         text: new FormControl(null, [Validators.required]),
     });
     <form [formGroup]="form" (ngSubmit)="submit()">
-    <pa-poc-input
+    <pa-input-field
     type="email"
     email
     [pattern]="pattern"
     formControlName="text"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-poc-input></form>`;
+ ></pa-input-field></form>`;
 
     mixedValidation = new FormGroup({
         text: new FormControl('', [Validators.required]),
@@ -271,33 +267,84 @@ reactive = new FormGroup({
     control.updateValueAndValidity();
     }
     <form [formGroup]="form" (ngSubmit)="submit()">
-    <pa-poc-input
+    <pa-input-field
     type="email"
     [pattern]="pattern"
     formControlName="text"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-poc-input></form>`;
+ ></pa-input-field></form>`;
 
     dynamicValidation = new FormGroup({
         text: new FormControl('', [Validators.required]),
     });
     has2Validation = false;
 
-    changeDynnamicValidation() {
-        const control = this.dynamicValidation.controls['text'];
-        control.clearValidators();
-        if (this.has2Validation) {
-            control.setValidators([Validators.required]);
-        } else {
-            control.setValidators([Validators.required, Validators.email]);
-        }
-        control.updateValueAndValidity();
-        this.has2Validation = !this.has2Validation;
-        this.updateValidatorEvent = !this.updateValidatorEvent;
-    }
+    updateValidatorEvent = new Subject();
 
-    updateValidatorEvent?: boolean;
+    useCaseCKCode = `<pa-input-field
+    type="email"
+    [pattern]="pattern"
+    [formControl]="textFormControl"
+    [errorMessage]="errorMessage"
+    [errorMessages]="errorMessages"
+ ></pa-input-field>`;
+
+    textFormControl = new FormControl(null, [Validators.required, Validators.email]);
+
+    useCaseCLCode = `
+    form = new FormGroup({
+        text: new FormControl(null, [Validators.required]),
+    });
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <pa-input-field
+    type="email"
+    email
+    [pattern]="pattern"
+    formControlName="text"
+    [errorMessage]="errorMessage"
+    [errorMessages]="errorMessages"
+ ></pa-input-field></form>`;
+
+    formGroupValidation = new FormGroup(
+        {
+            text: new FormControl('', [Validators.required, Validators.email]),
+        },
+        [this.customValidator]
+    );
+
+    updateOn: 'change' | 'blur' | 'submit' = 'change';
+
+    useCaseCMCode = `updateFormControl = new FormControl(null, {
+        updateOn: this.updateOn,
+        validators: [Validators.required, Validators.email],
+    });
+    <pa-input-field
+    type="email"
+    [pattern]="pattern"
+    [formControl]="textFormControl"
+    [errorMessage]="errorMessage"
+    [errorMessages]="errorMessages"
+ ></pa-input-field>`;
+
+    updateFormControl = new FormControl(null, {
+        updateOn: 'change',
+        validators: [Validators.required, Validators.email],
+    });
+    updateBlurFormControl = new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.email],
+    });
+    updateSubmitFormControl = new FormControl(null, {
+        updateOn: 'submit',
+        validators: [Validators.required, Validators.email],
+    });
+
+    updateStrategy = 'change';
+
+    changeUpdateStrategy(strategy: 'change' | 'blur' | 'submit') {
+        this.updateStrategy = strategy;
+    }
 
     changeValueText() {
         this.valueText = !!this.valueText ? undefined : 'defaultText';
@@ -360,6 +407,11 @@ reactive = new FormGroup({
         this.valueNumber = !!this.valueNumber ? undefined : 7;
     }
 
+    submitTemplateDriven() {
+        console.log('submitting', this.valueText);
+        this.submitted = this.valueText;
+    }
+
     setReactiveText() {
         const text = !!this.reactive.value.text ? null : 'defaultText';
         this.reactive.setValue({ text: text });
@@ -398,8 +450,8 @@ reactive = new FormGroup({
     }
 
     patchReactive2Number() {
-        const number = !!this.reactive2.value.number ? null : 300;
-        this.reactive2.controls['number'].patchValue(number);
+        const numb = !!this.reactive2.value.number ? null : 300;
+        this.reactive2.controls['number'].patchValue(numb);
     }
 
     submitReactive2() {
@@ -457,5 +509,70 @@ reactive = new FormGroup({
 
     resetDynamicValidation() {
         this.dynamicValidation.reset();
+    }
+
+    changeDynnamicValidation() {
+        const control = this.dynamicValidation.controls['text'];
+        control.clearValidators();
+        if (this.has2Validation) {
+            control.setValidators([Validators.required]);
+        } else {
+            control.setValidators([Validators.required, Validators.email]);
+        }
+        control.updateValueAndValidity();
+        this.has2Validation = !this.has2Validation;
+        this.updateValidatorEvent.next();
+    }
+
+    patchTextFormControl() {
+        const text = !!this.textFormControl.value ? null : 'defaultText';
+        this.textFormControl.patchValue(text);
+    }
+
+    resetTextFormControl() {
+        this.textFormControl.reset();
+    }
+
+    customValidator(formGroup: any) {
+        return !!formGroup && !!formGroup.value && formGroup.value.text && formGroup.value.text.indexOf('papa') > -1
+            ? null
+            : { invalidGroup: true };
+    }
+
+    submitFormGroupValidation() {
+        this.submitted = this.formGroupValidation.value;
+    }
+
+    patchFormGroupValidationText() {
+        const text = !!this.formGroupValidation.value.text ? null : 'defaultText';
+        this.formGroupValidation.controls['text'].patchValue(text);
+    }
+
+    resetFormGroupValidation() {
+        this.formGroupValidation.reset();
+    }
+
+    patchUpdateFormControl() {
+        const text = !!this.updateFormControl.value ? null : 'defaultText';
+        this.updateFormControl.patchValue(text);
+        this.updateBlurFormControl.patchValue(text);
+        this.updateSubmitFormControl.patchValue(text);
+    }
+    setUpdateFormControl() {
+        const text = !!this.updateFormControl.value ? null : 'defaultText';
+        this.updateFormControl.setValue(text);
+        this.updateBlurFormControl.setValue(text);
+        this.updateSubmitFormControl.setValue(text);
+    }
+    patchNoEventUpdateFormControl() {
+        const text = !!this.updateFormControl.value ? null : 'defaultText';
+        this.updateFormControl.patchValue(text, { emitEvent: false });
+        this.updateBlurFormControl.patchValue(text, { emitEvent: false });
+        this.updateSubmitFormControl.patchValue(text, { emitEvent: false });
+    }
+    resetUpdateFormControl() {
+        this.updateFormControl.reset();
+        this.updateBlurFormControl.reset();
+        this.updateSubmitFormControl.reset();
     }
 }
