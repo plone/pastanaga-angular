@@ -15,14 +15,26 @@ export namespace ViewportSize {
     }
 }
 
+export type ViewportMode = 'desktop' | 'tablet' | 'mobile';
+
 @Injectable({ providedIn: 'root' })
 export class BreakpointObserver {
+    currentMode: Observable<ViewportMode>;
     currentMinSize: Observable<ViewportSize>;
     currentMaxSize: Observable<ViewportSize>;
 
     constructor() {
         this.currentMinSize = this.watchViewportSize(this.findMinSize);
         this.currentMaxSize = this.watchViewportSize(this.findMaxSize);
+        this.currentMode = this.currentMinSize.pipe(
+            map((viewportSize) =>
+                viewportSize === ViewportSize.small
+                    ? 'mobile'
+                    : viewportSize === ViewportSize.medium
+                    ? 'tablet'
+                    : 'desktop'
+            )
+        );
     }
 
     private watchViewportSize(findSize: () => ViewportSize): Observable<ViewportSize> {

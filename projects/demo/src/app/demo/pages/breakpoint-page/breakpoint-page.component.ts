@@ -11,18 +11,16 @@ export class BreakpointPageComponent {
     large = 1025,
     xLarge = 1470,
 }`;
-    currentMinSizeUsage = `ngOnInit(): void {
-    this.pastanaga.breakpoint.currentMinSize
-        .pipe(takeUntil(this.terminator))
-        .subscribe((viewportSize: ViewportSize) => {
-            this._isDesktop = viewportSize === ViewportSize.large;
-            this._isTablet = viewportSize === ViewportSize.medium;
-            if (!this._isDesktop) {
-                this.store.dispatch(NavigationActions.hideNavigation());
-            } else {
-                this.store.dispatch(NavigationActions.showNavigation());
-            }
-            markForCheck(this.cdr);
-        });
+
+    currentMode = `ngOnInit(): void {
+    this.pastanaga.breakpoint.currentMode.pipe(takeUntil(this.terminator)).subscribe((mode) => {
+        this._mode = mode;
+        if (this._mode !== 'desktop') {
+            this.store.dispatch(NavigationActions.hideNavigation());
+        } else {
+            this.store.dispatch(NavigationActions.showNavigation());
+        }
+        markForCheck(this.cdr);
+    });
 }`;
 }

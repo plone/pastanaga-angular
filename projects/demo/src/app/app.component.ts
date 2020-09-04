@@ -22,7 +22,7 @@ import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.com
 import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
 import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
-import { markForCheck, PastanagaService, ViewportSize } from '../../../pastanaga-angular/src';
+import { markForCheck, PastanagaService } from '../../../pastanaga-angular/src';
 
 @Component({
     selector: 'app-root',
@@ -71,8 +71,8 @@ export class AppComponent {
     _isMenuVisible = false;
 
     constructor(private traverser: Traverser, private pastanaga: PastanagaService, private cdr: ChangeDetectorRef) {
-        this.pastanaga.breakpoint.currentMinSize.subscribe((viewportSize) => {
-            this._isMobile = viewportSize === ViewportSize.small;
+        this.pastanaga.breakpoint.currentMode.subscribe((mode) => {
+            this._isMobile = mode === 'mobile';
             markForCheck(this.cdr);
         });
         traverser.addView('view', '', WelcomePageComponent);
