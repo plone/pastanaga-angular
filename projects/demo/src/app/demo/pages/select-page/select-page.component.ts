@@ -31,7 +31,7 @@ export class SelectPageComponent {
     disabledState = false;
     readOnlyState = false;
 
-    exampleInTemplate = `<pa-select label="Select with options passed through template"
+    exampleInTemplate = `<pa-deprecated-select label="Select with options passed through template"
            placeholder="Placeholder"
            [value]="selectedValue1"
            [disabled]="disabledState"
@@ -45,16 +45,16 @@ export class SelectPageComponent {
     <pa-option (selectOption)="selectedValue1 = 'Group 1'">Group 1</pa-option>
     <pa-option (selectOption)="selectedValue1 = 'Group 2'">Group 2</pa-option>
     <pa-option (selectOption)="selectedValue1 = 'Group 3'">Group 3</pa-option>
-</pa-select>`;
+</pa-deprecated-select>`;
 
-    exampleWithInputHtml = `<pa-select label="Select with options passed as parameter"
+    exampleWithInputHtml = `<pa-deprecated-select label="Select with options passed as parameter"
            placeholder="Placeholder"
            [options]="options"
            [value]="selectedValue2"
            [disabled]="disabledState"
            [readonly]="readOnlyState"
            (selectOption)="onSelect($event)"
-></pa-select>`;
+></pa-deprecated-select>`;
     exampleWithInputTs = `options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
     new OptionHeaderModel({id: 'audio', label: 'Audio'}),
     new OptionModel({id: 'file1', label: 'Audio 1', value: 'audio1', icon: 'audio'}),

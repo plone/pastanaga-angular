@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 let nextId = 0;
 
 @Directive()
-export class BaseControl implements OnInit, OnDestroy {
+export class DeprecatedBaseControl implements OnInit, OnDestroy {
     @Input() id?: string;
     @Input() name?: string;
     @Input()

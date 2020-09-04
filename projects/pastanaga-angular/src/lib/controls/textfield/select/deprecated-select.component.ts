@@ -13,7 +13,7 @@ import {
     QueryList,
     ViewChild,
 } from '@angular/core';
-import { BaseTextField } from '../base-text-field';
+import { DeprecatedBaseTextField } from '../deprecated-base-text-field.directive';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { takeUntil } from 'rxjs/operators';
@@ -21,12 +21,12 @@ import { markForCheck } from '../../../common';
 import { DropdownComponent } from '../../../dropdown/dropdown.component';
 
 @Component({
-    selector: 'pa-select',
-    templateUrl: './select.component.html',
-    styleUrls: ['./select.component.scss'],
+    selector: 'pa-deprecated-select',
+    templateUrl: './deprecated-select.component.html',
+    styleUrls: ['./deprecated-select.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent extends BaseTextField implements AfterContentInit, OnInit, OnDestroy {
+export class DeprecatedSelectComponent extends DeprecatedBaseTextField implements AfterContentInit, OnInit, OnDestroy {
     @Input()
     get label(): string {
         return this._label || '';

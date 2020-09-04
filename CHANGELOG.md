@@ -1,3 +1,9 @@
+# 2.5.2 (2020-09-04)
+
+### Breaking changes
+InputComponent, TextareaComponent, SelectComponent and CheckboxComponent are renamed as deprecated components. 
+
+
 # 2.5.1 (2020-09-02)
 
 ### Bugfixes

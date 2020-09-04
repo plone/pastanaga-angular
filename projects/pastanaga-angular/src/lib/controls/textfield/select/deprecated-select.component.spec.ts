@@ -1,40 +1,40 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
 
-import { SelectComponent } from './select.component';
+import { DeprecatedSelectComponent } from './deprecated-select.component';
 import { PaIconModule } from '../../../icon/icon.module';
 import { PaDropdownModule } from '../../../dropdown/dropdown.module';
 import { PaPopupModule } from '../../../popup/popup.module';
-import { InputComponent } from '../input/input.component';
+import { DeprectedInputComponent } from '../input/deprected-input.component';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../../testing';
 import { ControlModel, ControlType } from '../../control.model';
 import { By } from '@angular/platform-browser';
 
 @Component({
-    template: `<pa-select [(value)]="value" #select>
+    template: `<pa-deprecated-select [(value)]="value" #select>
         <pa-option value="abc">ABC</pa-option>
         <pa-option value="def">DEF</pa-option>
-    </pa-select>`,
+    </pa-deprecated-select>`,
 })
 export class TestComponent {
     value = '';
-    @ViewChild('select') select?: SelectComponent;
+    @ViewChild('select') select?: DeprecatedSelectComponent;
 }
 
 describe('SelectComponent', () => {
-    let component: SelectComponent;
-    let fixture: ComponentFixture<SelectComponent>;
+    let component: DeprecatedSelectComponent;
+    let fixture: ComponentFixture<DeprecatedSelectComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [...TESTING_IMPORTS, PaIconModule, PaDropdownModule, PaPopupModule],
             providers: [...TESTING_PROVIDERS],
-            declarations: [SelectComponent, InputComponent, TestComponent],
+            declarations: [DeprecatedSelectComponent, DeprectedInputComponent, TestComponent],
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(SelectComponent);
+        fixture = TestBed.createComponent(DeprecatedSelectComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

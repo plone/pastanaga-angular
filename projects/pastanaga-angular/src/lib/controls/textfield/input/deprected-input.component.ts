@@ -25,27 +25,27 @@ import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { takeUntil } from 'rxjs/operators';
 import { detectChanges } from '../../../common';
-import { BaseTextField } from '../base-text-field';
+import { DeprecatedBaseTextField } from '../deprecated-base-text-field.directive';
 
 @Component({
-    selector: 'pa-input',
-    templateUrl: './input.component.html',
-    styleUrls: ['./input.component.scss'],
+    selector: 'pa-deprecated-input',
+    templateUrl: './deprected-input.component.html',
+    styleUrls: ['./deprected-input.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => InputComponent),
+            useExisting: forwardRef(() => DeprectedInputComponent),
             multi: true,
         },
         {
             provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => InputComponent),
+            useExisting: forwardRef(() => DeprectedInputComponent),
             multi: true,
         },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent extends BaseTextField
+export class DeprectedInputComponent extends DeprecatedBaseTextField
     implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() type: 'text' | 'number' | 'password' = 'text';
     @Input() min?: number;

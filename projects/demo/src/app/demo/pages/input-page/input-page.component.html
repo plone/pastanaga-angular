@@ -5,7 +5,7 @@
     <pa-demo-examples>
         <h3 class="typography">Basic form</h3>
         <form #demoForm="ngForm">
-            <pa-input required
+            <pa-deprecated-input required
                       ngModel
                       placeholder="Placeholder"
                       id="demo"
@@ -16,9 +16,9 @@
                       [errorMessage]="customError"
             >
                 Label
-            </pa-input>
+            </pa-deprecated-input>
 
-            <pa-input required
+            <pa-deprecated-input required
                       ngModel
                       placeholder="Placeholder"
                       help="Field help text message"
@@ -30,11 +30,11 @@
                       [errorMessage]="customError"
             >
                 Field with help
-            </pa-input>
+            </pa-deprecated-input>
         </form>
         <h3 class="typography">Login form</h3>
         <form #loginForm="ngForm">
-            <pa-input required
+            <pa-deprecated-input required
                       ngModel
                       placeholder="Email"
                       id="email"
@@ -45,8 +45,8 @@
                       [errorMessage]="customError"
             >
                 Email
-            </pa-input>
-            <pa-input required
+            </pa-deprecated-input>
+            <pa-deprecated-input required
                       ngModel
                       placeholder="Password"
                       id="password"
@@ -58,16 +58,16 @@
                       [errorMessage]="customError"
             >
                 Password
-            </pa-input>
+            </pa-deprecated-input>
             <pa-button kind="primary" [disabled]="loginForm.invalid">Login</pa-button>
         </form>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+            <pa-deprecated-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
+            <pa-deprecated-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
             <pa-button size="small" aspect="solid"

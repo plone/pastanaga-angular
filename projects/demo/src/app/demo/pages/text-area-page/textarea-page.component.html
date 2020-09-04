@@ -3,7 +3,7 @@
     <pa-demo-description>Basic textarea field</pa-demo-description>
 
     <pa-demo-examples>
-            <pa-textarea
+            <pa-deprecated-textarea
                 placeholder="Placeholder"
                 required
                 [autoHeight]="autoHeightState"
@@ -16,27 +16,27 @@
                 [errorMessage]="customError"
             >
                 Label
-            </pa-textarea>
+            </pa-deprecated-textarea>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="focusTrigger" [(selected)]="focusedState">Focused & Active state</pa-checkbox>
+            <pa-deprecated-checkbox id="focusTrigger" [(selected)]="focusedState">Focused & Active state</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="filledTrigger" [(selected)]="filledState"
+            <pa-deprecated-checkbox id="filledTrigger" [(selected)]="filledState"
                          (selectedChange)="externalValueChange($event, shortText)">Filled
-            </pa-checkbox>
+            </pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="filledLongTrigger" [(selected)]="filledLongState"
+            <pa-deprecated-checkbox id="filledLongTrigger" [(selected)]="filledLongState"
                          (selectedChange)="externalValueChange($event, longText)">Filled With Long text (adaptive size)
-            </pa-checkbox>
+            </pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabledTrigger" [(selected)]="disabledState">Disabled state</pa-checkbox>
+            <pa-deprecated-checkbox id="disabledTrigger" [(selected)]="disabledState">Disabled state</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="readonlyTrigger" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
+            <pa-deprecated-checkbox id="readonlyTrigger" [(selected)]="readOnlyState">Readonly state</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
             <pa-button size="small" aspect="solid"
@@ -45,10 +45,10 @@
             </pa-button>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="autoHeightTrigger" [(selected)]="autoHeightState">AutoHeight state</pa-checkbox>
+            <pa-deprecated-checkbox id="autoHeightTrigger" [(selected)]="autoHeightState">AutoHeight state</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="resizableTrigger" [(selected)]="resizableState">Resizable state</pa-checkbox>
+            <pa-deprecated-checkbox id="resizableTrigger" [(selected)]="resizableState">Resizable state</pa-deprecated-checkbox>
         </div>
     </pa-demo-configuration>
 

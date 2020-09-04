@@ -7,12 +7,12 @@
         <h4>Using ngModel</h4>
         <div class="grid-3 has-gutter">
             <div class="col-1">
-                <pa-toggle id="firstToggle"
+                <pa-deprecated-toggle id="firstToggle"
                            name="firstToggle"
                            [(ngModel)]="firstToggle"
                            [hasFocus]="focusedFirstToggle"
                            [disabled]="disabled"
-                ></pa-toggle></div>
+                ></pa-deprecated-toggle></div>
             <div class="col-2">Value: {{firstToggle}}</div>
         </div>
 
@@ -20,14 +20,14 @@
         <form [formGroup]="form">
             <div class="grid-3 has-gutter">
                 <div class="col-1">
-                    <pa-toggle
+                    <pa-deprecated-toggle
                         id="toggle"
                         name="toggle"
                         formControlName="toggle"
                         help="help text"
                         [hasFocus]="focusedToggle"
                     >Label
-                    </pa-toggle></div>
+                    </pa-deprecated-toggle></div>
                 <div class="col-2">
                     Value: {{form.value.toggle}}
                 </div>
@@ -36,16 +36,16 @@
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="focusFirstTrigger" [(selected)]="focusedFirstToggle">Focused state On first toggle
-            </pa-checkbox>
+            <pa-deprecated-checkbox id="focusFirstTrigger" [(selected)]="focusedFirstToggle">Focused state On first toggle
+            </pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="focusTrigger" [(selected)]="focusedToggle">Focused state On Second toggle</pa-checkbox>
+            <pa-deprecated-checkbox id="focusTrigger" [(selected)]="focusedToggle">Focused state On Second toggle</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabledTrigger" [(selected)]="disabled" (selectedChange)="toggleDisabled()">Toggle
+            <pa-deprecated-checkbox id="disabledTrigger" [(selected)]="disabled" (selectedChange)="toggleDisabled()">Toggle
                 disabled
-            </pa-checkbox>
+            </pa-deprecated-checkbox>
         </div>
     </pa-demo-configuration>
 

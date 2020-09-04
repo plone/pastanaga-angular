@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges, Keys } from '../../common';
-import { BaseControl } from '../base-control';
+import { DeprecatedBaseControl } from '../deprecated-base-control.directive';
 
 export interface InputErrors {
     required: boolean;
@@ -48,7 +48,7 @@ export class ErrorMessages {
 }
 
 @Directive()
-export class BaseTextField extends BaseControl implements AfterContentInit, OnInit, OnDestroy {
+export class DeprecatedBaseTextField extends DeprecatedBaseControl implements AfterContentInit, OnInit, OnDestroy {
     @Input() debounceDuration = 500;
     @Input() errorMessages?: ErrorMessages;
     @Input() pattern?: RegExp;

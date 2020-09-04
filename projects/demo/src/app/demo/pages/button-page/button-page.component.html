@@ -238,17 +238,17 @@
 
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-select label="Size"
+            <pa-deprecated-select label="Size"
                        [(value)]="selectedSize">
                 <pa-option [value]="size.xsmall">xsmall</pa-option>
                 <pa-option [value]="size.small">small</pa-option>
                 <pa-option [value]="size.medium">medium</pa-option>
                 <pa-option [value]="size.large">large</pa-option>
-            </pa-select>
+            </pa-deprecated-select>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled"
-                         [(selected)]="disabledState">Disabled state</pa-checkbox>
+            <pa-deprecated-checkbox id="disabled"
+                         [(selected)]="disabledState">Disabled state</pa-deprecated-checkbox>
         </div>
     </pa-demo-configuration>
 

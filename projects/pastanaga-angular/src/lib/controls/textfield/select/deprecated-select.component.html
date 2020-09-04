@@ -1,7 +1,7 @@
 <div class="pa-select">
     <div class="pa-select-input-container"
          [class.pa-disabled]="_disabled">
-        <pa-input #dropdownInput
+        <pa-deprecated-input #dropdownInput
                   noAutoComplete
                   [id]="_id"
                   [help]="_help"
@@ -17,7 +17,7 @@
                   [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '42px'}"
                   [popupDisabled]="_disabled"
                   (instantValueChange)="filterOptions($event)"
-        >{{_label}}</pa-input>
+        >{{_label}}</pa-deprecated-input>
         <pa-icon class="pa-select-chevron" name="chevron-down" (click)="toggleDropdown()"></pa-icon>
     </div>
 
