@@ -575,4 +575,11 @@ reactive = new FormGroup({
         this.updateBlurFormControl.reset();
         this.updateSubmitFormControl.reset();
     }
+    toggleFormControlDisable() {
+        if (this.textFormControl.disabled) {
+            this.textFormControl.enable();
+        } else {
+            this.textFormControl.disable();
+        }
+    }
 }
