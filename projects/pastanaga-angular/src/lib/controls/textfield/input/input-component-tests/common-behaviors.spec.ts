@@ -22,8 +22,8 @@ import {
     whenUserFocusControl,
     whenUserInputs,
     whenUserKeyUp,
-} from '../../form-field-test.utils.spec';
-import { Keys } from '../../../common';
+} from '../../../form-field-test.utils.spec';
+import { Keys } from '../../../../common';
 
 export function testId(fixture: ComponentFixture<any>, nextId: number) {
     clearFakeAsyncZone(fixture);

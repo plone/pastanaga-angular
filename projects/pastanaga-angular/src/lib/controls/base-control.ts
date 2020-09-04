@@ -9,7 +9,14 @@ import {
     Self,
     SimpleChanges,
 } from '@angular/core';
-import { FORM_CONTROL, FORM_CONTROL_NAME, InternalMode, NG_MODEL, STANDALONE } from './form-field-internal.model';
+import {
+    FORM_CONTROL,
+    FORM_CONTROL_NAME,
+    IErrorMessages,
+    InternalMode,
+    NG_MODEL,
+    STANDALONE,
+} from './form-field.model';
 import {
     buildAlwaysFalseValidator,
     concatAllErrorMessages,
@@ -32,7 +39,6 @@ import {
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { markForCheck } from '../common';
 import { takeUntil } from 'rxjs/operators';
-import { ErrorMessages } from '../..';
 
 let nextId = 0;
 
@@ -42,7 +48,7 @@ let nextId = 0;
  * apply and synchronize internal state to parentComponent NgControl's state
  */
 @Directive()
-export abstract class FormFieldBase implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
+export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
     terminator: Subject<void> = new Subject();
 
     /**
@@ -89,7 +95,7 @@ export abstract class FormFieldBase implements OnChanges, OnInit, OnDestroy, Con
     }
 
     @Input() showAllErrors = true;
-    @Input() errorMessages?: ErrorMessages;
+    @Input() errorMessages?: IErrorMessages;
     /**
      * Manual error messaging: a manual 'always false' validator
      * is added to internal form control
@@ -318,10 +324,10 @@ export abstract class FormFieldBase implements OnChanges, OnInit, OnDestroy, Con
         this.setupInternalMode();
 
         if (!isStandalone(this._internalMode) && this.parentControl.control) {
-            this.changeControlReference(this.parentControl.control);
+            this.control = this.parentControl.control;
         }
         if (isFormControl(this._internalMode)) {
-            this.changeControlReference((this.parentControl as FormControlDirective).form);
+            this.control = (this.parentControl as FormControlDirective).form;
         }
         this._updateOn = this.control.updateOn;
     }
@@ -405,11 +411,6 @@ export abstract class FormFieldBase implements OnChanges, OnInit, OnDestroy, Con
                 : findFirstErrorMessage(this.control.errors, this.errorMessages);
         }
         return '';
-    }
-
-    private changeControlReference(control: AbstractControl) {
-        //: TODO apply control state to reference ? or remove this method
-        this.control = control;
     }
 
     private updateDescribedBy() {

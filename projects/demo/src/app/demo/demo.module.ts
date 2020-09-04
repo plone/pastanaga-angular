@@ -29,7 +29,6 @@ import {
     PaDateTimeModule,
     PaToastModule,
     PaModalModule,
-    PaInputFieldModule,
 } from '../../../../pastanaga-angular/src';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -119,7 +118,6 @@ const COMPONENTS = [
         PaTooltipModule,
         PaDateTimeModule,
         PaModalModule,
-        PaInputFieldModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

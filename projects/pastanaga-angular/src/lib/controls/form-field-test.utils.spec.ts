@@ -2,14 +2,14 @@ import { Type } from '@angular/core';
 import { ComponentFixture, flush, TestBed, tick } from '@angular/core/testing';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputFieldComponent } from './input-field/input-field.component';
+import { InputComponent } from './textfield/input/input.component';
 import { By } from '@angular/platform-browser';
 
 export function initTest<T>(component: Type<T>): ComponentFixture<T> {
     TestBed.configureTestingModule({
         imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule],
         providers: [...TESTING_PROVIDERS],
-        declarations: [InputFieldComponent, component],
+        declarations: [InputComponent, component],
     }).compileComponents();
     return TestBed.createComponent(component);
 }

@@ -1,6 +1,12 @@
-import { FORM_CONTROL, FORM_CONTROL_NAME, InternalMode, NG_MODEL, STANDALONE } from './form-field-internal.model';
+import {
+    FORM_CONTROL,
+    FORM_CONTROL_NAME,
+    IErrorMessages,
+    InternalMode,
+    NG_MODEL,
+    STANDALONE,
+} from './form-field.model';
 import { ValidationErrors, ValidatorFn } from '@angular/forms';
-import { ErrorMessages } from '../..';
 
 export function isStandalone(internalMode: InternalMode): boolean {
     return internalMode === STANDALONE;
@@ -14,7 +20,7 @@ export function isFormControl(internalMode: InternalMode): boolean {
 export function isFormControlName(internalMode: InternalMode): boolean {
     return internalMode === FORM_CONTROL_NAME;
 }
-export function concatAllErrorMessages(errors: ValidationErrors, errorMessages?: ErrorMessages): string {
+export function concatAllErrorMessages(errors: ValidationErrors, errorMessages?: IErrorMessages): string {
     const messages: any = errorMessages || {};
     const displayedErrorMessage = Object.keys(errors)
         .sort()
@@ -31,7 +37,7 @@ export function concatAllErrorMessages(errors: ValidationErrors, errorMessages?:
     // remove first ', '
     return displayedErrorMessage.length > 0 ? displayedErrorMessage.substr(2) : displayedErrorMessage;
 }
-export function findFirstErrorMessage(errors: ValidationErrors, errorMessages?: ErrorMessages): string {
+export function findFirstErrorMessage(errors: ValidationErrors, errorMessages?: IErrorMessages): string {
     const messages: any = errorMessages || {};
     const firstMessageKey = Object.keys(errors)
         .sort()

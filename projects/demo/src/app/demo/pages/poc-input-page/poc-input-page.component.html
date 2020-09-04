@@ -110,7 +110,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseAACode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         [id]="'myId'"
                         [name]="'myName'"
                         type="text"
@@ -124,7 +124,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Standalone text
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -157,7 +157,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseABCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [debounceDuration]="debounceDuration"
                         [placeholder]="placeholder"
@@ -170,7 +170,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Standalone text
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -205,7 +205,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseACCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [errorMessage]="errorMessage"
                         [pattern]="pattern"
@@ -219,7 +219,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Standalone text
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -256,7 +256,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseACCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [errorMessage]="errorMessage"
                         [pattern]="pattern"
@@ -271,7 +271,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Standalone text
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -314,7 +314,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseADCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         [type]="type"
                         [hasFocus]="hasFocus"
                         [noAutoComplete]="noAutoComplete"
@@ -326,7 +326,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Standalone Email
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -359,7 +359,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseAECode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="number"
                         [value]="valueNumber"
                         [min]="min"
@@ -373,10 +373,10 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Standalone Number
-                    </pa-input-field>
+                    </pa-input>
                     <strong>maxlength html property does not apply to input type number but can be used as
                         validator</strong>
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [value]="valueText"
                         [maxlength]="maxlength"
@@ -388,7 +388,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Standalone Text
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -430,7 +430,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseBACode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [(ngModel)]="valueText"
                         [help]="helpText"
@@ -443,7 +443,7 @@
                         (focusing)="receivedFocusText = $event"
                         (ngModelChange)="receivedNgModelChange = $event"
                     >Text input with ng-model
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -479,7 +479,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseBBCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [(ngModel)]="valueText"
                         [debounceDuration]="debounceDuration"
@@ -493,7 +493,7 @@
                         (focusing)="receivedFocusText = $event"
                         (ngModelChange)="receivedNgModelChange = $event"
                     >Text input with ng-model
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -531,7 +531,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseBCCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [errorMessage]="errorMessage"
                         [pattern]="pattern"
@@ -546,7 +546,7 @@
                         (focusing)="receivedFocusText = $event"
                         (ngModelChange)="receivedNgModelChange = $event"
                     >Text input with ng-model
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -586,7 +586,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseBDCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         [type]="type"
                         [hasFocus]="hasFocus"
                         [noAutoComplete]="noAutoComplete"
@@ -599,7 +599,7 @@
                         (focusing)="receivedFocusText = $event"
                         (ngModelChange)="receivedNgModelChange = $event"
                     >{{type}} input with ng-model
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -634,7 +634,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseBECode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="number"
                         [(ngModel)]="valueNumber"
                         [min]="min"
@@ -649,10 +649,10 @@
                         (focusing)="receivedFocusText = $event"
                         (ngModelChange)="receivedNgModelChange = $event"
                     >Ng Model number input
-                    </pa-input-field>
+                    </pa-input>
                     <strong>maxlength html property does not apply to input type number but can be used as
                         validator</strong>
-                    <pa-input-field
+                    <pa-input
                         type="text"
                         [(ngModel)]="valueText"
                         [maxlength]="maxlength"
@@ -665,7 +665,7 @@
                         (focusing)="receivedFocusText = $event"
                         (ngModelChange)="receivedNgModelChange = $event"
                     >Ng Model Text
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -709,7 +709,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form #templateForm="ngForm" (ngSubmit)="submitTemplateDriven()">
-                        <pa-input-field
+                        <pa-input
                             type="email"
                             name="name"
                             [(ngModel)]="valueText"
@@ -724,7 +724,7 @@
                             (focusing)="receivedFocusText = $event"
                             (ngModelChange)="receivedNgModelChange = $event"
                         >Text input with ng-model
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -767,7 +767,7 @@
 
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="email"
                         name="name"
                         [(ngModel)]="valueText"
@@ -782,7 +782,7 @@
                         (focusing)="receivedFocusText = $event"
                         (ngModelChange)="receivedNgModelChange = $event"
                     >Text input with ng-model
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -822,7 +822,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-                        <pa-input-field
+                        <pa-input
                             type="text"
                             formControlName="text"
                             [help]="helpText"
@@ -833,7 +833,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -876,7 +876,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-                        <pa-input-field
+                        <pa-input
                             type="text"
                             formControlName="text"
                             [debounceDuration]="debounceDuration"
@@ -889,7 +889,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -933,7 +933,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-                        <pa-input-field
+                        <pa-input
                             type="text"
                             formControlName="text"
                             [errorMessage]="errorMessage"
@@ -947,7 +947,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -997,7 +997,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-                        <pa-input-field
+                        <pa-input
                             type="text"
                             formControlName="text"
                             [hasFocus]="hasFocus"
@@ -1009,7 +1009,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -1050,7 +1050,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="reactive2" (ngSubmit)="submitReactive2()">
-                        <pa-input-field
+                        <pa-input
                             type="text"
                             formControlName="text"
                             [maxlength]="maxlength"
@@ -1061,8 +1061,8 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
-                        <pa-input-field
+                        </pa-input>
+                        <pa-input
                             type="number"
                             formControlName="number"
                             [min]="min"
@@ -1076,7 +1076,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive number
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -1120,7 +1120,7 @@
                 <div class="poc-example">
                     <p>We should define the behavior we want according to set / patch / reset and event dispatching</p>
                     <form [formGroup]="validated" (ngSubmit)="submitValidated()">
-                        <pa-input-field
+                        <pa-input
                             type="email"
                             formControlName="text"
                             [errorMessage]="errorMessage"
@@ -1132,7 +1132,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -1181,7 +1181,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="mixedValidation" (ngSubmit)="submitMixedValidation()">
-                        <pa-input-field
+                        <pa-input
                             type="email"
                             formControlName="text"
                             email
@@ -1195,7 +1195,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -1241,7 +1241,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="dynamicValidation" (ngSubmit)="submitDynamicValidation()">
-                        <pa-input-field
+                        <pa-input
                             type="email"
                             formControlName="text"
                             [pattern]="pattern"
@@ -1255,7 +1255,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                     </form>
                 </div>
                 <div class="state-info">
@@ -1304,7 +1304,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseCKCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="email"
                         [formControl]="textFormControl"
                         [pattern]="pattern"
@@ -1318,7 +1318,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Form Control text
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>
@@ -1366,7 +1366,7 @@
             <div class="in-action">
                 <div class="poc-example">
                     <form [formGroup]="formGroupValidation" (ngSubmit)="submitFormGroupValidation()">
-                        <pa-input-field
+                        <pa-input
                             type="email"
                             formControlName="text"
                             email
@@ -1380,7 +1380,7 @@
                             (blurring)="receivedBlurText = $event"
                             (focusing)="receivedFocusText = $event"
                         >Reactive text
-                        </pa-input-field>
+                        </pa-input>
                         <div *ngIf="formGroupValidation.errors"> {{formGroupValidation.errors | json}}</div>
                     </form>
                 </div>
@@ -1427,7 +1427,7 @@
             <pre *ngIf="seeCode"><code>{{useCaseCMCode}}</code></pre>
             <div class="in-action">
                 <div class="poc-example">
-                    <pa-input-field
+                    <pa-input
                         type="email"
                         [formControl]="updateFormControl"
                         [pattern]="pattern"
@@ -1441,8 +1441,8 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Update on change
-                    </pa-input-field>
-                    <pa-input-field
+                    </pa-input>
+                    <pa-input
                         type="email"
                         [formControl]="updateBlurFormControl"
                         [pattern]="pattern"
@@ -1456,8 +1456,8 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Update on blur
-                    </pa-input-field>
-                    <pa-input-field
+                    </pa-input>
+                    <pa-input
                         type="email"
                         [formControl]="updateSubmitFormControl"
                         [pattern]="pattern"
@@ -1471,7 +1471,7 @@
                         (blurring)="receivedBlurText = $event"
                         (focusing)="receivedFocusText = $event"
                     >Update on submit
-                    </pa-input-field>
+                    </pa-input>
                 </div>
                 <div class="state-info">
                     <ul>

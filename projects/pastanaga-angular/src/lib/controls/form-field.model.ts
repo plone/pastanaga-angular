@@ -3,3 +3,14 @@ export const NG_MODEL = 'model';
 export const FORM_CONTROL = 'formControl';
 export const FORM_CONTROL_NAME = 'formControlName';
 export declare type InternalMode = 'standalone' | 'model' | 'formControl' | 'formControlName';
+
+export interface IErrorMessages {
+    required?: string;
+    pattern?: string;
+    min?: string;
+    max?: string;
+    passwordStrength?: string;
+    email?: string;
+    minlength?: string;
+    maxlength?: string;
+}

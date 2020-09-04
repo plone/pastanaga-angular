@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { InputFieldComponent } from '../input-field.component';
+import { InputComponent } from '../input.component';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import {
     clearFakeAsyncZone,
@@ -12,7 +12,7 @@ import {
     thenFormFieldHasNoError,
     whenParentSets,
     whenUserInputs,
-} from '../../form-field-test.utils.spec';
+} from '../../../form-field-test.utils.spec';
 import {
     testAutocomplete,
     testDebounce,
@@ -43,7 +43,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 @Component({
-    template: ` <pa-input-field
+    template: ` <pa-input
         #paInput
         [formControl]="formControl"
         [id]="id"
@@ -74,10 +74,10 @@ import { Subject } from 'rxjs';
         (blurring)="onBlurring($event)"
         (ngModelChange)="onNgModelChange($event)"
         >Label
-    </pa-input-field>`,
+    </pa-input>`,
 })
 export class TestComponent {
-    @ViewChild('paInput') paField?: InputFieldComponent;
+    @ViewChild('paInput') paField?: InputComponent;
     formControl = new FormControl();
     id?: string;
     name?: string;
@@ -99,7 +99,7 @@ export class TestComponent {
     maxlength?: number;
     noAutoComplete = false;
     acceptHtmlTags = false;
-    // avoid debouncing for most tests
+    // avoid debouncing for most input-component-tests
     debounceDuration? = 0;
 
     onValueChange(event: any) {}
@@ -221,7 +221,7 @@ describe('InputFieldComponent FormControl', () => {
 
 // merged Validators + validator change in parent
 @Component({
-    template: ` <pa-input-field
+    template: ` <pa-input
         #paInput
         [formControl]="formControl"
         type="email"
@@ -231,10 +231,10 @@ describe('InputFieldComponent FormControl', () => {
         [updateValidatorEvent]="updateValidatorEvent"
         [debounceDuration]="debounceDuration"
         >Label
-    </pa-input-field>`,
+    </pa-input>`,
 })
 export class TestMixedValidationComponent {
-    @ViewChild('paInput') paField?: InputFieldComponent;
+    @ViewChild('paInput') paField?: InputComponent;
 
     formControl = new FormControl(null, [Validators.email]);
     pattern = new RegExp('.?test.?');
@@ -243,7 +243,7 @@ export class TestMixedValidationComponent {
         email: 'email error',
         required: 'required error',
     };
-    // avoid debouncing for most tests
+    // avoid debouncing for most input-component-tests
     debounceDuration? = 0;
     updateValidatorEvent = new Subject();
 

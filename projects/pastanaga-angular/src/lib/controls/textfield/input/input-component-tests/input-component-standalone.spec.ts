@@ -1,15 +1,13 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { InputFieldComponent } from '../input-field.component';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
+import { InputComponent } from '../input.component';
+import { Component, ViewChild } from '@angular/core';
 import {
-    clearFakeAsyncZone,
     initTest,
-    thenErrorIsDisplayed,
-    thenErrorIsNotDisplayed,
-    thenFormFieldHasError,
-    thenFormFieldHasNoError,
+    clearFakeAsyncZone,
     whenUserInputs,
-} from '../../form-field-test.utils.spec';
+    whenParentSets,
+    whenUserBlurControl,
+} from '../../../form-field-test.utils.spec';
 import {
     testAutocomplete,
     testDebounce,
@@ -41,9 +39,8 @@ import {
 } from './common-behaviors.spec';
 
 @Component({
-    template: ` <pa-input-field
+    template: ` <pa-input
         #paInput
-        [(ngModel)]="value"
         [id]="id"
         [name]="name"
         [help]="help"
@@ -55,6 +52,7 @@ import {
         [errorMessages]="errorMessages"
         [errorMessage]="errorMessage"
         [updateOn]="updateOn"
+        [value]="value"
         [type]="type"
         [placeholder]="placeholder"
         [required]="required"
@@ -71,12 +69,11 @@ import {
         (enter)="onEnter($event)"
         (focusing)="onFocusing($event)"
         (blurring)="onBlurring($event)"
-        (ngModelChange)="onNgModelChange($event)"
         >Label
-    </pa-input-field>`,
+    </pa-input>`,
 })
 export class TestComponent {
-    @ViewChild('paInput') paField?: InputFieldComponent;
+    @ViewChild('paInput') paField?: InputComponent;
     id?: string;
     name?: string;
     help?: string;
@@ -98,7 +95,7 @@ export class TestComponent {
     maxlength?: number;
     noAutoComplete = false;
     acceptHtmlTags = false;
-    // avoid debouncing for most tests
+    // avoid debouncing for most input-component-tests
     debounceDuration? = 0;
 
     onValueChange(event: any) {}
@@ -112,11 +109,9 @@ export class TestComponent {
     onFocusing(event: FocusEvent) {}
 
     onBlurring(event: any) {}
-
-    onNgModelChange(event: any) {}
 }
 
-describe('InputFieldComponent ngModel', () => {
+describe('InputFieldComponent standalone', () => {
     let nextId = 0;
     let fixture: ComponentFixture<TestComponent>;
     beforeEach(async(() => {
@@ -178,115 +173,47 @@ describe('InputFieldComponent ngModel', () => {
 
     it('should propagate blur', fakeAsync(() => testOnBlur(fixture)));
 
-    it('should provide ngModelChange', fakeAsync(() => {
+    it('should change updateOn strategy', fakeAsync(() => {
         clearFakeAsyncZone(fixture);
-        const spy = jest.spyOn(fixture.componentInstance, 'onNgModelChange');
-        whenUserInputs(fixture, 'a user input');
+        whenParentSets('updateOn', 'change', fixture);
+        jest.spyOn(fixture.componentInstance, 'onValueChange');
+        whenUserInputs(fixture, 'anything');
+        expect(fixture.componentInstance.onValueChange).toHaveBeenCalledWith('anything');
+
+        whenParentSets('updateOn', 'blur', fixture);
+        whenUserInputs(fixture, 'something else');
+        // onValueChange not triggered
+        expect(fixture.componentInstance.onValueChange).toHaveReturnedTimes(1);
+        whenUserBlurControl(fixture);
+        expect(fixture.componentInstance.onValueChange).toHaveReturnedTimes(2);
+        expect(fixture.componentInstance.onValueChange).toHaveBeenCalledWith('something else');
+    }));
+
+    it('should trigger debounceValueChange when updateOn is blur', fakeAsync(() => {
+        clearFakeAsyncZone(fixture);
+        whenParentSets('debounceDuration', 10, fixture);
+        whenParentSets('updateOn', 'blur', fixture);
+        const spy = jest.spyOn(fixture.componentInstance, 'onDebouncedValueChange');
+        whenUserInputs(fixture, 'test 10ms');
+        expect(spy).toHaveReturnedTimes(0);
+        tick(10);
+        expect(spy).toHaveReturnedTimes(0);
+        whenUserBlurControl(fixture);
+        expect(spy).toHaveReturnedTimes(0);
+        tick(10);
         expect(spy).toHaveReturnedTimes(1);
-        expect(spy).toHaveBeenCalledWith('a user input');
+        expect(spy).toHaveBeenCalledWith('test 10ms');
     }));
-});
 
-@Component({
-    template: ` <pa-input-field
-        #paInput
-        [(ngModel)]="value"
-        type="email"
-        name="name"
-        email
-        [pattern]="pattern"
-        [errorMessages]="errorMessages"
-        [debounceDuration]="debounceDuration"
-        >Label
-    </pa-input-field>`,
-})
-export class TestMixedValidationComponent {
-    @ViewChild('paInput') paField?: InputFieldComponent;
-
-    value = '';
-    pattern = new RegExp('.?test.?');
-    errorMessages = {
-        pattern: 'pattern error',
-        email: 'email error',
-    };
-    // avoid debouncing for most tests
-    debounceDuration? = 0;
-}
-describe('InputFieldComponent ngModel mixed validation', () => {
-    let fixture: ComponentFixture<TestMixedValidationComponent>;
-    beforeEach(async(() => {
-        fixture = initTest(TestMixedValidationComponent);
-    }));
-    it('should display errorMessages for all validators', fakeAsync(() => {
+    it('should not propagate change when component is not active', fakeAsync(() => {
         clearFakeAsyncZone(fixture);
-
-        whenUserInputs(fixture, 'no match for all validators');
-        thenFormFieldHasError(fixture);
-        thenErrorIsDisplayed(fixture, 'email error, pattern error');
-
-        whenUserInputs(fixture, 'email@invalid.com');
-        thenFormFieldHasError(fixture);
-        thenErrorIsDisplayed(fixture, 'pattern error');
-
-        whenUserInputs(fixture, 'email@test.com');
-        thenFormFieldHasNoError(fixture);
-        thenErrorIsNotDisplayed(fixture);
-    }));
-});
-
-export function thenFormHasStatus(fixture: ComponentFixture<any>, status: string) {
-    expect(fixture.componentInstance.form.form.status).toEqual(status);
-}
-
-export function thenFormHasValue(fixture: ComponentFixture<any>, value: any) {
-    expect(fixture.componentInstance.form.form.value).toEqual(value);
-}
-
-@Component({
-    template: ` <form #form="ngForm">
-        <pa-input-field
-            #paInput
-            [(ngModel)]="value"
-            type="email"
-            name="name"
-            email
-            [pattern]="pattern"
-            [errorMessages]="errorMessages"
-            [debounceDuration]="debounceDuration"
-            >Label
-        </pa-input-field>
-    </form>`,
-})
-export class TestFormComponent {
-    @ViewChild('paInput') paField?: InputFieldComponent;
-    @ViewChild('form') form?: ElementRef;
-
-    value = '';
-    pattern = new RegExp('.?test.?');
-    errorMessages = {
-        pattern: 'pattern error',
-        email: 'email error',
-    };
-    // avoid debouncing for most tests
-    debounceDuration? = 0;
-}
-describe('InputFieldComponent ngModel in a form', () => {
-    let fixture: ComponentFixture<TestFormComponent>;
-    beforeEach(async(() => {
-        fixture = initTest(TestFormComponent);
-    }));
-    it('should interact with a form', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        whenUserInputs(fixture, 'no match for all validators');
-        thenFormFieldHasError(fixture);
-        thenErrorIsDisplayed(fixture, 'email error, pattern error');
-        thenFormHasStatus(fixture, 'INVALID');
-
-        whenUserInputs(fixture, 'email@test.com');
-        thenFormFieldHasNoError(fixture);
-        thenErrorIsNotDisplayed(fixture);
-        thenFormHasStatus(fixture, 'VALID');
-        thenFormHasValue(fixture, { name: 'email@test.com' });
+        const spyOnChange = jest.spyOn(fixture.componentInstance, 'onValueChange');
+        whenParentSets('readonly', true, fixture);
+        whenUserInputs(fixture, 'test');
+        expect(spyOnChange).toHaveReturnedTimes(0);
+        whenParentSets('readonly', false, fixture);
+        whenParentSets('disabled', true, fixture);
+        whenUserInputs(fixture, 'test');
+        expect(spyOnChange).toHaveReturnedTimes(0);
     }));
 });

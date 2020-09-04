@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { InputFieldComponent } from '../input-field.component';
+import { InputComponent } from '../input.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import {
@@ -9,7 +9,7 @@ import {
     thenFieldControlIsDisabled,
     whenParentSets,
     whenUserInputs,
-} from '../../form-field-test.utils.spec';
+} from '../../../form-field-test.utils.spec';
 import {
     testAutocomplete,
     testDebounce,
@@ -39,7 +39,7 @@ import {
 
 @Component({
     template: ` <form [formGroup]="form">
-        <pa-input-field
+        <pa-input
             #paInput
             formControlName="text"
             [id]="id"
@@ -70,11 +70,11 @@ import {
             (blurring)="onBlurring($event)"
             (ngModelChange)="onNgModelChange($event)"
             >Label
-        </pa-input-field>
+        </pa-input>
     </form>`,
 })
 export class TestComponent {
-    @ViewChild('paInput') paField?: InputFieldComponent;
+    @ViewChild('paInput') paField?: InputComponent;
     form = new FormGroup({
         text: new FormControl(),
     });
@@ -101,7 +101,7 @@ export class TestComponent {
     maxlength?: number;
     noAutoComplete = false;
     acceptHtmlTags = false;
-    // avoid debouncing for most tests
+    // avoid debouncing for most input-component-tests
     debounceDuration? = 0;
 
     onValueChange(event: any) {}

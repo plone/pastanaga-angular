@@ -13,12 +13,12 @@ export class PocInputPageComponent {
     currentUseCase = 'A';
     currentFeatureGroup = 'C';
 
-    useCaseAACode = `<pa-input-field
+    useCaseAACode = `<pa-input
     [value]="value"
     [help]="textHelp"
     [disabled]="disabled"
     (valueChange)="onTextValueChange($event)"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     idText?: string;
     nameText?: string;
@@ -33,115 +33,115 @@ export class PocInputPageComponent {
     receivedBlurText?: any;
     receivedFocusText?: any;
 
-    useCaseABCode = `<pa-input-field
+    useCaseABCode = `<pa-input
     [value]="value"
     [debounceDuration]="debounceDuration"
     [placeholder]="placeholder"
     [readonly]="readonly"
     (valueChange)="onTextValueChange($event)"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     debounceDuration?: any;
     placeholder?: any;
     readonly = false;
 
-    useCaseACCode = `<pa-input-field
+    useCaseACCode = `<pa-input
     [value]="value"
     [errorMessage] = "errorMessage"
     [pattern] = "pattern"
     [required] = "required"
     [errorMessages]="errorMessages"
     (valueChange)="onTextValueChange($event)"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     pattern?: any;
     required = false;
     errorMessage?: any;
     errorMessages?: any;
 
-    useCaseADCode = `<pa-input-field
+    useCaseADCode = `<pa-input
     [type]="type"
     [value]="value"
     [hasFocus] = "hasFocus"
     [noAutoComplete] = "noAutoComplete"
     (valueChange)="onTextValueChange($event)"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     type = 'email';
     hasFocus = false;
     noAutoComplete = false;
 
-    useCaseAECode = `<pa-input-field
+    useCaseAECode = `<pa-input
     type="number"
     [value]="value"
     [min]="min"
     [max]="max"
     [maxlength]="maxlength"
     (valueChange)="onTextValueChange($event)"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     min?: number;
     max?: number;
     maxlength?: number;
 
-    useCaseBACode = `<pa-input-field
+    useCaseBACode = `<pa-input
     [(ngModel)]="value"
     [help]="textHelp"
     [disabled]="disabled"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     receivedNgModelChange?: any;
-    useCaseBBCode = `<pa-input-field
+    useCaseBBCode = `<pa-input
     [(ngModel)]="value"
     [debounceDuration]="debounceDuration"
     [placeholder]="placeholder"
     [readonly]="readonly"
- ></pa-input-field>`;
+ ></pa-input>`;
 
-    useCaseBCCode = `<pa-input-field
+    useCaseBCCode = `<pa-input
     [(ngModel)]="value"
     [errorMessage] = "errorMessage"
     [pattern] = "pattern"
     [required] = "required"
     [errorMessages]="errorMessages"
- ></pa-input-field>`;
+ ></pa-input>`;
 
-    useCaseBDCode = `<pa-input-field
+    useCaseBDCode = `<pa-input
     [type]="type"
     [(ngModel)]="value"
     [hasFocus] = "hasFocus"
     [noAutoComplete] = "noAutoComplete"
- ></pa-input-field>`;
+ ></pa-input>`;
 
-    useCaseBECode = `<pa-input-field
+    useCaseBECode = `<pa-input
     type="number"
     [(ngModel)]="value"
     [min]="min"
     [max]="max"
     [maxlength]="maxlength"
     (valueChange)="onTextValueChange($event)"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     useCaseBFCode = `<form #form="ngForm"
     (ngSubmit)="submitTemplateDriven()">
-        <pa-input-field
+        <pa-input
         type="email"
         name="name"
         [(ngModel)]="valueText"
         email
         [pattern]="pattern"
         [errorMessages]="errorMessages"
-     ></pa-input-field>
+     ></pa-input>
  </form>`;
 
-    useCaseBGCode = `<pa-input-field
+    useCaseBGCode = `<pa-input
     type="email"
     name="name"
     [(ngModel)]="valueText"
     email
     [pattern]="pattern"
     [errorMessages]="errorMessages"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     submitted?: any;
 
@@ -155,10 +155,10 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-input-field
+    <pa-input
     formControlName="text"
     [help]="textHelp"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     useCaseCBCode = `
 reactive = new FormGroup({
@@ -166,12 +166,12 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-input-field
+    <pa-input
     formControlName="text"
     [debounceDuration]="debounceDuration"
     [placeholder]="placeholder"
     [readonly]="readonly"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     useCaseCCCode = `
 reactive = new FormGroup({
@@ -179,12 +179,12 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-input-field
+    <pa-input
     formControlName="text"
     [pattern]="pattern"
     [required]="required"
     [errorMessages]="errorMessages"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     useCaseCDCode = `
 reactive = new FormGroup({
@@ -192,11 +192,11 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-input-field
+    <pa-input
     formControlName="text"
     [hasFocus]="hasFocus"
     [noAutoComplete]="noAutoComplete"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     useCaseCECode = `
 reactive = new FormGroup({
@@ -205,17 +205,17 @@ reactive = new FormGroup({
     });
 
 <form [formGroup]="reactive" (ngSubmit)="submitReactive()">
-    <pa-input-field
+    <pa-input
     formControlName="text"
     [maxlength]="maxlength"
-    ></pa-input-field>
-    <pa-input-field
+    ></pa-input>
+    <pa-input
     type="number"
     formControlName="number"
     [min]="min"
     [max]="max"
     [maxlength]="maxlength"
-    ></pa-input-field>
+    ></pa-input>
  </form>`;
 
     reactive2 = new FormGroup({
@@ -228,11 +228,11 @@ reactive = new FormGroup({
         text: new FormControl(null, [Validators.required, Validators.email]),
     });
     <form [formGroup]="form" (ngSubmit)="submit()">
-    <pa-input-field
+    <pa-input
     formControlName="text"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     validated = new FormGroup({
         text: new FormControl('', [Validators.required, Validators.email]),
@@ -243,14 +243,14 @@ reactive = new FormGroup({
         text: new FormControl(null, [Validators.required]),
     });
     <form [formGroup]="form" (ngSubmit)="submit()">
-    <pa-input-field
+    <pa-input
     type="email"
     email
     [pattern]="pattern"
     formControlName="text"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     mixedValidation = new FormGroup({
         text: new FormControl('', [Validators.required]),
@@ -267,13 +267,13 @@ reactive = new FormGroup({
     control.updateValueAndValidity();
     }
     <form [formGroup]="form" (ngSubmit)="submit()">
-    <pa-input-field
+    <pa-input
     type="email"
     [pattern]="pattern"
     formControlName="text"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     dynamicValidation = new FormGroup({
         text: new FormControl('', [Validators.required]),
@@ -282,13 +282,13 @@ reactive = new FormGroup({
 
     updateValidatorEvent = new Subject();
 
-    useCaseCKCode = `<pa-input-field
+    useCaseCKCode = `<pa-input
     type="email"
     [pattern]="pattern"
     [formControl]="textFormControl"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     textFormControl = new FormControl(null, [Validators.required, Validators.email]);
 
@@ -297,14 +297,14 @@ reactive = new FormGroup({
         text: new FormControl(null, [Validators.required]),
     });
     <form [formGroup]="form" (ngSubmit)="submit()">
-    <pa-input-field
+    <pa-input
     type="email"
     email
     [pattern]="pattern"
     formControlName="text"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-input-field></form>`;
+ ></pa-input></form>`;
 
     formGroupValidation = new FormGroup(
         {
@@ -319,13 +319,13 @@ reactive = new FormGroup({
         updateOn: this.updateOn,
         validators: [Validators.required, Validators.email],
     });
-    <pa-input-field
+    <pa-input
     type="email"
     [pattern]="pattern"
     [formControl]="textFormControl"
     [errorMessage]="errorMessage"
     [errorMessages]="errorMessages"
- ></pa-input-field>`;
+ ></pa-input>`;
 
     updateFormControl = new FormControl(null, {
         updateOn: 'change',

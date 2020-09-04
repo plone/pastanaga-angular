@@ -20,10 +20,10 @@ import { NgControl, ValidatorFn, Validators } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
-import { detectChanges, Keys, markForCheck } from '../../common';
+import { detectChanges, Keys, markForCheck } from '../../../common';
 import { merge, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { FormFieldBase } from '../form-field-base';
+import { BaseControl } from '../../base-control';
 
 const HTML_TAG = new RegExp(/.?<.+>/g);
 const REPLACE_LT_GT = new RegExp(/[<>]/g);
@@ -36,12 +36,12 @@ const REPLACE_LT_GT = new RegExp(/[<>]/g);
  * both references must be kept in sync
  */
 @Component({
-    selector: 'pa-input-field',
-    templateUrl: './input-field.component.html',
-    styleUrls: ['./input-field.component.scss'],
+    selector: 'pa-input',
+    templateUrl: './input.component.html',
+    styleUrls: ['./input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputFieldComponent extends FormFieldBase implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+export class InputComponent extends BaseControl implements OnChanges, OnInit, AfterViewInit, OnDestroy {
     @Input() set type(value: 'text' | 'number' | 'password' | 'email') {
         this._fieldType = value;
         // When using Angular inputs, developers are no longer able to set the properties on the native
