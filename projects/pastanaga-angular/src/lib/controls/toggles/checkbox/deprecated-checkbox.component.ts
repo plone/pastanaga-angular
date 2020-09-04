@@ -9,25 +9,25 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { BaseControl } from '../../base-control';
+import { DeprecatedBaseControl } from '../../deprecated-base-control.directive';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges } from '../../../common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'pa-checkbox',
-    templateUrl: './checkbox.component.html',
-    styleUrls: ['./checkbox.component.scss'],
+    selector: 'pa-deprecated-checkbox',
+    templateUrl: './deprecated-checkbox.component.html',
+    styleUrls: ['./deprecated-checkbox.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => CheckboxComponent),
+            useExisting: forwardRef(() => DeprecatedCheckboxComponent),
             multi: true,
         },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy, ControlValueAccessor {
+export class DeprecatedCheckboxComponent extends DeprecatedBaseControl implements OnInit, OnDestroy, ControlValueAccessor {
     @Input()
     get type(): 'checkbox' | 'radio' {
         return this._type;

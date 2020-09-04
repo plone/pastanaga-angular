@@ -16,22 +16,22 @@ export class TogglePageComponent {
     focusedToggle = false;
     disabled = false;
 
-    code = `<pa-toggle
+    code = `<pa-deprecated-toggle
     id="firstToggle"
     name="firstToggle"
     [(ngModel)]="firstToggle"
     [hasFocus]="focusedFirstToggle"
     [disabled]="disabled"
-></pa-toggle>
+></pa-deprecated-toggle>
 
 <form [formGroup]="form">
-    <pa-toggle
+    <pa-deprecated-toggle
         id="toggle"
         name="toggle"
         formControlName="toggle"
         help="help text"
         [hasFocus]="focusedToggle"
-    >Label</pa-toggle>
+    >Label</pa-deprecated-toggle>
 </form>
 `;
 

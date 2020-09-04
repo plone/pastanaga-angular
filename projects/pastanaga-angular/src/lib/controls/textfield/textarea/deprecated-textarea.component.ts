@@ -20,7 +20,7 @@ import {
     NgForm,
     Validator,
 } from '@angular/forms';
-import { BaseTextField } from '../base-text-field';
+import { DeprecatedBaseTextField } from '../deprecated-base-text-field.directive';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { takeUntil } from 'rxjs/operators';
@@ -29,24 +29,24 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 
 @Component({
-    selector: 'pa-textarea',
-    templateUrl: './textarea.component.html',
-    styleUrls: ['./textarea.component.scss'],
+    selector: 'pa-deprecated-textarea',
+    templateUrl: './deprecated-textarea.component.html',
+    styleUrls: ['./deprecated-textarea.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TextareaComponent),
+            useExisting: forwardRef(() => DeprecatedTextareaComponent),
             multi: true,
         },
         {
             provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => TextareaComponent),
+            useExisting: forwardRef(() => DeprecatedTextareaComponent),
             multi: true,
         },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextareaComponent extends BaseTextField
+export class DeprecatedTextareaComponent extends DeprecatedBaseTextField
     implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() maxlength?: number;
 

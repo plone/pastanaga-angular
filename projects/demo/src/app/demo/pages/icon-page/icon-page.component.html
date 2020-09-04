@@ -23,24 +23,24 @@
 
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-select label="Size" [value]="selectedSize">
+            <pa-deprecated-select label="Size" [value]="selectedSize">
                 <pa-option [selected]="selectedSize === size.xsmall" (selectOption)="selectedSize = size.xsmall">xsmall</pa-option>
                 <pa-option [selected]="selectedSize === size.small" (selectOption)="selectedSize = size.small">small</pa-option>
                 <pa-option [selected]="selectedSize === size.medium" (selectOption)="selectedSize = size.medium">medium</pa-option>
                 <pa-option [selected]="selectedSize === size.large" (selectOption)="selectedSize = size.large">large</pa-option>
-            </pa-select>
+            </pa-deprecated-select>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-select label="Color" [value]="selectedColor">
+            <pa-deprecated-select label="Color" [value]="selectedColor">
                 <pa-option [selected]="selectedColor === 'none'" (selectOption)="updateColor('none')">None</pa-option>
                 <pa-option [selected]="selectedColor === 'Blue'" (selectOption)="updateColor('#0047FF')">Blue</pa-option>
-            </pa-select>
+            </pa-deprecated-select>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-select label="Background" [value]="selectedBackground">
+            <pa-deprecated-select label="Background" [value]="selectedBackground">
                 <pa-option [selected]="selectedBackground === 'none'" (selectOption)="updateBackground('none')">None</pa-option>
                 <pa-option [selected]="selectedBackground === 'Yellow'" (selectOption)="updateBackground('#FFA100')">Yellow</pa-option>
-            </pa-select>
+            </pa-deprecated-select>
         </div>
     </pa-demo-configuration>
 

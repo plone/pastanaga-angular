@@ -13,7 +13,7 @@ export class InputPageComponent {
     customError = '';
     tsExample = `errorMessages: ErrorMessages = new ErrorMessages({required: 'Field required'});`;
     htmlExample = `<form #demoForm="ngForm">
-    <pa-input required
+    <pa-deprecated-input required
               ngModel
               placeholder="Placeholder"
               id="demo"
@@ -23,7 +23,7 @@ export class InputPageComponent {
               [errorMessages]="errorMessages"
     >
         Label
-    </pa-input>
+    </pa-deprecated-input>
 </form>`;
 
     toggleCustomErrorMessage() {

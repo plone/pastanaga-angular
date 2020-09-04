@@ -25,7 +25,7 @@ export class TextareaPageComponent {
 
     tsExample = `errorMessages: ErrorMessages = new ErrorMessages({required: 'Field required'});`;
     htmlExample = `<form #demoForm="ngForm">
-    <pa-textarea
+    <pa-deprecated-textarea
             id="demo"
             name="demo"
             ngModel
@@ -40,7 +40,7 @@ export class TextareaPageComponent {
             [errorMessage]="customError"
         >
             Label
-    </pa-textarea>
+    </pa-deprecated-textarea>
 </form>`;
 
     externalValueChange(addText: boolean, text: string) {

@@ -2,32 +2,32 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { CheckboxComponent } from './checkbox.component';
+import { DeprecatedCheckboxComponent } from './deprecated-checkbox.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     template: `
-        <pa-checkbox id="control1" [(selected)]="selected"></pa-checkbox>
+        <pa-deprecated-checkbox id="control1" [(selected)]="selected"></pa-deprecated-checkbox>
 
-        <pa-checkbox id="control2" type="radio"></pa-checkbox>
+        <pa-deprecated-checkbox id="control2" type="radio"></pa-deprecated-checkbox>
 
-        <pa-checkbox #ngModelCheckbox
+        <pa-deprecated-checkbox #ngModelCheckbox
                      id="ngModelCheckbox"
                      [(ngModel)]="selected"
-        ></pa-checkbox>
+        ></pa-deprecated-checkbox>
 
         <form [formGroup]="form">
-            <pa-checkbox #reactiveCheckbox
+            <pa-deprecated-checkbox #reactiveCheckbox
                          id="reactiveCheckbox"
                          formControlName="checked"
-            ></pa-checkbox>
+            ></pa-deprecated-checkbox>
         </form>
     `,
 })
 export class TestComponent {
 
-    @ViewChild('ngModelCheckbox') ngModelCheckbox?: CheckboxComponent;
-    @ViewChild('reactiveCheckbox') reactiveCheckbox?: CheckboxComponent;
+    @ViewChild('ngModelCheckbox') ngModelCheckbox?: DeprecatedCheckboxComponent;
+    @ViewChild('reactiveCheckbox') reactiveCheckbox?: DeprecatedCheckboxComponent;
 
     form = new FormGroup({
         checked: new FormControl(false)
@@ -43,7 +43,7 @@ describe('CheckboxComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, ReactiveFormsModule],
-            declarations: [CheckboxComponent, TestComponent],
+            declarations: [DeprecatedCheckboxComponent, TestComponent],
         }).compileComponents();
     }));
 

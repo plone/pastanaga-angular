@@ -12,25 +12,25 @@ import {
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
-import { BaseControl } from '../../base-control';
+import { DeprecatedBaseControl } from '../../deprecated-base-control.directive';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges, markForCheck } from '../../../common';
 
 @Component({
-    selector: 'pa-toggle',
-    templateUrl: './toggle.component.html',
-    styleUrls: ['./toggle.component.scss'],
+    selector: 'pa-deprecated-toggle',
+    templateUrl: './deprecated-toggle.component.html',
+    styleUrls: ['./deprecated-toggle.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ToggleComponent),
+            useExisting: forwardRef(() => DeprecatedToggleComponent),
             multi: true,
         },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToggleComponent extends BaseControl
+export class DeprecatedToggleComponent extends DeprecatedBaseControl
     implements OnChanges, OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
     @Input()
     get hasFocus(): boolean {
