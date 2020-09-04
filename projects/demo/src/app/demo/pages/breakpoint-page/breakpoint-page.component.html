@@ -8,23 +8,26 @@
     </pa-demo-description>
 
     <pa-demo-usage>
-        <h3><code>ViewportSize</code></h3>
-        <p>enum containing viewport sizes supported by Pastanaga (corresponding to the ones defined in our css):</p>
-        <pa-demo-code>
-            <pre><code>{{viewportSize}}</code></pre>
-        </pa-demo-code>
+        <h3>Types</h3>
+        <dl>
+            <dt><code>ViewportSize</code></dt>
+            <dd>Enum containing viewport sizes supported by Pastanaga (corresponding to the ones defined in css)</dd>
+            <dt><code>ViewportMode</code></dt>
+            <dd><code>'desktop' | 'tablet' | 'mobile'</code></dd>
+        </dl>
 
         <h3><code>BreakpointObserver</code></h3>
-        <p>Provides two observers:</p>
         <dl>
             <dt>currentMinSize</dt>
             <dd>Observable returning <code>ViewportSize</code> corresponding to the current <code>min-width</code> from css media query</dd>
             <dt>currentMaxSize</dt>
             <dd>Observable returning <code>ViewportSize</code> corresponding to the current <code>max-width</code> from css media query</dd>
+            <dt>currentMode</dt>
+            <dd>Observable returning <code>ViewportMode</code> based on <code>currentMinSize</code></dd>
         </dl>
-        <p>Example of usage in a component:</p>
-        <pa-demo-code>
-            <pre><code>{{currentMinSizeUsage}}</code></pre>
-        </pa-demo-code>
     </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{currentMode}}</code></pre>
+    </pa-demo-code>
 </pa-demo-page>

@@ -1,3 +1,8 @@
+# 2.5.2 (2020-09-04)
+
+### Improvements
+- **Breakpoints**: provide new observable returning current mode (desktop/tablet/mobile) [mpellerin42]
+
 # 2.5.1 (2020-09-02)
 
 ### Bugfixes
