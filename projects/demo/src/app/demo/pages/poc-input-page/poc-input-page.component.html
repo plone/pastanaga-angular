@@ -1354,6 +1354,9 @@
                 <pa-checkbox [selected]="!!errorMessages" (selectedChange)="changeErrorMessages()">
                     errorMessages
                 </pa-checkbox>
+                <pa-checkbox [selected]="textFormControl.disabled" (selectedChange)="toggleFormControlDisable()">
+                    disabled
+                </pa-checkbox>
             </div>
         </div>
 
