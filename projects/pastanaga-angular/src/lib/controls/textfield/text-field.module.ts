@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DeprecatedInputComponent } from './input/deprecated-input.component';
+import { DeprecatedInputComponent } from './input/deprecated/deprecated-input.component';
 import { DeprecatedSelectComponent } from './select/deprecated-select.component';
 import { PaIconModule } from '../../icon/icon.module';
 import { PaPopupModule } from '../../popup/popup.module';

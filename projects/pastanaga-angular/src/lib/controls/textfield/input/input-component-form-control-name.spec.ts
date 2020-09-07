@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { InputComponent } from '../input.component';
+import { InputComponent } from './input.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import {
@@ -10,7 +10,7 @@ import {
     whenFormControlSetValue,
     whenParentSets,
     whenUserInputs,
-} from '../../../form-field-test-utils.spec';
+} from '../../form-field-test-utils.spec';
 import {
     testAutocomplete,
     testDebounce,
@@ -37,7 +37,7 @@ import {
     testShowAllErrors,
     testType,
 } from './common-behaviors.spec';
-import { TextInputType, UpdateOnStrategy } from '../../../form-field.model';
+import { TextInputType, UpdateOnStrategy } from '../../form-field.model';
 
 @Component({
     template: ` <form [formGroup]="form">

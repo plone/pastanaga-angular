@@ -5,7 +5,7 @@ import { DeprecatedSelectComponent } from './deprecated-select.component';
 import { PaIconModule } from '../../../icon/icon.module';
 import { PaDropdownModule } from '../../../dropdown/dropdown.module';
 import { PaPopupModule } from '../../../popup/popup.module';
-import { DeprecatedInputComponent } from '../input/deprecated-input.component';
+import { DeprecatedInputComponent } from '../input/deprecated/deprecated-input.component';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../../testing';
 import { ControlModel, ControlType } from '../../control.model';
 import { By } from '@angular/platform-browser';

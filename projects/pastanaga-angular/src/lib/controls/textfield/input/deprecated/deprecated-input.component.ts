@@ -24,8 +24,8 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { takeUntil } from 'rxjs/operators';
-import { detectChanges } from '../../../common';
-import { DeprecatedBaseTextField } from '../deprecated-base-text-field.directive';
+import { detectChanges } from '../../../../common';
+import { DeprecatedBaseTextField } from '../../deprecated-base-text-field.directive';
 
 @Component({
     selector: 'pa-deprecated-input',

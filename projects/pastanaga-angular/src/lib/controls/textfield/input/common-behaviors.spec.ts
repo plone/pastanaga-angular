@@ -22,8 +22,8 @@ import {
     whenUserFocusControl,
     whenUserInputs,
     whenUserKeyUp,
-} from '../../../form-field-test-utils.spec';
-import { Keys } from '../../../../common';
+} from '../../form-field-test-utils.spec';
+import { Keys } from '../../../common';
 
 it('is a toolkit for input component tests', () => {
     expect(true).toEqual(true);

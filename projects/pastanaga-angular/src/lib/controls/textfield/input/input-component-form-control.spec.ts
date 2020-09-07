@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { InputComponent } from '../input.component';
+import { InputComponent } from './input.component';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import {
     clearFakeAsyncZone,
@@ -13,7 +13,7 @@ import {
     whenFormControlSetValue,
     whenParentSets,
     whenUserInputs,
-} from '../../../form-field-test-utils.spec';
+} from '../../form-field-test-utils.spec';
 import {
     testAutocomplete,
     testDebounce,
@@ -42,7 +42,7 @@ import {
 } from './common-behaviors.spec';
 import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { TextInputType, UpdateOnStrategy } from '../../../form-field.model';
+import { TextInputType, UpdateOnStrategy } from '../../form-field.model';
 
 @Component({
     template: ` <pa-input
