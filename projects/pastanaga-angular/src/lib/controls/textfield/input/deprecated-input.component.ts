@@ -29,23 +29,23 @@ import { DeprecatedBaseTextField } from '../deprecated-base-text-field.directive
 
 @Component({
     selector: 'pa-deprecated-input',
-    templateUrl: './deprected-input.component.html',
-    styleUrls: ['./deprected-input.component.scss'],
+    templateUrl: './deprecated-input.component.html',
+    styleUrls: ['./deprecated-input.component.scss'],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DeprectedInputComponent),
+            useExisting: forwardRef(() => DeprecatedInputComponent),
             multi: true,
         },
         {
             provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => DeprectedInputComponent),
+            useExisting: forwardRef(() => DeprecatedInputComponent),
             multi: true,
         },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DeprectedInputComponent extends DeprecatedBaseTextField
+export class DeprecatedInputComponent extends DeprecatedBaseTextField
     implements AfterViewInit, ControlValueAccessor, OnInit, OnDestroy, Validator {
     @Input() type: 'text' | 'number' | 'password' = 'text';
     @Input() min?: number;

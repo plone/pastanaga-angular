@@ -196,11 +196,11 @@ describe('InputFieldComponent standalone', () => {
         whenParentSets('updateOn', 'blur', fixture);
         const spy = jest.spyOn(fixture.componentInstance, 'onDebouncedValueChange');
         whenUserInputs(fixture, 'test 10ms');
-        expect(spy).toHaveReturnedTimes(0);
+        expect(spy).not.toHaveBeenCalled();
         tick(10);
-        expect(spy).toHaveReturnedTimes(0);
+        expect(spy).not.toHaveBeenCalled();
         whenUserBlurControl(fixture);
-        expect(spy).toHaveReturnedTimes(0);
+        expect(spy).not.toHaveBeenCalled();
         tick(10);
         expect(spy).toHaveReturnedTimes(1);
         expect(spy).toHaveBeenCalledWith('test 10ms');
@@ -211,10 +211,10 @@ describe('InputFieldComponent standalone', () => {
         const spyOnChange = jest.spyOn(fixture.componentInstance, 'onValueChange');
         whenParentSets('readonly', true, fixture);
         whenUserInputs(fixture, 'test');
-        expect(spyOnChange).toHaveReturnedTimes(0);
+        expect(spyOnChange).not.toHaveBeenCalled();
         whenParentSets('readonly', false, fixture);
         whenParentSets('disabled', true, fixture);
         whenUserInputs(fixture, 'test');
-        expect(spyOnChange).toHaveReturnedTimes(0);
+        expect(spyOnChange).not.toHaveBeenCalled();
     }));
 });

@@ -5,7 +5,7 @@ import { DeprecatedSelectComponent } from './deprecated-select.component';
 import { PaIconModule } from '../../../icon/icon.module';
 import { PaDropdownModule } from '../../../dropdown/dropdown.module';
 import { PaPopupModule } from '../../../popup/popup.module';
-import { DeprectedInputComponent } from '../input/deprected-input.component';
+import { DeprecatedInputComponent } from '../input/deprecated-input.component';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../../testing';
 import { ControlModel, ControlType } from '../../control.model';
 import { By } from '@angular/platform-browser';
@@ -29,7 +29,7 @@ describe('SelectComponent', () => {
         TestBed.configureTestingModule({
             imports: [...TESTING_IMPORTS, PaIconModule, PaDropdownModule, PaPopupModule],
             providers: [...TESTING_PROVIDERS],
-            declarations: [DeprecatedSelectComponent, DeprectedInputComponent, TestComponent],
+            declarations: [DeprecatedSelectComponent, DeprecatedInputComponent, TestComponent],
         }).compileComponents();
     }));
 

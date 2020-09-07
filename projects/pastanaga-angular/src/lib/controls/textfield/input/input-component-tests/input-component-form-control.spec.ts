@@ -10,6 +10,7 @@ import {
     thenFieldControlIsDisabled,
     thenFormFieldHasError,
     thenFormFieldHasNoError,
+    whenFormControlSetValue,
     whenParentSets,
     whenUserInputs,
 } from '../../../form-field-test-utils.spec';
@@ -163,11 +164,9 @@ describe('InputFieldComponent FormControl', () => {
     it('should assign value without emitting', fakeAsync(() => {
         clearFakeAsyncZone(fixture);
         jest.spyOn(fixture.componentInstance, 'onValueChange');
-        fixture.componentInstance.formControl.setValue('test');
-        fixture.detectChanges();
-        tick();
+        whenFormControlSetValue(fixture, fixture.componentInstance.formControl, 'test');
         thenFieldControlHasValue(fixture, 'test');
-        expect(fixture.componentInstance.onValueChange).toHaveReturnedTimes(0);
+        expect(fixture.componentInstance.onValueChange).not.toHaveBeenCalled();
     }));
 
     it('should assign type', fakeAsync(() => testType(fixture)));
@@ -191,19 +190,14 @@ describe('InputFieldComponent FormControl', () => {
         whenParentSets('acceptHtmlTags', false, fixture);
         whenUserInputs(fixture, '<div>');
         thenFieldControlHasValue(fixture, 'div');
-
-        fixture.componentInstance.formControl.setValue('<span>');
-        fixture.detectChanges();
-        tick();
+        whenFormControlSetValue(fixture, fixture.componentInstance.formControl, '<span>');
         thenFieldControlHasValue(fixture, 'span');
 
         whenParentSets('acceptHtmlTags', true, fixture);
         whenUserInputs(fixture, '<h1>');
         thenFieldControlHasValue(fixture, '<h1>');
 
-        fixture.componentInstance.formControl.setValue('<h2>');
-        fixture.detectChanges();
-        tick();
+        whenFormControlSetValue(fixture, fixture.componentInstance.formControl, '<h2>');
         thenFieldControlHasValue(fixture, '<h2>');
     }));
 
@@ -229,7 +223,7 @@ describe('InputFieldComponent FormControl', () => {
         name="name"
         [pattern]="pattern"
         [errorMessages]="errorMessages"
-        [updateValidatorEvent]="updateValidatorEvent"
+        [updateValidator]="updateValidator"
         [debounceDuration]="debounceDuration"
         >Label
     </pa-input>`,
@@ -246,13 +240,13 @@ export class TestMixedValidationComponent {
     };
     // avoid debouncing for most input-component-tests
     debounceDuration? = 0;
-    updateValidatorEvent = new Subject();
+    updateValidator = new Subject();
 
     changeValidator() {
         this.formControl.setErrors(null);
         this.formControl.clearValidators();
         this.formControl.setValidators([Validators.required]);
-        this.updateValidatorEvent.next();
+        this.updateValidator.next();
     }
 }
 describe('InputFieldComponent ngModel mixed validation', () => {

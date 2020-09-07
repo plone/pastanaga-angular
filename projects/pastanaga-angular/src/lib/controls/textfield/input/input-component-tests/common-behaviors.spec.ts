@@ -165,7 +165,7 @@ export function testWriteValueDoNotEmit(fixture: ComponentFixture<any>) {
     jest.spyOn(fixture.componentInstance, 'onValueChange');
     whenParentSets('value', 'test', fixture);
     thenFieldControlHasValue(fixture, 'test');
-    expect(fixture.componentInstance.onValueChange).toHaveReturnedTimes(0);
+    expect(fixture.componentInstance.onValueChange).not.toHaveBeenCalled();
 }
 
 export function testType(fixture: ComponentFixture<any>) {
@@ -273,7 +273,7 @@ export function testDebounce(fixture: ComponentFixture<any>) {
     whenParentSets('debounceDuration', 50, fixture);
     const spy = jest.spyOn(fixture.componentInstance, 'onDebouncedValueChange');
     whenUserInputs(fixture, 'test 50ms');
-    expect(spy).toHaveReturnedTimes(0);
+    expect(spy).not.toHaveBeenCalled();
     tick(50);
     expect(spy).toHaveReturnedTimes(1); // spy returns twice when eventEmitter triggers once
     expect(spy).toHaveBeenCalledWith('test 50ms');
@@ -300,7 +300,7 @@ export function testKeyupTab(fixture: ComponentFixture<any>) {
     clearFakeAsyncZone(fixture);
     const spy = jest.spyOn(fixture.componentInstance, 'onKeyup');
     whenUserKeyUp(fixture, 'test', Keys.tab);
-    expect(spy).toHaveReturnedTimes(0);
+    expect(spy).not.toHaveBeenCalled();
 }
 
 export function testOnEnter(fixture: ComponentFixture<any>) {

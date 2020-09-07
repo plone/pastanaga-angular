@@ -1,29 +1,29 @@
 <h3>Inputs</h3>
 <dl>
-    <dt>id: string</dt>
-    <dt>name: string</dt>
-    <dd>Form field's id <small>(optional)</small>. The html form element will have an id based on the provided value. If the value is not provided, an auto-generated will be applied to the html form element.</dd>
-    <dd>Form field's name <small>(optional)</small>. When provided, the form field carry the value used in the form and the html form element will have no 'name' property. Otherwise, id is used for the 'name' property of the html form element.</dd>
-    <dt>help: string</dt>
-    <dd>Field's help <small>(optional)</small>. Only displayed when the form field is VALID. Used as aria-described-by reference when none is provided.</dd>
     <dt>describedBy: string</dt>
     <dd>Reference to an element describing the field <small>(optional)</small>.</dd>
-    <dt>readonly: boolean</dt>
-    <dd>Sets readonly state <small>(default: false)</small></dd>
-    <dt>hasFocus: boolean</dt>
-    <dd>Set to true to focus the html native element <small>(default: false)</small></dd>
     <dt>disabled: boolean</dt>
     <dd>Set disabled state <small>(default: false)</small></dd>
-    <dt>showAllErrors: boolean</dt>
-    <dd>Display all error messages or just the first (alphabetically ordered) <small>(default: true)</small></dd>
-    <dt>errorMessages: IErrorMessages</dt>
-    <dd>All possible basic error messages (like <code>required</code>) <small>(optional: by default field will have the error state without any message displayed)</small></dd>
     <dt>errorMessage: string</dt>
     <dd>Error message to display when field validation is done externally. Will be added to internal validation error if any. <small>(optional)</small></dd>
-    <dt>updateValidatorEvent: Subject</dt>
+    <dt>errorMessages: IErrorMessages</dt>
+    <dd>All possible basic error messages (like <code>required</code>) <small>(optional: by default field will have the error state without any message displayed)</small></dd>
+    <dt>hasFocus: boolean</dt>
+    <dd>Set to true to focus on the html native element <small>(default: false)</small></dd>
+    <dt>help: string</dt>
+    <dd>Field's help <small>(optional)</small>. Only displayed when the form field is VALID. Used as <code>aria-describedby</code> reference when none is provided.</dd>
+    <dt>id: string</dt>
+    <dd>Form field's id <small>(optional)</small>. The html form element will have an id based on the provided value. If the value is not provided, an auto-generated id will be applied to the html nativeElement.</dd>
+    <dt>name: string</dt>
+    <dd>Form field's name <small>(optional)</small>. When provided, the form field carry the value used in the form and the html nativeElement will have no 'name' property. Otherwise, id is used for the 'name' property of the html nativeElement.</dd>
+    <dt>readonly: boolean</dt>
+    <dd>Sets readonly state <small>(default: false)</small></dd>
+    <dt>showAllErrors: boolean</dt>
+    <dd>When true, display all error messages. Display only the the first one (from alphabetical order) otherwise <small>(default: true)</small></dd>
+    <dt>updateOn: UpdateOnStrategy</dt>
+    <dd>Reports the update strategy of the AbstractControl (meaning the event on which the control updates itself).<small>(default: 'change')</small>. This can only be changed when form field is in standalone mode, otherwise, parent's update strategy will be applied.</dd>
+    <dt>updateValidator: Subject</dt>
     <dd>An event to notify the component when parent's validators have changed. <small>(optional)</small></dd>
     <dt>value</dt>
     <dd>Field's value. Should only be used when form field is in standalone mode.</dd>
-    <dt>updateOn: UpdateOnStrategy</dt>
-    <dd>Reports the update strategy of the AbstractControl (meaning the event on which the control updates itself).<small>(default: 'change')</small>. This can only be changed when form field is in standalone mode, otherwise, parent's update strategy will be applied.</dd>
 </dl>

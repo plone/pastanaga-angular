@@ -1,7 +1,7 @@
 import { Type } from '@angular/core';
 import { ComponentFixture, flush, TestBed, tick } from '@angular/core/testing';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './textfield/input/input.component';
 import { By } from '@angular/platform-browser';
 
@@ -69,6 +69,12 @@ export function whenUserBlurControl(fixture: ComponentFixture<any>) {
     tick();
 }
 
+export function whenFormControlSetValue(fixture: ComponentFixture<any>, formControl: AbstractControl, value: any) {
+    formControl.setValue(value);
+    fixture.detectChanges();
+    tick();
+}
+
 export function thenFieldControlHasId(fixture: ComponentFixture<any>, id: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.properties['id']).toEqual(id);
@@ -111,13 +117,13 @@ export function thenErrorIsDisplayed(fixture: ComponentFixture<any>, errorMessag
 }
 export function thenFormFieldHasError(fixture: ComponentFixture<any>) {
     expect(fixture.componentInstance.paField.control.errors).toBeTruthy();
-    const formField = fixture.debugElement.query(By.css('.pa-field-error'));
-    expect(formField).toBeTruthy();
+    const formFieldWithErrorClass = fixture.debugElement.query(By.css('.pa-field-error'));
+    expect(formFieldWithErrorClass).toBeTruthy();
 }
 export function thenFormFieldHasNoError(fixture: ComponentFixture<any>) {
     expect(fixture.componentInstance.paField.control.errors).toEqual(null);
-    const formField = fixture.debugElement.query(By.css('.pa-field-error'));
-    expect(formField).toEqual(null);
+    const formFieldWithErrorClass = fixture.debugElement.query(By.css('.pa-field-error'));
+    expect(formFieldWithErrorClass).toEqual(null);
 }
 export function thenErrorIsNotDisplayed(fixture: ComponentFixture<any>) {
     const help = fixture.debugElement.query(By.css('.pa-field-help'));
@@ -141,6 +147,11 @@ export function thenFieldControlHasPlaceholder(fixture: ComponentFixture<any>, p
 export function thenFieldControlIsRequired(fixture: ComponentFixture<any>, required: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.attributes['ng-reflect-required']).toEqual('' + required);
+    if (required) {
+        expect(control.nativeElement.required).toBeTruthy();
+    } else {
+        expect(control.nativeElement.required).toBeFalsy();
+    }
 }
 export function thenFieldControlHasAutoComplete(fixture: ComponentFixture<any>, autocomplete: string | null) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));

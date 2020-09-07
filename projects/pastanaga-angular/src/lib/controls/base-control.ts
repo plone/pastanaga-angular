@@ -62,9 +62,10 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     }
 
     /**
-     * When name of formFieldBase is provided
-     * htmlElement should not have name property and should not be considered as part of a form's value
-     * otherwise, html element will have a generated name
+     * When name is provided, the formFieldBase "holds" the value for the form.
+     * Therefore, the native html element should not have the name property and should not be considered as part of a form's value
+     * (otherwise the form would contain 2 values with the same name).
+     * When the name is not provided, the html native element has a generated name base on id to be registered in a form.
      */
     @Input() set name(value: string) {
         this._name = value;
@@ -111,7 +112,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
      * and therefore is a huge performance gain.
      * The stream is initialized 'once for good' and won't be used if not provided in the onInit lifeCycle.
      */
-    @Input() updateValidatorEvent?: Subject<any>;
+    @Input() updateValidator?: Subject<any>;
 
     @Input() set value(value: any) {
         if (!isStandalone(this._internalMode)) {
@@ -126,7 +127,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     @Input() set updateOn(value: UpdateOnStrategy) {
         // changing the 'updateOn' strategy is accomplished by changing the reference of the internal formControl
         // if the internal formControl is provided by the parent component. This cannot be processed.
-        // CAUTION: if parent's form control's reference is broken. Form field will be out of sync with it's parent.
+        // CAUTION: if parent's form control's reference is broken, form field will be out of sync with it's parent.
         if (!isStandalone(this._internalMode)) {
             console.warn('Dynamic changes of updateOn FormHook is not supported for ngModel nor formControl.');
         } else {
@@ -166,22 +167,22 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     alwaysFalseValidator?: ValidatorFn;
 
     /**
-     * Defined what should be processed before the value change is triggered by the parent component.
+     * Define what should be processed before the value change is triggered by the parent component.
      * For example: sanitizing or coerce value...
      */
     abstract preWriteValue: (value: any) => any;
     /**
-     * Defined what should be processed after the value change is triggered by the parent component.
+     * Define what should be processed after the value change is triggered by the parent component.
      * For example: emit an event, add a class...
      */
     abstract postValueChange: () => void;
     /**
-     * Defined what should be processed when the internal value change.
+     * Define what should be processed when the internal value change.
      * For example: sanitizing or coerce value...
      */
     abstract preValueChange: (value: any) => any;
     /**
-     * Defined what should be processed after the internal value change.
+     * Define what should be processed after the internal value change.
      * For example: emit an event, add a class...
      */
     abstract postWriteValue: () => void;
@@ -204,7 +205,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
 
     /**
      * NgControl is a superClass of ngModel and formControl
-     * and prevents local form control from being override by angular,
+     * and prevents local form control from being overridden by angular,
      */
     protected constructor(@Optional() @Self() public parentControl: NgControl, protected cdr: ChangeDetectorRef) {
         nextId++;
@@ -230,8 +231,8 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
         this.setupFormControl();
         this.initParentValidators();
         this.manageInternalState();
-        if (!!this.updateValidatorEvent) {
-            this.updateValidatorEvent.pipe(takeUntil(this.terminator)).subscribe(() => {
+        if (!!this.updateValidator) {
+            this.updateValidator.pipe(takeUntil(this.terminator)).subscribe(() => {
                 this.initParentValidators();
                 this.mergeValidators();
             });
@@ -262,7 +263,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     }
 
     /**
-     * Is override by Control Value Accessor.
+     * Is overridden by Control Value Accessor.
      * This method only applies when no Control Value Accessor
      * is provided by parent component (standalone mode).
      */
@@ -272,7 +273,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     }
 
     /**
-     * Is override by Control Value Accessor.
+     * Is overridden by Control Value Accessor.
      * This method only applies when no Control Value Accessor
      * is provided by parent component (standalone mode).
      */

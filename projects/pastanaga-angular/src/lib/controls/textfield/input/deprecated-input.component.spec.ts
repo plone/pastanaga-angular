@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeprectedInputComponent } from './deprected-input.component';
+import { DeprecatedInputComponent } from './deprecated-input.component';
 
 describe('InputComponent', () => {
-    let component: DeprectedInputComponent;
-    let fixture: ComponentFixture<DeprectedInputComponent>;
+    let component: DeprecatedInputComponent;
+    let fixture: ComponentFixture<DeprecatedInputComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [],
-            declarations: [DeprectedInputComponent],
+            declarations: [DeprecatedInputComponent],
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DeprectedInputComponent);
+        fixture = TestBed.createComponent(DeprecatedInputComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

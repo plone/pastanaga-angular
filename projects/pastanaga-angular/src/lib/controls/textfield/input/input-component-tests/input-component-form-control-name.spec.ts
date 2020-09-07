@@ -7,6 +7,7 @@ import {
     initTest,
     thenFieldControlHasValue,
     thenFieldControlIsDisabled,
+    whenFormControlSetValue,
     whenParentSets,
     whenUserInputs,
 } from '../../../form-field-test-utils.spec';
@@ -180,21 +181,17 @@ describe('InputFieldComponent FormControlName', () => {
     it('should assign value without emitting', fakeAsync(() => {
         clearFakeAsyncZone(fixture);
         jest.spyOn(fixture.componentInstance, 'onValueChange');
-        fixture.componentInstance.form.setValue({ text: 'test' });
-        fixture.detectChanges();
-        tick();
+        whenFormControlSetValue(fixture, fixture.componentInstance.form, { text: 'test' });
         thenFieldControlHasValue(fixture, 'test');
-        expect(fixture.componentInstance.onValueChange).toHaveReturnedTimes(0);
+        expect(fixture.componentInstance.onValueChange).not.toHaveBeenCalled();
 
         if (!fixture.componentInstance.formControl) {
             expect(true).toEqual(false);
             return;
         }
-        fixture.componentInstance.formControl.setValue('test2');
-        fixture.detectChanges();
-        tick();
+        whenFormControlSetValue(fixture, fixture.componentInstance.formControl, 'test2');
         thenFieldControlHasValue(fixture, 'test2');
-        expect(fixture.componentInstance.onValueChange).toHaveReturnedTimes(0);
+        expect(fixture.componentInstance.onValueChange).not.toHaveBeenCalled();
     }));
 
     it('should assign type', fakeAsync(() => testType(fixture)));
@@ -219,17 +216,14 @@ describe('InputFieldComponent FormControlName', () => {
         whenUserInputs(fixture, '<div>');
         thenFieldControlHasValue(fixture, 'div');
 
-        fixture.componentInstance.form.setValue({ text: '<span>' });
-        fixture.detectChanges();
-        tick();
+        whenFormControlSetValue(fixture, fixture.componentInstance.form, { text: '<span>' });
         thenFieldControlHasValue(fixture, 'span');
 
         whenParentSets('acceptHtmlTags', true, fixture);
         whenUserInputs(fixture, '<h1>');
         thenFieldControlHasValue(fixture, '<h1>');
 
-        fixture.componentInstance.form.setValue({ text: '<h2>' });
-        fixture.detectChanges();
+        whenFormControlSetValue(fixture, fixture.componentInstance.form, { text: '<h2>' });
         tick();
         thenFieldControlHasValue(fixture, '<h2>');
     }));
