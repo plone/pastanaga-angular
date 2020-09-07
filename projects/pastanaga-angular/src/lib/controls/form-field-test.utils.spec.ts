@@ -22,7 +22,6 @@ export function clearFakeAsyncZone(fixture: ComponentFixture<any>) {
     flush();
 }
 
-/* WHEN */
 export function whenParentSets(property: string, value: any, fixture: ComponentFixture<any>) {
     fixture.componentInstance[property] = value;
     fixture.detectChanges();
@@ -31,7 +30,7 @@ export function whenParentSets(property: string, value: any, fixture: ComponentF
 
 export function trackFieldControlFocusEvent(fixture: ComponentFixture<any>): any {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    control.nativeElement.addEventListener = jest.fn((event) => {});
+    control.nativeElement.addEventListener = jest.fn(() => {});
     return jest.spyOn(control.nativeElement, 'focus');
 }
 
@@ -66,7 +65,6 @@ export function whenUserBlurControl(fixture: ComponentFixture<any>) {
     tick();
 }
 
-/* THEN */
 export function thenFieldControlHasId(fixture: ComponentFixture<any>, id: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.properties['id']).toEqual(id);
