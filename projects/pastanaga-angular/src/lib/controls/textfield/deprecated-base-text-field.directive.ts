@@ -16,6 +16,7 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges, Keys } from '../../common';
 import { DeprecatedBaseControl } from '../deprecated-base-control.directive';
+import { IErrorMessages } from '../form-field.model';
 
 export interface InputErrors {
     required: boolean;
@@ -24,13 +25,7 @@ export interface InputErrors {
     max?: boolean;
     passwordStrength?: boolean;
 }
-export interface IErrorMessages {
-    required?: string;
-    pattern?: string;
-    min?: string;
-    max?: string;
-    passwordStrength?: string;
-}
+
 export class ErrorMessages {
     required: string;
     pattern: string;

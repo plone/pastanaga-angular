@@ -24,6 +24,7 @@ import { detectChanges, Keys, markForCheck } from '../../../common';
 import { merge, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { BaseControl } from '../../base-control';
+import { TextInputType } from '../../form-field.model';
 
 const HTML_TAG = new RegExp(/.?<.+>/g);
 const REPLACE_LT_GT = new RegExp(/[<>]/g);
@@ -42,7 +43,7 @@ const REPLACE_LT_GT = new RegExp(/[<>]/g);
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent extends BaseControl implements OnChanges, OnInit, AfterViewInit, OnDestroy {
-    @Input() set type(value: 'text' | 'number' | 'password' | 'email') {
+    @Input() set type(value: TextInputType) {
         this._fieldType = value;
         // When using Angular inputs, developers are no longer able to set the properties on the native
         // input element. To ensure that bindings for `type` work, we need to sync the setter
@@ -99,7 +100,7 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     @Output() blurring: EventEmitter<string | number> = new EventEmitter();
 
     _label = '';
-    _fieldType: 'text' | 'number' | 'password' | 'email' = 'text';
+    _fieldType: TextInputType = 'text';
     _noAutoComplete = false;
     _autofilled = false;
     _acceptHtmlTags = false;

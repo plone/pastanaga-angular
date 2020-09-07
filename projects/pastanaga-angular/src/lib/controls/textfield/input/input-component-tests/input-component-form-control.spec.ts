@@ -41,6 +41,7 @@ import {
 } from './common-behaviors.spec';
 import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { TextInputType, UpdateOnStrategy } from '../../../form-field.model';
 
 @Component({
     template: ` <pa-input
@@ -88,9 +89,9 @@ export class TestComponent {
     showAllErrors = false;
     errorMessages?: any;
     errorMessage?: string;
-    updateOn = 'change';
+    updateOn: UpdateOnStrategy = 'change';
     value?: string | number;
-    type?: string;
+    type?: TextInputType;
     placeholder?: string;
     required = false;
     pattern?: string | RegExp;

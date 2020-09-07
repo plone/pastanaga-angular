@@ -1,3 +1,10 @@
+# 2.6.0 (2020-09-07)
+
+### Breaking changes
+We found out `form fields` were not properly supporting reactive forms, so we implemented a new BaseControl: [jcarret]
+- **input component**: is using the new BaseControl
+- **all previous form fields are marked as deprecated and will be updated using the new base control**
+
 # 2.5.2 (2020-09-04)
 
 ### Improvements

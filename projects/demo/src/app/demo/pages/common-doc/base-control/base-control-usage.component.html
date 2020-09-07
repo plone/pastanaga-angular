@@ -1,0 +1,29 @@
+<h3>Inputs</h3>
+<dl>
+    <dt>id: string</dt>
+    <dd>Form field's id <small>(optional: when provided, html form input will have an id based on this id otherwise, an auto-generated one)</small></dd>
+    <dt>name: string</dt>
+    <dd>Form field's name <small>(optional: when provided, the form field carry the value used in the form and no 'name' property is added to the html form element, otherwise, id is used to add a 'name' property to the html form element)</small></dd>
+    <dt>help: string</dt>
+    <dd>Field's help <small>(optional)</small>. Only displayed when the form field is VALID. Used as aria-described-by reference when none is provided.</dd>
+    <dt>describedBy: string</dt>
+    <dd>Reference to an element describing the field <small>(optional)</small>.</dd>
+    <dt>readonly: boolean</dt>
+    <dd>Sets readonly state <small>(default: false)</small></dd>
+    <dt>hasFocus: boolean</dt>
+    <dd>Set to true to focus the html native element <small>(default: false)</small></dd>
+    <dt>disabled: boolean</dt>
+    <dd>Set disabled state <small>(default: false)</small></dd>
+    <dt>showAllErrors: boolean</dt>
+    <dd>Display all error messages or just the first (ordered by alpha) <small>(default: true)</small></dd>
+    <dt>errorMessages: IErrorMessages</dt>
+    <dd>All possible basic error messages (like <code>required</code>) <small>(optional: by default field will have the error state without any message displayed)</small></dd>
+    <dt>errorMessage: string</dt>
+    <dd>Error message to display when field validation is done externally. Will be added to internal validation error if any. <small>(optional)</small></dd>
+    <dt>updateValidatorEvent: Subject</dt>
+    <dd>An event to notify the component when parent's validators have changed. <small>(optional)</small></dd>
+    <dt>value</dt>
+    <dd>Field's value. Should only be used when form field is in standalone mode.</dd>
+    <dt>updateOn: UpdateOnStrategy</dt>
+    <dd>Reports the update strategy of the AbstractControl (meaning the event on which the control updates itself).<small>(default: 'change')</small>. This can only be changed when form field is in standalone mode, otherwise, parent's update strategy will be applied.</dd>
+</dl>

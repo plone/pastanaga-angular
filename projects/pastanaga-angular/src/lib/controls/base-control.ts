@@ -16,6 +16,7 @@ import {
     InternalMode,
     NG_MODEL,
     STANDALONE,
+    UpdateOnStrategy,
 } from './form-field.model';
 import {
     buildAlwaysFalseValidator,
@@ -122,7 +123,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
         return this.model;
     }
 
-    @Input() set updateOn(value: 'change' | 'blur' | 'submit') {
+    @Input() set updateOn(value: UpdateOnStrategy) {
         // changing the 'updateOn' strategy is accomplished by changing the reference of the internal formControl
         // if the internal formControl is provided by the parent component. This cannot be processed.
         // CAUTION: if parent's form control's reference is broken. Form field will be out of sync with it's parent.

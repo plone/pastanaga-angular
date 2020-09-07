@@ -36,6 +36,7 @@ import {
     testShowAllErrors,
     testType,
 } from './common-behaviors.spec';
+import { TextInputType, UpdateOnStrategy } from '../../../form-field.model';
 
 @Component({
     template: ` <form [formGroup]="form">
@@ -90,9 +91,9 @@ export class TestComponent {
     showAllErrors = false;
     errorMessages?: any;
     errorMessage?: string;
-    updateOn = 'change';
+    updateOn: UpdateOnStrategy = 'change';
     value?: string | number;
-    type?: string;
+    type?: TextInputType;
     placeholder?: string;
     required = false;
     pattern?: string | RegExp;

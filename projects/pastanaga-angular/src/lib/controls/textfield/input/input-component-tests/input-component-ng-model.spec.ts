@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { InputComponent } from '../input.component';
-import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync } from '@angular/core/testing';
 import {
     clearFakeAsyncZone,
     initTest,
@@ -39,6 +39,7 @@ import {
     testType,
     testWriteValueDoNotEmit,
 } from './common-behaviors.spec';
+import { TextInputType, UpdateOnStrategy } from '../../../form-field.model';
 
 @Component({
     template: ` <pa-input
@@ -87,9 +88,9 @@ export class TestComponent {
     showAllErrors = false;
     errorMessages?: any;
     errorMessage?: string;
-    updateOn = 'change';
+    updateOn: UpdateOnStrategy = 'change';
     value?: string | number;
-    type?: string;
+    type?: TextInputType;
     placeholder?: string;
     required = false;
     pattern?: string | RegExp;
