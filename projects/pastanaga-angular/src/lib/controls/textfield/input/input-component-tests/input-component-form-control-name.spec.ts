@@ -9,7 +9,7 @@ import {
     thenFieldControlIsDisabled,
     whenParentSets,
     whenUserInputs,
-} from '../../../form-field-test.utils.spec';
+} from '../../../form-field-test-utils.spec';
 import {
     testAutocomplete,
     testDebounce,

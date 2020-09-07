@@ -7,7 +7,7 @@ import {
     whenUserInputs,
     whenParentSets,
     whenUserBlurControl,
-} from '../../../form-field-test.utils.spec';
+} from '../../../form-field-test-utils.spec';
 import {
     testAutocomplete,
     testDebounce,

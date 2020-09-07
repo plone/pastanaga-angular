@@ -5,6 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './textfield/input/input.component';
 import { By } from '@angular/platform-browser';
 
+it('is a toolkit for form fields tests', () => {
+    expect(true).toEqual(true);
+});
+
 export function initTest<T>(component: Type<T>): ComponentFixture<T> {
     TestBed.configureTestingModule({
         imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule],

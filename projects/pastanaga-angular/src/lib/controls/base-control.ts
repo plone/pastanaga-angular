@@ -159,7 +159,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     _hasFocus = false;
 
     _internalMode: InternalMode = STANDALONE;
-    _updateOn: 'change' | 'blur' | 'submit' = 'change';
+    _updateOn: UpdateOnStrategy = 'change';
     _parentValidator?: ValidatorFn | null = null;
     _parentAsyncValidator: any;
     _formControlChanged: Subject<void> = new Subject();
