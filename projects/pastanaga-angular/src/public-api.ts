@@ -21,6 +21,7 @@ export * from './lib/controls/textfield/deprecated-base-text-field.directive';
 export * from './lib/controls/textfield/text-field.module';
 export * from './lib/controls/textfield/select/deprecated-select.component';
 export * from './lib/controls/textfield/input/deprecated/deprecated-input.component';
+export * from './lib/controls/textfield/input/input.component';
 export * from './lib/controls/toggles/toggles.module';
 export * from './lib/controls/toggles/checkbox/deprecated-checkbox.component';
 
