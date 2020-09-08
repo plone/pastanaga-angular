@@ -1,3 +1,10 @@
+# 2.6.1 (not released)
+
+### Bugfixes
+- **exports**: [jCarret]
+    - fixed export for deprecated checkbox
+    - added export for input component
+
 # 2.6.0 (2020-09-07)
 
 ### Breaking changes

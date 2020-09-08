@@ -117,10 +117,10 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
 
     constructor(
         @Optional() @Self() public parentControl: NgControl,
-        private platform: Platform,
-        private ngZone: NgZone,
+        protected platform: Platform,
+        protected ngZone: NgZone,
         public cdr: ChangeDetectorRef,
-        private autofillMonitor: AutofillMonitor
+        protected autofillMonitor: AutofillMonitor
     ) {
         super(parentControl, cdr);
         this._fieldKind = 'input';
