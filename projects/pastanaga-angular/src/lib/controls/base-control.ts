@@ -141,6 +141,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     control: AbstractControl = new FormControl();
 
     _id? = '';
+    _autoId = 0;
     _name? = '';
     _elementId = '';
     _fieldKind = 'field';
@@ -202,6 +203,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
      */
     protected constructor(@Optional() @Self() public parentControl: NgControl, protected cdr: ChangeDetectorRef) {
         nextId++;
+        this._autoId = nextId;
         if (!!this.parentControl) {
             this.parentControl.valueAccessor = this;
         }
@@ -419,7 +421,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     }
 
     setupIdentifiers() {
-        this._elementId = this._id ? `${this._id}-${this._fieldKind}` : `${this._fieldKind}-${nextId}`;
+        this._elementId = this._id ? `${this._id}-${this._fieldKind}` : `${this._fieldKind}-${this._autoId}`;
         if (!this._name) {
             this._name = this._elementId;
         }
