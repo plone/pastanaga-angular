@@ -1,16 +1,15 @@
-# 2.6.1 (not released)
-
-### Bugfixes
-- **exports**: [jCarret]
-    - fixed export for deprecated checkbox
-    - added export for input component
-
-# 2.6.0 (2020-09-07)
+# 2.6.0 (2020-09-08)
 
 ### Breaking changes
 We found out `form fields` were not properly supporting reactive forms, so we implemented a new BaseControl: [jcarret]
 - **input component**: is using the new BaseControl
 - **all previous form fields are marked as deprecated and will be updated using the new base control**
+
+### Bugfixes
+- **exports**: [jCarret]
+    - fixed export for deprecated checkbox
+    - added export for input component
+- **NPM**: put styles and assets in NPM package [ebrehault]
 
 # 2.5.2 (2020-09-04)
 
