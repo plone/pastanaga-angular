@@ -69,8 +69,12 @@ export function whenUserBlurControl(fixture: ComponentFixture<any>) {
     tick();
 }
 
-export function whenFormControlSetValue(fixture: ComponentFixture<any>, formControl: AbstractControl, value: any) {
-    formControl.setValue(value);
+export function whenFormControlSetValue(
+    fixture: ComponentFixture<any>,
+    formControl: AbstractControl | null,
+    value: any
+) {
+    formControl?.setValue(value);
     fixture.detectChanges();
     tick();
 }
@@ -82,7 +86,7 @@ export function thenFieldControlHasId(fixture: ComponentFixture<any>, id: string
 
 export function thenFieldControlHasName(fixture: ComponentFixture<any>, name?: string | null) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.attributes['ng-reflect-name']).toEqual(name);
+    expect(control.attributes['name']).toEqual(name);
 }
 
 export function thenFormFieldHasHelp(fixture: ComponentFixture<any>, helpText?: string) {

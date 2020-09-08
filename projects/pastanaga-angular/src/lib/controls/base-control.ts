@@ -61,12 +61,6 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
         this._id = value;
     }
 
-    /**
-     * When name is provided, the formFieldBase "holds" the value for the form.
-     * Therefore, the native html element should not have the name property and should not be considered as part of a form's value
-     * (otherwise the form would contain 2 values with the same name).
-     * When the name is not provided, the html native element has a generated name base on id to be registered in a form.
-     */
     @Input() set name(value: string) {
         this._name = value;
     }
@@ -149,7 +143,6 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     _id? = '';
     _name? = '';
     _elementId = '';
-    _elementName?: string;
     _fieldKind = 'field';
     _helpId = '';
     _defaultDescribedBy?: string;
@@ -427,7 +420,9 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
 
     setupIdentifiers() {
         this._elementId = this._id ? `${this._id}-${this._fieldKind}` : `${this._fieldKind}-${nextId}`;
-        this._elementName = this._name ? undefined : this._elementId;
+        if (!this._name) {
+            this._name = this._elementId;
+        }
         this._helpId = `${this._elementId}-help`;
         this.updateDescribedBy();
     }

@@ -1,7 +1,7 @@
 <h3>Inputs</h3>
 <dl>
     <dt>describedBy: string</dt>
-    <dd>Reference to an element describing the field <small>(optional)</small>.</dd>
+    <dd>Reference to an element describing the field, used in <code>aria-describedby</code> <small>(optional)</small>.</dd>
     <dt>disabled: boolean</dt>
     <dd>Set disabled state <small>(default: false)</small></dd>
     <dt>errorMessage: string</dt>
@@ -15,7 +15,7 @@
     <dt>id: string</dt>
     <dd>Form field's id <small>(optional)</small>. The html form element will have an id based on the provided value. If the value is not provided, an auto-generated id will be applied to the html nativeElement.</dd>
     <dt>name: string</dt>
-    <dd>Form field's name <small>(optional)</small>. When provided, the form field carry the value used in the form and the html nativeElement will have no 'name' property. Otherwise, id is used for the 'name' property of the html nativeElement.</dd>
+    <dd>Input's <code>name</code> attribute <small>(optional)</small>. Is required by angular when using template driven forms.</dd>
     <dt>readonly: boolean</dt>
     <dd>Sets readonly state <small>(default: false)</small></dd>
     <dt>showAllErrors: boolean</dt>

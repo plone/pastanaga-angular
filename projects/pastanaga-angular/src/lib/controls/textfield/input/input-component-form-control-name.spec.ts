@@ -154,17 +154,14 @@ describe('InputFieldComponent FormControlName', () => {
         tick();
         thenFieldControlIsDisabled(fixture, false);
 
-        if (!fixture.componentInstance.formControl) {
-            expect(true).toEqual(false);
-            return;
-        }
+        expect(fixture.componentInstance.formControl).toBeTruthy();
 
-        fixture.componentInstance.formControl.disable();
+        fixture.componentInstance.formControl?.disable();
         fixture.detectChanges();
         tick();
         thenFieldControlIsDisabled(fixture, true);
 
-        fixture.componentInstance.formControl.enable();
+        fixture.componentInstance.formControl?.enable();
         fixture.detectChanges();
         tick();
         thenFieldControlIsDisabled(fixture, false);
@@ -185,10 +182,8 @@ describe('InputFieldComponent FormControlName', () => {
         thenFieldControlHasValue(fixture, 'test');
         expect(fixture.componentInstance.onValueChange).not.toHaveBeenCalled();
 
-        if (!fixture.componentInstance.formControl) {
-            expect(true).toEqual(false);
-            return;
-        }
+        expect(fixture.componentInstance.formControl).toBeTruthy();
+
         whenFormControlSetValue(fixture, fixture.componentInstance.formControl, 'test2');
         thenFieldControlHasValue(fixture, 'test2');
         expect(fixture.componentInstance.onValueChange).not.toHaveBeenCalled();

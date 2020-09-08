@@ -5,7 +5,7 @@
            [(ngModel)]="model"
            [ngModelOptions]="{standalone: _internalMode === 'standalone'}"
            [id]="_elementId"
-           [name]="_elementName"
+           [attr.name]="_name"
            [type]="type"
            [disabled]="control.disabled"
            [attr.maxlength]="maxlength"

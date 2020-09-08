@@ -44,7 +44,7 @@ export function testName(fixture: ComponentFixture<any>, nextId: number) {
     thenFieldControlHasName(fixture, `input-${nextId}`);
 
     whenParentSets('name', 'testName', fixture);
-    thenFieldControlHasName(fixture, null);
+    thenFieldControlHasName(fixture, 'testName');
 }
 
 export function testHelp(fixture: ComponentFixture<any>) {
