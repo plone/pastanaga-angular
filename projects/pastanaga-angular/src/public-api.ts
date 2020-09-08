@@ -14,14 +14,15 @@ export * from './lib/button/button.component';
 
 export * from './lib/breakpoint-observer/breakpoint.observer';
 
-export * from './lib/controls/base-control';
+export * from './lib/controls/deprecated-base-control.directive';
 export * from './lib/controls/control.model';
-export * from './lib/controls/textfield/base-text-field';
+export * from './lib/controls/form-field.model';
+export * from './lib/controls/textfield/deprecated-base-text-field.directive';
 export * from './lib/controls/textfield/text-field.module';
-export * from './lib/controls/textfield/select/select.component';
-export * from './lib/controls/textfield/input/input.component';
+export * from './lib/controls/textfield/select/deprecated-select.component';
+export * from './lib/controls/textfield/input/deprecated/deprecated-input.component';
 export * from './lib/controls/toggles/toggles.module';
-export * from './lib/controls/toggles/checkbox/checkbox.component';
+export * from './lib/controls/toggles/checkbox/deprecated-checkbox.component';
 
 export * from './lib/datetime/datetime.component';
 export * from './lib/datetime/datetime.module';

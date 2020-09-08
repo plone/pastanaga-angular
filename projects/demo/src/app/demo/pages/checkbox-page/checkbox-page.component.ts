@@ -11,9 +11,9 @@ export class CheckboxPageComponent {
     });
 
     disabledState = false;
-    code = `<pa-checkbox [disabled]="disabledState">Checkbox label</pa-checkbox>
-<pa-checkbox type="radio"
-             [disabled]="disabledState">Radio label</pa-checkbox>`;
+    code = `<pa-deprecated-checkbox [disabled]="disabledState">Checkbox label</pa-deprecated-checkbox>
+<pa-deprecated-checkbox type="radio"
+             [disabled]="disabledState">Radio label</pa-deprecated-checkbox>`;
 
     disableForm() {
         if (this.disabledState) {

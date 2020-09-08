@@ -1,5 +1,5 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { ToggleComponent } from './toggle.component';
+import { DeprecatedToggleComponent } from './deprecated-toggle.component';
 import { Component, ViewChild } from '@angular/core';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../../testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,24 +7,24 @@ import { By } from '@angular/platform-browser';
 
 
 @Component({
-    template: `<pa-toggle #toggle
+    template: `<pa-deprecated-toggle #toggle
                           id="toggle1"
                           name="toggle1"
                           [(ngModel)]="checked"
                           [hasFocus]="hasFocus"
-                >The label</pa-toggle>
+                >The label</pa-deprecated-toggle>
         <form id="form" [formGroup]="form">
-            <pa-toggle #toggleForm
+            <pa-deprecated-toggle #toggleForm
                        formControlName="checked"
-            >The label</pa-toggle>
+            >The label</pa-deprecated-toggle>
         </form>
     `,
 })
 export class TestComponent {
     checked?: boolean;
     hasFocus?: boolean;
-    @ViewChild('toggle') toggle?: ToggleComponent;
-    @ViewChild('toggleForm') toggleForm?: ToggleComponent;
+    @ViewChild('toggle') toggle?: DeprecatedToggleComponent;
+    @ViewChild('toggleForm') toggleForm?: DeprecatedToggleComponent;
 
     form: FormGroup = new FormGroup({
         checked: new FormControl()
@@ -45,7 +45,7 @@ describe('ToggleComponent', () => {
             providers: [
                 ...TESTING_PROVIDERS,
             ],
-            declarations: [ToggleComponent, TestComponent],
+            declarations: [DeprecatedToggleComponent, TestComponent],
         }).compileComponents();
     }));
 

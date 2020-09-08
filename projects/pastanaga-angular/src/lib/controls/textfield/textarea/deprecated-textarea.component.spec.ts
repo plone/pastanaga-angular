@@ -1,25 +1,25 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { TextareaComponent } from './textarea.component';
+import { DeprecatedTextareaComponent } from './deprecated-textarea.component';
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ErrorMessages } from '../base-text-field';
+import { ErrorMessages } from '../deprecated-base-text-field.directive';
 import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../../testing';
 
 describe('TextareaComponent', () => {
-    let component: TextareaComponent;
-    let fixture: ComponentFixture<TextareaComponent>;
+    let component: DeprecatedTextareaComponent;
+    let fixture: ComponentFixture<DeprecatedTextareaComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [],
-            declarations: [TextareaComponent],
+            declarations: [DeprecatedTextareaComponent],
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TextareaComponent);
+        fixture = TestBed.createComponent(DeprecatedTextareaComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -65,21 +65,21 @@ describe('TextareaComponent', () => {
 
 @Component({
     template: `
-        <pa-textarea #ngModelTextArea
+        <pa-deprecated-textarea #ngModelTextArea
                      class="ngModelTextArea"
                      [(ngModel)]="value"
                      [disabled]="disabledState"
                      [readonly]="readOnlyState"
                      [errorMessages]="errorMessages"
                      [errorMessage]="errorMessage"
-        >Label</pa-textarea>
+        >Label</pa-deprecated-textarea>
 
         <form id="form" [formGroup]="form">
-            <pa-textarea #reactiveFormTextArea
+            <pa-deprecated-textarea #reactiveFormTextArea
                          formControlName="text"
                          [readonly]="readOnlyState"
             >Label
-            </pa-textarea>
+            </pa-deprecated-textarea>
         </form>
     `,
 })
@@ -89,8 +89,8 @@ export class TestComponent {
     readOnlyState = false;
     errorMessages?: ErrorMessages;
     errorMessage?: string;
-    @ViewChild('ngModelTextArea') ngModelTextArea?: TextareaComponent;
-    @ViewChild('reactiveFormTextArea') reactiveFormTextArea?: TextareaComponent;
+    @ViewChild('ngModelTextArea') ngModelTextArea?: DeprecatedTextareaComponent;
+    @ViewChild('reactiveFormTextArea') reactiveFormTextArea?: DeprecatedTextareaComponent;
 
     form: FormGroup = new FormGroup({
         text: new FormControl()
@@ -109,7 +109,7 @@ describe('TextareaComponentValueAccessor', () => {
             providers: [
                 ...TESTING_PROVIDERS,
             ],
-            declarations: [TextareaComponent, TestComponent],
+            declarations: [DeprecatedTextareaComponent, TestComponent],
         }).compileComponents();
     }));
 

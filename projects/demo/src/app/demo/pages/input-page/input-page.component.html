@@ -1,116 +1,298 @@
 <pa-demo-page>
-    <pa-demo-title>Inputs</pa-demo-title>
-    <pa-demo-description>Basic input field</pa-demo-description>
+    <pa-demo-title>Input</pa-demo-title>
+    <pa-demo-description>
+        <p><code>pa-input</code> wraps an html <code>input</code> element and apply pastanaga's form field style.</p>
+        <p>As other pastanaga's form fields, <code>pa-input</code> supports 4 modes internally: <i>standalone, model, formControl and formControlName</i>, in order to be used in various context.</p>
+        <p><code>pa-input</code> also supports internal and external validation.</p>
+    </pa-demo-description>
 
     <pa-demo-examples>
-        <h3 class="typography">Basic form</h3>
-        <form #demoForm="ngForm">
-            <pa-input required
-                      ngModel
-                      placeholder="Placeholder"
-                      id="demo"
-                      name="demo"
-                      [disabled]="disabledState"
-                      [readonly]="readOnlyState"
-                      [errorMessages]="errorMessages"
-                      [errorMessage]="customError"
-            >
-                Label
-            </pa-input>
+        <pa-tabs>
+            <pa-tab (click)="selectedTab = 'standalone'"
+                    [active]="selectedTab === 'standalone'">Standalone</pa-tab>
+            <pa-tab (click)="selectedTab = 'ngModel'"
+                    [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControl'"
+                    [active]="selectedTab === 'formControl'">Form Control</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControlName'"
+                    [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
+        </pa-tabs>
+        <ul>
+            <li>valueChange = "{{valueChange}}"</li>
+            <li>debouncedValueChange = "{{debouncedValueChange}}"</li>
+            <li>KeyUp = "{{keyupEvent | json}}"</li>
+            <li>Enter = "{{enterEvent | json}}"</li>
+            <li>Blur = "{{blurEvent | json}}"</li>
+            <li>Focus = "{{focusEvent | json}}"</li>
+            <li *ngIf="selectedTab === 'ngModel'">ngModelChange = "{{ngModelChangeEvent}}"</li>
+            <li *ngIf="selectedTab === 'formControl'">formControlValueChange = "{{formControlValueChangeEvent}}"</li>
+            <li *ngIf="selectedTab === 'formControl'">formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
+            <li *ngIf="selectedTab === 'formControlName'">formControlValueChange = "{{formGroupValueChangeEvent | json}}"</li>
+            <li *ngIf="selectedTab === 'formControlName'">formControlStatusChange = "{{formGroupStatusChangeEvent}}"</li>
+        </ul>
+        <div *ngIf="selectedTab === 'standalone'">
+            <pa-input
+                [value]="value"
 
-            <pa-input required
-                      ngModel
-                      placeholder="Placeholder"
-                      help="Field help text message"
-                      id="demo-help"
-                      name="demo-help"
-                      [disabled]="disabledState"
-                      [readonly]="readOnlyState"
-                      [errorMessages]="errorMessages"
-                      [errorMessage]="customError"
-            >
-                Field with help
-            </pa-input>
-        </form>
-        <h3 class="typography">Login form</h3>
-        <form #loginForm="ngForm">
-            <pa-input required
-                      ngModel
-                      placeholder="Email"
-                      id="email"
-                      name="email"
-                      [disabled]="disabledState"
-                      [readonly]="readOnlyState"
-                      [errorMessages]="errorMessages"
-                      [errorMessage]="customError"
-            >
-                Email
-            </pa-input>
-            <pa-input required
-                      ngModel
-                      placeholder="Password"
-                      id="password"
-                      name="password"
-                      type="password"
-                      [disabled]="disabledState"
-                      [readonly]="readOnlyState"
-                      [errorMessages]="errorMessages"
-                      [errorMessage]="customError"
-            >
-                Password
-            </pa-input>
-            <pa-button kind="primary" [disabled]="loginForm.invalid">Login</pa-button>
-        </form>
+                [id]="id"
+                [name]="name"
+                [type]="type"
+                [help]="help"
+                [describedBy]="describedBy"
+                [disabled]="disabled"
+                [readonly]="readonly"
+                [hasFocus]="hasFocus"
+
+                [showAllErrors]="showAllErrors"
+                [errorMessages]="errorMessages"
+                [errorMessage]="errorMessage"
+                [updateOn]="updateOn"
+                [placeholder]="placeholder"
+                [required]="required"
+                [pattern]="pattern"
+                [min]="min"
+                [max]="max"
+                [maxlength]="maxlength"
+                [noAutoComplete]="noAutoComplete"
+                [acceptHtmlTags]="acceptHtmlTags"
+                [debounceDuration]="debounceDuration"
+
+                (valueChange)="valueChange = $event"
+                (debouncedValueChange)="debouncedValueChange = $event"
+                (keyUp)="keyupEvent = $event"
+                (enter)="enterEvent = $event"
+                (blurring)="blurEvent = $event"
+                (focusing)="focusEvent = $event"
+            >Label</pa-input>
+
+        </div>
+        <div *ngIf="selectedTab === 'ngModel'">
+            <pa-input
+                [(ngModel)]="value"
+
+                [id]="id"
+                [name]="name"
+                [type]="type"
+                [help]="help"
+                [describedBy]="describedBy"
+                [disabled]="disabled"
+                [readonly]="readonly"
+                [hasFocus]="hasFocus"
+
+                [showAllErrors]="showAllErrors"
+                [errorMessages]="errorMessages"
+                [errorMessage]="errorMessage"
+                [placeholder]="placeholder"
+                [required]="required"
+                [pattern]="pattern"
+                [min]="min"
+                [max]="max"
+                [maxlength]="maxlength"
+                [noAutoComplete]="noAutoComplete"
+                [acceptHtmlTags]="acceptHtmlTags"
+                [debounceDuration]="debounceDuration"
+
+                (valueChange)="valueChange = $event"
+                (debouncedValueChange)="debouncedValueChange = $event"
+                (keyUp)="keyupEvent = $event"
+                (enter)="enterEvent = $event"
+                (blurring)="blurEvent = $event"
+                (focusing)="focusEvent = $event"
+                (ngModelChange)="onModelChange()"
+            >Label</pa-input>
+
+        </div>
+        <div *ngIf="selectedTab === 'formControl'">
+            <pa-input
+                [formControl]="formControl"
+
+                [id]="id"
+                [name]="name"
+                [type]="type"
+                [help]="help"
+                [describedBy]="describedBy"
+                [readonly]="readonly"
+                [hasFocus]="hasFocus"
+
+                [showAllErrors]="showAllErrors"
+                [errorMessages]="errorMessages"
+                [errorMessage]="errorMessage"
+                [placeholder]="placeholder"
+                [required]="required"
+                [pattern]="pattern"
+                [min]="min"
+                [max]="max"
+                [maxlength]="maxlength"
+                [noAutoComplete]="noAutoComplete"
+                [acceptHtmlTags]="acceptHtmlTags"
+                [debounceDuration]="debounceDuration"
+
+                (valueChange)="valueChange = $event"
+                (debouncedValueChange)="debouncedValueChange = $event"
+                (keyUp)="keyupEvent = $event"
+                (enter)="enterEvent = $event"
+                (blurring)="blurEvent = $event"
+                (focusing)="focusEvent = $event"
+            >Label</pa-input>
+        </div>
+        <div *ngIf="selectedTab === 'formControlName'">
+            <form [formGroup]="formGroup">
+                <pa-input
+                    formControlName="text"
+                    [id]="id"
+                    [name]="name"
+                    [type]="type"
+                    [help]="help"
+                    [describedBy]="describedBy"
+                    [readonly]="readonly"
+                    [hasFocus]="hasFocus"
+
+                    [showAllErrors]="showAllErrors"
+                    [errorMessages]="errorMessages"
+                    [errorMessage]="errorMessage"
+                    [placeholder]="placeholder"
+                    [required]="required"
+                    [pattern]="pattern"
+                    [min]="min"
+                    [max]="max"
+                    [maxlength]="maxlength"
+                    [noAutoComplete]="noAutoComplete"
+                    [acceptHtmlTags]="acceptHtmlTags"
+                    [debounceDuration]="debounceDuration"
+
+                    (valueChange)="valueChange = $event"
+                    (debouncedValueChange)="debouncedValueChange = $event"
+                    (keyUp)="keyupEvent = $event"
+                    (enter)="enterEvent = $event"
+                    (blurring)="blurEvent = $event"
+                    (focusing)="focusEvent = $event"
+                >Label
+                </pa-input>
+            </form>
+        </div>
+
     </pa-demo-examples>
     <pa-demo-configuration>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button size="small" aspect="solid"
-                       (click)="toggleCustomErrorMessage()">
-                {{!!customError ? 'Reset custom error' : 'Set custom error message'}}
-            </pa-button>
-        </div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!value" (selectedChange)="changeValue()">parent value: {{value}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!placeholder" (selectedChange)="changePlaceholder()">placeholder</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!help" (selectedChange)="changeHelp()">help message</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!hasFocus" (selectedChange)="changeFocus()">focus</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="readonly" (selectedChange)="changeReadonly()">readonly</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="disabled" (selectedChange)="changeDisable()">disabled</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!errorMessage" (selectedChange)="changeErrorMessage()">errorMessage</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="showAllErrors" (selectedChange)="changeShowAllErrors()">showAllErrors</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!errorMessages" (selectedChange)="changeErrorMessages()">errorMessages</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="required" (selectedChange)="changeRequired()">required</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!pattern" (selectedChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!min" (selectedChange)="changeMin()">min {{min}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!max" (selectedChange)="changeMax()">max {{max}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!maxlength" (selectedChange)="changeMaxlength()">maxlength {{maxlength}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="noAutoComplete" (selectedChange)="changeNoAutoComplete()">noAutoComplete</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="acceptHtmlTags" (selectedChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="type === 'text'" (selectedChange)="changeType()">type {{type}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox *ngIf="selectedTab === 'standalone'" [selected]="!!updateOn" (selectedChange)="changeUpdateOn()">updateOn {{updateOn}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!debounceDuration" (selectedChange)="changeDebounceDuration()">debounceDuration {{debounceDuration}}</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!id" (selectedChange)="changeId()">id</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!name" (selectedChange)="changeName()">name</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!describedBy" (selectedChange)="changeDescribedBy()">describedBy</pa-deprecated-checkbox></div>
+
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <pa-demo-base-textfield></pa-demo-base-textfield>
+        <h2>Inherited from <code>BaseControl</code></h2>
+        <pa-demo-base-control-usage></pa-demo-base-control-usage>
 
         <br>
         <h2>Specific to <code>InputComponent</code></h2>
         <h3>Inputs</h3>
+        <dt>type: TextInputType</dt>
+        <dd>Input type: text | number | password... <small>(default: text)</small></dd>
+        <dt>placeholder</dt>
+        <dd>Field's placeholder <small>(optional)</small></dd>
+        <dt>required: boolean</dt>
+        <dd>Adds an internal Validators.required <small>(default: false)</small></dd>
+        <dt>pattern: RegExp | string</dt>
+        <dd>Adds an internal Validators.pattern. Allows to validate field value according a regular expression <small>(optional)</small></dd>
+        <dt>min: number</dt>
+        <dd>Adds an internal Validators.min. <small>(optional)</small></dd>
+        <dt>max: number</dt>
+        <dd>Adds an internal Validators.max. <small>(optional)</small></dd>
+        <dt>maxlength: number</dt>
+        <dd>Adds an internal Validators.maxLength. <small>(optional)</small></dd>
+        <dt>noAutoComplete: boolean</dt>
+        <dd>Set autocomplete attribute to <code>off</code> <small>(default: false)</small></dd>
+        <dt>acceptHtmlTags: boolean</dt>
+        <dd>Allow to render/enter HTML tags in the field. Enabling this can have an impact on the security of your app, to be use with caution. <small>(default: false)</small></dd>
+        <dt>debounceDuration: number</dt>
+        <dd>Duration (in milliseconds) used to debounce values emitted by <code>debouncedValueChange</code> <small>(default: 500ms)</small></dd>
+
+        <h3>Outputs</h3>
         <dl>
-            <dt>acceptHtmlTags</dt>
-            <dd>Allow to render/enter HTML tags in the field. Enabling this can have an impact on the security of your app, to be use with caution. <small>(default: false)</small></dd>
+            <dt>blurring</dt>
+            <dd>Emits current value on blur</dd>
 
-            <dt>hasFocus</dt>
-            <dd>Set to true to give focus on the input by default <small>(default: false)</small></dd>
+            <dt>enter</dt>
+            <dd>Emits <code>KeyboardEvent</code> and <code>string</code> value when pressing enter</dd>
 
-            <dt>max</dt>
-            <dd>Max value available for input of type number <small>(optional)</small></dd>
+            <dt>focusing</dt>
+            <dd>Emits <code>FocusEvent</code> on focus</dd>
 
-            <dt>maxlength</dt>
-            <dd>Max number of characters allowed for input of type text <small>(optional)</small></dd>
+            <dt>valueChange</dt>
+            <dd>Emits value as soon as it changes. Only available when input is in standalone mode.</dd>
 
-            <dt>min</dt>
-            <dd>Min value available for input of type number <small>(optional)</small></dd>
+            <dt>keyUp</dt>
+            <dd>Emits <code>string</code> value on key up event</dd>
 
-            <dt>noAutoComplete</dt>
-            <dd>Set autocomplete attribute to <code>off</code> <small>(default: false)</small></dd>
-
-            <dt>type</dt>
-            <dd>Input type: text | number <small>(default: text)</small></dd>
+            <dt>debouncedValueChange</dt>
+            <dd>Emits current value after a debounce time defined by <code>debounceDuration</code> input</dd>
         </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
-        <h3>HTML</h3>
-        <pre><code>{{htmlExample}}</code></pre>
-        <h3>Typescript</h3>
-        <pre><code>{{tsExample}}</code></pre>
+        <pa-tabs>
+            <pa-tab (click)="selectedTab = 'standalone'"
+                    [active]="selectedTab === 'standalone'">Standalone</pa-tab>
+            <pa-tab (click)="selectedTab = 'ngModel'"
+                    [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControl'"
+                    [active]="selectedTab === 'formControl'">Form Control</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControlName'"
+                    [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
+        </pa-tabs>
+        <br>
+        <div *ngIf="selectedTab === 'standalone'">
+            <h3>basic usage</h3>
+            <pre><code>{{standaloneBasicCode}}</code></pre>
+            <h3>full usage</h3>
+            <pre><code>{{standaloneFullCode}}</code></pre>
+        </div>
+        <div *ngIf="selectedTab === 'ngModel'">
+            <h3>basic usage</h3>
+            <pre><code>{{ngModelBasicCode}}</code></pre>
+            <h3>with angular validation and internal validation</h3>
+            <pre><code>{{ngModelValidationCode}}</code></pre>
+            <h3>full usage</h3>
+            <pre><code>{{ngModelFullCode}}</code></pre>
+
+        </div>
+        <div *ngIf="selectedTab === 'formControl'">
+            <h3>basic usage</h3>
+            <pre><code>{{formControlBasicCode}}</code></pre>
+            <h3>with reactive form validation and internal validation</h3>
+            <pre><code>{{formControlValidationCodeTs}}</code></pre>
+            <pre><code>{{formControlValidationCodeHtml}}</code></pre>
+            <h3>full usage</h3>
+            <pre><code>{{formControlFullCode}}</code></pre>
+        </div>
+        <div *ngIf="selectedTab === 'formControlName'">
+            <h3>basic usage</h3>
+            <pre><code>{{formControlNameBasicCode}}</code></pre>
+            <h3>with reactive form validation and internal validation</h3>
+            <pre><code>{{formControlNameValidationCodeTs}}</code></pre>
+            <pre><code>{{formControlNameValidationCodeHtml}}</code></pre>
+            <h3>full usage</h3>
+            <pre><code>{{formControlNameFullCode}}</code></pre>
+        </div>
+
     </pa-demo-code>
 </pa-demo-page>

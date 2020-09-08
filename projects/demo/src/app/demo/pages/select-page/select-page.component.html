@@ -13,7 +13,7 @@
         <div class="cols">
             <div class="row">
                 <div class="col1">
-                    <pa-select label="Select with options passed through template"
+                    <pa-deprecated-select label="Select with options passed through template"
                                placeholder="Placeholder"
                                [(value)]="selectedValue1"
                                [disabled]="disabledState"
@@ -27,7 +27,7 @@
                         <pa-option value="group1" disabled>Group 1</pa-option>
                         <pa-option value="group2">Group 2</pa-option>
                         <pa-option value="group3">Group 3</pa-option>
-                    </pa-select>
+                    </pa-deprecated-select>
                 </div>
                 <div class="col2">
                     <p>Selected value: {{selectedValue1}}</p>
@@ -36,13 +36,13 @@
 
             <div class="row">
                 <div class="col1">
-                    <pa-select label="Select with options passed as parameter"
+                    <pa-deprecated-select label="Select with options passed as parameter"
                                placeholder="Placeholder"
                                [options]="options"
                                [(value)]="selectedValue2"
                                [disabled]="disabledState"
                                [readonly]="readOnlyState"
-                    ></pa-select>
+                    ></pa-deprecated-select>
                 </div>
                 <div class="col2">
                     <p>Selected value: {{selectedValue2}}</p>
@@ -50,7 +50,7 @@
             </div>
             <div class="row">
                 <div class="col1">
-                    <pa-select label="Select with no option preselected"
+                    <pa-deprecated-select label="Select with no option preselected"
                                placeholder="Placeholder"
                                [(value)]="selectedValue3"
                                [disabled]="disabledState"
@@ -63,7 +63,7 @@
                         <pa-option value="group1" disabled>Group 1</pa-option>
                         <pa-option value="group2">Group 2</pa-option>
                         <pa-option value="group3">Group 3</pa-option>
-                    </pa-select>
+                    </pa-deprecated-select>
                 </div>
                 <div class="col2">
                     <p>Selected value: {{selectedValue3}}</p>
@@ -73,15 +73,15 @@
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-checkbox>
+            <pa-deprecated-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-deprecated-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-checkbox>
+            <pa-deprecated-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-deprecated-checkbox>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <pa-demo-base-textfield></pa-demo-base-textfield>
+        <pa-demo-deprecated-base-textfield></pa-demo-deprecated-base-textfield>
 
         <br>
         <h2>Specific to <code>SelectComponent</code></h2>

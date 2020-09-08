@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckboxComponent } from './checkbox/checkbox.component';
-import { ToggleComponent } from './toggle/toggle.component';
+import { DeprecatedCheckboxComponent } from './checkbox/deprecated-checkbox.component';
+import { DeprecatedToggleComponent } from './toggle/deprecated-toggle.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [CheckboxComponent, ToggleComponent],
+    declarations: [DeprecatedCheckboxComponent, DeprecatedToggleComponent],
     imports: [CommonModule, FormsModule],
-    exports: [CheckboxComponent, ToggleComponent],
+    exports: [DeprecatedCheckboxComponent, DeprecatedToggleComponent],
 })
 export class PaTogglesModule {}

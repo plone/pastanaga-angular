@@ -4,7 +4,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
 import { ButtonPageComponent } from './demo/pages/button-page/button-page.component';
 import { IconPageComponent } from './demo/pages/icon-page/icon-page.component';
-import { InputPageComponent } from './demo/pages/input-page/input-page.component';
+import { DeprecatedInputPageComponent } from './demo/pages/input-page/deprecated-input-page.component';
 import { CheckboxPageComponent } from './demo/pages/checkbox-page/checkbox-page.component';
 import { TranslatePageComponent } from './demo/pages/translate-page/translate-page.component';
 import { PopupPageComponent } from './demo/pages/popup-page/popup-page.component';
@@ -23,6 +23,7 @@ import { PalettePageComponent } from './demo/pages/palette-page/palette-page.com
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
 import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
 import { markForCheck, PastanagaService } from '../../../pastanaga-angular/src';
+import { InputPageComponent } from './demo/pages/input-page/input-page.component';
 
 @Component({
     selector: 'app-root',
@@ -60,7 +61,8 @@ export class AppComponent {
             title: 'Form elements',
             pages: [
                 { view: 'checkbox', title: 'Checkbox', type: CheckboxPageComponent },
-                { view: 'input', title: 'Input', type: InputPageComponent },
+                { view: 'deprecatedInput', title: 'Input (Deprecated)', type: DeprecatedInputPageComponent },
+                { view: 'Input', title: 'Input', type: InputPageComponent },
                 { view: 'select', title: 'Select', type: SelectPageComponent },
                 { view: 'textarea', title: 'Textarea', type: TextareaPageComponent },
                 { view: 'toggle', title: 'Toggle', type: TogglePageComponent },

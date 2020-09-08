@@ -1,38 +1,38 @@
-<div class="pa-field"
-     [class.pa-field-error]="_hasError || !!_errorMessage"
->
-    <input #inputElement
+<div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
+    <input #htmlInput
            class="pa-field-control"
-           [class.pa-field-control-filled]="!!_value || _value === 0"
-           [id]="_id"
-           [name]="_name"
+           [class.pa-field-control-filled]="!!model || model === 0"
+           [(ngModel)]="model"
+           [ngModelOptions]="{standalone: _internalMode === 'standalone'}"
+           [id]="_elementId"
+           [attr.name]="_name"
            [type]="type"
-           [value]="_value"
-           [disabled]="_disabled"
-           [readonly]="_readonly"
-           [required]="_required"
-           [attr.placeholder]="_placeholder"
-           [attr.autocomplete]="_noAutoComplete ? 'off' : undefined"
+           [disabled]="control.disabled"
            [attr.maxlength]="maxlength"
            [attr.aria-label]="_label"
-           [attr.aria-disabled]="_disabled"
-           [attr.aria-readonly]="_readonly"
-           [attr.aria-required]="_required"
-           [attr.aria-describedby]="_helpId"
-           [attr.aria-errormessage]="_helpId"
-           (change)="change($event.target.value)"
-           (keyup)="onKeyUp($event)"
+           [attr.aria-describedby]="_describedBy"
+           [attr.placeholder]="placeholder"
+           [attr.autocomplete]="_noAutoComplete ? 'off' : undefined"
+           [readonly]="_readonly"
+           [required]="required"
+
+           (input)="onChange($event.target.value)"
            (blur)="onBlur()"
+           (keyup)="onKeyUp($event)"
            (focus)="onFocus($event)"
     >
-    <label #labelElement
+
+    <label #label
            class="pa-field-label"
            [for]="_id"
-           aria-hidden="true"
+           [attr.aria-owns]="_id"
     ><ng-content></ng-content></label>
-    <small *ngIf="_errorMessage || _help"
+
+    <small *ngIf="_errorHelp || _help"
            class="pa-field-help"
+           aria-live="polite"
            [id]="_helpId"
-           [class.pa-field-help-error]="!!_errorMessage"
-           [innerHTML]="_errorMessage || _help"></small>
+           [attr.aria-owns]="_id"
+           [class.pa-field-help-error]="!!_errorHelp "
+           [innerHTML]="_errorHelp || _help"></small>
 </div>

@@ -5,25 +5,25 @@
 
     <pa-demo-examples>
         <div>
-            <pa-checkbox [disabled]="disabledState">Checkbox label</pa-checkbox>
+            <pa-deprecated-checkbox [disabled]="disabledState">Checkbox label</pa-deprecated-checkbox>
         </div>
         <div>
-            <pa-checkbox type="radio"
-                          [disabled]="disabledState">Radio label</pa-checkbox>
+            <pa-deprecated-checkbox type="radio"
+                          [disabled]="disabledState">Radio label</pa-deprecated-checkbox>
         </div>
         <div><form [formGroup]="form">
-            <pa-checkbox formControlName="checkbox">Using reactive form</pa-checkbox>
+            <pa-deprecated-checkbox formControlName="checkbox">Using reactive form</pa-deprecated-checkbox>
         </form></div>
     </pa-demo-examples>
 
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled" [(selected)]="disabledState" (selectedChange)="disableForm()">Disabled state</pa-checkbox>
+            <pa-deprecated-checkbox id="disabled" [(selected)]="disabledState" (selectedChange)="disableForm()">Disabled state</pa-deprecated-checkbox>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <pa-demo-base-control></pa-demo-base-control>
+        <pa-demo-deprecated-base-control></pa-demo-deprecated-base-control>
 
         <h3>Specific to <code>CheckboxComponent</code></h3>
         <h4>Inputs</h4>

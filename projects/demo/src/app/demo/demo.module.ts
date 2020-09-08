@@ -30,31 +30,33 @@ import {
     PaToastModule,
     PaModalModule,
 } from '../../../../pastanaga-angular/src';
-import { InputPageComponent } from './pages/input-page/input-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
-import { BaseTextfieldComponent } from './pages/common-doc/base-textfield/base-textfield.component';
-import { BaseControlComponent } from './pages/common-doc/base-control/base-control.component';
-import { PopupPageComponent } from './pages/popup-page/popup-page.component';
-import { BasicPopupComponent } from './pages/popup-page/basic-popup.component';
-import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
-import { SelectPageComponent } from './pages/select-page/select-page.component';
-import { GridPageComponent } from './pages/grid-page/grid-page.component';
-import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
-import { TablePageComponent } from './pages/table-page/table-page.component';
-import { TextareaPageComponent } from './pages/text-area-page/textarea-page.component';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
+import { BaseControlUsageComponent } from './pages/common-doc/base-control/base-control-usage.component';
+import { BasicPopupComponent } from './pages/popup-page/basic-popup.component';
+import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
+import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
-import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
-import { ToastPageComponent } from './pages/toast-page/toast-page.component';
-import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
-import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
-import { PalettePageComponent } from './pages/palette-page/palette-page.component';
-import { ModalPageComponent } from './pages/modal-page/modal-page.component';
 import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
+import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
+import { DeprecatedBaseControlComponent } from './pages/common-doc/base-control/deprecated-base-control.component';
+import { DeprecatedBaseTextfieldComponent } from './pages/common-doc/base-textfield/deprecated-base-textfield.component';
+import { DeprecatedInputPageComponent } from './pages/input-page/deprecated-input-page.component';
+import { GridPageComponent } from './pages/grid-page/grid-page.component';
+import { InputPageComponent } from './pages/input-page/input-page.component';
 import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
-import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
+import { ModalPageComponent } from './pages/modal-page/modal-page.component';
+import { PalettePageComponent } from './pages/palette-page/palette-page.component';
+import { PopupPageComponent } from './pages/popup-page/popup-page.component';
+import { SelectPageComponent } from './pages/select-page/select-page.component';
+import { TablePageComponent } from './pages/table-page/table-page.component';
+import { TabsPageComponent } from './pages/tabs-page/tabs-page.component';
+import { TextareaPageComponent } from './pages/text-area-page/textarea-page.component';
+import { ToastPageComponent } from './pages/toast-page/toast-page.component';
+import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
+import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
+import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -66,8 +68,9 @@ const COMPONENTS = [
     DemoCodeDirective,
     DemoConfigurationDirective,
 
-    BaseControlComponent,
-    BaseTextfieldComponent,
+    BaseControlUsageComponent,
+    DeprecatedBaseControlComponent,
+    DeprecatedBaseTextfieldComponent,
     DialogExampleComponent,
     DialogImageExampleComponent,
     ModalExampleComponent,
@@ -78,6 +81,7 @@ const COMPONENTS = [
     ButtonPageComponent,
     CheckboxPageComponent,
     DateTimePageComponent,
+    DeprecatedInputPageComponent,
     DropdownPageComponent,
     GridPageComponent,
     IconPageComponent,
