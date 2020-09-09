@@ -1,5 +1,19 @@
 @import "variables";
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: $border-field-autofilled;
+    -webkit-text-fill-color: inherit;
+    -webkit-box-shadow: 0 0 0 0 $color-background-field-autofilled inset;
+}
+
 .pa-field {
     position: relative;
     margin-bottom: $margin-bottom-field;
@@ -72,6 +86,13 @@
                 transform: scale(.8) translateY(-2rem) translateX(-.25rem);
                 padding: 0 rhythm(.5);
             }
+        }
+        &.cdk-text-field-autofilled:not(:disabled):not(:read-only) {
+            &~.pa-field-label {
+                background: linear-gradient(180deg, #FFFFFF 62.42%, rgba(229, 243, 255, 0) 63.83%, $color-background-field-autofilled 100%);
+                color: $color-text-field-label-autofilled;
+            }
+            border: $border-field-autofilled;
         }
 
         &:disabled {

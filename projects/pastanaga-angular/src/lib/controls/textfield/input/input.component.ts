@@ -102,7 +102,6 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     _label = '';
     _fieldType: TextInputType = 'text';
     _noAutoComplete = false;
-    _autofilled = false;
     _acceptHtmlTags = false;
     _debouncedTime = 500;
     debounceTimeChanged: Subject<void> = new Subject();
@@ -297,15 +296,15 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
 
     private handleBrowserAutoFill() {
         if (this.platform.isBrowser && !!this.htmlElement) {
-            this.autofillMonitor.monitor(this.htmlElement).subscribe((event) => {
-                this._autofilled = event.isAutofilled;
-                // get html value and apply valueChange
-                const val = this.htmlElement.value;
-                if (val && this._autofilled && !this._noAutoComplete) {
-                    this.control.markAsDirty();
-                    this.onValueChange(val);
-                }
-            });
+            this.autofillMonitor
+                .monitor(this.htmlElement)
+                .pipe(takeUntil(this.terminator))
+                .subscribe((event) => {
+                    if (this.htmlElement.value && event.isAutofilled && !this._noAutoComplete) {
+                        this.control.markAsDirty();
+                        this.onValueChange(this.htmlElement.value);
+                    }
+                });
         }
     }
 
