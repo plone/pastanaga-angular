@@ -89,7 +89,7 @@ select:-webkit-autofill:focus {
         }
         &.cdk-text-field-autofilled:not(:disabled):not(:read-only) {
             &~.pa-field-label {
-                background: linear-gradient(180deg, #FFFFFF 62.42%, rgba(229, 243, 255, 0) 63.83%, $color-background-field-autofilled 100%);
+                background: linear-gradient(180deg, $color-background-field-regular 62.42%, $color-background-field-autofilled-transparent 63.83%, $color-background-field-autofilled 100%);
                 color: $color-text-field-label-autofilled;
             }
             border: $border-field-autofilled;

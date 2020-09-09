@@ -6,6 +6,7 @@
 // COLORS
 //=====================================
 $color-autofilled-background: hsl(208, 100%, 95%);
+$color-autofilled-background-transparent: hsla(208, 100%, 95%, 0);
 $color-autofilled: hsl(223, 100%, 50%);
 //
 // label
@@ -29,6 +30,7 @@ $color-caret-field-control-error: $color-accent-secondary-default !default;
 
 $color-background-field-regular: $color-neutral-primary-lightest !default;
 $color-background-field-autofilled: $color-autofilled-background !default;
+$color-background-field-autofilled-transparent: $color-autofilled-background !default;
 
 //=====================================
 // BORDERS
