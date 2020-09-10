@@ -1,3 +1,9 @@
+# 2.6.3 (2020-09-10)
+
+### Bugfix
+- **form fields**: detect changes of ids before rendering [jCarret]
+
+
 # 2.6.2 (2020-09-10)
 
 ### Bugfix
