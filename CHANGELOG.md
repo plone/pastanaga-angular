@@ -1,3 +1,14 @@
+# 2.6.2 (2020-09-10)
+
+### Bugfix
+- **Table**: don't hide menu button on mobile/tablet [mpellerin42]
+
+### Improvements
+- **Table**: [mpellerin42]
+    - center cell content
+    - improve menu button style
+- **Input** documentation [mpellerin42]
+
 # 2.6.1 (2020-09-09)
 
 ### Improvements
