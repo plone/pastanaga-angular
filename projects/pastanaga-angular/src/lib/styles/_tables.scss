@@ -13,7 +13,7 @@
     .pa-table-grid--header {
         position: sticky;
         top: 0;
-        padding: rhythm(1.5) rhythm(0.75);
+        padding: rhythm(1) rhythm(0.75);
 
         background: $color-background-table-header;
         border-bottom: 1px $color-border-table-header solid;
@@ -31,16 +31,13 @@
 
     .pa-table-grid--header {
         border-bottom: 1px $color-border-table-row solid;
-        padding: rhythm(1.5) rhythm(0.75);
+        padding: rhythm(1) rhythm(0.75);
         background:$color-background-table-row;
     }
 
     .pa-table-grid--row:hover .pa-table-grid--header,
     .pa-table-grid--row:hover .pa-table-grid--cell {
         background: $color-background-table-row-hover;
-    }
-    .pa-table-grid--row:hover .pa-table-grid--menu-cell pa-button {
-        opacity: 1;
     }
 
     /*
@@ -78,22 +75,29 @@
     padding: rhythm(1.5) rhythm(0.75);
     background: $color-background-table-row;
     color: $color-text-table-row;
+    display: flex;
+    align-items: center;
 }
 
 .pa-table-grid--menu-cell {
     text-align: center;
 
-    &:not(.pa-table-grid--header) pa-button {
-        opacity: 0;
-    }
     .pa-button {
         background: $color-background-table-menu-button !important;
 
         &:hover {
             background: $color-background-table-menu-button-hover !important;
+
+            svg {
+                fill: $color-icon-table-menu-button-hover !important;
+            }
         }
         &:active {
             background: $color-background-table-menu-button-active !important;
+        }
+
+        svg {
+            fill: $color-icon-table-menu-button !important;
         }
     }
 }
@@ -102,4 +106,17 @@
 // ignore Angular components
 pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell, pa-table-cell-menu {
     display: contents;
+}
+
+
+@media (min-width: $size-viewport-large-min) {
+    .pa-table-grid--cell {
+        cursor: default;
+    }
+    .pa-table-grid--menu-cell:not(.pa-table-grid--header) pa-button {
+        opacity: 0;
+    }
+    .pa-table-grid--row:hover .pa-table-grid--menu-cell pa-button {
+        opacity: 1;
+    }
 }
