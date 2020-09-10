@@ -84,6 +84,11 @@ export function thenFieldControlHasId(fixture: ComponentFixture<any>, id: string
     expect(control.properties['id']).toEqual(id);
 }
 
+export function thenFieldControlByCssHasId(fixture: ComponentFixture<any>, selector: string, id: string) {
+    const control = fixture.debugElement.query(By.css(`${selector} .pa-field-control`));
+    expect(control.properties['id']).toEqual(id);
+}
+
 export function thenFieldControlHasName(fixture: ComponentFixture<any>, name?: string | null) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.attributes['name']).toEqual(name);

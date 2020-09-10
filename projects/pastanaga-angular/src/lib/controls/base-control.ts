@@ -427,5 +427,6 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
         }
         this._helpId = `${this._elementId}-help`;
         this.updateDescribedBy();
+        markForCheck(this.cdr);
     }
 }
