@@ -1,3 +1,9 @@
+# 2.6.1 (2020-09-09)
+
+### Improvements
+- **Form fields auto-fill style**: added custom style for browser's autofill on form fields [jCarret]
+
+
 # 2.6.0 (2020-09-08)
 
 ### Breaking changes

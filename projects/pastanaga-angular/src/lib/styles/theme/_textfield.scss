@@ -5,6 +5,9 @@
 //=====================================
 // COLORS
 //=====================================
+$color-autofilled-background: hsl(208, 100%, 95%);
+$color-autofilled-background-transparent: hsla(208, 100%, 95%, 0);
+$color-autofilled: hsl(223, 100%, 50%);
 //
 // label
 //
@@ -12,6 +15,7 @@ $color-text-field-label-regular: $color-neutral-secondary-default !default;
 $color-text-field-label-regular-active: $color-accent-primary-default !default;
 $color-text-field-label-disabled: $color-neutral-secondary-light !default;
 $color-text-field-label-error: $color-accent-secondary-default !default;
+$color-text-field-label-autofilled: $color-autofilled !default;
 
 //
 // control
@@ -25,6 +29,8 @@ $color-caret-field-control-active: $color-accent-primary-default !default;
 $color-caret-field-control-error: $color-accent-secondary-default !default;
 
 $color-background-field-regular: $color-neutral-primary-lightest !default;
+$color-background-field-autofilled: $color-autofilled-background !default;
+$color-background-field-autofilled-transparent: $color-autofilled-background !default;
 
 //=====================================
 // BORDERS
@@ -42,6 +48,7 @@ $border-field-error-active: $border-width-active solid $color-accent-secondary-d
 
 $border-field-disabled: $border-width-regular solid $color-neutral-secondary-light !default;
 $border-field-readonly: $border-width-regular dashed $color-neutral-secondary-light !default;
+$border-field-autofilled: $border-width-regular solid $color-autofilled !default;
 
 $border-radius-field: $border-radius-default !default;
 
