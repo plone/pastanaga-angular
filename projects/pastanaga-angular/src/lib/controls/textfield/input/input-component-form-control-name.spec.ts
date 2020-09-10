@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import {
     clearFakeAsyncZone,
-    initTest,
+    initTest, thenFieldControlByCssHasId, thenFieldControlHasId,
     thenFieldControlHasValue,
     thenFieldControlIsDisabled,
     whenFormControlSetValue,
@@ -234,4 +234,34 @@ describe('InputFieldComponent FormControlName', () => {
     it('should propagate focus', fakeAsync(() => testOnFocus(fixture)));
 
     it('should propagate blur', fakeAsync(() => testOnBlur(fixture)));
+});
+
+@Component({
+    template: ` <form [formGroup]="form">
+        <pa-input class="paInput1" #paInput1 formControlName="text1"></pa-input>
+        <pa-input class="paInput2" #paInput2 formControlName="text2"></pa-input>
+        <pa-input class="paInput3" #paInput3 formControlName="text3"></pa-input>
+    </form>`,
+})
+export class TestFormIdsComponent {
+    @ViewChild('paInput') paField?: InputComponent;
+    form = new FormGroup({
+        text1: new FormControl(),
+        text2: new FormControl(),
+        text3: new FormControl(),
+    });
+}
+describe('InputFieldComponent id in forms', () => {
+    let fixture: ComponentFixture<TestFormIdsComponent>;
+    beforeEach(async(() => {
+        fixture = initTest(TestFormIdsComponent);
+    }));
+
+    it('should assign id', fakeAsync(() => {
+        clearFakeAsyncZone(fixture);
+        thenFieldControlByCssHasId(fixture, '.paInput1', 'input-1');
+        thenFieldControlByCssHasId(fixture, '.paInput2', 'input-2');
+        thenFieldControlByCssHasId(fixture, '.paInput3', 'input-3');
+
+    }));
 });
