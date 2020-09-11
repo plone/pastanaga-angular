@@ -4,7 +4,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import {
     clearFakeAsyncZone,
-    initTest, thenFieldControlByCssHasId, thenFieldControlHasId,
+    initTest,
+    thenFieldControlByCssHasId,
     thenFieldControlHasValue,
     thenFieldControlIsDisabled,
     whenFormControlSetValue,
@@ -104,7 +105,7 @@ export class TestComponent {
     noAutoComplete = false;
     acceptHtmlTags = false;
     // avoid debouncing for most input-component-tests
-    debounceDuration? = 0;
+    debounceDuration = 0;
 
     onValueChange(event: any) {}
 
@@ -238,9 +239,9 @@ describe('InputFieldComponent FormControlName', () => {
 
 @Component({
     template: ` <form [formGroup]="form">
-        <pa-input class="paInput1" #paInput1 formControlName="text1"></pa-input>
-        <pa-input class="paInput2" #paInput2 formControlName="text2"></pa-input>
-        <pa-input class="paInput3" #paInput3 formControlName="text3"></pa-input>
+        <pa-input class="paInput1" id="first" #paInput1 formControlName="text1"></pa-input>
+        <pa-input class="paInput2" id="second" #paInput2 formControlName="text2"></pa-input>
+        <pa-input class="paInput3" id="third" #paInput3 formControlName="text3"></pa-input>
     </form>`,
 })
 export class TestFormIdsComponent {
@@ -259,9 +260,8 @@ describe('InputFieldComponent id in forms', () => {
 
     it('should assign id', fakeAsync(() => {
         clearFakeAsyncZone(fixture);
-        thenFieldControlByCssHasId(fixture, '.paInput1', 'input-1');
-        thenFieldControlByCssHasId(fixture, '.paInput2', 'input-2');
-        thenFieldControlByCssHasId(fixture, '.paInput3', 'input-3');
-
+        thenFieldControlByCssHasId(fixture, '.paInput1', 'first-input');
+        thenFieldControlByCssHasId(fixture, '.paInput2', 'second-input');
+        thenFieldControlByCssHasId(fixture, '.paInput3', 'third-input');
     }));
 });

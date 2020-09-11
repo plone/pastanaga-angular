@@ -80,8 +80,11 @@ export class TablePageComponent {
     </pa-table-row>
 </pa-table>`;
 
+    rowSelected = false;
+
     clickRow() {
         console.log('Row has been clicked');
+        this.rowSelected = !this.rowSelected;
     }
 
     openMenu($event: MouseEvent) {
