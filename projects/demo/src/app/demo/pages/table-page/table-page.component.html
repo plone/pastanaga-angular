@@ -15,8 +15,7 @@
                     <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Header menu button</pa-button>
                 </pa-table-cell-menu>
             </pa-table-header>
-            <pa-table-row-header>Today</pa-table-row-header>
-            <pa-table-row (click)="clickRow()" clickable>
+            <pa-table-row [class.pa-selected]="rowSelected" (click)="clickRow()" clickable>
                 <pa-table-cell header>My_text_file.txt</pa-table-cell>
                 <pa-table-cell>Bonjour, Occitania, França, Jenesepas</pa-table-cell>
                 <pa-table-cell>(AC) | (GD)</pa-table-cell>
@@ -82,7 +81,7 @@
 
     <pa-demo-usage>
         <h3><code>pa-table</code></h3>
-        <p> It can contain <code>pa-table-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></p>
+        <p>It can contain <code>pa-table-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></p>
         <dl>
             <dt>columns</dt>
             <dd>Define the <code>grid-template-columns</code> CSS attribute value. <small>(optional, default is <code>auto</code>)</small></dd>
@@ -99,6 +98,8 @@
         <dl>
             <dt>clickable</dt>
             <dd>If true, hovering the row will display a pointer cursor. <small>(optional)</small></dd>
+            <dt>pa-selected</dt>
+            <dd>Applying the class <code>.pa-selected</code> to a row change its background color to be <code>$color-background-table-row-selected</code>.</dd>
         </dl>
 
         <h3><code>pa-table-row-header</code></h3>

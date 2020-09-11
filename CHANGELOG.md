@@ -1,3 +1,12 @@
+# 2.6.4 (2020-09-11)
+
+### Improvements
+- **Table**: [mpellerin42]
+    - center header cell content
+    - adjust padding
+    - add selected row style
+    - fix clickable row cursor on desktop
+
 # 2.6.3 (2020-09-10)
 
 ### Bugfix
