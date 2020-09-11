@@ -100,7 +100,7 @@ export class TestComponent {
     noAutoComplete = false;
     acceptHtmlTags = false;
     // avoid debouncing for most input-component-tests
-    debounceDuration? = 0;
+    debounceDuration = 0;
 
     onValueChange(event: any) {}
 
