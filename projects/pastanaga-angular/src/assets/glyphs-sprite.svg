@@ -76,34 +76,26 @@
                  points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"/>
     </symbol>
 
-    <symbol xmlns="http://www.w3.org/2000/svg" id="chevron-small-down" viewBox="0 0 24 24">
-        <path clip-rule="evenodd"
-              d="M7.90245 10.1215L11.7501 13.1996L15.5977 10.1215L16.3785 11.0976L11.7501 14.8004L7.12158 11.0976L7.90245 10.1215Z"
-              fill-rule="evenodd"/>
-    </symbol>
+    <svg xmlns="http://www.w3.org/2000/svg" id="chevron-small-down" viewBox="0 0 36 36">
+        <polygon fill-rule="evenodd" points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"/>
+    </svg>
 
-    <symbol xmlns="http://www.w3.org/2000/svg" id="chevron-large-down" viewBox="0 0 24 24">
-        <path clip-rule="evenodd"
-              d="M12.0001 15.8004L17.8785 11.0976L17.0977 10.1215L12.0001 14.1996L6.90245 10.1215L6.12158 11.0976L12.0001 15.8004Z"
-              fill-rule="evenodd"/>
-    </symbol>
+    <svg xmlns="http://www.w3.org/2000/svg" id="chevron-large-down" viewBox="0 0 36 36">
+        <polygon fill-rule="evenodd" points="9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414"/>
+    </svg>
 
-    <symbol xmlns="http://www.w3.org/2000/svg" id="chevron-large-up" viewBox="0 0 24 24">
-        <path clip-rule="evenodd"
-              d="M12.0001 9.19961L17.8785 13.9024L17.0977 14.8785L12.0001 10.8004L6.90245 14.8785L6.12158 13.9024L12.0001 9.19961Z"
-              fill-rule="evenodd"/>
-    </symbol>
 
     <symbol id="chevron-up" viewBox="0 0 36 36">
         <polygon fill-rule="evenodd"
                  points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"/>
     </symbol>
 
-    <symbol xmlns="http://www.w3.org/2000/svg" id="chevron-small-up" viewBox="0 0 24 24">
-        <path clip-rule="evenodd"
-              d="M11.7501 9.19961L16.3785 12.9024L15.5977 13.8785L11.7501 10.8004L7.90245 13.8785L7.12158 12.9024L11.7501 9.19961Z"
-              fill-rule="evenodd"/>
-    </symbol>
+    <svg xmlns="http://www.w3.org/2000/svg" id="chevron-small-up" viewBox="0 0 36 36">
+        <polygon fill-rule="evenodd" points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"/>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" id="chevron-large-up" viewBox="0 0 36 36">
+        <polygon fill-rule="evenodd" points="26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586"/>
+    </svg>
 
     <symbol id="cross-large" viewBox="0 0 36 36">
         <polygon fill-rule="evenodd"
