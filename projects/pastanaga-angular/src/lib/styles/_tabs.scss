@@ -10,7 +10,7 @@
     white-space: nowrap;
 
     li {
-        border-bottom: 1px solid $color-neutral-secondary-light;
+        border-bottom: 1px solid $color-neutral-primary-lighter;
     }
 }
 
@@ -62,7 +62,7 @@ pa-tab {
             align-items: center;
             text-align: left;
             margin: rhythm(.25);
-            padding: rhythm(.75);
+            padding: rhythm(.75) 0 rhythm(.75) rhythm(.75);
             z-index: 1;
             position: relative;
             overflow: hidden;

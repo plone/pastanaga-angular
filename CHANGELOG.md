@@ -1,3 +1,10 @@
+# 2.6.5 (2020-09-14)
+
+### Improvements
+- **Tab item**: [jCarret]
+    - added icon on mobile
+    - aligned style on mobile (border color and padding)
+
 # 2.6.4 (2020-09-11)
 
 ### Improvements
