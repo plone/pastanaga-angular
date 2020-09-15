@@ -16,6 +16,7 @@
         font-size: font-size(xs);
         font-weight: $font-weight-text-table-header;
         text-transform: uppercase;
+        z-index: 1;
     }
     .pa-table-grid--row > :first-child  {
         z-index: 2;

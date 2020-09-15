@@ -1,3 +1,8 @@
+# 2.6.6 (2020-09-15)
+
+### Bugfixes
+- **Table**: prevent table row to scroll over table header [mpellerin42]
+
 # 2.6.5 (2020-09-14)
 
 ### Improvements
