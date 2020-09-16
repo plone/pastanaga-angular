@@ -1,3 +1,10 @@
+# 2.6.8 (2020-09-16)
+
+### Improvements
+
+-   **Modal**: add data property to ModalRef [jlp0328]
+-   **PastanagaService**: add toast service [jlp0328]
+
 # 2.6.7 (2020-09-16)
 
 ### Bugfixes
