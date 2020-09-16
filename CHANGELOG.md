@@ -1,147 +1,178 @@
+# 2.6.7 (2020-09-16)
+
+### Bugfixes
+
+-   **Popup**: fix max-width on small devices [ebrehault]
+
 # 2.6.6 (2020-09-15)
 
 ### Bugfixes
-- **Table**: prevent table row to scroll over table header [mpellerin42]
+
+-   **Table**: prevent table row to scroll over table header [mpellerin42]
 
 # 2.6.5 (2020-09-14)
 
 ### Improvements
-- **Tab item**: [jCarret]
-    - added icon on mobile
-    - aligned style on mobile (border color and padding)
+
+-   **Tab item**: [jCarret]
+    -   added icon on mobile
+    -   aligned style on mobile (border color and padding)
 
 # 2.6.4 (2020-09-11)
 
 ### Improvements
-- **Table**: [mpellerin42]
-    - center header cell content
-    - adjust padding
-    - add selected row style
-    - fix clickable row cursor on desktop
+
+-   **Table**: [mpellerin42]
+    -   center header cell content
+    -   adjust padding
+    -   add selected row style
+    -   fix clickable row cursor on desktop
 
 # 2.6.3 (2020-09-10)
 
 ### Bugfix
-- **form fields**: detect changes of ids before rendering [jCarret]
 
+-   **form fields**: detect changes of ids before rendering [jCarret]
 
 # 2.6.2 (2020-09-10)
 
 ### Bugfix
-- **Table**: don't hide menu button on mobile/tablet [mpellerin42]
+
+-   **Table**: don't hide menu button on mobile/tablet [mpellerin42]
 
 ### Improvements
-- **Table**: [mpellerin42]
-    - center cell content
-    - improve menu button style
-- **Input** documentation [mpellerin42]
+
+-   **Table**: [mpellerin42]
+    -   center cell content
+    -   improve menu button style
+-   **Input** documentation [mpellerin42]
 
 # 2.6.1 (2020-09-09)
 
 ### Improvements
-- **Form fields auto-fill style**: added custom style for browser's autofill on form fields [jCarret]
 
+-   **Form fields auto-fill style**: added custom style for browser's autofill on form fields [jCarret]
 
 # 2.6.0 (2020-09-08)
 
 ### Breaking changes
+
 We found out `form fields` were not properly supporting reactive forms, so we implemented a new BaseControl: [jcarret]
-- **input component**: is using the new BaseControl
-- **all previous form fields are marked as deprecated and will be updated using the new base control**
+
+-   **input component**: is using the new BaseControl
+-   **all previous form fields are marked as deprecated and will be updated using the new base control**
 
 ### Bugfixes
-- **exports**: [jCarret]
-    - fixed export for deprecated checkbox
-    - added export for input component
-- **NPM**: put styles and assets in NPM package [ebrehault]
+
+-   **exports**: [jCarret]
+    -   fixed export for deprecated checkbox
+    -   added export for input component
+-   **NPM**: put styles and assets in NPM package [ebrehault]
 
 # 2.5.2 (2020-09-04)
 
 ### Improvements
-- **Breakpoints**: provide new observable returning current mode (desktop/tablet/mobile) [mpellerin42]
+
+-   **Breakpoints**: provide new observable returning current mode (desktop/tablet/mobile) [mpellerin42]
 
 # 2.5.1 (2020-09-02)
 
 ### Bugfixes
-- **Breakpoints**: [mpellerin42]
-    - removing small breakpoint
-    - fixing large breakpoint variables
-    - adding xLarge breakpoint
+
+-   **Breakpoints**: [mpellerin42]
+    -   removing small breakpoint
+    -   fixing large breakpoint variables
+    -   adding xLarge breakpoint
 
 # 2.5.0 (2020-09-01)
 
 ### Breaking changes
+
 We found out `glyph` was not very intuitive to use, so we changed it for `icon` in all components and models: [mpellerin42]
-- **control model**: in `IControlModel`, and `ControlModel`
-- **option component**: impact **select component** as well
+
+-   **control model**: in `IControlModel`, and `ControlModel`
+-   **option component**: impact **select component** as well
 
 ### Bugfixes
-- **Toasts**: export toast service and models [mpellerin42]
+
+-   **Toasts**: export toast service and models [mpellerin42]
 
 ### Improvements
-- **Modal**: Use a token for modal box-shadow [mpellerin42]
-- **Table**: [mpellerin42]
-    - Better component structure: one folder by component
-    - Differentiate hover background from header one
-    - New table-cell-menu component to manage row menu button style
+
+-   **Modal**: Use a token for modal box-shadow [mpellerin42]
+-   **Table**: [mpellerin42]
+    -   Better component structure: one folder by component
+    -   Differentiate hover background from header one
+    -   New table-cell-menu component to manage row menu button style
 
 # 2.4.4 (2020-08-14)
 
 ### Improvements
 
-- **Colors**: New lighter gray for `$color-neutral-secondary-lightest`, previous one is now `$color-neutral-primary-lighter` [mpellerin42]
-- **Icons**: Add icon name as accessibility title in pa-icon's SVGs [mpellerin42]
-- **Dropdown option**: Differentiating selected state from active one with a new background color and a check icon [mpellerin42] 
+-   **Colors**: New lighter gray for `$color-neutral-secondary-lightest`, previous one is now `$color-neutral-primary-lighter` [mpellerin42]
+-   **Icons**: Add icon name as accessibility title in pa-icon's SVGs [mpellerin42]
+-   **Dropdown option**: Differentiating selected state from active one with a new background color and a check icon [mpellerin42]
 
 ### Bugfixes
-- Fix demo tests setup so unit tests don't fail [mpellerin42]
+
+-   Fix demo tests setup so unit tests don't fail [mpellerin42]
 
 # 2.4.3 (2020-08-11)
 
 ### Bugfixes
-- **Button**: Fix large icon button style [mpellerin42]
+
+-   **Button**: Fix large icon button style [mpellerin42]
 
 ### Improvements
-- **Popup**: add `onOpen` event emitter to `PopupComponent` [mpellerin42]
-- **Select**: add `expanded` event emitter to `SelectComponent` [mpellerin42]
+
+-   **Popup**: add `onOpen` event emitter to `PopupComponent` [mpellerin42]
+-   **Select**: add `expanded` event emitter to `SelectComponent` [mpellerin42]
 
 # 2.4.2 (2020-08-06)
 
 ### Bugfixes
-- **Select**: prevent weird blinking of input right border on hover [mpellerin42]
+
+-   **Select**: prevent weird blinking of input right border on hover [mpellerin42]
 
 # 2.4.1 (2020-08-05)
 
 ### Bugfixes
-- **Select**: adjust dropdown position to match new input's size set in version 2.3.7 [mpellerin42]
+
+-   **Select**: adjust dropdown position to match new input's size set in version 2.3.7 [mpellerin42]
 
 ### Improvements
-- **PastanagaService**: rename `breakpointObserver` to `breakpoint` [mpellerin42]
+
+-   **PastanagaService**: rename `breakpointObserver` to `breakpoint` [mpellerin42]
 
 # 2.4.0 (2020-08-04)
 
 ### Bugfixes
-- **Checkbox**: ability to navigate through checkboxes from keyboard + visible focus state [mpellerin42]
-- **Tabs**: [mpellerin42]
-    - Center tab's text on desktop
-    - Fix hover/focus state
+
+-   **Checkbox**: ability to navigate through checkboxes from keyboard + visible focus state [mpellerin42]
+-   **Tabs**: [mpellerin42]
+    -   Center tab's text on desktop
+    -   Fix hover/focus state
 
 ### Improvements
-- **Input**: help/error message spacing [mpellerin42]
-- **Tabs**: Display chevron icon on mobile, no icon on tablet/desktop [mpellerin42]
-- **Demo**: Responsive demo app [mpellerin42]
+
+-   **Input**: help/error message spacing [mpellerin42]
+-   **Tabs**: Display chevron icon on mobile, no icon on tablet/desktop [mpellerin42]
+-   **Demo**: Responsive demo app [mpellerin42]
 
 ### Feature
-- **BreakpointObserver**: service allowing to know current viewport size [mpellerin42]
+
+-   **BreakpointObserver**: service allowing to know current viewport size [mpellerin42]
 
 # 2.3.7 (2020-08-03)
 
 ### Bugfix
-- **pa-option**: set display pa-option element with display block so e2e tool can click on it [mpellerin42] 
-- **pa-select**: prevent autocomplete on select [mpellerin42]
+
+-   **pa-option**: set display pa-option element with display block so e2e tool can click on it [mpellerin42]
+-   **pa-select**: prevent autocomplete on select [mpellerin42]
 
 ### Improvements
-- **Input**: update input size to be the same as medium button [mpellerin42]
+
+-   **Input**: update input size to be the same as medium button [mpellerin42]
 
 # 2.3.6 (2020-07-31)
 
