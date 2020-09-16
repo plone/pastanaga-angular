@@ -93,14 +93,13 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
     passingDataToModal = `export class CallerComponent {
     open() {
         const modalRef = this.pastanaga.modalService.openModal(SomeDialogComponent);
-        modalRef['document'] = myDoc;
-        modalRef['user'] = myUser;
+        modalRef.data = { document: myDoc, user: myUser };
     }
 }`;
     accessingModalData = `export class SomeDialogComponent implements IModal {
     ngOnInit() {
-        this.document = this.modal.ref['document'];
-        this.user = this.modal.ref['user'];
+        this.document = this.modal.ref.data?.document;
+        this.user = this.modal.ref.data?.user;
     }
 }`;
     onEnterBinding = `export class SomeDialogComponent implements IModal {

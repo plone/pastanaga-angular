@@ -15,10 +15,11 @@ export class ModalConfig {
     }
 }
 
-export class ModalRef {
+export class ModalRef<T = any> {
     id: number;
     isLast: boolean;
     config: ModalConfig;
+    data?: T;
     onClose: EventEmitter<any>;
 
     constructor(data: { id: number; config?: ModalConfig }) {
