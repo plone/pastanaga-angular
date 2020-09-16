@@ -3,6 +3,7 @@ import { DateTimeService } from './datetime/datetime.service';
 import { PopupService } from './popup/popup.service';
 import { TranslatePipe } from './translate/translate.pipe';
 import { ModalService } from './modal/modal.service';
+import { ToastService } from './toast/toast.service'
 import { BreakpointObserver } from './breakpoint-observer/breakpoint.observer';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class PastanagaService {
         public translate: TranslatePipe,
         public datetime: DateTimeService,
         public modalService: ModalService,
+        public toastService: ToastService,
         public breakpoint: BreakpointObserver
     ) {}
 }
