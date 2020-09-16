@@ -2,7 +2,12 @@
 
 .pa-popup-wrapper {
     padding: 0;
-    max-width: rhythm(20);
+    max-width: 100%;
+}
+@media (min-width: $size-viewport-large-min) {
+    .pa-popup-wrapper {
+        max-width: rhythm(20);
+    }
 }
 .pa-menu {
     list-style: none;
