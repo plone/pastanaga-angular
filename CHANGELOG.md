@@ -2,7 +2,7 @@
 
 ### Bugfixes
 
--   **Checkbox**: checkbox focus style is removed for now [jCarret]
+-   **Checkbox**: updated checkbox focus style [jCarret]
 
 
 # 2.6.8 (2020-09-16)

@@ -7,5 +7,6 @@ $shadow-medium: 0px rhythm(.5) rhythm(1.5) rgba($color-neutral-primary-default, 
 $shadow-large: 0px rhythm(1) rhythm(3) rgba($color-neutral-primary-default, 0.24), 0px 0px 4px rgba($color-neutral-primary-default, 0.1) !default;
 
 $shadow-focus: 0 0 0 rhythm(.25) rgba($color-accent-primary-light, .6) !default;
+$shadow-focus-check-box: 0 0 0 2px $color-neutral-primary-lightest, 0 0 0 4px rgba($color-accent-primary-light, .6) !default;
 $shadow-modal: $shadow-default !default;
 
