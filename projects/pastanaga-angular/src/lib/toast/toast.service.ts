@@ -13,7 +13,7 @@ import { ToastConfig, ToastType } from './toast.model';
 
 let nextId = 0;
 
-@Injectable({ providedIn: PaToastModule })
+@Injectable({ providedIn: 'root' })
 export class ToastService {
     private renderer: Renderer2;
     private toastContainer?: HTMLElement;
