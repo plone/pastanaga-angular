@@ -1,3 +1,10 @@
+# 2.6.9 (2020-09-17)
+
+### Bugfixes
+
+-   **Checkbox**: checkbox focus style is removed for now [jCarret]
+
+
 # 2.6.8 (2020-09-16)
 
 ### Improvements

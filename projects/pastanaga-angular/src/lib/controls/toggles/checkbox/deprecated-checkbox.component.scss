@@ -4,11 +4,6 @@
     display: inline-flex;
     align-items: center;
 
-    &:focus-within {
-        box-shadow: $shadow-focus;
-        outline: 0;
-    }
-
     .pa-toggle-control {
         -webkit-appearance: none;
         border: $border-toggle-unselected;
