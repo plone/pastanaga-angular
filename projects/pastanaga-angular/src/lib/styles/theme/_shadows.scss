@@ -1,12 +1,12 @@
 @import "palette";
 @import "spacing";
 
-$shadow-small: none !default;
-$shadow-default: 0px 1px rhythm(.75) rgba($color-neutral-primary-default, 0.12), 0px 0px 4px rgba($color-neutral-primary-default, 0.1) !default;
-$shadow-medium: 0px rhythm(.5) rhythm(1.5) rgba($color-neutral-primary-default, 0.18), 0px 0px 4px rgba($color-neutral-primary-default, 0.1) !default;
-$shadow-large: 0px rhythm(1) rhythm(3) rgba($color-neutral-primary-default, 0.24), 0px 0px 4px rgba($color-neutral-primary-default, 0.1) !default;
+$shadow-small:  0px 4px 8px rgba($color-neutral-primary-default, 0.1), 0px 2px 4px rgba($color-neutral-primary-default, 0.04) !default;
+$shadow-default: 0px 10px 20px rgba($color-neutral-primary-default, 0.06), 0px 2px 6px rgba($color-neutral-primary-default, 0.04), 0px 0px 2px rgba($color-neutral-primary-default, 0.04)!default;
+$shadow-medium: 0px 16px rhythm(2) rgba($color-neutral-primary-default, 0.06), 0px 8px 12px rgba($color-neutral-primary-default, 0.4), 0px 0px 1px rgba($color-neutral-primary-default, 0.4)!default;
+$shadow-large: 0px 10px rhythm(2) rgba($color-neutral-primary-default, 0.15) !default;
 
 $shadow-focus: 0 0 0 rhythm(.25) rgba($color-accent-primary-light, .6) !default;
 $shadow-focus-checkbox: 0 0 0 2px $color-neutral-primary-lightest, 0 0 0 4px rgba($color-accent-primary-light, .6) !default;
-$shadow-modal: $shadow-default !default;
+$shadow-modal: $shadow-medium !default;
 

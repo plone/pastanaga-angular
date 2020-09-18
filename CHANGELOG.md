@@ -1,9 +1,16 @@
+# 2.6.10 (2020-09-18)
+
+### Bugfixes
+
+-   **Theme**:
+    -   update shadows variables to current designs[jlp0328]
+    -   reassign $shadow-modal variable to $shadow-medium [jlp0328]
+
 # 2.6.9 (2020-09-17)
 
 ### Bugfixes
 
 -   **Checkbox**: updated checkbox focus style [jCarret]
-
 
 # 2.6.8 (2020-09-16)
 
