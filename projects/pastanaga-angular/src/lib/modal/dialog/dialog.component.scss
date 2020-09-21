@@ -4,7 +4,8 @@
     text-align: center;
     min-width: rhythm(28);
     max-width: rhythm(32);
-    padding: rhythm(2);
+    padding: rhythm(3.5) rhythm(2.5) rhythm(2);
+    box-shadow: $shadow-modal;
 
     .pa-modal-header {
         h4 {
@@ -24,7 +25,7 @@
     pa-modal-footer {
         margin-top: rhythm(3.5);
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
 
         pa-button:not(:last-of-type) {
             margin-right: rhythm(1);

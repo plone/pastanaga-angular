@@ -1,3 +1,9 @@
+# 2.7.1 (2020-09-21)
+
+### Bugfixes
+
+-   **Dialog**: updated dialog styles [jlp0328]
+
 # 2.7.0 (2020-09-21)
 
 ### Breaking changes
