@@ -1,6 +1,8 @@
-import { Pipe, PipeTransform, Inject } from '@angular/core';
+import { Pipe, PipeTransform, Inject, InjectionToken } from '@angular/core';
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
+export const PA_LANG = new InjectionToken<string>('pastanaga.lang');
+export const PA_TRANSLATIONS = new InjectionToken<string>('pastanaga.translations');
 
 @Pipe({
     name: 'translate',
@@ -11,7 +13,7 @@ export class TranslatePipe implements PipeTransform {
     lastParams?: string;
     value: string | undefined = '';
 
-    constructor(@Inject('LANG') private lang: any, @Inject('TRANSLATIONS') private translations: any) {}
+    constructor(@Inject(PA_LANG) private lang: any, @Inject(PA_TRANSLATIONS) private translations: any) {}
 
     transform(key?: string, args?: any): string {
         if (!key) {

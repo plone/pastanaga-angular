@@ -1,15 +1,20 @@
+# 2.7.0 (2020-09-21)
+
+### Breaking changes
+
+-   **Translate**: 'LANG' and 'TRANSLATIONS' are now InjectionTokens named `PA_LANG` and `PA_TRANSLATIONS` [ebrehault]
 
 # 2.6.10 (2020-09-21)
 
 ### Improvements
-- **Theme**: added new value in spacing rhythm [niglesiaszingoni]
+
+-   **Theme**: added new value in spacing rhythm [niglesiaszingoni]
 
 # 2.6.9 (2020-09-17)
 
 ### Bugfixes
 
 -   **Checkbox**: updated checkbox focus style [jCarret]
-
 
 # 2.6.8 (2020-09-16)
 

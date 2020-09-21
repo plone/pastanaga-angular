@@ -6,7 +6,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { AppMarker } from './app.marker';
 import { AppResolver } from './app.resolver';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { I18N_EN, mergeTranslations, PaButtonModule } from '../../../pastanaga-angular/src';
+import { I18N_EN, mergeTranslations, PaButtonModule, PA_TRANSLATIONS, PA_LANG } from '../../../pastanaga-angular/src';
 import { BrowserModule } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
@@ -19,9 +19,9 @@ describe('AppComponent', () => {
                 { provide: Resolver, useClass: AppResolver },
                 { provide: Normalizer },
                 { provide: APP_BASE_HREF, useValue: '/' },
-                { provide: 'LANG', useValue: 'en_US' },
+                { provide: PA_LANG, useValue: 'en_US' },
                 {
-                    provide: 'TRANSLATIONS',
+                    provide: PA_TRANSLATIONS,
                     useValue: {
                         en_US: mergeTranslations([I18N_EN]),
                     },

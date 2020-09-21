@@ -11,7 +11,7 @@ import { AppMarker } from './app.marker';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PaDemoModule } from './demo/demo.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { I18N_EN, mergeTranslations, PaButtonModule } from 'projects/pastanaga-angular/src';
+import { I18N_EN, mergeTranslations, PaButtonModule, PA_LANG, PA_TRANSLATIONS } from 'projects/pastanaga-angular/src';
 
 @NgModule({
     declarations: [AppComponent, WelcomePageComponent],
@@ -20,9 +20,9 @@ import { I18N_EN, mergeTranslations, PaButtonModule } from 'projects/pastanaga-a
         { provide: Marker, useClass: AppMarker },
         { provide: Resolver, useClass: AppResolver },
         Normalizer,
-        { provide: 'LANG', useValue: 'en_US' },
+        { provide: PA_LANG, useValue: 'en_US' },
         {
-            provide: 'TRANSLATIONS',
+            provide: PA_TRANSLATIONS,
             useValue: {
                 en_US: mergeTranslations([I18N_EN, { ...(enDemo as any).default }, { ...(custom as any).default }]),
                 latin: { ...la },
