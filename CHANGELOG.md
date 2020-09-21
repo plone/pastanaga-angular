@@ -1,3 +1,9 @@
+
+# 2.6.10 (2020-09-21)
+
+### Improvements
+- **Theme**: added new value in spacing rhythm [niglesiaszingoni]
+
 # 2.6.9 (2020-09-17)
 
 ### Bugfixes
