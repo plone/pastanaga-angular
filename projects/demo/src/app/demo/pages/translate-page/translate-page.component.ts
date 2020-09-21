@@ -36,13 +36,14 @@ import * as la from '../assets/i18n/la.json';
 @NgModule({
     ...
     providers: [
-    {
-        provide: 'TRANSLATIONS',
-         useValue: {
-            'en_US': {...en},
-            'latin': {...la},
-        }
-    },
+        { provide: PA_LANG, useValue: 'en_US' },
+        {
+            provide: PA_TRANSLATIONS,
+            useValue: {
+                'en_US': {...en},
+                'latin': {...la},
+            }
+        },
 `;
     concatTranslations = `en_US: mergeTranslations([{...en}, {...custom}])`;
 }
