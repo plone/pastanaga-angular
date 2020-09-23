@@ -34,11 +34,15 @@
             <li>valueChange = "{{valueChange}}"</li>
             <li>Expanded = "{{expandedEvent}}"</li>
             <li *ngIf="selectedTab === 'ngModel'">ngModelChange = "{{ngModelChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControl'">formControlValueChange = "{{formControlValueChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControl'">formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formControlValueChange = "{{formGroupValueChangeEvent | json}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formControlStatusChange = "{{formGroupStatusChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">submitted = "{{formGroupValue | json}}"</li>
+            <ng-container *ngIf="selectedTab === 'formControl'">
+                <li>formControlValueChange = "{{formControlValueChangeEvent}}"</li>
+                <li>formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
+            </ng-container>
+            <ng-container *ngIf="selectedTab === 'formControlName'">   
+                <li>formControlValueChange = "{{formGroupValueChangeEvent | json}}"</li>
+                <li>formControlStatusChange = "{{formGroupStatusChangeEvent}}"</li>
+                <li>submitted = "{{formGroupValue | json}}"</li>
+            </ng-container>
         </ul>
 
         <div *ngIf="selectedTab === 'standalone'">
