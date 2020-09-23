@@ -8,6 +8,9 @@ import {
 } from './form-field.model';
 import { ValidationErrors, ValidatorFn } from '@angular/forms';
 
+const HTML_TAG = new RegExp(/.?<.+>/g);
+const REPLACE_LT_GT = new RegExp(/[<>]/g);
+
 export function isStandalone(internalMode: InternalMode): boolean {
     return internalMode === STANDALONE;
 }
@@ -55,4 +58,11 @@ export function buildAlwaysFalseValidator(message: string): ValidatorFn {
     return (): { [key: string]: any } | null => {
         return { customError: message };
     };
+}
+
+export function sanitizeStringValue(value: any, acceptHtmlTags: boolean) {
+    if (!!value && typeof value === 'string' && !acceptHtmlTags && value.match(HTML_TAG)) {
+        return value.replace(REPLACE_LT_GT, '');
+    }
+    return value;
 }

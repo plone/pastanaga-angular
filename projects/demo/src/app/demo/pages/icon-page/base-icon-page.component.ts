@@ -17,12 +17,10 @@ export class BaseIconPageComponent {
 `;
 
     updateColor(value: string) {
-        this.selectedColor = value !== 'none' ? 'Blue' : value;
         this._selectedColor = value === 'none' ? undefined : value;
     }
 
     updateBackground(value: string) {
-        this.selectedBackground = value !== 'none' ? 'Yellow' : value;
         this._selectedBackground = value === 'none' ? undefined : value;
     }
 }

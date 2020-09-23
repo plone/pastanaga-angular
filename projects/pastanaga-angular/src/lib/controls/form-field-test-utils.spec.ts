@@ -9,11 +9,12 @@ it('is a toolkit for form fields tests', () => {
     expect(true).toEqual(true);
 });
 
-export function initTest<T>(component: Type<T>): ComponentFixture<T> {
+export function initTest<T>(component: Type<T>, testedComponent: any, otherModules?: any): ComponentFixture<T> {
+    const additionalModules = !!otherModules ? otherModules : [];
     TestBed.configureTestingModule({
-        imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule],
+        imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule, ...additionalModules],
         providers: [...TESTING_PROVIDERS],
-        declarations: [InputComponent, component],
+        declarations: [testedComponent, component],
     }).compileComponents();
     return TestBed.createComponent(component);
 }
@@ -58,6 +59,13 @@ export function whenUserKeyUp(fixture: ComponentFixture<any>, value: any, key: a
 export function whenUserFocusControl(fixture: ComponentFixture<any>) {
     const nativeElement = fixture.debugElement.query(By.css('.pa-field-control')).nativeElement;
     nativeElement.dispatchEvent(new Event('focus'));
+    fixture.detectChanges();
+    tick();
+}
+
+export function whenUserClicksControl(fixture: ComponentFixture<any>) {
+    const nativeElement = fixture.debugElement.query(By.css('.pa-field-control')).nativeElement;
+    nativeElement.click();
     fixture.detectChanges();
     tick();
 }
@@ -144,6 +152,13 @@ export function thenFieldControlHasValue(fixture: ComponentFixture<any>, value: 
 
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.nativeElement.value).toEqual(value);
+}
+export function thenFieldControlHasNoValue(fixture: ComponentFixture<any>) {
+    expect(fixture.componentInstance.paField.model).toBeFalsy();
+    expect(fixture.componentInstance.paField.control.value).toBeFalsy();
+
+    const control = fixture.debugElement.query(By.css('.pa-field-control'));
+    expect(control.nativeElement.value).toBeFalsy();
 }
 export function thenFieldControlHasType(fixture: ComponentFixture<any>, type: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));

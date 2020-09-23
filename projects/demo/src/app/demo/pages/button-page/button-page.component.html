@@ -238,13 +238,12 @@
 
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-select label="Size"
-                       [(value)]="selectedSize">
+            <pa-select label="Size" [(ngModel)]="selectedSize">
                 <pa-option [value]="size.xsmall">xsmall</pa-option>
                 <pa-option [value]="size.small">small</pa-option>
                 <pa-option [value]="size.medium">medium</pa-option>
                 <pa-option [value]="size.large">large</pa-option>
-            </pa-deprecated-select>
+            </pa-select>
         </div>
         <div class="pa-demo-configuration-field">
             <pa-deprecated-checkbox id="disabled"

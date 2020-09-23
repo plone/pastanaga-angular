@@ -7,7 +7,6 @@ import {
     thenErrorIsDisplayed,
     thenErrorIsNotDisplayed,
     thenFieldControlHasValue,
-    thenFieldControlIsDisabled,
     thenFormFieldHasError,
     thenFormFieldHasNoError,
     whenFormControlSetValue,
@@ -18,6 +17,7 @@ import {
     testAutocomplete,
     testDebounce,
     testDescribedBy,
+    testDisabledReactive,
     testErrorMessage,
     testErrorMessages,
     testFocus,
@@ -124,7 +124,7 @@ describe('InputFieldComponent FormControl', () => {
     let fixture: ComponentFixture<TestComponent>;
     beforeEach(async(() => {
         nextId++;
-        fixture = initTest(TestComponent);
+        fixture = initTest(TestComponent, InputComponent);
     }));
 
     it('should assign id', fakeAsync(() => testId(fixture, nextId)));
@@ -139,19 +139,7 @@ describe('InputFieldComponent FormControl', () => {
 
     it('should focus field', fakeAsync(() => testFocus(fixture)));
 
-    it('should apply disabled state', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        fixture.componentInstance.formControl.disable();
-        fixture.detectChanges();
-        tick();
-        thenFieldControlIsDisabled(fixture, true);
-
-        fixture.componentInstance.formControl.enable();
-        fixture.detectChanges();
-        tick();
-        thenFieldControlIsDisabled(fixture, false);
-    }));
+    it('should apply disabled state', fakeAsync(() => testDisabledReactive(fixture, fixture.componentInstance.formControl)));
 
     it('should apply showAllErrors', fakeAsync(() => testShowAllErrors(fixture)));
 
@@ -252,7 +240,7 @@ export class TestMixedValidationComponent {
 describe('InputFieldComponent ngModel mixed validation', () => {
     let fixture: ComponentFixture<TestMixedValidationComponent>;
     beforeEach(async(() => {
-        fixture = initTest(TestMixedValidationComponent);
+        fixture = initTest(TestMixedValidationComponent, InputComponent);
     }));
     it('should display errorMessages for all validators', fakeAsync(() => {
         clearFakeAsyncZone(fixture);

@@ -122,7 +122,7 @@ describe('InputFieldComponent ngModel', () => {
     let fixture: ComponentFixture<TestComponent>;
     beforeEach(async(() => {
         nextId++;
-        fixture = initTest(TestComponent);
+        fixture = initTest(TestComponent, InputComponent);
     }));
 
     it('should assign id', fakeAsync(() => testId(fixture, nextId)));
@@ -216,7 +216,7 @@ export class TestMixedValidationComponent {
 describe('InputFieldComponent ngModel mixed validation', () => {
     let fixture: ComponentFixture<TestMixedValidationComponent>;
     beforeEach(async(() => {
-        fixture = initTest(TestMixedValidationComponent);
+        fixture = initTest(TestMixedValidationComponent, InputComponent);
     }));
     it('should display errorMessages for all validators', fakeAsync(() => {
         clearFakeAsyncZone(fixture);
@@ -274,7 +274,7 @@ export class TestFormComponent {
 describe('InputFieldComponent ngModel in a form', () => {
     let fixture: ComponentFixture<TestFormComponent>;
     beforeEach(async(() => {
-        fixture = initTest(TestFormComponent);
+        fixture = initTest(TestFormComponent, InputComponent);
     }));
     it('should interact with a form', fakeAsync(() => {
         clearFakeAsyncZone(fixture);

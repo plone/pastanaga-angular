@@ -8,10 +8,11 @@ import { PaDropdownModule } from '../../dropdown/dropdown.module';
 import { DeprecatedTextareaComponent } from './textarea/deprecated-textarea.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
+import { SelectComponent } from './select/select.component';
 
 @NgModule({
-    declarations: [InputComponent, DeprecatedSelectComponent, DeprecatedInputComponent, DeprecatedTextareaComponent],
+    declarations: [InputComponent, DeprecatedSelectComponent, DeprecatedInputComponent, DeprecatedTextareaComponent, SelectComponent],
     imports: [CommonModule, PaIconModule, PaDropdownModule, PaPopupModule, FormsModule, ReactiveFormsModule],
-    exports: [InputComponent, DeprecatedSelectComponent, DeprecatedInputComponent, DeprecatedTextareaComponent],
+    exports: [InputComponent, DeprecatedSelectComponent, DeprecatedInputComponent, DeprecatedTextareaComponent, SelectComponent],
 })
 export class PaTextFieldModule {}

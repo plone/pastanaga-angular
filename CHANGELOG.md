@@ -1,3 +1,9 @@
+# 2.8.0 (2020-09-23)
+
+### Breaking changes
+
+-   **Select**: Select Component replacing deprecated select [jCarret]
+
 # 2.7.2 (2020-09-24)
 
 ### Improvements

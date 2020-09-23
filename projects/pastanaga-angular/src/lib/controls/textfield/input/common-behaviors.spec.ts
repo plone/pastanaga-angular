@@ -24,24 +24,25 @@ import {
     whenUserKeyUp,
 } from '../../form-field-test-utils.spec';
 import { Keys } from '../../../common';
+import {AbstractControl} from '@angular/forms';
 
 it('is a toolkit for input component tests', () => {
     expect(true).toEqual(true);
 });
 
-export function testId(fixture: ComponentFixture<any>, nextId: number) {
+export function testId(fixture: ComponentFixture<any>, nextId: number, fieldType: string = 'input') {
     clearFakeAsyncZone(fixture);
     whenParentSets('id', undefined, fixture);
-    thenFieldControlHasId(fixture, `input-${nextId}`);
+    thenFieldControlHasId(fixture, `${fieldType}-${nextId}`);
 
     whenParentSets('id', 'testId', fixture);
-    thenFieldControlHasId(fixture, 'testId-input');
+    thenFieldControlHasId(fixture, `testId-${fieldType}`);
 }
 
-export function testName(fixture: ComponentFixture<any>, nextId: number) {
+export function testName(fixture: ComponentFixture<any>, nextId: number, fieldType: string = 'input') {
     clearFakeAsyncZone(fixture);
     whenParentSets('name', undefined, fixture);
-    thenFieldControlHasName(fixture, `input-${nextId}`);
+    thenFieldControlHasName(fixture, `${fieldType}-${nextId}`);
 
     whenParentSets('name', 'testName', fixture);
     thenFieldControlHasName(fixture, 'testName');
@@ -57,14 +58,14 @@ export function testHelp(fixture: ComponentFixture<any>) {
     thenFormFieldHasHelp(fixture, 'help test');
 }
 
-export function testDescribedBy(fixture: ComponentFixture<any>, nextId: number) {
+export function testDescribedBy(fixture: ComponentFixture<any>, nextId: number, fieldType: string = 'input') {
     clearFakeAsyncZone(fixture);
 
     whenParentSets('describedBy', undefined, fixture);
     thenFieldControlHasDescribedBy(fixture, '');
 
     whenParentSets('help', 'testHelp', fixture);
-    thenFieldControlHasDescribedBy(fixture, `input-${nextId}-help`);
+    thenFieldControlHasDescribedBy(fixture, `${fieldType}-${nextId}-help`);
 
     whenParentSets('help', undefined, fixture);
     whenParentSets('describedBy', 'described-by-test', fixture);
@@ -95,6 +96,20 @@ export function testDisabled(fixture: ComponentFixture<any>) {
     thenFieldControlIsDisabled(fixture, true);
 
     whenParentSets('disabled', false, fixture);
+    thenFieldControlIsDisabled(fixture, false);
+}
+
+export function testDisabledReactive(fixture: ComponentFixture<any>, control: AbstractControl) {
+    clearFakeAsyncZone(fixture);
+
+    control.disable();
+    fixture.detectChanges();
+    tick();
+    thenFieldControlIsDisabled(fixture, true);
+
+    control.enable();
+    fixture.detectChanges();
+    tick();
     thenFieldControlIsDisabled(fixture, false);
 }
 

@@ -25,9 +25,7 @@ import { merge, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { BaseControl } from '../../base-control';
 import { TextInputType } from '../../form-field.model';
-
-const HTML_TAG = new RegExp(/.?<.+>/g);
-const REPLACE_LT_GT = new RegExp(/[<>]/g);
+import {sanitizeStringValue} from '../../form-field.utils';
 
 /**
  * Due to standalone usage specifications, the local state of the component
@@ -58,7 +56,12 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     }
 
     @Input() placeholder = '';
-    @Input() required?: boolean;
+    @Input() set required(value: boolean) {
+        this._required = coerceBooleanProperty(value);
+    }
+    get required() {
+        return this._required || false;
+    }
     @Input() pattern?: RegExp | string;
     @Input() min?: number;
     @Input() max?: number;
@@ -107,6 +110,7 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     debounceTimeChanged: Subject<void> = new Subject();
     debouncedChange: Observable<any> = new Subject();
     _hasDebounce = false;
+    _required?: boolean;
 
     requiredValidator?: ValidatorFn;
     patternValidator?: ValidatorFn;
@@ -183,7 +187,7 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     }
 
     preValueChange = (value?: any) => {
-        return this.sanitizeStringValue(value);
+        return sanitizeStringValue(value, this._acceptHtmlTags);
     };
 
     postValueChange = () => {
@@ -198,7 +202,7 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     // prevent debouncedValueChange from being triggered when changes come from parent
     preWriteValue = (value?: any) => {
         this.debounceTimeChanged.next();
-        return this.sanitizeStringValue(value);
+        return sanitizeStringValue(value, this._acceptHtmlTags);
     };
 
     postWriteValue = () => {
@@ -226,15 +230,11 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
         if (!!this.maxlengthValidator) {
             validators.push(this.maxlengthValidator);
         }
-
-        if (!!this._parentValidator) {
-            validators.push(this._parentValidator);
-        }
         return validators;
     };
 
     refreshInternalValidators() {
-        this.requiredValidator = !!this.required ? Validators.required : undefined;
+        this.requiredValidator = this.required ? Validators.required : undefined;
         this.patternValidator = !!this.pattern ? Validators.pattern(this.pattern) : undefined;
         this.minValidator = !!this.min ? Validators.min(this.min) : undefined;
         this.maxValidator = !!this.max ? Validators.max(this.max) : undefined;
@@ -242,7 +242,7 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     }
 
     registerOnValueChange = (value: any) => {
-        this.model = this.sanitizeStringValue(value);
+        this.model = sanitizeStringValue(value, this._acceptHtmlTags);
         if (this.control.value !== this.model) {
             this.control.setValue(this.model);
         }
@@ -285,13 +285,6 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
         setTimeout(() => {
             this.debouncedValueChange.emit(val);
         }, this._debouncedTime);
-    }
-
-    private sanitizeStringValue(value: any) {
-        if (!!value && typeof value === 'string' && !this._acceptHtmlTags && value.match(HTML_TAG)) {
-            return value.replace(REPLACE_LT_GT, '');
-        }
-        return value;
     }
 
     private handleBrowserAutoFill() {
