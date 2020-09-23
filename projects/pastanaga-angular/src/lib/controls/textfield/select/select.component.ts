@@ -204,8 +204,7 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         if (this.control.pristine) {
             return;
         }
-        const displayedValue = `${optionLabel}`.toLocaleLowerCase();
-        this.hideIrrelevantOptions(displayedValue);
+        this.hideIrrelevantOptions(`${optionLabel}`.toLocaleLowerCase());
     }
 
     hideIrrelevantOptions(displayedValue: any) {
