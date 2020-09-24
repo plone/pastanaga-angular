@@ -18,7 +18,6 @@ import {
     TEST_OPTIONS, testApplyUserInputInSuggestionMode,
     testErrorMessagesForSelect,
     testFilterOptions,
-    testHtmlTagsForSelect,
     testMaxlengthForSelect,
     testNoChangeForInactiveReactive,
     testParentAssignValueReactive,
@@ -52,7 +51,6 @@ import {FormControl} from '@angular/forms';
             [pattern]="pattern"
             [label]="label"
             [maxlength]="maxlength"
-            [acceptHtmlTags]="acceptHtmlTags"
             (valueChange)="onValueChange($event)"
             (expanded)="onExpanded($event)"
         >
@@ -84,7 +82,6 @@ export class TemplateOptionsTestComponent {
     required = false;
     pattern?: string | RegExp;
     maxlength?: number;
-    acceptHtmlTags = false;
     label = 'the label';
     suggestionMode = false;
     formControl = new FormControl();
@@ -128,8 +125,6 @@ describe('SelectComponent ngModel template options', () => {
 
     it('should validate maxlength', fakeAsync(() => testMaxlengthForSelect(fixture)));
 
-    it('should apply acceptHtmlTags', fakeAsync(() => testHtmlTagsForSelect(fixture)));
-
     it('should not propagate change when component is not active', fakeAsync(() =>
         testNoChangeForInactiveReactive(fixture, fixture.componentInstance.formControl)));
 
@@ -168,7 +163,6 @@ describe('SelectComponent ngModel template options', () => {
             [pattern]="pattern"
             [label]="label"
             [maxlength]="maxlength"
-            [acceptHtmlTags]="acceptHtmlTags"
             (valueChange)="onValueChange($event)"
             (expanded)="onExpanded($event)"
         ></pa-select>
@@ -191,7 +185,6 @@ export class ParameterOptionsTestComponent {
     required = false;
     pattern?: string | RegExp;
     maxlength?: number;
-    acceptHtmlTags = false;
     label = 'the label';
     suggestionMode = false;
     formControl = new FormControl();
@@ -224,8 +217,6 @@ describe('SelectComponent ngModel parameter options', () => {
     it('should validate pattern', fakeAsync(() => testPatternForSelect(fixture)));
 
     it('should validate maxlength', fakeAsync(() => testMaxlengthForSelect(fixture)));
-
-    it('should apply acceptHtmlTags', fakeAsync(() => testHtmlTagsForSelect(fixture)));
 
     it('should not propagate change when component is not active', fakeAsync(() =>
         testNoChangeForInactiveReactive(fixture, fixture.componentInstance.formControl)));

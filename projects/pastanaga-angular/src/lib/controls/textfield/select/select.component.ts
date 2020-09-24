@@ -54,14 +54,6 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
 
     @Input() suggestionMode = false;
 
-    @Input()
-    get acceptHtmlTags(): boolean {
-        return this._acceptHtmlTags;
-    }
-    set acceptHtmlTags(value: boolean) {
-        this._acceptHtmlTags = coerceBooleanProperty(value);
-    }
-
     @Input() set required(value: boolean) {
         this._required = coerceBooleanProperty(value);
     }
@@ -80,10 +72,11 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     @ViewChild('optionsDropdown') optionsDropdown?: DropdownComponent;
     @ContentChildren(OptionComponent, {descendants: true}) ngContentOptions?: QueryList<OptionComponent>;
 
+    readonly acceptHtmlTags = false;
+
     _options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
     displayedValue?: string | number;
     optionsClosed = new Subject();
-    _acceptHtmlTags = false;
     _optionsAreNgContent = true;
     _required?: boolean;
 
@@ -274,7 +267,7 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         if (!!optionValueForUserInput) {
             this.onValueChange(optionValueForUserInput);
         } else if (this.suggestionMode) {
-            const sanitized = sanitizeStringValue(this.displayedValue, this._acceptHtmlTags);
+            const sanitized = sanitizeStringValue(this.displayedValue, this.acceptHtmlTags);
             this.onValueChange(sanitized);
         } else if (!!this.model) {
             this.displayedValue = this.findLabelByValue(this.model);

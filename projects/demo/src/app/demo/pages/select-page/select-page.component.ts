@@ -108,7 +108,6 @@ export class SelectPageComponent implements OnInit, OnDestroy {
     [updateValidator]="updateValidatorSubject"
     [describedBy]="theIdOfTheDescribingElement"
     [suggestionMode]="true"
-    [acceptHtmlTags]="false"
     [value]="preselected"
     [pattern]="myRegexPattern"
     (valueChange)="doSomething()"

@@ -51,20 +51,6 @@ export function testMaxlengthForSelect(fixture: ComponentFixture<any>) {
     thenFormFieldHasNoError(fixture);
 }
 
-export function testHtmlTagsForSelect(fixture: ComponentFixture<any>) {
-    fixture.componentInstance.suggestionMode = true;
-    clearFakeAsyncZone(fixture);
-    whenParentSets('acceptHtmlTags', false, fixture);
-    whenUserInputs(fixture, '<div>');
-    whenUserBlurControl(fixture);
-    thenFieldControlHasValue(fixture, 'div');
-
-    whenParentSets('acceptHtmlTags', true, fixture);
-    whenUserInputs(fixture, '<h1>');
-    whenUserBlurControl(fixture);
-    thenFieldControlHasValue(fixture, '<h1>');
-}
-
 export function testOnEnterSelect(fixture: ComponentFixture<any>) {
     fixture.componentInstance.suggestionMode = true;
     clearFakeAsyncZone(fixture);
