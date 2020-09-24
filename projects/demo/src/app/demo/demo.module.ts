@@ -42,7 +42,6 @@ import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-exa
 import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
 import { DeprecatedBaseControlComponent } from './pages/common-doc/base-control/deprecated-base-control.component';
 import { DeprecatedBaseTextfieldComponent } from './pages/common-doc/base-textfield/deprecated-base-textfield.component';
-import { DeprecatedInputPageComponent } from './pages/input-page/deprecated-input-page.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
@@ -81,7 +80,6 @@ const COMPONENTS = [
     ButtonPageComponent,
     CheckboxPageComponent,
     DateTimePageComponent,
-    DeprecatedInputPageComponent,
     DropdownPageComponent,
     GridPageComponent,
     IconPageComponent,
