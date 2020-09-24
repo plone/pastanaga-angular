@@ -1,3 +1,8 @@
+# 2.7.2 (2020-09-24)
+
+### Improvements
+- **Prettier**: added a pre-commit hook running prettier on changed/staged files [mpellerin42]
+
 # 2.7.1 (2020-09-21)
 
 ### Bugfixes
