@@ -2,6 +2,7 @@
 
 ### Improvements
 - **Prettier**: added a pre-commit hook running prettier on changed/staged files [mpellerin42]
+- **Unit tests**: added a pre-push hook running all unit tests [mpellerin42]
 
 # 2.7.1 (2020-09-21)
 

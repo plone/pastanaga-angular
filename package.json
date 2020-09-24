@@ -59,6 +59,7 @@
         "typescript": "~3.9.5"
     },
     "husky": {
-        "pre-commit": "pretty-quick --staged"
+        "pre-commit": "pretty-quick --staged",
+        "pre-push": "sh .githooks/pre-push"
     }
 }
