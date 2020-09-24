@@ -1,5 +1,4 @@
 import 'jest-preset-angular';
-global.Promise = jest.requireActual('promise');
 
 // allow window.matchMedia in tests
 Object.defineProperty(window, 'matchMedia', {

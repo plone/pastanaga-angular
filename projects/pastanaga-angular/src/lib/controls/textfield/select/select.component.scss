@@ -1,0 +1,42 @@
+@import "../../../styles/variables";
+
+.pa-select {
+    position: relative;
+
+    $icon-width: rhythm(2);
+    $icon-right-padding: rhythm(.5);
+    .pa-select-chevron {
+        cursor: pointer;
+        position: absolute;
+        right: $icon-right-padding;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $icon-width;
+    }
+    &.pa-field-disabled {
+        color: $color-text-field-control-disabled;
+        .pa-select-chevron {
+            cursor: default;
+        }
+    }
+    &.pa-field-readonly {
+        .pa-select-chevron {
+            cursor: default;
+        }
+    }
+    .pa-field-control {
+        padding-right: calc(#{$icon-width + $icon-right-padding});
+    }
+    .pa-field-label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100% - #{$padding-field-control-left + $icon-width + $icon-right-padding});
+    }
+}
+:host ::ng-deep {
+    .pa-select pa-dropdown .pa-popup-wrapper {
+        max-width: none;
+        width: 100%;
+    }
+}

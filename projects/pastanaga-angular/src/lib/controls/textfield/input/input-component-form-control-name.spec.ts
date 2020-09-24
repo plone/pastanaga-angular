@@ -7,7 +7,6 @@ import {
     initTest,
     thenFieldControlByCssHasId,
     thenFieldControlHasValue,
-    thenFieldControlIsDisabled,
     whenFormControlSetValue,
     whenParentSets,
     whenUserInputs,
@@ -16,6 +15,7 @@ import {
     testAutocomplete,
     testDebounce,
     testDescribedBy,
+    testDisabledReactive,
     testErrorMessage,
     testErrorMessages,
     testFocus,
@@ -82,7 +82,7 @@ export class TestComponent {
         text: new FormControl(),
     });
     get formControl() {
-        return this.form.get('text');
+        return this.form.get('text') || new FormControl();
     }
     id?: string;
     name?: string;
@@ -127,7 +127,7 @@ describe('InputFieldComponent FormControlName', () => {
     let fixture: ComponentFixture<TestComponent>;
     beforeEach(async(() => {
         nextId++;
-        fixture = initTest(TestComponent);
+        fixture = initTest(TestComponent, InputComponent);
     }));
 
     it('should assign id', fakeAsync(() => testId(fixture, nextId)));
@@ -143,29 +143,8 @@ describe('InputFieldComponent FormControlName', () => {
     it('should focus field', fakeAsync(() => testFocus(fixture)));
 
     it('should apply disabled state', fakeAsync(() => {
-        clearFakeAsyncZone(fixture);
-
-        fixture.componentInstance.form.disable();
-        fixture.detectChanges();
-        tick();
-        thenFieldControlIsDisabled(fixture, true);
-
-        fixture.componentInstance.form.enable();
-        fixture.detectChanges();
-        tick();
-        thenFieldControlIsDisabled(fixture, false);
-
-        expect(fixture.componentInstance.formControl).toBeTruthy();
-
-        fixture.componentInstance.formControl?.disable();
-        fixture.detectChanges();
-        tick();
-        thenFieldControlIsDisabled(fixture, true);
-
-        fixture.componentInstance.formControl?.enable();
-        fixture.detectChanges();
-        tick();
-        thenFieldControlIsDisabled(fixture, false);
+        testDisabledReactive(fixture, fixture.componentInstance.form);
+        testDisabledReactive(fixture, fixture.componentInstance.formControl);
     }));
 
     it('should apply showAllErrors', fakeAsync(() => testShowAllErrors(fixture)));
@@ -255,7 +234,7 @@ export class TestFormIdsComponent {
 describe('InputFieldComponent id in forms', () => {
     let fixture: ComponentFixture<TestFormIdsComponent>;
     beforeEach(async(() => {
-        fixture = initTest(TestFormIdsComponent);
+        fixture = initTest(TestFormIdsComponent, InputComponent);
     }));
 
     it('should assign id', fakeAsync(() => {

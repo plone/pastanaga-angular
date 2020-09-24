@@ -117,7 +117,7 @@ describe('InputFieldComponent standalone', () => {
     let fixture: ComponentFixture<TestComponent>;
     beforeEach(async(() => {
         nextId++;
-        fixture = initTest(TestComponent);
+        fixture = initTest(TestComponent, InputComponent);
     }));
 
     it('should assign id', fakeAsync(() => testId(fixture, nextId)));

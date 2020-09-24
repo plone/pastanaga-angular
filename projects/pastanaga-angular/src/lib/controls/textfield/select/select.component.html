@@ -1,0 +1,75 @@
+<div class="pa-field pa-select"
+     [class.pa-field-readonly]="_readonly"
+     [class.pa-field-disabled]="control.disabled"
+     [class.pa-field-error]="control.dirty && control.invalid">
+
+    <input #selectInput
+           class="pa-field-control"
+           type="text"
+           autocomplete='off'
+           [(ngModel)]="displayedValue"
+           [ngModelOptions]="{standalone: true}"
+           [class.pa-field-control-filled]="!!displayedValue || displayedValue === 0"
+           [id]="_elementId"
+           [attr.name]="_name"
+           [attr.aria-label]="label"
+           [attr.aria-describedby]="_describedBy"
+           [attr.placeholder]="placeholder"
+           [readonly]="_readonly"
+           [disabled]="control.disabled"
+           [required]="required"
+           [paPopup]="optionsDropdown"
+           [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '42px'}"
+           [popupDisabled]="control.disabled || _readonly"
+           (input)="selectInputChanged($event.target.value)"
+           (keyup.enter)="onEnter()"
+           (blur)="onBlur()"
+    >
+
+    <label class="pa-field-label"
+           [for]="_id"
+           [attr.aria-owns]="_id"
+    >{{label}}</label>
+
+    <pa-icon class="pa-select-chevron"
+             name="chevron-down"
+             (click)="toggleDropdown()"></pa-icon>
+
+    <small *ngIf="_errorHelp || _help"
+           class="pa-field-help"
+           aria-live="polite"
+           [id]="_helpId"
+           [attr.aria-owns]="_id"
+           [class.pa-field-help-error]="!!_errorHelp "
+           [innerHTML]="_errorHelp || _help"></small>
+
+    <pa-dropdown #optionsDropdown
+                 role="listbox"
+                 dontAdjustPosition
+                 (onClose)="dropDownClosed()"
+                 (onOpen)="dropDownOpened()"
+                 [companionElement]="selectInput">
+
+        <ng-container *ngIf="_optionsAreNgContent; else paramOptions">
+            <ng-content></ng-content>
+        </ng-container>
+
+        <ng-template #paramOptions>
+            <ng-container *ngFor="let option of _options">
+                <pa-option-header *ngIf="option.type === 'header'">{{option.label}}</pa-option-header>
+                <pa-separator *ngIf="option.type === 'separator'"></pa-separator>
+                <pa-option *ngIf="option.type === 'option' && !option.filtered"
+                           [id]="option.id"
+                           [disabled]="option.disabled"
+                           [selected]="option.selected"
+                           [destructive]="option.destructive"
+                           [dontCloseOnSelect]="option.dontCloseOnSelect"
+                           [icon]="option.icon"
+                           [value]="option.value"
+                           (selectOption)="selectListOption(option)"
+                >{{option.label}}</pa-option>
+            </ng-container>
+
+        </ng-template>
+    </pa-dropdown>
+</div>

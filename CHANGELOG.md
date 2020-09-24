@@ -1,3 +1,11 @@
+# 2.8.0 (2020-09-24)
+
+### Breaking changes
+
+-   **Select**: Select Component replacing deprecated select [jCarret]
+-   **Select**: DeprecatedSelect and DeprecatedInput are removed from the library [jCarret]
+-   **unit tests**: fix test setup to be able to run tests from the outside [jCarret]
+
 # 2.7.2 (2020-09-24)
 
 ### Improvements

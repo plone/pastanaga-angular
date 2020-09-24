@@ -2,74 +2,282 @@
     <pa-demo-title>Select</pa-demo-title>
 
     <pa-demo-description>
-        <p>Component providing a dropdown of options.</p>
+        <p><code>pa-select</code> wraps an html <code>input</code> element and apply pastanaga's form field style.</p>
+        <p>As other pastanaga's form fields, <code>pa-select</code> supports 4 modes internally: <i>standalone, model, formControl and formControlName</i>, in order to be used in various context.</p>
+        <p><code>pa-select</code> also supports internal and external validation.</p>
+        <p><code>pa-select</code> renders a list of options in a dropdown, just like a native <code>select</code> input would.</p>
         <p>It can be used by declaring the options directly in the template like you would do with a basic HTML select,
-            or by passing the options list through <code>options</code> attribute. Passing the list of options as an attribute
-            allows to filter options when user is typing.
+            or by passing the options list through <code>options</code> attribute.
         </p>
+        <p>A dedicated config parameter <code>suggestionMode</code>, allows the user to input any text (options are then considered as suggestions rather than the finite list of possible values).<br>
+            In that case, if the value typed in the input does not match any option value, the actual value of the component is taken from the input.
+        </p>
+        <p>Clicking on the input field toggles the display of the options.<br>
+            Typing in the input field filters the displayed options.<br>
+            Options are not filtered when the component is pristine.<br>
+            When user inputs a value that matches exactly an option's label, the corresponding option is selected.<br>
+            When user inputs a value that does not match any option's label and blurs the input, the behavior of the component follows these rules:
+            </p>
+        <ul>
+            <li>If the component is in suggestion mode, component's value is updated with the user input.</li>
+            <li>If the component already had a selected option, the input is refreshed using the selected option's label.</li>
+            <li>If the component had no selected option, the input is emptied.</li>
+        </ul>
     </pa-demo-description>
 
     <pa-demo-examples>
-        <div class="cols">
-            <div class="row">
-                <div class="col1">
-                    <pa-deprecated-select label="Select with options passed through template"
-                               placeholder="Placeholder"
-                               [(value)]="selectedValue1"
-                               [disabled]="disabledState"
-                               [readonly]="readOnlyState"
-                    >
-                        <pa-option-header>Users</pa-option-header>
-                        <pa-option value="user1">User 1</pa-option>
-                        <pa-option value="user2">User 2</pa-option>
-                        <pa-option value="user3">User 3</pa-option>
-                        <pa-option-header>Groups</pa-option-header>
-                        <pa-option value="group1" disabled>Group 1</pa-option>
-                        <pa-option value="group2">Group 2</pa-option>
-                        <pa-option value="group3">Group 3</pa-option>
-                    </pa-deprecated-select>
-                </div>
-                <div class="col2">
-                    <p>Selected value: {{selectedValue1}}</p>
-                </div>
-            </div>
+        <pa-tabs>
+            <pa-tab (click)="selectedTab = 'standalone'"
+                    [active]="selectedTab === 'standalone'">Standalone</pa-tab>
+            <pa-tab (click)="selectedTab = 'ngModel'"
+                    [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControl'"
+                    [active]="selectedTab === 'formControl'">Form Control</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControlName'"
+                    [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
+        </pa-tabs>
+        <ul>
+            <li>valueChange = "{{valueChange}}"</li>
+            <li>Expanded = "{{expandedEvent}}"</li>
+            <li *ngIf="selectedTab === 'ngModel'">ngModelChange = "{{ngModelChangeEvent}}"</li>
+            <ng-container *ngIf="selectedTab === 'formControl'">
+                <li>formControlValueChange = "{{formControlValueChangeEvent}}"</li>
+                <li>formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
+            </ng-container>
+            <ng-container *ngIf="selectedTab === 'formControlName'">
+                <li>formControlValueChange = "{{formGroupValueChangeEvent | json}}"</li>
+                <li>formControlStatusChange = "{{formGroupStatusChangeEvent}}"</li>
+                <li>submitted = "{{formGroupValue | json}}"</li>
+            </ng-container>
+        </ul>
 
-            <div class="row">
-                <div class="col1">
-                    <pa-deprecated-select label="Select with options passed as parameter"
-                               placeholder="Placeholder"
-                               [options]="options"
-                               [(value)]="selectedValue2"
-                               [disabled]="disabledState"
-                               [readonly]="readOnlyState"
-                    ></pa-deprecated-select>
-                </div>
-                <div class="col2">
-                    <p>Selected value: {{selectedValue2}}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col1">
-                    <pa-deprecated-select label="Select with no option preselected"
-                               placeholder="Placeholder"
-                               [(value)]="selectedValue3"
-                               [disabled]="disabledState"
-                               [readonly]="readOnlyState">
-                        <pa-option-header>Users</pa-option-header>
-                        <pa-option value="user1">User 1</pa-option>
-                        <pa-option value="user2">User 2</pa-option>
-                        <pa-option value="user3">User 3</pa-option>
-                        <pa-option-header>Groups</pa-option-header>
-                        <pa-option value="group1" disabled>Group 1</pa-option>
-                        <pa-option value="group2">Group 2</pa-option>
-                        <pa-option value="group3">Group 3</pa-option>
-                    </pa-deprecated-select>
-                </div>
-                <div class="col2">
-                    <p>Selected value: {{selectedValue3}}</p>
-                </div>
-            </div>
+        <div *ngIf="selectedTab === 'standalone'">
+            <pa-select
+                label="Html Options, required"
+                placeholder="Placeholder"
+                required
+                [value]="selectedValue1"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [hasFocus]="firstFocused"
+                [errorMessages]="errorMessages"
+                (valueChange)="valueChange = $event"
+                (expanded)="expandedEvent = $event"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
+
+            <pa-select
+                label="Options passed as parameter"
+                placeholder="Placeholder"
+                [options]="options"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                (valueChange)="valueChange = $event"
+                (expanded)="expandedEvent = $event"
+            ></pa-select>
+
+            <pa-select
+                label="Not preselected, free text, pattern validation"
+                placeholder="Placeholder"
+                name="notPreselected"
+                [pattern]="pattern"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [errorMessages]="errorMessages"
+                [suggestionMode]="true"
+                (valueChange)="valueChange = $event"
+                (expanded)="expandedEvent = $event"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
         </div>
+
+        <div *ngIf="selectedTab === 'ngModel'">
+            <pa-select
+                label="Html Options, required"
+                placeholder="Placeholder"
+                required
+                [(ngModel)]="selectedValue1"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [hasFocus]="firstFocused"
+                [errorMessages]="errorMessages"
+                (expanded)="expandedEvent = $event"
+                (ngModelChange)="ngModelChangeEvent = selectedValue1"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
+
+            <pa-select
+                label="Options passed as parameter"
+                placeholder="Placeholder"
+                [(ngModel)]="selectedValue2"
+                [options]="options"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                (expanded)="expandedEvent = $event"
+                (ngModelChange)="ngModelChangeEvent = selectedValue2"
+            ></pa-select>
+
+            <pa-select
+                label="Not preselected, free text, pattern validation"
+                placeholder="Placeholder"
+                name="notPreselected"
+                [(ngModel)]="selectedValue3"
+                [pattern]="pattern"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [errorMessages]="errorMessages"
+                [suggestionMode]="true"
+                (expanded)="expandedEvent = $event"
+                (ngModelChange)="ngModelChangeEvent = selectedValue3"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
+        </div>
+
+        <div *ngIf="selectedTab === 'formControl'">
+            <pa-select
+                label="Html Options, required"
+                placeholder="Placeholder"
+                required
+                [formControl]="formControl1"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [hasFocus]="firstFocused"
+                [errorMessages]="errorMessages"
+                (expanded)="expandedEvent = $event"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
+
+            <pa-select
+                label="Options passed as parameter"
+                placeholder="Placeholder"
+                [formControl]="formControl2"
+                [options]="options"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                (expanded)="expandedEvent = $event"
+            ></pa-select>
+
+            <pa-select
+                label="Not preselected, free text, pattern validation"
+                placeholder="Placeholder"
+                name="notPreselected"
+                [formControl]="formControl3"
+                [pattern]="pattern"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [errorMessages]="errorMessages"
+                [suggestionMode]="true"
+                (expanded)="expandedEvent = $event"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
+        </div>
+
+        <div *ngIf="selectedTab === 'formControlName'">
+            <form [formGroup]="formGroup" (ngSubmit)="formGroupValue = formGroup.value">
+            <pa-select
+                label="Html Options, required"
+                placeholder="Placeholder"
+                required
+                formControlName="select1"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [hasFocus]="firstFocused"
+                [errorMessages]="errorMessages"
+                (expanded)="expandedEvent = $event"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
+
+            <pa-select
+                label="Options passed as parameter"
+                placeholder="Placeholder"
+                formControlName="select2"
+                [options]="options"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                (expanded)="expandedEvent = $event"
+            ></pa-select>
+
+            <pa-select
+                label="Not preselected, free text, pattern validation"
+                placeholder="Placeholder"
+                name="notPreselected"
+                formControlName="select3"
+                [pattern]="pattern"
+                [disabled]="disabledState"
+                [readonly]="readOnlyState"
+                [errorMessages]="errorMessages"
+                [suggestionMode]="true"
+                (expanded)="expandedEvent = $event"
+            >
+                <pa-option-header>Users</pa-option-header>
+                <pa-option value="user1">User 1</pa-option>
+                <pa-option value="user2">User 2</pa-option>
+                <pa-option value="user3">User 3</pa-option>
+                <pa-option-header>Groups</pa-option-header>
+                <pa-option value="group1" disabled>Group 1</pa-option>
+                <pa-option value="group2">Group 2</pa-option>
+                <pa-option value="group3">Group 3</pa-option>
+            </pa-select>
+                <pa-button type="submit">Submit</pa-button>
+            </form>
+        </div>
+
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
@@ -78,10 +286,14 @@
         <div class="pa-demo-configuration-field">
             <pa-deprecated-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-deprecated-checkbox>
         </div>
+        <div class="pa-demo-configuration-field">
+            <pa-deprecated-checkbox id="focused" [(selected)]="firstFocused">focus first select</pa-deprecated-checkbox>
+        </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <pa-demo-deprecated-base-textfield></pa-demo-deprecated-base-textfield>
+        <h2>Inherited from <code>BaseControl</code></h2>
+        <pa-demo-base-control-usage></pa-demo-base-control-usage>
 
         <br>
         <h2>Specific to <code>SelectComponent</code></h2>
@@ -89,23 +301,64 @@
         <dl>
             <dt>label</dt>
             <dd>Field's label</dd>
+            <dt>maxlength</dt>
+            <dd>Adds an internal <code>Validators.maxLength</code>. <small>(optional)</small></dd>
             <dt>options</dt>
             <dd>Option list to be displayed in the dropdown <small>(optional: can be set directly in the DOM)</small></dd>
+            <dt>pattern</dt>
+            <dd>Adds an internal <code>Validators.pattern</code>. Allows to validate field value according to a regular expression <small>(optional)</small></dd>
+            <dt>placeholder</dt>
+            <dd>Field's placeholder <small>(optional)</small></dd>
+            <dt>required</dt>
+            <dd>Adds an internal <code>Validators.required</code> <small>(default: false)</small></dd>
+            <dt>suggestionMode</dt>
+            <dd>allow user to input any text and consider options as suggestions <small>(default: false)</small></dd>
         </dl>
 
         <h3>Outputs</h3>
         <dl>
             <dt>expanded</dt>
             <dd>Emits <code>true</code> when the dropdown is opened, and <code>false</code> when it is closed.</dd>
+            <dt>valueChange</dt>
+            <dd>Emits value when an option is selected or when user blurs the input.</dd>
         </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
-        You can declare the options directly in the template:
-        <pre><code>{{exampleInTemplate}}</code></pre>
+        <pa-tabs>
+            <pa-tab (click)="selectedTab = 'standalone'"
+                    [active]="selectedTab === 'standalone'">Standalone</pa-tab>
+            <pa-tab (click)="selectedTab = 'ngModel'"
+                    [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControl'"
+                    [active]="selectedTab === 'formControl'">Form Control</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControlName'"
+                    [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
+        </pa-tabs>
+        <div *ngIf="selectedTab === 'standalone'">
+            <h3>basic usage</h3>
+            You can declare the options directly in the template:
+            <pre><code>{{standaloneBasicCode}}</code></pre>
+            Or you can pass the options as a parameter:
+            <pre><code>{{standaloneBasicCodeOptionsTs}}</code></pre>
+            <pre><code>{{standaloneBasicCodeOptionsHtml}}</code></pre>
+            <h3>full usage</h3>
+            <pre><code>{{standaloneFullCode}}</code></pre>
+        </div>
 
-        Or you can pass the options as a parameter:
-        <pre><code>{{exampleWithInputHtml}}</code></pre>
-        <pre><code>{{exampleWithInputTs}}</code></pre>
+        <div *ngIf="selectedTab === 'ngModel'">
+            <pre><code>{{ngModelBasicCode}}</code></pre>
+        </div>
+
+        <div *ngIf="selectedTab === 'formControl'">
+            <pre><code>{{formControlCodeTs}}</code></pre>
+            <pre><code>{{formControlCodeHtml}}</code></pre>
+        </div>
+
+        <div *ngIf="selectedTab === 'formControlName'">
+            <pre><code>{{formControlNameCodeTs}}</code></pre>
+            <pre><code>{{formControlNameCodeHtml}}</code></pre>
+        </div>
+
     </pa-demo-code>
 </pa-demo-page>
