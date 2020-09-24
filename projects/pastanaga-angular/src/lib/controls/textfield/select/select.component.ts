@@ -31,14 +31,10 @@ import {sanitizeStringValue} from '../../form-field.utils';
 export class SelectComponent extends BaseControl implements OnChanges, AfterViewInit, OnDestroy {
 
     @Input() label = '';
+
     @Input() placeholder = '';
 
-    @Input()
-    get options(): (OptionModel | OptionSeparator | OptionHeaderModel)[] {
-        return this._options;
-    }
-
-    set options(value: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
+    @Input() set options(value: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
         this._optionsAreNgContent = false;
         this._options = value;
 
@@ -52,23 +48,29 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
             this.onWriteValue(selectedOption.value);
         }
     }
+    get options(): (OptionModel | OptionSeparator | OptionHeaderModel)[] {
+        return this._options;
+    }
 
     @Input() suggestionMode = false;
+
     @Input()
     get acceptHtmlTags(): boolean {
         return this._acceptHtmlTags;
     }
-
     set acceptHtmlTags(value: boolean) {
         this._acceptHtmlTags = coerceBooleanProperty(value);
     }
+
     @Input() set required(value: boolean) {
         this._required = coerceBooleanProperty(value);
     }
     get required() {
         return this._required || false;
     }
+
     @Input() pattern?: RegExp | string;
+
     @Input() maxlength?: number;
 
     @Output() valueChange: EventEmitter<string | number> = new EventEmitter();
@@ -274,8 +276,8 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         } else if (this.suggestionMode) {
             const sanitized = sanitizeStringValue(this.displayedValue, this._acceptHtmlTags);
             this.onValueChange(sanitized);
-        } else {
-            this.onValueChange(null);
+        } else if (!!this.model) {
+            this.displayedValue = this.findLabelByValue(this.model);
         }
     }
 

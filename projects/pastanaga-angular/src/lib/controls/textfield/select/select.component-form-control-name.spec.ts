@@ -15,12 +15,19 @@ import {
 } from '../input/common-behaviors.spec';
 import {SelectComponent} from './select.component';
 import {
-    TEST_OPTIONS,
+    TEST_OPTIONS, testApplyUserInputInSuggestionMode,
     testErrorMessagesForSelect,
     testFilterOptions,
     testHtmlTagsForSelect,
-    testMaxlengthForSelect, testNoChangeForInactiveReactive, testParentAssignValueReactive,
-    testPatternForSelect, testRequiredForSelect, testSelectOption, testShowAllErrorsForSelect, testToggleDropDownWithInputClick,
+    testMaxlengthForSelect,
+    testNoChangeForInactiveReactive,
+    testParentAssignValueReactive,
+    testPatternForSelect,
+    testRequiredForSelect,
+    testSelectOption,
+    testShowAllErrorsForSelect,
+    testToggleDropDownWithInputClick,
+    testUserInputMatchOptionLabel, testUserInputNotMatchingOptionLabel,
 } from './common-behaviors.spec';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -147,6 +154,13 @@ describe('SelectComponent ngModel template options', () => {
     it('should apply showAllErrors', fakeAsync(() => testShowAllErrorsForSelect(fixture)));
 
     it('should display errorMessages', fakeAsync(() => testErrorMessagesForSelect(fixture)));
+
+    it('should apply option value when user input match an option label', fakeAsync(() => testUserInputMatchOptionLabel(fixture)));
+
+    it('should keep actual value when user input does not match an option label',
+        fakeAsync(() => testUserInputNotMatchingOptionLabel(fixture)));
+
+    it('should apply user input on blur when suggestionMode is on', fakeAsync(() => testApplyUserInputInSuggestionMode(fixture)));
 });
 
 @Component({

@@ -132,6 +132,48 @@ export function testSelectOption(fixture: ComponentFixture<any>) {
     expect(spy).toHaveBeenCalledWith('user1');
 }
 
+export function testUserInputMatchOptionLabel(fixture: ComponentFixture<any>) {
+    clearFakeAsyncZone(fixture);
+    whenUserClicksControl(fixture);
+    whenUserInputs(fixture, 'User 3');
+    whenUserBlurControl(fixture);
+    thenSelectHasValue(fixture, 'user3', 'User 3');
+    thenSelectedOptionIs(fixture, 'user3');
+}
+
+export function testUserInputNotMatchingOptionLabel(fixture: ComponentFixture<any>) {
+    clearFakeAsyncZone(fixture);
+    const spy = jest.spyOn(fixture.componentInstance, 'onValueChange');
+    whenUserClicksOption(fixture, 'user1');
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('user1');
+    whenUserClicksControl(fixture);
+    whenUserInputs(fixture, 'Use');
+    whenUserBlurControl(fixture);
+    thenSelectHasValue(fixture, 'user1', 'User 1');
+    thenSelectedOptionIs(fixture, 'user1');
+    // no other call were performed
+    expect(spy).toHaveBeenCalledTimes(1);
+}
+
+
+export function testApplyUserInputInSuggestionMode(fixture: ComponentFixture<any>) {
+    fixture.componentInstance.suggestionMode = true;
+    clearFakeAsyncZone(fixture);
+
+    const spy = jest.spyOn(fixture.componentInstance, 'onValueChange');
+    whenUserClicksOption(fixture, 'user1');
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('user1');
+    whenUserClicksControl(fixture);
+    whenUserInputs(fixture, 'Use');
+    whenUserBlurControl(fixture);
+
+    thenSelectHasValue(fixture, 'Use', 'Use');
+    thenNoOptionSelected(fixture);
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenCalledWith('Use');
+}
 export function testFilterOptions(fixture: ComponentFixture<any>) {
     clearFakeAsyncZone(fixture);
     whenUserClicksControl(fixture);
@@ -255,6 +297,11 @@ export function thenSelectedOptionIs(fixture: ComponentFixture<any>, value: stri
     const option = fixture.debugElement.queryAll(By.css('pa-option')).filter((opt) => opt.componentInstance.selected === true);
     expect(option.length).toEqual(1);
     expect(option[0].componentInstance.value).toEqual(value);
+}
+
+export function thenNoOptionSelected(fixture: ComponentFixture<any>) {
+    const option = fixture.debugElement.queryAll(By.css('pa-option')).filter((opt) => opt.componentInstance.selected === true);
+    expect(option.length).toEqual(0);
 }
 
 export function thenSelectHasValue(fixture: ComponentFixture<any>, value: string, label: string) {

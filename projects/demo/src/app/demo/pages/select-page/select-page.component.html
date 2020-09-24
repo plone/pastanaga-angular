@@ -9,14 +9,20 @@
         <p>It can be used by declaring the options directly in the template like you would do with a basic HTML select,
             or by passing the options list through <code>options</code> attribute.
         </p>
+        <p>A dedicated config parameter <code>suggestionMode</code>, allows the user to input any text (options are then considered as suggestions rather than the finite list of possible values).<br>
+            In that case, if the value typed in the input does not match any option value, the actual value of the component is taken from the input.
+        </p>
         <p>Clicking on the input field toggles the display of the options.<br>
             Typing in the input field filters the displayed options.<br>
             Options are not filtered when the component is pristine.<br>
-            When user inputs a value that matches exactly an option's label, the option is selected and the actual value of the field is selected.<br>
-            When user inputs a value that does not match any option's label and blurs the input, the input field and the value are emptied.<br>
-            A dedicated config parameter <code>suggestionMode</code>, allows the user to input any text (options are then considered as suggestions rather than the finite list of possible values).<br>
-            In that case, if the value typed in the input does not match any option value, the actual value of the component is taken from the input.
-        </p>
+            When user inputs a value that matches exactly an option's label, the corresponding option is selected.<br>
+            When user inputs a value that does not match any option's label and blurs the input, the behavior of the component follows these rules:
+            </p>
+        <ul>
+            <li>If the component is in suggestion mode, component's value is updated with the user input.</li>
+            <li>If the component already had a selected option, the input is refreshed using the selected option's label.</li>
+            <li>If the component had no selected option, the input is emptied.</li>
+        </ul>
     </pa-demo-description>
 
     <pa-demo-examples>
@@ -38,7 +44,7 @@
                 <li>formControlValueChange = "{{formControlValueChangeEvent}}"</li>
                 <li>formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
             </ng-container>
-            <ng-container *ngIf="selectedTab === 'formControlName'">   
+            <ng-container *ngIf="selectedTab === 'formControlName'">
                 <li>formControlValueChange = "{{formGroupValueChangeEvent | json}}"</li>
                 <li>formControlStatusChange = "{{formGroupStatusChangeEvent}}"</li>
                 <li>submitted = "{{formGroupValue | json}}"</li>
@@ -111,7 +117,6 @@
                 [readonly]="readOnlyState"
                 [hasFocus]="firstFocused"
                 [errorMessages]="errorMessages"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
                 (ngModelChange)="ngModelChangeEvent = selectedValue1"
             >
@@ -132,7 +137,6 @@
                 [options]="options"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
                 (ngModelChange)="ngModelChangeEvent = selectedValue2"
             ></pa-select>
@@ -147,7 +151,6 @@
                 [readonly]="readOnlyState"
                 [errorMessages]="errorMessages"
                 [suggestionMode]="true"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
                 (ngModelChange)="ngModelChangeEvent = selectedValue3"
             >
@@ -172,7 +175,6 @@
                 [readonly]="readOnlyState"
                 [hasFocus]="firstFocused"
                 [errorMessages]="errorMessages"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
             >
                 <pa-option-header>Users</pa-option-header>
@@ -192,7 +194,6 @@
                 [options]="options"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
             ></pa-select>
 
@@ -206,7 +207,6 @@
                 [readonly]="readOnlyState"
                 [errorMessages]="errorMessages"
                 [suggestionMode]="true"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
             >
                 <pa-option-header>Users</pa-option-header>
@@ -231,7 +231,6 @@
                 [readonly]="readOnlyState"
                 [hasFocus]="firstFocused"
                 [errorMessages]="errorMessages"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
             >
                 <pa-option-header>Users</pa-option-header>
@@ -251,7 +250,6 @@
                 [options]="options"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
             ></pa-select>
 
@@ -265,7 +263,6 @@
                 [readonly]="readOnlyState"
                 [errorMessages]="errorMessages"
                 [suggestionMode]="true"
-                (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
             >
                 <pa-option-header>Users</pa-option-header>
