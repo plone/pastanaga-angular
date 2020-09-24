@@ -54,12 +54,15 @@
         "jest-preset-angular": "^8.2.0",
         "ng-packagr": "^10.0.0",
         "prettier": "2.0.5",
+        "pretty-quick": "^3.0.2",
         "ts-node": "~8.3.0",
         "tslint": "~6.1.0",
         "typescript": "~3.9.5"
     },
     "husky": {
-        "pre-commit": "pretty-quick --staged",
-        "pre-push": "sh .githooks/pre-push"
+        "hooks": {
+            "pre-commit": "pretty-quick --staged",
+            "pre-push": "sh .githooks/pre-push"
+        }
     }
 }
