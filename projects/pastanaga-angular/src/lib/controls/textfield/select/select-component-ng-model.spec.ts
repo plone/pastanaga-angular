@@ -1,21 +1,25 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { PaDropdownModule } from '../../../dropdown/dropdown.module';
+import { PaPopupModule } from '../../../popup/popup.module';
+import { PaIconModule } from '../../../icon/icon.module';
+import { TextInputType, UpdateOnStrategy } from '../../form-field.model';
+import { async, ComponentFixture, fakeAsync } from '@angular/core/testing';
+import { initTest } from '../../form-field-test-utils.spec';
 import {
-    PaDropdownModule,
-    PaIconModule,
-    PaPopupModule,
-    TextInputType,
-    UpdateOnStrategy
-} from '../../../..';
-import {async, ComponentFixture, fakeAsync} from '@angular/core/testing';
-import {initTest} from '../../form-field-test-utils.spec';
-import {
-    testDescribedBy, testDisabled, testErrorMessage,
-    testHelp, testId, testName, testNoErrorForPristine, testPlaceholder,
+    testDescribedBy,
+    testDisabled,
+    testErrorMessage,
+    testHelp,
+    testId,
+    testName,
+    testNoErrorForPristine,
+    testPlaceholder,
     testReadonly,
 } from '../input/common-behaviors.spec';
-import {SelectComponent} from './select.component';
+import { SelectComponent } from './select.component';
 import {
-    TEST_OPTIONS, testApplyUserInputInSuggestionMode,
+    TEST_OPTIONS,
+    testApplyUserInputInSuggestionMode,
     testErrorMessagesForSelect,
     testFilterOptions,
     testMaxlengthForSelect,
@@ -26,7 +30,8 @@ import {
     testSelectOption,
     testShowAllErrorsForSelect,
     testToggleDropDownWithInputClick,
-    testUserInputMatchOptionLabel, testUserInputNotMatchingOptionLabel,
+    testUserInputMatchOptionLabel,
+    testUserInputNotMatchingOptionLabel,
 } from './common-behaviors.spec';
 
 @Component({

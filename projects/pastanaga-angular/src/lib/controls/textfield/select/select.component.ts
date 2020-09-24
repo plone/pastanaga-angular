@@ -7,20 +7,28 @@ import {
     ChangeDetectorRef,
     SimpleChanges,
     Input,
-    Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, QueryList, ContentChildren, OnDestroy, OnChanges
+    Output,
+    EventEmitter,
+    ViewChild,
+    ElementRef,
+    AfterViewInit,
+    QueryList,
+    ContentChildren,
+    OnDestroy,
+    OnChanges
 } from '@angular/core';
-import {BaseControl} from '../../base-control';
-import {NgControl, ValidatorFn, Validators} from '@angular/forms';
-import {Platform} from '@angular/cdk/platform';
-import {AutofillMonitor} from '@angular/cdk/text-field';
-import {ControlType, OptionHeaderModel, OptionModel, OptionSeparator} from '../../control.model';
-import {OptionComponent} from '../../../dropdown/option/option.component';
-import {DropdownComponent} from '../../../dropdown/dropdown.component';
-import {takeUntil} from 'rxjs/operators';
-import {detectChanges, markForCheck} from '../../../common';
-import {Subject} from 'rxjs';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import {sanitizeStringValue} from '../../form-field.utils';
+import { BaseControl } from '../../base-control';
+import { NgControl, ValidatorFn, Validators } from '@angular/forms';
+import { Platform } from '@angular/cdk/platform';
+import { AutofillMonitor } from '@angular/cdk/text-field';
+import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
+import { OptionComponent } from '../../../dropdown/option/option.component';
+import { DropdownComponent } from '../../../dropdown/dropdown.component';
+import { takeUntil } from 'rxjs/operators';
+import { detectChanges, markForCheck } from '../../../common';
+import { Subject } from 'rxjs';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { sanitizeStringValue } from '../../form-field.utils';
 
 @Component({
     selector: 'pa-select',
@@ -34,12 +42,12 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
 
     @Input() placeholder = '';
 
-    @Input() set options(value: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
+    @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
         this._optionsAreNgContent = false;
-        this._options = value;
+        this._options = values;
 
         // find provided selected option
-        const selectedOption: OptionModel | undefined = value.find(
+        const selectedOption: OptionModel | undefined = values.find(
             (option) =>
                 option.type === ControlType.option
                 && (option as OptionModel).selected) as OptionModel | undefined;

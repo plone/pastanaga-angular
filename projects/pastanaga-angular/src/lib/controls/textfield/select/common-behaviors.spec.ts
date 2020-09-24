@@ -1,20 +1,26 @@
-import {ComponentFixture, tick} from '@angular/core/testing';
+import { ComponentFixture, tick } from '@angular/core/testing';
 import {
-    clearFakeAsyncZone, thenErrorIsDisplayed, thenErrorIsNotDisplayed, thenFieldControlHasValue, thenFieldControlIsRequired,
+    clearFakeAsyncZone,
+    thenErrorIsDisplayed,
+    thenErrorIsNotDisplayed,
+    thenFieldControlHasValue,
+    thenFieldControlIsRequired,
     thenFormFieldHasError,
     thenFormFieldHasNoError,
-    whenParentSets, whenUserBlurControl, whenUserClicksControl,
+    whenParentSets,
+    whenUserBlurControl,
+    whenUserClicksControl,
     whenUserInputs
 } from '../../form-field-test-utils.spec';
-import {By} from '@angular/platform-browser';
-import {AbstractControl} from '@angular/forms';
-import {OptionHeaderModel, OptionModel, OptionSeparator} from '../../control.model';
+import { By } from '@angular/platform-browser';
+import { AbstractControl } from '@angular/forms';
+import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 
 it('is a toolkit for select component tests', () => {
     expect(true).toEqual(true);
 });
 
-export const TEST_OPTIONS: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
+export const TEST_OPTIONS: ( OptionModel | OptionSeparator | OptionHeaderModel )[] = [
     new OptionHeaderModel({ id: 'users', label: 'Users' }),
     new OptionModel({ id: 'user1', label: 'User 1', value: 'user1', icon: 'audio' }),
     new OptionModel({ id: 'user2', label: 'User 2', value: 'user2', icon: 'audio', disabled: true }),
@@ -64,6 +70,10 @@ export function testOnEnterSelect(fixture: ComponentFixture<any>) {
     thenFieldControlHasValue(fixture, 'test');
 }
 
+/**
+ * Theoretical Use Case, user cannot focus/input/blur a readonly or disabled input,
+ * unless he hacks the html
+ */
 export function testNoChangeForInactive(fixture: ComponentFixture<any>) {
     fixture.componentInstance.suggestionMode = true;
     clearFakeAsyncZone(fixture);
@@ -79,6 +89,10 @@ export function testNoChangeForInactive(fixture: ComponentFixture<any>) {
     expect(spyOnChange).not.toHaveBeenCalled();
 }
 
+/**
+ * Theoretical Use Case, user cannot focus/input/blur a readonly or disabled input,
+ * unless he hacks the html
+ */
 export function testNoChangeForInactiveReactive(fixture: ComponentFixture<any>, control: AbstractControl) {
     fixture.componentInstance.suggestionMode = true;
     clearFakeAsyncZone(fixture);

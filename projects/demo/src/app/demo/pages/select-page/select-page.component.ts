@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../../../../pastanaga-angular/src';
-import {FormControl, FormGroup} from '@angular/forms';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
     templateUrl: './select-page.component.html',

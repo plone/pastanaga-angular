@@ -25,7 +25,7 @@ import { merge, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { BaseControl } from '../../base-control';
 import { TextInputType } from '../../form-field.model';
-import {sanitizeStringValue} from '../../form-field.utils';
+import { sanitizeStringValue } from '../../form-field.utils';
 
 /**
  * Due to standalone usage specifications, the local state of the component

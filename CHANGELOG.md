@@ -3,6 +3,7 @@
 ### Breaking changes
 
 -   **Select**: Select Component replacing deprecated select [jCarret]
+-   **Select**: DeprecatedSelect and DeprecatedInput are removed from the library [jCarret]
 
 # 2.7.2 (2020-09-24)
 

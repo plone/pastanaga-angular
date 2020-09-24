@@ -1,4 +1,8 @@
-<div class="pa-field pa-select" [class.pa-field-readonly]="_readonly"  [class.pa-field-disabled]="control.disabled" [class.pa-field-error]="control.dirty && control.invalid">
+<div class="pa-field pa-select"
+     [class.pa-field-readonly]="_readonly"
+     [class.pa-field-disabled]="control.disabled"
+     [class.pa-field-error]="control.dirty && control.invalid">
+
     <input #selectInput
            class="pa-field-control"
            type="text"
@@ -27,7 +31,9 @@
            [attr.aria-owns]="_id"
     >{{label}}</label>
 
-    <pa-icon class="pa-select-chevron" name="chevron-down" (click)="toggleDropdown()"></pa-icon>
+    <pa-icon class="pa-select-chevron"
+             name="chevron-down"
+             (click)="toggleDropdown()"></pa-icon>
 
     <small *ngIf="_errorHelp || _help"
            class="pa-field-help"
