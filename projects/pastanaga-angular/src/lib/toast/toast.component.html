@@ -1,6 +1,7 @@
-<pa-icon *ngIf="_icon" class="pa-toast-icon" [name]="_icon"></pa-icon>
-<div [class]="_class">{{message}}</div>
-<pa-button *ngIf="_actionButtonLabel" kind="primary"
-           aspect="basic"
-           size="small"
-           (click)="onAction()">{{_actionButtonLabel}}</pa-button>
+<div #toastWrapper class="pa-toast-wrapper">
+    <pa-icon *ngIf="_icon" class="pa-toast-icon" [name]="_icon"></pa-icon>
+    <div [class]="_class">{{ message }}</div>
+    <button *ngIf="_actionButtonLabel" (click)="onAction()" class="pa-button pa-basic pa-small pa-toast-button">
+        {{ _actionButtonLabel }}
+    </button>
+</div>

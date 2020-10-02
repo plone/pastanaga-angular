@@ -1,39 +1,100 @@
-@import "../styles/variables";
+@import '../styles/variables';
 
 :host {
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin: 0 auto;
-    box-shadow: $shadow-default;
-    min-width: 30%;
-    padding: rhythm(1);
-    background: $color-neutral-primary-lightest;
-    -webkit-animation: toastin .5s;
-    animation: toastin .5s;
+    opacity: 0;
+    will-change: transform, opacity;
+    color: $color-neutral-primary-lightest;
+    animation: toastin 0.5s cubic-bezier(0.3, 0.95, 0.5, 1);
+    animation-fill-mode: forwards;
 }
+
+.pa-toast-error-wrapper {
+    background: $color-accent-secondary-default;
+}
+.pa-toast-info-wrapper {
+    background: $color-neutral-primary-default;
+}
+.pa-toast-success-wrapper {
+    background: $color-accent-primary-default;
+}
+.pa-toast-warning-wrapper {
+    background: $color-neutral-primary-default;
+}
+.pa-toast-animate-out {
+    animation: toastout 0.4s cubic-bezier(0.3, 0.95, 0.5, 1);
+    animation-fill-mode: forwards;
+}
+
+.pa-toast-wrapper {
+    display: flex;
+    align-items: center;
+    padding: rhythm(1);
+    min-width: 30%;
+    box-shadow: $shadow-default;
+    will-change: transform, opacity;
+}
+
 pa-icon {
     margin-right: rhythm(1);
 }
+
+.pa-toast-button {
+    margin-left: rhythm(4);
+    background: transparent;
+    border: none;
+    color: $color-neutral-primary-lightest;
+    background: $color-background-button-primary-basic;
+    border: $border-button-primary-basic;
+    &:hover {
+        background: rgba($color-neutral-primary-lightest, 0.1);
+    }
+    &:active {
+        background: rgba($color-neutral-secondary-default, 0.15);
+    }
+}
+
 @-webkit-keyframes toastin {
-    from {max-height: 0}
-    to {max-height: 100%}
+    from {
+        opacity: 0;
+        transform: translateY(- rhythm(5.5));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(rhythm(2));
+    }
 }
 
 @keyframes toastin {
-    from {max-height: 0}
-    to {max-height: 100%}
+    from {
+        opacity: 0;
+        transform: translateY(- rhythm(5.5));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(rhythm(2));
+    }
 }
 
-.pa-toast-warning {
-    color: $color-accent-secondary-light;
+@-webkit-keyframes toastout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(- rhythm(5.5));
+    }
 }
 
-.pa-toast-success {
-    color: $color-accent-primary-default;
-}
-
-.pa-toast-error {
-    color: $color-accent-secondary-default;
+@keyframes toastout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(- rhythm(5.5));
+    }
 }
