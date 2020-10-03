@@ -1,3 +1,9 @@
+# 2.8.1 (2020-10-02)
+
+### Improvements
+
+-   **Toast**: updated styling for toasts and added test [jlp0328]
+
 # 2.8.0 (2020-09-24)
 
 ### Breaking changes
