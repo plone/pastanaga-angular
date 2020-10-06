@@ -48,17 +48,17 @@ export const getAvatarColor = (id: string): string => {
  * This hashing function returns a number between 0 and 4294967295 (inclusive).
  */
 export const hash = (str: string): number => {
-    let hash = 5381,
-        i = str.length;
+    let _hash = 5381;
+    let i = str.length;
 
     while (i) {
         // tslint:disable-next-line:no-bitwise
-        hash = (hash * 33) ^ str.charCodeAt(--i);
+        _hash = (_hash * 33) ^ str.charCodeAt(--i);
     }
 
     /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
      * integers. Since we want the results to be always positive, convert the
      * signed int to an unsigned by doing an unsigned bitshift. */
     // tslint:disable-next-line:no-bitwise
-    return hash >>> 0;
+    return _hash >>> 0;
 };

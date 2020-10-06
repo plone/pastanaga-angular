@@ -89,24 +89,24 @@ export function whenFormControlSetValue(
 
 export function thenFieldControlHasId(fixture: ComponentFixture<any>, id: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.properties['id']).toEqual(id);
+    expect(control.properties.id).toEqual(id);
 }
 
 export function thenFieldControlByCssHasId(fixture: ComponentFixture<any>, selector: string, id: string) {
     const control = fixture.debugElement.query(By.css(`${selector} .pa-field-control`));
-    expect(control.properties['id']).toEqual(id);
+    expect(control.properties.id).toEqual(id);
 }
 
 export function thenFieldControlHasName(fixture: ComponentFixture<any>, name?: string | null) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.attributes['name']).toEqual(name);
+    expect(control.attributes.name).toEqual(name);
 }
 
 export function thenFormFieldHasHelp(fixture: ComponentFixture<any>, helpText?: string) {
     const help = fixture.debugElement.query(By.css('.pa-field-help'));
     if (!!helpText) {
         expect(help).toBeTruthy();
-        expect(help.properties['innerHTML']).toEqual(helpText);
+        expect(help.properties.innerHTML).toEqual(helpText);
     } else {
         expect(help).toEqual(null);
     }
@@ -119,7 +119,7 @@ export function thenFieldControlHasDescribedBy(fixture: ComponentFixture<any>, d
 
 export function thenFieldControlIsReadonly(fixture: ComponentFixture<any>, readonly: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.properties['readOnly']).toEqual(readonly);
+    expect(control.properties.readOnly).toEqual(readonly);
 }
 
 export function thenFieldControlIsDisabled(fixture: ComponentFixture<any>, disabled: boolean) {
@@ -130,7 +130,7 @@ export function thenFieldControlIsDisabled(fixture: ComponentFixture<any>, disab
 export function thenErrorIsDisplayed(fixture: ComponentFixture<any>, errorMessage?: string) {
     const help = fixture.debugElement.query(By.css('.pa-field-help'));
     expect(help).toBeTruthy();
-    expect(help.properties['innerHTML']).toEqual(errorMessage);
+    expect(help.properties.innerHTML).toEqual(errorMessage);
 }
 export function thenFormFieldHasError(fixture: ComponentFixture<any>) {
     expect(fixture.componentInstance.paField.control.errors).toBeTruthy();
@@ -162,11 +162,11 @@ export function thenFieldControlHasNoValue(fixture: ComponentFixture<any>) {
 }
 export function thenFieldControlHasType(fixture: ComponentFixture<any>, type: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.properties['type']).toEqual(type);
+    expect(control.properties.type).toEqual(type);
 }
 export function thenFieldControlHasPlaceholder(fixture: ComponentFixture<any>, placeholder: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.attributes['placeholder']).toEqual(placeholder);
+    expect(control.attributes.placeholder).toEqual(placeholder);
 }
 export function thenFieldControlIsRequired(fixture: ComponentFixture<any>, required: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
@@ -179,5 +179,5 @@ export function thenFieldControlIsRequired(fixture: ComponentFixture<any>, requi
 }
 export function thenFieldControlHasAutoComplete(fixture: ComponentFixture<any>, autocomplete: string | null) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.attributes['autocomplete']).toEqual(autocomplete);
+    expect(control.attributes.autocomplete).toEqual(autocomplete);
 }

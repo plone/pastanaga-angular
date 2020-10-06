@@ -46,7 +46,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     _stayVisible = false;
     _isDisplayed = false;
     _style?: any;
-    _handlers: Function[] = [];
+    _handlers: (() => void)[] = [];
     _dontAdjustPosition = false;
 
     _popupType = 'popup';

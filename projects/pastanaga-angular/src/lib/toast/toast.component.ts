@@ -52,7 +52,7 @@ export class ToastComponent implements OnInit, AfterViewInit {
 
     @Output() dismiss = new EventEmitter<string>();
 
-    _id: string = '';
+    _id = '';
     _icon?: string;
     _actionButtonLabel?: string;
     _action?: () => any;
