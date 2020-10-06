@@ -37,7 +37,7 @@
         "ordered-imports": false,
         "quotemark": [true, "single"],
         "semicolon": {
-            "options": ["always"]
+            "options": ["always", "strict-bound-class-methods"]
         },
         "space-before-function-paren": {
             "options": {
@@ -93,6 +93,7 @@
         "template-banana-in-box": true,
         "template-no-negated-async": true,
         "use-lifecycle-interface": true,
-        "use-pipe-transform-interface": true
+        "use-pipe-transform-interface": true,
+        "rxjs-no-unsafe-takeuntil": { "severity": "error" }
     }
 }
