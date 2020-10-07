@@ -211,7 +211,7 @@ export class TestMixedValidationComponent {
         email: 'email error',
     };
     // avoid debouncing for most input-component-tests
-    debounceDuration? = 0;
+    debounceDuration = 0;
 }
 describe('InputFieldComponent ngModel mixed validation', () => {
     let fixture: ComponentFixture<TestMixedValidationComponent>;
@@ -269,7 +269,7 @@ export class TestFormComponent {
         email: 'email error',
     };
     // avoid debouncing for most input-component-tests
-    debounceDuration? = 0;
+    debounceDuration = 0;
 }
 describe('InputFieldComponent ngModel in a form', () => {
     let fixture: ComponentFixture<TestFormComponent>;

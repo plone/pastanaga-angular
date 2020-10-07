@@ -120,7 +120,7 @@ export class DeprecatedBaseTextField extends DeprecatedBaseControl implements Af
     constructor(protected cdr: ChangeDetectorRef, public element?: ElementRef) {
         super();
         this.debouncer
-            .pipe(takeUntil(this.terminator), debounceTime(this.debounceDuration))
+            .pipe(debounceTime(this.debounceDuration), takeUntil(this.terminator))
             .subscribe((value) => this.valueChange.emit(value));
     }
 

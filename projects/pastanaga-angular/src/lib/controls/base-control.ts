@@ -49,6 +49,7 @@ let nextId = 0;
  * apply and synchronize internal state to parentComponent NgControl's state
  */
 @Directive()
+// tslint:disable-next-line:directive-class-suffix
 export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
     terminator: Subject<void> = new Subject();
 
@@ -58,7 +59,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
      * otherwise, html element will have a generated id
      */
     @Input() set id(value: string | undefined) {
-        this._id = value;
+        this._id = value || '';
     }
 
     @Input() set name(value: string) {
@@ -140,9 +141,9 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
     model: any;
     control: AbstractControl = new FormControl();
 
-    _id? = '';
+    _id = '';
     _autoId = 0;
-    _name? = '';
+    _name = '';
     _elementId = '';
     _fieldKind = 'field';
     _helpId = '';

@@ -48,7 +48,7 @@ export class TooltipDirective {
     @HostListener('focusin', ['$event'])
     focus(event: MouseEvent | any) {
         // do not show tooltip if focus has been triggered programmatically
-        if (event['sourceCapabilities']) {
+        if (event.sourceCapabilities) {
             this.startDisplay(event);
         }
     }
@@ -121,7 +121,6 @@ export class TooltipDirective {
         if (this.type === ACTION) {
             position = [rect.left, rect.top, rect.width, rect.height];
         } else if (event.type === 'focusin') {
-            const rect = this.element.nativeElement.getBoundingClientRect();
             position = [rect.right, rect.bottom, rect.width, rect.height];
         } else {
             position = [event.pageX, event.pageY, rect.width, rect.height];

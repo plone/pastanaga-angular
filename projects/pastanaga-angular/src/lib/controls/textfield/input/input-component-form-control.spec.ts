@@ -139,7 +139,8 @@ describe('InputFieldComponent FormControl', () => {
 
     it('should focus field', fakeAsync(() => testFocus(fixture)));
 
-    it('should apply disabled state', fakeAsync(() => testDisabledReactive(fixture, fixture.componentInstance.formControl)));
+    it('should apply disabled state', fakeAsync(() =>
+        testDisabledReactive(fixture, fixture.componentInstance.formControl)));
 
     it('should apply showAllErrors', fakeAsync(() => testShowAllErrors(fixture)));
 
@@ -227,7 +228,7 @@ export class TestMixedValidationComponent {
         required: 'required error',
     };
     // avoid debouncing for most input-component-tests
-    debounceDuration? = 0;
+    debounceDuration = 0;
     updateValidator = new Subject();
 
     changeValidator() {

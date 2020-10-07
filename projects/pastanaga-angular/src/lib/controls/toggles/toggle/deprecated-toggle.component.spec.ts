@@ -5,20 +5,13 @@ import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../../testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-
 @Component({
-    template: `<pa-deprecated-toggle #toggle
-                          id="toggle1"
-                          name="toggle1"
-                          [(ngModel)]="checked"
-                          [hasFocus]="hasFocus"
-                >The label</pa-deprecated-toggle>
+    template: `<pa-deprecated-toggle #toggle id="toggle1" name="toggle1" [(ngModel)]="checked" [hasFocus]="hasFocus"
+            >The label</pa-deprecated-toggle
+        >
         <form id="form" [formGroup]="form">
-            <pa-deprecated-toggle #toggleForm
-                       formControlName="checked"
-            >The label</pa-deprecated-toggle>
-        </form>
-    `,
+            <pa-deprecated-toggle #toggleForm formControlName="checked">The label</pa-deprecated-toggle>
+        </form> `,
 })
 export class TestComponent {
     checked?: boolean;
@@ -27,7 +20,7 @@ export class TestComponent {
     @ViewChild('toggleForm') toggleForm?: DeprecatedToggleComponent;
 
     form: FormGroup = new FormGroup({
-        checked: new FormControl()
+        checked: new FormControl(),
     });
 }
 
@@ -37,14 +30,8 @@ describe('ToggleComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                ...TESTING_IMPORTS,
-                FormsModule,
-                ReactiveFormsModule
-            ],
-            providers: [
-                ...TESTING_PROVIDERS,
-            ],
+            imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule],
+            providers: [...TESTING_PROVIDERS],
             declarations: [DeprecatedToggleComponent, TestComponent],
         }).compileComponents();
     }));
@@ -65,7 +52,6 @@ describe('ToggleComponent', () => {
         expect(fixture.debugElement.query(By.css('#toggle1 .pa-toggle-container')).classes.focused).toBeTruthy();
     });
 
-
     it('should apply modelChange to view', fakeAsync(() => {
         // model -> view
         fixture.detectChanges();
@@ -74,10 +60,9 @@ describe('ToggleComponent', () => {
         fixture.detectChanges();
         tick();
         const input = fixture.debugElement.query(By.css('#toggle1 input'));
-        expect(input.nativeElement.value).toEqual("true")
+        expect(input.nativeElement.value).toEqual('true');
         expect(fixture.componentInstance.toggle?._checked).toEqual(true);
         expect(fixture.componentInstance.checked).toEqual(true);
-
     }));
 
     it('should apply view Change to model', fakeAsync(() => {
@@ -87,7 +72,7 @@ describe('ToggleComponent', () => {
         input.nativeElement.click();
         fixture.detectChanges();
         tick();
-        expect(input.nativeElement.value).toEqual("true");
+        expect(input.nativeElement.value).toEqual('true');
         expect(fixture.componentInstance.toggle?._checked).toEqual(true);
         expect(fixture.componentInstance.checked).toEqual(true);
     }));
@@ -95,13 +80,13 @@ describe('ToggleComponent', () => {
     it('should apply formControl change', fakeAsync(() => {
         fixture.detectChanges();
         tick();
-        fixture.componentInstance.form.patchValue({checked: true});
+        fixture.componentInstance.form.patchValue({ checked: true });
         fixture.detectChanges();
         tick();
 
         // model -> view
         const input = fixture.debugElement.query(By.css('#form input'));
-        expect(input.nativeElement.value).toEqual("true")
+        expect(input.nativeElement.value).toEqual('true');
         expect(fixture.componentInstance.toggleForm?._checked).toEqual(true);
         expect(fixture.componentInstance.form.value.checked).toEqual(true);
         expect(fixture.componentInstance.form.pristine).toEqual(true);
@@ -111,7 +96,7 @@ describe('ToggleComponent', () => {
         fixture.detectChanges();
         tick();
 
-        expect(input.nativeElement.value).toEqual("false");
+        expect(input.nativeElement.value).toEqual('false');
         expect(fixture.componentInstance.toggleForm?._checked).toEqual(false);
         expect(fixture.componentInstance.form.value.checked).toEqual(false);
         expect(fixture.componentInstance.form.pristine).toEqual(false);

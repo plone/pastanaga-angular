@@ -187,7 +187,7 @@ export class DeprecatedTextareaComponent extends DeprecatedBaseTextField
 
     private autoResize(text: string | number | undefined) {
         if (!!this.textarea && typeof text === 'string' && this._charWidth > 0) {
-            const elementWidth = this.textarea.nativeElement.getBoundingClientRect()['width'];
+            const elementWidth = this.textarea.nativeElement.getBoundingClientRect().width;
             const charsByRow = Math.max(elementWidth / this._charWidth, 1);
 
             const textLines = text.split('\n');

@@ -65,20 +65,20 @@ describe('TextareaComponent', () => {
 
 @Component({
     template: `
-        <pa-deprecated-textarea #ngModelTextArea
-                     class="ngModelTextArea"
-                     [(ngModel)]="value"
-                     [disabled]="disabledState"
-                     [readonly]="readOnlyState"
-                     [errorMessages]="errorMessages"
-                     [errorMessage]="errorMessage"
-        >Label</pa-deprecated-textarea>
+        <pa-deprecated-textarea
+            #ngModelTextArea
+            class="ngModelTextArea"
+            [(ngModel)]="value"
+            [disabled]="disabledState"
+            [readonly]="readOnlyState"
+            [errorMessages]="errorMessages"
+            [errorMessage]="errorMessage"
+            >Label</pa-deprecated-textarea
+        >
 
         <form id="form" [formGroup]="form">
-            <pa-deprecated-textarea #reactiveFormTextArea
-                         formControlName="text"
-                         [readonly]="readOnlyState"
-            >Label
+            <pa-deprecated-textarea #reactiveFormTextArea formControlName="text" [readonly]="readOnlyState"
+                >Label
             </pa-deprecated-textarea>
         </form>
     `,
@@ -93,7 +93,7 @@ export class TestComponent {
     @ViewChild('reactiveFormTextArea') reactiveFormTextArea?: DeprecatedTextareaComponent;
 
     form: FormGroup = new FormGroup({
-        text: new FormControl()
+        text: new FormControl(),
     });
 }
 describe('TextareaComponentValueAccessor', () => {
@@ -101,14 +101,8 @@ describe('TextareaComponentValueAccessor', () => {
     let fixture: ComponentFixture<TestComponent>;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                ...TESTING_IMPORTS,
-                FormsModule,
-                ReactiveFormsModule
-            ],
-            providers: [
-                ...TESTING_PROVIDERS,
-            ],
+            imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule],
+            providers: [...TESTING_PROVIDERS],
             declarations: [DeprecatedTextareaComponent, TestComponent],
         }).compileComponents();
     }));
@@ -126,7 +120,7 @@ describe('TextareaComponentValueAccessor', () => {
         fixture.detectChanges();
         tick(fixture.componentInstance.ngModelTextArea?.debounceDuration);
         const input = fixture.debugElement.query(By.css('.ngModelTextArea textarea'));
-        expect(input.nativeElement.value).toEqual(initialText)
+        expect(input.nativeElement.value).toEqual(initialText);
         expect(fixture.componentInstance.ngModelTextArea?._value).toEqual(initialText);
         expect(fixture.componentInstance.value).toEqual(initialText);
     }));
@@ -137,10 +131,9 @@ describe('TextareaComponentValueAccessor', () => {
         const input = fixture.debugElement.query(By.css('.ngModelTextArea textarea'));
         const updatedText = 'updated text';
         input.nativeElement.value = updatedText;
-        input.triggerEventHandler('change', {target: {value: updatedText}});
+        input.triggerEventHandler('change', { target: { value: updatedText } });
         fixture.detectChanges();
         tick(fixture.componentInstance.ngModelTextArea?.debounceDuration);
         expect(fixture.componentInstance.value).toEqual(updatedText);
     }));
-
 });

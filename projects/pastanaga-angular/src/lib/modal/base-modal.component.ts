@@ -23,6 +23,7 @@ export interface IModal {
 }
 
 @Directive()
+// tslint:disable-next-line:directive-class-suffix
 export class BaseModalComponent implements AfterViewInit {
     @Output() onEnter: EventEmitter<void> = new EventEmitter();
 

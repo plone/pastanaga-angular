@@ -96,8 +96,8 @@ export class DeprecatedToggleComponent extends DeprecatedBaseControl
     }
 
     updateState(event: any) {
-        if (!this._disabled && event !== this._checked ) {
-            this._checked= !this._checked;
+        if (!this._disabled && event !== this._checked) {
+            this._checked = !this._checked;
             this.onChange(this._checked);
             this.onTouched();
         }

@@ -7,7 +7,6 @@ import {
     Renderer2,
     RendererFactory2,
 } from '@angular/core';
-import { PaToastModule } from './toast.module';
 import { ToastComponent } from './toast.component';
 import { ToastConfig, ToastType } from './toast.model';
 
@@ -69,8 +68,8 @@ export class ToastService {
         if (!!config) {
             componentRef.instance.config = config;
         }
-        componentRef.instance.dismiss.subscribe((id: string) => {
-            this.removeToast(id);
+        componentRef.instance.dismiss.subscribe((_id: string) => {
+            this.removeToast(_id);
         });
         return componentRef;
     }

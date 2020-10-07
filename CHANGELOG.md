@@ -1,3 +1,12 @@
+# 2.8.2 (2020-10-06)
+
+### Improvements
+
+- **Linter**:   [mpellerin42]
+    - Add rxjs-tslint-rules set and enable rxjs-no-unsafe-takeuntil rule
+    - Setup semicolon rule to match prettier one
+    - Fix most of linter's errors (the ones not implying breaking changes)
+
 # 2.8.1 (2020-10-02)
 
 ### Improvements

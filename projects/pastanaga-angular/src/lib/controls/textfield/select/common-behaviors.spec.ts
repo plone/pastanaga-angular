@@ -10,7 +10,7 @@ import {
     whenParentSets,
     whenUserBlurControl,
     whenUserClicksControl,
-    whenUserInputs
+    whenUserInputs,
 } from '../../form-field-test-utils.spec';
 import { By } from '@angular/platform-browser';
 import { AbstractControl } from '@angular/forms';
@@ -20,7 +20,7 @@ it('is a toolkit for select component tests', () => {
     expect(true).toEqual(true);
 });
 
-export const TEST_OPTIONS: ( OptionModel | OptionSeparator | OptionHeaderModel )[] = [
+export const TEST_OPTIONS: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
     new OptionHeaderModel({ id: 'users', label: 'Users' }),
     new OptionModel({ id: 'user1', label: 'User 1', value: 'user1', icon: 'audio' }),
     new OptionModel({ id: 'user2', label: 'User 2', value: 'user2', icon: 'audio', disabled: true }),
@@ -156,7 +156,6 @@ export function testUserInputNotMatchingOptionLabel(fixture: ComponentFixture<an
     expect(spy).toHaveBeenCalledTimes(1);
 }
 
-
 export function testApplyUserInputInSuggestionMode(fixture: ComponentFixture<any>) {
     fixture.componentInstance.suggestionMode = true;
     clearFakeAsyncZone(fixture);
@@ -268,18 +267,20 @@ export function testErrorMessagesForSelect(fixture: ComponentFixture<any>) {
 
 export function thenOptionPopupShouldBeHidden(fixture: ComponentFixture<any>) {
     const popup = fixture.debugElement.query(By.css('.pa-popup'));
-    expect(popup.properties['hidden']).toEqual(true);
+    expect(popup.properties.hidden).toEqual(true);
 }
 
 export function thenOptionPopupShouldBeDisplayed(fixture: ComponentFixture<any>) {
     const popup = fixture.debugElement.query(By.css('.pa-popup'));
-    expect(popup.properties['hidden']).toEqual(false);
+    expect(popup.properties.hidden).toEqual(false);
     const options = fixture.debugElement.queryAll(By.css('.pa-option'));
     expect(options).toBeTruthy();
 }
 
 export function whenUserClicksOption(fixture: ComponentFixture<any>, value: string) {
-    const option = fixture.debugElement.queryAll(By.css('pa-option')).find((opt) => opt.componentInstance.value === value);
+    const option = fixture.debugElement
+        .queryAll(By.css('pa-option'))
+        .find((opt) => opt.componentInstance.value === value);
     expect(option).toBeTruthy();
     if (!!option) {
         option.componentInstance.onSelect(new MouseEvent('click'));
@@ -289,18 +290,24 @@ export function whenUserClicksOption(fixture: ComponentFixture<any>, value: stri
 }
 
 export function thenVisibleOptionCountIs(fixture: ComponentFixture<any>, count: number) {
-    const option = fixture.debugElement.queryAll(By.css('pa-option')).filter((opt) => opt.componentInstance._hidden === false);
+    const option = fixture.debugElement
+        .queryAll(By.css('pa-option'))
+        .filter((opt) => opt.componentInstance._hidden === false);
     expect(option.length).toEqual(count);
 }
 
 export function thenSelectedOptionIs(fixture: ComponentFixture<any>, value: string) {
-    const option = fixture.debugElement.queryAll(By.css('pa-option')).filter((opt) => opt.componentInstance.selected === true);
+    const option = fixture.debugElement
+        .queryAll(By.css('pa-option'))
+        .filter((opt) => opt.componentInstance.selected === true);
     expect(option.length).toEqual(1);
     expect(option[0].componentInstance.value).toEqual(value);
 }
 
 export function thenNoOptionSelected(fixture: ComponentFixture<any>) {
-    const option = fixture.debugElement.queryAll(By.css('pa-option')).filter((opt) => opt.componentInstance.selected === true);
+    const option = fixture.debugElement
+        .queryAll(By.css('pa-option'))
+        .filter((opt) => opt.componentInstance.selected === true);
     expect(option.length).toEqual(0);
 }
 

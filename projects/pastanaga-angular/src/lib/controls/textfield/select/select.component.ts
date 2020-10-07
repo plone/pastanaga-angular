@@ -15,7 +15,7 @@ import {
     QueryList,
     ContentChildren,
     OnDestroy,
-    OnChanges
+    OnChanges,
 } from '@angular/core';
 import { BaseControl } from '../../base-control';
 import { NgControl, ValidatorFn, Validators } from '@angular/forms';
@@ -34,10 +34,9 @@ import { sanitizeStringValue } from '../../form-field.utils';
     selector: 'pa-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent extends BaseControl implements OnChanges, AfterViewInit, OnDestroy {
-
     @Input() label = '';
 
     @Input() placeholder = '';
@@ -48,9 +47,8 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
 
         // find provided selected option
         const selectedOption: OptionModel | undefined = values.find(
-            (option) =>
-                option.type === ControlType.option
-                && (option as OptionModel).selected) as OptionModel | undefined;
+            (option) => option.type === ControlType.option && (option as OptionModel).selected
+        ) as OptionModel | undefined;
 
         if (selectedOption) {
             this.onWriteValue(selectedOption.value);
@@ -78,7 +76,7 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
 
     @ViewChild('selectInput') selectInput?: ElementRef;
     @ViewChild('optionsDropdown') optionsDropdown?: DropdownComponent;
-    @ContentChildren(OptionComponent, {descendants: true}) ngContentOptions?: QueryList<OptionComponent>;
+    @ContentChildren(OptionComponent, { descendants: true }) ngContentOptions?: QueryList<OptionComponent>;
 
     readonly acceptHtmlTags = false;
 
@@ -126,10 +124,9 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         if (this.ngContentOptions && this.ngContentOptions.length > 0) {
             // subscribe to option selection
             this.ngContentOptions.forEach((option) =>
-                option.selectOption.pipe(takeUntil(this.terminator))
-                    .subscribe(() => {
-                        this.onValueChange(option.value);
-                    })
+                option.selectOption.pipe(takeUntil(this.terminator)).subscribe(() => {
+                    this.onValueChange(option.value);
+                })
             );
 
             // relaunch write after printing the options
@@ -189,12 +186,7 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     };
 
     shouldUpdateValidators = (changes: SimpleChanges): boolean => {
-        return (
-            !!changes.required ||
-            !!changes.maxlength ||
-            !!changes.pattern ||
-            !!changes.errorMessage
-        );
+        return !!changes.required || !!changes.maxlength || !!changes.pattern || !!changes.errorMessage;
     };
 
     refreshInternalValidators() {
@@ -307,12 +299,16 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         }
     }
 
-    findValueByLabel(): string | null{
+    findValueByLabel(): string | null {
         if (!!this.ngContentOptions && this.ngContentOptions.length > 0) {
-            const selectedComponent = this.ngContentOptions.find((optionComponent) => optionComponent.text === this.displayedValue);
+            const selectedComponent = this.ngContentOptions.find(
+                (optionComponent) => optionComponent.text === this.displayedValue
+            );
             return selectedComponent ? selectedComponent.value : null;
         } else {
-            const selectedModel = this._options.find((option: OptionModel) => option.label === this.displayedValue) as OptionModel;
+            const selectedModel = this._options.find(
+                (option: OptionModel) => option.label === this.displayedValue
+            ) as OptionModel;
             return selectedModel ? selectedModel.value : null;
         }
     }
@@ -323,7 +319,7 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
             const selectedOption = this.ngContentOptions.find((option) => option.value === this.model);
             label = !!selectedOption ? selectedOption.text : undefined;
         } else {
-            const selectedOption =  this._options.find((option: OptionModel) => option.value === value);
+            const selectedOption = this._options.find((option: OptionModel) => option.value === value);
             label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
         }
         if (!label && this.suggestionMode) {
@@ -364,12 +360,14 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
             });
         }
         if (!!this._options) {
-            this._options.filter(opt => opt.type === ControlType.option).forEach((option: OptionModel) => {
-                const isSelected = option.value === this.model;
-                if (option.selected !== isSelected) {
-                    option.selected = isSelected;
-                }
-            });
+            this._options
+                .filter((opt) => opt.type === ControlType.option)
+                .forEach((option: OptionModel) => {
+                    const isSelected = option.value === this.model;
+                    if (option.selected !== isSelected) {
+                        option.selected = isSelected;
+                    }
+                });
         }
     }
 }
