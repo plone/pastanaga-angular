@@ -69,6 +69,7 @@ export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy 
             this.onChange(true);
         } else if (this._type === 'checkbox' || !this.model) {
             this.isChecked = !this.isChecked;
+            //When managed by formControl/ngModel, onChange will not be triggered.
             this.onChange(this.isChecked);
         }
     }

@@ -70,7 +70,6 @@
                 type="checkbox"
                 [id]="id"
                 [name]="'name'"
-                [value]="model"
                 [attr.aria-checked]="model"
                 (selectedChange)="ngModelChangeEvent = $event"
                 >Checkbox label</pa-checkbox
@@ -80,7 +79,6 @@
                 [id]="id"
                 [name]="'name'"
                 [formControl]="formControl"
-                [value]="model"
                 [attr.aria-checked]="model"
                 (selectedChange)="ngModelChangeEvent = $event"
                 >Radio label</pa-checkbox

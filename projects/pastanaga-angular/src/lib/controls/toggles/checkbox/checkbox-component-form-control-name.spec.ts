@@ -14,7 +14,6 @@ import { CheckboxComponent } from './checkbox.component';
             type="checkbox"
             [id]="id"
             [name]="name"
-            [value]="model"
             (selectedChange)="onValueChange($event)"
             (ngModelChange)="onNgModelChange($event)"
             >Checkbox label</pa-checkbox
@@ -105,7 +104,6 @@ describe('CheckboxComponent formControlName', () => {
             type="radio"
             [id]="id"
             [name]="name"
-            [value]="model"
             (selectedChange)="onValueChange($event)"
             (ngModelChange)="onNgModelChange($event)"
             >Radio label</pa-checkbox
