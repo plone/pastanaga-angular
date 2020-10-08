@@ -1,3 +1,11 @@
+# 2.9.1 (2020-10-08)
+
+### Bugfix
+- **Checkbox**: style [mpellerin42]
+
+### Improvement
+- **Checkbox**: remove deprecated checkbox component [mpellerin42]
+
 # 2.9.0 (2020-10-07)
 
 ### Breaking changes
