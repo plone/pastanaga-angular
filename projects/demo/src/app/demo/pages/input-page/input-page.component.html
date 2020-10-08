@@ -173,28 +173,28 @@
 
     </pa-demo-examples>
     <pa-demo-configuration>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!value" (selectedChange)="changeValue()">parent value: {{value}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!placeholder" (selectedChange)="changePlaceholder()">placeholder</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!help" (selectedChange)="changeHelp()">help message</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!hasFocus" (selectedChange)="changeFocus()">focus</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="readonly" (selectedChange)="changeReadonly()">readonly</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="disabled" (selectedChange)="changeDisable()">disabled</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!errorMessage" (selectedChange)="changeErrorMessage()">errorMessage</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="showAllErrors" (selectedChange)="changeShowAllErrors()">showAllErrors</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!errorMessages" (selectedChange)="changeErrorMessages()">errorMessages</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="required" (selectedChange)="changeRequired()">required</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!pattern" (selectedChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!min" (selectedChange)="changeMin()">min {{min}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!max" (selectedChange)="changeMax()">max {{max}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!maxlength" (selectedChange)="changeMaxlength()">maxlength {{maxlength}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="noAutoComplete" (selectedChange)="changeNoAutoComplete()">noAutoComplete</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="acceptHtmlTags" (selectedChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="type === 'text'" (selectedChange)="changeType()">type {{type}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [selected]="!!updateOn" (selectedChange)="changeUpdateOn()">updateOn {{updateOn}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!debounceDuration" (selectedChange)="changeDebounceDuration()">debounceDuration {{debounceDuration}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!id" (selectedChange)="changeId()">id</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!name" (selectedChange)="changeName()">name</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!describedBy" (selectedChange)="changeDescribedBy()">describedBy</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!value" (selectedChange)="changeValue()">parent value: {{value}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!placeholder" (selectedChange)="changePlaceholder()">placeholder</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!help" (selectedChange)="changeHelp()">help message</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!hasFocus" (selectedChange)="changeFocus()">focus</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="readonly" (selectedChange)="changeReadonly()">readonly</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="disabled" (selectedChange)="changeDisable()">disabled</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessage" (selectedChange)="changeErrorMessage()">errorMessage</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="showAllErrors" (selectedChange)="changeShowAllErrors()">showAllErrors</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessages" (selectedChange)="changeErrorMessages()">errorMessages</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="required" (selectedChange)="changeRequired()">required</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!pattern" (selectedChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!min" (selectedChange)="changeMin()">min {{min}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!max" (selectedChange)="changeMax()">max {{max}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!maxlength" (selectedChange)="changeMaxlength()">maxlength {{maxlength}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="noAutoComplete" (selectedChange)="changeNoAutoComplete()">noAutoComplete</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="acceptHtmlTags" (selectedChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="type === 'text'" (selectedChange)="changeType()">type {{type}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [value]="!!updateOn" (selectedChange)="changeUpdateOn()">updateOn {{updateOn}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!debounceDuration" (selectedChange)="changeDebounceDuration()">debounceDuration {{debounceDuration}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!id" (selectedChange)="changeId()">id</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!name" (selectedChange)="changeName()">name</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!describedBy" (selectedChange)="changeDescribedBy()">describedBy</pa-checkbox></div>
 
     </pa-demo-configuration>
 
