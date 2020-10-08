@@ -22,7 +22,7 @@
             <li>debouncedValueChange = "{{debouncedValueChange}}"</li>
             <li>KeyUp = "{{keyupEvent | json}}"</li>
             <li>Enter = "{{enterEvent | json}}"</li>
-            <li>Blur = "{{blurEvent | json}}"</li>
+            <li>Blur = "{{blurEvent | json}}"</li>
             <li>Focus = "{{focusEvent | json}}"</li>
             <li *ngIf="selectedTab === 'ngModel'">ngModelChange = "{{ngModelChangeEvent}}"</li>
             <li *ngIf="selectedTab === 'formControl'">formControlValueChange = "{{formControlValueChangeEvent}}"</li>
@@ -173,28 +173,28 @@
 
     </pa-demo-examples>
     <pa-demo-configuration>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!value" (selectedChange)="changeValue()">parent value: {{value}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!placeholder" (selectedChange)="changePlaceholder()">placeholder</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!help" (selectedChange)="changeHelp()">help message</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!hasFocus" (selectedChange)="changeFocus()">focus</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="readonly" (selectedChange)="changeReadonly()">readonly</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="disabled" (selectedChange)="changeDisable()">disabled</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!errorMessage" (selectedChange)="changeErrorMessage()">errorMessage</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="showAllErrors" (selectedChange)="changeShowAllErrors()">showAllErrors</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!errorMessages" (selectedChange)="changeErrorMessages()">errorMessages</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="required" (selectedChange)="changeRequired()">required</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!pattern" (selectedChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!min" (selectedChange)="changeMin()">min {{min}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!max" (selectedChange)="changeMax()">max {{max}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!maxlength" (selectedChange)="changeMaxlength()">maxlength {{maxlength}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="noAutoComplete" (selectedChange)="changeNoAutoComplete()">noAutoComplete</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="acceptHtmlTags" (selectedChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="type === 'text'" (selectedChange)="changeType()">type {{type}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox *ngIf="selectedTab === 'standalone'" [selected]="!!updateOn" (selectedChange)="changeUpdateOn()">updateOn {{updateOn}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!debounceDuration" (selectedChange)="changeDebounceDuration()">debounceDuration {{debounceDuration}}</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!id" (selectedChange)="changeId()">id</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!name" (selectedChange)="changeName()">name</pa-deprecated-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-deprecated-checkbox [selected]="!!describedBy" (selectedChange)="changeDescribedBy()">describedBy</pa-deprecated-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!value" (selectedChange)="changeValue()">parent value: {{value}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!placeholder" (selectedChange)="changePlaceholder()">placeholder</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!help" (selectedChange)="changeHelp()">help message</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!hasFocus" (selectedChange)="changeFocus()">focus</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="readonly" (selectedChange)="changeReadonly()">readonly</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="disabled" (selectedChange)="changeDisable()">disabled</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!errorMessage" (selectedChange)="changeErrorMessage()">errorMessage</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="showAllErrors" (selectedChange)="changeShowAllErrors()">showAllErrors</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!errorMessages" (selectedChange)="changeErrorMessages()">errorMessages</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="required" (selectedChange)="changeRequired()">required</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!pattern" (selectedChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!min" (selectedChange)="changeMin()">min {{min}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!max" (selectedChange)="changeMax()">max {{max}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!maxlength" (selectedChange)="changeMaxlength()">maxlength {{maxlength}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="noAutoComplete" (selectedChange)="changeNoAutoComplete()">noAutoComplete</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="acceptHtmlTags" (selectedChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="type === 'text'" (selectedChange)="changeType()">type {{type}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [selected]="!!updateOn" (selectedChange)="changeUpdateOn()">updateOn {{updateOn}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!debounceDuration" (selectedChange)="changeDebounceDuration()">debounceDuration {{debounceDuration}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!id" (selectedChange)="changeId()">id</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!name" (selectedChange)="changeName()">name</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [selected]="!!describedBy" (selectedChange)="changeDescribedBy()">describedBy</pa-checkbox></div>
 
     </pa-demo-configuration>
 

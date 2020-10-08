@@ -36,16 +36,16 @@
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="focusFirstTrigger" [(selected)]="focusedFirstToggle">Focused state On first toggle
-            </pa-deprecated-checkbox>
+            <pa-checkbox id="focusFirstTrigger" [(ngModel)]="focusedFirstToggle">Focused state On first toggle
+            </pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="focusTrigger" [(selected)]="focusedToggle">Focused state On Second toggle</pa-deprecated-checkbox>
+            <pa-checkbox id="focusTrigger" [(ngModel)]="focusedToggle">Focused state On Second toggle</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="disabledTrigger" [(selected)]="disabled" (selectedChange)="toggleDisabled()">Toggle
+            <pa-checkbox id="disabledTrigger" [(ngModel)]="disabled" (selectedChange)="toggleDisabled()">Toggle
                 disabled
-            </pa-deprecated-checkbox>
+            </pa-checkbox>
         </div>
     </pa-demo-configuration>
 
