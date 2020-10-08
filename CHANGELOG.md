@@ -1,3 +1,10 @@
+# 2.9.0 (2020-10-07)
+
+### Breaking changes
+
+-   **Checkbox**: Checkbox Component replacing deprecated checkbox [jlp0328]
+-   **Checkbox**: Add unit tests [jlp0328]
+
 # 2.8.2 (2020-10-06)
 
 ### Improvements

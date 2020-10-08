@@ -9,9 +9,9 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { DeprecatedBaseControl } from '../../deprecated-base-control.directive';
+import { DeprecatedBaseControl } from '../../../deprecated-base-control.directive';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { detectChanges } from '../../../common';
+import { detectChanges } from '../../../../common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -27,7 +27,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DeprecatedCheckboxComponent extends DeprecatedBaseControl implements OnInit, OnDestroy, ControlValueAccessor {
+export class DeprecatedCheckboxComponent extends DeprecatedBaseControl
+    implements OnInit, OnDestroy, ControlValueAccessor {
     @Input()
     get type(): 'checkbox' | 'radio' {
         return this._type;
