@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 
 import { ToastComponent } from './toast.component';
 import { PaIconModule } from '../..';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
+import { MockModule } from 'ng-mocks';
 
 describe('ToastComponent', () => {
     let component: ToastComponent;
@@ -11,8 +11,7 @@ describe('ToastComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS, PaIconModule],
-            providers: [...TESTING_PROVIDERS],
+            imports: [MockModule(PaIconModule)],
             declarations: [ToastComponent],
         }).compileComponents();
     }));

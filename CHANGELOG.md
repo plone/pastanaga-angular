@@ -1,3 +1,8 @@
+# 2.9.2 (2020-10-09)
+
+### Improvement
+- **Unit Tests**: improve performance by mocking dependencies [dgsmith2]
+
 # 2.9.1 (2020-10-08)
 
 ### Bugfix

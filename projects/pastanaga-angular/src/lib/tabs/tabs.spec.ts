@@ -5,17 +5,17 @@ import { By } from '@angular/platform-browser';
 import { TabsListComponent } from './tabs-list.component';
 import { TabItemComponent } from './tab-item.component';
 import { PaIconModule } from '../..';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
+import { MockModule } from 'ng-mocks';
 
 @Component({
-    template: `<pa-tabs #tabs>
+    template: ` <pa-tabs #tabs>
         <pa-tab #tab1 (click)="selectedTab = 'info'" [active]="selectedTab === 'info'">Info</pa-tab>
         <pa-tab #tab2 id="settings" (click)="selectedTab = 'settings'" [active]="selectedTab === 'settings'"
-            >Settings</pa-tab
-        >
+            >Settings
+        </pa-tab>
         <pa-tab #tab3 (click)="selectedTab = 'notifications'" [active]="selectedTab === 'notifications'"
-            >Notifications</pa-tab
-        >
+            >Notifications
+        </pa-tab>
     </pa-tabs>`,
 })
 export class TestComponent {
@@ -31,8 +31,7 @@ describe('Tabs', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS, PaIconModule],
-            providers: [...TESTING_PROVIDERS],
+            imports: [MockModule(PaIconModule)],
             declarations: [TabsListComponent, TabItemComponent, TestComponent],
         }).compileComponents();
     }));

@@ -6,7 +6,7 @@ import { OptionHeaderComponent } from './option-header/option-header.component';
 import { OptionComponent } from './option/option.component';
 import { SeparatorComponent } from './separator/separator.component';
 import { PaIconModule } from '../icon/icon.module';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
+import { MockModule } from 'ng-mocks';
 
 @Component({
     template: ` <pa-dropdown [stayVisible]="stayVisible" #dropdown>
@@ -33,8 +33,7 @@ describe('Dropdown', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS, PaIconModule],
-            providers: [...TESTING_PROVIDERS],
+            imports: [MockModule(PaIconModule)],
             declarations: [
                 DropdownComponent,
                 OptionHeaderComponent,
