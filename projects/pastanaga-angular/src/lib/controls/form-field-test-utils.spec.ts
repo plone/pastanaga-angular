@@ -2,8 +2,8 @@ import { Type } from '@angular/core';
 import { ComponentFixture, flush, TestBed, tick } from '@angular/core/testing';
 import { AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { mockProvider } from '@ngneat/spectator/jest';
 import { SvgIconRegistryService } from 'angular-svg-icon';
+import { MockService } from "ng-mocks";
 
 it('is a toolkit for form fields tests', () => {
     expect(true).toEqual(true);
@@ -13,7 +13,10 @@ export function initTest<T>(component: Type<T>, testedComponent: any, otherModul
     const additionalModules = !!otherModules ? otherModules : [];
     TestBed.configureTestingModule({
         imports: [FormsModule, ReactiveFormsModule, ...additionalModules],
-        providers: [mockProvider(SvgIconRegistryService)],
+        providers: [{
+            provide: SvgIconRegistryService,
+            useValue: MockService(SvgIconRegistryService)
+        }],
         declarations: [testedComponent, component],
     }).compileComponents();
     return TestBed.createComponent(component);
