@@ -7,7 +7,7 @@ import { PaIconModule } from '../icon/icon.module';
 import { MockModule } from 'ng-mocks';
 
 @Component({
-    template: ` <pa-avatar
+    template: `<pa-avatar
         #avatar
         [userId]="userId"
         [userName]="userName"
