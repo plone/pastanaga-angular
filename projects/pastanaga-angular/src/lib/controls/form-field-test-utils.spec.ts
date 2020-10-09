@@ -1,7 +1,9 @@
 import { Type } from '@angular/core';
 import { ComponentFixture, flush, TestBed, tick } from '@angular/core/testing';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { mockProvider } from '@ngneat/spectator/jest';
+import { SvgIconRegistryService } from 'angular-svg-icon';
 
 it('is a toolkit for form fields tests', () => {
     expect(true).toEqual(true);
@@ -10,7 +12,8 @@ it('is a toolkit for form fields tests', () => {
 export function initTest<T>(component: Type<T>, testedComponent: any, otherModules?: any): ComponentFixture<T> {
     const additionalModules = !!otherModules ? otherModules : [];
     TestBed.configureTestingModule({
-        imports: [...additionalModules],
+        imports: [FormsModule, ReactiveFormsModule, ...additionalModules],
+        providers: [mockProvider(SvgIconRegistryService)],
         declarations: [testedComponent, component],
     }).compileComponents();
     return TestBed.createComponent(component);
