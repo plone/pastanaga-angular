@@ -21,37 +21,37 @@
 
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="userNameTrigger" [(selected)]="hasUserName" (selectedChange)="toggleUserName($event)">userName: John Doe</pa-deprecated-checkbox>
+            <pa-checkbox id="userNameTrigger" [value]="hasUserName" (selectedChange)="toggleUserName($event)">userName: John Doe</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="userIdTrigger" [(selected)]="hasUserId" (selectedChange)="toggleUserId($event)">userId: 1234567</pa-deprecated-checkbox>
+            <pa-checkbox id="userIdTrigger" [value]="hasUserId" (selectedChange)="toggleUserId($event)">userId: 1234567</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="imageTrigger" [(selected)]="hasImage" (selectedChange)="toggleImage($event)">Image</pa-deprecated-checkbox>
+            <pa-checkbox id="imageTrigger" [value]="hasImage" (selectedChange)="toggleImage($event)">Image</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="backgroundColorTrigger" [(selected)]="hasBackgroundColor" (selectedChange)="toggleBackgroundColor($event)">Background color #FBC452</pa-deprecated-checkbox>
+            <pa-checkbox id="backgroundColorTrigger" [value]="hasBackgroundColor" (selectedChange)="toggleBackgroundColor($event)">Background color #FBC452</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="largeTrigger" [(selected)]="isLarge">large</pa-deprecated-checkbox>
+            <pa-checkbox id="largeTrigger" [(ngModel)]="isLarge">large</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="iconTrigger" [(selected)]="hasIcon" (selectedChange)="toggleIcon($event)">Icon camera (will be full-size when no userName or image is provided)</pa-deprecated-checkbox>
+            <pa-checkbox id="iconTrigger" [value]="hasIcon" (selectedChange)="toggleIcon($event)">Icon camera (will be full-size when no userName or image is provided)</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="iconColorTrigger" [(selected)]="hasIconColor" (selectedChange)="toggleIconColor($event)">Icon Color {{iconColor}}</pa-deprecated-checkbox>
+            <pa-checkbox id="iconColorTrigger" [value]="hasIconColor" (selectedChange)="toggleIconColor($event)">Icon Color {{iconColor}}</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="iconBackgroundColorTrigger" [(selected)]="hasIconBackgroundColor" (selectedChange)="toggleIconBackgroundColor($event)">Icon background color #0047FF</pa-deprecated-checkbox>
+            <pa-checkbox id="iconBackgroundColorTrigger" [value]="hasIconBackgroundColor" (selectedChange)="toggleIconBackgroundColor($event)">Icon background color #0047FF</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="alternateTextTrigger" [(selected)]="hasAlternateText" (selectedChange)="toggleAlternateText($event)">Alt text for image or icon (only displayed for large icon avatar)</pa-deprecated-checkbox>
+            <pa-checkbox id="alternateTextTrigger" [value]="hasAlternateText" (selectedChange)="toggleAlternateText($event)">Alt text for image or icon (only displayed for large icon avatar)</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="autoColorTrigger" [(selected)]="autoBackground">Let component choose background color according to userName or userId</pa-deprecated-checkbox>
+            <pa-checkbox id="autoColorTrigger" [(ngModel)]="autoBackground">Let component choose background color according to userName or userId</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="activeTrigger" [(selected)]="isActive">Set as Active</pa-deprecated-checkbox>
+            <pa-checkbox id="activeTrigger" [(ngModel)]="isActive">Set as Active</pa-checkbox>
         </div>
     </pa-demo-configuration>
 

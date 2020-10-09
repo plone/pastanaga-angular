@@ -281,13 +281,13 @@
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="disabled" [(selected)]="disabledState">Disabled state</pa-deprecated-checkbox>
+            <pa-checkbox id="disabled" [(ngModel)]="disabledState">Disabled state</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="readonly" [(selected)]="readOnlyState">Readonly state</pa-deprecated-checkbox>
+            <pa-checkbox id="readonly" [(ngModel)]="readOnlyState">Readonly state</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="focused" [(selected)]="firstFocused">focus first select</pa-deprecated-checkbox>
+            <pa-checkbox id="focused" [(ngModel)]="firstFocused">focus first select</pa-checkbox>
         </div>
     </pa-demo-configuration>
 

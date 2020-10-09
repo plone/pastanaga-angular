@@ -20,23 +20,26 @@
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="focusTrigger" [(selected)]="focusedState">Focused & Active state</pa-deprecated-checkbox>
+            <pa-checkbox id="focusTrigger"
+                         [(ngModel)]="focusedState">Focused & Active state</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="filledTrigger" [(selected)]="filledState"
-                         (selectedChange)="externalValueChange($event, shortText)">Filled
-            </pa-deprecated-checkbox>
+            <pa-checkbox id="filledTrigger"
+                         [(ngModel)]="filledState"
+                         (ngModelChange)="externalValueChange($event, shortText)">Filled
+            </pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="filledLongTrigger" [(selected)]="filledLongState"
-                         (selectedChange)="externalValueChange($event, longText)">Filled With Long text (adaptive size)
-            </pa-deprecated-checkbox>
+            <pa-checkbox id="filledLongTrigger"
+                         [(ngModel)]="filledLongState"
+                         (ngModelChange)="externalValueChange($event, longText)">Filled With Long text (adaptive size)
+            </pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="disabledTrigger" [(selected)]="disabledState">Disabled state</pa-deprecated-checkbox>
+            <pa-checkbox id="disabledTrigger" [(ngModel)]="disabledState">Disabled state</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="readonlyTrigger" [(selected)]="readOnlyState">Readonly state</pa-deprecated-checkbox>
+            <pa-checkbox id="readonlyTrigger" [(ngModel)]="readOnlyState">Readonly state</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
             <pa-button size="small" aspect="solid"
@@ -45,10 +48,10 @@
             </pa-button>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="autoHeightTrigger" [(selected)]="autoHeightState">AutoHeight state</pa-deprecated-checkbox>
+            <pa-checkbox id="autoHeightTrigger" [(ngModel)]="autoHeightState">AutoHeight state</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-deprecated-checkbox id="resizableTrigger" [(selected)]="resizableState">Resizable state</pa-deprecated-checkbox>
+            <pa-checkbox id="resizableTrigger" [(ngModel)]="resizableState">Resizable state</pa-checkbox>
         </div>
     </pa-demo-configuration>
 

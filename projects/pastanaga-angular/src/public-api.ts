@@ -22,7 +22,6 @@ export * from './lib/controls/textfield/text-field.module';
 export * from './lib/controls/textfield/input/input.component';
 export * from './lib/controls/textfield/select/select.component';
 export * from './lib/controls/toggles/toggles.module';
-export * from './lib/controls/toggles/checkbox/deprecated/deprecated-checkbox.component';
 export * from './lib/controls/toggles/checkbox/checkbox.component';
 
 export * from './lib/datetime/datetime.component';

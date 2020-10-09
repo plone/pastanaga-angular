@@ -1,16 +1,17 @@
 <pa-demo-page>
     <pa-demo-title>Checkboxes</pa-demo-title>
 
-    <pa-demo-description>Simple checkbox component</pa-demo-description>
+    <pa-demo-description>
+        <p><code>pa-checkbox</code> wraps an html <code>input</code> element of type <code>checkbox</code> or <code>radio</code> and apply pastanaga's form field style.</p>
+        <p>As other pastanaga's form fields, <code>pa-checkbox</code> supports 4 modes internally: <i>standalone, model, formControl and formControlName</i>, in order to be used in various context.</p>
+    </pa-demo-description>
 
     <pa-demo-examples>
         <pa-tabs>
             <pa-tab (click)="selectedTab = 'standalone'" [active]="selectedTab === 'standalone'">Standalone</pa-tab>
             <pa-tab (click)="selectedTab = 'ngModel'" [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
             <pa-tab (click)="selectedTab = 'formControl'" [active]="selectedTab === 'formControl'">Form Control</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControlName'" [active]="selectedTab === 'formControlName'"
-                >Form Control Name</pa-tab
-            >
+            <pa-tab (click)="selectedTab = 'formControlName'" [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
         </pa-tabs>
         <ul>
             <li *ngIf="selectedTab === 'standalone'">selectedChange = {{ ngModelChangeEvent }}</li>
@@ -21,92 +22,102 @@
             </li>
         </ul>
         <div *ngIf="selectedTab === 'standalone'">
-            <pa-checkbox
-                type="checkbox"
-                [id]="id"
-                [name]="'name'"
-                [disabled]="disabled"
-                [value]="model"
-                [attr.aria-checked]="model"
-                (selectedChange)="ngModelChangeEvent = $event"
-                >Checkbox label</pa-checkbox
-            >
-            <pa-checkbox
-                type="radio"
-                [id]="id"
-                [name]="'name'"
-                [disabled]="disabled"
-                [value]="model"
-                [attr.aria-checked]="model"
-                (selectedChange)="ngModelChangeEvent = $event"
-                >Radio label</pa-checkbox
-            >
+            <div>
+                <pa-checkbox type="checkbox"
+                             [id]="id"
+                             [name]="'name'"
+                             [disabled]="disabled"
+                             [value]="model"
+                             (selectedChange)="ngModelChangeEvent = $event"
+                >Standalone checkbox label</pa-checkbox>
+            </div>
+            <div>
+                <pa-checkbox type="radio"
+                             [id]="id"
+                             [name]="'name'"
+                             [disabled]="disabled"
+                             [value]="model"
+                             (selectedChange)="ngModelChangeEvent = $event"
+                >Standalone radio label</pa-checkbox>
+            </div>
+
         </div>
         <div *ngIf="selectedTab === 'ngModel'">
-            <pa-checkbox
-                type="checkbox"
-                [id]="id"
-                [name]="'name'"
-                [disabled]="disabled"
-                [(ngModel)]="model"
-                [attr.aria-checked]="model"
-                (ngModelChange)="onModelChange()"
-                >Checkbox label</pa-checkbox
-            >
-            <pa-checkbox
-                type="radio"
-                [id]="id"
-                [name]="'name'"
-                [disabled]="disabled"
-                [(ngModel)]="model"
-                [attr.aria-checked]="model"
-                (ngModelChange)="onModelChange()"
-                >Radio label</pa-checkbox
-            >
+            <div>
+                <pa-checkbox type="checkbox"
+                             [id]="id"
+                             [name]="'name'"
+                             [disabled]="disabled"
+                             [(ngModel)]="model"
+                             (ngModelChange)="onModelChange()"
+                >ngModel checkbox label</pa-checkbox>
+            </div>
+           <div>
+               <pa-checkbox type="radio"
+                            [id]="id"
+                            [name]="'name'"
+                            [disabled]="disabled"
+                            [(ngModel)]="model"
+                            (ngModelChange)="onModelChange()"
+               >ngModel radio label </pa-checkbox>
+           </div>
+
         </div>
         <div *ngIf="selectedTab === 'formControl'">
-            <pa-checkbox
-            [formControl]="formControl"
-                type="checkbox"
-                [id]="id"
-                [name]="'name'"
-                [attr.aria-checked]="model"
-                (selectedChange)="ngModelChangeEvent = $event"
-                >Checkbox label</pa-checkbox
-            >
-            <pa-checkbox
-                type="radio"
-                [id]="id"
-                [name]="'name'"
-                [formControl]="formControl"
-                [attr.aria-checked]="model"
-                (selectedChange)="ngModelChangeEvent = $event"
-                >Radio label</pa-checkbox
-            >
+            <div>
+                <pa-checkbox [formControl]="formControl"
+                             type="checkbox"
+                             [id]="id"
+                             [name]="'name'"
+                             (selectedChange)="ngModelChangeEvent = $event"
+                >formControl checkbox label</pa-checkbox>
+            </div>
+            <div>
+                <pa-checkbox type="radio"
+                             [id]="id"
+                             [name]="'name'"
+                             [formControl]="formControl"
+                             (selectedChange)="ngModelChangeEvent = $event"
+                >formControl radio label</pa-checkbox>
+            </div>
         </div>
         <div *ngIf="selectedTab === 'formControlName'">
             <form [formGroup]="form">
-                <pa-checkbox type="checkbox" [id]="id" [name]="'name'" [attr.aria-checked]="model" formControlName="checkbox"
-                    >Checkbox label</pa-checkbox
-                >
-                <pa-checkbox type="radio" [id]="id" [name]="'name'" [attr.aria-checked]="model" formControlName="radio"
-                    >Radio label</pa-checkbox
-                >
+                <div>
+                    <pa-checkbox type="checkbox"
+                                 [id]="id"
+                                 [name]="'name'"
+                                 formControlName="checkbox">
+                        formControlName checkbox label
+                    </pa-checkbox>
+                </div>
+                <div>
+                    <pa-checkbox type="radio"
+                                 [id]="id"
+                                 [name]="'name'"
+                                 formControlName="radio">
+                        formControlName radio label
+                    </pa-checkbox>
+                </div>
             </form>
         </div>
     </pa-demo-examples>
 
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled" [value]="disabled" (selectedChange)="disableForm($event)"
-                >Disabled state</pa-checkbox
-            >
+            <pa-checkbox id="disabled"
+                         [value]="disabled"
+                         (selectedChange)="disableForm($event)">Disabled state
+            </pa-checkbox>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h3>Specific to <code>CheckboxComponent</code></h3>
-        <h4>Inputs</h4>
+        <h2>Inherited from <code>BaseControl</code></h2>
+        <pa-demo-base-control-usage></pa-demo-base-control-usage>
+
+        <h2>Specific to <code>CheckboxComponent</code></h2>
+        <h3>Inputs</h3>
         <dl>
             <dt>value</dt>
             <dd>Set checked state <small>(default: false)</small></dd>
@@ -114,7 +125,7 @@
             <dd>checkbox | radio <small>(default: checkbox)</small></dd>
         </dl>
 
-        <h4>Outputs</h4>
+        <h3>Outputs</h3>
         <dl>
             <dt>selectedChange</dt>
             <dd>
