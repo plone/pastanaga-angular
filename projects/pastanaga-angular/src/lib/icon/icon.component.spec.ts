@@ -4,7 +4,7 @@ import { IconComponent } from './icon.component';
 import { By } from '@angular/platform-browser';
 import { Size } from '../common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
-import { mockProvider } from '@ngneat/spectator/jest';
+import { MockService } from 'ng-mocks';
 
 describe('IconComponent', () => {
     let component: IconComponent;
@@ -12,7 +12,12 @@ describe('IconComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            providers: [mockProvider(SvgIconRegistryService)],
+            providers: [
+                {
+                    provide: SvgIconRegistryService,
+                    useValue: MockService(SvgIconRegistryService),
+                },
+            ],
             declarations: [IconComponent],
         }).compileComponents();
     }));
