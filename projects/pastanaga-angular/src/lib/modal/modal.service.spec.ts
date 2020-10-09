@@ -4,13 +4,13 @@ import { ModalService } from './modal.service';
 import { IModal } from './base-modal.component';
 import { Component, ViewChild } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { PaModalModule } from './modal.module';
 import { ModalConfig } from './modal.model';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { MockModule } from 'ng-mocks';
 
 @Component({
-    template: `<pa-dialog>
+    template: ` <pa-dialog>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
     </pa-dialog>`,
@@ -24,8 +24,7 @@ describe('ModalService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS, PaModalModule],
-            providers: [...TESTING_PROVIDERS],
+            imports: [MockModule(PaModalModule)],
             declarations: [TestDialogComponent],
         })
             .overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [TestDialogComponent] } })

@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IconComponent } from './icon.component';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { By } from '@angular/platform-browser';
 import { Size } from '../common';
+import { SvgIconRegistryService } from 'angular-svg-icon';
+import { mockProvider } from '@ngneat/spectator/jest';
 
 describe('IconComponent', () => {
     let component: IconComponent;
@@ -11,8 +12,7 @@ describe('IconComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS],
-            providers: [...TESTING_PROVIDERS],
+            providers: [mockProvider(SvgIconRegistryService)],
             declarations: [IconComponent],
         }).compileComponents();
     }));

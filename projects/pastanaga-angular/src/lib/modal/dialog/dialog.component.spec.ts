@@ -1,13 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogComponent } from './dialog.component';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../testing';
 import { Component, ViewChild } from '@angular/core';
 import { IModal } from '../base-modal.component';
-import { PaButtonModule, PaModalModule } from '../../..';
+import {
+    ModalDescriptionDirective,
+    ModalFooterDirective,
+    ModalImageDirective,
+    ModalTitleDirective,
+} from '../modal.directive';
+import { MockModule } from 'ng-mocks';
+import { PaButtonModule } from "../../..";
 
 @Component({
-    template: `<pa-dialog>
+    template: ` <pa-dialog>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
         <pa-modal-footer>
@@ -21,7 +27,7 @@ export class TestDialogComponent implements IModal {
 }
 
 @Component({
-    template: `<pa-dialog>
+    template: ` <pa-dialog>
         <pa-modal-image><img src="assets/ninja.svg" alt="ninja" /></pa-modal-image>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
@@ -44,9 +50,16 @@ describe('DialogComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS, PaModalModule, PaButtonModule],
-            providers: [...TESTING_PROVIDERS],
-            declarations: [TestDialogComponent, TestDialogImageComponent],
+            imports: [MockModule(PaButtonModule)],
+            declarations: [
+                DialogComponent,
+                TestDialogComponent,
+                TestDialogImageComponent,
+                ModalTitleDirective,
+                ModalDescriptionDirective,
+                ModalFooterDirective,
+                ModalImageDirective,
+            ],
         }).compileComponents();
     }));
 

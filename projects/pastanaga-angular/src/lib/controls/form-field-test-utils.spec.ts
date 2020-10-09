@@ -1,8 +1,6 @@
 import { Type } from '@angular/core';
 import { ComponentFixture, flush, TestBed, tick } from '@angular/core/testing';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
-import { AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputComponent } from './textfield/input/input.component';
+import { AbstractControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 it('is a toolkit for form fields tests', () => {
@@ -12,8 +10,7 @@ it('is a toolkit for form fields tests', () => {
 export function initTest<T>(component: Type<T>, testedComponent: any, otherModules?: any): ComponentFixture<T> {
     const additionalModules = !!otherModules ? otherModules : [];
     TestBed.configureTestingModule({
-        imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule, ...additionalModules],
-        providers: [...TESTING_PROVIDERS],
+        imports: [...additionalModules],
         declarations: [testedComponent, component],
     }).compileComponents();
     return TestBed.createComponent(component);
@@ -132,20 +129,24 @@ export function thenErrorIsDisplayed(fixture: ComponentFixture<any>, errorMessag
     expect(help).toBeTruthy();
     expect(help.properties.innerHTML).toEqual(errorMessage);
 }
+
 export function thenFormFieldHasError(fixture: ComponentFixture<any>) {
     expect(fixture.componentInstance.paField.control.errors).toBeTruthy();
     const formFieldWithErrorClass = fixture.debugElement.query(By.css('.pa-field-error'));
     expect(formFieldWithErrorClass).toBeTruthy();
 }
+
 export function thenFormFieldHasNoError(fixture: ComponentFixture<any>) {
     expect(fixture.componentInstance.paField.control.errors).toEqual(null);
     const formFieldWithErrorClass = fixture.debugElement.query(By.css('.pa-field-error'));
     expect(formFieldWithErrorClass).toEqual(null);
 }
+
 export function thenErrorIsNotDisplayed(fixture: ComponentFixture<any>) {
     const help = fixture.debugElement.query(By.css('.pa-field-help'));
     expect(help).toEqual(null);
 }
+
 export function thenFieldControlHasValue(fixture: ComponentFixture<any>, value: any) {
     expect(fixture.componentInstance.paField.model).toEqual(value);
     expect(fixture.componentInstance.paField.control.value).toEqual(value);
@@ -153,6 +154,7 @@ export function thenFieldControlHasValue(fixture: ComponentFixture<any>, value: 
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.nativeElement.value).toEqual(value);
 }
+
 export function thenFieldControlHasNoValue(fixture: ComponentFixture<any>) {
     expect(fixture.componentInstance.paField.model).toBeFalsy();
     expect(fixture.componentInstance.paField.control.value).toBeFalsy();
@@ -160,14 +162,17 @@ export function thenFieldControlHasNoValue(fixture: ComponentFixture<any>) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.nativeElement.value).toBeFalsy();
 }
+
 export function thenFieldControlHasType(fixture: ComponentFixture<any>, type: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.properties.type).toEqual(type);
 }
+
 export function thenFieldControlHasPlaceholder(fixture: ComponentFixture<any>, placeholder: string) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.attributes.placeholder).toEqual(placeholder);
 }
+
 export function thenFieldControlIsRequired(fixture: ComponentFixture<any>, required: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.attributes['ng-reflect-required']).toEqual('' + required);
@@ -177,6 +182,7 @@ export function thenFieldControlIsRequired(fixture: ComponentFixture<any>, requi
         expect(control.nativeElement.required).toBeFalsy();
     }
 }
+
 export function thenFieldControlHasAutoComplete(fixture: ComponentFixture<any>, autocomplete: string | null) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
     expect(control.attributes.autocomplete).toEqual(autocomplete);

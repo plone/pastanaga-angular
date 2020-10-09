@@ -1,17 +1,18 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { DeprecatedToggleComponent } from './deprecated-toggle.component';
 import { Component, ViewChild } from '@angular/core';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../../../testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 @Component({
-    template: `<pa-deprecated-toggle #toggle id="toggle1" name="toggle1" [(ngModel)]="checked" [hasFocus]="hasFocus"
-            >The label</pa-deprecated-toggle
-        >
+    template: `
+        <pa-deprecated-toggle #toggle id="toggle1" name="toggle1" [(ngModel)]="checked" [hasFocus]="hasFocus"
+            >The label
+        </pa-deprecated-toggle>
         <form id="form" [formGroup]="form">
             <pa-deprecated-toggle #toggleForm formControlName="checked">The label</pa-deprecated-toggle>
-        </form> `,
+        </form>
+    `,
 })
 export class TestComponent {
     checked?: boolean;
@@ -30,8 +31,7 @@ describe('ToggleComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS, FormsModule, ReactiveFormsModule],
-            providers: [...TESTING_PROVIDERS],
+            imports: [FormsModule, ReactiveFormsModule],
             declarations: [DeprecatedToggleComponent, TestComponent],
         }).compileComponents();
     }));

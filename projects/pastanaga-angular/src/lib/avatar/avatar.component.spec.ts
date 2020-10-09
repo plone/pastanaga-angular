@@ -3,11 +3,11 @@ import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { AvatarComponent } from './avatar.component';
-import { TESTING_IMPORTS, TESTING_PROVIDERS } from '../testing';
 import { PaIconModule } from '../icon/icon.module';
+import { MockModule } from 'ng-mocks';
 
 @Component({
-    template: `<pa-avatar
+    template: ` <pa-avatar
         #avatar
         [userId]="userId"
         [userName]="userName"
@@ -28,8 +28,8 @@ describe('AvatarComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [...TESTING_IMPORTS, PaIconModule],
-            providers: [...TESTING_PROVIDERS],
+            imports: [MockModule(PaIconModule)],
+            providers: [],
             declarations: [AvatarComponent, TestComponent],
         }).compileComponents();
     }));
@@ -59,12 +59,12 @@ describe('AvatarComponent', () => {
     });
 
     it('should set icon with proper size', () => {
-        expect(fixture.debugElement.query(By.css('svg.pa-medium'))).toBeFalsy();
+        expect(fixture.debugElement.query(By.css('.pa-avatar-no-info-icon pa-icon'))).toBeFalsy();
         component.icon = 'search';
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('svg.pa-medium'))).toBeTruthy();
+        expect(fixture.debugElement.query(By.css('.pa-avatar-no-info-icon pa-icon'))).toBeTruthy();
         component.userName = 'Clark Kent';
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('svg.pa-xxsmall'))).toBeTruthy();
+        expect(fixture.debugElement.query(By.css('.pa-avatar-user-icon'))).toBeTruthy();
     });
 });
