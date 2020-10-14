@@ -1,3 +1,8 @@
+# 2.9.3 (2020-10-14)
+
+### Bugfix
+- **Table**: show button when it has focus [ebrehault]
+
 # 2.9.2 (2020-10-09)
 
 ### Improvement
