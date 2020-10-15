@@ -1,3 +1,6 @@
+# (not released yet)
+- added values to rhythm (jCarret)
+
 # 2.9.3 (2020-10-14)
 
 ### Bugfix
