@@ -1,11 +1,12 @@
 @import "../styles/variables";
 
 .pa-badge {
-    display: inline-block;
+    display: inline-flex;
     @include font-size(m, m, s);
     padding: rythm(.25) rythm(.5);
     margin-left: - rythm(.5);
     margin-right: rythm(1);
+    max-height: rythm(2);
     font-weight: $badge-font-weight;
     text-align: center;
     white-space: nowrap;
@@ -57,6 +58,10 @@
             margin-bottom: - rythm(.25)*5;
         }
     }
+}
+
+.pa-badge-icon {
+    margin-right: rythm(.5);
 }
 
 .pa-badge-small {

@@ -10,6 +10,7 @@ import { TranslateModule } from '../translate/translate.module';
 import { TooltipModule } from '../tooltip/tooltip.module';
 import { ButtonModule } from '../button/button.module';
 import { AvatarModule } from '../avatar/avatar.module';
+import { SvgModule } from '../svg/svg.module';
 
 const en = {
     'common': {
@@ -121,6 +122,7 @@ describe('BadgeComponent', () => {
                 AvatarModule,
                 TooltipModule,
                 TranslateModule,
+                SvgModule,
                 AngularSvgIconModule.forRoot({
                     loader: {
                         provide: SvgLoader,

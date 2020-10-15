@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { BadgeModel } from './badge.model';
 import { Avatar } from '../avatar/avatar.model';
+import { Icon } from '../common/utils';
 
 @Component({
     selector: 'pa-badge',
@@ -56,6 +57,7 @@ export class BadgeComponent implements AfterViewInit {
     }
     @Input() of?: number;
     @Input() buttons?: BadgeModel[];
+    @Input() icon?: Icon;
     @Input() set avatar(value: Avatar) {
         if (!!value) {
             this._avatar = value;
