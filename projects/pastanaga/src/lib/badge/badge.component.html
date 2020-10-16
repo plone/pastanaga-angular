@@ -1,4 +1,4 @@
-<span class="pa-badge {{colorClass}}"
+<div class="pa-badge {{colorClass}}"
       [id]="id"
       [class.pa-badge-accent]="isAccented"
       [class.pa-badge-small]="isSmall"
@@ -7,6 +7,10 @@
       [ngStyle]="colorStyle">
 
     <pa-avatar *ngIf="!!_avatar" [avatar]="_avatar" size="small"></pa-avatar>
+
+    <ng-container *ngIf="icon">
+      <pa-icon [icon]="icon" class="pa-badge-icon"></pa-icon>
+    </ng-container>
 
     <span *ngIf="!_value"
           class="pa-badge-value"
@@ -19,5 +23,5 @@
     <pa-button *ngIf="canBeRemoved" aria-label="Remove"
                  size="small" icon="clear" color="secondary" (click)="remove.emit($event)">Remove</pa-button>
     <ng-container *ngIf="!!_value || _value === 0">{{ _value | number }}<span *ngIf="of"><abbr title="of">/</abbr>{{ of | number }}</span></ng-container>
-</span>
+</div>
 

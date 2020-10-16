@@ -5,6 +5,7 @@ import { ButtonModule } from '../button/button.module';
 import { TooltipModule } from '../tooltip/tooltip.module';
 import { TranslateModule } from '../translate/translate.module';
 import { AvatarModule } from '../avatar/avatar.module';
+import { SvgModule } from '../svg/svg.module';
 
 @NgModule({
     imports: [
@@ -13,6 +14,7 @@ import { AvatarModule } from '../avatar/avatar.module';
         TooltipModule,
         TranslateModule,
         AvatarModule,
+        SvgModule,
     ],
     declarations: [BadgeComponent],
     exports: [BadgeComponent],
