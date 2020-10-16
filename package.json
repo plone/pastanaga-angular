@@ -46,6 +46,7 @@
         "@briebug/jest-schematic": "^2.1.1",
         "@types/jest": "^25.2.3",
         "@types/node": "^12.11.1",
+        "@ngneat/spectator": "^6.0.0",
         "angular-cli-ghpages": "^0.6.2",
         "codelyzer": "^5.1.2",
         "husky": "^4.3.0",
