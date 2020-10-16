@@ -16,7 +16,6 @@
 
 pa-tab {
     display: inline-block;
-    width: 100%;
     min-width: 0;
     flex-grow: 1;
 
@@ -76,10 +75,6 @@ pa-tab {
     }
 }
 
-
-
-
-
 @media (min-width: $size-viewport-medium-min) {
     .pa-tabs-list {
         flex-direction: row;
@@ -90,12 +85,12 @@ pa-tab {
     }
 
     .pa-tabs-slider {
-        background: $color-tab-slider-active;
-        height: rhythm(.25);
-        bottom: 0;
-        left: 0;
         position: absolute;
-        transition: left .25s ease;
+        left: 0;
+        bottom: 0;
+        height: rhythm(.25);
+        background: $color-tab-slider-active;
+        transition: left .25s ease, width .25s ease;
     }
 
     pa-tab {
@@ -125,6 +120,8 @@ pa-tab {
             }
 
             .pa-tabs-link-wrapper {
+                display: block;
+                text-align: center;
                 margin: rhythm(.25);
                 padding: rhythm(.75);
                 z-index: 1;
@@ -133,56 +130,7 @@ pa-tab {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
-
-                pa-icon {
-                    display: none;
-                }
             }
-        }
-
-        &:nth-child(1):nth-last-child(3) ~ .pa-tabs-slider,
-        &:nth-child(2):nth-last-child(2) ~ .pa-tabs-slider,
-        &:nth-child(3):nth-last-child(1) ~ .pa-tabs-slider {
-            width: 50%;
-        }
-
-        &:nth-child(1):nth-last-child(4) ~ .pa-tabs-slider,
-        &:nth-child(2):nth-last-child(3) ~ .pa-tabs-slider,
-        &:nth-child(3):nth-last-child(2) ~ .pa-tabs-slider,
-        &:nth-child(4):nth-last-child(1) ~ .pa-tabs-slider {
-            width: 33.33333333333%;
-        }
-
-        &:nth-child(1):nth-last-child(5) ~ .pa-tabs-slider,
-        &:nth-child(2):nth-last-child(4) ~ .pa-tabs-slider,
-        &:nth-child(3):nth-last-child(3) ~ .pa-tabs-slider,
-        &:nth-child(4):nth-last-child(2) ~ .pa-tabs-slider,
-        &:nth-child(5):nth-last-child(1) ~ .pa-tabs-slider {
-            width: 25%;
-        }
-
-        &.active:nth-child(2):nth-last-child(2) ~ .pa-tabs-slider {
-            left: 50%;
-        }
-
-        &.active:nth-child(2):nth-last-child(3) ~ .pa-tabs-slider {
-            left: 33.33333333333%;
-        }
-
-        &.active:nth-child(3):nth-last-child(2) ~ .pa-tabs-slider {
-            left: 66.66666666667%;
-        }
-
-        &.active:nth-child(2):nth-last-child(4) ~ .pa-tabs-slider {
-            left: 25%;
-        }
-
-        &.active:nth-child(3):nth-last-child(3) ~ .pa-tabs-slider {
-            left: 50%;
-        }
-
-        &.active:nth-child(4):nth-last-child(2) ~ .pa-tabs-slider {
-            left: 75%;
         }
     }
 

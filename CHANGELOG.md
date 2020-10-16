@@ -1,5 +1,6 @@
-# (not released yet)
-- added values to rhythm (jCarret)
+# (2.9.4)
+- **Tabs**: allow tabs of different size [jCarret]
+- added values to rhythm [jCarret]
 
 # 2.9.3 (2020-10-14)
 
