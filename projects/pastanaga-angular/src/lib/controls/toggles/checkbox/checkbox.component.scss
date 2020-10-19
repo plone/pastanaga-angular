@@ -15,6 +15,8 @@
 
         &:focus {
             outline: 0;
+        }
+        &.cdk-keyboard-focused {
             box-shadow: $shadow-focus-checkbox;
         }
         &:not(:disabled):hover {

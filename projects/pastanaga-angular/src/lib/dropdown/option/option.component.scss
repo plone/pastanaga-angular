@@ -2,6 +2,7 @@
 
 :host {
     display: block;
+    position: relative;
 }
 
 .pa-option {
@@ -23,7 +24,13 @@
         &.pa-option-selected{
             background-color: $color-background-menu-option-selected;
         }
-        &:focus {
+        &.cdk-keyboard-focused:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: rhythm(.25);
+            left: rhythm(.25);
+            height: 100%;
             box-shadow: $shadow-focus;
         }
     }
@@ -37,7 +44,6 @@
     &.pa-option-disabled {
         cursor: default;
         color: $color-text-menu-option-disabled;
-        background-color: $color-background-menu-option-disabled;
     }
 
     pa-icon:not(.pa-option-selected-icon) {

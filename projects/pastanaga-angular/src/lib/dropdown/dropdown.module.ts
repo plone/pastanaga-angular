@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { A11yModule } from '@angular/cdk/a11y';
 import { PaPopupModule } from '../popup/popup.module';
 import { PaIconModule } from '../icon/icon.module';
 
@@ -11,7 +12,7 @@ import { OptionHeaderComponent } from './option-header/option-header.component';
 const COMPONENTS = [DropdownComponent, OptionHeaderComponent, OptionComponent, SeparatorComponent];
 
 @NgModule({
-    imports: [CommonModule, PaIconModule, PaPopupModule],
+    imports: [CommonModule, PaIconModule, PaPopupModule, A11yModule],
     declarations: COMPONENTS,
     exports: COMPONENTS,
 })
