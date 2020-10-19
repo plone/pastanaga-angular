@@ -39,6 +39,9 @@ pa-button:focus {
         &.pa-button-icon {
             padding: $padding-button-icon-xsmall;
         }
+        &.pa-button-icon-text {
+            padding: $padding-button-icon-text-xsmall;
+        }
     }
 
     &.pa-small {
@@ -48,6 +51,9 @@ pa-button:focus {
 
         &.pa-button-icon {
             padding: $padding-button-icon-small;
+        }
+        &.pa-button-icon-text {
+            padding: $padding-button-icon-text-small;
         }
     }
 
@@ -59,15 +65,21 @@ pa-button:focus {
         &.pa-button-icon {
             padding: $padding-button-icon-medium;
         }
+        &.pa-button-icon-text {
+            padding: $padding-button-icon-text-medium;
+        }
     }
 
     &.pa-large {
-        font-size: font-size(l);
-        line-height: rhythm(4);
+        font-size: font-size(m);
+        line-height: rhythm(3.5);
         padding: $padding-button-large;
 
         &.pa-button-icon {
             padding: $padding-button-icon-large;
+        }
+        &.pa-button-icon-text {
+            padding: $padding-button-icon-text-large;
         }
     }
 
@@ -290,7 +302,7 @@ pa-button:focus {
         }
     }
 
-    &:focus  {
+    &.cdk-keyboard-focused  {
         box-shadow: $shadow-focus;
     }
 

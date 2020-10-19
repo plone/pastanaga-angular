@@ -51,7 +51,7 @@ pa-tab {
             outline: 0;
         }
 
-        &:focus {
+        &.cdk-keyboard-focused {
             box-shadow: $shadow-focus;
         }
 

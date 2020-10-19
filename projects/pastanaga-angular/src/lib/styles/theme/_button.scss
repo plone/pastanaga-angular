@@ -158,9 +158,14 @@ $border-radius-button: 100px !default;
 //=====================================
 
 $padding-button-xsmall: rhythm(.25) rhythm(.5) !default;
-$padding-button-small:  rhythm(.5) rhythm(1) !default;
+$padding-button-small:  rhythm(.5) rhythm(1.5) !default;
 $padding-button-medium: rhythm(.5) rhythm(1.5) !default;
-$padding-button-large:  rhythm(.5) rhythm(2) !default;
+$padding-button-large:  rhythm(.5) rhythm(1.5) !default;
+
+$padding-button-icon-text-xsmall: rhythm(.25) rhythm(.5) !default;
+$padding-button-icon-text-small:  rhythm(.5) rhythm(1.5) rhythm(.5) rhythm(1) !default;
+$padding-button-icon-text-medium: rhythm(.5) rhythm(1.5) rhythm(.5) rhythm(1) !default;
+$padding-button-icon-text-large:  rhythm(.5) rhythm(1.5) rhythm(.5) rhythm(1)!default;
 
 $padding-button-icon-xsmall:    rhythm(.5) !default;
 $padding-button-icon-small:     rhythm(.75) !default;

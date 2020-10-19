@@ -1,3 +1,9 @@
+# 2.9.5 (2020-10-19)
+
+### Improvements
+- **Buttons**: updated style for icon and text, small and large buttons
+_ **focus state on checkbox, dropdown, tabs and buttons**: design for focus state only applied when focus is the result of a keyboard interaction
+
 # 2.9.4 (2020-10-16)
 
 ### Improvements
