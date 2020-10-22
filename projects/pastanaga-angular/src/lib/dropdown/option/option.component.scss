@@ -11,6 +11,12 @@
     align-items: center;
     padding: $padding-menu-option-top $padding-menu-option-side;
 
+    .pa-option-content {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
     &[hidden] {
         display: none;
     }
