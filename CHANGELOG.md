@@ -1,3 +1,9 @@
+# 2.9.6 (2020-10-22)
+
+### Improvements
+- **Dropdown**: Setup ellipsis on dropdown options [mpellerin42]
+- new rhythm value [mpellerin42]
+
 # 2.9.5 (2020-10-19)
 
 ### Improvements
