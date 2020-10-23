@@ -45,11 +45,8 @@ jobs:
         - stage: pages
           if: branch = master
           deploy:
-              provider: pages
-              skip_cleanup: true
-              github_token: $GITHUB_TOKEN
-              keep_history: true
-              local_dir: dist/pastanaga-app
+              provider: script
+              script: bash ghpages.sh
               on:
                   repo: plone/pastanaga-angular
                   branch: master
