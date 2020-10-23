@@ -47,6 +47,7 @@ jobs:
           deploy:
               provider: script
               script: bash ghpages.sh
+              skip_cleanup: true
               on:
                   repo: plone/pastanaga-angular
                   branch: master
