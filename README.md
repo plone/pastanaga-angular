@@ -3,10 +3,12 @@
 [![Build Status](https://travis-ci.com/plone/pastanaga-angular.svg?branch=master)](https://travis-ci.com/plone/pastanaga-angular)
 
 ## Pastanaga 2.0 is now released
+
 For now, it's still living on its own branch: [origin/2.x](https://github.com/plone/pastanaga-angular/tree/2.x)
 
-Demo:
-https://plone.github.io/pastanaga-angular
+Demo v1: https://plone.github.io/pastanaga-angular/v1/
+
+Demo v2: https://plone.github.io/pastanaga-angular/v2/
 
 ## Pastanaga 1.x
 
@@ -29,6 +31,7 @@ Declare the assets in `angular.json`:
             "output": "assets"
         }
 ```
+
 Import the common reset in main app style:
 
 ```
@@ -92,6 +95,7 @@ Whenever `open` and `folded` states are changing, the corresponding events `open
 Pastanaga allows to manage translation.
 
 Each supported language is a JSON file (or a TypeScript exporting a dictionary) where translated strings are handled in nested dictionaries:
+
 ```json
 {
     "calendar": {
@@ -118,6 +122,7 @@ Each supported language is a JSON file (or a TypeScript exporting a dictionary) 
 ```
 
 Translations must be provided in the main app module:
+
 ```typescript
 import * as en from '../assets/i18n/en.json';
 import * as la from '../assets/i18n/la.json';
@@ -132,34 +137,45 @@ import * as la from '../assets/i18n/la.json';
 ```
 
 The current language is expected to be provided too, it can be hard-coded:
+
 ```typescript
 {provide: 'LANG', useValue: 'en_US'},
 ```
+
 or computed, depending on the needs.
 
 Translations can be applied using a directive:
+
 ```html
 <span translate>demo-page.title</span>
 ```
+
 or a pipe:
+
 ```html
 {{ "demo-page.title" | translate }}
 ```
 
 Translations support parameters
+
 ```json
-{ "demo-page": {"score": "{{points}} points of {{total}}"} }
+{ "demo-page": { "score": "{{points}} points of {{total}}" } }
 ```
 
 ```html
-<span translate [translateParams]="{points: 10, total: 25}">demo-page.score</span>
+<span translate [translateParams]="{points: 10, total: 25}"
+    >demo-page.score</span
+>
 ```
+
 or
+
 ```html
 {{ "demo-page.score" | translate:{points: 10, total: 25} }}
 ```
 
 It can also be used as a service:
+
 ```typescript
 import { TranslatePipe } from 'pastanaga-angular';
 ...
