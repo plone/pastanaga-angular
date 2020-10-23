@@ -1,58 +1,56 @@
 language: node_js
 node_js:
-- 12.4.0
+    - 12.4.0
 cache:
-  directories:
-  - node_modules
+    directories:
+        - node_modules
 dist: trusty
 install:
-- npm install
+    - npm install
 script:
-- npm run test:ci
-- npm run build:demo
+    - npm run test:ci
+    - npm run build:demo
 notifications:
-  email:
-  - ebrehault@gmail.com
+    email:
+        - ebrehault@gmail.com
 
 jobs:
-  include:
-    - stage: Tagging
-      if: (branch IN (master, 2.x)) AND (tag IS blank)
-      after_success: source ./deploy.sh
-      deploy:
-        provider: releases
-        api_key:
-          secure: iez/Ji90Kb2DkfLqhNXHpZOWWDMhM+Mv3AZL/5ZXaAnANcW9UIIfIank90iQ0yyTtyZfSdio6uY40JQ3i+7t6K4qXKQZyl+RVro22RwLG//buZ5ZprLNHcgHexINHKwwZUgHqjtKinoPVk8v9S4us2J2VoN1JM8ICyrMZpbLw7xCCbggerZorVJCmmsQQFKSWE10ZibuXh4tGnEmn2CbpRlipe8EhlNdXM3z+3s+EpNqrO+26/vQuu3mtZGu4sDZyYVcVIL29ynAI2bBYGZodKfSUolArifBGbHLLhoQk3AviHF7+o66Zeuel3X9AlVyKIhqYebEVKHMbSqPzy6f94DrLTek6hBJXjt+6bbfPVrUt+XpbxdzHKaszINuNgLQFjNxO6wl+Cpjz12oYHbvhA93z6nGvF6nT6oKDka9RKL244LGderOTsNOJW37SmZSCq6tSwPUzKDWx5s8tDk/AErWKtvjWDjQPfZXrGJx1+ohgx8XkkzfMV7E2wogoS7tEaML5KMeRG4FB64hFDIBF14q5Laag8Yw4ghFLyERTtmF5thLbvRacNrl68Y8NbAu2BpMrxJQo46LNWILUbKzh5sr+byD3tzY+YvbNpugsdivmFf76aulcZSTKfix94hhYDDzuxsESiTTzGhjp3dn/mwCz1kmuSDmKWcU8Ipm3bg=
-        name: Build $PACKAGE_VERSION
-        on:
-          repo: plone/pastanaga-angular
-          branch: master OR 2.x
-          tags: true
-    - stage: NPM release
-      if: tag IS present
-      before_deploy: npm run build && cd dist/pastanaga-angular
-      deploy:
-        provider: npm
-        edge: true
-        email: ebrehault@gmail.com
-        skip_cleanup: true
-        api_key:
-          secure: darUwSHoMztOZEVPezttX+QckHdGxLmKzERFYcla7u6JC0FjCVYKp4OMDARxXnnK878JEQMcHGUj5Bp6A8msdfSH+su1O2LhZY0iYxgrqIrP8tl8rDO2sHs9n2Tg7/ZMNIS6VWKjzE5QBfow4UKqRNbUL7i9qZs69Cdh3EZsg5nSrviRMrsrgPwRL5SubCDNeGPitOLLJxWWxfoOrP3i/2sYmJEz/dIUJNA/nriu6H0k4I9niXdh9rE6Bm3mts0IT9xSC1LPwrDZBwj56Z/wfg6EgCytsAuOuxkrcVkHImgMw4rgW8KTFG3vcCrq9/v6a5JwwP3H1I3QRH26rif5s2wdu2Ph3dOzRzefNgYbcgfTeTGLGOKU48ilYtSe3XUu7htgj2WP1yLX3pJydtljCMJzz5/RJYmxYRKGFIGNEcjf2J/mJPNrzqW2nKsvo3YFPko1wn4ZYEq+RYDbF2/Gg2PrkeD0dOP7Snp5ARNR05aeWRj0AHduEFhXzN5CStvTh+X2YwLrxnkDNUs74XF68wkeeF0ICjl7CnM8/yTS6kY02m4izCdrnNM5qpjvHjyCRuhWiR6Fptp30x/qpYMw32b1/SRjJnD/acNGoEjpwKN/hjTZyMtd8huXEmRLMfhoJer0s+kTq8bx7ET0UGAQGEz9Xft+BWNVotYVvl0StfM=
-        on:
-          tags: true
-          repo: plone/pastanaga-angular
-          branch: master OR 2.x
-    - stage: pages
-      if: branch = 2.x
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: $GITHUB_TOKEN
-        keep_history: true
-        local_dir: dist/demo
-        on:
-          repo: plone/pastanaga-angular
-          branch: 2.x
+    include:
+        - stage: Tagging
+          if: (branch IN (master, 2.x)) AND (tag IS blank)
+          after_success: source ./deploy.sh
+          deploy:
+              provider: releases
+              api_key:
+                  secure: iez/Ji90Kb2DkfLqhNXHpZOWWDMhM+Mv3AZL/5ZXaAnANcW9UIIfIank90iQ0yyTtyZfSdio6uY40JQ3i+7t6K4qXKQZyl+RVro22RwLG//buZ5ZprLNHcgHexINHKwwZUgHqjtKinoPVk8v9S4us2J2VoN1JM8ICyrMZpbLw7xCCbggerZorVJCmmsQQFKSWE10ZibuXh4tGnEmn2CbpRlipe8EhlNdXM3z+3s+EpNqrO+26/vQuu3mtZGu4sDZyYVcVIL29ynAI2bBYGZodKfSUolArifBGbHLLhoQk3AviHF7+o66Zeuel3X9AlVyKIhqYebEVKHMbSqPzy6f94DrLTek6hBJXjt+6bbfPVrUt+XpbxdzHKaszINuNgLQFjNxO6wl+Cpjz12oYHbvhA93z6nGvF6nT6oKDka9RKL244LGderOTsNOJW37SmZSCq6tSwPUzKDWx5s8tDk/AErWKtvjWDjQPfZXrGJx1+ohgx8XkkzfMV7E2wogoS7tEaML5KMeRG4FB64hFDIBF14q5Laag8Yw4ghFLyERTtmF5thLbvRacNrl68Y8NbAu2BpMrxJQo46LNWILUbKzh5sr+byD3tzY+YvbNpugsdivmFf76aulcZSTKfix94hhYDDzuxsESiTTzGhjp3dn/mwCz1kmuSDmKWcU8Ipm3bg=
+              name: Build $PACKAGE_VERSION
+              on:
+                  repo: plone/pastanaga-angular
+                  branch: master OR 2.x
+                  tags: true
+        - stage: NPM release
+          if: tag IS present
+          before_deploy: npm run build && cd dist/pastanaga-angular
+          deploy:
+              provider: npm
+              edge: true
+              email: ebrehault@gmail.com
+              skip_cleanup: true
+              api_key:
+                  secure: darUwSHoMztOZEVPezttX+QckHdGxLmKzERFYcla7u6JC0FjCVYKp4OMDARxXnnK878JEQMcHGUj5Bp6A8msdfSH+su1O2LhZY0iYxgrqIrP8tl8rDO2sHs9n2Tg7/ZMNIS6VWKjzE5QBfow4UKqRNbUL7i9qZs69Cdh3EZsg5nSrviRMrsrgPwRL5SubCDNeGPitOLLJxWWxfoOrP3i/2sYmJEz/dIUJNA/nriu6H0k4I9niXdh9rE6Bm3mts0IT9xSC1LPwrDZBwj56Z/wfg6EgCytsAuOuxkrcVkHImgMw4rgW8KTFG3vcCrq9/v6a5JwwP3H1I3QRH26rif5s2wdu2Ph3dOzRzefNgYbcgfTeTGLGOKU48ilYtSe3XUu7htgj2WP1yLX3pJydtljCMJzz5/RJYmxYRKGFIGNEcjf2J/mJPNrzqW2nKsvo3YFPko1wn4ZYEq+RYDbF2/Gg2PrkeD0dOP7Snp5ARNR05aeWRj0AHduEFhXzN5CStvTh+X2YwLrxnkDNUs74XF68wkeeF0ICjl7CnM8/yTS6kY02m4izCdrnNM5qpjvHjyCRuhWiR6Fptp30x/qpYMw32b1/SRjJnD/acNGoEjpwKN/hjTZyMtd8huXEmRLMfhoJer0s+kTq8bx7ET0UGAQGEz9Xft+BWNVotYVvl0StfM=
+              on:
+                  tags: true
+                  repo: plone/pastanaga-angular
+                  branch: master OR 2.x
+        - stage: pages
+          if: branch = 2.x
+          deploy:
+              provider: script
+              script: bash ghpages.sh
+              skip_cleanup: true
+              on:
+                  repo: plone/pastanaga-angular
+                  branch: 2.x
 env:
-  global:
-    secure: sdtEYOtmDIkZ4N99+umJCLDyFWhyFNE1t6mQK4KE89shSrv+So7/kJTUcg9DJHohZTIdghF0vt30c7m1ZDgDsQ+01eOT0XfPj1nVLGxCV16s0gnVmpVZdoeECZI9gPNryznVeAGXzLjn7m6M9ZhkLmG+OsMg09UmEvSH1ygtnx2w1YbTW8axxGVk6FGCIB3AjyU7MTa98AqPbR+YZp+BvP21vFquA04njc40VNJJV7hRjVmuxK/9AIM6QHSUrNYmhlHm1todpMv00dAshh2fD803+y1Evi0qfXwmXyugF1aQlqPW5P7PgCrsihOCp6jhs9GQRbFt9h1UgXhZ6VVPmOqFh7qzm5Z1wWralNWx+02A3/AverUqoWcBGJq8dFTwS8IJxlt3aofpcKdk6ChthkpOVYsGA1cvD6eMp8HzqTQzf/tLNmA0+Mbn5GtxiA/lmkHOtjVY90AU0d0dCMFVXF5AUrsF1dfBPGCTqglvHF5N8NH/qoion0NtjSM6JjiaUwmmuOzxqxupTv/wm6LBBR9hCsnK3NFbKoNsTTQ3bCuWXcIgcljXFjEQ4lDFKiu6GvBRBUq9a8MnJtsiAbmhoarDLYPplqBNFox3p2ouH/rFohOmZz+JHt+fRnY8KhmUSMcyaz4cDWeoxymtw0ERT2QDlDx28WkWAZqfzQ6BG4Q=
+    global:
+        secure: sdtEYOtmDIkZ4N99+umJCLDyFWhyFNE1t6mQK4KE89shSrv+So7/kJTUcg9DJHohZTIdghF0vt30c7m1ZDgDsQ+01eOT0XfPj1nVLGxCV16s0gnVmpVZdoeECZI9gPNryznVeAGXzLjn7m6M9ZhkLmG+OsMg09UmEvSH1ygtnx2w1YbTW8axxGVk6FGCIB3AjyU7MTa98AqPbR+YZp+BvP21vFquA04njc40VNJJV7hRjVmuxK/9AIM6QHSUrNYmhlHm1todpMv00dAshh2fD803+y1Evi0qfXwmXyugF1aQlqPW5P7PgCrsihOCp6jhs9GQRbFt9h1UgXhZ6VVPmOqFh7qzm5Z1wWralNWx+02A3/AverUqoWcBGJq8dFTwS8IJxlt3aofpcKdk6ChthkpOVYsGA1cvD6eMp8HzqTQzf/tLNmA0+Mbn5GtxiA/lmkHOtjVY90AU0d0dCMFVXF5AUrsF1dfBPGCTqglvHF5N8NH/qoion0NtjSM6JjiaUwmmuOzxqxupTv/wm6LBBR9hCsnK3NFbKoNsTTQ3bCuWXcIgcljXFjEQ4lDFKiu6GvBRBUq9a8MnJtsiAbmhoarDLYPplqBNFox3p2ouH/rFohOmZz+JHt+fRnY8KhmUSMcyaz4cDWeoxymtw0ERT2QDlDx28WkWAZqfzQ6BG4Q=
