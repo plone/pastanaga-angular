@@ -4,7 +4,7 @@
 
 Provides Pastanaga elements as Angular components.
 
-See https://plone.github.io/pastanaga-angular for usage example and developer guide.
+See https://plone.github.io/pastanaga-angular/v2/ for usage example and developer guide.
 
 ## Migration guide version 1.x to version 2.x
 ### Module names
