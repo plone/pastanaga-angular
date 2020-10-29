@@ -1,3 +1,9 @@
+# 2.9.7 (2020-10-29)
+
+### Improvements
+- **Tabs**: Added option to have tablist full width or not [jCarret]
+- focus: added a directive to style keyboard focused elements [jCarret]
+
 # 2.9.6 (2020-10-22)
 
 ### Improvements
