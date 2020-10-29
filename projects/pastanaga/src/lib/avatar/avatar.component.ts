@@ -48,7 +48,7 @@ export class AvatarComponent {
     base64Image?: string;
 
     constructor(
-        private cdr: ChangeDetectorRef,
+        protected cdr: ChangeDetectorRef,
     ) {
     }
 
