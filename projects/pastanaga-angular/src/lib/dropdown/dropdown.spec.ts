@@ -7,6 +7,7 @@ import { OptionComponent } from './option/option.component';
 import { SeparatorComponent } from './separator/separator.component';
 import { PaIconModule } from '../icon/icon.module';
 import { MockModule } from 'ng-mocks';
+import { PaFocusableModule } from '../focusable/focusable.module';
 
 @Component({
     template: ` <pa-dropdown [stayVisible]="stayVisible" #dropdown>
@@ -25,6 +26,7 @@ import { MockModule } from 'ng-mocks';
 export class TestComponent {
     @ViewChild('dropdown') dropdown?: DropdownComponent;
     stayVisible = false;
+    onSelect(event: any) {}
 }
 
 describe('Dropdown', () => {
@@ -33,7 +35,7 @@ describe('Dropdown', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [MockModule(PaIconModule)],
+            imports: [MockModule(PaIconModule), MockModule(PaFocusableModule)],
             declarations: [
                 DropdownComponent,
                 OptionHeaderComponent,
