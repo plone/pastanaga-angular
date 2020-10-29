@@ -30,18 +30,18 @@
         &.pa-option-selected{
             background-color: $color-background-menu-option-selected;
         }
-        &.cdk-keyboard-focused:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: rhythm(.25);
-            left: rhythm(.25);
-            height: 100%;
-            box-shadow: $shadow-focus;
+        &.pa-keyboard-focus {
+            box-shadow: unset;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: rhythm(.25);
+                left: rhythm(.25);
+                height: 100%;
+                box-shadow: $shadow-focus;
+            }
         }
-    }
-    &:focus {
-        outline: 0;
     }
 
     &.pa-option-destructive {

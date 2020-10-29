@@ -1,9 +1,5 @@
 @import "variables";
 
-pa-button:focus {
-    outline: 0;
-}
-
 .pa-button {
     background: transparent;
     display: inline-flex;
@@ -300,10 +296,6 @@ pa-button:focus {
             background: $color-background-button-basic-disabled;
             border: $border-button-basic-disabled;
         }
-    }
-
-    &.cdk-keyboard-focused  {
-        box-shadow: $shadow-focus;
     }
 
     &.pa-solid .pa-button-label {

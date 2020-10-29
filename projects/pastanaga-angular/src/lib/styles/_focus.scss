@@ -1,0 +1,8 @@
+@import "variables";
+
+.pa-no-browser-accessibility-styling:focus {
+    outline: 0;
+}
+.pa-keyboard-focus {
+    box-shadow: $shadow-focus;
+}

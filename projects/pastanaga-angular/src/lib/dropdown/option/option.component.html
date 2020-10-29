@@ -1,10 +1,10 @@
 <li class="pa-option" role="menuitem"
-    cdkMonitorElementFocus
+    paFocusable
+    [paFocusDisabled]="_disabled "
     [class.pa-option-destructive]="_destructive"
     [class.pa-option-disabled]="_disabled"
     [class.pa-option-selected]="_selected"
     [hidden]="_hidden"
-    [tabindex]="_disabled ? -1 : 0"
     (click)="onSelect($event)"
     (keyup.enter)="onSelect($event)"
 >
