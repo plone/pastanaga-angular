@@ -5,6 +5,7 @@ import { TabItemComponent } from './tab-item.component';
 import { MockComponent, MockModule, ngMocks } from 'ng-mocks';
 import { PaIconModule } from '../..';
 import { Subject } from 'rxjs';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 @Component({ template: '' })
 class TestComponent {
@@ -55,15 +56,19 @@ describe('TabsListComponent', () => {
             }
         });
     });
-    it('should set slider style at start', () => {
+    it('should set slider style at start', fakeAsync(() => {
         spectator.detectChanges();
+        tick(2);
         expect(component.sliderStyle).toEqual('left: 5px; width: 10px');
-    });
-    it('should set slider style when tabItem selected', () => {
+    }));
+    it('should set slider style when tabItem selected', fakeAsync(() => {
         spectator.detectChanges();
+        tick(2);
         tabsSelected[1].next();
+        tick(1);
         expect(component.sliderStyle).toEqual('left: 15px; width: 20px');
         tabsSelected[2].next();
+        tick(1);
         expect(component.sliderStyle).toEqual('left: 25px; width: 30px');
-    });
+    }));
 });

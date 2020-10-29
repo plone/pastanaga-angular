@@ -12,12 +12,16 @@
     li {
         border-bottom: 1px solid $color-neutral-primary-lighter;
     }
+    &.pa-full-width-tabs {
+        pa-tab {
+            flex-grow: 1;
+        }
+    }
 }
 
 pa-tab {
     display: inline-block;
     min-width: 0;
-    flex-grow: 1;
 
     .pa-tabs-link {
         width: 100%;
@@ -39,20 +43,11 @@ pa-tab {
             }
         }
 
-        &:not(:-moz-focusring):focus > &-wrapper {
-            outline: 0;
-        }
-
-        &::-moz-focus-inner, button::-moz-focus-outer {
-            border: 0;
-        }
-
-        &:focus, &-wrapper:focus {
-            outline: 0;
-        }
-
-        &.cdk-keyboard-focused {
-            box-shadow: $shadow-focus;
+        &.pa-keyboard-focus {
+            box-shadow: unset;
+            .pa-tabs-link-wrapper {
+                box-shadow: $shadow-focus;
+            }
         }
 
         .pa-tabs-link-wrapper {
@@ -60,8 +55,7 @@ pa-tab {
             justify-content: space-between;
             align-items: center;
             text-align: left;
-            margin: rhythm(.25);
-            padding: rhythm(.75) 0 rhythm(.75) rhythm(.75);
+            padding: $tab-menu-item-padding-mobile;
             z-index: 1;
             position: relative;
             overflow: hidden;
@@ -122,8 +116,7 @@ pa-tab {
             .pa-tabs-link-wrapper {
                 display: block;
                 text-align: center;
-                margin: rhythm(.25);
-                padding: rhythm(.75);
+                padding: $tab-menu-item-padding-desktop;
                 z-index: 1;
                 justify-content: center;
                 position: relative;

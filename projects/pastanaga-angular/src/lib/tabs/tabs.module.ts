@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { A11yModule } from '@angular/cdk/a11y';
 
 import { TabItemComponent } from './tab-item.component';
 import { TabsListComponent } from './tabs-list.component';
 import { PaIconModule } from '../icon/icon.module';
+import { PaFocusableModule } from '../focusable/focusable.module';
 
 @NgModule({
-    imports: [CommonModule, PaIconModule, A11yModule],
+    imports: [CommonModule, PaIconModule, PaFocusableModule],
     exports: [TabsListComponent, TabItemComponent],
     declarations: [TabsListComponent, TabItemComponent],
     providers: [],

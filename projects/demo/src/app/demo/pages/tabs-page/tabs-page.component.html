@@ -5,7 +5,7 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-tabs>
+        <pa-tabs [fullWidth]="fullWidth">
             <pa-tab (click)="selectedTab = 'info'"
                     [active]="selectedTab === 'info'">Info</pa-tab>
             <pa-tab (click)="selectedTab = 'settings'"
@@ -29,12 +29,17 @@
             Some notifications
         </section>
     </pa-demo-examples>
-
+    <pa-demo-configuration>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="fullWidth">Full width tab</pa-checkbox>
+        </div>
+    </pa-demo-configuration>
     <pa-demo-usage>
         <h3><code>pa-tabs</code></h3>
-        <p>
-            <code>pa-tabs</code> does not have any input/output, it just allows to declare a list of <code>pa-tab</code>.
-        </p>
+        <dl>
+            <dt>fullWidth</dt>
+            <dd>allows tabs to grow in width in order to fill all the available width <small>(default: true)</small></dd>
+        </dl>
         <h3><code>pa-tab</code></h3>
         <dl>
             <dt>active</dt>
