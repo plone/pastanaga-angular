@@ -1,3 +1,9 @@
+# 1.18.13 (2020-10-29)
+
+### Improvements
+
+-   **Avatar** Changed cdr on avatar component for inheritance [barcafa]
+
 # 1.18.12 (2020-10-16)
 
 ### Improvements
