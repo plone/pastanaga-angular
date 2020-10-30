@@ -6,6 +6,8 @@ import { TableRowHeaderComponent } from './table-row-header/table-row-header.com
 import { TableCellComponent } from './table-cell/table-cell.component';
 import { TableRowComponent } from './table-row/table-row.component';
 import { TableComponent } from './table.component';
+import { MockModule } from 'ng-mocks';
+import { PaFocusableModule } from '../..';
 
 @Component({
     template: ` <pa-table [columns]="columns" #table [noHeader]="noHeader">
@@ -40,7 +42,7 @@ describe('Table', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [],
+            imports: [MockModule(PaFocusableModule)],
             declarations: [
                 TableComponent,
                 TableRowComponent,
