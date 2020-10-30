@@ -5,13 +5,16 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-tabs [fullWidth]="fullWidth">
+        <pa-tabs [notFullWidth]="!fullWidth">
             <pa-tab (click)="selectedTab = 'info'"
-                    [active]="selectedTab === 'info'">Info</pa-tab>
+                    [active]="selectedTab === 'info'">Info
+            </pa-tab>
             <pa-tab (click)="selectedTab = 'settings'"
-                    [active]="selectedTab === 'settings'">Settings</pa-tab>
+                    [active]="selectedTab === 'settings'">Settings
+            </pa-tab>
             <pa-tab (click)="selectedTab = 'notifications'"
-                    [active]="selectedTab === 'notifications'">Notifications</pa-tab>
+                    [active]="selectedTab === 'notifications'">Notifications
+            </pa-tab>
         </pa-tabs>
         <section id="panel-info"
                  class="tab-content"
@@ -37,8 +40,9 @@
     <pa-demo-usage>
         <h3><code>pa-tabs</code></h3>
         <dl>
-            <dt>fullWidth</dt>
-            <dd>allows tabs to grow in width in order to fill all the available width <small>(default: true)</small></dd>
+            <dt>notFullwidth</dt>
+            <dd>By default, tab items takes all the available space with flex grow. this option allows to disable this
+                behavior <small>(default: true)</small></dd>
         </dl>
         <h3><code>pa-tab</code></h3>
         <dl>

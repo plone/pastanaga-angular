@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableCellMenuComponent } from './table-cell-menu.component';
 import { MockModule } from 'ng-mocks';
-import { PaFocusableModule } from '../../..';
+import { TableCellMenuComponent } from './table-cell-menu.component';
+import { PaFocusableModule } from '../../focusable/focusable.module';
 
 describe('TableCellMenuComponent', () => {
     let component: TableCellMenuComponent;

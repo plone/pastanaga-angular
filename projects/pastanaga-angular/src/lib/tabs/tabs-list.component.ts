@@ -22,8 +22,8 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsListComponent implements AfterContentInit, OnDestroy {
-    @Input() set fullWidth(full: boolean) {
-        this.fullWidthTabItems = coerceBooleanProperty(full);
+    @Input() set notFullWidth(notFull: boolean) {
+        this.fullWidthTabItems = !coerceBooleanProperty(notFull);
         this.updateSlider();
     }
 
