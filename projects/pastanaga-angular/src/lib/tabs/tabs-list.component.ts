@@ -72,7 +72,7 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
     }
 
     updateSlider(item?: TabItemComponent) {
-        if (!item) {
+        if (!item && !!this.tabItems) {
             item = this.tabItems.find((tabItem) => tabItem._active);
         }
         if (!!item) {
