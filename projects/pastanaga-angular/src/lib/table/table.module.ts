@@ -7,9 +7,10 @@ import { TableHeaderDirective } from './table.directives';
 import { TableRowComponent } from './table-row/table-row.component';
 import { TableRowHeaderComponent } from './table-row-header/table-row-header.component';
 import { TableCellMenuComponent } from './table-cell-menu/table-cell-menu.component';
+import { PaFocusableModule } from '../focusable/focusable.module';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, PaFocusableModule],
     exports: [
         TableComponent,
         TableRowComponent,
