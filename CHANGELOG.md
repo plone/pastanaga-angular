@@ -1,3 +1,8 @@
+# 2.9.8 (2020-10-30)
+
+### Bugfix
+- **TabList**: wait for tabItems to be rendered before updating slider [jCarret]
+
 # 2.9.7 (2020-10-29)
 
 ### Improvements
