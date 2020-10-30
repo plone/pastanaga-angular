@@ -29,6 +29,7 @@ import {
     PaDateTimeModule,
     PaToastModule,
     PaModalModule,
+    PaFocusableModule,
 } from '../../../../pastanaga-angular/src';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
@@ -56,6 +57,7 @@ import { ToastPageComponent } from './pages/toast-page/toast-page.component';
 import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
 import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
+import { FocusablePageComponent } from './pages/focusable-page/focusable-page.component';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -81,6 +83,7 @@ const COMPONENTS = [
     CheckboxPageComponent,
     DateTimePageComponent,
     DropdownPageComponent,
+    FocusablePageComponent,
     GridPageComponent,
     IconPageComponent,
     InputPageComponent,
@@ -108,6 +111,7 @@ const COMPONENTS = [
         PaButtonModule,
         PaIconModule,
         PaDropdownModule,
+        PaFocusableModule,
         PaPopupModule,
         PaTextFieldModule,
         PaToastModule,

@@ -1,6 +1,5 @@
 <button class="pa-button pa-{{_kind}} pa-{{_aspect}} pa-{{_size}}"
-        tabindex="0"
-        cdkMonitorElementFocus
+        paFocusable
         [class.pa-button-icon]="!!_icon && !_iconAndText"
         [class.pa-button-icon-text]="!!_icon && !!_iconAndText"
         [disabled]="_disabled"

@@ -13,10 +13,7 @@
         height: $size-toggle-checkbox;
         width: $size-toggle-checkbox;
 
-        &:focus {
-            outline: 0;
-        }
-        &.cdk-keyboard-focused {
+        &.pa-keyboard-focus {
             box-shadow: $shadow-focus-checkbox;
         }
         &:not(:disabled):hover {

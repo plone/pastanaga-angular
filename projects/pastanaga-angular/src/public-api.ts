@@ -34,6 +34,8 @@ export * from './lib/dropdown/option-header/option-header.component';
 export * from './lib/dropdown/option/option.component';
 export * from './lib/dropdown/separator/separator.component';
 
+export * from './lib/focusable/focusable.module';
+
 export * from './lib/icon/icon.module';
 export * from './lib/icon/icon.component';
 export * from './lib/icon/svg-loader.interface';

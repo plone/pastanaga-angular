@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class TabsPageComponent {
     selectedTab = 'info';
+    fullWidth = true;
 
     codeExample = `
 <pa-tabs>

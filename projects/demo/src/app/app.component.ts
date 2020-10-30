@@ -23,6 +23,7 @@ import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component
 import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
 import { markForCheck, PastanagaService } from '../../../pastanaga-angular/src';
 import { InputPageComponent } from './demo/pages/input-page/input-page.component';
+import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-page.component';
 
 @Component({
     selector: 'app-root',
@@ -36,6 +37,7 @@ export class AppComponent {
             pages: [
                 { view: 'icon', title: 'Icons', type: IconPageComponent },
                 { view: 'palette', title: 'Palette', type: PalettePageComponent },
+                { view: 'focusable', title: 'Focusable', type: FocusablePageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
                 { view: 'breakpoint', title: 'Breakpoint Observer', type: BreakpointPageComponent },
                 { view: 'translate', title: 'Translate', type: TranslatePageComponent },

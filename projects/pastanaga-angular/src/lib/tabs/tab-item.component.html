@@ -1,8 +1,7 @@
 <li role="presentation" [class.active]="_active">
     <button class="pa-tabs-link"
             role="tab"
-            tabindex="0"
-            cdkMonitorElementFocus
+            paFocusable
             [attr.aria-expanded]="_active">
         <span class="pa-tabs-link-wrapper" tabindex="-1">
             <ng-content></ng-content>

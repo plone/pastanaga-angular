@@ -7,11 +7,14 @@ import {
     ChangeDetectorRef,
     ElementRef,
     OnDestroy,
+    Input,
+    Renderer2,
 } from '@angular/core';
 import { TabItemComponent } from './tab-item.component';
-import { BehaviorSubject, fromEvent, interval, Subject } from 'rxjs';
+import { fromEvent, interval, Subject } from 'rxjs';
 import { detectChanges } from '../common';
 import { debounce, takeUntil } from 'rxjs/operators';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-tabs',
@@ -19,20 +22,28 @@ import { debounce, takeUntil } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsListComponent implements AfterContentInit, OnDestroy {
+    @Input() set notFullWidth(notFull: boolean) {
+        this.fullWidthTabItems = !coerceBooleanProperty(notFull);
+        this.updateSlider();
+    }
+
     @ContentChildren(TabItemComponent) tabItems!: QueryList<TabItemComponent>;
 
-    selected = new BehaviorSubject(0);
     sliderStyle = '';
-    xPosition = 0;
-    terminator = new Subject();
+    fullWidthTabItems = true;
 
-    constructor(private ref: ElementRef, private cdr: ChangeDetectorRef) {}
+    private _xPosition = 0;
+    private _terminator = new Subject();
+
+    constructor(private ref: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
     ngAfterContentInit(): void {
-        this.xPosition = this.ref.nativeElement.getBoundingClientRect().x;
-        this.updateSlider();
-        this.trackTabSelection();
-
+        // wait for tabList to be rendered
+        setTimeout(() => {
+            this._xPosition = this.ref.nativeElement.getBoundingClientRect().x;
+            this.updateSlider();
+            this.trackTabSelection();
+        });
         this.tabItems.changes.subscribe(() => {
             this.updateSlider();
             this.trackTabSelection();
@@ -41,17 +52,17 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
         fromEvent(window, 'resize')
             .pipe(
                 debounce(() => interval(150)),
-                takeUntil(this.terminator)
+                takeUntil(this._terminator)
             )
             .subscribe(() => {
-                this.xPosition = this.ref.nativeElement.getBoundingClientRect().x;
+                this._xPosition = this.ref.nativeElement.getBoundingClientRect().x;
                 this.updateSlider();
             });
     }
 
     ngOnDestroy() {
-        this.terminator.next();
-        this.terminator.complete();
+        this._terminator.next();
+        this._terminator.complete();
     }
 
     trackTabSelection() {
@@ -64,10 +75,13 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
         if (!item) {
             item = this.tabItems.find((tabItem) => tabItem._active);
         }
-        if (item) {
-            const tabRect = item.geTabRect();
-            this.sliderStyle = `left: ${tabRect.x - this.xPosition}px; width: ${tabRect.width}px`;
-            detectChanges(this.cdr);
+        if (!!item) {
+            // wait for tab item to be rendered
+            setTimeout(() => {
+                const tabRect = item?.geTabRect();
+                this.sliderStyle = `left: ${tabRect.x - this._xPosition}px; width: ${tabRect.width}px`;
+                detectChanges(this.cdr);
+            });
         }
     }
 }
