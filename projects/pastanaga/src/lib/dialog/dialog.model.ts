@@ -1,20 +1,23 @@
 import { EventEmitter } from '@angular/core';
 
-export interface DialogConfigData {
+export interface DialogConfigData<D = any> {
     bandColor?: string;
     blocking?: boolean;
     withCloseButton?: boolean;
+    data?: D;
 }
 
-export class DialogConfig {
+export class DialogConfig<D = any> {
     bandColor: string;
     blocking: boolean;
     withCloseButton: boolean;
+    data: D | undefined;
 
-    constructor(data?: DialogConfigData) {
+    constructor(data?: DialogConfigData<D>) {
         this.blocking = !!data && typeof data.blocking === 'boolean' ? data.blocking : true;
         this.withCloseButton = !!data && typeof data.withCloseButton === 'boolean' ? data.withCloseButton : true;
-        this.bandColor = !!data ? (data.bandColor || '') : '';
+        this.bandColor = !!data ? data.bandColor || '' : '';
+        this.data = data?.data;
     }
 }
 
