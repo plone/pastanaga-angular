@@ -69,19 +69,20 @@ export class AppComponent {
             ],
         },
     ];
-    _isMobile = false;
-    _isMenuVisible = false;
-
+    activeItem = 'icon';
+    _isMenuVisible = true;
+    mode?: string;
     constructor(private traverser: Traverser, private pastanaga: PastanagaService, private cdr: ChangeDetectorRef) {
         this.pastanaga.breakpoint.currentMode.subscribe((mode) => {
-            this._isMobile = mode === 'mobile';
+            this.mode = mode;
+            this._isMenuVisible = mode === 'desktop';
             markForCheck(this.cdr);
         });
         traverser.addView('view', '', WelcomePageComponent);
         this.menu.forEach((section) => section.pages.forEach((page) => traverser.addView(page.view, '', page.type)));
     }
 
-    toggleMenu() {
-        this._isMenuVisible = !this._isMenuVisible;
+    toggleSideNav(value: boolean) {
+        this._isMenuVisible = value;
     }
 }

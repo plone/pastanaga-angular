@@ -58,6 +58,7 @@ import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
 import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 import { FocusablePageComponent } from './pages/focusable-page/focusable-page.component';
+import { PaSideNavModule } from '../../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
 
 const COMPONENTS = [
     DemoPageComponent,
@@ -122,6 +123,7 @@ const COMPONENTS = [
         PaTooltipModule,
         PaDateTimeModule,
         PaModalModule,
+        PaSideNavModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

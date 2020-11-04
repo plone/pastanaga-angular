@@ -1,0 +1,9 @@
+<li class="pa-side-nav-item" 
+    paFocusable
+    [paFocusDisabled]="_header"
+    [class.active]="_active" 
+    [class.inverted]="_inverted" 
+    [class.header]="_header">
+    <h2 *ngIf="_header">{{_label}}</h2>
+    <span *ngIf="!_header">{{_label}}</span>
+</li>
