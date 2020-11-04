@@ -8,12 +8,20 @@ import { AppResolver } from './app.resolver';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { I18N_EN, mergeTranslations, PaButtonModule, PA_TRANSLATIONS, PA_LANG } from '../../../pastanaga-angular/src';
 import { BrowserModule } from '@angular/platform-browser';
+import { PaSideNavModule } from '../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
-            imports: [BrowserModule, TraversalModule, AngularSvgIconModule.forRoot(), PaDemoModule, PaButtonModule],
+            imports: [
+                BrowserModule,
+                TraversalModule,
+                AngularSvgIconModule.forRoot(),
+                PaDemoModule,
+                PaButtonModule,
+                PaSideNavModule,
+            ],
             providers: [
                 { provide: Marker, useClass: AppMarker },
                 { provide: Resolver, useClass: AppResolver },

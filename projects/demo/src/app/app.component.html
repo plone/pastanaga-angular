@@ -1,10 +1,21 @@
-<pa-button *ngIf="_isMobile"
-           [icon]="_isMenuVisible ? 'cross-large' : 'hamburger-right'"
+<pa-button *ngIf="!_isDesktop"
+           icon="hamburger-right"
            class="demo-menu-button"
            (click)="toggleMenu()">Menu</pa-button>
-
-<pa-demo-menu [class.pa-visible]="_isMenuVisible" [menu]="menu"></pa-demo-menu>
-
+<pa-side-nav [toggle]="sideNavToggle">
+    <pa-side-nav-header>
+        <img src="./assets/p-angular.svg">
+    </pa-side-nav-header>
+    <div class="section" *ngFor="let section of menu">
+        <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
+        <pa-side-nav-item *ngFor="let page of section.pages" 
+                          [active]="page.view === activeItem"
+                          [label]="page.title"
+                          [traverseTo]="'/@@' + page.view"
+                          (click)="activeItem = page.view">
+        </pa-side-nav-item>
+    </div>
+</pa-side-nav>
 <div class="view-container">
     <traverser-outlet></traverser-outlet>
 </div>

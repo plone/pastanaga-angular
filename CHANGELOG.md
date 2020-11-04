@@ -1,3 +1,8 @@
+# 2.10.0 (2020-11-04)
+
+### Feature
+- **SideNavComponent**:  New side nav component [niglesias]
+
 # 2.9.8 (2020-10-30)
 
 ### Bugfix

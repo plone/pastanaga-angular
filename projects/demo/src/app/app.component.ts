@@ -24,6 +24,7 @@ import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint
 import { markForCheck, PastanagaService } from '../../../pastanaga-angular/src';
 import { InputPageComponent } from './demo/pages/input-page/input-page.component';
 import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-page.component';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -69,12 +70,13 @@ export class AppComponent {
             ],
         },
     ];
-    _isMobile = false;
-    _isMenuVisible = false;
-
+    activeItem = 'icon';
+    _isDesktop = false;
+    _isMenuVisible = true;
+    sideNavToggle: Subject<boolean> = new Subject<boolean>();
     constructor(private traverser: Traverser, private pastanaga: PastanagaService, private cdr: ChangeDetectorRef) {
         this.pastanaga.breakpoint.currentMode.subscribe((mode) => {
-            this._isMobile = mode === 'mobile';
+            this._isDesktop = mode === 'desktop';
             markForCheck(this.cdr);
         });
         traverser.addView('view', '', WelcomePageComponent);
@@ -82,6 +84,6 @@ export class AppComponent {
     }
 
     toggleMenu() {
-        this._isMenuVisible = !this._isMenuVisible;
+        this.sideNavToggle.next(true);
     }
 }

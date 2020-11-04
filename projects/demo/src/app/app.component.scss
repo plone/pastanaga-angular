@@ -12,40 +12,20 @@
         margin-left: 0;
         padding: rhythm(1.5);
     }
-
-    pa-demo-menu {
-        opacity: 0;
-        z-index: 2;
-        transition: all ease-out .1s;
-
-        &.pa-visible {
-            opacity: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba($color-neutral-primary-default, .8);
-        }
-    }
-}
-
-@media (min-width: $size-viewport-medium-min) {
-    :host {
-        pa-demo-menu {
-            opacity: 1;
-        }
-
-        .view-container {
-            margin-left: rhythm(20);
-            padding: rhythm(1.5) rhythm(3) rhythm(2.5) rhythm(3);
-        }
-    }
 }
 
 @media (min-width: $size-viewport-large-min) {
     :host {
+        pa-side-nav {
+            pa-side-nav-header img{
+                width: 180px;
+            }
+            .section {
+                padding-top: rhythm(1);
+            }
+        }
         .view-container {
+            margin-left: rhythm(20);
             padding: rhythm(1.5) rhythm(10) rhythm(2.5) rhythm(10);
         }
     }

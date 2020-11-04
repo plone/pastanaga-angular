@@ -1,0 +1,78 @@
+@import '../styles/variables';
+
+.pa-side-nav-item {
+    display: flex;
+    align-items: center;
+    height: rhythm(2.5);
+    padding-left: rhythm(2);
+    &.header {
+        margin: rhythm(2) 0;
+        h2 {
+            margin: 0;
+        }
+    }
+    &:not(.header) {
+        margin: rhythm(1) 0;
+        cursor: pointer;
+        &:focus {
+            border: 2px solid $color-accent-primary-lighter;
+        }
+    }
+    span {
+        display: block;
+        font-size: font-size(m);
+    }
+    &.active {
+        padding-left: rhythm(1.75);
+    }
+    &.inverted {
+        h2 {
+            color: $color-neutral-primary-lightest;
+        }
+        span {
+            color: $color-neutral-secondary-light;
+        }
+        &:hover {
+            span {
+                color: $color-neutral-primary-lightest;
+            }
+        }
+        &:active {
+            span {
+                 color: $color-neutral-secondary-light;
+            }
+        }
+        &.active {
+            border-left: rhythm(.25) solid $color-accent-primary-light;
+            span {
+                color: $color-neutral-primary-lightest;
+            }
+        }
+    }
+    &:not(.inverted) {
+        h2 {
+            color: $color-neutral-primary-default;
+        }
+        span {
+            color: $color-neutral-secondary-default;
+        }
+        &:hover {
+            span {
+                 color: $color-neutral-primary-default;
+            }
+        }
+        &:active {
+            span {
+                 color: $color-neutral-secondary-default;
+            }
+        }
+        &.active {
+            border-left: rhythm(.25) solid $color-accent-primary-default;
+            span {
+                color: $color-neutral-primary-default;
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+    
+}
