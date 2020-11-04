@@ -12,6 +12,7 @@ import {
     Renderer2,
     OnInit,
     Output,
+    EventEmitter,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -53,7 +54,7 @@ export class SideNavComponent implements AfterContentInit {
         this.modeChanged = value !== this._mode;
         this._mode = value;
     }
-    @Output() close: Subject<void> = new Subject<void>();
+    @Output() close: EventEmitter<void> = new EventEmitter<void>();
     @ViewChild('navBar', { read: ElementRef }) navBar?: ElementRef;
     @ViewChild('tabletOverlay', { read: ElementRef }) tabletOverlay?: ElementRef;
     @ContentChildren(SideNavItemComponent, { descendants: true }) contentChild!: QueryList<SideNavItemComponent>;
@@ -92,7 +93,7 @@ export class SideNavComponent implements AfterContentInit {
     }
 
     closeSideNav() {
-        this.close.next();
+        this.close.emit();
     }
 
     addClass(element: ElementRef | undefined, cssClass: string) {

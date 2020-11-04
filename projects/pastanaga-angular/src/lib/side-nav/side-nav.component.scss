@@ -4,64 +4,7 @@ $open-menu-anim-duration: 1.2s;
 $close-menu-anim-duration: 1s;
 $overlay-anim-duration: .6s;
 
-// .pa-side-nav-tablet-overlay {
-//     content: '';
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100vw; 
-//     height: 100vh;
-//     background: $color-neutral-primary-lightest;
-//     z-index: $z-index-popup;
-//     opacity: 0;
-
-//     &.opened {
-//         opacity: .95;
-//         transition-duration: $overlay-anim-duration;
-//         transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-//     }
-
-//     &.closed {
-//         opacity: 0;
-//         transition-duration: $overlay-anim-duration;
-//         transition-timing-function: cubic-bezier(0.58, 1, 0.42, 0);
-//     }
-// }
-// .pa-side-nav {
-//     height: 100%;
-//     width: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     position: fixed;
-//     right: 0;
-//     top: 0;
-//     padding-left: rhythm(2);
-//     z-index: $z-index-popup;
-//     background-color: $color-neutral-primary-lighter;
-//     &.inverted {
-//         background-color: $color-neutral-primary-default;
-//     }
-//     .pa-side-nav-items {
-//         flex-grow: 1;
-//         overflow: auto;
-//         padding: 0;
-//     }
-
-//     header {
-//         display: flex;
-//         padding: rhythm(1.5) rhythm(1);
-//         justify-content: space-between;
-//     }
-//     @media (min-width: $size-viewport-medium-min) {
-//         width: 60vw;
-//     }
-//     @media (min-width: $size-viewport-large-min) {
-//         width: 300px;
-//         left: 0;
-//     }
-// }
-
-:host ::ng-deep {
+:host {
     .pa-side-nav {
         .o-close-nav-button .pa-button.pa-secondary.pa-basic {
             color: $color-neutral-primary-lightest;
