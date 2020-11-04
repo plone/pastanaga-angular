@@ -1,29 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { createComponentFactory, Spectator, mockProvider } from '@ngneat/spectator/jest';
 import { MockModule } from 'ng-mocks';
 import { SideNavComponent } from './side-nav.component';
 import { PaButtonModule } from '../button/button.module';
-import { ReplaySubject, Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { TranslatePipe } from '../translate/translate.pipe';
-import { PastanagaService } from '../pastanaga.service';
-import { createSpyObject, mockProvider } from '@ngneat/spectator';
 import { BreakpointObserver, ViewportMode } from '../breakpoint-observer/breakpoint.observer';
-import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('SideNavComponent', () => {
     let spectator: Spectator<SideNavComponent>;
     let component: SideNavComponent;
-    const currentMode: ReplaySubject<ViewportMode> = new ReplaySubject<ViewportMode>(1);
-    const toggle: Subject<boolean> = new Subject<boolean>();
+    const currentModeTest: ReplaySubject<ViewportMode> = new ReplaySubject<ViewportMode>(1);
     const createComponent = createComponentFactory({
         component: SideNavComponent,
         imports: [MockModule(CommonModule), MockModule(PaButtonModule)],
         mocks: [TranslatePipe],
         providers: [
-            mockProvider(PastanagaService, {
-                breakpoint: createSpyObject(BreakpointObserver, {
-                    currentMode,
-                }),
+            mockProvider(BreakpointObserver, {
+                currentMode: currentModeTest,
             }),
         ],
         detectChanges: false,
@@ -32,13 +26,12 @@ describe('SideNavComponent', () => {
     beforeEach(() => {
         spectator = createComponent();
         component = spectator.component;
-        component.toggle = toggle;
     });
 
     describe('when visible is true', () => {
         describe(`desktop`, () => {
             beforeEach(() => {
-                currentMode.next('desktop');
+                currentModeTest.next('desktop');
                 spectator.detectComponentChanges();
             });
             it(`should display a navbar`, () => {
@@ -54,7 +47,7 @@ describe('SideNavComponent', () => {
 
         describe(`tablet`, () => {
             beforeEach(() => {
-                currentMode.next('tablet');
+                component.mode = 'tablet';
                 component.visible = true;
                 spectator.detectComponentChanges();
             });
@@ -74,7 +67,7 @@ describe('SideNavComponent', () => {
 
         describe(`mobile`, () => {
             beforeEach(() => {
-                currentMode.next('mobile');
+                component.mode = 'mobile';
                 component.visible = true;
                 spectator.detectComponentChanges();
             });
@@ -106,16 +99,12 @@ describe('SideNavComponent', () => {
 
     describe('closeSideNav', () => {
         beforeEach(() => {
-            currentMode.next('tablet');
-            component.ngOnInit();
+            component.mode = 'tablet';
         });
-        it('should close side nav', fakeAsync(() => {
+        it('should trigger next function from close subject', () => {
+            const spy = jest.spyOn(component.close, 'next');
             component.closeSideNav();
-            tick(1000);
-            expect(component._visible).toBeFalsy();
-            expect(spectator.query('.pa-side-nav')).toBeFalsy();
-            expect(spectator.query('.pa-side-nav-tablet-overlay')).toBeFalsy();
-            expect(spectator.query('.pa-close-side-nav-button')).toBeFalsy();
-        }));
+            expect(spy).toBeCalled();
+        });
     });
 });

@@ -11,11 +11,12 @@ import {
     ElementRef,
     Renderer2,
     OnInit,
+    Output,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { BreakpointObserver } from '../breakpoint-observer/breakpoint.observer';
 import { markForCheck } from '../common';
-import { PastanagaService } from '../pastanaga.service';
 import { SideNavItemComponent } from './side-nav-item.component';
 
 @Component({
@@ -24,7 +25,7 @@ import { SideNavItemComponent } from './side-nav-item.component';
     styleUrls: ['./side-nav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideNavComponent implements OnInit, AfterContentInit {
+export class SideNavComponent implements AfterContentInit {
     @Input()
     get inverted(): boolean {
         return this._inverted;
@@ -37,46 +38,52 @@ export class SideNavComponent implements OnInit, AfterContentInit {
         return !!this._visible;
     }
     set visible(value: boolean) {
-        this._visible = coerceBooleanProperty(value);
+        if (this._mode !== 'desktop' && !this.modeChanged) {
+            this.triggerAnimation(value);
+        } else {
+            this.modeChanged = false;
+            this._visible = coerceBooleanProperty(value);
+        }
     }
-    @Input() toggle?: Subject<boolean>;
+    @Input()
+    get mode(): string {
+        return this._mode;
+    }
+    set mode(value: string) {
+        this.modeChanged = value !== this._mode;
+        this._mode = value;
+    }
+    @Output() close: Subject<void> = new Subject<void>();
     @ViewChild('navBar', { read: ElementRef }) navBar?: ElementRef;
     @ViewChild('tabletOverlay', { read: ElementRef }) tabletOverlay?: ElementRef;
     @ContentChildren(SideNavItemComponent, { descendants: true }) contentChild!: QueryList<SideNavItemComponent>;
     _inverted = false;
-    _visible = false;
-    _mode?: string;
+    _visible = true;
+    _mode = 'desktop';
+    // we need to avoid animation when mode changed (from desktop to tablet for example)
+    modeChanged = false;
     readonly closeNavBarDuration = 1000;
     terminator: Subject<void> = new Subject<void>();
-    constructor(private paService: PastanagaService, private cdr: ChangeDetectorRef, private renderer: Renderer2) {
-        this.paService.breakpoint.currentMode.pipe(takeUntil(this.terminator)).subscribe((mode) => {
-            this._visible = mode === 'desktop';
-            this._mode = mode;
+    constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
+
+    triggerAnimation(isOpen: boolean) {
+        if (isOpen) {
+            this._visible = isOpen;
             markForCheck(this.cdr);
-        });
-    }
-    ngOnInit() {
-        this.toggle?.subscribe((toggle) => {
-            if (this._mode !== 'desktop') {
-                if (toggle) {
-                    this._visible = toggle;
-                    markForCheck(this.cdr);
-                    // wait for ViewChildren rendering
-                    setTimeout(() => {
-                        this.addClass(this.navBar, 'animated');
-                        this.addClass(this.tabletOverlay, 'opened');
-                    });
-                } else {
-                    this.addClass(this.tabletOverlay, 'closing');
-                    this.addClass(this.navBar, 'closing');
-                    // wait for animation ends
-                    setTimeout(() => {
-                        this._visible = toggle;
-                        markForCheck(this.cdr);
-                    }, this.closeNavBarDuration);
-                }
-            }
-        });
+            // wait for ViewChildren rendering
+            setTimeout(() => {
+                this.addClass(this.navBar, 'animated');
+                this.addClass(this.tabletOverlay, 'opened');
+            });
+        } else {
+            this.addClass(this.tabletOverlay, 'closed');
+            this.addClass(this.navBar, 'closed');
+            // wait for animation ends
+            setTimeout(() => {
+                this._visible = isOpen;
+                markForCheck(this.cdr);
+            }, this.closeNavBarDuration);
+        }
     }
     ngAfterContentInit() {
         this.contentChild.forEach((child) => {
@@ -85,7 +92,7 @@ export class SideNavComponent implements OnInit, AfterContentInit {
     }
 
     closeSideNav() {
-        this.toggle?.next(false);
+        this.close.next();
     }
 
     addClass(element: ElementRef | undefined, cssClass: string) {

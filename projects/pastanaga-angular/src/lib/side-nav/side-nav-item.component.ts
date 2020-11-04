@@ -27,6 +27,10 @@ export class SideNavItemComponent {
     set active(value: boolean) {
         this._active = coerceBooleanProperty(value);
     }
+    @Input()
+    get inverted(): boolean {
+        return this._inverted;
+    }
     set inverted(value: boolean) {
         this._inverted = coerceBooleanProperty(value);
         markForCheck(this.cdr);

@@ -1,21 +1,26 @@
 <ng-container *ngIf="_visible">
-    <div #tabletOverlay *ngIf="_mode === 'tablet'" class="pa-side-nav-tablet-overlay" (click)="closeSideNav()"></div>
-    <div #navBar class="pa-side-nav" [class.inverted]="_inverted">
-        <div class="header">
+    <div #tabletOverlay 
+         *ngIf="_mode === 'tablet'" 
+         class="pa-side-nav-tablet-overlay" 
+         (click)="closeSideNav()"></div>
+    <div #navBar 
+         class="pa-side-nav" 
+         [class.inverted]="_inverted">
+        <header>
             <ng-content select="pa-side-nav-header"></ng-content>
             <pa-button *ngIf="_mode !== 'desktop'"
                        class="pa-close-side-nav-button"
                        icon="cross-large"
                        aspect="basic"
                        (click)="closeSideNav()"></pa-button>
-        </div>
+        </header>
         
         <ul class="pa-side-nav-items">
-            <ng-content select="div"></ng-content>
+            <ng-content select="pa-side-nav-content"></ng-content>
         </ul>
 
-        <div class="footer">
+        <footer>
             <ng-content select="pa-side-nav-footer"></ng-content>
-        </div>
+        </footer>
     </div>
 </ng-container>

@@ -1,6 +1,9 @@
 /* tslint:disable:directive-selector */
 import { Directive } from '@angular/core';
 
+@Directive({ selector: 'pa-side-nav-content' })
+export class SideNavContentDirective {}
+
 @Directive({ selector: 'pa-side-nav-header' })
 export class SideNavHeaderDirective {}
 

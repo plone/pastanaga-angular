@@ -2,12 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SideNavComponent } from './side-nav.component';
 import { SideNavItemComponent } from './side-nav-item.component';
-import { SideNavFooterDirective, SideNavHeaderDirective } from './side-nav.directive';
+import { SideNavContentDirective, SideNavFooterDirective, SideNavHeaderDirective } from './side-nav.directive';
 import { PaButtonModule } from '../button/button.module';
+import { PaFocusableModule } from '../focusable/focusable.module';
 
 @NgModule({
-    imports: [CommonModule, PaButtonModule],
-    declarations: [SideNavComponent, SideNavItemComponent, SideNavHeaderDirective, SideNavFooterDirective],
-    exports: [SideNavComponent, SideNavItemComponent, SideNavHeaderDirective, SideNavFooterDirective],
+    imports: [CommonModule, PaButtonModule, PaFocusableModule],
+    declarations: [
+        SideNavComponent,
+        SideNavItemComponent,
+        SideNavHeaderDirective,
+        SideNavFooterDirective,
+        SideNavContentDirective,
+    ],
+    exports: [
+        SideNavComponent,
+        SideNavItemComponent,
+        SideNavHeaderDirective,
+        SideNavFooterDirective,
+        SideNavContentDirective,
+    ],
 })
 export class PaSideNavModule {}

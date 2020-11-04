@@ -14,12 +14,8 @@
     &:not(.header) {
         margin: rhythm(1) 0;
         cursor: pointer;
-        &:focus {
-            border: 2px solid $color-accent-primary-lighter;
-        }
     }
     span {
-        display: block;
         font-size: font-size(m);
     }
     &.active {
