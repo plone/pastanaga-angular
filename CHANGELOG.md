@@ -2,7 +2,7 @@
 
 ### Improvements
 
-- **Dialog** Ability to define data to inject be injected into dialog component
+- **Dialog** Ability to define data to be injected into dialog component
 
 # 1.18.13 (2020-10-29)
 
