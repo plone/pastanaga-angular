@@ -6,14 +6,6 @@ $overlay-anim-duration: .6s;
 
 :host {
     .pa-side-nav {
-        .o-close-nav-button .pa-button.pa-secondary.pa-basic {
-            color: $color-neutral-primary-lightest;
-
-            &:hover {
-                background: transparent;
-                color: $color-neutral-secondary-light;
-            }
-        }
         height: 100%;
         width: 100%;
         display: flex;
@@ -26,6 +18,14 @@ $overlay-anim-duration: .6s;
         background-color: $color-neutral-primary-lighter;
         &.inverted {
             background-color: $color-neutral-primary-default;
+            .pa-close-side-nav-button ::ng-deep .pa-button.pa-secondary.pa-basic {
+                color: $color-neutral-primary-lightest;
+
+                &:hover {
+                    background: transparent;
+                    color: $color-neutral-secondary-light;
+                }
+            }
         }
         .pa-side-nav-items {
             flex-grow: 1;

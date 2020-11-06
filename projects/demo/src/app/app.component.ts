@@ -69,7 +69,7 @@ export class AppComponent {
             ],
         },
     ];
-    activeItem = 'icon';
+    activeItem = '';
     _isMenuVisible = true;
     mode?: string;
     constructor(private traverser: Traverser, private pastanaga: PastanagaService, private cdr: ChangeDetectorRef) {
@@ -84,5 +84,11 @@ export class AppComponent {
 
     toggleSideNav(value: boolean) {
         this._isMenuVisible = value;
+    }
+    onSelectedItem(view: string) {
+        this.activeItem = view;
+        if (this.mode !== 'desktop') {
+            this._isMenuVisible = false;
+        }
     }
 }
