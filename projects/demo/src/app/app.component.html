@@ -8,7 +8,9 @@
     (close)="toggleSideNav(false)"
     >
     <pa-side-nav-header>
-        <img src="./assets/p-angular.svg">
+         <a href="#" traverseTo="/" tabindex="-1">
+            <img src="./assets/p-angular.svg" alt="Logo" tabindex="0">
+        </a>
     </pa-side-nav-header>
     <pa-side-nav-content class="section" *ngFor="let section of menu">
         <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
@@ -16,7 +18,7 @@
                         [active]="page.view === activeItem"
                         [label]="page.title"
                         [traverseTo]="'/@@' + page.view"
-                        (click)="activeItem = page.view">
+                        (click)="onSelectedItem(page.view)">
         </pa-side-nav-item>
     </pa-side-nav-content>
 </pa-side-nav>

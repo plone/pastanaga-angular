@@ -1,3 +1,10 @@
+# 2.10.1 (2020-11-06)
+
+### Bugfix
+- By default any item should be selected [niglesias]
+- Clicking on pastanaga icon in the sidenav should display home page again [niglesias]
+- on mobile/tablet, selecting a sidenav item should close the menu [niglesias]
+
 # 2.10.0 (2020-11-04)
 
 ### Feature
