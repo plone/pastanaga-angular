@@ -7,15 +7,16 @@ cache:
 dist: trusty
 install:
     - npm install
-script:
-    - npm run test:ci
-    - npm run build:demo
 notifications:
     email:
         - ebrehault@gmail.com
 
 jobs:
     include:
+        - stage: Test
+          script:
+              - npm run test:ci
+              - npm run build:demo
         - stage: Tagging
           if: (branch IN (master, 2.x)) AND (tag IS blank)
           after_success: source ./deploy.sh

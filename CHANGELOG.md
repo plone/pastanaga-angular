@@ -1,3 +1,7 @@
+# 2.10.2 (unreleased)
+
+- Fix Travis
+
 # 2.10.1 (2020-11-06)
 
 ### Bugfix
