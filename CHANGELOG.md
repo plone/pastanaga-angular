@@ -1,3 +1,9 @@
+# 1.18.14 (2020-11-04)
+
+### Improvements
+
+- **Dialog** Ability to define data to be injected into dialog component
+
 # 1.18.13 (2020-10-29)
 
 ### Improvements
