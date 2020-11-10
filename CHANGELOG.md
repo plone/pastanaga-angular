@@ -1,5 +1,10 @@
-# 2.10.2 (unreleased)
+# 2.10.2 (2020-11-10)
 
+### Improvements
+- **spacing**:
+    - added values
+    
+### Bugfix
 - Fix Travis
 
 # 2.10.1 (2020-11-06)
