@@ -45,6 +45,7 @@ jobs:
                   branch: master OR 2.x
         - stage: pages
           if: branch = 2.x
+          before_deploy: npm run build:demo
           deploy:
               provider: script
               script: bash ghpages.sh
