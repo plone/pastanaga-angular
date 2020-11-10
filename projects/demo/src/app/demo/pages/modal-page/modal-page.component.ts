@@ -24,15 +24,15 @@ export class ModalPageComponent {
 export class DialogExampleComponent implements IModal {
     @ViewChild(DialogComponent, { static: true }) modal: DialogComponent | undefined;
 }`;
-    callerComponent = `import { PastanagaService } from 'pastanaga-angular';
+    callerComponent = `import { ModalService } from 'pastanaga-angular';
 
 export class CallerComponent {
     constructor(
-        private pastanaga: PastanagaService,
+        private modalService: ModalService,
     ) {}
 
     open() {
-        this.pastanaga.modalService.openModal(DialogExampleComponent);
+        this.modalService.openModal(DialogExampleComponent);
     }
 }`;
     customModalComponent = `@Component({

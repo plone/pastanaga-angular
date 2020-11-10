@@ -21,7 +21,7 @@ import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.com
 import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
 import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
-import { markForCheck, PastanagaService } from '../../../pastanaga-angular/src';
+import { BreakpointObserver, markForCheck } from '../../../pastanaga-angular/src';
 import { InputPageComponent } from './demo/pages/input-page/input-page.component';
 import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-page.component';
 
@@ -72,8 +72,8 @@ export class AppComponent {
     activeItem = '';
     _isMenuVisible = true;
     mode?: string;
-    constructor(private traverser: Traverser, private pastanaga: PastanagaService, private cdr: ChangeDetectorRef) {
-        this.pastanaga.breakpoint.currentMode.subscribe((mode) => {
+    constructor(private traverser: Traverser, private breakpoint: BreakpointObserver, private cdr: ChangeDetectorRef) {
+        this.breakpoint.currentMode.subscribe((mode) => {
             this.mode = mode;
             this._isMenuVisible = mode === 'desktop';
             markForCheck(this.cdr);
