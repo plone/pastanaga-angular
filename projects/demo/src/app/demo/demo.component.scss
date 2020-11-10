@@ -1,0 +1,18 @@
+@import "../../../../pastanaga-angular/src/lib/styles/variables";
+
+:host {
+    .view-container {
+        margin-left: 0;
+        padding: rhythm(1.5);
+
+        @media (min-width: $size-viewport-medium-min) {
+            padding: rhythm(1.5) rhythm(3) rhythm(2.5) rhythm(3);
+        }
+
+        @media (min-width: $size-viewport-large-min) {
+            margin-left: rhythm(20);
+            padding: rhythm(1.5) rhythm(10) rhythm(2.5) rhythm(10);
+        }
+    }
+}
+

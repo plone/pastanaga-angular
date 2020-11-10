@@ -1,20 +1,25 @@
-<div class="demo-menu-sidebar">
-    <a href="#" traverseTo="/" tabindex="-1">
-        <img [src]="logo" alt="Logo" tabindex="0">
-    </a>
+<pa-button *ngIf="mode !== 'desktop'"
+           icon="hamburger-right"
+           class="demo-menu-button"
+           (click)="toggleSideNav(true)">Menu
+</pa-button>
 
-    <nav>
-        <div *ngFor="let section of menu" class="pa-doc-menu-section">
-            <div class="pa-doc-menu-title">{{section.title}}</div>
-            <ul>
-                <li *ngFor="let page of section.pages"><a [traverseTo]="'/@@' + page.view" href="#">{{page.title}}</a></li>
-            </ul>
-        </div>
-        <div class="pa-doc-menu-section">
-            <div class="pa-doc-menu-title">Other</div>
-            <ul>
-                <li><a href="https://github.com/plone/pastanaga-angular" target="_blank">Pastanaga on Github</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
+<pa-side-nav [mode]="mode"
+             [visible]="isMenuVisible"
+             (close)="toggleSideNav(false)">
+    <pa-side-nav-header>
+        <a href="#" traverseTo="/" paFocusable>
+            <img [src]="logo" alt="Logo">
+        </a>
+    </pa-side-nav-header>
+
+    <pa-side-nav-content class="section" *ngFor="let section of menu">
+        <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
+        <pa-side-nav-item *ngFor="let page of section.pages"
+                          [active]="page.view === activeItem"
+                          [label]="page.title"
+                          [traverseTo]="'/@@' + page.view"
+                          (click)="onSelectedItem()">
+        </pa-side-nav-item>
+    </pa-side-nav-content>
+</pa-side-nav>

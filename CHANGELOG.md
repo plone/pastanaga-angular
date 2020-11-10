@@ -1,3 +1,10 @@
+# 2.11.1 (2020-11-10)
+
+### Improvements
+- **Pastanaga demo**: [mpellerin42]
+  - Move usage of sidenav in pa-demo-menu component
+  - Factorize main demo in a component
+  
 # 2.11.0 (2020-11-10)
 
 ### Breaking change

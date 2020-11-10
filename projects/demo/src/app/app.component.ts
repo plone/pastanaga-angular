@@ -1,6 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { Traverser } from 'angular-traversal';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { Component } from '@angular/core';
 import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
 import { ButtonPageComponent } from './demo/pages/button-page/button-page.component';
 import { IconPageComponent } from './demo/pages/icon-page/icon-page.component';
@@ -21,9 +19,10 @@ import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.com
 import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
 import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
 import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
-import { BreakpointObserver, markForCheck } from '../../../pastanaga-angular/src';
 import { InputPageComponent } from './demo/pages/input-page/input-page.component';
 import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { Traverser } from 'angular-traversal';
 
 @Component({
     selector: 'app-root',
@@ -69,26 +68,10 @@ export class AppComponent {
             ],
         },
     ];
-    activeItem = '';
-    _isMenuVisible = true;
-    mode?: string;
-    constructor(private traverser: Traverser, private breakpoint: BreakpointObserver, private cdr: ChangeDetectorRef) {
-        this.breakpoint.currentMode.subscribe((mode) => {
-            this.mode = mode;
-            this._isMenuVisible = mode === 'desktop';
-            markForCheck(this.cdr);
-        });
-        traverser.addView('view', '', WelcomePageComponent);
-        this.menu.forEach((section) => section.pages.forEach((page) => traverser.addView(page.view, '', page.type)));
-    }
 
-    toggleSideNav(value: boolean) {
-        this._isMenuVisible = value;
-    }
-    onSelectedItem(view: string) {
-        this.activeItem = view;
-        if (this.mode !== 'desktop') {
-            this._isMenuVisible = false;
-        }
+    logo = './assets/p-angular.svg';
+
+    constructor(private traverser: Traverser) {
+        traverser.addView('view', '', WelcomePageComponent);
     }
 }

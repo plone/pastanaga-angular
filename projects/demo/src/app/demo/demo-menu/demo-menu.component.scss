@@ -1,48 +1,24 @@
 @import "../../../../../pastanaga-angular/src/lib/styles/variables";
 
-$menu-width: rhythm(20);
-.demo-menu-sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
+.demo-menu-button {
+    position: absolute;
+    top: rhythm(1.5);
+    right: rhythm(1.5);
+    z-index: 3;
+}
 
-    background: $color-neutral-secondary-lighter;
-    min-width: $menu-width;
-    width: $menu-width;
-    max-width: $menu-width;
+pa-side-nav-header img {
+    max-width: 100%;
+    max-height: rhythm(6);
+}
 
-    padding: rhythm(2.5);
-
-    a img {
-        width: 100%;
-        margin-bottom: rhythm(2.5);
-    }
-
-    nav {
-        overflow-y: auto;
-        max-height: calc(100% - #{rhythm(5)});
-
-        .pa-doc-menu-section {
-            margin-bottom: rhythm(2.5);
-
-            .pa-doc-menu-title {
-                font-weight: $font-weight-bold;
-                font-size: rhythm(1);
-                color: $color-text-title-default;
-            }
-            ul {
-                list-style: none;
-                padding: 0;
-
-                li {
-                    margin-bottom: rhythm(.5);
-                }
-                li > a {
-                    text-decoration: none;
-                    color: $color-neutral-primary-default;
-                }
-            }
+@media (min-width: $size-viewport-large-min) {
+    pa-side-nav {
+        pa-side-nav-header img {
+            max-width: 180px;
+        }
+        .section {
+            padding-top: rhythm(1);
         }
     }
 }

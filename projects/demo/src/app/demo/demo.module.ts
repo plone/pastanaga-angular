@@ -59,8 +59,10 @@ import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.componen
 import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 import { FocusablePageComponent } from './pages/focusable-page/focusable-page.component';
 import { PaSideNavModule } from '../../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
+import { DemoComponent } from './demo.component';
 
 const COMPONENTS = [
+    DemoComponent,
     DemoPageComponent,
     DemoMenuComponent,
     DemoTitleDirective,
