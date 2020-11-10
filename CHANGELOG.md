@@ -2,7 +2,7 @@
 
 ### Improvements
 - **spacing**:
-    - added values
+    - added values [jCarret]
     
 ### Bugfix
 - Fix Travis
