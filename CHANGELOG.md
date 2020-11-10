@@ -1,8 +1,12 @@
+# 2.11.0 (2020-11-10)
+
+### Breaking change
+- **PastanagaService** deleted: having one service to rule them all is a bad practice as it impacts badly test performances, so we decided to remove it [mpellerin42]
+
 # 2.10.2 (2020-11-10)
 
 ### Improvements
-- **spacing**:
-    - added values [jCarret]
+- **spacing**: added values [jCarret]
     
 ### Bugfix
 - Fix Travis
