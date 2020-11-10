@@ -1,29 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogComponent } from './dialog.component';
-import { Component, ViewChild } from '@angular/core';
-import { IModal } from '../base-modal.component';
+import { Component } from '@angular/core';
 import {
     ModalDescriptionDirective,
     ModalFooterDirective,
     ModalImageDirective,
     ModalTitleDirective,
 } from '../modal.directive';
-import { MockModule } from 'ng-mocks';
-import { PaButtonModule } from "../../..";
+import { MockDirective, MockModule } from 'ng-mocks';
+import { ModalRef, PaButtonModule } from '../../..';
+import { createSpyObject } from '@ngneat/spectator/jest';
+import { By } from "@angular/platform-browser";
 
 @Component({
     template: ` <pa-dialog>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
         <pa-modal-footer>
-            <pa-button kind="secondary" (click)="modal?.close('from secondary')">Secondary CTA</pa-button>
-            <pa-button kind="primary" (click)="modal?.close('from primary')">Primary CTA</pa-button>
+            <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
+            <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
         </pa-modal-footer>
     </pa-dialog>`,
 })
-export class TestDialogComponent implements IModal {
-    @ViewChild(DialogComponent, { static: true }) modal: DialogComponent | undefined;
+export class TestDialogComponent {
+    constructor(public modal: ModalRef) {}
 }
 
 @Component({
@@ -32,13 +33,13 @@ export class TestDialogComponent implements IModal {
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
         <pa-modal-footer>
-            <pa-button kind="secondary" (click)="modal?.close('from secondary')">Secondary CTA</pa-button>
-            <pa-button kind="primary" (click)="modal?.close('from primary')">Primary CTA</pa-button>
+            <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
+            <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
         </pa-modal-footer>
     </pa-dialog>`,
 })
-export class TestDialogImageComponent implements IModal {
-    @ViewChild(DialogComponent, { static: true }) modal: DialogComponent | undefined;
+export class TestDialogImageComponent {
+    constructor(public modal: ModalRef) {}
 }
 
 describe('DialogComponent', () => {
@@ -55,13 +56,19 @@ describe('DialogComponent', () => {
                 DialogComponent,
                 TestDialogComponent,
                 TestDialogImageComponent,
-                ModalTitleDirective,
-                ModalDescriptionDirective,
-                ModalFooterDirective,
-                ModalImageDirective,
+                MockDirective(ModalTitleDirective),
+                MockDirective(ModalDescriptionDirective),
+                MockDirective(ModalFooterDirective),
+                MockDirective(ModalImageDirective),
             ],
+            providers: [{ provide: ModalRef, useFactory: () => createSpyObject(ModalRef) }],
         }).compileComponents();
     }));
+
+    beforeEach(() => {
+        const modalRef = TestBed.inject(ModalRef);
+        modalRef.config = {} as any;
+    });
 
     it('should create', () => {
         fixture = TestBed.createComponent(DialogComponent);
@@ -74,15 +81,15 @@ describe('DialogComponent', () => {
         fixture = TestBed.createComponent(TestDialogComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
-        expect(component.modal).toBeDefined();
-        expect(component.modal?._hasImage).toBe(false);
+        const dialog: DialogComponent = fixture.debugElement.query(By.directive(DialogComponent)).componentInstance;
+        expect(dialog._hasImage).toBe(false);
     });
 
     it(`should display image container when pa-modal-image is present`, () => {
         fixture = TestBed.createComponent(TestDialogImageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
-        expect(component.modal).toBeDefined();
-        expect(component.modal?._hasImage).toBe(true);
+        const dialog: DialogComponent = fixture.debugElement.query(By.directive(DialogComponent)).componentInstance;
+        expect(dialog._hasImage).toBe(true);
     });
 });

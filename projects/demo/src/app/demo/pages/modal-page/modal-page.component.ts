@@ -13,16 +13,16 @@ export class ModalPageComponent {
     <pa-modal-title>Dialog title</pa-modal-title>
     <pa-modal-description>Dialog description</pa-modal-description>
     <pa-modal-footer>
-        <pa-button kind="secondary" (click)="modal?.close('from secondary')">Secondary CTA</pa-button>
-        <pa-button kind="primary" (click)="modal?.close('from primary')">Primary CTA</pa-button>
+        <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
+        <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
     </pa-modal-footer>
 </pa-dialog>`;
     dialogComponent = `@Component({
     templateUrl: './dialog-example.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogExampleComponent implements IModal {
-    @ViewChild(DialogComponent, { static: true }) modal: DialogComponent | undefined;
+export class DialogExampleComponent {
+    constructor(public modal: ModalRef) {}
 }`;
     callerComponent = `import { ModalService } from 'pastanaga-angular';
 
@@ -85,21 +85,24 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
         this.pastanaga.modalService.openModal(DialogExampleComponent).onClose.subscribe(data => console.log('Modal closed', data));
     }
 }`;
-    closingProgrammatically = `export class SomeDialogComponent implements IModal {
+    closingProgrammatically = `export class SomeDialogComponent {
     closeDialog() {
         this.modal.close({whatever: true, answer: 42});
     }
 }`;
     passingDataToModal = `export class CallerComponent {
     open() {
-        const modalRef = this.pastanaga.modalService.openModal(SomeDialogComponent);
-        modalRef.data = { document: myDoc, user: myUser };
+        const modalRef = this.pastanaga.modalService.openModal(SomeDialogComponent, {
+            data = { document: myDoc, user: myUser }
+        });
     }
 }`;
     accessingModalData = `export class SomeDialogComponent implements IModal {
+    constructor(private dialog: ModalRef) {}
+
     ngOnInit() {
-        this.document = this.modal.ref.data?.document;
-        this.user = this.modal.ref.data?.user;
+        this.document = this.dialog.data?.document;
+        this.user = this.dialog.data?.user;
     }
 }`;
     onEnterBinding = `export class SomeDialogComponent implements IModal {

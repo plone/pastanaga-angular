@@ -32,11 +32,11 @@
         <p>You can also create your own modal components.</p>
 
         <h3>Using <code>DialogComponent</code> or <code>ModalComponent</code></h3>
-        <p>First you need to create a component implementing <code>IModal</code> interface. <code>IModal</code> interface requires you to have a <code>ViewChild</code> referencing the modal component</p>
+        <p>First you need to create a component. A <code>ModalRef</code> can be injected to control the modal from within the component.
         <pa-demo-code>
             <pre><code>{{dialogComponent}}</code></pre>
         </pa-demo-code>
-        <p>In its template, you need to use a <code>pa-dialog</code> or a <code>pa-modal</code></p>
+        <p>In its template, for common/core functionality, use a <code>pa-dialog</code> or a <code>pa-modal</code></p>
         <pa-demo-code>
             <pre><code>{{dialogTemplate}}</code></pre>
         </pa-demo-code>
@@ -103,11 +103,11 @@
         </pa-demo-code>
 
         <h3>Passing data to a modal</h3>
-        <p>Sometimes, a modal's caller needs to pass some data to id. You can easily do so by adding the <code>data</code> property to the <code>ModalRef</code> when opening the modal:</p>
+        <p>Sometimes, a modal's caller needs to pass some data to it. You can easily do so by adding the <code>data</code> property to the <code>ModalConfig</code> when opening the modal:</p>
         <pa-demo-code>
             <pre><code>{{passingDataToModal}}</code></pre>
         </pa-demo-code>
-        <p>The modal can access the <code>ModalRef</code> as well, for example in their <code>ngOnInit</code> block</p>
+        <p>The modal can access the data by using the data<code>InjectionToken</code>, for example in their <code>ngOnInit</code> block</p>
         <pa-demo-code>
             <pre><code>{{accessingModalData}}</code></pre>
         </pa-demo-code>

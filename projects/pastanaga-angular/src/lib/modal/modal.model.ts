@@ -1,31 +1,43 @@
-import { EventEmitter } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
-export interface IModalConfig {
+export interface IModalConfig<D = any> {
     blocking?: boolean;
     withCloseButton?: boolean;
+    data?: D;
 }
 
-export class ModalConfig {
+export class ModalConfig<D = any> {
     blocking: boolean;
     withCloseButton: boolean;
+    data?: D;
 
-    constructor(data?: IModalConfig) {
-        this.blocking = !!data && typeof data.blocking === 'boolean' ? data.blocking : true;
-        this.withCloseButton = !!data && typeof data.withCloseButton === 'boolean' ? data.withCloseButton : false;
+    constructor(config?: IModalConfig<D>) {
+        this.blocking = !!config && typeof config.blocking === 'boolean' ? config.blocking : true;
+        this.withCloseButton = !!config && typeof config.withCloseButton === 'boolean' ? config.withCloseButton : false;
+        this.data = config?.data;
     }
 }
 
-export class ModalRef<T = any> {
+export class ModalRef<D = any, R = any> {
+    private _onClose: Subject<R | undefined>;
+
     id: number;
     isLast: boolean;
-    config: ModalConfig;
-    data?: T;
-    onClose: EventEmitter<any>;
+    config: ModalConfig<D>;
 
-    constructor(data: { id: number; config?: ModalConfig }) {
+    constructor(data: { id: number; config?: ModalConfig<D> }) {
         this.id = data.id;
         this.isLast = true;
         this.config = data.config || new ModalConfig();
-        this.onClose = new EventEmitter<any>();
+        this._onClose = new Subject();
+    }
+
+    get onClose(): Observable<R | undefined> {
+        return this._onClose.asObservable();
+    }
+
+    close(result?: R) {
+        this._onClose.next(result);
+        this._onClose.complete();
     }
 }

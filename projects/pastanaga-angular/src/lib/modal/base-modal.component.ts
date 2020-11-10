@@ -10,18 +10,6 @@ import {
 import { ModalConfig, ModalRef } from './modal.model';
 import { detectChanges, Keys } from '../common';
 
-/**
- * All modal components must have a modal property of type BaseModalComponent (needed to manage modals in ModalService)
- *
- * Example:
- * ```typescript
- * @ViewChild(ModalComponent, { static: true }) modal: ModalComponent | undefined;
- * ```
- */
-export interface IModal {
-    modal: BaseModalComponent | undefined;
-}
-
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
 export class BaseModalComponent implements AfterViewInit {
@@ -29,7 +17,6 @@ export class BaseModalComponent implements AfterViewInit {
 
     @ViewChild('modalContainer') modalContainer?: ElementRef;
 
-    ref?: ModalRef;
     closing = false;
     off = false;
     id = 0;
@@ -37,7 +24,7 @@ export class BaseModalComponent implements AfterViewInit {
 
     protected _onKeyDown = this.onKeyDown.bind(this);
 
-    constructor(protected cdr: ChangeDetectorRef) {}
+    constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef) {}
 
     ngAfterViewInit() {
         if (!!this.ref) {
@@ -56,7 +43,7 @@ export class BaseModalComponent implements AfterViewInit {
                 this.off = true;
                 detectChanges(this.cdr);
                 if (!!this.ref) {
-                    this.ref.onClose.emit(data);
+                    this.ref.close(data);
                 }
             }, 700);
         }
