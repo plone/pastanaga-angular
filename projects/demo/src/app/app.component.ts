@@ -69,26 +69,14 @@ export class AppComponent {
             ],
         },
     ];
-    activeItem = '';
-    _isMenuVisible = true;
     mode?: string;
+
     constructor(private traverser: Traverser, private breakpoint: BreakpointObserver, private cdr: ChangeDetectorRef) {
         this.breakpoint.currentMode.subscribe((mode) => {
             this.mode = mode;
-            this._isMenuVisible = mode === 'desktop';
             markForCheck(this.cdr);
         });
         traverser.addView('view', '', WelcomePageComponent);
         this.menu.forEach((section) => section.pages.forEach((page) => traverser.addView(page.view, '', page.type)));
-    }
-
-    toggleSideNav(value: boolean) {
-        this._isMenuVisible = value;
-    }
-    onSelectedItem(view: string) {
-        this.activeItem = view;
-        if (this.mode !== 'desktop') {
-            this._isMenuVisible = false;
-        }
     }
 }

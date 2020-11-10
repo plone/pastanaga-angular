@@ -1,27 +1,6 @@
-<pa-button *ngIf="mode !== 'desktop'"
-           icon="hamburger-right"
-           class="demo-menu-button"
-           (click)="toggleSideNav(true)">Menu</pa-button>
-<pa-side-nav 
-    [mode]="mode"
-    [visible]="_isMenuVisible" 
-    (close)="toggleSideNav(false)"
-    >
-    <pa-side-nav-header>
-         <a href="#" traverseTo="/" paFocusable>
-            <img src="./assets/p-angular.svg" alt="Logo">
-        </a>
-    </pa-side-nav-header>
-    <pa-side-nav-content class="section" *ngFor="let section of menu">
-        <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
-        <pa-side-nav-item *ngFor="let page of section.pages" 
-                        [active]="page.view === activeItem"
-                        [label]="page.title"
-                        [traverseTo]="'/@@' + page.view"
-                        (click)="onSelectedItem(page.view)">
-        </pa-side-nav-item>
-    </pa-side-nav-content>
-</pa-side-nav>
+<pa-demo-menu [menu]="menu"
+              [mode]="mode"></pa-demo-menu>
+
 <div class="view-container">
     <traverser-outlet></traverser-outlet>
 </div>
