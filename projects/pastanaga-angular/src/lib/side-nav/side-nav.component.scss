@@ -13,7 +13,7 @@ $overlay-anim-duration: .6s;
         position: fixed;
         right: 0;
         top: 0;
-        padding-left: rhythm(2);
+        padding: 0 rhythm(2);
         z-index: $z-index-popup;
         background-color: $color-neutral-primary-lighter;
         &.inverted {
@@ -31,13 +31,19 @@ $overlay-anim-duration: .6s;
             flex-grow: 1;
             overflow: auto;
             padding: 0;
+            margin-bottom: rhythm(3);
         }
         pa-side-nav-item {
             opacity: 0;
         }
+        footer {
+            display: flex;
+            padding: rhythm(1.5) rhythm(2);
+            justify-content: space-between;
+        }
         header {
             display: flex;
-            padding: rhythm(1.5) rhythm(1);
+            padding: rhythm(1.5) 0;
             justify-content: space-between;
         }
         &.animated {
@@ -59,8 +65,14 @@ $overlay-anim-duration: .6s;
             width: 60vw;
         }
         @media (min-width: $size-viewport-large-min) {
+            position: relative;
+            top: unset;
+            right: unset;
             width: 300px;
             left: 0;
+            header {
+                padding: rhythm(1.5) rhythm(2);
+            }
         }
     }
     .pa-side-nav-tablet-overlay {

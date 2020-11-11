@@ -2,6 +2,7 @@
 
 :host {
     .view-container {
+        width: 100%;
         margin-left: 0;
         padding: rhythm(1.5);
 
@@ -10,7 +11,7 @@
         }
 
         @media (min-width: $size-viewport-large-min) {
-            margin-left: rhythm(20);
+            width: calc(100vw - #{rhythm(25)});
             padding: rhythm(1.5) rhythm(10) rhythm(2.5) rhythm(10);
         }
     }
