@@ -1,97 +1,82 @@
 <pa-demo-page>
     <pa-demo-title>Avatar</pa-demo-title>
 
-    <pa-demo-description>You can use an Avatar to represent a user or a group. Avatars with no image have an auto assigned background color.</pa-demo-description>
+    <pa-demo-description>You can use an Avatar to represent a user or a group. Avatars with no image can have an auto
+        assigned background color.
+    </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-avatar
-            [userId]="userId"
-            [userName]="userName"
-            [image]="image"
-            [alternateText]="alternateText"
-            [backgroundColor]="backgroundColor"
-            [large]="isLarge"
-            [icon]="icon"
-            [iconColor]="iconColor"
-            [iconBackgroundColor]="iconBackgroundColor"
-            [autoBackground]="autoBackground"
-            [active]="isActive"
-        ></pa-avatar>
-    </pa-demo-examples>
+        <div class="avatar-row">
+            <div>Large</div>
+            <pa-avatar userName="John Doe"
+                       size="large"
+            ></pa-avatar>
+            <pa-avatar userName="John Doe"
+                       [image]="image"
+                       size="large"
+            ></pa-avatar>
+            <pa-avatar userName="John Doe"
+                       size="large"
+                       autoBackground
+            ></pa-avatar>
+        </div>
+        <div class="avatar-row">
+            <div>Medium</div>
+            <pa-avatar userName="Darth Vador"
+                       size="medium"
+            ></pa-avatar>
+            <pa-avatar userName="Darth Vador"
+                       [image]="image"
+                       size="medium"
+            ></pa-avatar>
+            <pa-avatar userName="Darth Vador"
+                       size="medium"
+                       autoBackground
+            ></pa-avatar>
+        </div>
+        <div class="avatar-row">
+            <div>Small</div>
+            <pa-avatar userName="Steve Jobs"
+                       size="small"
+            ></pa-avatar>
+            <pa-avatar userName="Steve Jobs"
+                       [image]="image"
+                       size="small"
+            ></pa-avatar>
+            <pa-avatar userName="Steve Jobs"
+                       size="small"
+                       autoBackground
+            ></pa-avatar>
+        </div>
 
-    <pa-demo-configuration>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="userNameTrigger" [value]="hasUserName" (selectedChange)="toggleUserName($event)">userName: John Doe</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="userIdTrigger" [value]="hasUserId" (selectedChange)="toggleUserId($event)">userId: 1234567</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="imageTrigger" [value]="hasImage" (selectedChange)="toggleImage($event)">Image</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="backgroundColorTrigger" [value]="hasBackgroundColor" (selectedChange)="toggleBackgroundColor($event)">Background color #FBC452</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="largeTrigger" [(ngModel)]="isLarge">large</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="iconTrigger" [value]="hasIcon" (selectedChange)="toggleIcon($event)">Icon camera (will be full-size when no userName or image is provided)</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="iconColorTrigger" [value]="hasIconColor" (selectedChange)="toggleIconColor($event)">Icon Color {{iconColor}}</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="iconBackgroundColorTrigger" [value]="hasIconBackgroundColor" (selectedChange)="toggleIconBackgroundColor($event)">Icon background color #0047FF</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="alternateTextTrigger" [value]="hasAlternateText" (selectedChange)="toggleAlternateText($event)">Alt text for image or icon (only displayed for large icon avatar)</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="autoColorTrigger" [(ngModel)]="autoBackground">Let component choose background color according to userName or userId</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="activeTrigger" [(ngModel)]="isActive">Set as Active</pa-checkbox>
-        </div>
-    </pa-demo-configuration>
+
+
+    </pa-demo-examples>
 
     <pa-demo-usage>
         <h3>Inputs</h3>
 
         <dl>
-            <dt>active</dt>
-            <dd>Adds an outline-like border to the component to simulate a focused or active button</dd>
-
-            <dt>alternateText</dt>
-            <dd>The text used to fill alt property of the image. When Avatar is displayed as an Icon, and the size is large, this text can also provide a label to the icon. <small>(optional)</small></dd>
-
             <dt>autoBackground</dt>
-            <dd>Let component choose initial's background color according to userName or userId. <small>(false by default)</small></dd>
-
-            <dt>backgroundColor</dt>
-            <dd>Hexadecimal value to be used as background color when no <code>image</code> is provided. If <code>autoBackground</code> is true, <code>backgroundColor</code> overrides the generated one. <small>(optional)</small></dd>
-
-            <dt>icon</dt>
-            <dd>Icon name to be used. When an image or a userName is provided, the icon will be displayed on the bottom right corner of the avatar. Otherwise, the icon will be displayed as an avatar itself. <small>(optional)</small></dd>
-
-            <dt>iconBackgroundColor</dt>
-            <dd>Hexadecimal color of icon's background. <small>(optional)</small></dd>
-
-            <dt>iconColor</dt>
-            <dd>Hexadecimal color of the icon. <small>(optional)</small></dd>
+            <dd>Assign background color automatically according to <code>userName</code> or <code>userId</code>. <small>(false by default)</small></dd>
 
             <dt>image</dt>
-            <dd>Provides to be displayed as avatar. Expect an observable of blob. Once an image is provided, generated initials and backgroundColor are not displayed anymore. <small>(optional)</small></dd>
+            <dd>Observable of blob to be displayed as avatar. Once the image is set, generated
+                initials and backgroundColor are not displayed anymore. <small>(optional)</small></dd>
 
-            <dt>large</dt>
-            <dd>Display large avatar <small>false by default</small></dd>
+            <dt>imageSrc</dt>
+            <dd>Base64 string to be displayed as avatar. Once the image is set, generated
+                initials and backgroundColor are not displayed anymore. <small>(optional)</small></dd>
+
+            <dt>size</dt>
+            <dd>Avatar's size. Can be <code>small</code> | <code>medium</code> | <code>large</code>. <small>(medium by default)</small></dd>
 
             <dt>userId</dt>
-            <dd>Used to generate a background color when no <code>image</code> or <code>backgroundColor</code> is provided. <small>(optional)</small></dd>
+            <dd>Used to generate a background color when no <code>image</code> is provided and <code>autoBackground</code> is <code>true</code>. <small>(optional)</small></dd>
 
             <dt>userName</dt>
-            <dd>Used to generate displayed initials and a background color when no <code>image</code> or <code>backgroundColor</code> is provided. <small>(optional)</small></dd>
-
+            <dd>Used to generate displayed initials and a background color when no <code>image</code>
+                is provided and <code>autoBackground</code> is <code>true</code>. <small>(optional)</small></dd>
         </dl>
     </pa-demo-usage>
 

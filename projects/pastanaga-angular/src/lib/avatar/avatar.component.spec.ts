@@ -1,70 +1,62 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, ViewChild } from '@angular/core';
-import { By } from '@angular/platform-browser';
-
 import { AvatarComponent } from './avatar.component';
-import { PaIconModule } from '../icon/icon.module';
-import { MockModule } from 'ng-mocks';
-
-@Component({
-    template: `<pa-avatar
-        #avatar
-        [userId]="userId"
-        [userName]="userName"
-        [icon]="icon"
-        [autoBackground]="true"
-    ></pa-avatar>`,
-})
-export class TestComponent {
-    userId = '';
-    userName = '';
-    icon = '';
-    @ViewChild('avatar') avatar?: AvatarComponent;
-}
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
+import { of } from 'rxjs';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('AvatarComponent', () => {
-    let component: TestComponent;
-    let fixture: ComponentFixture<TestComponent>;
-
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            imports: [MockModule(PaIconModule)],
-            providers: [],
-            declarations: [AvatarComponent, TestComponent],
-        }).compileComponents();
-    }));
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(TestComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
+    const createHost = createHostFactory({
+        component: AvatarComponent,
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-
-    it('should set an avatar color', () => {
-        component.userId = 'user1';
-        fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-avatar-initials')).properties.className).toContain(
-            'pa-avatar-lime'
-        );
-    });
+    let spectator: SpectatorHost<AvatarComponent>;
 
     it('should set user initials', () => {
-        component.userName = 'Clark Kent';
-        fixture.detectChanges();
-        expect(component.avatar?._initials).toEqual('CK');
+        spectator = createHost(`<pa-avatar userName="Clark Kent"></pa-avatar>`);
+        spectator.detectChanges();
+        expect(spectator.component._initials).toEqual('CK');
     });
 
-    it('should set icon with proper size', () => {
-        expect(fixture.debugElement.query(By.css('.pa-avatar-no-info-icon pa-icon'))).toBeFalsy();
-        component.icon = 'search';
-        fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-avatar-no-info-icon pa-icon'))).toBeTruthy();
-        component.userName = 'Clark Kent';
-        fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-avatar-user-icon'))).toBeTruthy();
+    it('should set default background color when no autoBackground', () => {
+        spectator = createHost(`<pa-avatar userId="user1"></pa-avatar>`);
+        spectator.detectChanges();
+        const initials = spectator.query('.pa-avatar-initials');
+        expect(initials).toBeTruthy();
+        expect(initials?.className).toContain('pa-avatar-default');
     });
+
+    it('should set an avatar color when autoBackground is set', () => {
+        spectator = createHost(`<pa-avatar userId="user1" autoBackground></pa-avatar>`);
+        spectator.detectChanges();
+        const initials = spectator.query('.pa-avatar-initials');
+        expect(initials).toBeTruthy();
+        expect(initials?.className).toContain('pa-avatar-secondary');
+    });
+
+    it('should display a question mark as initials and set medium size by default', () => {
+        spectator = createHost(`<pa-avatar></pa-avatar>`);
+        spectator.detectChanges();
+        expect(spectator.component._initials).toBe('?');
+        expect(spectator.component._size).toBe('medium');
+    });
+
+    it('should set avatar size', () => {
+        spectator = createHost(`<pa-avatar size="large"></pa-avatar>`);
+        spectator.detectChanges();
+        expect(spectator.component._size).toBe('large');
+    });
+
+    it('should set base64 image from imageSrc', () => {
+        spectator = createHost(`<pa-avatar imageSrc="img64"></pa-avatar>`);
+        spectator.detectChanges();
+        expect(spectator.component._base64Image).toBe('img64');
+    });
+
+    it('should load blob image when set', fakeAsync(() => {
+        const image = of(new Blob());
+        spectator = createHost(`<pa-avatar [image]="image"></pa-avatar>`, {
+            hostProps: { image },
+        });
+        spectator.detectChanges();
+        expect(spectator.component._base64Image).toBe('');
+    }));
 });

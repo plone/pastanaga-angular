@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 import { getAvatarColor, getInitials } from './avatar.utils';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Observable } from 'rxjs';
-import { detectChanges, Size } from '../common';
+import { detectChanges } from '../common';
 
 @Component({
     selector: 'pa-avatar',
@@ -12,7 +12,7 @@ import { detectChanges, Size } from '../common';
 export class AvatarComponent {
     @Input() set userId(value: string) {
         this._userId = value;
-        this.assignColorClass();
+        this.assignBackgroundColor();
     }
 
     @Input()
@@ -22,9 +22,9 @@ export class AvatarComponent {
             this._initials = getInitials(value);
         } else {
             this._userName = undefined;
-            this._initials = ' ? ';
+            this._initials = '?';
         }
-        this.assignColorClass();
+        this.assignBackgroundColor();
     }
 
     @Input()
@@ -38,46 +38,30 @@ export class AvatarComponent {
 
     @Input()
     set imageSrc(value: string) {
-        if (!!value) {
-            this._base64Image = value;
-        } else {
-            this._base64Image = undefined;
-        }
-    }
-
-    @Input()
-    set backgroundColor(value: string) {
-        this._backgroundColor = value;
-    }
-
-    @Input()
-    set large(value: boolean) {
-        this._isLarge = coerceBooleanProperty(value);
-        this._iconSize = this._isLarge ? Size.medium : Size.xxsmall;
-        this._iconAvatarSize = this._isLarge ? Size.xxlarge : Size.medium;
+        this._base64Image = value;
     }
 
     @Input() set autoBackground(value: boolean) {
         this._autoBackground = coerceBooleanProperty(value);
-        this.assignColorClass();
+        this.assignBackgroundColor();
     }
 
-    @Input() icon?: string;
-    @Input() iconColor?: string;
-    @Input() iconBackgroundColor?: string;
-    @Input() alternateText?: string;
-    @Input() active = false;
+    @Input() set size(value: 'small' | 'medium' | 'large') {
+        if (!!value) {
+            this._size = value;
+        }
+    }
+    get size() {
+        return this._size;
+    }
 
     _userId?: string;
     _userName?: string;
-    _initials = ' ? ';
-    _colorClass?: string;
-    _backgroundColor?: string;
-    _isLarge = false;
+    _initials = '?';
     _base64Image?: string;
-    _iconSize = Size.xxsmall;
-    _iconAvatarSize = Size.medium;
     _autoBackground = false;
+    _backgroundColorClass?: string;
+    _size: 'small' | 'medium' | 'large' = 'medium';
 
     constructor(private cdr: ChangeDetectorRef) {}
 
@@ -101,12 +85,12 @@ export class AvatarComponent {
         });
     }
 
-    private assignColorClass() {
-        let colorClass = 'default';
+    private assignBackgroundColor() {
+        let backgroundColor = 'default';
         if (this._autoBackground) {
             const id = !!this._userId ? this._userId : this._userName ? this._userName : this._initials;
-            colorClass = getAvatarColor(id);
+            backgroundColor = getAvatarColor(id);
         }
-        this._colorClass = `pa-avatar-${colorClass}`;
+        this._backgroundColorClass = `pa-avatar-${backgroundColor}`;
     }
 }

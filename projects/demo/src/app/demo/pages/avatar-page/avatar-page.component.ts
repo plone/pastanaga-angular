@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 // tslint:disable:max-line-length
@@ -30,74 +30,14 @@ const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => 
 @Component({
     selector: 'app-avatar-page',
     templateUrl: './avatar-page.component.html',
+    styleUrls: ['./avatar-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarPageComponent {
-    // avatar values
-    userName: string | undefined;
-    userId: string | undefined;
-    image: Observable<Blob> | undefined;
-    backgroundColor: string | undefined;
-    icon: string | undefined = undefined;
-    iconColor = '#001530';
-    iconBackgroundColor: string | undefined = undefined;
-    isLarge = false;
-    alternateText: string | undefined;
-    autoBackground = false;
+    image: Observable<Blob> = of(b64toBlob(IMAGE, 'image/gif'));
 
-    // configuration
-    hasUserName = false;
-    hasUserId = false;
-    hasImage = false;
-    hasBackgroundColor = false;
-    hasIcon = false;
-    hasIconColor = false;
-    hasIconBackgroundColor = false;
-    hasAlternateText = false;
-    isActive = false;
-
-    code = `<pa-avatar
-    [userId]="userId"
-    [userName]="userName"
-    [image]="image"
-    [alternateText]="alternateText"
-    [backgroundColor]="backgroundColor"
-    [large]="isLarge"
-    [icon]="icon"
-    [iconColor]="iconColor"
-    [iconBackgroundColor]="iconBackgroundColor"
-    [autoBackground]="autoBackground"
-    [active]="isActive"
+    code = `<pa-avatar userName="Steve Jobs"
+           size="small"
+           autoBackground
 ></pa-avatar>`;
-
-    toggleUserName(event: boolean) {
-        this.userName = event ? 'John Doe' : undefined;
-    }
-
-    toggleUserId(event: boolean) {
-        this.userId = event ? '123456' : undefined;
-    }
-
-    toggleImage(event: boolean) {
-        this.image = event ? of(b64toBlob(IMAGE, 'image/gif')) : undefined;
-    }
-
-    toggleBackgroundColor(event: boolean) {
-        this.backgroundColor = event ? '#FBC452' : undefined;
-    }
-
-    toggleIcon(event: boolean) {
-        this.icon = event ? 'camera' : undefined;
-    }
-
-    toggleIconColor(event: boolean) {
-        this.iconColor = event ? '#99CFFF' : '#001530';
-    }
-
-    toggleIconBackgroundColor(event: boolean) {
-        this.iconBackgroundColor = event ? '#0047FF' : undefined;
-    }
-
-    toggleAlternateText(event: boolean) {
-        this.alternateText = event ? 'Upload image' : undefined;
-    }
 }

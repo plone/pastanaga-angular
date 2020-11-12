@@ -7,82 +7,42 @@
     border-radius: 50%;
 }
 
-@mixin flex-content-aligned() {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .pa-avatar {
     position: relative;
     display: flex;
-    width: $size-avatar-small;
-    height: $size-avatar-small;
     border-radius: 50%;
 
-    .pa-avatar-no-info-icon {
-        @include full-size-circle();
-        @include flex-content-aligned();
-        background: $background-color-avatar-default;
+    &.pa-avatar-small {
+        width: $size-avatar-small;
+        height: $size-avatar-small;
+    }
+    &.pa-avatar-medium {
+        width: $size-avatar-medium;
+        height: $size-avatar-medium;
+    }
+    &.pa-avatar-large {
+        width: $size-avatar-large;
+        height: $size-avatar-large;
     }
 
-    .pa-avatar-user-img {
+    .pa-avatar-img {
         @include full-size-circle();
         object-fit: cover;
     }
 
-    .pa-avatar-user-icon {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        @include flex-content-aligned();
-        width: rhythm(1.25);
-        height: rhythm(1.25);
-        border-radius: 50%;
-        background: $background-color-avatar-default;
-    }
-
     .pa-avatar-initials {
+        background: $background-color-avatar-default;
         border-bottom: none;
-        text-decoration: none;
-        text-align: center;
-        width: rhythm(2.5);
-    }
-
-    &.pa-avatar-large {
-        width: $size-avatar-large-mobile;
-        height: $size-avatar-large-mobile;
-
-        .pa-avatar-no-info-icon-alt {
-            @include size(xs);
-            font-weight: $font-weight-avatar-icon-alt;
-        }
-
-        .pa-avatar-user-icon {
-            width: rhythm(3.5);
-            height: rhythm(3.5);
-        }
-
-        .pa-avatar-initials span {
-            @include size(dsmall);
-        }
-    }
-
-    &.pa-avatar-active {
-        box-shadow: $shadow-focus;
-    }
-
-    .pa-avatar-initials {
         display: inline-flex;
+        font-weight: $font-weight-bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include size-small(xs);
         @include full-size-circle();
-        background: $background-color-avatar-default;
 
         span {
-            @include size(m);
             margin: auto;
-            font-weight: $font-weight-avatar-initials;
-            text-transform: uppercase;
         }
 
         &.pa-avatar-primary {

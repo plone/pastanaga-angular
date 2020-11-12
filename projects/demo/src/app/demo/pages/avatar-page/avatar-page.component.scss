@@ -1,0 +1,13 @@
+.avatar-row {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+
+    & > div {
+        width: 72px;
+    }
+    & > * {
+        margin: 0 6px;
+        min-width: 48px;
+    }
+}
