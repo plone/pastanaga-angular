@@ -2,26 +2,13 @@
 @import "spacing";
 @import "typography";
 
-$avatar-blue:       #179fbd !default;
-$avatar-teal:       #17a397 !default;
-$avatar-jade:       #17a07f !default;
-$avatar-green:      #5fa44d !default;
-$avatar-lime:       #71903c !default;
-$avatar-kaki:       #a2842e !default;
-$avatar-yellow:     #C08817 !default;
-$avatar-orange:     #DF6B1F !default;
-$avatar-salmon:     #F36831 !default;
-$avatar-red:        #EC6248 !default;
-$avatar-crisom:     #EA6375 !default;
-$avatar-magenta:    #DA5499 !default;
-$avatar-violet:     #9489CE !default;
-$avatar-indigo:     #7A92C5 !default;
-$avatar-azure:      #219ACE !default;
+$avatar-primary: $color-accent-primary-lightest !default;
+$avatar-secondary: $color-accent-secondary-lightest !default;
+$avatar-tertiary: $color-accent-tertiary-lightest !default;
 
 $size-avatar-large-mobile:                  rhythm(8.75) !default;
 $size-avatar-large-desktop:                 rhythm(11) !default;
 $size-avatar-small:                         rhythm(2.5) !default;
-$background-color-avatar-icon-default: $color-neutral-primary-lighter !default;
+$background-color-avatar-default:           $color-neutral-primary-lighter !default;
 $font-weight-avatar-icon-alt:               $font-weight-semi-bold !default;
 $font-weight-avatar-initials:               $font-weight-thin !default;
-$font-color-avatar-initials:                $color-neutral-primary-lightest !default;

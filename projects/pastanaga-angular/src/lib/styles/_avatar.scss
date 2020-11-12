@@ -24,7 +24,7 @@
     .pa-avatar-no-info-icon {
         @include full-size-circle();
         @include flex-content-aligned();
-        background: $background-color-avatar-icon-default;
+        background: $background-color-avatar-default;
     }
 
     .pa-avatar-user-img {
@@ -40,7 +40,7 @@
         width: rhythm(1.25);
         height: rhythm(1.25);
         border-radius: 50%;
-        background: $background-color-avatar-icon-default;
+        background: $background-color-avatar-default;
     }
 
     .pa-avatar-initials {
@@ -76,7 +76,7 @@
     .pa-avatar-initials {
         display: inline-flex;
         @include full-size-circle();
-        background: $color-neutral-secondary-light;
+        background: $background-color-avatar-default;
 
         span {
             @include size(m);
@@ -85,93 +85,16 @@
             text-transform: uppercase;
         }
 
-        &.pa-avatar-blue {
-            background: $avatar-blue;
+        &.pa-avatar-primary {
+            background: $avatar-primary;
         }
 
-        &.pa-avatar-teal {
-            background: $avatar-teal;
+        &.pa-avatar-secondary {
+            background: $avatar-secondary;
         }
 
-        &.pa-avatar-jade {
-            background: $avatar-jade;
+        &.pa-avatar-tertiary {
+            background: $avatar-tertiary;
         }
-
-        &.pa-avatar-green {
-            background: $avatar-green;
-        }
-
-        &.pa-avatar-lime {
-            background: $avatar-lime;
-        }
-
-        &.pa-avatar-kaki {
-            background: $avatar-kaki;
-        }
-
-        &.pa-avatar-yellow {
-            background: $avatar-yellow;
-        }
-
-        &.pa-avatar-orange {
-            background: $avatar-orange;
-        }
-
-        &.pa-avatar-salmon {
-            background: $avatar-salmon;
-        }
-
-        &.pa-avatar-red {
-            background: $avatar-red;
-        }
-
-        &.pa-avatar-crisom {
-            background: $avatar-crisom;
-        }
-
-        &.pa-avatar-magenta {
-            background: $avatar-magenta;
-        }
-
-        &.pa-avatar-violet {
-            background: $avatar-violet;
-        }
-
-        &.pa-avatar-indigo {
-            background: $avatar-indigo;
-        }
-
-        &.pa-avatar-azure {
-            background: $avatar-azure;
-        }
-
-        &.pa-avatar-blue,
-        &.pa-avatar-teal,
-        &.pa-avatar-jade,
-        &.pa-avatar-green,
-        &.pa-avatar-lime,
-        &.pa-avatar-kaki,
-        &.pa-avatar-yellow,
-        &.pa-avatar-orange,
-        &.pa-avatar-salmon,
-        &.pa-avatar-red,
-        &.pa-avatar-crisom,
-        &.pa-avatar-magenta,
-        &.pa-avatar-violet,
-        &.pa-avatar-indigo,
-        &.pa-avatar-azure {
-            span {
-                color: $font-color-avatar-initials;
-            }
-        }
-    }
-
-
-}
-
-@media (min-width: $size-viewport-medium-min) {
-    .pa-avatar.pa-avatar-large {
-        width: $size-avatar-large-desktop;
-        height: $size-avatar-large-desktop;
     }
 }
