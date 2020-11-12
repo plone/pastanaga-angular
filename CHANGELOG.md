@@ -1,3 +1,12 @@
+# 2.11.2 (2020-11-12)
+
+### Improvements
+ **SideNavComponent**: [niglesiaz]
+  - Adding an optional icon to pa-side-nav-items 
+  - Fixing alignments
+- **Pastanaga demo**: [niglesiaz]
+  - Fixing alignments in pa-demo
+  
 # 2.11.1 (2020-11-10)
 
 ### Improvements

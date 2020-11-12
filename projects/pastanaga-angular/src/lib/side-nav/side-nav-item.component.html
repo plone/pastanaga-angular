@@ -1,9 +1,10 @@
 <li class="pa-side-nav-item" 
     paFocusable
-    [paFocusDisabled]="_header"
-    [class.active]="_active" 
-    [class.inverted]="_inverted" 
-    [class.header]="_header">
-    <h2 *ngIf="_header">{{_label}}</h2>
-    <span *ngIf="!_header">{{_label}}</span>
+    [paFocusDisabled]="header"
+    [class.active]="active" 
+    [class.inverted]="inverted" 
+    [class.header]="header">
+    <h2 *ngIf="header">{{label}}</h2>
+    <span *ngIf="!header">{{label}}</span>
+    <pa-icon [name]="icon" [size]="header ? 'large' : 'medium'"></pa-icon>
 </li>

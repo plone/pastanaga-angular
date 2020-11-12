@@ -2,13 +2,13 @@ import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { MockModule } from 'ng-mocks';
 import { PaFocusableModule } from '../focusable/focusable.module';
 import { SideNavItemComponent } from './side-nav-item.component';
-
+import { PaIconModule } from '../icon/icon.module';
 describe('SideNavItem', () => {
     let spectator: Spectator<SideNavItemComponent>;
     let component: SideNavItemComponent;
     const createComponent = createComponentFactory({
         component: SideNavItemComponent,
-        imports: [MockModule(PaFocusableModule)],
+        imports: [MockModule(PaFocusableModule), MockModule(PaIconModule)],
         detectChanges: false,
     });
 

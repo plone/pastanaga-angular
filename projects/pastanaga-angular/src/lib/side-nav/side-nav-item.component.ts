@@ -17,6 +17,9 @@ export class SideNavItemComponent {
         this._header = coerceBooleanProperty(value);
     }
     @Input()
+    get label(): string {
+        return this._label;
+    }
     set label(value: string) {
         this._label = value;
     }
@@ -35,9 +38,17 @@ export class SideNavItemComponent {
         this._inverted = coerceBooleanProperty(value);
         markForCheck(this.cdr);
     }
-    _active = false;
-    _header = false;
-    _label = '';
-    _inverted = false;
+    @Input()
+    get icon(): string {
+        return this._icon;
+    }
+    set icon(value: string) {
+        this._icon = value;
+    }
+    private _active = false;
+    private _header = false;
+    private _label = '';
+    private _inverted = false;
+    private _icon = '';
     constructor(private cdr: ChangeDetectorRef) {}
 }
