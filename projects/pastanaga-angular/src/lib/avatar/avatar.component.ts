@@ -17,14 +17,12 @@ export class AvatarComponent {
 
     @Input()
     set userName(value: string) {
-        if (!!value) {
-            this._userName = value;
-            this._initials = getInitials(value);
-        } else {
-            this._userName = undefined;
-            this._initials = '?';
-        }
+        this._userName = value;
+        this._initials = !!value ? getInitials(value) : '?';
         this.assignBackgroundColor();
+    }
+    get userName() {
+        return this._userName;
     }
 
     @Input()
@@ -45,8 +43,12 @@ export class AvatarComponent {
         this._autoBackground = coerceBooleanProperty(value);
         this.assignBackgroundColor();
     }
+    get autoBackground() {
+        return this._autoBackground;
+    }
 
-    @Input() set size(value: 'small' | 'medium' | 'large') {
+    @Input()
+    set size(value: 'small' | 'medium' | 'large') {
         if (!!value) {
             this._size = value;
         }
@@ -55,13 +57,23 @@ export class AvatarComponent {
         return this._size;
     }
 
-    _userId?: string;
-    _userName?: string;
-    _initials = '?';
-    _base64Image?: string;
-    _autoBackground = false;
-    _backgroundColorClass?: string;
-    _size: 'small' | 'medium' | 'large' = 'medium';
+    get base64Image() {
+        return this._base64Image;
+    }
+    get backgroundColorClass() {
+        return this._backgroundColorClass;
+    }
+    get initials() {
+        return this._initials;
+    }
+
+    private _userId?: string;
+    private _userName = '';
+    private _initials = '?';
+    private _base64Image?: string;
+    private _autoBackground = false;
+    private _backgroundColorClass?: string;
+    private _size: 'small' | 'medium' | 'large' = 'medium';
 
     constructor(private cdr: ChangeDetectorRef) {}
 
