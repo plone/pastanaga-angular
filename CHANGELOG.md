@@ -1,3 +1,8 @@
+# 2.12.1 (not released yet)
+
+### Improvements
+- **Tabs**: fix typo in the documentation page [mpellerin42]
+
 # 2.12.0 (2020-11-12)
 
 ### Breaking changes
