@@ -1,7 +1,7 @@
 import { AvatarComponent } from './avatar.component';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { of } from 'rxjs';
-import { fakeAsync, tick } from '@angular/core/testing';
+import { fakeAsync } from '@angular/core/testing';
 
 describe('AvatarComponent', () => {
     const createHost = createHostFactory({
@@ -13,7 +13,7 @@ describe('AvatarComponent', () => {
     it('should set user initials', () => {
         spectator = createHost(`<pa-avatar userName="Clark Kent"></pa-avatar>`);
         spectator.detectChanges();
-        expect(spectator.component._initials).toEqual('CK');
+        expect(spectator.component.initials).toEqual('CK');
     });
 
     it('should set default background color when no autoBackground', () => {
@@ -35,20 +35,20 @@ describe('AvatarComponent', () => {
     it('should display a question mark as initials and set medium size by default', () => {
         spectator = createHost(`<pa-avatar></pa-avatar>`);
         spectator.detectChanges();
-        expect(spectator.component._initials).toBe('?');
-        expect(spectator.component._size).toBe('medium');
+        expect(spectator.component.initials).toBe('?');
+        expect(spectator.component.size).toBe('medium');
     });
 
     it('should set avatar size', () => {
         spectator = createHost(`<pa-avatar size="large"></pa-avatar>`);
         spectator.detectChanges();
-        expect(spectator.component._size).toBe('large');
+        expect(spectator.component.size).toBe('large');
     });
 
     it('should set base64 image from imageSrc', () => {
         spectator = createHost(`<pa-avatar imageSrc="img64"></pa-avatar>`);
         spectator.detectChanges();
-        expect(spectator.component._base64Image).toBe('img64');
+        expect(spectator.component.base64Image).toBe('img64');
     });
 
     it('should load blob image when set', fakeAsync(() => {
@@ -57,6 +57,6 @@ describe('AvatarComponent', () => {
             hostProps: { image },
         });
         spectator.detectChanges();
-        expect(spectator.component._base64Image).toBe('');
+        expect(spectator.component.base64Image).toBe('');
     }));
 });
