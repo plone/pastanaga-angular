@@ -1,3 +1,10 @@
+# 2.13.0
+
+### Breaking changes
+- **Modal**: [dgsmith2]
+    - to provide data to modal components, specify a `data` field when creating
+      the `ModalConfig` and inject `ModalRef` into the componet
+
 # 2.12.1 (not released yet)
 
 ### Improvements
