@@ -1,3 +1,14 @@
+# 2.12.0 (2020-11-12)
+
+### Breaking changes
+- **Avatar**: [mpellerin42]
+    - replace input `large` by `size` so avatar can now be `small`, `medium`, `large`
+    - remove icon, iconBackground and altText properties
+    - fix default background color
+    - fix avatar's initials text style
+    - keep only 3 auto-background colors: `primary`, `secondary` and `tertiary`
+    - update demo and documentation
+
 # 2.11.2 (2020-11-12)
 
 ### Improvements

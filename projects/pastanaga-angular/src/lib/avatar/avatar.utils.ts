@@ -1,20 +1,4 @@
-const AVATAR_COLORS = [
-    'blue',
-    'teal',
-    'jade',
-    'green',
-    'lime',
-    'kaki',
-    'yellow',
-    'orange',
-    'salmon',
-    'red',
-    'crisom',
-    'magenta',
-    'violet',
-    'indigo',
-    'azure',
-];
+const AVATAR_COLORS = ['primary', 'secondary', 'tertiary'];
 
 export const getInitials = (username: string): string => {
     let initials = '—';

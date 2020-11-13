@@ -1,0 +1,15 @@
+@import "../../../../../../pastanaga-angular/src/lib/styles/variables";
+
+.avatar-row {
+    display: flex;
+    align-items: center;
+    margin: rhythm(.5) 0;
+
+    & > div {
+        width: rhythm(6);
+    }
+    & > * {
+        margin: 0 rhythm(.5);
+        min-width: rhythm(4);
+    }
+}
