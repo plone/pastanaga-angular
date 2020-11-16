@@ -1,11 +1,9 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { ModalService } from './modal.service';
-import { IModal } from './base-modal.component';
-import { Component, ViewChild } from '@angular/core';
-import { DialogComponent } from './dialog/dialog.component';
+import { Component } from '@angular/core';
 import { PaModalModule } from './modal.module';
-import { ModalConfig } from './modal.model';
+import { ModalConfig, ModalRef } from './modal.model';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { MockModule } from 'ng-mocks';
 
@@ -15,8 +13,8 @@ import { MockModule } from 'ng-mocks';
         <pa-modal-description>Dialog description</pa-modal-description>
     </pa-dialog>`,
 })
-export class TestDialogComponent implements IModal {
-    @ViewChild(DialogComponent, { static: true }) modal: DialogComponent | undefined;
+export class TestDialogComponent {
+    constructor(public modal: ModalRef) {}
 }
 
 describe('ModalService', () => {
@@ -47,13 +45,13 @@ describe('ModalService', () => {
             expect(service.modals.length).toBe(0);
             const ref = service.openModal(TestDialogComponent);
             expect(service.modals.length).toBe(1);
-            expect(service.modals[0].instance.modal.ref).toBe(ref);
+            expect(service.modals[0].instance.modal).toBe(ref);
         });
 
         it(`should increment the counter `, () => {
-            expect(service.counter).toBe(0);
-            service.openModal(TestDialogComponent);
-            expect(service.counter).toBe(1);
+            const ref1 = service.openModal(TestDialogComponent);
+            const ref2 = service.openModal(TestDialogComponent);
+            expect(ref2.id - ref1.id).toBe(1);
         });
 
         it(`should set a default modal config`, () => {
@@ -70,10 +68,11 @@ describe('ModalService', () => {
         });
     });
 
-    it(`should close modal when ref.onClose event is triggered`, () => {
+    it(`should close modal when ref.onClose event is triggered`, fakeAsync(() => {
         const ref = service.openModal(TestDialogComponent);
-        ref.onClose.emit();
+        ref.close();
+        tick();
         expect(service.modals.length).toBe(0);
         expect(service.hasModalOpened).toBe(false);
-    });
+    }));
 });

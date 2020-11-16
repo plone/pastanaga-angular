@@ -2,11 +2,12 @@ import { BaseModalComponent } from './base-modal.component';
 import { ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { ModalConfig, ModalRef } from './modal.model';
 import { Keys } from '../common';
+import { createSpyObject, SpyObject } from '@ngneat/spectator/jest';
 
 describe('BaseModalComponent', () => {
     const config = new ModalConfig({ blocking: false, withCloseButton: true });
-    const ref = new ModalRef({ id: 1, config });
     let cdr: ChangeDetectorRef;
+    let modalRef: SpyObject<ModalRef>;
     let baseModal: BaseModalComponent;
     let events: { [event: string]: EventListener } = {};
 
@@ -15,8 +16,10 @@ describe('BaseModalComponent', () => {
             markForCheck: jest.fn(() => {}),
             detectChanges: jest.fn(() => {}),
         } as any) as ChangeDetectorRef;
-        baseModal = new BaseModalComponent(cdr);
-        baseModal.ref = ref;
+        modalRef = createSpyObject(ModalRef);
+        modalRef.id = 1;
+        modalRef.config = config;
+        baseModal = new BaseModalComponent(modalRef, cdr);
     });
 
     beforeEach(() => {
@@ -37,7 +40,7 @@ describe('BaseModalComponent', () => {
             expect(baseModal.config.withCloseButton).toBe(false);
 
             baseModal.ngAfterViewInit();
-            expect(baseModal.id).toBe(ref.id);
+            expect(baseModal.id).toBe(modalRef.id);
             expect(baseModal.config.blocking).toBe(config.blocking);
             expect(baseModal.config.withCloseButton).toBe(config.withCloseButton);
         });
@@ -91,17 +94,14 @@ describe('BaseModalComponent', () => {
         });
 
         it(`should set off to true and trigger ref's onClose after 700ms`, () => {
-            const mockOnClose = jest.fn(() => {});
-            const mockedRef: ModalRef = ({ ...ref, onClose: { emit: mockOnClose } } as any) as ModalRef;
-            baseModal.ref = mockedRef;
             baseModal.close();
             expect(baseModal.off).toBe(false);
-            expect(mockOnClose.mock.calls.length).toBe(0);
+            expect(modalRef.close).not.toHaveBeenCalled();
 
             jest.runAllTimers();
             expect(baseModal.off).toBe(true);
             expect((cdr.detectChanges as jest.Mock).mock.calls.length).toBe(2);
-            expect(mockOnClose.mock.calls.length).toBe(1);
+            expect(modalRef.close).toHaveBeenCalled();
         });
     });
 
@@ -134,7 +134,7 @@ describe('BaseModalComponent', () => {
         });
 
         it(`should do nothing if ref is not the last one`, () => {
-            baseModal.ref = { ...ref, isLast: false };
+            modalRef.isLast = false;
             baseModal.config = new ModalConfig({ withCloseButton: true });
             fakeKeypressEvent = ({
                 key: Keys.esc,
@@ -159,6 +159,7 @@ describe('BaseModalComponent', () => {
         });
 
         it(`should close when pressing ESC and config has withCloseButton set to true`, () => {
+            modalRef.isLast = true;
             baseModal.config = new ModalConfig({ withCloseButton: true });
             fakeKeypressEvent = ({
                 key: Keys.esc,

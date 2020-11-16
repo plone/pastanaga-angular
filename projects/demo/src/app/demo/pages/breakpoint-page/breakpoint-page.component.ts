@@ -13,7 +13,7 @@ export class BreakpointPageComponent {
 }`;
 
     currentMode = `ngOnInit(): void {
-    this.pastanaga.breakpoint.currentMode.pipe(takeUntil(this.terminator)).subscribe((mode) => {
+    this.breakpoint.currentMode.pipe(takeUntil(this.terminator)).subscribe((mode) => {
         this._mode = mode;
         if (this._mode !== 'desktop') {
             this.store.dispatch(NavigationActions.hideNavigation());

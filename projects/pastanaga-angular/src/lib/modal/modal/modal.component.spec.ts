@@ -13,6 +13,12 @@ describe('ModalComponent', () => {
         TestBed.configureTestingModule({
             imports: [MockModule(PaButtonModule)],
             declarations: [ModalComponent],
+            providers: [
+                {
+                    provide: ModalRef,
+                    useValue: new ModalRef({ id: 0, config: new ModalConfig({}) }),
+                },
+            ],
         }).compileComponents();
     }));
 
@@ -27,10 +33,7 @@ describe('ModalComponent', () => {
     });
 
     it(`should set withCloseButton to true in its config`, () => {
-        component.ref = new ModalRef({ id: 0, config: new ModalConfig({}) });
         fixture.detectChanges();
-        expect(component.ref).toBeDefined();
-        expect(component.ref?.config).toBeDefined();
-        expect(component.ref?.config.withCloseButton).toBe(true);
+        expect(component.ref.config.withCloseButton).toBe(true);
     });
 });

@@ -7,9 +7,9 @@ import {
     NgZone,
     Type,
 } from '@angular/core';
-import { IModal } from './base-modal.component';
 import { ModalConfig, ModalRef } from './modal.model';
-import { take } from 'rxjs/operators';
+
+let counter = 0;
 
 @Injectable({
     providedIn: 'root',
@@ -18,7 +18,6 @@ export class ModalService {
     hasModalOpened = false;
 
     modals: ComponentRef<any>[] = [];
-    counter = 0;
 
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
@@ -27,30 +26,33 @@ export class ModalService {
         private zone: NgZone
     ) {}
 
-    openModal(component: Type<IModal>, config?: ModalConfig): ModalRef {
+    openModal(component: Type<any>, config?: ModalConfig): ModalRef {
+        // create the modal reference
+        const ref = new ModalRef({ id: counter++, config });
+        ref.onClose.subscribe(() => this.closeModal(ref));
+
+        // instantiate injector
+        const injector = Injector.create({
+            providers: [
+                {
+                    provide: ModalRef,
+                    useValue: ref,
+                },
+            ],
+            parent: this.injector,
+        });
+
         // instantiate modal component
-        const modalComponentRef = this.componentFactoryResolver
-            .resolveComponentFactory(component)
-            .create(this.injector);
+        const modalComponentRef = this.componentFactoryResolver.resolveComponentFactory(component).create(injector);
         this.appRef.attachView(modalComponentRef.hostView);
         document.body.appendChild(modalComponentRef.location.nativeElement);
 
         // freeze background
         this.freezeBackground(true);
 
-        // pass config to the modal and manage the component
-        const ref = new ModalRef({ id: this.counter, config });
-        this.counter++;
-        ref.onClose.pipe(take(1)).subscribe(() => this.closeModal(ref));
-        if (!modalComponentRef.instance.modal) {
-            console.error(`The modal component must be wrapped in a <pa-modal> tag.`);
-        } else {
-            modalComponentRef.instance.modal.ref = ref;
-        }
-
         // Store the modal and manage the others if any
         if (this.modals.length > 0) {
-            this.modals[this.modals.length - 1].instance.modal.ref.isLast = false;
+            this.modals[this.modals.length - 1].instance.modal.isLast = false;
         }
         this.modals.push(modalComponentRef);
         this.hasModalOpened = true;
@@ -58,7 +60,7 @@ export class ModalService {
     }
 
     private closeModal(ref: ModalRef) {
-        const index = this.modals.findIndex((modal) => modal.instance.modal.ref.id === ref.id);
+        const index = this.modals.findIndex((modal) => modal.instance.modal.id === ref.id);
         if (index > -1) {
             this.zone.run(() => {
                 const componentRef = this.modals[index];
@@ -66,7 +68,7 @@ export class ModalService {
                 componentRef.destroy();
                 this.modals.splice(index, 1);
                 if (this.modals.length > 0) {
-                    this.modals[this.modals.length - 1].instance.modal.ref.isLast = true;
+                    this.modals[this.modals.length - 1].instance.modal.isLast = true;
                 }
             });
         }
