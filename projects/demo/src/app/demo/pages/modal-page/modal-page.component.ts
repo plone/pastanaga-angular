@@ -68,7 +68,7 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 </div>`;
     openModalConfig = `export class CallerComponent {
     open() {
-        this.pastanaga.modalService.openModal(DialogExampleComponent, new ModalConfig({blocking: false}));
+        this.modalService.openModal(DialogExampleComponent, new ModalConfig({blocking: false}));
     }
 }`;
     modalCloseButtonSetup = `export class ModalComponent extends BaseModalComponent implements AfterViewInit {
@@ -82,7 +82,7 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 `;
     collectDataOnClose = `export class CallerComponent {
     open() {
-        this.pastanaga.modalService.openModal(DialogExampleComponent).onClose.subscribe(data => console.log('Modal closed', data));
+        this.modalService.openModal(DialogExampleComponent).onClose.subscribe(data => console.log('Modal closed', data));
     }
 }`;
     closingProgrammatically = `export class SomeDialogComponent {
@@ -92,7 +92,7 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 }`;
     passingDataToModal = `export class CallerComponent {
     open() {
-        const modalRef = this.pastanaga.modalService.openModal(SomeDialogComponent, {
+        const modalRef = this.modalService.openModal(SomeDialogComponent, {
             data = { document: myDoc, user: myUser }
         });
     }

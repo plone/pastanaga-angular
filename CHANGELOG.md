@@ -1,11 +1,9 @@
-# 2.13.0
+# 2.13.0 (2020-11-16)
 
 ### Breaking changes
 - **Modal**: [dgsmith2]
     - to provide data to modal components, specify a `data` field when creating
       the `ModalConfig` and inject `ModalRef` into the componet
-
-# 2.12.1 (not released yet)
 
 ### Improvements
 - **Tabs**: fix typo in the documentation page [mpellerin42]

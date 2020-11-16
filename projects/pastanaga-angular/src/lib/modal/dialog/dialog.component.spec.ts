@@ -9,9 +9,10 @@ import {
     ModalTitleDirective,
 } from '../modal.directive';
 import { MockDirective, MockModule } from 'ng-mocks';
-import { ModalRef, PaButtonModule } from '../../..';
+import { PaButtonModule } from '../../button/button.module';
 import { createSpyObject } from '@ngneat/spectator/jest';
-import { By } from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
+import { ModalRef } from '../modal.model';
 
 @Component({
     template: ` <pa-dialog>

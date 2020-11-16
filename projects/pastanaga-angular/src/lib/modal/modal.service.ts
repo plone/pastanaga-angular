@@ -31,7 +31,7 @@ export class ModalService {
         const ref = new ModalRef({ id: counter++, config });
         ref.onClose.subscribe(() => this.closeModal(ref));
 
-        // instantiate component
+        // instantiate injector
         const injector = Injector.create({
             providers: [
                 {
