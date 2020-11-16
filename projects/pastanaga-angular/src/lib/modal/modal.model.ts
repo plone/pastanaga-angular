@@ -9,7 +9,7 @@ export interface IModalConfig<D = any> {
 export class ModalConfig<D = any> {
     blocking: boolean;
     withCloseButton: boolean;
-    data?: D;
+    readonly data?: Readonly<D>;
 
     constructor(config?: IModalConfig<D>) {
         this.blocking = !!config && typeof config.blocking === 'boolean' ? config.blocking : true;
