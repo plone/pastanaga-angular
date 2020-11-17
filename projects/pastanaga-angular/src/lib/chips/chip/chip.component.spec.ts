@@ -6,8 +6,7 @@ import { AvatarComponent, ButtonComponent, PaAvatarModule, PaButtonModule } from
 
 @Component({ template: '' })
 class TestComponent {
-    contact: any = { name: 'the name' };
-    autoBackgroundAvatar = true;
+    avatar: any = { userName: 'the name' };
     noCloseButton = true;
     disabled = true;
     ariaRole = 'role';
@@ -59,7 +58,7 @@ describe('ChipComponent Avatar noClose', () => {
     });
 
     beforeEach(() => {
-        spectator = createHost(`<pa-chip [contact]="contact" noCloseButton>A chip</pa-chip>`);
+        spectator = createHost(`<pa-chip [avatar]="avatar" noCloseButton>A chip</pa-chip>`);
         component = spectator.component;
         avatar = ngMocks.find(spectator.debugElement, AvatarComponent);
     });

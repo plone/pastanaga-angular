@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Observable } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { AvatarModel } from '../../avatar/avatar.model';
 
 @Component({
     selector: 'pa-chip',
@@ -8,9 +8,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipComponent {
-    @Input() contact?: { name: string; image?: Observable<Blob> };
-
-    @Input() autoBackgroundAvatar = false;
+    @Input() avatar?: AvatarModel;
 
     @Input() set noCloseButton(value: boolean) {
         this.canClose = !coerceBooleanProperty(value);

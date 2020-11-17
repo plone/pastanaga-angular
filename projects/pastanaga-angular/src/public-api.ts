@@ -6,6 +6,7 @@ export * from './lib/common';
 
 export * from './lib/avatar/avatar.module';
 export * from './lib/avatar/avatar.component';
+export * from './lib/avatar/avatar.model';
 
 export * from './lib/button/button.module';
 export * from './lib/button/button.component';

@@ -1,25 +1,18 @@
 <pa-demo-page>
     <pa-demo-title>Chip</pa-demo-title>
-    <pa-demo-description>Small and compact chip used to display information, make selections, filter content or input visual content.
+    <pa-demo-description>Simple chip.
     </pa-demo-description>
 
     <pa-demo-examples>
         <pa-chip noCloseButton>Not closable chip</pa-chip>
         <pa-chip disabled>Disabled chip</pa-chip>
-        <ng-container *ngFor="let chip of chips">
-            <pa-chip *ngIf="chip.contact" [contact]="chip.contact" (closed)="closeChip(chip.name)">{{chip.name}}</pa-chip>
-            <pa-chip *ngIf="!chip.contact" (closed)="closeChip(chip.name)">{{chip.name}}</pa-chip>
-        </ng-container>
+        <pa-chip *ngIf="first" (closed)="close('first')">Standard chip</pa-chip>
+        <pa-chip *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip>
+        <pa-chip *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with avatar base on name</pa-chip>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-button (click)="addChip()">Add a chip</pa-button>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button (click)="addAvatarImageChip()">Add an avatar chip with image</pa-button>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button (click)="addAvatarChip()">Add an avatar chip without image</pa-button>
+            <pa-button (click)="reload()">Reload</pa-button>
         </div>
     </pa-demo-configuration>
 
@@ -27,11 +20,8 @@
         <h3>Inputs</h3>
 
         <dl>
-            <dt>contact</dt>
-            <dd>Object providing name and image to avatar <code> name: string, image?: Observable of Blob</code>. <small>(optional)</small></dd>
-
-            <dt>autoBackgroundAvatar</dt>
-            <dd>Assign background color automatically ti the avatar<small>(false by default)</small></dd>
+            <dt>avatar</dt>
+            <dd>Configuration of the avatar to display<code>AvatarModel</code>. <small>(optional)</small></dd>
 
             <dt>noCloseButton</dt>
             <dd>Removes the close button from the chip. <small>(optional)</small></dd>
