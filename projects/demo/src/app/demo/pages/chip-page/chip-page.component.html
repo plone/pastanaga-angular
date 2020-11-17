@@ -8,7 +8,7 @@
         <pa-chip disabled>Disabled chip</pa-chip>
         <pa-chip *ngIf="first" (closed)="close('first')">Standard chip</pa-chip>
         <pa-chip *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip>
-        <pa-chip *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with avatar base on name</pa-chip>
+        <pa-chip *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with avatar based on name</pa-chip>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
@@ -21,7 +21,7 @@
 
         <dl>
             <dt>avatar</dt>
-            <dd>Configuration of the avatar to display<code>AvatarModel</code>. <small>(optional)</small></dd>
+            <dd>Configuration of the avatar to display <code>AvatarModel</code>. <small>(optional)</small></dd>
 
             <dt>noCloseButton</dt>
             <dd>Removes the close button from the chip. <small>(optional)</small></dd>

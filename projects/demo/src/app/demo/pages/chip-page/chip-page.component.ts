@@ -19,7 +19,7 @@ export class ChipPageComponent {
     };
 
     code = `<pa-chip>A chip</pa-chip>
-<pa-chip [avatar]="avatar">Another chip</pa-chip>`;
+<pa-chip [avatar]="avatar">A chip with avatar</pa-chip>`;
 
     constructor(private cdr: ChangeDetectorRef) {}
 
