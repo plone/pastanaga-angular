@@ -1,10 +1,8 @@
 import { ChipComponent } from './chip.component';
 import { Component } from '@angular/core';
-import { SpectatorHost } from '@ngneat/spectator';
-import { createHostFactory } from '@ngneat/spectator/jest';
-import { MockModule, ngMocks } from 'ng-mocks';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
+import { MockModule, ngMocks, MockedDebugElement } from 'ng-mocks';
 import { AvatarComponent, ButtonComponent, PaAvatarModule, PaButtonModule } from '../../..';
-import { MockedDebugElement } from 'ng-mocks/dist/lib/mock-render';
 
 @Component({ template: '' })
 class TestComponent {

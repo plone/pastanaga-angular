@@ -18,7 +18,13 @@ export class ChipComponent {
 
     canClose = true;
 
-    @Input() disabled = false;
+    @Input() set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
+    get disabled() {
+        return this._disabled;
+    }
+    private _disabled = false;
 
     @Input() ariaRole = 'listitem';
 
