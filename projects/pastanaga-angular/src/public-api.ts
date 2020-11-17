@@ -6,11 +6,14 @@ export * from './lib/common';
 
 export * from './lib/avatar/avatar.module';
 export * from './lib/avatar/avatar.component';
+export * from './lib/avatar/avatar.model';
 
 export * from './lib/button/button.module';
 export * from './lib/button/button.component';
 
 export * from './lib/breakpoint-observer/breakpoint.observer';
+
+export * from './lib/chips/chips.module';
 
 export * from './lib/controls/deprecated-base-control.directive';
 export * from './lib/controls/control.model';

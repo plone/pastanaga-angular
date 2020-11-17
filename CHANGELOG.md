@@ -1,3 +1,8 @@
+# 2.13.1 (2020-11-17)
+
+### Feature
+- **ChipComponent**:  New chip component [jCarret]
+
 # 2.13.0 (2020-11-16)
 
 ### Breaking changes

@@ -23,6 +23,7 @@ import { InputPageComponent } from './demo/pages/input-page/input-page.component
 import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { Traverser } from 'angular-traversal';
+import { ChipPageComponent } from './demo/pages/chip-page/chip-page.component';
 
 @Component({
     selector: 'app-root',
@@ -47,6 +48,7 @@ export class AppComponent {
             pages: [
                 { view: 'avatar', title: 'Avatar', type: AvatarPageComponent },
                 { view: 'button', title: 'Button', type: ButtonPageComponent },
+                { view: 'chip', title: 'Chip', type: ChipPageComponent },
                 { view: 'datetime', title: 'Date/time', type: DateTimePageComponent },
                 { view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent },
                 { view: 'modal', title: 'Modal', type: ModalPageComponent },

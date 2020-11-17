@@ -1,0 +1,22 @@
+@import "variables";
+
+.pa-chip {
+    display: inline-flex;
+    align-items: center;
+    background: $color-neutral-primary-lighter;
+    height: rhythm(2.5);
+    max-width: rhythm(33);
+    padding: 0 0 0 rhythm(.25);
+    border-radius: rhythm(3);
+    overflow: hidden;
+}
+.pa-chip-content-wrapper {
+    margin: 0 rhythm(.5);
+    overflow: hidden;
+    @include font-size(s);
+    @include line-height(m);
+    font-weight: $font-weight-regular;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
