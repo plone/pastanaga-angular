@@ -1,5 +1,7 @@
 pa-demo-examples {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    pa-chip {
+        display: contents;
+    }
 }
