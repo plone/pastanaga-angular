@@ -1,0 +1,60 @@
+<pa-demo-page>
+    <pa-demo-title>Chip</pa-demo-title>
+    <pa-demo-description>Small and compact chip used to display information, make selections, filter content or input visual content.
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-chip noCloseButton>Not closable chip</pa-chip>
+        <pa-chip disabled>Disabled chip</pa-chip>
+        <ng-container *ngFor="let chip of chips">
+            <pa-chip *ngIf="chip.contact" [contact]="chip.contact" (closed)="closeChip(chip.name)">{{chip.name}}</pa-chip>
+            <pa-chip *ngIf="!chip.contact" (closed)="closeChip(chip.name)">{{chip.name}}</pa-chip>
+        </ng-container>
+    </pa-demo-examples>
+    <pa-demo-configuration>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="addChip()">Add a chip</pa-button>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="addAvatarImageChip()">Add an avatar chip with image</pa-button>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button (click)="addAvatarChip()">Add an avatar chip without image</pa-button>
+        </div>
+    </pa-demo-configuration>
+
+    <pa-demo-usage>
+        <h3>Inputs</h3>
+
+        <dl>
+            <dt>contact</dt>
+            <dd>Object providing name and image to avatar <code> name: string, image?: Observable of Blob</code>. <small>(optional)</small></dd>
+
+            <dt>autoBackgroundAvatar</dt>
+            <dd>Assign background color automatically ti the avatar<small>(false by default)</small></dd>
+
+            <dt>noCloseButton</dt>
+            <dd>Removes the close button from the chip. <small>(optional)</small></dd>
+
+            <dt>disabled</dt>
+            <dd>Disable the close button of the chip. <small>(optional)</small></dd>
+
+            <dt>ariaRole</dt>
+            <dd>Defines the role attribute of the chip <code>(listitem by default)</code>. <small>(optional)</small></dd>
+
+            <dt>value</dt>
+            <dd>A value held by the chip. <small>(optional)</small></dd>
+        </dl>
+
+        <h3>Outputs</h3>
+
+        <dl>
+            <dt>closed</dt>
+            <dd>Emits when the closed button is clicked. Provides the event and the optional value of it.</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

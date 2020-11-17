@@ -18,18 +18,19 @@ import { TranslatePageComponent } from './pages/translate-page/translate-page.co
 import {
     PaAvatarModule,
     PaButtonModule,
-    PaIconModule,
+    PaChipsModule,
+    PaDateTimeModule,
     PaDropdownModule,
+    PaFocusableModule,
+    PaIconModule,
+    PaModalModule,
     PaPopupModule,
     PaTextFieldModule,
     PaTogglesModule,
     PaTranslateModule,
     PaTabsModule,
     PaTableModule,
-    PaDateTimeModule,
     PaToastModule,
-    PaModalModule,
-    PaFocusableModule,
 } from '../../../../pastanaga-angular/src';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
@@ -60,6 +61,7 @@ import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/t
 import { FocusablePageComponent } from './pages/focusable-page/focusable-page.component';
 import { PaSideNavModule } from '../../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
 import { DemoComponent } from './demo.component';
+import { ChipPageComponent } from './pages/chip-page/chip-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -84,6 +86,7 @@ const COMPONENTS = [
     BreakpointPageComponent,
     ButtonPageComponent,
     CheckboxPageComponent,
+    ChipPageComponent,
     DateTimePageComponent,
     DropdownPageComponent,
     FocusablePageComponent,
@@ -112,6 +115,7 @@ const COMPONENTS = [
 
         PaAvatarModule,
         PaButtonModule,
+        PaChipsModule,
         PaIconModule,
         PaDropdownModule,
         PaFocusableModule,

@@ -1,0 +1,21 @@
+<div class="pa-chip" [attr.role]="ariaRole">
+    <ng-container *ngIf="contact">
+        <pa-avatar size="small"
+                   [userName]="contact.name"
+                   [image]="contact.image"
+                   [autoBackground]="autoBackgroundAvatar"></pa-avatar>
+    </ng-container>
+    <span class="pa-chip-content-wrapper">
+        <ng-content></ng-content>
+    </span>
+    <pa-button *ngIf="canClose"
+               class="pa-close-chip-button"
+               icon="cross-large"
+               size="xsmall"
+               kind="secondary"
+               aspect="basic"
+               [disabled]="disabled"
+               (click)="close($event)"
+               (keydown.enter)="close($event)"
+               (keydown.space)="close($event)"></pa-button>
+</div>
