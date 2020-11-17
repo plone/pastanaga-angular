@@ -8,17 +8,6 @@
     max-width: rhythm(33);
     padding: 0 0 0 rhythm(.25);
     border-radius: rhythm(3);
-    .pa-close-chip-button .pa-button:not(:disabled).pa-secondary.pa-basic {
-        &:hover {
-            background: $color-neutral-secondary-lighter;
-        }
-        &:active {
-            background: $color-neutral-secondary-light;
-        }
-        &.pa-keyboard-focus {
-            background: $color-neutral-secondary-lighter;
-        }
-    }
 }
 .pa-chip-content-wrapper {
     margin: 0 rhythm(.5);
