@@ -70,6 +70,7 @@
                               [shouldSort]="_shouldSort"
                               [mode]="mode"
                               [disabled]="_disabled"
+                              (childrenSelection)="childrenSelection.emit($event)"
                               (isLoadingChildren)="_disableToggleChildren = $event"
                               (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>
         </div>

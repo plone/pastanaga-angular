@@ -1,6 +1,9 @@
-# 1.18.15 (unreleased)
+# 1.18.15 (2020-11-20)
+
+### Bug fixes ###
 
 -   Fix Travis to update GitHub Pages
+-   **Checkbox tree** Propagate children selection to parent
 
 # 1.18.14 (2020-11-04)
 
