@@ -14,6 +14,7 @@ export * from './lib/button/button.component';
 export * from './lib/breakpoint-observer/breakpoint.observer';
 
 export * from './lib/chips/chips.module';
+export * from './lib/chips/chip/chip.component';
 
 export * from './lib/controls/deprecated-base-control.directive';
 export * from './lib/controls/control.model';
