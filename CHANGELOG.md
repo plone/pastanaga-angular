@@ -1,4 +1,4 @@
-# 2.13.2 (not realeased yet)
+# 2.13.2 (not released yet)
 
 ### Improvements
 - **ChipComponent**: expose ChipComponent in public api [jCarret]
