@@ -1,3 +1,10 @@
+# 1.18.16 (2020-11-25)
+
+### Improvements
+
+-   **Toaster**: move style to global
+-   **Filtered checkbox list**: no encapsulation for style
+
 # 1.18.15 (2020-11-20)
 
 ### Bug fixes ###
