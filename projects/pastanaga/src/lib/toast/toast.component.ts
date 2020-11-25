@@ -10,7 +10,6 @@ const HAS_LINK = /.*(\[(.+)\|(.+)\]).*/g;
 @Component({
     selector: 'pa-toast',
     templateUrl: './toast.component.html',
-    styleUrls: ['./toast.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastComponent implements OnInit {

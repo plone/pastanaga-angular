@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@import "./variables";
 
 .pa-toast {
     box-shadow: $shadow-dialog;
@@ -61,7 +61,7 @@
         .pa-toast-title {
             color: $white;
 
-            & ::ng-deep svg {
+            & svg {
                 fill: $white;
             }
         }
@@ -167,7 +167,7 @@
 }
 
 
-:host ::ng-deep .pa-toast-title > pa-icon > svg {
+.pa-toast-title > pa-icon > svg {
     width: rythm(2);
     height: rythm(2);
     fill: $gray-contrast;
