@@ -9,7 +9,7 @@ import {
     SimpleChanges,
     OnChanges,
     OnDestroy,
-    ViewChild
+    ViewChild, ViewEncapsulation
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
@@ -26,6 +26,7 @@ let nextId = 0;
     selector: 'pa-filtered-checkbox-group',
     templateUrl: 'filtered-checkbox-group.component.html',
     styleUrls: ['./filtered-checkbox-group.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDestroy {

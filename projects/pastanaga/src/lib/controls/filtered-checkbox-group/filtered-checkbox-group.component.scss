@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-:host {
+pa-filtered-checkbox-group {
     position: relative;
     display: block;
 
@@ -32,7 +32,7 @@
             float: left;
             border-top-left-radius: rythm(.25);
             border-bottom-left-radius: rythm(.25);
-            ::ng-deep svg {
+            svg {
                 height: rythm(2);
                 width: rythm(2);
                 fill: $gray-pale;
@@ -79,7 +79,7 @@
 
     .cdk-virtual-scroll-viewport {
         height: 300px;
-        ::ng-deep .cdk-virtual-scroll-content-wrapper {
+        .cdk-virtual-scroll-content-wrapper {
             padding-top: rythm(0.5);
             padding-left: 1px;
         }
