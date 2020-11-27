@@ -33,7 +33,7 @@ describe('ChipComponent Minimal', () => {
 
     it('should have an enabled close button by default', () => {
         expect(closeButton.attributes.aspect).toEqual('basic');
-        expect(closeButton.attributes.icon).toEqual('cross-large');
+        expect(closeButton.attributes.icon).toEqual('cross-small');
         expect(closeButton.attributes.kind).toEqual('secondary');
         expect(closeButton.attributes.size).toEqual('xsmall');
         expect(closeButton.attributes['ng-reflect-disabled']).toEqual('false');
