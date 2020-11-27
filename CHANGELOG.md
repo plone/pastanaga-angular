@@ -1,3 +1,8 @@
+# 2.13.3 (not yet released)
+
+### Improvements
+- **Icon**: Prevent icon name to be displayed on hover [mpellerin42]
+
 # 2.13.2 (2020-11-20)
 
 ### Improvements
