@@ -1,7 +1,8 @@
-# 2.13.3 (not yet released)
+# 2.13.3 (2020-11-27)
 
 ### Improvements
 - **Icon**: Prevent icon name to be displayed on hover [mpellerin42]
+- **Toast**: Add z-index on toast-container [mpellerin42]
 
 # 2.13.2 (2020-11-20)
 
