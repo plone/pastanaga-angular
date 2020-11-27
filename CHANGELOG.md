@@ -1,3 +1,8 @@
+# 2.13.4 (2020-11-27)
+
+### Improvements
+- **Chips**: changed close icon [jCarret]
+
 # 2.13.3 (2020-11-27)
 
 ### Improvements
