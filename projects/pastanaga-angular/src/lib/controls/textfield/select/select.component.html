@@ -23,6 +23,8 @@
            [popupDisabled]="control.disabled || _readonly"
            (input)="selectInputChanged($event.target.value)"
            (keyup.enter)="onEnter()"
+           cdkMonitorElementFocus
+           (cdkFocusChange)="onFocus($event)"
            (blur)="onBlur()"
     >
 

@@ -29,6 +29,7 @@ import { detectChanges, markForCheck } from '../../../common';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { sanitizeStringValue } from '../../form-field.utils';
+import { FocusOrigin } from '@angular/cdk/a11y';
 
 @Component({
     selector: 'pa-select',
@@ -85,6 +86,7 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     optionsClosed = new Subject();
     _optionsAreNgContent = true;
     _required?: boolean;
+    optionsDisplayed = false;
 
     requiredValidator?: ValidatorFn;
     patternValidator?: ValidatorFn;
@@ -250,6 +252,13 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         this.applyUserInput();
     }
 
+    onFocus(event: FocusOrigin) {
+        if (!this.optionsDisplayed && event === 'keyboard') {
+            // open option dropdown
+            this.clickOnSelectInput();
+        }
+    }
+
     onEnter() {
         if (!!this.optionsDropdown && this.optionsDropdown._isDisplayed) {
             this.optionsDropdown.close();
@@ -329,11 +338,13 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     }
 
     dropDownClosed() {
+        this.optionsDisplayed = false;
         this.optionsClosed.next();
         this.expanded.emit(false);
     }
 
     dropDownOpened() {
+        this.optionsDisplayed = true;
         if (!this._optionsAreNgContent) {
             setTimeout(() => {
                 this.ngContentOptions?.forEach((option: OptionComponent, index) => {

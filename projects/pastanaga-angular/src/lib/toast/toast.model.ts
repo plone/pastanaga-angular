@@ -5,3 +5,5 @@ export interface ToastConfig {
 }
 
 export type ToastType = 'info' | 'success' | 'warning' | 'error';
+
+export type ToastStatus = 'closed' | 'opening' | 'opened';
