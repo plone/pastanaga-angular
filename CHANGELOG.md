@@ -1,3 +1,10 @@
+# 2.13.5 (2020-11-30)
+
+### Improvements
+- **ToastService**: expose toast status [jCarret]
+### Bugfix
+- Fix Select dropdown cannot be opened with keyboard navigation [jCarret]
+
 # 2.13.4 (2020-11-27)
 
 ### Improvements
