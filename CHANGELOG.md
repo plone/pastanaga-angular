@@ -1,3 +1,9 @@
+# 1.18.17 (2020-11-30)
+
+### Improvements
+
+-   **Control Model** Added Icon compatibility [LuisPalomo]
+
 # 1.18.16 (2020-11-25)
 
 ### Improvements
