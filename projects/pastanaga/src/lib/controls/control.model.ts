@@ -1,3 +1,5 @@
+import { Icon } from '../common/utils';
+
 export interface ControlModelData {
     id: string;
     label: string;
@@ -5,7 +7,7 @@ export interface ControlModelData {
     labelIcons?: LabelIcon[];
     value?: string;
     help?: string;
-    icon?: string;
+    icon?: string | Icon;
     isSelected?: boolean;
     isDisabled?: boolean;
     isFiltered?: boolean;
@@ -24,7 +26,7 @@ export class ControlModel {
     labelIcons?: LabelIcon[];
     value?: string;
     help?: string;
-    icon?: string;
+    icon?: string | Icon;
     isSelected = false;
     isDisabled = false;
     isFiltered = false;
