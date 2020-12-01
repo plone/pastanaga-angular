@@ -9,13 +9,13 @@ import {
 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { ToastConfig, ToastStatus, ToastType } from './toast.model';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 let nextId = 0;
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-    toastStatus = new Subject<ToastStatus>();
+    toastStatus = new ReplaySubject<ToastStatus>(1);
     private renderer: Renderer2;
     private toastContainer?: HTMLElement;
     private toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
@@ -27,6 +27,7 @@ export class ToastService {
         private injector: Injector
     ) {
         this.renderer = rendererFactory.createRenderer(null, null);
+        this.toastStatus.next('closed');
     }
 
     openInfo(message: string, config?: ToastConfig) {

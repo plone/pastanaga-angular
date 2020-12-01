@@ -1,3 +1,8 @@
+# 2.13.6 (2020-11-30)
+
+### Improvements
+- **ToastService**: use ReplaySubject instead of Subject for toast status [jCarret]
+
 # 2.13.5 (2020-11-30)
 
 ### Improvements
