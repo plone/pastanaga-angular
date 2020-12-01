@@ -1,3 +1,8 @@
+# 2.13.7 (2020-12-01)
+
+### Improvements
+- **ToastComponent**: Set min-width to the content [niglesias]
+
 # 2.13.6 (2020-11-30)
 
 ### Improvements
