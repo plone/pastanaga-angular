@@ -1,3 +1,8 @@
+# 2.14.0 (2020-12-04)
+
+### Improvements
+- Upgrade to Angular 11
+
 # 2.13.9 (2020-12-02)
 
 ### Bugfix
