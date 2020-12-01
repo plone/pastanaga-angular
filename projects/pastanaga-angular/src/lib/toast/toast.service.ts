@@ -15,7 +15,7 @@ let nextId = 0;
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-    toastStatus = new ReplaySubject<ToastStatus>();
+    toastStatus = new ReplaySubject<ToastStatus>(1);
     private renderer: Renderer2;
     private toastContainer?: HTMLElement;
     private toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
