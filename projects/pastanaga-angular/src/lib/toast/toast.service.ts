@@ -9,16 +9,20 @@ import {
 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { ToastConfig, ToastStatus, ToastType } from './toast.model';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 let nextId = 0;
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-    toastStatus = new ReplaySubject<ToastStatus>(1);
-    private renderer: Renderer2;
-    private toastContainer?: HTMLElement;
-    private toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
+    private _toastStatus = new BehaviorSubject<ToastStatus>('closed');
+    private _renderer: Renderer2;
+    private _toastContainer?: HTMLElement;
+    private _toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
+
+    get toastStatus(): Observable<ToastStatus> {
+        return this._toastStatus.asObservable();
+    }
 
     constructor(
         private resolver: ComponentFactoryResolver,
@@ -26,8 +30,7 @@ export class ToastService {
         private appRef: ApplicationRef,
         private injector: Injector
     ) {
-        this.renderer = rendererFactory.createRenderer(null, null);
-        this.toastStatus.next('closed');
+        this._renderer = rendererFactory.createRenderer(null, null);
     }
 
     openInfo(message: string, config?: ToastConfig) {
@@ -47,20 +50,20 @@ export class ToastService {
     }
 
     open(message: string, type: ToastType, config?: ToastConfig) {
-        this.toastStatus.next('opening');
+        this._toastStatus.next('opening');
         const id = `pa-toast-${nextId++}`;
         const toast: ComponentRef<ToastComponent> = this.createToast(id, message, type, config);
 
         this.appRef.attachView(toast.hostView);
-        this.toastMap.set(id, toast);
+        this._toastMap.set(id, toast);
 
-        if (!this.toastContainer) {
-            this.toastContainer = this.createContainer();
+        if (!this._toastContainer) {
+            this._toastContainer = this.createContainer();
         }
 
-        this.renderer.setAttribute(toast.location.nativeElement, 'role', 'alert');
-        this.renderer.appendChild(this.toastContainer, toast.location.nativeElement);
-        this.toastStatus.next('opened');
+        this._renderer.setAttribute(toast.location.nativeElement, 'role', 'alert');
+        this._renderer.appendChild(this._toastContainer, toast.location.nativeElement);
+        this._toastStatus.next('opened');
     }
 
     private createToast(id: string, message: string, type: ToastType, config?: ToastConfig) {
@@ -82,26 +85,26 @@ export class ToastService {
     private createContainer(): HTMLElement {
         const container = document.createElement('div');
         container.className = 'pa-toast-container';
-        this.renderer.appendChild(document.body, container);
+        this._renderer.appendChild(document.body, container);
         return container;
     }
 
     private removeToast(id: string) {
-        const ref = this.toastMap.get(id);
+        const ref = this._toastMap.get(id);
         if (!ref) {
             return;
         }
         this.appRef.detachView(ref.hostView);
         ref.destroy();
-        this.toastMap.delete(id);
-        if (!this.toastMap.size) {
+        this._toastMap.delete(id);
+        if (!this._toastMap.size) {
             this.removeContainer();
-            this.toastStatus.next('closed');
+            this._toastStatus.next('closed');
         }
     }
 
     private removeContainer() {
-        this.renderer.removeChild(document.body, this.toastContainer);
-        this.toastContainer = undefined;
+        this._renderer.removeChild(document.body, this._toastContainer);
+        this._toastContainer = undefined;
     }
 }
