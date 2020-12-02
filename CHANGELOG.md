@@ -1,3 +1,8 @@
+# 2.13.8 (2020-12-02)
+
+### Improvements
+- **ToastService**: Test coverage and toast status protection [jCarret]
+
 # 2.13.7 (2020-12-01)
 
 ### Improvements
