@@ -5,7 +5,7 @@ import { ToastStatus } from './toast.model';
 import { ApplicationRef, Component, ComponentRef, Renderer2 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { PaToastModule } from '../..';
+import { PaToastModule } from './toast.module';
 
 @Component({
     template: ``,
