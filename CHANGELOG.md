@@ -1,3 +1,8 @@
+# 2.13.9 (2020-12-02)
+
+### Bugfix
+- **Table**: Fix clickable header style [mpellerin42]
+
 # 2.13.8 (2020-12-02)
 
 ### Improvements
