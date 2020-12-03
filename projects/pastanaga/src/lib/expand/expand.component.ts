@@ -19,6 +19,7 @@ const EXPANSION_PANEL_ANIMATION_TIMING = '225ms cubic-bezier(0.4,0.0,0.2,1)';
 export class ExpandComponent implements OnInit {
     @Input() toggleTooltip: string[] = ['', ''];
     @Input() openOnInit = false;
+    @Input() maintainContentOnClose = false;
 
     @Output() open: EventEmitter<void> = new EventEmitter();
     @Output() close: EventEmitter<void> = new EventEmitter();

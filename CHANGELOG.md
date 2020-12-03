@@ -1,3 +1,9 @@
+# 1.18.18 (2020-12-03)
+
+### Improvements
+
+-   **Expand** Provide option to maintain DOM content in expand body if collapsed [jeffheinrichs]
+
 # 1.18.17 (2020-11-30)
 
 ### Improvements
@@ -13,7 +19,7 @@
 
 # 1.18.15 (2020-11-20)
 
-### Bug fixes ###
+### Bug fixes
 
 -   Fix Travis to update GitHub Pages
 -   **Checkbox tree** Propagate children selection to parent

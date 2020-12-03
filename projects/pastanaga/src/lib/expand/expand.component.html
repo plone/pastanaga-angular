@@ -13,6 +13,6 @@
 <div class="pa-expand-body" role="tabpanel" [attr.aria-labelledby]="id + '-tab'" [attr.aria-hidden]="!isOpen"
     [id]="id + '-panel'" [@bodyExpansion]="isOpen ? 'expanded' : 'collapsed'" style="height: 0; visibility: hidden;">
     <div class="pa-expand-body-wrapper">
-        <ng-content *ngIf="isOpen"></ng-content>
+        <ng-content *ngIf="isOpen || maintainContentOnClose"></ng-content>
     </div>
 </div>
