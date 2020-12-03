@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
 const EXPANSION_PANEL_ANIMATION_TIMING = '225ms cubic-bezier(0.4,0.0,0.2,1)';
@@ -18,12 +19,18 @@ const EXPANSION_PANEL_ANIMATION_TIMING = '225ms cubic-bezier(0.4,0.0,0.2,1)';
 })
 export class ExpandComponent implements OnInit {
     @Input() toggleTooltip: string[] = ['', ''];
-    @Input() openOnInit = false;
-    @Input() maintainContentOnClose = false;
+    @Input()
+    get openOnInit(): boolean { return this._openOnInit; }
+    set openOnInit(value: boolean) { this._openOnInit = coerceBooleanProperty(value); }
+    @Input()
+    get maintainContentOnClose(): boolean { return this._maintainContentOnClose; }
+    set maintainContentOnClose(value: boolean) { this._maintainContentOnClose = coerceBooleanProperty(value); }
 
     @Output() open: EventEmitter<void> = new EventEmitter();
     @Output() close: EventEmitter<void> = new EventEmitter();
 
+    private _openOnInit = false;
+    private _maintainContentOnClose = false;
     isOpen = false;
     id: string;
 
