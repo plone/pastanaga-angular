@@ -1,7 +1,7 @@
 {
     "name": "@guillotinaweb/pastanaga-angular",
     "description": "Provides Pastanaga UI elements as Angular components",
-    "version": "2.13.9",
+    "version": "2.14.0",
     "license": "MIT",
     "keywords": [
         "angular",
@@ -15,9 +15,9 @@
         "url": "https://github.com/guillotinaweb/pastanaga-angular/issues"
     },
     "peerDependencies": {
-        "@angular/cdk": "^10.0.0",
-        "@angular/common": "^10.0.0",
-        "@angular/core": "^10.0.0",
+        "@angular/cdk": "^11.0.1",
+        "@angular/common": "^11.0.2",
+        "@angular/core": "^11.0.2",
         "angular-svg-icon": "^9.2.0",
         "date-fns": "^2.14.0"
     },
