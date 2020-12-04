@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { getPositionedParent, PositionStyle } from '../common';
-import { PopupComponent } from './popup.component';
+import { MARGIN, PopupComponent } from './popup.component';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
 
@@ -97,13 +97,13 @@ export class PopupDirective implements OnInit {
             this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
         }
         const rootRect = this._rootParent.getBoundingClientRect();
-        const top = rect.top - rootRect.top + this._rootParent.scrollTop;
+        const top = rect.bottom - rootRect.top + this._rootParent.scrollTop;
         const bottom = window.innerHeight - rect.top - window.pageYOffset;
 
         let position: PositionStyle = {
             position: 'absolute',
-            top: !this.popupOnTop ? top + 'px' : undefined,
-            bottom: this.popupOnTop ? bottom + 'px' : undefined,
+            top: !this.popupOnTop ? top + MARGIN + 'px' : undefined,
+            bottom: this.popupOnTop ? bottom - MARGIN + 'px' : undefined,
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
         if (this._popupOnRight || !!contextualEvent) {

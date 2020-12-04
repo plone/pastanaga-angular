@@ -15,6 +15,7 @@ import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
+export const MARGIN = 6;
 
 @Component({
     selector: 'pa-popup',
@@ -126,7 +127,7 @@ export class PopupComponent implements OnInit, OnDestroy {
             const currentTop = element.style.top || '';
             if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > rect.height) {
                 // enough space above, we display the dropdown on top
-                element.style.top = `calc(${currentTop} - ${rect.height}px)`;
+                element.style.top = `calc(${currentTop} - ${rect.height}px - ${MARGIN * 2}px)`;
                 isAdjusted = true;
             } else if (!!currentTop) {
                 // not enough space, we just align the dropdown bottom with the parent bottom
