@@ -1,3 +1,9 @@
+# 2.14.2 (2020-12-07)
+
+### Bugfix
+
+-   **Modal**: Add background color for modal and dialog [jlp0328]
+
 # 2.14.1 (2020-12-04)
 
 ### Improvements
