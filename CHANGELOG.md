@@ -1,3 +1,9 @@
+# 2.14.3 (2020-12-07)
+
+### Improvements
+
+- Use GitHub Actions instead of Travis [ebrehault]
+
 # 2.14.2 (2020-12-07)
 
 ### Bugfix
