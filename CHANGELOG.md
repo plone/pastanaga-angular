@@ -1,165 +1,203 @@
+# 2.14.1 (2020-12-04)
+
+### Improvements
+
+-   **Popup**: display below the clicked element [ebrehault]
+
 # 2.14.0 (2020-12-04)
 
 ### Improvements
-- Upgrade to Angular 11
+
+-   Upgrade to Angular 11 [ebrehault]
 
 # 2.13.9 (2020-12-02)
 
 ### Bugfix
-- **Table**: Fix clickable header style [mpellerin42]
+
+-   **Table**: Fix clickable header style [mpellerin42]
 
 # 2.13.8 (2020-12-02)
 
 ### Improvements
-- **ToastService**: Test coverage and toast status protection [jCarret]
+
+-   **ToastService**: Test coverage and toast status protection [jCarret]
 
 # 2.13.7 (2020-12-01)
 
 ### Improvements
-- **ToastComponent**: Set min-width to the content [niglesias]
+
+-   **ToastComponent**: Set min-width to the content [niglesias]
 
 # 2.13.6 (2020-11-30)
 
 ### Improvements
-- **ToastService**: use ReplaySubject instead of Subject for toast status [jCarret]
+
+-   **ToastService**: use ReplaySubject instead of Subject for toast status [jCarret]
 
 # 2.13.5 (2020-11-30)
 
 ### Improvements
-- **ToastService**: expose toast status [jCarret]
+
+-   **ToastService**: expose toast status [jCarret]
+
 ### Bugfix
-- Fix Select dropdown cannot be opened with keyboard navigation [jCarret]
+
+-   Fix Select dropdown cannot be opened with keyboard navigation [jCarret]
 
 # 2.13.4 (2020-11-27)
 
 ### Improvements
-- **Chips**: changed close icon [jCarret]
+
+-   **Chips**: changed close icon [jCarret]
 
 # 2.13.3 (2020-11-27)
 
 ### Improvements
-- **Icon**: Prevent icon name to be displayed on hover [mpellerin42]
-- **Toast**: Add z-index on toast-container [mpellerin42]
+
+-   **Icon**: Prevent icon name to be displayed on hover [mpellerin42]
+-   **Toast**: Add z-index on toast-container [mpellerin42]
 
 # 2.13.2 (2020-11-20)
 
 ### Improvements
-- **ChipComponent**: expose ChipComponent in public api [jCarret]
+
+-   **ChipComponent**: expose ChipComponent in public api [jCarret]
 
 # 2.13.1 (2020-11-17)
 
 ### Feature
-- **ChipComponent**:  New chip component [jCarret]
+
+-   **ChipComponent**: New chip component [jCarret]
 
 # 2.13.0 (2020-11-16)
 
 ### Breaking changes
-- **Modal**: [dgsmith2]
-    - to provide data to modal components, specify a `data` field when creating
-      the `ModalConfig` and inject `ModalRef` into the componet
+
+-   **Modal**: [dgsmith2]
+    -   to provide data to modal components, specify a `data` field when creating
+        the `ModalConfig` and inject `ModalRef` into the componet
 
 ### Improvements
-- **Tabs**: fix typo in the documentation page [mpellerin42]
+
+-   **Tabs**: fix typo in the documentation page [mpellerin42]
 
 # 2.12.0 (2020-11-12)
 
 ### Breaking changes
-- **Avatar**: [mpellerin42]
-    - replace input `large` by `size` so avatar can now be `small`, `medium`, `large`
-    - remove icon, iconBackground and altText properties
-    - fix default background color
-    - fix avatar's initials text style
-    - keep only 3 auto-background colors: `primary`, `secondary` and `tertiary`
-    - update demo and documentation
+
+-   **Avatar**: [mpellerin42]
+    -   replace input `large` by `size` so avatar can now be `small`, `medium`, `large`
+    -   remove icon, iconBackground and altText properties
+    -   fix default background color
+    -   fix avatar's initials text style
+    -   keep only 3 auto-background colors: `primary`, `secondary` and `tertiary`
+    -   update demo and documentation
 
 # 2.11.2 (2020-11-12)
 
 ### Improvements
- **SideNavComponent**: [niglesiaz]
-  - Adding an optional icon to pa-side-nav-items 
-  - Fixing alignments
-- **Pastanaga demo**: [niglesiaz]
-  - Fixing alignments in pa-demo
-  
+
+**SideNavComponent**: [niglesiaz]
+
+-   Adding an optional icon to pa-side-nav-items
+-   Fixing alignments
+-   **Pastanaga demo**: [niglesiaz]
+    -   Fixing alignments in pa-demo
+
 # 2.11.1 (2020-11-10)
 
 ### Improvements
-- **Pastanaga demo**: [mpellerin42]
-  - Move usage of sidenav in pa-demo-menu component
-  - Factorize main demo in a component
-  
+
+-   **Pastanaga demo**: [mpellerin42]
+    -   Move usage of sidenav in pa-demo-menu component
+    -   Factorize main demo in a component
+
 # 2.11.0 (2020-11-10)
 
 ### Breaking change
-- **PastanagaService** deleted: having one service to rule them all is a bad practice as it impacts badly test performances, so we decided to remove it [mpellerin42]
+
+-   **PastanagaService** deleted: having one service to rule them all is a bad practice as it impacts badly test performances, so we decided to remove it [mpellerin42]
 
 # 2.10.2 (2020-11-10)
 
 ### Improvements
-- **spacing**: added values [jCarret]
-    
+
+-   **spacing**: added values [jCarret]
+
 ### Bugfix
-- Fix Travis
+
+-   Fix Travis
 
 # 2.10.1 (2020-11-06)
 
 ### Bugfix
-- **Sidenav demo**:
-    - By default no item should be selected [niglesias]
-    - Clicking on pastanaga icon in the sidenav should display home page again [niglesias]
-    - on mobile/tablet, selecting a sidenav item should close the menu [niglesias]
+
+-   **Sidenav demo**:
+    -   By default no item should be selected [niglesias]
+    -   Clicking on pastanaga icon in the sidenav should display home page again [niglesias]
+    -   on mobile/tablet, selecting a sidenav item should close the menu [niglesias]
 
 # 2.10.0 (2020-11-04)
 
 ### Feature
-- **SideNavComponent**:  New side nav component [niglesias]
+
+-   **SideNavComponent**: New side nav component [niglesias]
 
 # 2.9.8 (2020-10-30)
 
 ### Bugfix
-- **TabList**: wait for tabItems to be rendered before updating slider [jCarret]
+
+-   **TabList**: wait for tabItems to be rendered before updating slider [jCarret]
 
 # 2.9.7 (2020-10-29)
 
 ### Improvements
-- **Tabs**: Added option to have tablist full width or not [jCarret]
-- focus: added a directive to style keyboard focused elements [jCarret]
+
+-   **Tabs**: Added option to have tablist full width or not [jCarret]
+-   focus: added a directive to style keyboard focused elements [jCarret]
 
 # 2.9.6 (2020-10-22)
 
 ### Improvements
-- **Dropdown**: Setup ellipsis on dropdown options [mpellerin42]
-- new rhythm value [mpellerin42]
+
+-   **Dropdown**: Setup ellipsis on dropdown options [mpellerin42]
+-   new rhythm value [mpellerin42]
 
 # 2.9.5 (2020-10-19)
 
 ### Improvements
-- **Buttons**: updated style for icon and text, small and large buttons
-_ **focus state on checkbox, dropdown, tabs and buttons**: design for focus state only applied when focus is the result of a keyboard interaction
+
+-   **Buttons**: updated style for icon and text, small and large buttons
+    \_ **focus state on checkbox, dropdown, tabs and buttons**: design for focus state only applied when focus is the result of a keyboard interaction
 
 # 2.9.4 (2020-10-16)
 
 ### Improvements
-- **Tabs**: allow tabs of different size [jCarret]
-- added values to rhythm [jCarret]
+
+-   **Tabs**: allow tabs of different size [jCarret]
+-   added values to rhythm [jCarret]
 
 # 2.9.3 (2020-10-14)
 
 ### Bugfix
-- **Table**: show button when it has focus [ebrehault]
+
+-   **Table**: show button when it has focus [ebrehault]
 
 # 2.9.2 (2020-10-09)
 
 ### Improvement
-- **Unit Tests**: improve performance by mocking dependencies [dgsmith2]
+
+-   **Unit Tests**: improve performance by mocking dependencies [dgsmith2]
 
 # 2.9.1 (2020-10-08)
 
 ### Bugfix
-- **Checkbox**: style [mpellerin42]
+
+-   **Checkbox**: style [mpellerin42]
 
 ### Improvement
-- **Checkbox**: remove deprecated checkbox component [mpellerin42]
+
+-   **Checkbox**: remove deprecated checkbox component [mpellerin42]
 
 # 2.9.0 (2020-10-07)
 
@@ -172,10 +210,10 @@ _ **focus state on checkbox, dropdown, tabs and buttons**: design for focus stat
 
 ### Improvements
 
-- **Linter**:   [mpellerin42]
-    - Add rxjs-tslint-rules set and enable rxjs-no-unsafe-takeuntil rule
-    - Setup semicolon rule to match prettier one
-    - Fix most of linter's errors (the ones not implying breaking changes)
+-   **Linter**: [mpellerin42]
+    -   Add rxjs-tslint-rules set and enable rxjs-no-unsafe-takeuntil rule
+    -   Setup semicolon rule to match prettier one
+    -   Fix most of linter's errors (the ones not implying breaking changes)
 
 # 2.8.1 (2020-10-02)
 
@@ -194,8 +232,9 @@ _ **focus state on checkbox, dropdown, tabs and buttons**: design for focus stat
 # 2.7.2 (2020-09-24)
 
 ### Improvements
-- **Prettier**: added a pre-commit hook running prettier on changed/staged files [mpellerin42]
-- **Unit tests**: added a pre-push hook running all unit tests [mpellerin42]
+
+-   **Prettier**: added a pre-commit hook running prettier on changed/staged files [mpellerin42]
+-   **Unit tests**: added a pre-push hook running all unit tests [mpellerin42]
 
 # 2.7.1 (2020-09-21)
 
