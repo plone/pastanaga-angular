@@ -1,0 +1,21 @@
+name: Tag version
+env:
+    CI: true
+on:
+    push:
+        branches:
+            - master
+            - 2.x
+jobs:
+    release:
+        name: Setup
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v1
+            - name: setup Node
+              uses: actions/setup-node@v1
+            - name: package-version-to-git-tag
+              uses: pkgdeps/git-tag-action@v1
+              with:
+                  github_token: ${{ secrets.GH_ACTIONS_TOKEN }}

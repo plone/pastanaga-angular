@@ -1,6 +1,6 @@
 # Pastanaga Angular Components
 
-[![Build Status](https://travis-ci.com/plone/pastanaga-angular.svg?branch=master)](https://travis-ci.com/plone/pastanaga-angular)
+[![Build Status](https://github.com/plone/pastanaga-angular/workflows/CI/badge.svg)](https://github.com/plone/pastanaga-angular/actions?query=workflow%3ACI)
 
 Provides Pastanaga elements as Angular components.
 
