@@ -1,8 +1,12 @@
 name: NPM release
 on:
-    push:
-        tags:
-            - '*'
+    workflow_run:
+        workflows: ['Tag version']
+        branches:
+            - master
+            - 2.x
+        types:
+            - completed
 jobs:
     build:
         runs-on: ubuntu-latest
