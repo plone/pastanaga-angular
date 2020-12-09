@@ -22,13 +22,13 @@ export enum Size {
 
 export enum Aspect {
     solid = 'solid',
-    regular = 'regular',
     basic = 'basic',
 }
 
 export enum Kind {
     primary = 'primary',
     secondary = 'secondary',
+    inverted = 'inverted',
     destructive = 'destructive',
 }
 

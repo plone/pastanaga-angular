@@ -34,6 +34,12 @@ $_tiffany:   hsl(175,60,66);
 $_spa:       hsl(175,60,83);
 $_aqua:      hsl(175,60,90);
 
+// Alphas
+$_alpha_default:   hsla(0,0,100,0.5);
+$_alpha_light:     hsla(0,0,100,0.25);
+$_alpha_lighter:   hsla(0,0,100,0.15);
+$_alpha_lightest:  hsla(0,0,100,0.05);
+
 // General tokens
 $color-neutral-primary-default:     $_denim !default;
 $color-neutral-primary-lighter:     $_snow !default;
@@ -63,6 +69,12 @@ $color-accent-tertiary-default: $_turquoise !default;
 $color-accent-tertiary-light: $_tiffany !default;
 $color-accent-tertiary-lighter: $_spa !default;
 $color-accent-tertiary-lightest: $_aqua !default;
+
+$color-neutral-inverted-default:   $_alpha_default !default;
+$color-neutral-inverted-light:     $_alpha_light !default;
+$color-neutral-inverted-lighter:   $_alpha_lighter !default;
+$color-neutral-inverted-lightest:  $_alpha_lightest !default;
+
 
 
 

@@ -1,4 +1,26 @@
+@import "../../../../../../pastanaga-angular/src/lib/styles/variables";
+
 .button-cell {
     display: flex;
     justify-content: space-between;
+}
+.section-title {
+    margin: rhythm(3) 0;
+}
+.pa-container {
+    h3 {
+        margin: rhythm(2) 0;
+    }
+
+    .pa-buttons-container {
+        display: flex;
+        border: 1px solid $color-neutral-secondary-lighter;
+        padding: rhythm(.5);
+        pa-button {
+            margin: rhythm(.5);
+        }
+        &.inverted {
+            background-color: $color-neutral-primary-default;
+        }
+    }
 }

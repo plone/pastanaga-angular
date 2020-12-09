@@ -1,3 +1,10 @@
+# 2.14.7 (2020-12-10)
+
+### Feature
+
+-   **InvertedButtons**: New style for buttons [niglesias]
+-   **Pallet**: add alphas and inverted tokens [niglesias]
+
 # 2.14.6 (2020-12-09)
 
 ### Improvement

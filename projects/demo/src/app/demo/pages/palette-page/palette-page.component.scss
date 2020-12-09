@@ -18,6 +18,10 @@
             align-items: center;
         }
     }
+    div.inverted {
+        background-color: $color-neutral-primary-default;
+        color: $color-neutral-primary-lightest;
+    }
 }
 [class*="color-"] {
     height: rhythm(4);
@@ -44,6 +48,18 @@
 }
 .color-neutral-secondary-lightest {
     background-color: $color-neutral-secondary-lightest;
+}
+.color-neutral-inverted-default {
+    background-color: $color-neutral-inverted-default;
+}
+.color-neutral-inverted-light {
+    background-color: $color-neutral-inverted-light;
+}
+.color-neutral-inverted-lighter {
+    background-color: $color-neutral-inverted-lighter;
+}
+.color-neutral-inverted-lightest {
+    background-color: $color-neutral-inverted-lightest;
 }
 .color-accent-primary-darker {
     background-color: $color-accent-primary-darker;
