@@ -1,3 +1,9 @@
+# 2.14.5 (2020-12-09)
+
+### Improvement
+
+- **Datetime**: refresh time displayed every minute when format is human and time less than 15min ago [mpellerin42] 
+
 # 2.14.4 (2020-12-08)
 
 ### Bugfix
