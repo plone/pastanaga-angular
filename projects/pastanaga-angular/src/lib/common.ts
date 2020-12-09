@@ -6,6 +6,8 @@ export const Keys = {
     backspace: 'Backspace',
     esc: 'Escape',
     tab: 'Tab',
+    arrowRight: 'ArrowRight',
+    arrowLeft: 'ArrowLeft',
 };
 
 export enum Size {

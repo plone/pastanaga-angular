@@ -1,3 +1,11 @@
+# 2.14.6 (2020-12-09)
+
+### Improvement
+
+- **Keys**: Complete Keys const [jCarret]
+- **dialog**: adapt width on mobile to avoid modal being full-width [jCarret]
+
+
 # 2.14.5 (2020-12-09)
 
 ### Improvement
