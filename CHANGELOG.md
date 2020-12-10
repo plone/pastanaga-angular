@@ -1,3 +1,9 @@
+# 2.15.1 (2020-12-10)
+
+### Bugfix
+
+-   **Modal**: Avoid pa-modal to override pa-dialog [jCarret]
+
 # 2.15.0 (2020-12-10)
 
 ### Feature
