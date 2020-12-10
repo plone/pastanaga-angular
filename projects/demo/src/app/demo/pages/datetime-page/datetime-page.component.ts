@@ -8,7 +8,7 @@ export class DateTimePageComponent {
     todayAm: Date;
     yesterdayPm: Date;
     fewSecondsAgo: Date;
-    tenMinutesAgo: Date;
+    fifteenMinutesAgo: Date;
     aDate: Date;
     oneMinuteAgo: Date;
     thisYear: Date;
@@ -34,9 +34,9 @@ export class DateTimePageComponent {
         oneMinuteAgo.setSeconds(oneMinuteAgo.getSeconds() - 60);
         this.oneMinuteAgo = oneMinuteAgo;
 
-        const tenMinutesAgo = new Date();
-        tenMinutesAgo.setMinutes(tenMinutesAgo.getMinutes() - 10);
-        this.tenMinutesAgo = tenMinutesAgo;
+        const fifteenMinutesAgo = new Date();
+        fifteenMinutesAgo.setMinutes(fifteenMinutesAgo.getMinutes() - 15);
+        this.fifteenMinutesAgo = fifteenMinutesAgo;
 
         this.thisYear = startOfYear(todayAm);
         this.aDate = new Date('1974-10-20');
