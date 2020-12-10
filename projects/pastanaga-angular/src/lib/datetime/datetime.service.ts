@@ -85,14 +85,15 @@ export class DateTimeService {
         } else if (format === DATE_FORMAT.numerical) {
             return of(this.getNumericalDate(timestamp, dateOnly, displaySeconds));
         } else {
+            const limit = 15;
             let minutesFromNow = differenceInMinutes(new Date(), new Date(timestamp));
-            return minutesFromNow > 15
+            return minutesFromNow > limit
                 ? this.getHumanDate(timestamp, dateOnly, displaySeconds)
                 : timer(0, 1000 * 60).pipe(
                       switchMap(() => this.getHumanDate(timestamp, dateOnly, displaySeconds)),
                       takeWhile(() => {
                           minutesFromNow++;
-                          return minutesFromNow < 15;
+                          return minutesFromNow <= limit + 2;
                       })
                   );
         }

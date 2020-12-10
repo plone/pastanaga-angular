@@ -1,3 +1,9 @@
+# 2.15.2 (2020-12-10)
+
+### Bugfix
+
+- **Datetime**: refresh date time until it's more than 15min ago [mpellerin42]
+
 # 2.15.1 (2020-12-10)
 
 ### Bugfix
@@ -13,7 +19,7 @@
 
 ### Breaking changes
 
-- **ButtonComponent**: No more regular buttons
+- **ButtonComponent**: No more regular buttons [niglesias]
 
 # 2.14.6 (2020-12-09)
 
