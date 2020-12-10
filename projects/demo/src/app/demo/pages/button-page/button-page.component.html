@@ -2,240 +2,192 @@
     <pa-demo-title>Buttons</pa-demo-title>
 
     <pa-demo-description>Buttons can contain text, icon or both.</pa-demo-description>
-
     <pa-demo-examples>
-        <div class="grid-10 has-gutter">
-            <!-- Row 1 -->
-            <div class="col-1"></div>
-            <div class="col-3 justify-center cell-header">Primary</div>
-            <div class="col-3 justify-center cell-header">Secondary</div>
-            <div class="col-3 justify-center cell-header">Destructive</div>
-
-            <!-- Row 2 -->
-            <div class="col-1 align-center cell-header">Solid</div>
-            <pa-button class="col-1 align-center justify-right"
-                       [kind]="kind.primary"
-                       [aspect]="aspect.solid"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <pa-button class="col-1 align-center"
-                       icon="search"
-                       iconAndText
-                       [kind]="kind.primary"
-                       [aspect]="aspect.solid"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <div class="col-1 align-center">
-                <pa-button icon="search"
-                           [kind]="kind.primary"
-                           [aspect]="aspect.solid"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-
-            <pa-button class="col-1 align-center justify-right"
-                       [kind]="kind.secondary"
-                       [aspect]="aspect.solid"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <pa-button class="col-1 align-center"
-                       icon="search"
-                       iconAndText
-                       [kind]="kind.secondary"
-                       [aspect]="aspect.solid"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <div class="col-1 align-center">
-                <pa-button icon="search"
-                           [kind]="kind.secondary"
-                           [aspect]="aspect.solid"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-
-            <pa-button class="col-1 align-center justify-right"
-                       [kind]="kind.destructive"
-                       [aspect]="aspect.solid"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <pa-button class="col-1 align-center"
-                       icon="search"
-                       iconAndText
-                       [kind]="kind.destructive"
-                       [aspect]="aspect.solid"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <div class="col-1 align-center">
-                <pa-button icon="search"
-                           [kind]="kind.destructive"
-                           [aspect]="aspect.solid"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-
-            <!-- Row 3 -->
-            <div class="col-1 align-center">Regular</div>
-            <div class="col-1 align-center justify-right">
+        <h2 class="section-title">Primary</h2>
+        <div class="pa-container">
+            <h3>Solid</h3>
+            <div class="pa-buttons-container">
                 <pa-button [kind]="kind.primary"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           iconAndText
-                           [kind]="kind.primary"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        iconAndText
+                        [kind]="kind.primary"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           [kind]="kind.primary"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
+                        [kind]="kind.primary"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
             </div>
-
-            <div class="col-1 align-center justify-right">
+            <h3>Basic</h3>
+            <div class="pa-buttons-container">
+                <pa-button
+                        [kind]="kind.primary"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                        iconAndText
+                        [kind]="kind.primary"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                        [kind]="kind.primary"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
+            </div>
+        </div>
+        <h2 class="section-title">Secondary</h2>
+        <div class="pa-container">
+            <h3>Solid</h3>
+            <div class="pa-buttons-container">
                 <pa-button [kind]="kind.secondary"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           iconAndText
-                           [kind]="kind.secondary"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        iconAndText
+                        [kind]="kind.secondary"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           [kind]="kind.secondary"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
+                        [kind]="kind.secondary"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
             </div>
-
-            <div class="col-1 align-center justify-right">
+            <h3>Basic</h3>
+            <div class="pa-buttons-container">
+                <pa-button
+                        [kind]="kind.secondary"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                        iconAndText
+                        [kind]="kind.secondary"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
+                <pa-button icon="search"
+                        [kind]="kind.secondary"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
+            </div>
+        </div>
+        <h2 class="section-title">Destructive</h2>
+        <div class="pa-container">
+            <h3>Solid</h3>
+            <div class="pa-buttons-container">
                 <pa-button [kind]="kind.destructive"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           iconAndText
-                           [kind]="kind.destructive"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        iconAndText
+                        [kind]="kind.destructive"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           [kind]="kind.destructive"
-                           [aspect]="aspect.regular"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
+                        [kind]="kind.destructive"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
             </div>
-
-            <!-- Row 4 -->
-            <div class="col-1 align-center cell-header">Basic</div>
-            <pa-button class="col-1 align-center justify-right"
-                       [kind]="kind.primary"
-                       [aspect]="aspect.basic"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <div class="col-1 align-center">
+            <h3>Basic</h3>
+            <div class="pa-buttons-container">
+                <pa-button
+                        [kind]="kind.destructive"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           iconAndText
-                           [kind]="kind.primary"
-                           [aspect]="aspect.basic"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        iconAndText
+                        [kind]="kind.destructive"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           [kind]="kind.primary"
-                           [aspect]="aspect.basic"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
+                        [kind]="kind.destructive"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
             </div>
-
-            <div class="col-1 align-center justify-right">
-                <pa-button [kind]="kind.secondary"
-                           [aspect]="aspect.basic"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+        </div>
+        <h2 class="section-title">Inverted</h2>
+        <div class="pa-container">
+            <h3>Solid</h3>
+            <div class="pa-buttons-container inverted">
+                <pa-button [kind]="kind.inverted"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           iconAndText
-                           [kind]="kind.secondary"
-                           [aspect]="aspect.basic"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        iconAndText
+                        [kind]="kind.inverted"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           [kind]="kind.secondary"
-                           [aspect]="aspect.basic"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
+                        [kind]="kind.inverted"
+                        [aspect]="aspect.solid"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
             </div>
-
-            <pa-button class="col-1 align-center justify-right"
-                       [kind]="kind.destructive"
-                       [aspect]="aspect.basic"
-                       [size]="selectedSize"
-                       [disabled]="disabledState"
-                       (click)="clickOn($event)">Value</pa-button>
-            <div class="col-1 align-center">
+            <h3>Basic</h3>
+            <div class="pa-buttons-container inverted">
+                <pa-button
+                        [kind]="kind.inverted"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           iconAndText
-                           [kind]="kind.destructive"
-                           [aspect]="aspect.basic"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
-            </div>
-            <div class="col-1 align-center">
+                        iconAndText
+                        [kind]="kind.inverted"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
                 <pa-button icon="search"
-                           [kind]="kind.destructive"
-                           [aspect]="aspect.basic"
-                           [size]="selectedSize"
-                           [disabled]="disabledState"
-                           (click)="clickOn($event)">Value</pa-button>
+                        [kind]="kind.inverted"
+                        [aspect]="aspect.basic"
+                        [size]="selectedSize"
+                        [disabled]="disabledState"
+                        (click)="clickOn($event)">Value</pa-button>
             </div>
         </div>
     </pa-demo-examples>
-
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-select label="Size" [(ngModel)]="selectedSize">
@@ -264,7 +216,7 @@
             <dd>Display icon and text together <small>(default: false)</small></dd>
 
             <dt>kind</dt>
-            <dd>primary | secondary | destructive <small>(default: secondary)</small></dd>
+            <dd>primary | secondary | destructive | inverted <small>(default: secondary)</small></dd>
 
             <dt>size</dt>
             <dd>xsmall | small | medium | large <small>(default: medium)</small></dd>
@@ -273,7 +225,7 @@
             <dd>button | submit | reset <small>(default: button)</small></dd>
 
             <dt>aspect</dt>
-            <dd>solid | regular | basic <small>(default: solid)</small></dd>
+            <dd>solid | basic <small>(default: solid)</small></dd>
         </dl>
     </pa-demo-usage>
 

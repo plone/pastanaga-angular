@@ -105,24 +105,6 @@
                 }
             }
 
-            &.pa-regular {
-                color: $color-text-button-primary-regular;
-                background: $color-background-button-primary-regular;
-                border: $border-button-primary-regular;
-
-                &:hover {
-                    color: $color-text-button-primary-regular-hover;
-                    background: $color-background-button-primary-regular-hover;
-                    border: $border-button-primary-regular-hover;
-                }
-
-                &:active {
-                    color: $color-text-button-primary-regular-active;
-                    background: $color-background-button-primary-regular-active;
-                    border: $border-button-primary-regular-active;
-                }
-            }
-
             &.pa-basic {
                 color: $color-text-button-primary-basic;
                 background: $color-background-button-primary-basic;
@@ -161,24 +143,6 @@
                 }
             }
 
-            &.pa-regular {
-                color: $color-text-button-secondary-regular;
-                background: $color-background-button-secondary-regular;
-                border: $border-button-secondary-regular;
-
-                &:hover {
-                    color: $color-text-button-secondary-regular-hover;
-                    background: $color-background-button-secondary-regular-hover;
-                    border: $border-button-secondary-regular-hover;
-                }
-
-                &:active {
-                    color: $color-text-button-secondary-regular-active;
-                    background: $color-background-button-secondary-regular-active;
-                    border: $border-button-secondary-regular-active;
-                }
-            }
-
             &.pa-basic {
                 color: $color-text-button-secondary-basic;
                 background: $color-background-button-secondary-basic;
@@ -194,6 +158,44 @@
                     color: $color-text-button-secondary-basic-active;
                     background: $color-background-button-secondary-basic-active;
                     border: $border-button-secondary-basic-active;
+                }
+            }
+        }
+
+        &.pa-inverted {
+            &.pa-solid {
+                color: $color-text-button-inverted-solid;
+                background: $color-background-button-inverted-solid;
+                border: $border-button-inverted-solid;
+
+                &:hover {
+                    color: $color-text-button-inverted-solid-hover;
+                    background: $color-background-button-inverted-solid-hover;
+                    border: $border-button-inverted-solid-hover;
+                }
+
+                &:active {
+                    color: $color-text-button-inverted-solid-active;
+                    background: $color-background-button-inverted-solid-active;
+                    border: $border-button-inverted-solid-active;
+                }
+            }
+
+            &.pa-basic {
+                color: $color-text-button-inverted-basic;
+                background: $color-background-button-inverted-basic;
+                border: $border-button-secondary-basic;
+
+                &:hover {
+                    color: $color-text-button-inverted-basic-hover;
+                    background: $color-background-button-inverted-basic-hover;
+                    border: $border-button-inverted-basic-hover;
+                }
+
+                &:active {
+                    color: $color-text-button-inverted-basic-active;
+                    background: $color-background-button-inverted-basic-active;
+                    border: $border-button-inverted-basic-active;
                 }
             }
         }
@@ -214,24 +216,6 @@
                     color: $color-text-button-destructive-solid-active;
                     background: $color-background-button-destructive-solid-active;
                     border: $border-button-destructive-solid-active;
-                }
-            }
-
-            &.pa-regular {
-                color: $color-text-button-destructive-regular;
-                background: $color-background-button-destructive-regular;
-                border: $border-button-destructive-regular;
-
-                &:hover {
-                    color: $color-text-button-destructive-regular-hover;
-                    background: $color-background-button-destructive-regular-hover;
-                    border: $border-button-destructive-regular-hover;
-                }
-
-                &:active {
-                    color: $color-text-button-destructive-regular-active;
-                    background: $color-background-button-destructive-regular-active;
-                    border: $border-button-destructive-regular-active;
                 }
             }
 
@@ -262,13 +246,6 @@
                 }
             }
 
-            &.pa-regular {
-                box-shadow: $shadow-button-regular-hover;
-                &:active {
-                    box-shadow: none;
-                }
-            }
-
             &.pa-basic {
                 box-shadow: $shadow-button-basic-hover;
                 &:active {
@@ -285,25 +262,28 @@
             border: $border-button-solid-disabled;
         }
 
-        &.pa-regular {
-            color: $color-text-button-regular-disabled;
-            background: $color-background-button-regular-disabled;
-            border: $border-button-regular-disabled;
-        }
-
         &.pa-basic {
             color: $color-text-button-basic-disabled;
             background: $color-background-button-basic-disabled;
             border: $border-button-basic-disabled;
         }
+
+        &.pa-inverted {
+            &.pa-solid {
+                color: $color-text-button-inverted-solid-disabled;
+                background: $color-text-button-inverted-solid-disabled;
+                border: $border-button-solid-disabled;
+            }
+            &.pa-basic {
+                color: $color-text-button-inverted-basic-disabled;
+                background: $color-background-button-basic-disabled;
+                border: $border-button-basic-disabled;
+            }
+        }
     }
 
     &.pa-solid .pa-button-label {
         font-weight: $font-weight-button-label-solid;
-    }
-
-    &.pa-regular .pa-button-label {
-        font-weight: $font-weight-button-label-regular;
     }
 
     &.pa-basic .pa-button-label {

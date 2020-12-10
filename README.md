@@ -12,14 +12,14 @@ In Pastanaga 2+, we prefix all modules with `Pa`: `ButtonModule` becomes `PaButt
 
 ### Components common properties
 Pastanaga now contains some useful enums for properties configuring several components:
-- `Kind`: primary | secondary | destructive
+- `Kind`: primary | secondary | destructive | inverted
 - `Size`: tee-shirt size going from `xxsmall` to `xxlarge`. Not all sizes are available for all components
 
 ### Buttons
 We changed the way to configure buttons:
 - `color` is now managed by `kind` property
 - `size` is now expecting one of the values of `Size` enum
-- `border` property is replaced by `aspect` which can be `solid` | `regular` | `basic`
+- `border` property is replaced by `aspect` which can be `solid` | `basic`
 
 See https://plone.github.io/pastanaga-angular/@@button for full documentation.  
 

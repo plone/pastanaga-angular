@@ -1,3 +1,14 @@
+# 2.15.0 (2020-12-10)
+
+### Feature
+
+-   **InvertedButtons**: New style for buttons [niglesias]
+-   **Palette**: add alphas and inverted tokens [niglesias]
+
+### Breaking changes
+
+- **ButtonComponent**: No more regular buttons
+
 # 2.14.6 (2020-12-09)
 
 ### Improvement
