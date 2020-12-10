@@ -26,10 +26,6 @@ describe('DateTimeComponent', () => {
         span = fixture.nativeElement.querySelector('span');
     });
 
-    it('should create', () => {
-        expect(component).toBeDefined();
-    });
-
     it('should display date in human by default', () => {
         component.datetime = dates.beforeYesterdayPM.timestamp;
 

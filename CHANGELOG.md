@@ -1,3 +1,9 @@
+# 2.15.3 (not released yet)
+
+### Bugfix
+
+- **Datetime**: stop refresh date timer on component destroy [mpellerin42]
+
 # 2.15.2 (2020-12-10)
 
 ### Bugfix
