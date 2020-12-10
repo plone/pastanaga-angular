@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-.pa-dialog {
+.pa-dialog, .pa-dialog.pa-modal {
     text-align: center;
     min-width: rhythm(28);
     max-width: rhythm(32);
