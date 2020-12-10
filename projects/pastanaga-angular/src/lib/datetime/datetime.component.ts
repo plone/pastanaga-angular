@@ -1,10 +1,9 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { filter, map, switchMap, takeUntil, takeWhile } from 'rxjs/operators';
 import { differenceInMinutes } from 'date-fns';
 import { Observable, Subject, timer } from 'rxjs';
-import { markForCheck } from '../common';
 
 const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical];
 
@@ -31,7 +30,7 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
     private _terminator = new Subject();
     formattedTime = '';
 
-    constructor(private service: DateTimeService, private cdr: ChangeDetectorRef) {}
+    constructor(private service: DateTimeService) {}
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.format && changes.format.currentValue && formats.indexOf(changes.format.currentValue) === -1) {
@@ -41,15 +40,13 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
 
         if (!!changes.datetime?.currentValue) {
             if (this.format === DATE_FORMAT.numerical) {
-                this.updateFormattedTime(changes.datetime.currentValue).subscribe((formattedDate: string) => {
-                    this.formattedTime = formattedDate;
-                    markForCheck(this.cdr);
-                });
+                this.updateFormattedTime(changes.datetime.currentValue).subscribe(
+                    (formattedDate: string) => (this.formattedTime = formattedDate)
+                );
             } else {
-                this.updateHumanFormattedTime(changes.datetime.currentValue).subscribe((formattedDate: string) => {
-                    this.formattedTime = formattedDate;
-                    markForCheck(this.cdr);
-                });
+                this.updateHumanFormattedTime(changes.datetime.currentValue).subscribe(
+                    (formattedDate: string) => (this.formattedTime = formattedDate)
+                );
             }
         }
     }
