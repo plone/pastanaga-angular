@@ -1,8 +1,8 @@
 import { DatePipe, FormatWidth, getLocaleDateFormat } from '@angular/common';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { isToday, isYesterday, isThisMinute, differenceInMinutes, isThisYear } from 'date-fns';
-import { Observable, of, ReplaySubject, timer } from 'rxjs';
-import { map, switchMap, takeWhile } from 'rxjs/operators';
+import { Observable, of, ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TranslatePipe } from '../translate/translate.pipe';
 
 /**
@@ -82,20 +82,12 @@ export class DateTimeService {
     ): Observable<string | null> {
         if (format !== DATE_FORMAT.human && format !== DATE_FORMAT.numerical) {
             throw new Error(`Unknown date/time format: ${format}`);
-        } else if (format === DATE_FORMAT.numerical) {
-            return of(this.getNumericalDate(timestamp, dateOnly, displaySeconds));
         } else {
-            const limit = 15;
-            let minutesFromNow = differenceInMinutes(new Date(), new Date(timestamp));
-            return minutesFromNow > limit
-                ? this.getHumanDate(timestamp, dateOnly, displaySeconds)
-                : timer(0, 1000 * 60).pipe(
-                      switchMap(() => this.getHumanDate(timestamp, dateOnly, displaySeconds)),
-                      takeWhile(() => {
-                          minutesFromNow++;
-                          return minutesFromNow <= limit + 2;
-                      })
-                  );
+            if (format === DATE_FORMAT.numerical) {
+                return of(this.getNumericalDate(timestamp, dateOnly, displaySeconds));
+            } else {
+                return this.getHumanDate(timestamp, dateOnly, displaySeconds);
+            }
         }
     }
 

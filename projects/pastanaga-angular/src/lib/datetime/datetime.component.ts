@@ -1,6 +1,9 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { filter, map, switchMap, takeUntil, takeWhile } from 'rxjs/operators';
+import { differenceInMinutes } from 'date-fns';
+import { Observable, Subject, timer } from 'rxjs';
 
 const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical];
 
@@ -8,20 +11,23 @@ const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical];
     selector: 'pa-datetime',
     templateUrl: './datetime.component.html',
 })
-export class DateTimeComponent implements OnChanges {
+export class DateTimeComponent implements OnChanges, OnDestroy {
     @Input() datetime?: string;
     @Input() format = DATE_FORMAT.human;
+
     @Input()
     set dateOnly(value: boolean) {
         this._dateOnly = coerceBooleanProperty(value);
     }
-    _dateOnly = false;
+
     @Input()
     set displaySeconds(value: boolean) {
         this._displaySeconds = coerceBooleanProperty(value);
     }
-    _displaySeconds = false;
 
+    private _dateOnly = false;
+    private _displaySeconds = false;
+    private _terminator = new Subject();
     formattedTime = '';
 
     constructor(private service: DateTimeService) {}
@@ -32,14 +38,43 @@ export class DateTimeComponent implements OnChanges {
             this.format = DATE_FORMAT.human;
         }
 
-        if (changes.datetime && changes.datetime.currentValue) {
-            this.service
-                .getFormattedDate(changes.datetime.currentValue, this.format, this._dateOnly, this._displaySeconds)
-                .subscribe((formattedDate) => {
-                    if (!!formattedDate) {
-                        this.formattedTime = formattedDate;
-                    }
-                });
+        if (!!changes.datetime?.currentValue) {
+            if (this.format === DATE_FORMAT.numerical) {
+                this.updateFormattedTime(changes.datetime.currentValue).subscribe(
+                    (formattedDate: string) => (this.formattedTime = formattedDate)
+                );
+            } else {
+                this.updateHumanFormattedTime(changes.datetime.currentValue).subscribe(
+                    (formattedDate: string) => (this.formattedTime = formattedDate)
+                );
+            }
         }
+    }
+
+    ngOnDestroy() {
+        this._terminator.next();
+        this._terminator.complete();
+    }
+
+    private updateFormattedTime(datetime: string): Observable<string> {
+        return this.service.getFormattedDate(datetime, this.format, this._dateOnly, this._displaySeconds).pipe(
+            filter((formattedDate) => !!formattedDate),
+            map((formattedDate: string) => formattedDate)
+        );
+    }
+
+    private updateHumanFormattedTime(timestamp: string): Observable<string> {
+        const limit = 15;
+        let minutesFromNow = differenceInMinutes(new Date(), new Date(timestamp));
+        return minutesFromNow > limit
+            ? this.updateFormattedTime(timestamp)
+            : timer(0, 1000 * 60).pipe(
+                  switchMap(() => this.updateFormattedTime(timestamp)),
+                  takeWhile(() => {
+                      minutesFromNow++;
+                      return minutesFromNow <= limit + 2;
+                  }),
+                  takeUntil(this._terminator)
+              );
     }
 }
