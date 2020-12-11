@@ -3,6 +3,7 @@
 ### Bugfix
 
 - **Buttons**: CSS4 hover media query for buttons [jlp0328]
+- **Avatar**: Add color to avatar initials [jlp0328]
 
 # 2.15.3 (2020-12-10)
 

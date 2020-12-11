@@ -38,6 +38,7 @@
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
+        color: $color-neutral-primary-default;
         @include size-small(xs);
         @include full-size-circle();
 
