@@ -1,3 +1,9 @@
+# 2.15.4 (2020-12-11)
+
+### Bugfix
+
+- **Buttons**: CSS4 hover media query for buttons [jlp0328]
+
 # 2.15.3 (2020-12-10)
 
 ### Bugfix
