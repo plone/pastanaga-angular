@@ -1,4 +1,4 @@
-# 2.15.3 (not released yet)
+# 2.15.3 (2020-12-10)
 
 ### Bugfix
 
