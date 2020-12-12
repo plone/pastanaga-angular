@@ -92,10 +92,12 @@
                 background: $color-background-button-primary-solid;
                 border: $border-button-primary-solid;
 
-                &:hover {
-                    color: $color-text-button-primary-solid-hover;
-                    background: $color-background-button-primary-solid-hover;
-                    border: $border-button-primary-solid-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-primary-solid-hover;
+                        background: $color-background-button-primary-solid-hover;
+                        border: $border-button-primary-solid-hover;
+                    }
                 }
 
                 &:active {
@@ -110,10 +112,12 @@
                 background: $color-background-button-primary-basic;
                 border: $border-button-primary-basic;
 
-                &:hover {
-                    color: $color-text-button-primary-basic-hover;
-                    background: $color-background-button-primary-basic-hover;
-                    border: $border-button-primary-basic-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-primary-basic-hover;
+                        background: $color-background-button-primary-basic-hover;
+                        border: $border-button-primary-basic-hover;
+                    }
                 }
 
                 &:active {
@@ -130,10 +134,12 @@
                 background: $color-background-button-secondary-solid;
                 border: $border-button-secondary-solid;
 
-                &:hover {
-                    color: $color-text-button-secondary-solid-hover;
-                    background: $color-background-button-secondary-solid-hover;
-                    border: $border-button-secondary-solid-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-secondary-solid-hover;
+                        background: $color-background-button-secondary-solid-hover;
+                        border: $border-button-secondary-solid-hover;
+                    }
                 }
 
                 &:active {
@@ -148,10 +154,12 @@
                 background: $color-background-button-secondary-basic;
                 border: $border-button-secondary-basic;
 
-                &:hover {
-                    color: $color-text-button-secondary-basic-hover;
-                    background: $color-background-button-secondary-basic-hover;
-                    border: $border-button-secondary-basic-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-secondary-basic-hover;
+                        background: $color-background-button-secondary-basic-hover;
+                        border: $border-button-secondary-basic-hover;
+                    }
                 }
 
                 &:active {
@@ -168,10 +176,12 @@
                 background: $color-background-button-inverted-solid;
                 border: $border-button-inverted-solid;
 
-                &:hover {
-                    color: $color-text-button-inverted-solid-hover;
-                    background: $color-background-button-inverted-solid-hover;
-                    border: $border-button-inverted-solid-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-inverted-solid-hover;
+                        background: $color-background-button-inverted-solid-hover;
+                        border: $border-button-inverted-solid-hover;
+                    }
                 }
 
                 &:active {
@@ -186,10 +196,12 @@
                 background: $color-background-button-inverted-basic;
                 border: $border-button-secondary-basic;
 
-                &:hover {
-                    color: $color-text-button-inverted-basic-hover;
-                    background: $color-background-button-inverted-basic-hover;
-                    border: $border-button-inverted-basic-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-inverted-basic-hover;
+                        background: $color-background-button-inverted-basic-hover;
+                        border: $border-button-inverted-basic-hover;
+                    }
                 }
 
                 &:active {
@@ -206,10 +218,12 @@
                 background: $color-background-button-destructive-solid;
                 border: $border-button-destructive-solid;
 
-                &:hover {
-                    color: $color-text-button-destructive-solid-hover;
-                    background: $color-background-button-destructive-solid-hover;
-                    border: $border-button-destructive-solid-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-destructive-solid-hover;
+                        background: $color-background-button-destructive-solid-hover;
+                        border: $border-button-destructive-solid-hover;
+                    }
                 }
 
                 &:active {
@@ -224,10 +238,12 @@
                 background: $color-background-button-destructive-basic;
                 border: $border-button-destructive-basic;
 
-                &:hover {
-                    color: $color-text-button-destructive-basic-hover;
-                    background: $color-background-button-destructive-basic-hover;
-                    border: $border-button-destructive-basic-hover;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $color-text-button-destructive-basic-hover;
+                        background: $color-background-button-destructive-basic-hover;
+                        border: $border-button-destructive-basic-hover;
+                    }
                 }
 
                 &:active {
@@ -238,18 +254,22 @@
             }
         }
 
-        &:hover {
-            &.pa-solid {
-                box-shadow: $shadow-button-solid-hover;
-                &:active {
-                    box-shadow: none;
-                }
-            }
+        @media (hover: hover) {
+            &:hover {
+                &.pa-solid {
+                    box-shadow: $shadow-button-solid-hover;
 
-            &.pa-basic {
-                box-shadow: $shadow-button-basic-hover;
-                &:active {
-                    box-shadow: none;
+                    &:active {
+                        box-shadow: none;
+                    }
+                }
+
+                &.pa-basic {
+                    box-shadow: $shadow-button-basic-hover;
+
+                    &:active {
+                        box-shadow: none;
+                    }
                 }
             }
         }
