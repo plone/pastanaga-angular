@@ -64,10 +64,10 @@
         background: $color-background-table-header-row;
         color: $color-text-table-header-row;
         margin-top: -1px;
-        padding: rhythm(0.33) rhythm(0.75);
+        padding: rhythm(.5) rhythm(1);
         border-top: 1px solid $color-border-table-header-row;
         position: sticky;
-        top: rhythm(4);
+        top: rhythm(6);
         z-index: 3;
     }
 }
@@ -76,7 +76,7 @@
 .pa-table-grid--cell {
     display: flex;
     align-items: center;
-    padding: rhythm(1) rhythm(0.75);
+    padding: rhythm(1.5) rhythm(1);
 }
 
 .pa-table-grid--cell {

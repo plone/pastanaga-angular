@@ -2,18 +2,18 @@
 
 .pa-dialog, .pa-dialog.pa-modal {
     text-align: center;
-    min-width: rhythm(28);
-    max-width: rhythm(32);
-    padding: rhythm(3.5) rhythm(2.5) rhythm(2);
+    min-width: rhythm(48);
+    max-width: rhythm(48);
+    padding: rhythm(6) rhythm(4) rhythm(3);
     box-shadow: $shadow-modal;
     background-color: $color-neutral-primary-lightest;
 
     .pa-modal-header {
         h4 {
-            margin-bottom: rhythm(.75);
+            margin-bottom: rhythm(1);
         }
         img {
-            width: rhythm(7.5);
+            width: rhythm(12);
         }
     }
 
@@ -24,17 +24,17 @@
     }
 
     pa-modal-footer {
-        margin-top: rhythm(3.5);
+        margin-top: rhythm(6);
         display: flex;
         justify-content: center;
 
         pa-button:not(:last-of-type) {
-            margin-right: rhythm(1);
+            margin-right: rhythm(1.5);
         }
     }
     @media (max-width: $size-viewport-medium-max) {
         // on mobile, keep a margin to avoid the dialog being full-width
             min-width: unset;
-            max-width: calc(100% - #{rhythm(3)});
+            max-width: calc(100% - #{rhythm(5)});
     }
 }

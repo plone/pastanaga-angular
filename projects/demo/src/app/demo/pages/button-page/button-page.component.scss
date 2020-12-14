@@ -5,19 +5,19 @@
     justify-content: space-between;
 }
 .section-title {
-    margin: rhythm(3) 0;
+    margin: rhythm(5) 0;
 }
 .pa-container {
     h3 {
-        margin: rhythm(2) 0;
+        margin: rhythm(3) 0;
     }
 
     .pa-buttons-container {
         display: flex;
         border: 1px solid $color-neutral-secondary-lighter;
-        padding: rhythm(.5);
+        padding: rhythm(1);
         pa-button {
-            margin: rhythm(.5);
+            margin: rhythm(1);
         }
         &.inverted {
             background-color: $color-neutral-primary-default;

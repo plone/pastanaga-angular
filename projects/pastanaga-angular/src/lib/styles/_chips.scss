@@ -4,14 +4,14 @@
     display: inline-flex;
     align-items: center;
     background: $color-neutral-primary-lighter;
-    height: rhythm(2.5);
-    max-width: rhythm(33);
+    height: rhythm(4);
+    max-width: rhythm(56);
     padding: 0 0 0 rhythm(.25);
-    border-radius: rhythm(3);
+    border-radius: rhythm(5);
     overflow: hidden;
 }
 .pa-chip-content-wrapper {
-    margin: 0 rhythm(.5);
+    margin: 0 rhythm(1);
     overflow: hidden;
     @include font-size(s);
     @include line-height(m);

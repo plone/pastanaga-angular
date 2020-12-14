@@ -13,7 +13,7 @@ $overlay-anim-duration: .6s;
         position: fixed;
         right: 0;
         top: 0;
-        padding: 0 rhythm(2);
+        padding: 0 rhythm(3);
         z-index: $z-index-popup;
         background-color: $color-neutral-primary-lighter;
         &.inverted {
@@ -31,19 +31,19 @@ $overlay-anim-duration: .6s;
             flex-grow: 1;
             overflow: auto;
             padding: 0;
-            margin-bottom: rhythm(3);
+            margin-bottom: rhythm(5);
         }
         pa-side-nav-item {
             opacity: 0;
         }
         footer {
             display: flex;
-            padding: rhythm(1.5) rhythm(2);
+            padding: rhythm(2) rhythm(3);
             justify-content: space-between;
         }
         header {
             display: flex;
-            padding: rhythm(1.5) 0;
+            padding: rhythm(2) 0;
             justify-content: space-between;
         }
         &.animated {
@@ -71,7 +71,7 @@ $overlay-anim-duration: .6s;
             width: 300px;
             left: 0;
             header {
-                padding: rhythm(1.5) rhythm(2);
+                padding: rhythm(2) rhythm(3);
             }
         }
     }
@@ -80,7 +80,7 @@ $overlay-anim-duration: .6s;
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw; 
+        width: 100vw;
         height: 100vh;
         background: $color-neutral-primary-lightest;
         z-index: $z-index-popup;

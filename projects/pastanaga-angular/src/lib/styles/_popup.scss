@@ -4,13 +4,13 @@
     z-index: $z-index-popup;
     box-shadow: $shadow-default;
     border-radius: $border-radius-default;
-    min-width: rhythm(16);
+    min-width: rhythm(24);
     max-height: rhythm(29);
     overflow-x: hidden;
     overflow-y: auto;
 
     .pa-popup-wrapper {
-        padding: rhythm(1);
+        padding: rhythm(1.5);
         background: $color-neutral-primary-lightest;
     }
 }

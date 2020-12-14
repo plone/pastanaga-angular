@@ -5,32 +5,32 @@ pa-icon {
         vertical-align: middle;
         fill: currentColor;
         &.pa-xxsmall {
-            width: rhythm(.75);
-            height: rhythm(.75);
-        }
-        &.pa-xsmall {
             width: rhythm(1);
             height: rhythm(1);
         }
-        &.pa-small {
+        &.pa-xsmall {
             width: rhythm(1.5);
             height: rhythm(1.5);
         }
-        &.pa-medium {
+        &.pa-small {
             width: rhythm(2);
             height: rhythm(2);
         }
-        &.pa-large {
-            width: rhythm(2.5);
-            height: rhythm(2.5);
-        }
-        &.pa-xlarge {
+        &.pa-medium {
             width: rhythm(3);
             height: rhythm(3);
         }
+        &.pa-large {
+            width: rhythm(4);
+            height: rhythm(4);
+        }
+        &.pa-xlarge {
+            width: rhythm(5);
+            height: rhythm(5);
+        }
         &.pa-xxlarge {
-            width: rhythm(3.5);
-            height: rhythm(3.5);
+            width: rhythm(6);
+            height: rhythm(6);
         }
     }
 }

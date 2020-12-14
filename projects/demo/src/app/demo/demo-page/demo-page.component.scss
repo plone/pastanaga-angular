@@ -7,11 +7,11 @@ pa-demo-page {
 
     .doc-page-title,
     .doc-section-title {
-        margin-bottom: rhythm(2.5);
+        margin-bottom: rhythm(4);
     }
 
     section.doc-section {
-        margin-bottom: rhythm(4);
+        margin-bottom: rhythm(6);
 
         .doc-section-title {
             @include size(dxsmall);
@@ -33,7 +33,7 @@ pa-demo-page {
 
             dt {
                 flex: 1 0 20%;
-                min-width: rhythm(16);
+                min-width: rhythm(24);
                 font-weight: $font-weight-semi-bold;
             }
             dd {
@@ -48,30 +48,30 @@ pa-demo-page {
 
     pa-demo-examples {
         display: block;
-        margin-bottom: rhythm(1);
+        margin-bottom: rhythm(1.5);
 
         > *:not(.icon-list-container):not(:last-child) {
-            margin-right: rhythm(2.5);
+            margin-right: rhythm(4);
         }
 
         h3:not(.typography) {
-            margin: rhythm(2.5) 0 rhythm(.5);
+            margin: rhythm(4) 0 rhythm(1);
         }
     }
 
     .pa-demo-example-configuration {
-        margin-top: rhythm(2.5);
+        margin-top: rhythm(4);
 
         .pa-demo-configuration-field {
-            margin-bottom: rhythm(.5);
+            margin-bottom: rhythm(1);
         }
     }
 
     pa-demo-code code {
         display: block;
-        padding: rhythm(1);
+        padding: rhythm(1.5);
         background-color: $color-neutral-secondary-lighter;
-        margin: rhythm(1) 0;
+        margin: rhythm(1.5) 0;
         overflow: auto;
     }
 }
