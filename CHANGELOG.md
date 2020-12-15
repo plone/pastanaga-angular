@@ -1,3 +1,9 @@
+# 2.15.5 (2020-12-15)
+
+### Improvement
+
+- **Input**: Support autocapitalize attribute [ebrehault]
+
 # 2.15.4 (2020-12-11)
 
 ### Bugfix

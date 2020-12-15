@@ -66,6 +66,7 @@ export class InputComponent extends BaseControl implements OnChanges, OnInit, Af
     @Input() min?: number;
     @Input() max?: number;
     @Input() maxlength?: number;
+    @Input() autocapitalize?: string;
 
     @Input() set noAutoComplete(value: boolean) {
         this._noAutoComplete = coerceBooleanProperty(value);
