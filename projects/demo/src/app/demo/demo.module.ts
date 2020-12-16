@@ -62,6 +62,7 @@ import { FocusablePageComponent } from './pages/focusable-page/focusable-page.co
 import { PaSideNavModule } from '../../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
 import { DemoComponent } from './demo.component';
 import { ChipPageComponent } from './pages/chip-page/chip-page.component';
+import { SidenavPageComponent } from './pages/sidenav-page/sidenav-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -97,6 +98,7 @@ const COMPONENTS = [
     PalettePageComponent,
     PopupPageComponent,
     SelectPageComponent,
+    SidenavPageComponent,
     TabsPageComponent,
     TablePageComponent,
     ToastPageComponent,

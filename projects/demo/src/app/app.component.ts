@@ -24,6 +24,7 @@ import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-pa
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { Traverser } from 'angular-traversal';
 import { ChipPageComponent } from './demo/pages/chip-page/chip-page.component';
+import { SidenavPageComponent } from './demo/pages/sidenav-page/sidenav-page.component';
 
 @Component({
     selector: 'app-root',
@@ -53,6 +54,7 @@ export class AppComponent {
                 { view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent },
                 { view: 'modal', title: 'Modal', type: ModalPageComponent },
                 { view: 'popup', title: 'Popup', type: PopupPageComponent },
+                { view: 'sidenav', title: 'Sidenav', type: SidenavPageComponent },
                 { view: 'tables', title: 'Tables', type: TablePageComponent },
                 { view: 'tabs', title: 'Tabs', type: TabsPageComponent },
                 { view: 'toast', title: 'Toast', type: ToastPageComponent },
