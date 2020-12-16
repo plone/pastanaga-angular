@@ -1,3 +1,9 @@
+# 2.15.6 (2020-12-16)
+
+### Improvement
+
+- **Sidenav**: Update demo and documentation [niglesias]
+
 # 2.15.5 (2020-12-15)
 
 ### Improvement
