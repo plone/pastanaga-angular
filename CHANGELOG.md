@@ -1,8 +1,14 @@
+# 2.15.8 (2020-12-17)
+
+### Improvement
+
+- **Checkbox**: ellipsis on checkbox label [mpellerin42] 
+
 # 2.15.7 (2020-12-17)
 
 ### Improvement
 
--   **Popup**: when popup position is not adjusted, we adjust its height [ebrehault]
+- **Popup**: when popup position is not adjusted, we adjust its height [ebrehault]
 
 # 2.15.6 (2020-12-16)
 
