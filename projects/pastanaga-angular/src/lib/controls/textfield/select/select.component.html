@@ -48,6 +48,7 @@
     <pa-dropdown #optionsDropdown
                  role="listbox"
                  dontAdjustPosition
+                 [adjustHeight]="_adjustHeight"
                  (onClose)="dropDownClosed()"
                  (onOpen)="dropDownOpened()"
                  [companionElement]="selectInput">

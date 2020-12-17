@@ -59,6 +59,7 @@
                 [value]="selectedValue1"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [hasFocus]="firstFocused"
                 [errorMessages]="errorMessages"
                 (valueChange)="valueChange = $event"
@@ -80,6 +81,7 @@
                 [options]="options"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 (valueChange)="valueChange = $event"
                 (expanded)="expandedEvent = $event"
             ></pa-select>
@@ -91,6 +93,7 @@
                 [pattern]="pattern"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [errorMessages]="errorMessages"
                 [suggestionMode]="true"
                 (valueChange)="valueChange = $event"
@@ -115,6 +118,7 @@
                 [(ngModel)]="selectedValue1"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [hasFocus]="firstFocused"
                 [errorMessages]="errorMessages"
                 (expanded)="expandedEvent = $event"
@@ -137,6 +141,7 @@
                 [options]="options"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 (expanded)="expandedEvent = $event"
                 (ngModelChange)="ngModelChangeEvent = selectedValue2"
             ></pa-select>
@@ -149,6 +154,7 @@
                 [pattern]="pattern"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [errorMessages]="errorMessages"
                 [suggestionMode]="true"
                 (expanded)="expandedEvent = $event"
@@ -173,6 +179,7 @@
                 [formControl]="formControl1"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [hasFocus]="firstFocused"
                 [errorMessages]="errorMessages"
                 (expanded)="expandedEvent = $event"
@@ -194,6 +201,7 @@
                 [options]="options"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 (expanded)="expandedEvent = $event"
             ></pa-select>
 
@@ -205,6 +213,7 @@
                 [pattern]="pattern"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [errorMessages]="errorMessages"
                 [suggestionMode]="true"
                 (expanded)="expandedEvent = $event"
@@ -229,6 +238,7 @@
                 formControlName="select1"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [hasFocus]="firstFocused"
                 [errorMessages]="errorMessages"
                 (expanded)="expandedEvent = $event"
@@ -250,6 +260,7 @@
                 [options]="options"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 (expanded)="expandedEvent = $event"
             ></pa-select>
 
@@ -261,6 +272,7 @@
                 [pattern]="pattern"
                 [disabled]="disabledState"
                 [readonly]="readOnlyState"
+                [adjustHeight]="adjustHeightState"
                 [errorMessages]="errorMessages"
                 [suggestionMode]="true"
                 (expanded)="expandedEvent = $event"
@@ -289,6 +301,9 @@
         <div class="pa-demo-configuration-field">
             <pa-checkbox id="focused" [(ngModel)]="firstFocused">focus first select</pa-checkbox>
         </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="adjust" [(ngModel)]="adjustHeightState">adjust height</pa-checkbox>
+        </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
@@ -313,6 +328,8 @@
             <dd>Adds an internal <code>Validators.required</code> <small>(default: false)</small></dd>
             <dt>suggestionMode</dt>
             <dd>allow user to input any text and consider options as suggestions <small>(default: false)</small></dd>
+            <dt>adjustHeight</dt>
+            <dd>allow to make sure the selection list will not go under the window bottom <small>(default: false)</small></dd>
         </dl>
 
         <h3>Outputs</h3>

@@ -40,6 +40,14 @@ export class PopupComponent implements OnInit, OnDestroy {
         this._dontAdjustPosition = coerceBooleanProperty(value);
     }
 
+    @Input()
+    get adjustHeight(): boolean {
+        return this._adjustHeight;
+    }
+    set adjustHeight(value: boolean) {
+        this._adjustHeight = coerceBooleanProperty(value);
+    }
+
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
@@ -49,8 +57,10 @@ export class PopupComponent implements OnInit, OnDestroy {
     _style?: any;
     _handlers: (() => void)[] = [];
     _dontAdjustPosition = false;
+    private _adjustHeight = false;
 
     _popupType = 'popup';
+    private _originalHeight = 0;
 
     constructor(
         public popupService: PopupService,
@@ -89,9 +99,9 @@ export class PopupComponent implements OnInit, OnDestroy {
 
         markForCheck(this.cdr);
         window.setTimeout(() => {
-            if (!this._dontAdjustPosition && !this.adjustPosition()) {
+            if ((!this._dontAdjustPosition || this._adjustHeight) && !this.adjust()) {
                 const interval = window.setInterval(() => {
-                    if (this.adjustPosition()) {
+                    if (this.adjust()) {
                         window.clearInterval(interval);
                     }
                 }, 200);
@@ -99,7 +109,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         }, 0);
     }
 
-    adjustPosition(): boolean {
+    adjust(): boolean {
         if (!this.element.nativeElement) {
             return false;
         }
@@ -109,31 +119,38 @@ export class PopupComponent implements OnInit, OnDestroy {
         if (rect.height <= 12) {
             // menu is still empty
             return false;
+        } else {
+            this._originalHeight = this._originalHeight || rect.height;
         }
         const { bottom, right } = getVirtualScrollParentPosition(element) || {
             bottom: window.innerHeight,
             right: window.innerWidth,
         };
         const diffX = rect.left + rect.width - right;
-        if (diffX > 0) {
-            element.style.left = `calc(${element.style.left} - ${diffX}px)`;
-            isAdjusted = true;
-        } else if (rect.left < 0) {
-            element.style.left = `0px`;
-            isAdjusted = true;
-        }
-        const diffY = rect.top + rect.height - bottom;
-        if (diffY > 0) {
-            const currentTop = element.style.top || '';
-            if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > rect.height) {
-                // enough space above, we display the dropdown on top
-                element.style.top = `calc(${currentTop} - ${rect.height}px - ${MARGIN * 2}px)`;
+        const diffY = rect.top + this._originalHeight - bottom;
+        if (!this._dontAdjustPosition) {
+            if (diffX > 0) {
+                element.style.left = `calc(${element.style.left} - ${diffX}px)`;
                 isAdjusted = true;
-            } else if (!!currentTop) {
-                // not enough space, we just align the dropdown bottom with the parent bottom
-                element.style.top = `calc(${currentTop} - ${diffY}px)`;
+            } else if (rect.left < 0) {
+                element.style.left = `0px`;
                 isAdjusted = true;
             }
+            if (diffY > 0) {
+                const currentTop = element.style.top || '';
+                if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight) {
+                    // enough space above, we display the dropdown on top
+                    element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${MARGIN * 2}px)`;
+                    isAdjusted = true;
+                } else if (!!currentTop) {
+                    // not enough space, we just align the dropdown bottom with the parent bottom
+                    element.style.top = `calc(${currentTop} - ${diffY}px)`;
+                    isAdjusted = true;
+                }
+            }
+        } else if (this._adjustHeight && diffY > 0) {
+            element.style.maxHeight = `${this._originalHeight - diffY - MARGIN}px`;
+            isAdjusted = true;
         }
         if (isAdjusted) {
             markForCheck(this.cdr);
