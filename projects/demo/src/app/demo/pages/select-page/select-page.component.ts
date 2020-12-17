@@ -35,7 +35,7 @@ export class SelectPageComponent implements OnInit, OnDestroy {
 
     errorMessages = {
         required: 'this is required',
-        pattern: 'regex test failed, should match user'
+        pattern: 'regex test failed, should match user',
     };
     pattern = new RegExp('.?user.?');
     selectedValue1 = 'user2';
@@ -62,6 +62,7 @@ export class SelectPageComponent implements OnInit, OnDestroy {
     ];
     disabledState = false;
     readOnlyState = false;
+    adjustHeightState = false;
 
     standaloneBasicCode = `<pa-select label="Select an option"
     [value]="preselected"

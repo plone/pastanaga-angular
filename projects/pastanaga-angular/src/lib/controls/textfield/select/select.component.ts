@@ -72,6 +72,14 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
 
     @Input() maxlength?: number;
 
+    @Input()
+    get adjustHeight(): boolean {
+        return this._adjustHeight;
+    }
+    set adjustHeight(value: boolean) {
+        this._adjustHeight = coerceBooleanProperty(value);
+    }
+
     @Output() valueChange: EventEmitter<string | number> = new EventEmitter();
     @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -87,6 +95,7 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     _optionsAreNgContent = true;
     _required?: boolean;
     optionsDisplayed = false;
+    _adjustHeight = false;
 
     requiredValidator?: ValidatorFn;
     patternValidator?: ValidatorFn;
