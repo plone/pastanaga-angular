@@ -124,14 +124,15 @@ export function thenFieldControlHasDescribedBy(fixture: ComponentFixture<any>, d
 
 export function thenFieldControlIsReadonly(fixture: ComponentFixture<any>, readonly: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    const hasReadonly = control.properties.readOnly || control.classes['read-only'];
-    expect(hasReadonly).toEqual(readonly);
+    const hasReadonly = control.properties.readOnly === readonly || control.classes['read-only'] === readonly;
+    expect(hasReadonly).toEqual(true);
 }
 
 export function thenFieldControlIsDisabled(fixture: ComponentFixture<any>, disabled: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    const hasDisabled = control.attributes['ng-reflect-is-disabled'] === `${disabled}` || control.classes.disabled;
-    expect(hasDisabled).toEqual(disabled);
+    const hasDisabled =
+        control.attributes['ng-reflect-is-disabled'] === `${disabled}` || control.classes.disabled === disabled;
+    expect(hasDisabled).toEqual(true);
 }
 
 export function thenErrorIsDisplayed(fixture: ComponentFixture<any>, errorMessage?: string) {
