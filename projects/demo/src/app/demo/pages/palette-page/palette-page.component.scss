@@ -8,7 +8,7 @@
         background-color: $color-neutral-primary-lightest;
         display: grid;
         justify-items: center;
-        padding: rhythm(1);
+        padding: rhythm(1.5);
         height: 100%;
         small {
             text-transform: uppercase;
@@ -24,9 +24,9 @@
     }
 }
 [class*="color-"] {
-    height: rhythm(4);
-    width: rhythm(4);
-    border-radius: rhythm(2);
+    height: rhythm(6);
+    width: rhythm(6);
+    border-radius: rhythm(3);
 }
 .color-neutral-primary-default {
     background-color: $color-neutral-primary-default;

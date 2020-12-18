@@ -1,5 +1,10 @@
 @import "../../../styles/variables";
 
+$toggle-full-width: rhythm(6);
+$toggle-full-height: rhythm(3);
+$toggle-slider-padding: rhythm(.25);
+$toggle-transition-duration: .3s;
+
 .pa-field {
     flex-direction: row;
     justify-content: space-between;
@@ -17,9 +22,9 @@
 
 .pa-toggle-container {
     position: relative;
-    width: rhythm(4);
-    min-width: rhythm(4);
-    height: rhythm(2);
+    width: $toggle-full-width;
+    min-width: $toggle-full-width;
+    height: $toggle-full-height;
     box-sizing: border-box;
 
     input {
@@ -28,31 +33,29 @@
     }
 
     .pa-toggle-checkbox {
-        width: rhythm(4);
-        height: rhythm(2);
+        width: $toggle-full-width;
+        height: $toggle-full-height;
         opacity: 0;
     }
-
     .pa-toggle-slider {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        -webkit-transition: .3s;
-        transition: .3s;
-        border-radius: rhythm(2);
+        transition: $toggle-transition-duration;
+        border-radius: $toggle-full-height;
         background: $color-neutral-secondary-lighter;
         cursor: pointer;
         &:before {
             content: "";
             position: absolute;
             border-radius: 50%;
-            transition: 0.3s;
-            top: rhythm(.25);
-            right: rhythm(2.25);
-            bottom: rhythm(.25);
-            left: rhythm(.25);
+            transition: $toggle-transition-duration;
+            top: $toggle-slider-padding;
+            right: $toggle-full-width / 2 + $toggle-slider-padding;
+            bottom: $toggle-slider-padding;
+            left: $toggle-slider-padding;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
             background-color: $color-neutral-primary-lightest;
         }
@@ -62,9 +65,9 @@
         .pa-toggle-slider {
             background: $color-accent-primary-default;
             &:before {
-                -webkit-transform: translateX(rhythm(2));
-                -ms-transform: translateX(rhythm(2));
-                transform: translateX(rhythm(2));
+                -webkit-transform: translateX($toggle-full-width / 2);
+                -ms-transform: translateX($toggle-full-width / 2);
+                transform: translateX($toggle-full-width / 2);
             }
         }
     }

@@ -56,12 +56,12 @@
 @keyframes modal-in-content {
     0% {
         opacity: 0;
-        transform: translateY(rhythm(1));
+        transform: translateY(rhythm(1.5));
 
     }
     50% {
         opacity: 0;
-        transform: translateY(rhythm(1));
+        transform: translateY(rhythm(1.5));
     }
     100% {
         opacity: 1;
@@ -84,12 +84,12 @@
 @keyframes modal-out-content {
     0% {
         opacity: 1;
-        transform: translateY(rhythm(1));
+        transform: translateY(rhythm(1.5));
 
     }
     25% {
         opacity: 0;
-        transform: translateY(rhythm(1));
+        transform: translateY(rhythm(1.5));
     }
     100% {
         opacity: 0;

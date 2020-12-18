@@ -53,7 +53,7 @@
     }
 
     pa-icon:not(.pa-option-selected-icon) {
-        margin-right: rhythm(1);
+        margin-right: rhythm(1.5);
 
         &::ng-deep svg {
             fill: currentColor;

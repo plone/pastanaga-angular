@@ -1,9 +1,18 @@
+# 2.17.0 (2020-12-21)
+
+### Breaking changes
+
+- Spacing in base 8:
+    - Update our rhythm map to be base 8 instead of base 12 [mpellerin42]
+    - Update all components to use the new rhythm map [mpellerin42]
+
 # 2.16.0 (2020-12-18)
 
-### Feature
+### Breaking changes
 
--   **pa-select**: User can no longer type in pa-select [jCarret]
--   **pa-select**: pa-select free-text option removed [jCarret]
+- **pa-select**: 
+    - User can no longer type in pa-select [jCarret]
+    - free-text option removed [jCarret]
 
 # 2.15.8 (2020-12-17)
 

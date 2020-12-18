@@ -20,7 +20,7 @@
         fill: currentColor;
     }
     .pa-icon-text {
-        margin-right: rhythm(.5);
+        margin-right: rhythm(1);
     }
 
     &.pa-button-icon {
@@ -29,7 +29,7 @@
 
     &.pa-xsmall {
         font-size: font-size(xs);
-        line-height: rhythm(2);
+        line-height: rhythm(3);
         padding: $padding-button-xsmall;
 
         &.pa-button-icon {
@@ -42,7 +42,7 @@
 
     &.pa-small {
         font-size: font-size(s);
-        line-height: rhythm(2);
+        line-height: rhythm(3);
         padding: $padding-button-small;
 
         &.pa-button-icon {
@@ -55,7 +55,7 @@
 
     &.pa-medium {
         font-size: font-size(m);
-        line-height: rhythm(2.5);
+        line-height: rhythm(4);
         padding: $padding-button-medium;
 
         &.pa-button-icon {
@@ -68,7 +68,7 @@
 
     &.pa-large {
         font-size: font-size(m);
-        line-height: rhythm(3.5);
+        line-height: rhythm(6);
         padding: $padding-button-large;
 
         &.pa-button-icon {

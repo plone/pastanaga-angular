@@ -2,14 +2,14 @@
 
 .demo-menu-button {
     position: absolute;
-    top: rhythm(1.5);
-    right: rhythm(1.5);
+    top: rhythm(2);
+    right: rhythm(2);
     z-index: 3;
 }
 
 pa-side-nav-header img {
     max-width: 100%;
-    max-height: rhythm(6);
+    max-height: rhythm(9);
 }
 
 @media (min-width: $size-viewport-large-min) {
@@ -18,7 +18,7 @@ pa-side-nav-header img {
             max-width: 180px;
         }
         .section {
-            padding-top: rhythm(1);
+            padding-top: rhythm(1.5);
         }
     }
 }

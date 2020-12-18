@@ -33,18 +33,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: rhythm(1);
-    min-width: rhythm(20);
+    padding: rhythm(1.5);
+    min-width: rhythm(28);
     box-shadow: $shadow-default;
     will-change: transform, opacity;
 }
 
 pa-icon {
-    margin-right: rhythm(1);
+    margin-right: rhythm(1.5);
 }
 
 .pa-toast-button {
-    margin-left: rhythm(4);
+    margin-left: rhythm(6);
     background: transparent;
     border: none;
     color: $color-neutral-primary-lightest;
@@ -61,22 +61,22 @@ pa-icon {
 @-webkit-keyframes toastin {
     from {
         opacity: 0;
-        transform: translateY(- rhythm(5.5));
+        transform: translateY(- rhythm(8));
     }
     to {
         opacity: 1;
-        transform: translateY(rhythm(2));
+        transform: translateY(rhythm(3));
     }
 }
 
 @keyframes toastin {
     from {
         opacity: 0;
-        transform: translateY(- rhythm(5.5));
+        transform: translateY(- rhythm(8));
     }
     to {
         opacity: 1;
-        transform: translateY(rhythm(2));
+        transform: translateY(rhythm(3));
     }
 }
 
@@ -86,7 +86,7 @@ pa-icon {
     }
     to {
         opacity: 0;
-        transform: translateY(- rhythm(5.5));
+        transform: translateY(- rhythm(8));
     }
 }
 
@@ -96,6 +96,6 @@ pa-icon {
     }
     to {
         opacity: 0;
-        transform: translateY(- rhythm(5.5));
+        transform: translateY(- rhythm(8));
     }
 }

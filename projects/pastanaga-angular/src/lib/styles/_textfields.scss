@@ -84,7 +84,7 @@ select:-webkit-autofill:focus {
         &:not(:disabled):not(:read-only):active {
             &~.pa-field-label {
                 transform: scale(.8) translateY(-2rem) translateX(-.25rem);
-                padding: 0 rhythm(.5);
+                padding: 0 rhythm(1);
             }
         }
         &.cdk-text-field-autofilled:not(:disabled):not(:read-only) {

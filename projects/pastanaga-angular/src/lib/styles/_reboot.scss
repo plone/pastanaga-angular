@@ -101,7 +101,7 @@ ol,
 ul,
 dl {
     margin-top: 0;
-    margin-bottom: rhythm(1);
+    margin-bottom: rhythm(1.5);
 }
 
 ol ol,
@@ -117,7 +117,7 @@ dt {
 
 dd {
     font-weight: $font-weight-dd;
-    margin-bottom: rhythm(.5);
+    margin-bottom: rhythm(1);
     margin-left: 0; // Undo browser default
 }
 

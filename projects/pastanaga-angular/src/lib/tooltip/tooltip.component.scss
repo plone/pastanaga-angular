@@ -10,7 +10,7 @@
     -webkit-box-shadow: $shadow-tooltip;
     box-shadow: $shadow-tooltip;
     border-radius: 1px;
-    padding: rhythm(.75);
+    padding: rhythm(1);
     background: $color-neutral-primary-default;
     color: $color-neutral-primary-lightest;
     @include size(xs);
@@ -39,7 +39,7 @@
 
 .pa-tooltip > kbd, .pa-tooltip-system > kbd {
     top: 0;
-    margin-left: rhythm(.5);
+    margin-left: rhythm(1);
     margin-right: - rhythm(.25);
     color: $color-neutral-primary-lightest;
     line-height: 0;

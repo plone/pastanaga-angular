@@ -14,14 +14,14 @@
     }
 }
 .select-input {
-    height: rhythm(3.5);
+    height: rhythm(6);
 }
 
 .pa-field.pa-select {
     position: relative;
 
-    $icon-width: rhythm(2);
-    $icon-right-padding: rhythm(.5);
+    $icon-width: rhythm(3);
+    $icon-right-padding: rhythm(1);
     .pa-select-chevron {
 
         cursor: pointer;
