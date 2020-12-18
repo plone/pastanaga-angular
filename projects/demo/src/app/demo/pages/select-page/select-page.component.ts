@@ -23,7 +23,6 @@ export class SelectPageComponent implements OnInit, OnDestroy {
 
     formControl1 = new FormControl('user2');
     formControl2 = new FormControl();
-    formControl3 = new FormControl();
 
     formGroup = new FormGroup({
         select1: new FormControl('user2'),
@@ -40,7 +39,6 @@ export class SelectPageComponent implements OnInit, OnDestroy {
     pattern = new RegExp('.?user.?');
     selectedValue1 = 'user2';
     selectedValue2 = '';
-    selectedValue3 = '';
     firstFocused = false;
     options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
         new OptionHeaderModel({ id: 'audio', label: 'Audio' }),
@@ -171,12 +169,6 @@ onSubmit() {
         this.formControl2.statusChanges.pipe(takeUntil(this.terminator)).subscribe((status) => {
             this.formControlStatusChangeEvent = status;
         });
-        this.formControl3.valueChanges.pipe(takeUntil(this.terminator)).subscribe((value) => {
-            this.formControlValueChangeEvent = value;
-        });
-        this.formControl3.statusChanges.pipe(takeUntil(this.terminator)).subscribe((status) => {
-            this.formControlStatusChangeEvent = status;
-        });
 
         this.formGroup.valueChanges.pipe(takeUntil(this.terminator)).subscribe((value) => {
             this.formGroupValueChangeEvent = value;
@@ -186,6 +178,17 @@ onSubmit() {
         });
     }
 
+    toggleDisableForms() {
+        if (this.disabledState) {
+            this.formControl1.disable();
+            this.formControl2.disable();
+            this.formGroup.disable();
+        } else {
+            this.formControl1.enable();
+            this.formControl2.enable();
+            this.formGroup.enable();
+        }
+    }
     ngOnDestroy() {
         this.terminator.next();
         this.terminator.complete();

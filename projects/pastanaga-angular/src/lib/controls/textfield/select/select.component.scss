@@ -1,17 +1,38 @@
 @import "../../../styles/variables";
 
-.pa-select {
+.select-value {
+    font-weight: $font-weight-regular;
+    &.placeholder {
+        color: $color-text-field-control-placeholder-regular;
+        font-weight: $font-weight-placeholder;
+        opacity: 0;
+        transition: all 0s ease;
+        &.active {
+            opacity: 1;
+            transition: all 1s ease;
+        }
+    }
+}
+.select-input {
+    height: rhythm(3.5);
+}
+
+.pa-field.pa-select {
     position: relative;
 
     $icon-width: rhythm(2);
     $icon-right-padding: rhythm(.5);
     .pa-select-chevron {
+
         cursor: pointer;
         position: absolute;
         right: $icon-right-padding;
         top: 50%;
         transform: translateY(-50%);
         width: $icon-width;
+        &.opened {
+            transform: translateY(-50%) rotate(180deg);
+        }
     }
     &.pa-field-disabled {
         color: $color-text-field-control-disabled;
@@ -26,6 +47,46 @@
     }
     .pa-field-control {
         padding-right: calc(#{$icon-width + $icon-right-padding});
+            &:read-only {
+                border: $border-field-regular;
+                &:not(.disabled):not(.read-only) {
+                    &:hover {
+                        border: $border-field-regular-hover;
+                        margin: 0;
+                    }
+
+                    &:focus,
+                    &:active {
+                        border: $border-field-regular-active;
+                        margin: 0;
+
+                        &::placeholder {
+                            opacity: 1;
+                            transition: all 1s ease;
+                        }
+
+                        &~.pa-field-label {
+                            color: $color-text-field-label-regular-active;
+                        }
+                    }
+                }
+
+                &.disabled {
+                    border: $border-field-disabled;
+                    color: $color-text-field-control-disabled;
+
+                    &~.pa-field-label {
+                        color: $color-text-field-label-disabled;
+                    }
+                }
+                &.read-only {
+                    border: $border-field-readonly;
+                }
+            }
+            &.pa-keyboard-focus {
+                border: $border-field-autofilled;
+                box-shadow: none;
+            }
     }
     .pa-field-label {
         white-space: nowrap;

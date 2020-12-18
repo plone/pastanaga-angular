@@ -1,3 +1,10 @@
+# 2.16.0 (2020-12-18)
+
+### Feature
+
+-   **pa-select**: User can no longer type in pa-select [jCarret]
+-   **pa-select**: pa-select free-text option removed [jCarret]
+
 # 2.15.8 (2020-12-17)
 
 ### Improvement

@@ -3,14 +3,11 @@ import {
     clearFakeAsyncZone,
     thenErrorIsDisplayed,
     thenErrorIsNotDisplayed,
-    thenFieldControlHasValue,
-    thenFieldControlIsRequired,
     thenFormFieldHasError,
     thenFormFieldHasNoError,
     whenParentSets,
     whenUserBlurControl,
     whenUserClicksControl,
-    whenUserInputs,
 } from '../../form-field-test-utils.spec';
 import { By } from '@angular/platform-browser';
 import { AbstractControl } from '@angular/forms';
@@ -32,44 +29,6 @@ export const TEST_OPTIONS: (OptionModel | OptionSeparator | OptionHeaderModel)[]
     new OptionSeparator(),
 ];
 
-export function testPatternForSelect(fixture: ComponentFixture<any>) {
-    fixture.componentInstance.suggestionMode = true;
-    clearFakeAsyncZone(fixture);
-    whenUserInputs(fixture, 'make component dirty');
-    whenUserBlurControl(fixture);
-    whenParentSets('pattern', 'test', fixture);
-    thenFormFieldHasError(fixture);
-
-    whenUserInputs(fixture, 'test');
-    whenUserBlurControl(fixture);
-    thenFormFieldHasNoError(fixture);
-}
-
-export function testMaxlengthForSelect(fixture: ComponentFixture<any>) {
-    fixture.componentInstance.suggestionMode = true;
-    clearFakeAsyncZone(fixture);
-    whenUserInputs(fixture, 'a long text');
-    whenUserBlurControl(fixture);
-    whenParentSets('maxlength', 3, fixture);
-    thenFormFieldHasError(fixture);
-
-    whenParentSets('maxlength', undefined, fixture);
-    thenFormFieldHasNoError(fixture);
-}
-
-export function testOnEnterSelect(fixture: ComponentFixture<any>) {
-    fixture.componentInstance.suggestionMode = true;
-    clearFakeAsyncZone(fixture);
-    const spy = jest.spyOn(fixture.componentInstance, 'onValueChange');
-    whenUserInputs(fixture, 'test');
-    expect(spy).not.toHaveBeenCalled();
-    fixture.componentInstance.paField.onEnter();
-    fixture.detectChanges();
-    tick();
-    expect(spy).toHaveBeenCalled();
-    thenFieldControlHasValue(fixture, 'test');
-}
-
 /**
  * Theoretical Use Case, user cannot focus/input/blur a readonly or disabled input,
  * unless he hacks the html
@@ -79,12 +38,13 @@ export function testNoChangeForInactive(fixture: ComponentFixture<any>) {
     clearFakeAsyncZone(fixture);
     const spyOnChange = jest.spyOn(fixture.componentInstance, 'onValueChange');
     whenParentSets('readonly', true, fixture);
-    whenUserInputs(fixture, 'test');
-    whenUserBlurControl(fixture);
+    whenUserClicksControl(fixture);
+    whenUserClicksControl(fixture);
     expect(spyOnChange).not.toHaveBeenCalled();
     whenParentSets('readonly', false, fixture);
     whenParentSets('disabled', true, fixture);
-    whenUserInputs(fixture, 'test');
+    whenUserClicksControl(fixture);
+    whenUserClicksControl(fixture);
     whenUserBlurControl(fixture);
     expect(spyOnChange).not.toHaveBeenCalled();
 }
@@ -99,16 +59,16 @@ export function testNoChangeForInactiveReactive(fixture: ComponentFixture<any>, 
     const spyOnChange = jest.spyOn(fixture.componentInstance, 'onValueChange');
 
     whenParentSets('readonly', true, fixture);
-    whenUserInputs(fixture, 'test');
-    whenUserBlurControl(fixture);
+    whenUserClicksControl(fixture);
+    whenUserClicksControl(fixture);
     expect(spyOnChange).not.toHaveBeenCalled();
     whenParentSets('readonly', false, fixture);
     control.disable();
     fixture.detectChanges();
     tick();
 
-    whenUserInputs(fixture, 'test');
-    whenUserBlurControl(fixture);
+    whenUserClicksControl(fixture);
+    whenUserClicksControl(fixture);
     expect(spyOnChange).not.toHaveBeenCalled();
 }
 
@@ -130,55 +90,6 @@ export function testSelectOption(fixture: ComponentFixture<any>) {
     whenUserClicksControl(fixture);
     whenUserClicksOption(fixture, 'user1');
     expect(spy).toHaveBeenCalledWith('user1');
-}
-
-export function testUserInputMatchOptionLabel(fixture: ComponentFixture<any>) {
-    clearFakeAsyncZone(fixture);
-    whenUserClicksControl(fixture);
-    whenUserInputs(fixture, 'User 3');
-    whenUserBlurControl(fixture);
-    thenSelectHasValue(fixture, 'user3', 'User 3');
-    thenSelectedOptionIs(fixture, 'user3');
-}
-
-export function testUserInputNotMatchingOptionLabel(fixture: ComponentFixture<any>) {
-    clearFakeAsyncZone(fixture);
-    const spy = jest.spyOn(fixture.componentInstance, 'onValueChange');
-    whenUserClicksOption(fixture, 'user1');
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith('user1');
-    whenUserClicksControl(fixture);
-    whenUserInputs(fixture, 'Use');
-    whenUserBlurControl(fixture);
-    thenSelectHasValue(fixture, 'user1', 'User 1');
-    thenSelectedOptionIs(fixture, 'user1');
-    // no other call were performed
-    expect(spy).toHaveBeenCalledTimes(1);
-}
-
-export function testApplyUserInputInSuggestionMode(fixture: ComponentFixture<any>) {
-    fixture.componentInstance.suggestionMode = true;
-    clearFakeAsyncZone(fixture);
-
-    const spy = jest.spyOn(fixture.componentInstance, 'onValueChange');
-    whenUserClicksOption(fixture, 'user1');
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith('user1');
-    whenUserClicksControl(fixture);
-    whenUserInputs(fixture, 'Use');
-    whenUserBlurControl(fixture);
-
-    thenSelectHasValue(fixture, 'Use', 'Use');
-    thenNoOptionSelected(fixture);
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(spy).toHaveBeenCalledWith('Use');
-}
-export function testFilterOptions(fixture: ComponentFixture<any>) {
-    clearFakeAsyncZone(fixture);
-    whenUserClicksControl(fixture);
-    thenVisibleOptionCountIs(fixture, 6);
-    whenUserInputs(fixture, 'User');
-    thenVisibleOptionCountIs(fixture, 3);
 }
 
 export function testParentAssignValue(fixture: ComponentFixture<any>) {
@@ -204,7 +115,6 @@ export function testParentAssignValueReactive(fixture: ComponentFixture<any>, co
 }
 
 export function testShowAllErrorsForSelect(fixture: ComponentFixture<any>) {
-    fixture.componentInstance.suggestionMode = true;
     clearFakeAsyncZone(fixture);
     whenParentSets('showAllErrors', true, fixture);
     whenParentSets(
@@ -217,8 +127,9 @@ export function testShowAllErrorsForSelect(fixture: ComponentFixture<any>) {
     );
     whenParentSets('pattern', 'test', fixture);
     whenParentSets('maxlength', 2, fixture);
-    whenUserInputs(fixture, 'no match for all validators');
-    whenUserBlurControl(fixture);
+    fixture.componentInstance.paField.control.patchValue('no match for all validators');
+    whenUserClicksControl(fixture); // open
+    whenUserClicksControl(fixture); // close
     thenErrorIsDisplayed(fixture, 'wrong length, wrong pattern');
 
     whenParentSets('showAllErrors', false, fixture);
@@ -228,17 +139,13 @@ export function testShowAllErrorsForSelect(fixture: ComponentFixture<any>) {
 export function testRequiredForSelect(fixture: ComponentFixture<any>) {
     fixture.componentInstance.suggestionMode = true;
     clearFakeAsyncZone(fixture);
-    whenUserInputs(fixture, 'make component dirty');
-    whenUserBlurControl(fixture);
     whenParentSets('required', true, fixture);
-    thenFieldControlIsRequired(fixture, true);
+    whenUserClicksControl(fixture); // open
+    whenUserClicksControl(fixture); // close
 
-    whenUserInputs(fixture, '');
-    whenUserBlurControl(fixture);
-    thenFormFieldHasError(fixture);
+    expect(fixture.componentInstance.paField.control.valid).toEqual(false);
 
     whenParentSets('required', false, fixture);
-    thenFieldControlIsRequired(fixture, false);
     thenFormFieldHasNoError(fixture);
 }
 
@@ -249,8 +156,9 @@ export function testErrorMessagesForSelect(fixture: ComponentFixture<any>) {
     whenParentSets('showAllErrors', true, fixture);
     whenParentSets('pattern', 'test', fixture);
     whenParentSets('maxlength', 2, fixture);
-    whenUserInputs(fixture, 'no match for all validators');
-    whenUserBlurControl(fixture);
+    fixture.componentInstance.paField.control.patchValue('no match for all validators');
+    whenUserClicksControl(fixture);
+    whenUserClicksControl(fixture);
     thenFormFieldHasError(fixture);
     thenErrorIsNotDisplayed(fixture);
 
@@ -314,7 +222,4 @@ export function thenNoOptionSelected(fixture: ComponentFixture<any>) {
 export function thenSelectHasValue(fixture: ComponentFixture<any>, value: string, label: string) {
     expect(fixture.componentInstance.paField.model).toEqual(value);
     expect(fixture.componentInstance.paField.control.value).toEqual(value);
-
-    const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.nativeElement.value).toEqual(label);
 }
