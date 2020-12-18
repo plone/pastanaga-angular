@@ -2,38 +2,32 @@
      [class.pa-field-readonly]="_readonly"
      [class.pa-field-disabled]="control.disabled"
      [class.pa-field-error]="control.dirty && control.invalid">
-
-    <input #selectInput
-           class="pa-field-control"
-           type="text"
-           autocomplete='off'
-           [(ngModel)]="displayedValue"
-           [ngModelOptions]="{standalone: true}"
-           [class.pa-field-control-filled]="!!displayedValue || displayedValue === 0"
-           [id]="_elementId"
-           [attr.name]="_name"
-           [attr.aria-label]="label"
-           [attr.aria-describedby]="_describedBy"
-           [attr.placeholder]="placeholder"
-           [readonly]="_readonly"
-           [disabled]="control.disabled"
-           [required]="required"
-           [paPopup]="optionsDropdown"
-           [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '42px'}"
-           [popupDisabled]="control.disabled || _readonly"
-           (input)="selectInputChanged($event.target.value)"
-           (keyup.enter)="onEnter()"
-           cdkMonitorElementFocus
-           (cdkFocusChange)="onFocus($event)"
-           (blur)="onBlur()"
-    >
-
+    <div #selectInput class="select-input pa-field-control"
+         [class.pa-field-control-filled]="(!!selectedLabel && selectedLabel.length) || (optionsDisplayed && !!displayedLabel)"
+         [class.read-only]="_readonly"
+         [class.disabled]="control.disabled"
+         [id]="_elementId"
+         [attr.name]="_name"
+         [attr.aria-label]="label"
+         [attr.aria-describedby]="_describedBy"
+         paFocusable
+         [paPopup]="optionsDropdown"
+         [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '42px'}"
+         [popupDisabled]="control.disabled || _readonly"
+         cdkMonitorElementFocus
+         (cdkFocusChange)="onFocus($event)">
+        <span class="select-value"
+              [class.placeholder]="!selectedLabel"
+              [class.active]="optionsDisplayed"
+        >{{displayedLabel}}</span>
+    </div>
     <label class="pa-field-label"
            [for]="_id"
            [attr.aria-owns]="_id"
     >{{label}}</label>
 
     <pa-icon class="pa-select-chevron"
+             [class.opened]="optionsDisplayed"
              name="chevron-down"
              (click)="toggleDropdown()"></pa-icon>
 

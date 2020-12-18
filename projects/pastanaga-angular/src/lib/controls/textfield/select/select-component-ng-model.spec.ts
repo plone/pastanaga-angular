@@ -8,30 +8,22 @@ import { initTest } from '../../form-field-test-utils.spec';
 import {
     testDescribedBy,
     testDisabled,
-    testErrorMessage,
     testHelp,
     testId,
     testName,
     testNoErrorForPristine,
-    testPlaceholder,
     testReadonly,
 } from '../input/common-behaviors.spec';
 import { SelectComponent } from './select.component';
 import {
     TEST_OPTIONS,
-    testApplyUserInputInSuggestionMode,
     testErrorMessagesForSelect,
-    testFilterOptions,
-    testMaxlengthForSelect,
     testNoChangeForInactive,
     testParentAssignValue,
-    testPatternForSelect,
     testRequiredForSelect,
     testSelectOption,
     testShowAllErrorsForSelect,
     testToggleDropDownWithInputClick,
-    testUserInputMatchOptionLabel,
-    testUserInputNotMatchingOptionLabel,
 } from './common-behaviors.spec';
 
 @Component({
@@ -50,7 +42,6 @@ import {
             [errorMessage]="errorMessage"
             [updateOn]="updateOn"
             [(ngModel)]="value"
-            [suggestionMode]="suggestionMode"
             [placeholder]="placeholder"
             [required]="required"
             [pattern]="pattern"
@@ -90,13 +81,10 @@ export class TemplateOptionsTestComponent {
     pattern?: string | RegExp;
     maxlength?: number;
     label = 'the label';
-    suggestionMode = false;
 
-    onValueChange(event: any) {
-    }
+    onValueChange(event: any) {}
 
-    onExpanded(event: any) {
-    }
+    onExpanded(event: any) {}
 }
 
 describe('SelectComponent ngModel template options', () => {
@@ -104,7 +92,11 @@ describe('SelectComponent ngModel template options', () => {
     let fixture: ComponentFixture<TemplateOptionsTestComponent>;
     beforeEach(async(() => {
         nextId++;
-        fixture = initTest(TemplateOptionsTestComponent, SelectComponent, [PaIconModule, PaDropdownModule, PaPopupModule]);
+        fixture = initTest(TemplateOptionsTestComponent, SelectComponent, [
+            PaIconModule,
+            PaDropdownModule,
+            PaPopupModule,
+        ]);
     }));
 
     it('should assign id', fakeAsync(() => testId(fixture, nextId, 'select')));
@@ -121,15 +113,7 @@ describe('SelectComponent ngModel template options', () => {
 
     it('should not show errors when pristine', fakeAsync(() => testNoErrorForPristine(fixture)));
 
-    it('should apply errorMessage', fakeAsync(() => testErrorMessage(fixture)));
-
-    it('should assign placeholder', fakeAsync(() => testPlaceholder(fixture)));
-
     it('should validate required', fakeAsync(() => testRequiredForSelect(fixture)));
-
-    it('should validate pattern', fakeAsync(() => testPatternForSelect(fixture)));
-
-    it('should validate maxlength', fakeAsync(() => testMaxlengthForSelect(fixture)));
 
     it('should not propagate change when component is not active', fakeAsync(() => testNoChangeForInactive(fixture)));
 
@@ -137,20 +121,11 @@ describe('SelectComponent ngModel template options', () => {
 
     it('should select option from template', fakeAsync(() => testSelectOption(fixture)));
 
-    it('should filter options when typing', fakeAsync(() => testFilterOptions(fixture)));
-
     it('should have parent value selected', fakeAsync(() => testParentAssignValue(fixture)));
 
     it('should apply showAllErrors', fakeAsync(() => testShowAllErrorsForSelect(fixture)));
 
     it('should display errorMessages', fakeAsync(() => testErrorMessagesForSelect(fixture)));
-
-    it('should apply option value when user input match an option label', fakeAsync(() => testUserInputMatchOptionLabel(fixture)));
-
-    it('should keep actual value when user input does not match an option label',
-        fakeAsync(() => testUserInputNotMatchingOptionLabel(fixture)));
-
-    it('should apply user input on blur when suggestionMode is on', fakeAsync(() => testApplyUserInputInSuggestionMode(fixture)));
 });
 
 @Component({
@@ -170,7 +145,6 @@ describe('SelectComponent ngModel template options', () => {
             [errorMessage]="errorMessage"
             [updateOn]="updateOn"
             [(ngModel)]="value"
-            [suggestionMode]="suggestionMode"
             [placeholder]="placeholder"
             [required]="required"
             [pattern]="pattern"
@@ -201,13 +175,10 @@ export class ParameterOptionsTestComponent {
     pattern?: string | RegExp;
     maxlength?: number;
     label = 'the label';
-    suggestionMode = false;
     options = TEST_OPTIONS;
-    onValueChange(event: any) {
-    }
+    onValueChange(event: any) {}
 
-    onExpanded(event: any) {
-    }
+    onExpanded(event: any) {}
 }
 
 describe('SelectComponent ngModel parameter options', () => {
@@ -215,7 +186,11 @@ describe('SelectComponent ngModel parameter options', () => {
     let fixture: ComponentFixture<ParameterOptionsTestComponent>;
     beforeEach(async(() => {
         nextId++;
-        fixture = initTest(ParameterOptionsTestComponent, SelectComponent, [PaIconModule, PaDropdownModule, PaPopupModule]);
+        fixture = initTest(ParameterOptionsTestComponent, SelectComponent, [
+            PaIconModule,
+            PaDropdownModule,
+            PaPopupModule,
+        ]);
     }));
 
     it('should assign readonly', fakeAsync(() => testReadonly(fixture)));
@@ -224,13 +199,7 @@ describe('SelectComponent ngModel parameter options', () => {
 
     it('should not show errors when pristine', fakeAsync(() => testNoErrorForPristine(fixture)));
 
-    it('should apply errorMessage', fakeAsync(() => testErrorMessage(fixture)));
-
     it('should validate required', fakeAsync(() => testRequiredForSelect(fixture)));
-
-    it('should validate pattern', fakeAsync(() => testPatternForSelect(fixture)));
-
-    it('should validate maxlength', fakeAsync(() => testMaxlengthForSelect(fixture)));
 
     it('should not propagate change when component is not active', fakeAsync(() => testNoChangeForInactive(fixture)));
 

@@ -3,7 +3,7 @@ import { ComponentFixture, flush, TestBed, tick } from '@angular/core/testing';
 import { AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { SvgIconRegistryService } from 'angular-svg-icon';
-import { MockService } from "ng-mocks";
+import { MockService } from 'ng-mocks';
 
 it('is a toolkit for form fields tests', () => {
     expect(true).toEqual(true);
@@ -13,10 +13,12 @@ export function initTest<T>(component: Type<T>, testedComponent: any, otherModul
     const additionalModules = !!otherModules ? otherModules : [];
     TestBed.configureTestingModule({
         imports: [FormsModule, ReactiveFormsModule, ...additionalModules],
-        providers: [{
-            provide: SvgIconRegistryService,
-            useValue: MockService(SvgIconRegistryService)
-        }],
+        providers: [
+            {
+                provide: SvgIconRegistryService,
+                useValue: MockService(SvgIconRegistryService),
+            },
+        ],
         declarations: [testedComponent, component],
     }).compileComponents();
     return TestBed.createComponent(component);
@@ -122,12 +124,14 @@ export function thenFieldControlHasDescribedBy(fixture: ComponentFixture<any>, d
 
 export function thenFieldControlIsReadonly(fixture: ComponentFixture<any>, readonly: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.properties.readOnly).toEqual(readonly);
+    const hasReadonly = control.properties.readOnly || control.classes['read-only'];
+    expect(hasReadonly).toEqual(readonly);
 }
 
 export function thenFieldControlIsDisabled(fixture: ComponentFixture<any>, disabled: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
-    expect(control.attributes['ng-reflect-is-disabled']).toEqual('' + disabled);
+    const hasDisabled = control.attributes['ng-reflect-is-disabled'] === `${disabled}` || control.classes.disabled;
+    expect(hasDisabled).toEqual(disabled);
 }
 
 export function thenErrorIsDisplayed(fixture: ComponentFixture<any>, errorMessage?: string) {
@@ -181,6 +185,7 @@ export function thenFieldControlHasPlaceholder(fixture: ComponentFixture<any>, p
 
 export function thenFieldControlIsRequired(fixture: ComponentFixture<any>, required: boolean) {
     const control = fixture.debugElement.query(By.css('.pa-field-control'));
+
     expect(control.attributes['ng-reflect-required']).toEqual('' + required);
     if (required) {
         expect(control.nativeElement.required).toBeTruthy();

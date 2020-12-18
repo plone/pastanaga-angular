@@ -1,26 +1,25 @@
 import {
-    Component,
-    ChangeDetectionStrategy,
-    Optional,
-    Self,
-    NgZone,
-    ChangeDetectorRef,
-    SimpleChanges,
-    Input,
-    Output,
-    EventEmitter,
-    ViewChild,
-    ElementRef,
     AfterViewInit,
-    QueryList,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
     ContentChildren,
-    OnDestroy,
+    ElementRef,
+    EventEmitter,
+    Input,
+    NgZone,
     OnChanges,
+    OnDestroy,
+    Optional,
+    Output,
+    QueryList,
+    Self,
+    SimpleChanges,
+    ViewChild,
 } from '@angular/core';
 import { BaseControl } from '../../base-control';
 import { NgControl, ValidatorFn, Validators } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
-import { AutofillMonitor } from '@angular/cdk/text-field';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { DropdownComponent } from '../../../dropdown/dropdown.component';
@@ -28,7 +27,6 @@ import { takeUntil } from 'rxjs/operators';
 import { detectChanges, markForCheck } from '../../../common';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { sanitizeStringValue } from '../../form-field.utils';
 import { FocusOrigin } from '@angular/cdk/a11y';
 
 @Component({
@@ -59,8 +57,6 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         return this._options;
     }
 
-    @Input() suggestionMode = false;
-
     @Input() set required(value: boolean) {
         this._required = coerceBooleanProperty(value);
     }
@@ -90,11 +86,12 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     readonly acceptHtmlTags = false;
 
     _options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
-    displayedValue?: string | number;
     optionsClosed = new Subject();
     _optionsAreNgContent = true;
     _required?: boolean;
     optionsDisplayed = false;
+    selectedLabel?: string;
+    displayedLabel?: string;
     _adjustHeight = false;
 
     requiredValidator?: ValidatorFn;
@@ -105,22 +102,17 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         @Optional() @Self() public parentControl: NgControl,
         protected platform: Platform,
         protected ngZone: NgZone,
-        public cdr: ChangeDetectorRef,
-        protected autofillMonitor: AutofillMonitor
+        public cdr: ChangeDetectorRef
     ) {
         super(parentControl, cdr);
         this._fieldKind = 'select';
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (this.shouldUpdateValidators(changes)) {
-            this.refreshInternalValidators();
-        }
         super.ngOnChanges(changes);
     }
 
     ngAfterViewInit(): void {
-        this.handleIosCaretPosition();
         this.handleInitialValue();
         this.focus();
     }
@@ -169,7 +161,8 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     };
 
     postValueChange = (): void => {
-        this.displayedValue = this.findLabelByValue(this.model);
+        this.selectedLabel = this.findLabelByValue(this.model);
+        this.displayedLabel = this.selectedLabel;
         this.flagSelectedOption();
         detectChanges(this.cdr);
         this.valueChange.emit(this.model);
@@ -180,7 +173,8 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
     };
 
     postWriteValue = (): void => {
-        this.displayedValue = this.findLabelByValue(this.model);
+        this.selectedLabel = this.findLabelByValue(this.model);
+        this.displayedLabel = this.selectedLabel;
         this.flagSelectedOption();
         detectChanges(this.cdr);
     };
@@ -204,28 +198,6 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         this.requiredValidator = this.required ? Validators.required : undefined;
         this.patternValidator = !!this.pattern ? Validators.pattern(this.pattern) : undefined;
         this.maxlengthValidator = !!this.maxlength ? Validators.maxLength(this.maxlength) : undefined;
-    }
-
-    filterOptions(optionLabel?: string | number) {
-        if (this.control.pristine) {
-            return;
-        }
-        this.hideIrrelevantOptions(`${optionLabel}`.toLocaleLowerCase());
-    }
-
-    hideIrrelevantOptions(displayedValue: any) {
-        if (!!this.ngContentOptions && this.ngContentOptions.length > 0) {
-            this.ngContentOptions.forEach((option) => {
-                option._hidden = !option.text.toLocaleLowerCase().includes(displayedValue);
-                option.refresh();
-            });
-            markForCheck(this.cdr);
-        }
-    }
-
-    selectInputChanged(optionLabel?: string | number) {
-        this.control.markAsDirty();
-        this.filterOptions(optionLabel);
     }
 
     toggleDropdown() {
@@ -257,38 +229,13 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         }
     }
 
-    onBlur() {
-        this.applyUserInput();
-    }
-
     onFocus(event: FocusOrigin) {
         if (!this.optionsDisplayed && event === 'keyboard') {
+            if (!this.selectedLabel) {
+                this.displayedLabel = this.placeholder;
+            }
             // open option dropdown
             this.clickOnSelectInput();
-        }
-    }
-
-    onEnter() {
-        if (!!this.optionsDropdown && this.optionsDropdown._isDisplayed) {
-            this.optionsDropdown.close();
-        }
-        if (!!this.selectInput) {
-            this.selectInput.nativeElement.blur();
-        }
-    }
-
-    applyUserInput() {
-        if (!this.isActive()) {
-            return;
-        }
-        const optionValueForUserInput = this.findValueByLabel();
-        if (!!optionValueForUserInput) {
-            this.onValueChange(optionValueForUserInput);
-        } else if (this.suggestionMode) {
-            const sanitized = sanitizeStringValue(this.displayedValue, this.acceptHtmlTags);
-            this.onValueChange(sanitized);
-        } else if (!!this.model) {
-            this.displayedValue = this.findLabelByValue(this.model);
         }
     }
 
@@ -298,34 +245,15 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
         }
     }
 
-    private handleIosCaretPosition() {
-        if (this.platform.IOS && !!this.selectInput) {
-            const input = this.selectInput;
-            this.ngZone.runOutsideAngular(() => {
-                input.nativeElement.addEventListener('keyup', (event: Event) => {
-                    const element = event.target as HTMLInputElement;
-                    if (!element.value && !element.selectionStart && !element.selectionEnd) {
-                        // Note: Just setting `0, 0` doesn't fix the issue. Setting
-                        // `1, 1` fixes it for the first time that you type text and
-                        // then hold delete. Toggling to `1, 1` and then back to
-                        // `0, 0` seems to completely fix it.
-                        element.setSelectionRange(1, 1);
-                        element.setSelectionRange(0, 0);
-                    }
-                });
-            });
-        }
-    }
-
     findValueByLabel(): string | null {
         if (!!this.ngContentOptions && this.ngContentOptions.length > 0) {
             const selectedComponent = this.ngContentOptions.find(
-                (optionComponent) => optionComponent.text === this.displayedValue
+                (optionComponent) => optionComponent.text === this.selectedLabel
             );
             return selectedComponent ? selectedComponent.value : null;
         } else {
             const selectedModel = this._options.find(
-                (option: OptionModel) => option.label === this.displayedValue
+                (option: OptionModel) => option.label === this.selectedLabel
             ) as OptionModel;
             return selectedModel ? selectedModel.value : null;
         }
@@ -340,20 +268,24 @@ export class SelectComponent extends BaseControl implements OnChanges, AfterView
             const selectedOption = this._options.find((option: OptionModel) => option.value === value);
             label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
         }
-        if (!label && this.suggestionMode) {
-            label = value;
-        }
         return label;
     }
 
     dropDownClosed() {
         this.optionsDisplayed = false;
+        this.control.markAsTouched();
+        this.control.markAsDirty();
+        this.control.updateValueAndValidity();
         this.optionsClosed.next();
         this.expanded.emit(false);
     }
 
     dropDownOpened() {
         this.optionsDisplayed = true;
+        if (!this.selectedLabel) {
+            this.displayedLabel = this.placeholder;
+            detectChanges(this.cdr);
+        }
         if (!this._optionsAreNgContent) {
             setTimeout(() => {
                 this.ngContentOptions?.forEach((option: OptionComponent, index) => {

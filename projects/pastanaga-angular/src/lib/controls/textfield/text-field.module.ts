@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
 import { A11yModule } from '@angular/cdk/a11y';
+import { PaFocusableModule } from '../../focusable/focusable.module';
 
 @NgModule({
     declarations: [InputComponent, DeprecatedTextareaComponent, SelectComponent],
@@ -19,6 +20,7 @@ import { A11yModule } from '@angular/cdk/a11y';
         PaPopupModule,
         FormsModule,
         ReactiveFormsModule,
+        PaFocusableModule,
     ],
     exports: [InputComponent, DeprecatedTextareaComponent, SelectComponent],
 })

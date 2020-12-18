@@ -21,7 +21,8 @@ export class SelectPageComponent implements OnInit, OnDestroy {
     formGroupValueChangeEvent?: any;
     formGroupStatusChangeEvent?: any;
 
-    formControl1 = new FormControl('user2');
+    // formControl1 = new FormControl('user2');
+    formControl1 = new FormControl();
     formControl2 = new FormControl();
     formControl3 = new FormControl();
 
@@ -38,7 +39,8 @@ export class SelectPageComponent implements OnInit, OnDestroy {
         pattern: 'regex test failed, should match user',
     };
     pattern = new RegExp('.?user.?');
-    selectedValue1 = 'user2';
+    // selectedValue1 = 'user2';
+    selectedValue1?: string;
     selectedValue2 = '';
     selectedValue3 = '';
     firstFocused = false;
@@ -186,6 +188,19 @@ onSubmit() {
         });
     }
 
+    toggleDisableForms() {
+        if (this.disabledState) {
+            this.formControl1.disable();
+            this.formControl2.disable();
+            this.formControl3.disable();
+            this.formGroup.disable();
+        } else {
+            this.formControl1.enable();
+            this.formControl2.enable();
+            this.formControl3.enable();
+            this.formGroup.enable();
+        }
+    }
     ngOnDestroy() {
         this.terminator.next();
         this.terminator.complete();
