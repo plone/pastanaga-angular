@@ -1,4 +1,10 @@
-# 2.17.0 (2020-12-21)
+# 2.17.1 (2020-12-21)
+
+### Bugfix
+
+- **pa-select**: Fix dropdown position under pa-select [mpellerin42]
+
+# 2.17.0 (2020-12-18)
 
 ### Breaking changes
 
