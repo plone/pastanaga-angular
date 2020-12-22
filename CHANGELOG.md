@@ -1,3 +1,9 @@
+# 2.17.2 (2020-12-22)
+
+### Improvements
+
+- **Buttons**: add transitions to background color and box shadows on hover and active states [mpellerin42]
+
 # 2.17.1 (2020-12-21)
 
 ### Bugfix
