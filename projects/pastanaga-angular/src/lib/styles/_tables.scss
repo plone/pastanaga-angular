@@ -69,6 +69,12 @@
         top: rhythm(6);
         z-index: 3;
     }
+
+    &:not(.pa-table-grid--row--last) {
+        .pa-table-grid--cell {
+            border-bottom: 1px $color-border-table-row solid;
+        }
+    }
 }
 
 .pa-table-grid--header,
@@ -79,7 +85,6 @@
 }
 
 .pa-table-grid--cell {
-    border-bottom: 1px $color-border-table-row solid;
     background: $color-background-table-row;
     color: $color-text-table-row;
 }

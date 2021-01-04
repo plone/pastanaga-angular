@@ -1,3 +1,7 @@
-<div class="pa-table-grid--row" [class.clickable]="_clickable" paFocusable [paFocusDisabled]="!_clickable">
+<div class="pa-table-grid--row"
+     paFocusable
+     [class.clickable]="_clickable"
+     [class.pa-table-grid--row--last]="_last"
+     [paFocusDisabled]="!_clickable">
     <ng-content></ng-content>
 </div>
