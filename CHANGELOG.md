@@ -1,3 +1,9 @@
+# 2.17.3 (2021-01-04)
+
+### Bugfix
+
+- **Tables**: Remove z-index from table header which was causing side effect on some pages [mpellerin42]
+
 # 2.17.2 (2020-12-22)
 
 ### Improvements
