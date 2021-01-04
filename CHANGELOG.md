@@ -1,3 +1,9 @@
+# 2.17.4 (2021-01-04)
+
+### Improvements
+
+- **Tables**: add `last` input to table row component allowing to style properly row's border bottom (last row without border bottom) [mpellerin42]
+
 # 2.17.3 (2021-01-04)
 
 ### Bugfix
