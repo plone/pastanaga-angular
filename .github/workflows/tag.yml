@@ -1,0 +1,17 @@
+name: Tag version
+env:
+    CI: true
+on:
+    push:
+        branches:
+            - master
+            - 2.x
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v2
+            - name: setup Node
+              uses: actions/setup-node@v1
+            - run: ./tag-version.sh
