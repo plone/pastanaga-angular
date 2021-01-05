@@ -1,3 +1,9 @@
+# 2.17.5 (2021-01-05)
+
+### Bugfix
+
+- **Dropdown**: Increase max-width of dropdown on large viewports [jlp0328]
+
 # 2.17.4 (2021-01-04)
 
 ### Improvements
