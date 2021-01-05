@@ -1,3 +1,9 @@
+# 1.18.19 (2021-01-05)
+
+### Improvements
+
+-   Use GitHub Actions instead of Travis [ebrehault]
+
 # 1.18.18 (2020-12-03)
 
 ### Improvements
