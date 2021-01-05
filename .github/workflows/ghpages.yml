@@ -5,15 +5,14 @@ on:
         branches:
             - master
             - 2.x
-
+env:
+    GH_ACTIONS_TOKEN: ${{ secrets.GH_ACTIONS_TOKEN }}
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
-              with:
-                  github_token: ${{ secrets.GH_ACTIONS_TOKEN }}
             - run: npm install
-            - run: npm run build:demo
+            - run: npm run build_demo
             - run: ./ghpages.sh

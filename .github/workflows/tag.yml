@@ -1,4 +1,4 @@
-name: Tag version
+name: Tag version and publish
 env:
     CI: true
 on:
@@ -15,3 +15,8 @@ jobs:
             - name: setup Node
               uses: actions/setup-node@v1
             - run: ./tag-version.sh
+            - run: npm install && npm run build_lib
+            - uses: JS-DevTools/npm-publish@v1
+              with:
+                  token: ${{ secrets.NPM_TOKEN }}
+                  package: ./dist/pastanaga-angular/package.json
