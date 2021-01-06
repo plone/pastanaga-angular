@@ -15,4 +15,4 @@ jobs:
             - uses: actions/setup-node@v1
             - run: npm install
             - run: npm run build:demo
-            - run: ./ghpages.sh ${{ secrets.GH_ACTIONS_TOKEN }}
+            - run: ./ghpages.sh
