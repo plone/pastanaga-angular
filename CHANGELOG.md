@@ -1,3 +1,9 @@
+# 1.19.0 (2021-01-06)
+
+### Improvements
+
+-   Upgrade to Angular 11 [ebrehault]
+
 # 1.18.19 (2021-01-05)
 
 ### Improvements
