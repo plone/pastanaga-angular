@@ -1,3 +1,9 @@
+# 2.17.6 (2021-01-07)
+
+### Improvement
+
+- **Popup**: Add `openOnHover` attribute to popup directive [mpellerin42]
+
 # 2.17.5 (2021-01-05)
 
 ### Bugfix

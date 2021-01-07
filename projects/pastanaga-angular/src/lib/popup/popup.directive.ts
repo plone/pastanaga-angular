@@ -12,6 +12,13 @@ export class PopupDirective implements OnInit {
     @Input() paPopup?: PopupComponent;
     @Input() popupPosition?: PositionStyle;
     @Input()
+    set openOnHover(value: boolean) {
+        this._openOnHover = coerceBooleanProperty(value);
+    }
+    get openOnHover(): boolean {
+        return this._openOnHover;
+    }
+    @Input()
     get popupOnRight(): boolean {
         return this._popupOnRight;
     }
@@ -40,13 +47,14 @@ export class PopupDirective implements OnInit {
         this._disabled = coerceBooleanProperty(value);
     }
 
-    _rootParent?: HTMLElement;
-    _remoteElement?: HTMLElement;
-    _disabled = false;
+    private _rootParent?: HTMLElement;
+    private _remoteElement?: HTMLElement;
+    private _disabled = false;
 
-    _popupOnRight = false;
-    _popupOnTop = false;
-    _sameWidth = false;
+    private _popupOnRight = false;
+    private _popupOnTop = false;
+    private _sameWidth = false;
+    private _openOnHover = false;
 
     constructor(private element: ElementRef, private service: PopupService) {}
 
@@ -55,24 +63,13 @@ export class PopupDirective implements OnInit {
     }
 
     @HostListener('click', ['$event'])
-    onClick($event: MouseEvent, override?: PositionStyle, isContextual?: boolean, useLast?: boolean) {
+    onClick($event: MouseEvent) {
         if (!this._disabled) {
-            const menu = this.paPopup;
-            if (!!menu) {
-                if (menu._isDisplayed) {
-                    menu.close();
+            if (!!this.paPopup) {
+                if (this.paPopup._isDisplayed) {
+                    this.paPopup.close();
                 } else {
-                    let position: PositionStyle;
-                    if (!useLast || !this.service.lastPosition) {
-                        position =
-                            !isContextual && !!this.popupPosition
-                                ? this.popupPosition
-                                : this.getPosition(override, isContextual && $event);
-                        this.service.lastPosition = position;
-                    } else {
-                        position = this.service.lastPosition;
-                    }
-                    menu.show(position);
+                    this.paPopup.show(this.getPosition($event));
                 }
             }
         }
@@ -82,7 +79,20 @@ export class PopupDirective implements OnInit {
         }
     }
 
-    getPosition(override?: PositionStyle, contextualEvent?: MouseEvent | false): PositionStyle {
+    @HostListener('mouseenter', ['$event'])
+    onHover($event: MouseEvent) {
+        if (this._openOnHover && !this._disabled && !this.paPopup?._isDisplayed) {
+            this.paPopup?.show(this.getPosition($event));
+        }
+    }
+    @HostListener('mouseleave')
+    onLeave() {
+        if (this._openOnHover && !this._disabled && !!this.paPopup?._isDisplayed) {
+            this.paPopup.close();
+        }
+    }
+
+    getPosition(contextualEvent?: MouseEvent): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
         const clickedElement: HTMLElement = this._remoteElement || directiveElement;
         const rect = contextualEvent
@@ -110,9 +120,6 @@ export class PopupDirective implements OnInit {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
         } else {
             position.right = Math.min(rootRect.right - rect.right + 3, window.innerWidth - 240) + 'px';
-        }
-        if (!!override) {
-            position = Object.assign(position, override);
         }
 
         return position;
