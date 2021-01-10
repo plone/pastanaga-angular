@@ -69,7 +69,9 @@ export class PopupDirective implements OnInit {
                 if (this.paPopup._isDisplayed) {
                     this.paPopup.close();
                 } else {
-                    this.paPopup.show(this.getPosition($event));
+                    let position: PositionStyle;
+                    position = this.getPosition();
+                    this.paPopup.show(position);
                 }
             }
         }
@@ -80,9 +82,9 @@ export class PopupDirective implements OnInit {
     }
 
     @HostListener('mouseenter', ['$event'])
-    onHover($event: MouseEvent) {
+    onHover() {
         if (this._openOnHover && !this._disabled && !this.paPopup?._isDisplayed) {
-            this.paPopup?.show(this.getPosition($event));
+            this.paPopup?.show(this.getPosition());
         }
     }
     @HostListener('mouseleave')
@@ -92,7 +94,7 @@ export class PopupDirective implements OnInit {
         }
     }
 
-    getPosition(contextualEvent?: MouseEvent): PositionStyle {
+    getPosition(contextualEvent?: MouseEvent | false): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
         const clickedElement: HTMLElement = this._remoteElement || directiveElement;
         const rect = contextualEvent
@@ -103,6 +105,7 @@ export class PopupDirective implements OnInit {
                   right: contextualEvent.x,
               }
             : clickedElement.getBoundingClientRect();
+
         if (!this._rootParent) {
             this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
         }
@@ -116,6 +119,7 @@ export class PopupDirective implements OnInit {
             bottom: this.popupOnTop ? bottom - MARGIN + 'px' : undefined,
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
+
         if (this._popupOnRight || !!contextualEvent) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
         } else {

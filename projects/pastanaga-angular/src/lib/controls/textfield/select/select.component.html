@@ -15,6 +15,7 @@
          [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '48px'}"
          [popupDisabled]="control.disabled || _readonly"
          cdkMonitorElementFocus
+         sameWidth
          (cdkFocusChange)="onFocus($event)">
         <span class="select-value"
               [class.placeholder]="!selectedLabel"
