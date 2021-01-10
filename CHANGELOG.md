@@ -1,3 +1,9 @@
+# 2.17.7 (2021-01-07)
+
+### Bugfix
+
+- **Popup**: Fix width and position of dropdown [jlp0328]
+
 # 2.17.6 (2021-01-07)
 
 ### Improvement
