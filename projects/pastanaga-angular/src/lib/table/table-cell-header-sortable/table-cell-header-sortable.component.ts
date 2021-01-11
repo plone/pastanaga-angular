@@ -12,10 +12,8 @@ export class TableCellHeaderSortableComponent {
     @Input()
     set reversed(value: boolean) {
         this._reversed = coerceBooleanProperty(value);
-        if (this._reversed) {
-            this.icon = 'sorted-ascending';
-            this.currentSort = Sort.ascending;
-        }
+        this.icon = this._reversed ? 'sorted-ascending' : 'sorted-descending';
+        this.currentSort = this._reversed ? Sort.ascending : Sort.descending;
     }
     get reversed() {
         return this._reversed;
