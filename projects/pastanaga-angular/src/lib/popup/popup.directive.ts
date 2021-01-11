@@ -69,7 +69,8 @@ export class PopupDirective implements OnInit {
                 if (this.paPopup._isDisplayed) {
                     this.paPopup.close();
                 } else {
-                    this.paPopup.show(this.getPosition($event));
+                    const position: PositionStyle = this.getPosition();
+                    this.paPopup.show(position);
                 }
             }
         }
@@ -80,9 +81,9 @@ export class PopupDirective implements OnInit {
     }
 
     @HostListener('mouseenter', ['$event'])
-    onHover($event: MouseEvent) {
+    onHover() {
         if (this._openOnHover && !this._disabled && !this.paPopup?._isDisplayed) {
-            this.paPopup?.show(this.getPosition($event));
+            this.paPopup?.show(this.getPosition());
         }
     }
     @HostListener('mouseleave')
@@ -92,17 +93,11 @@ export class PopupDirective implements OnInit {
         }
     }
 
-    getPosition(contextualEvent?: MouseEvent): PositionStyle {
+    getPosition(): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
         const clickedElement: HTMLElement = this._remoteElement || directiveElement;
-        const rect = contextualEvent
-            ? {
-                  top: contextualEvent.y,
-                  bottom: contextualEvent.y,
-                  left: contextualEvent.x,
-                  right: contextualEvent.x,
-              }
-            : clickedElement.getBoundingClientRect();
+        const rect = clickedElement.getBoundingClientRect();
+
         if (!this._rootParent) {
             this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
         }
@@ -116,7 +111,8 @@ export class PopupDirective implements OnInit {
             bottom: this.popupOnTop ? bottom - MARGIN + 'px' : undefined,
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
-        if (this._popupOnRight || !!contextualEvent) {
+
+        if (this._popupOnRight) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
         } else {
             position.right = Math.min(rootRect.right - rect.right + 3, window.innerWidth - 240) + 'px';
