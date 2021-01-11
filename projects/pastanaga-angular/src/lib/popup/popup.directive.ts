@@ -69,8 +69,7 @@ export class PopupDirective implements OnInit {
                 if (this.paPopup._isDisplayed) {
                     this.paPopup.close();
                 } else {
-                    let position: PositionStyle;
-                    position = this.getPosition();
+                    const position: PositionStyle = this.getPosition();
                     this.paPopup.show(position);
                 }
             }
@@ -94,17 +93,10 @@ export class PopupDirective implements OnInit {
         }
     }
 
-    getPosition(contextualEvent?: MouseEvent | false): PositionStyle {
+    getPosition(): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
         const clickedElement: HTMLElement = this._remoteElement || directiveElement;
-        const rect = contextualEvent
-            ? {
-                  top: contextualEvent.y,
-                  bottom: contextualEvent.y,
-                  left: contextualEvent.x,
-                  right: contextualEvent.x,
-              }
-            : clickedElement.getBoundingClientRect();
+        const rect = clickedElement.getBoundingClientRect();
 
         if (!this._rootParent) {
             this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
@@ -120,7 +112,7 @@ export class PopupDirective implements OnInit {
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
 
-        if (this._popupOnRight || !!contextualEvent) {
+        if (this._popupOnRight) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
         } else {
             position.right = Math.min(rootRect.right - rect.right + 3, window.innerWidth - 240) + 'px';
