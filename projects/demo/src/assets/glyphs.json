@@ -20,5 +20,7 @@
     "settings",
     "ellipsis-horizontal",
     "ellipsis-vertical",
+    "sorted-ascending",
+    "sorted-descending",
     "warning"
 ]

@@ -1,0 +1,43 @@
+@import '../../styles/variables';
+
+button {
+    color: $color-text-table-header;
+    font-size: font-size(xs);
+    display: flex;
+    align-items: center;
+    border: transparent;
+    background: transparent;
+    padding: 0 rhythm(1);
+    margin: 0 #{- rhythm(1)};
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:active {
+        color: $color-neutral-primary-default;
+    }
+
+    @media (min-width: $size-viewport-large-min) {
+        pa-icon {
+            opacity: 0;
+        }
+
+        &.active pa-icon {
+            opacity: 1;
+        }
+        &:hover, &:active, &.pa-keyboard-focus {
+            cursor: pointer;
+            color: $color-neutral-primary-default;
+
+            pa-icon {
+                opacity: 1;
+            }
+        }
+        &:not(.active) {
+            &:hover:not(:active):not(.pa-keyboard-focus) {
+                pa-icon {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+    }
+}

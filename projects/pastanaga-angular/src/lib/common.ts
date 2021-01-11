@@ -32,6 +32,11 @@ export enum Kind {
     destructive = 'destructive',
 }
 
+export enum Sort {
+    ascending = 'ASC',
+    descending = 'DESC',
+}
+
 export class PositionStyle {
     position?: string;
     left?: string;

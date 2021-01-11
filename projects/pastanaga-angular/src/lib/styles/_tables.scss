@@ -9,7 +9,7 @@
     .pa-table-grid--header {
         position: sticky;
         top: 0;
-
+        min-height: rhythm(4);
         background: $color-background-table-header;
         border-bottom: 1px $color-border-table-header solid;
         color: $color-text-table-header;
@@ -66,7 +66,7 @@
         padding: rhythm(.5) rhythm(1);
         border-top: 1px solid $color-border-table-header-row;
         position: sticky;
-        top: rhythm(6);
+        top: rhythm(4);
         z-index: 3;
     }
 
@@ -77,11 +77,16 @@
     }
 }
 
-.pa-table-grid--header,
+.pa-table-grid--header {
+    display: flex;
+    align-items: center;
+    padding: 0 rhythm(1);
+}
 .pa-table-grid--cell {
     display: flex;
     align-items: center;
     padding: rhythm(1.5) rhythm(1);
+    min-height: rhythm(8);
 }
 
 .pa-table-grid--cell {
@@ -114,7 +119,7 @@
 
 
 // ignore Angular components
-pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell, pa-table-cell-menu {
+pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell, pa-table-cell-menu, pa-table-cell-header-sortable {
     display: contents;
 }
 
