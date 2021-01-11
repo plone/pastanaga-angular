@@ -8,10 +8,14 @@ import { Sort } from '../../common';
     styleUrls: [],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableCellHeaderSortableComponent implements OnInit {
+export class TableCellHeaderSortableComponent {
     @Input()
     set reversed(value: boolean) {
         this._reversed = coerceBooleanProperty(value);
+        if (this._reversed) {
+            this.icon = 'sorted-ascending';
+            this.currentSort = Sort.ascending;
+        }
     }
     get reversed() {
         return this._reversed;
@@ -19,14 +23,8 @@ export class TableCellHeaderSortableComponent implements OnInit {
     @Input() label?: string;
     @Output() sorted = new EventEmitter();
     currentSort: Sort = Sort.descending;
-    icon?: string = 'sorted-descending';
+    icon: string = 'sorted-descending';
     _reversed = false;
-    ngOnInit() {
-        if (coerceBooleanProperty(this.reversed)) {
-            this.icon = 'sorted-ascending';
-            this.currentSort = Sort.ascending;
-        }
-    }
     sortBy() {
         if (this.currentSort === Sort.descending) {
             this.icon = 'sorted-ascending';

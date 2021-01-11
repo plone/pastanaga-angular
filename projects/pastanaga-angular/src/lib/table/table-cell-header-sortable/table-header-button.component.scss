@@ -9,7 +9,7 @@ button {
     background: transparent;
     padding: 0 rhythm(1);
     margin: 0 #{- rhythm(1)};
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     text-transform: uppercase;
 
     &:active {
@@ -23,6 +23,7 @@ button {
 
         &.active pa-icon {
             opacity: 1;
+            transition: transform ease-in-out .3s;
         }
         &:hover, &:active, &.pa-keyboard-focus {
             cursor: pointer;
