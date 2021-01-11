@@ -1,3 +1,9 @@
+# 2.17.8 (2021-01-11)
+
+### Improvements
+
+- **Popup**: Fix prod build - Don't provide $event to HostListener when the method doesn't use it [mpellerin42] 
+
 # 2.17.7 (2021-01-07)
 
 ### Bugfix

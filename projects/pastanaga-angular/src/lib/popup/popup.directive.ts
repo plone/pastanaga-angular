@@ -80,7 +80,7 @@ export class PopupDirective implements OnInit {
         }
     }
 
-    @HostListener('mouseenter', ['$event'])
+    @HostListener('mouseenter')
     onHover() {
         if (this._openOnHover && !this._disabled && !this.paPopup?._isDisplayed) {
             this.paPopup?.show(this.getPosition());
@@ -105,7 +105,7 @@ export class PopupDirective implements OnInit {
         const top = rect.bottom - rootRect.top + this._rootParent.scrollTop;
         const bottom = window.innerHeight - rect.top - window.pageYOffset;
 
-        let position: PositionStyle = {
+        const position: PositionStyle = {
             position: 'absolute',
             top: !this.popupOnTop ? top + MARGIN + 'px' : undefined,
             bottom: this.popupOnTop ? bottom - MARGIN + 'px' : undefined,
