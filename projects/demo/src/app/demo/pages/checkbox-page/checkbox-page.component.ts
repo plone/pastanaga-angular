@@ -55,4 +55,10 @@ export class CheckboxPageComponent implements OnInit {
     onModelChange() {
         this.ngModelChangeEvent = this.model;
     }
+
+    toggleValue() {
+        this.model = !this.model;
+        this.formControl.patchValue(!this.formControl.value);
+        this.form.patchValue({ checkbox: !this.form.value.checkbox });
+    }
 }
