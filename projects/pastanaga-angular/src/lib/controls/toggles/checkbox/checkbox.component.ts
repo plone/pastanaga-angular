@@ -4,23 +4,18 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    EventEmitter,
     Input,
     OnChanges,
-    OnDestroy,
-    OnInit,
     Optional,
-    Output,
     Renderer2,
     Self,
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
-import { BaseControl } from '../../base-control';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { detectChanges } from '../../../common';
-import { NgControl, ValidatorFn, Validators } from '@angular/forms';
+import { NgControl, Validators } from '@angular/forms';
 import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
+import { takeUntil } from 'rxjs/operators';
+import { IErrorMessages } from '../../form-field.model';
 
 @Component({
     selector: 'pa-checkbox',
@@ -30,11 +25,12 @@ import { PaFormControlDirective } from '../../form-field/pa-form-control.directi
 })
 export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {
     @Input() required?: boolean;
+    @Input() errorMessages?: IErrorMessages;
 
     @ViewChild('htmlElement') htmlElementRef?: ElementRef;
 
     fieldType = 'checkbox';
-
+    describedById?: string;
     isChecked = false;
     constructor(
         protected element: ElementRef,
@@ -47,7 +43,6 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
 
     ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
-        // TODO: we have a validation but no message handling nor error style
         if (changes.required) {
             if (changes.required.currentValue) {
                 this.internalValidatorsMap.set('required', Validators.required);
@@ -59,8 +54,11 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
     }
 
     ngAfterViewInit() {
-        this.control.valueChanges.subscribe((val) => {
+        this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
             this.isChecked = val;
+        });
+        this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe((status) => {
+            this.describedById = status === 'VALID' ? undefined : `${this.id}-hint`;
         });
     }
     setDisabledState(isDisabled: boolean): void {

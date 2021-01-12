@@ -7,8 +7,15 @@
            [id]="id"
            [attr.name]="name"
            [attr.aria-checked]="isChecked"
+           [attr.aria-describedby]="describedById"
     />
     <label [for]="id" class="pa-toggle-label">
         <ng-content></ng-content>
     </label>
+    <pa-form-field-hint
+        [id]="describedById"
+        [errors]="control.errors"
+        [showErrors]="control.dirty"
+        [errorMessages]="errorMessages"
+    ></pa-form-field-hint>
 </div>
