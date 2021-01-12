@@ -22,15 +22,17 @@ import {
     PaDateTimeModule,
     PaDropdownModule,
     PaFocusableModule,
+    PaFormFieldModule,
     PaIconModule,
     PaModalModule,
     PaPopupModule,
+    PaSideNavModule,
+    PaTableModule,
+    PaTabsModule,
     PaTextFieldModule,
+    PaToastModule,
     PaTogglesModule,
     PaTranslateModule,
-    PaTabsModule,
-    PaTableModule,
-    PaToastModule,
 } from '../../../../pastanaga-angular/src';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
@@ -59,10 +61,16 @@ import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
 import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 import { FocusablePageComponent } from './pages/focusable-page/focusable-page.component';
-import { PaSideNavModule } from '../../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
 import { DemoComponent } from './demo.component';
 import { ChipPageComponent } from './pages/chip-page/chip-page.component';
 import { SidenavPageComponent } from './pages/sidenav-page/sidenav-page.component';
+import { FormFieldHintPageComponent } from './pages/form-field-hint-page/form-field-hint-page.component';
+import { FormControlPageComponent } from './pages/form-control-page/form-control-page.component';
+import { FormControlIdExampleComponent } from './pages/form-control-page/form-control-id-example/form-control-id-example.component';
+import { FormControlNameExampleComponent } from './pages/form-control-page/form-control-name-example/form-control-name-example.component';
+import { FormControlValueExampleComponent } from './pages/form-control-page/form-control-value-example/form-control-value-example.component';
+import { FormControlStateExampleComponent } from './pages/form-control-page/form-control-state-example/form-control-state-example.component';
+import { FormControlValidationExampleComponent } from './pages/form-control-page/form-control-validation-example/form-control-validation-example.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -91,6 +99,13 @@ const COMPONENTS = [
     DateTimePageComponent,
     DropdownPageComponent,
     FocusablePageComponent,
+    FormControlPageComponent,
+    FormControlIdExampleComponent,
+    FormControlNameExampleComponent,
+    FormControlValueExampleComponent,
+    FormControlStateExampleComponent,
+    FormControlValidationExampleComponent,
+    FormFieldHintPageComponent,
     GridPageComponent,
     IconPageComponent,
     InputPageComponent,
@@ -121,6 +136,7 @@ const COMPONENTS = [
         PaIconModule,
         PaDropdownModule,
         PaFocusableModule,
+        PaFormFieldModule,
         PaPopupModule,
         PaTextFieldModule,
         PaToastModule,
