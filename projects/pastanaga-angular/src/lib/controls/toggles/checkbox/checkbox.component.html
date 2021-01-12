@@ -1,4 +1,4 @@
-<div class="pa-toggle">
+<div class="pa-toggle" [class.pa-field-error]="control.dirty && control.invalid">
     <input #htmlElement
            type="checkbox"
            class="pa-toggle-control"
@@ -12,10 +12,10 @@
     <label [for]="id" class="pa-toggle-label">
         <ng-content></ng-content>
     </label>
-    <pa-form-field-hint
-        [id]="describedById"
-        [errors]="control.errors"
-        [showErrors]="control.dirty"
-        [errorMessages]="errorMessages"
-    ></pa-form-field-hint>
 </div>
+<pa-form-field-hint
+    [id]="describedById"
+    [errors]="control.errors"
+    [showErrors]="control.dirty"
+    [errorMessages]="errorMessages"
+></pa-form-field-hint>

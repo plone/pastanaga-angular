@@ -68,11 +68,12 @@ import { ContainerPageComponent } from './pages/container-page/container-page.co
 import { ContainerDemoComponent } from './pages/container-page/container-demo/container-demo.component';
 import { FormFieldHintPageComponent } from './pages/form-field-hint-page/form-field-hint-page.component';
 import { FormControlPageComponent } from './pages/form-control-page/form-control-page.component';
-import { FormControlIdExampleComponent } from './pages/form-control-page/form-control-id-example/form-control-id-example.component';
-import { FormControlNameExampleComponent } from './pages/form-control-page/form-control-name-example/form-control-name-example.component';
-import { FormControlValueExampleComponent } from './pages/form-control-page/form-control-value-example/form-control-value-example.component';
-import { FormControlStateExampleComponent } from './pages/form-control-page/form-control-state-example/form-control-state-example.component';
-import { FormControlValidationExampleComponent } from './pages/form-control-page/form-control-validation-example/form-control-validation-example.component';
+import { FormControlIdExampleComponent } from './pages/form-control-page/id-example/form-control-id-example.component';
+import { FormControlNameExampleComponent } from './pages/form-control-page/name-example/form-control-name-example.component';
+import { FormControlValueExampleComponent } from './pages/form-control-page/value-example/form-control-value-example.component';
+import { FormControlStateExampleComponent } from './pages/form-control-page/state-example/form-control-state-example.component';
+import { FormControlValidationExampleComponent } from './pages/form-control-page/validation-example/form-control-validation-example.component';
+import { PaFormControlUsageComponent } from './pages/form-control-page/usage/pa-form-control-usage.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -109,6 +110,7 @@ const COMPONENTS = [
     FormControlValueExampleComponent,
     FormControlStateExampleComponent,
     FormControlValidationExampleComponent,
+    PaFormControlUsageComponent,
     FormFieldHintPageComponent,
     GridPageComponent,
     IconPageComponent,

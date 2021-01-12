@@ -32,6 +32,7 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
     fieldType = 'checkbox';
     describedById?: string;
     isChecked = false;
+
     constructor(
         protected element: ElementRef,
         @Optional() @Self() protected parentControl: NgControl,
@@ -45,7 +46,7 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
         super.ngOnChanges(changes);
         if (changes.required) {
             if (changes.required.currentValue) {
-                this.internalValidatorsMap.set('required', Validators.required);
+                this.internalValidatorsMap.set('required', Validators.requiredTrue);
             } else {
                 this.internalValidatorsMap.delete('required');
             }
@@ -59,8 +60,10 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
         });
         this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe((status) => {
             this.describedById = status === 'VALID' ? undefined : `${this.id}-hint`;
+            console.log('heyyyy', this.control.errors);
         });
     }
+
     setDisabledState(isDisabled: boolean): void {
         super.setDisabledState(isDisabled);
         if (this.htmlElementRef) {

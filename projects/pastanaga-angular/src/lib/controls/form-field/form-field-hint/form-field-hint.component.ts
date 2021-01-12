@@ -60,6 +60,7 @@ export class FormFieldHintComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         this.refreshMessage();
+        console.log('got error message ?', this.errorMessages);
     }
 
     /**
