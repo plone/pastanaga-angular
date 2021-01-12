@@ -1,0 +1,51 @@
+<p>Name attribute is used whenever provided, if not, a default name is built based on the form-control id.<br>
+    However, used inside forms, the name attribute will follow angular api: </p>
+    <ul>
+        <li>name attribute is mandatory in template driven forms</li>
+        <li>name must be equal to formControlName in reactive forms</li>
+    </ul>
+<h4>Standalone</h4>
+<pre><code>{{standaloneCode}}</code></pre>
+<div>
+    <div paFormControl name="name">provided</div><span> formControl name: {{standaloneName1}}</span>
+</div>
+<div>
+    <div paFormControl>generated</div><span> formControl name: {{standaloneName2}}</span>
+</div>
+<br><br>
+<h4>Template Driven Form</h4>
+<pre><code>{{templateDrivenCode}}</code></pre>
+<form #tdForm="ngForm" (ngSubmit)="formSubmit(tdForm.form.value)">
+    <div>
+        <span>formControl name: {{firstName}}</span>
+        <input paFormControl name="first" [ngModel]="first">
+    </div>
+    <div>
+        <span>formControl name: {{secondName}}</span>
+        <div paFormControl [name]="'second'" ngModel="second">second value</div>
+    </div>
+    <div>
+        <span>formControl name: {{thirdName}}</span>
+        <input paFormControl name="third" [(ngModel)]="third">
+    </div>
+    <div>
+        <span>formControl name: {{fourthName}}</span>
+        <div paFormControl [name]="'fourth'" [(ngModel)]="fourth">fourth value</div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<h4>Reactive Form</h4>
+<pre><code>{{reactiveCode}}</code></pre>
+<p>Provided names will always be ignored</p>
+<form [formGroup]="form" (ngSubmit)="formSubmit(form.value)">
+    <div>
+        <span>formControl name: {{fifthName}}</span>
+        <input paFormControl formControlName="fifth">
+    </div>
+    <div>
+        <span>formControl name: {{sixthName}}</span>
+        <input name="ignored" paFormControl formControlName="sixth">
+    </div>
+    <button type="submit">Submit</button>
+</form>
