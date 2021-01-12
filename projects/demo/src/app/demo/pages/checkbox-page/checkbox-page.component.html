@@ -2,8 +2,9 @@
     <pa-demo-title>Checkboxes</pa-demo-title>
 
     <pa-demo-description>
-        <p><code>pa-checkbox</code> wraps an html <code>input</code> element of type <code>checkbox</code> or <code>radio</code> and apply pastanaga's form field style.</p>
+        <p><code>pa-checkbox</code> wraps an html <code>input</code> element of type <code>checkbox</code> and apply pastanaga's form field style.</p>
         <p>As other pastanaga's form fields, <code>pa-checkbox</code> supports 4 modes internally: <i>standalone, model, formControl and formControlName</i>, in order to be used in various context.</p>
+        <p><code>pa-checkbox</code> uses <code>pa-form-field-hint</code> to display error messages.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
@@ -13,88 +14,109 @@
             <pa-tab (click)="selectedTab = 'formControl'" [active]="selectedTab === 'formControl'">Form Control</pa-tab>
             <pa-tab (click)="selectedTab = 'formControlName'" [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
         </pa-tabs>
-        <ul>
-            <li *ngIf="selectedTab === 'standalone'">selectedChange = {{ ngModelChangeEvent }}</li>
-            <li *ngIf="selectedTab === 'ngModel'">ngModelChange = {{ ngModelChangeEvent }}</li>
-            <li *ngIf="selectedTab === 'formControl'">formControlValueChange = {{ formControlValueChangeEvent }}</li>
-            <li *ngIf="selectedTab === 'formControlName'">
-                formControlValueChange = {{ formGroupValueChangeEvent | json }}
-            </li>
-        </ul>
         <div *ngIf="selectedTab === 'standalone'">
             <div>
-                <pa-checkbox [id]="id"
-                             [name]="'name'"
-                             [disabled]="disabled"
-                             [value]="model"
-                             (valueChange)="ngModelChangeEvent = $event"
+                <pa-checkbox [disabled]="disabled"
+                             [readonly]="readonly"
+                             [required]="required"
+                             [value]="value"
+                             [errorMessages]="errorMessages"
+                             (valueChange)=" standaloneValueChange = $event"
+                             (statusChange)="standaloneStatusChange = $event"
                 >Standalone checkbox label</pa-checkbox>
             </div>
+            <ul>
+                <li>value changed : {{standaloneValueChange}}</li>
+                <li>status changed : {{standaloneStatusChange}}</li>
+            </ul>
 
         </div>
         <div *ngIf="selectedTab === 'ngModel'">
-            <div>`
-                <p>model: {{model}}</p>
-                <pa-checkbox [id]="id"
-                             [name]="'name'"
-                             [disabled]="disabled"
+            <div>
+                <pa-checkbox [disabled]="disabled"
+                             [readonly]="readonly"
+                             [required]="required"
                              [(ngModel)]="model"
-                             (ngModelChange)="ngModelChangeEvent = $event"
-                >ngModel checkbox label</pa-checkbox>
+                             [errorMessages]="errorMessages"
+                             (valueChange)=" ngModelValueChange = $event"
+                             (statusChange)="ngModelStatusChange = $event"
+                >NgModel checkbox label</pa-checkbox>
             </div>
+            <ul>
+                <li>value changed : {{ngModelValueChange}}</li>
+                <li>status changed : {{ngModelStatusChange}}</li>
+            </ul>
 
         </div>
         <div *ngIf="selectedTab === 'formControl'">
             <div>
-                <pa-checkbox [formControl]="formControl"
-                             [id]="id"
-                             [name]="'name'"
-                             (valueChange)="ngModelChangeEvent = $event"
-                >formControl checkbox label</pa-checkbox>
+                <div>
+                    <pa-checkbox [readonly]="readonly"
+                                 [required]="required"
+                                 [formControl]="formControl"
+                                 [errorMessages]="errorMessages"
+                                 (valueChange)=" formControlValueChange = $event"
+                                 (statusChange)="formControlStatusChange = $event"
+                    >FormControl checkbox label</pa-checkbox>
+                </div>
+                <ul>
+                    <li>value changed : {{formControlValueChange}}</li>
+                    <li>status changed : {{formControlStatusChange}}</li>
+                </ul>
             </div>
         </div>
         <div *ngIf="selectedTab === 'formControlName'">
             <form [formGroup]="form">
                 <div>
-                    <pa-checkbox [id]="id"
-                                 [name]="'name'"
-                                 formControlName="checkbox">
-                        formControlName checkbox label
-                    </pa-checkbox>
+                    <pa-checkbox formControlName="checkbox"
+                                 [readonly]="readonly"
+                                 [required]="required"
+                                 [formControl]="formControl"
+                                 [errorMessages]="errorMessages"
+                                 (valueChange)=" formControlNameValueChange = $event"
+                                 (statusChange)="formControlNameStatusChange = $event"
+                    >FormControlName checkbox label</pa-checkbox>
                 </div>
             </form>
+            <ul>
+                <li>value changed : {{formControlNameValueChange}}</li>
+                <li>status changed : {{formControlNameStatusChange}}</li>
+                <li>form value : {{formGroupValueChange | json}}</li>
+                <li>form status : {{formGroupStatusChange}}</li>
+            </ul>
         </div>
     </pa-demo-examples>
 
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabled"
-                         [value]="disabled"
-                         (valueChange)="disableForm($event)">Disabled state
-            </pa-checkbox>
-            <button (click)="toggleValue()">Change from parent</button>
+            <pa-checkbox [(ngModel)]="disabled" (ngModelChange)="disableForm()">{{disabled ? 'Enable' : 'disable'}}</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="readonly">readonly</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="required">required</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="hasErrorMessage" (ngModelChange)="toggleErrorMessages()">{{hasErrorMessage ? 'remove error messages' : 'add error messages'}}</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-button [size]="'small'" (click)="toggleValue()">Toggle in parent component</pa-button>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h2>Inherited from <code>BaseControl</code></h2>
-        <pa-demo-base-control-usage></pa-demo-base-control-usage>
+        <h2>Inherited from <code>PaFormControlDirective</code></h2>
+        <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
 
         <h2>Specific to <code>CheckboxComponent</code></h2>
         <h3>Inputs</h3>
         <dl>
-            <dt>value</dt>
-            <dd>Set checked state <small>(default: false)</small></dd>
-            <dt>type</dt>
-            <dd>checkbox | radio <small>(default: checkbox)</small></dd>
-        </dl>
-
-        <h3>Outputs</h3>
-        <dl>
-            <dt>selectedChange</dt>
-            <dd>
-                Emit checked state when it changes <small>(allow two-way data binding on selected attribute)</small>
-            </dd>
+            <dt>required</dt>
+            <dd>adds a Validators.requiredTrue validator to the formControl</dd>
+            <dt>errorMessages</dt>
+            <dd>Provides default messages to display for the possible error keys when none is present in the errors object. If a message (string) is provided for a given key, it
+                will be displayed rather than the message provided in errorMessages.</dd>
         </dl>
     </pa-demo-usage>
 

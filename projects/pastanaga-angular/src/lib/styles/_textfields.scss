@@ -109,31 +109,29 @@ select:-webkit-autofill:focus {
         }
     }
 
-    &.pa-field-error {
-        .pa-field-label {
-            color: $color-text-field-label-error;
-        }
-        .pa-field-control {
-            border: $border-field-error;
+}
+.pa-field-error {
+    .pa-field-label, .pa-toggle-label {
+        color: $color-text-field-label-error;
+    }
+    .pa-field-control, .pa-toggle-control {
+        border: $border-field-error;
 
-            &:not(:disabled):not(:read-only) {
-                &:hover {
-                    border: $border-field-error-hover;
-                }
+        &:not(:disabled):not(:read-only) {
+            &:hover {
+                border: $border-field-error-hover;
+            }
 
-                &:focus,
-                &:active {
-                    border: $border-field-error-active;
+            &:focus,
+            &:active {
+                border: $border-field-error-active;
 
-                    &~.pa-field-label {
-                        color: $color-text-field-label-error;
-                    }
+                &~.pa-field-label {
+                    color: $color-text-field-label-error;
                 }
             }
         }
     }
-
-
 }
 .pa-field-help {
     @include size(xs);
