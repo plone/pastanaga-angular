@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
-import { takeUntil } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -22,6 +22,9 @@ export class TextFieldUtilityService {
                         control.patchValue(htmlElement.value);
                     }
                 });
+            stopMonitoring.pipe(take(1)).subscribe(() => {
+                this.autofillMonitor.stopMonitoring(htmlElement);
+            });
         }
     }
 
