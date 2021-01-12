@@ -133,13 +133,14 @@ select:-webkit-autofill:focus {
         }
     }
 
-    .pa-field-help {
-        @include size(xs);
-        color: $color-text-field-control-help-regular;
-        margin-top: rhythm(.25);
 
-        &.pa-field-help-error {
-            color: $color-text-field-label-error;
-        }
+}
+.pa-field-help {
+    @include size(xs);
+    color: $color-text-field-control-help-regular;
+    margin-top: rhythm(.25);
+
+    &.pa-field-help-error {
+        color: $color-text-field-label-error;
     }
 }
