@@ -23,80 +23,43 @@
         </ul>
         <div *ngIf="selectedTab === 'standalone'">
             <div>
-                <pa-checkbox type="checkbox"
-                             [id]="id"
+                <pa-checkbox [id]="id"
                              [name]="'name'"
                              [disabled]="disabled"
                              [value]="model"
-                             (selectedChange)="ngModelChangeEvent = $event"
+                             (valueChange)="ngModelChangeEvent = $event"
                 >Standalone checkbox label</pa-checkbox>
-            </div>
-            <div>
-                <pa-checkbox type="radio"
-                             [id]="id"
-                             [name]="'name'"
-                             [disabled]="disabled"
-                             [value]="model"
-                             (selectedChange)="ngModelChangeEvent = $event"
-                >Standalone radio label</pa-checkbox>
             </div>
 
         </div>
         <div *ngIf="selectedTab === 'ngModel'">
-            <div>
-                <pa-checkbox type="checkbox"
-                             [id]="id"
+            <div>`
+                <p>model: {{model}}</p>
+                <pa-checkbox [id]="id"
                              [name]="'name'"
                              [disabled]="disabled"
                              [(ngModel)]="model"
-                             (ngModelChange)="onModelChange()"
+                             (ngModelChange)="ngModelChangeEvent = $event"
                 >ngModel checkbox label</pa-checkbox>
             </div>
-           <div>
-               <pa-checkbox type="radio"
-                            [id]="id"
-                            [name]="'name'"
-                            [disabled]="disabled"
-                            [(ngModel)]="model"
-                            (ngModelChange)="onModelChange()"
-               >ngModel radio label </pa-checkbox>
-           </div>
 
         </div>
         <div *ngIf="selectedTab === 'formControl'">
             <div>
                 <pa-checkbox [formControl]="formControl"
-                             type="checkbox"
                              [id]="id"
                              [name]="'name'"
-                             (selectedChange)="ngModelChangeEvent = $event"
+                             (valueChange)="ngModelChangeEvent = $event"
                 >formControl checkbox label</pa-checkbox>
-            </div>
-            <div>
-                <pa-checkbox type="radio"
-                             [id]="id"
-                             [name]="'name'"
-                             [formControl]="formControl"
-                             (selectedChange)="ngModelChangeEvent = $event"
-                >formControl radio label</pa-checkbox>
             </div>
         </div>
         <div *ngIf="selectedTab === 'formControlName'">
             <form [formGroup]="form">
                 <div>
-                    <pa-checkbox type="checkbox"
-                                 [id]="id"
+                    <pa-checkbox [id]="id"
                                  [name]="'name'"
                                  formControlName="checkbox">
                         formControlName checkbox label
-                    </pa-checkbox>
-                </div>
-                <div>
-                    <pa-checkbox type="radio"
-                                 [id]="id"
-                                 [name]="'name'"
-                                 formControlName="radio">
-                        formControlName radio label
                     </pa-checkbox>
                 </div>
             </form>
@@ -107,8 +70,9 @@
         <div class="pa-demo-configuration-field">
             <pa-checkbox id="disabled"
                          [value]="disabled"
-                         (selectedChange)="disableForm($event)">Disabled state
+                         (valueChange)="disableForm($event)">Disabled state
             </pa-checkbox>
+            <button (click)="toggleValue()">Change from parent</button>
         </div>
     </pa-demo-configuration>
 
