@@ -7,43 +7,56 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CheckboxPageComponent implements OnInit {
     selectedTab = 'standalone';
+
     id?: string;
     name?: string;
-    type?: 'checkbox' | 'radio' = 'checkbox';
-    help?: string;
-    ariaChecked?: boolean;
     disabled = false;
-    model?: any;
-    selectedChange?: any;
+    readonly = false;
+    required = false;
+    hasErrorMessage = false;
+    errorMessages?: any;
 
-    ngModelChangeEvent?: any;
+    value?: boolean;
+    standaloneValueChange?: any;
+    standaloneStatusChange?: any;
+
+    model?: any;
+    ngModelValueChange?: any;
+    ngModelStatusChange?: any;
+
     formControl = new FormControl();
-    formControlValueChangeEvent?: any;
-    formGroupValueChangeEvent?: any;
+    formControlValueChange?: any;
+    formControlStatusChange?: any;
 
     form: FormGroup = new FormGroup({
         checkbox: new FormControl(),
-        radio: new FormControl(),
     });
+    formControlNameValueChange?: any;
+    formControlNameStatusChange?: any;
+    formGroupValueChange?: any;
+    formGroupStatusChange?: any;
 
-    code = `<pa-checkbox [value]="value" [disabled]="disabled">Checkbox label</pa-checkbox>
-<pa-checkbox type="radio"
-             [value]="value" [disabled]="disabled">Radio label</pa-checkbox>`;
+    code = `<pa-checkbox [value]="value" (valueChange)="...">Label</pa-checkbox>
+<pa-checkbox [(ngModel)]="model">Label</pa-checkbox>
+<pa-checkbox [formControl]="formControl">Label</pa-checkbox>
+<form [formGroup]="form">
+    <pa-checkbox formControlName="checkbox">Label</pa-checkbox>
+</form>
+`;
 
     ngOnInit() {
-        this.formControl.valueChanges.subscribe((value) => {
-            this.formControlValueChangeEvent = value;
-        });
-
         this.form.valueChanges.subscribe((value) => {
-            this.formGroupValueChangeEvent = value;
+            this.formGroupValueChange = value;
+        });
+        this.form.statusChanges.subscribe((value) => {
+            this.formGroupStatusChange = value;
         });
     }
 
-    disableForm(event: boolean) {
-        this.disabled = event;
+    disableForm() {
+        // this.disabled = event;
 
-        if (event) {
+        if (this.disabled) {
             this.form.disable();
             this.formControl.disable();
         } else {
@@ -52,13 +65,14 @@ export class CheckboxPageComponent implements OnInit {
         }
     }
 
-    onModelChange() {
-        this.ngModelChangeEvent = this.model;
-    }
-
     toggleValue() {
+        this.value = !this.value;
         this.model = !this.model;
         this.formControl.patchValue(!this.formControl.value);
         this.form.patchValue({ checkbox: !this.form.value.checkbox });
+    }
+
+    toggleErrorMessages() {
+        this.errorMessages = this.hasErrorMessage ? { required: 'This checkbox is required.' } : undefined;
     }
 }
