@@ -150,11 +150,12 @@ describe('PaFormControlDirective', () => {
             expect(spectator.directive.control.disabled).toEqual(true);
         });
 
-        it('should be applied with ngModel ', () => {
+        it('should be applied with ngModel ', fakeAsync(() => {
             spectator = createDirective(
                 `<div [(ngModel)]="model" paFormControl [disabled]="disabled" [readonly]="readonly"></div>`
             );
             spectator.detectChanges();
+            tick();
             expect(spectator.directive.readonly).toEqual(false);
             expect(spectator.directive.disabled).toEqual(false);
             expect(spectator.directive.control.disabled).toEqual(false);
@@ -164,7 +165,7 @@ describe('PaFormControlDirective', () => {
             expect(spectator.directive.readonly).toEqual(true);
             expect(spectator.directive.disabled).toEqual(true);
             expect(spectator.directive.control.disabled).toEqual(true);
-        });
+        }));
 
         it('should be applied with formControl ', () => {
             spectator = createDirective(`<input [formControl]="control" paFormControl [readonly]="readonly">`);
