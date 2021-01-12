@@ -47,6 +47,14 @@ let nextId = 0;
  * Wraps a value, a ngModel or a formControl.
  * handle id/name generation when not provided.
  * apply and synchronize internal state to parentComponent NgControl's state
+ * @deprecated
+ * should be replaced with a paFormControl directive
+ * because:
+ * * it is too complicated and does too much
+ * * some pa-form-fields won't need a big part of this code
+ * * there's a tight coupling between this parent class and the child html element which is not advisable
+ * * we should be able to provide the same functionality without dealing with a model and a formControl at the same time.
+ * * creating ot exposing a single formControl should be enough to manage values and states
  */
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
