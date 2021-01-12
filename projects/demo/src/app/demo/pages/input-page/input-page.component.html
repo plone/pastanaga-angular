@@ -19,7 +19,6 @@
         </pa-tabs>
         <ul>
             <li>valueChange = "{{valueChange}}"</li>
-            <li>debouncedValueChange = "{{debouncedValueChange}}"</li>
             <li>KeyUp = "{{keyupEvent | json}}"</li>
             <li>Enter = "{{enterEvent | json}}"</li>
             <li>Blur = "{{blurEvent | json}}"</li>
@@ -27,18 +26,16 @@
             <li *ngIf="selectedTab === 'ngModel'">ngModelChange = "{{ngModelChangeEvent}}"</li>
             <li *ngIf="selectedTab === 'formControl'">formControlValueChange = "{{formControlValueChangeEvent}}"</li>
             <li *ngIf="selectedTab === 'formControl'">formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formControlValueChange = "{{formGroupValueChangeEvent | json}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formControlStatusChange = "{{formGroupStatusChangeEvent}}"</li>
+            <li *ngIf="selectedTab === 'formControlName'">formGroupValueChange = "{{formGroupValueChangeEvent | json}}"</li>
+            <li *ngIf="selectedTab === 'formControlName'">formGroupStatusChange = "{{formGroupStatusChangeEvent}}"</li>
         </ul>
         <div *ngIf="selectedTab === 'standalone'">
             <pa-input
                 [value]="value"
-
                 [id]="id"
                 [name]="name"
                 [type]="type"
                 [help]="help"
-                [describedBy]="describedBy"
                 [disabled]="disabled"
                 [readonly]="readonly"
                 [hasFocus]="hasFocus"
@@ -46,7 +43,6 @@
                 [showAllErrors]="showAllErrors"
                 [errorMessages]="errorMessages"
                 [errorMessage]="errorMessage"
-                [updateOn]="updateOn"
                 [placeholder]="placeholder"
                 [required]="required"
                 [pattern]="pattern"
@@ -55,10 +51,8 @@
                 [maxlength]="maxlength"
                 [noAutoComplete]="noAutoComplete"
                 [acceptHtmlTags]="acceptHtmlTags"
-                [debounceDuration]="debounceDuration"
 
-                (valueChange)="valueChange = $event"
-                (debouncedValueChange)="debouncedValueChange = $event"
+                (valueChange)="updateChangeEvent($event)"
                 (keyUp)="keyupEvent = $event"
                 (enter)="enterEvent = $event"
                 (blurring)="blurEvent = $event"
@@ -69,12 +63,10 @@
         <div *ngIf="selectedTab === 'ngModel'">
             <pa-input
                 [(ngModel)]="value"
-
                 [id]="id"
                 [name]="name"
                 [type]="type"
                 [help]="help"
-                [describedBy]="describedBy"
                 [disabled]="disabled"
                 [readonly]="readonly"
                 [hasFocus]="hasFocus"
@@ -90,10 +82,7 @@
                 [maxlength]="maxlength"
                 [noAutoComplete]="noAutoComplete"
                 [acceptHtmlTags]="acceptHtmlTags"
-                [debounceDuration]="debounceDuration"
 
-                (valueChange)="valueChange = $event"
-                (debouncedValueChange)="debouncedValueChange = $event"
                 (keyUp)="keyupEvent = $event"
                 (enter)="enterEvent = $event"
                 (blurring)="blurEvent = $event"
@@ -110,7 +99,6 @@
                 [name]="name"
                 [type]="type"
                 [help]="help"
-                [describedBy]="describedBy"
                 [readonly]="readonly"
                 [hasFocus]="hasFocus"
 
@@ -125,10 +113,7 @@
                 [maxlength]="maxlength"
                 [noAutoComplete]="noAutoComplete"
                 [acceptHtmlTags]="acceptHtmlTags"
-                [debounceDuration]="debounceDuration"
 
-                (valueChange)="valueChange = $event"
-                (debouncedValueChange)="debouncedValueChange = $event"
                 (keyUp)="keyupEvent = $event"
                 (enter)="enterEvent = $event"
                 (blurring)="blurEvent = $event"
@@ -143,7 +128,6 @@
                     [name]="name"
                     [type]="type"
                     [help]="help"
-                    [describedBy]="describedBy"
                     [readonly]="readonly"
                     [hasFocus]="hasFocus"
 
@@ -158,10 +142,7 @@
                     [maxlength]="maxlength"
                     [noAutoComplete]="noAutoComplete"
                     [acceptHtmlTags]="acceptHtmlTags"
-                    [debounceDuration]="debounceDuration"
 
-                    (valueChange)="valueChange = $event"
-                    (debouncedValueChange)="debouncedValueChange = $event"
                     (keyUp)="keyupEvent = $event"
                     (enter)="enterEvent = $event"
                     (blurring)="blurEvent = $event"
@@ -173,28 +154,29 @@
 
     </pa-demo-examples>
     <pa-demo-configuration>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!value" (selectedChange)="changeValue()">parent value: {{value}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!placeholder" (selectedChange)="changePlaceholder()">placeholder</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!help" (selectedChange)="changeHelp()">help message</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!hasFocus" (selectedChange)="changeFocus()">focus</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="readonly" (selectedChange)="changeReadonly()">readonly</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="disabled" (selectedChange)="changeDisable()">disabled</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessage" (selectedChange)="changeErrorMessage()">errorMessage</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="showAllErrors" (selectedChange)="changeShowAllErrors()">showAllErrors</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessages" (selectedChange)="changeErrorMessages()">errorMessages</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="required" (selectedChange)="changeRequired()">required</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!pattern" (selectedChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!min" (selectedChange)="changeMin()">min {{min}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!max" (selectedChange)="changeMax()">max {{max}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!maxlength" (selectedChange)="changeMaxlength()">maxlength {{maxlength}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="noAutoComplete" (selectedChange)="changeNoAutoComplete()">noAutoComplete</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="acceptHtmlTags" (selectedChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="type === 'text'" (selectedChange)="changeType()">type {{type}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [value]="!!updateOn" (selectedChange)="changeUpdateOn()">updateOn {{updateOn}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!debounceDuration" (selectedChange)="changeDebounceDuration()">debounceDuration {{debounceDuration}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!id" (selectedChange)="changeId()">id</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!name" (selectedChange)="changeName()">name</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!describedBy" (selectedChange)="changeDescribedBy()">describedBy</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [(ngModel)]="useParentValue" (valueChange)="changeValue($event)">parent value: {{value}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!placeholder" (valueChange)="changePlaceholder()">placeholder</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!help" (valueChange)="changeHelp()">help message</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!hasFocus" (valueChange)="changeFocus()">focus</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="readonly" (valueChange)="changeReadonly()">readonly</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="disabled" (valueChange)="changeDisable()">disabled</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessage" (valueChange)="changeErrorMessage()">errorMessage</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="showAllErrors" (valueChange)="changeShowAllErrors()">showAllErrors</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessages" (valueChange)="changeErrorMessages()">errorMessages</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="required" (valueChange)="changeRequired()">required</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!pattern" (valueChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!min" (valueChange)="changeMin()">min {{min}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!max" (valueChange)="changeMax()">max {{max}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!maxlength" (valueChange)="changeMaxlength()">maxlength {{maxlength}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="noAutoComplete" (valueChange)="changeNoAutoComplete()">noAutoComplete</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="acceptHtmlTags" (valueChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="type === 'text'" (valueChange)="changeType()">type {{type}}</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox name="updateOnChange" *ngIf="selectedTab === 'standalone'" [value]="updateOn === 'change' || !updateOn" (valueChange)="changeUpdateOn('change')">updateOn Change</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [value]="updateOn === 'blur'" (valueChange)="changeUpdateOn('blur')">updateOn Blur</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [value]="updateOn === 'submit'" (valueChange)="changeUpdateOn('submit')">updateOn submit</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!id" (valueChange)="changeId()">id</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!name" (valueChange)="changeName()">name</pa-checkbox></div>
+            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!describedBy" (valueChange)="changeDescribedBy()">describedBy</pa-checkbox></div>
 
     </pa-demo-configuration>
 
@@ -224,8 +206,6 @@
             <dd>Set autocomplete attribute to <code>off</code> <small>(default: false)</small></dd>
             <dt>acceptHtmlTags</dt>
             <dd>Allows to render/enter HTML tags in the field. Enabling this can have an impact on the security of your app, to be use with caution. <small>(default: false)</small></dd>
-            <dt>debounceDuration</dt>
-            <dd>Duration (in milliseconds) used to debounce values emitted by <code>debouncedValueChange</code> <small>(default: 500)</small></dd>
             <dt>autocapitalize</dt>
             <dd>Allow to define the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize" target="_new">HTML5 autocapitalize attribute</a> value.
                 <small>(no default)</small>
@@ -249,9 +229,6 @@
 
             <dt>keyUp</dt>
             <dd>Emits <code>string</code> value on key up event</dd>
-
-            <dt>debouncedValueChange</dt>
-            <dd>Emits current value after a debounce time defined by <code>debounceDuration</code> input</dd>
         </dl>
     </pa-demo-usage>
 
