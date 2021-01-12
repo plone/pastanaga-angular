@@ -1,0 +1,6 @@
+<small *ngIf="hint"
+       class="pa-field-help"
+       aria-live="polite"
+       [id]="id"
+       [class.pa-field-help-error]="!!errors && showErrors"
+       [innerHTML]="hint"></small>

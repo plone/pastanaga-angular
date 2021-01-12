@@ -26,6 +26,8 @@ import { Traverser } from 'angular-traversal';
 import { ChipPageComponent } from './demo/pages/chip-page/chip-page.component';
 import { SidenavPageComponent } from './demo/pages/sidenav-page/sidenav-page.component';
 import { ContainerPageComponent } from './demo/pages/container-page/container-page.component';
+import { FormFieldHintPageComponent } from './demo/pages/form-field-hint-page/form-field-hint-page.component';
+import { FormControlPageComponent } from './demo/pages/form-control-page/form-control-page.component';
 
 @Component({
     selector: 'app-root',
@@ -65,6 +67,8 @@ export class AppComponent {
         {
             title: 'Form elements',
             pages: [
+                { view: 'formControl', title: 'Form control', type: FormControlPageComponent },
+                { view: 'formFieldHint', title: 'Form field hint', type: FormFieldHintPageComponent },
                 { view: 'checkbox', title: 'Checkbox', type: CheckboxPageComponent },
                 { view: 'Input', title: 'Input', type: InputPageComponent },
                 { view: 'select', title: 'Select', type: SelectPageComponent },
