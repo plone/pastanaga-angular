@@ -1,0 +1,25 @@
+<p><code>paFormControl</code> valid status change can be tracked using the statusChange output</p>
+<pre><code>{{statusChangeCode}}</code></pre>
+<input paFormControl (statusChange)="status = $event">
+
+<button (click)="addError()">Add / remove error</button>
+<span>received status: {{status}}</span>
+
+<p><br><code>paFormControl</code> accepts internal validators.
+    This allow the directive to programmatically set a custom errorMessage using the errorMessage input. NB: validation will only be evaluated when the formControl is dirty.</p>
+<pre><code>{{errorMessageCode}}</code></pre>
+<input paFormControl [errorMessage]="errorMessage">
+
+<button (click)="addCustomError()">Add / remove custom error</button>
+<span>formControl errors: {{errors | json}}</span>
+
+<p><br>When used in combination with ngModel or formControl directives, <code>paFormControl</code> internal validators are merged with parent's validators.</p>
+<pre><code>{{mergingValidatorsCode}}</code></pre>
+<div class="example" paFormControl [(ngModel)]="model" email [errorMessage]="errorMessage">{{model}}</div>
+<input paFormControl [formControl]="formControl" [errorMessage]="errorMessage">
+
+<button (click)="patchInvalidModel()">Patch invalid model</button>
+<button (click)="patchValidModel()">Patch valid model</button>
+<button (click)="addCustomError()">Add / remove custom error</button>
+<span>ngModel errors: {{errorsNgModel | json}}</span>
+<span>formControl errors: {{formControl.errors | json}}</span>

@@ -1,0 +1,80 @@
+<pa-demo-page>
+    <pa-demo-title><code>pa-form-control</code></pa-demo-title>
+    <pa-demo-description>
+        <h3>Creates or exposes a <code>FormControl</code></h3>
+        <p>
+            This directive is designed to build custom form elements.<br><br>
+        </p>
+        <p>In a standalone usage, it creates a formControl:</p>
+        <pre><code>{{standaloneCode}}</code></pre>
+
+        <p>It exposes the formControl of a given ngModel, allowing to manage it's state and validation:</p>
+        <pre><code>{{ngModelCode}}</code></pre>
+
+        <p>It reflects a given formControl:</p>
+        <pre><code>{{formControlCode}}</code></pre>
+        <p>
+            <code>pa-form-control</code> has 3 purpose:
+        </p>
+        <ul>
+            <li>provide consistent id and name.</li>
+            <li>allow consistent form control state management (readonly / disabled / status) on any use case.</li>
+            <li>allow to 'merge' internal validation with validation controlled by parent (ngModel's or formControl's validators).
+            </li>
+        </ul>
+        <p>Because it is a directive and not a component, it can be used on standard html elements with these three exceptions:</p>
+        <ul>
+            <li>standalone fields won't be added to form's values</li>
+            <li>input elements inner change won't be bound to ngModel</li>
+            <li>formControl directives cannot be used on html elements which are not managed by angular reactive form api (for example
+                divs).
+            </li>
+        </ul>
+        <p><strong>Important note: </strong> the formControl will only be available after the <code>OnInit</code> lifecycle.</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-tabs>
+            <pa-tab (click)="selected = 'id'" [active]="selected === 'id'">Id</pa-tab>
+            <pa-tab (click)="selected = 'name'" [active]="selected === 'name'">Name</pa-tab>
+            <pa-tab (click)="selected = 'value'" [active]="selected === 'value'">Value</pa-tab>
+            <pa-tab (click)="selected = 'state'" [active]="selected === 'state'">State (readonly / disabled)</pa-tab>
+            <pa-tab (click)="selected = 'validation'" [active]="selected === 'validation'">Validation / errors</pa-tab>
+        </pa-tabs>
+        <pa-demo-form-control-id-example *ngIf="selected === 'id'"></pa-demo-form-control-id-example>
+        <pa-demo-form-control-name-example *ngIf="selected === 'name'"></pa-demo-form-control-name-example>
+        <pa-demo-form-control-value-example *ngIf="selected === 'value'"></pa-demo-form-control-value-example>
+        <pa-demo-form-control-validation-example
+            *ngIf="selected === 'validation'"></pa-demo-form-control-validation-example>
+        <pa-demo-form-control-state-example *ngIf="selected === 'state'"></pa-demo-form-control-state-example>
+
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3><code>Inputs</code></h3>
+        <dl>
+            <dt>id</dt>
+            <dd>id to be used by the directive<small>(optional)</small></dd>
+            <dt>name</dt>
+            <dd>name to use for the form field<small>(optional)</small></dd>
+            <dt>value</dt>
+            <dd>sets the value to the formControl<small>(should not be used in combination with ngModel nor formControl
+                directives)</small></dd>
+            <dt>readonly</dt>
+            <dd>sets the formControl to readonly (value can only be updated by parent component)<small>(default:
+                false)</small></dd>
+            <dt>disabled</dt>
+            <dd>disable the form control<small>(default: false)</small></dd>
+            <dt>errorMessage</dt>
+            <dd>manually set the control in invalid state with the given error message<small>(optional)</small></dd>
+        </dl>
+        <h3><code>Outputs</code></h3>
+        <dl>
+            <dt>valueChange</dt>
+            <dd>emits the value when it changes</dd>
+            <dt>statusChange</dt>
+            <dd>emits the status of the form control value when it changes (valid / invalid)</dd>
+        </dl>
+    </pa-demo-usage>
+
+</pa-demo-page>
