@@ -60,14 +60,7 @@ export function buildAlwaysFalseValidator(message: string): ValidatorFn {
     };
 }
 
-export function sanitizeStringValue(value: any, acceptHtmlTags: boolean) {
-    if (!!value && typeof value === 'string' && !acceptHtmlTags && value.match(HTML_TAG)) {
-        return value.replace(REPLACE_LT_GT, '');
-    }
-    return value;
-}
-
-export function sanitizeStringValue2(value: any) {
+export function sanitizeStringValue(value: any) {
     if (!!value && typeof value === 'string' && !!value.match(HTML_TAG)) {
         return value.replace(REPLACE_LT_GT, '');
     }
