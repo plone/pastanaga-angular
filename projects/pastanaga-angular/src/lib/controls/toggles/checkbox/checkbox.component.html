@@ -1,15 +1,14 @@
 <div class="pa-toggle">
-    <input
-        #htmlElement
-        class="pa-toggle-control"
-        paFocusable
-        [checked]="isChecked"
-        [id]="_elementId"
-        [attr.name]="_name"
-        [type]="_type"
-        [disabled]="control.disabled"
-        [attr.aria-checked]="isChecked"
-        (click)="toggleCheckbox()"
+    <input #htmlElement
+           type="checkbox"
+           class="pa-toggle-control"
+           paFocusable
+           [formControl]="control"
+           [id]="id"
+           [attr.name]="name"
+           [attr.aria-checked]="isChecked"
     />
-    <label [for]="_elementId" class="pa-toggle-label"><ng-content></ng-content></label>
+    <label [for]="id" class="pa-toggle-label">
+        <ng-content></ng-content>
+    </label>
 </div>

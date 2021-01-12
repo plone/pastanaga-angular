@@ -1,22 +1,26 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ElementRef,
     EventEmitter,
     Input,
+    OnChanges,
     OnDestroy,
     OnInit,
     Optional,
     Output,
+    Renderer2,
     Self,
     SimpleChanges,
-    ViewChild
+    ViewChild,
 } from '@angular/core';
 import { BaseControl } from '../../base-control';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges } from '../../../common';
-import { NgControl, ValidatorFn } from '@angular/forms';
+import { NgControl, ValidatorFn, Validators } from '@angular/forms';
+import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
 
 @Component({
     selector: 'pa-checkbox',
@@ -24,86 +28,45 @@ import { NgControl, ValidatorFn } from '@angular/forms';
     styleUrls: ['./checkbox.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxComponent extends BaseControl implements OnInit, OnDestroy {
-    @Input() set type(value: 'checkbox' | 'radio') {
-        this._type = value;
-        // When using Angular inputs, developers are no longer able to set the properties on the native
-        // input element. To ensure that bindings for `type` work, we need to sync the setter
-        // with the native property.
-        if (!!this.htmlElement) {
-            this.htmlElement.type = value;
-        }
-    }
-
-    get type(): 'checkbox' | 'radio' {
-        return this._type;
-    }
-
+export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {
     @Input() required?: boolean;
 
     @ViewChild('htmlElement') htmlElementRef?: ElementRef;
 
-    @Output() selectedChange: EventEmitter<boolean> = new EventEmitter();
+    fieldType = 'checkbox';
 
-    _type: 'checkbox' | 'radio' = 'checkbox';
     isChecked = false;
-
-    requiredValidator?: ValidatorFn;
-
-    constructor(@Optional() @Self() public parentControl: NgControl, protected cdr: ChangeDetectorRef) {
-        super(parentControl, cdr);
-        this._fieldKind = this._type;
+    constructor(
+        protected element: ElementRef,
+        @Optional() @Self() protected parentControl: NgControl,
+        protected cdr: ChangeDetectorRef,
+        private renderer: Renderer2
+    ) {
+        super(element, parentControl, cdr);
     }
 
-    ngOnInit(): void {
-        super.ngOnInit();
-    }
-
-    ngOnDestroy() {
-        super.ngOnDestroy();
-    }
-
-    toggleCheckbox() {
-        if (this._type === 'radio' && !this.model) {
-            this.isChecked = true;
-            this.onChange(true);
-        } else if (this._type === 'checkbox' || !this.model) {
-            this.isChecked = !this.isChecked;
-            //When managed by formControl/ngModel, onChange will not be triggered.
-            this.onChange(this.isChecked);
+    ngOnChanges(changes: SimpleChanges) {
+        super.ngOnChanges(changes);
+        // TODO: we have a validation but no message handling nor error style
+        if (changes.required) {
+            if (changes.required.currentValue) {
+                this.internalValidatorsMap.set('required', Validators.required);
+            } else {
+                this.internalValidatorsMap.delete('required');
+            }
+            this.validatorChanged$.next();
         }
     }
 
-    preValueChange = (value: any) => {
-        return value;
-    };
-
-    postValueChange = () => {
-        detectChanges(this.cdr);
-        this.selectedChange.emit(this.isChecked);
-    };
-
-    preWriteValue = (value: any) => {
-        return value;
-    };
-
-    postWriteValue = () => {
-        this.isChecked = coerceBooleanProperty(this.model);
-    };
-
-    listInternalValidators = (): ValidatorFn[] => {
-        return [];
-    };
-
-    registerOnValueChange = (value: any) => {
-        return [];
-    };
-
-    registerOnStatusChanges = (status: any) => {
-        return [];
-    };
-
-    shouldUpdateValidators = (changes: SimpleChanges) => {
-        return false;
-    };
+    ngAfterViewInit() {
+        this.control.valueChanges.subscribe((val) => {
+            this.isChecked = val;
+        });
+    }
+    setDisabledState(isDisabled: boolean): void {
+        super.setDisabledState(isDisabled);
+        if (this.htmlElementRef) {
+            this.renderer.setProperty(this.htmlElementRef?.nativeElement, 'disabled', isDisabled);
+        }
+    }
 }
