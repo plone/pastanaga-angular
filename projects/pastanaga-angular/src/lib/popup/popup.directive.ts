@@ -69,7 +69,7 @@ export class PopupDirective implements OnInit {
                 if (this.paPopup._isDisplayed) {
                     this.paPopup.close();
                 } else {
-                    const position: PositionStyle = this.getPosition();
+                    const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
                     this.paPopup.show(position);
                 }
             }
