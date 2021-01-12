@@ -182,11 +182,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     onFocus(event: FocusOrigin) {
         if (!this.isOpened && event === 'keyboard') {
-            // TODO: check that
-            // if (!this.selectedLabel) {
-            //     this.displayedLabel = this.placeholder;
-            // }
-            // open option dropdown
             this.openOptionDropDown();
         }
     }
@@ -233,13 +228,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     dropDownOpened() {
         this.isOpened = true;
-        // TODO: check that
-        // if (!this.selectedLabel) {
-        //     this.displayedLabel = this.placeholder;
-        //     detectChanges(this.cdr);
-        // }
-        // when options are provided as ngContent,
-        // we track option selections until the dropdown is closed
         if (!this.optionModels.length) {
             setTimeout(() => {
                 this.ngContentOptions?.forEach((option: OptionComponent) => {
