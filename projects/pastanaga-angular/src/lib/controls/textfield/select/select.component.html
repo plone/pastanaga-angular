@@ -1,73 +1,61 @@
 <div class="pa-field pa-select"
-     [class.pa-field-readonly]="_readonly"
+     [class.pa-field-readonly]="readonly"
      [class.pa-field-disabled]="control.disabled"
      [class.pa-field-error]="control.dirty && control.invalid">
     <div #selectInput class="select-input pa-field-control"
-         [class.pa-field-control-filled]="(!!selectedLabel && selectedLabel.length) || (optionsDisplayed && !!displayedLabel)"
-         [class.read-only]="_readonly"
+         [class.pa-field-control-filled]="hasValue || isOpened"
+         [class.read-only]="readonly"
          [class.disabled]="control.disabled"
-         [id]="_elementId"
-         [attr.name]="_name"
+         [id]="id"
+         [attr.name]="name"
          [attr.aria-label]="label"
-         [attr.aria-describedby]="_describedBy"
+         [attr.aria-describedby]="describedById"
          paFocusable
          [paPopup]="optionsDropdown"
          [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '48px'}"
-         [popupDisabled]="control.disabled || _readonly"
+         [popupDisabled]="control.disabled || readonly"
          cdkMonitorElementFocus
          sameWidth
          (cdkFocusChange)="onFocus($event)">
         <span class="select-value"
-              [class.placeholder]="!selectedLabel"
-              [class.active]="optionsDisplayed"
-        >{{displayedLabel}}</span>
+              [class.placeholder]="!hasValue"
+              [class.active]="isOpened"
+        >{{displayedValue}}</span>
     </div>
-    <label class="pa-field-label"
-           [for]="_id"
-           [attr.aria-owns]="_id"
-    >{{label}}</label>
+
+    <label class="pa-field-label" [for]="id">{{label}}</label>
 
     <pa-icon class="pa-select-chevron"
-             [class.opened]="optionsDisplayed"
+             [class.opened]="isOpened"
              name="chevron-down"
              (click)="toggleDropdown()"></pa-icon>
 
-    <small *ngIf="_errorHelp || _help"
-           class="pa-field-help"
-           aria-live="polite"
-           [id]="_helpId"
-           [attr.aria-owns]="_id"
-           [class.pa-field-help-error]="!!_errorHelp "
-           [innerHTML]="_errorHelp || _help"></small>
+    <pa-form-field-hint
+        [id]="describedById"
+        [help]="help"
+        [errors]="control.errors"
+        [showErrors]="control.dirty"
+        [showAllErrors]="showAllErrors"
+        [errorMessages]="errorMessages"
+    ></pa-form-field-hint>
 
     <pa-dropdown #optionsDropdown
                  role="listbox"
                  dontAdjustPosition
-                 [adjustHeight]="_adjustHeight"
+                 [adjustHeight]="adjustHeight"
+                 [companionElement]="selectInput"
                  (onClose)="dropDownClosed()"
                  (onOpen)="dropDownOpened()"
-                 [companionElement]="selectInput">
+                 >
 
-        <ng-container *ngIf="_optionsAreNgContent; else paramOptions">
-            <ng-content></ng-content>
+        <ng-container *ngIf="optionModels.length; else contentOptions">
+            <pa-select-options
+                [options]="optionModels"
+                (optionSelected)="optionSelected($event)"
+            ></pa-select-options>
         </ng-container>
 
-        <ng-template #paramOptions>
-            <ng-container *ngFor="let option of _options">
-                <pa-option-header *ngIf="option.type === 'header'">{{option.label}}</pa-option-header>
-                <pa-separator *ngIf="option.type === 'separator'"></pa-separator>
-                <pa-option *ngIf="option.type === 'option' && !option.filtered"
-                           [id]="option.id"
-                           [disabled]="option.disabled"
-                           [selected]="option.selected"
-                           [destructive]="option.destructive"
-                           [dontCloseOnSelect]="option.dontCloseOnSelect"
-                           [icon]="option.icon"
-                           [value]="option.value"
-                           (selectOption)="selectListOption(option)"
-                >{{option.label}}</pa-option>
-            </ng-container>
+        <ng-template #contentOptions><ng-content></ng-content></ng-template>
 
-        </ng-template>
     </pa-dropdown>
 </div>
