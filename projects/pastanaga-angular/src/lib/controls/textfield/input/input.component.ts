@@ -22,7 +22,7 @@ import { detectChanges, Keys } from '../../../common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IErrorMessages, TextInputType } from '../../form-field.model';
-import { sanitizeStringValue2 } from '../../form-field.utils';
+import { sanitizeStringValue } from '../../form-field.utils';
 import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
 import { TextFieldUtilityService } from '../text-field-utility.service';
 
@@ -104,7 +104,7 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
         if (!!this.sanitizeHtmlTags && accept) {
             this.sanitizeHtmlTags = undefined;
         } else if (!this.sanitizeHtmlTags && !accept) {
-            this.sanitizeHtmlTags = sanitizeStringValue2;
+            this.sanitizeHtmlTags = sanitizeStringValue;
         }
     }
 
@@ -126,7 +126,7 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
     @Output() focusing: EventEmitter<FocusEvent> = new EventEmitter();
     @Output() blurring: EventEmitter<string | number> = new EventEmitter();
 
-    sanitizeHtmlTags?: (val: any) => any = sanitizeStringValue2;
+    sanitizeHtmlTags?: (val: any) => any = sanitizeStringValue;
     describedById?: string;
     fieldType = 'input';
     isFilled = false;
@@ -177,7 +177,7 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
             this._checkIsFilled();
         }
 
-        this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
+        this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe(() => {
             this._checkIsFilled();
         });
         this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe(() => {
