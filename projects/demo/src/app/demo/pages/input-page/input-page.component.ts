@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {
     IErrorMessages,
     TextInputType,
@@ -7,6 +7,7 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { detectChanges, markForCheck } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     templateUrl: './input-page.component.html',
@@ -15,13 +16,12 @@ import { takeUntil } from 'rxjs/operators';
 export class InputPageComponent implements OnInit, OnDestroy {
     selectedTab = 'standalone';
     id?: string;
-    name?: string;
+    name? = 'email';
     type: TextInputType = 'text';
     help?: string;
     disabled = false;
-    value: any;
+    value?: any;
     valueChange?: any;
-    debouncedValueChange?: any;
     keyupEvent?: any;
     enterEvent?: any;
     blurEvent?: any;
@@ -41,7 +41,7 @@ export class InputPageComponent implements OnInit, OnDestroy {
     maxlength?: number;
     noAutoComplete = false;
     acceptHtmlTags = true;
-    debounceDuration?: number;
+    useParentValue = false;
 
     ngModelChangeEvent?: any;
     formControl = new FormControl();
@@ -49,7 +49,7 @@ export class InputPageComponent implements OnInit, OnDestroy {
     formControlStatusChangeEvent?: any;
 
     formGroup = new FormGroup({
-        text: new FormControl(),
+        text: new FormControl(''),
     });
 
     formGroupValueChangeEvent?: any;
@@ -81,10 +81,8 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [maxlength]="maxlength"
     [noAutoComplete]="noAutoComplete"
     [acceptHtmlTags]="acceptHtmlTags"
-    [debounceDuration]="debounceDuration"
 
     (valueChange)="valueChange = $event"
-    (debouncedValueChange)="debouncedValueChange = $event"
     (keyUp)="keyupEvent = $event"
     (enter)="enterEvent = $event"
     (blurring)="blurEvent = $event"
@@ -123,10 +121,8 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [maxlength]="maxlength"
     [noAutoComplete]="noAutoComplete"
     [acceptHtmlTags]="acceptHtmlTags"
-    [debounceDuration]="debounceDuration"
 
     (valueChange)="valueChange = $event"
-    (debouncedValueChange)="debouncedValueChange = $event"
     (keyUp)="keyupEvent = $event"
     (enter)="enterEvent = $event"
     (blurring)="blurEvent = $event"
@@ -165,10 +161,8 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [maxlength]="maxlength"
     [noAutoComplete]="noAutoComplete"
     [acceptHtmlTags]="acceptHtmlTags"
-    [debounceDuration]="debounceDuration"
 
     (valueChange)="valueChange = $event"
-    (debouncedValueChange)="debouncedValueChange = $event"
     (keyUp)="keyupEvent = $event"
     (enter)="enterEvent = $event"
     (blurring)="blurEvent = $event"
@@ -214,10 +208,8 @@ export class InputPageComponent implements OnInit, OnDestroy {
         [maxlength]="maxlength"
         [noAutoComplete]="noAutoComplete"
         [acceptHtmlTags]="acceptHtmlTags"
-        [debounceDuration]="debounceDuration"
 
         (valueChange)="valueChange = $event"
-        (debouncedValueChange)="debouncedValueChange = $event"
         (keyUp)="keyupEvent = $event"
         (enter)="enterEvent = $event"
         (blurring)="blurEvent = $event"
@@ -226,6 +218,7 @@ export class InputPageComponent implements OnInit, OnDestroy {
     </pa-input>
 </form>`;
 
+    constructor(private cdr: ChangeDetectorRef) {}
     ngOnInit() {
         this.formControl.valueChanges.pipe(takeUntil(this.terminator)).subscribe((value) => {
             this.formControlValueChangeEvent = value;
@@ -246,16 +239,18 @@ export class InputPageComponent implements OnInit, OnDestroy {
         this.terminator.complete();
     }
 
-    changeValue() {
+    changeValue(useParent: boolean) {
+        console.log('HEEEEE in DEMO, checkbox changed changeValue', this.value, useParent);
         let val;
-        if (!!this.value) {
+        if (!useParent) {
             val = null;
         } else if (!!this.type && this.type === 'number') {
             val = 7;
         } else {
-            val = 'applied text';
+            val = 'applied parent value';
         }
         this.value = val || undefined;
+        // console.log('demo: value', this.value);
         this.formControl.patchValue(val);
         this.formGroup.get('text')?.patchValue(val);
     }
@@ -305,6 +300,7 @@ export class InputPageComponent implements OnInit, OnDestroy {
 
     changeShowAllErrors() {
         this.showAllErrors = !this.showAllErrors;
+        console.log('changed showAllErrors', this.showAllErrors);
     }
 
     changeErrorMessages() {
@@ -324,8 +320,14 @@ export class InputPageComponent implements OnInit, OnDestroy {
         this.errorMessage = !!this.errorMessage ? undefined : 'External error message';
     }
 
-    changeUpdateOn() {
-        this.updateOn = this.updateOn === 'change' ? 'blur' : 'change';
+    changeUpdateOn(value: UpdateOnStrategy) {
+        if (value === this.updateOn) {
+            this.updateOn = undefined;
+        } else {
+            this.updateOn = value;
+        }
+
+        // detectChanges(this.cdr);
     }
 
     changeRequired() {
@@ -356,11 +358,12 @@ export class InputPageComponent implements OnInit, OnDestroy {
         this.acceptHtmlTags = !this.acceptHtmlTags;
     }
 
-    changeDebounceDuration() {
-        this.debounceDuration = !!this.debounceDuration ? undefined : 100;
-    }
-
     onModelChange() {
         this.ngModelChangeEvent = this.value;
+    }
+
+    updateChangeEvent(event: any) {
+        this.valueChange = event;
+        detectChanges(this.cdr);
     }
 }
