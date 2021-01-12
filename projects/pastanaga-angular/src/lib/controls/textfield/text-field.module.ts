@@ -10,9 +10,17 @@ import { SelectComponent } from './select/select.component';
 import { InputFormatterDirective } from './input-formatter.directive';
 import { A11yModule } from '@angular/cdk/a11y';
 import { PaFocusableModule } from '../../focusable/focusable.module';
+import { PaFormFieldModule } from '../form-field/form-field.module';
+import { SelectOptionsComponent } from './select/select-options/select-options.component';
 
 @NgModule({
-    declarations: [InputComponent, DeprecatedTextareaComponent, SelectComponent],
+    declarations: [
+        InputComponent,
+        DeprecatedTextareaComponent,
+        SelectComponent,
+        InputFormatterDirective,
+        SelectOptionsComponent,
+    ],
     imports: [
         CommonModule,
         A11yModule,
