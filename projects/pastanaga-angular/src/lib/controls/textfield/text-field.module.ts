@@ -7,6 +7,7 @@ import { DeprecatedTextareaComponent } from './textarea/deprecated-textarea.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
+import { InputFormatterDirective } from './input-formatter.directive';
 import { A11yModule } from '@angular/cdk/a11y';
 import { PaFocusableModule } from '../../focusable/focusable.module';
 
@@ -21,7 +22,8 @@ import { PaFocusableModule } from '../../focusable/focusable.module';
         FormsModule,
         ReactiveFormsModule,
         PaFocusableModule,
+        PaFormFieldModule,
     ],
-    exports: [InputComponent, DeprecatedTextareaComponent, SelectComponent],
+    exports: [InputComponent, DeprecatedTextareaComponent, SelectComponent, InputFormatterDirective],
 })
 export class PaTextFieldModule {}
