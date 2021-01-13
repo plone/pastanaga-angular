@@ -16,6 +16,7 @@ import { NgControl, Validators } from '@angular/forms';
 import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
 import { takeUntil } from 'rxjs/operators';
 import { IErrorMessages } from '../../form-field.model';
+import { detectChanges } from '../../../common';
 
 @Component({
     selector: 'pa-checkbox',
@@ -57,10 +58,11 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
     ngAfterViewInit() {
         this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
             this.isChecked = val;
+            detectChanges(this.cdr);
         });
         this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe((status) => {
-            this.describedById = status === 'VALID' ? undefined : `${this.id}-hint`;
-            console.log('heyyyy', this.control.errors);
+            this.describedById = status === 'INVALID' ? `${this.id}-hint` : undefined;
+            detectChanges(this.cdr);
         });
     }
 

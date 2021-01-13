@@ -5,6 +5,7 @@
         <p><code>pa-checkbox</code> wraps an html <code>input</code> element of type <code>checkbox</code> and apply pastanaga's form field style.</p>
         <p>As other pastanaga's form fields, <code>pa-checkbox</code> supports 4 modes internally: <i>standalone, model, formControl and formControlName</i>, in order to be used in various context.</p>
         <p><code>pa-checkbox</code> uses <code>pa-form-field-hint</code> to display error messages.</p>
+        <p><strong>Important note: </strong> readonly is not applicable to input of type checkbox so the input inherited from <code>PaFormControlDirective</code> will have no effect.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
@@ -16,10 +17,9 @@
         </pa-tabs>
         <div *ngIf="selectedTab === 'standalone'">
             <div>
-                <pa-checkbox [disabled]="disabled"
-                             [readonly]="readonly"
+                <pa-checkbox [value]="value"
+                             [disabled]="disabled"
                              [required]="required"
-                             [value]="value"
                              [errorMessages]="errorMessages"
                              (valueChange)=" standaloneValueChange = $event"
                              (statusChange)="standaloneStatusChange = $event"
@@ -33,10 +33,9 @@
         </div>
         <div *ngIf="selectedTab === 'ngModel'">
             <div>
-                <pa-checkbox [disabled]="disabled"
-                             [readonly]="readonly"
+                <pa-checkbox [(ngModel)]="model"
+                             [disabled]="disabled"
                              [required]="required"
-                             [(ngModel)]="model"
                              [errorMessages]="errorMessages"
                              (valueChange)=" ngModelValueChange = $event"
                              (statusChange)="ngModelStatusChange = $event"
@@ -51,9 +50,8 @@
         <div *ngIf="selectedTab === 'formControl'">
             <div>
                 <div>
-                    <pa-checkbox [readonly]="readonly"
+                    <pa-checkbox [formControl]="formControl"
                                  [required]="required"
-                                 [formControl]="formControl"
                                  [errorMessages]="errorMessages"
                                  (valueChange)=" formControlValueChange = $event"
                                  (statusChange)="formControlStatusChange = $event"
@@ -69,9 +67,7 @@
             <form [formGroup]="form">
                 <div>
                     <pa-checkbox formControlName="checkbox"
-                                 [readonly]="readonly"
                                  [required]="required"
-                                 [formControl]="formControl"
                                  [errorMessages]="errorMessages"
                                  (valueChange)=" formControlNameValueChange = $event"
                                  (statusChange)="formControlNameStatusChange = $event"
@@ -90,9 +86,6 @@
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-checkbox [(ngModel)]="disabled" (ngModelChange)="disableForm()">{{disabled ? 'Enable' : 'disable'}}</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox [(ngModel)]="readonly">readonly</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
             <pa-checkbox [(ngModel)]="required">required</pa-checkbox>
