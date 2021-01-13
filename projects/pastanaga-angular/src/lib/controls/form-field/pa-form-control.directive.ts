@@ -252,7 +252,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
         this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
             this.valueChange.emit(val);
             if (this.internalMode === NG_MODEL && this.control.value !== (this.parentControl as NgModel).model) {
-                this.parentControl.viewToModelUpdate(this.control.value);
+                this.parentControl.viewToModelUpdate(val);
             }
             this.updateHtmlValue(val);
         });

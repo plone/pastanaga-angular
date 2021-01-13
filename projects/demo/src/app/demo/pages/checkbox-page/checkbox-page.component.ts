@@ -11,7 +11,6 @@ export class CheckboxPageComponent implements OnInit {
     id?: string;
     name?: string;
     disabled = false;
-    readonly = false;
     required = false;
     hasErrorMessage = false;
     errorMessages?: any;
