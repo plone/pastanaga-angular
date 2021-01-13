@@ -1,3 +1,9 @@
+# 2.17.10 (2021-01-12)
+
+### Bugfix
+
+- **Popup**: Fix for popup position [jlp0328]
+
 # 2.17.9 (2021-01-11)
 
 ### Improvement
@@ -5,6 +11,7 @@
 - **Table**: 
     - Added sortable header component [niglesias]
     - Added table header button to be used only in tables [niglesias]
+    
 # 2.17.8 (2021-01-11)
 
 ### Improvements
