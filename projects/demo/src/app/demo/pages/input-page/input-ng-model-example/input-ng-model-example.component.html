@@ -1,0 +1,45 @@
+<div class="component">
+    <pa-input
+        [(ngModel)]="model"
+        [type]="config.type"
+        [placeholder]="config.placeholder"
+        [autocapitalize]="config.autoCapitalize"
+        [noAutoComplete]="config.preventAutocomplete"
+        [acceptHtmlTags]="config.acceptHtml"
+
+        [disabled]="config.disabled"
+        [readonly]="config.readonly"
+        [hasFocus]="config.hasFocus"
+
+        [help]="config.help"
+        [errorMessage]="config.errorMessage"
+        [errorMessages]="config.errorMessages"
+        [showAllErrors]="config.showAllErrors"
+        [required]="config.required"
+        [pattern]="config.pattern"
+        [min]="config.min"
+        [max]="config.max"
+        [maxlength]="config.maxlength"
+
+        (valueChange)="updateChangeEvent = $event"
+        (statusChange)="updateStatusEvent = $event"
+        (keyUp)="keyupEvent = $event"
+        (enter)="enterEvent = $event"
+        (focusing)="focusEvent = $event"
+        (blurring)="blurEvent = $event"
+        (ngModelChange)="ngModelChangeEvent = $event">Label
+    </pa-input>
+
+    <ul>
+        <li>value change event: {{updateChangeEvent | json}}</li>
+        <li>status change event: {{updateStatusEvent | json}}</li>
+        <li>keyup event: {{keyupEvent | json}}</li>
+        <li>enter event: {{enterEvent | json}}</li>
+        <li>focus event: {{focusEvent | json}}</li>
+        <li>blur event: {{blurEvent | json}}</li>
+        <li>ngModelChange event: {{ngModelChangeEvent | json}}</li>
+    </ul>
+</div>
+<pa-demo-pa-input-config (configChanged)="updateConfig($event)"></pa-demo-pa-input-config>
+
+

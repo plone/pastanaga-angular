@@ -17,172 +17,17 @@
             <pa-tab (click)="selectedTab = 'formControlName'"
                     [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
         </pa-tabs>
-        <ul>
-            <li>valueChange = "{{valueChange}}"</li>
-            <li>KeyUp = "{{keyupEvent | json}}"</li>
-            <li>Enter = "{{enterEvent | json}}"</li>
-            <li>Blur = "{{blurEvent | json}}"</li>
-            <li>Focus = "{{focusEvent | json}}"</li>
-            <li *ngIf="selectedTab === 'ngModel'">ngModelChange = "{{ngModelChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControl'">formControlValueChange = "{{formControlValueChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControl'">formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formGroupValueChange = "{{formGroupValueChangeEvent | json}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formGroupStatusChange = "{{formGroupStatusChangeEvent}}"</li>
-        </ul>
-        <div *ngIf="selectedTab === 'standalone'">
-            <pa-input
-                [value]="value"
-                [id]="id"
-                [name]="name"
-                [type]="type"
-                [help]="help"
-                [disabled]="disabled"
-                [readonly]="readonly"
-                [hasFocus]="hasFocus"
-
-                [showAllErrors]="showAllErrors"
-                [errorMessages]="errorMessages"
-                [errorMessage]="errorMessage"
-                [placeholder]="placeholder"
-                [required]="required"
-                [pattern]="pattern"
-                [min]="min"
-                [max]="max"
-                [maxlength]="maxlength"
-                [noAutoComplete]="noAutoComplete"
-                [acceptHtmlTags]="acceptHtmlTags"
-
-                (valueChange)="updateChangeEvent($event)"
-                (keyUp)="keyupEvent = $event"
-                (enter)="enterEvent = $event"
-                (blurring)="blurEvent = $event"
-                (focusing)="focusEvent = $event"
-            >Label</pa-input>
-
-        </div>
-        <div *ngIf="selectedTab === 'ngModel'">
-            <pa-input
-                [(ngModel)]="value"
-                [id]="id"
-                [name]="name"
-                [type]="type"
-                [help]="help"
-                [disabled]="disabled"
-                [readonly]="readonly"
-                [hasFocus]="hasFocus"
-
-                [showAllErrors]="showAllErrors"
-                [errorMessages]="errorMessages"
-                [errorMessage]="errorMessage"
-                [placeholder]="placeholder"
-                [required]="required"
-                [pattern]="pattern"
-                [min]="min"
-                [max]="max"
-                [maxlength]="maxlength"
-                [noAutoComplete]="noAutoComplete"
-                [acceptHtmlTags]="acceptHtmlTags"
-
-                (keyUp)="keyupEvent = $event"
-                (enter)="enterEvent = $event"
-                (blurring)="blurEvent = $event"
-                (focusing)="focusEvent = $event"
-                (ngModelChange)="onModelChange()"
-            >Label</pa-input>
-
-        </div>
-        <div *ngIf="selectedTab === 'formControl'">
-            <pa-input
-                [formControl]="formControl"
-
-                [id]="id"
-                [name]="name"
-                [type]="type"
-                [help]="help"
-                [readonly]="readonly"
-                [hasFocus]="hasFocus"
-
-                [showAllErrors]="showAllErrors"
-                [errorMessages]="errorMessages"
-                [errorMessage]="errorMessage"
-                [placeholder]="placeholder"
-                [required]="required"
-                [pattern]="pattern"
-                [min]="min"
-                [max]="max"
-                [maxlength]="maxlength"
-                [noAutoComplete]="noAutoComplete"
-                [acceptHtmlTags]="acceptHtmlTags"
-
-                (keyUp)="keyupEvent = $event"
-                (enter)="enterEvent = $event"
-                (blurring)="blurEvent = $event"
-                (focusing)="focusEvent = $event"
-            >Label</pa-input>
-        </div>
-        <div *ngIf="selectedTab === 'formControlName'">
-            <form [formGroup]="formGroup">
-                <pa-input
-                    formControlName="text"
-                    [id]="id"
-                    [name]="name"
-                    [type]="type"
-                    [help]="help"
-                    [readonly]="readonly"
-                    [hasFocus]="hasFocus"
-
-                    [showAllErrors]="showAllErrors"
-                    [errorMessages]="errorMessages"
-                    [errorMessage]="errorMessage"
-                    [placeholder]="placeholder"
-                    [required]="required"
-                    [pattern]="pattern"
-                    [min]="min"
-                    [max]="max"
-                    [maxlength]="maxlength"
-                    [noAutoComplete]="noAutoComplete"
-                    [acceptHtmlTags]="acceptHtmlTags"
-
-                    (keyUp)="keyupEvent = $event"
-                    (enter)="enterEvent = $event"
-                    (blurring)="blurEvent = $event"
-                    (focusing)="focusEvent = $event"
-                >Label
-                </pa-input>
-            </form>
-        </div>
+<!--        TODO: add autoCapitalize-->
+        <pa-demo-input-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-input-standalone-example>
+        <pa-demo-input-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-input-ng-model-example>
+        <pa-demo-input-form-control-example *ngIf="selectedTab === 'formControl'"></pa-demo-input-form-control-example>
+        <pa-demo-input-form-group-example *ngIf="selectedTab === 'formControlName'"></pa-demo-input-form-group-example>
 
     </pa-demo-examples>
-    <pa-demo-configuration>
-            <div class="pa-demo-configuration-field"><pa-checkbox [(ngModel)]="useParentValue" (valueChange)="changeValue($event)">parent value: {{value}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!placeholder" (valueChange)="changePlaceholder()">placeholder</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!help" (valueChange)="changeHelp()">help message</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!hasFocus" (valueChange)="changeFocus()">focus</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="readonly" (valueChange)="changeReadonly()">readonly</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="disabled" (valueChange)="changeDisable()">disabled</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessage" (valueChange)="changeErrorMessage()">errorMessage</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="showAllErrors" (valueChange)="changeShowAllErrors()">showAllErrors</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessages" (valueChange)="changeErrorMessages()">errorMessages</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="required" (valueChange)="changeRequired()">required</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!pattern" (valueChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!min" (valueChange)="changeMin()">min {{min}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!max" (valueChange)="changeMax()">max {{max}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!maxlength" (valueChange)="changeMaxlength()">maxlength {{maxlength}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="noAutoComplete" (valueChange)="changeNoAutoComplete()">noAutoComplete</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="acceptHtmlTags" (valueChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="type === 'text'" (valueChange)="changeType()">type {{type}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox name="updateOnChange" *ngIf="selectedTab === 'standalone'" [value]="updateOn === 'change' || !updateOn" (valueChange)="changeUpdateOn('change')">updateOn Change</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [value]="updateOn === 'blur'" (valueChange)="changeUpdateOn('blur')">updateOn Blur</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [value]="updateOn === 'submit'" (valueChange)="changeUpdateOn('submit')">updateOn submit</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!id" (valueChange)="changeId()">id</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!name" (valueChange)="changeName()">name</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!describedBy" (valueChange)="changeDescribedBy()">describedBy</pa-checkbox></div>
-
-    </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h2>Inherited from <code>BaseControl</code></h2>
-        <pa-demo-base-control-usage></pa-demo-base-control-usage>
+        <h2>Inherited from <code>PaFormControlDirective</code></h2>
+        <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
 
         <br>
         <h2>Specific to <code>InputComponent</code></h2>
@@ -210,6 +55,17 @@
             <dd>Allow to define the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize" target="_new">HTML5 autocapitalize attribute</a> value.
                 <small>(no default)</small>
                 <br>Note: it must be set to <code>off</code> to disable the autocapitalization applied by some smartphones.
+            </dd>
+            <dt>hasFocus</dt>
+            <dd>triggers the focus on the input field <small>(optional)</small></dd>
+            <dt>help</dt>
+            <dd>A hint to display, helping the user when filling a form field <small>(optional)</small></dd>
+            <dt>showAllErrors</dt>
+            <dd>Display all errors or only the first error encountered (errors being sorted by key) <small>(default:
+                true)</small></dd>
+            <dt>errorMessages</dt>
+            <dd>Provides default messages to display for the possible error keys when none is present in the errors object. If a message (string) is provided for a given key, it
+                will be displayed rather than the message provided in errorMessages.
             </dd>
         </dl>
 

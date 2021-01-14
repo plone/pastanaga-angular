@@ -1,60 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import {
-    IErrorMessages,
-    TextInputType,
-    UpdateOnStrategy,
-} from '../../../../../../pastanaga-angular/src/lib/controls/form-field.model';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { detectChanges, markForCheck } from '../../../../../../pastanaga-angular/src';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     templateUrl: './input-page.component.html',
+    styleUrls: ['./input-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputPageComponent implements OnInit, OnDestroy {
+export class InputPageComponent {
     selectedTab = 'standalone';
-    id?: string;
-    name? = 'email';
-    type: TextInputType = 'text';
-    help?: string;
-    disabled = false;
-    value?: any;
-    valueChange?: any;
-    keyupEvent?: any;
-    enterEvent?: any;
-    blurEvent?: any;
-    focusEvent?: any;
-    describedBy?: string;
-    readonly = false;
-    hasFocus = false;
-    showAllErrors = true;
-    errorMessages?: IErrorMessages;
-    errorMessage?: string;
-    updateOn?: UpdateOnStrategy;
-    placeholder?: string;
-    required = false;
-    pattern?: string | RegExp;
-    min?: number;
-    max?: number;
-    maxlength?: number;
-    noAutoComplete = false;
-    acceptHtmlTags = true;
-    useParentValue = false;
-
-    ngModelChangeEvent?: any;
-    formControl = new FormControl();
-    formControlValueChangeEvent?: any;
-    formControlStatusChangeEvent?: any;
-
-    formGroup = new FormGroup({
-        text: new FormControl(''),
-    });
-
-    formGroupValueChangeEvent?: any;
-    formGroupStatusChangeEvent?: any;
-    terminator: Subject<void> = new Subject<void>();
 
     standaloneBasicCode = `<pa-input [value]="value" (valueChange)="doSomething($event)">Label</pa-input>`;
     standaloneFullCode = `<pa-input
@@ -64,7 +16,6 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [name]="name"
     [type]="type"
     [help]="help"
-    [describedBy]="describedBy"
     [disabled]="disabled"
     [readonly]="readonly"
     [hasFocus]="hasFocus"
@@ -72,7 +23,6 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [showAllErrors]="showAllErrors"
     [errorMessages]="errorMessages"
     [errorMessage]="errorMessage"
-    [updateOn]="updateOn"
     [placeholder]="placeholder"
     [required]="required"
     [pattern]="pattern"
@@ -83,6 +33,7 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [acceptHtmlTags]="acceptHtmlTags"
 
     (valueChange)="valueChange = $event"
+    (statusChange)="statusChange = $event"
     (keyUp)="keyupEvent = $event"
     (enter)="enterEvent = $event"
     (blurring)="blurEvent = $event"
@@ -105,7 +56,6 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [name]="name"
     [type]="type"
     [help]="help"
-    [describedBy]="describedBy"
     [disabled]="disabled"
     [readonly]="readonly"
     [hasFocus]="hasFocus"
@@ -146,7 +96,6 @@ export class InputPageComponent implements OnInit, OnDestroy {
     [name]="name"
     [type]="type"
     [help]="help"
-    [describedBy]="describedBy"
     [readonly]="readonly"
     [hasFocus]="hasFocus"
 
@@ -193,7 +142,6 @@ export class InputPageComponent implements OnInit, OnDestroy {
         [name]="name"
         [type]="type"
         [help]="help"
-        [describedBy]="describedBy"
         [readonly]="readonly"
         [hasFocus]="hasFocus"
 
@@ -217,153 +165,4 @@ export class InputPageComponent implements OnInit, OnDestroy {
     >Label
     </pa-input>
 </form>`;
-
-    constructor(private cdr: ChangeDetectorRef) {}
-    ngOnInit() {
-        this.formControl.valueChanges.pipe(takeUntil(this.terminator)).subscribe((value) => {
-            this.formControlValueChangeEvent = value;
-        });
-        this.formControl.statusChanges.pipe(takeUntil(this.terminator)).subscribe((status) => {
-            this.formControlStatusChangeEvent = status;
-        });
-        this.formGroup.valueChanges.pipe(takeUntil(this.terminator)).subscribe((value) => {
-            this.formGroupValueChangeEvent = value;
-        });
-        this.formGroup.statusChanges.pipe(takeUntil(this.terminator)).subscribe((status) => {
-            this.formGroupStatusChangeEvent = status;
-        });
-    }
-
-    ngOnDestroy() {
-        this.terminator.next();
-        this.terminator.complete();
-    }
-
-    changeValue(useParent: boolean) {
-        console.log('HEEEEE in DEMO, checkbox changed changeValue', this.value, useParent);
-        let val;
-        if (!useParent) {
-            val = null;
-        } else if (!!this.type && this.type === 'number') {
-            val = 7;
-        } else {
-            val = 'applied parent value';
-        }
-        this.value = val || undefined;
-        // console.log('demo: value', this.value);
-        this.formControl.patchValue(val);
-        this.formGroup.get('text')?.patchValue(val);
-    }
-
-    changePlaceholder() {
-        this.placeholder = !!this.placeholder ? undefined : 'A placeholder';
-    }
-
-    changeId() {
-        this.id = !!this.id ? undefined : 'id';
-    }
-
-    changeName() {
-        this.name = !!this.name ? undefined : 'name';
-    }
-
-    changeType() {
-        this.type = this.type === 'text' ? 'number' : 'text';
-    }
-
-    changeHelp() {
-        this.help = !!this.help ? undefined : 'the provided help message';
-    }
-
-    changeDisable() {
-        this.disabled = !this.disabled;
-        if (this.disabled) {
-            this.formControl.disable();
-            this.formGroup.get('text')?.disable();
-        } else {
-            this.formControl.enable();
-            this.formGroup.get('text')?.enable();
-        }
-    }
-
-    changeDescribedBy() {
-        this.describedBy = !!this.describedBy ? undefined : 'other-element-describing-input';
-    }
-
-    changeReadonly() {
-        this.readonly = !this.readonly;
-    }
-
-    changeFocus() {
-        this.hasFocus = !this.hasFocus;
-    }
-
-    changeShowAllErrors() {
-        this.showAllErrors = !this.showAllErrors;
-        console.log('changed showAllErrors', this.showAllErrors);
-    }
-
-    changeErrorMessages() {
-        this.errorMessages = !!this.errorMessages
-            ? undefined
-            : {
-                  required: 'this field is required',
-                  pattern: 'this field is not matching regex',
-                  min: 'value is too low',
-                  max: 'value is too high',
-                  email: 'invalid email',
-                  maxlength: 'too many chars',
-              };
-    }
-
-    changeErrorMessage() {
-        this.errorMessage = !!this.errorMessage ? undefined : 'External error message';
-    }
-
-    changeUpdateOn(value: UpdateOnStrategy) {
-        if (value === this.updateOn) {
-            this.updateOn = undefined;
-        } else {
-            this.updateOn = value;
-        }
-
-        // detectChanges(this.cdr);
-    }
-
-    changeRequired() {
-        this.required = !this.required;
-    }
-
-    changePattern() {
-        this.pattern = !!this.pattern ? undefined : new RegExp('.?test.?');
-    }
-
-    changeMin() {
-        this.min = !!this.min ? undefined : 3;
-    }
-
-    changeMax() {
-        this.max = !!this.max ? undefined : 5;
-    }
-
-    changeMaxlength() {
-        this.maxlength = !!this.maxlength ? undefined : 2;
-    }
-
-    changeNoAutoComplete() {
-        this.noAutoComplete = !this.noAutoComplete;
-    }
-
-    changeAcceptHtmlTags() {
-        this.acceptHtmlTags = !this.acceptHtmlTags;
-    }
-
-    onModelChange() {
-        this.ngModelChangeEvent = this.value;
-    }
-
-    updateChangeEvent(event: any) {
-        this.valueChange = event;
-        detectChanges(this.cdr);
-    }
 }
