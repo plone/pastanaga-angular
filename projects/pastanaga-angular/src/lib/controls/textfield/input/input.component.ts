@@ -18,7 +18,7 @@ import {
 } from '@angular/core';
 import { NgControl, ValidatorFn, Validators } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { detectChanges, Keys } from '../../../common';
+import { Keys, markForCheck } from '../../../common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IErrorMessages, TextInputType } from '../../form-field.model';
@@ -34,13 +34,8 @@ import { TextFieldUtilityService } from '../text-field-utility.service';
 })
 export class InputComponent extends PaFormControlDirective implements OnChanges, OnInit, AfterViewInit, OnDestroy {
     @Input() set type(value: TextInputType) {
-        this._type = value;
-        // When using Angular inputs, developers are no longer able to set the properties on the native
-        // input element. To ensure that bindings for `type` work, we need to sync the setter
-        // with the native property.
-        if (!!this.htmlInputRef) {
-            this.htmlInputRef.nativeElement.type = value;
-        }
+        this._type = value || 'text';
+        this._updateInputType();
     }
 
     get type() {
@@ -61,21 +56,11 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
     }
 
     @Input() set min(value: number | undefined) {
-        this._min = value;
-        this._toggleValidator('min', value ? Validators.min(value) : undefined);
-    }
-
-    get min() {
-        return this._min;
+        this._toggleValidator('min', value || value === 0 ? Validators.min(value) : undefined);
     }
 
     @Input() set max(value: number | undefined) {
-        this._max = value;
-        this._toggleValidator('max', value ? Validators.max(value) : undefined);
-    }
-
-    get max() {
-        return this._max;
+        this._toggleValidator('max', value || value === 0 ? Validators.max(value) : undefined);
     }
 
     @Input() set maxlength(value: number | undefined) {
@@ -137,8 +122,7 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
     private _stopAutoCompleteMonitor = new Subject();
     private _hasFocus = false;
     private _maxlength?: number;
-    private _max?: number;
-    private _min?: number;
+    private _wasNumber = false;
 
     constructor(
         protected element: ElementRef,
@@ -171,6 +155,7 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
     }
 
     ngAfterViewInit(): void {
+        this._updateInputType();
         if (!!this.htmlInputRef) {
             this._updateAutoComplete();
             this.textFieldUtility.handleIosCaretPosition(this.htmlInputRef.nativeElement);
@@ -179,9 +164,11 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
 
         this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe(() => {
             this._checkIsFilled();
+            markForCheck(this.cdr);
         });
         this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe(() => {
             this._checkDescribedBy();
+            markForCheck(this.cdr);
         });
         this.setDisabledState(this.control.disabled);
         this._focusInput();
@@ -190,6 +177,7 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
     ngOnDestroy() {
         this._stopAutoCompleteMonitor.next();
         this._stopAutoCompleteMonitor.complete();
+        this._unTrackNumberInputClick();
         super.ngOnDestroy();
     }
 
@@ -234,16 +222,15 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
     private _checkIsFilled() {
         // NB: depending on updateOn formHook, the input can be filled but the formControlValue not updated yet
         this.isFilled = this.htmlInputRef?.nativeElement.value === 0 || this.htmlInputRef?.nativeElement.value.length;
-        detectChanges(this.cdr);
     }
 
     private _checkDescribedBy() {
         if ((!this.describedById && this.help) || this.control.errors) {
             this.describedById = `${this.id}-hint`;
-            detectChanges(this.cdr);
-        } else if (!this.help && !this.control.errors) {
+            // markForCheck(this.cdr);
+        } else if (!this.help && this.control.errors === null) {
             this.describedById = undefined;
-            detectChanges(this.cdr);
+            markForCheck(this.cdr);
         }
     }
 
@@ -262,6 +249,44 @@ export class InputComponent extends PaFormControlDirective implements OnChanges,
     private _focusInput() {
         if (this._hasFocus && !!this.htmlInputRef && this.isActive) {
             this.htmlInputRef.nativeElement.focus();
+        }
+    }
+
+    private _updateInputType() {
+        // When using Angular inputs, developers are no longer able to set the properties on the native
+        // input element. To ensure that bindings for `type` work, we need to sync the setter
+        // with the native property.
+        if (!!this.htmlInputRef) {
+            this.htmlInputRef.nativeElement.type = this._type;
+        }
+        this._checkNumberInputEvent();
+    }
+
+    private _checkNumberInputEvent() {
+        if (!!this.htmlInputRef && this._type === 'number') {
+            this._wasNumber = true;
+            this.htmlInputRef.nativeElement.addEventListener('mouseup', this._numberInputClicked);
+        } else {
+            this._unTrackNumberInputClick();
+        }
+    }
+
+    private _numberInputClicked = () => {
+        if (this.control.untouched) {
+            this.control.markAsTouched();
+        }
+        if (this.control.pristine) {
+            this.control.markAsDirty();
+        }
+        if (this.htmlInputRef?.nativeElement.value !== this.control.value) {
+            const val = Number(this.htmlInputRef?.nativeElement.value);
+            this.control.patchValue(isNaN(val) ? null : val);
+        }
+    };
+
+    private _unTrackNumberInputClick() {
+        if (!!this.htmlInputRef && this._wasNumber) {
+            this.htmlInputRef.nativeElement.removeEventListener('mouseup', this._numberInputClicked);
         }
     }
 }

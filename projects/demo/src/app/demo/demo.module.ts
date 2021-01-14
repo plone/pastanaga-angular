@@ -74,6 +74,11 @@ import { FormControlValueExampleComponent } from './pages/form-control-page/valu
 import { FormControlStateExampleComponent } from './pages/form-control-page/state-example/form-control-state-example.component';
 import { FormControlValidationExampleComponent } from './pages/form-control-page/validation-example/form-control-validation-example.component';
 import { PaFormControlUsageComponent } from './pages/form-control-page/usage/pa-form-control-usage.component';
+import { InputStandaloneExampleComponent } from './pages/input-page/input-standalone-example/input-standalone-example.component';
+import { InputNgModelExampleComponent } from './pages/input-page/input-ng-model-example/input-ng-model-example.component';
+import { InputFormControlExampleComponent } from './pages/input-page/input-form-control-example/input-form-control-example.component';
+import { InputFormGroupExampleComponent } from './pages/input-page/input-form-group-example/input-form-group-example.component';
+import { PaInputConfigComponent } from './pages/input-page/pa-input-config/pa-input-config.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -115,6 +120,11 @@ const COMPONENTS = [
     GridPageComponent,
     IconPageComponent,
     InputPageComponent,
+    InputStandaloneExampleComponent,
+    InputNgModelExampleComponent,
+    InputFormControlExampleComponent,
+    InputFormGroupExampleComponent,
+    PaInputConfigComponent,
     ModalPageComponent,
     PalettePageComponent,
     PopupPageComponent,
