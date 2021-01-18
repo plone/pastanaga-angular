@@ -83,3 +83,7 @@ export * from './lib/side-nav/side-nav.module';
 export * from './lib/side-nav/side-nav.component';
 export * from './lib/side-nav/side-nav.directive';
 export * from './lib/side-nav/side-nav-item.component';
+
+export * from './lib/tooltip/tootip.module';
+export * from './lib/tooltip/tooltip.directive';
+export * from './lib/tooltip/tooltip.component';
