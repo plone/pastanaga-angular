@@ -17,7 +17,6 @@ export class InputFormGroupExampleComponent {
     enterEvent?: any;
     blurEvent?: any;
     focusEvent?: any;
-    ngModelChangeEvent?: any;
 
     config?: any = {};
 

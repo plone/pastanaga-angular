@@ -3,6 +3,9 @@
      [class.pa-field-disabled]="control.disabled"
      [class.pa-field-error]="control.dirty && control.invalid">
     <div #selectInput class="select-input pa-field-control"
+         paFocusable
+         cdkMonitorElementFocus
+         sameWidth
          [class.pa-field-control-filled]="hasValue || isOpened"
          [class.read-only]="readonly"
          [class.disabled]="control.disabled"
@@ -10,14 +13,11 @@
          [attr.name]="name"
          [attr.aria-label]="label"
          [attr.aria-describedby]="describedById"
-         paFocusable
          [paPopup]="optionsDropdown"
          [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '48px'}"
          [popupDisabled]="control.disabled || readonly"
-         cdkMonitorElementFocus
-         sameWidth
-         (cdkFocusChange)="onFocus($event)">
-        <span class="select-value"
+         (cdkFocusChange)="onControlFocused($event)">
+        <span class="pa-select-value"
               [class.placeholder]="!hasValue"
               [class.active]="isOpened"
         >{{displayedValue}}</span>
@@ -26,8 +26,8 @@
     <label class="pa-field-label" [for]="id">{{label}}</label>
 
     <pa-icon class="pa-select-chevron"
-             [class.opened]="isOpened"
              name="chevron-down"
+             [class.opened]="isOpened"
              (click)="toggleDropdown()"></pa-icon>
 
     <pa-form-field-hint
@@ -48,10 +48,10 @@
                  (onOpen)="dropDownOpened()"
                  >
 
-        <ng-container *ngIf="optionModels.length; else contentOptions">
+        <ng-container *ngIf="dropDownModels.length; else contentOptions">
             <pa-select-options
-                [options]="optionModels"
-                (optionSelected)="optionSelected($event)"
+                [options]="dropDownModels"
+                (optionSelected)="selectOption($event)"
             ></pa-select-options>
         </ng-container>
 

@@ -79,6 +79,11 @@ import { InputNgModelExampleComponent } from './pages/input-page/input-ng-model-
 import { InputFormControlExampleComponent } from './pages/input-page/input-form-control-example/input-form-control-example.component';
 import { InputFormGroupExampleComponent } from './pages/input-page/input-form-group-example/input-form-group-example.component';
 import { PaInputConfigComponent } from './pages/input-page/pa-input-config/pa-input-config.component';
+import { SelectStandaloneExampleComponent } from './pages/select-page/select-standalone-example/select-standalone-example.component';
+import { SelectNgModelExampleComponent } from './pages/select-page/select-ng-model-example/select-ng-model-example.component';
+import { SelectFormControlExampleComponent } from './pages/select-page/select-form-control-example/select-form-control-example.component';
+import { SelectFormGroupExampleComponent } from './pages/select-page/select-form-group-example/select-form-group-example.component';
+import { PaSelectConfigComponent } from './pages/select-page/pa-select-config/pa-select-config.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -129,6 +134,11 @@ const COMPONENTS = [
     PalettePageComponent,
     PopupPageComponent,
     SelectPageComponent,
+    SelectStandaloneExampleComponent,
+    SelectNgModelExampleComponent,
+    SelectFormControlExampleComponent,
+    SelectFormGroupExampleComponent,
+    PaSelectConfigComponent,
     SidenavPageComponent,
     TabsPageComponent,
     TablePageComponent,
