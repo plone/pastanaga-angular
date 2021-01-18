@@ -21,8 +21,8 @@ import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { DropdownComponent } from '../../../dropdown/dropdown.component';
-import { takeUntil } from 'rxjs/operators';
-import { detectChanges } from '../../../common';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { detectChanges, markForCheck } from '../../../common';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
@@ -40,22 +40,11 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     @Input() placeholder?: string;
 
     @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
-        this.optionModels = values;
-        // find provided selected option
-        const selectedOption: OptionModel | undefined = values.find(
-            (option) => option.type === ControlType.option && (option as OptionModel).selected
-        ) as OptionModel | undefined;
-        if (selectedOption) {
-            this.control.patchValue(selectedOption.value);
-        }
+        this.dropDownModels = !!values ? values : [];
     }
 
     @Input() set required(value: boolean) {
         this._required = coerceBooleanProperty(value);
-    }
-
-    get required() {
-        return this._required || false;
     }
 
     @Input() set hasFocus(value: boolean) {
@@ -72,19 +61,18 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     @ViewChild('selectInput') selectInput?: ElementRef;
     @ViewChild('optionsDropdown') optionsDropdown?: DropdownComponent;
-    @ContentChildren(OptionComponent, { descendants: true }) ngContentOptions?: QueryList<OptionComponent>;
+    @ContentChildren(OptionComponent, { descendants: true }) ngContent?: QueryList<OptionComponent>;
 
     get hasValue() {
-        // TODO: question this condition
-        return !!this.control.value && this.control.value.length;
+        return !!this.control.value;
     }
 
-    optionModels: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
+    dropDownModels: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
     isOpened = false;
     fieldType = 'select';
     describedById?: string;
     /**
-     * either the label of the selected option, either the placeholder
+     * either the selected option label, either the placeholder
      */
     displayedValue?: string;
     private optionsClosed$ = new Subject();
@@ -119,9 +107,16 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         this._checkDescribedBy();
         this._focusInput();
         this._updateDisplayedValue(this.control.value);
-        this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
+        // valueChanges may be triggered by an update value and validity...
+        // we don't want to recompute the displayed option label in that case
+        this.control.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.terminator$)).subscribe((val) => {
             this._updateDisplayedValue(val);
+            this._markOptionAsSelected();
+            detectChanges(this.cdr);
         });
+        this.control.statusChanges
+            .pipe(distinctUntilChanged(), takeUntil(this.terminator$))
+            .subscribe(() => markForCheck(this.cdr));
     }
 
     ngOnDestroy() {
@@ -131,88 +126,26 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         super.ngOnDestroy();
     }
 
-    _handleNgContent() {
-        if (!!this.ngContentOptions) {
-            this._trackOptionSelected();
-            this.ngContentOptions.changes.pipe(takeUntil(this.terminator$)).subscribe(() => {
-                this.contentOptionsChanged$.next();
-                this._trackOptionSelected();
-            });
-        }
-    }
-    _trackOptionSelected() {
-        if (this.ngContentOptions && this.ngContentOptions.length > 0) {
-            // subscribe to option selection
-            this.ngContentOptions.forEach((option) =>
-                option.selectOption.pipe(takeUntil(this.terminator$)).subscribe(() => {
-                    this.control.patchValue(option.value);
-                })
-            );
-        }
-    }
-
     toggleDropdown() {
         if (this.control.disabled || this.readonly) {
             return;
         }
         if (!!this.optionsDropdown && this.optionsDropdown._isDisplayed) {
+            // will trigger onClose event
             this.optionsDropdown.close();
         } else {
-            this.openOptionDropDown();
+            this._openOptionDropDown();
         }
     }
 
-    /**
-     * click on select input triggers paPopup toggle and display the options
-     * paPopup will listen to click and close itself immediately if we dont wait for a tick
-     */
-    openOptionDropDown() {
-        setTimeout(() => {
-            if (!!this.selectInput) {
-                this.selectInput.nativeElement.click();
-            }
-        });
-    }
-
-    optionSelected(selectedOption: OptionModel) {
-        if (!selectedOption.disabled && this.isActive) {
-            this.control.patchValue(selectedOption.value);
-        }
-    }
-
-    onFocus(event: FocusOrigin) {
-        if (!this.isOpened && event === 'keyboard') {
-            this.openOptionDropDown();
-        }
-    }
-
-    private _focusInput() {
-        if (this._hasFocus && !!this.selectInput && this.isActive) {
-            this.openOptionDropDown();
-        }
-    }
-
-    _updateDisplayedValue(val?: string) {
-        const selectedOptionLabel = this._findLabelByValue(val);
-        this.displayedValue = selectedOptionLabel || this.placeholder;
-        detectChanges(this.cdr);
-    }
-
-    private _findLabelByValue(value?: string): string | undefined {
-        let label: string | undefined;
-        if (!!this.ngContentOptions && this.ngContentOptions.length > 0) {
-            const selectedOption = this.ngContentOptions.find((option) => option.value === this.control.value);
-            label = !!selectedOption ? selectedOption.text : undefined;
-        } else {
-            const selectedOption = this.optionModels.find((option: OptionModel) => option.value === value);
-            label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
-        }
-        return label;
+    dropDownOpened() {
+        this.isOpened = true;
+        this.expanded.emit(true);
     }
 
     dropDownClosed() {
         if (!this.control.touched) {
-            this.control.markAsTouched();
+            this.control.markAsTouched({});
         }
         // if user opened the dropdown but did not select a value
         // we consider this as an action leading to formControl validation
@@ -226,18 +159,54 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         this.expanded.emit(false);
     }
 
-    dropDownOpened() {
-        this.isOpened = true;
-        if (!this.optionModels.length) {
-            setTimeout(() => {
-                this.ngContentOptions?.forEach((option: OptionComponent) => {
-                    option.selectOption.pipe(takeUntil(this.optionsClosed$)).subscribe(() => {
-                        this.writeValue(option.value);
-                    });
-                });
-            });
+    onControlFocused(event: FocusOrigin) {
+        if (!this.isOpened && event === 'keyboard') {
+            this._openOptionDropDown();
         }
-        this.expanded.emit(true);
+    }
+
+    selectOption(option: OptionModel | OptionComponent) {
+        if (!option.disabled && this.isActive && option.value !== this.control.value) {
+            this.control.patchValue(option.value);
+        }
+    }
+
+    private _focusInput() {
+        if (this._hasFocus && this.isActive) {
+            this._openOptionDropDown();
+        }
+    }
+
+    /**
+     * click on select input triggers paPopup toggle and display the options.
+     * paPopup will listen to click and close itself immediately if we dont wait for a tick
+     */
+    private _openOptionDropDown() {
+        setTimeout(() => {
+            if (!!this.selectInput) {
+                this.selectInput.nativeElement.click();
+            }
+        });
+    }
+
+    private _updateDisplayedValue(val?: string) {
+        const selectedOptionLabel = this._findLabelByValue(val);
+        this.displayedValue = selectedOptionLabel || this.placeholder;
+    }
+
+    private _findLabelByValue(value?: string): string | undefined {
+        let label: string | undefined;
+
+        // precedence of drop options provided in input over options provided as ngContent
+        if (this.dropDownModels.length) {
+            const selectedOption = this.dropDownModels.find((option: OptionModel) => option.value === value);
+            label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
+        }
+        if (!label && !!this.ngContent && this.ngContent.length) {
+            const selectedOption = this.ngContent.find((option) => option.value === this.control.value);
+            label = !!selectedOption ? selectedOption.text : undefined;
+        }
+        return label;
     }
 
     private _checkDescribedBy() {
@@ -247,6 +216,51 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         } else if (!this.help && !this.control.errors) {
             this.describedById = undefined;
             detectChanges(this.cdr);
+        }
+    }
+
+    private _handleNgContent() {
+        this._markOptionAsSelected();
+        this._trackNgContentOptionSelected();
+
+        if (!!this.ngContent) {
+            this.ngContent.changes.pipe(takeUntil(this.terminator$)).subscribe(() => {
+                this.contentOptionsChanged$.next();
+                this._markOptionAsSelected();
+                this._trackNgContentOptionSelected();
+            });
+        }
+    }
+
+    private _trackNgContentOptionSelected() {
+        if (!!this.ngContent) {
+            // subscribe to option selection
+            this.ngContent.forEach((option) =>
+                option.selectOption.pipe(takeUntil(this.terminator$)).subscribe(() => this.selectOption(option))
+            );
+        }
+    }
+
+    private _markOptionAsSelected() {
+        if (this.dropDownModels.length) {
+            this.dropDownModels.forEach((option: OptionModel | OptionSeparator | OptionHeaderModel) => {
+                if (option.type === ControlType.option) {
+                    this._toggleSelectedOption(option as OptionModel);
+                }
+            });
+            // refresh array reference to trigger change detection in child component
+            this.dropDownModels = this.dropDownModels.slice();
+        }
+        if (!!this.ngContent) {
+            this.ngContent.toArray().forEach((option) => this._toggleSelectedOption(option));
+        }
+    }
+
+    private _toggleSelectedOption(option: OptionComponent | OptionModel) {
+        if (option.selected && option.value !== this.control.value) {
+            option.selected = false;
+        } else if (!option.selected && option.value === this.control.value) {
+            option.selected = true;
         }
     }
 }

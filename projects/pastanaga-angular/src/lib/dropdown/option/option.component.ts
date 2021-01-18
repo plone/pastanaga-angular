@@ -51,6 +51,9 @@ export class OptionComponent implements AfterContentInit, OnInit {
     @Input()
     set selected(value: boolean) {
         this._selected = coerceBooleanProperty(value);
+        // when selected is triggered programmatically by a parent component
+        // change detection must be triggered manually
+        markForCheck(this.cdr);
     }
     get selected(): boolean {
         return this._selected;
@@ -68,12 +71,12 @@ export class OptionComponent implements AfterContentInit, OnInit {
     text = '';
     _hidden = false;
 
-    _icon = '';
-    _value = '';
-    _disabled = false;
-    _selected = false;
-    _destructive = false;
-    _dontCloseOnSelect = false;
+    private _value = '';
+    private _icon = '';
+    private _disabled = false;
+    private _selected = false;
+    private _destructive = false;
+    private _dontCloseOnSelect = false;
 
     constructor(private element: ElementRef, private popupService: PopupService, private cdr: ChangeDetectorRef) {}
 
@@ -94,9 +97,5 @@ export class OptionComponent implements AfterContentInit, OnInit {
             $event.stopPropagation();
             $event.preventDefault();
         }
-    }
-
-    refresh() {
-        markForCheck(this.cdr);
     }
 }

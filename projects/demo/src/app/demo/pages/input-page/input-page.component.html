@@ -17,7 +17,6 @@
             <pa-tab (click)="selectedTab = 'formControlName'"
                     [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
         </pa-tabs>
-<!--        TODO: add autoCapitalize-->
         <pa-demo-input-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-input-standalone-example>
         <pa-demo-input-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-input-ng-model-example>
         <pa-demo-input-form-control-example *ngIf="selectedTab === 'formControl'"></pa-demo-input-form-control-example>

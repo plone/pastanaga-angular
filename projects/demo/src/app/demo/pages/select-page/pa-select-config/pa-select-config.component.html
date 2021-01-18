@@ -1,0 +1,168 @@
+<h4>Configure component</h4>
+
+<form [formGroup]="stateForm">
+    <fieldset>
+        <legend>Component configuration</legend>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="optionsProvidedInTemplate" [value]="true" id="templateOptions" type="radio">
+                <label for="templateOptions">provide options "In template"</label>
+            </div>
+            <div class="option">
+                <input formControlName="optionsProvidedInTemplate" [value]="false" id="typescriptOptions" type="radio">
+                <label for="typescriptOptions">provide options programmatically</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="adjustHeight" [value]="undefined" id="undefinedAdjustHeight" type="radio">
+                <label for="undefinedAdjustHeight">Adjust dropdown height undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="adjustHeight" [value]="true" id="adjustHeight" type="radio">
+                <label for="adjustHeight">prevent dropdown to expand below window bottom</label>
+            </div>
+            <div class="option">
+                <p>NB: once adjustHeight is set to true, it cannot be undone</p>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="hasFocus" [value]="null" id="hasFocusUndefined" type="radio">
+                <label for="hasFocusUndefined">hasFocus undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="hasFocus" [value]="true" id="hasFocus" type="radio">
+                <label for="hasFocus">hasFocus</label>
+            </div>
+            <div class="option">
+                <input formControlName="hasFocus" [value]="false" id="hasFocusFalse" type="radio">
+                <label for="hasFocusFalse">hasFocus false</label>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Input properties, attributes and state</legend>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="value" [value]="null" id="parentValueUndefined" type="radio">
+                <label for="parentValueUndefined">Parent Value Undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="value" value="user1"
+                       id="parentValuated" type="radio">
+                <label for="parentValuated">Parent Value: user1</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="label" [value]="null" id="labelUndefined" type="radio">
+                <label for="labelUndefined">label undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="label" value="The label" id="label" type="radio">
+                <label for="label">with a label</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="placeholder" [value]="null" id="placeholderUndefined" type="radio">
+                <label for="placeholderUndefined">placeholder undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="placeholder" value="A placeholder" id="placeholderValuated" type="radio">
+                <label for="placeholderValuated">with placeholder</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="disabled" [value]="null" id="disabledUndefined" type="radio">
+                <label for="disabledUndefined">disabled undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="disabled" [value]="true" id="disabled" type="radio">
+                <label for="disabled">disabled</label>
+            </div>
+            <div class="option">
+                <input formControlName="disabled" [value]="false" id="enabled" type="radio">
+                <label for="enabled">enabled</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="readonly" [value]="null" id="readonlyUndefined" type="radio">
+                <label for="readonlyUndefined">readonly undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="readonly" [value]="true" id="readonly" type="radio">
+                <label for="readonly">readonly</label>
+            </div>
+            <div class="option">
+                <input formControlName="readonly" [value]="false" id="notReadonly" type="radio">
+                <label for="notReadonly">not readonly</label>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Hint and error management</legend>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="help" [value]="null" id="helpUndefined" type="radio">
+                <label for="helpUndefined">help undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="help" value="A hint to help the user" id="help" type="radio">
+                <label for="help">help provided</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="errorMessage" [value]="null" id="errorMessageUndefined" type="radio">
+                <label for="errorMessageUndefined">manual error message undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="errorMessage" value="A manually set error message" id="errorMessage"
+                       type="radio">
+                <label for="errorMessage">manual error message </label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="errorMessages" [value]="null" id="errorMessagesUndefined" type="radio">
+                <label for="errorMessagesUndefined">error messages undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="errorMessages" [value]="errorMessages" id="errorMessages" type="radio">
+                <label for="errorMessages">error messages provided</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="showAllErrors" [value]="null" id="showAllErrorsUndefined" type="radio">
+                <label for="showAllErrorsUndefined">showAllErrors undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="showAllErrors" [value]="true" id="showAllErrors" type="radio">
+                <label for="showAllErrors">Show all errors having messages</label>
+            </div>
+            <div class="option">
+                <input formControlName="showAllErrors" [value]="false" id="showFirstError" type="radio">
+                <label for="showFirstError">Show only first error</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="required" [value]="null" id="requiredUndefined" type="radio">
+                <label for="requiredUndefined">required undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="required" [value]="true" id="required" type="radio">
+                <label for="required">Add required validation</label>
+            </div>
+            <div class="option">
+                <input formControlName="required" [value]="false" id="notRequired" type="radio">
+                <label for="notRequired">Remove required validation</label>
+            </div>
+        </div>
+    </fieldset>
+</form>
