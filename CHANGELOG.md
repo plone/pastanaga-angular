@@ -1,3 +1,9 @@
+# 2.17.11 (2021-01-18)
+
+### Bugfix
+
+- **Tooltip**: Add missing export of tooltips in public-api [mpellerin42]
+
 # 2.17.10 (2021-01-12)
 
 ### Bugfix
