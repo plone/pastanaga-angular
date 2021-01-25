@@ -108,6 +108,9 @@ export class DeprecatedTextareaComponent extends DeprecatedBaseTextField
         this._rows = value;
         this._defaultRows = value;
     }
+    get rows() {
+        return this._rows;
+    }
 
     @ViewChild('textareaElement', { static: true }) textarea?: ElementRef;
 

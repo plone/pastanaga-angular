@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { ElementRef, Injectable, NgZone } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { take, takeUntil } from 'rxjs/operators';
@@ -44,5 +44,18 @@ export class TextFieldUtilityService {
                 });
             });
         }
+    }
+
+    computeCharWidth(htmlElementRef: ElementRef | undefined) {
+        if (!!htmlElementRef) {
+            const font = window.getComputedStyle(htmlElementRef.nativeElement).getPropertyValue('font');
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            if (context && !!font) {
+                context.font = font;
+                return context.measureText('_').width;
+            }
+        }
+        return 0;
     }
 }
