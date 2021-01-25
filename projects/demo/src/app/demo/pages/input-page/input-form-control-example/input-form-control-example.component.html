@@ -20,8 +20,8 @@
         [max]="config.max"
         [maxlength]="config.maxlength"
 
-        (valueChange)="updateChangeEvent = $event"
-        (statusChange)="updateStatusEvent = $event"
+        (valueChange)="valueChangeEvent = $event"
+        (statusChange)="statusChangeEvent = $event"
         (keyUp)="keyupEvent = $event"
         (enter)="enterEvent = $event"
         (focusing)="focusEvent = $event"
@@ -29,8 +29,8 @@
     </pa-input>
 
     <ul>
-        <li>value change event: {{updateChangeEvent | json}}</li>
-        <li>status change event: {{updateStatusEvent | json}}</li>
+        <li>value change event: {{valueChangeEvent | json}}</li>
+        <li>status change event: {{statusChangeEvent | json}}</li>
         <li>keyup event: {{keyupEvent | json}}</li>
         <li>enter event: {{enterEvent | json}}</li>
         <li>focus event: {{focusEvent | json}}</li>

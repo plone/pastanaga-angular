@@ -3,7 +3,6 @@ import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../../../
 
 @Component({
     templateUrl: './select-page.component.html',
-    styleUrls: ['./select-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPageComponent {

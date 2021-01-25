@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     templateUrl: './input-page.component.html',
-    styleUrls: ['./input-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputPageComponent {
