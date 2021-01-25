@@ -22,7 +22,7 @@ import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '..
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { DropdownComponent } from '../../../dropdown/dropdown.component';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { detectChanges, markForCheck } from '../../../common';
+import { detectChanges, isVisibleInViewport, markForCheck } from '../../../common';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
@@ -174,6 +174,9 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     private _focusInput() {
         if (this._hasFocus && this.isActive) {
             this._openOptionDropDown();
+            if (!isVisibleInViewport(this.selectInput?.nativeElement)) {
+                this.selectInput?.nativeElement.scrollIntoView();
+            }
         }
     }
 

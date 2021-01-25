@@ -1,31 +1,23 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { detectChanges } from '../../../../../../../pastanaga-angular/src';
+import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-config-ng-model.directive';
 
 @Component({
     selector: 'pa-demo-input-ng-model-example',
     templateUrl: './input-ng-model-example.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputNgModelExampleComponent {
-    model?: any;
-
-    updateChangeEvent?: any;
-    updateStatusEvent?: any;
+export class InputNgModelExampleComponent extends FormFieldConfigNgModelDirective {
     keyupEvent?: any;
     enterEvent?: any;
     blurEvent?: any;
     focusEvent?: any;
-    ngModelChangeEvent?: any;
 
-    config?: any = {};
-
-    constructor(private cdr: ChangeDetectorRef) {}
+    constructor(protected cdr: ChangeDetectorRef) {
+        super(cdr);
+    }
 
     updateConfig(config: any) {
-        if (config.value !== this.config.value) {
-            this.model = config.value;
-            detectChanges(this.cdr);
-        }
+        super.updateConfig(config);
         this.config = config;
     }
 }
