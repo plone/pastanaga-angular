@@ -1,0 +1,43 @@
+<div class="component">
+
+    <pa-textarea
+        [formControl]="control"
+        [placeholder]="config.placeholder"
+        [noAutoComplete]="config.preventAutocomplete"
+        [acceptHtmlTags]="config.acceptHtml"
+
+        [readonly]="config.readonly"
+        [hasFocus]="config.hasFocus"
+
+        [help]="config.help"
+        [errorMessage]="config.errorMessage"
+        [errorMessages]="config.errorMessages"
+        [showAllErrors]="config.showAllErrors"
+        [required]="config.required"
+        [maxlength]="config.maxlength"
+
+        [autoHeight]="config.autoHeight"
+        [rows]="config.rows"
+        [resizable]="config.resizable"
+        [maxRows]="config.maxRows"
+        [maxHeight]="config.maxHeight"
+
+        (valueChange)="valueChangeEvent = $event"
+        (statusChange)="statusChangeEvent = $event"
+        (keyUp)="keyupEvent = $event"
+        (enter)="enterEvent = $event"
+        (focusing)="focusEvent = $event"
+        (blurring)="blurEvent = $event">Label
+    </pa-textarea>
+
+    <ul>
+        <li>value change event: {{valueChangeEvent | json}}</li>
+        <li>status change event: {{statusChangeEvent | json}}</li>
+        <li>keyup event: {{keyupEvent | json}}</li>
+        <li>enter event: {{enterEvent | json}}</li>
+        <li>focus event: {{focusEvent | json}}</li>
+        <li>blur event: {{blurEvent | json}}</li>
+    </ul>
+</div>
+<pa-demo-pa-textarea-config (configChanged)="updateConfig($event)"></pa-demo-pa-textarea-config>
+

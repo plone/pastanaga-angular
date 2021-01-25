@@ -7,6 +7,8 @@ import { ErrorMessages } from '../../../../../../pastanaga-angular/src';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextareaPageComponent {
+    selectedTab = 'standalone';
+
     autoHeightState = false;
     disabledState = false;
     filledLongState = false;
