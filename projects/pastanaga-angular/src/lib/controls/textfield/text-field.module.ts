@@ -12,6 +12,9 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { PaFocusableModule } from '../../focusable/focusable.module';
 import { PaFormFieldModule } from '../form-field/form-field.module';
 import { SelectOptionsComponent } from './select/select-options/select-options.component';
+import { TextareaComponent } from './textarea/textarea.component';
+import { NativeTextFieldDirective } from './native-text-field.directive';
+import { PaTextareaAutoHeightDirective } from './textarea/pa-textarea-auto-height.directive';
 
 @NgModule({
     declarations: [
@@ -20,6 +23,9 @@ import { SelectOptionsComponent } from './select/select-options/select-options.c
         SelectComponent,
         InputFormatterDirective,
         SelectOptionsComponent,
+        TextareaComponent,
+        NativeTextFieldDirective,
+        PaTextareaAutoHeightDirective,
     ],
     imports: [
         CommonModule,
@@ -32,6 +38,14 @@ import { SelectOptionsComponent } from './select/select-options/select-options.c
         PaFocusableModule,
         PaFormFieldModule,
     ],
-    exports: [InputComponent, DeprecatedTextareaComponent, SelectComponent, InputFormatterDirective],
+    exports: [
+        InputComponent,
+        DeprecatedTextareaComponent,
+        SelectComponent,
+        InputFormatterDirective,
+        TextareaComponent,
+        NativeTextFieldDirective,
+        PaTextareaAutoHeightDirective,
+    ],
 })
 export class PaTextFieldModule {}

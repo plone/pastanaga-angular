@@ -84,6 +84,17 @@ import { SelectNgModelExampleComponent } from './pages/select-page/select-ng-mod
 import { SelectFormControlExampleComponent } from './pages/select-page/select-form-control-example/select-form-control-example.component';
 import { SelectFormGroupExampleComponent } from './pages/select-page/select-form-group-example/select-form-group-example.component';
 import { PaSelectConfigComponent } from './pages/select-page/pa-select-config/pa-select-config.component';
+import { NativeTextFieldPageComponent } from './pages/native-text-field-page/native-text-field-page.component';
+import { NativeTextFieldUsageComponent } from './pages/native-text-field-page/usage/native-text-field-usage.component';
+import { PaTextareaConfigComponent } from './pages/text-area-page/pa-textarea-config/pa-textarea-config.component';
+import { TextareaStandaloneExampleComponent } from './pages/text-area-page/textarea-standalone-example/textarea-standalone-example.component';
+import { TextareaNgModelExampleComponent } from './pages/text-area-page/textarea-ng-model-example/textarea-ng-model-example.component';
+import { TextareaFormControlExampleComponent } from './pages/text-area-page/textarea-form-control-example/textarea-form-control-example.component';
+import { TextareaFormGroupExampleComponent } from './pages/text-area-page/textarea-form-group-example/textarea-form-group-example.component';
+import { FormFieldConfigStandaloneDirective } from './pages/common-doc/form-field-config-standalone.directive';
+import { FormFieldConfigNgModelDirective } from './pages/common-doc/form-field-config-ng-model.directive';
+import { FormFieldConfigFormControlDirective } from './pages/common-doc/form-field-config-form-control.directive';
+import { FormFieldConfigFormGroupDirective } from './pages/common-doc/form-field-config-form-group.directive';
 
 const COMPONENTS = [
     DemoComponent,
@@ -120,6 +131,10 @@ const COMPONENTS = [
     FormControlValueExampleComponent,
     FormControlStateExampleComponent,
     FormControlValidationExampleComponent,
+    FormFieldConfigStandaloneDirective,
+    FormFieldConfigNgModelDirective,
+    FormFieldConfigFormControlDirective,
+    FormFieldConfigFormGroupDirective,
     PaFormControlUsageComponent,
     FormFieldHintPageComponent,
     GridPageComponent,
@@ -129,6 +144,8 @@ const COMPONENTS = [
     InputNgModelExampleComponent,
     InputFormControlExampleComponent,
     InputFormGroupExampleComponent,
+    NativeTextFieldPageComponent,
+    NativeTextFieldUsageComponent,
     PaInputConfigComponent,
     ModalPageComponent,
     PalettePageComponent,
@@ -145,6 +162,11 @@ const COMPONENTS = [
     ToastPageComponent,
     TogglePageComponent,
     TextareaPageComponent,
+    PaTextareaConfigComponent,
+    TextareaStandaloneExampleComponent,
+    TextareaNgModelExampleComponent,
+    TextareaFormControlExampleComponent,
+    TextareaFormGroupExampleComponent,
     TooltipPageComponent,
     TranslatePageComponent,
 ];

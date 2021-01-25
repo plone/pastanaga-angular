@@ -1,0 +1,35 @@
+<div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
+    <textarea #htmlInput
+              class="pa-field-control pa-field-textarea"
+              [class.pa-field-control-filled]="isFilled"
+              [class.pa-text-area-resizable]="resizable"
+              [formControl]="control"
+              [id]="id"
+              [attr.name]="name"
+              [attr.autocomplete]="noAutoComplete ? 'off' : undefined"
+              [attr.placeholder]="placeholder"
+              [attr.maxlength]="maxlength"
+              [attr.aria-describedby]="describedById"
+              [readonly]="readonly"
+              [required]="required"
+              [paTextareaAutoHeight]="autoHeight"
+              [paTextareaMaxHeight]="autoMaxHeight"
+              [attr.rows]="rows"
+              [paInputFormatter]="sanitizeHtmlTags"
+              (blur)="onBlur()"
+              (keyup)="onKeyUp($event)"
+              (focus)="onFocus($event)"
+    ></textarea>
+    <label class="pa-field-label" [for]="id" aria-hidden="true">
+        <ng-content></ng-content>
+    </label>
+
+    <pa-form-field-hint
+        [id]="describedById"
+        [help]="help"
+        [errors]="control.errors"
+        [showErrors]="control.dirty"
+        [showAllErrors]="showAllErrors"
+        [errorMessages]="errorMessages"
+    ></pa-form-field-hint>
+</div>

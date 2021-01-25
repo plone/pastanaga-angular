@@ -1,0 +1,16 @@
+@import "../../../styles/variables";
+
+::-webkit-resizer {
+    display: none;
+}
+
+.pa-field-control.pa-field-textarea {
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="%23' + str_slice(#{$color-neutral-secondary-light}, 2) + '" fill-rule="evenodd"> <path d="M28.4419 12.4419L28.8839 12L28 11.1161L27.558 11.558L15.558 23.558L15.1161 24L16 24.8839L16.4419 24.4419L28.4419 12.4419ZM28.4419 16.4419L28.8839 16L28 15.1161L27.558 15.558L19.558 23.558L19.1161 24L20 24.8839L20.4419 24.4419L28.4419 16.4419Z"></path> </g></svg>');
+    resize: none;
+    &.pa-text-area-resizable:not(:disabled) {
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="%23' + str_slice(#{$color-neutral-secondary-default}, 2) + '" fill-rule="evenodd"> <path d="M28.4419 12.4419L28.8839 12L28 11.1161L27.558 11.558L15.558 23.558L15.1161 24L16 24.8839L16.4419 24.4419L28.4419 12.4419ZM28.4419 16.4419L28.8839 16L28 15.1161L27.558 15.558L19.558 23.558L19.1161 24L20 24.8839L20.4419 24.4419L28.4419 16.4419Z"></path> </g></svg>');
+        resize: both;
+    }
+}
