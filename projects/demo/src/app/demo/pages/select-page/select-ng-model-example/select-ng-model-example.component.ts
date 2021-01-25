@@ -1,35 +1,26 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import {
-    detectChanges,
-    OptionHeaderModel,
-    OptionModel,
-    OptionSeparator,
-} from '../../../../../../../pastanaga-angular/src';
+import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../../../../../pastanaga-angular/src';
+import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-config-ng-model.directive';
 
 @Component({
     selector: 'pa-demo-select-ng-model-example',
     templateUrl: './select-ng-model-example.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectNgModelExampleComponent {
+export class SelectNgModelExampleComponent extends FormFieldConfigNgModelDirective {
     @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
-    model?: any;
     config?: any = { optionsProvidedInTemplate: true, label: 'The label' };
 
-    valueChangeEvent?: any;
-    statusChangeEvent?: any;
     expandedEvent?: any;
-    ngModelChangeEvent?: any;
 
     options?: (OptionModel | OptionSeparator | OptionHeaderModel)[];
 
-    constructor(private cdr: ChangeDetectorRef) {}
+    constructor(protected cdr: ChangeDetectorRef) {
+        super(cdr);
+    }
 
     updateConfig(config: any) {
-        if (config.value !== this.config.value && (!!config.value || !!this.config.value)) {
-            this.model = config.value;
-            detectChanges(this.cdr);
-        }
+        super.updateConfig(config);
         if (config.optionsProvidedInTemplate !== this.config.optionsProvidedInTemplate) {
             this.options = config.optionsProvidedInTemplate ? undefined : this.dropdownContent;
         }
