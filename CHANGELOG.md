@@ -1,3 +1,15 @@
+# 2.18.0 (2021-01-25)
+
+### Breaking changes
+
+- **Typography**: Improve typography setup and consistency [mpellerin42]
+    - New naming convention for display sizes: d1, d2,… instead of dsmall, dmedium,…
+    - New `-md` suffix applied to values meant to be used on medium breakpoint
+    - Update some values in font-size and line-height mapping
+    - Add mapping function and mixin for letter spacing
+    - Update documentation page
+    
+
 # 2.17.11 (2021-01-18)
 
 ### Bugfix
