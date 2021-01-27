@@ -21,7 +21,6 @@ export * from './lib/controls/form-field.utils';
 export * from './lib/controls/deprecated-base-control.directive';
 export * from './lib/controls/control.model';
 export * from './lib/controls/form-field.model';
-export * from './lib/controls/textfield/deprecated-base-text-field.directive';
 export * from './lib/controls/textfield/text-field.module';
 export * from './lib/controls/textfield/input/input.component';
 export * from './lib/controls/textfield/select/select.component';

@@ -40,6 +40,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
     /** Class that should be applied to the textarea while it's being measured. */
     readonly _measuringClass: string;
     readonly _textarea: HTMLTextAreaElement;
+    readonly _heightSafetynet = 4;
     private _previousHeight = 0;
     private _previousValue?: string;
 
@@ -77,7 +78,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
             nextHeight = this._maxHeight;
         }
         if (nextHeight !== this._previousHeight) {
-            this._textarea.style.height = `${nextHeight}px`;
+            this.renderer.setStyle(this._textarea, 'height', `${nextHeight}px`);
             this._previousHeight = nextHeight;
         }
     }
@@ -94,21 +95,11 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
 
         // Use the scrollHeight to know how big the textarea *would* be if fit its entire value.
         // make sure textarea won't be scrollable afterward adding an offset of 4px;
-        const height = this._textarea.scrollHeight + 4;
+        const height = this._textarea.scrollHeight + this._heightSafetynet;
         this.renderer.removeClass(this._textarea, this._measuringClass);
         this._textarea.placeholder = placeholderCache;
         return height;
     }
-
-    // _setMaxHeight(): void {
-    //     if (this._maxHeight) {
-    //         this._appliedMaxHeight = this._maxHeight;
-    //     } else if (this._maxRows && this._lineHeight) {
-    //         this._appliedMaxHeight = this._maxRows * this._lineHeight + this._verticalPadding;
-    //     } else {
-    //         this._appliedMaxHeight = undefined;
-    //     }
-    // }
 
     private _toggleAutoHeight() {
         if (this._enabled) {
@@ -116,7 +107,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
             this._trackChanges();
         } else {
             this._autoSizingChanged$.next();
-            this._textarea.style.height = '';
+            this.renderer.removeStyle(this._textarea, 'height');
         }
     }
 
@@ -143,7 +134,10 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
                         filter((val) => val !== this._previousValue),
                         takeUntil(this._autoSizingChanged$)
                     )
-                    .subscribe(() => this.resizeToFitContent());
+                    .subscribe(() => {
+                        this.resizeToFitContent();
+                        this._previousValue = this._textarea.value;
+                    });
             }
         });
     }

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { PaIconModule } from '../../icon/icon.module';
 import { PaPopupModule } from '../../popup/popup.module';
 import { PaDropdownModule } from '../../dropdown/dropdown.module';
-import { DeprecatedTextareaComponent } from './textarea/deprecated-textarea.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
@@ -19,7 +18,6 @@ import { PaTextareaAutoHeightDirective } from './textarea/pa-textarea-auto-heigh
 @NgModule({
     declarations: [
         InputComponent,
-        DeprecatedTextareaComponent,
         SelectComponent,
         InputFormatterDirective,
         SelectOptionsComponent,
@@ -40,7 +38,6 @@ import { PaTextareaAutoHeightDirective } from './textarea/pa-textarea-auto-heigh
     ],
     exports: [
         InputComponent,
-        DeprecatedTextareaComponent,
         SelectComponent,
         InputFormatterDirective,
         TextareaComponent,
