@@ -13,16 +13,21 @@
     border-radius: 50%;
 
     &.pa-avatar-small {
-        width: $size-avatar-small;
+        @include font-size(xxs);
+        @include line-height(m);
         height: $size-avatar-small;
+        width: $size-avatar-small;
     }
     &.pa-avatar-medium {
-        width: $size-avatar-medium;
+        @include font-size(s);
+        @include line-height(m);
         height: $size-avatar-medium;
+        width: $size-avatar-medium;
     }
     &.pa-avatar-large {
-        width: $size-avatar-large;
+        @include size(xl);
         height: $size-avatar-large;
+        width: $size-avatar-large;
     }
 
     .pa-avatar-img {
@@ -39,7 +44,6 @@
         text-decoration: none;
         text-transform: uppercase;
         color: $color-neutral-primary-default;
-        @include size-small(xs);
         @include full-size-circle();
 
         span {
