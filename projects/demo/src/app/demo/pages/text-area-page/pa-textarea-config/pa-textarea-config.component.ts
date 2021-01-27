@@ -32,7 +32,7 @@ export class PaTextareaConfigComponent implements OnInit {
         required: new FormControl(),
         maxlength: new FormControl(),
         // display
-        autoHeight: new FormControl(true),
+        autoHeight: new FormControl(),
         rows: new FormControl(),
         resizable: new FormControl(),
         maxRows: new FormControl(),
