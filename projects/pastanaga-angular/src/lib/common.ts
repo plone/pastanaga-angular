@@ -109,7 +109,7 @@ export const getVirtualScrollParentPosition = (element: HTMLElement): { bottom: 
     }
 };
 export function cssAsNumber(css: string) {
-    const num = Number(css.replace('px', ''));
+    const num = !!css ? Number(css.replace('px', '')) : NaN;
     return isNaN(num) ? 0 : num;
 }
 

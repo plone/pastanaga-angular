@@ -73,6 +73,8 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
             this.autoMaxHeight = max;
         } else if (!this._maxRows) {
             this.autoMaxHeight = null;
+        } else {
+            this._computeMaxHeight();
         }
     }
 

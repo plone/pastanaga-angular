@@ -125,6 +125,13 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         super.ngOnDestroy();
     }
 
+    setDisabledState(isDisabled: boolean): void {
+        super.setDisabledState(isDisabled);
+        if (this.htmlInputRef) {
+            this.renderer.setProperty(this.htmlInputRef?.nativeElement, 'disabled', isDisabled);
+        }
+    }
+
     onFocus(event: any) {
         this.onTouched();
 
