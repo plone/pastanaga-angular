@@ -1,3 +1,8 @@
+# 2.18.1 (2021-01-29)
+
+### Improvement
+- **OptionModel**: add `hasSeparator` property to OptionModel to allow the creation of a menu dynamically [mpellerin42] 
+
 # 2.18.0 (2021-01-25)
 
 ### Breaking changes

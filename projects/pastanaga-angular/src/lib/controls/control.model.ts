@@ -21,6 +21,7 @@ export interface IControlModel {
 export interface IOptionModel extends IControlModel {
     destructive?: boolean;
     dontCloseOnSelect?: boolean;
+    hasSeparator?: boolean;
 }
 
 export class BaseControlModel {
@@ -57,11 +58,13 @@ export class ControlModel extends BaseControlModel {
 export class OptionModel extends ControlModel {
     destructive: boolean;
     dontCloseOnSelect: boolean;
+    hasSeparator: boolean;
 
     constructor(data: IOptionModel) {
         super({ ...data, type: ControlType.option });
         this.destructive = data.destructive || false;
         this.dontCloseOnSelect = data.dontCloseOnSelect || false;
+        this.hasSeparator = data.hasSeparator || false;
     }
 }
 
