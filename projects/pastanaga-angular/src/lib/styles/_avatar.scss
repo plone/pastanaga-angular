@@ -12,22 +12,30 @@
     display: flex;
     border-radius: 50%;
 
-    &.pa-avatar-small {
+    &.no-avatar {
+        border: 1px dashed $color-neutral-secondary-light;
+    }
+    &.pa-avatar-tiny {
         @include font-size(xxs);
+        @include line-height(m);
+        height: $size-avatar-tiny;
+        width: $size-avatar-tiny;
+    }
+    &.pa-avatar-small {
+        @include font-size(s);
         @include line-height(m);
         height: $size-avatar-small;
         width: $size-avatar-small;
     }
     &.pa-avatar-medium {
-        @include font-size(s);
-        @include line-height(m);
+        @include size(xl);
         height: $size-avatar-medium;
         width: $size-avatar-medium;
     }
-    &.pa-avatar-large {
-        @include size(xl);
-        height: $size-avatar-large;
-        width: $size-avatar-large;
+    &.pa-avatar-huge {
+        @include size(d2-md);
+        height: $size-avatar-huge;
+        width: $size-avatar-huge;
     }
 
     .pa-avatar-img {

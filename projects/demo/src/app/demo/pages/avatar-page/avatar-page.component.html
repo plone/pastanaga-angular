@@ -6,51 +6,72 @@
     </pa-demo-description>
 
     <pa-demo-examples>
+        <h3>Kinds</h3>
+        <h4>Undefined (invited)</h4>
+        <pa-avatar></pa-avatar>
+
+        <h4>Initials</h4>
         <div class="avatar-row">
-            <div>Large</div>
-            <pa-avatar userName="John Doe"
-                       size="large"
-            ></pa-avatar>
-            <pa-avatar userName="John Doe"
-                       [image]="image"
-                       size="large"
-            ></pa-avatar>
-            <pa-avatar userName="John Doe"
-                       size="large"
-                       autoBackground
-            ></pa-avatar>
+            <pa-avatar userName="John Doe"></pa-avatar>
+            <p>User variation, the user photo is not set yet.</p>
         </div>
         <div class="avatar-row">
-            <div>Medium</div>
             <pa-avatar userName="Darth Vador"
-                       size="medium"
-            ></pa-avatar>
-            <pa-avatar userName="Darth Vador"
-                       [image]="image"
-                       size="medium"
-            ></pa-avatar>
-            <pa-avatar userName="Darth Vador"
-                       size="medium"
                        autoBackground
             ></pa-avatar>
+            <pa-avatar userName="John Doe"
+                       autoBackground
+            ></pa-avatar>
+            <pa-avatar userName="Steve Jobs"
+                       autoBackground
+            ></pa-avatar>
+            <p>Group variations, we apply 3 different colors based on the group name.</p>
         </div>
+
+        <h3>Sizes</h3>
+        <h4>Huge</h4>
         <div class="avatar-row">
-            <div>Small</div>
-            <pa-avatar userName="Steve Jobs"
-                       size="small"
-            ></pa-avatar>
-            <pa-avatar userName="Steve Jobs"
+            <pa-avatar userName="John Doe"
                        [image]="image"
-                       size="small"
+                       size="huge"
             ></pa-avatar>
-            <pa-avatar userName="Steve Jobs"
-                       size="small"
-                       autoBackground
+            <pa-avatar userName="John Doe"
+                       size="huge"
             ></pa-avatar>
         </div>
 
+        <h4>Medium</h4>
+        <div class="avatar-row">
+            <pa-avatar userName="Darth Vador"
+                       [image]="image"
+                       size="medium"
+            ></pa-avatar>
+            <pa-avatar userName="Darth Vador"
+                       size="medium"
+            ></pa-avatar>
+        </div>
 
+        <h4>Small</h4>
+        <div class="avatar-row">
+            <pa-avatar userName="Steve Jobs"
+                       [image]="image"
+                       size="small"
+            ></pa-avatar>
+            <pa-avatar userName="Steve Jobs"
+                       size="small"
+            ></pa-avatar>
+        </div>
 
+        <h4>Tiny</h4>
+        <div class="avatar-row">
+            <pa-avatar userName="Steve Jobs"
+                       [image]="image"
+                       size="tiny"
+            ></pa-avatar>
+            <pa-avatar userName="Steve Jobs"
+                       size="tiny"
+            ></pa-avatar>
+        </div>
     </pa-demo-examples>
 
     <pa-demo-usage>
@@ -69,7 +90,7 @@
                 initials and backgroundColor are not displayed anymore. <small>(optional)</small></dd>
 
             <dt>size</dt>
-            <dd>Avatar's size. Can be <code>small</code> | <code>medium</code> | <code>large</code>. <small>(medium by default)</small></dd>
+            <dd>Avatar's size. Can be <code>tiny</code> | <code>small</code> | <code>medium</code> | <code>huge</code>. <small>(medium by default)</small></dd>
 
             <dt>userId</dt>
             <dd>Used to generate a background color when no <code>image</code> is provided and <code>autoBackground</code> is <code>true</code>. <small>(optional)</small></dd>

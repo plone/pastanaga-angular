@@ -1,3 +1,11 @@
+# 2.19.0 (2021-02-1)
+
+### Breaking changes
+- **Avatar**: [mpellerin42]
+    - Size update: tiny | small | medium | huge (instead of small | medium | large)
+    - Change the `undefined` state to be without background and with a dashed border
+    - Update documentation page
+
 # 2.18.1 (2021-01-29)
 
 ### Improvement

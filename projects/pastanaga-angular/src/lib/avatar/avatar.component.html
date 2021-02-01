@@ -1,12 +1,12 @@
-<span class="pa-avatar pa-avatar-{{size}}">
+<span class="pa-avatar pa-avatar-{{size}}" [class.no-avatar]="!initials">
     <img *ngIf="base64Image; else avatarInitials"
          [src]="base64Image"
          class="pa-avatar-img">
 
     <ng-template #avatarInitials>
-        <abbr [attr.title]="userName"
-              class="pa-avatar-initials {{backgroundColorClass}}"
-        >
+        <abbr *ngIf="!!initials || !!userId"
+              [attr.title]="userName"
+              class="pa-avatar-initials {{backgroundColorClass}}">
             <span>{{initials}}</span>
         </abbr>
     </ng-template>
