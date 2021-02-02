@@ -18,7 +18,7 @@ export class AvatarComponent {
     @Input()
     set userName(value: string) {
         this._userName = value;
-        this._initials = !!value ? getInitials(value) : '?';
+        this._initials = !!value ? getInitials(value) : '';
         this.assignBackgroundColor();
     }
     get userName() {
@@ -48,7 +48,7 @@ export class AvatarComponent {
     }
 
     @Input()
-    set size(value: 'small' | 'medium' | 'large') {
+    set size(value: 'tiny' | 'small' | 'medium' | 'huge') {
         if (!!value) {
             this._size = value;
         }
@@ -66,14 +66,17 @@ export class AvatarComponent {
     get initials() {
         return this._initials;
     }
+    get userId() {
+        return this._userId;
+    }
 
-    private _userId?: string;
+    private _userId = '';
     private _userName = '';
-    private _initials = '?';
+    private _initials = '';
     private _base64Image?: string;
     private _autoBackground = false;
     private _backgroundColorClass?: string;
-    private _size: 'small' | 'medium' | 'large' = 'medium';
+    private _size: 'tiny' | 'small' | 'medium' | 'huge' = 'medium';
 
     constructor(private cdr: ChangeDetectorRef) {}
 
