@@ -1,3 +1,9 @@
+# 2.19.1 (2021-02-3)
+
+### Improvements
+- **Avatar**: fix font-weight to semi-bold [mpellerin42]
+- **Table**: fix padding on table rows [mpellerin42]
+
 # 2.19.0 (2021-02-1)
 
 ### Breaking changes
