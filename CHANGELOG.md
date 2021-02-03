@@ -1,3 +1,8 @@
+# 2.19.2 (2021-02-3)
+
+### Bugfix
+- **Typography**: Use our monospace font token in our CSS reboot [mpellerin42]
+
 # 2.19.1 (2021-02-3)
 
 ### Improvements
