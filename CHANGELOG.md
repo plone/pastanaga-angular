@@ -1,3 +1,8 @@
+# 2.19.3 (2021-02-5)
+
+### Bugfix
+- **Typography**: Put back proper spacing in documentation pages [mpellerin42]
+
 # 2.19.2 (2021-02-3)
 
 ### Bugfix
