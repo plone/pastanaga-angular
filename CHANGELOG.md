@@ -1,3 +1,9 @@
+# 1.19.1 (2021-02-05)
+
+### Improvements
+
+-   Export date-input component [jlp0328]
+
 # 1.19.0 (2021-01-06)
 
 ### Improvements
