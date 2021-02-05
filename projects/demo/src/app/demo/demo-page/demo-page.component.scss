@@ -1,21 +1,14 @@
 @import "../../../../../pastanaga-angular/src/lib/styles/variables";
 
 pa-demo-page {
-    .doc-page-title {
-        @include size(dsmall);
-    }
-
     .doc-page-title,
-    .doc-section-title {
+    .doc-section-title,
+    .pa-demo-example-configuration-title{
         margin-bottom: rhythm(4);
     }
 
     section.doc-section {
         margin-bottom: rhythm(6);
-
-        .doc-section-title {
-            @include size(dxsmall);
-        }
     }
 
     pa-demo-usage {
