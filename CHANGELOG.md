@@ -1,3 +1,9 @@
+# 2.19.5 (2021-02-10)
+
+### Bugfix
+
+- **Toast**: Align toast text [barcafa]
+
 # 2.19.4 (2021-02-10)
 
 ### Bugfix
