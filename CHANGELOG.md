@@ -1,3 +1,9 @@
+# 2.19.4 (2021-02-10)
+
+### Bugfix
+
+- **Toast**: Set toast message as innerHTML [barcafa]
+
 # 2.19.3 (2021-02-5)
 
 ### Bugfix
