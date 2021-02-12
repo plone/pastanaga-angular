@@ -1,5 +1,4 @@
-@import "./variables";
-
+@import './variables';
 
 @mixin full-size-circle() {
     width: 100%;
@@ -13,7 +12,7 @@
     border-radius: 50%;
 
     &.no-avatar {
-        border: 1px dashed $color-neutral-secondary-light;
+        background-image: url('data:image/svg+xml,%3csvg width="100%25" height="100%25" xmlns="http://www.w3.org/2000/svg"%3e%3crect width="100%25" height="100%25" fill="none" rx="100" ry="100" stroke="%23' + str_slice(#{$color-neutral-secondary-light},2) + '" stroke-width="2" stroke-dasharray="4%2c 6" stroke-dashoffset="0" stroke-linecap="butt"/%3e%3c/svg%3e');
     }
     &.pa-avatar-tiny {
         @include font-size(xxs);
