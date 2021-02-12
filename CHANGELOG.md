@@ -1,3 +1,9 @@
+# 2.19.6 (2021-02-12)
+
+### Bugfix
+
+- **Avatar**: Undefined avatar state use svg border image [barcafa]
+
 # 2.19.5 (2021-02-10)
 
 ### Bugfix
