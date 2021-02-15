@@ -40,7 +40,7 @@ export class AppComponent {
                 { view: 'palette', title: 'Palette', type: PalettePageComponent },
                 { view: 'focusable', title: 'Focusable', type: FocusablePageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
-                { view: 'breakpoint', title: 'Breakpoint Observer', type: BreakpointPageComponent },
+                { view: 'breakpoint', title: 'Breakpoint', type: BreakpointPageComponent },
                 { view: 'translate', title: 'Translate', type: TranslatePageComponent },
             ],
         },
