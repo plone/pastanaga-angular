@@ -5,6 +5,7 @@
 
 ### Improvements
 - **Breakpoints**: Update breakpoints documentation page [mpellerin42]
+- **Documentation pages**: Add some space below the different titles to let the pages breath [mpellerin42]
 
 # 2.19.6 (2021-02-12)
 
