@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { BreakpointObserver } from 'pastanaga-angular';
+import { BreakpointObserver } from '../../../../../../../pastanaga-angular/src';
 
 @Component({
     selector: 'pa-demo-container-demo',
