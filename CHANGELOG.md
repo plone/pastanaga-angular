@@ -1,3 +1,15 @@
+# 2.20.0 (2021-02-15)
+
+### Breaking changes
+- **Breakpoints**: Update large and xLarge breakpoints to be respectively 1024px and 1440px [mpellerin42]
+
+### Improvements
+- **Breakpoints**: Update breakpoints documentation page [mpellerin42]
+- **Documentation pages**: [mpellerin42]
+    - Add some space below the different titles to let the pages breath
+    - Automatically scroll to top when navigating through demo pages.
+- **Spacing**: Add token for side panel width [mpellerin42]
+
 # 2.19.6 (2021-02-12)
 
 ### Bugfix

@@ -68,7 +68,7 @@ $overlay-anim-duration: .6s;
             position: relative;
             top: unset;
             right: unset;
-            width: 300px;
+            width: $width-side-panel;
             left: 0;
             header {
                 padding: rhythm(2) rhythm(3);
