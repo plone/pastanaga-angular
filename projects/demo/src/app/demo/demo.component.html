@@ -1,8 +1,11 @@
-<pa-demo-menu [menu]="menu"
-              [mode]="mode"
-              [activeItem]="activeItem"
-              [logo]="logo"></pa-demo-menu>
-
-<div class="view-container">
-    <traverser-outlet></traverser-outlet>
+<div class="pa-main-container">
+    <div class="pa-main-side-panel">
+        <pa-demo-menu [menu]="menu"
+                      [mode]="mode"
+                      [activeItem]="activeItem"
+                      [logo]="logo"></pa-demo-menu>
+    </div>
+    <div class="pa-main-container-wide">
+        <traverser-outlet></traverser-outlet>
+    </div>
 </div>

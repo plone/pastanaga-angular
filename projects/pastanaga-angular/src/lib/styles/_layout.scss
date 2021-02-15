@@ -2,7 +2,7 @@
 
 $extra-rhythm: (
     45: ($spacer * 45),     //   45  unit -  360px - 22.5 rem
-    70: ($spacer * 70),     //   70  unit -  560px - 35   rem
+    72: ($spacer * 72),     //   72  unit -  576px - 36   rem
     75: ($spacer * 75),     //   75  unit -  600px - 37.5 rem
     100: ($spacer * 100),   //  100  unit -  800px - 50   rem
     128: ($spacer * 128),   //  128  unit - 1024px - 64   rem
@@ -17,6 +17,9 @@ $breakpoint-small: extraRhythm(45);
 $breakpoint-medium: extraRhythm(75);
 $breakpoint-large: extraRhythm(128);
 $breakpoint-xlarge: extraRhythm(180);
+
+$size-viewport-large-with-panel-min: 1344px;
+$size-viewport-xlarge-with-panel-min: 1760px;
 
 // In our formulas, some values must be without unit. To remove a unit from a value, we have to divide it by 1 unit.
 
@@ -45,7 +48,9 @@ $formula-tight-medium: calc(#{$margin-medium}rem + #{$margin-tight-large - $marg
 $formula-tight-large: calc(#{$margin-tight-large}rem + #{$margin-tight-xlarge - $margin-tight-large} * ((100vw - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large}));
 $formula-wide-medium: calc(#{$margin-medium}rem + #{$margin-wide-large - $margin-medium} * ((100vw - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium}));
 $formula-wide-large: calc(#{$margin-wide-large}rem + #{$margin-wide-xlarge - $margin-wide-large} * ((100vw - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large}));
-$formula-panel-plus-wide-large: calc(100vw - #{$width-side-panel} - (#{$margin-wide-large}rem + #{$margin-wide-xlarge - $margin-wide-large} * (((100vw - #{$breakpoint-large}) - #{$width-side-panel}) / #{$width-breakpoint-xlarge - $width-breakpoint-large})));
+
+$formula-panel-plus-wide-medium: calc(100vw - #{$width-side-panel} - 2*(#{$margin-medium}rem + #{$margin-wide-large - $margin-medium} * (((100vw - #{$width-side-panel}) - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium})));
+$formula-panel-plus-wide-large: calc(100vw - #{$width-side-panel} - 2*(#{$margin-wide-large}rem + #{$margin-wide-xlarge - $margin-wide-large} * (((100vw - #{$width-side-panel}) - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large})));
 
 // Tight compact max-width:
 $max-width-tight-compact-medium: extraRhythm(70);
@@ -76,14 +81,17 @@ $max-width-tight-compact-medium: extraRhythm(70);
     .pa-main-container-wide {
         margin: 0 $formula-wide-large;
     }
-    .pa-main-container {
-        display: flex;
-    }
     .pa-main-side-panel {
         width: $width-side-panel;
     }
+
+    .pa-main-container {
+        display: flex;
+        width: 100%;
+    }
     .pa-main-side-panel + .pa-main-container-wide {
-        width: $formula-panel-plus-wide-large;
+        width: $formula-panel-plus-wide-medium;
+        margin: 0 auto;
     }
 }
 
@@ -98,5 +106,18 @@ $max-width-tight-compact-medium: extraRhythm(70);
     }
     .pa-main-container-wide {
         max-width: #{$max-width-container-wide-xlarge}rem;
+    }
+}
+
+@media (min-width: $size-viewport-large-with-panel-min) {
+    .pa-main-side-panel + .pa-main-container-wide {
+        width: $formula-panel-plus-wide-large;
+    }
+}
+
+@media (min-width: $size-viewport-xlarge-with-panel-min) {
+    .pa-main-side-panel + .pa-main-container-wide {
+        // FIXME
+        //width: $formula-panel-plus-wide-xlarge;
     }
 }
