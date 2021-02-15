@@ -42,7 +42,7 @@ $margin-wide-xlarge: rhythm(20) / 1rem;
 $max-width-container-tight-xlarge: extraRhythm(100) / 1rem;
 $max-width-container-wide-xlarge: extraRhythm(140) / 1rem;
 
-// Formula documented in Figma: https://www.figma.com/file/XUbMdnVPLtgzUNWYrTlWV7/%F0%9F%8F%94-Atlas-Design-System?node-id=9672%3A0
+// Formula to compute side margin
 $formula-small: calc(#{$margin-small}rem + #{$margin-medium - $margin-small} * ((100vw - #{$breakpoint-small}) / #{$width-breakpoint-medium - $width-breakpoint-small}));
 $formula-tight-medium: calc(#{$margin-medium}rem + #{$margin-tight-large - $margin-medium} * ((100vw - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium}));
 $formula-tight-large: calc(#{$margin-tight-large}rem + #{$margin-tight-xlarge - $margin-tight-large} * ((100vw - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large}));
