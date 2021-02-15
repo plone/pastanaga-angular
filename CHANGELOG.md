@@ -8,6 +8,7 @@
 - **Documentation pages**: [mpellerin42]
     - Add some space below the different titles to let the pages breath
     - Automatically scroll to top when navigating through demo pages.
+- **Spacing**: Add token for side panel width [mpellerin42]
 
 # 2.19.6 (2021-02-12)
 
