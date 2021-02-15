@@ -1,3 +1,10 @@
+# 2.20.1 (2021-02-15)
+
+### Feature
+- **Layout**: [mpellerin42]
+    - Add a new container based layout
+    - Use Panel+Wide layout on our demo
+
 # 2.20.0 (2021-02-15)
 
 ### Breaking changes
