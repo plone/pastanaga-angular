@@ -1,3 +1,8 @@
+# 2.20.2 (2021-02-16)
+
+### Bugfix:
+- **Layout**: Fix tight compact container max-width value [mpellerin42]
+
 # 2.20.1 (2021-02-15)
 
 ### Feature
