@@ -7,29 +7,31 @@
         <h4>Using ngModel</h4>
         <div class="grid-3 has-gutter">
             <div class="col-1">
-                <pa-deprecated-toggle id="firstToggle"
+                <pa-toggle id="firstToggle"
                            name="firstToggle"
                            [(ngModel)]="firstToggle"
                            [hasFocus]="focusedFirstToggle"
                            [disabled]="disabled"
-                ></pa-deprecated-toggle></div>
-            <div class="col-2">Value: {{firstToggle}}</div>
+                           (statusChange)="firstToggleStatus = $event"
+                ></pa-toggle></div>
+            <div class="col-2">Value: {{firstToggle}}, state: {{firstToggleStatus}}</div>
         </div>
 
         <h4>Using formControl</h4>
         <form [formGroup]="form">
             <div class="grid-3 has-gutter">
                 <div class="col-1">
-                    <pa-deprecated-toggle
+                    <pa-toggle
                         id="toggle"
                         name="toggle"
                         formControlName="toggle"
                         help="help text"
                         [hasFocus]="focusedToggle"
+                        (statusChange)="secondToggleStatus = $event"
                     >Label
-                    </pa-deprecated-toggle></div>
+                    </pa-toggle></div>
                 <div class="col-2">
-                    Value: {{form.value.toggle}}
+                    Value: {{form.value.toggle}}, state: {{secondToggleStatus}}
                 </div>
             </div>
         </form>
