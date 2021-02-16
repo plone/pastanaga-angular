@@ -73,27 +73,23 @@ describe('Table', () => {
 
     it('should set grid-template-columns css attribute', () => {
         expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual(
-            'repeat(3, 1fr)'
+            'repeat(3, 1fr)',
         );
         component.columns = '60px 50px 40px';
         fixture.detectChanges();
         expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual(
-            '60px 50px 40px'
+            '60px 50px 40px',
         );
     });
 
     it('should set the clickable class on rows', () => {
-        expect(fixture.debugElement.query(By.css('#row-1 .pa-table-grid--row')).classes.clickable).toBe(true);
-        expect(fixture.debugElement.query(By.css('#row-2 .pa-table-grid--row')).classes.clickable).toBe(false);
+        expect(fixture.debugElement.query(By.css('#row-1 .pa-table-grid--row.clickable'))).toBeTruthy();
+        expect(fixture.debugElement.query(By.css('#row-2 .pa-table-grid--row.clickable'))).toBeFalsy();
     });
 
     it('should set the clickable class on headers', () => {
-        expect(fixture.debugElement.query(By.css('#header-cell-1 .pa-table-grid--header')).classes.clickable).toBe(
-            true
-        );
-        expect(fixture.debugElement.query(By.css('#header-cell-2 .pa-table-grid--header')).classes.clickable).toBe(
-            false
-        );
+        expect(fixture.debugElement.query(By.css('#header-cell-1 .pa-table-grid--header.clickable'))).toBeTruthy();
+        expect(fixture.debugElement.query(By.css('#header-cell-2 .pa-table-grid--header.clickable'))).toBeFalsy();
     });
 
     it('should support regular cells and header cells', () => {
