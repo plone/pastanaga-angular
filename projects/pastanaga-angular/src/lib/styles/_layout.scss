@@ -1,0 +1,123 @@
+@import "variables";
+
+$extra-rhythm: (
+    45: ($spacer * 45),     //   45  unit -  360px - 22.5 rem
+    72: ($spacer * 72),     //   72  unit -  576px - 36   rem
+    75: ($spacer * 75),     //   75  unit -  600px - 37.5 rem
+    100: ($spacer * 100),   //  100  unit -  800px - 50   rem
+    128: ($spacer * 128),   //  128  unit - 1024px - 64   rem
+    140: ($spacer * 140),   //  140  unit - 1120px - 70   rem
+    180: ($spacer * 180),   //  180  unit - 1440px - 90   rem
+);
+@function extraRhythm($spacer-size) {
+    @return map-get($extra-rhythm, $spacer-size);
+}
+
+$breakpoint-small: extraRhythm(45);
+$breakpoint-medium: extraRhythm(75);
+$breakpoint-large: extraRhythm(128);
+$breakpoint-xlarge: extraRhythm(180);
+
+$size-viewport-large-with-panel-min: 1344px;
+$size-viewport-xlarge-with-panel-min: 1760px;
+
+// In our formulas, some values must be without unit. To remove a unit from a value, we have to divide it by 1 unit.
+
+// Remove unit from breakpoints
+$width-breakpoint-small: $breakpoint-small / 1rem;
+$width-breakpoint-medium: $breakpoint-medium / 1rem;
+$width-breakpoint-large: $breakpoint-large / 1rem;
+$width-breakpoint-xlarge: $breakpoint-xlarge / 1rem;
+
+// Fixed margins value in rem without unit
+$margin-small: rhythm(2) / 1rem;
+$margin-medium: rhythm(8) / 1rem;
+
+$margin-tight-large: rhythm(20) / 1rem;
+$margin-tight-xlarge: rhythm(40) / 1rem;
+
+$margin-wide-large: rhythm(10) / 1rem;
+$margin-wide-xlarge: rhythm(20) / 1rem;
+
+$max-width-container-tight-xlarge: extraRhythm(100) / 1rem;
+$max-width-container-wide-xlarge: extraRhythm(140) / 1rem;
+
+// Formula to compute side margin
+$formula-small: calc(#{$margin-small}rem + #{$margin-medium - $margin-small} * ((100vw - #{$breakpoint-small}) / #{$width-breakpoint-medium - $width-breakpoint-small}));
+$formula-tight-medium: calc(#{$margin-medium}rem + #{$margin-tight-large - $margin-medium} * ((100vw - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium}));
+$formula-tight-large: calc(#{$margin-tight-large}rem + #{$margin-tight-xlarge - $margin-tight-large} * ((100vw - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large}));
+$formula-wide-medium: calc(#{$margin-medium}rem + #{$margin-wide-large - $margin-medium} * ((100vw - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium}));
+$formula-wide-large: calc(#{$margin-wide-large}rem + #{$margin-wide-xlarge - $margin-wide-large} * ((100vw - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large}));
+
+$formula-panel-plus-wide-medium: calc(100vw - #{$width-side-panel} - 2*(#{$margin-medium}rem + #{$margin-wide-large - $margin-medium} * (((100vw - #{$width-side-panel}) - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium})));
+$formula-panel-plus-wide-large: calc(100vw - #{$width-side-panel} - 2*(#{$margin-wide-large}rem + #{$margin-wide-xlarge - $margin-wide-large} * (((100vw - #{$width-side-panel}) - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large})));
+
+// Tight compact max-width:
+$max-width-tight-compact-medium: extraRhythm(70);
+
+
+.pa-main-container-tight,
+.pa-main-container-wide {
+    margin: 0 $formula-small;
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .pa-main-container-tight {
+        margin: 0 $formula-tight-medium;
+    }
+    .pa-main-container-wide {
+        margin: 0 $formula-wide-medium;
+    }
+    .pa-child-container-compact {
+        margin: 0 auto;
+        max-width: $max-width-tight-compact-medium;
+    }
+}
+
+@media (min-width: $size-viewport-large-min) {
+    .pa-main-container-tight {
+        margin: 0 $formula-tight-large;
+    }
+    .pa-main-container-wide {
+        margin: 0 $formula-wide-large;
+    }
+    .pa-main-side-panel {
+        width: $width-side-panel;
+    }
+
+    .pa-main-container {
+        display: flex;
+        width: 100%;
+    }
+    .pa-main-side-panel + .pa-main-container-wide {
+        width: $formula-panel-plus-wide-medium;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: $size-viewport-xlarge-min) {
+    .pa-main-container-tight,
+    .pa-main-container-wide {
+        margin: 0 auto;
+    }
+
+    .pa-main-container-tight {
+        max-width: #{$max-width-container-tight-xlarge}rem;
+    }
+    .pa-main-container-wide {
+        max-width: #{$max-width-container-wide-xlarge}rem;
+    }
+}
+
+@media (min-width: $size-viewport-large-with-panel-min) {
+    .pa-main-side-panel + .pa-main-container-wide {
+        width: $formula-panel-plus-wide-large;
+    }
+}
+
+@media (min-width: $size-viewport-xlarge-with-panel-min) {
+    .pa-main-side-panel + .pa-main-container-wide {
+        // FIXME
+        //width: $formula-panel-plus-wide-xlarge;
+    }
+}

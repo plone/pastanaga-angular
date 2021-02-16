@@ -63,6 +63,8 @@ import { PaSideNavModule } from '../../../../pastanaga-angular/src/lib/side-nav/
 import { DemoComponent } from './demo.component';
 import { ChipPageComponent } from './pages/chip-page/chip-page.component';
 import { SidenavPageComponent } from './pages/sidenav-page/sidenav-page.component';
+import { ContainerPageComponent } from './pages/container-page/container-page.component';
+import { ContainerDemoComponent } from './pages/container-page/container-demo/container-demo.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -88,6 +90,8 @@ const COMPONENTS = [
     ButtonPageComponent,
     CheckboxPageComponent,
     ChipPageComponent,
+    ContainerPageComponent,
+    ContainerDemoComponent,
     DateTimePageComponent,
     DropdownPageComponent,
     FocusablePageComponent,

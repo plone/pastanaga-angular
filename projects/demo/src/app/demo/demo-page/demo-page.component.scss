@@ -1,6 +1,9 @@
 @import "../../../../../pastanaga-angular/src/lib/styles/variables";
 
 pa-demo-page {
+    display: block;
+    padding: rhythm(2) 0 rhythm(4);
+
     .doc-page-title,
     .doc-section-title,
     .pa-demo-example-configuration-title {
