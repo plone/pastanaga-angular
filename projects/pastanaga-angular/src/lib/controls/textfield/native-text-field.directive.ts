@@ -96,7 +96,7 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         @Optional() @Self() protected parentControl: NgControl,
         protected cdr: ChangeDetectorRef,
         protected textFieldUtility: TextFieldUtilityService,
-        protected renderer: Renderer2
+        protected renderer: Renderer2,
     ) {
         super(element, parentControl, cdr);
     }
@@ -168,7 +168,7 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
             this.textFieldUtility.handleBrowserAutoFill(
                 this.htmlInputRef?.nativeElement,
                 this.control,
-                this._stopAutoCompleteMonitor
+                this._stopAutoCompleteMonitor,
             );
         } else {
             this._stopAutoCompleteMonitor.next();
@@ -177,7 +177,8 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
 
     protected _checkIsFilled() {
         // NB: depending on updateOn formHook, the input can be filled but the formControlValue not updated yet
-        this.isFilled = this.htmlInputRef?.nativeElement.value === 0 || this.htmlInputRef?.nativeElement.value.length;
+        const value = this.control.value || this.htmlInputRef?.nativeElement.value;
+        this.isFilled = !!value || value === 0;
     }
 
     protected _checkDescribedBy() {
