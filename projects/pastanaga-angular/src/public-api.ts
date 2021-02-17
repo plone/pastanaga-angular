@@ -16,6 +16,7 @@ export * from './lib/breakpoint-observer/breakpoint.observer';
 export * from './lib/chips/chips.module';
 export * from './lib/chips/chip/chip.component';
 
+export * from './lib/controls/form-field/form-field-hint/form-field-hint.component';
 export * from './lib/controls/form-field/form-field.module';
 export * from './lib/controls/form-field.utils';
 export * from './lib/controls/deprecated-base-control.directive';
