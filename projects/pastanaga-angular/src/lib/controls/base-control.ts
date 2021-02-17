@@ -394,9 +394,7 @@ export abstract class BaseControl implements OnChanges, OnInit, OnDestroy, Contr
             this.control.setAsyncValidators(this._parentAsyncValidator);
         }
 
-        if (this.control.dirty) {
-            this.control.updateValueAndValidity();
-        }
+        this.control.updateValueAndValidity();
     }
 
     /**

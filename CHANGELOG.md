@@ -1,3 +1,8 @@
+# 2.21.0 (2021-02-17)
+
+### Bugfix:
+- **Controls**: Apply validators when changed at run time [dgsmith2]
+
 # 2.20.2 (2021-02-16)
 
 ### Bugfix:
