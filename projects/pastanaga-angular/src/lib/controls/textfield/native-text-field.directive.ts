@@ -141,16 +141,26 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     }
 
     onBlur() {
-        this.blurring.emit(this.control.value);
+        // if the fromControl uses { updateOn: 'blur' } or { updateOn: 'submit' }
+        // we emit the element value as this.control.value might not be updated yet
+        const value = this.control.updateOn !== 'change' ? this.htmlInputRef?.nativeElement?.value : this.control.value;
+        this.blurring.emit(value);
         this._checkIsFilled();
+        if (this.control.updateOn !== 'change') {
+            this.control.setValue(value);
+            this.control.markAsTouched();
+            this.control.updateValueAndValidity({ emitEvent: true });
+        }
     }
 
     onKeyUp(event: any) {
+        // we emit the element value as this.control.value might not be updated yet
+        // if the fromControl uses { updateOn: 'blur' } or  { updateOn: 'submit' }
         if (this.isActive && event.key !== Keys.tab && !!event.target) {
-            this.keyUp.emit(this.control.value);
+            this.keyUp.emit(this.htmlInputRef?.nativeElement?.value);
 
             if (event.key === Keys.enter) {
-                this.enter.emit({ event, value: this.control.value });
+                this.enter.emit({ event, value: this.htmlInputRef?.nativeElement?.value });
             }
         }
     }
