@@ -16,6 +16,7 @@ export * from './lib/breakpoint-observer/breakpoint.observer';
 export * from './lib/chips/chips.module';
 export * from './lib/chips/chip/chip.component';
 
+export * from './lib/controls/form-field/form-field-hint/form-field-hint.component';
 export * from './lib/controls/form-field/form-field.module';
 export * from './lib/controls/form-field.utils';
 export * from './lib/controls/deprecated-base-control.directive';
@@ -24,6 +25,7 @@ export * from './lib/controls/form-field.model';
 export * from './lib/controls/textfield/text-field.module';
 export * from './lib/controls/textfield/input/input.component';
 export * from './lib/controls/textfield/select/select.component';
+export * from './lib/controls/textfield/text-field-utility.service';
 export * from './lib/controls/toggles/toggles.module';
 export * from './lib/controls/toggles/checkbox/checkbox.component';
 
@@ -84,3 +86,7 @@ export * from './lib/side-nav/side-nav.module';
 export * from './lib/side-nav/side-nav.component';
 export * from './lib/side-nav/side-nav.directive';
 export * from './lib/side-nav/side-nav-item.component';
+
+export * from './lib/tooltip/tootip.module';
+export * from './lib/tooltip/tooltip.directive';
+export * from './lib/tooltip/tooltip.component';

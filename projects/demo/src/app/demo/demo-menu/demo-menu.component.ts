@@ -37,5 +37,6 @@ export class DemoMenuComponent {
         if (this.mode !== 'desktop') {
             this.isMenuVisible = false;
         }
+        window.scrollTo(0, 0);
     }
 }

@@ -5,8 +5,8 @@ import { distinctUntilChanged, shareReplay, startWith, map } from 'rxjs/operator
 export enum ViewportSize {
     small = 0,
     medium = 600,
-    large = 1025,
-    xLarge = 1470,
+    large = 1024,
+    xLarge = 1440,
 }
 
 export namespace ViewportSize {
@@ -32,8 +32,8 @@ export class BreakpointObserver {
                     ? 'mobile'
                     : viewportSize === ViewportSize.medium
                     ? 'tablet'
-                    : 'desktop'
-            )
+                    : 'desktop',
+            ),
         );
     }
 
@@ -42,7 +42,7 @@ export class BreakpointObserver {
             startWith(findSize()),
             map(() => findSize()),
             distinctUntilChanged(),
-            shareReplay(1)
+            shareReplay(1),
         );
     }
 

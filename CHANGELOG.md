@@ -1,3 +1,98 @@
+# 2.20.2 (2021-02-16)
+
+### Bugfix:
+- **Layout**: Fix tight compact container max-width value [mpellerin42]
+
+# 2.20.1 (2021-02-15)
+
+### Feature
+- **Layout**: [mpellerin42]
+    - Add a new container based layout
+    - Use Panel+Wide layout on our demo
+
+# 2.20.0 (2021-02-15)
+
+### Breaking changes
+- **Breakpoints**: Update large and xLarge breakpoints to be respectively 1024px and 1440px [mpellerin42]
+
+### Improvements
+- **Breakpoints**: Update breakpoints documentation page [mpellerin42]
+- **Documentation pages**: [mpellerin42]
+    - Add some space below the different titles to let the pages breath
+    - Automatically scroll to top when navigating through demo pages.
+- **Spacing**: Add token for side panel width [mpellerin42]
+
+# 2.19.6 (2021-02-12)
+
+### Bugfix
+
+- **Avatar**: Undefined avatar state use svg border image [barcafa]
+
+# 2.19.5 (2021-02-10)
+
+### Bugfix
+
+- **Toast**: Align toast text [barcafa]
+
+# 2.19.4 (2021-02-10)
+
+### Bugfix
+
+- **Toast**: Set toast message as innerHTML [barcafa]
+
+# 2.19.3 (2021-02-5)
+
+### Bugfix
+- **Typography**: Put back proper spacing in documentation pages [mpellerin42]
+
+# 2.19.2 (2021-02-3)
+
+### Bugfix
+- **Typography**: Use our monospace font token in our CSS reboot [mpellerin42]
+
+# 2.19.1 (2021-02-3)
+
+### Improvements
+- **Avatar**: fix font-weight to semi-bold [mpellerin42]
+- **Table**: fix padding on table rows [mpellerin42]
+
+# 2.19.0 (2021-02-1)
+
+### Breaking changes
+- **Avatar**: [mpellerin42]
+    - Size update: tiny | small | medium | huge (instead of small | medium | large)
+    - Change the `undefined` state to be without background and with a dashed border
+    - Update documentation page
+
+# 2.18.1 (2021-01-29)
+
+### Improvement
+- **OptionModel**: add `hasSeparator` property to OptionModel to allow the creation of a menu dynamically [mpellerin42] 
+
+# 2.18.0 (2021-01-25)
+
+### Breaking changes
+
+- **Typography**: Improve typography setup and consistency [mpellerin42]
+    - New naming convention for display sizes: d1, d2,… instead of dsmall, dmedium,…
+    - New `-md` suffix applied to values meant to be used on medium breakpoint
+    - Update some values in font-size and line-height mapping
+    - Add mapping function and mixin for letter spacing
+    - Update documentation page
+    
+
+# 2.17.11 (2021-01-18)
+
+### Bugfix
+
+- **Tooltip**: Add missing export of tooltips in public-api [mpellerin42]
+
+# 2.17.10 (2021-01-12)
+
+### Bugfix
+
+- **Popup**: Fix for popup position [jlp0328]
+
 # 2.17.9 (2021-01-11)
 
 ### Improvement
@@ -5,6 +100,7 @@
 - **Table**: 
     - Added sortable header component [niglesias]
     - Added table header button to be used only in tables [niglesias]
+    
 # 2.17.8 (2021-01-11)
 
 ### Improvements

@@ -1,20 +1,49 @@
 @import "../../../../../pastanaga-angular/src/lib/styles/variables";
 
 pa-demo-page {
-    .doc-page-title {
-        @include size(dsmall);
-    }
+    display: block;
+    padding: rhythm(2) 0 rhythm(4);
 
     .doc-page-title,
-    .doc-section-title {
+    .doc-section-title,
+    .pa-demo-example-configuration-title {
         margin-bottom: rhythm(4);
     }
 
     section.doc-section {
         margin-bottom: rhythm(6);
 
-        .doc-section-title {
-            @include size(dxsmall);
+        h2 {
+            margin-bottom: rhythm(3);
+        }
+        h3 {
+            margin-bottom: rhythm(2);
+        }
+        h4 {
+            margin-bottom: rhythm(1);
+        }
+    }
+
+
+    dl {
+        dt {
+            font-weight: $font-weight-semi-bold;
+        }
+        dd {
+            small {
+                color: $color-neutral-secondary-light;
+            }
+        }
+    }
+
+    pa-demo-description {
+        dl {
+            dt {
+                margin-bottom: rhythm(1);
+            }
+            dd {
+                margin-bottom: rhythm(2);
+            }
         }
     }
 
@@ -26,22 +55,16 @@ pa-demo-page {
             padding: 0 rhythm(.25);
             overflow: auto;
         }
-
         dl {
             display: flex;
             flex-wrap: wrap;
 
             dt {
-                flex: 1 0 20%;
+                flex: 1 0 25%;
                 min-width: rhythm(24);
-                font-weight: $font-weight-semi-bold;
             }
             dd {
-                flex: 1 0 80%;
-
-                small {
-                    color: $color-neutral-secondary-light;
-                }
+                flex: 1 0 75%;
             }
         }
     }
@@ -50,12 +73,12 @@ pa-demo-page {
         display: block;
         margin-bottom: rhythm(1.5);
 
-        > *:not(.icon-list-container):not(:last-child) {
+        > *:not(.icon-list-container) {
             margin-right: rhythm(4);
         }
 
         h3:not(.typography) {
-            margin: rhythm(4) 0 rhythm(1);
+            margin: rhythm(4) 0 rhythm(2);
         }
     }
 

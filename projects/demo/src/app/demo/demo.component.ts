@@ -34,7 +34,6 @@ export const avatar = of(b64toBlob(IMAGE, 'image/gif'));
 @Component({
     selector: 'pa-demo',
     templateUrl: './demo.component.html',
-    styleUrls: ['./demo.component.scss'],
 })
 export class DemoComponent implements OnInit, OnDestroy {
     @Input() menu: IDemoMenuSection[] = [];
@@ -58,7 +57,7 @@ export class DemoComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.menu.forEach((section) =>
-            section.pages.forEach((page) => this.traverser.addView(page.view, '', page.type))
+            section.pages.forEach((page) => this.traverser.addView(page.view, '', page.type)),
         );
     }
 

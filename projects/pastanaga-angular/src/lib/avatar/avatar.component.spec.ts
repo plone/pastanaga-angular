@@ -32,17 +32,17 @@ describe('AvatarComponent', () => {
         expect(initials?.className).toContain('pa-avatar-secondary');
     });
 
-    it('should display a question mark as initials and set medium size by default', () => {
+    it('should display set medium size by default', () => {
         spectator = createHost(`<pa-avatar></pa-avatar>`);
         spectator.detectChanges();
-        expect(spectator.component.initials).toBe('?');
+        expect(spectator.component.initials).toBe('');
         expect(spectator.component.size).toBe('medium');
     });
 
     it('should set avatar size', () => {
-        spectator = createHost(`<pa-avatar size="large"></pa-avatar>`);
+        spectator = createHost(`<pa-avatar size="huge"></pa-avatar>`);
         spectator.detectChanges();
-        expect(spectator.component.size).toBe('large');
+        expect(spectator.component.size).toBe('huge');
     });
 
     it('should set base64 image from imageSrc', () => {

@@ -64,6 +64,8 @@ import { FocusablePageComponent } from './pages/focusable-page/focusable-page.co
 import { DemoComponent } from './demo.component';
 import { ChipPageComponent } from './pages/chip-page/chip-page.component';
 import { SidenavPageComponent } from './pages/sidenav-page/sidenav-page.component';
+import { ContainerPageComponent } from './pages/container-page/container-page.component';
+import { ContainerDemoComponent } from './pages/container-page/container-demo/container-demo.component';
 import { FormFieldHintPageComponent } from './pages/form-field-hint-page/form-field-hint-page.component';
 import { FormControlPageComponent } from './pages/form-control-page/form-control-page.component';
 import { FormControlIdExampleComponent } from './pages/form-control-page/id-example/form-control-id-example.component';
@@ -118,6 +120,8 @@ const COMPONENTS = [
     ButtonPageComponent,
     CheckboxPageComponent,
     ChipPageComponent,
+    ContainerPageComponent,
+    ContainerDemoComponent,
     DateTimePageComponent,
     DropdownPageComponent,
     FocusablePageComponent,

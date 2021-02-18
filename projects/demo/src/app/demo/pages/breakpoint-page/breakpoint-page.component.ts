@@ -8,8 +8,8 @@ export class BreakpointPageComponent {
     viewportSize = `export enum ViewportSize {
     small = 0,
     medium = 600,
-    large = 1025,
-    xLarge = 1470,
+    large = 1024,
+    xLarge = 1440,
 }`;
 
     currentMode = `ngOnInit(): void {
