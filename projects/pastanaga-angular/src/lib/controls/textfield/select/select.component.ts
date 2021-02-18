@@ -16,7 +16,7 @@ import {
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
-import { NgControl, Validators } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
@@ -41,10 +41,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
         this.dropDownModels = !!values ? values : [];
-    }
-
-    @Input() set required(value: boolean) {
-        this._required = coerceBooleanProperty(value);
     }
 
     @Input() set hasFocus(value: boolean) {
@@ -77,14 +73,13 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     displayedValue?: string;
     private optionsClosed$ = new Subject();
     private contentOptionsChanged$ = new Subject();
-    private _required?: boolean;
     private _hasFocus = false;
 
     constructor(
         protected element: ElementRef,
         @Optional() @Self() protected parentControl: NgControl,
         protected platform: Platform,
-        public cdr: ChangeDetectorRef
+        public cdr: ChangeDetectorRef,
     ) {
         super(element, parentControl, cdr);
     }
@@ -92,14 +87,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
         this._checkDescribedBy();
-        if (changes.required) {
-            if (changes.required.currentValue) {
-                this.internalValidatorsMap.set('required', Validators.required);
-            } else {
-                this.internalValidatorsMap.delete('required');
-            }
-            this.validatorChanged$.next();
-        }
     }
 
     ngAfterViewInit(): void {
@@ -239,7 +226,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         if (!!this.ngContent) {
             // subscribe to option selection
             this.ngContent.forEach((option) =>
-                option.selectOption.pipe(takeUntil(this.terminator$)).subscribe(() => this.selectOption(option))
+                option.selectOption.pipe(takeUntil(this.terminator$)).subscribe(() => this.selectOption(option)),
             );
         }
     }

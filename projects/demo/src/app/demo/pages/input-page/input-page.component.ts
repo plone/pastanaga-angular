@@ -23,10 +23,6 @@ export class InputPageComponent {
     [errorMessages]="errorMessages"
     [errorMessage]="errorMessage"
     [placeholder]="placeholder"
-    [required]="required"
-    [pattern]="pattern"
-    [min]="min"
-    [max]="max"
     [maxlength]="maxlength"
     [noAutoComplete]="noAutoComplete"
     [acceptHtmlTags]="acceptHtmlTags"
@@ -63,10 +59,6 @@ export class InputPageComponent {
     [errorMessages]="errorMessages"
     [errorMessage]="errorMessage"
     [placeholder]="placeholder"
-    [required]="required"
-    [pattern]="pattern"
-    [min]="min"
-    [max]="max"
     [maxlength]="maxlength"
     [noAutoComplete]="noAutoComplete"
     [acceptHtmlTags]="acceptHtmlTags"
@@ -85,7 +77,6 @@ export class InputPageComponent {
     formControlValidationCodeHtml = `<pa-input
     type="email"
     [formControl]="formControl"
-    [required]="required"
 >Label</pa-input>`;
 
     formControlFullCode = `<pa-input
@@ -102,10 +93,6 @@ export class InputPageComponent {
     [errorMessages]="errorMessages"
     [errorMessage]="errorMessage"
     [placeholder]="placeholder"
-    [required]="required"
-    [pattern]="pattern"
-    [min]="min"
-    [max]="max"
     [maxlength]="maxlength"
     [noAutoComplete]="noAutoComplete"
     [acceptHtmlTags]="acceptHtmlTags"
@@ -128,8 +115,6 @@ export class InputPageComponent {
     <pa-input
         formControlName="text"
         type="email"
-        [required]="required"
-        [pattern]="pattern"
     >Label
     </pa-input>
 </form>`;
@@ -148,10 +133,6 @@ export class InputPageComponent {
         [errorMessages]="errorMessages"
         [errorMessage]="errorMessage"
         [placeholder]="placeholder"
-        [required]="required"
-        [pattern]="pattern"
-        [min]="min"
-        [max]="max"
         [maxlength]="maxlength"
         [noAutoComplete]="noAutoComplete"
         [acceptHtmlTags]="acceptHtmlTags"

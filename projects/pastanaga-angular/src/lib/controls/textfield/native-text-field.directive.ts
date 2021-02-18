@@ -13,7 +13,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { PaFormControlDirective } from '../form-field/pa-form-control.directive';
-import { NgControl, ValidatorFn, Validators } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { TextFieldUtilityService } from './text-field-utility.service';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
@@ -26,18 +26,8 @@ import { takeUntil } from 'rxjs/operators';
     selector: '[paNativeTextField]',
 })
 export class NativeTextFieldDirective extends PaFormControlDirective implements AfterViewInit, OnDestroy {
-    @Input() set required(value: boolean) {
-        this._required = coerceBooleanProperty(value);
-        this._toggleValidator('required', this._required ? Validators.required : undefined);
-    }
-
-    get required() {
-        return this._required || false;
-    }
-
     @Input() set maxlength(value: number | undefined) {
         this._maxlength = value;
-        this._toggleValidator('maxlength', value ? Validators.maxLength(value) : undefined);
     }
 
     get maxlength() {
@@ -85,7 +75,6 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     describedById?: string;
     sanitizeHtmlTags?: (val: any) => any = sanitizeStringValue;
 
-    private _required?: boolean;
     private _maxlength?: number;
     private _noAutoComplete = false;
     private _stopAutoCompleteMonitor = new Subject();
@@ -162,14 +151,6 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
             if (event.key === Keys.enter) {
                 this.enter.emit({ event, value: this.htmlInputRef?.nativeElement?.value });
             }
-        }
-    }
-
-    protected _toggleValidator(key: string, validator?: ValidatorFn) {
-        if (validator) {
-            this.internalValidatorsMap.set(key, validator);
-        } else {
-            this.internalValidatorsMap.delete(key);
         }
     }
 

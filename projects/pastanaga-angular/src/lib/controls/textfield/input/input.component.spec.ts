@@ -99,7 +99,7 @@ describe('InputComponent', () => {
     });
     it('should manage formControlName value', () => {
         spectator = createHost(
-            `<form [formGroup]="formGroup"><pa-input formControlName="control">Label</pa-input></form>`
+            `<form [formGroup]="formGroup"><pa-input formControlName="control">Label</pa-input></form>`,
         );
         component = spectator.component;
         host = spectator.hostComponent;
@@ -197,7 +197,7 @@ describe('InputComponent', () => {
     });
     it('should apply disabled in formGroup', () => {
         spectator = createHost(
-            `<form [formGroup]="formGroup"><pa-input formControlName="control">Label</pa-input></form>`
+            `<form [formGroup]="formGroup"><pa-input formControlName="control">Label</pa-input></form>`,
         );
         component = spectator.component;
         host = spectator.hostComponent;
@@ -238,114 +238,19 @@ describe('InputComponent', () => {
         const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
         expect(hint.componentInstance.help).toEqual('a hint message');
     });
-    it('should apply required', () => {
-        spectator = createHost(`<pa-input [required]="required">Label</pa-input>`);
-        component = spectator.component;
-        host = spectator.hostComponent;
-        spectator.detectChanges();
-        thenInputHasProperty('required', false);
-
-        component.control.markAsDirty();
-        component.control.updateValueAndValidity();
-        expect(component.control.valid).toEqual(true);
-
-        host.required = true;
-        spectator.detectChanges();
-        thenInputHasProperty('required', true);
-        expect(component.control.valid).toEqual(false);
-    });
-    it('should apply pattern validator', fakeAsync(() => {
-        spectator = createHost(`<pa-input [pattern]="pattern">Label</pa-input>`);
-        component = spectator.component;
-        host = spectator.hostComponent;
-        spectator.detectChanges();
-        component.control.patchValue('something');
-        component.control.markAsDirty();
-        component.control.updateValueAndValidity();
-        expect(component.control.valid).toEqual(true);
-
-        host.pattern = new RegExp('.?test.?');
-        spectator.detectChanges();
-        tick(1);
-        spectator.detectChanges();
-        expect(component.control.valid).toEqual(false);
-        expect(component.control.errors).toEqual({
-            pattern: {
-                actualValue: 'something',
-                requiredPattern: '/.?test.?/',
-            },
-        });
-    }));
-    it('should apply min validator', fakeAsync(() => {
-        spectator = createHost(`<pa-input type="number" [min]="min">Label</pa-input>`);
-        component = spectator.component;
-        host = spectator.hostComponent;
-        spectator.detectChanges();
-        component.control.patchValue(2);
-        component.control.markAsDirty();
-        component.control.updateValueAndValidity();
-        expect(component.control.valid).toEqual(true);
-
-        host.min = 3;
-        spectator.detectChanges();
-        tick(1);
-        spectator.detectChanges();
-        expect(component.control.valid).toEqual(false);
-        expect(component.control.errors).toEqual({
-            min: {
-                actual: 2,
-                min: 3,
-            },
-        });
-    }));
-    it('should apply max validator', fakeAsync(() => {
-        spectator = createHost(`<pa-input type="number" [max]="max">Label</pa-input>`);
-        component = spectator.component;
-        host = spectator.hostComponent;
-        spectator.detectChanges();
-        component.control.patchValue(2);
-        component.control.markAsDirty();
-        component.control.updateValueAndValidity();
-        expect(component.control.valid).toEqual(true);
-
-        host.max = 1;
-        spectator.detectChanges();
-        tick(1);
-        spectator.detectChanges();
-        expect(component.control.valid).toEqual(false);
-        expect(component.control.errors).toEqual({
-            max: {
-                actual: 2,
-                max: 1,
-            },
-        });
-    }));
-    it('should apply maxlength', fakeAsync(() => {
+    it('should apply maxlength', () => {
         spectator = createHost(`<pa-input [maxlength]="maxlength">Label</pa-input>`);
         component = spectator.component;
         host = spectator.hostComponent;
-        spectator.detectChanges();
-        component.control.patchValue('abcd');
-        component.control.markAsDirty();
-        component.control.updateValueAndValidity();
-        expect(component.control.valid).toEqual(true);
-
         host.maxlength = 3;
-        spectator.detectChanges();
-        tick(1);
         spectator.detectChanges();
         thenInputHasProperty('maxLength', 3);
         thenInputHasAttribute('maxlength', '3');
-        expect(component.control.valid).toEqual(false);
-        expect(component.control.errors).toEqual({
-            maxlength: {
-                actualLength: 4,
-                requiredLength: 3,
-            },
-        });
-    }));
+    });
     it('should display errorMessages', () => {
-        spectator = createHost(`<pa-input [required]="required" [errorMessages]="errorMessages">Label</pa-input>`);
+        spectator = createHost(
+            `<pa-input [(ngModel)]="model" [required]="required" [errorMessages]="errorMessages">Label</pa-input>`,
+        );
         component = spectator.component;
         host = spectator.hostComponent;
         host.required = true;
@@ -362,7 +267,9 @@ describe('InputComponent', () => {
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
     });
     it('should toggle showAllErrors', () => {
-        spectator = createHost(`<pa-input [required]="required" [showAllErrors]="showAllErrors">Label</pa-input>`);
+        spectator = createHost(
+            `<pa-input [(ngModel)]="model" [required]="required" [showAllErrors]="showAllErrors">Label</pa-input>`,
+        );
         component = spectator.component;
         host = spectator.hostComponent;
         host.required = true;

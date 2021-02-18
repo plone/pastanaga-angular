@@ -34,10 +34,6 @@ export class PaInputConfigComponent implements OnInit {
         errorMessage: new FormControl(),
         errorMessages: new FormControl(),
         showAllErrors: new FormControl(),
-        required: new FormControl(),
-        pattern: new FormControl(),
-        min: new FormControl(),
-        max: new FormControl(),
         maxlength: new FormControl(),
     });
 

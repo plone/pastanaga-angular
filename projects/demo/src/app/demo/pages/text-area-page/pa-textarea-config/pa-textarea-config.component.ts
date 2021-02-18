@@ -29,7 +29,6 @@ export class PaTextareaConfigComponent implements OnInit {
         errorMessage: new FormControl(),
         errorMessages: new FormControl(),
         showAllErrors: new FormControl(),
-        required: new FormControl(),
         maxlength: new FormControl(),
         // display
         autoHeight: new FormControl(),

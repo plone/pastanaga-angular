@@ -13,7 +13,7 @@ import {
     Self,
     SimpleChanges,
 } from '@angular/core';
-import { NgControl, Validators } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { TextInputType } from '../../form-field.model';
 import { TextFieldUtilityService } from '../text-field-utility.service';
 import { NativeTextFieldDirective } from '../native-text-field.directive';
@@ -34,18 +34,6 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
         return this._type;
     }
 
-    @Input() set pattern(value: RegExp | string | undefined) {
-        this._toggleValidator('pattern', value ? Validators.pattern(value) : undefined);
-    }
-
-    @Input() set min(value: number | undefined) {
-        this._toggleValidator('min', value || value === 0 ? Validators.min(value) : undefined);
-    }
-
-    @Input() set max(value: number | undefined) {
-        this._toggleValidator('max', value || value === 0 ? Validators.max(value) : undefined);
-    }
-
     @Input() autocapitalize?: string;
 
     fieldType = 'input';
@@ -59,22 +47,12 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
         @Optional() @Self() protected parentControl: NgControl,
         protected cdr: ChangeDetectorRef,
         protected textFieldUtility: TextFieldUtilityService,
-        protected renderer: Renderer2
+        protected renderer: Renderer2,
     ) {
         super(element, parentControl, cdr, textFieldUtility, renderer);
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (
-            !!changes.required ||
-            !!changes.min ||
-            !!changes.max ||
-            !!changes.maxlength ||
-            !!changes.pattern ||
-            !!changes.errorMessage
-        ) {
-            this.validatorChanged$.next();
-        }
         super.ngOnChanges(changes);
         this._checkIsFilled();
         this._checkDescribedBy();
