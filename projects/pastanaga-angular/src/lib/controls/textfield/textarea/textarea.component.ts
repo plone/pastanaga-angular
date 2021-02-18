@@ -99,15 +99,12 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
         @Optional() @Self() protected parentControl: NgControl,
         protected cdr: ChangeDetectorRef,
         protected textFieldUtility: TextFieldUtilityService,
-        protected renderer: Renderer2
+        protected renderer: Renderer2,
     ) {
         super(element, parentControl, cdr, textFieldUtility, renderer);
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (!!changes.required || !!changes.maxlength || !!changes.errorMessage) {
-            this.validatorChanged$.next();
-        }
         super.ngOnChanges(changes);
         this._checkIsFilled();
         this._checkDescribedBy();

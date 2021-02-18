@@ -26,7 +26,6 @@ export class PaSelectConfigComponent implements OnInit {
         disabled: new FormControl(),
 
         help: new FormControl(),
-        required: new FormControl(),
         errorMessage: new FormControl(),
         errorMessages: new FormControl(),
         showAllErrors: new FormControl(),

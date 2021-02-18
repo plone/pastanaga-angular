@@ -71,7 +71,7 @@ describe('SelectComponent', () => {
         expect(spectator.query('.pa-select-value')?.innerHTML).toEqual(label);
     };
     const thenSelectIsNotValuated = () => {
-        expect(component.control.value).toEqual(null);
+        expect(!!component.control.value).toEqual(false);
         // no selected option
         expect(spectator.queryAll('pa-dropdown pa-select-options pa-option .pa-option-selected')).toHaveLength(0);
         expect(spectator.queryAll('pa-dropdown pa-option .pa-option-selected')).toHaveLength(0);
@@ -152,7 +152,7 @@ describe('SelectComponent', () => {
 
     it('should manage formControlName value', () => {
         initWithTemplate(
-            `<form [formGroup]="formGroup"><pa-select formControlName="control" [options]="options"></pa-select></form>`
+            `<form [formGroup]="formGroup"><pa-select formControlName="control" [options]="options"></pa-select></form>`,
         );
         whenHostHasTwoOptionModels();
         thenSelectIsNotValuated();
@@ -165,7 +165,7 @@ describe('SelectComponent', () => {
 
     it('should propagate standalone value', () => {
         initWithTemplate(
-            `<pa-select [value]="value" (valueChange)="valueChanged($event)">${optionsInTemplate}</pa-select>`
+            `<pa-select [value]="value" (valueChange)="valueChanged($event)">${optionsInTemplate}</pa-select>`,
         );
         thenSelectIsNotValuated();
         const changeInHost = jest.spyOn(host, 'valueChanged');
@@ -192,7 +192,7 @@ describe('SelectComponent', () => {
 
     it('should propagate formControlName value', () => {
         initWithTemplate(
-            `<form [formGroup]="formGroup"><pa-select formControlName="control">${optionsInTemplate}</pa-select></form>`
+            `<form [formGroup]="formGroup"><pa-select formControlName="control">${optionsInTemplate}</pa-select></form>`,
         );
         thenSelectIsNotValuated();
         whenFirstOptionClicked();
@@ -222,7 +222,7 @@ describe('SelectComponent', () => {
 
     it('should apply disabled in formGroup', () => {
         initWithTemplate(
-            `<form [formGroup]="formGroup"><pa-select formControlName="control">${optionsInTemplate}</pa-select></form>`
+            `<form [formGroup]="formGroup"><pa-select formControlName="control">${optionsInTemplate}</pa-select></form>`,
         );
         expect(spectator.query('.pa-field-disabled')).toEqual(null);
         host.formGroup.disable();
@@ -246,7 +246,7 @@ describe('SelectComponent', () => {
 
     it('should focus input', fakeAsync(() => {
         initWithTemplate(
-            `<pa-select [value]="value" [hasFocus]="hasFocus" (expanded)="onExpanded($event)">${optionsInTemplate}</pa-select>`
+            `<pa-select [value]="value" [hasFocus]="hasFocus" (expanded)="onExpanded($event)">${optionsInTemplate}</pa-select>`,
         );
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(true);
         const selectClicked = jest.spyOn(component.selectInput?.nativeElement, 'click');
@@ -319,9 +319,9 @@ describe('SelectComponent', () => {
         expect(hint.componentInstance.help).toEqual('a hint message');
     });
 
-    it('should apply required', fakeAsync(() => {
+    it('should apply required', () => {
         initWithTemplate(
-            `<pa-select [required]="required" (statusChange)="statusChanged($event)">${optionsInTemplate}</pa-select>`
+            `<pa-select [(ngModel)]="model" [required]="required" (statusChange)="statusChanged($event)">${optionsInTemplate}</pa-select>`,
         );
         expect(spectator.query('.pa-field-error')).toEqual(null);
         component.control.markAsDirty();
@@ -329,22 +329,20 @@ describe('SelectComponent', () => {
         const statusChanged = jest.spyOn(host, 'statusChanged');
         host.required = true;
         spectator.detectChanges();
-        tick(1); // debounce time for validator change
         expect(component.control.valid).toEqual(false);
         spectator.detectChanges();
         expect(spectator.query('.pa-field-error')).toBeTruthy();
         expect(statusChanged).toHaveBeenCalledWith('INVALID');
-    }));
+    });
 
-    it('should display errorMessages', fakeAsync(() => {
+    it('should display errorMessages', () => {
         initWithTemplate(
-            `<pa-select [required]="required" [errorMessages]="errorMessages">${optionsInTemplate}</pa-select>`
+            `<pa-select [(ngModel)]="model" [required]="required" [errorMessages]="errorMessages">${optionsInTemplate}</pa-select>`,
         );
         component.control.markAsDirty();
         expect(component.control.valid).toEqual(true);
         host.required = true;
         spectator.detectChanges();
-        tick(1); // debounce time for validator change
         expect(component.control.valid).toEqual(false);
         spectator.detectChanges();
         const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
@@ -353,5 +351,5 @@ describe('SelectComponent', () => {
         host.errorMessages = { required: 'field required' };
         spectator.detectChanges();
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
-    }));
+    });
 });

@@ -12,7 +12,7 @@ import {
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
-import { NgControl, Validators } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
 import { takeUntil } from 'rxjs/operators';
 import { IErrorMessages } from '../../form-field.model';
@@ -25,7 +25,6 @@ import { detectChanges } from '../../../common';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {
-    @Input() required?: boolean;
     @Input() errorMessages?: IErrorMessages;
 
     @ViewChild('htmlElement') htmlElementRef?: ElementRef;
@@ -38,21 +37,13 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
         protected element: ElementRef,
         @Optional() @Self() protected parentControl: NgControl,
         protected cdr: ChangeDetectorRef,
-        private renderer: Renderer2
+        private renderer: Renderer2,
     ) {
         super(element, parentControl, cdr);
     }
 
     ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
-        if (changes.required) {
-            if (changes.required.currentValue) {
-                this.internalValidatorsMap.set('required', Validators.requiredTrue);
-            } else {
-                this.internalValidatorsMap.delete('required');
-            }
-            this.validatorChanged$.next();
-        }
     }
 
     ngAfterViewInit() {

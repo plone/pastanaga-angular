@@ -112,14 +112,14 @@ describe('PaFormControlDirective', () => {
 
             it('should assign the name of the formControl', () => {
                 spectator = createDirective(
-                    `<form [formGroup]="form"><input formControlName="first" paFormControl></form>`
+                    `<form [formGroup]="form"><input formControlName="first" paFormControl></form>`,
                 );
                 spectator.detectChanges();
                 expect(spectator.directive.name).toEqual('first');
             });
             it('should ignore the given name', () => {
                 spectator = createDirective(
-                    `<form [formGroup]="form"><input paFormControl name='ignored' formControlName="first"></form>`
+                    `<form [formGroup]="form"><input paFormControl name='ignored' formControlName="first"></form>`,
                 );
                 spectator.detectChanges();
                 expect(spectator.directive.name).toEqual('first');
@@ -152,7 +152,7 @@ describe('PaFormControlDirective', () => {
 
         it('should be applied with ngModel ', fakeAsync(() => {
             spectator = createDirective(
-                `<div [(ngModel)]="model" paFormControl [disabled]="disabled" [readonly]="readonly"></div>`
+                `<div [(ngModel)]="model" paFormControl [disabled]="disabled" [readonly]="readonly"></div>`,
             );
             spectator.detectChanges();
             tick();
@@ -183,22 +183,18 @@ describe('PaFormControlDirective', () => {
     });
 
     describe('validation', () => {
-        const thenControlValidWithoutValidator = () => {
+        const thenControlValid = () => {
             expect(spectator.directive.control.valid).toEqual(true);
-            expect(spectator.directive.control.validator).toEqual(null);
         };
-        const thenControlValidWithValidator = () => {
-            expect(spectator.directive.control.valid).toEqual(true);
-            expect(spectator.directive.control.validator).toBeDefined();
+
+        const thenControlPristineAndInvalid = () => {
+            expect(spectator.directive.control.pristine).toEqual(true);
+            expect(spectator.directive.control.valid).toEqual(false);
         };
-        const thenControlPristineValidWithValidator = () => {
+
+        const thenControlPristineAndValid = () => {
             expect(spectator.directive.control.pristine).toEqual(true);
             expect(spectator.directive.control.valid).toEqual(true);
-            expect(spectator.directive.control.validator).toBeDefined();
-        };
-        const thenControlDirtyAndInvalid = () => {
-            expect(spectator.directive.control.dirty).toEqual(true);
-            expect(spectator.directive.control.valid).toEqual(false);
         };
 
         const thenControlInvalidWithError = (error: any) => {
@@ -216,33 +212,29 @@ describe('PaFormControlDirective', () => {
 
         let spectator: SpectatorDirective<PaFormControlDirective, TestComponent>;
 
-        it('should apply internal validation in standalone ', fakeAsync(() => {
+        it('should apply error message in standalone ', () => {
             spectator = createDirective(
-                `<div paFormControl [errorMessage]="errorMessage" (statusChange)="status = $event"></div>`
+                `<div paFormControl [errorMessage]="errorMessage" (statusChange)="status = $event"></div>`,
             );
             spectator.detectChanges();
-            thenControlValidWithoutValidator();
+            thenControlValid();
             spectator.hostComponent.errorMessage = 'error';
             spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
-            // form pristine, no validation but validator has been set,
-            // status has not been updated in standalone mode
-            thenControlPristineValidWithValidator();
-            expect(spectator.hostComponent.status).toEqual(undefined);
-            // make formControl dirty and evaluate status
-            spectator.directive.control.markAsDirty();
-            spectator.directive.control.updateValueAndValidity();
-            thenControlDirtyAndInvalid();
+            thenControlPristineAndInvalid();
+            thenControlInvalidWithError({ customError: 'error' });
             expect(spectator.hostComponent.status).toEqual('INVALID');
-        }));
+            spectator.hostComponent.errorMessage = undefined;
+            spectator.detectChanges();
+            thenControlPristineAndValid();
+            expect(spectator.hostComponent.status).toEqual('VALID');
+        });
 
         it('should expose ngModel validation', () => {
             spectator = createDirective(
-                `<div paFormControl [(ngModel)]="model" email (statusChange)="status = $event"></div>`
+                `<div paFormControl [(ngModel)]="model" email (statusChange)="status = $event"></div>`,
             );
             spectator.detectChanges();
-            thenControlValidWithValidator();
+            thenControlValid();
             spectator.directive.control.setValue('invalid email');
             spectator.detectChanges();
             thenControlInvalidWithError({ email: true });
@@ -252,59 +244,58 @@ describe('PaFormControlDirective', () => {
             expect(spectator.hostComponent.status).toEqual('VALID');
         });
 
-        it('should apply internal validation on ngModel', fakeAsync(() => {
+        it('should apply validation on ngModel', () => {
             spectator = createDirective(
-                `<div paFormControl [(ngModel)]="model" [errorMessage]="errorMessage" (statusChange)="status = $event"></div>`
+                `<div paFormControl [(ngModel)]="model" [errorMessage]="errorMessage" (statusChange)="status = $event"></div>`,
             );
             spectator.detectChanges();
-            thenControlValidWithoutValidator();
-            spectator.hostComponent.errorMessage = 'error';
-            spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
-            thenControlValidWithValidator();
-            expect(spectator.hostComponent.status).toEqual('VALID');
-            // make formControl dirty and evaluate status
-            spectator.directive.control.markAsDirty();
-            spectator.directive.control.updateValueAndValidity();
-            thenControlDirtyAndInvalid();
-            expect(spectator.hostComponent.status).toEqual('INVALID');
-        }));
+            thenControlValid();
 
-        it('should merge internal and external validators for ngModel', fakeAsync(() => {
-            spectator = createDirective(
-                `<div paFormControl [(ngModel)]="model" email [errorMessage]="errorMessage" (statusChange)="status = $event"></div>`
-            );
-            spectator.detectChanges();
-            thenControlValidWithValidator();
             spectator.hostComponent.errorMessage = 'error';
             spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
-            thenControlValidWithValidator();
+            thenControlPristineAndInvalid();
+            expect(spectator.hostComponent.status).toEqual('INVALID');
+            spectator.hostComponent.errorMessage = undefined;
+
+            spectator.detectChanges();
+            thenControlValid();
             expect(spectator.hostComponent.status).toEqual('VALID');
+        });
+
+        it('should replace errorMessage by external validators error for ngModel', () => {
+            spectator = createDirective(
+                `<div paFormControl [(ngModel)]="model" email [errorMessage]="errorMessage" (statusChange)="status = $event"></div>`,
+            );
+            spectator.detectChanges();
+            thenControlValid();
+            spectator.hostComponent.errorMessage = 'error';
+            spectator.detectChanges();
+            thenControlPristineAndInvalid();
+            expect(spectator.hostComponent.status).toEqual('INVALID');
 
             spectator.directive.control.setValue('invalid email');
             spectator.detectChanges();
-            thenControlInvalidWithError({ customError: 'error', email: true });
+            thenControlInvalidWithError({ email: true });
             expect(spectator.hostComponent.status).toEqual('INVALID');
 
+            // still invalid after errorMessage is reset
             spectator.hostComponent.errorMessage = undefined;
             spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
+            thenControlInvalidWithError({ email: true });
+            expect(spectator.hostComponent.status).toEqual('INVALID');
+
             spectator.directive.control.setValue('email@test.test');
             spectator.detectChanges();
             expect(spectator.directive.control.valid).toEqual(true);
             expect(spectator.hostComponent.status).toEqual('VALID');
-        }));
+        });
 
         it('should use formControl validation', () => {
             spectator = createDirective(
-                `<input paFormControl [formControl]="control" (statusChange)="status = $event">`
+                `<input paFormControl [formControl]="control" (statusChange)="status = $event">`,
             );
             spectator.detectChanges();
-            thenControlValidWithValidator();
+            thenControlValid();
             spectator.directive.control.setValue('12');
             spectator.detectChanges();
             thenControlInvalidWithError({ minlength: { actualLength: 2, requiredLength: 3 } });
@@ -314,53 +305,62 @@ describe('PaFormControlDirective', () => {
             expect(spectator.hostComponent.status).toEqual('VALID');
         });
 
-        it('should merge formControl validation and internal validation', fakeAsync(() => {
+        it('should apply errorMessage and formControl validation', () => {
             spectator = createDirective(
-                `<input paFormControl [formControl]="control" [errorMessage]="errorMessage" (statusChange)="status = $event">`
+                `<input paFormControl [formControl]="control" [errorMessage]="errorMessage" (statusChange)="status = $event">`,
             );
             spectator.detectChanges();
-            thenControlValidWithValidator();
+            thenControlValid();
             spectator.hostComponent.errorMessage = 'error';
             spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
+            thenControlInvalidWithError({ customError: 'error' });
+
             spectator.directive.control.setValue('12');
             spectator.detectChanges();
-            thenControlInvalidWithError({ customError: 'error', minlength: { actualLength: 2, requiredLength: 3 } });
+            thenControlInvalidWithError({ minlength: { actualLength: 2, requiredLength: 3 } });
             expect(spectator.hostComponent.status).toEqual('INVALID');
+
+            // still invalid after errorMessage reset
             spectator.hostComponent.errorMessage = undefined;
             spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
+            thenControlInvalidWithError({ minlength: { actualLength: 2, requiredLength: 3 } });
+
             spectator.directive.control.setValue('123');
             expect(spectator.directive.control.valid).toEqual(true);
             expect(spectator.hostComponent.status).toEqual('VALID');
-        }));
+        });
 
-        it('should apply validation on formGroup', fakeAsync(() => {
+        it('should apply errorMessage and validation on formGroup', () => {
             spectator = createDirective(
-                `<form [formGroup]="form"><input paFormControl formControlName="first" [errorMessage]="errorMessage" (statusChange)="status = $event"></form> `
+                `<form [formGroup]="form"><input paFormControl formControlName="first" [errorMessage]="errorMessage" (statusChange)="status = $event"></form> `,
             );
             spectator.detectChanges();
-            thenControlValidWithValidator();
+            thenControlValid();
             spectator.hostComponent.errorMessage = 'error';
             spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
-            spectator.directive.control.setValue('12');
             spectator.detectChanges();
-            thenControlInvalidWithError({ customError: 'error', minlength: { actualLength: 2, requiredLength: 3 } });
+            thenControlInvalidWithError({ customError: 'error' });
             expect(spectator.hostComponent.status).toEqual('INVALID');
             expect(spectator.hostComponent.form.valid).toEqual(false);
+
+            spectator.directive.control.setValue('12');
+            spectator.detectChanges();
+            thenControlInvalidWithError({ minlength: { actualLength: 2, requiredLength: 3 } });
+            expect(spectator.hostComponent.status).toEqual('INVALID');
+            expect(spectator.hostComponent.form.valid).toEqual(false);
+
+            // still invalid after errorMessage reset
             spectator.hostComponent.errorMessage = undefined;
             spectator.detectChanges();
-            // debounce before updating validators
-            tick(1);
+            thenControlInvalidWithError({ minlength: { actualLength: 2, requiredLength: 3 } });
+            expect(spectator.hostComponent.status).toEqual('INVALID');
+            expect(spectator.hostComponent.form.valid).toEqual(false);
+
             spectator.directive.control.setValue('123');
             expect(spectator.directive.control.valid).toEqual(true);
             expect(spectator.hostComponent.status).toEqual('VALID');
             expect(spectator.hostComponent.form.valid).toEqual(true);
-        }));
+        });
     });
 
     describe('value binding', () => {
@@ -376,7 +376,7 @@ describe('PaFormControlDirective', () => {
 
         it('should bind standalone element', () => {
             spectator = createDirective(
-                `<div #ref paFormControl [value]="value" (valueChange)="receivedValue = $event"></div>`
+                `<div #ref paFormControl [value]="value" (valueChange)="receivedValue = $event"></div>`,
             );
             spectator.detectChanges();
             expect(spectator.directive.control.value).toEqual(null);
@@ -391,7 +391,7 @@ describe('PaFormControlDirective', () => {
 
         it('should bind ngModel element', fakeAsync(() => {
             spectator = createDirective(
-                `<div #ref paFormControl [(ngModel)]="model" (valueChange)="receivedValue = $event"></div>`
+                `<div #ref paFormControl [(ngModel)]="model" (valueChange)="receivedValue = $event"></div>`,
             );
             spectator.detectChanges();
             expect(spectator.directive.control.value).toEqual(null);
@@ -410,7 +410,7 @@ describe('PaFormControlDirective', () => {
 
         it('should bind reactive element', fakeAsync(() => {
             spectator = createDirective(
-                `<form [formGroup]="form"><input #ref paFormControl formControlName="first" (valueChange)="receivedValue = $event"></form>`
+                `<form [formGroup]="form"><input #ref paFormControl formControlName="first" (valueChange)="receivedValue = $event"></form>`,
             );
             spectator.detectChanges();
             spectator.hostComponent.form.patchValue({ first: 'abc' });

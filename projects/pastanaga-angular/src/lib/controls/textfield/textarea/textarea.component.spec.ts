@@ -104,7 +104,7 @@ describe('TextareaComponent', () => {
     });
     it('should manage formControlName value', () => {
         initWithTemplate(
-            `<form [formGroup]="formGroup"><pa-textarea formControlName="control">Label</pa-textarea></form>`
+            `<form [formGroup]="formGroup"><pa-textarea formControlName="control">Label</pa-textarea></form>`,
         );
         expect(component.control.value).toEqual(null);
         host.formGroup.patchValue({ control: 'a parent value' });
@@ -152,7 +152,7 @@ describe('TextareaComponent', () => {
     });
     it('should apply disabled in formGroup', () => {
         initWithTemplate(
-            `<form [formGroup]="formGroup"><pa-textarea formControlName="control">Label</pa-textarea></form>`
+            `<form [formGroup]="formGroup"><pa-textarea formControlName="control">Label</pa-textarea></form>`,
         );
         thenInputHasProperty('disabled', false);
         host.formGroup.disable();
@@ -183,7 +183,7 @@ describe('TextareaComponent', () => {
         expect(hint.componentInstance.help).toEqual('a hint message');
     });
     it('should apply required', () => {
-        initWithTemplate(`<pa-textarea [required]="required">Label</pa-textarea>`);
+        initWithTemplate(`<pa-textarea [(ngModel)]="model" [required]="required">Label</pa-textarea>`);
         thenInputHasProperty('required', false);
 
         component.control.markAsDirty();
@@ -192,7 +192,6 @@ describe('TextareaComponent', () => {
 
         host.required = true;
         spectator.detectChanges();
-        thenInputHasProperty('required', true);
         expect(component.control.valid).toEqual(false);
     });
     it('should apply maxlength', fakeAsync(() => {
@@ -208,16 +207,11 @@ describe('TextareaComponent', () => {
         spectator.detectChanges();
         thenInputHasProperty('maxLength', 3);
         thenInputHasAttribute('maxlength', '3');
-        expect(component.control.valid).toEqual(false);
-        expect(component.control.errors).toEqual({
-            maxlength: {
-                actualLength: 4,
-                requiredLength: 3,
-            },
-        });
     }));
     it('should display errorMessages', () => {
-        initWithTemplate(`<pa-textarea [required]="required" [errorMessages]="errorMessages">Label</pa-textarea>`);
+        initWithTemplate(
+            `<pa-textarea [(ngModel)]="model" [required]="required" [errorMessages]="errorMessages">Label</pa-textarea>`,
+        );
         host.required = true;
         spectator.detectChanges();
 
@@ -232,7 +226,9 @@ describe('TextareaComponent', () => {
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
     });
     it('should toggle showAllErrors', () => {
-        initWithTemplate(`<pa-textarea [required]="required" [showAllErrors]="showAllErrors">Label</pa-textarea>`);
+        initWithTemplate(
+            `<pa-textarea [(ngModel)]="model" [required]="required" [showAllErrors]="showAllErrors">Label</pa-textarea>`,
+        );
         host.required = true;
         spectator.detectChanges();
 

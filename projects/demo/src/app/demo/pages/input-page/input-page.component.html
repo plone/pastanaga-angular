@@ -33,12 +33,6 @@
         <dl>
             <dt>type</dt>
             <dd>Input type: <code>TextInputType</code> (text | number | password…) <small>(default: text)</small></dd>
-            <dt>pattern</dt>
-            <dd>Adds an internal <code>Validators.pattern</code>. Allows to validate field value according to a regular expression <small>(optional)</small></dd>
-            <dt>min</dt>
-            <dd>Adds an internal <code>Validators.min</code>. <small>(optional)</small></dd>
-            <dt>max</dt>
-            <dd>Adds an internal <code>Validators.max</code>. <small>(optional)</small></dd>
             <dt>autocapitalize</dt>
             <dd>Allow to define the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize" target="_new">HTML5 autocapitalize attribute</a> value.
                 <small>(no default)</small>
@@ -68,7 +62,7 @@
         <div *ngIf="selectedTab === 'ngModel'">
             <h3>basic usage</h3>
             <pre><code>{{ngModelBasicCode}}</code></pre>
-            <h3>with angular validation and internal validation</h3>
+            <h3>with angular validation</h3>
             <pre><code>{{ngModelValidationCode}}</code></pre>
             <h3>full usage</h3>
             <pre><code>{{ngModelFullCode}}</code></pre>
@@ -77,7 +71,7 @@
         <div *ngIf="selectedTab === 'formControl'">
             <h3>basic usage</h3>
             <pre><code>{{formControlBasicCode}}</code></pre>
-            <h3>with reactive form validation and internal validation</h3>
+            <h3>with reactive form validation</h3>
             <pre><code>{{formControlValidationCodeTs}}</code></pre>
             <pre><code>{{formControlValidationCodeHtml}}</code></pre>
             <h3>full usage</h3>
@@ -86,7 +80,7 @@
         <div *ngIf="selectedTab === 'formControlName'">
             <h3>basic usage</h3>
             <pre><code>{{formControlNameBasicCode}}</code></pre>
-            <h3>with reactive form validation and internal validation</h3>
+            <h3>with reactive form validation</h3>
             <pre><code>{{formControlNameValidationCodeTs}}</code></pre>
             <pre><code>{{formControlNameValidationCodeHtml}}</code></pre>
             <h3>full usage</h3>

@@ -19,7 +19,6 @@
             <div>
                 <pa-checkbox [value]="value"
                              [disabled]="disabled"
-                             [required]="required"
                              [errorMessages]="errorMessages"
                              (valueChange)=" standaloneValueChange = $event"
                              (statusChange)="standaloneStatusChange = $event"
@@ -35,7 +34,6 @@
             <div>
                 <pa-checkbox [(ngModel)]="model"
                              [disabled]="disabled"
-                             [required]="required"
                              [errorMessages]="errorMessages"
                              (valueChange)=" ngModelValueChange = $event"
                              (statusChange)="ngModelStatusChange = $event"
@@ -51,7 +49,6 @@
             <div>
                 <div>
                     <pa-checkbox [formControl]="formControl"
-                                 [required]="required"
                                  [errorMessages]="errorMessages"
                                  (valueChange)=" formControlValueChange = $event"
                                  (statusChange)="formControlStatusChange = $event"
@@ -67,7 +64,6 @@
             <form [formGroup]="form">
                 <div>
                     <pa-checkbox formControlName="checkbox"
-                                 [required]="required"
                                  [errorMessages]="errorMessages"
                                  (valueChange)=" formControlNameValueChange = $event"
                                  (statusChange)="formControlNameStatusChange = $event"
@@ -88,9 +84,6 @@
             <pa-checkbox [(ngModel)]="disabled" (ngModelChange)="disableForm()">{{disabled ? 'Enable' : 'disable'}}</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox [(ngModel)]="required">required</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
             <pa-checkbox [(ngModel)]="hasErrorMessage" (ngModelChange)="toggleErrorMessages()">{{hasErrorMessage ? 'remove error messages' : 'add error messages'}}</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
@@ -105,8 +98,6 @@
         <h2>Specific to <code>CheckboxComponent</code></h2>
         <h3>Inputs</h3>
         <dl>
-            <dt>required</dt>
-            <dd>adds a Validators.requiredTrue validator to the formControl</dd>
             <dt>errorMessages</dt>
             <dd>Provides default messages to display for the possible error keys when none is present in the errors object. If a message (string) is provided for a given key, it
                 will be displayed rather than the message provided in errorMessages.</dd>

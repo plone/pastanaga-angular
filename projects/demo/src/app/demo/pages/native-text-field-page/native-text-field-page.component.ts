@@ -22,12 +22,10 @@ export class NativeTextFieldPageComponent implements OnInit {
     enterEvent?: any;
     focusEvent?: any;
     blurEvent?: any;
-    valueEvent?: any;
     statusEvent?: any;
 
     config = new FormGroup({
         placeholder: new FormControl(),
-        required: new FormControl(),
         maxlength: new FormControl(),
         noAutoComplete: new FormControl(),
         help: new FormControl(),
