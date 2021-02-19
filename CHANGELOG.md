@@ -1,3 +1,8 @@
+# 2.20.3 (2021-02-19)
+
+### Improvements:
+- **Theme**: Add units to for saturation and lightness [dgsmith2]
+
 # 2.20.2 (2021-02-16)
 
 ### Bugfix:

@@ -2,43 +2,43 @@
 
 // Grays
 $_black:   #000;
-$_dolphin: hsl(207,17,58);
-$_silver:  hsl(207,17,80);
-$_smoke:   hsl(207,17,91);
-$_snow:    hsl(207,17,96);
-$_steam:   hsl(207,17,98);
+$_dolphin: hsl(207,17%,58%);
+$_silver:  hsl(207,17%,80%);
+$_smoke:   hsl(207,17%,91%);
+$_snow:    hsl(207,17%,96%);
+$_steam:   hsl(207,17%,98%);
 $_white:   #fff;
 
 // Blues
-$_denim:     hsl(207,90,7);
-$_royal:     hsl(207,90,31);
-$_sapphire:  hsl(207,90,43);
-$_cobalt:    hsl(207,90,55);
-$_azure:     hsl(207,90,73);
-$_sky:       hsl(207,90,85);
-$_arctic:    hsl(207,90,92);
+$_denim:     hsl(207,90%,7%);
+$_royal:     hsl(207,90%,31%);
+$_sapphire:  hsl(207,90%,43%);
+$_cobalt:    hsl(207,90%,55%);
+$_azure:     hsl(207,90%,73%);
+$_sky:       hsl(207,90%,85%);
+$_arctic:    hsl(207,90%,92%);
 
 // Reds
-$_wine:      hsl(7,90,35);
-$_candy:     hsl(7,90,43);
-$_rose:      hsl(7,90,59);
-$_poppy:     hsl(7,90,78);
-$_flamingo:  hsl(7,90,89);
-$_ballet:    hsl(7,90,95);
+$_wine:      hsl(7,90%,35%);
+$_candy:     hsl(7,90%,43%);
+$_rose:      hsl(7,90%,59%);
+$_poppy:     hsl(7,90%,78%);
+$_flamingo:  hsl(7,90%,89%);
+$_ballet:    hsl(7,90%,95%);
 
 // Teal
-$_puya:      hsl(175,60,23);
-$_peacock:   hsl(175,60,31);
-$_turquoise: hsl(175,60,40);
-$_tiffany:   hsl(175,60,66);
-$_spa:       hsl(175,60,83);
-$_aqua:      hsl(175,60,90);
+$_puya:      hsl(175,60%,23%);
+$_peacock:   hsl(175,60%,31%);
+$_turquoise: hsl(175,60%,40%);
+$_tiffany:   hsl(175,60%,66%);
+$_spa:       hsl(175,60%,83%);
+$_aqua:      hsl(175,60%,90%);
 
 // Alphas
-$_alpha_default:   hsla(0,0,100,0.5);
-$_alpha_light:     hsla(0,0,100,0.25);
-$_alpha_lighter:   hsla(0,0,100,0.15);
-$_alpha_lightest:  hsla(0,0,100,0.05);
+$_alpha_default:   hsla(0,0%,100%,0.5);
+$_alpha_light:     hsla(0,0%,100%,0.25);
+$_alpha_lighter:   hsla(0,0%,100%,0.15);
+$_alpha_lightest:  hsla(0,0%,100%,0.05);
 
 // General tokens
 $color-neutral-primary-default:     $_denim !default;
