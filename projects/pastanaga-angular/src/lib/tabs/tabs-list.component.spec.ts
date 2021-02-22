@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { TabsListComponent } from './tabs-list.component';
 import { TabItemComponent } from './tab-item.component';
 import { MockComponent, MockModule, ngMocks } from 'ng-mocks';
-import { PaIconModule } from '../..';
 import { Subject } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
+import { PaIconModule } from '../icon/icon.module';
 
 @Component({ template: '' })
 class TestComponent {

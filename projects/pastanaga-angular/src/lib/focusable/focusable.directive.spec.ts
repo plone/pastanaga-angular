@@ -1,6 +1,6 @@
 import { FocusableDirective } from './focusable.directive';
 import { Component } from '@angular/core';
-import { createComponentFactory, Spectator } from '@ngneat/spectator';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { PaFocusableModule } from './focusable.module';
 import { TAB } from '@angular/cdk/keycodes';
 
