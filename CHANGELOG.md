@@ -1,3 +1,8 @@
+# 2.21.0 (2021-02-23)
+
+### Improvements:
+- **Form fields**: simplify and refactor fields implementation [julienCarret & ebrehault]
+
 # 2.20.3 (2021-02-19)
 
 ### Improvements:

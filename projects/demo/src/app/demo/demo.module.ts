@@ -44,8 +44,6 @@ import { DateTimePageComponent } from './pages/datetime-page/datetime-page.compo
 import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
 import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
-import { DeprecatedBaseControlComponent } from './pages/common-doc/base-control/deprecated-base-control.component';
-import { DeprecatedBaseTextfieldComponent } from './pages/common-doc/base-textfield/deprecated-base-textfield.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
@@ -108,8 +106,6 @@ const COMPONENTS = [
     DemoConfigurationDirective,
 
     BaseControlUsageComponent,
-    DeprecatedBaseControlComponent,
-    DeprecatedBaseTextfieldComponent,
     DialogExampleComponent,
     DialogImageExampleComponent,
     ModalExampleComponent,

@@ -19,7 +19,6 @@ export * from './lib/chips/chip/chip.component';
 export * from './lib/controls/form-field/form-field-hint/form-field-hint.component';
 export * from './lib/controls/form-field/form-field.module';
 export * from './lib/controls/form-field.utils';
-export * from './lib/controls/deprecated-base-control.directive';
 export * from './lib/controls/control.model';
 export * from './lib/controls/form-field.model';
 export * from './lib/controls/textfield/text-field.module';
