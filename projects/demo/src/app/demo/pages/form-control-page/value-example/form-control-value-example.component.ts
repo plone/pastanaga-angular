@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, QueryList, ViewChildren } from '@angular/core';
 import { PaFormControlDirective } from '../../../../../../../pastanaga-angular/src/lib/controls/form-field/pa-form-control.directive';
-import { detectChanges } from '../../../../../../../pastanaga-angular/src';
+import { markForCheck } from '../../../../../../../pastanaga-angular/src';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -29,9 +29,9 @@ export class FormControlValueExampleComponent {
     standaloneParentToChildChange() {
         // reset former value;
         this.standaloneParentValue = undefined;
-        detectChanges(this.cdr);
+        markForCheck(this.cdr);
         this.standaloneParentValue = 'change from parent';
-        detectChanges(this.cdr);
+        markForCheck(this.cdr);
     }
 
     standaloneChildToParentChange() {

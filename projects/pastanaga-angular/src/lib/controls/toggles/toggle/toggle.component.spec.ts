@@ -16,6 +16,9 @@ export class TestComponent {
     form: FormGroup = new FormGroup({
         checked: new FormControl(),
     });
+    otherForm: FormGroup = new FormGroup({
+        checked: new FormControl(true),
+    });
 }
 
 describe('ToggleComponent', () => {
@@ -106,4 +109,13 @@ describe('ToggleComponent', () => {
         tick();
         expect(host.form.value.checked).toEqual(false);
     }));
+
+    it('should set checked state if true initially', () => {
+        spectator = createHost(
+            `<form id="otherForm" [formGroup]="otherForm"><pa-toggle formControlName="checked"></pa-toggle></form>`,
+        );
+        component = spectator.component;
+        spectator.detectChanges();
+        expect(component.isChecked).toBeTruthy();
+    });
 });

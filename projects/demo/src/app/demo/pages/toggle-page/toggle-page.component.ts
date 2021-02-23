@@ -8,7 +8,7 @@ export class TogglePageComponent {
     firstToggle = false;
 
     form: FormGroup = new FormGroup({
-        toggle: new FormControl(),
+        toggle: new FormControl(true),
     });
     firstToggleStatus?: any;
     secondToggleStatus?: any;
