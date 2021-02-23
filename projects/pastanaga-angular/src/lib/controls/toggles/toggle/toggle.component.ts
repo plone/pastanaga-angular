@@ -69,9 +69,11 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
 
     ngOnInit(): void {
         super.ngOnInit();
+        this.isChecked = this.control.value;
     }
 
     ngAfterViewInit() {
+        this;
         this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
             this.isChecked = val;
             detectChanges(this.cdr);
