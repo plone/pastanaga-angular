@@ -319,7 +319,7 @@ describe('SelectComponent', () => {
         expect(hint.componentInstance.help).toEqual('a hint message');
     });
 
-    it('should apply required', () => {
+    it('should apply required', fakeAsync(() => {
         initWithTemplate(
             `<pa-select [(ngModel)]="model" [required]="required" (statusChange)="statusChanged($event)">${optionsInTemplate}</pa-select>`,
         );
@@ -328,28 +328,28 @@ describe('SelectComponent', () => {
         expect(component.control.valid).toEqual(true);
         const statusChanged = jest.spyOn(host, 'statusChanged');
         host.required = true;
+        tick();
         spectator.detectChanges();
         expect(component.control.valid).toEqual(false);
-        spectator.detectChanges();
         expect(spectator.query('.pa-field-error')).toBeTruthy();
         expect(statusChanged).toHaveBeenCalledWith('INVALID');
-    });
+    }));
 
-    it('should display errorMessages', () => {
+    it('should display errorMessages', fakeAsync(() => {
         initWithTemplate(
             `<pa-select [(ngModel)]="model" [required]="required" [errorMessages]="errorMessages">${optionsInTemplate}</pa-select>`,
         );
         component.control.markAsDirty();
         expect(component.control.valid).toEqual(true);
         host.required = true;
+        tick();
         spectator.detectChanges();
         expect(component.control.valid).toEqual(false);
-        spectator.detectChanges();
         const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
         expect(hint.componentInstance.errorMessages).toEqual(undefined);
 
         host.errorMessages = { required: 'field required' };
         spectator.detectChanges();
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
-    });
+    }));
 });

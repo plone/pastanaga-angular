@@ -208,11 +208,12 @@ describe('TextareaComponent', () => {
         thenInputHasProperty('maxLength', 3);
         thenInputHasAttribute('maxlength', '3');
     }));
-    it('should display errorMessages', () => {
+    it('should display errorMessages', fakeAsync(() => {
         initWithTemplate(
             `<pa-textarea [(ngModel)]="model" [required]="required" [errorMessages]="errorMessages">Label</pa-textarea>`,
         );
         host.required = true;
+        tick();
         spectator.detectChanges();
 
         component.control.markAsDirty();
@@ -224,12 +225,13 @@ describe('TextareaComponent', () => {
         host.errorMessages = { required: 'field required' };
         spectator.detectChanges();
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
-    });
-    it('should toggle showAllErrors', () => {
+    }));
+    it('should toggle showAllErrors', fakeAsync(() => {
         initWithTemplate(
             `<pa-textarea [(ngModel)]="model" [required]="required" [showAllErrors]="showAllErrors">Label</pa-textarea>`,
         );
         host.required = true;
+        tick();
         spectator.detectChanges();
 
         component.control.markAsDirty();
@@ -241,7 +243,7 @@ describe('TextareaComponent', () => {
         host.showAllErrors = true;
         spectator.detectChanges();
         expect(hint.componentInstance.showAllErrors).toEqual(true);
-    });
+    }));
     it('should notify keyup and enter when not tab', () => {
         initWithTemplate(`<pa-textarea [value]="value">Label</pa-textarea>`);
         const keyup = jest.spyOn(component.keyUp, 'emit');
