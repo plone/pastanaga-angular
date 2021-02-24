@@ -2,9 +2,9 @@
     <pa-demo-title>Textarea</pa-demo-title>
     <pa-demo-description>
         <p><code>pa-textarea</code> wraps an html <code>textarea</code> element and apply pastanaga's form field style.</p>
-        <p>As other pastanaga's form fields, <code>pa-textarea</code> supports 4 modes internally: <i>standalone, model, formControl and formControlName</i>, in order to be used in various context.</p>
+        <p>As other pastanaga's form fields, <code>pa-textarea</code> supports 4 modes internally: <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and <strong>formControlName</strong>, in order to be used in various context.</p>
         <p><code>pa-textarea</code> also supports internal and external validation (required and maxlength).</p>
-        <p><code>pa-textarea</code> elements can be made to automatically resize. The resizable property of the field can also be disabled.</p>
+        <p><code>pa-textarea</code> elements will automatically resize by default, but this behavior can be disabled by setting <code>resizable</code> property to <code>false</code>.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
@@ -38,16 +38,16 @@
                 false)</small></dd>
 
             <dt>resizable</dt>
-            <dd>allow user to resize the textarea: boolean <small>(default: true)</small></dd>
+            <dd>boolean allowing user to resize the textarea <small>(default: true)</small></dd>
 
             <dt>rows</dt>
-            <dd>textarea's rows attribute: number <small>(default: 1)</small></dd>
+            <dd>number of rows displayed in the textarea <small>(default: 1)</small></dd>
 
-            <dt>maxRows <code>number</code></dt>
-            <dd>defines the max count of rows when used in combination with autoHeight. Unused when a maxHeight is defined <small>(optional)</small></dd>
+            <dt>maxRows</dt>
+            <dd>max number of rows when used in combination with autoHeight. Not used when a <code>maxHeight</code> is defined <small>(optional)</small></dd>
 
-            <dt>maxHeight <code>number</code></dt>
-            <dd>defines the maxHeight of the textarea <small>(optional)</small></dd>
+            <dt>maxHeight</dt>
+            <dd>number of pixels defining the maxHeight of the textarea <small>(optional)</small></dd>
         </dl>
     </pa-demo-usage>
 
