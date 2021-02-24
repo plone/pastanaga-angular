@@ -52,8 +52,6 @@ export class CheckboxPageComponent implements OnInit {
     }
 
     disableForm() {
-        // this.disabled = event;
-
         if (this.disabled) {
             this.form.disable();
             this.formControl.disable();

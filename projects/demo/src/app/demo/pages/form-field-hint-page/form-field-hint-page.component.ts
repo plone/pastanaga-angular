@@ -25,7 +25,7 @@ export class FormFieldHintPageComponent implements OnInit {
     };
     errorMessages?: IErrorMessages;
 
-    hasHelp = false;
+    hasHelp = true;
     hasErrors = false;
     hasShowErrors = false;
     hasShowAllErrors = false;

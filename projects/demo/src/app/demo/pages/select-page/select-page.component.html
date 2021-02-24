@@ -5,13 +5,17 @@
         <p><code>pa-select</code> is similar to a native select element, allowing to select a value from a set of options and apply pastanaga's form field style.</p>
         <p>As other pastanaga's form fields, <code>pa-select</code> supports 4 modes internally: <em>standalone, model, formControl and formControlName</em>, in order to be used in various context.</p>
         <p><code>pa-select</code> also supports internal and external validation.</p><br>
-        <p>There are 2 ways to provide options to pa-select: </p>
-        <p>using BaseControlModels (OptionModel | OptionSeparator | OptionHeaderModel)</p>
-        <pre><code>{{baseControlModelsUsage}}</code></pre>
-        <p>using dropdown module's components</p>
+        <p>There are 2 ways to provide options to pa-select: directly in the template or programmatically using <code>BaseControlModels</code></p>
+        <h3>Static options</h3>
+        <p>using dropdown module's components:</p>
         <pre><code>{{paOptionUsage}}</code></pre>
-        <p><strong>Important note: </strong>by design, it is possible to mark an OptionModel or <code>pa-option</code> component as selected. This won't work for <code>pa-select</code>.<br>
-            To assign a value to the form control, use value, ngModel or formControl.<br><code>pa-select</code> controls its children, not the opposite.</p>
+        <h3>Dynamic options</h3>
+        <p>using BaseControlModels (<code>OptionModel</code> | <code>OptionSeparator</code> | <code>OptionHeaderModel</code>)</p>
+        <pre><code>{{baseControlModelsUsage}}</code></pre>
+        <p><strong>Important note:</strong> by design, it is possible to mark an <code>OptionModel</code> or <code>pa-option</code> component as selected,
+            but this won't work for <code>pa-select</code>.
+            To assign a value to the form control (and so select an option), you should use <code>value</code>, <code>ngModel</code> or <code>formControl</code>.
+            <code>pa-select</code> controls its children, not the opposite.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
@@ -41,27 +45,35 @@
         <h2>Specific to <code>SelectComponent</code></h2>
         <h3>Inputs</h3>
         <dl>
-            <dt>label</dt>
-            <dd>Field's label</dd>
-            <dt>options</dt>
-            <dd>Option list to be displayed in the dropdown <small>(optional: can be set directly in the DOM)</small></dd>
-            <dt>placeholder</dt>
-            <dd>Field's placeholder <small>(optional)</small></dd>
-            <dt>required</dt>
-            <dd>Adds an internal <code>Validators.required</code> <small>(default: false)</small></dd>
             <dt>adjustHeight</dt>
             <dd>allow to make sure the selection list will not go under the window bottom <small>(default: false)</small></dd>
-            <dt>hasFocus</dt>
-            <dd>triggers the focus on the input field <small>(optional)</small></dd>
-            <dt>help</dt>
-            <dd>A hint to display, helping the user when filling a form field <small>(optional)</small></dd>
-            <dt>showAllErrors</dt>
-            <dd>Display all errors or only the first error encountered (errors being sorted by key) <small>(default:
-                true)</small></dd>
+
             <dt>errorMessages</dt>
             <dd>Provides default messages to display for the possible error keys when none is present in the errors object. If a message (string) is provided for a given key, it
                 will be displayed rather than the message provided in errorMessages.
             </dd>
+
+            <dt>hasFocus</dt>
+            <dd>triggers the focus on the input field <small>(optional)</small></dd>
+
+            <dt>help</dt>
+            <dd>A hint to display, helping the user when filling a form field <small>(optional)</small></dd>
+
+            <dt>label</dt>
+            <dd>Field's label</dd>
+
+            <dt>options</dt>
+            <dd>Option list to be displayed in the dropdown <small>(optional: can be set directly in the DOM)</small></dd>
+
+            <dt>placeholder</dt>
+            <dd>Field's placeholder <small>(optional)</small></dd>
+
+            <dt>required</dt>
+            <dd>Adds an internal <code>Validators.required</code> <small>(default: false)</small></dd>
+
+            <dt>showAllErrors</dt>
+            <dd>Display all errors or only the first error encountered (errors being sorted by key) <small>(default:
+                true)</small></dd>
         </dl>
 
         <h3>Outputs</h3>

@@ -34,9 +34,9 @@ export class SelectPageComponent {
 <pa-select [options]="models"></pa-select>`;
 
     paOptionUsage = `<pa-select>
-<pa-option-header>Header</pa-option-header>
-<pa-option value="option1">Option 1</pa-option>
-<pa-separator></pa-separator>
+    <pa-option-header>Header</pa-option-header>
+    <pa-option value="option1">Option 1</pa-option>
+    <pa-separator></pa-separator>
 </pa-select>`;
     standaloneBasicCode = `<pa-select label="Select an option"
     [value]="preselected"
