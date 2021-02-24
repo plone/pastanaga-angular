@@ -11,10 +11,10 @@ import { FormControl } from '@angular/forms';
 export class FormControlValueExampleComponent {
     standaloneParentValue?: any;
     standaloneChangeEvent?: any;
-    standaloneCode = `<div paFormControl
+    standaloneCode = `<input paFormControl
     [value]="..."
-    (valueChange)="..."></div>`;
-    ngModelCode = `<div paFormControl [(ngModel)]="..."></div>`;
+    (valueChange)="...">`;
+    ngModelCode = `<input paFormControl [(ngModel)]="...">`;
     model = 'initial value';
     formControl = new FormControl('');
     formControlCode = `<input paFormControl [formControl]="formControl">`;

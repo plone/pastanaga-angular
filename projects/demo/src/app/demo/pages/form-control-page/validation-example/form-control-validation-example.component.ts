@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
 import { PaFormControlDirective } from '../../../../../../../pastanaga-angular/src/lib/controls/form-field/pa-form-control.directive';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-form-control-validation-example',
@@ -17,18 +17,8 @@ export class FormControlValidationExampleComponent implements AfterViewInit {
     errors?: any;
 
     model?: any;
-    formControl = new FormControl('', [Validators.minLength(3)]);
     errorsNgModel?: any;
-    mergingValidatorsCode = `<div paFormControl
-    [(ngModel)]="model"
-    email
-    [errorMessage]="errorMessage">{{model}}</div>
 
-formControl = new FormControl('', [Validators.minLength(3)]);
-
-<input paFormControl
-    [formControl]="formControl"
-    [errorMessage]="errorMessage">`;
     @ViewChildren(PaFormControlDirective) directives?: QueryList<PaFormControlDirective>;
 
     constructor() {}
@@ -65,11 +55,5 @@ formControl = new FormControl('', [Validators.minLength(3)]);
         } else {
             this.errorMessage = 'A custom error message';
         }
-    }
-    patchInvalidModel() {
-        this.directives?.toArray()[2].control.setValue('invalid');
-    }
-    patchValidModel() {
-        this.directives?.toArray()[2].control.setValue('test@test.test');
     }
 }

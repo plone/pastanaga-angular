@@ -1,22 +1,22 @@
 <p>The provided id attribute is used whenever possible (avoiding duplicate identifier). When no id is provided, a generated
     id is built using a default 'field' specifier.</p>
 
-<div paFormControl></div>
+<input paFormControl hidden>
 <code>{{ noIdProvided }}</code>
 <div>formControl id: <strong>{{autoId}}</strong></div>
 <br>
 
-<div id="test1" paFormControl></div>
+<input id="test1" paFormControl hidden>
 <code>{{ elementHasId }}</code>
 <div>formControl id: <strong>{{elementId}}</strong>, <em>duplicate identifier avoided</em></div>
 <br>
 
-<div id="test2" [id]="'control'" paFormControl></div>
+<input id="test2" [id]="'control'" paFormControl hidden>
 <code>{{ elementHasIdAndControlHasId }}</code>
 <div>formControl id: <strong>{{elementAndControlId}}</strong></div>
 <br>
 
-<div [id]="'test3'" paFormControl></div>
+<input [id]="'test3'" paFormControl hidden>
 <code>{{ elementWithoutIdAndControlHasId }}</code>
 <div>formControl id: <strong>{{controlId}}</strong></div>
 

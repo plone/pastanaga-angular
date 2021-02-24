@@ -1,29 +1,25 @@
-<p><code>pa-form-control</code> can be marked as disabled or readonly.<br>NB: <code>disabled</code> can not be used in combination with FormControl or FormControlName directive.</p>
+<p><code>paFormControl</code> can be marked as <code>disabled</code> or <code>readonly</code>.</p>
+<p><strong>Important</strong>: <code>disabled</code> can not be used in combination with <code>FormControl</code> or <code>FormControlName</code> directive.</p>
 <pre><code>{{code}}</code></pre>
-<div paFormControl [disabled]="disabled" [readonly]="readonly">standalone formControl state: disabled({{controlDisabled}}), readonly({{controlReadonly}})</div>
-<div paFormControl [disabled]="disabled" [readonly]="readonly" [(ngModel)]="model">ngModel formControl state: disabled({{modelDisabled}}), readonly({{modelReadonly}})</div>
+<div>
+    <input paFormControl [disabled]="disabled" [readonly]="readonly">
+    standalone formControl state: disabled({{controlDisabled}}), readonly({{controlReadonly}})
+</div>
+<div>
+    <input paFormControl [disabled]="disabled" [readonly]="readonly" [(ngModel)]="model">
+    ngModel formControl state: disabled({{modelDisabled}}), readonly({{modelReadonly}})
+</div>
 <button (click)="setDisabled()">{{disabled ? 'Enable' : 'Disable'}}</button>
 <button (click)="setReadonly()">{{readonly ? 'Active' : 'Readonly'}}</button>
 <br><br>
-<p><code>pa-form-control</code> exposes form control inner state and makes touched / pristine / dirty / pending / valid values accessible.<br>
-    NB: ngControlStatus classes will only be available when used with ngModel and formControls, but the formControl's state can be used to create our own style.</p>
+<p><code>paFormControl</code> exposes form control inner state and makes touched / pristine / dirty / pending / valid values accessible.<br>
+    NB: <code>ngControlStatus</code> classes will only be available when used with <code>ngModel</code> and <code>FormControl</code>, but the formControl's state can be used to create our own style.</p>
 <ul>
-    <li>.ng-untouched</li>
-    <li>.ng-touched</li>
-    <li>.ng-pristine</li>
-    <li>.ng-dirty</li>
-    <li>.ng-valid</li>
-    <li>.ng-invalid</li>
-    <li>.ng-pending</li>
+    <li><code>.ng-untouched</code></li>
+    <li><code>.ng-touched</code></li>
+    <li><code>.ng-pristine</code></li>
+    <li><code>.ng-dirty</code></li>
+    <li><code>.ng-valid</code></li>
+    <li><code>.ng-invalid</code></li>
+    <li><code>.ng-pending</code></li>
 </ul>
-
-<pre><code>{{formStatusCode}}</code></pre>
-<div paFormControl>standalone: touched({{control2?.touched}}), pristine({{control2?.pristine}}), dirty({{control2?.dirty}}), valid({{control2?.valid}})</div>
-<div paFormControl [(ngModel)]="model2">ngModel: touched({{control3?.touched}}), pristine({{control3?.pristine}}), dirty({{control3?.dirty}}), valid({{control3?.valid}})</div>
-<span>formControl: touched({{control4?.touched}}), pristine({{control4?.pristine}}), dirty({{control4?.dirty}}), valid({{control4?.valid}})</span>
-<input paFormControl [formControl]="myFormControl"><br>
-<button (click)="setTouched()">Mark as touched</button>
-<button (click)="setPristine()">Mark as pristine</button>
-<button (click)="setDirty()">Mark as dirty</button>
-<button (click)="setInvalid()">Mark as invalid</button>
-<button (click)="setValid()">Mark as valid</button>

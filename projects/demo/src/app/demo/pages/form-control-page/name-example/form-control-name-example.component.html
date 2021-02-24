@@ -1,5 +1,5 @@
-<p>Name attribute is used whenever provided, if not, a default name is built based on the form-control id.<br>
-    However, used inside forms, the name attribute will follow angular api: </p>
+<p>Name attribute is used whenever provided. If not provided, a default name is built based on the form-control id.<br>
+    However when used inside forms the name attribute will follow angular api: </p>
     <ul>
         <li>name attribute is mandatory in template driven forms</li>
         <li>name must be equal to formControlName in reactive forms</li>
@@ -22,7 +22,7 @@
     </div>
     <div>
         <span>formControl name: {{secondName}}</span>
-        <div paFormControl [name]="'second'" ngModel="second">second value</div>
+        <input paFormControl [name]="'second'" ngModel="second">
     </div>
     <div>
         <span>formControl name: {{thirdName}}</span>
@@ -30,7 +30,7 @@
     </div>
     <div>
         <span>formControl name: {{fourthName}}</span>
-        <div paFormControl [name]="'fourth'" [(ngModel)]="fourth">fourth value</div>
+        <input paFormControl [name]="'fourth'" [(ngModel)]="fourth">
     </div>
     <button type="submit">Submit</button>
 </form>

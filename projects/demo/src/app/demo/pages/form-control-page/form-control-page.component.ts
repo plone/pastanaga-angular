@@ -6,9 +6,9 @@ import { markForCheck } from '../../../../../../pastanaga-angular/src';
     styleUrls: ['./form-control-page.component.scss'],
 })
 export class FormControlPageComponent {
-    selected = '';
+    selected = 'id';
     standaloneCode = `<input paFormControl [value]="myValue"/>`;
-    ngModelCode = `<div paFormControl [(ngModel)]="myModel"></div>`;
+    ngModelCode = `<input paFormControl [(ngModel)]="myModel"></input>`;
     formControlCode = `<input paFormControl [formControl]="myFormControl"/>
 <input paFormControl [formControlName]="nameInAFormGroup"/>`;
     constructor(private cdr: ChangeDetectorRef) {}

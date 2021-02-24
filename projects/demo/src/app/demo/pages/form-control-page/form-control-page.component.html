@@ -1,34 +1,30 @@
 <pa-demo-page>
-    <pa-demo-title><code>pa-form-control</code></pa-demo-title>
+    <pa-demo-title><code>paFormControl</code></pa-demo-title>
     <pa-demo-description>
-        <h3>Creates or exposes a <code>FormControl</code></h3>
-        <p>
-            This directive is designed to build custom form elements.<br><br>
-        </p>
-        <p>In a standalone usage, it creates a formControl:</p>
+        <p><code>paFormControl</code> is a directive designed to build custom form elements: it creates or exposes a <code>FormControl</code>.</p>
+
+        <p>In a standalone usage, it creates a <code>FormControl</code>:</p>
         <pre><code>{{standaloneCode}}</code></pre>
 
-        <p>It exposes the formControl of a given ngModel, allowing to manage it's state and validation:</p>
+        <p>When used in combination with a ngModel, it exposes the corresponding formControl, allowing to manage its state and validation:</p>
         <pre><code>{{ngModelCode}}</code></pre>
 
-        <p>It reflects a given formControl:</p>
+        <p>It can also reflects a given <code>FormControl</code>:</p>
         <pre><code>{{formControlCode}}</code></pre>
-        <p>
-            <code>pa-form-control</code>:
-        </p>
+
+        <code>paFormControl</code>:
         <ul>
-            <li>provide consistent id and name.</li>
-            <li>allow consistent form control state management (readonly / disabled / status) on any use case.</li>
+            <li>provides consistent id and name.</li>
+            <li>allows consistent form control state management (readonly / disabled / status) on any use case.</li>
         </ul>
         <p>Because it is a directive and not a component, it can be used on standard html elements with these three exceptions:</p>
         <ul>
             <li>standalone fields won't be added to form's values</li>
             <li>input elements inner change won't be bound to ngModel</li>
-            <li>formControl directives cannot be used on html elements which are not managed by angular reactive form api (for example
-                divs).
+            <li><code>formControl</code> directives cannot be used on html elements which are not managed by angular reactive form api (for example divs).
             </li>
         </ul>
-        <p><strong>Important note: </strong> the formControl will only be available after the <code>OnInit</code> lifecycle.</p>
+        <p><strong>Important note: </strong> the <code>formControl</code> will only be available after the <code>OnInit</code> lifecycle.</p>
     </pa-demo-description>
 
     <pa-demo-examples>

@@ -12,10 +12,10 @@ export class FormControlIdExampleComponent implements AfterContentInit {
     controlId?: string;
     autoId?: string;
 
-    elementHasId = `<div id="test1" paFormControl></div>`;
-    elementHasIdAndControlHasId = `<div id="test2" [id]="'control'" paFormControl></div>`;
-    elementWithoutIdAndControlHasId = `<div [id]="'test3'" paFormControl></div>`;
-    noIdProvided = `<div paFormControl></div>`;
+    elementHasId = `<input id="test1" paFormControl>`;
+    elementHasIdAndControlHasId = `<input id="test2" [id]="'control'" paFormControl>`;
+    elementWithoutIdAndControlHasId = `<input [id]="'test3'" paFormControl>`;
+    noIdProvided = `<input paFormControl>`;
 
     ngAfterContentInit(): void {
         setTimeout(() => {

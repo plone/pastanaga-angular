@@ -20,13 +20,13 @@ export class FormControlNameExampleComponent implements AfterViewInit {
     thirdName?: string;
     fourthName?: string;
 
-    standaloneCode = `<div paFormControl name="name">provided</div>
-<div paFormControl>generated</div>`;
+    standaloneCode = `Provided: <input paFormControl name="name">
+Generated: <input paFormControl>`;
     templateDrivenCode = `<form #form="ngForm" (ngSubmit)="...">
     <input paFormControl name="first" [ngModel]="first">
-    <div paFormControl [name]="'second'" ngModel="second">second</div>
+    <input paFormControl [name]="'second'" ngModel="second">
     <input paFormControl name="third" [(ngModel)]="third">
-    <div paFormControl [name]="'fourth'" [(ngModel)]="fourth">forth</div>
+    <input paFormControl [name]="'fourth'" [(ngModel)]="fourth">
 </form>`;
 
     reactiveCode = `<form [formGroup]="form" (ngSubmit)="...">
