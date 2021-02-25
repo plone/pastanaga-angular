@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     templateUrl: './checkbox-page.component.html',
@@ -22,12 +22,12 @@ export class CheckboxPageComponent implements OnInit {
     ngModelValueChange?: any;
     ngModelStatusChange?: any;
 
-    formControl = new FormControl();
+    formControl = new FormControl(true, Validators.requiredTrue);
     formControlValueChange?: any;
     formControlStatusChange?: any;
 
     form: FormGroup = new FormGroup({
-        checkbox: new FormControl(),
+        checkbox: new FormControl(false, Validators.requiredTrue),
     });
     formControlNameValueChange?: any;
     formControlNameStatusChange?: any;

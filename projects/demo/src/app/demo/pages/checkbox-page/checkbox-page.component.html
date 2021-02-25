@@ -83,7 +83,7 @@
         <div class="pa-demo-configuration-field">
             <pa-checkbox [(ngModel)]="disabled" (ngModelChange)="disableForm()">{{disabled ? 'Enable' : 'disable'}}</pa-checkbox>
         </div>
-        <div class="pa-demo-configuration-field">
+        <div class="pa-demo-configuration-field" *ngIf="selectedTab === 'formControlName' || selectedTab === 'formControl'">
             <pa-checkbox [(ngModel)]="hasErrorMessage" (ngModelChange)="toggleErrorMessages()">{{hasErrorMessage ? 'remove error messages' : 'add error messages'}}</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">

@@ -69,13 +69,13 @@ export class AppComponent {
             title: 'Form elements',
             pages: [
                 { view: 'checkbox', title: 'Checkbox', type: CheckboxPageComponent },
-                { view: 'formControl', title: 'Form control', type: FormControlPageComponent },
-                { view: 'formFieldHint', title: 'Form field hint', type: FormFieldHintPageComponent },
                 { view: 'input', title: 'Input', type: InputPageComponent },
-                { view: 'nativeTextField', title: 'Native Text Field', type: NativeTextFieldPageComponent },
                 { view: 'select', title: 'Select', type: SelectPageComponent },
                 { view: 'textarea', title: 'Textarea', type: TextareaPageComponent },
                 { view: 'toggle', title: 'Toggle', type: TogglePageComponent },
+                { view: 'formControl', title: 'Form control', type: FormControlPageComponent },
+                { view: 'formFieldHint', title: 'Form field hint', type: FormFieldHintPageComponent },
+                { view: 'nativeTextField', title: 'Native Text Field', type: NativeTextFieldPageComponent },
             ],
         },
     ];

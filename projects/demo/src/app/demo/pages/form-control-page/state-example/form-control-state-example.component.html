@@ -2,11 +2,11 @@
 <p><strong>Important</strong>: <code>disabled</code> can not be used in combination with <code>FormControl</code> or <code>FormControlName</code> directive.</p>
 <pre><code>{{code}}</code></pre>
 <div>
-    <input paFormControl [disabled]="disabled" [readonly]="readonly">
+    <input paFormControl [attr.disabled]="disabled || undefined" [attr.readonly]="readonly || undefined">
     standalone formControl state: disabled({{controlDisabled}}), readonly({{controlReadonly}})
 </div>
 <div>
-    <input paFormControl [disabled]="disabled" [readonly]="readonly" [(ngModel)]="model">
+    <input paFormControl [attr.disabled]="disabled || undefined" [attr.readonly]="readonly || undefined" [(ngModel)]="model">
     ngModel formControl state: disabled({{modelDisabled}}), readonly({{modelReadonly}})
 </div>
 <button (click)="setDisabled()">{{disabled ? 'Enable' : 'Disable'}}</button>
