@@ -1,8 +1,8 @@
 <pa-demo-page>
     <pa-demo-title>Input</pa-demo-title>
     <pa-demo-description>
-        <p><code>pa-input</code> wraps an html <code>input</code> element and apply pastanaga's form field style.</p>
-        <p>As other pastanaga's form fields, <code>pa-input</code> supports 4 modes internally: <i>standalone, model, formControl and formControlName</i>, in order to be used in various context.</p>
+        <p><code>pa-input</code> wraps an html <code>input</code> element and applies pastanaga's form field style.</p>
+        <p>As other pastanaga's form fields, <code>pa-input</code> supports 4 modes internally: <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and <strong>formControlName</strong>, in order to be used in various context.</p>
         <p><code>pa-input</code> also supports internal and external validation.</p>
     </pa-demo-description>
 
@@ -17,190 +17,15 @@
             <pa-tab (click)="selectedTab = 'formControlName'"
                     [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
         </pa-tabs>
-        <ul>
-            <li>valueChange = "{{valueChange}}"</li>
-            <li>debouncedValueChange = "{{debouncedValueChange}}"</li>
-            <li>KeyUp = "{{keyupEvent | json}}"</li>
-            <li>Enter = "{{enterEvent | json}}"</li>
-            <li>Blur = "{{blurEvent | json}}"</li>
-            <li>Focus = "{{focusEvent | json}}"</li>
-            <li *ngIf="selectedTab === 'ngModel'">ngModelChange = "{{ngModelChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControl'">formControlValueChange = "{{formControlValueChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControl'">formControlStatusChange = "{{formControlStatusChangeEvent}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formControlValueChange = "{{formGroupValueChangeEvent | json}}"</li>
-            <li *ngIf="selectedTab === 'formControlName'">formControlStatusChange = "{{formGroupStatusChangeEvent}}"</li>
-        </ul>
-        <div *ngIf="selectedTab === 'standalone'">
-            <pa-input
-                [value]="value"
-
-                [id]="id"
-                [name]="name"
-                [type]="type"
-                [help]="help"
-                [describedBy]="describedBy"
-                [disabled]="disabled"
-                [readonly]="readonly"
-                [hasFocus]="hasFocus"
-
-                [showAllErrors]="showAllErrors"
-                [errorMessages]="errorMessages"
-                [errorMessage]="errorMessage"
-                [updateOn]="updateOn"
-                [placeholder]="placeholder"
-                [required]="required"
-                [pattern]="pattern"
-                [min]="min"
-                [max]="max"
-                [maxlength]="maxlength"
-                [noAutoComplete]="noAutoComplete"
-                [acceptHtmlTags]="acceptHtmlTags"
-                [debounceDuration]="debounceDuration"
-
-                (valueChange)="valueChange = $event"
-                (debouncedValueChange)="debouncedValueChange = $event"
-                (keyUp)="keyupEvent = $event"
-                (enter)="enterEvent = $event"
-                (blurring)="blurEvent = $event"
-                (focusing)="focusEvent = $event"
-            >Label</pa-input>
-
-        </div>
-        <div *ngIf="selectedTab === 'ngModel'">
-            <pa-input
-                [(ngModel)]="value"
-
-                [id]="id"
-                [name]="name"
-                [type]="type"
-                [help]="help"
-                [describedBy]="describedBy"
-                [disabled]="disabled"
-                [readonly]="readonly"
-                [hasFocus]="hasFocus"
-
-                [showAllErrors]="showAllErrors"
-                [errorMessages]="errorMessages"
-                [errorMessage]="errorMessage"
-                [placeholder]="placeholder"
-                [required]="required"
-                [pattern]="pattern"
-                [min]="min"
-                [max]="max"
-                [maxlength]="maxlength"
-                [noAutoComplete]="noAutoComplete"
-                [acceptHtmlTags]="acceptHtmlTags"
-                [debounceDuration]="debounceDuration"
-
-                (valueChange)="valueChange = $event"
-                (debouncedValueChange)="debouncedValueChange = $event"
-                (keyUp)="keyupEvent = $event"
-                (enter)="enterEvent = $event"
-                (blurring)="blurEvent = $event"
-                (focusing)="focusEvent = $event"
-                (ngModelChange)="onModelChange()"
-            >Label</pa-input>
-
-        </div>
-        <div *ngIf="selectedTab === 'formControl'">
-            <pa-input
-                [formControl]="formControl"
-
-                [id]="id"
-                [name]="name"
-                [type]="type"
-                [help]="help"
-                [describedBy]="describedBy"
-                [readonly]="readonly"
-                [hasFocus]="hasFocus"
-
-                [showAllErrors]="showAllErrors"
-                [errorMessages]="errorMessages"
-                [errorMessage]="errorMessage"
-                [placeholder]="placeholder"
-                [required]="required"
-                [pattern]="pattern"
-                [min]="min"
-                [max]="max"
-                [maxlength]="maxlength"
-                [noAutoComplete]="noAutoComplete"
-                [acceptHtmlTags]="acceptHtmlTags"
-                [debounceDuration]="debounceDuration"
-
-                (valueChange)="valueChange = $event"
-                (debouncedValueChange)="debouncedValueChange = $event"
-                (keyUp)="keyupEvent = $event"
-                (enter)="enterEvent = $event"
-                (blurring)="blurEvent = $event"
-                (focusing)="focusEvent = $event"
-            >Label</pa-input>
-        </div>
-        <div *ngIf="selectedTab === 'formControlName'">
-            <form [formGroup]="formGroup">
-                <pa-input
-                    formControlName="text"
-                    [id]="id"
-                    [name]="name"
-                    [type]="type"
-                    [help]="help"
-                    [describedBy]="describedBy"
-                    [readonly]="readonly"
-                    [hasFocus]="hasFocus"
-
-                    [showAllErrors]="showAllErrors"
-                    [errorMessages]="errorMessages"
-                    [errorMessage]="errorMessage"
-                    [placeholder]="placeholder"
-                    [required]="required"
-                    [pattern]="pattern"
-                    [min]="min"
-                    [max]="max"
-                    [maxlength]="maxlength"
-                    [noAutoComplete]="noAutoComplete"
-                    [acceptHtmlTags]="acceptHtmlTags"
-                    [debounceDuration]="debounceDuration"
-
-                    (valueChange)="valueChange = $event"
-                    (debouncedValueChange)="debouncedValueChange = $event"
-                    (keyUp)="keyupEvent = $event"
-                    (enter)="enterEvent = $event"
-                    (blurring)="blurEvent = $event"
-                    (focusing)="focusEvent = $event"
-                >Label
-                </pa-input>
-            </form>
-        </div>
+        <pa-demo-input-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-input-standalone-example>
+        <pa-demo-input-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-input-ng-model-example>
+        <pa-demo-input-form-control-example *ngIf="selectedTab === 'formControl'"></pa-demo-input-form-control-example>
+        <pa-demo-input-form-group-example *ngIf="selectedTab === 'formControlName'"></pa-demo-input-form-group-example>
 
     </pa-demo-examples>
-    <pa-demo-configuration>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!value" (selectedChange)="changeValue()">parent value: {{value}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!placeholder" (selectedChange)="changePlaceholder()">placeholder</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!help" (selectedChange)="changeHelp()">help message</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!hasFocus" (selectedChange)="changeFocus()">focus</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="readonly" (selectedChange)="changeReadonly()">readonly</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="disabled" (selectedChange)="changeDisable()">disabled</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessage" (selectedChange)="changeErrorMessage()">errorMessage</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="showAllErrors" (selectedChange)="changeShowAllErrors()">showAllErrors</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!errorMessages" (selectedChange)="changeErrorMessages()">errorMessages</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="required" (selectedChange)="changeRequired()">required</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!pattern" (selectedChange)="changePattern()">pattern {{pattern ? '.?test.?' : ''}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!min" (selectedChange)="changeMin()">min {{min}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!max" (selectedChange)="changeMax()">max {{max}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!maxlength" (selectedChange)="changeMaxlength()">maxlength {{maxlength}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="noAutoComplete" (selectedChange)="changeNoAutoComplete()">noAutoComplete</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="acceptHtmlTags" (selectedChange)="changeAcceptHtmlTags()">acceptHtmlTags</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="type === 'text'" (selectedChange)="changeType()">type {{type}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox *ngIf="selectedTab === 'standalone'" [value]="!!updateOn" (selectedChange)="changeUpdateOn()">updateOn {{updateOn}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!debounceDuration" (selectedChange)="changeDebounceDuration()">debounceDuration {{debounceDuration}}</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!id" (selectedChange)="changeId()">id</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!name" (selectedChange)="changeName()">name</pa-checkbox></div>
-            <div class="pa-demo-configuration-field"><pa-checkbox [value]="!!describedBy" (selectedChange)="changeDescribedBy()">describedBy</pa-checkbox></div>
-
-    </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h2>Inherited from <code>BaseControl</code></h2>
-        <pa-demo-base-control-usage></pa-demo-base-control-usage>
+        <pa-demo-native-text-field-usage></pa-demo-native-text-field-usage>
 
         <br>
         <h2>Specific to <code>InputComponent</code></h2>
@@ -208,50 +33,11 @@
         <dl>
             <dt>type</dt>
             <dd>Input type: <code>TextInputType</code> (text | number | password…) <small>(default: text)</small></dd>
-            <dt>placeholder</dt>
-            <dd>Field's placeholder <small>(optional)</small></dd>
-            <dt>required</dt>
-            <dd>Adds an internal Validators.required <small>(default: false)</small></dd>
-            <dt>pattern</dt>
-            <dd>Adds an internal <code>Validators.pattern</code>. Allows to validate field value according to a regular expression <small>(optional)</small></dd>
-            <dt>min</dt>
-            <dd>Adds an internal <code>Validators.min</code>. <small>(optional)</small></dd>
-            <dt>max</dt>
-            <dd>Adds an internal <code>Validators.max</code>. <small>(optional)</small></dd>
-            <dt>maxlength</dt>
-            <dd>Adds an internal <code>Validators.maxLength</code>. <small>(optional)</small></dd>
-            <dt>noAutoComplete</dt>
-            <dd>Set autocomplete attribute to <code>off</code> <small>(default: false)</small></dd>
-            <dt>acceptHtmlTags</dt>
-            <dd>Allows to render/enter HTML tags in the field. Enabling this can have an impact on the security of your app, to be use with caution. <small>(default: false)</small></dd>
-            <dt>debounceDuration</dt>
-            <dd>Duration (in milliseconds) used to debounce values emitted by <code>debouncedValueChange</code> <small>(default: 500)</small></dd>
             <dt>autocapitalize</dt>
             <dd>Allow to define the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize" target="_new">HTML5 autocapitalize attribute</a> value.
                 <small>(no default)</small>
                 <br>Note: it must be set to <code>off</code> to disable the autocapitalization applied by some smartphones.
             </dd>
-        </dl>
-
-        <h3>Outputs</h3>
-        <dl>
-            <dt>blurring</dt>
-            <dd>Emits current value on blur</dd>
-
-            <dt>enter</dt>
-            <dd>Emits <code>KeyboardEvent</code> and <code>string</code> value when pressing enter</dd>
-
-            <dt>focusing</dt>
-            <dd>Emits <code>FocusEvent</code> on focus</dd>
-
-            <dt>valueChange</dt>
-            <dd>Emits value as soon as it changes. Only available when input is in standalone mode.</dd>
-
-            <dt>keyUp</dt>
-            <dd>Emits <code>string</code> value on key up event</dd>
-
-            <dt>debouncedValueChange</dt>
-            <dd>Emits current value after a debounce time defined by <code>debounceDuration</code> input</dd>
         </dl>
     </pa-demo-usage>
 
@@ -276,7 +62,7 @@
         <div *ngIf="selectedTab === 'ngModel'">
             <h3>basic usage</h3>
             <pre><code>{{ngModelBasicCode}}</code></pre>
-            <h3>with angular validation and internal validation</h3>
+            <h3>with angular validation</h3>
             <pre><code>{{ngModelValidationCode}}</code></pre>
             <h3>full usage</h3>
             <pre><code>{{ngModelFullCode}}</code></pre>
@@ -285,7 +71,7 @@
         <div *ngIf="selectedTab === 'formControl'">
             <h3>basic usage</h3>
             <pre><code>{{formControlBasicCode}}</code></pre>
-            <h3>with reactive form validation and internal validation</h3>
+            <h3>with reactive form validation</h3>
             <pre><code>{{formControlValidationCodeTs}}</code></pre>
             <pre><code>{{formControlValidationCodeHtml}}</code></pre>
             <h3>full usage</h3>
@@ -294,7 +80,7 @@
         <div *ngIf="selectedTab === 'formControlName'">
             <h3>basic usage</h3>
             <pre><code>{{formControlNameBasicCode}}</code></pre>
-            <h3>with reactive form validation and internal validation</h3>
+            <h3>with reactive form validation</h3>
             <pre><code>{{formControlNameValidationCodeTs}}</code></pre>
             <pre><code>{{formControlNameValidationCodeHtml}}</code></pre>
             <h3>full usage</h3>

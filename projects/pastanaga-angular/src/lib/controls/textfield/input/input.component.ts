@@ -1,323 +1,112 @@
 import {
-    Component,
-    OnInit,
-    ChangeDetectionStrategy,
-    Input,
-    ViewChild,
-    ElementRef,
-    Self,
-    Optional,
     AfterViewInit,
-    NgZone,
+    ChangeDetectionStrategy,
     ChangeDetectorRef,
-    Output,
-    EventEmitter,
-    OnDestroy,
+    Component,
+    ElementRef,
+    Input,
     OnChanges,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Renderer2,
+    Self,
     SimpleChanges,
 } from '@angular/core';
-import { NgControl, ValidatorFn, Validators } from '@angular/forms';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Platform } from '@angular/cdk/platform';
-import { AutofillMonitor } from '@angular/cdk/text-field';
-import { detectChanges, Keys, markForCheck } from '../../../common';
-import { merge, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { BaseControl } from '../../base-control';
+import { NgControl } from '@angular/forms';
 import { TextInputType } from '../../form-field.model';
-import { sanitizeStringValue } from '../../form-field.utils';
+import { TextFieldUtilityService } from '../text-field-utility.service';
+import { NativeTextFieldDirective } from '../native-text-field.directive';
 
-/**
- * Due to standalone usage specifications, the local state of the component
- * is split into two synchronized references:
- * - the model (ngModel) responsible of the value hold by the component and used in the template
- * - the control (formControl) responsible for validation and state management
- * both references must be kept in sync
- */
 @Component({
     selector: 'pa-input',
     templateUrl: './input.component.html',
     styleUrls: ['./input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent extends BaseControl implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+export class InputComponent extends NativeTextFieldDirective implements OnChanges, OnInit, AfterViewInit, OnDestroy {
     @Input() set type(value: TextInputType) {
-        this._fieldType = value;
-        // When using Angular inputs, developers are no longer able to set the properties on the native
-        // input element. To ensure that bindings for `type` work, we need to sync the setter
-        // with the native property.
-        if (!!this.htmlElement) {
-            this.htmlElement.type = value;
-        }
+        this._type = value || 'text';
+        this._updateInputType();
     }
 
     get type() {
-        return this._fieldType;
+        return this._type;
     }
 
-    @Input() placeholder = '';
-    @Input() set required(value: boolean) {
-        this._required = coerceBooleanProperty(value);
-    }
-    get required() {
-        return this._required || false;
-    }
-    @Input() pattern?: RegExp | string;
-    @Input() min?: number;
-    @Input() max?: number;
-    @Input() maxlength?: number;
     @Input() autocapitalize?: string;
 
-    @Input() set noAutoComplete(value: boolean) {
-        this._noAutoComplete = coerceBooleanProperty(value);
-    }
+    fieldType = 'input';
 
-    get noAutoComplete(): boolean {
-        return this._noAutoComplete;
-    }
+    private _type: TextInputType = 'text';
 
-    @Input()
-    get acceptHtmlTags(): boolean {
-        return this._acceptHtmlTags;
-    }
-
-    set acceptHtmlTags(value: boolean) {
-        this._acceptHtmlTags = coerceBooleanProperty(value);
-    }
-
-    @Input() set debounceDuration(value: number | undefined) {
-        if (value !== this._debouncedTime) {
-            this._debouncedTime = value !== undefined ? value : 500;
-            this.debounceTimeChanged.next();
-            this.initDebounce();
-        }
-    }
-
-    @ViewChild('htmlInput') htmlInputRef?: ElementRef;
-    @ViewChild('label') labelRef?: ElementRef;
-
-    @Output() valueChange: EventEmitter<string | number> = new EventEmitter();
-    @Output() debouncedValueChange: EventEmitter<string | number> = new EventEmitter();
-    @Output() keyUp: EventEmitter<any> = new EventEmitter();
-    @Output() enter: EventEmitter<{ event: KeyboardEvent; value: any }> = new EventEmitter();
-    @Output() focusing: EventEmitter<FocusEvent> = new EventEmitter();
-    @Output() blurring: EventEmitter<string | number> = new EventEmitter();
-
-    _label = '';
-    _fieldType: TextInputType = 'text';
-    _noAutoComplete = false;
-    _acceptHtmlTags = false;
-    _debouncedTime = 500;
-    debounceTimeChanged: Subject<void> = new Subject();
-    debouncedChange: Observable<any> = new Subject();
-    _hasDebounce = false;
-    _required?: boolean;
-
-    requiredValidator?: ValidatorFn;
-    patternValidator?: ValidatorFn;
-    minValidator?: ValidatorFn;
-    maxValidator?: ValidatorFn;
-    maxlengthValidator?: ValidatorFn;
+    private _wasNumber = false;
 
     constructor(
-        @Optional() @Self() public parentControl: NgControl,
-        protected platform: Platform,
-        protected ngZone: NgZone,
-        public cdr: ChangeDetectorRef,
-        protected autofillMonitor: AutofillMonitor
+        protected element: ElementRef,
+        @Optional() @Self() protected parentControl: NgControl,
+        protected cdr: ChangeDetectorRef,
+        protected textFieldUtility: TextFieldUtilityService,
+        protected renderer: Renderer2,
     ) {
-        super(parentControl, cdr);
-        this._fieldKind = 'input';
+        super(element, parentControl, cdr, textFieldUtility, renderer);
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (this.shouldUpdateValidators(changes)) {
-            this.refreshInternalValidators();
-        }
         super.ngOnChanges(changes);
+        this._checkIsFilled();
+        this._checkDescribedBy();
     }
 
     ngOnInit(): void {
         super.ngOnInit();
-        if (!this._hasDebounce) {
-            this.initDebounce();
-        }
     }
 
     ngAfterViewInit(): void {
-        if (!!this.htmlInputRef) {
-            this.htmlElement = this.htmlInputRef.nativeElement;
-        }
-
-        this.handleBrowserAutoFill();
-        this.handleIosCaretPosition();
-
-        if (!!this.labelRef) {
-            this._label = this.labelRef.nativeElement.textContent.trim();
-        }
-
-        this.focus();
+        this._updateInputType();
+        super.ngAfterViewInit();
     }
 
     ngOnDestroy() {
+        this._unTrackNumberInputClick();
         super.ngOnDestroy();
-        this.debounceTimeChanged.complete();
     }
 
-    onFocus(event: any) {
-        if (this.isActive()) {
-            this.focusing.emit(event);
+    private _updateInputType() {
+        // When using Angular inputs, developers are no longer able to set the properties on the native
+        // input element. To ensure that bindings for `type` work, we need to sync the setter
+        // with the native property.
+        if (!!this.htmlInputRef) {
+            this.htmlInputRef.nativeElement.type = this._type;
         }
+        this._checkNumberInputEvent();
     }
 
-    onBlur() {
-        super.onBlur();
-        this.blurring.emit(this.model);
-    }
-
-    onKeyUp(event: any) {
-        if (this.isActive() && event.key !== Keys.tab && !!event.target) {
-            this.keyUp.emit(this.model);
-            if (event.key === Keys.enter) {
-                if (this._updateOn === 'submit') {
-                    this.onValueChange(this.htmlElement.value);
-                }
-                this.enter.emit({ event, value: this.model });
-            }
+    private _checkNumberInputEvent() {
+        if (!!this.htmlInputRef && this._type === 'number') {
+            this._wasNumber = true;
+            this.htmlInputRef.nativeElement.addEventListener('mouseup', this._numberInputClicked);
+        } else {
+            this._unTrackNumberInputClick();
         }
     }
 
-    preValueChange = (value?: any) => {
-        return sanitizeStringValue(value, this._acceptHtmlTags);
-    };
-
-    postValueChange = () => {
-        this.valueChange.emit(this.model);
-        // depending on updateOn value, internal FormControl's valueChange may not be triggered
-        // internally, therefore, debouncedValueChange must be triggered manually.
-        if (this._updateOn !== 'change') {
-            this.notifyDebouncedChange(this.model);
+    private _numberInputClicked = () => {
+        if (this.control.untouched) {
+            this.control.markAsTouched();
+        }
+        if (this.control.pristine) {
+            this.control.markAsDirty();
+        }
+        if (this.htmlInputRef?.nativeElement.value !== this.control.value) {
+            const val = Number(this.htmlInputRef?.nativeElement.value);
+            this.control.patchValue(isNaN(val) ? null : val);
         }
     };
 
-    // prevent debouncedValueChange from being triggered when changes come from parent
-    preWriteValue = (value?: any) => {
-        this.debounceTimeChanged.next();
-        return sanitizeStringValue(value, this._acceptHtmlTags);
-    };
-
-    postWriteValue = () => {
-        if (this._hasDebounce) {
-            this.initDebounce();
-        }
-        detectChanges(this.cdr);
-    };
-
-    listInternalValidators = (): ValidatorFn[] => {
-        const validators = [];
-
-        if (!!this.requiredValidator) {
-            validators.push(this.requiredValidator);
-        }
-        if (!!this.patternValidator) {
-            validators.push(this.patternValidator);
-        }
-        if (!!this.minValidator) {
-            validators.push(this.minValidator);
-        }
-        if (!!this.maxValidator) {
-            validators.push(this.maxValidator);
-        }
-        if (!!this.maxlengthValidator) {
-            validators.push(this.maxlengthValidator);
-        }
-        return validators;
-    };
-
-    refreshInternalValidators() {
-        this.requiredValidator = this.required ? Validators.required : undefined;
-        this.patternValidator = !!this.pattern ? Validators.pattern(this.pattern) : undefined;
-        this.minValidator = !!this.min ? Validators.min(this.min) : undefined;
-        this.maxValidator = !!this.max ? Validators.max(this.max) : undefined;
-        this.maxlengthValidator = !!this.maxlength ? Validators.maxLength(this.maxlength) : undefined;
-    }
-
-    registerOnValueChange = (value: any) => {
-        this.model = sanitizeStringValue(value, this._acceptHtmlTags);
-        if (this.control.value !== this.model) {
-            this.control.setValue(this.model);
-        }
-        markForCheck(this.cdr);
-    };
-
-    registerOnStatusChanges = (status: any) => {
-        markForCheck(this.cdr);
-    };
-
-    shouldUpdateValidators = (changes: SimpleChanges): boolean => {
-        return (
-            !!changes.required ||
-            !!changes.min ||
-            !!changes.max ||
-            !!changes.maxlength ||
-            !!changes.pattern ||
-            !!changes.errorMessage
-        );
-    };
-
-    initDebounce() {
-        // initDebounce is called 'while' control's value is changing
-        // wait for inner state to be stable before subscribing to changes
-        setTimeout(() => {
-            this.control.valueChanges
-                .pipe(
-                    debounceTime(this._debouncedTime),
-                    distinctUntilChanged(),
-                    takeUntil(merge(this.debounceTimeChanged, this.terminator))
-                )
-                .subscribe((value) => {
-                    this.debouncedValueChange.emit(value);
-                });
-        });
-        this._hasDebounce = true;
-    }
-
-    private notifyDebouncedChange(val: any) {
-        setTimeout(() => {
-            this.debouncedValueChange.emit(val);
-        }, this._debouncedTime);
-    }
-
-    private handleBrowserAutoFill() {
-        if (this.platform.isBrowser && !!this.htmlElement) {
-            this.autofillMonitor
-                .monitor(this.htmlElement)
-                .pipe(takeUntil(this.terminator))
-                .subscribe((event) => {
-                    if (this.htmlElement.value && event.isAutofilled && !this._noAutoComplete) {
-                        this.control.markAsDirty();
-                        this.onValueChange(this.htmlElement.value);
-                    }
-                });
-        }
-    }
-
-    private handleIosCaretPosition() {
-        if (this.platform.IOS && !!this.htmlInputRef) {
-            const input = this.htmlInputRef;
-            this.ngZone.runOutsideAngular(() => {
-                input.nativeElement.addEventListener('keyup', (event: Event) => {
-                    const element = event.target as HTMLInputElement;
-                    if (!element.value && !element.selectionStart && !element.selectionEnd) {
-                        // Note: Just setting `0, 0` doesn't fix the issue. Setting
-                        // `1, 1` fixes it for the first time that you type text and
-                        // then hold delete. Toggling to `1, 1` and then back to
-                        // `0, 0` seems to completely fix it.
-                        element.setSelectionRange(1, 1);
-                        element.setSelectionRange(0, 0);
-                    }
-                });
-            });
+    private _unTrackNumberInputClick() {
+        if (!!this.htmlInputRef && this._wasNumber) {
+            this.htmlInputRef.nativeElement.removeEventListener('mouseup', this._numberInputClicked);
         }
     }
 }

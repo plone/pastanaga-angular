@@ -1,0 +1,37 @@
+<div class="component">
+    <pa-select
+        [options]="options"
+        [formControl]="control"
+        [label]="config.label"
+        [placeholder]="config.placeholder"
+        [adjustHeight]="config.adjustHeight"
+        [hasFocus]="config.hasFocus"
+        [readonly]="config.readonly"
+        [help]="config.help"
+        [showAllErrors]="config.showAllErrors"
+        [errorMessage]="config.errorMessage"
+        [errorMessages]="config.errorMessages"
+        (valueChange)="valueChangeEvent = $event"
+        (statusChange)="statusChangeEvent = $event"
+        (expanded)="expandedEvent = $event">
+        <ng-container *ngIf="config.optionsProvidedInTemplate">
+            <ng-container *ngFor="let item of dropdownContent">
+                <pa-option-header *ngIf="item.type === 'header'">{{item.label}}</pa-option-header>
+                <pa-separator *ngIf="item.type === 'separator'"></pa-separator>
+                <pa-option *ngIf="item.type === 'option' && !item.filtered"
+                           [disabled]="item.disabled"
+                           [destructive]="item.destructive"
+                           [icon]="item.icon"
+                           [value]="item.value"
+                >{{item.label}}</pa-option>
+            </ng-container>
+        </ng-container>
+    </pa-select>
+
+    <ul>
+        <li>value change event: {{valueChangeEvent | json}}</li>
+        <li>status change event: {{statusChangeEvent | json}}</li>
+        <li>expanded event: {{expandedEvent | json}}</li>
+    </ul>
+</div>
+<pa-demo-pa-select-config (configChanged)="updateConfig($event)"></pa-demo-pa-select-config>

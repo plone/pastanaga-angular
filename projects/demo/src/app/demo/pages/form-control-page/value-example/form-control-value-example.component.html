@@ -1,0 +1,20 @@
+<p>The value can be passed and received in a standalone way</p>
+<pre><code>{{standaloneCode}}</code></pre>
+<div class="example" #control paFormControl [value]="standaloneParentValue" (valueChange)="onStandaloneChange($event)">{{control.value}}</div>
+<button (click)="standaloneChildToParentChange()">Change inside directive</button>
+<button (click)="standaloneParentToChildChange()">Change in parent</button>
+
+<br>
+<p>The value can be passed and received using <code>ngModel</code></p>
+<pre><code>{{ngModelCode}}</code></pre>
+<div class="example" paFormControl [(ngModel)]="model">{{model}}</div>
+<button (click)="ngModelChildToParentChange()">Change inside directive</button>
+<button (click)="ngModelParentToChildChange()">Change in parent</button>
+
+<br>
+<p>a <code>FormControl</code> or a <code>FormControlName</code> directive can also hold the value</p>
+<pre><code>{{formControlCode}}</code></pre>
+<input class="example" paFormControl [formControl]="formControl">
+<button (click)="formControlChildToParentChange()">Change inside directive</button>
+<button (click)="formControlParentToChildChange()">Change in parent</button>
+

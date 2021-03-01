@@ -22,15 +22,17 @@ import {
     PaDateTimeModule,
     PaDropdownModule,
     PaFocusableModule,
+    PaFormFieldModule,
     PaIconModule,
     PaModalModule,
     PaPopupModule,
+    PaSideNavModule,
+    PaTableModule,
+    PaTabsModule,
     PaTextFieldModule,
+    PaToastModule,
     PaTogglesModule,
     PaTranslateModule,
-    PaTabsModule,
-    PaTableModule,
-    PaToastModule,
 } from '../../../../pastanaga-angular/src';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
@@ -42,8 +44,6 @@ import { DateTimePageComponent } from './pages/datetime-page/datetime-page.compo
 import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
 import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
-import { DeprecatedBaseControlComponent } from './pages/common-doc/base-control/deprecated-base-control.component';
-import { DeprecatedBaseTextfieldComponent } from './pages/common-doc/base-textfield/deprecated-base-textfield.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { InputPageComponent } from './pages/input-page/input-page.component';
 import { ModalExampleComponent } from './pages/modal-page/modal-example/modal-example.component';
@@ -59,12 +59,40 @@ import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
 import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 import { FocusablePageComponent } from './pages/focusable-page/focusable-page.component';
-import { PaSideNavModule } from '../../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
 import { DemoComponent } from './demo.component';
 import { ChipPageComponent } from './pages/chip-page/chip-page.component';
 import { SidenavPageComponent } from './pages/sidenav-page/sidenav-page.component';
 import { ContainerPageComponent } from './pages/container-page/container-page.component';
 import { ContainerDemoComponent } from './pages/container-page/container-demo/container-demo.component';
+import { FormFieldHintPageComponent } from './pages/form-field-hint-page/form-field-hint-page.component';
+import { FormControlPageComponent } from './pages/form-control-page/form-control-page.component';
+import { FormControlIdExampleComponent } from './pages/form-control-page/id-example/form-control-id-example.component';
+import { FormControlNameExampleComponent } from './pages/form-control-page/name-example/form-control-name-example.component';
+import { FormControlValueExampleComponent } from './pages/form-control-page/value-example/form-control-value-example.component';
+import { FormControlStateExampleComponent } from './pages/form-control-page/state-example/form-control-state-example.component';
+import { FormControlValidationExampleComponent } from './pages/form-control-page/validation-example/form-control-validation-example.component';
+import { PaFormControlUsageComponent } from './pages/form-control-page/usage/pa-form-control-usage.component';
+import { InputStandaloneExampleComponent } from './pages/input-page/input-standalone-example/input-standalone-example.component';
+import { InputNgModelExampleComponent } from './pages/input-page/input-ng-model-example/input-ng-model-example.component';
+import { InputFormControlExampleComponent } from './pages/input-page/input-form-control-example/input-form-control-example.component';
+import { InputFormGroupExampleComponent } from './pages/input-page/input-form-group-example/input-form-group-example.component';
+import { PaInputConfigComponent } from './pages/input-page/pa-input-config/pa-input-config.component';
+import { SelectStandaloneExampleComponent } from './pages/select-page/select-standalone-example/select-standalone-example.component';
+import { SelectNgModelExampleComponent } from './pages/select-page/select-ng-model-example/select-ng-model-example.component';
+import { SelectFormControlExampleComponent } from './pages/select-page/select-form-control-example/select-form-control-example.component';
+import { SelectFormGroupExampleComponent } from './pages/select-page/select-form-group-example/select-form-group-example.component';
+import { PaSelectConfigComponent } from './pages/select-page/pa-select-config/pa-select-config.component';
+import { NativeTextFieldPageComponent } from './pages/native-text-field-page/native-text-field-page.component';
+import { NativeTextFieldUsageComponent } from './pages/native-text-field-page/usage/native-text-field-usage.component';
+import { PaTextareaConfigComponent } from './pages/text-area-page/pa-textarea-config/pa-textarea-config.component';
+import { TextareaStandaloneExampleComponent } from './pages/text-area-page/textarea-standalone-example/textarea-standalone-example.component';
+import { TextareaNgModelExampleComponent } from './pages/text-area-page/textarea-ng-model-example/textarea-ng-model-example.component';
+import { TextareaFormControlExampleComponent } from './pages/text-area-page/textarea-form-control-example/textarea-form-control-example.component';
+import { TextareaFormGroupExampleComponent } from './pages/text-area-page/textarea-form-group-example/textarea-form-group-example.component';
+import { FormFieldConfigStandaloneDirective } from './pages/common-doc/form-field-config-standalone.directive';
+import { FormFieldConfigNgModelDirective } from './pages/common-doc/form-field-config-ng-model.directive';
+import { FormFieldConfigFormControlDirective } from './pages/common-doc/form-field-config-form-control.directive';
+import { FormFieldConfigFormGroupDirective } from './pages/common-doc/form-field-config-form-group.directive';
 
 const COMPONENTS = [
     DemoComponent,
@@ -78,8 +106,6 @@ const COMPONENTS = [
     DemoConfigurationDirective,
 
     BaseControlUsageComponent,
-    DeprecatedBaseControlComponent,
-    DeprecatedBaseTextfieldComponent,
     DialogExampleComponent,
     DialogImageExampleComponent,
     ModalExampleComponent,
@@ -95,19 +121,48 @@ const COMPONENTS = [
     DateTimePageComponent,
     DropdownPageComponent,
     FocusablePageComponent,
+    FormControlPageComponent,
+    FormControlIdExampleComponent,
+    FormControlNameExampleComponent,
+    FormControlValueExampleComponent,
+    FormControlStateExampleComponent,
+    FormControlValidationExampleComponent,
+    FormFieldConfigStandaloneDirective,
+    FormFieldConfigNgModelDirective,
+    FormFieldConfigFormControlDirective,
+    FormFieldConfigFormGroupDirective,
+    PaFormControlUsageComponent,
+    FormFieldHintPageComponent,
     GridPageComponent,
     IconPageComponent,
     InputPageComponent,
+    InputStandaloneExampleComponent,
+    InputNgModelExampleComponent,
+    InputFormControlExampleComponent,
+    InputFormGroupExampleComponent,
+    NativeTextFieldPageComponent,
+    NativeTextFieldUsageComponent,
+    PaInputConfigComponent,
     ModalPageComponent,
     PalettePageComponent,
     PopupPageComponent,
     SelectPageComponent,
+    SelectStandaloneExampleComponent,
+    SelectNgModelExampleComponent,
+    SelectFormControlExampleComponent,
+    SelectFormGroupExampleComponent,
+    PaSelectConfigComponent,
     SidenavPageComponent,
     TabsPageComponent,
     TablePageComponent,
     ToastPageComponent,
     TogglePageComponent,
     TextareaPageComponent,
+    PaTextareaConfigComponent,
+    TextareaStandaloneExampleComponent,
+    TextareaNgModelExampleComponent,
+    TextareaFormControlExampleComponent,
+    TextareaFormGroupExampleComponent,
     TooltipPageComponent,
     TranslatePageComponent,
 ];
@@ -125,6 +180,7 @@ const COMPONENTS = [
         PaIconModule,
         PaDropdownModule,
         PaFocusableModule,
+        PaFormFieldModule,
         PaPopupModule,
         PaTextFieldModule,
         PaToastModule,

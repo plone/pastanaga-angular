@@ -32,8 +32,8 @@ export class BreakpointObserver {
                     ? 'mobile'
                     : viewportSize === ViewportSize.medium
                     ? 'tablet'
-                    : 'desktop'
-            )
+                    : 'desktop',
+            ),
         );
     }
 
@@ -42,7 +42,7 @@ export class BreakpointObserver {
             startWith(findSize()),
             map(() => findSize()),
             distinctUntilChanged(),
-            shareReplay(1)
+            shareReplay(1),
         );
     }
 

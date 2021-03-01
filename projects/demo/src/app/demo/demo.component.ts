@@ -57,7 +57,7 @@ export class DemoComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.menu.forEach((section) =>
-            section.pages.forEach((page) => this.traverser.addView(page.view, '', page.type))
+            section.pages.forEach((page) => this.traverser.addView(page.view, '', page.type)),
         );
     }
 

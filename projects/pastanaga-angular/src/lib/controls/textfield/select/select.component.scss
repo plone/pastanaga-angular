@@ -1,6 +1,6 @@
 @import "../../../styles/variables";
 
-.select-value {
+.pa-select-value {
     font-weight: $font-weight-regular;
     &.placeholder {
         color: $color-text-field-control-placeholder-regular;
@@ -14,7 +14,7 @@
     }
 }
 .select-input {
-    height: rhythm(6);
+    height: rhythm(5);
 }
 
 .pa-field.pa-select {
@@ -94,6 +94,9 @@
         text-overflow: ellipsis;
         max-width: calc(100% - #{$padding-field-control-left + $icon-width + $icon-right-padding});
     }
+}
+pa-dropdown {
+    width: 100%;
 }
 :host ::ng-deep {
     .pa-select pa-dropdown .pa-popup-wrapper {

@@ -73,7 +73,7 @@ pa-demo-page {
         display: block;
         margin-bottom: rhythm(1.5);
 
-        > *:not(.icon-list-container):not(:last-child) {
+        > *:not(.icon-list-container) {
             margin-right: rhythm(4);
         }
 

@@ -1,35 +1,41 @@
 <pa-demo-page>
     <pa-demo-title>Toggle</pa-demo-title>
-    <pa-demo-description>Pa field (with label and help) for a checkbox with a "slide toggle" design.
+    <pa-demo-description>
+        <p><code>pa-toggle</code> wraps an <code>input</code> element of type <code>checkbox</code> and applies pastanaga's form field style with a "slide toggle" design.</p>
+        <p>As other pastanaga's form fields, <code>pa-checkbox</code> supports 4 modes internally: <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and <strong>formControlName</strong>, in order to be used in various context.</p>
+        <p><code>pa-toggle</code> uses <code>pa-form-field-hint</code> to display help and error messages.</p>
+        <p><strong>Important note: </strong> <code>readonly</code> is not applicable to input of type checkbox so the input inherited from <code>PaFormControlDirective</code> will have no effect.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
         <h4>Using ngModel</h4>
         <div class="grid-3 has-gutter">
             <div class="col-1">
-                <pa-deprecated-toggle id="firstToggle"
+                <pa-toggle id="firstToggle"
                            name="firstToggle"
                            [(ngModel)]="firstToggle"
                            [hasFocus]="focusedFirstToggle"
                            [disabled]="disabled"
-                ></pa-deprecated-toggle></div>
-            <div class="col-2">Value: {{firstToggle}}</div>
+                           (statusChange)="firstToggleStatus = $event"
+                ></pa-toggle></div>
+            <div class="col-2">Value: {{firstToggle}}, state: {{firstToggleStatus}}</div>
         </div>
 
         <h4>Using formControl</h4>
         <form [formGroup]="form">
             <div class="grid-3 has-gutter">
                 <div class="col-1">
-                    <pa-deprecated-toggle
+                    <pa-toggle
                         id="toggle"
                         name="toggle"
                         formControlName="toggle"
                         help="help text"
                         [hasFocus]="focusedToggle"
+                        (statusChange)="secondToggleStatus = $event"
                     >Label
-                    </pa-deprecated-toggle></div>
+                    </pa-toggle></div>
                 <div class="col-2">
-                    Value: {{form.value.toggle}}
+                    Value: {{form.value.toggle}}, state: {{secondToggleStatus}}
                 </div>
             </div>
         </form>
@@ -43,16 +49,16 @@
             <pa-checkbox id="focusTrigger" [(ngModel)]="focusedToggle">Focused state On Second toggle</pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabledTrigger" [(ngModel)]="disabled" (selectedChange)="toggleDisabled()">Toggle
+            <pa-checkbox id="disabledTrigger" [(ngModel)]="disabled" (ngModelChange)="toggleDisabled()">Toggle
                 disabled
             </pa-checkbox>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <pa-demo-deprecated-base-control></pa-demo-deprecated-base-control>
+        <h2>Inherited from <code>PaFormControlDirective</code></h2>
+        <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
 
-        <br>
         <h2>Specific to <code>ToggleComponent</code></h2>
         <h3>Inputs</h3>
         <dl>

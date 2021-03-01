@@ -14,6 +14,9 @@ export class AvatarComponent {
         this._userId = value;
         this.assignBackgroundColor();
     }
+    get userId() {
+        return this._userId;
+    }
 
     @Input()
     set userName(value: string) {
@@ -66,9 +69,6 @@ export class AvatarComponent {
     get initials() {
         return this._initials;
     }
-    get userId() {
-        return this._userId;
-    }
 
     private _userId = '';
     private _userName = '';
@@ -90,7 +90,7 @@ export class AvatarComponent {
                         this._base64Image = reader.result as string;
                         detectChanges(this.cdr);
                     },
-                    false
+                    false,
                 );
                 reader.readAsDataURL(blob);
             } else {
