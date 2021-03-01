@@ -1,3 +1,8 @@
+# 2.21.1 (2021-03-01)
+
+### Improvement:
+- **Table**: don't hide menu button by default in desktop tables [mpellerin42] 
+
 # 2.21.0 (2021-02-23)
 
 ### Improvements:
