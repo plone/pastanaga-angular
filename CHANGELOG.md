@@ -1,3 +1,9 @@
+# 1.19.1 (2021-03-01)
+
+### Improvements
+
+-   export everything [jCarret]
+
 # 1.19.0 (2021-01-06)
 
 ### Improvements
