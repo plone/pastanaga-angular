@@ -1,0 +1,64 @@
+<pa-demo-page>
+    <pa-demo-title>Form field hint</pa-demo-title>
+    <pa-demo-description>
+        A wrapper used to describe a form field with hint or error messages.
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-form-field-hint style="display: flex; min-height: 2rem;" id="id"
+                            [help]="help"
+                            [errors]="errors"
+                            [showErrors]="showErrors"
+                            [showAllErrors]="showAllErrors"
+                            [errorMessages]="errorMessages">
+        </pa-form-field-hint>
+    </pa-demo-examples>
+    <pa-demo-configuration>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="hasHelp" (ngModelChange)="toggleHelp()">help</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="hasErrors" (ngModelChange)="toggleErrors()">errors</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="showErrors">showErrors</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="showAllErrors">showAllErrors</pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox [(ngModel)]="hasErrorMessages" (ngModelChange)="toggleErrorMessages()">errorMessages
+            </pa-checkbox>
+        </div>
+    </pa-demo-configuration>
+    <pa-demo-usage>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>errorMessages</dt>
+            <dd>Provides default messages to display for the possible error keys when none is present in the errors object. If a message (string) is provided for a given key, it
+                will be displayed rather than the message provided in errorMessages.
+            </dd>
+
+            <dt>errors</dt>
+            <dd>ValidationErrors of a formControl <small>(optional)</small></dd>
+
+            <dt>help</dt>
+            <dd>A hint to display, helping the user when filling a form field <small>(optional)</small></dd>
+
+            <dt>id</dt>
+            <dd>Id for the hint message which is used for accessibility aria-describedby attribute in parent component</dd>
+
+            <dt>showAllErrors</dt>
+            <dd>Display all errors or only the first error encountered (errors being sorted by key) <small>(default:
+                true)</small></dd>
+
+            <dt>showErrors</dt>
+            <dd>Activate the display of error messages (disable for example when formControl is pristine if you don't
+                want to display errors at initial state) <small>(default: true)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{ code }}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

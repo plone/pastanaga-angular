@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ErrorMessages } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     selector: 'app-text-area-page',
@@ -7,51 +6,38 @@ import { ErrorMessages } from '../../../../../../pastanaga-angular/src';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextareaPageComponent {
-    autoHeightState = false;
-    disabledState = false;
-    filledLongState = false;
-    filledState = false;
-    focusedState = false;
-    readOnlyState = false;
-    resizableState = true;
-    value: string | undefined;
+    selectedTab = 'standalone';
 
-    shortText = 'A short text already filled';
-    longText =
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-    errorMessages: ErrorMessages = new ErrorMessages({ required: 'Field required' });
-    customError = '';
-
-    tsExample = `errorMessages: ErrorMessages = new ErrorMessages({required: 'Field required'});`;
     htmlExample = `<form #demoForm="ngForm">
-    <pa-deprecated-textarea
-            id="demo"
-            name="demo"
-            ngModel
-            placeholder="Placeholder"
-            required
-            [autoHeight]="autoHeightState"
-            [hasFocus]="focusedState"
-            [resizable]="resizableState"
-            [disabled]="disabledState"
-            [readonly]="readOnlyState"
-            [errorMessages]="errorMessages"
-            [errorMessage]="customError"
-        >
-            Label
-    </pa-deprecated-textarea>
+    <pa-textarea
+        [(ngModel)]="model"
+        [placeholder]="config.placeholder"
+        [noAutoComplete]="config.preventAutocomplete"
+        [acceptHtmlTags]="config.acceptHtml"
+
+        [disabled]="config.disabled"
+        [readonly]="config.readonly"
+        [hasFocus]="config.hasFocus"
+
+        [help]="config.help"
+        [errorMessage]="config.errorMessage"
+        [errorMessages]="config.errorMessages"
+        [showAllErrors]="config.showAllErrors"
+        [required]="config.required"
+        [maxlength]="config.maxlength"
+
+        [autoHeight]="config.autoHeight"
+        [rows]="config.rows"
+        [resizable]="config.resizable"
+        [maxRows]="config.maxRows"
+        [maxHeight]="config.maxHeight"
+
+        (valueChange)="valueChangeEvent = $event"
+        (statusChange)="statusChangeEvent = $event"
+        (keyUp)="keyupEvent = $event"
+        (enter)="enterEvent = $event"
+        (focusing)="focusEvent = $event"
+        (blurring)="blurEvent = $event"
+    </pa-textarea>
 </form>`;
-
-    externalValueChange(addText: boolean, text: string) {
-        this.value = addText ? text : undefined;
-    }
-
-    toggleCustomErrorMessage() {
-        if (!this.customError) {
-            this.customError = 'Some error message from external validation';
-        } else {
-            this.customError = '';
-        }
-    }
 }

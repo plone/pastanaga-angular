@@ -31,7 +31,7 @@ select:-webkit-autofill:focus {
         pointer-events: none;
 
         transform-origin: bottom left;
-        transition: transform 150ms cubic-bezier(0.4,0,0.2,1); // copied from google transition
+        transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
     }
 
     .pa-field-control {
@@ -72,7 +72,7 @@ select:-webkit-autofill:focus {
                     transition: all 1s ease;
                 }
 
-                &~.pa-field-label {
+                & ~ .pa-field-label {
                     color: $color-text-field-label-regular-active;
                 }
             }
@@ -82,16 +82,18 @@ select:-webkit-autofill:focus {
         &.cdk-text-field-autofilled,
         &:not(:disabled):not(:read-only):focus,
         &:not(:disabled):not(:read-only):active {
-            &~.pa-field-label {
+            & ~ .pa-field-label {
                 transform: scale(.8) translateY(-2rem) translateX(-.25rem);
                 padding: 0 rhythm(1);
             }
         }
+
         &.cdk-text-field-autofilled:not(:disabled):not(:read-only) {
-            &~.pa-field-label {
+            & ~ .pa-field-label {
                 background: linear-gradient(180deg, $color-background-field-regular 62.42%, $color-background-field-autofilled-transparent 63.83%, $color-background-field-autofilled 100%);
                 color: $color-text-field-label-autofilled;
             }
+
             border: $border-field-autofilled;
         }
 
@@ -99,7 +101,7 @@ select:-webkit-autofill:focus {
             border: $border-field-disabled;
             color: $color-text-field-control-disabled;
 
-            &~.pa-field-label {
+            & ~ .pa-field-label {
                 color: $color-text-field-label-disabled;
             }
         }
@@ -113,6 +115,7 @@ select:-webkit-autofill:focus {
         .pa-field-label {
             color: $color-text-field-label-error;
         }
+
         .pa-field-control {
             border: $border-field-error;
 
@@ -125,21 +128,31 @@ select:-webkit-autofill:focus {
                 &:active {
                     border: $border-field-error-active;
 
-                    &~.pa-field-label {
+                    & ~ .pa-field-label {
                         color: $color-text-field-label-error;
                     }
                 }
             }
         }
     }
+}
 
-    .pa-field-help {
-        @include size(xs);
-        color: $color-text-field-control-help-regular;
-        margin-top: rhythm(.25);
+.pa-field-help {
+    @include size(xs);
+    color: $color-text-field-control-help-regular;
+    margin-top: rhythm(.25);
 
-        &.pa-field-help-error {
-            color: $color-text-field-label-error;
-        }
+    &.pa-field-help-error {
+        color: $color-text-field-label-error;
     }
+}
+
+.pa-textarea-autosize-measuring {
+    height: auto !important;
+    overflow: hidden !important;
+}
+
+.pa-textarea-autosize-measuring-firefox {
+    height: 0 !important;
+    overflow: hidden !important;
 }

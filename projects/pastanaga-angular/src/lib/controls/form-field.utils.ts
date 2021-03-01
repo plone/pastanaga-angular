@@ -40,7 +40,7 @@ export function concatAllErrorMessages(errors: ValidationErrors, errorMessages?:
             }
             return agg;
         }, []);
-    return displayedErrorMessage.length > 0 ? displayedErrorMessage.join(', ') : '';
+    return displayedErrorMessage.length > 0 ? displayedErrorMessage.join(' ') : '';
 }
 
 export function findFirstErrorMessage(errors: ValidationErrors, errorMessages?: IErrorMessages): string {
@@ -60,8 +60,8 @@ export function buildAlwaysFalseValidator(message: string): ValidatorFn {
     };
 }
 
-export function sanitizeStringValue(value: any, acceptHtmlTags: boolean) {
-    if (!!value && typeof value === 'string' && !acceptHtmlTags && value.match(HTML_TAG)) {
+export function sanitizeStringValue(value: any) {
+    if (!!value && typeof value === 'string' && !!value.match(HTML_TAG)) {
         return value.replace(REPLACE_LT_GT, '');
     }
     return value;

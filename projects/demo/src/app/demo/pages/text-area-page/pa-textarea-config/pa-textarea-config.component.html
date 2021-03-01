@@ -1,0 +1,236 @@
+<h4>Configure component</h4>
+<form class="form-field-config" [formGroup]="stateForm">
+    <fieldset>
+        <legend>Basic input html properties and attributes</legend>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="value" [value]="null" id="parentValueUndefined" type="radio">
+                <label for="parentValueUndefined">Parent Value Undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="value" [value]="shortText" id="parentValuated" type="radio">
+                <label for="parentValuated">Short text provided by Parent</label>
+            </div>
+            <div class="option">
+                <input formControlName="value" [value]="longText" id="parentLongValuated" type="radio">
+                <label for="parentLongValuated">Long text provided by Parent</label>
+            </div>
+        </div>
+
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="placeholder" [value]="null" id="placeholderUndefined" type="radio">
+                <label for="placeholderUndefined">placeholder undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="placeholder" value="A placeholder" id="placeholderValuated" type="radio">
+                <label for="placeholderValuated">with placeholder</label>
+            </div>
+        </div>
+
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="preventAutocomplete" [value]="null" id="autocompleteUndefined" type="radio">
+                <label for="autocompleteUndefined">autocomplete unspecified</label>
+            </div>
+            <div class="option">
+                <input formControlName="preventAutocomplete" [value]="false" id="allowAutocomplete" type="radio">
+                <label for="allowAutocomplete">allow Autocomplete</label>
+            </div>
+            <div class="option">
+                <input formControlName="preventAutocomplete" [value]="true" id="disableAutocomplete" type="radio">
+                <label for="disableAutocomplete">disable Autocomplete</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="acceptHtml" [value]="null" id="acceptHtmlUndefined" type="radio">
+                <label for="acceptHtmlUndefined">accept/refuse html tags unspecified</label>
+            </div>
+            <div class="option">
+                <input formControlName="acceptHtml" [value]="true" id="acceptHtml" type="radio">
+                <label for="acceptHtml">accept html tags</label>
+            </div>
+            <div class="option">
+                <input formControlName="acceptHtml" [value]="false" id="rejectHtml" type="radio">
+                <label for="rejectHtml">refuse html tags</label>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Input state</legend>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="disabled" [value]="null" id="disabledUndefined" type="radio">
+                <label for="disabledUndefined">disabled undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="disabled" [value]="true" id="disabled" type="radio">
+                <label for="disabled">disabled</label>
+            </div>
+            <div class="option">
+                <input formControlName="disabled" [value]="false" id="enabled" type="radio">
+                <label for="enabled">enabled</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="readonly" [value]="null" id="readonlyUndefined" type="radio">
+                <label for="readonlyUndefined">readonly undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="readonly" [value]="true" id="readonly" type="radio">
+                <label for="readonly">readonly</label>
+            </div>
+            <div class="option">
+                <input formControlName="readonly" [value]="false" id="notReadonly" type="radio">
+                <label for="notReadonly">not readonly</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="hasFocus" [value]="null" id="hasFocusUndefined" type="radio">
+                <label for="hasFocusUndefined">hasFocus undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="hasFocus" [value]="true" id="hasFocus" type="radio">
+                <label for="hasFocus">hasFocus</label>
+            </div>
+            <div class="option">
+                <input formControlName="hasFocus" [value]="false" id="hasFocusFalse" type="radio">
+                <label for="hasFocusFalse">hasFocus false</label>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Hint and error management</legend>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="help" [value]="null" id="helpUndefined" type="radio">
+                <label for="helpUndefined">help undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="help" value="A hint to help the user" id="help" type="radio">
+                <label for="help">help provided</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="errorMessage" [value]="null" id="errorMessageUndefined" type="radio">
+                <label for="errorMessageUndefined">manual error message undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="errorMessage" value="A manually set error message" id="errorMessage" type="radio">
+                <label for="errorMessage">manual error message </label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="errorMessages" [value]="null" id="errorMessagesUndefined" type="radio">
+                <label for="errorMessagesUndefined">error messages undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="errorMessages" [value]="errorMessages" id="errorMessages" type="radio">
+                <label for="errorMessages">error messages provided</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="showAllErrors" [value]="null" id="showAllErrorsUndefined" type="radio">
+                <label for="showAllErrorsUndefined">showAllErrors undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="showAllErrors" [value]="true" id="showAllErrors" type="radio">
+                <label for="showAllErrors">Show all errors having messages</label>
+            </div>
+            <div class="option">
+                <input formControlName="showAllErrors" [value]="false" id="showFirstError" type="radio">
+                <label for="showFirstError">Show only first error</label>
+            </div>
+        </div>
+
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="maxlength" [value]="null" id="maxlengthUndefined" type="radio">
+                <label for="maxlengthUndefined">maxlength validation undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="maxlength" [value]="3" id="maxlength3" type="radio">
+                <label for="maxlength3">add maxlength validation = 3</label>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Display options</legend>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="autoHeight" [value]="null" id="autoHeightUndefined" type="radio">
+                <label for="autoHeightUndefined">autoHeight undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="autoHeight" [value]="true" id="autoHeight" type="radio">
+                <label for="autoHeight">autoHeight</label>
+            </div>
+            <div class="option">
+                <input formControlName="autoHeight" [value]="false" id="autoHeightFalse" type="radio">
+                <label for="autoHeightFalse">autoHeight disabled</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="rows" [value]="null" id="rowsUndefined" type="radio">
+                <label for="rowsUndefined">readonly undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="rows" [value]="4" id="rows4" type="radio">
+                <label for="rows4">4 rows</label>
+            </div>
+            <div class="option">
+                <input formControlName="rows" [value]="8" id="rows8" type="radio">
+                <label for="rows8">8 rows</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="resizable" [value]="null" id="resizableUndefined" type="radio">
+                <label for="resizableUndefined">hasFocus undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="resizable" [value]="true" id="resizable" type="radio">
+                <label for="resizable">resizable</label>
+            </div>
+            <div class="option">
+                <input formControlName="resizable" [value]="false" id="resizableFalse" type="radio">
+                <label for="resizableFalse">not resizable</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="maxRows" [value]="null" id="maxRowsUndefined" type="radio">
+                <label for="maxRowsUndefined">maxRows undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="maxRows" [value]="4" id="maxRows4" type="radio">
+                <label for="maxRows4">maxRows 4</label>
+            </div>
+            <div class="option">
+                <input formControlName="maxRows" [value]="8" id="maxRows8" type="radio">
+                <label for="maxRows8">maxRows 8</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
+                <input formControlName="maxHeight" [value]="null" id="maxHeightUndefined" type="radio">
+                <label for="maxHeightUndefined">maxHeight undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="maxHeight" [value]="150" id="maxHeight150" type="radio">
+                <label for="maxHeight150">maxHeight 150</label>
+            </div>
+            <div class="option">
+                <input formControlName="maxHeight" [value]="300" id="maxHeight300" type="radio">
+                <label for="maxHeight300">maxHeight 300</label>
+            </div>
+        </div>
+    </fieldset>
+</form>

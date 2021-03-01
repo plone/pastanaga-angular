@@ -7,7 +7,6 @@ import {
     ElementRef,
     EventEmitter,
     Input,
-    NgZone,
     OnChanges,
     OnDestroy,
     Optional,
@@ -17,17 +16,18 @@ import {
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
-import { BaseControl } from '../../base-control';
-import { NgControl, ValidatorFn, Validators } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { DropdownComponent } from '../../../dropdown/dropdown.component';
-import { takeUntil } from 'rxjs/operators';
-import { detectChanges, markForCheck } from '../../../common';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { detectChanges, isVisibleInViewport, markForCheck } from '../../../common';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
+import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
+import { IErrorMessages } from '../../form-field.model';
 
 @Component({
     selector: 'pa-select',
@@ -35,291 +35,222 @@ import { FocusOrigin } from '@angular/cdk/a11y';
     styleUrls: ['./select.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent extends BaseControl implements OnChanges, AfterViewInit, OnDestroy {
+export class SelectComponent extends PaFormControlDirective implements OnChanges, AfterViewInit, OnDestroy {
     @Input() label = '';
-
-    @Input() placeholder = '';
+    @Input() placeholder?: string;
 
     @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
-        this._optionsAreNgContent = false;
-        this._options = values;
-
-        // find provided selected option
-        const selectedOption: OptionModel | undefined = values.find(
-            (option) => option.type === ControlType.option && (option as OptionModel).selected
-        ) as OptionModel | undefined;
-
-        if (selectedOption) {
-            this.onWriteValue(selectedOption.value);
-        }
-    }
-    get options(): (OptionModel | OptionSeparator | OptionHeaderModel)[] {
-        return this._options;
+        this.dropDownModels = !!values ? values : [];
     }
 
-    @Input() set required(value: boolean) {
-        this._required = coerceBooleanProperty(value);
-    }
-    get required() {
-        return this._required || false;
+    @Input() set hasFocus(value: boolean) {
+        this._hasFocus = coerceBooleanProperty(value);
+        this._focusInput();
     }
 
-    @Input() pattern?: RegExp | string;
+    @Input() adjustHeight = false;
+    @Input() help?: string;
+    @Input() errorMessages?: IErrorMessages;
+    @Input() showAllErrors = true;
 
-    @Input() maxlength?: number;
-
-    @Input()
-    get adjustHeight(): boolean {
-        return this._adjustHeight;
-    }
-    set adjustHeight(value: boolean) {
-        this._adjustHeight = coerceBooleanProperty(value);
-    }
-
-    @Output() valueChange: EventEmitter<string | number> = new EventEmitter();
     @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @ViewChild('selectInput') selectInput?: ElementRef;
     @ViewChild('optionsDropdown') optionsDropdown?: DropdownComponent;
-    @ContentChildren(OptionComponent, { descendants: true }) ngContentOptions?: QueryList<OptionComponent>;
+    @ContentChildren(OptionComponent, { descendants: true }) ngContent?: QueryList<OptionComponent>;
 
-    readonly acceptHtmlTags = false;
+    get hasValue() {
+        return !!this.control.value;
+    }
 
-    _options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
-    optionsClosed = new Subject();
-    _optionsAreNgContent = true;
-    _required?: boolean;
-    optionsDisplayed = false;
-    selectedLabel?: string;
-    displayedLabel?: string;
-    _adjustHeight = false;
-
-    requiredValidator?: ValidatorFn;
-    patternValidator?: ValidatorFn;
-    maxlengthValidator?: ValidatorFn;
+    dropDownModels: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
+    isOpened = false;
+    fieldType = 'select';
+    describedById?: string;
+    /**
+     * either the selected option label, either the placeholder
+     */
+    displayedValue?: string;
+    private optionsClosed$ = new Subject();
+    private contentOptionsChanged$ = new Subject();
+    private _hasFocus = false;
 
     constructor(
-        @Optional() @Self() public parentControl: NgControl,
+        protected element: ElementRef,
+        @Optional() @Self() protected parentControl: NgControl,
         protected platform: Platform,
-        protected ngZone: NgZone,
-        public cdr: ChangeDetectorRef
+        public cdr: ChangeDetectorRef,
     ) {
-        super(parentControl, cdr);
-        this._fieldKind = 'select';
+        super(element, parentControl, cdr);
     }
 
     ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
+        this._checkDescribedBy();
     }
 
     ngAfterViewInit(): void {
-        this.handleInitialValue();
-        this.focus();
+        this._handleNgContent();
+        this._checkDescribedBy();
+        this._focusInput();
+        this._updateDisplayedValue(this.control.value);
+        // valueChanges may be triggered by an update value and validity...
+        // we don't want to recompute the displayed option label in that case
+        this.control.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.terminator$)).subscribe((val) => {
+            this._updateDisplayedValue(val);
+            this._markOptionAsSelected();
+            detectChanges(this.cdr);
+        });
+        this.control.statusChanges
+            .pipe(distinctUntilChanged(), takeUntil(this.terminator$))
+            .subscribe(() => markForCheck(this.cdr));
     }
 
     ngOnDestroy() {
-        this.optionsClosed.next();
-        this.optionsClosed.complete();
+        this.optionsClosed$.next();
+        this.optionsClosed$.complete();
+        this.contentOptionsChanged$.complete();
         super.ngOnDestroy();
     }
 
-    handleInitialValue() {
-        if (this.ngContentOptions && this.ngContentOptions.length > 0) {
-            // subscribe to option selection
-            this.ngContentOptions.forEach((option) =>
-                option.selectOption.pipe(takeUntil(this.terminator)).subscribe(() => {
-                    this.onValueChange(option.value);
-                })
-            );
-
-            // relaunch write after printing the options
-            if (!!this.model) {
-                this.onWriteValue(this.model);
-            }
-        } else {
-            this._optionsAreNgContent = false;
-        }
-    }
-
-    listInternalValidators = (): ValidatorFn[] => {
-        const validators = [];
-
-        if (!!this.requiredValidator) {
-            validators.push(this.requiredValidator);
-        }
-        if (!!this.patternValidator) {
-            validators.push(this.patternValidator);
-        }
-        if (!!this.maxlengthValidator) {
-            validators.push(this.maxlengthValidator);
-        }
-        return validators;
-    };
-
-    preValueChange = (value: any): any => {
-        return value;
-    };
-
-    postValueChange = (): void => {
-        this.selectedLabel = this.findLabelByValue(this.model);
-        this.displayedLabel = this.selectedLabel;
-        this.flagSelectedOption();
-        detectChanges(this.cdr);
-        this.valueChange.emit(this.model);
-    };
-
-    preWriteValue = (value: any): any => {
-        return value;
-    };
-
-    postWriteValue = (): void => {
-        this.selectedLabel = this.findLabelByValue(this.model);
-        this.displayedLabel = this.selectedLabel;
-        this.flagSelectedOption();
-        detectChanges(this.cdr);
-    };
-
-    registerOnStatusChanges = (status: any): void => {
-        markForCheck(this.cdr);
-    };
-
-    registerOnValueChange = (value: any): void => {
-        if (this.control.value !== this.model) {
-            this.control.setValue(this.model);
-        }
-        markForCheck(this.cdr);
-    };
-
-    shouldUpdateValidators = (changes: SimpleChanges): boolean => {
-        return !!changes.required || !!changes.maxlength || !!changes.pattern || !!changes.errorMessage;
-    };
-
-    refreshInternalValidators() {
-        this.requiredValidator = this.required ? Validators.required : undefined;
-        this.patternValidator = !!this.pattern ? Validators.pattern(this.pattern) : undefined;
-        this.maxlengthValidator = !!this.maxlength ? Validators.maxLength(this.maxlength) : undefined;
-    }
-
     toggleDropdown() {
-        if (this.control.disabled || this._readonly) {
+        if (this.control.disabled || this.readonly) {
             return;
         }
         if (!!this.optionsDropdown && this.optionsDropdown._isDisplayed) {
+            // will trigger onClose event
             this.optionsDropdown.close();
         } else {
-            this.clickOnSelectInput();
+            this._openOptionDropDown();
+        }
+    }
+
+    dropDownOpened() {
+        this.isOpened = true;
+        this.expanded.emit(true);
+    }
+
+    dropDownClosed() {
+        if (!this.control.touched) {
+            this.control.markAsTouched({});
+        }
+        // if user opened the dropdown but did not select a value
+        // we consider this as an action leading to formControl validation
+        if (this.control.pristine) {
+            this.control.markAsDirty();
+            this.control.updateValueAndValidity();
+        }
+
+        this.optionsClosed$.next();
+        this.isOpened = false;
+        this.expanded.emit(false);
+    }
+
+    onControlFocused(event: FocusOrigin) {
+        if (!this.isOpened && event === 'keyboard') {
+            this._openOptionDropDown();
+        }
+    }
+
+    selectOption(option: OptionModel | OptionComponent) {
+        if (!option.disabled && this.isActive && option.value !== this.control.value) {
+            this.control.patchValue(option.value);
+        }
+    }
+
+    private _focusInput() {
+        if (this._hasFocus && this.isActive) {
+            this._openOptionDropDown();
+            if (!isVisibleInViewport(this.selectInput?.nativeElement)) {
+                this.selectInput?.nativeElement.scrollIntoView();
+            }
         }
     }
 
     /**
-     * click on select input should trigger paPopup toggle and display the options
+     * click on select input triggers paPopup toggle and display the options.
      * paPopup will listen to click and close itself immediately if we dont wait for a tick
      */
-    clickOnSelectInput() {
+    private _openOptionDropDown() {
         setTimeout(() => {
             if (!!this.selectInput) {
                 this.selectInput.nativeElement.click();
             }
-        }, 0);
+        });
     }
 
-    selectListOption(selectedOption: OptionModel) {
-        if (!selectedOption.disabled && this.isActive()) {
-            this.onValueChange(selectedOption.value);
-        }
+    private _updateDisplayedValue(val?: string) {
+        const selectedOptionLabel = this._findLabelByValue(val);
+        this.displayedValue = selectedOptionLabel || this.placeholder;
     }
 
-    onFocus(event: FocusOrigin) {
-        if (!this.optionsDisplayed && event === 'keyboard') {
-            if (!this.selectedLabel) {
-                this.displayedLabel = this.placeholder;
-            }
-            // open option dropdown
-            this.clickOnSelectInput();
-        }
-    }
-
-    focus() {
-        if (this._hasFocus && !!this.selectInput && this.isActive()) {
-            this.clickOnSelectInput();
-        }
-    }
-
-    findValueByLabel(): string | null {
-        if (!!this.ngContentOptions && this.ngContentOptions.length > 0) {
-            const selectedComponent = this.ngContentOptions.find(
-                (optionComponent) => optionComponent.text === this.selectedLabel
-            );
-            return selectedComponent ? selectedComponent.value : null;
-        } else {
-            const selectedModel = this._options.find(
-                (option: OptionModel) => option.label === this.selectedLabel
-            ) as OptionModel;
-            return selectedModel ? selectedModel.value : null;
-        }
-    }
-
-    findLabelByValue(value?: string): string | undefined {
+    private _findLabelByValue(value?: string): string | undefined {
         let label: string | undefined;
-        if (!!this.ngContentOptions && this.ngContentOptions.length > 0) {
-            const selectedOption = this.ngContentOptions.find((option) => option.value === this.model);
-            label = !!selectedOption ? selectedOption.text : undefined;
-        } else {
-            const selectedOption = this._options.find((option: OptionModel) => option.value === value);
+
+        // precedence of drop options provided in input over options provided as ngContent
+        if (this.dropDownModels.length) {
+            const selectedOption = this.dropDownModels.find((option: OptionModel) => option.value === value);
             label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
+        }
+        if (!label && !!this.ngContent && this.ngContent.length) {
+            const selectedOption = this.ngContent.find((option) => option.value === this.control.value);
+            label = !!selectedOption ? selectedOption.text : undefined;
         }
         return label;
     }
 
-    dropDownClosed() {
-        this.optionsDisplayed = false;
-        this.control.markAsTouched();
-        this.control.markAsDirty();
-        this.control.updateValueAndValidity();
-        this.optionsClosed.next();
-        this.expanded.emit(false);
-    }
-
-    dropDownOpened() {
-        this.optionsDisplayed = true;
-        if (!this.selectedLabel) {
-            this.displayedLabel = this.placeholder;
+    private _checkDescribedBy() {
+        if ((!this.describedById && this.help) || this.control.errors) {
+            this.describedById = `${this.id}-hint`;
+            detectChanges(this.cdr);
+        } else if (!this.help && !this.control.errors) {
+            this.describedById = undefined;
             detectChanges(this.cdr);
         }
-        if (!this._optionsAreNgContent) {
-            setTimeout(() => {
-                this.ngContentOptions?.forEach((option: OptionComponent, index) => {
-                    option.selectOption.pipe(takeUntil(this.optionsClosed)).subscribe(() => {
-                        this.onValueChange(option.value);
-                    });
-                });
-            });
-        }
-        this.expanded.emit(true);
     }
 
-    /**
-     * browse options and update selected status
-     */
-    private flagSelectedOption() {
-        if (!!this.ngContentOptions) {
-            this.ngContentOptions.forEach((option) => {
-                const isSelected = option.value === this.model;
-                if (option._selected !== isSelected) {
-                    option._selected = isSelected;
-                    option.refresh();
-                }
+    private _handleNgContent() {
+        this._markOptionAsSelected();
+        this._trackNgContentOptionSelected();
+
+        if (!!this.ngContent) {
+            this.ngContent.changes.pipe(takeUntil(this.terminator$)).subscribe(() => {
+                this.contentOptionsChanged$.next();
+                this._markOptionAsSelected();
+                this._trackNgContentOptionSelected();
             });
         }
-        if (!!this._options) {
-            this._options
-                .filter((opt) => opt.type === ControlType.option)
-                .forEach((option: OptionModel) => {
-                    const isSelected = option.value === this.model;
-                    if (option.selected !== isSelected) {
-                        option.selected = isSelected;
-                    }
-                });
+    }
+
+    private _trackNgContentOptionSelected() {
+        if (!!this.ngContent) {
+            // subscribe to option selection
+            this.ngContent.forEach((option) =>
+                option.selectOption.pipe(takeUntil(this.terminator$)).subscribe(() => this.selectOption(option)),
+            );
+        }
+    }
+
+    private _markOptionAsSelected() {
+        if (this.dropDownModels.length) {
+            this.dropDownModels.forEach((option: OptionModel | OptionSeparator | OptionHeaderModel) => {
+                if (option.type === ControlType.option) {
+                    this._toggleSelectedOption(option as OptionModel);
+                }
+            });
+            // refresh array reference to trigger change detection in child component
+            this.dropDownModels = this.dropDownModels.slice();
+        }
+        if (!!this.ngContent) {
+            this.ngContent.toArray().forEach((option) => this._toggleSelectedOption(option));
+        }
+    }
+
+    private _toggleSelectedOption(option: OptionComponent | OptionModel) {
+        if (option.selected && option.value !== this.control.value) {
+            option.selected = false;
+        } else if (!option.selected && option.value === this.control.value) {
+            option.selected = true;
         }
     }
 }

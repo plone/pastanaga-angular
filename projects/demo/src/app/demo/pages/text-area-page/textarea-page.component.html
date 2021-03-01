@@ -1,95 +1,58 @@
 <pa-demo-page>
     <pa-demo-title>Textarea</pa-demo-title>
-    <pa-demo-description>Basic textarea field</pa-demo-description>
+    <pa-demo-description>
+        <p><code>pa-textarea</code> wraps an html <code>textarea</code> element and apply pastanaga's form field style.</p>
+        <p>As other pastanaga's form fields, <code>pa-textarea</code> supports 4 modes internally: <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and <strong>formControlName</strong>, in order to be used in various context.</p>
+        <p><code>pa-textarea</code> also supports internal and external validation (required and maxlength).</p>
+        <p><code>pa-textarea</code> elements will automatically resize by default, but this behavior can be disabled by setting <code>resizable</code> property to <code>false</code>.</p>
+    </pa-demo-description>
 
     <pa-demo-examples>
-            <pa-deprecated-textarea
-                placeholder="Placeholder"
-                required
-                [autoHeight]="autoHeightState"
-                [hasFocus]="focusedState"
-                [resizable]="resizableState"
-                [(ngModel)]="value"
-                [disabled]="disabledState"
-                [readonly]="readOnlyState"
-                [errorMessages]="errorMessages"
-                [errorMessage]="customError"
-            >
-                Label
-            </pa-deprecated-textarea>
+        <pa-tabs>
+            <pa-tab (click)="selectedTab = 'standalone'"
+                    [active]="selectedTab === 'standalone'">Standalone</pa-tab>
+            <pa-tab (click)="selectedTab = 'ngModel'"
+                    [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControl'"
+                    [active]="selectedTab === 'formControl'">Form Control</pa-tab>
+            <pa-tab (click)="selectedTab = 'formControlName'"
+                    [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
+        </pa-tabs>
+        <pa-demo-textarea-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-textarea-standalone-example>
+        <pa-demo-textarea-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-textarea-ng-model-example>
+        <pa-demo-textarea-form-control-example *ngIf="selectedTab === 'formControl'"></pa-demo-textarea-form-control-example>
+        <pa-demo-textarea-form-group-example *ngIf="selectedTab === 'formControlName'"></pa-demo-textarea-form-group-example>
+
     </pa-demo-examples>
-    <pa-demo-configuration>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="focusTrigger"
-                         [(ngModel)]="focusedState">Focused & Active state</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="filledTrigger"
-                         [(ngModel)]="filledState"
-                         (ngModelChange)="externalValueChange($event, shortText)">Filled
-            </pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="filledLongTrigger"
-                         [(ngModel)]="filledLongState"
-                         (ngModelChange)="externalValueChange($event, longText)">Filled With Long text (adaptive size)
-            </pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabledTrigger" [(ngModel)]="disabledState">Disabled state</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="readonlyTrigger" [(ngModel)]="readOnlyState">Readonly state</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button size="small" aspect="solid"
-                       (click)="toggleCustomErrorMessage()">
-                {{!!customError ? 'Reset custom error' : 'Set custom error message'}}
-            </pa-button>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="autoHeightTrigger" [(ngModel)]="autoHeightState">AutoHeight state</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox id="resizableTrigger" [(ngModel)]="resizableState">Resizable state</pa-checkbox>
-        </div>
-    </pa-demo-configuration>
 
     <pa-demo-usage>
-        <pa-demo-deprecated-base-textfield></pa-demo-deprecated-base-textfield>
+        <pa-demo-native-text-field-usage></pa-demo-native-text-field-usage>
+
         <br>
+
         <h2>Specific to <code>TextareaComponent</code></h2>
         <h3>Inputs</h3>
         <dl>
-            <dt>acceptHtmlTags</dt>
-            <dd>Allow to render/enter HTML tags in the field. Enabling this can have an impact on the security of your
-                app, to be use with caution. <small>(default: false)</small></dd>
-
             <dt>autoHeight</dt>
             <dd>allow textarea to expand with user entries or according to currentValue: boolean <small>(default:
                 false)</small></dd>
 
-            <dt>hasFocus</dt>
-            <dd>Set to true to give focus on the input by default <small>(default: false)</small></dd>
-
-            <dt>maxlength</dt>
-            <dd>Max number of characters allowed for input of type text <small>(optional)</small></dd>
-
-            <dt>noAutoComplete</dt>
-            <dd>Set autocomplete attribute to <code>off</code> <small>(default: false)</small></dd>
-
             <dt>resizable</dt>
-            <dd>allow user to resize the textarea: boolean <small>(default: true)</small></dd>
+            <dd>boolean allowing user to resize the textarea <small>(default: true)</small></dd>
 
             <dt>rows</dt>
-            <dd>textarea's rows attribute: number <small>(default: 1)</small></dd>
+            <dd>number of rows displayed in the textarea <small>(default: 1)</small></dd>
+
+            <dt>maxRows</dt>
+            <dd>max number of rows when used in combination with autoHeight. Not used when a <code>maxHeight</code> is defined <small>(optional)</small></dd>
+
+            <dt>maxHeight</dt>
+            <dd>number of pixels defining the maxHeight of the textarea <small>(optional)</small></dd>
         </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
-        <h3>HTML</h3>
+        <h3>ngModel template driven</h3>
         <pre><code>{{htmlExample}}</code></pre>
-        <h3>Typescript</h3>
-        <pre><code>{{tsExample}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

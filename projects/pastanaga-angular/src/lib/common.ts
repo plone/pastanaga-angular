@@ -108,3 +108,20 @@ export const getVirtualScrollParentPosition = (element: HTMLElement): { bottom: 
         return null;
     }
 };
+export function cssAsNumber(css: string) {
+    const num = !!css ? Number(css.replace('px', '')) : NaN;
+    return isNaN(num) ? 0 : num;
+}
+
+export function isVisibleInViewport(element?: HTMLElement): boolean {
+    if (!element) {
+        return false;
+    }
+    const position = element.getBoundingClientRect();
+    return (
+        position.top >= 0 &&
+        position.left >= 0 &&
+        position.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        position.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}

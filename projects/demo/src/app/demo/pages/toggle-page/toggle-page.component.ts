@@ -5,33 +5,34 @@ import { FormControl, FormGroup } from '@angular/forms';
     templateUrl: './toggle-page.component.html',
 })
 export class TogglePageComponent {
-
     firstToggle = false;
 
     form: FormGroup = new FormGroup({
-        toggle: new FormControl()
+        toggle: new FormControl(true),
     });
+    firstToggleStatus?: any;
+    secondToggleStatus?: any;
 
     focusedFirstToggle = false;
     focusedToggle = false;
     disabled = false;
 
-    code = `<pa-deprecated-toggle
+    code = `<pa-toggle
     id="firstToggle"
     name="firstToggle"
     [(ngModel)]="firstToggle"
     [hasFocus]="focusedFirstToggle"
     [disabled]="disabled"
-></pa-deprecated-toggle>
+></pa-toggle>
 
 <form [formGroup]="form">
-    <pa-deprecated-toggle
+    <pa-toggle
         id="toggle"
         name="toggle"
         formControlName="toggle"
         help="help text"
         [hasFocus]="focusedToggle"
-    >Label</pa-deprecated-toggle>
+    >Label</pa-toggle>
 </form>
 `;
 

@@ -1,39 +1,29 @@
 <div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
     <input #htmlInput
            class="pa-field-control"
-           [class.pa-field-control-filled]="!!model || model === 0"
-           [(ngModel)]="model"
-           [ngModelOptions]="{standalone: _internalMode === 'standalone'}"
-           [id]="_elementId"
-           [attr.name]="_name"
+           [class.pa-field-control-filled]="isFilled"
+           [formControl]="control"
+           [id]="id"
+           [attr.name]="name"
            [type]="type"
-           [disabled]="control.disabled"
            [attr.maxlength]="maxlength"
-           [attr.aria-label]="_label"
-           [attr.aria-describedby]="_describedBy"
+           [attr.aria-describedby]="describedById"
            [attr.placeholder]="placeholder"
-           [attr.autocomplete]="_noAutoComplete ? 'off' : undefined"
+           [attr.autocomplete]="noAutoComplete ? 'off' : undefined"
            [attr.autocapitalize]="autocapitalize || undefined"
-           [readonly]="_readonly"
-           [required]="required"
-
-           (input)="onChange($event.target.value)"
+           [readonly]="readonly"
+           [paInputFormatter]="sanitizeHtmlTags"
            (blur)="onBlur()"
            (keyup)="onKeyUp($event)"
            (focus)="onFocus($event)"
     >
-
-    <label #label
-           class="pa-field-label"
-           [for]="_id"
-           [attr.aria-owns]="_id"
-    ><ng-content></ng-content></label>
-
-    <small *ngIf="_errorHelp || _help"
-           class="pa-field-help"
-           aria-live="polite"
-           [id]="_helpId"
-           [attr.aria-owns]="_id"
-           [class.pa-field-help-error]="!!_errorHelp "
-           [innerHTML]="_errorHelp || _help"></small>
+    <label class="pa-field-label" [for]="id"><ng-content></ng-content></label>
+    <pa-form-field-hint
+        [id]="describedById"
+        [help]="help"
+        [errors]="control.errors"
+        [showErrors]="control.dirty"
+        [showAllErrors]="showAllErrors"
+        [errorMessages]="errorMessages"
+    ></pa-form-field-hint>
 </div>

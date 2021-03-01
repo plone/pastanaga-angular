@@ -1,6 +1,7 @@
 <span class="pa-avatar pa-avatar-{{size}}" [class.no-avatar]="!initials">
     <img *ngIf="base64Image; else avatarInitials"
          [src]="base64Image"
+         alt="avatar"
          class="pa-avatar-img">
 
     <ng-template #avatarInitials>

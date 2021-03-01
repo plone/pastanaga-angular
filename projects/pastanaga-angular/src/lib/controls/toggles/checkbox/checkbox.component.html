@@ -1,15 +1,24 @@
-<div class="pa-toggle">
-    <input
-        #htmlElement
-        class="pa-toggle-control"
-        paFocusable
-        [checked]="isChecked"
-        [id]="_elementId"
-        [attr.name]="_name"
-        [type]="_type"
-        [disabled]="control.disabled"
-        [attr.aria-checked]="isChecked"
-        (click)="toggleCheckbox()"
-    />
-    <label [for]="_elementId" class="pa-toggle-label"><ng-content></ng-content></label>
+<div class="pa-toggle" [class.pa-field-error]="control.dirty && control.invalid">
+    <div class="pa-checkbox-wrapper">
+        <input #htmlElement
+               type="checkbox"
+               class="pa-toggle-control"
+               paFocusable
+               [formControl]="control"
+               [id]="id"
+               [attr.name]="name"
+               [attr.aria-checked]="isChecked"
+               [attr.aria-describedby]="describedById"
+        />
+        <label [for]="id" class="pa-toggle-label">
+            <ng-content></ng-content>
+        </label>
+    </div>
+    <pa-form-field-hint
+        [id]="describedById"
+        [errors]="control.errors"
+        [showErrors]="control.dirty"
+        [errorMessages]="errorMessages"
+    ></pa-form-field-hint>
 </div>
+
