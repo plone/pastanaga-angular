@@ -102,7 +102,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-primary-solid-active;
                     background: $color-background-button-primary-solid-active;
                     border: $border-button-primary-solid-active;
@@ -122,7 +123,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-primary-basic-active;
                     background: $color-background-button-primary-basic-active;
                     border: $border-button-primary-basic-active;
@@ -144,7 +146,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-secondary-solid-active;
                     background: $color-background-button-secondary-solid-active;
                     border: $border-button-secondary-solid-active;
@@ -164,7 +167,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-secondary-basic-active;
                     background: $color-background-button-secondary-basic-active;
                     border: $border-button-secondary-basic-active;
@@ -186,7 +190,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-inverted-solid-active;
                     background: $color-background-button-inverted-solid-active;
                     border: $border-button-inverted-solid-active;
@@ -206,7 +211,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-inverted-basic-active;
                     background: $color-background-button-inverted-basic-active;
                     border: $border-button-inverted-basic-active;
@@ -228,7 +234,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-destructive-solid-active;
                     background: $color-background-button-destructive-solid-active;
                     border: $border-button-destructive-solid-active;
@@ -248,7 +255,8 @@
                     }
                 }
 
-                &:active {
+                &:active,
+                &.pa-active {
                     color: $color-text-button-destructive-basic-active;
                     background: $color-background-button-destructive-basic-active;
                     border: $border-button-destructive-basic-active;
@@ -261,7 +269,8 @@
                 &.pa-solid {
                     box-shadow: $shadow-button-solid-hover;
 
-                    &:active {
+                    &:active,
+                    &.pa-active {
                         box-shadow: none;
                     }
                 }
@@ -269,7 +278,8 @@
                 &.pa-basic {
                     box-shadow: $shadow-button-basic-hover;
 
-                    &:active {
+                    &:active,
+                    &.pa-active {
                         box-shadow: none;
                     }
                 }

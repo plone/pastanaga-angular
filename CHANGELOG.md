@@ -1,3 +1,8 @@
+# 2.21.2 (2021-03-02)
+
+### Improvement:
+- **Button**: add active state property on buttons [mpellerin42]
+
 # 2.21.1 (2021-03-01)
 
 ### Improvement:

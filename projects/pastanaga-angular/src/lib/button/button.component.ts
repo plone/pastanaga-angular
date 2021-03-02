@@ -52,6 +52,9 @@ export class ButtonComponent implements AfterContentInit, OnInit {
     @Input() set disabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value);
     }
+    @Input() set active(value: boolean) {
+        this._active = coerceBooleanProperty(value);
+    }
     @Input() set icon(value: string) {
         this._icon = value || '';
     }
@@ -71,6 +74,7 @@ export class ButtonComponent implements AfterContentInit, OnInit {
 
     // state
     _disabled = false;
+    _active = false;
 
     // accessibility
     _ariaLabel = '';
