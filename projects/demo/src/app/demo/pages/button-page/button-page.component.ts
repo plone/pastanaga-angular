@@ -11,6 +11,7 @@ export class ButtonPageComponent {
     aspect = Aspect;
     size = Size;
     selectedSize: Size = Size.medium;
+    activeState = false;
     disabledState = false;
     codeExample = `<pa-button [kind]="selectedKind"
            [size]="selectedSize"
