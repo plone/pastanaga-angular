@@ -66,13 +66,13 @@ export class TablePageComponent implements OnInit {
     code = `
 <pa-table columns="repeat(6, 1fr)">
     <pa-table-header>
-        <pa-table-cell-header-sortable label="Name" (sorted)="sortBy($event)"></pa-table-cell-header-sortable>
+        <pa-table-sortable-header-cell label="Name" (sorted)="sortBy($event)"></pa-table-sortable-header-cell>
         <pa-table-cell header>Tags</pa-table-cell>
         <pa-table-cell header>Shared with</pa-table-cell>
         <pa-table-cell header>Last updated</pa-table-cell>
         <pa-table-cell header>Size</pa-table-cell>
         <pa-table-cell-menu header>
-            <pa-table-header-button icon="ellipsis-vertical" (click)="openMenu($event)"></pa-table-header-button>
+            <pa-button icon="ellipsis-vertical" (click)="openMenu($event)"></pa-button>
         </pa-table-cell-menu>
     </pa-table-header>
     <pa-table-row-header>Today</pa-table-row-header>

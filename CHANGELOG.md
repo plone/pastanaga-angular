@@ -1,3 +1,14 @@
+# 2.22.0 (2021-03-03)
+
+### Breaking changes
+- **Table**: [mpellerin42]
+    - No more `tableHeaderButton` component: use normal pa-button instead. On header cell pa-button are now styled without background nor box-shadow.
+    - `pa-table-cell-header-sortable` renamed to `pa-table-sortable-header-cell`
+    - replace `label` input of `pa-table-sortable-header-cell` by `ng-content` to stay consistent with other cell components
+    - rename `reversed` input by `isDescending` to improve code clarity
+    - rename `sorted` output by `sort`
+    - update the documentation accordingly
+
 # 2.21.2 (2021-03-02)
 
 ### Improvement:
