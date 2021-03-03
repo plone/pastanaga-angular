@@ -6,13 +6,13 @@
     <pa-demo-examples>
         <pa-table columns="minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px">
             <pa-table-header>
-                <pa-table-cell-header-sortable label="Name" (sorted)="sortBy($event)"></pa-table-cell-header-sortable>
+                <pa-table-sortable-header-cell label="Name" (sorted)="sortBy($event)"></pa-table-sortable-header-cell>
                 <pa-table-cell header>Tags</pa-table-cell>
                 <pa-table-cell header>Shared with</pa-table-cell>
                 <pa-table-cell header>Last updated</pa-table-cell>
                 <pa-table-cell header>Size</pa-table-cell>
                 <pa-table-cell-menu header>
-                    <pa-table-header-button icon="ellipsis-vertical" (click)="openMenu($event)"></pa-table-header-button>
+                    <pa-button icon="ellipsis-vertical" (click)="openMenu($event)"></pa-button>
                 </pa-table-cell-menu>
             </pa-table-header>
             <pa-table-row *ngFor="let item of [data[0],data[1],data[2]]" [class.pa-selected]="rowSelected === item.id" (click)="clickRow(item.id)" clickable>
@@ -72,24 +72,17 @@
             <dd>If true, cell is rendered as a header cell. <small>(optional)</small></dd>
         </dl>
 
-        <h3><code>pa-table-header-button</code></h3>
-        <p>It renders as a header button without extra styling.</p>
-         <dl>
-            <dt>icon</dt>
-            <dd>Icon name to be used.</dd>
-            <dt>active</dt>
-            <dd>If false, icon is visible only when is hovered. <small>(default is <code>true</code>)</small></dd>
-            <dt>label</dt>
-            <dd>Header cell name. <small>(optional)</small></dd>
-        </dl>
-        
-        <h3><code>pa-table-cell-header-sortable</code></h3>
-        <p>It renders as a header cell with the possibility of sorting.</p>
+        <h3><code>pa-table-sortable-header-cell</code></h3>
+        <p>It renders as a sortable header cell with a sorting indicator.</p>
         <dl>
-            <dt>reverse</dt>
-            <dd>If true, the sorting starts as ascending. <small>(optional)</small></dd>
-            <dt>label</dt>
-            <dd>Header cell name.</dd>
+            <dt>active</dt>
+            <dd>If true, display the sorting indicator icon, otherwise it will display a chevron down icon on hover. <small>False by default</small></dd>
+
+            <dt>isDescending</dt>
+            <dd>Set the sorting indicator to <code>sorted-descending</code> icon. <small>By default, sorting indicator is <code>sorted-ascending</code></small></dd>
+
+            <dt>sort</dt>
+            <dd>Event triggered when clicking on the cell.</dd>
         </dl>
 
         <h3><code>pa-table-cell-menu</code></h3>

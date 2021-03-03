@@ -8,10 +8,9 @@ import { TableRowComponent } from './table-row/table-row.component';
 import { TableRowHeaderComponent } from './table-row-header/table-row-header.component';
 import { TableCellMenuComponent } from './table-cell-menu/table-cell-menu.component';
 import { PaFocusableModule } from '../focusable/focusable.module';
-import { TableCellHeaderSortableComponent } from './table-cell-header-sortable/table-cell-header-sortable.component';
+import { TableSortableHeaderCellComponent } from './table-sortable-header-cell/table-sortable-header-cell.component';
 import { PaTranslateModule } from '../translate/translate.module';
 import { PaIconModule } from '../icon/icon.module';
-import { TableHeaderButtonComponent } from './table-cell-header-sortable/table-header-button.component';
 
 @NgModule({
     imports: [CommonModule, PaFocusableModule, PaTranslateModule, PaIconModule],
@@ -22,8 +21,7 @@ import { TableHeaderButtonComponent } from './table-cell-header-sortable/table-h
         TableRowHeaderComponent,
         TableHeaderDirective,
         TableCellMenuComponent,
-        TableCellHeaderSortableComponent,
-        TableHeaderButtonComponent,
+        TableSortableHeaderCellComponent,
     ],
     declarations: [
         TableComponent,
@@ -32,8 +30,7 @@ import { TableHeaderButtonComponent } from './table-cell-header-sortable/table-h
         TableRowHeaderComponent,
         TableHeaderDirective,
         TableCellMenuComponent,
-        TableCellHeaderSortableComponent,
-        TableHeaderButtonComponent,
+        TableSortableHeaderCellComponent,
     ],
     providers: [],
 })

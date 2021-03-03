@@ -1,0 +1,8 @@
+<div class="pa-table-grid--header clickable"
+     (click)="sort.emit()"
+     paFocusable>
+
+    <button type="button"
+            [class.active]="active"
+            paFocusable><ng-content></ng-content> <pa-icon *ngIf="icon" [name]="icon"></pa-icon></button>
+</div>
