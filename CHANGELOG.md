@@ -1,3 +1,9 @@
+# 1.19.3 (2021-03-04)
+
+### Improvements
+
+-   improved style of input type number on hover [jCarret]
+
 # 1.19.2 (2021-03-04)
 
 ### Improvements
