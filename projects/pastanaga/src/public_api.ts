@@ -90,6 +90,7 @@ export * from './lib/textfield/input-icon/input-icon.component';
 export * from './lib/textfield/password-input/password-input.component';
 export * from './lib/textfield/password-input/password-rule';
 export * from './lib/textfield/input.component';
+export * from './lib/textfield/number-input.directive';
 export * from './lib/textfield/select.component';
 export * from './lib/textfield/textarea.component';
 export * from './lib/textfield/textfield.common';

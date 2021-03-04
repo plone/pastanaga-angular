@@ -10,6 +10,7 @@ import { InputIconComponent } from './input-icon/input-icon.component';
 import { ButtonModule } from '../button/button.module';
 import { TooltipModule } from '../tooltip/tooltip.module';
 import { ProgressModule } from '../progress/progress.module';
+import {NumberInputDirective} from 'pastanaga-angular/lib/textfield/number-input.directive';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { ProgressModule } from '../progress/progress.module';
         SelectComponent,
         TextareaComponent,
         PasswordInputComponent,
+        NumberInputDirective
     ],
     exports: [
         InputComponent,
@@ -33,6 +35,7 @@ import { ProgressModule } from '../progress/progress.module';
         SelectComponent,
         TextareaComponent,
         PasswordInputComponent,
+        NumberInputDirective
     ],
 })
 export class TextFieldModule {

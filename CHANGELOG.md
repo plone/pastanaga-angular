@@ -1,3 +1,9 @@
+# 1.19.2 (2021-03-04)
+
+### Improvements
+
+-   support native input type number attributes [jCarret]
+
 # 1.19.1 (2021-03-01)
 
 ### Improvements
