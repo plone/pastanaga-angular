@@ -1,4 +1,4 @@
-import { ChipComponent } from './chip.component';
+import { ChipCloseableComponent } from './chip-closeable.component';
 import { Component } from '@angular/core';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { MockModule, ngMocks, MockedDebugElement } from 'ng-mocks';
@@ -16,17 +16,19 @@ class TestComponent {
 }
 
 describe('ChipComponent Minimal', () => {
-    let spectator: SpectatorHost<ChipComponent, TestComponent>;
-    let component: ChipComponent;
+    let spectator: SpectatorHost<ChipCloseableComponent, TestComponent>;
+    let component: ChipCloseableComponent;
     let closeButton: MockedDebugElement<ButtonComponent>;
     const createHost = createHostFactory({
-        component: ChipComponent,
+        component: ChipCloseableComponent,
         host: TestComponent,
         imports: [MockModule(PaButtonModule), MockModule(PaAvatarModule)],
     });
 
     beforeEach(() => {
-        spectator = createHost(`<pa-chip [value]="value" (closed)="onClose($event)">A chip</pa-chip>`);
+        spectator = createHost(
+            `<pa-chip-closeable [value]="value" (closed)="onClose($event)">A chip</pa-chip-closeable>`,
+        );
         component = spectator.component;
         closeButton = ngMocks.find(spectator.debugElement, ButtonComponent);
     });
@@ -48,17 +50,17 @@ describe('ChipComponent Minimal', () => {
 });
 
 describe('ChipComponent Avatar noClose', () => {
-    let spectator: SpectatorHost<ChipComponent, TestComponent>;
-    let component: ChipComponent;
+    let spectator: SpectatorHost<ChipCloseableComponent, TestComponent>;
+    let component: ChipCloseableComponent;
     let avatar: MockedDebugElement<AvatarComponent>;
     const createHost = createHostFactory({
-        component: ChipComponent,
+        component: ChipCloseableComponent,
         host: TestComponent,
         imports: [MockModule(PaButtonModule), MockModule(PaAvatarModule)],
     });
 
     beforeEach(() => {
-        spectator = createHost(`<pa-chip [avatar]="avatar" noCloseButton>A chip</pa-chip>`);
+        spectator = createHost(`<pa-chip-closeable [avatar]="avatar" noCloseButton>A chip</pa-chip-closeable>`);
         component = spectator.component;
         avatar = ngMocks.find(spectator.debugElement, AvatarComponent);
     });

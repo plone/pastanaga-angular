@@ -4,11 +4,11 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-chip noCloseButton>Not closable chip</pa-chip>
-        <pa-chip disabled>Disabled chip</pa-chip>
-        <pa-chip *ngIf="first" (closed)="close('first')">Standard chip</pa-chip>
-        <pa-chip *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip>
-        <pa-chip *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with avatar based on name</pa-chip>
+        <pa-chip-closeable noCloseButton>Not closable chip</pa-chip-closeable>
+        <pa-chip-closeable disabled>Disabled chip</pa-chip-closeable>
+        <pa-chip-closeable *ngIf="first" (closed)="close('first')">Standard chip</pa-chip-closeable>
+        <pa-chip-closeable *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip-closeable>
+        <pa-chip-closeable *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with avatar based on name</pa-chip-closeable>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">

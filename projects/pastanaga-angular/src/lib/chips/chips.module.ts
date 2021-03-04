@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChipComponent } from './chip/chip.component';
+import { ChipCloseableComponent } from './chip-closeable/chip-closeable.component';
 import { PaAvatarModule } from '../avatar/avatar.module';
 import { PaButtonModule } from '../button/button.module';
 
 @NgModule({
-    declarations: [ChipComponent],
+    declarations: [ChipCloseableComponent],
     imports: [CommonModule, PaAvatarModule, PaButtonModule],
-    exports: [ChipComponent],
+    exports: [ChipCloseableComponent],
 })
 export class PaChipsModule {}

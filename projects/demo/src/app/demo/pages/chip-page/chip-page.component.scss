@@ -1,7 +1,10 @@
+@import "../../../../../../pastanaga-angular/src/lib/styles/variables";
+
 pa-demo-examples {
     display: flex;
     flex-wrap: wrap;
-    pa-chip {
-        display: contents;
+
+    pa-chip-closeable {
+        margin-right: rhythm(1);
     }
 }
