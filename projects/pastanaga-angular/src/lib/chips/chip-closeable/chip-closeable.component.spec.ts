@@ -2,11 +2,19 @@ import { ChipCloseableComponent } from './chip-closeable.component';
 import { Component } from '@angular/core';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { MockModule, ngMocks, MockedDebugElement } from 'ng-mocks';
-import { AvatarComponent, ButtonComponent, PaAvatarModule, PaButtonModule } from '../../..';
+import { ButtonComponent } from '../../button/button.component';
+import { PaButtonModule } from '../../button/button.module';
+import { PaAvatarModule } from '../../avatar/avatar.module';
+import { PaIconModule } from '../../icon/icon.module';
+import { AvatarComponent } from '../../avatar/avatar.component';
+import { AvatarModel } from '../../avatar/avatar.model';
+import { IconComponent } from '../../icon/icon.component';
+import { IconModel } from '../../icon/icon.model';
 
 @Component({ template: '' })
 class TestComponent {
-    avatar: any = { userName: 'the name' };
+    avatar: AvatarModel = { userName: 'the name' };
+    icon: IconModel = { name: 'iconName' };
     noCloseButton = true;
     disabled = true;
     ariaRole = 'role';
@@ -15,59 +23,54 @@ class TestComponent {
     onClose(event: any) {}
 }
 
-describe('ChipComponent Minimal', () => {
+describe('ChipCloseableComponent', () => {
     let spectator: SpectatorHost<ChipCloseableComponent, TestComponent>;
-    let component: ChipCloseableComponent;
     let closeButton: MockedDebugElement<ButtonComponent>;
     const createHost = createHostFactory({
         component: ChipCloseableComponent,
         host: TestComponent,
-        imports: [MockModule(PaButtonModule), MockModule(PaAvatarModule)],
+        imports: [MockModule(PaButtonModule), MockModule(PaAvatarModule), MockModule(PaIconModule)],
     });
 
-    beforeEach(() => {
-        spectator = createHost(
-            `<pa-chip-closeable [value]="value" (closed)="onClose($event)">A chip</pa-chip-closeable>`,
-        );
-        component = spectator.component;
-        closeButton = ngMocks.find(spectator.debugElement, ButtonComponent);
+    describe('by default', () => {
+        beforeEach(() => {
+            spectator = createHost(
+                `<pa-chip-closeable [value]="value" (closed)="onClose($event)">A chip</pa-chip-closeable>`,
+            );
+            closeButton = ngMocks.find(spectator.debugElement, ButtonComponent);
+        });
+
+        it('should have an enabled close button', () => {
+            expect(closeButton.attributes.aspect).toEqual('basic');
+            expect(closeButton.attributes.icon).toEqual('cross-small');
+            expect(closeButton.attributes.kind).toEqual('secondary');
+            expect(closeButton.attributes.size).toEqual('xsmall');
+            expect(closeButton.attributes['ng-reflect-disabled']).toEqual('false');
+        });
+
+        it('should notify the value when clicking on close button', () => {
+            const closed = jest.spyOn(spectator.hostComponent, 'onClose');
+            const mouseEvent = new MouseEvent('click');
+            spectator.dispatchMouseEvent(closeButton, 'click', 0, 0, mouseEvent);
+            expect(closed).toHaveBeenCalledWith({ event: mouseEvent, value: 'the value' });
+        });
     });
 
-    it('should have an enabled close button by default', () => {
-        expect(closeButton.attributes.aspect).toEqual('basic');
-        expect(closeButton.attributes.icon).toEqual('cross-small');
-        expect(closeButton.attributes.kind).toEqual('secondary');
-        expect(closeButton.attributes.size).toEqual('xsmall');
-        expect(closeButton.attributes['ng-reflect-disabled']).toEqual('false');
-    });
-
-    it('should notify the value when button clicked', () => {
-        const closed = jest.spyOn(spectator.hostComponent, 'onClose');
-        const mouseEvent = new MouseEvent('click');
-        spectator.dispatchMouseEvent(closeButton, 'click', 0, 0, mouseEvent);
-        expect(closed).toHaveBeenCalledWith({ event: mouseEvent, value: 'the value' });
-    });
-});
-
-describe('ChipComponent Avatar noClose', () => {
-    let spectator: SpectatorHost<ChipCloseableComponent, TestComponent>;
-    let component: ChipCloseableComponent;
-    let avatar: MockedDebugElement<AvatarComponent>;
-    const createHost = createHostFactory({
-        component: ChipCloseableComponent,
-        host: TestComponent,
-        imports: [MockModule(PaButtonModule), MockModule(PaAvatarModule)],
-    });
-
-    beforeEach(() => {
-        spectator = createHost(`<pa-chip-closeable [avatar]="avatar" noCloseButton>A chip</pa-chip-closeable>`);
-        component = spectator.component;
-        avatar = ngMocks.find(spectator.debugElement, AvatarComponent);
-    });
-
-    it('should have an avatar and no close button', () => {
-        expect(avatar).toBeTruthy();
+    it('should not have a close button when noCloseButton is set', () => {
+        spectator = createHost(`<pa-chip-closeable noCloseButton>A chip</pa-chip-closeable>`);
         const button = spectator.query('.pa-close-chip-button');
         expect(button).toEqual(null);
+    });
+
+    it('should display an avatar when avatar is set', () => {
+        spectator = createHost(`<pa-chip-closeable [avatar]="avatar">A chip</pa-chip-closeable>`);
+        const avatar = ngMocks.find(spectator.debugElement, AvatarComponent);
+        expect(avatar).toBeTruthy();
+    });
+
+    it('should display an icon when icon is set', () => {
+        spectator = createHost(`<pa-chip-closeable [icon]="icon">A chip</pa-chip-closeable>`);
+        const icon = ngMocks.find(spectator.debugElement, IconComponent);
+        expect(icon).toBeTruthy();
     });
 });

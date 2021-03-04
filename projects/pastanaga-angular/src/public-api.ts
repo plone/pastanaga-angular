@@ -14,7 +14,9 @@ export * from './lib/button/button.component';
 export * from './lib/breakpoint-observer/breakpoint.observer';
 
 export * from './lib/chips/chips.module';
+export * from './lib/chips/base-chip';
 export * from './lib/chips/chip-closeable/chip-closeable.component';
+export * from './lib/chips/chip-selectionable/chip-selectionable.component';
 
 export * from './lib/controls/form-field/form-field-hint/form-field-hint.component';
 export * from './lib/controls/form-field/form-field.module';
@@ -41,6 +43,7 @@ export * from './lib/dropdown/separator/separator.component';
 export * from './lib/focusable/focusable.module';
 
 export * from './lib/icon/icon.module';
+export * from './lib/icon/icon.model';
 export * from './lib/icon/icon.component';
 export * from './lib/icon/svg-loader.interface';
 export * from './lib/icon/svg-loader';

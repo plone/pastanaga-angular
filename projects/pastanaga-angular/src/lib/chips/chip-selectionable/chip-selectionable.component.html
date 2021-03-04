@@ -1,4 +1,10 @@
-<div class="pa-chip" [attr.role]="ariaRole">
+<div class="pa-chip pa-selectionable"
+     paFocusable
+     [paFocusDisabled]="disabled"
+     [class.pa-disabled]="disabled"
+     [class.pa-selected]="selected"
+     [attr.role]="ariaRole"
+     (click)="triggerSelect()">
     <pa-avatar *ngIf="avatar"
                size="tiny"
                [userId]="avatar.userId"
@@ -12,12 +18,4 @@
     <span class="pa-chip-content-wrapper">
         <ng-content></ng-content>
     </span>
-    <pa-button *ngIf="canClose"
-               class="pa-close-chip-button"
-               icon="cross-small"
-               size="xsmall"
-               kind="secondary"
-               aspect="basic"
-               [disabled]="disabled"
-               (click)="close($event)"></pa-button>
 </div>

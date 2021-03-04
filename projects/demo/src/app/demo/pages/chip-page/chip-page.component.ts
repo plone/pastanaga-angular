@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { avatar } from '../../demo.component';
-import { AvatarModel, detectChanges } from '../../../../../../pastanaga-angular/src';
+import { AvatarModel, detectChanges, IconModel } from '../../../../../../pastanaga-angular/src';
 
 @Component({
     selector: 'pa-demo-chip-page',
@@ -18,8 +18,20 @@ export class ChipPageComponent {
         image: avatar,
     };
 
-    code = `<pa-chip-closeable>A chip</pa-chip-closeable>
-<pa-chip-closeable [avatar]="avatar">A chip with avatar</pa-chip-closeable>`;
+    readonly icon: IconModel = {
+        path: 'assets/ninja.svg',
+        color: '#2597f4',
+    };
+
+    selection?: number;
+
+    code = `<pa-chip-closeable noCloseButton>Not closable chip</pa-chip-closeable>
+<pa-chip-closeable (closed)="close('chip2')">Closeable chip</pa-chip-closeable>
+<pa-chip-closeable [avatar]="avatar" (closed)="close('chip1')">Closeable chip with avatar</pa-chip-closeable>
+`;
+    codeSelection = `<pa-chip-selectionable [selected]="selection === 1" (select)="onSelect(1)">Selectionable chip</pa-chip-selectionable>
+<pa-chip-selectionable [selected]="selection === 2" (select)="onSelect(2)" disabled>Disabled chip</pa-chip-selectionable>
+<pa-chip-selectionable [selected]="selection === 3" (select)="onSelect(3)" [icon]="icon">Icon chip</pa-chip-selectionable>`;
 
     constructor(private cdr: ChangeDetectorRef) {}
 
@@ -42,5 +54,13 @@ export class ChipPageComponent {
         this.first = true;
         this.second = true;
         this.third = true;
+    }
+
+    onSelect(id: number) {
+        if (this.selection !== id) {
+            this.selection = id;
+        } else {
+            this.selection = undefined;
+        }
     }
 }

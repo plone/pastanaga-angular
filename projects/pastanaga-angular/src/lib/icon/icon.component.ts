@@ -13,6 +13,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { SvgLoader } from './svg-loader';
 import { markForCheck, Size } from '../common';
+import { IconModel } from './icon.model';
 
 @Component({
     selector: 'pa-icon',
@@ -22,6 +23,17 @@ import { markForCheck, Size } from '../common';
     encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent {
+    @Input() set icon(value: IconModel) {
+        if (value.name) {
+            this.name = value.name;
+        } else if (value.path) {
+            this.path = value.path;
+        }
+        this.size = value.size;
+        this.color = value.color;
+        this.background = value.background;
+    }
+
     @Input() set name(value: string) {
         if (!!value) {
             this._name = value;
@@ -34,19 +46,23 @@ export class IconComponent {
         this._accessibilityName = value.substring(value.lastIndexOf('/') + 1, value.indexOf('.svg'));
         this.updateSvg();
     }
-    @Input() set size(value: Size) {
+    @Input() set size(value: Size | undefined) {
         if (!!value) {
             this._size = value;
             this.updateSvg();
         }
     }
-    @Input() set color(value: string) {
-        this._color = value;
-        this.updateSvg();
+    @Input() set color(value: string | undefined) {
+        if (!!value) {
+            this._color = value;
+            this.updateSvg();
+        }
     }
-    @Input() set background(value: string) {
-        this._background = value;
-        this.updateSvg();
+    @Input() set background(value: string | undefined) {
+        if (!!value) {
+            this._background = value;
+            this.updateSvg();
+        }
     }
 
     _name = '';
@@ -65,7 +81,7 @@ export class IconComponent {
         private service: SvgIconRegistryService,
         private svgLoader: SvgLoader,
         @Inject(PLATFORM_ID) protected platformId: Object,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
     ) {}
 
     private updateSvg() {

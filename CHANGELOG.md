@@ -1,3 +1,12 @@
+# 2.23.0 (2021-03-04)
+
+### Breaking changes
+- **Chip**: `pa-chip` renamed to `pa-chip-closeable` [mpellerin42]
+
+### Improvements
+- **Chips**: New kind of chip – `pa-chip-selectionable` (without close button) allowing to chip selection [mpellerin42]
+- **Icon**: Support `IconModel` to fill all arguments of `pa-icon` at once [mpellerin42]
+
 # 2.22.0 (2021-03-03)
 
 ### Breaking changes

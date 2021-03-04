@@ -1,10 +1,13 @@
 @import "../../../../../../pastanaga-angular/src/lib/styles/variables";
 
-pa-demo-examples {
+.chip-container {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: rhythm(2);
 
-    pa-chip-closeable {
+    pa-chip-closeable,
+    pa-chip-selectionable {
         margin-right: rhythm(1);
+        margin-bottom: rhythm(1);
     }
 }

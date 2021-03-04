@@ -1,10 +1,12 @@
 import { Directive, Input } from '@angular/core';
 import { AvatarModel } from '../avatar/avatar.model';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { IconModel } from '../icon/icon.model';
 
 @Directive()
 export class BaseChip {
     @Input() avatar?: AvatarModel;
+    @Input() icon?: IconModel;
 
     @Input() ariaRole = 'listitem';
 

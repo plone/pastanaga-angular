@@ -1,50 +1,90 @@
 <pa-demo-page>
-    <pa-demo-title>Chip</pa-demo-title>
-    <pa-demo-description>Simple chip.
+    <pa-demo-title>Chips</pa-demo-title>
+    <pa-demo-description>
+        <p>There are two kinds of chip: <strong>closeable chips</strong> and <strong>selectionable chips</strong>.</p>
+        <p>Both kinds have the same look and feel and can display an avatar and/or an icon.</p>
+        <p>Closeable chips can also display a close button on the right.</p>
+        <p>Selectionable chips doesn't have any button but support a select event and corresponding style.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-chip-closeable noCloseButton>Not closable chip</pa-chip-closeable>
-        <pa-chip-closeable disabled>Disabled chip</pa-chip-closeable>
-        <pa-chip-closeable *ngIf="first" (closed)="close('first')">Standard chip</pa-chip-closeable>
-        <pa-chip-closeable *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip-closeable>
-        <pa-chip-closeable *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with avatar based on name</pa-chip-closeable>
+        <h4>Closeable chip</h4>
+        <div class="chip-container">
+            <pa-chip-closeable noCloseButton>Not closable chip</pa-chip-closeable>
+            <pa-chip-closeable disabled>Disabled chip</pa-chip-closeable>
+            <pa-chip-closeable [icon]="icon">Icon chip</pa-chip-closeable>
+            <pa-chip-closeable *ngIf="first" (closed)="close('first')">Standard chip</pa-chip-closeable>
+            <pa-chip-closeable *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip-closeable>
+            <pa-chip-closeable *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with name avatar</pa-chip-closeable>
+        </div>
+
+        <h4>Selectionable chip</h4>
+        <div class="chip-container">
+            <pa-chip-selectionable [selected]="selection === 1" (select)="onSelect(1)">Selectionable chip</pa-chip-selectionable>
+            <pa-chip-selectionable [selected]="selection === 2" (select)="onSelect(2)" disabled>Disabled chip</pa-chip-selectionable>
+            <pa-chip-selectionable [selected]="selection === 3" (select)="onSelect(3)" [icon]="icon">Icon chip</pa-chip-selectionable>
+            <pa-chip-selectionable [selected]="selection === 4" (select)="onSelect(4)" [avatar]="avatarWithImage">Chip with avatar</pa-chip-selectionable>
+            <pa-chip-selectionable [selected]="selection === 5" (select)="onSelect(5)" [avatar]="{userName: 'Amanda Caballerot'}">Chip with name avatar</pa-chip-selectionable>
+        </div>
+
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-button (click)="reload()">Reload</pa-button>
+            <pa-button (click)="reload()">Reset</pa-button>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h3>Inputs</h3>
+        <h3>Common inputs</h3>
 
         <dl>
-            <dt>avatar</dt>
-            <dd>Configuration of the avatar to display <code>AvatarModel</code>. <small>(optional)</small></dd>
+            <dt>ariaRole</dt>
+            <dd>Defines the role attribute of the chip. <small>(listitem by default)</small></dd>
 
-            <dt>noCloseButton</dt>
-            <dd>Removes the close button from the chip. <small>(optional)</small></dd>
+            <dt>avatar</dt>
+            <dd><code>AvatarModel</code> configuring the avatar to display. <small>(optional)</small></dd>
 
             <dt>disabled</dt>
-            <dd>Disable the close button of the chip. <small>(optional)</small></dd>
+            <dd>Disable the chip. <small>(optional)</small></dd>
 
-            <dt>ariaRole</dt>
-            <dd>Defines the role attribute of the chip <code>(listitem by default)</code>. <small>(optional)</small></dd>
+            <dt>icon</dt>
+            <dd><code>IconModel</code> configuring the icon to display. <small>(optional)</small></dd>
 
             <dt>value</dt>
             <dd>A value held by the chip. <small>(optional)</small></dd>
         </dl>
 
-        <h3>Outputs</h3>
+        <h3><code>pa-chip-closeable</code></h3>
+        <h4>Inputs</h4>
+        <dl>
+            <dt>noCloseButton</dt>
+            <dd>Removes the close button from the chip. <small>(optional)</small></dd>
+        </dl>
 
+        <h4>Outputs</h4>
         <dl>
             <dt>closed</dt>
             <dd>Emits when the closed button is clicked. Provides the event and the optional value of it.</dd>
         </dl>
+
+        <h3><code>pa-chip-selectionable</code></h3>
+        <h4>Inputs</h4>
+        <dl>
+            <dt>selected</dt>
+            <dd>Boolean applying selected style to the chip</dd>
+        </dl>
+        <h4>Outputs</h4>
+        <dl>
+            <dt>select</dt>
+            <dd>Event trigger when clicking on the chip. <small>Triggered only if not disabled</small></dd>
+        </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
+        Closeable chips
         <pre><code>{{code}}</code></pre>
+
+        Selectionable chips
+        <pre><code>{{codeSelection}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>
