@@ -1,12 +1,14 @@
 <div class="pa-chip" [attr.role]="ariaRole">
-    <ng-container *ngIf="avatar">
-        <pa-avatar size="tiny"
-                   [userId]="avatar.userId"
-                   [userName]="avatar.userName"
-                   [image]="avatar.image"
-                   [imageSrc]="avatar.imageSrc"
-                   [autoBackground]="avatar.autoBackground"></pa-avatar>
-    </ng-container>
+    <pa-avatar *ngIf="avatar"
+               size="tiny"
+               [userId]="avatar.userId"
+               [userName]="avatar.userName"
+               [image]="avatar.image"
+               [imageSrc]="avatar.imageSrc"
+               [autoBackground]="avatar.autoBackground"></pa-avatar>
+
+    <pa-icon *ngIf="icon" [icon]="icon"></pa-icon>
+
     <span class="pa-chip-content-wrapper">
         <ng-content></ng-content>
     </span>

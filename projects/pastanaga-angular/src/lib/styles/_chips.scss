@@ -9,6 +9,24 @@
     padding: 0 0 0 rhythm(.25);
     border-radius: rhythm(5);
     overflow: hidden;
+
+    &.pa-selectionable:not(.pa-disabled) {
+        cursor: pointer;
+
+        &:hover {
+            background: $color-neutral-secondary-lighter;
+        }
+        &.pa-selected {
+            background: $color-accent-primary-lightest;
+        }
+    }
+    &.pa-disabled {
+        color: $color-neutral-secondary-light;
+    }
+
+    & > pa-icon {
+        padding-left: rhythm(1.5);
+    }
 }
 .pa-chip-content-wrapper {
     margin: 0 rhythm(1);
