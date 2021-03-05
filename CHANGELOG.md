@@ -1,3 +1,9 @@
+# 2.23.1 (2021-03-05)
+
+### Improvements
+- **PopupDirective**: Allow to override popup margin [mpellerin42]
+- **Chips**: Fix minor spacing issues [mpellerin42]
+
 # 2.23.0 (2021-03-04)
 
 ### Breaking changes
