@@ -1,6 +1,7 @@
 <div class="pa-chip pa-selectionable"
      paFocusable
      [paFocusDisabled]="disabled"
+     [class.pa-with-avatar]="!!avatar"
      [class.pa-disabled]="disabled"
      [class.pa-selected]="selected"
      [attr.role]="ariaRole"
@@ -13,9 +14,9 @@
                [imageSrc]="avatar.imageSrc"
                [autoBackground]="avatar.autoBackground"></pa-avatar>
 
-    <pa-icon *ngIf="icon" [icon]="icon"></pa-icon>
+    <pa-icon *ngIf="icon" class="pa-chip-icon" [icon]="icon"></pa-icon>
 
-    <span class="pa-chip-content-wrapper">
+    <span class="pa-chip-content-wrapper body-s">
         <ng-content></ng-content>
     </span>
 </div>

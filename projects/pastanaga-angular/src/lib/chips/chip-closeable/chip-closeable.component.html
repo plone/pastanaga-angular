@@ -1,4 +1,7 @@
-<div class="pa-chip" [attr.role]="ariaRole">
+<div class="pa-chip"
+     [class.pa-with-avatar]="!!avatar"
+     [class.pa-with-button]="canClose"
+     [attr.role]="ariaRole">
     <pa-avatar *ngIf="avatar"
                size="tiny"
                [userId]="avatar.userId"
@@ -7,14 +10,14 @@
                [imageSrc]="avatar.imageSrc"
                [autoBackground]="avatar.autoBackground"></pa-avatar>
 
-    <pa-icon *ngIf="icon" [icon]="icon"></pa-icon>
+    <pa-icon *ngIf="icon" class="pa-chip-icon" [icon]="icon"></pa-icon>
 
-    <span class="pa-chip-content-wrapper">
+    <span class="pa-chip-content-wrapper body-s">
         <ng-content></ng-content>
     </span>
     <pa-button *ngIf="canClose"
                class="pa-close-chip-button"
-               icon="cross-small"
+               icon="cross-medium"
                size="xsmall"
                kind="secondary"
                aspect="basic"
