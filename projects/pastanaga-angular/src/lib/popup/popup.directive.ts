@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { getPositionedParent, PositionStyle } from '../common';
 import { MARGIN, PopupComponent } from './popup.component';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
 
 @Directive({
@@ -11,6 +11,9 @@ import { PopupService } from './popup.service';
 export class PopupDirective implements OnInit {
     @Input() paPopup?: PopupComponent;
     @Input() popupPosition?: PositionStyle;
+    @Input() set popupMargin(value: number) {
+        this._margin = coerceNumberProperty(value);
+    }
     @Input()
     set openOnHover(value: boolean) {
         this._openOnHover = coerceBooleanProperty(value);
@@ -55,6 +58,7 @@ export class PopupDirective implements OnInit {
     private _popupOnTop = false;
     private _sameWidth = false;
     private _openOnHover = false;
+    private _margin = MARGIN;
 
     constructor(private element: ElementRef, private service: PopupService) {}
 
@@ -107,8 +111,8 @@ export class PopupDirective implements OnInit {
 
         const position: PositionStyle = {
             position: 'absolute',
-            top: !this.popupOnTop ? top + MARGIN + 'px' : undefined,
-            bottom: this.popupOnTop ? bottom - MARGIN + 'px' : undefined,
+            top: !this.popupOnTop ? top + this._margin + 'px' : undefined,
+            bottom: this.popupOnTop ? bottom - this._margin + 'px' : undefined,
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
 
