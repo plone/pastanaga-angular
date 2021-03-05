@@ -1,5 +1,5 @@
 import {AfterContentInit, Directive, Input} from '@angular/core';
-import {InputComponent} from 'pastanaga-angular/lib/textfield/input.component';
+import {InputComponent} from './input.component';
 
 /**
  * Applied on a pa-input

@@ -1,3 +1,9 @@
+# 1.19.4 (2020-03-05)
+
+### Bug fixes
+
+-   Fix input type number imports [jCarret]
+
 # 1.19.3 (2021-03-04)
 
 ### Improvements
