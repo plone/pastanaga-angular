@@ -42,7 +42,7 @@ describe('ChipCloseableComponent', () => {
 
         it('should have an enabled close button', () => {
             expect(closeButton.attributes.aspect).toEqual('basic');
-            expect(closeButton.attributes.icon).toEqual('cross-small');
+            expect(closeButton.attributes.icon).toEqual('cross-medium');
             expect(closeButton.attributes.kind).toEqual('secondary');
             expect(closeButton.attributes.size).toEqual('xsmall');
             expect(closeButton.attributes['ng-reflect-disabled']).toEqual('false');

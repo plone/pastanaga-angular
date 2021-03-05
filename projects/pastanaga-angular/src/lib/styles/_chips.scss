@@ -6,9 +6,16 @@
     background: $color-neutral-primary-lighter;
     height: rhythm(4);
     max-width: rhythm(56);
-    padding: 0 0 0 rhythm(.25);
+    padding: rhythm(.5) rhythm(1.5);
     border-radius: rhythm(5);
     overflow: hidden;
+
+    &.pa-with-avatar {
+        padding-left: rhythm(.5);
+    }
+    &.pa-with-button {
+        padding-right: 0;
+    }
 
     &.pa-selectionable:not(.pa-disabled) {
         cursor: pointer;
@@ -24,17 +31,17 @@
         color: $color-neutral-secondary-light;
     }
 
-    & > pa-icon {
-        padding-left: rhythm(1.5);
+    pa-avatar,
+    .pa-chip-icon {
+        margin-right: rhythm(1);
+    }
+
+    pa-button {
+        margin-left: rhythm(1);
     }
 }
 .pa-chip-content-wrapper {
-    margin: 0 rhythm(1);
     overflow: hidden;
-    @include font-size(s);
-    @include line-height(m);
-    font-weight: $font-weight-regular;
-    letter-spacing: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
 }

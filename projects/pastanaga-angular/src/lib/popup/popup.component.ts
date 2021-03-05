@@ -15,7 +15,7 @@ import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
-export const MARGIN = 6;
+export const MARGIN = 4;
 
 @Component({
     selector: 'pa-popup',
@@ -66,7 +66,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         public popupService: PopupService,
         public renderer: Renderer2,
         public element: ElementRef,
-        public cdr: ChangeDetectorRef
+        public cdr: ChangeDetectorRef,
     ) {
         this.popupService.closeAllPopups.subscribe(() => this.close());
         this.popupService.closeAllButId.subscribe((id) => {
