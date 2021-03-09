@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { PopupDirective } from '../../../../../../../projects/pastanaga-angular/src/lib/popup/popup.directive';
 
 @Component({
     templateUrl: './popup-page.component.html',
@@ -11,4 +12,13 @@ export class PopupPageComponent {
     popupOnRight = false;
     popupOnTop = false;
     sameWidth = false;
+    @ViewChild('myPopupDirective') myPopupDirective?: PopupDirective;
+
+    openProgrammatically(event: MouseEvent) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (this.myPopupDirective) {
+            this.myPopupDirective.toggle();
+        }
+    }
 }

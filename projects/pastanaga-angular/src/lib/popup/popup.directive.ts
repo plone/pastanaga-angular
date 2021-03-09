@@ -51,7 +51,6 @@ export class PopupDirective implements OnInit {
     }
 
     private _rootParent?: HTMLElement;
-    private _remoteElement?: HTMLElement;
     private _disabled = false;
 
     private _popupOnRight = false;
@@ -69,18 +68,22 @@ export class PopupDirective implements OnInit {
     @HostListener('click', ['$event'])
     onClick($event: MouseEvent) {
         if (!this._disabled) {
-            if (!!this.paPopup) {
-                if (this.paPopup._isDisplayed) {
-                    this.paPopup.close();
-                } else {
-                    const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
-                    this.paPopup.show(position);
-                }
-            }
+            this.toggle();
         }
         if ($event instanceof MouseEvent) {
             $event.preventDefault();
             $event.stopPropagation();
+        }
+    }
+
+    toggle() {
+        if (!!this.paPopup) {
+            if (this.paPopup._isDisplayed) {
+                this.paPopup.close();
+            } else {
+                const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
+                this.paPopup.show(position);
+            }
         }
     }
 
@@ -99,8 +102,7 @@ export class PopupDirective implements OnInit {
 
     getPosition(): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
-        const clickedElement: HTMLElement = this._remoteElement || directiveElement;
-        const rect = clickedElement.getBoundingClientRect();
+        const rect = directiveElement.getBoundingClientRect();
 
         if (!this._rootParent) {
             this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);

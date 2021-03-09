@@ -1,3 +1,8 @@
+# 2.23.2 (2021-03-09)
+
+### Improvements
+- **PopupDirective**: Allow to toggle popup programmatically [ebrehault]
+
 # 2.23.1 (2021-03-05)
 
 ### Improvements
