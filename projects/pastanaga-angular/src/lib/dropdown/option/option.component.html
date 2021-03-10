@@ -8,7 +8,6 @@
     (click)="onSelect($event)"
     (keyup.enter)="onSelect($event)"
 >
-    <pa-icon *ngIf="!!icon" [name]="icon"></pa-icon>
+    <pa-icon *ngIf="!!icon" [icon]="_icon" [name]="iconName"></pa-icon>
     <div class="pa-option-content"><ng-content></ng-content></div>
-    <pa-icon *ngIf="selected" class="pa-option-selected-icon" name="check"></pa-icon>
 </li>

@@ -1,3 +1,11 @@
+# 2.23.3 (2021-03-10)
+
+### Improvements
+- **OptionComponent**: [mpellerin42]
+    - support `string` and `IconModel` for icon property
+    - no more check mark on selected options
+    - rhythm 8 spacing
+
 # 2.23.2 (2021-03-09)
 
 ### Improvements
