@@ -12,6 +12,7 @@ import {
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from '../../popup/popup.service';
 import { markForCheck } from '../../common';
+import { IconModel } from '../../icon/icon.model';
 
 @Component({
     selector: 'pa-option',
@@ -28,11 +29,12 @@ export class OptionComponent implements AfterContentInit, OnInit {
         return this._value;
     }
     @Input()
-    set icon(value: string) {
-        this._icon = value || '';
+    set icon(value: string | IconModel) {
+        this.iconName = typeof value === 'string' ? value : '';
+        this._icon = typeof value === 'object' ? value : undefined;
     }
-    get icon(): string {
-        return this._icon;
+    get icon(): string | IconModel {
+        return this._icon || this.iconName;
     }
     @Input()
     set destructive(value: boolean) {
@@ -69,10 +71,11 @@ export class OptionComponent implements AfterContentInit, OnInit {
     @Output() selectOption: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
 
     text = '';
+    iconName = '';
+    _icon?: IconModel;
     _hidden = false;
 
     private _value = '';
-    private _icon = '';
     private _disabled = false;
     private _selected = false;
     private _destructive = false;
