@@ -1,3 +1,8 @@
+# 2.23.4 (2021-03-10)
+
+### Improvements
+- **OptionComponent**: fix line-height on options without icons [mpellerin42]
+
 # 2.23.3 (2021-03-10)
 
 ### Improvements
