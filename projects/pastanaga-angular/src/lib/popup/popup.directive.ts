@@ -49,9 +49,17 @@ export class PopupDirective implements OnInit {
     set popupDisabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value);
     }
+    @Input()
+    set openOnly(value: boolean) {
+        this._openOnly = coerceBooleanProperty(value);
+    }
+    get openOnly() {
+        return this._openOnly;
+    }
 
     private _rootParent?: HTMLElement;
     private _disabled = false;
+    private _openOnly = false;
 
     private _popupOnRight = false;
     private _popupOnTop = false;
@@ -78,7 +86,7 @@ export class PopupDirective implements OnInit {
 
     toggle() {
         if (!!this.paPopup) {
-            if (this.paPopup._isDisplayed) {
+            if (this.paPopup._isDisplayed && !this.openOnly) {
                 this.paPopup.close();
             } else {
                 const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
