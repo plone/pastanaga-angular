@@ -48,3 +48,10 @@ $chip-max-width-medium: rhythm(56);
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+
+@media (min-width: $size-viewport-medium-min) {
+    .pa-chip {
+        max-width: $chip-max-width-medium;
+    }
+}
