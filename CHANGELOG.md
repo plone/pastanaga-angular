@@ -1,3 +1,8 @@
+# 2.23.7 (2021-03-12)
+
+### Bugfix
+- **Chips**: change chip max-width to be working on mobile without impacting chip look and feel when container is flex [mpellerin42]
+
 # 2.23.6 (2021-03-12)
 
 ### Bugfix

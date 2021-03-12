@@ -1,13 +1,14 @@
 @import "variables";
 
-$chip-max-width: rhythm(56);
+$chip-max-width-small: rhythm(32);
+$chip-max-width-medium: rhythm(56);
 
 .pa-chip {
     display: inline-flex;
     align-items: center;
     background: $color-neutral-primary-lighter;
     height: rhythm(4);
-    max-width: Min(#{$chip-max-width}, 100%);
+    max-width: $chip-max-width-small;
     padding: rhythm(.5) rhythm(1.5);
     border-radius: rhythm(5);
     overflow: hidden;
