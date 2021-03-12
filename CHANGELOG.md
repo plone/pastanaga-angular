@@ -1,3 +1,8 @@
+# 2.23.6 (2021-03-12)
+
+### Bugfix
+- **Chips**: prevent chips to be wider than their container [mpellerin42] 
+
 # 2.23.5 (2021-03-11)
 
 ### Improvements
