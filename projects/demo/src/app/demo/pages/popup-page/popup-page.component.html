@@ -76,6 +76,9 @@
             <dt>openOnHover</dt>
             <dd>Display popup when hovering the element containing the popup directive. <small>(default: false)</small></dd>
 
+            <dt>openOnly</dt>
+            <dd>Don't close popup when clicking on the element carrying the directive while the popup is visible. <small>(default: false)</small></dd>
+
             <dt>paPopup</dt>
             <dd>Popup to open when clicking on the element carrying the directive</dd>
 
@@ -98,5 +101,11 @@
 
     <pa-demo-code>
         <pre><code>{{example}}</code></pre>
+
+        To open a popup programmatically, in your template add a reference to you popup directive:
+        <pre><code>{{openProgrammaticallyTemplate}}</code></pre>
+        Then in your component, you can call <code>toggle</code> method of your directive to open/close the popup:
+        <pre><code>{{openProgrammaticallyComponent}}</code></pre>
+
     </pa-demo-code>
 </pa-demo-page>

@@ -1,3 +1,8 @@
+# 2.23.5 (2021-03-11)
+
+### Improvements
+- **PopupDirective**: Add `openOnly` input to prevent popup from closing when clicking on the element carrying the directive while the popup is visible [mpellerin42]
+
 # 2.23.4 (2021-03-10)
 
 ### Improvements
