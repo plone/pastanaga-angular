@@ -12,7 +12,7 @@
                 <pa-table-cell header>Last updated</pa-table-cell>
                 <pa-table-cell header>Size</pa-table-cell>
                 <pa-table-cell-menu header>
-                    <pa-button icon="ellipsis-vertical" (click)="openMenu($event)"></pa-button>
+                    <pa-button icon="more" (click)="openMenu($event)"></pa-button>
                 </pa-table-cell-menu>
             </pa-table-header>
             <pa-table-row *ngFor="let item of [data[0],data[1],data[2]]" [class.pa-selected]="rowSelected === item.id" (click)="clickRow(item.id)" clickable>
@@ -22,7 +22,7 @@
                 <pa-table-cell>{{item.lastUpdate}}</pa-table-cell>
                 <pa-table-cell>{{item.size}}</pa-table-cell>
                 <pa-table-cell-menu>
-                    <pa-button icon="ellipsis-vertical" size="small" (click)="openMenu($event)">Menu button</pa-button>
+                    <pa-button icon="more" size="small" (click)="openMenu($event)">Menu button</pa-button>
                 </pa-table-cell-menu>
             </pa-table-row>
             <pa-table-row-header>{{subHeader}}</pa-table-row-header>
@@ -33,7 +33,7 @@
                 <pa-table-cell>{{item.lastUpdate}}</pa-table-cell>
                 <pa-table-cell>{{item.size}}</pa-table-cell>
                 <pa-table-cell-menu>
-                    <pa-button icon="ellipsis-vertical" size="small" (click)="openMenu($event)">Menu button</pa-button>
+                    <pa-button icon="more" size="small" (click)="openMenu($event)">Menu button</pa-button>
                 </pa-table-cell-menu>
             </pa-table-row>
         </pa-table>
@@ -79,7 +79,7 @@
             <dd>If true, display the sorting indicator icon, otherwise it will display a chevron down icon on hover. <small>False by default</small></dd>
 
             <dt>isDescending</dt>
-            <dd>Set the sorting indicator to <code>sorted-descending</code> icon. <small>By default, sorting indicator is <code>sorted-ascending</code></small></dd>
+            <dd>Set the sorting indicator to <code>arrow-up</code> icon. <small>By default, sorting indicator is <code>arrow-down</code></small></dd>
 
             <dt>sort</dt>
             <dd>Event triggered when clicking on the cell.</dd>

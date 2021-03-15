@@ -24,6 +24,9 @@ import { IconModel } from './icon.model';
 })
 export class IconComponent {
     @Input() set icon(value: IconModel) {
+        if (!value) {
+            return;
+        }
         if (value.name) {
             this.name = value.name;
         } else if (value.path) {

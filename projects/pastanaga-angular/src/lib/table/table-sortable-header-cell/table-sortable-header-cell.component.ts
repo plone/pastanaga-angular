@@ -31,9 +31,9 @@ export class TableSortableHeaderCellComponent implements OnChanges {
 
     private updateIcon() {
         if (!coerceBooleanProperty(this.active)) {
-            this.icon = 'chevron-small-up';
+            this.icon = 'chevron-up';
         } else {
-            this.icon = coerceBooleanProperty(this.isDescending) ? 'sorted-descending' : 'sorted-ascending';
+            this.icon = coerceBooleanProperty(this.isDescending) ? 'arrow-up' : 'arrow-down';
         }
     }
 }

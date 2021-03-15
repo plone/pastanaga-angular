@@ -72,7 +72,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell header>Last updated</pa-table-cell>
         <pa-table-cell header>Size</pa-table-cell>
         <pa-table-cell-menu header>
-            <pa-button icon="ellipsis-vertical" (click)="openMenu($event)"></pa-button>
+            <pa-button icon="more" (click)="openMenu($event)"></pa-button>
         </pa-table-cell-menu>
     </pa-table-header>
     <pa-table-row-header>Today</pa-table-row-header>
@@ -83,7 +83,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>Today, 9:45 AM</pa-table-cell>
         <pa-table-cell>100 MB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -93,7 +93,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>1/2/2010</pa-table-cell>
         <pa-table-cell>15 KB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -103,7 +103,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>12/31/2007</pa-table-cell>
         <pa-table-cell>100 bytes</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row-header>Yesterday</pa-table-row-header>
@@ -114,7 +114,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>Yesterday, 12:56 PM</pa-table-cell>
         <pa-table-cell>234.54 TB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -124,7 +124,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>4/10/2020</pa-table-cell>
         <pa-table-cell>24.56 MB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -134,7 +134,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>11/11/2011</pa-table-cell>
         <pa-table-cell>3.56 MB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
 </pa-table>`;
