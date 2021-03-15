@@ -16,6 +16,9 @@
         display: inline-flex;
         align-items: center
     }
+    .pa-button-label {
+        font-weight: $font-weight-button-label;
+    }
 
     svg {
         display: block;
@@ -299,13 +302,5 @@
                 border: $border-button-basic-disabled;
             }
         }
-    }
-
-    &.pa-solid .pa-button-label {
-        font-weight: $font-weight-button-label-solid;
-    }
-
-    &.pa-basic .pa-button-label {
-        font-weight: $font-weight-button-label-basic;
     }
 }
