@@ -16,12 +16,27 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableSortableHeaderCellComponent implements OnChanges {
-    @Input() active = false;
-    @Input() isDescending = false;
+    @Input()
+    set active(value: boolean) {
+        this._active = coerceBooleanProperty(value);
+    }
+    get active() {
+        return this._active;
+    }
+    @Input()
+    set isDescending(value: boolean) {
+        this._isDescending = coerceBooleanProperty(value);
+    }
+    get isDescending() {
+        return this._isDescending;
+    }
 
     @Output() sort = new EventEmitter();
 
     icon?: string;
+
+    private _active = false;
+    private _isDescending = false;
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.active || changes.isDescending) {

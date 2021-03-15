@@ -6,13 +6,13 @@
     <pa-demo-examples>
         <pa-table columns="minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px">
             <pa-table-header>
-                <pa-table-sortable-header-cell label="Name" (sorted)="sortBy($event)"></pa-table-sortable-header-cell>
+                <pa-table-sortable-header-cell [active]="sorted" [isDescending]="isDescending" (sort)="sortBy()">Name</pa-table-sortable-header-cell>
                 <pa-table-cell header>Tags</pa-table-cell>
                 <pa-table-cell header>Shared with</pa-table-cell>
                 <pa-table-cell header>Last updated</pa-table-cell>
                 <pa-table-cell header>Size</pa-table-cell>
                 <pa-table-cell-menu header>
-                    <pa-button icon="more" (click)="openMenu($event)"></pa-button>
+                    <pa-button icon="menu-left" (click)="openMenu($event)"></pa-button>
                 </pa-table-cell-menu>
             </pa-table-header>
             <pa-table-row *ngFor="let item of [data[0],data[1],data[2]]" [class.pa-selected]="rowSelected === item.id" (click)="clickRow(item.id)" clickable>
@@ -22,7 +22,7 @@
                 <pa-table-cell>{{item.lastUpdate}}</pa-table-cell>
                 <pa-table-cell>{{item.size}}</pa-table-cell>
                 <pa-table-cell-menu>
-                    <pa-button icon="more" size="small" (click)="openMenu($event)">Menu button</pa-button>
+                    <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
                 </pa-table-cell-menu>
             </pa-table-row>
             <pa-table-row-header>{{subHeader}}</pa-table-row-header>
@@ -33,7 +33,7 @@
                 <pa-table-cell>{{item.lastUpdate}}</pa-table-cell>
                 <pa-table-cell>{{item.size}}</pa-table-cell>
                 <pa-table-cell-menu>
-                    <pa-button icon="more" size="small" (click)="openMenu($event)">Menu button</pa-button>
+                    <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
                 </pa-table-cell-menu>
             </pa-table-row>
         </pa-table>
