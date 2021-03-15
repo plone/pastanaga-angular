@@ -1,3 +1,16 @@
+# 2.24.0 (2021-03-15)
+
+### Breaking changes
+- **Size**: no more `xxsmall` nor `xsmall` sizes [mpellerin42]
+- **Icons**: [mpellerin42]
+    - no more svg provided in assets (icons are in `glyphs-sprite.svg`)
+    - the icon list provided and some of their names changed
+    - documentation and components have been updated with the new names
+- **Button**: [mpellerin42]
+    - `xsmall` button not supported anymore, use `small` button instead
+    - display medium size icon in small button
+    - fix small and medium button padding
+
 # 2.23.7 (2021-03-12)
 
 ### Bugfix
