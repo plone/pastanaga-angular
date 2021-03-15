@@ -4,14 +4,6 @@ pa-icon {
     svg {
         vertical-align: middle;
         fill: currentColor;
-        &.pa-xxsmall {
-            width: rhythm(1);
-            height: rhythm(1);
-        }
-        &.pa-xsmall {
-            width: rhythm(1.5);
-            height: rhythm(1.5);
-        }
         &.pa-small {
             width: rhythm(2);
             height: rhythm(2);

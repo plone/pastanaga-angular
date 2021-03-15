@@ -29,19 +29,6 @@
         border-radius: 50%;
     }
 
-    &.pa-xsmall {
-        font-size: font-size(xs);
-        line-height: rhythm(3);
-        padding: $padding-button-xsmall;
-
-        &.pa-button-icon {
-            padding: $padding-button-icon-xsmall;
-        }
-        &.pa-button-icon-text {
-            padding: $padding-button-icon-text-xsmall;
-        }
-    }
-
     &.pa-small {
         font-size: font-size(s);
         line-height: rhythm(3);

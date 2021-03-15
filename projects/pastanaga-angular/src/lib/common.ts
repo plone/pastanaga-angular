@@ -11,8 +11,6 @@ export const Keys = {
 };
 
 export enum Size {
-    xxsmall = 'xxsmall',
-    xsmall = 'xsmall',
     small = 'small',
     medium = 'medium',
     large = 'large',
