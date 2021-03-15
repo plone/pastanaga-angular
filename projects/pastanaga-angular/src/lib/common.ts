@@ -11,8 +11,6 @@ export const Keys = {
 };
 
 export enum Size {
-    xxsmall = 'xxsmall',
-    xsmall = 'xsmall',
     small = 'small',
     medium = 'medium',
     large = 'large',
@@ -30,11 +28,6 @@ export enum Kind {
     secondary = 'secondary',
     inverted = 'inverted',
     destructive = 'destructive',
-}
-
-export enum Sort {
-    ascending = 'ASC',
-    descending = 'DESC',
 }
 
 export class PositionStyle {

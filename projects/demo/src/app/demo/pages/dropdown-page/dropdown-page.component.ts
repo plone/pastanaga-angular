@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownPageComponent {
-    codeExample = `<pa-button icon="ellipsis-vertical" size="small"
+    codeExample = `<pa-button icon="more" size="small"
            [paPopup]="contextualMenu"></pa-button>
 
 <pa-dropdown #contextualMenu>

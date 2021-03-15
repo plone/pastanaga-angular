@@ -16,6 +16,9 @@
         display: inline-flex;
         align-items: center
     }
+    .pa-button-label {
+        font-weight: $font-weight-button-label;
+    }
 
     svg {
         display: block;
@@ -27,19 +30,6 @@
 
     &.pa-button-icon {
         border-radius: 50%;
-    }
-
-    &.pa-xsmall {
-        font-size: font-size(xs);
-        line-height: rhythm(3);
-        padding: $padding-button-xsmall;
-
-        &.pa-button-icon {
-            padding: $padding-button-icon-xsmall;
-        }
-        &.pa-button-icon-text {
-            padding: $padding-button-icon-text-xsmall;
-        }
     }
 
     &.pa-small {
@@ -312,13 +302,5 @@
                 border: $border-button-basic-disabled;
             }
         }
-    }
-
-    &.pa-solid .pa-button-label {
-        font-weight: $font-weight-button-label-solid;
-    }
-
-    &.pa-basic .pa-button-label {
-        font-weight: $font-weight-button-label-basic;
     }
 }

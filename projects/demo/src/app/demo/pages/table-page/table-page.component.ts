@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Sort } from '../../../../../../pastanaga-angular/src';
+import { Component } from '@angular/core';
 
 @Component({
     templateUrl: 'table-page.component.html',
 })
-export class TablePageComponent implements OnInit {
+export class TablePageComponent {
+    isDescending = false;
+    sorted = false;
     data: {
         id: number;
         name: string;
@@ -72,7 +73,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell header>Last updated</pa-table-cell>
         <pa-table-cell header>Size</pa-table-cell>
         <pa-table-cell-menu header>
-            <pa-button icon="ellipsis-vertical" (click)="openMenu($event)"></pa-button>
+            <pa-button icon="more-horizontal" (click)="openMenu($event)"></pa-button>
         </pa-table-cell-menu>
     </pa-table-header>
     <pa-table-row-header>Today</pa-table-row-header>
@@ -83,7 +84,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>Today, 9:45 AM</pa-table-cell>
         <pa-table-cell>100 MB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -93,7 +94,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>1/2/2010</pa-table-cell>
         <pa-table-cell>15 KB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -103,7 +104,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>12/31/2007</pa-table-cell>
         <pa-table-cell>100 bytes</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row-header>Yesterday</pa-table-row-header>
@@ -114,7 +115,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>Yesterday, 12:56 PM</pa-table-cell>
         <pa-table-cell>234.54 TB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -124,7 +125,7 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>4/10/2020</pa-table-cell>
         <pa-table-cell>24.56 MB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
     <pa-table-row>
@@ -134,16 +135,12 @@ export class TablePageComponent implements OnInit {
         <pa-table-cell>11/11/2011</pa-table-cell>
         <pa-table-cell>3.56 MB</pa-table-cell>
         <pa-table-cell-menu>
-            <pa-button icon="ellipsis-vertical" size="xsmall" (click)="openMenu($event)">Menu button</pa-button>
+            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
         </pa-table-cell-menu>
     </pa-table-row>
 </pa-table>`;
 
     rowSelected?: string;
-
-    ngOnInit() {
-        this.sortBy(Sort.descending);
-    }
 
     clickRow(id: string) {
         console.log('Row has been clicked');
@@ -156,8 +153,10 @@ export class TablePageComponent implements OnInit {
         console.log('Menu button has been clicked');
     }
 
-    sortBy(sortType: Sort) {
-        if (sortType === Sort.descending) {
+    sortBy() {
+        this.sorted = true;
+        this.isDescending = !this.isDescending;
+        if (this.isDescending) {
             this.subHeader = 'Yesterday';
             this.data.sort((a, b) => a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()));
         } else {

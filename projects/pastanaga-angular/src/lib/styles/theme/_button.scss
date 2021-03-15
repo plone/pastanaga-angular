@@ -148,19 +148,16 @@ $border-radius-button: 100px !default;
 // SPACING and SHADOWS
 //=====================================
 
-$padding-button-xsmall: rhythm(.25) rhythm(1) !default;
 $padding-button-small:  rhythm(1) rhythm(2) !default;
 $padding-button-medium: rhythm(1) rhythm(2) !default;
 $padding-button-large:  rhythm(1) rhythm(2) !default;
 
-$padding-button-icon-text-xsmall: rhythm(.25) rhythm(1) !default;
 $padding-button-icon-text-small:  rhythm(1) rhythm(2) rhythm(1) rhythm(1.5) !default;
 $padding-button-icon-text-medium: rhythm(1) rhythm(2) rhythm(1) rhythm(1.5) !default;
 $padding-button-icon-text-large:  rhythm(1) rhythm(2) rhythm(1) rhythm(1.5)!default;
 
-$padding-button-icon-xsmall:    rhythm(1) !default;
-$padding-button-icon-small:     rhythm(1) !default;
-$padding-button-icon-medium:    rhythm(1) !default;
+$padding-button-icon-small:     rhythm(.5) !default;
+$padding-button-icon-medium:    rhythm(1.5) !default;
 $padding-button-icon-large:     rhythm(2) !default;
 
 $shadow-button-solid-hover: $shadow-small !default;
@@ -169,5 +166,4 @@ $shadow-button-basic-hover: $shadow-small !default;
 //=====================================
 // LABELS
 //=====================================
-$font-weight-button-label-solid: $font-weight-semi-bold !default;
-$font-weight-button-label-basic: $font-weight-bold !default;
+$font-weight-button-label: $font-weight-semi-bold !default;

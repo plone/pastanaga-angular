@@ -12,13 +12,13 @@ import { PaFocusableModule } from '../focusable/focusable.module';
 @Component({
     template: ` <pa-dropdown [stayVisible]="stayVisible" #dropdown>
         <pa-option-header>Menu list header</pa-option-header>
-        <pa-option icon="settings" id="menu-item-1" (selectOption)="onSelect($event)">Menu list item 1</pa-option>
-        <pa-option disabled icon="settings" id="menu-item-2" (selectOption)="onSelect($event)"
+        <pa-option icon="home" id="menu-item-1" (selectOption)="onSelect($event)">Menu list item 1</pa-option>
+        <pa-option disabled icon="globe" id="menu-item-2" (selectOption)="onSelect($event)"
             >Menu list item 2
         </pa-option>
-        <pa-option icon="settings" id="menu-item-3" (selectOption)="onSelect($event)">Menu list item 3</pa-option>
+        <pa-option icon="face-happy" id="menu-item-3" (selectOption)="onSelect($event)">Menu list item 3</pa-option>
         <pa-separator></pa-separator>
-        <pa-option icon="delete" destructive id="menu-item-destructive" (selectOption)="onSelect($event)"
+        <pa-option icon="trash" destructive id="menu-item-destructive" (selectOption)="onSelect($event)"
             >Menu item destructive
         </pa-option>
     </pa-dropdown>`,

@@ -24,7 +24,6 @@
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-select label="Size" [(ngModel)]="selectedSize">
-                <pa-option [value]="size.xsmall">xsmall</pa-option>
                 <pa-option [value]="size.small">small</pa-option>
                 <pa-option [value]="size.medium">medium</pa-option>
                 <pa-option [value]="size.large">large</pa-option>
@@ -56,7 +55,7 @@
             <dd>Path of the icon. <small>(optional)</small></dd>
 
             <dt>size</dt>
-            <dd>Size to be applied: xsmall | small | medium | large. <small>(default: medium)</small></dd>
+            <dd>Size to be applied: small | medium | large. <small>(default: medium)</small></dd>
 
             <dt>color</dt>
             <dd>Color to apply to the icon (works only with svg icons). <small>(optional)</small></dd>

@@ -15,6 +15,9 @@ button {
     &:active {
         color: $color-neutral-primary-default;
     }
+    pa-icon {
+        display: flex;
+    }
 
     @media (min-width: $size-viewport-large-min) {
         pa-icon {
