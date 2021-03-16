@@ -11,7 +11,9 @@
         padding: rhythm(1.5);
         height: 100%;
         small {
-            text-transform: uppercase;
+            @include font-size(xxs);
+            line-height: rhythm(1.5);
+            margin-top: rhythm(1);
         }
         & > div {
             display: grid;
@@ -36,6 +38,7 @@
 }
 .color-neutral-primary-lightest {
     background-color: $color-neutral-primary-lightest;
+    border: 1px solid $color-neutral-primary-lighter;
 }
 .color-neutral-secondary-default {
     background-color: $color-neutral-secondary-default;

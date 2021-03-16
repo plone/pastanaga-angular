@@ -1,3 +1,8 @@
+# 2.24.1 (2021-03-15)
+
+### Improvements
+- **Colors**: better documentation of color palette, making it easier to be reused by other pastanaga based demo [mpellerin42]
+
 # 2.24.0 (2021-03-15)
 
 ### Breaking changes
