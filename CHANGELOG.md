@@ -1,3 +1,8 @@
+# 2.24.2 (2021-03-18)
+
+### Improvements
+- **Buttons**: provide mixins for button style [mpellerin42]
+
 # 2.24.1 (2021-03-15)
 
 ### Improvements
