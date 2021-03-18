@@ -1,3 +1,9 @@
+# 1.19.5 (2021-03-18)
+
+### Improvements
+
+-   allow pa-tooltip extension [jCarret]
+
 # 1.19.4 (2020-03-05)
 
 ### Bug fixes

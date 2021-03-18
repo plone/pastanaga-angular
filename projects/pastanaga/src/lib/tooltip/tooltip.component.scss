@@ -24,8 +24,8 @@
     &[aria-expanded=true] {
         opacity: 1;
         visibility: visible;
-        transition: visibility 0s ease, opacity .33s 2s ease;
-        -webkit-transition: visibility 0s ease, opacity .33s 2s ease;
+        transition: visibility 0s ease, opacity .33s 1s ease;
+        -webkit-transition: visibility 0s ease, opacity .33s 1s ease;
     }
 }
 
