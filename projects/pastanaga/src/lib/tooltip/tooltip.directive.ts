@@ -1,13 +1,4 @@
-import {
-    ComponentRef,
-    ComponentFactoryResolver,
-    Directive,
-    HostListener,
-    Input,
-    ViewContainerRef,
-    ElementRef,
-    Renderer2,
-} from '@angular/core';
+import { ComponentFactoryResolver, ComponentRef, Directive, HostListener, Input, Renderer2, ViewContainerRef } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 
@@ -26,6 +17,7 @@ export class TooltipDirective {
     get paTooltipOffset(): number { return this.offset; }
     set paTooltipOffset(value: number) { this.offset = coerceNumberProperty(value); }
     protected offset = 0;
+    protected nativeElement;
 
     id = '';
     isDisplayed = false;
@@ -34,11 +26,12 @@ export class TooltipDirective {
     private component?: ComponentRef<TooltipComponent>;
 
     constructor(
-        private element: ElementRef,
-        private viewContainerRef: ViewContainerRef,
-        private resolver: ComponentFactoryResolver,
-        private renderer: Renderer2,
-    ) {}
+        protected viewContainerRef: ViewContainerRef,
+        protected resolver: ComponentFactoryResolver,
+        protected renderer: Renderer2,
+    ) {
+        this.nativeElement = this.viewContainerRef.element.nativeElement;
+    }
 
     @HostListener('focusin', ['$event'])
     focus(event: MouseEvent) {
@@ -84,7 +77,7 @@ export class TooltipDirective {
 
     createTooltip(x: number, y: number) {
         this.id = `pa-tooltip-${nextId++}`;
-        this.element.nativeElement.setAttribute('aria-describedby', this.id);
+        this.nativeElement.setAttribute('aria-describedby', this.id);
         const factory = this.resolver.resolveComponentFactory(
             TooltipComponent,
         );
@@ -95,11 +88,11 @@ export class TooltipDirective {
         this.component.instance.left = x || 0;
         this.component.instance.top = y || 0;
         this.component.instance.offset = this.offset || 0;
-        this.component.instance.width = this.element.nativeElement.clientWidth;
-        this.component.instance.height = this.element.nativeElement.clientHeight;
+        this.component.instance.width = this.nativeElement.clientWidth;
+        this.component.instance.height = this.nativeElement.clientHeight;
 
         this.renderer.appendChild(
-            this.viewContainerRef.element.nativeElement,
+            this.nativeElement,
             this.component.location.nativeElement,
         );
     }
@@ -117,16 +110,16 @@ export class TooltipDirective {
     getFixedPosition(event: MouseEvent): [number, number] {
         let position: [number, number];
         if (this.type === ACTION) {
-            const rect = this.element.nativeElement.getBoundingClientRect();
+            const rect = this.nativeElement.getBoundingClientRect();
             position = [rect.left, rect.top];
         } else if (event.type === 'focusin') {
-            const rect = this.element.nativeElement.getBoundingClientRect();
+            const rect = this.nativeElement.getBoundingClientRect();
             position = [rect.right, rect.bottom];
         } else {
             position = [event.pageX, event.pageY];
         }
         if (!this.rootParent) {
-            this.rootParent = this.getFixedRootParent(this.element.nativeElement);
+            this.rootParent = this.getFixedRootParent(this.nativeElement);
         }
         const rootRect = this.rootParent.getBoundingClientRect();
         return [position[0] - rootRect.left, position[1] - rootRect.top];
