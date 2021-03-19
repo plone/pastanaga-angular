@@ -23,7 +23,7 @@ export class TooltipDirective {
     isDisplayed = false;
     rootParent?: HTMLElement;
 
-    private component?: ComponentRef<TooltipComponent>;
+    protected component?: ComponentRef<TooltipComponent>;
 
     constructor(
         protected viewContainerRef: ViewContainerRef,
