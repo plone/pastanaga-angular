@@ -1,3 +1,9 @@
+# 1.19.6 (2021-03-19)
+
+### Improvements
+
+-   allow pa-tooltip extension to access tooltip component [jCarret]
+
 # 1.19.5 (2021-03-18)
 
 ### Improvements
