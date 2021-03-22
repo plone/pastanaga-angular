@@ -7,7 +7,7 @@ import { PopupDirective } from '../../../../../../../projects/pastanaga-angular/
 })
 export class PopupPageComponent {
     example = `<pa-button [paPopup]="myPopup" size="small">Open popup</pa-button>
-<pa-demo-basic-popup #myPopup></pa-demo-basic-popup>`;
+<pa-popup #myPopup></pa-popup>`;
 
     openProgrammaticallyTemplate = `<pa-button [paPopup]="myPopup"
            #myPopupDirective="paPopupRef"
