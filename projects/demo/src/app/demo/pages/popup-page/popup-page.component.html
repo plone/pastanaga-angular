@@ -21,11 +21,11 @@
                    [sameWidth]="sameWidth"
                    #myPopupDirective="paPopupRef"
                    size="small">Open popup</pa-button>
-        <pa-demo-basic-popup #myPopup></pa-demo-basic-popup>
+        <pa-popup #myPopup>Popup content</pa-popup>
 
         <div>
             <p>Popup can also appear on hover of an <a href="#" [paPopup]="myHoverPopup" openOnHover>element</a></p>
-            <pa-demo-basic-popup #myHoverPopup></pa-demo-basic-popup>
+            <pa-popup #myHoverPopup>Popup opening on hover</pa-popup>
         </div>
         <div>
             <p>We can also toggle a popup programmatically: <pa-button size="small" (click)="openProgrammatically($event)">Toggle first popup</pa-button></p>

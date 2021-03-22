@@ -9,6 +9,10 @@
     overflow-x: hidden;
     overflow-y: auto;
 
+    &.pa-hidden {
+        display: none;
+    }
+
     .pa-popup-wrapper {
         padding: rhythm(2);
         background: $color-neutral-primary-lightest;

@@ -37,8 +37,6 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { BaseControlUsageComponent } from './pages/common-doc/base-control/base-control-usage.component';
-import { BasicPopupComponent } from './pages/popup-page/basic-popup.component';
-import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
 import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
 import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
@@ -93,6 +91,7 @@ import { FormFieldConfigStandaloneDirective } from './pages/common-doc/form-fiel
 import { FormFieldConfigNgModelDirective } from './pages/common-doc/form-field-config-ng-model.directive';
 import { FormFieldConfigFormControlDirective } from './pages/common-doc/form-field-config-form-control.directive';
 import { FormFieldConfigFormGroupDirective } from './pages/common-doc/form-field-config-form-group.directive';
+import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -111,7 +110,6 @@ const COMPONENTS = [
     ModalExampleComponent,
 
     AvatarPageComponent,
-    BasicPopupComponent,
     BreakpointPageComponent,
     ButtonPageComponent,
     CheckboxPageComponent,

@@ -1,3 +1,9 @@
+# 2.24.3 (2021-03-22)
+
+### Improvements
+- **Buttons**: center button text by default [mpellerin42]
+- **Popup**: Manage popup visibility with a class to allow transitions [mpellerin42]
+
 # 2.24.2 (2021-03-18)
 
 ### Improvements
