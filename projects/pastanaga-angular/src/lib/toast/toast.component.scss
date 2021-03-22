@@ -10,6 +10,7 @@
     color: $color-neutral-primary-lightest;
     animation: toastin 0.5s cubic-bezier(0.3, 0.95, 0.5, 1);
     animation-fill-mode: forwards;
+    z-index: 1;
 }
 
 .pa-toast-error-wrapper {

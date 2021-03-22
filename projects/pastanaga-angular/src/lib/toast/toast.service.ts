@@ -16,7 +16,7 @@ let nextId = 0;
 @Injectable({ providedIn: 'root' })
 export class ToastService {
     private _toastStatus = new BehaviorSubject<ToastStatus>('closed');
-    private _renderer: Renderer2;
+    private readonly _renderer: Renderer2;
     private _toastContainer?: HTMLElement;
     private _toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
 
@@ -24,11 +24,22 @@ export class ToastService {
         return this._toastStatus.asObservable();
     }
 
+    get toastContainer(): HTMLElement {
+        if (!this._toastContainer) {
+            this._toastContainer = this.createContainer();
+        }
+        return this._toastContainer;
+    }
+
+    get renderer(): Renderer2 {
+        return this._renderer;
+    }
+
     constructor(
         private resolver: ComponentFactoryResolver,
         private rendererFactory: RendererFactory2,
         private appRef: ApplicationRef,
-        private injector: Injector
+        private injector: Injector,
     ) {
         this._renderer = rendererFactory.createRenderer(null, null);
     }
@@ -49,7 +60,7 @@ export class ToastService {
         this.open(message, 'error', config);
     }
 
-    open(message: string, type: ToastType, config?: ToastConfig) {
+    open(message: string, type: ToastType, config?: ToastConfig): ComponentRef<ToastComponent> {
         this._toastStatus.next('opening');
         const id = `pa-toast-${nextId++}`;
         const toast: ComponentRef<ToastComponent> = this.createToast(id, message, type, config);
@@ -57,13 +68,10 @@ export class ToastService {
         this.appRef.attachView(toast.hostView);
         this._toastMap.set(id, toast);
 
-        if (!this._toastContainer) {
-            this._toastContainer = this.createContainer();
-        }
-
         this._renderer.setAttribute(toast.location.nativeElement, 'role', 'alert');
-        this._renderer.appendChild(this._toastContainer, toast.location.nativeElement);
+        this._renderer.appendChild(this.toastContainer, toast.location.nativeElement);
         this._toastStatus.next('opened');
+        return toast;
     }
 
     private createToast(id: string, message: string, type: ToastType, config?: ToastConfig) {
