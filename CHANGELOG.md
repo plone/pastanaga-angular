@@ -1,3 +1,8 @@
+# 2.24.4 (2021-03-22)
+
+### Improvements
+- **Toasts**: add some getters to allow toast service composition [mpellerin42]
+
 # 2.24.3 (2021-03-22)
 
 ### Improvements
