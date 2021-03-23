@@ -1,3 +1,9 @@
+# 1.19.7 (2021-03-23)
+
+### Improvements
+
+-   add type to pa-tooltip text [jCarret]
+
 # 1.19.6 (2021-03-19)
 
 ### Improvements

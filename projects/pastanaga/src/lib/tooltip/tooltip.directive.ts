@@ -11,7 +11,7 @@ let nextId = 0;
     selector: '[paTooltip]'
 })
 export class TooltipDirective {
-    @Input('paTooltip') text = '';
+    @Input('paTooltip') text: string | undefined = '';
     @Input('paTooltipType') type: 'system' | 'action' = ACTION;
     @Input()
     get paTooltipOffset(): number { return this.offset; }
