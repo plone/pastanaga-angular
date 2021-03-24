@@ -66,8 +66,10 @@ export * from './lib/table/table-cell/table-cell.component';
 export * from './lib/table/table-cell-menu/table-cell-menu.component';
 export * from './lib/table/table-row-header/table-row-header.component';
 export * from './lib/table/table-row/table-row.component';
+export * from './lib/table/table-sortable-header/table-sortable-header.component';
 export * from './lib/table/table.component';
 export * from './lib/table/table.directives';
+export * from './lib/table/table.models';
 
 export * from './lib/tabs/tabs.module';
 export * from './lib/tabs/tabs-list.component';

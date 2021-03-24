@@ -11,27 +11,22 @@ import { PaFocusableModule } from '../focusable/focusable.module';
 import { TableSortableHeaderCellComponent } from './table-sortable-header-cell/table-sortable-header-cell.component';
 import { PaTranslateModule } from '../translate/translate.module';
 import { PaIconModule } from '../icon/icon.module';
+import { TableSortableHeaderComponent } from './table-sortable-header/table-sortable-header.component';
+
+const components = [
+    TableComponent,
+    TableRowComponent,
+    TableCellComponent,
+    TableRowHeaderComponent,
+    TableHeaderDirective,
+    TableCellMenuComponent,
+    TableSortableHeaderComponent,
+    TableSortableHeaderCellComponent,
+];
 
 @NgModule({
     imports: [CommonModule, PaFocusableModule, PaTranslateModule, PaIconModule],
-    exports: [
-        TableComponent,
-        TableRowComponent,
-        TableCellComponent,
-        TableRowHeaderComponent,
-        TableHeaderDirective,
-        TableCellMenuComponent,
-        TableSortableHeaderCellComponent,
-    ],
-    declarations: [
-        TableComponent,
-        TableRowComponent,
-        TableCellComponent,
-        TableRowHeaderComponent,
-        TableHeaderDirective,
-        TableCellMenuComponent,
-        TableSortableHeaderCellComponent,
-    ],
-    providers: [],
+    exports: components,
+    declarations: components,
 })
 export class PaTableModule {}

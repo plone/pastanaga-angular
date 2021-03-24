@@ -13,7 +13,7 @@ In Pastanaga 2+, we prefix all modules with `Pa`: `ButtonModule` becomes `PaButt
 ### Components common properties
 Pastanaga now contains some useful enums for properties configuring several components:
 - `Kind`: primary | secondary | destructive | inverted
-- `Size`: tee-shirt size going from `xxsmall` to `xxlarge`. Not all sizes are available for all components
+- `Size`: tee-shirt size going from `small` to `xxlarge`. Not all sizes are available for all components
 
 ### Buttons
 We changed the way to configure buttons:
