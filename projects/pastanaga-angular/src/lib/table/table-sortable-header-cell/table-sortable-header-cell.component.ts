@@ -1,13 +1,18 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    ElementRef,
     EventEmitter,
     Input,
     OnChanges,
     Output,
     SimpleChanges,
+    ViewChild,
 } from '@angular/core';
+import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
+import { markForCheck } from '../../common';
 
 @Component({
     selector: 'pa-table-sortable-header-cell',
@@ -33,10 +38,14 @@ export class TableSortableHeaderCellComponent implements OnChanges {
 
     @Output() sort = new EventEmitter();
 
+    @ViewChild('cell', { read: ElementRef }) cellElement?: ElementRef;
+
     icon?: string;
 
     private _active = false;
     private _isDescending = false;
+
+    constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.active || changes.isDescending) {
@@ -45,10 +54,17 @@ export class TableSortableHeaderCellComponent implements OnChanges {
     }
 
     private updateIcon() {
-        if (!coerceBooleanProperty(this.active)) {
-            this.icon = 'chevron-up';
-        } else {
-            this.icon = coerceBooleanProperty(this.isDescending) ? 'arrow-up' : 'arrow-down';
-        }
+        this.breakpointObserver.currentMode.subscribe((mode) => {
+            if (mode === 'mobile') {
+                this.icon = 'chevron-down';
+            } else {
+                if (!coerceBooleanProperty(this.active)) {
+                    this.icon = 'chevron-up';
+                } else {
+                    this.icon = coerceBooleanProperty(this.isDescending) ? 'arrow-up' : 'arrow-down';
+                }
+            }
+            markForCheck(this.cdr);
+        });
     }
 }

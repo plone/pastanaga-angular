@@ -12,7 +12,8 @@ button {
     font-weight: $font-weight-bold;
     text-transform: uppercase;
 
-    &:active {
+    &:active,
+    &.active {
         color: $color-neutral-primary-default;
     }
     pa-icon {

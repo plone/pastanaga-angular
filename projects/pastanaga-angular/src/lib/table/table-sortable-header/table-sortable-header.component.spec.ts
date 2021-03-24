@@ -8,11 +8,13 @@ import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer/brea
 import { HeaderCell, SortableHeaderCell } from '../table.models';
 import { PaTranslateModule } from '../../translate/translate.module';
 import { TableCellComponent } from '../table-cell/table-cell.component';
+import { PaPopupModule } from '../../popup/popup.module';
+import { PaDropdownModule } from '../../dropdown/dropdown.module';
 
 describe('TableSortableHeaderComponent', () => {
     const mode: BehaviorSubject<ViewportMode> = new BehaviorSubject<ViewportMode>('desktop');
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaTranslateModule)],
+        imports: [MockModule(PaTranslateModule), MockModule(PaPopupModule), MockModule(PaDropdownModule)],
         declarations: [
             MockComponent(TableCellComponent),
             MockComponent(TableCellMenuComponent),
@@ -101,6 +103,51 @@ describe('TableSortableHeaderComponent', () => {
         beforeEach(() => {
             mode.next('mobile');
         });
-        // TODO
+
+        it('should display the active column only', () => {
+            const activeCell = new SortableHeaderCell({ id: '3', label: 'sortable column', active: true });
+            component.cells = [
+                new SortableHeaderCell({ id: '1', label: 'column 1' }),
+                new HeaderCell({ id: '2', label: 'column 2' }),
+                activeCell,
+            ];
+            spectator.detectChanges();
+            expect(spectator.queryAll('pa-table-sortable-header-cell')?.length).toBe(1);
+            expect(component.mobileCell).toEqual(activeCell);
+        });
+
+        it('should display first column when no cell is active', () => {
+            component.cells = [
+                new SortableHeaderCell({ id: '1', label: 'column 1' }),
+                new HeaderCell({ id: '2', label: 'column 2' }),
+                new SortableHeaderCell({ id: '3', label: 'sortable column' }),
+            ];
+            spectator.detectChanges();
+            expect(spectator.queryAll('pa-table-sortable-header-cell')?.length).toBe(1);
+            expect(component.mobileCell).toBe(component.cells[0]);
+        });
+
+        it('should display sortable cells in a dropdown', () => {
+            const cell1 = new SortableHeaderCell({ id: '1', label: 'column 1' });
+            const cell3 = new SortableHeaderCell({ id: '3', label: 'sortable column' });
+            component.cells = [cell1, new HeaderCell({ id: '2', label: 'column 2' }), cell3];
+            spectator.detectChanges();
+            expect(spectator.queryAll('pa-option')?.length).toBe(2);
+            expect(component.sortableCells).toEqual([cell1, cell3]);
+        });
+
+        it('should set sortMenuPosition relatively to mobileCellContainer', () => {
+            component.mobileCellContainer = {
+                cellElement: {
+                    nativeElement: { getBoundingClientRect: jest.fn(() => ({ top: 100, left: 10, height: 30 })) },
+                },
+            } as TableSortableHeaderCellComponent;
+            component.ngAfterViewInit();
+            expect(component.sortMenuPosition).toEqual({
+                position: 'absolute',
+                left: 10,
+                top: 130,
+            });
+        });
     });
 });

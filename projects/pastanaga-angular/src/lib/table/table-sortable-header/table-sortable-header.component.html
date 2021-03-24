@@ -14,8 +14,27 @@
 <pa-table-cell-menu header *ngIf="menuColumn"></pa-table-cell-menu>
 
 <ng-template #mobileHeader>
+    <pa-table-sortable-header-cell *ngIf="mobileCell?.sortable; else basicCell"
+                                   #mobileCellContainer
+                                   [active]="sortMenuOpen"
+                                   [paPopup]="sortMenu"
+                                   [popupPosition]="sortMenuPosition"
+    >{{mobileCell.label | translate}}
+    </pa-table-sortable-header-cell>
 
+    <ng-template #basicCell>
+        <pa-table-cell header>{{mobileCell.label | translate}}</pa-table-cell>
+    </ng-template>
 </ng-template>
 
-
+<pa-dropdown #sortMenu
+             (onOpen)="sortMenuOpen = true"
+             (onClose)="sortMenuOpen = false">
+    <pa-option-header>{{'pastanaga.sort-by' | translate }}</pa-option-header>
+    <pa-option *ngFor="let cell of sortableCells"
+               [icon]="!cell.active ? 'no-icon' : cell.descending ? 'arrow-up' : 'arrow-down'"
+               [selected]="cell.active"
+               (selectOption)="sortBy(cell.id)"
+    >{{cell.label | translate}}</pa-option>
+</pa-dropdown>
 
