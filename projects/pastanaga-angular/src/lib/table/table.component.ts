@@ -25,7 +25,15 @@ export class TableComponent {
         this._columns = value;
         this.columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
     }
+    @Input()
+    get noAutoColumnStyle(): boolean {
+        return this._noAutoColumnStyle;
+    }
+    set noAutoColumnStyle(value: boolean) {
+        this._noAutoColumnStyle = coerceBooleanProperty(value);
+    }
 
+    private _noAutoColumnStyle = false;
     private _noHeader = false;
     private _columns = 'auto';
     columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
