@@ -2,10 +2,12 @@
 
 ### Feature
 - **Table**: [mpellerin42]
-    - New component pa-table-sortable-header allowing managing the sorting seamlessly
-    - New pa-table-lead-cell-multi-line component providing a layout for cells with a lead image, a title and a description
+    - New component `pa-table-sortable-header` allowing managing the sorting seamlessly
+    - New `pa-table-lead-cell-multi-line` component providing a layout for cells with a lead image, a title and a description
     - Fixing spacing on cells
-    - Add noAutoColumnStyle option on table, allowing setting grid template by CSS
+    - Add `noAutoColumnStyle` option on table, allowing setting grid template by CSS
+    - Add `disabled` property on all kind of cells and on rows
+    - Rename `clickable` class to `pa-clickable` for consistency
 
 # 2.24.4 (2021-03-22)
 

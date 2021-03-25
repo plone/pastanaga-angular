@@ -15,7 +15,7 @@ export class TableRowComponent {
     set clickable(value: boolean) {
         this._clickable = coerceBooleanProperty(value);
     }
-    _clickable = false;
+    private _clickable = false;
 
     @Input()
     get last(): boolean {
@@ -24,5 +24,14 @@ export class TableRowComponent {
     set last(value: boolean) {
         this._last = coerceBooleanProperty(value);
     }
-    _last = false;
+    private _last = false;
+
+    @Input()
+    get disabled(): boolean {
+        return this._disabled;
+    }
+    set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
+    private _disabled = false;
 }

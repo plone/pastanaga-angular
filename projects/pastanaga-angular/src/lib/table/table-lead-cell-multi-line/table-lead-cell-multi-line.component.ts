@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
@@ -16,5 +16,15 @@ export class TableLeadCellMultiLineComponent {
     set clickable(value: boolean) {
         this._clickable = coerceBooleanProperty(value);
     }
+
+    @Input()
+    get disabled(): boolean {
+        return this._disabled;
+    }
+    set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
+
+    private _disabled = false;
     private _clickable = false;
 }
