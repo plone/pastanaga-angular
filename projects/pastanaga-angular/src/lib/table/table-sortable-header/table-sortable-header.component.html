@@ -1,7 +1,7 @@
 <ng-container *ngIf="(mode | async) !== 'mobile'; else mobileHeader">
     <ng-container *ngFor="let cell of cells">
         <pa-table-sortable-header-cell *ngIf="cell.sortable; else basicCell"
-                                       [active]="cell.active"
+                                       [enabled]="cell.active"
                                        [isDescending]="cell.descending"
                                        (sort)="sortBy(cell.id)"
         >{{cell.label | translate}}</pa-table-sortable-header-cell>

@@ -22,6 +22,14 @@ import { markForCheck } from '../../common';
 })
 export class TableSortableHeaderCellComponent implements OnChanges {
     @Input()
+    set enabled(value: boolean) {
+        this._enabled = coerceBooleanProperty(value);
+    }
+    get enabled() {
+        return this._enabled;
+    }
+
+    @Input()
     set active(value: boolean) {
         this._active = coerceBooleanProperty(value);
     }
@@ -42,6 +50,7 @@ export class TableSortableHeaderCellComponent implements OnChanges {
 
     icon?: string;
 
+    private _enabled = false;
     private _active = false;
     private _isDescending = false;
 
@@ -58,7 +67,7 @@ export class TableSortableHeaderCellComponent implements OnChanges {
             if (mode === 'mobile') {
                 this.icon = 'chevron-down';
             } else {
-                if (!coerceBooleanProperty(this.active)) {
+                if (!this.enabled) {
                     this.icon = 'chevron-up';
                 } else {
                     this.icon = coerceBooleanProperty(this.isDescending) ? 'arrow-up' : 'arrow-down';

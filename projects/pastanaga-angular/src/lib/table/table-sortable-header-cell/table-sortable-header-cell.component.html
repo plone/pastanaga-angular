@@ -4,6 +4,7 @@
      paFocusable>
 
     <button type="button"
-            [class.active]="active"
+            [class.pa-enabled]="enabled"
+            [class.pa-active]="active"
             paFocusable><ng-content></ng-content> <pa-icon *ngIf="icon" [name]="icon" size="small"></pa-icon></button>
 </div>

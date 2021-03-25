@@ -1,0 +1,10 @@
+<div class="pa-table-grid--cell"
+     [class.clickable]="clickable"
+     paFocusable
+     [paFocusDisabled]="!clickable">
+    <ng-content select="pa-table-lead-image"></ng-content>
+    <div class="pa-lead-text">
+        <div class="pa-lead-title"><ng-content select="pa-table-lead-title"></ng-content></div>
+        <div class="pa-lead-description"><ng-content select="pa-table-lead-description"></ng-content></div>
+    </div>
+</div>

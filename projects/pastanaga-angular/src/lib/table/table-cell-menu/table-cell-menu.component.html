@@ -1,8 +1,8 @@
 <div class="pa-table-grid--menu-cell"
      [class.pa-table-grid--cell]="!header"
      [class.pa-table-grid--header]="header"
-     [class.clickable]="_clickable"
+     [class.clickable]="clickable"
      paFocusable
-     [paFocusDisabled]="!_clickable">
+     [paFocusDisabled]="!clickable">
     <ng-content></ng-content>
 </div>

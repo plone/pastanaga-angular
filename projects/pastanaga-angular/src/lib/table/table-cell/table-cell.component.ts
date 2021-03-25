@@ -15,7 +15,7 @@ export class TableCellComponent {
     set header(value: boolean) {
         this._header = coerceBooleanProperty(value);
     }
-    _header = false;
+    private _header = false;
 
     @Input()
     get clickable(): boolean {
@@ -24,5 +24,5 @@ export class TableCellComponent {
     set clickable(value: boolean) {
         this._clickable = coerceBooleanProperty(value);
     }
-    _clickable = false;
+    private _clickable = false;
 }
