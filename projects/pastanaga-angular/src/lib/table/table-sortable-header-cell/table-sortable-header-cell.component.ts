@@ -14,6 +14,10 @@ import {
 import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
 import { markForCheck } from '../../common';
 
+export const SORTABLE_ICON = 'chevron-down';
+export const SORTED_ASCENDING_ICON = 'arrow-down';
+export const SORTED_DESCENDING_ICON = 'arrow-up';
+
 @Component({
     selector: 'pa-table-sortable-header-cell',
     templateUrl: './table-sortable-header-cell.component.html',
@@ -65,12 +69,14 @@ export class TableSortableHeaderCellComponent implements OnChanges {
     private updateIcon() {
         this.breakpointObserver.currentMode.subscribe((mode) => {
             if (mode === 'mobile') {
-                this.icon = 'chevron-down';
+                this.icon = SORTABLE_ICON;
             } else {
                 if (!this.enabled) {
-                    this.icon = 'chevron-up';
+                    this.icon = SORTABLE_ICON;
                 } else {
-                    this.icon = coerceBooleanProperty(this.isDescending) ? 'arrow-up' : 'arrow-down';
+                    this.icon = coerceBooleanProperty(this.isDescending)
+                        ? SORTED_DESCENDING_ICON
+                        : SORTED_ASCENDING_ICON;
                 }
             }
             markForCheck(this.cdr);

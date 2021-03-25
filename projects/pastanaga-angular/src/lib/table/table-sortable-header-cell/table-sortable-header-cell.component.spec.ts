@@ -1,5 +1,10 @@
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { TableSortableHeaderCellComponent } from './table-sortable-header-cell.component';
+import {
+    SORTABLE_ICON,
+    SORTED_ASCENDING_ICON,
+    SORTED_DESCENDING_ICON,
+    TableSortableHeaderCellComponent,
+} from './table-sortable-header-cell.component';
 import { MockModule } from 'ng-mocks';
 import { PaIconModule } from '../../icon/icon.module';
 import { BehaviorSubject } from 'rxjs';
@@ -30,25 +35,25 @@ describe('TableSortableHeaderCellComponent', () => {
     });
 
     describe('on desktop', () => {
-        it('should display a chevron-up icon when not active', fakeAsync(() => {
+        it('should display a chevron-down icon when not enabled', fakeAsync(() => {
             // @ts-ignore access private member
             component.updateIcon();
-            expect(component.icon).toBe('chevron-up');
+            expect(component.icon).toBe(SORTABLE_ICON);
         }));
 
-        it('should display an arrow-down icon when active and NOT descending', fakeAsync(() => {
-            component.active = true;
+        it('should display an arrow-down icon when enabled and NOT descending', fakeAsync(() => {
+            component.enabled = true;
             // @ts-ignore access private member
             component.updateIcon();
-            expect(component.icon).toBe('arrow-down');
+            expect(component.icon).toBe(SORTED_ASCENDING_ICON);
         }));
 
-        it('should display an arrow-up icon when active and descending', fakeAsync(() => {
-            component.active = true;
+        it('should display an arrow-up icon when enabled and descending', fakeAsync(() => {
+            component.enabled = true;
             component.isDescending = true;
             // @ts-ignore access private member
             component.updateIcon();
-            expect(component.icon).toBe('arrow-up');
+            expect(component.icon).toBe(SORTED_DESCENDING_ICON);
         }));
     });
 
@@ -56,6 +61,6 @@ describe('TableSortableHeaderCellComponent', () => {
         mode.next('mobile');
         // @ts-ignore access private member
         component.updateIcon();
-        expect(component.icon).toBe('chevron-down');
+        expect(component.icon).toBe(SORTABLE_ICON);
     }));
 });

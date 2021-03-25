@@ -7,8 +7,8 @@ button {
     align-items: center;
     border: transparent;
     background: transparent;
-    padding: 0 rhythm(1);
-    margin: 0 #{- rhythm(1)};
+    padding: 0;
+    margin: 0;
     font-weight: $font-weight-bold;
     text-transform: uppercase;
 
@@ -36,13 +36,6 @@ button {
 
             pa-icon {
                 opacity: 1;
-            }
-        }
-        &:not(.pa-enabled) {
-            &:hover:not(:active):not(.pa-keyboard-focus) {
-                pa-icon {
-                    transform: rotate(-180deg);
-                }
             }
         }
     }
