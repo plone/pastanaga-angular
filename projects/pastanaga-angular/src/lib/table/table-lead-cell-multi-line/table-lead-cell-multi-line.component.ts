@@ -1,13 +1,14 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
-    selector: 'pa-table-row',
-    templateUrl: 'table-row.component.html',
+    selector: 'pa-table-lead-cell-multi-line',
+    templateUrl: './table-lead-cell-multi-line.component.html',
+    styleUrls: ['./table-lead-cell-multi-line.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class TableRowComponent {
+export class TableLeadCellMultiLineComponent {
     @Input()
     get clickable(): boolean {
         return this._clickable;
@@ -15,16 +16,6 @@ export class TableRowComponent {
     set clickable(value: boolean) {
         this._clickable = coerceBooleanProperty(value);
     }
-    private _clickable = false;
-
-    @Input()
-    get last(): boolean {
-        return this._last;
-    }
-    set last(value: boolean) {
-        this._last = coerceBooleanProperty(value);
-    }
-    private _last = false;
 
     @Input()
     get disabled(): boolean {
@@ -33,5 +24,7 @@ export class TableRowComponent {
     set disabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value);
     }
+
     private _disabled = false;
+    private _clickable = false;
 }

@@ -42,6 +42,7 @@ export const I18N_EN: TranslationEntries = {
         save: 'Save',
         select: 'Select',
         'select-all': 'Select all',
+        'sort-by': 'Sort by',
         to: 'to',
         yes: 'Yes',
     },

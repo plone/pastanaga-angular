@@ -83,13 +83,13 @@ describe('Table', () => {
     });
 
     it('should set the clickable class on rows', () => {
-        expect(fixture.debugElement.query(By.css('#row-1 .pa-table-grid--row.clickable'))).toBeTruthy();
-        expect(fixture.debugElement.query(By.css('#row-2 .pa-table-grid--row.clickable'))).toBeFalsy();
+        expect(fixture.debugElement.query(By.css('#row-1 .pa-table-grid--row.pa-clickable'))).toBeTruthy();
+        expect(fixture.debugElement.query(By.css('#row-2 .pa-table-grid--row.pa-clickable'))).toBeFalsy();
     });
 
     it('should set the clickable class on headers', () => {
-        expect(fixture.debugElement.query(By.css('#header-cell-1 .pa-table-grid--header.clickable'))).toBeTruthy();
-        expect(fixture.debugElement.query(By.css('#header-cell-2 .pa-table-grid--header.clickable'))).toBeFalsy();
+        expect(fixture.debugElement.query(By.css('#header-cell-1 .pa-table-grid--header.pa-clickable'))).toBeTruthy();
+        expect(fixture.debugElement.query(By.css('#header-cell-2 .pa-table-grid--header.pa-clickable'))).toBeFalsy();
     });
 
     it('should support regular cells and header cells', () => {

@@ -7,16 +7,18 @@ button {
     align-items: center;
     border: transparent;
     background: transparent;
-    padding: 0 rhythm(1);
-    margin: 0 #{- rhythm(1)};
+    padding: 0;
+    margin: 0;
     font-weight: $font-weight-bold;
     text-transform: uppercase;
 
-    &:active {
+    &:active,
+    &.pa-active {
         color: $color-neutral-primary-default;
     }
     pa-icon {
         display: flex;
+        margin-left: rhythm(1);
     }
 
     @media (min-width: $size-viewport-large-min) {
@@ -24,7 +26,7 @@ button {
             opacity: 0;
         }
 
-        &.active pa-icon {
+        &.pa-enabled pa-icon {
             opacity: 1;
             transition: transform ease-in-out .3s;
         }
@@ -34,13 +36,6 @@ button {
 
             pa-icon {
                 opacity: 1;
-            }
-        }
-        &:not(.active) {
-            &:hover:not(:active):not(.pa-keyboard-focus) {
-                pa-icon {
-                    transform: rotate(-180deg);
-                }
             }
         }
     }

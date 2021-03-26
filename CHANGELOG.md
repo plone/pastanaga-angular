@@ -1,3 +1,15 @@
+# 2.25.0 (2021-03-26)
+
+### Feature
+- **Table**: [mpellerin42]
+    - New component `pa-table-sortable-header` allowing managing the sorting seamlessly
+    - New `pa-table-lead-cell-multi-line` component providing a layout for cells with a lead image, a title and a description
+    - Fixing spacing on cells
+    - Add `noAutoColumnStyle` option on table, allowing setting grid template by CSS
+    - Add `disabled` property on all kind of cells and on rows
+    - Add `noWrap` property on cells and provide `pa-ellipsis` class to support ellipsis on cell content
+    - Rename `clickable` class to `pa-clickable` for consistency
+
 # 2.24.4 (2021-03-22)
 
 ### Improvements

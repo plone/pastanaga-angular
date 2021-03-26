@@ -16,7 +16,6 @@ export class TableComponent {
     set noHeader(value: boolean) {
         this._noHeader = coerceBooleanProperty(value);
     }
-    _noHeader = false;
 
     @Input()
     get columns(): string {
@@ -24,10 +23,20 @@ export class TableComponent {
     }
     set columns(value: string) {
         this._columns = value;
-        this._columnsStyle = this.santizer.bypassSecurityTrustStyle(this._columns);
+        this.columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
     }
-    _columns = 'auto';
-    _columnsStyle = this.santizer.bypassSecurityTrustStyle(this._columns);
+    @Input()
+    get noAutoColumnStyle(): boolean {
+        return this._noAutoColumnStyle;
+    }
+    set noAutoColumnStyle(value: boolean) {
+        this._noAutoColumnStyle = coerceBooleanProperty(value);
+    }
 
-    constructor(private santizer: DomSanitizer) {}
+    private _noAutoColumnStyle = false;
+    private _noHeader = false;
+    private _columns = 'auto';
+    columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
+
+    constructor(private sanitizer: DomSanitizer) {}
 }

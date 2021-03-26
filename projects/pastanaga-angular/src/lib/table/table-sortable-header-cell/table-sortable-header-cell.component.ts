@@ -1,13 +1,22 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    ElementRef,
     EventEmitter,
     Input,
     OnChanges,
     Output,
     SimpleChanges,
+    ViewChild,
 } from '@angular/core';
+import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
+import { markForCheck } from '../../common';
+
+export const SORTABLE_ICON = 'chevron-down';
+export const SORTED_ASCENDING_ICON = 'arrow-down';
+export const SORTED_DESCENDING_ICON = 'arrow-up';
 
 @Component({
     selector: 'pa-table-sortable-header-cell',
@@ -16,6 +25,14 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableSortableHeaderCellComponent implements OnChanges {
+    @Input()
+    set enabled(value: boolean) {
+        this._enabled = coerceBooleanProperty(value);
+    }
+    get enabled() {
+        return this._enabled;
+    }
+
     @Input()
     set active(value: boolean) {
         this._active = coerceBooleanProperty(value);
@@ -33,10 +50,15 @@ export class TableSortableHeaderCellComponent implements OnChanges {
 
     @Output() sort = new EventEmitter();
 
+    @ViewChild('cell', { read: ElementRef }) cellElement?: ElementRef;
+
     icon?: string;
 
+    private _enabled = false;
     private _active = false;
     private _isDescending = false;
+
+    constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.active || changes.isDescending) {
@@ -45,10 +67,19 @@ export class TableSortableHeaderCellComponent implements OnChanges {
     }
 
     private updateIcon() {
-        if (!coerceBooleanProperty(this.active)) {
-            this.icon = 'chevron-up';
-        } else {
-            this.icon = coerceBooleanProperty(this.isDescending) ? 'arrow-up' : 'arrow-down';
-        }
+        this.breakpointObserver.currentMode.subscribe((mode) => {
+            if (mode === 'mobile') {
+                this.icon = SORTABLE_ICON;
+            } else {
+                if (!this.enabled) {
+                    this.icon = SORTABLE_ICON;
+                } else {
+                    this.icon = coerceBooleanProperty(this.isDescending)
+                        ? SORTED_DESCENDING_ICON
+                        : SORTED_ASCENDING_ICON;
+                }
+            }
+            markForCheck(this.cdr);
+        });
     }
 }
