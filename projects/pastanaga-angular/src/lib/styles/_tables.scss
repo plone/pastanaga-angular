@@ -110,6 +110,17 @@
         opacity: .5;
         pointer-events: none;
     }
+
+    &.pa-no-wrap {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .pa-ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 .pa-table-grid--menu-cell {

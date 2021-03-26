@@ -7,6 +7,7 @@
     - Fixing spacing on cells
     - Add `noAutoColumnStyle` option on table, allowing setting grid template by CSS
     - Add `disabled` property on all kind of cells and on rows
+    - Add `noWrap` property on cells and provide `pa-ellipsis` class to support ellipsis on cell content
     - Rename `clickable` class to `pa-clickable` for consistency
 
 # 2.24.4 (2021-03-22)
