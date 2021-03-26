@@ -109,7 +109,7 @@ export class TablePageComponent {
     </pa-table-row>
     <pa-table-row-header>Yesterday</pa-table-row-header>
     <pa-table-row>
-        <pa-table-cell header>Channel #general - 2020-01-23 (UTC).htm</pa-table-cell>
+        <pa-table-cell header noWrap><span class="pa-ellipsis">Channel #general - 2020-01-23 (UTC).htm</span></pa-table-cell>
         <pa-table-cell></pa-table-cell>
         <pa-table-cell>(EB) | (MP) (NI) (AC) (GD) (+3)</pa-table-cell>
         <pa-table-cell>Yesterday, 12:56 PM</pa-table-cell>

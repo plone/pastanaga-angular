@@ -27,7 +27,7 @@
             </pa-table-row>
             <pa-table-row-header>{{subHeader}}</pa-table-row-header>
             <pa-table-row *ngFor="let item of [data[3],data[4],data[5]]" [class.pa-selected]="rowSelected === item.id" (click)="clickRow(item.id)" clickable>
-                <pa-table-cell header>{{item.name}}</pa-table-cell>
+                <pa-table-cell header noWrap><span class="pa-ellipsis">{{item.name}}</span></pa-table-cell>
                 <pa-table-cell>{{item.tags}}</pa-table-cell>
                 <pa-table-cell>{{item.shared}}</pa-table-cell>
                 <pa-table-cell>{{item.lastUpdate}}</pa-table-cell>
@@ -41,10 +41,14 @@
 
     <pa-demo-usage>
         <h3><code>pa-table</code></h3>
-        <p>It can contain <code>pa-table-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></p>
+        <p>It can contain <code>pa-table-header</code>, <code>pa-table-sortable-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></p>
         <dl>
             <dt>columns</dt>
             <dd>Define the <code>grid-template-columns</code> CSS attribute value. <small>(optional, default is <code>auto</code>)</small></dd>
+
+            <dt>noAutoColumnStyle</dt>
+            <dd>By default, the table set <code>grid-template-columns: auto</code> when <code>columns</code> property is not filled.
+                To prevent this behavior, set <code>noAutoColumnStyle</code> property on your table. <small>(optional, false by default)</small></dd>
 
             <dt>noHeader</dt>
             <dd>If true, table header is not displayed. <small>(optional)</small></dd>
@@ -53,13 +57,25 @@
         <h3><code>pa-table-header</code></h3>
         <p> It can contain <code>pa-table-cell</code> and <code>pa-table-cell-menu</code></p>
 
+        <h3><code>pa-table-sortable-header</code></h3>
+        <p>Easy way to manage sorting on a table. On mobile, only the sorted column is displayed and clicking on it display a dropdown with all the sortable columns.</p>
+        <dl>
+            <dt>cells</dt>
+            <dd>List of <code>HeaderCell</code> to display. </dd>
+            <dt>menuColumn</dt>
+            <dd>Add an empty menu column when set <small>(optional)</small></dd>
+            <dt>sort</dt>
+            <dd>Emit sorted <code>HeaderCell</code> when sorting changes</dd>
+        </dl>
+
         <h3><code>pa-table-row</code></h3>
-        <p> It can contain <code>pa-table-cell</code> and <code>pa-table-cell-menu</code></p>
+        <p> It can contain <code>pa-table-cell</code> and <code>pa-table-cell-menu</code>.
+            Applying the class <code>.pa-selected</code> to a row change its background color to be <code>$color-background-table-row-selected</code>.</p>
         <dl>
             <dt>clickable</dt>
             <dd>If true, hovering the row will display a pointer cursor. <small>(optional)</small></dd>
-            <dt>pa-selected</dt>
-            <dd>Applying the class <code>.pa-selected</code> to a row change its background color to be <code>$color-background-table-row-selected</code>.</dd>
+            <dt>disabled</dt>
+            <dd>Disable the row by applying an opacity mask and preventing <code>pointer-events</code>. <small>(default: false)</small></dd>
         </dl>
 
         <h3><code>pa-table-row-header</code></h3>
@@ -70,13 +86,19 @@
         <dl>
             <dt>header</dt>
             <dd>If true, cell is rendered as a header cell. <small>(optional)</small></dd>
+            <dt>disabled</dt>
+            <dd>Disable the cell by applying an opacity mask and preventing <code>pointer-events</code>. <small>(default: false)</small></dd>
+            <dt>clickable</dt>
+            <dd>If true, hovering the cell will display a pointer cursor. <small>(optional)</small></dd>
+            <dt>noWrap</dt>
+            <dd>Prevent the cell to wrap its content. You can then apply the class <code>pa-ellipsis</code> to your cell content. <small>(Default: false)</small></dd>
         </dl>
 
         <h3><code>pa-table-sortable-header-cell</code></h3>
         <p>It renders as a sortable header cell with a sorting indicator.</p>
         <dl>
             <dt>active</dt>
-            <dd>If true, display the sorting indicator icon, otherwise it will display a chevron down icon on hover. <small>False by default</small></dd>
+            <dd>If true, display the sorting indicator icon, otherwise it will display a chevron down icon on hover. <small>(Default: false)</small></dd>
 
             <dt>isDescending</dt>
             <dd>Set the sorting indicator to <code>arrow-up</code> icon. <small>By default, sorting indicator is <code>arrow-down</code></small></dd>
@@ -86,12 +108,7 @@
         </dl>
 
         <h3><code>pa-table-cell-menu</code></h3>
-        <p>
-            It renders as a cell with centered aligned content and it must contain a <code>pa-button</code>.
-        </p>
-        <p>
-            The button is visible only when its parent row is hovered (except for header cells).
-        </p>
+        <p>It renders as a cell with centered aligned content and it must contain a <code>pa-button</code>.</p>
         <dl>
             <dt>header</dt>
             <dd>If true, cell is rendered as a header cell and menu button is always visible. <small>(optional)</small></dd>

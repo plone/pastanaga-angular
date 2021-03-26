@@ -110,7 +110,10 @@
         opacity: .5;
         pointer-events: none;
     }
+}
 
+.pa-table-grid--header,
+.pa-table-grid--cell {
     &.pa-no-wrap {
         overflow: hidden;
         text-overflow: ellipsis;
