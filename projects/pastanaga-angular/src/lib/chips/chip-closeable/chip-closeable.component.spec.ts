@@ -58,7 +58,7 @@ describe('ChipCloseableComponent', () => {
 
     it('should not have a close button when noCloseButton is set', () => {
         spectator = createHost(`<pa-chip-closeable noCloseButton>A chip</pa-chip-closeable>`);
-        const button = spectator.query('.pa-close-chip-button');
+        const button = spectator.query('[qa="chip-button"]');
         expect(button).toEqual(null);
     });
 
