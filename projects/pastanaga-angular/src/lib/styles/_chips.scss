@@ -17,7 +17,12 @@ $chip-max-width-medium: rhythm(56);
         padding-left: rhythm(.5);
     }
     &.pa-with-button {
-        padding-right: 0;
+        padding-right: rhythm(.5);
+
+        .pa-button svg {
+            height: rhythm(2);
+            width: rhythm(2);
+        }
     }
 
     &.pa-selectionable:not(.pa-disabled) {

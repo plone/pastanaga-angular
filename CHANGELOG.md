@@ -1,3 +1,8 @@
+# 2.25.1 (2021-03-29)
+
+### Improvement
+- **Chip**: set inner icon size to 16px in close button [mpellerin42]
+
 # 2.25.0 (2021-03-26)
 
 ### Feature
