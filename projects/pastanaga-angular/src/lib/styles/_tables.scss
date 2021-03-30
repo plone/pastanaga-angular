@@ -99,16 +99,25 @@
     padding: rhythm(1) rhythm(2);
     min-height: rhythm(9);
 
+    $lead-image-dimension: rhythm(6);
     .pa-lead-image {
-        height: rhythm(6);
+        height: $lead-image-dimension;
         margin-right: rhythm(1);
-        width: rhythm(6);
+        width: $lead-image-dimension;
+
+        pa-icon svg {
+            height: $lead-image-dimension !important;
+            width: $lead-image-dimension !important;
+        }
     }
 
     &.pa-disabled {
         cursor: default;
         opacity: .5;
         pointer-events: none;
+    }
+    &.pa-keyboard-focus {
+        box-shadow: inset $shadow-focus !important;
     }
 }
 
