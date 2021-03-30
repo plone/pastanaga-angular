@@ -1,3 +1,8 @@
+# 2.25.2 (2021-03-30)
+
+### Improvement
+- **Table**: support pa-icon as lead-image [mpellerin42]  
+
 # 2.25.1 (2021-03-29)
 
 ### Improvement
