@@ -116,6 +116,9 @@
         opacity: .5;
         pointer-events: none;
     }
+    &.pa-keyboard-focus {
+        box-shadow: inset $shadow-focus !important;
+    }
 }
 
 .pa-table-grid--header,

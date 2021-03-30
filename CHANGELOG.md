@@ -1,7 +1,9 @@
 # 2.25.2 (2021-03-30)
 
 ### Improvement
-- **Table**: support pa-icon as lead-image [mpellerin42]  
+- **Table**:
+    - support pa-icon as lead-image [mpellerin42]
+    - Fix focus state on cells [mpellerin42]
 
 # 2.25.1 (2021-03-29)
 
