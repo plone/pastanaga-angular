@@ -1,3 +1,8 @@
+# 2.25.3 (2021-04-01)
+
+### Improvement
+- **Avatar**: Update avatar default background color to be slightly darker [mpellerin42]
+
 # 2.25.2 (2021-03-30)
 
 ### Improvement
