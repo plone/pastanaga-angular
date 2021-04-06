@@ -13,8 +13,9 @@
 
     .pa-toggle-control {
         -webkit-appearance: none;
-        border: $border-toggle-unselected;
+        border: 1px solid $color-border-toggle-unselected;
         border-radius: $border-radius-default;
+        box-sizing: content-box;
         cursor: pointer;
         flex: 1 0 auto;
         margin: 0;
@@ -26,27 +27,23 @@
         }
 
         &:not(:disabled):hover {
-            border: $border-toggle-unselected-hover;
+            border-color: $color-border-toggle-unselected-hover;
         }
 
         &:checked {
-            border: $border-toggle-selected;
+            border-color: $color-border-toggle-selected;
             background-color: $color-background-toggle-selected;
             background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
             background-size: $size-toggle-checkbox $size-toggle-checkbox;
 
             &:not(:disabled):hover {
-                border: $border-toggle-selected-hover;
+                border-color: $color-border-toggle-selected-hover;
                 background-color: $color-background-toggle-selected-hover;
             }
 
             &:disabled {
                 background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(#{$color-check-toggle-disabled}, 2) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
-                border: $border-toggle-unselected;
-            }
-
-            &:read-only {
-                border: $border-field-readonly;
+                border-color: $color-border-toggle-disabled;
             }
         }
 
@@ -65,7 +62,7 @@
                 background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" fill-rule="evenodd"/></svg>');
 
                 &:disabled {
-                    border: $border-toggle-selected;
+                    border-color: $color-border-toggle-disabled;
                     background-color: $color-check-toggle-disabled;
                 }
             }

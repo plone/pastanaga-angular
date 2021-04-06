@@ -3,16 +3,6 @@
 @import "typography";
 
 //=====================================
-// BORDERS
-//=====================================
-
-$border-toggle-unselected:          1px solid $color-neutral-secondary-light !default;
-$border-toggle-unselected-hover:    1px solid $color-neutral-primary-default !default;
-$border-toggle-selected:            none !default;
-$border-toggle-selected-hover:      none !default;
-$border-toggle-disabled:            1px solid $color-neutral-secondary-lighter !default;
-
-//=====================================
 // COLORS
 //=====================================
 
@@ -21,6 +11,13 @@ $color-background-toggle-selected: $color-accent-primary-default !default;
 $color-background-toggle-selected-hover: $color-accent-primary-dark !default;
 $color-background-toggle-disabled: $color-neutral-primary-lighter !default;
 
+// Border
+$color-border-toggle-selected: $color-background-toggle-selected !default;
+$color-border-toggle-selected-hover: $color-background-toggle-selected-hover !default;
+$color-border-toggle-unselected: $color-neutral-secondary-light !default;
+$color-border-toggle-unselected-hover: $color-neutral-primary-default !default;
+$color-border-toggle-disabled: $color-background-toggle-disabled !default;
+
 // Check
 $color-check-toggle: $color-neutral-primary-lightest !default;
 $color-check-toggle-disabled: $color-neutral-secondary-light !default;
@@ -28,7 +25,7 @@ $color-check-toggle-disabled: $color-neutral-secondary-light !default;
 //=====================================
 // SPACING
 //=====================================
-$size-toggle-checkbox:   rhythm(2) !default;
+$size-toggle-checkbox:   calc(#{rhythm(2)} - #{rhythm(.25)}) !default;
 
 //=====================================
 // TYPOGRAPHY

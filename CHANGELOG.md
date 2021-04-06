@@ -1,3 +1,11 @@
+# 2.25.4 (2021-04-06)
+
+### Bugfix
+- **Checkbox**: fix border on checkbox to prevent wrong dashed border on safari [mpellerin42]
+    - checkbox always has a 1px solid border
+    - replace `$border-toggle` by `$color-border-toggle` tokens  
+    - set box-sizing to `content-box` and update size to take borders into account
+
 # 2.25.3 (2021-04-01)
 
 ### Improvement
