@@ -1,3 +1,8 @@
+# 2.25.5 (2021-04-12)
+
+### Improvement
+- **Layout**: Add support for wide+panel layout (with panel on the right) [mpellerin42]
+
 # 2.25.4 (2021-04-06)
 
 ### Bugfix

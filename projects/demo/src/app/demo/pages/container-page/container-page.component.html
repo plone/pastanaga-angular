@@ -5,12 +5,12 @@
         <dl>
             <dt>Tight</dt>
             <dd>This layout is meant to be used when there is an aesthetic and functional purpose or interest in keeping
-                the content into a tight centered area (<i>eg.</i> web application). This brings the attention and focus of the user to this area and
+                the content into a tight centered area (<em>eg.</em> web application). This brings the attention and focus of the user to this area and
                 the big margins let design breath and brings simplicity and sophistication.</dd>
 
             <dt>Wide</dt>
             <dd>This layout is meant to use as much space as possible, ideal for cases where we are interested in leveraging
-                most of the available space (<i>eg.</i> website). This layout is provided with margins allowing to keep a generous
+                most of the available space (<em>eg.</em> website). This layout is provided with margins allowing to keep a generous
                 "safe area" which ensures that the content has space to breath.</dd>
 
             <dt>Panel+Wide</dt>
@@ -43,7 +43,7 @@
         </pa-demo-code>
 
         <h3>Wide</h3>
-        <p>Wide layout is done by creating a <code>div</code> with the class <code>.pa-main-container-wide</code>.
+        <p>Wide layout is done by creating a <code>div</code> with the class <code>pa-main-container-wide</code>.
             This div is meant to be the main container of a view.</p>
         <pa-demo-code>
             <pre><code>{{wideExample}}</code></pre>
@@ -53,6 +53,11 @@
         <p>Panel+Wide layout is done by creating the following DOM structure:</p>
         <pa-demo-code>
             <pre><code>{{panelExample}}</code></pre>
+        </pa-demo-code>
+
+        <p>When side panel should be displayed on the right of the screen, add <code>pa-side-on-right</code> class on <code>pa-main-container-wide</code> div:</p>
+        <pa-demo-code>
+            <pre><code>{{rightPanelExample}}</code></pre>
         </pa-demo-code>
     </pa-demo-usage>
 </pa-demo-page>
