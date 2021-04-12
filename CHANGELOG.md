@@ -1,3 +1,8 @@
+# 2.25.6 (2021-04-13)
+
+### Bugfix
+- **Layout**: Fix wide+panel on xLarge screens [mpellerin42]
+
 # 2.25.5 (2021-04-12)
 
 ### Improvement
