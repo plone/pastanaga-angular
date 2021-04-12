@@ -27,4 +27,13 @@ export class ContainerPageComponent {
         <!-- View content -->
     </div>
 </div>`;
+
+    rightPanelExample = `<div class="pa-main-container">
+    <div class="pa-main-container-wide pa-side-on-right">
+        <!-- View content -->
+    </div>
+    <div class="pa-main-side-panel">
+        <!-- Panel content -->
+    </div>
+</div>`;
 }

@@ -89,7 +89,8 @@ $max-width-tight-compact: extraRhythm(72);
         display: flex;
         width: 100%;
     }
-    .pa-main-side-panel + .pa-main-container-wide {
+    .pa-main-side-panel + .pa-main-container-wide,
+    .pa-main-container-wide.pa-side-on-right {
         width: $formula-panel-plus-wide-medium;
         margin: 0 auto;
     }
