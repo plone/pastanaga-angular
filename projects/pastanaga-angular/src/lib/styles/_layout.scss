@@ -80,6 +80,7 @@ $max-width-tight-compact: extraRhythm(72);
     }
     .pa-main-container-wide {
         margin: 0 $formula-wide-large;
+        width: auto;
     }
     .pa-main-side-panel {
         width: $width-side-panel;
@@ -111,7 +112,8 @@ $max-width-tight-compact: extraRhythm(72);
 }
 
 @media (min-width: $size-viewport-large-with-panel-min) {
-    .pa-main-side-panel + .pa-main-container-wide {
+    .pa-main-side-panel + .pa-main-container-wide,
+    .pa-main-container-wide.pa-side-on-right {
         width: $formula-panel-plus-wide-large;
     }
 }
