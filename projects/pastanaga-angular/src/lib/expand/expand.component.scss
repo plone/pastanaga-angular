@@ -36,7 +36,6 @@
     .pa-expand-body {
         opacity: 1;
         height: var(--contentHeight, 1px);
-        margin-left: rhythm(4);
         transition: opacity $transition-hint, height $transition-hint;
     }
 
