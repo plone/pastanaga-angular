@@ -1,1 +1,28 @@
-$transition-timing-button: ease-in-out .16s;
+// ----------------------------------
+// TRANSITIONS
+// ----------------------------------
+$transition-hint-duration: 0.16s;
+$transition-response-duration: 0.24s;
+$transition-process-duration: 0.48s;
+$transition-slide-duration: 0.8s;
+
+/*
+ * hint to be used for :hover, :active, fade/opacity, shadow, color, background
+ */
+$transition-hint: $transition-hint-duration cubic-bezier(0.4, 0, 0.6, 1);
+
+/*
+ * response to be used for :focus, scale, toggle dropdown, change tab, show tooltip, remove small element (dismiss chip)
+ */
+$transition-response: $transition-response-duration cubic-bezier(0.2, 1, 0.3, 1);
+
+/*
+ * process to be used for toast, popover (big tooltip), confirmation dialog
+ */
+$transition-process-in: $transition-process-duration cubic-bezier(0.3, 0.9, 0.5, 1);
+$transition-process-out: $transition-process-duration cubic-bezier(0.9, 0.3, 1, 0.5);
+
+/*
+ * slide to be used for big components in movement (side panels, onboarding screens,…)
+ */
+$transition-slide: $transition-slide-duration cubic-bezier(0.6, 0, 0.4, 1);
