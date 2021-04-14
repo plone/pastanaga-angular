@@ -1,3 +1,8 @@
+# 2.26.0 (2021-04-14)
+
+### Feature
+- **Expand**: New pa-expand component [mpellerin42]
+
 # 2.25.6 (2021-04-13)
 
 ### Bugfix
