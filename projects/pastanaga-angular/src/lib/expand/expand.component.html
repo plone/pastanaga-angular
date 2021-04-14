@@ -1,0 +1,24 @@
+<div class="pa-expand"
+     [class.pa-collapsed]="!expanded"
+     [attr.aria-expanded]="expanded">
+
+    <div class="pa-expand-header"
+         (click)="toggleExpand()">
+        <pa-button size="small"
+                   aspect="basic"
+                   icon="chevron-down"
+                   class="pa-expand-button"
+        >{{(expanded ? 'pastanaga.collapse' : 'pastanaga.expand') | translate}}</pa-button>
+
+        <div class="pa-expand-title">
+            <ng-content select="pa-expand-header"></ng-content>
+        </div>
+        <div class="pa-expand-header-extra">
+            <ng-content select="pa-expand-header-extra-space"></ng-content>
+        </div>
+    </div>
+
+    <div class="pa-expand-body">
+        <ng-content select="pa-expand-body"></ng-content>
+    </div>
+</div>
