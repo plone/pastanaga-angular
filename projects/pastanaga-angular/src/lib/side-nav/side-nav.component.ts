@@ -34,6 +34,7 @@ export class SideNavComponent implements AfterContentInit {
     set inverted(value: boolean) {
         this._inverted = coerceBooleanProperty(value);
     }
+
     @Input()
     get visible(): boolean {
         return !!this._visible;
@@ -46,6 +47,7 @@ export class SideNavComponent implements AfterContentInit {
             this._visible = coerceBooleanProperty(value);
         }
     }
+
     @Input()
     get mode(): string {
         return this._mode;
@@ -54,13 +56,17 @@ export class SideNavComponent implements AfterContentInit {
         this.modeChanged = value !== this._mode;
         this._mode = value;
     }
+
     @Output() close: EventEmitter<void> = new EventEmitter<void>();
+
     @ViewChild('navBar', { read: ElementRef }) navBar?: ElementRef;
     @ViewChild('tabletOverlay', { read: ElementRef }) tabletOverlay?: ElementRef;
     @ContentChildren(SideNavItemComponent, { descendants: true }) contentChild!: QueryList<SideNavItemComponent>;
-    _inverted = false;
-    _visible = true;
-    _mode = 'desktop';
+
+    private _inverted = false;
+    private _visible = true;
+    private _mode = 'desktop';
+
     // we need to avoid animation when mode changed (from desktop to tablet for example)
     modeChanged = false;
     readonly closeNavBarDuration = 1000;
