@@ -1,10 +1,16 @@
 @import "../styles/variables";
 
+:host {
+    display: block;
+}
 .pa-expand {
-
     .pa-expand-button ::ng-deep .pa-button {
         transform: rotate(0);
         transition: transform $transition-hint;
+
+        pa-icon svg {
+            fill: $color-neutral-secondary-default;
+        }
     }
 
     .pa-expand-header {
