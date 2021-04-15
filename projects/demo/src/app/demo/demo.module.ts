@@ -21,7 +21,7 @@ import {
     PaChipsModule,
     PaDateTimeModule,
     PaDropdownModule,
-    PaExpandModule,
+    PaExpanderModule,
     PaFocusableModule,
     PaFormFieldModule,
     PaIconModule,
@@ -93,7 +93,7 @@ import { FormFieldConfigNgModelDirective } from './pages/common-doc/form-field-c
 import { FormFieldConfigFormControlDirective } from './pages/common-doc/form-field-config-form-control.directive';
 import { FormFieldConfigFormGroupDirective } from './pages/common-doc/form-field-config-form-group.directive';
 import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
-import { ExpandPageComponent } from './pages/expand-page/expand-page.component';
+import { ExpanderPageComponent } from './pages/expand-page/expander-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -165,7 +165,7 @@ const COMPONENTS = [
     TextareaFormGroupExampleComponent,
     TooltipPageComponent,
     TranslatePageComponent,
-    ExpandPageComponent,
+    ExpanderPageComponent,
 ];
 
 @NgModule({
@@ -180,7 +180,7 @@ const COMPONENTS = [
         PaChipsModule,
         PaIconModule,
         PaDropdownModule,
-        PaExpandModule,
+        PaExpanderModule,
         PaFocusableModule,
         PaFormFieldModule,
         PaPopupModule,

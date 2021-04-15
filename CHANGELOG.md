@@ -1,7 +1,16 @@
+# 2.26.1 (2021-04-15)
+
+### Improvements
+- **Expander**: [mpellerin42]
+    - Rename Expand to Expander for better clarity
+    - Add `contentLoaded` input which update content height whenever it changes
+- **Transitions**: Update transition tokens [mpellerin42]
+
 # 2.26.0 (2021-04-14)
 
 ### Feature
 - **Expand**: New pa-expand component [mpellerin42]
+- **Transitions**: Create transition tokens [mpellerin42]
 
 # 2.25.6 (2021-04-13)
 

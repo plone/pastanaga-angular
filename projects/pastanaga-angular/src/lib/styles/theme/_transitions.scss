@@ -6,23 +6,27 @@ $transition-response-duration: 0.24s;
 $transition-process-duration: 0.48s;
 $transition-slide-duration: 0.8s;
 
+$ease-out-accent: cubic-bezier(0.3, 0.9, 0.5, 1);
+$ease-in-accent: cubic-bezier(0.9, 0.3, 1, 0.5);
+$ease-in-out-accent: cubic-bezier(0.6, 0, 0.4, 1);
+
 /*
  * hint to be used for :hover, :active, fade/opacity, shadow, color, background
  */
-$transition-hint: $transition-hint-duration cubic-bezier(0.4, 0, 0.6, 1);
+$transition-hint: $transition-hint-duration ease-in-out;
 
 /*
  * response to be used for :focus, scale, toggle dropdown, change tab, show tooltip, remove small element (dismiss chip)
  */
-$transition-response: $transition-response-duration cubic-bezier(0.2, 1, 0.3, 1);
+$transition-response: $transition-response-duration ease;
 
 /*
  * process to be used for toast, popover (big tooltip), confirmation dialog
  */
-$transition-process-in: $transition-process-duration cubic-bezier(0.3, 0.9, 0.5, 1);
-$transition-process-out: $transition-process-duration cubic-bezier(0.9, 0.3, 1, 0.5);
+$transition-process-in: $transition-process-duration $ease-out-accent;
+$transition-process-out: $transition-process-duration $ease-in-accent;
 
 /*
  * slide to be used for big components in movement (side panels, onboarding screens,…)
  */
-$transition-slide: $transition-slide-duration cubic-bezier(0.6, 0, 0.4, 1);
+$transition-slide: $transition-slide-duration $ease-in-out-accent;

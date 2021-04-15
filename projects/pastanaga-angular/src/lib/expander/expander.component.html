@@ -1,27 +1,27 @@
-<div class="pa-expand"
+<div class="pa-expander"
      [class.pa-collapsed]="!expanded"
      [attr.aria-expanded]="expanded">
 
-    <div class="pa-expand-header">
+    <div class="pa-expander-header">
         <pa-button qa="expand-button"
                    size="small"
                    aspect="basic"
                    icon="chevron-down"
-                   class="pa-expand-button"
+                   class="pa-expander-button"
                    (click)="toggleExpand()"
         >{{(expanded ? 'pastanaga.collapse' : 'pastanaga.expand') | translate}}</pa-button>
 
-        <div class="pa-expand-title"
+        <div class="pa-expander-title"
              qa="expand-title"
              (click)="toggleExpand()">
-            <ng-content select="pa-expand-header"></ng-content>
+            <ng-content select="pa-expander-header"></ng-content>
         </div>
-        <div class="pa-expand-header-extra">
-            <ng-content select="pa-expand-header-side-block"></ng-content>
+        <div class="pa-expander-header-extra">
+            <ng-content select="pa-expander-header-side-block"></ng-content>
         </div>
     </div>
 
-    <div class="pa-expand-body">
-        <ng-content select="pa-expand-body"></ng-content>
+    <div class="pa-expander-body">
+        <ng-content select="pa-expander-body"></ng-content>
     </div>
 </div>
