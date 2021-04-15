@@ -1,0 +1,52 @@
+@import "../styles/variables";
+
+:host {
+    display: block;
+}
+.pa-expand {
+    .pa-expand-button ::ng-deep .pa-button {
+        transform: rotate(0);
+        transition: transform $transition-hint;
+
+        pa-icon svg {
+            fill: $color-neutral-secondary-default;
+        }
+    }
+
+    .pa-expand-header {
+        align-items: center;
+        display: flex;
+        width: 100%;
+
+        .pa-expand-title {
+            color: $color-neutral-secondary-default;
+            cursor: pointer;
+            flex: 1 0 auto;
+
+            &:hover {
+                color: $color-neutral-primary-default
+            }
+        }
+
+        .pa-expand-header-extra {
+            flex: 0 0 auto;
+        }
+    }
+
+    .pa-expand-body {
+        opacity: 1;
+        height: var(--contentHeight, 1px);
+        transition: opacity $transition-hint, height $transition-hint;
+    }
+
+    &.pa-collapsed {
+        .pa-expand-button ::ng-deep .pa-button {
+            transform: rotate(-90deg);
+        }
+
+        .pa-expand-body {
+            height: 0;
+            opacity: 0;
+        }
+    }
+}

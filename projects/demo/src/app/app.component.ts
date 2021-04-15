@@ -29,6 +29,7 @@ import { ContainerPageComponent } from './demo/pages/container-page/container-pa
 import { FormFieldHintPageComponent } from './demo/pages/form-field-hint-page/form-field-hint-page.component';
 import { FormControlPageComponent } from './demo/pages/form-control-page/form-control-page.component';
 import { NativeTextFieldPageComponent } from './demo/pages/native-text-field-page/native-text-field-page.component';
+import { ExpandPageComponent } from './demo/pages/expand-page/expand-page.component';
 
 @Component({
     selector: 'app-root',
@@ -56,6 +57,7 @@ export class AppComponent {
                 { view: 'chip', title: 'Chip', type: ChipPageComponent },
                 { view: 'datetime', title: 'Date/time', type: DateTimePageComponent },
                 { view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent },
+                { view: 'expand', title: 'Expand', type: ExpandPageComponent },
                 { view: 'modal', title: 'Modal', type: ModalPageComponent },
                 { view: 'popup', title: 'Popup', type: PopupPageComponent },
                 { view: 'sidenav', title: 'Sidenav', type: SidenavPageComponent },

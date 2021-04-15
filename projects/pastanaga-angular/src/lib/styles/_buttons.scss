@@ -1,5 +1,4 @@
 @import "variables";
-@import "./theme/transitions";
 
 .pa-button {
     background: transparent;
@@ -11,7 +10,7 @@
     white-space: nowrap;
     border: none;
     border-radius: $border-radius-button;
-    transition: background-color $transition-timing-button, box-shadow $transition-timing-button;
+    transition: background-color $transition-hint, box-shadow $transition-hint;
 
     .pa-button-wrapper {
         display: inline-flex;
