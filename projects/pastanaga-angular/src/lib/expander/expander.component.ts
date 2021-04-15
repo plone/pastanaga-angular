@@ -1,14 +1,14 @@
 import { Component, ChangeDetectionStrategy, ElementRef, AfterViewInit, ContentChild } from '@angular/core';
-import { ExpandBodyDirective } from './expand.directive';
+import { ExpanderBodyDirective } from './expander.directive';
 
 @Component({
-    selector: 'pa-expand',
-    templateUrl: './expand.component.html',
-    styleUrls: ['./expand.component.scss'],
+    selector: 'pa-expander',
+    templateUrl: './expander.component.html',
+    styleUrls: ['./expander.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExpandComponent implements AfterViewInit {
-    @ContentChild(ExpandBodyDirective, { read: ElementRef }) expandContent?: ElementRef;
+export class ExpanderComponent implements AfterViewInit {
+    @ContentChild(ExpanderBodyDirective, { read: ElementRef }) expanderContent?: ElementRef;
 
     expanded = true;
 
@@ -18,7 +18,7 @@ export class ExpandComponent implements AfterViewInit {
         setTimeout(() => {
             this.elementRef.nativeElement.style.setProperty(
                 '--contentHeight',
-                `${this.expandContent?.nativeElement.getBoundingClientRect().height}px`,
+                `${this.expanderContent?.nativeElement.getBoundingClientRect().height}px`,
             );
         });
     }

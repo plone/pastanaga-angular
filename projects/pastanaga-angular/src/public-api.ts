@@ -40,8 +40,8 @@ export * from './lib/dropdown/option-header/option-header.component';
 export * from './lib/dropdown/option/option.component';
 export * from './lib/dropdown/separator/separator.component';
 
-export * from './lib/expand/expand.module';
-export * from './lib/expand/expand.component';
+export * from './lib/expander/expander.module';
+export * from './lib/expander/expander.component';
 
 export * from './lib/focusable/focusable.module';
 

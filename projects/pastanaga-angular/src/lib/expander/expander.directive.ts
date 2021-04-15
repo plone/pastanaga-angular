@@ -2,18 +2,18 @@ import { Directive } from '@angular/core';
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: 'pa-expand-header',
+    selector: 'pa-expander-header',
 })
-export class ExpandHeaderDirective {}
+export class ExpanderHeaderDirective {}
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: 'pa-expand-header-side-block',
+    selector: 'pa-expander-header-side-block',
 })
-export class ExpandHeaderSideBlockDirective {}
+export class ExpanderHeaderSideBlockDirective {}
 
 @Directive({
     // tslint:disable-next-line:directive-selector
-    selector: 'pa-expand-body',
+    selector: 'pa-expander-body',
 })
-export class ExpandBodyDirective {}
+export class ExpanderBodyDirective {}
