@@ -1,3 +1,10 @@
+# 2.26.1 (2021-04-15)
+
+### Improvements
+- **Expander**: [mpellerin42]
+    - Rename Expand to Expander for better clarity
+    - Add `contentLoaded` input which update content height whenever it changes
+
 # 2.26.0 (2021-04-14)
 
 ### Feature

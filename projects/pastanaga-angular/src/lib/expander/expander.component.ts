@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ElementRef, AfterViewInit, ContentChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ElementRef, AfterViewInit, ContentChild, Input } from '@angular/core';
 import { ExpanderBodyDirective } from './expander.directive';
 
 @Component({
@@ -8,6 +8,10 @@ import { ExpanderBodyDirective } from './expander.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpanderComponent implements AfterViewInit {
+    @Input() set contentLoaded(value: any) {
+        this.updateContentHeight();
+    }
+
     @ContentChild(ExpanderBodyDirective, { read: ElementRef }) expanderContent?: ElementRef;
 
     expanded = true;
@@ -15,15 +19,19 @@ export class ExpanderComponent implements AfterViewInit {
     constructor(private elementRef: ElementRef) {}
 
     ngAfterViewInit() {
+        this.updateContentHeight();
+    }
+
+    toggleExpand() {
+        this.expanded = !this.expanded;
+    }
+
+    private updateContentHeight() {
         setTimeout(() => {
             this.elementRef.nativeElement.style.setProperty(
                 '--contentHeight',
                 `${this.expanderContent?.nativeElement.getBoundingClientRect().height}px`,
             );
         });
-    }
-
-    toggleExpand() {
-        this.expanded = !this.expanded;
     }
 }
