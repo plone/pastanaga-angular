@@ -1,7 +1,7 @@
 <div class="pa-modal-backdrop"
      tabindex="0"
      #modalContainer
-     [class.pa-modal-blocking]="config.blocking"
+     [class.pa-modal-blocking]="config.blocking || config.showOverlay"
      (click)="outsideClick($event)"
 >
     <dialog class="pa-modal pa-dialog"
