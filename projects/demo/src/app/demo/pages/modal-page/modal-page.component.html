@@ -2,7 +2,7 @@
     <pa-demo-title>Modal</pa-demo-title>
     <pa-demo-description>
         <p>Pastanaga provides a full system allowing you to create and manage your modals as you wish.</p>
-        <p>It also provide two predefined kind of modal component ready to be used:</p>
+        <p>It also provides two predefined kinds of modal component ready to be used:</p>
         <ul>
             <li><code>DialogComponent</code> is a blocking modal without closing button containing:</li>
             <ul>
@@ -11,7 +11,7 @@
                 <li>a description</li>
                 <li>a footer</li>
             </ul>
-            <li><code>ModalComponent</code> is a modal with a closing containing:</li>
+            <li><code>ModalComponent</code> is a modal with a closing button containing:</li>
             <ul>
                 <li>a title</li>
                 <li>a description</li>
@@ -68,6 +68,9 @@
         <dl>
             <dt>blocking</dt>
             <dd>When <code>true</code>, modal won't close when a user clicks outside the modal. <small>(Default: true)</small></dd>
+
+            <dt>showOverlay</dt>
+            <dd>When <code>true</code>, display an overlay behind the modal. <small>(Default: true)</small></dd>
 
             <dt>withCloseButton</dt>
             <dd>When <code>true</code>, we consider the modal to have a close button and pressing ESC key will close the modal and return <code>false</code>.

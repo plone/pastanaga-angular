@@ -2,17 +2,20 @@ import { Observable, Subject } from 'rxjs';
 
 export interface IModalConfig<D = any> {
     blocking?: boolean;
+    showOverlay?: boolean;
     withCloseButton?: boolean;
     data?: D;
 }
 
 export class ModalConfig<D = any> {
     blocking: boolean;
+    showOverlay: boolean;
     withCloseButton: boolean;
     readonly data?: Readonly<D>;
 
     constructor(config?: IModalConfig<D>) {
         this.blocking = !!config && typeof config.blocking === 'boolean' ? config.blocking : true;
+        this.showOverlay = !!config && typeof config.showOverlay === 'boolean' ? config.showOverlay : true;
         this.withCloseButton = !!config && typeof config.withCloseButton === 'boolean' ? config.withCloseButton : false;
         this.data = config?.data;
     }

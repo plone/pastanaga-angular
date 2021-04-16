@@ -1,3 +1,10 @@
+# 2.26.2 (2021-04-16)
+
+### Improvements
+- **Modal**: [mpellerin42]
+    - Allow the display of an overlay for non-blocking modals
+    - Update spacing
+
 # 2.26.1 (2021-04-15)
 
 ### Improvements

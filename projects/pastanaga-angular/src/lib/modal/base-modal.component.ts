@@ -50,7 +50,7 @@ export class BaseModalComponent implements AfterViewInit {
     }
 
     outsideClick($event: MouseEvent) {
-        if (($event.target as HTMLElement).className === 'pa-modal-backdrop') {
+        if (($event.target as HTMLElement).className.includes('pa-modal-backdrop')) {
             $event.preventDefault();
             if (!this.config.blocking) {
                 this.close(false);
