@@ -6,6 +6,7 @@
 >
     <dialog class="pa-modal pa-dialog"
             role="dialog"
+            [class.pa-fullscreen]="config.fullscreen"
             [class.in]="!closing"
             [class.out]="closing"
             [attr.aria-labelledby]="'dialog-' + id + '-title'"
