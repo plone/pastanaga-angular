@@ -1,4 +1,4 @@
-import { ExpanderComponent } from './expander.component';
+import { ExpanderComponent, transitionDuration } from './expander.component';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { PaButtonModule } from '../button/button.module';
 import { PaTranslateModule } from '../translate/translate.module';
@@ -25,17 +25,37 @@ describe('ExpandComponent', () => {
     });
 
     it('should toggle the expand when clicking on the button', () => {
+        spyOn(component, 'toggleExpand');
         spectator.click('[qa="expand-button"]');
-        expect(component.expanded).toBe(false);
-        spectator.click('[qa="expand-button"]');
-        expect(component.expanded).toBe(true);
+        expect(component.toggleExpand).toHaveBeenCalled();
     });
 
     it('should toggle the expand when clicking on the title', () => {
+        spyOn(component, 'toggleExpand');
         spectator.click('[qa="expand-title"]');
-        expect(component.expanded).toBe(false);
-        spectator.click('[qa="expand-title"]');
-        expect(component.expanded).toBe(true);
+        expect(component.toggleExpand).toHaveBeenCalled();
+    });
+
+    describe('toggleExpand', () => {
+        it('when expanded should collapse and then hide content after ', fakeAsync(() => {
+            component.expanded = true;
+            component.contentHidden = false;
+            component.toggleExpand();
+            expect(component.expanded).toBe(false);
+            expect(component.contentHidden).toBe(false);
+            tick(transitionDuration);
+            expect(component.contentHidden).toBe(true);
+        }));
+
+        it('when collapsed should display content and then expand (so animation is visible)', fakeAsync(() => {
+            component.expanded = false;
+            component.contentHidden = true;
+            component.toggleExpand();
+            expect(component.contentHidden).toBe(false);
+            expect(component.expanded).toBe(false);
+            tick();
+            expect(component.expanded).toBe(true);
+        }));
     });
 
     describe('updateContentHeight', () => {

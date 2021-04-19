@@ -33,8 +33,13 @@
         }
     }
     @media (max-width: $size-viewport-medium-max) {
-        // on mobile, keep a margin to avoid the dialog being full-width
-        min-width: unset;
-        max-width: calc(100% - #{rhythm(5)});
+        &:not(.pa-fullscreen) {
+            // on mobile, keep a margin to avoid the dialog being full-width
+            min-width: unset;
+            max-width: calc(100% - #{rhythm(5)});
+        }
+        &.pa-fullscreen {
+            height: 100%;
+        }
     }
 }

@@ -1,3 +1,11 @@
+# 2.26.3 (2021-04-19)
+
+### Improvements
+- **Modal**: Add a fullscreen option on modal config to display fullscreen modal on mobile [mpellerin42]
+
+### Bugfix
+- **Expander**: Prevent expander content to go over following expand (even if invisible) [mpellerin42]
+
 # 2.26.2 (2021-04-16)
 
 ### Improvements
