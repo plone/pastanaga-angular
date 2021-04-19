@@ -1,4 +1,4 @@
-# 2.26.4 (2021-04-19)
+# 2.27.0 (2021-04-19)
 
 ### Improvements
 - **Chip**: Added expandable chip [barcafa]
