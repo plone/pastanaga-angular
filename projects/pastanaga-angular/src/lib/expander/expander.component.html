@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="pa-expander-body">
+    <div class="pa-expander-body" [hidden]="contentHidden">
         <ng-content select="pa-expander-body"></ng-content>
     </div>
 </div>
