@@ -1,3 +1,8 @@
+# 2.27.1 (2021-04-21)
+
+### Bugfix
+- **Tooltip**: Fix tooltip background color on safari [mpellerin42]
+
 # 2.27.0 (2021-04-19)
 
 ### Improvements
