@@ -18,19 +18,19 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
-                        "tsConfig": "projects/pastanaga-angular/tsconfig.lib.json",
+                        "tsconfig": "projects/pastanaga-angular/tsconfig.lib.json",
                         "project": "projects/pastanaga-angular/ng-package.json"
                     },
                     "configurations": {
                         "production": {
-                            "tsConfig": "projects/pastanaga-angular/tsconfig.lib.prod.json"
+                            "tsconfig": "projects/pastanaga-angular/tsconfig.lib.prod.json"
                         }
                     }
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
+                        "tsconfig": [
                             "projects/pastanaga-angular/tsconfig.lib.json",
                             "projects/pastanaga-angular/tsconfig.spec.json"
                         ],
@@ -57,7 +57,7 @@
                         "index": "projects/demo/src/index.html",
                         "main": "projects/demo/src/main.ts",
                         "polyfills": "projects/demo/src/polyfills.ts",
-                        "tsConfig": "projects/demo/tsconfig.app.json",
+                        "tsconfig": "projects/demo/tsconfig.app.json",
                         "aot": true,
                         "assets": [
                             "projects/demo/src/favicon.png",
@@ -124,7 +124,7 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
+                        "tsconfig": [
                             "projects/demo/tsconfig.app.json",
                             "projects/demo/tsconfig.spec.json",
                             "projects/demo/e2e/tsconfig.json"
