@@ -7,34 +7,23 @@
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
-    -webkit-box-shadow: $shadow-tooltip;
     box-shadow: $shadow-tooltip;
     border-radius: 1px;
     padding: rhythm(1);
     background: $color-neutral-primary-default;
     color: $color-neutral-primary-lightest;
-    @include size(xs);
     white-space: nowrap;
     pointer-events: none;
 
     &[aria-expanded=true] {
         opacity: 1;
         visibility: visible;
-        transition: visibility 0s ease, opacity .33s 2s ease;
-        -webkit-transition: visibility 0s ease, opacity .33s 2s ease;
+        transition: visibility 0s ease, opacity $transition-hint 2s;
     }
 }
 
 .pa-tooltip-system[aria-expanded=true] {
-    transition: visibility 0s ease, opacity .33s .5s ease;
-    -webkit-transition: visibility 0s ease, opacity .33s .5s ease;
-}
-
-@supports (-webkit-backdrop-filter: blur(3px)) {
-    .pa-tooltip, .pa-tooltip-system {
-        background: $color-neutral-secondary-light;
-        -webkit-backdrop-filter: blur(3px);
-    }
+    transition: visibility 0s ease, opacity $transition-hint .5s;
 }
 
 .pa-tooltip > kbd, .pa-tooltip-system > kbd {
