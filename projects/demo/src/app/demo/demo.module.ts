@@ -14,6 +14,9 @@ import { TraversalModule } from 'angular-traversal';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { IconPageComponent } from './pages/icon-page/icon-page.component';
 import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
+import * as enDemo from '../../assets/i18n/en.json';
+import * as custom from '../../assets/i18n/custom-en.json';
+import * as la from '../../assets/i18n/la.json';
 
 import {
     PaAvatarModule,
@@ -187,7 +190,11 @@ const COMPONENTS = [
         PaTextFieldModule,
         PaToastModule,
         PaTogglesModule,
-        PaTranslateModule,
+        PaTranslateModule.addTranslations([
+            { en_US: { ...(enDemo as any).default } },
+            { en_US: { ...(custom as any).default } },
+            { latin: { ...la } },
+        ]),
         PaTabsModule,
         PaTableModule,
         PaTooltipModule,

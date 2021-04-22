@@ -6,7 +6,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { AppMarker } from './app.marker';
 import { AppResolver } from './app.resolver';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { I18N_EN, mergeTranslations, PaButtonModule, PA_TRANSLATIONS, PA_LANG } from '../../../pastanaga-angular/src';
+import { I18N_EN, PaButtonModule, PA_LANG, PaTranslateModule } from '../../../pastanaga-angular/src';
 import { BrowserModule } from '@angular/platform-browser';
 import { PaSideNavModule } from '../../../pastanaga-angular/src/lib/side-nav/side-nav.module';
 
@@ -21,6 +21,7 @@ describe('AppComponent', () => {
                 PaDemoModule,
                 PaButtonModule,
                 PaSideNavModule,
+                PaTranslateModule.addTranslations([{ en_US: I18N_EN }]),
             ],
             providers: [
                 { provide: Marker, useClass: AppMarker },
@@ -28,12 +29,6 @@ describe('AppComponent', () => {
                 { provide: Normalizer },
                 { provide: APP_BASE_HREF, useValue: '/' },
                 { provide: PA_LANG, useValue: 'en_US' },
-                {
-                    provide: PA_TRANSLATIONS,
-                    useValue: {
-                        en_US: mergeTranslations([I18N_EN]),
-                    },
-                },
             ],
         }).compileComponents();
     }));

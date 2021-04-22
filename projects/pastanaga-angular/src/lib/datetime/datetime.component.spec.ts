@@ -1,7 +1,8 @@
-import { SimpleChange, TRANSLATIONS } from '@angular/core';
+import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PaTranslateModule } from '../translate/translate.module';
 
-import { TranslatePipe, PA_LANG, PA_TRANSLATIONS } from '../translate/translate.pipe';
+import { TranslatePipe, PA_LANG } from '../translate/translate.pipe';
 import { DateTimeComponent } from './datetime.component';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 import { dates, mockTranslateEn } from './test-data';
@@ -14,12 +15,8 @@ describe('DateTimeComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [DateTimeComponent],
-            providers: [
-                DateTimeService,
-                TranslatePipe,
-                { provide: PA_LANG, useValue: 'en_US' },
-                { provide: PA_TRANSLATIONS, useValue: { en_US: { ...mockTranslateEn } as any } },
-            ],
+            imports: [PaTranslateModule.addTranslations([{ en_US: { ...mockTranslateEn } }])],
+            providers: [DateTimeService, TranslatePipe, { provide: PA_LANG, useValue: 'en_US' }],
         });
         fixture = TestBed.createComponent(DateTimeComponent);
         component = fixture.componentInstance;

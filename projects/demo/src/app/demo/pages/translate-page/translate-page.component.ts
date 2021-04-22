@@ -34,16 +34,15 @@ import * as en from '../assets/i18n/en.json';
 import * as la from '../assets/i18n/la.json';
 
 @NgModule({
-    ...
+    imports : [
+        ...
+        PaTranslateModule.addTranslations([{'en_US': {...en}}, {'latin': {...la}}]),
     providers: [
         { provide: PA_LANG, useValue: 'en_US' },
-        {
-            provide: PA_TRANSLATIONS,
-            useValue: {
-                'en_US': {...en},
-                'latin': {...la},
-            }
-        },
 `;
-    concatTranslations = `en_US: mergeTranslations([{...en}, {...custom}])`;
+    moreTranslations = `@NgModule({
+    imports : [
+        ...
+        PaTranslateModule.addTranslations([{'en_US': {...moreTranslationsForThisModule}}])
+    ]`;
 }

@@ -1,3 +1,11 @@
+# 2.28.0 (2021-04-22)
+
+### Breaking change
+- **Translate**: [ebrehault]
+    - Translations are now added from any module using the `addTranslations` static method
+    - `mergeTranslations` is not available anymore
+    - `PA_TRANSLATIONS` cannot be provided anymore
+
 # 2.27.1 (2021-04-21)
 
 ### Bugfix

@@ -87,7 +87,6 @@ export * from './lib/translate/translate.module';
 export * from './lib/translate/translate.pipe';
 export * from './lib/translate/translate.directive';
 export * from './lib/translate/translate.model';
-export * from './lib/translate/translate.utils';
 export * from './lib/translate/i18n/en';
 
 export * from './lib/side-nav/side-nav.module';
