@@ -1,3 +1,15 @@
+# 2.28.0 (2021-04-22)
+
+### Breaking change
+- **Translate**: [ebrehault]
+    - Translations are now added from any module using the `addTranslations` static method
+    - `mergeTranslations` is not available anymore
+    
+### BugFix
+- **Sortable Table Header**: Prevent sortable table header mobile dropdown to impact table rows [mpellerin42]
+- **Expander**: Update content height on expand to prevent overlap when window is resized while collapsed [mpellerin42]
+- **Typography**: Update display line-height to prevent low and high characters from being cut [mpellerin42]
+
 # 2.27.1 (2021-04-21)
 
 ### Bugfix

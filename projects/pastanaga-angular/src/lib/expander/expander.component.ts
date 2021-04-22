@@ -6,9 +6,13 @@ import {
     ContentChild,
     Input,
     ChangeDetectorRef,
+    OnDestroy,
 } from '@angular/core';
 import { ExpanderBodyDirective } from './expander.directive';
 import { markForCheck } from '../common';
+import { BreakpointObserver } from '../breakpoint-observer/breakpoint.observer';
+import { Subject } from 'rxjs';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 export const transitionDuration = 160;
 
@@ -18,20 +22,30 @@ export const transitionDuration = 160;
     styleUrls: ['./expander.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExpanderComponent implements AfterViewInit {
+export class ExpanderComponent implements AfterViewInit, OnDestroy {
     @Input() set contentLoaded(value: any) {
         this.updateContentHeight();
     }
 
     @ContentChild(ExpanderBodyDirective, { read: ElementRef }) expanderContent?: ElementRef;
 
+    terminator = new Subject();
     expanded = true;
     contentHidden = false;
 
-    constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
+    constructor(
+        private elementRef: ElementRef,
+        private breakpoint: BreakpointObserver,
+        private cdr: ChangeDetectorRef,
+    ) {}
 
     ngAfterViewInit() {
         this.updateContentHeight();
+    }
+
+    ngOnDestroy() {
+        this.terminator.next();
+        this.terminator.complete();
     }
 
     toggleExpand() {
@@ -43,8 +57,9 @@ export class ExpanderComponent implements AfterViewInit {
                 markForCheck(this.cdr);
             }, transitionDuration);
         } else {
-            // when collapsed, we remove display: none before expand the panel so the animation is visible
+            // when collapsed, we remove "display: none" before expanding the panel so the animation is visible
             this.contentHidden = false;
+            this.updateContentHeight();
             setTimeout(() => {
                 this.expanded = true;
                 markForCheck(this.cdr);

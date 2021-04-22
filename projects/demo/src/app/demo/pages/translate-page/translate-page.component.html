@@ -12,7 +12,7 @@
             </pre>
         </pa-demo-code>
 
-        <p>Translations must be provided in the main app module:</p>
+        <p>Translation language is provided in the main app module, and translations are passed using the <code>PaTranslateModule.addTranslations</code> method:</p>
         <pa-demo-code>
             <pre>
                 <code>{{appModule}}</code>
@@ -20,11 +20,13 @@
         </pa-demo-code>
 
         <p>
-            We can cascade several translations using the <code>mergeTranslations</code> method:
+            We can add more translations in any other module, possibly lazy-loaded, still using the <code>addTranslations</code> method, it makes a deep merge with the existing translations (existing entries are replaced, new ones are added):
         </p>
-        <pre>
-            <code>{{concatTranslations}}</code>
-        </pre>
+        <pa-demo-code>
+            <pre>
+                <code>{{moreTranslations}}</code>
+            </pre>
+        </pa-demo-code>
 
         <h3>Using the directive</h3>
         <div>
