@@ -44,10 +44,10 @@ $line-height: (
     // display
     d1:     ($font-size-base * 2.25),   // 36px - 2.25 rem
     d1-md:  ($font-size-base * 2.5),    // 40px - 2.5 rem
-    d2:     ($font-size-base * 2.75),   // 44px - 2.75 rem
-    d2-md:  ($font-size-base * 3.5),    // 56px - 3.5 rem
-    d3:     ($font-size-base * 4),      // 64px - 4 rem
-    d3-md:  ($font-size-base * 5),      // 80px - 5 rem
+    d2:     ($font-size-base * 3),      // 48px - 3 rem
+    d2-md:  ($font-size-base * 4),      // 64px - 4 rem
+    d3:     ($font-size-base * 4.5),    // 72px - 4.5 rem
+    d3-md:  ($font-size-base * 6),      // 96px - 6 rem
 ) !default;
 @function line-height($t-shirt-size) {
     @return map-get($line-height, $t-shirt-size)
