@@ -4,15 +4,13 @@ import { DATE_FORMAT, DateTimeService } from './datetime.service';
 
 import { TranslatePipe } from '../translate/translate.pipe';
 import { dates, mockTranslateEn, mockTranslateFr } from './test-data';
-import { PA_TRANSLATIONS } from '../translate/translate.model';
 
 describe('DateTimeService', () => {
     let service: DateTimeService;
 
     describe('en-US locale', () => {
         beforeEach(() => {
-            PA_TRANSLATIONS.en_US = mockTranslateEn;
-            service = new DateTimeService(new TranslatePipe('en-US'), 'en-US');
+            service = new DateTimeService(new TranslatePipe('en-US', { 'en-US': mockTranslateEn }), 'en-US');
         });
 
         it('should be defined', () => {
@@ -143,8 +141,7 @@ describe('DateTimeService', () => {
     describe('fr-FR locale', () => {
         beforeEach(() => {
             registerLocaleData(localeFr, 'fr-FR');
-            PA_TRANSLATIONS['fr-FR'] = mockTranslateFr;
-            service = new DateTimeService(new TranslatePipe('fr-FR'), 'fr-FR');
+            service = new DateTimeService(new TranslatePipe('fr-FR', { 'fr-FR': mockTranslateFr }), 'fr-FR');
         });
 
         describe('getFormattedDate method with human param', () => {

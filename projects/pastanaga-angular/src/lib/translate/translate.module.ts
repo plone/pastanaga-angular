@@ -1,9 +1,11 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslatePipe } from './translate.pipe';
+import { PA_TRANSLATIONS, TranslatePipe } from './translate.pipe';
 import { TranslateDirective } from './translate.directive';
-import { PA_TRANSLATIONS, Translation } from './translate.model';
+import { Translation } from './translate.model';
 import { mergeTranslations } from './translate.utils';
+
+const _TRANSLATIONS: Translation = {};
 
 @NgModule({
     imports: [CommonModule],
@@ -12,11 +14,16 @@ import { mergeTranslations } from './translate.utils';
     providers: [TranslatePipe],
 })
 export class PaTranslateModule {
-    static addTranslations(translations: Translation[]): ModuleWithProviders<PaTranslateModule> {
-        mergeTranslations(translations);
+    static addTranslations(newTranslations: Translation[]): ModuleWithProviders<PaTranslateModule> {
+        mergeTranslations(_TRANSLATIONS, newTranslations);
         return {
             ngModule: PaTranslateModule,
-            providers: [],
+            providers: [
+                {
+                    provide: PA_TRANSLATIONS,
+                    useFactory: () => _TRANSLATIONS,
+                },
+            ],
         };
     }
 }

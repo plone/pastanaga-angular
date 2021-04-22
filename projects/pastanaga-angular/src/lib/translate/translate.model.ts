@@ -1,5 +1,3 @@
-export const PA_TRANSLATIONS: Translation = {};
-
 export interface TranslationEntries {
     [id: string]: string | TranslationEntries;
 }

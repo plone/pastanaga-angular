@@ -1,20 +1,20 @@
-import { PA_TRANSLATIONS, Translation } from './translate.model';
+import { Translation, TranslationEntries } from './translate.model';
 
-function deepMerge(from: any, to: any): any {
+function deepMerge(from: TranslationEntries, to: TranslationEntries): TranslationEntries {
     return Object.entries(from).reduce((all, [key, translation]) => {
         if (!all[key]) {
             all[key] = translation;
         } else if (typeof all[key] !== 'string' && typeof translation !== 'string') {
-            all[key] = deepMerge(translation, all[key]);
+            all[key] = deepMerge(translation, all[key] as TranslationEntries);
         }
         return all;
     }, to);
 }
 
-export const mergeTranslations = (translations: Translation[]) => {
-    translations.forEach((current) => {
-        Object.entries(current).forEach(
-            ([lang, entries]) => (PA_TRANSLATIONS[lang] = deepMerge(entries, PA_TRANSLATIONS[lang] || {})),
-        );
-    });
+export const mergeTranslations = (existing: Translation, translations: Translation[]) => {
+    translations.forEach((translation) =>
+        Object.entries(translation).forEach(
+            ([lang, entries]) => (existing[lang] = deepMerge(entries, existing[lang] || {})),
+        ),
+    );
 };
