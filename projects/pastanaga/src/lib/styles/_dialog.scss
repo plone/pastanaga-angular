@@ -296,6 +296,7 @@
 .pa-dialog.out {
     animation-name: dialog-out;
     animation-duration: .75s;
+    animation-fill-mode: forwards;
 
     .pa-dialog-header,
     .pa-dialog-band,
@@ -303,5 +304,6 @@
     .pa-dialog-footer {
         animation-name: dialog-out-content;
         animation-duration: 1.25s;
+        animation-fill-mode: forwards;
     }
 }

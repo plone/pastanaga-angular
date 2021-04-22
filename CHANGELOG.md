@@ -1,3 +1,9 @@
+# 1.19.8 (2021-04-22)
+
+### Bug fixes
+
+-   closed dialogs re-appear when js is too busy and late to destroy them [jCarret]
+
 # 1.19.7 (2021-03-23)
 
 ### Improvements

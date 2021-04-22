@@ -66,12 +66,14 @@
         animation-name: confirmation-out;
         animation-duration: .75s;
         animation-iteration-count: 1;
+        animation-fill-mode: forwards;
 
         .pa-confirmation-header,
         .pa-confirmation-footer {
             animation-name: dialog-out-content;
             animation-duration: 1.25s;
             animation-iteration-count: 1;
+            animation-fill-mode: forwards;
         }
     }
 }
