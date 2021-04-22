@@ -6,6 +6,7 @@ import { MockModule } from 'ng-mocks';
 import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('ExpandComponent', () => {
+    const updateContentHeight = jest.fn();
     const createComponent = createComponentFactory({
         imports: [MockModule(PaButtonModule), MockModule(PaTranslateModule)],
         component: ExpanderComponent,
@@ -37,7 +38,7 @@ describe('ExpandComponent', () => {
     });
 
     describe('toggleExpand', () => {
-        it('when expanded should collapse and then hide content after ', fakeAsync(() => {
+        it('when expanded should collapse and then hide content', fakeAsync(() => {
             component.expanded = true;
             component.contentHidden = false;
             component.toggleExpand();
@@ -48,11 +49,14 @@ describe('ExpandComponent', () => {
         }));
 
         it('when collapsed should display content and then expand (so animation is visible)', fakeAsync(() => {
+            //@ts-ignore access private member
+            component.updateContentHeight = updateContentHeight;
             component.expanded = false;
             component.contentHidden = true;
             component.toggleExpand();
             expect(component.contentHidden).toBe(false);
             expect(component.expanded).toBe(false);
+            expect(updateContentHeight).toHaveBeenCalled();
             tick();
             expect(component.expanded).toBe(true);
         }));
@@ -79,7 +83,6 @@ describe('ExpandComponent', () => {
 
     describe('ngAfterViewInit', () => {
         it('should call updateContentHeight', () => {
-            const updateContentHeight = jest.fn();
             //@ts-ignore access private member
             component.updateContentHeight = updateContentHeight;
             component.ngAfterViewInit();
@@ -89,7 +92,6 @@ describe('ExpandComponent', () => {
 
     describe('contentLoaded', () => {
         it('should call updateContentHeight', () => {
-            const updateContentHeight = jest.fn();
             //@ts-ignore access private member
             component.updateContentHeight = updateContentHeight;
             component.contentLoaded = true;

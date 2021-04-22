@@ -8,6 +8,7 @@
     
 ### BugFix
 - **Sortable Table Header**: Prevent sortable table header mobile dropdown to impact table rows [mpellerin42]
+- **Expander**: Update content height on expand to prevent overlap when window is resized while collapsed [mpellerin42]
 
 # 2.27.1 (2021-04-21)
 
