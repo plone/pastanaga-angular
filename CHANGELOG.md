@@ -4,7 +4,6 @@
 - **Translate**: [ebrehault]
     - Translations are now added from any module using the `addTranslations` static method
     - `mergeTranslations` is not available anymore
-    - `PA_TRANSLATIONS` cannot be provided anymore
     
 ### BugFix
 - **Sortable Table Header**: Prevent sortable table header mobile dropdown to impact table rows [mpellerin42]
