@@ -145,7 +145,6 @@ describe('TableSortableHeaderComponent', () => {
             component.ngAfterViewInit();
             expect(component.sortMenuPosition).toEqual({
                 position: 'absolute',
-                left: 10,
                 top: 130,
             });
         });
