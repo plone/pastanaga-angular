@@ -61,7 +61,6 @@ export class TableSortableHeaderComponent implements AfterViewInit {
         if (!!elementRect) {
             this.sortMenuPosition = {
                 position: 'absolute',
-                left: elementRect.left,
                 top: elementRect.top + elementRect.height,
             };
         }
