@@ -1,3 +1,8 @@
+# 2.28.1 (2021-04-22)
+
+### BugFix
+- **Typography**: Update d1-md token to prevent low and high characters from being cut [mpellerin42]
+
 # 2.28.0 (2021-04-22)
 
 ### Breaking change
