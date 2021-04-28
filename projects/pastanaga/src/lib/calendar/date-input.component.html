@@ -5,10 +5,10 @@
                          [placeholder]="datePlaceholder"
                          [debounceDuration]="1000"
                          (valueChange)="checkTypedDate($event)"
-                         [class.pa-field-label-error]="!isValidDate && dateInput !== ''"
+                         [class.pa-field-label-error]="!(isValidDate && dateInput !== '') || !!errorMessage"
                          [maxCharacters]="10"
                          [id]="id"
-                         [errorMessage]="!isValidDate && dateInput !== '' ? errorMessage : ''"
+                         [errorMessage]="((!isValidDate && dateInput && 'pastanaga.invalid-date') || errorMessage) | translate"
                          [help]="help"
                          [accent]="_accent"
                          [isLessen]="_isLessen">

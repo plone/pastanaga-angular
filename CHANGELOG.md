@@ -1,3 +1,9 @@
+# 1.19.9 (2021-04-28)
+
+### Bug fixes
+
+-   Fix date input custom error messages [ebrehault]
+
 # 1.19.8 (2021-04-22)
 
 ### Bug fixes
