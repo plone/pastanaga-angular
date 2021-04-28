@@ -6,8 +6,9 @@ import {
     Input,
     OnChanges,
     OnInit,
-    Output, SimpleChanges,
-    ViewChild
+    Output,
+    SimpleChanges,
+    ViewChild,
 } from '@angular/core';
 import { markForCheck, PositionStyle } from '../common/utils';
 import { TextfieldCommon } from '../textfield/textfield.common';
@@ -22,16 +23,22 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 })
 export class DateInputComponent extends TextfieldCommon implements OnInit, OnChanges {
     @Input() datePlaceholder = 'mm/dd/yyyy';
-    @Input() errorMessage = 'Invalid date (mm/dd/yyyy)';
+    @Input() errorMessage = '';
     @Input() id = '';
     @Input() minDate?: Date;
     @Input() selection?: Date;
 
-    @Input() set noFuture(value) { this._noFuture = coerceBooleanProperty(value); }
+    @Input() set noFuture(value) {
+        this._noFuture = coerceBooleanProperty(value);
+    }
     _noFuture = false;
-    @Input() set accent(value) { this._accent = coerceBooleanProperty(value); }
+    @Input() set accent(value) {
+        this._accent = coerceBooleanProperty(value);
+    }
     _accent = false;
-    @Input() set isLessen(value) { this._isLessen = coerceBooleanProperty(value); }
+    @Input() set isLessen(value) {
+        this._isLessen = coerceBooleanProperty(value);
+    }
     _isLessen = false;
 
     @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
@@ -41,11 +48,9 @@ export class DateInputComponent extends TextfieldCommon implements OnInit, OnCha
     dateInput = '';
     isValidDate = true;
     currentDate = new Date();
-    datePickerPosition: PositionStyle = {position: 'absolute', left: '0', top: '0'};
+    datePickerPosition: PositionStyle = { position: 'absolute', left: '0', top: '0' };
 
-    constructor(
-        public cdr: ChangeDetectorRef,
-    ) {
+    constructor(public cdr: ChangeDetectorRef) {
         super();
     }
 
@@ -59,9 +64,9 @@ export class DateInputComponent extends TextfieldCommon implements OnInit, OnCha
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.help) {
             const top = !!changes.help.currentValue ? '-33px' : '0';
-            this.datePickerPosition = {...this.datePickerPosition, top};
+            this.datePickerPosition = { ...this.datePickerPosition, top };
         }
-        if (changes.selection && changes.selection.currentValue) { 
+        if (changes.selection && changes.selection.currentValue) {
             this.selectDate(changes.selection.currentValue);
         }
     }
@@ -106,6 +111,6 @@ export class DateInputComponent extends TextfieldCommon implements OnInit, OnCha
     iconClick($event: MouseEvent) {
         $event.preventDefault();
         $event.stopPropagation();
-        this.datePicker.remoteClick({ignoreRemote: true});
+        this.datePicker.remoteClick({ ignoreRemote: true });
     }
 }

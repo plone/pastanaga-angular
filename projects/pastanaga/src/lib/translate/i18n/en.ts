@@ -27,6 +27,7 @@ export const I18N_EN: TranslationEntries = {
         filtered: 'Filtered',
         finish: 'Finish',
         from: 'From',
+        'invalid-date': 'Invalid date (mm/dd/yyyy)',
         loading: 'Loading…',
         syncing: 'Now syncing…',
         me: 'me',
@@ -51,6 +52,6 @@ export const I18N_EN: TranslationEntries = {
         'view-selected': 'View selection',
         'view-all': 'View all',
         yes: 'Yes',
-        'unexpected-error': 'Unexpected error'
+        'unexpected-error': 'Unexpected error',
     },
 };
