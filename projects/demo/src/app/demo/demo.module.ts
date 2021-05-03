@@ -97,6 +97,7 @@ import { FormFieldConfigFormControlDirective } from './pages/common-doc/form-fie
 import { FormFieldConfigFormGroupDirective } from './pages/common-doc/form-field-config-form-group.directive';
 import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
 import { ExpanderPageComponent } from './pages/expand-page/expander-page.component';
+import { AccessibilityPageComponent } from './pages/accessibility/accessibility-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -114,6 +115,7 @@ const COMPONENTS = [
     DialogImageExampleComponent,
     ModalExampleComponent,
 
+    AccessibilityPageComponent,
     AvatarPageComponent,
     BreakpointPageComponent,
     ButtonPageComponent,
