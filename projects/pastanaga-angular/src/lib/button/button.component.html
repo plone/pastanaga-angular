@@ -15,7 +15,7 @@
                  [class.pa-icon-text]="_iconAndText"
         ></pa-icon>
         <span #textContainer class="pa-button-label"
-              [class.pa-sr]="!!_icon && !_iconAndText"
+              [class.pa-sr-only]="!!_icon && !_iconAndText"
         ><ng-content></ng-content></span>
     </span>
 </button>
