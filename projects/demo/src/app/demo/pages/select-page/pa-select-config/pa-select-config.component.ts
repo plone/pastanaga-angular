@@ -18,6 +18,7 @@ export class PaSelectConfigComponent implements OnInit {
         optionsProvidedInTemplate: new FormControl(true),
         adjustHeight: new FormControl(),
         hasFocus: new FormControl(),
+        dim: new FormControl(false),
 
         value: new FormControl(),
         label: new FormControl('The label'),

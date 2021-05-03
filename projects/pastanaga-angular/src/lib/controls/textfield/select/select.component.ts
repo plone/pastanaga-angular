@@ -52,6 +52,13 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     @Input() help?: string;
     @Input() errorMessages?: IErrorMessages;
     @Input() showAllErrors = true;
+    _dim = false;
+    @Input() set dim(value: boolean) {
+        this._dim = coerceBooleanProperty(value);
+    }
+    get dim() {
+        return this._dim;
+    }
 
     @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
 

@@ -352,4 +352,10 @@ describe('SelectComponent', () => {
         spectator.detectChanges();
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
     }));
+
+    it('should rendre in dim mode', fakeAsync(() => {
+        initWithTemplate(`<pa-select dim>${optionsInTemplate}</pa-select>`);
+        expect(spectator.query('label.pa-sr-only')).toBeTruthy();
+        expect(spectator.query('.pa-field-control.dim')).toBeTruthy();
+    }));
 });

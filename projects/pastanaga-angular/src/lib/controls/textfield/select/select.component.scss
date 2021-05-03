@@ -55,7 +55,6 @@
                     border: $border-field-regular-hover;
                     margin: 0;
                 }
-
                 &:focus,
                 &:active {
                     border: $border-field-regular-active;
@@ -71,8 +70,10 @@
                     }
                 }
             }
-
-            &.disabled {
+            &.dim {
+                border-color: transparent;
+            }
+            &.disabled:not(.dim) {
                 border: $border-field-disabled;
                 color: $color-text-field-control-disabled;
 
@@ -80,7 +81,7 @@
                     color: $color-text-field-label-disabled;
                 }
             }
-            &.read-only {
+            &.read-only:not(.dim) {
                 border: $border-field-readonly;
             }
         }
