@@ -182,6 +182,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     private _updateDisplayedValue(val?: string) {
         const selectedOptionLabel = this._findLabelByValue(val);
         this.displayedValue = selectedOptionLabel || this.placeholder;
+        markForCheck(this.cdr);
     }
 
     private _findLabelByValue(value?: string): string | undefined {
