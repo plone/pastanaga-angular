@@ -52,7 +52,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     @Input() help?: string;
     @Input() errorMessages?: IErrorMessages;
     @Input() showAllErrors = true;
-    _dim = false;
     @Input() set dim(value: boolean) {
         this._dim = coerceBooleanProperty(value);
     }
@@ -81,6 +80,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     private optionsClosed$ = new Subject();
     private contentOptionsChanged$ = new Subject();
     private _hasFocus = false;
+    private _dim = false;
 
     constructor(
         protected element: ElementRef,
