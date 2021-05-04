@@ -360,8 +360,9 @@ describe('SelectComponent', () => {
     }));
 
     it('should render in dim mode', fakeAsync(() => {
-        initWithTemplate(`<pa-select dim>${optionsInTemplate}</pa-select>`);
-        expect(spectator.query('label.pa-sr-only')).toBeTruthy();
+        initWithTemplate(`<pa-select label="my field" dim>${optionsInTemplate}</pa-select>`);
         expect(spectator.query('.pa-field-control.dim')).toBeTruthy();
+        whenFirstOptionClicked();
+        expect(spectator.query('label.pa-sr-only')).toBeTruthy();
     }));
 });

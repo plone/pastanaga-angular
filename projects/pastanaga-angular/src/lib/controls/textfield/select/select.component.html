@@ -25,7 +25,7 @@
         >{{displayedValue}}</span>
     </div>
 
-    <label class="pa-field-label" [class.pa-sr-only]="dim" [for]="id">{{label}}</label>
+    <label class="pa-field-label" [class.pa-sr-only]="dim && (hasValue || isOpened)" [for]="id">{{label}}</label>
 
     <pa-icon class="pa-select-chevron"
              name="chevron-down"
