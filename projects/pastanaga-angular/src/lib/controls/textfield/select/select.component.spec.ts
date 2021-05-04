@@ -9,7 +9,7 @@ import { PaDropdownModule } from '../../../dropdown/dropdown.module';
 import { PaPopupModule } from '../../../popup/popup.module';
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { PaIconModule } from '../../../icon/icon.module';
-import { fakeAsync, tick } from '@angular/core/testing';
+import { fakeAsync, discardPeriodicTasks, tick } from '@angular/core/testing';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
@@ -96,6 +96,7 @@ describe('SelectComponent', () => {
         host = spectator.hostComponent;
         spectator.detectChanges();
     };
+
     it('should have an id, a name and a label', () => {
         initWithTemplate(`<pa-select [(ngModel)]="model" label="Label"></pa-select>`);
         thenInputHasAttribute('id', 'select-1');
@@ -258,6 +259,7 @@ describe('SelectComponent', () => {
         expect(expanded).toHaveBeenCalledWith(true);
         spectator.detectChanges();
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(false);
+        discardPeriodicTasks();
     }));
 
     it('should toggle the icon when the dropdown is opened', fakeAsync(() => {
@@ -268,6 +270,7 @@ describe('SelectComponent', () => {
         tick();
         spectator.detectChanges();
         expect(spectator.query('.pa-select-chevron.opened')).toBeTruthy();
+        discardPeriodicTasks();
     }));
     it('should toggle the dropdown clicking on the icon when active', fakeAsync(() => {
         initWithTemplate(`<pa-select [readonly]="readonly">${optionsInTemplate}</pa-select>`);
@@ -286,6 +289,7 @@ describe('SelectComponent', () => {
         tick();
         spectator.detectChanges();
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(true);
+        discardPeriodicTasks();
     }));
     it('should be touched and dirty ounce dropdown is closed', fakeAsync(() => {
         initWithTemplate(`<pa-select [value]="value">${optionsInTemplate}</pa-select>`);
@@ -297,6 +301,7 @@ describe('SelectComponent', () => {
         spectator.triggerEventHandler(DropdownComponent, 'onClose', true);
         expect(component.control.pristine).toEqual(false);
         expect(component.control.touched).toEqual(true);
+        discardPeriodicTasks();
     }));
 
     it('should open dropdown with keyboard focus', fakeAsync(() => {
@@ -309,6 +314,7 @@ describe('SelectComponent', () => {
         expect(selectClicked).toHaveBeenCalled();
         spectator.detectChanges();
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(false);
+        discardPeriodicTasks();
     }));
 
     it('should display help', () => {
