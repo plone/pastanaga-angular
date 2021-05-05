@@ -1,3 +1,9 @@
+# 1.19.10 (2021-05-04)
+
+### Bug fixes
+
+-   Fix select label position [ebrehault]
+
 # 1.19.9 (2021-04-28)
 
 ### Bug fixes

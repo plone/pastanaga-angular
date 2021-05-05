@@ -1,6 +1,19 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    Input,
+    OnInit,
+    Output,
+    OnChanges,
+    SimpleChanges,
+    ChangeDetectorRef,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { markForCheck } from '../common/utils';
 
 let nextId = 0;
 
@@ -8,54 +21,85 @@ let nextId = 0;
     selector: 'pa-select',
     templateUrl: 'select.component.html',
     styleUrls: ['select.component.scss'],
-    providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => SelectComponent),
-        multi: true,
-    }, {
-        provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => SelectComponent),
-        multi: true,
-    }],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectComponent),
+            multi: true,
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => SelectComponent),
+            multi: true,
+        },
+    ],
 })
-export class SelectComponent implements ControlValueAccessor, OnChanges,OnInit, AfterViewInit, Validator {
+export class SelectComponent implements ControlValueAccessor, OnChanges, OnInit, AfterViewInit, Validator {
     @Input() id?: string;
     @Input() name?: string;
     @Input() label?: string;
     @Input() value: any;
     @Input() placeholder?: string;
     @Input() help?: string;
-    @Input() errorHelp ?: string;
-    @Input() errorMessage ?: string;
+    @Input() errorHelp?: string;
+    @Input() errorMessage?: string;
     @Input()
-    get disabled(): boolean { return this._disabled; }
-    set disabled(value: boolean) { this._disabled = coerceBooleanProperty(value); }
+    get disabled(): boolean {
+        return this._disabled;
+    }
+    set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
     @Input()
-    get readOnly(): boolean { return this._readOnly; }
-    set readOnly(value: boolean) { this._readOnly = coerceBooleanProperty(value); }
+    get readOnly(): boolean {
+        return this._readOnly;
+    }
+    set readOnly(value: boolean) {
+        this._readOnly = coerceBooleanProperty(value);
+    }
     @Input()
-    get required(): boolean { return this._required; }
-    set required(value: boolean) { this._required = coerceBooleanProperty(value); }
+    get required(): boolean {
+        return this._required;
+    }
+    set required(value: boolean) {
+        this._required = coerceBooleanProperty(value);
+    }
     @Input()
-    get labelHidden(): boolean { return this._labelHidden; }
-    set labelHidden(value: boolean) { this._labelHidden = coerceBooleanProperty(value); }
+    get labelHidden(): boolean {
+        return this._labelHidden;
+    }
+    set labelHidden(value: boolean) {
+        this._labelHidden = coerceBooleanProperty(value);
+    }
     @Input()
-    get lessen(): boolean { return this._lessen; }
-    set lessen(value: boolean) { this._lessen = coerceBooleanProperty(value); }
+    get lessen(): boolean {
+        return this._lessen;
+    }
+    set lessen(value: boolean) {
+        this._lessen = coerceBooleanProperty(value);
+    }
     @Input()
-    get isAccent(): boolean { return this._accent; }
-    set isAccent(value: boolean) { this._accent = coerceBooleanProperty(value); }
+    get isAccent(): boolean {
+        return this._accent;
+    }
+    set isAccent(value: boolean) {
+        this._accent = coerceBooleanProperty(value);
+    }
     @Input()
-    get selectablePlaceholder(): boolean { return this._selectablePlaceholder; }
-    set selectablePlaceholder(value: boolean) { this._selectablePlaceholder = coerceBooleanProperty(value); }
+    get selectablePlaceholder(): boolean {
+        return this._selectablePlaceholder;
+    }
+    set selectablePlaceholder(value: boolean) {
+        this._selectablePlaceholder = coerceBooleanProperty(value);
+    }
     @Output() onSelection: EventEmitter<any> = new EventEmitter();
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     helpId = '';
     onChange?: Function;
     onTouched?: Function;
-    hasNoSelection = false;
+    hasNoSelection = true;
     isPlaceHolderSelected = false;
-    hasError = false;    
+    hasError = false;
     _disabled = false;
     _readOnly = false;
     _required = false;
@@ -63,9 +107,8 @@ export class SelectComponent implements ControlValueAccessor, OnChanges,OnInit, 
     _lessen = false;
     _accent = false;
     _selectablePlaceholder = false;
-    
-    constructor(private element: ElementRef) {
-    }
+
+    constructor(private element: ElementRef, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.id = !this.id ? `select-${nextId++}` : `${this.id}-select`;
@@ -99,6 +142,7 @@ export class SelectComponent implements ControlValueAccessor, OnChanges,OnInit, 
             const noOptionSelected = this.element.nativeElement.querySelectorAll('option:checked').length === 0;
             this.hasNoSelection = noOptionSelected && !!firstOption && !firstOption.innerText;
         }
+        markForCheck(this.cdr);
     }
 
     writeValue(value: any) {
@@ -110,11 +154,11 @@ export class SelectComponent implements ControlValueAccessor, OnChanges,OnInit, 
     }
 
     registerOnTouched(handler: any) {
-        this.onTouched = (handler as Function);
+        this.onTouched = handler as Function;
     }
 
     registerOnChange(handler: any) {
-        this.onChange = (handler as Function);
+        this.onChange = handler as Function;
     }
 
     change(value: any) {
@@ -140,7 +184,7 @@ export class SelectComponent implements ControlValueAccessor, OnChanges,OnInit, 
             return null;
         } else {
             this.hasError = true;
-            return {required: {valid: false}};
+            return { required: { valid: false } };
         }
     }
 }
