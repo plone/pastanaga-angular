@@ -1,3 +1,8 @@
+# 2.29.1 (2021-05-05)
+
+### BugFix
+- **Select**: refresh displayed value when options change [ebrehault]
+
 # 2.29.0 (2021-05-03)
 
 ### Breaking change

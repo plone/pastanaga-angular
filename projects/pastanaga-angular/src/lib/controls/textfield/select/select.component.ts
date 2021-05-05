@@ -41,6 +41,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
         this.dropDownModels = !!values ? values : [];
+        this._updateDisplayedValue(this.control.value);
     }
 
     @Input() set hasFocus(value: boolean) {
