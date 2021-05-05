@@ -1,3 +1,11 @@
+# 2.29.0 (2021-05-03)
+
+### Breaking change
+- **Theme**: `.pa-sr` renamed in `.pa-sr-only` [ebrehault]
+
+### Improvements
+- **Select**: `pa-select` supports dim mode [ebrehault]
+
 # 2.28.1 (2021-04-22)
 
 ### BugFix

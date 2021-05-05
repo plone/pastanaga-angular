@@ -52,6 +52,12 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     @Input() help?: string;
     @Input() errorMessages?: IErrorMessages;
     @Input() showAllErrors = true;
+    @Input() set dim(value: boolean) {
+        this._dim = coerceBooleanProperty(value);
+    }
+    get dim() {
+        return this._dim;
+    }
 
     @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -74,6 +80,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     private optionsClosed$ = new Subject();
     private contentOptionsChanged$ = new Subject();
     private _hasFocus = false;
+    private _dim = false;
 
     constructor(
         protected element: ElementRef,
@@ -182,6 +189,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     private _updateDisplayedValue(val?: string) {
         const selectedOptionLabel = this._findLabelByValue(val);
         this.displayedValue = selectedOptionLabel || this.placeholder;
+        markForCheck(this.cdr);
     }
 
     private _findLabelByValue(value?: string): string | undefined {

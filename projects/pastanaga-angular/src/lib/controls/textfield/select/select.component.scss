@@ -47,46 +47,50 @@
     }
     .pa-field-control {
         padding-right: calc(#{$icon-width + $icon-right-padding});
-            &:read-only {
-                border: $border-field-regular;
-                &:not(.disabled):not(.read-only) {
-                    &:hover {
-                        border: $border-field-regular-hover;
-                        margin: 0;
-                    }
-
-                    &:focus,
-                    &:active {
-                        border: $border-field-regular-active;
-                        margin: 0;
-
-                        &::placeholder {
-                            opacity: 1;
-                            transition: all 1s ease;
-                        }
-
-                        &~.pa-field-label {
-                            color: $color-text-field-label-regular-active;
-                        }
-                    }
+        width: 100%;
+        &:read-only {
+            border: $border-field-regular;
+            &:not(.disabled):not(.read-only) {
+                &:hover {
+                    border: $border-field-regular-hover;
+                    margin: 0;
                 }
+                &:focus,
+                &:active
+                &.expanded {
+                    border: $border-field-regular-active;
+                    margin: 0;
 
-                &.disabled {
-                    border: $border-field-disabled;
-                    color: $color-text-field-control-disabled;
+                    &::placeholder {
+                        opacity: 1;
+                        transition: all 1s ease;
+                    }
 
                     &~.pa-field-label {
-                        color: $color-text-field-label-disabled;
+                        color: $color-text-field-label-regular-active;
                     }
                 }
-                &.read-only {
-                    border: $border-field-readonly;
+            }
+            &.dim:not(:hover):not(:focus):not(:active):not(.expanded) {
+                border-color: transparent;
+                background-color: transparent;
+            }
+            &.disabled:not(.dim) {
+                border: $border-field-disabled;
+                color: $color-text-field-control-disabled;
+
+                &~.pa-field-label {
+                    color: $color-text-field-label-disabled;
                 }
             }
-            &.pa-keyboard-focus {
-                border: $border-field-autofilled;
-                box-shadow: none;
+            &.read-only:not(.dim) {
+                border: $border-field-readonly;
             }
+        }
+        &.pa-keyboard-focus {
+            border: $border-field-autofilled;
+            box-shadow: none;
+        }
     }
     .pa-field-label {
         white-space: nowrap;

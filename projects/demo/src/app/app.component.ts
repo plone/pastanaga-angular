@@ -30,6 +30,7 @@ import { FormFieldHintPageComponent } from './demo/pages/form-field-hint-page/fo
 import { FormControlPageComponent } from './demo/pages/form-control-page/form-control-page.component';
 import { NativeTextFieldPageComponent } from './demo/pages/native-text-field-page/native-text-field-page.component';
 import { ExpanderPageComponent } from './demo/pages/expand-page/expander-page.component';
+import { AccessibilityPageComponent } from './demo/pages/accessibility/accessibility-page.component';
 
 @Component({
     selector: 'app-root',
@@ -43,6 +44,7 @@ export class AppComponent {
                 { view: 'icon', title: 'Icons', type: IconPageComponent },
                 { view: 'palette', title: 'Palette', type: PalettePageComponent },
                 { view: 'focusable', title: 'Focusable', type: FocusablePageComponent },
+                { view: 'accessibility', title: 'Accessibility', type: AccessibilityPageComponent },
                 { view: 'containers', title: 'Containers', type: ContainerPageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
                 { view: 'breakpoint', title: 'Breakpoint', type: BreakpointPageComponent },

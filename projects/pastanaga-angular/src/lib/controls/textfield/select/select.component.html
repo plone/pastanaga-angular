@@ -9,12 +9,14 @@
          [class.pa-field-control-filled]="hasValue || isOpened"
          [class.read-only]="readonly"
          [class.disabled]="control.disabled"
+         [class.dim]="dim"
+         [class.expanded]="isOpened"
          [id]="id"
          [attr.name]="name"
          [attr.aria-label]="label"
          [attr.aria-describedby]="describedById"
          [paPopup]="optionsDropdown"
-         [popupPosition]="{position: 'absolute', left: '0', right: '0', top: '48px'}"
+         [popupPosition]="{position: 'absolute', left: '0', right: '0', top: dim ? '40px' : '48px'}"
          [popupDisabled]="control.disabled || readonly"
          (cdkFocusChange)="onControlFocused($event)">
         <span class="pa-select-value"
@@ -23,7 +25,7 @@
         >{{displayedValue}}</span>
     </div>
 
-    <label class="pa-field-label" [for]="id">{{label}}</label>
+    <label class="pa-field-label" [class.pa-sr-only]="dim && (hasValue || isOpened)" [for]="id">{{label}}</label>
 
     <pa-icon class="pa-select-chevron"
              name="chevron-down"
@@ -41,7 +43,6 @@
 
     <pa-dropdown #optionsDropdown
                  role="listbox"
-                 dontAdjustPosition
                  [adjustHeight]="adjustHeight"
                  [companionElement]="selectInput"
                  (onClose)="dropDownClosed()"
