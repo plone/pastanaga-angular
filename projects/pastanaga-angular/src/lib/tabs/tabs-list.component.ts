@@ -27,12 +27,12 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
         this.updateSlider();
     }
 
-    @Input() set defaultOnMobile(value: boolean) {
-        this._defaultOnMobile = coerceBooleanProperty(value);
+    @Input() set displayAsTabOnMobile(value: boolean) {
+        this._displayAsTabOnMobile = coerceBooleanProperty(value);
     }
 
-    get defaultOnMobile() {
-        return this._defaultOnMobile;
+    get displayAsTabOnMobile() {
+        return this._displayAsTabOnMobile;
     }
 
     @ContentChildren(TabItemComponent) tabItems!: QueryList<TabItemComponent>;
@@ -40,7 +40,7 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
     sliderStyle = '';
     fullWidthTabItems = true;
 
-    private _defaultOnMobile = false;
+    private _displayAsTabOnMobile = false;
     private _xPosition = 0;
     private _terminator = new Subject();
 
@@ -61,7 +61,7 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
         fromEvent(window, 'resize')
             .pipe(
                 debounce(() => interval(150)),
-                takeUntil(this._terminator)
+                takeUntil(this._terminator),
             )
             .subscribe(() => {
                 this._xPosition = this.ref.nativeElement.getBoundingClientRect().x;
