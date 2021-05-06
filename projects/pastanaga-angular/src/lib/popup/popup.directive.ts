@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { getPositionedParent, PositionStyle } from '../common';
 import { MARGIN, PopupComponent } from './popup.component';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
@@ -67,10 +67,12 @@ export class PopupDirective implements OnInit {
     private _openOnHover = false;
     private _margin = MARGIN;
 
-    constructor(private element: ElementRef, private service: PopupService) {}
+    constructor(private element: ElementRef, private service: PopupService, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.element.nativeElement.setAttribute('aria-haspopup', true);
+
+        this.paPopup?.onClose.subscribe(() => this.removeActiveStateFromParentButton());
     }
 
     @HostListener('click', ['$event'])
@@ -91,6 +93,7 @@ export class PopupDirective implements OnInit {
             } else {
                 const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
                 this.paPopup.show(position);
+                this.addActiveStateOnParentButton();
             }
         }
     }
@@ -133,5 +136,17 @@ export class PopupDirective implements OnInit {
         }
 
         return position;
+    }
+
+    private addActiveStateOnParentButton() {
+        if (this.element.nativeElement.tagName.toLowerCase() === 'pa-button') {
+            this.renderer.addClass(this.element.nativeElement.children[0], 'pa-active');
+        }
+    }
+
+    private removeActiveStateFromParentButton() {
+        if (this.element.nativeElement.tagName.toLowerCase() === 'pa-button') {
+            this.renderer.removeClass(this.element.nativeElement.children[0], 'pa-active');
+        }
     }
 }
