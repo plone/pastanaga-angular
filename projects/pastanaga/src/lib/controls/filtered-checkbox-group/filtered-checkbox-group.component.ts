@@ -97,7 +97,8 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
                 label: this.translate.transform(checkbox.label || ''),
             }));
             this._checkboxes = this._shouldSort ? sortCheckboxes(checkboxes) : checkboxes;
-            this.isAllSelected = this._checkboxes.every(checkbox => checkbox.isSelected);
+            const checkAllSelected = this.isFiltered ? checkboxes.filter((checkbox) => checkbox.isFiltered) : this._checkboxes;
+            this.isAllSelected = checkAllSelected.every(checkbox => checkbox.isSelected);
             this.totalCount = this._checkboxes.length;
             this.applyFilter();
         }
