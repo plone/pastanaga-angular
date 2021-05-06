@@ -1,3 +1,8 @@
+# 2.29.2 (2021-05-06)
+
+### Improvements
+- **Popup**: add active state on pa-button carrying the popup directive whenever the popup is opened [mpellerin42] 
+
 # 2.29.1 (2021-05-05)
 
 ### BugFix
