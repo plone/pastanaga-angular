@@ -1,3 +1,9 @@
+# 1.19.11 (2021-05-06)
+
+### Bug fixes
+
+-   Checking if filtered when defining isAllSelected on filtered-checkbox-group [raul-onna]
+
 # 1.19.10 (2021-05-04)
 
 ### Bug fixes
