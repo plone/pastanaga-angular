@@ -27,11 +27,20 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
         this.updateSlider();
     }
 
+    @Input() set defaultOnMobile(value: boolean) {
+        this._defaultOnMobile = coerceBooleanProperty(value);
+    }
+
+    get defaultOnMobile() {
+        return this._defaultOnMobile;
+    }
+
     @ContentChildren(TabItemComponent) tabItems!: QueryList<TabItemComponent>;
 
     sliderStyle = '';
     fullWidthTabItems = true;
 
+    private _defaultOnMobile = false;
     private _xPosition = 0;
     private _terminator = new Subject();
 

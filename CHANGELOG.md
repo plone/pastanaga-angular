@@ -1,3 +1,8 @@
+# 2.29.3 (2021-05-06)
+
+### Improvements
+- **Tabs**: Enable row tabs on mobile [barcafa]
+
 # 2.29.2 (2021-05-06)
 
 ### Improvements

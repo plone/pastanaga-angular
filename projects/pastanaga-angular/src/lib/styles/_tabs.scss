@@ -69,15 +69,7 @@ pa-tab {
     }
 }
 
-@media (min-width: $size-viewport-medium-min) {
-    .pa-tabs-list {
-        flex-direction: row;
-
-        li {
-            border-bottom: none;
-        }
-    }
-
+@mixin pa-tabs-row {
     .pa-tabs-slider {
         position: absolute;
         left: 0;
@@ -126,5 +118,31 @@ pa-tab {
             }
         }
     }
-
 }
+
+.pa-tabs-mobile {
+    flex-direction: row;
+
+    li {
+        border-bottom: none;
+    }
+
+    @include pa-tabs-row;
+
+    .pa-tabs-link-wrapper pa-icon {
+        display: none;
+    }
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .pa-tabs-list {
+        flex-direction: row;
+
+        li {
+            border-bottom: none;
+        }
+    }
+
+    @include pa-tabs-row;
+}
+
