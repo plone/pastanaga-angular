@@ -1,3 +1,9 @@
+# 1.20.0 (2021-05-07)
+
+### Breaking change
+
+-   Theming: add `pastanaga-core-overrides.scss` to overrides palette colors or font size/weight [ebehault]
+
 # 1.19.11 (2021-05-06)
 
 ### Bug fixes

@@ -1,4 +1,3 @@
-@import 'src/pastanaga-overrides.scss';
 //==================
 //###   COLORS   ###
 
@@ -29,6 +28,19 @@ $b30: #57C1D6;    $t30: #5BD2CC;    $j30: #61BCA6;    $g30:#96C689;    $l30:#B2C
 $b20: #88D0E0;    $t20: #8BDED9;    $j20: #8FCCBE;    $g20:#B3D4AA;    $l20:#CFDBAD;    $k20: #F1E8A4;    $y20: #FDEEAE;    $o20: #FDDE9B;    $s20: #FDD09C;    $r20: #FAB6AC;    $c20:#E9A4AE;    $m20:#E79CC1;    $v20:#B2ABDA;    $i20:#A0B0D5;    $a20:#93C9E4;
 $b10: #B5E0EA;    $t10: #B7E8E4;    $j10: #B9DDD5;    $g10:#CDE1C8;    $l10:#DFE6CA;    $k10: #F3EECA;    $y10: #FEF2CB;    $o10: #FDE7C0;    $s10: #FDDFC0;    $r10: #F9D0CB;    $c10:#F6CFD8;    $m10:#EDC1D7;    $v10:#CDCAE4;    $i10:#C3CDE1;    $a10:#BCDBEC;
 $b05: #DDEEF1;    $t05: #DEF0EF;    $j05: #DEECE9;    $g05:#E5EEE3;    $l05:#EDF1E5;    $k05: #F5F3E4;    $y05: #F9F5E5;    $o05: #F9F1E2;    $s05: #F9EEE1;    $r05: #F3E5E6;    $c05:#F6E7EC;    $m05:#F2E2E9;    $v05:#E7E5EF;    $i05:#E2E6EE;    $a05:#DFEBF1;
+
+
+// FONT CORE
+$font-weight-light:           300 !default;
+$font-weight-regular:         400 !default;
+$font-weight-normal:          $font-weight-regular;
+$font-weight-bold:            700 !default;
+$font-weight-base:            $font-weight-light !default;
+
+$font-size-base:          0.875rem !default;   //14px
+
+// CORE OVERRIDES
+@import 'src/pastanaga-core-overrides.scss';
 
 $body-bg:                   $white !default;
 $body-color:                $gray-blacky !default;
@@ -142,19 +154,7 @@ $font-family-sans-serif:      Poppins, Futura, -apple-system, BlinkMacSystemFont
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 
-
-//$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-
-$font-weight-light:           300 !default;
-$font-weight-regular:         400 !default;
-$font-weight-normal:          $font-weight-regular;
-$font-weight-bold:            700 !default;
-
-$font-weight-base:            $font-weight-light !default;
-
-
 // FONT SIZES
-$font-size-base:          0.875rem !default;   //14px
 $font-size: (
         xxxs: calc(#{$font-size-base} * 10/14),   // ~10px - Corner case
         xxs:  calc(#{$font-size-base} * 11/14),   // ~11px
@@ -283,3 +283,5 @@ $zindex-modal:             10050 !default;
 $zindex-toast:             10060 !default;
 $zindex-tooltip:           10070 !default;
 
+// REGULAR OVERRIDES
+@import 'src/pastanaga-overrides.scss';
