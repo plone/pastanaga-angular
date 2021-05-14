@@ -1,30 +1,32 @@
 <div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
-    <div class="pa-toggle-label-container" *ngIf="hasLabel">
-        <label #label [for]="id"
-               class="pa-field-label"
-               aria-hidden="true"
+    <div class="pa-toggle-context">
+        <div class="pa-toggle-label-container" *ngIf="hasLabel">
+            <label #label [for]="id"
+                   class="pa-field-label"
+                   aria-hidden="true"
+            >
+                <ng-content></ng-content>
+            </label>
+        </div>
+        <div class="pa-toggle-container"
+             [ngClass]="{checked: isChecked, focused: hasFocus, disabled: control.disabled}"
+             (click)="updateState(!isChecked)"
         >
-            <ng-content></ng-content>
-        </label>
-    </div>
-    <div class="pa-toggle-container"
-         [ngClass]="{checked: isChecked, focused: hasFocus, disabled: control.disabled}"
-         (click)="updateState(!isChecked)"
-    >
-        <input #inputElement
-               type="checkbox"
-               class="toggle-checkbox"
-               [id]="id"
-               [name]="name"
-               [formControl]="control"
-               [attr.aria-label]="label"
-               [attr.aria-disabled]="control.disabled"
-               [attr.aria-checked]="isChecked"
-               [attr.aria-describedby]="describedById"
-               (blur)="onBlur()"
-               (focus)="onFocus()"
-        >
-        <span class="pa-toggle-slider"></span>
+            <input #inputElement
+                   type="checkbox"
+                   class="toggle-checkbox"
+                   [id]="id"
+                   [name]="name"
+                   [formControl]="control"
+                   [attr.aria-label]="label"
+                   [attr.aria-disabled]="control.disabled"
+                   [attr.aria-checked]="isChecked"
+                   [attr.aria-describedby]="describedById"
+                   (blur)="onBlur()"
+                   (focus)="onFocus()"
+            >
+            <span class="pa-toggle-slider"></span>
+        </div>
     </div>
     <pa-form-field-hint
         [id]="describedById"
