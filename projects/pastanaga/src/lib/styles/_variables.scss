@@ -91,6 +91,11 @@ $toggle-labels-text-transform:          uppercase !default;
 $labels-color:                          $gray-black !default;
 $labels-required-color:                 $red-light !default;
 
+// Inputs
+$field-background-color-active:         rgba($blue,.12);
+$field-accent-background-color:         rgba($blue, .09)
+    
+    
 // Sidebar
 $sidebar-width:                         280px !default;
 $sidebar-backdrop-color:                rgba($gray-black, 0.6) !default;
