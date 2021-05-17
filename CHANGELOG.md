@@ -1,3 +1,8 @@
+# 2.29.4 (2021-05-17)
+
+### Bugfix
+- **Toggle**: Fix toggle styling [barcafa]
+
 # 2.29.3 (2021-05-06)
 
 ### Improvements

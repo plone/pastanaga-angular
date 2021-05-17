@@ -9,6 +9,11 @@ $toggle-transition-duration: .3s;
     flex-direction: row;
     justify-content: space-between;
 
+    .pa-toggle-context {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .pa-toggle-label-container {
         display: flex;
         flex-direction: column;
