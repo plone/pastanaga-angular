@@ -7,6 +7,13 @@
             >
                 <ng-content></ng-content>
             </label>
+            <pa-form-field-hint
+                [id]="describedById"
+                [help]="help"
+                [errors]="control.errors"
+                [showErrors]="control.dirty"
+                [errorMessages]="errorMessages"
+            ></pa-form-field-hint>
         </div>
         <div class="pa-toggle-container"
              [ngClass]="{checked: isChecked, focused: hasFocus, disabled: control.disabled}"
@@ -28,11 +35,4 @@
             <span class="pa-toggle-slider"></span>
         </div>
     </div>
-    <pa-form-field-hint
-        [id]="describedById"
-        [help]="help"
-        [errors]="control.errors"
-        [showErrors]="control.dirty"
-        [errorMessages]="errorMessages"
-    ></pa-form-field-hint>
 </div>
