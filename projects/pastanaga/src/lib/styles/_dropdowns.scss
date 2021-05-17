@@ -46,10 +46,10 @@
         }
     }
     &-link-selected .pa-dropdown-link-wrapper {
-        background: rgba($blue, 0.12);
+        background: $field-background-color-active;
     }
     &-link-selected:hover .pa-dropdown-link-wrapper {
-        background: rgba($blue, 0.12);
+        background: $field-background-color-active;
     }
     &-link-primary .pa-dropdown-link-wrapper {
         color: $primary-color;
