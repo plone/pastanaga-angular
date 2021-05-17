@@ -1,8 +1,8 @@
 # 1.20.1 (2021-05-17)
 
-### Breaking change
+### Improvements
 
--   Theming: move text fields backgrounds to variables [albertcasado]
+-   Move text fields backgrounds to variables [albertcasado]
 
 # 1.20.0 (2021-05-07)
 
