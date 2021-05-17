@@ -25,7 +25,7 @@ pa-filtered-checkbox-group {
     .pa-filter-container {
         padding-top: rythm(.5);
         pa-icon {
-            background-color: rgba($blue, .06);
+            background-color: $field-background-color;
             display: block;
             height: rythm(4);
             line-height: rythm(4);
@@ -43,7 +43,7 @@ pa-filtered-checkbox-group {
         }
 
         input {
-            background-color: rgba($blue, .06);
+            background-color: $field-background-color;
             display: inline-block;
             border: none;
             border-top-right-radius: rythm(.25);
@@ -59,19 +59,19 @@ pa-filtered-checkbox-group {
             margin-bottom: rythm(.25);
     
             &:hover, &:focus {
-                background-color: rgba($blue, .06);
+                background-color: $field-background-color;
     
                 & + pa-icon {
-                    background-color: rgba($blue, .06);
+                    background-color: $field-background-color;
                 }
             }
     
             &:active, &:focus {
                 outline: 0;
-                background-color: rgba($blue, .12);
+                background-color: $field-background-color-active;
     
                 & + pa-icon {
-                    background-color: rgba($blue, .12);
+                    background-color: $field-background-color-active;
                 }
             }
         }

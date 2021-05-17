@@ -6,7 +6,7 @@
     background-repeat: no-repeat;
     background-size: rythm(2) rythm(2);
     &.pa-field-control-accent {
-        background-color: rgba($blue, .06);
+        background-color: $field-background-color;
         box-shadow: 0 200px 0 -200px $blue-contrast;
         transition: all .5s ease;
     }
@@ -17,7 +17,7 @@
     &:active,
     &:focus {
         box-shadow: 0 2px 0 0px $control-border-color;
-        background-color: rgba($blue,.12);
+        background-color: $field-background-color-active;
     }
     &.pa-field-control-lessen {
         padding-right: rythm(2.5) !important;

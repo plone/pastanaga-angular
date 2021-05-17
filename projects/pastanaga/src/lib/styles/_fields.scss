@@ -90,7 +90,8 @@ fieldset > pa-button.pa-field-button-right {
     .pa-field-control:not(:disabled):not(:-moz-read-only):active,
     .pa-field-control:not(:disabled):not(:-moz-read-only):focus {
         /* autoprefixer: off */
-        background: rgba($error-color, .05) !important;
+        background: 
+            ($error-color, .05) !important;
         box-shadow: 0 7px 0 -6px $error-color !important;
         caret-color: $error-color !important;
     }
@@ -111,13 +112,13 @@ fieldset > pa-button.pa-field-button-right {
     box-shadow: none !important;
     background-color: transparent;
     &:hover {
-        background-color: rgba($blue,.06);
+        background-color: $field-background-color;
         box-shadow: none;
         color: $blue-contrast;
     }
     &:active,
     &:focus {
-        background-color: rgba($blue,.12);
+        background-color: $field-background-color-active;
         box-shadow: none;
     }
 }

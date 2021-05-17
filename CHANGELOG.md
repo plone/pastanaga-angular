@@ -1,3 +1,9 @@
+# 1.20.1 (2021-05-17)
+
+### Improvements
+
+-   Move text fields backgrounds to variables [albertcasado]
+
 # 1.20.0 (2021-05-07)
 
 ### Breaking change
