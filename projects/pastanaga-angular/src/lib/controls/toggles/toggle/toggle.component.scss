@@ -19,6 +19,7 @@ $toggle-transition-duration: .3s;
         flex-direction: column;
         margin: auto 0;
         .pa-field-label {
+            color: $color-neutral-primary-default;
             position: inherit;
             max-width: 100%;
         }

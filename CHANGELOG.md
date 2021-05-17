@@ -1,3 +1,8 @@
+# 2.29.5 (2021-05-17)
+
+### Bugfix
+- **Toggle**: Fix toggle color [barcafa]
+
 # 2.29.4 (2021-05-17)
 
 ### Bugfix
