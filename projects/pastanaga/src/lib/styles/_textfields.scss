@@ -47,7 +47,7 @@
         &:not(:disabled):not(:read-only):focus {
             /* autoprefixer: off */
             box-shadow: 0 2px 0 0px $control-border-color;
-            background-color: rgba($blue,.12);
+            background-color: $field-background-color-active;
         }
         // Firefox workaround
         &:not(:disabled):not(:-moz-read-only):hover {
@@ -59,7 +59,7 @@
         &:not(:disabled):not(:-moz-read-only):focus {
             /* autoprefixer: off */
             box-shadow: 0 2px 0 0px $control-border-color;
-            background-color: rgba($blue,.12);
+            background-color: $field-background-color-active;
         }
 
         &:focus {
@@ -263,7 +263,7 @@
 
     &.pa-accent {
         .pa-field-control {
-            background-color: rgba($blue, .09);
+            background-color: $field-accent-background-color;
             box-shadow: 0 200px 0 -200px $blue-contrast;
             transition: all .5s ease;
         }
