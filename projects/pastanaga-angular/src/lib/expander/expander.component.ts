@@ -55,8 +55,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
         private elementRef: ElementRef,
         private breakpoint: BreakpointObserver,
         private cdr: ChangeDetectorRef,
-    ) {
-    }
+    ) {}
 
     ngAfterViewInit() {
         this.updateContentHeight();
