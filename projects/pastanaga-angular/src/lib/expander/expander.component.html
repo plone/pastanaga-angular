@@ -1,4 +1,5 @@
 <div class="pa-expander"
+     [class.pa-expander-card]="card"
      [class.pa-collapsed]="!expanded"
      [attr.aria-expanded]="expanded">
 
@@ -6,14 +7,15 @@
         <pa-button qa="expand-button"
                    size="small"
                    aspect="basic"
-                   icon="chevron-down"
+                   [icon]="card? 'chevron-up': 'chevron-down'"
                    class="pa-expander-button"
+                   [disabled]="disabled"
                    (click)="toggleExpand()"
         >{{(expanded ? 'pastanaga.collapse' : 'pastanaga.expand') | translate}}</pa-button>
 
         <div class="pa-expander-title"
              qa="expand-title"
-             (click)="toggleExpand()">
+             (click)="onTitleClick()">
             <ng-content select="pa-expander-header"></ng-content>
         </div>
         <div class="pa-expander-header-extra">

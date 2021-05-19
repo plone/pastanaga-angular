@@ -13,6 +13,7 @@ import { markForCheck } from '../common';
 import { BreakpointObserver } from '../breakpoint-observer/breakpoint.observer';
 import { Subject } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 export const transitionDuration = 160;
 
@@ -26,6 +27,23 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     @Input() set contentLoaded(value: any) {
         this.updateContentHeight();
     }
+    @Input()
+    set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
+    }
+    get disabled() {
+        return this._disabled;
+    }
+    private _disabled = false;
+
+    @Input()
+    set card(value: boolean) {
+        this._card = coerceBooleanProperty(value);
+    }
+    get card() {
+        return this._card;
+    }
+    private _card = false;
 
     @ContentChild(ExpanderBodyDirective, { read: ElementRef }) expanderContent?: ElementRef;
 
@@ -41,11 +59,20 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this.updateContentHeight();
+        if (this.card) {
+            this.toggleExpand();
+        }
     }
 
     ngOnDestroy() {
         this.terminator.next();
         this.terminator.complete();
+    }
+
+    onTitleClick() {
+        if (!this.card) {
+            this.toggleExpand();
+        }
     }
 
     toggleExpand() {

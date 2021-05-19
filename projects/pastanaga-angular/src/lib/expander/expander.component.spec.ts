@@ -25,10 +25,25 @@ describe('ExpandComponent', () => {
         expect(component.expanded).toBe(true);
     });
 
+    it('should not be expanded by default when it\'s a card', () => {
+        component.card = true;
+        spectator.detectChanges();
+        expect(component.expanded).toBe(false);
+    });
+
     it('should toggle the expand when clicking on the button', () => {
         spyOn(component, 'toggleExpand');
         spectator.click('[qa="expand-button"]');
         expect(component.toggleExpand).toHaveBeenCalled();
+    });
+
+    it('should not toggle the expand when clicking on the title for an expandable card', () => {
+        component.card = true;
+        spectator.detectChanges();
+        spyOn(component, 'toggleExpand');
+
+        spectator.click('[qa="expand-title"]');
+        expect(component.toggleExpand).not.toHaveBeenCalled();
     });
 
     it('should toggle the expand when clicking on the title', () => {

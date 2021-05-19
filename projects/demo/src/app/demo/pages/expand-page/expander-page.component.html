@@ -2,6 +2,9 @@
     <pa-demo-title>Expander</pa-demo-title>
     <pa-demo-description>
         <p>Expander component allows to expand/collapse a section by clicking on its header or on the chevron button next to it.</p>
+        <p>By default, expander is displayed like in a list: the toggle button being on the left. The <code>card</code>
+        option allows to display a card expander with the toggle button on the right.
+        </p>
         <p><code>PaExpanderModule</code> provide different directives to be used with <code>pa-expander</code>:</p>
         <ul>
             <li><code>pa-expander-header</code>: its content is displayed next to the chevron button, clicking on it toggles the expander</li>
@@ -44,6 +47,20 @@
                 <p>Smallest one</p>
             </pa-expander-body>
         </pa-expander>
+        <pa-expander card>
+            <pa-expander-header>
+                <h5>Card Title</h5>
+                <div>Description</div>
+            </pa-expander-header>
+            <pa-expander-header-side-block>
+                <pa-icon size="large" name="apps"></pa-icon>
+            </pa-expander-header-side-block>
+            <pa-expander-body>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </pa-expander-body>
+        </pa-expander>
     </pa-demo-examples>
 
     <pa-demo-usage>
@@ -51,6 +68,17 @@
         <dl>
             <dt>contentLoaded</dt>
             <dd>Any value marking expander's content as loaded or updated so the expand can update its body height.</dd>
+        </dl>
+        <dl>
+            <dt>card</dt>
+            <dd>Card option allows to change the expander look and feel by displaying toggle button on the right and any
+                <code>pa-expander-header-side-block</code> on the left. When this option is set, the card expander is
+                collapsed by default and can only be expanded by the expander button
+            </dd>
+        </dl>
+        <dl>
+            <dt>disabled</dt>
+            <dd>In case we want the expander to be disabled</dd>
         </dl>
     </pa-demo-usage>
 
