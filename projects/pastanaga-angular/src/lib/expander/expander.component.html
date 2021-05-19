@@ -15,7 +15,7 @@
 
         <div class="pa-expander-title"
              qa="expand-title"
-             (click)="card? '': toggleExpand()">
+             (click)="onTitleClick()">
             <ng-content select="pa-expander-header"></ng-content>
         </div>
         <div class="pa-expander-header-extra">

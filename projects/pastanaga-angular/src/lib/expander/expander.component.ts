@@ -68,6 +68,10 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
         this.terminator.complete();
     }
 
+    onTitleClick() {
+        if (!this.card) this.toggleExpand();
+    }
+
     toggleExpand() {
         // when expanded, we collapse directly and hide content after the transition delay
         if (this.expanded) {
