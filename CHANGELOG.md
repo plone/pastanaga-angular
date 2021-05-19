@@ -1,3 +1,9 @@
+# 1.20.2 (2021-05-19)
+
+### Improvements
+
+-   pa-input is refreshed when cva setDisable is triggered [jCarret]
+
 # 1.20.1 (2021-05-17)
 
 ### Improvements
