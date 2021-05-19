@@ -25,7 +25,7 @@ import { AutofillMonitor } from '@angular/cdk/text-field';
 import { TextfieldCommon } from './textfield.common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { takeUntil } from 'rxjs/operators';
-import { detectChanges } from '../common/utils';
+import {detectChanges, markForCheck} from '../common/utils';
 
 const HTML_TAG = new RegExp(/.?<.+>/g);
 const REPLACE_LT_GT = new RegExp(/[<>]/g);
@@ -152,5 +152,10 @@ export class InputComponent extends TextfieldCommon implements OnInit, AfterView
             this.input.nativeElement.value = '';
             this.value = '';
         }
+    }
+
+    setDisabledState(disabled: boolean) {
+        super.setDisabledState(disabled);
+        markForCheck(this.cdr);
     }
 }
