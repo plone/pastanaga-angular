@@ -1,3 +1,8 @@
+# 2.29.7 (2021-05-19)
+
+### Bugfix
+- **Input Formatter**: Use `input` event [dgsmith2]
+
 # 2.29.6 (2021-05-19)
 
 ### Improvements

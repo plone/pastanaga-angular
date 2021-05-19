@@ -6,6 +6,7 @@ const FORMATTER_CONTROL_VALUE_ACCESSOR: Provider = {
     useExisting: forwardRef(() => InputFormatterDirective),
     multi: true,
 };
+
 @Directive({
     selector: '[paInputFormatter]',
     providers: [FORMATTER_CONTROL_VALUE_ACCESSOR],
@@ -16,7 +17,7 @@ export class InputFormatterDirective implements ControlValueAccessor {
 
     private _writeToFormControl: (value: any) => void = () => {};
 
-    @HostListener('keyup') onKeyup() {
+    @HostListener('input') onKeyup() {
         const val = this.formatValue(this.el.nativeElement.value);
         if (val !== this.el.nativeElement.value) {
             this.el.nativeElement.value = val;
