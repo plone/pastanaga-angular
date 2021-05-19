@@ -59,7 +59,9 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this.updateContentHeight();
-        if (this.card) this.toggleExpand();
+        if (this.card) {
+            this.toggleExpand();
+        }
     }
 
     ngOnDestroy() {
@@ -68,7 +70,9 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     }
 
     onTitleClick() {
-        if (!this.card) this.toggleExpand();
+        if (!this.card) {
+            this.toggleExpand();
+        }
     }
 
     toggleExpand() {
