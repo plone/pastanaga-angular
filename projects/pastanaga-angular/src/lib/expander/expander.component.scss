@@ -24,7 +24,7 @@
             flex: 1 0 auto;
 
             &:hover {
-                color: $color-neutral-primary-default
+                color: $color-neutral-primary-default;
             }
         }
 
@@ -48,5 +48,24 @@
             height: 0;
             opacity: 0;
         }
+    }
+}
+
+.pa-expander-card {
+    .pa-expander-header {
+        flex-direction: row-reverse;
+        height: rhythm(10);
+
+        .pa-expander-title {
+            color: $color-neutral-primary-default;
+        }
+
+        .pa-expander-header-extra {
+            margin-right: rhythm(3);
+        }
+    }
+
+    &.pa-collapsed .pa-expander-button ::ng-deep .pa-button {
+            transform: rotate(-180deg);
     }
 }

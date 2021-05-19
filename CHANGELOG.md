@@ -1,3 +1,8 @@
+# 2.29.6 (2021-05-19)
+
+### Improvements
+- **Expander**: Added expandable card option to expander component [barcafa]
+
 # 2.29.5 (2021-05-17)
 
 ### Bugfix
