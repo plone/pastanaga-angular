@@ -7,26 +7,17 @@
         "declaration": false,
         "module": "esnext",
         "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "strictNullChecks": true,
         "resolveJsonModule": true,
         "strictPropertyInitialization": true,
+        "allowSyntheticDefaultImports": true,
         "target": "es5",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2017",
-            "dom"
-        ],
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["es2017", "dom"],
         "paths": {
-            "pastanaga-angular": [
-                "projects/pastanaga/src"
-            ],
-            "pastanaga-angular/*": [
-                "projects/pastanaga/src/*"
-            ]
+            "pastanaga-angular": ["projects/pastanaga/src"],
+            "pastanaga-angular/*": ["projects/pastanaga/src/*"]
         }
     },
     "angularCompilerOptions": {
