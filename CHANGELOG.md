@@ -1,3 +1,8 @@
+# 2.30.0 (2021-05-25)
+
+### Improvements
+- Upgrade to Angular 12 [ebrehault]
+
 # 2.29.7 (2021-05-19)
 
 ### Bugfix
