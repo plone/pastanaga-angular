@@ -11,16 +11,29 @@
     align-items: center;
     padding: $padding-menu-option-top $padding-menu-option-side;
 
-    .pa-option-content {
+    &.pa-option-with-description {
+        padding: rhythm(.5) $padding-menu-option-side;
+    }
+
+    .pa-option-text-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pa-option-content,
+    .pa-option-description {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+    }
+    .pa-option-description {
+        color: $color-neutral-secondary-default;
     }
 
     &[hidden] {
         display: none;
     }
-    &:not(.pa-option-disabled) {
+    &:not(.pa-option-disabled):not(.pa-option-readonly) {
         &:hover {
             background-color: $color-background-menu-option-hover;
         }
@@ -47,11 +60,18 @@
     &.pa-option-destructive {
         color: $color-text-menu-option-destructive;
     }
-    &.pa-option-disabled {
+    &.pa-option-disabled,
+    &.pa-option-disabled .pa-option-description {
         cursor: default;
         color: $color-text-menu-option-disabled;
     }
+    &.pa-option-readonly {
+        cursor: default;
+    }
 
+    pa-avatar {
+        margin-right: rhythm(1.5);
+    }
     pa-icon:not(.pa-option-selected-icon) {
         margin-right: rhythm(1.5);
 

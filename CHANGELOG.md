@@ -1,3 +1,19 @@
+# 2.30.0 (2021-05-25)
+
+### Features
+- **Avatar pile**: New avatar pile component displaying a list of avatars [mpellerin42]
+- **Dropdown option**: [mpellerin42]
+    - New avatar option on dropdown options
+    - New readonly option on dropdown options
+    
+### Improvements
+- **Buttons**: Min width of 160px for text buttons [mpellerin42]
+- **Dropdown**: [mpellerin42]
+    - Set a max-height of 5.5 options so dropdown doesn't grow full screen
+    - Remove internal padding on dropdowns
+- **Tooltips**: Update duration so tooltips are displayed faster [mpellerin42]
+- **Tokens**: Add generic duration tokens [mpellerin42]
+
 # 2.29.7 (2021-05-19)
 
 ### Bugfix

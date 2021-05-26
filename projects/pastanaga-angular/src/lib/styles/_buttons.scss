@@ -2,15 +2,15 @@
 
 .pa-button {
     background: transparent;
+    border: none;
+    border-radius: $border-radius-button;
     display: inline-flex;
     justify-content: center;
     padding: 0;
     margin: 0;
     outline: 0;
-    white-space: nowrap;
-    border: none;
-    border-radius: $border-radius-button;
     transition: background-color $transition-hint, box-shadow $transition-hint;
+    white-space: nowrap;
 
     .pa-button-wrapper {
         display: inline-flex;
@@ -30,6 +30,9 @@
 
     &.pa-button-icon {
         border-radius: 50%;
+    }
+    &:not(.pa-button-icon) {
+        min-width: rhythm(20);
     }
 
     &.pa-small {

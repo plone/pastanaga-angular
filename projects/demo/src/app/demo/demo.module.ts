@@ -98,6 +98,8 @@ import { FormFieldConfigFormGroupDirective } from './pages/common-doc/form-field
 import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page.component';
 import { ExpanderPageComponent } from './pages/expand-page/expander-page.component';
 import { AccessibilityPageComponent } from './pages/accessibility/accessibility-page.component';
+import { AvatarPilePageComponent } from './pages/avatar-pile-page/avatar-pile-page.component';
+import { PaAvatarPileModule } from '../../../../pastanaga-angular/src/lib/avatar-pile/avatar-pile.module';
 
 const COMPONENTS = [
     DemoComponent,
@@ -117,6 +119,7 @@ const COMPONENTS = [
 
     AccessibilityPageComponent,
     AvatarPageComponent,
+    AvatarPilePageComponent,
     BreakpointPageComponent,
     ButtonPageComponent,
     CheckboxPageComponent,
@@ -181,6 +184,7 @@ const COMPONENTS = [
         ReactiveFormsModule,
 
         PaAvatarModule,
+        PaAvatarPileModule,
         PaButtonModule,
         PaChipsModule,
         PaIconModule,

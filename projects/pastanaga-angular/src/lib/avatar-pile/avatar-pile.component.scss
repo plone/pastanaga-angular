@@ -1,0 +1,26 @@
+@import "../styles/variables";
+
+.pa-avatar-pile {
+    display: flex;
+
+    pa-avatar ::ng-deep .pa-avatar {
+        background: $color-neutral-primary-lightest;
+    }
+    .pa-avatar-clip ::ng-deep img,
+    .pa-avatar-clip ::ng-deep abbr {
+        clip-path: url(#avatar-mask);
+    }
+
+
+    $list: 2 3;
+    @each $i in $list {
+        .pa-avatar-moved:nth-child(#{$i}) {
+            $translation: rhythm(1) * ($i - 1);
+            transform: translateX(- $translation);
+        }
+    }
+
+    pa-button {
+        transform: translateX(- #{rhythm(3)})
+    }
+}

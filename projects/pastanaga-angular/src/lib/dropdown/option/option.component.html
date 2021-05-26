@@ -1,13 +1,27 @@
 <li class="pa-option" role="menuitem"
     paFocusable
-    [paFocusDisabled]="disabled "
+    [paFocusDisabled]="disabled || readonly"
     [class.pa-option-destructive]="destructive"
     [class.pa-option-disabled]="disabled"
+    [class.pa-option-readonly]="readonly"
     [class.pa-option-selected]="selected"
+    [class.pa-option-with-description]="!!description"
     [hidden]="_hidden"
     (click)="onSelect($event)"
     (keyup.enter)="onSelect($event)"
 >
     <pa-icon *ngIf="!!icon" [icon]="_icon" [name]="iconName"></pa-icon>
-    <div class="pa-option-content body-m"><ng-content></ng-content></div>
+    <pa-avatar *ngIf="!!avatar"
+               size="small"
+               [autoBackground]="avatar.autoBackground"
+               [image]="avatar.image"
+               [imageSrc]="avatar.imageSrc"
+               [userId]="avatar.userId"
+               [userName]="avatar.userName"
+    ></pa-avatar>
+
+    <div class="pa-option-text-wrapper">
+        <div class="pa-option-content body-m"><ng-content></ng-content></div>
+        <div class="pa-option-description body-xs" *ngIf="!!description">{{description}}</div>
+    </div>
 </li>

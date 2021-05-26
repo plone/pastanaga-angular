@@ -51,22 +51,29 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
+    set popupType(value: 'popup' | 'dropdown') {
+        this._popupType = value;
+    }
+    get popupType() {
+        return this._popupType;
+    }
+
     _id = '';
     _stayVisible = false;
     _isDisplayed = false;
     _style?: any;
     _handlers: (() => void)[] = [];
     _dontAdjustPosition = false;
-    private _adjustHeight = false;
 
-    _popupType = 'popup';
+    private _adjustHeight = false;
+    private _popupType: 'popup' | 'dropdown' = 'popup';
     private _originalHeight = 0;
 
     constructor(
-        public popupService: PopupService,
-        public renderer: Renderer2,
-        public element: ElementRef,
-        public cdr: ChangeDetectorRef,
+        protected popupService: PopupService,
+        protected renderer: Renderer2,
+        protected element: ElementRef,
+        protected cdr: ChangeDetectorRef,
     ) {
         this.popupService.closeAllPopups.subscribe(() => this.close());
         this.popupService.closeAllButId.subscribe((id) => {
@@ -98,6 +105,10 @@ export class PopupComponent implements OnInit, OnDestroy {
         }
 
         markForCheck(this.cdr);
+        this.adjustPosition();
+    }
+
+    private adjustPosition() {
         window.setTimeout(() => {
             if ((!this._dontAdjustPosition || this._adjustHeight) && !this.adjust()) {
                 const interval = window.setInterval(() => {

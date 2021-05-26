@@ -1,10 +1,15 @@
 // ----------------------------------
 // TRANSITIONS
 // ----------------------------------
-$transition-hint-duration: 0.16s;
-$transition-response-duration: 0.24s;
-$transition-process-duration: 0.48s;
-$transition-slide-duration: 0.8s;
+$duration-superfast: 0.16s;
+$duration-fast: 0.24s;
+$duration-moderate: 0.48s;
+$duration-slow: 0.8s;
+
+$transition-hint-duration: $duration-superfast;
+$transition-response-duration: $duration-fast;
+$transition-process-duration: $duration-moderate;
+$transition-slide-duration: $duration-slow;
 
 $ease-out-accent: cubic-bezier(0.3, 0.9, 0.5, 1);
 $ease-in-accent: cubic-bezier(0.9, 0.3, 1, 0.5);
