@@ -29,10 +29,10 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
     private _role: 'listbox' | 'menu' = 'menu';
 
     constructor(
-        public popupService: PopupService,
-        public renderer: Renderer2,
-        public element: ElementRef,
-        public cdr: ChangeDetectorRef,
+        protected popupService: PopupService,
+        protected renderer: Renderer2,
+        protected element: ElementRef,
+        protected cdr: ChangeDetectorRef,
     ) {
         super(popupService, renderer, element, cdr);
         this.popupType = 'dropdown';
