@@ -51,15 +51,22 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
+    set popupType(value: 'popup' | 'dropdown') {
+        this._popupType = value;
+    }
+    get popupType() {
+        return this._popupType;
+    }
+
     _id = '';
     _stayVisible = false;
     _isDisplayed = false;
     _style?: any;
     _handlers: (() => void)[] = [];
     _dontAdjustPosition = false;
-    private _adjustHeight = false;
 
-    _popupType = 'popup';
+    private _adjustHeight = false;
+    private _popupType: 'popup' | 'dropdown' = 'popup';
     private _originalHeight = 0;
 
     constructor(
