@@ -1,4 +1,7 @@
-<span class="pa-avatar pa-avatar-{{size}}" [class.no-avatar]="!initials">
+<span class="pa-avatar pa-avatar-{{size}}"
+      [class.no-avatar]="!initials"
+      [paTooltip]="userName"
+>
     <img *ngIf="base64Image; else avatarInitials"
          [src]="base64Image"
          alt="avatar"
@@ -6,7 +9,6 @@
 
     <ng-template #avatarInitials>
         <abbr *ngIf="!!initials || !!userId"
-              [attr.title]="userName"
               class="pa-avatar-initials {{backgroundColorClass}}">
             <span>{{initials}}</span>
         </abbr>

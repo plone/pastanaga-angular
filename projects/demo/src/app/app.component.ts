@@ -31,6 +31,7 @@ import { FormControlPageComponent } from './demo/pages/form-control-page/form-co
 import { NativeTextFieldPageComponent } from './demo/pages/native-text-field-page/native-text-field-page.component';
 import { ExpanderPageComponent } from './demo/pages/expand-page/expander-page.component';
 import { AccessibilityPageComponent } from './demo/pages/accessibility/accessibility-page.component';
+import { AvatarPilePageComponent } from './demo/pages/avatar-pile-page/avatar-pile-page.component';
 
 @Component({
     selector: 'app-root',
@@ -55,6 +56,7 @@ export class AppComponent {
             title: 'Components',
             pages: [
                 { view: 'avatar', title: 'Avatar', type: AvatarPageComponent },
+                { view: 'avatar-pile', title: 'Avatar pile', type: AvatarPilePageComponent },
                 { view: 'button', title: 'Button', type: ButtonPageComponent },
                 { view: 'chip', title: 'Chip', type: ChipPageComponent },
                 { view: 'datetime', title: 'Date/time', type: DateTimePageComponent },
