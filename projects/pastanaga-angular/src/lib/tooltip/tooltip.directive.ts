@@ -42,7 +42,7 @@ export class TooltipDirective {
         private element: ElementRef,
         private viewContainerRef: ViewContainerRef,
         private resolver: ComponentFactoryResolver,
-        private renderer: Renderer2
+        private renderer: Renderer2,
     ) {}
 
     @HostListener('focusin', ['$event'])
@@ -123,7 +123,7 @@ export class TooltipDirective {
         } else if (event.type === 'focusin') {
             position = [rect.right, rect.bottom, rect.width, rect.height];
         } else {
-            position = [event.pageX, event.pageY, rect.width, rect.height];
+            position = [event.clientX, event.clientY, rect.width, rect.height];
         }
         if (!this.rootParent) {
             this.rootParent = this.getFixedRootParent(this.element.nativeElement);

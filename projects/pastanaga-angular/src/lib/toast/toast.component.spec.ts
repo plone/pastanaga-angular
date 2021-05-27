@@ -1,40 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-
 import { ToastComponent } from './toast.component';
 import { PaIconModule } from '../..';
 import { MockModule } from 'ng-mocks';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 
 describe('ToastComponent', () => {
-    let component: ToastComponent;
-    let fixture: ComponentFixture<ToastComponent>;
-
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            imports: [MockModule(PaIconModule)],
-            declarations: [ToastComponent],
-        }).compileComponents();
-    }));
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(ToastComponent);
-        component = fixture.componentInstance;
+    const createComponent = createComponentFactory({
+        imports: [MockModule(PaIconModule)],
+        component: ToastComponent,
+        detectChanges: false,
     });
 
-    it('should create', () => {
-        fixture.detectChanges();
-        expect(component).toBeTruthy();
+    let component: ToastComponent;
+    let spectator: Spectator<ToastComponent>;
+
+    beforeEach(() => {
+        spectator = createComponent();
+        component = spectator.component;
     });
 
     it('should display an icon when pa-icon is present', () => {
         component.config = { icon: 'warning' };
-        fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-toast-icon'))).toBeTruthy();
+        spectator.detectChanges();
+        expect(spectator.query('.pa-toast-icon')).toBeTruthy();
     });
 
     it('should display a button when an action is needed', () => {
         component.config = { buttonLabel: 'undo' };
-        fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('.pa-toast-button'))).toBeTruthy();
+        spectator.detectChanges();
+        expect(spectator.query('.pa-toast-button')).toBeTruthy();
     });
 });

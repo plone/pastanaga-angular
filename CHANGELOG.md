@@ -1,3 +1,12 @@
+# 2.30.1 (2021-05-27)
+
+### Bug fixes
+- **Button**: Set pa-button host `display: inline-block` to fix button tooltip position [mpellerin42] 
+- **Tooltip**: [mpellerin42]
+    - Fix system tooltip positioning relative to the cursor: 16px below and 16px on the right of the cursor
+    - Fix action and system tooltip position to take into account window scroll position
+    - Fix tooltip position when element near the side of the screen to prevent the tooltip to cover the element
+
 # 2.30.0 (2021-05-25)
 
 ### Features
@@ -11,7 +20,7 @@
 - **Dropdown**: [mpellerin42]
     - Set a max-height of 5.5 options so dropdown doesn't grow full screen
     - Remove internal padding on dropdowns
-- **Tooltips**: Update duration so tooltips are displayed faster [mpellerin42]
+- **Tooltip**: Update duration so tooltips are displayed faster [mpellerin42]
 - **Tokens**: Add generic duration tokens [mpellerin42]
 
 # 2.29.7 (2021-05-19)
