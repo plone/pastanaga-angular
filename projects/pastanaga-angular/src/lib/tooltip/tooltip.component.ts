@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import { detectChanges, markForCheck } from '../common';
 
-const VERTICAL_SEPARATION = 21;
-const VERTICAL_SEPARATION_ACTION = 3;
-const HORIZONTAL_SEPARATION = -3;
+const VERTICAL_SEPARATION = 16;
+const VERTICAL_SEPARATION_ACTION = 8;
+const HORIZONTAL_SEPARATION = 16;
 
 @Component({
     selector: 'pa-tooltip-element',
