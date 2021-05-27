@@ -6,12 +6,13 @@ import {
     ViewChild,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
+    Inject,
 } from '@angular/core';
 import { detectChanges, markForCheck } from '../common';
+import { WINDOW } from '@ng-web-apis/common';
 
-const VERTICAL_SEPARATION = 16;
-const VERTICAL_SEPARATION_ACTION = 8;
-const HORIZONTAL_SEPARATION = 16;
+const ACTION_SPACING = 8;
+const SYSTEM_SPACING = 16;
 
 @Component({
     selector: 'pa-tooltip-element',
@@ -32,7 +33,7 @@ export class TooltipComponent implements AfterViewInit {
 
     @ViewChild('tooltipText') tooltipText?: ElementRef;
 
-    constructor(public cdr: ChangeDetectorRef) {}
+    constructor(public cdr: ChangeDetectorRef, @Inject(WINDOW) private window: Window) {}
 
     ngAfterViewInit() {
         this.show();
@@ -60,30 +61,32 @@ export class TooltipComponent implements AfterViewInit {
             const tooltipWidth = this.tooltipText.nativeElement.offsetWidth;
             return this.left + this.width / 2 - tooltipWidth / 2;
         } else {
-            return this.left + HORIZONTAL_SEPARATION;
+            return this.left + SYSTEM_SPACING;
         }
     }
 
     private getTopPosition(): number {
         if (this.isAction) {
-            return this.top + this.height + VERTICAL_SEPARATION_ACTION + this.offset;
+            return this.top + this.height + ACTION_SPACING + this.offset - this.window.scrollY;
         } else {
-            return this.top + VERTICAL_SEPARATION + this.offset;
+            return this.top + SYSTEM_SPACING + this.offset - this.window.scrollY;
         }
     }
 
     private adjustPosition() {
         if (!!this.tooltipText) {
             const rect = this.tooltipText.nativeElement.getBoundingClientRect();
-            if (rect.right > window.innerWidth) {
-                let left: number = parseInt(this.tooltipText.nativeElement.style.left.replace('px', ''), 10);
-                left = left - (rect.right - window.innerWidth) - HORIZONTAL_SEPARATION;
-                this.tooltipText.nativeElement.style.left = left + 'px';
+            let left: number = parseInt(this.tooltipText.nativeElement.style.left.replace('px', ''), 10);
+            const spacing = this.isAction ? ACTION_SPACING : SYSTEM_SPACING;
+            if (rect.right > this.window.innerWidth) {
+                left = left - (rect.right - this.window.innerWidth) - spacing;
+                this.tooltipText.nativeElement.style.left = `${left}px`;
             }
-            if (rect.bottom > window.innerHeight) {
+            if (rect.bottom > this.window.innerHeight) {
                 let top: number = parseInt(this.tooltipText.nativeElement.style.top.replace('px', ''), 10);
-                top = top - (rect.bottom - window.innerHeight) - VERTICAL_SEPARATION;
-                this.tooltipText.nativeElement.style.top = top + 'px';
+                top = top - (rect.bottom - this.window.innerHeight) - spacing;
+                this.tooltipText.nativeElement.style.top = `${top}px`;
+                this.tooltipText.nativeElement.style.left = `${left + spacing + this.width / 2 + rect.width / 2}px`;
             }
         }
     }
