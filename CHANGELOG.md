@@ -1,3 +1,9 @@
+# 2.30.3 (2021-05-31)
+
+### Bug fix
+- **Table**: add margin after table-lead-image [ebrehault]
+- **Button**: no min-width for icon+text buttons [ebrehault]
+
 # 2.30.2 (2021-05-31)
 
 ### Bug fix
