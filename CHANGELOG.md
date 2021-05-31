@@ -1,3 +1,8 @@
+# 2.30.2 (2021-05-31)
+
+### Bug fix
+- **Toggle**: update toggle state by clicking on its label [mpellerin42]
+
 # 2.30.1 (2021-05-27)
 
 ### Bug fixes

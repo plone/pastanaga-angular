@@ -1,5 +1,5 @@
 <div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
-    <div class="pa-toggle-context">
+    <div class="pa-toggle-context" (click)="updateState(!isChecked)">
         <div class="pa-toggle-label-container" *ngIf="hasLabel">
             <label #label [for]="id"
                    class="pa-field-label"
@@ -17,7 +17,6 @@
         </div>
         <div class="pa-toggle-container"
              [ngClass]="{checked: isChecked, focused: hasFocus, disabled: control.disabled}"
-             (click)="updateState(!isChecked)"
         >
             <input #inputElement
                    type="checkbox"
