@@ -33,7 +33,10 @@ export class TooltipComponent implements AfterViewInit {
 
     @ViewChild('tooltipText') tooltipText?: ElementRef;
 
-    constructor(public cdr: ChangeDetectorRef, @Inject(WINDOW) private window: Window) {}
+    constructor(
+        public cdr: ChangeDetectorRef,
+        @Inject(WINDOW) private window: any, // we need `any` so the non-Ivy compilation do not break when building the lib bundle
+    ) {}
 
     ngAfterViewInit() {
         this.show();
