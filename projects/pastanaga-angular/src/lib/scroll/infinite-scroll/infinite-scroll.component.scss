@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+:host {
+    display: block;
+    position: relative;
+}
+.pa-infinite-scroll-bottom-anchor {
+    position: absolute;
+    top: 75%;
+}

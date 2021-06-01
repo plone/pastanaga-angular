@@ -1,0 +1,13 @@
+<pa-demo-page>
+    <pa-demo-title>Infinite scroll</pa-demo-title>
+
+    <pa-demo-description>TODO</pa-demo-description>
+
+    <pa-demo-examples>
+        <p>Total: {{total | async}}</p>
+        <pa-infinite-scroll (reachBottom)="loadMore()">
+            <pa-demo-data-card *ngFor="let card of (data | async); trackBy: trackById"
+                               [data]="card"></pa-demo-data-card>
+        </pa-infinite-scroll>
+    </pa-demo-examples>
+</pa-demo-page>

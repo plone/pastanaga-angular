@@ -86,12 +86,12 @@ export const getVirtualScrollParentPosition = (element: HTMLElement): { bottom: 
     while (
         !!tmp &&
         tmp.tagName.toLowerCase() !== 'body' &&
-        tmp.tagName.toLowerCase() !== 'cdk-virtual-scroll-viewport'
+        tmp.tagName.toLowerCase() !== 'cdk-virtual-scroll-page-viewport'
     ) {
         tmp = tmp.offsetParent as HTMLElement;
     }
 
-    if (!!tmp && tmp.tagName.toLowerCase() === 'cdk-virtual-scroll-viewport') {
+    if (!!tmp && tmp.tagName.toLowerCase() === 'cdk-virtual-scroll-page-viewport') {
         const pos = getRealPosition(tmp);
         return {
             bottom: pos.top + tmp.clientHeight,

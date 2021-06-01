@@ -20,8 +20,10 @@ import * as la from '../../assets/i18n/la.json';
 
 import {
     PaAvatarModule,
+    PaAvatarPileModule,
     PaButtonModule,
     PaChipsModule,
+    PaCustomViewHeightModule,
     PaDateTimeModule,
     PaDropdownModule,
     PaExpanderModule,
@@ -36,7 +38,9 @@ import {
     PaTextFieldModule,
     PaToastModule,
     PaTogglesModule,
+    PaTooltipModule,
     PaTranslateModule,
+    PaScrollModule,
 } from '../../../../pastanaga-angular/src';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
@@ -59,7 +63,6 @@ import { TextareaPageComponent } from './pages/text-area-page/textarea-page.comp
 import { ToastPageComponent } from './pages/toast-page/toast-page.component';
 import { TogglePageComponent } from './pages/toggle-page/toggle-page.component';
 import { TooltipPageComponent } from './pages/tooltip-page/tooltip-page.component';
-import { PaTooltipModule } from '../../../../pastanaga-angular/src/lib/tooltip/tootip.module';
 import { FocusablePageComponent } from './pages/focusable-page/focusable-page.component';
 import { DemoComponent } from './demo.component';
 import { ChipPageComponent } from './pages/chip-page/chip-page.component';
@@ -99,7 +102,9 @@ import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page
 import { ExpanderPageComponent } from './pages/expand-page/expander-page.component';
 import { AccessibilityPageComponent } from './pages/accessibility/accessibility-page.component';
 import { AvatarPilePageComponent } from './pages/avatar-pile-page/avatar-pile-page.component';
-import { PaAvatarPileModule } from '../../../../pastanaga-angular/src/lib/avatar-pile/avatar-pile.module';
+import { InfiniteScrollPageComponent } from './pages/scroll-pages/infinite-scroll-page.component';
+import { DataCardComponent } from './pages/scroll-pages/data-card/data-card.component';
+import { CustomViewHeightPageComponent } from './pages/custom-view-height-page/custom-view-height-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -174,6 +179,9 @@ const COMPONENTS = [
     TooltipPageComponent,
     TranslatePageComponent,
     ExpanderPageComponent,
+    InfiniteScrollPageComponent,
+    DataCardComponent,
+    CustomViewHeightPageComponent,
 ];
 
 @NgModule({
@@ -207,6 +215,8 @@ const COMPONENTS = [
         PaDateTimeModule,
         PaModalModule,
         PaSideNavModule,
+        PaCustomViewHeightModule,
+        PaScrollModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

@@ -36,6 +36,10 @@ $rhythm: (
     @return map-get($rhythm, $spacer-size) / $ratio;
 }
 
+@function customVh($quantity) {
+    @return calc(var(--customVh, 1vh) * #{$quantity});
+}
+
 $border-radius-default: rhythm(.25) !default;
 
 // layout
