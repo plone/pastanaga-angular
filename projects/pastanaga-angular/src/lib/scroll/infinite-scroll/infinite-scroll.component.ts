@@ -10,8 +10,9 @@ import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, Input, Outpu
 export class InfiniteScrollComponent implements AfterViewInit, OnDestroy {
     @Input() options = {};
 
-    @Output() reachBottom = new EventEmitter();
+    @Output() reachAnchor = new EventEmitter();
 
+    @ViewChild('mid') mid?: ElementRef<HTMLElement>;
     @ViewChild('bottom') bottom?: ElementRef<HTMLElement>;
 
     get element() {
@@ -27,12 +28,13 @@ export class InfiniteScrollComponent implements AfterViewInit, OnDestroy {
             root: this.isHostScrollable() ? this.element : null,
             ...this.options,
         };
-        if (!!this.bottom) {
+        if (!!this.bottom && !!this.mid) {
             this._observer = new IntersectionObserver(([entry]) => {
                 if (entry.isIntersecting) {
-                    this.reachBottom.emit();
+                    this.reachAnchor.emit();
                 }
             }, options);
+            this._observer.observe(this.mid.nativeElement);
             this._observer.observe(this.bottom.nativeElement);
         }
     }

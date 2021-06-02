@@ -5,7 +5,7 @@
 
     <pa-demo-examples>
         <p>Total: {{total | async}}</p>
-        <pa-infinite-scroll (reachBottom)="loadMore()">
+        <pa-infinite-scroll (reachAnchor)="loadMore()">
             <pa-demo-data-card *ngFor="let card of (data | async); trackBy: trackById"
                                [data]="card"></pa-demo-data-card>
         </pa-infinite-scroll>
