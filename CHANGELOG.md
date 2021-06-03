@@ -1,3 +1,9 @@
+# 1.21.1 (2021-06-03)
+
+### Improvements
+
+-   pa-button-text class added to differentiate icon-buttons [jCarret]
+
 # 1.21.0 (2021-05-21)
 
 ### Improvements
