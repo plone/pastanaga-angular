@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { of, Subject } from 'rxjs';
-import { BreakpointObserver, markForCheck } from '../../../../pastanaga-angular/src';
+import { BreakpointObserver, markForCheck, ViewportMode } from '../../../../pastanaga-angular/src';
 import { takeUntil } from 'rxjs/operators';
 import { IDemoMenuSection } from './demo-menu/demo-menu.component';
 import { Traverser } from 'angular-traversal';
@@ -39,7 +39,7 @@ export class DemoComponent implements OnInit, OnDestroy {
     @Input() menu: IDemoMenuSection[] = [];
     @Input() logo = '';
 
-    mode?: string;
+    mode?: ViewportMode;
     activeItem = '';
     terminator = new Subject();
 

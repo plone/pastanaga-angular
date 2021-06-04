@@ -1,3 +1,8 @@
+# 2.31.0 (2021-06-04)
+
+### Feature
+- **Infinite scroll**: New infinite scroll component [mpellerin42]
+
 # 2.30.4 (2021-06-01)
 
 ### Bug fix

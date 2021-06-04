@@ -8,6 +8,9 @@ export * from './lib/avatar/avatar.module';
 export * from './lib/avatar/avatar.component';
 export * from './lib/avatar/avatar.model';
 
+export * from './lib/avatar-pile/avatar-pile.module';
+export * from './lib/avatar-pile/avatar-pile.component';
+
 export * from './lib/button/button.module';
 export * from './lib/button/button.component';
 
@@ -93,6 +96,9 @@ export * from './lib/side-nav/side-nav.module';
 export * from './lib/side-nav/side-nav.component';
 export * from './lib/side-nav/side-nav.directive';
 export * from './lib/side-nav/side-nav-item.component';
+
+export * from './lib/scroll/scroll.module';
+export * from './lib/scroll/infinite-scroll/infinite-scroll.component';
 
 export * from './lib/tooltip/tootip.module';
 export * from './lib/tooltip/tooltip.directive';

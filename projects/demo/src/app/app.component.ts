@@ -32,6 +32,7 @@ import { NativeTextFieldPageComponent } from './demo/pages/native-text-field-pag
 import { ExpanderPageComponent } from './demo/pages/expand-page/expander-page.component';
 import { AccessibilityPageComponent } from './demo/pages/accessibility/accessibility-page.component';
 import { AvatarPilePageComponent } from './demo/pages/avatar-pile-page/avatar-pile-page.component';
+import { InfiniteScrollPageComponent } from './demo/pages/scroll-pages/infinite-scroll-page.component';
 
 @Component({
     selector: 'app-root',
@@ -69,6 +70,7 @@ export class AppComponent {
                 { view: 'tabs', title: 'Tabs', type: TabsPageComponent },
                 { view: 'toast', title: 'Toast', type: ToastPageComponent },
                 { view: 'tooltip', title: 'Tooltip', type: TooltipPageComponent },
+                { view: 'infinite-scroll', title: 'Infinite scroll', type: InfiniteScrollPageComponent },
             ],
         },
         {
