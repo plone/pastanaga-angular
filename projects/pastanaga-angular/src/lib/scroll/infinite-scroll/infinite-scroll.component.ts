@@ -1,5 +1,5 @@
 import { AfterViewInit, EventEmitter, OnDestroy } from '@angular/core';
-import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, Input, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, Output } from '@angular/core';
 
 @Component({
     selector: 'pa-infinite-scroll',
@@ -8,8 +8,6 @@ import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, Input, Outpu
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfiniteScrollComponent implements AfterViewInit, OnDestroy {
-    @Input() options = {};
-
     @Output() reachAnchor = new EventEmitter();
 
     @ViewChild('mid') mid?: ElementRef<HTMLElement>;
@@ -26,7 +24,6 @@ export class InfiniteScrollComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit() {
         const options = {
             root: this.isHostScrollable() ? this.element : null,
-            ...this.options,
         };
         if (!!this.bottom && !!this.mid) {
             this._observer = new IntersectionObserver(([entry]) => {

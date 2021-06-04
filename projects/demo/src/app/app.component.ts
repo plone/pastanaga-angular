@@ -33,7 +33,6 @@ import { ExpanderPageComponent } from './demo/pages/expand-page/expander-page.co
 import { AccessibilityPageComponent } from './demo/pages/accessibility/accessibility-page.component';
 import { AvatarPilePageComponent } from './demo/pages/avatar-pile-page/avatar-pile-page.component';
 import { InfiniteScrollPageComponent } from './demo/pages/scroll-pages/infinite-scroll-page.component';
-import { CustomViewHeightPageComponent } from './demo/pages/custom-view-height-page/custom-view-height-page.component';
 
 @Component({
     selector: 'app-root',
@@ -51,7 +50,6 @@ export class AppComponent {
                 { view: 'containers', title: 'Containers', type: ContainerPageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
                 { view: 'breakpoint', title: 'Breakpoint', type: BreakpointPageComponent },
-                { view: 'custom-vh', title: 'Custom view height', type: CustomViewHeightPageComponent },
                 { view: 'translate', title: 'Translate', type: TranslatePageComponent },
             ],
         },

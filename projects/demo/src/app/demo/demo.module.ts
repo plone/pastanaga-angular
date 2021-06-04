@@ -23,7 +23,6 @@ import {
     PaAvatarPileModule,
     PaButtonModule,
     PaChipsModule,
-    PaCustomViewHeightModule,
     PaDateTimeModule,
     PaDropdownModule,
     PaExpanderModule,
@@ -104,7 +103,7 @@ import { AccessibilityPageComponent } from './pages/accessibility/accessibility-
 import { AvatarPilePageComponent } from './pages/avatar-pile-page/avatar-pile-page.component';
 import { InfiniteScrollPageComponent } from './pages/scroll-pages/infinite-scroll-page.component';
 import { DataCardComponent } from './pages/scroll-pages/data-card/data-card.component';
-import { CustomViewHeightPageComponent } from './pages/custom-view-height-page/custom-view-height-page.component';
+import { InfiniteScrollDemoComponent } from './pages/scroll-pages/infinite-scroll-demo/infinite-scroll-demo.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -180,8 +179,8 @@ const COMPONENTS = [
     TranslatePageComponent,
     ExpanderPageComponent,
     InfiniteScrollPageComponent,
+    InfiniteScrollDemoComponent,
     DataCardComponent,
-    CustomViewHeightPageComponent,
 ];
 
 @NgModule({
@@ -215,7 +214,6 @@ const COMPONENTS = [
         PaDateTimeModule,
         PaModalModule,
         PaSideNavModule,
-        PaCustomViewHeightModule,
         PaScrollModule,
     ],
     declarations: COMPONENTS,

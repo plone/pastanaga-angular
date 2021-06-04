@@ -33,9 +33,6 @@ export * from './lib/controls/textfield/text-field-utility.service';
 export * from './lib/controls/toggles/toggles.module';
 export * from './lib/controls/toggles/checkbox/checkbox.component';
 
-export * from './lib/custom-view-height/custom-view-height.module';
-export * from './lib/custom-view-height/custom-view-height.directive';
-
 export * from './lib/datetime/datetime.component';
 export * from './lib/datetime/datetime.module';
 export * from './lib/datetime/datetime.service';

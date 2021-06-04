@@ -1,7 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Data, DataPage, ScrollPageService } from './scroll-page.service';
-import { Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
 
 @Component({
     templateUrl: './infinite-scroll-page.component.html',
@@ -9,29 +6,12 @@ import { map, take, tap } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfiniteScrollPageComponent {
-    private _data: Observable<DataPage> = this.service.getData();
-    private _hasMore = false;
+    code = `<pa-infinite-scroll (reachAnchor)="loadMore()">
+    <pa-demo-data-card *ngFor="let card of (data | async); trackBy: trackById"
+                       [data]="card"></pa-demo-data-card>
+</pa-infinite-scroll>`;
 
-    total = this._data.pipe(
-        tap((page) => (this._hasMore = page.pagination.hasMore)),
-        map((page) => page.pagination.total),
-    );
-    data = this._data.pipe(map((page) => page.data));
+    demoVisible = false;
 
-    constructor(private service: ScrollPageService) {}
-
-    loadMore() {
-        if (this._hasMore) {
-            this.data
-                .pipe(
-                    map((data) => data[data.length - 1].index),
-                    take(1),
-                )
-                .subscribe((lastIndex) => this.service.loadMore(lastIndex));
-        }
-    }
-
-    trackById(index: number, card: Data) {
-        return card.index;
-    }
+    constructor() {}
 }

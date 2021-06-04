@@ -1,13 +1,29 @@
 <pa-demo-page>
     <pa-demo-title>Infinite scroll</pa-demo-title>
 
-    <pa-demo-description>TODO</pa-demo-description>
+    <pa-demo-description>
+        <p><code>pa-infinite-scroll</code> is a wrapper component using intersection observer to setup a performant way for
+            loading more data when reaching anchors. One anchor is positioned in the middle of the container, and the other is
+            after the content.</p>
+        <p>By default, the intersection observer is relative to the viewport. It becomes relative to the host when
+            the host has <code>overflow: auto;</code> or <code>overflow-y: scroll;</code> style property set.</p>
+    </pa-demo-description>
 
     <pa-demo-examples>
-        <p>Total: {{total | async}}</p>
-        <pa-infinite-scroll (reachAnchor)="loadMore()">
-            <pa-demo-data-card *ngFor="let card of (data | async); trackBy: trackById"
-                               [data]="card"></pa-demo-data-card>
-        </pa-infinite-scroll>
+        <pa-button kind="primary" (click)="demoVisible = !demoVisible">Display infinite scroll demo</pa-button>
+        <pa-demo-infinite-scroll [hidden]="!demoVisible"
+                                 (back)="demoVisible = false"></pa-demo-infinite-scroll>
     </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3>Output</h3>
+        <dl>
+            <dt>reachAnchor</dt>
+            <dd>Event emitted when an anchor is reached.</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
 </pa-demo-page>
