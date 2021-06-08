@@ -1,3 +1,8 @@
+# 2.31.1 (2021-06-08)
+
+### Improvement
+- **Avatar pile**: Add `buttonAlwaysVisible` option to avatar pile component [mpellerin42]
+
 # 2.31.0 (2021-06-04)
 
 ### Feature

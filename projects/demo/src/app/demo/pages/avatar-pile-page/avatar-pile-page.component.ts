@@ -31,6 +31,7 @@ export class AvatarPilePageComponent {
     ];
 
     simpleCode = `<pa-avatar-pile [avatars]="avatars"></pa-avatar-pile>`;
+    alwaysVisibleButtonCode = `<pa-avatar-pile [avatars]="avatars" buttonAlwaysVisible></pa-avatar-pile>`;
     customButtonCode = `<pa-avatar-pile [avatars]="avatars"
                 (clickOnMore)="displayToast()"
                 customButton></pa-avatar-pile>`;

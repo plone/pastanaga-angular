@@ -20,7 +20,13 @@
         }
     }
 
-    pa-button {
+    pa-button.pa-avatar-pile-button-with-1 {
+        transform: translateX(- #{rhythm(1)})
+    }
+    pa-button.pa-avatar-pile-button-with-2 {
+        transform: translateX(- #{rhythm(2)})
+    }
+    pa-button.pa-avatar-pile-button-with-3 {
         transform: translateX(- #{rhythm(3)})
     }
 }

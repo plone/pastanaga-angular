@@ -2,7 +2,7 @@
     <pa-avatar *ngFor="let avatar of visibleAvatars; let first = first; let last = last;"
                size="small"
                [class.pa-avatar-moved]="!first"
-               [class.pa-avatar-clip]="!last || avatarCount > max"
+               [class.pa-avatar-clip]="!last || avatarCount > max || buttonAlwaysVisible"
                [autoBackground]="avatar.autoBackground"
                [image]="avatar.image"
                [imageSrc]="avatar.imageSrc"
@@ -10,10 +10,11 @@
                [userName]="avatar.userName"
     ></pa-avatar>
 
-    <ng-container *ngIf="avatarCount > max">
+    <ng-container *ngIf="avatarCount > max || buttonAlwaysVisible">
         <pa-button icon="more-horizontal"
                    size="small"
                    qa="more-avatars-button"
+                   class="pa-avatar-pile-button-with-{{buttonPositionCount}}"
                    [paPopup]="customButton ? null : avatarList"
                    [paTooltip]="buttonTooltip"
                    (click)="onClick()"

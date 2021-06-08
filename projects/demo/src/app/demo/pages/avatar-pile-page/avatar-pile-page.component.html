@@ -10,6 +10,7 @@
     </pa-demo-description>
 
     <pa-demo-examples>
+        <h4>Default behavior: button visible when more than 3 avatars in the pile</h4>
         <p>
             <pa-avatar-pile [avatars]="avatars.slice(0,1)"></pa-avatar-pile>
         </p>
@@ -19,11 +20,21 @@
         <p>
             <pa-avatar-pile [avatars]="avatars.slice(0,3)"></pa-avatar-pile>
         </p>
-
-        <h4>Default button behavior</h4>
         <p>
             <pa-avatar-pile [avatars]="avatars"></pa-avatar-pile>
         </p>
+
+        <h4>Optional behavior: button always visible</h4>
+        <p>
+            <pa-avatar-pile [avatars]="avatars.slice(0,1)" buttonAlwaysVisible></pa-avatar-pile>
+        </p>
+        <p>
+            <pa-avatar-pile [avatars]="avatars.slice(0,2)" buttonAlwaysVisible></pa-avatar-pile>
+        </p>
+        <p>
+            <pa-avatar-pile [avatars]="avatars.slice(0,3)" buttonAlwaysVisible></pa-avatar-pile>
+        </p>
+
         <h4>Custom button behavior</h4>
         <p>
             <pa-avatar-pile [avatars]="avatars"
@@ -37,6 +48,9 @@
         <dl>
             <dt>avatars</dt>
             <dd>List of avatars to display as a pile. A maximum of three avatars will be shown in the provided order (no internal sorting).</dd>
+
+            <dt>buttonAlwaysVisible</dt>
+            <dd>When set, the button is visible whatever the number of avatars in the list. <small>(Default: false)</small></dd>
 
             <dt>customButton</dt>
             <dd>When set, clicking on the button won't open a dropdown with the list of users. <small>(Default: false)</small></dd>
@@ -52,6 +66,9 @@
     <pa-demo-code>
         <h4>Default button behavior</h4>
         <pre><code>{{simpleCode}}</code></pre>
+
+        <h4>Always visible button behavior</h4>
+        <pre><code>{{alwaysVisibleButtonCode}}</code></pre>
 
         <h4>Custom button behavior</h4>
         <pre><code>{{customButtonCode}}</code></pre>
