@@ -1,6 +1,9 @@
 # 2.31.1 (2021-06-08)
 
-### Improvement
+### Bugs fixes
+- **Containers**: set a max-width on containers for all screen sizes
+
+### Improvements
 - **Avatar pile**:  [mpellerin42]
     - Add `buttonAlwaysVisible` option to avatar pile component
     - Prevent clip mask to take space in avatar pile
