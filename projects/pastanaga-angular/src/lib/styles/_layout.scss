@@ -8,14 +8,17 @@
 .pa-main-container-tight,
 .pa-main-container-wide {
     margin: 0 $margin-formula-small;
+    max-width: calc(100vw - #{$margin-formula-small}*2);
 }
 
 @media (min-width: $size-viewport-medium-min) {
     .pa-main-container-tight {
         margin: 0 $margin-formula-tight-medium;
+        max-width: calc(100vw - #{$margin-formula-tight-medium}*2);
     }
     .pa-main-container-wide {
         margin: 0 $margin-formula-wide-medium;
+        max-width: calc(100vw - #{$margin-formula-wide-medium}*2);
     }
     .pa-child-container-compact {
         margin: 0 auto;

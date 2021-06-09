@@ -31,6 +31,14 @@ export class AvatarPileComponent {
     }
 
     @Input()
+    set buttonAlwaysVisible(value: boolean) {
+        this._buttonAlwaysVisible = coerceBooleanProperty(value);
+    }
+    get buttonAlwaysVisible() {
+        return this._buttonAlwaysVisible;
+    }
+
+    @Input()
     set buttonTooltip(value: string) {
         this._buttonTooltip = value;
     }
@@ -48,9 +56,13 @@ export class AvatarPileComponent {
     get avatarCount() {
         return this._avatars.length;
     }
+    get buttonPositionCount() {
+        return Math.min(this._avatars.length, this.max);
+    }
 
     private _avatars: AvatarModel[] = [];
     private _customButtonBehavior = false;
+    private _buttonAlwaysVisible = false;
     private _buttonTooltip = '';
 
     constructor(private translate: TranslatePipe) {}

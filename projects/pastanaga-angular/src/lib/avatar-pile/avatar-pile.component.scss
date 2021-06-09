@@ -11,7 +11,6 @@
         clip-path: url(#avatar-mask);
     }
 
-
     $list: 2 3;
     @each $i in $list {
         .pa-avatar-moved:nth-child(#{$i}) {
@@ -20,7 +19,17 @@
         }
     }
 
-    pa-button {
+    pa-button.pa-avatar-pile-button-with-1 {
+        transform: translateX(- #{rhythm(1)})
+    }
+    pa-button.pa-avatar-pile-button-with-2 {
+        transform: translateX(- #{rhythm(2)})
+    }
+    pa-button.pa-avatar-pile-button-with-3 {
         transform: translateX(- #{rhythm(3)})
     }
+}
+
+.pa-avatar-clip-mask {
+    position: absolute;
 }

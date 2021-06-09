@@ -6,6 +6,7 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
 
 @Component({
     templateUrl: './modal-page.component.html',
+    styleUrls: ['./modal-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalPageComponent {

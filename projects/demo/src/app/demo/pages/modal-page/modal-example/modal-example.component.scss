@@ -1,7 +1,9 @@
+@import "../../../../../../../pastanaga-angular/src/lib/styles/variables";
+
 .content {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #F2F5F7;
-    height: 300px;
+    background: $color-neutral-primary-lighter;
+    height: rhythm(40);
 }
