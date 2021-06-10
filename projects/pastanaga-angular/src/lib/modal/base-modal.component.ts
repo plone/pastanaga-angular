@@ -8,12 +8,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ModalConfig, ModalRef } from './modal.model';
-import { detectChanges, Keys } from '../common';
+import { detectChanges, Keys, TRANSITION_DURATION } from '../common';
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
 export class BaseModalComponent implements AfterViewInit {
-    @Output() onEnter: EventEmitter<void> = new EventEmitter();
+    @Output() enterPressed: EventEmitter<void> = new EventEmitter();
 
     @ViewChild('modalContainer') modalContainer?: ElementRef;
 
@@ -45,7 +45,7 @@ export class BaseModalComponent implements AfterViewInit {
                 if (!!this.ref) {
                     this.ref.close(data);
                 }
-            }, 700);
+            }, TRANSITION_DURATION.moderate);
         }
     }
 
@@ -71,8 +71,8 @@ export class BaseModalComponent implements AfterViewInit {
     protected onKeyDown($event: KeyboardEvent) {
         if ($event.key === Keys.enter) {
             $event.stopPropagation();
-            this.onEnter.emit();
-        } else if ($event.key === Keys.esc && !!this.ref && this.ref.isLast && this.config.withCloseButton) {
+            this.enterPressed.emit();
+        } else if ($event.key === Keys.esc && this.ref?.isLast && this.config.closeOnEsc) {
             this.close(false);
             $event.stopPropagation();
         }

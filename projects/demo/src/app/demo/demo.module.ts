@@ -104,6 +104,7 @@ import { AvatarPilePageComponent } from './pages/avatar-pile-page/avatar-pile-pa
 import { InfiniteScrollPageComponent } from './pages/scroll-pages/infinite-scroll-page.component';
 import { DataCardComponent } from './pages/scroll-pages/data-card/data-card.component';
 import { InfiniteScrollDemoComponent } from './pages/scroll-pages/infinite-scroll-demo/infinite-scroll-demo.component';
+import { ConfirmationDialogPageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -181,6 +182,7 @@ const COMPONENTS = [
     InfiniteScrollPageComponent,
     InfiniteScrollDemoComponent,
     DataCardComponent,
+    ConfirmationDialogPageComponent,
 ];
 
 @NgModule({

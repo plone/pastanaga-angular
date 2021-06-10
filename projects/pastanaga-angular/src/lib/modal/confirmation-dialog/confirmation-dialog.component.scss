@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.pa-confirmation-dialog {
+    background-color: $color-neutral-primary-lightest;
+    box-shadow: $shadow-modal;
+    padding: rhythm(4);
+    text-align: center;
+    width: $breakpoint-small - rhythm(2)*2; // smallest device width minus the margin in each side
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    .pa-modal-header {
+        h4 {
+            margin-bottom: rhythm(3);
+        }
+        img {
+            width: rhythm(12);
+        }
+    }
+
+    .pa-modal-description {
+        color: $color-neutral-secondary-default;
+    }
+
+    .pa-modal-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: rhythm(3);
+
+        pa-button {
+            width: calc((100% - #{rhythm(2)}) / 2);
+
+            ::ng-deep button {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+    }
+}
+

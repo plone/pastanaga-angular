@@ -1,10 +1,18 @@
 import { Observable, Subject } from 'rxjs';
 
+export interface ConfirmationData {
+    title: string;
+    description?: string;
+    isDestructive?: boolean;
+    cancelLabel?: string;
+    confirmLabel?: string;
+}
+
 export interface IModalConfig<D = any> {
     blocking?: boolean;
     fullscreen?: boolean;
     showOverlay?: boolean;
-    withCloseButton?: boolean;
+    closeOnEsc?: boolean;
     data?: D;
 }
 
@@ -12,13 +20,13 @@ export class ModalConfig<D = any> {
     blocking: boolean;
     fullscreen: boolean;
     showOverlay: boolean;
-    withCloseButton: boolean;
+    closeOnEsc: boolean;
     readonly data?: Readonly<D>;
 
     constructor(config?: IModalConfig<D>) {
         this.blocking = !!config && typeof config.blocking === 'boolean' ? config.blocking : true;
         this.showOverlay = !!config && typeof config.showOverlay === 'boolean' ? config.showOverlay : true;
-        this.withCloseButton = !!config && typeof config.withCloseButton === 'boolean' ? config.withCloseButton : false;
+        this.closeOnEsc = !!config && typeof config.closeOnEsc === 'boolean' ? config.closeOnEsc : false;
         this.fullscreen = !!config && typeof config.fullscreen === 'boolean' ? config.fullscreen : false;
         this.data = config?.data;
     }

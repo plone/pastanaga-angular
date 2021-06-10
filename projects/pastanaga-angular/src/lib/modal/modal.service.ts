@@ -7,7 +7,8 @@ import {
     NgZone,
     Type,
 } from '@angular/core';
-import { ModalConfig, ModalRef } from './modal.model';
+import { ConfirmationData, ModalConfig, ModalRef } from './modal.model';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 let counter = 0;
 
@@ -23,8 +24,15 @@ export class ModalService {
         private componentFactoryResolver: ComponentFactoryResolver,
         private appRef: ApplicationRef,
         private injector: Injector,
-        private zone: NgZone
+        private zone: NgZone,
     ) {}
+
+    openConfirm(data: ConfirmationData): ModalRef {
+        return this.openModal(
+            ConfirmationDialogComponent,
+            new ModalConfig<ConfirmationData>({ data }),
+        );
+    }
 
     openModal(component: Type<any>, config?: ModalConfig): ModalRef {
         // create the modal reference
@@ -52,7 +60,7 @@ export class ModalService {
 
         // Store the modal and manage the others if any
         if (this.modals.length > 0) {
-            this.modals[this.modals.length - 1].instance.modal.isLast = false;
+            this.getModalInstance(this.modals[this.modals.length - 1]).isLast = false;
         }
         this.modals.push(modalComponentRef);
         this.hasModalOpened = true;
@@ -60,7 +68,7 @@ export class ModalService {
     }
 
     private closeModal(ref: ModalRef) {
-        const index = this.modals.findIndex((modal) => modal.instance.modal.id === ref.id);
+        const index = this.modals.findIndex((modal) => this.getModalInstance(modal).id === ref.id);
         if (index > -1) {
             this.zone.run(() => {
                 const componentRef = this.modals[index];
@@ -68,7 +76,7 @@ export class ModalService {
                 componentRef.destroy();
                 this.modals.splice(index, 1);
                 if (this.modals.length > 0) {
-                    this.modals[this.modals.length - 1].instance.modal.isLast = true;
+                    this.getModalInstance(this.modals[this.modals.length - 1]).isLast = true;
                 }
             });
         }
@@ -76,6 +84,10 @@ export class ModalService {
             this.freezeBackground(false);
             this.hasModalOpened = false;
         }
+    }
+
+    private getModalInstance(componentRef: ComponentRef<any>): ModalRef {
+        return !!componentRef.instance.modal ? componentRef.instance.modal : componentRef.instance;
     }
 
     private freezeBackground(freeze: boolean) {

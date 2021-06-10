@@ -1,6 +1,6 @@
 @import "variables";
 
-.pa-modal-backdrop{
+.pa-modal-backdrop {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -25,10 +25,6 @@
     box-shadow: $shadow-modal;
     margin: 0;
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     z-index: $z-index-modal;
 }
 
@@ -94,20 +90,19 @@
     100% {
         opacity: 0;
         transform: translateY(0);
-
     }
 }
 
 .pa-modal.in {
     animation-name: modal-in;
-    animation-duration: .75s;
+    animation-duration: $transition-process-duration;
 
     .pa-modal-header,
     .pa-modal-description,
     pa-modal-content,
     pa-modal-footer {
         animation-name: modal-in-content;
-        animation-duration: 1.25s;
+        animation-duration: $transition-process-duration;
     }
 }
 
@@ -117,13 +112,14 @@
 
 .pa-modal.out {
     animation-name: modal-out;
-    animation-duration: .75s;
+    animation-duration: $transition-process-duration;
+    animation-fill-mode: forwards;
 
     .pa-modal-header,
     .pa-modal-description,
     pa-modal-content,
     pa-modal-footer {
         animation-name: modal-out-content;
-        animation-duration: 1.25s;
+        animation-duration: $transition-process-duration;
     }
 }

@@ -5,7 +5,7 @@ import { Keys } from '../common';
 import { createSpyObject, SpyObject } from '@ngneat/spectator/jest';
 
 describe('BaseModalComponent', () => {
-    const config = new ModalConfig({ blocking: false, withCloseButton: true });
+    const config = new ModalConfig({ blocking: false, closeOnEsc: true });
     let cdr: ChangeDetectorRef;
     let modalRef: SpyObject<ModalRef>;
     let baseModal: BaseModalComponent;
@@ -37,12 +37,12 @@ describe('BaseModalComponent', () => {
         it(`should setup id and config from ref`, () => {
             expect(baseModal.id).toBe(0);
             expect(baseModal.config.blocking).toBe(true);
-            expect(baseModal.config.withCloseButton).toBe(false);
+            expect(baseModal.config.closeOnEsc).toBe(false);
 
             baseModal.ngAfterViewInit();
             expect(baseModal.id).toBe(modalRef.id);
             expect(baseModal.config.blocking).toBe(config.blocking);
-            expect(baseModal.config.withCloseButton).toBe(config.withCloseButton);
+            expect(baseModal.config.closeOnEsc).toBe(config.closeOnEsc);
         });
 
         it(`should setup keydown event listener`, () => {
@@ -117,7 +117,7 @@ describe('BaseModalComponent', () => {
             mockClose = jest.fn(() => {});
 
             baseModal.close = mockClose;
-            baseModal.onEnter = ({ emit: mockOnEnter } as any) as EventEmitter<void>;
+            baseModal.enterPressed = ({ emit: mockOnEnter } as any) as EventEmitter<void>;
             baseModal.ngAfterViewInit();
         });
 
@@ -135,7 +135,7 @@ describe('BaseModalComponent', () => {
 
         it(`should do nothing if ref is not the last one`, () => {
             modalRef.isLast = false;
-            baseModal.config = new ModalConfig({ withCloseButton: true });
+            baseModal.config = new ModalConfig({ closeOnEsc: true });
             fakeKeypressEvent = ({
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
@@ -147,7 +147,7 @@ describe('BaseModalComponent', () => {
         });
 
         it(`should do nothing when pressing ESC and config has withCloseButton set to false`, () => {
-            baseModal.config = new ModalConfig({ withCloseButton: false });
+            baseModal.config = new ModalConfig({ closeOnEsc: false });
             fakeKeypressEvent = ({
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
@@ -160,7 +160,7 @@ describe('BaseModalComponent', () => {
 
         it(`should close when pressing ESC and config has withCloseButton set to true`, () => {
             modalRef.isLast = true;
-            baseModal.config = new ModalConfig({ withCloseButton: true });
+            baseModal.config = new ModalConfig({ closeOnEsc: true });
             fakeKeypressEvent = ({
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,

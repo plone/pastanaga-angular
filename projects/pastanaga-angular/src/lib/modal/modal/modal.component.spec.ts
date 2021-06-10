@@ -34,6 +34,6 @@ describe('ModalComponent', () => {
 
     it(`should set withCloseButton to true in its config`, () => {
         fixture.detectChanges();
-        expect(component.ref.config.withCloseButton).toBe(true);
+        expect(component.ref.config.closeOnEsc).toBe(true);
     });
 });

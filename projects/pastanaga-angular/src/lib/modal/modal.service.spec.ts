@@ -58,11 +58,11 @@ describe('ModalService', () => {
             const ref = service.openModal(TestDialogComponent);
             expect(ref.config).toBeDefined();
             expect(ref.config.blocking).toBe(true);
-            expect(ref.config.withCloseButton).toBe(false);
+            expect(ref.config.closeOnEsc).toBe(false);
         });
 
         it(`should pass modal config to the modal component`, () => {
-            const config = new ModalConfig({ blocking: false, withCloseButton: true });
+            const config = new ModalConfig({ blocking: false, closeOnEsc: true });
             const ref = service.openModal(TestDialogComponent, config);
             expect(ref.config).toBe(config);
         });
