@@ -4,7 +4,7 @@
      [class.pa-modal-blocking]="config.blocking"
      (click)="outsideClick($event)"
 >
-    <dialog class="pa-modal"
+    <dialog class="pa-modal pa-modal-advanced pa-modal-fullscreen-on-small"
             role="dialog"
             [class.in]="!closing"
             [class.out]="closing"

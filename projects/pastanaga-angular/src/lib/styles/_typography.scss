@@ -1,0 +1,111 @@
+@import "variables";
+
+.overline {
+    @include font-size(xs);
+    @include line-height(s);
+    @include letter-spacing(increase-s);
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+}
+
+.body-xs {
+    @include font-size(xs);
+    @include line-height(s);
+    @include letter-spacing(normal);
+    font-weight: $font-weight-regular;
+}
+
+.body-s {
+    @include font-size(s);
+    @include line-height(m);
+    @include letter-spacing(normal);
+    font-weight: $font-weight-regular;
+}
+
+.body-m {
+    @include font-size(m);
+    @include line-height(l);
+    @include letter-spacing(normal);
+    font-weight: $font-weight-regular;
+}
+
+h6,
+.title-xxs {
+    @include font-size(s);
+    @include line-height(m);
+    @include letter-spacing(normal);
+    font-weight: $font-weight-semi-bold;
+}
+
+h5,
+.title-xs {
+    @include font-size(m);
+    @include line-height(l);
+    @include letter-spacing(normal);
+    font-weight: $font-weight-semi-bold;
+}
+
+h4,
+.title-s {
+    @include size(l);
+    @include letter-spacing(normal);
+    font-weight: $font-weight-semi-bold;
+}
+
+h3,
+.title-m {
+    @include size(xl);
+    @include letter-spacing(decrease-xs);
+    font-weight: $font-weight-semi-bold;
+}
+
+h2,
+.title-l {
+    @include size(d1);
+    @include letter-spacing(normal);
+    font-weight: $font-weight-semi-bold;
+}
+
+h1,
+.display-s {
+    @include size(d2);
+    @include letter-spacing(decrease-s);
+    font-weight: $font-weight-semi-bold;
+}
+
+.display-m {
+    @include size(d3);
+    @include letter-spacing(decrease-m);
+    font-weight: $font-weight-semi-bold;
+}
+
+
+@media (min-width: $size-viewport-medium-min) {
+    h4,
+    .title-s {
+        @include size(xl);
+    }
+
+    h3,
+    .title-m {
+        @include size(xxl);
+        @include letter-spacing(decrease-xs-md);
+    }
+
+    h2,
+    .title-l {
+        @include size(d1-md);
+    }
+
+    h1,
+    .display-s {
+        @include size(d2-md);
+        @include letter-spacing(decrease-s-md);
+    }
+
+    .display-m {
+        @include size(d3-md);
+        @include letter-spacing(decrease-m-md);
+    }
+}
+

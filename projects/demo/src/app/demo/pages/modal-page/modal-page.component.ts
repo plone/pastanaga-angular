@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ModalService } from '../../../../../../pastanaga-angular/src';
-import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { ModalConfig, ModalService } from '../../../../../../pastanaga-angular/src';
 import { DialogImageExampleComponent } from './dialog-image-example/dialog-image-example.component';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 
@@ -118,12 +117,18 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 
     constructor(private modalService: ModalService) {}
 
-    openDialog() {
-        this.modalService.openModal(DialogExampleComponent).onClose.subscribe(console.log);
-    }
-
     openImageDialog() {
         this.modalService.openModal(DialogImageExampleComponent).onClose.subscribe(console.log);
+    }
+    openImageAndDescriptionDialog() {
+        this.modalService
+            .openModal(
+                DialogImageExampleComponent,
+                new ModalConfig({
+                    data: { displayDescription: true },
+                }),
+            )
+            .onClose.subscribe(console.log);
     }
 
     openModal() {

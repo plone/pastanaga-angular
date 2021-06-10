@@ -4,15 +4,19 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
+    OnDestroy,
+    OnInit,
     Output,
     ViewChild,
 } from '@angular/core';
 import { ModalConfig, ModalRef } from './modal.model';
 import { detectChanges, Keys, TRANSITION_DURATION } from '../common';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
-export class BaseModalComponent implements AfterViewInit {
+export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
     @Output() enterPressed: EventEmitter<void> = new EventEmitter();
 
     @ViewChild('modalContainer') modalContainer?: ElementRef;
@@ -24,7 +28,13 @@ export class BaseModalComponent implements AfterViewInit {
 
     protected _onKeyDown = this.onKeyDown.bind(this);
 
+    private _terminator = new Subject();
+
     constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef) {}
+
+    ngOnInit() {
+        this.ref.onClose.pipe(takeUntil(this._terminator)).subscribe(() => this.close());
+    }
 
     ngAfterViewInit() {
         if (!!this.ref) {
@@ -32,6 +42,11 @@ export class BaseModalComponent implements AfterViewInit {
             this.config = this.ref.config;
         }
         document.addEventListener('keydown', this._onKeyDown);
+    }
+
+    ngOnDestroy() {
+        this._terminator.next();
+        this._terminator.complete();
     }
 
     close(data?: any) {
@@ -43,7 +58,7 @@ export class BaseModalComponent implements AfterViewInit {
                 this.off = true;
                 detectChanges(this.cdr);
                 if (!!this.ref) {
-                    this.ref.close(data);
+                    this.ref.dismiss(data);
                 }
             }, TRANSITION_DURATION.moderate);
         }

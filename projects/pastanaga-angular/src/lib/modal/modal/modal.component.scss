@@ -1,7 +1,7 @@
 @import "../../styles/variables";
+@import "../../styles/theme/modal";
 
-.pa-modal {
-    min-width: rhythm(64);
+.pa-modal-advanced {
     position: relative;
     padding: rhythm(4) rhythm(6);
     background-color: $color-neutral-primary-lightest;
@@ -26,5 +26,10 @@
         margin-top: rhythm(4);
         display: flex;
         justify-content: space-between;
+    }
+
+    @media (min-width: $size-viewport-medium-min) {
+        @include centered-dialog;
+        width: rhythm(64);
     }
 }

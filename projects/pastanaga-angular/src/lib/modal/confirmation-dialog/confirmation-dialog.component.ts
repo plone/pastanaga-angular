@@ -1,6 +1,5 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
-import { ConfirmationData, ModalRef } from '../modal.model';
 
 @Component({
     selector: 'pa-confirmation-dialog',
@@ -9,10 +8,6 @@ import { ConfirmationData, ModalRef } from '../modal.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmationDialogComponent extends BaseModalComponent implements AfterViewInit {
-    constructor(public ref: ModalRef<ConfirmationData>, protected cdr: ChangeDetectorRef) {
-        super(ref, cdr);
-    }
-
     ngAfterViewInit() {
         super.ngAfterViewInit();
 

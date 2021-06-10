@@ -83,7 +83,7 @@ describe('DialogComponent', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
         const dialog: DialogComponent = fixture.debugElement.query(By.directive(DialogComponent)).componentInstance;
-        expect(dialog._hasImage).toBe(false);
+        expect(dialog.hasImage).toBe(false);
     });
 
     it(`should display image container when pa-modal-image is present`, () => {
@@ -91,6 +91,6 @@ describe('DialogComponent', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
         const dialog: DialogComponent = fixture.debugElement.query(By.directive(DialogComponent)).componentInstance;
-        expect(dialog._hasImage).toBe(true);
+        expect(dialog.hasImage).toBe(true);
     });
 });

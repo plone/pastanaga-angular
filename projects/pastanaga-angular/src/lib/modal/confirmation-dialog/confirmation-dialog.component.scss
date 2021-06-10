@@ -1,43 +1,37 @@
 @import "../../styles/variables";
+@import "../../styles/theme/modal";
 
 .pa-confirmation-dialog {
+    @include centered-dialog;
     background-color: $color-neutral-primary-lightest;
     box-shadow: $shadow-modal;
-    padding: rhythm(4);
+    padding: $padding-modal;
     text-align: center;
     width: $breakpoint-small - rhythm(2)*2; // smallest device width minus the margin in each side
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    @debug "$breakpoint-small: #{$breakpoint-small} - #{rhythm(2)*2} = #{$breakpoint-small - rhythm(2)*2}";
 
     .pa-modal-header {
         h4 {
-            margin-bottom: rhythm(3);
+            margin-bottom: $spacing-dialog-sections;
         }
-        img {
-            width: rhythm(12);
-        }
-    }
-
-    .pa-modal-description {
-        color: $color-neutral-secondary-default;
     }
 
     .pa-modal-footer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: rhythm(3);
+        margin-top: $spacing-dialog-sections;
 
         pa-button {
             width: calc((100% - #{rhythm(2)}) / 2);
 
-            ::ng-deep button {
-                min-width: unset;
+            ::ng-deep .pa-button {
+                min-width: unset !important;
                 width: 100%;
             }
         }
+    }
+
+    @media (min-width: $size-viewport-medium-min) {
+        width: rhythm(48);
     }
 }
 

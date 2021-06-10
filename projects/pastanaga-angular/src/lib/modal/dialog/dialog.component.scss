@@ -1,45 +1,51 @@
 @import "../../styles/variables";
+@import "../../styles/theme/modal";
 
-.pa-dialog, .pa-dialog.pa-modal {
-    box-shadow: $shadow-modal;
-    background-color: $color-neutral-primary-lightest;
-    max-width: rhythm(48);
-    min-width: rhythm(48);
-    padding: rhythm(4);
+$dimension-image: rhythm(12);
+$header-height-small: $padding-modal + $dimension-image + $spacing-dialog-sections*2 + line-height(l);
+$header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-sections*2 + line-height(xl);
 
+.pa-modal-dialog {
     .pa-modal-header {
+        @include fixed-header;
         text-align: center;
-        h4 {
-            margin-bottom: rhythm(3);
-        }
+
         img {
-            width: rhythm(12);
+            margin-bottom: $spacing-dialog-sections;
+            height: $dimension-image;
+            width: $dimension-image;
+        }
+
+        .pa-modal-description {
+            margin-top: $spacing-dialog-sections;
         }
     }
 
-    .pa-modal-description {
-        @include font-size(s);
-        @include line-height(m);
-        color: $color-neutral-secondary-default;
+    pa-modal-content {
+        margin-top: var(--headerHeight, #{$header-height-small});
+        margin-bottom: $height-footer-modal;
+        transition: margin-top $transition-hint;
     }
 
     pa-modal-footer {
-        display: flex;
-        justify-content: center;
-        margin-top: rhythm(3);
+        @include fixed-footer;
 
-        pa-button:not(:last-of-type) {
-            margin-right: rhythm(2);
+        pa-button {
+            width: calc((100% - #{rhythm(2)}) / 2);
+
+            .pa-button {
+                min-width: unset !important;
+                width: 100%;
+            }
         }
     }
-    @media (max-width: $size-viewport-medium-max) {
-        &:not(.pa-fullscreen) {
-            // on mobile, keep a margin to avoid the dialog being full-width
-            min-width: unset;
-            max-width: calc(100% - #{rhythm(5)});
-        }
-        &.pa-fullscreen {
-            height: 100%;
+
+    @media (min-width: $size-viewport-medium-min) {
+        @include centered-dialog;
+        width: rhythm(56);
+
+        pa-modal-content {
+            margin-top: var(--headerHeight, #{$header-height-medium});
         }
     }
 }

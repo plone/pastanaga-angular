@@ -1,12 +1,15 @@
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
+import { ModalRef } from '../modal.model';
+import { TRANSITION_DURATION } from '../../common';
 
 @Component({
     selector: 'pa-dialog',
@@ -16,14 +19,30 @@ import { BaseModalComponent } from '../base-modal.component';
     encapsulation: ViewEncapsulation.None,
 })
 export class DialogComponent extends BaseModalComponent implements AfterViewInit {
+    @ViewChild('header', { read: ElementRef }) header?: ElementRef;
     @ViewChild('image', { read: ElementRef }) image?: ElementRef;
-    _hasImage = false;
+    @ViewChild('description', { read: ElementRef }) description?: ElementRef;
+
+    hasImage = false;
+    hasDescription = false;
+
+    constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef, private element: ElementRef) {
+        super(ref, cdr);
+    }
 
     ngAfterViewInit() {
         super.ngAfterViewInit();
 
-        this._hasImage = !!this.image && this.image.nativeElement.children.length > 0;
+        this.hasImage = !!this.image && this.image.nativeElement.children.length > 0;
+        this.hasDescription = !!this.description && this.description.nativeElement.children.length > 0;
         this.setFocus();
         this.refresh();
+
+        setTimeout(() => {
+            this.element.nativeElement.style.setProperty(
+                '--headerHeight',
+                `${Math.ceil(this.header?.nativeElement.getBoundingClientRect().height)}px`,
+            );
+        }, TRANSITION_DURATION.moderate);
     }
 }

@@ -46,7 +46,6 @@ import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { BaseControlUsageComponent } from './pages/common-doc/base-control/base-control-usage.component';
 import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
-import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
 import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
@@ -118,7 +117,6 @@ const COMPONENTS = [
     DemoConfigurationDirective,
 
     BaseControlUsageComponent,
-    DialogExampleComponent,
     DialogImageExampleComponent,
     ModalExampleComponent,
 
