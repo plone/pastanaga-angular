@@ -3,29 +3,24 @@
 
 .pa-modal-advanced {
     position: relative;
-    padding: rhythm(4) rhythm(6);
     background-color: $color-neutral-primary-lightest;
 
-    .pa-close-button {
-        position: absolute;
-        top: rhythm(1.5);
-        right: rhythm(1.5);
+    .pa-modal-header {
+        @include fixed-header;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: $spacing-dialog-sections $padding-modal;
     }
 
-    .pa-modal-description {
-        @include font-size(s);
-        @include line-height(m);
-        color: $color-neutral-secondary-default;
-    }
-
+    $height-header: rhythm(12);
     pa-modal-content {
-        margin-top: rhythm(2);
+        margin-top: $height-header;
+        margin-bottom: $height-footer-modal;
     }
 
     pa-modal-footer {
-        margin-top: rhythm(4);
-        display: flex;
-        justify-content: space-between;
+        @include fixed-footer;
     }
 
     @media (min-width: $size-viewport-medium-min) {

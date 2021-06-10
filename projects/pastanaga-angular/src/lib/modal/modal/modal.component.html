@@ -10,20 +10,16 @@
             [attr.aria-labelledby]="'modal-' + id + '-title'"
             [attr.aria-describedby]="'modal-' + id + '-description'"
     >
-        <pa-button class="pa-close-button"
-                   icon="cross"
-                   aspect="basic"
-                   (click)="close(false)">Close</pa-button>
         <header class="pa-modal-header">
-            <h3 [id]="'modal-' + id + '-title'">
+            <div class="title-m"
+                 [id]="'modal-' + id + '-title'">
                 <ng-content select="pa-modal-title"></ng-content>
-            </h3>
+            </div>
+            <pa-button class="pa-close-button"
+                       icon="cross"
+                       aspect="basic"
+                       (click)="close(false)">Close</pa-button>
         </header>
-
-        <div class="pa-modal-description"
-             [id]="'modal-' + id + '-description'">
-            <ng-content select="pa-modal-description"></ng-content>
-        </div>
 
         <ng-content select="pa-modal-content"></ng-content>
 

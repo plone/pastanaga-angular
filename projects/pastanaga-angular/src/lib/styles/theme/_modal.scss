@@ -3,7 +3,7 @@
 $background-color-modal: $color-neutral-primary-lightest;
 $padding-modal: rhythm(4);
 $spacing-dialog-sections: rhythm(3);
-$height-footer-modal: $spacing-dialog-sections + rhythm(12);
+$height-footer-modal: rhythm(12);
 
 @mixin centered-dialog() {
     position: fixed;
@@ -15,7 +15,6 @@ $height-footer-modal: $spacing-dialog-sections + rhythm(12);
 @mixin fixed-header() {
     background: $background-color-modal;
     left: 0;
-    padding: $padding-modal $padding-modal $spacing-dialog-sections;
     position: fixed;
     right: 0;
     top: 0;
@@ -26,6 +25,6 @@ $height-footer-modal: $spacing-dialog-sections + rhythm(12);
     bottom: 0;
     left: 0;
     position: fixed;
-    padding: $spacing-dialog-sections $padding-modal $padding-modal;
+    padding: $spacing-dialog-sections $padding-modal;
     right: 0;
 }

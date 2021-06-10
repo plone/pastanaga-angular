@@ -8,6 +8,7 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
 .pa-modal-dialog {
     .pa-modal-header {
         @include fixed-header;
+        padding: $padding-modal $padding-modal $spacing-dialog-sections;
         text-align: center;
 
         img {
