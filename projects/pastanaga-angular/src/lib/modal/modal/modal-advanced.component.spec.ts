@@ -1,18 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalComponent } from './modal.component';
+import { ModalAdvancedComponent } from './modal-advanced.component';
 import { PaButtonModule } from '../../button/button.module';
 import { ModalConfig, ModalRef } from '../modal.model';
 import { MockModule } from 'ng-mocks';
 
 describe('ModalComponent', () => {
-    let component: ModalComponent;
-    let fixture: ComponentFixture<ModalComponent>;
+    let component: ModalAdvancedComponent;
+    let fixture: ComponentFixture<ModalAdvancedComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [MockModule(PaButtonModule)],
-            declarations: [ModalComponent],
+            declarations: [ModalAdvancedComponent],
             providers: [
                 {
                     provide: ModalRef,
@@ -23,7 +23,7 @@ describe('ModalComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ModalComponent);
+        fixture = TestBed.createComponent(ModalAdvancedComponent);
         component = fixture.componentInstance;
     });
 

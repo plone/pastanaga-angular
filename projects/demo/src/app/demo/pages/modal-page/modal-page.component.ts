@@ -9,7 +9,7 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalPageComponent {
-    dialogTemplate = `<pa-dialog>
+    dialogTemplate = `<pa-modal-dialog>
     <pa-modal-title>Dialog title</pa-modal-title>
     <pa-modal-description>Dialog description</pa-modal-description>
     <pa-modal-content>Some content like a small form</pa-modal-content>
@@ -17,7 +17,7 @@ export class ModalPageComponent {
         <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
         <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
     </pa-modal-footer>
-</pa-dialog>`;
+</pa-modal-dialog>`;
     dialogComponent = `@Component({
     templateUrl: './dialog-example.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

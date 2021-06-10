@@ -8,10 +8,10 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
 import { MockModule } from 'ng-mocks';
 
 @Component({
-    template: ` <pa-dialog>
+    template: ` <pa-modal-dialog>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
-    </pa-dialog>`,
+    </pa-modal-dialog>`,
 })
 export class TestDialogComponent {
     constructor(public modal: ModalRef) {}

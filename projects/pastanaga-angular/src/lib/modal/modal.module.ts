@@ -7,16 +7,16 @@ import {
     ModalImageDirective,
     ModalTitleDirective,
 } from './modal.directive';
-import { DialogComponent } from './dialog/dialog.component';
-import { ModalComponent } from './modal/modal.component';
+import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
+import { ModalAdvancedComponent } from './modal/modal-advanced.component';
 import { PaButtonModule } from '../button/button.module';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { PaTranslateModule } from '../translate/translate.module';
 
 const COMPONENTS_AND_DIRECTIVES = [
     ConfirmationDialogComponent,
-    DialogComponent,
-    ModalComponent,
+    ModalDialogComponent,
+    ModalAdvancedComponent,
     ModalTitleDirective,
     ModalDescriptionDirective,
     ModalContentDirective,

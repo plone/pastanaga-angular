@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogComponent } from './dialog.component';
+import { ModalDialogComponent } from './modal-dialog.component';
 import { Component } from '@angular/core';
 import {
     ModalDescriptionDirective,
@@ -15,21 +15,21 @@ import { By } from '@angular/platform-browser';
 import { ModalRef } from '../modal.model';
 
 @Component({
-    template: ` <pa-dialog>
+    template: ` <pa-modal-dialog>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
         <pa-modal-footer>
             <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
             <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
         </pa-modal-footer>
-    </pa-dialog>`,
+    </pa-modal-dialog>`,
 })
 export class TestDialogComponent {
     constructor(public modal: ModalRef) {}
 }
 
 @Component({
-    template: ` <pa-dialog>
+    template: ` <pa-modal-dialog>
         <pa-modal-image><img src="assets/ninja.svg" alt="ninja" /></pa-modal-image>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
@@ -37,16 +37,16 @@ export class TestDialogComponent {
             <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
             <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
         </pa-modal-footer>
-    </pa-dialog>`,
+    </pa-modal-dialog>`,
 })
 export class TestDialogImageComponent {
     constructor(public modal: ModalRef) {}
 }
 
 describe('DialogComponent', () => {
-    let component: DialogComponent | TestDialogComponent | TestDialogImageComponent;
+    let component: ModalDialogComponent | TestDialogComponent | TestDialogImageComponent;
     let fixture:
-        | ComponentFixture<DialogComponent>
+        | ComponentFixture<ModalDialogComponent>
         | ComponentFixture<TestDialogComponent>
         | ComponentFixture<TestDialogImageComponent>;
 
@@ -54,7 +54,7 @@ describe('DialogComponent', () => {
         TestBed.configureTestingModule({
             imports: [MockModule(PaButtonModule)],
             declarations: [
-                DialogComponent,
+                ModalDialogComponent,
                 TestDialogComponent,
                 TestDialogImageComponent,
                 MockDirective(ModalTitleDirective),
@@ -72,7 +72,7 @@ describe('DialogComponent', () => {
     });
 
     it('should create', () => {
-        fixture = TestBed.createComponent(DialogComponent);
+        fixture = TestBed.createComponent(ModalDialogComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
         expect(component).toBeTruthy();
@@ -82,7 +82,8 @@ describe('DialogComponent', () => {
         fixture = TestBed.createComponent(TestDialogComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
-        const dialog: DialogComponent = fixture.debugElement.query(By.directive(DialogComponent)).componentInstance;
+        const dialog: ModalDialogComponent = fixture.debugElement.query(By.directive(ModalDialogComponent))
+            .componentInstance;
         expect(dialog.hasImage).toBe(false);
     });
 
@@ -90,7 +91,8 @@ describe('DialogComponent', () => {
         fixture = TestBed.createComponent(TestDialogImageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
-        const dialog: DialogComponent = fixture.debugElement.query(By.directive(DialogComponent)).componentInstance;
+        const dialog: ModalDialogComponent = fixture.debugElement.query(By.directive(ModalDialogComponent))
+            .componentInstance;
         expect(dialog.hasImage).toBe(true);
     });
 });

@@ -2,13 +2,13 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ViewEncapsulation } 
 import { BaseModalComponent } from '../base-modal.component';
 
 @Component({
-    selector: 'pa-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.scss'],
+    selector: 'pa-modal-advanced',
+    templateUrl: './modal-advanced.component.html',
+    styleUrls: ['./modal-advanced.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class ModalComponent extends BaseModalComponent implements AfterViewInit {
+export class ModalAdvancedComponent extends BaseModalComponent implements AfterViewInit {
     ngAfterViewInit() {
         super.ngAfterViewInit();
 

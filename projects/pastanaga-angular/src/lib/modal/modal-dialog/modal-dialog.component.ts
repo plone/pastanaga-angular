@@ -12,13 +12,13 @@ import { ModalRef } from '../modal.model';
 import { TRANSITION_DURATION } from '../../common';
 
 @Component({
-    selector: 'pa-dialog',
-    templateUrl: './dialog.component.html',
-    styleUrls: ['./dialog.component.scss'],
+    selector: 'pa-modal-dialog',
+    templateUrl: './modal-dialog.component.html',
+    styleUrls: ['./modal-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class DialogComponent extends BaseModalComponent implements AfterViewInit {
+export class ModalDialogComponent extends BaseModalComponent implements AfterViewInit {
     @ViewChild('header', { read: ElementRef }) header?: ElementRef;
     @ViewChild('image', { read: ElementRef }) image?: ElementRef;
     @ViewChild('description', { read: ElementRef }) description?: ElementRef;
