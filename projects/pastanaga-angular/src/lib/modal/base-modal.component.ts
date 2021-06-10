@@ -65,9 +65,9 @@ export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     outsideClick($event: MouseEvent) {
-        if (($event.target as HTMLElement).className.includes('pa-modal-backdrop')) {
+        if (($event.target as HTMLElement).outerHTML.includes('pa-modal-backdrop')) {
             $event.preventDefault();
-            if (!this.config.blocking) {
+            if (this.config.dismissable) {
                 this.close(false);
             }
         }
@@ -87,7 +87,7 @@ export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
         if ($event.key === Keys.enter) {
             $event.stopPropagation();
             this.enterPressed.emit();
-        } else if ($event.key === Keys.esc && this.ref?.isLast && this.config.closeOnEsc) {
+        } else if ($event.key === Keys.esc && this.ref?.isLast && this.config.dismissable) {
             this.close(false);
             $event.stopPropagation();
         }

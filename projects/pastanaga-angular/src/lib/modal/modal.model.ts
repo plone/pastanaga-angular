@@ -9,25 +9,16 @@ export interface ConfirmationData {
 }
 
 export interface IModalConfig<D = any> {
-    blocking?: boolean;
-    fullscreen?: boolean;
-    showOverlay?: boolean;
-    closeOnEsc?: boolean;
+    dismissable?: boolean;
     data?: D;
 }
 
 export class ModalConfig<D = any> {
-    blocking: boolean;
-    fullscreen: boolean;
-    showOverlay: boolean;
-    closeOnEsc: boolean;
+    dismissable: boolean;
     readonly data?: Readonly<D>;
 
     constructor(config?: IModalConfig<D>) {
-        this.blocking = !!config && typeof config.blocking === 'boolean' ? config.blocking : true;
-        this.showOverlay = !!config && typeof config.showOverlay === 'boolean' ? config.showOverlay : true;
-        this.closeOnEsc = !!config && typeof config.closeOnEsc === 'boolean' ? config.closeOnEsc : false;
-        this.fullscreen = !!config && typeof config.fullscreen === 'boolean' ? config.fullscreen : false;
+        this.dismissable = !!config && typeof config.dismissable === 'boolean' ? config.dismissable : true;
         this.data = config?.data;
     }
 }

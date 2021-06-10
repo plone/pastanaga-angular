@@ -10,9 +10,9 @@ import { BaseModalComponent } from '../base-modal.component';
 })
 export class ModalComponent extends BaseModalComponent implements AfterViewInit {
     ngAfterViewInit() {
-        if (!!this.ref) {
-            this.ref.config.closeOnEsc = true;
-        }
         super.ngAfterViewInit();
+
+        this.setFocus();
+        this.refresh();
     }
 }

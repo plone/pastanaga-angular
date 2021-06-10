@@ -12,6 +12,7 @@ export class ModalPageComponent {
     dialogTemplate = `<pa-dialog>
     <pa-modal-title>Dialog title</pa-modal-title>
     <pa-modal-description>Dialog description</pa-modal-description>
+    <pa-modal-content>Some content like a small form</pa-modal-content>
     <pa-modal-footer>
         <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
         <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
@@ -51,7 +52,6 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
     customModalTemplate = `<div class="pa-modal-backdrop"
      tabindex="0"
      #modalContainer
-     [class.pa-modal-blocking]="config.blocking"
      (click)="outsideClick($event)">
     <dialog class="pa-modal my-own-modal-style"
             role="dialog"
@@ -68,13 +68,13 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 </div>`;
     openModalConfig = `export class CallerComponent {
     open() {
-        this.modalService.openModal(DialogExampleComponent, new ModalConfig({blocking: false}));
+        this.modalService.openModal(DialogExampleComponent, new ModalConfig({dismissable: false}));
     }
 }`;
     modalCloseButtonSetup = `export class ModalComponent extends BaseModalComponent implements AfterViewInit {
     ngAfterViewInit() {
         if (!!this.ref) {
-            this.ref.config.withCloseButton = true;
+            this.ref.config.dismissable = false;
         }
         super.ngAfterViewInit();
     }
