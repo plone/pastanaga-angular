@@ -1,3 +1,9 @@
+# 2.34.1 (2021-06-17)
+
+### Improvements
+- **Scrollbar**: make scrollbar floating when using `pa-scrollable-container` [mpellerin42]
+
+
 # 2.34.0 (2021-06-17)
 
 ### Improvements
