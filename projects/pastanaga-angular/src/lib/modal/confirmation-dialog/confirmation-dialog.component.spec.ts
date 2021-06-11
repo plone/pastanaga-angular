@@ -40,7 +40,7 @@ describe('ConfirmationDialogComponent', () => {
         });
 
         it('should display title set in modal ref', () => {
-            expect(spectator.query('[qa="confirmation-title"]')?.textContent?.trim()).toBe(title);
+            expect(spectator.query('[qa="confirmation-title"]')?.textContent?.trim()).toBe(`translate--${title}`);
         });
 
         it('should display pastanaga cancel and confirm labels on buttons', () => {
@@ -74,7 +74,9 @@ describe('ConfirmationDialogComponent', () => {
         });
 
         it('should display description set in modal ref', () => {
-            expect(spectator.query('[qa="confirmation-description"]')?.textContent?.trim()).toBe(description);
+            expect(spectator.query('[qa="confirmation-description"]')?.textContent?.trim()).toBe(
+                `translate--${description}`,
+            );
         });
 
         it('should display cancel and confirm labels set in modal ref', () => {
