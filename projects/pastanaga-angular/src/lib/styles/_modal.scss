@@ -1,40 +1,64 @@
 @import "variables";
+@import "theme/modal";
 
-.pa-modal-backdrop{
+.pa-modal-backdrop {
+    background-color: rgba($color-neutral-primary-default, .5);
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: $z-index-modal-backdrop;
-
-    &.pa-modal-blocking {
-        background-color: rgba($color-neutral-primary-default, .5);
-    }
 }
 
 .pa-modal {
+    align-items: stretch;
     border: 0;
     display: flex;
     flex: 1 1 0;
     flex-flow: column nowrap;
-    align-items: stretch;
-    overflow-y: auto;
+    padding: 0;
 
-    background-color: $color-neutral-primary-lightest;
+    background-color: $background-color-modal;
     box-shadow: $shadow-modal;
     margin: 0;
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     z-index: $z-index-modal;
+
+    .pa-modal-description {
+        color: $color-neutral-secondary-default;
+        text-align: center;
+    }
+
+    pa-modal-content {
+        overflow-y: auto;
+        padding: 0 $padding-modal;
+        z-index: 0;
+    }
+
+    .pa-modal-header,
+    pa-modal-footer,
+    .pa-modal-footer {
+        z-index: 2;
+    }
+
+    pa-modal-footer,
+    .pa-modal-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @media (max-width: $size-viewport-medium-max) {
+        &.pa-modal-fullscreen-on-small {
+            height: 100%;
+            width: 100%;
+        }
+    }
 }
 
 @media (min-width: $size-viewport-medium-min) {
     .pa-modal {
-        max-height: 70vh;
+        max-height: 90vh;
     }
 }
 
@@ -42,10 +66,10 @@
 // Modal animation
 //=====================================
 
-@keyframes modal-in {
+@keyframes modal-centered-in {
     from {
         opacity: 0;
-        transform: translateX(-50%) translateY(400%) scale(0);
+        transform: translateX(-50%) translateY(-50%) scale(0);
     }
     to {
         opacity: 1;
@@ -53,77 +77,59 @@
     }
 }
 
-@keyframes modal-in-content {
-    0% {
-        opacity: 0;
-        transform: translateY(rhythm(1.5));
-
-    }
-    50% {
-        opacity: 0;
-        transform: translateY(rhythm(1.5));
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-
-    }
-}
-
-@keyframes modal-out {
+@keyframes modal-centered-out {
     from {
         opacity: 1;
         transform: translateX(-50%) translateY(-50%) scale(1);
     }
     to {
         opacity: 0;
-        transform: translateX(-50%) translateY(100%) scale(0);
+        transform: translateX(-50%) translateY(-50%) scale(0);
     }
 }
 
-@keyframes modal-out-content {
-    0% {
+@keyframes modal-fullscreen-in {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
         opacity: 1;
-        transform: translateY(rhythm(1.5));
-
+        transform: scale(1);
     }
-    25% {
-        opacity: 0;
-        transform: translateY(rhythm(1.5));
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0);
+}
 
+@keyframes modal-fullscreen-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0);
     }
 }
 
 .pa-modal.in {
-    animation-name: modal-in;
-    animation-duration: .75s;
+    animation: modal-centered-in $transition-process-duration;
+}
 
-    .pa-modal-header,
-    .pa-modal-description,
-    pa-modal-content,
-    pa-modal-footer {
-        animation-name: modal-in-content;
-        animation-duration: 1.25s;
-    }
+.pa-modal.out {
+    animation: modal-centered-out $transition-process-duration forwards;
 }
 
 .pa-modal.off {
     display: none;
 }
 
-.pa-modal.out {
-    animation-name: modal-out;
-    animation-duration: .75s;
-
-    .pa-modal-header,
-    .pa-modal-description,
-    pa-modal-content,
-    pa-modal-footer {
-        animation-name: modal-out-content;
-        animation-duration: 1.25s;
+@media (max-width: $size-viewport-medium-max) {
+    .pa-modal.pa-modal-fullscreen-on-small {
+        &.in {
+            animation: modal-fullscreen-in $transition-process-duration;
+        }
+        &.out {
+            animation: modal-fullscreen-out $transition-process-duration;
+        }
     }
 }
+

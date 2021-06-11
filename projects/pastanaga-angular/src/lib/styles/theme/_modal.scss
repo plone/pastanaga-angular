@@ -1,0 +1,30 @@
+@import "../variables";
+
+$background-color-modal: $color-neutral-primary-lightest;
+$padding-modal: rhythm(4);
+$spacing-dialog-sections: rhythm(3);
+$height-footer-modal: rhythm(12);
+
+@mixin centered-dialog() {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+@mixin fixed-header() {
+    background: $background-color-modal;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+@mixin fixed-footer() {
+    background: $background-color-modal;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    padding: $spacing-dialog-sections $padding-modal;
+    right: 0;
+}

@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+@import "../../styles/theme/modal";
+
+$dimension-image: rhythm(12);
+$header-height-small: $padding-modal + $dimension-image + $spacing-dialog-sections*2 + line-height(l);
+$header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-sections*2 + line-height(xl);
+
+.pa-modal-dialog {
+    .pa-modal-header {
+        @include fixed-header;
+        padding: $padding-modal $padding-modal $spacing-dialog-sections;
+        text-align: center;
+
+        img {
+            margin-bottom: $spacing-dialog-sections;
+            height: $dimension-image;
+            width: $dimension-image;
+        }
+
+        .pa-modal-description {
+            margin-top: $spacing-dialog-sections;
+        }
+    }
+
+    pa-modal-content {
+        margin-top: var(--headerHeight, #{$header-height-small});
+        margin-bottom: $height-footer-modal;
+        transition: margin-top $transition-hint;
+    }
+
+    pa-modal-footer {
+        @include fixed-footer;
+
+        pa-button {
+            width: calc((100% - #{rhythm(2)}) / 2);
+
+            .pa-button {
+                min-width: unset !important;
+                width: 100%;
+            }
+        }
+    }
+
+    @media (min-width: $size-viewport-medium-min) {
+        @include centered-dialog;
+        width: rhythm(56);
+
+        pa-modal-content {
+            margin-top: var(--headerHeight, #{$header-height-medium});
+        }
+    }
+}

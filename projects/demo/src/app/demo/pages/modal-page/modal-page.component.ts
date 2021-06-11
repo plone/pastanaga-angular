@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ModalService } from '../../../../../../pastanaga-angular/src';
-import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { ModalConfig, ModalService } from '../../../../../../pastanaga-angular/src';
 import { DialogImageExampleComponent } from './dialog-image-example/dialog-image-example.component';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 
@@ -10,14 +9,15 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalPageComponent {
-    dialogTemplate = `<pa-dialog>
+    dialogTemplate = `<pa-modal-dialog>
     <pa-modal-title>Dialog title</pa-modal-title>
     <pa-modal-description>Dialog description</pa-modal-description>
+    <pa-modal-content>Some content like a small form</pa-modal-content>
     <pa-modal-footer>
         <pa-button kind="secondary" (click)="modal.close('from secondary')">Secondary CTA</pa-button>
         <pa-button kind="primary" (click)="modal.close('from primary')">Primary CTA</pa-button>
     </pa-modal-footer>
-</pa-dialog>`;
+</pa-modal-dialog>`;
     dialogComponent = `@Component({
     templateUrl: './dialog-example.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,7 +52,6 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
     customModalTemplate = `<div class="pa-modal-backdrop"
      tabindex="0"
      #modalContainer
-     [class.pa-modal-blocking]="config.blocking"
      (click)="outsideClick($event)">
     <dialog class="pa-modal my-own-modal-style"
             role="dialog"
@@ -69,13 +68,13 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 </div>`;
     openModalConfig = `export class CallerComponent {
     open() {
-        this.modalService.openModal(DialogExampleComponent, new ModalConfig({blocking: false}));
+        this.modalService.openModal(DialogExampleComponent, new ModalConfig({dismissable: false}));
     }
 }`;
     modalCloseButtonSetup = `export class ModalComponent extends BaseModalComponent implements AfterViewInit {
     ngAfterViewInit() {
         if (!!this.ref) {
-            this.ref.config.withCloseButton = true;
+            this.ref.config.dismissable = false;
         }
         super.ngAfterViewInit();
     }
@@ -118,12 +117,18 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 
     constructor(private modalService: ModalService) {}
 
-    openDialog() {
-        this.modalService.openModal(DialogExampleComponent).onClose.subscribe(console.log);
-    }
-
     openImageDialog() {
         this.modalService.openModal(DialogImageExampleComponent).onClose.subscribe(console.log);
+    }
+    openImageAndDescriptionDialog() {
+        this.modalService
+            .openModal(
+                DialogImageExampleComponent,
+                new ModalConfig({
+                    data: { displayDescription: true },
+                }),
+            )
+            .onClose.subscribe(console.log);
     }
 
     openModal() {

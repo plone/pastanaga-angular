@@ -1,0 +1,33 @@
+<div class="pa-modal-backdrop"
+     tabindex="0"
+     #modalContainer
+     (click)="outsideClick($event)"
+>
+    <dialog class="pa-modal pa-confirmation-dialog"
+            role="dialog"
+            [class.in]="!closing"
+            [class.out]="closing"
+            [attr.aria-labelledby]="'dialog-' + id + '-title'"
+            [attr.aria-describedby]="'dialog-' + id + '-description'"
+    >
+        <header class="pa-modal-header">
+            <h4 qa="confirmation-title"
+                [id]="'dialog-' + id + '-title'">{{ref.config.data?.title | translate}}</h4>
+        </header>
+
+        <div class="pa-modal-description body-s"
+             qa="confirmation-description"
+             [id]="'dialog-' + id + '-description'">
+            {{ref.config.data?.description | translate}}
+        </div>
+
+        <footer class="pa-modal-footer">
+            <pa-button kind="secondary"
+                       qa="confirmation-dialog-cancel-button"
+                       (click)="close(false)">{{ (ref.config.data?.cancelLabel || 'pastanaga.cancel') | translate}}</pa-button>
+            <pa-button [kind]="ref.config.data?.isDestructive ? 'destructive' : 'primary'"
+                       qa="confirmation-dialog-confirm-button"
+                       (click)="close(true)">{{ (ref.config.data?.confirmLabel || 'pastanaga.confirm') | translate}}</pa-button>
+        </footer>
+    </dialog>
+</div>

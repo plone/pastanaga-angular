@@ -33,6 +33,7 @@ import { ExpanderPageComponent } from './demo/pages/expand-page/expander-page.co
 import { AccessibilityPageComponent } from './demo/pages/accessibility/accessibility-page.component';
 import { AvatarPilePageComponent } from './demo/pages/avatar-pile-page/avatar-pile-page.component';
 import { InfiniteScrollPageComponent } from './demo/pages/scroll-pages/infinite-scroll-page.component';
+import { ConfirmationDialogPageComponent } from './demo/pages/confirmation-dialog-page/confirmation-dialog-page.component';
 
 @Component({
     selector: 'app-root',
@@ -60,17 +61,18 @@ export class AppComponent {
                 { view: 'avatar-pile', title: 'Avatar pile', type: AvatarPilePageComponent },
                 { view: 'button', title: 'Button', type: ButtonPageComponent },
                 { view: 'chip', title: 'Chip', type: ChipPageComponent },
+                { view: 'confirmation-dialog', title: 'Confirmation dialog', type: ConfirmationDialogPageComponent },
+                { view: 'modal', title: 'Modal', type: ModalPageComponent },
                 { view: 'datetime', title: 'Date/time', type: DateTimePageComponent },
                 { view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent },
                 { view: 'expander', title: 'Expander', type: ExpanderPageComponent },
-                { view: 'modal', title: 'Modal', type: ModalPageComponent },
+                { view: 'infinite-scroll', title: 'Infinite scroll', type: InfiniteScrollPageComponent },
                 { view: 'popup', title: 'Popup', type: PopupPageComponent },
                 { view: 'sidenav', title: 'Sidenav', type: SidenavPageComponent },
                 { view: 'tables', title: 'Tables', type: TablePageComponent },
                 { view: 'tabs', title: 'Tabs', type: TabsPageComponent },
                 { view: 'toast', title: 'Toast', type: ToastPageComponent },
                 { view: 'tooltip', title: 'Tooltip', type: TooltipPageComponent },
-                { view: 'infinite-scroll', title: 'Infinite scroll', type: InfiniteScrollPageComponent },
             ],
         },
         {

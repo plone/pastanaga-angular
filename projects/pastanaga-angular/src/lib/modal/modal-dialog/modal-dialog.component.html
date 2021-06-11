@@ -1,34 +1,38 @@
 <div class="pa-modal-backdrop"
      tabindex="0"
      #modalContainer
-     [class.pa-modal-blocking]="config.blocking || config.showOverlay"
      (click)="outsideClick($event)"
 >
-    <dialog class="pa-modal pa-dialog"
+    <dialog class="pa-modal pa-modal-dialog pa-modal-fullscreen-on-small"
             role="dialog"
-            [class.pa-fullscreen]="config.fullscreen"
             [class.in]="!closing"
             [class.out]="closing"
             [attr.aria-labelledby]="'dialog-' + id + '-title'"
             [attr.aria-describedby]="'dialog-' + id + '-description'"
     >
-        <header class="pa-modal-header">
+        <header #header class="pa-modal-header">
             <div #image
                  role="presentation"
-                 [hidden]="!_hasImage"
+                 [hidden]="!hasImage"
             >
                 <ng-content select="pa-modal-image"></ng-content>
             </div>
 
-            <h4 [id]="'dialog-' + id + '-title'">
+            <div class="title-s"
+                 [id]="'dialog-' + id + '-title'">
                 <ng-content select="pa-modal-title"></ng-content>
-            </h4>
+            </div>
+
+            <div #description
+                 class="pa-modal-description body-s"
+                 [id]="'dialog-' + id + '-description'"
+                 [hidden]="!hasDescription"
+            >
+                <ng-content select="pa-modal-description"></ng-content>
+            </div>
         </header>
 
-        <div class="pa-modal-description"
-             [id]="'dialog-' + id + '-description'">
-            <ng-content select="pa-modal-description"></ng-content>
-        </div>
+        <ng-content select="pa-modal-content"></ng-content>
 
         <ng-content select="pa-modal-footer"></ng-content>
     </dialog>

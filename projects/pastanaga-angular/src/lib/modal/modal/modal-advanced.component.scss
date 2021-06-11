@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+@import "../../styles/theme/modal";
+
+.pa-modal-advanced {
+    position: relative;
+    background-color: $color-neutral-primary-lightest;
+
+    .pa-modal-header {
+        @include fixed-header;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: $spacing-dialog-sections $padding-modal;
+    }
+
+    $height-header: rhythm(12);
+    pa-modal-content {
+        margin-top: $height-header;
+        margin-bottom: $height-footer-modal;
+    }
+
+    pa-modal-footer {
+        @include fixed-footer;
+    }
+
+    @media (min-width: $size-viewport-medium-min) {
+        @include centered-dialog;
+        width: rhythm(64);
+    }
+}

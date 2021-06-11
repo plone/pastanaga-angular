@@ -1,5 +1,15 @@
 import { ChangeDetectorRef, ViewRef } from '@angular/core';
 
+/**
+ * CSS transition duration as defined in CSS
+ */
+export const TRANSITION_DURATION = {
+    superfast: 160,
+    fast: 240,
+    moderate: 480,
+    slow: 800,
+};
+
 export const Keys = {
     enter: 'Enter',
     space: ' ',

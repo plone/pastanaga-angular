@@ -46,7 +46,6 @@ import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { BaseControlUsageComponent } from './pages/common-doc/base-control/base-control-usage.component';
 import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
-import { DialogExampleComponent } from './pages/modal-page/dialog-example/dialog-example.component';
 import { DialogImageExampleComponent } from './pages/modal-page/dialog-image-example/dialog-image-example.component';
 import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
@@ -104,6 +103,7 @@ import { AvatarPilePageComponent } from './pages/avatar-pile-page/avatar-pile-pa
 import { InfiniteScrollPageComponent } from './pages/scroll-pages/infinite-scroll-page.component';
 import { DataCardComponent } from './pages/scroll-pages/data-card/data-card.component';
 import { InfiniteScrollDemoComponent } from './pages/scroll-pages/infinite-scroll-demo/infinite-scroll-demo.component';
+import { ConfirmationDialogPageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -117,7 +117,6 @@ const COMPONENTS = [
     DemoConfigurationDirective,
 
     BaseControlUsageComponent,
-    DialogExampleComponent,
     DialogImageExampleComponent,
     ModalExampleComponent,
 
@@ -181,6 +180,7 @@ const COMPONENTS = [
     InfiniteScrollPageComponent,
     InfiniteScrollDemoComponent,
     DataCardComponent,
+    ConfirmationDialogPageComponent,
 ];
 
 @NgModule({

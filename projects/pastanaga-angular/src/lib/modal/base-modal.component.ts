@@ -4,16 +4,20 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
+    OnDestroy,
+    OnInit,
     Output,
     ViewChild,
 } from '@angular/core';
 import { ModalConfig, ModalRef } from './modal.model';
-import { detectChanges, Keys } from '../common';
+import { detectChanges, Keys, TRANSITION_DURATION } from '../common';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
-export class BaseModalComponent implements AfterViewInit {
-    @Output() onEnter: EventEmitter<void> = new EventEmitter();
+export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
+    @Output() enterPressed: EventEmitter<void> = new EventEmitter();
 
     @ViewChild('modalContainer') modalContainer?: ElementRef;
 
@@ -24,7 +28,13 @@ export class BaseModalComponent implements AfterViewInit {
 
     protected _onKeyDown = this.onKeyDown.bind(this);
 
+    protected _terminator = new Subject();
+
     constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef) {}
+
+    ngOnInit() {
+        this.ref.onClose.pipe(takeUntil(this._terminator)).subscribe(() => this.close());
+    }
 
     ngAfterViewInit() {
         if (!!this.ref) {
@@ -32,6 +42,11 @@ export class BaseModalComponent implements AfterViewInit {
             this.config = this.ref.config;
         }
         document.addEventListener('keydown', this._onKeyDown);
+    }
+
+    ngOnDestroy() {
+        this._terminator.next();
+        this._terminator.complete();
     }
 
     close(data?: any) {
@@ -43,16 +58,16 @@ export class BaseModalComponent implements AfterViewInit {
                 this.off = true;
                 detectChanges(this.cdr);
                 if (!!this.ref) {
-                    this.ref.close(data);
+                    this.ref.dismiss(data);
                 }
-            }, 700);
+            }, TRANSITION_DURATION.moderate);
         }
     }
 
     outsideClick($event: MouseEvent) {
-        if (($event.target as HTMLElement).className.includes('pa-modal-backdrop')) {
+        if (($event.target as HTMLElement).outerHTML.includes('pa-modal-backdrop')) {
             $event.preventDefault();
-            if (!this.config.blocking) {
+            if (this.config.dismissable) {
                 this.close(false);
             }
         }
@@ -71,8 +86,8 @@ export class BaseModalComponent implements AfterViewInit {
     protected onKeyDown($event: KeyboardEvent) {
         if ($event.key === Keys.enter) {
             $event.stopPropagation();
-            this.onEnter.emit();
-        } else if ($event.key === Keys.esc && !!this.ref && this.ref.isLast && this.config.withCloseButton) {
+            this.enterPressed.emit();
+        } else if ($event.key === Keys.esc && this.ref?.isLast && this.config.dismissable) {
             this.close(false);
             $event.stopPropagation();
         }
