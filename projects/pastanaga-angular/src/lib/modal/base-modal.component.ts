@@ -28,7 +28,7 @@ export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
 
     protected _onKeyDown = this.onKeyDown.bind(this);
 
-    private _terminator = new Subject();
+    protected _terminator = new Subject();
 
     constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef) {}
 
