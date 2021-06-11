@@ -3,6 +3,7 @@ import { getAvatarColor, getInitials } from './avatar.utils';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Observable } from 'rxjs';
 import { detectChanges } from '../common';
+import { AvatarModel } from './avatar.model';
 
 @Component({
     selector: 'pa-avatar',
@@ -10,6 +11,27 @@ import { detectChanges } from '../common';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
+    @Input() set avatar(value: AvatarModel) {
+        if (value?.userName) {
+            this.userName = value.userName;
+        }
+        if (value?.userId) {
+            this.userId = value.userId;
+        }
+        if (value?.imageSrc) {
+            this.imageSrc = value.imageSrc;
+        }
+        if (value?.size) {
+            this.size = value.size;
+        }
+        if (value?.image) {
+            this.image = value.image;
+        }
+        if (typeof value?.autoBackground === 'boolean') {
+            this.autoBackground = value?.autoBackground;
+        }
+    }
+
     @Input() set userId(value: string) {
         this._userId = value;
         this.assignBackgroundColor();

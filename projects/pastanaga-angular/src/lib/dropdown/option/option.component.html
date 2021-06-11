@@ -12,12 +12,8 @@
 >
     <pa-icon *ngIf="!!icon" [icon]="_icon" [name]="iconName"></pa-icon>
     <pa-avatar *ngIf="!!avatar"
+               [avatar]="avatar"
                size="small"
-               [autoBackground]="avatar.autoBackground"
-               [image]="avatar.image"
-               [imageSrc]="avatar.imageSrc"
-               [userId]="avatar.userId"
-               [userName]="avatar.userName"
     ></pa-avatar>
 
     <div class="pa-option-text-wrapper">
