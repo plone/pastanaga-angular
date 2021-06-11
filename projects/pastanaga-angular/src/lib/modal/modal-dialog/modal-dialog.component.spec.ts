@@ -12,7 +12,7 @@ import { MockDirective, MockModule } from 'ng-mocks';
 import { PaButtonModule } from '../../button/button.module';
 import { createSpyObject } from '@ngneat/spectator/jest';
 import { By } from '@angular/platform-browser';
-import { ModalRef } from '../modal.model';
+import { ModalConfig, ModalRef } from '../modal.model';
 
 @Component({
     template: ` <pa-modal-dialog>
@@ -62,21 +62,9 @@ describe('DialogComponent', () => {
                 MockDirective(ModalFooterDirective),
                 MockDirective(ModalImageDirective),
             ],
-            providers: [{ provide: ModalRef, useFactory: () => createSpyObject(ModalRef) }],
+            providers: [{ provide: ModalRef, useValue: new ModalRef({ id: 0, config: new ModalConfig() }) }],
         }).compileComponents();
     }));
-
-    beforeEach(() => {
-        const modalRef = TestBed.inject(ModalRef);
-        modalRef.config = {} as any;
-    });
-
-    it('should create', () => {
-        fixture = TestBed.createComponent(ModalDialogComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-        expect(component).toBeTruthy();
-    });
 
     it(`should hide image container by default`, () => {
         fixture = TestBed.createComponent(TestDialogComponent);

@@ -16,13 +16,10 @@ describe('ConfirmationDialogComponent', () => {
         providers: [
             {
                 provide: ModalRef,
-                useValue: {
-                    config: {
-                        data: {
-                            title,
-                        },
-                    },
-                },
+                useValue: new ModalRef({
+                    id: 0,
+                    config: new ModalConfig({ data: { title } }),
+                }),
             },
         ],
         detectChanges: false,

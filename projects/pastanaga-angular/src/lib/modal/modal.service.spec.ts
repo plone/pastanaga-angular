@@ -1,14 +1,14 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 import { ModalService } from './modal.service';
 import { Component } from '@angular/core';
 import { PaModalModule } from './modal.module';
 import { ModalConfig, ModalRef } from './modal.model';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { MockModule } from 'ng-mocks';
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
 
 @Component({
-    template: ` <pa-modal-dialog>
+    template: `<pa-modal-dialog>
         <pa-modal-title>Dialog title</pa-modal-title>
         <pa-modal-description>Dialog description</pa-modal-description>
     </pa-modal-dialog>`,
@@ -18,20 +18,16 @@ export class TestDialogComponent {
 }
 
 describe('ModalService', () => {
+    const createService = createServiceFactory({
+        imports: [MockModule(PaModalModule)],
+        service: ModalService,
+    });
     let service: ModalService;
+    let spectator: SpectatorService<ModalService>;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [MockModule(PaModalModule)],
-            declarations: [TestDialogComponent],
-        })
-            .overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [TestDialogComponent] } })
-            .compileComponents();
-        service = TestBed.inject(ModalService);
-    });
-
-    it('should be created', () => {
-        expect(service).toBeTruthy();
+        spectator = createService();
+        service = spectator.service;
     });
 
     describe('openModal', () => {
@@ -57,20 +53,19 @@ describe('ModalService', () => {
         it(`should set a default modal config`, () => {
             const ref = service.openModal(TestDialogComponent);
             expect(ref.config).toBeDefined();
-            expect(ref.config.blocking).toBe(true);
-            expect(ref.config.closeOnEsc).toBe(false);
+            expect(ref.config.dismissable).toBe(true);
         });
 
         it(`should pass modal config to the modal component`, () => {
-            const config = new ModalConfig({ blocking: false, closeOnEsc: true });
+            const config = new ModalConfig({ dismissable: false });
             const ref = service.openModal(TestDialogComponent, config);
             expect(ref.config).toBe(config);
         });
     });
 
-    it(`should close modal when ref.onClose event is triggered`, fakeAsync(() => {
+    it(`should close modal when ref.onDismiss event is triggered`, fakeAsync(() => {
         const ref = service.openModal(TestDialogComponent);
-        ref.close();
+        ref.dismiss();
         tick();
         expect(service.modals.length).toBe(0);
         expect(service.hasModalOpened).toBe(false);
