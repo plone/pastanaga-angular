@@ -9,8 +9,6 @@
     text-align: center;
     width: $breakpoint-small - rhythm(2)*2; // smallest device width minus the margin in each side
 
-    @debug "$breakpoint-small: #{$breakpoint-small} - #{rhythm(2)*2} = #{$breakpoint-small - rhythm(2)*2}";
-
     .pa-modal-header {
         h4 {
             margin-bottom: $spacing-dialog-sections;

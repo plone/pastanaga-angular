@@ -12,13 +12,13 @@
     >
         <header class="pa-modal-header">
             <h4 qa="confirmation-title"
-                [id]="'dialog-' + id + '-title'">{{ref.config.data?.title}}</h4>
+                [id]="'dialog-' + id + '-title'">{{ref.config.data?.title | translate}}</h4>
         </header>
 
         <div class="pa-modal-description body-s"
              qa="confirmation-description"
              [id]="'dialog-' + id + '-description'">
-            {{ref.config.data?.description}}
+            {{ref.config.data?.description | translate}}
         </div>
 
         <footer class="pa-modal-footer">
