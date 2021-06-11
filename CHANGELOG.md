@@ -1,3 +1,30 @@
+# 2.32.0 (2021-06-11)
+
+### Breaking changes
+- **Modal**: [mpellerin42]
+    - `DialogComponent`
+        - renamed `ModalDialogComponent` and corresponding selector `pa-modal-dialog`
+        - displayed in fullscreen on small viewport
+    - `ModalComponent`
+        - renamed `ModalAdvancedComponent` and corresponding selector `pa-modal-advanced`
+        - displayed in fullscreen on small viewport
+        - Doesn't support `description` anymore 
+    - `ModalConfig`:
+        - suppression of the following options: `fullscreen`, `showOverlay`, `withCloseButton`
+        - replacement of `blocking` by `dismissable`: all modals are dismissable by default
+    - The backdrop overlay behind the modals is always visible
+
+### Feature
+- **Confirmation dialog**: [mpellerin42]
+    - new confirmation dialog component
+    - new `openConfirm` method in `ModalService` to open a confirmation dialog
+
+### Improvements
+- **Modal**: [mpellerin42]
+    - modal internal spacing and sizes updated
+    - in and out transition updated
+    - out transition now properly triggered when closing a modal from the template
+
 # 2.31.1 (2021-06-08)
 
 ### Bugs fixes
