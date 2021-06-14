@@ -17,17 +17,17 @@
 
         <div class="pa-modal-description body-s"
              qa="confirmation-description"
-             [id]="'dialog-' + id + '-description'">
-            {{ref.config.data?.description | translate}}
-        </div>
+             [id]="'dialog-' + id + '-description'"
+             [innerHTML]="ref.config.data?.description | translate"
+        ></div>
 
         <footer class="pa-modal-footer">
             <pa-button kind="secondary"
                        qa="confirmation-dialog-cancel-button"
-                       (click)="close(false)">{{ (ref.config.data?.cancelLabel || 'pastanaga.cancel') | translate}}</pa-button>
+                       (click)="ref.close(false)">{{ (ref.config.data?.cancelLabel || 'pastanaga.cancel') | translate}}</pa-button>
             <pa-button [kind]="ref.config.data?.isDestructive ? 'destructive' : 'primary'"
                        qa="confirmation-dialog-confirm-button"
-                       (click)="close(true)">{{ (ref.config.data?.confirmLabel || 'pastanaga.confirm') | translate}}</pa-button>
+                       (click)="ref.close(true)">{{ (ref.config.data?.confirmLabel || 'pastanaga.confirm') | translate}}</pa-button>
         </footer>
     </dialog>
 </div>

@@ -109,17 +109,17 @@ describe('ConfirmationDialogComponent', () => {
 
     describe('actions', () => {
         beforeEach(() => {
-            spyOn(component, 'close');
+            spyOn(component.ref, 'close');
         });
 
         it('should close with false when clicking on cancel', () => {
             spectator.click('[qa="confirmation-dialog-cancel-button"]');
-            expect(component.close).toHaveBeenCalledWith(false);
+            expect(component.ref.close).toHaveBeenCalledWith(false);
         });
 
         it('should close with true when clicking on confirm', () => {
             spectator.click('[qa="confirmation-dialog-confirm-button"]');
-            expect(component.close).toHaveBeenCalledWith(true);
+            expect(component.ref.close).toHaveBeenCalledWith(true);
         });
     });
 });
