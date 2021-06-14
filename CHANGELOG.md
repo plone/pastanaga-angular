@@ -1,3 +1,8 @@
+# 2.32.1 (2021-06-11)
+
+### Improvements
+- **Tooltip**: move style to global [ebrehault]
+
 # 2.32.0 (2021-06-11)
 
 ### Breaking changes

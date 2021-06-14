@@ -17,7 +17,6 @@ const SYSTEM_SPACING = 16;
 @Component({
     selector: 'pa-tooltip-element',
     templateUrl: './tooltip.component.html',
-    styleUrls: ['./tooltip.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TooltipComponent implements AfterViewInit {
