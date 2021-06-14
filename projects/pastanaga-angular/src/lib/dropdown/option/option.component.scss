@@ -19,14 +19,12 @@
         display: flex;
         flex-direction: column;
         max-width: 100%;
+
+        &.smaller-wrapper {
+            max-width: calc(100% - #{rhythm(4)});
+        }
     }
 
-    .pa-option-content,
-    .pa-option-description {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
     .pa-option-description {
         color: $color-neutral-secondary-default;
     }
