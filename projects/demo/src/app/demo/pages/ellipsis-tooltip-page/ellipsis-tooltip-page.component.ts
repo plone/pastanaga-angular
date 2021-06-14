@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-    selector: 'atlas-demo-ellipsis-tooltip-page',
     templateUrl: './ellipsis-tooltip-page.component.html',
     styleUrls: ['./ellipsis-tooltip-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
