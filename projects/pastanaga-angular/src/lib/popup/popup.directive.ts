@@ -132,7 +132,7 @@ export class PopupDirective implements OnInit {
         if (this._popupOnRight) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
         } else {
-            position.right = Math.min(rootRect.right - rect.right + 3, window.innerWidth - 240) + 'px';
+            position.right = Math.min(rootRect.right - rect.right, window.innerWidth - 240) + 'px';
         }
 
         return position;
