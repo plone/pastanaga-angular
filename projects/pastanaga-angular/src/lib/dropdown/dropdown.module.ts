@@ -9,11 +9,12 @@ import { SeparatorComponent } from './separator/separator.component';
 import { OptionHeaderComponent } from './option-header/option-header.component';
 import { PaFocusableModule } from '../focusable/focusable.module';
 import { PaAvatarModule } from '../avatar/avatar.module';
+import { PaTooltipModule } from '../tooltip/tootip.module';
 
 const COMPONENTS = [DropdownComponent, OptionHeaderComponent, OptionComponent, SeparatorComponent];
 
 @NgModule({
-    imports: [CommonModule, PaIconModule, PaPopupModule, PaFocusableModule, PaAvatarModule],
+    imports: [CommonModule, PaIconModule, PaPopupModule, PaFocusableModule, PaAvatarModule, PaTooltipModule],
     declarations: COMPONENTS,
     exports: COMPONENTS,
 })

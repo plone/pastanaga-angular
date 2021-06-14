@@ -6,5 +6,5 @@ export interface AvatarModel {
     image?: Observable<Blob>;
     imageSrc?: string;
     autoBackground?: boolean;
-    size?: 'small' | 'medium' | 'large';
+    size?: 'tiny' | 'small' | 'medium' | 'huge';
 }

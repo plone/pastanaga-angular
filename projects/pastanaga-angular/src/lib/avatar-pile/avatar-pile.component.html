@@ -1,13 +1,9 @@
 <div class="pa-avatar-pile">
     <pa-avatar *ngFor="let avatar of visibleAvatars; let first = first; let last = last;"
-               size="small"
                [class.pa-avatar-moved]="!first"
                [class.pa-avatar-clip]="!last || avatarCount > max || buttonAlwaysVisible"
-               [autoBackground]="avatar.autoBackground"
-               [image]="avatar.image"
-               [imageSrc]="avatar.imageSrc"
-               [userId]="avatar.userId"
-               [userName]="avatar.userName"
+               [avatar]="avatar"
+               size="small"
     ></pa-avatar>
 
     <ng-container *ngIf="avatarCount > max || buttonAlwaysVisible">

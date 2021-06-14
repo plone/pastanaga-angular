@@ -103,3 +103,4 @@ export * from './lib/scroll/infinite-scroll/infinite-scroll.component';
 export * from './lib/tooltip/tootip.module';
 export * from './lib/tooltip/tooltip.directive';
 export * from './lib/tooltip/tooltip.component';
+export * from './lib/tooltip/ellipsis-tooltip.directive';

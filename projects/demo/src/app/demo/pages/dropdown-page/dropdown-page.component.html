@@ -22,7 +22,9 @@
                 <pa-option-header>Dropdown header</pa-option-header>
                 <pa-option icon="home" id="menu-item-1" (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
                 <pa-option disabled icon="globe" id="menu-item-2" (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
-                <pa-option icon="face-happy" id="menu-item-3" (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
+                <pa-option icon="face-happy" id="menu-item-3"
+                           description="Very long description which has an ellipsis and a tooltip allowing to read it all."
+                           (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
                 <pa-separator></pa-separator>
                 <pa-option icon="trash" destructive id="menu-item-destructive" (selectOption)="onSelect($event)">Dropdown item destructive</pa-option>
             </pa-dropdown>

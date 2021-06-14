@@ -1,0 +1,35 @@
+<pa-demo-page>
+    <pa-demo-title>Ellipsis tooltip</pa-demo-title>
+    <pa-demo-description>
+        <p>The directive <code>paEllipsisTooltip</code> is adding style on its parent to display an ellipsis when there is
+            not enough space to display all the text.
+        </p>
+        <p>Whenever the element has an ellipsis, this directive automatically adds a system tooltip displaying the full text content on hover.</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <div class="example-container">
+            <p paEllipsisTooltip>Short text</p>
+            <p paEllipsisTooltip>No tooltip</p>
+            <p paEllipsisTooltip>Text content long enough to display an ellipsis and a tooltip</p>
+        </div>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <p>Add <code>paEllipsisTooltip</code> directive wherever you want to display an ellipsis when the content is too long for the container.</p>
+        <p>Style responsible for the ellipsis will be added automatically, but you need to manage the container size.</p>
+        <h3>Inputs and outputs</h3>
+        <dl>
+            <dt>content</dt>
+            <dd>Triggers a <code>hasEllipsis</code> event after its first change.</dd>
+
+            <dt>hasEllipsis</dt>
+            <dd>Emit a boolean indicating if the content has an ellipsis or not.
+                Event emitted on <code>AfterViewInit</code> and then anytime <code>content</code> changed (when <code>content</code> Input is applied).</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

@@ -34,6 +34,7 @@ import { AccessibilityPageComponent } from './demo/pages/accessibility/accessibi
 import { AvatarPilePageComponent } from './demo/pages/avatar-pile-page/avatar-pile-page.component';
 import { InfiniteScrollPageComponent } from './demo/pages/scroll-pages/infinite-scroll-page.component';
 import { ConfirmationDialogPageComponent } from './demo/pages/confirmation-dialog-page/confirmation-dialog-page.component';
+import { EllipsisTooltipPageComponent } from './demo/pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
 
 @Component({
     selector: 'app-root',
@@ -73,6 +74,7 @@ export class AppComponent {
                 { view: 'tabs', title: 'Tabs', type: TabsPageComponent },
                 { view: 'toast', title: 'Toast', type: ToastPageComponent },
                 { view: 'tooltip', title: 'Tooltip', type: TooltipPageComponent },
+                { view: 'tooltip-ellipsis', title: 'Ellipsis tooltip', type: EllipsisTooltipPageComponent },
             ],
         },
         {

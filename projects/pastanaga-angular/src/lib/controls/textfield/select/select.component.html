@@ -16,7 +16,7 @@
          [attr.aria-label]="label"
          [attr.aria-describedby]="describedById"
          [paPopup]="optionsDropdown"
-         [popupPosition]="{position: 'absolute', left: '0', right: '0', top: dim ? '40px' : '48px'}"
+         [popupMargin]="0"
          [popupDisabled]="control.disabled || readonly"
          (cdkFocusChange)="onControlFocused($event)">
         <span class="pa-select-value"

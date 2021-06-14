@@ -1,3 +1,15 @@
+# 2.33.0 (2021-06-14)
+
+### Feature
+- **Ellipsis tooltip**: New Ellipsis tooltip directive [mpellerin42]
+
+### Improvements
+- **Avatar**: Add avatar input to avatar component [mpellerin42]
+- **pa-option**: Add ellipsis tooltip on `pa-option` content and description [mpellerin42] 
+
+### Bugfix
+- **Select**: Fix change detection to display preselected option on pa-select [mpellerin42]
+
 # 2.32.1 (2021-06-11)
 
 ### Improvements
