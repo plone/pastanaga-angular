@@ -1,4 +1,11 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    ViewChild,
+    ViewEncapsulation,
+} from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
 
 @Component({
@@ -9,8 +16,14 @@ import { BaseModalComponent } from '../base-modal.component';
     encapsulation: ViewEncapsulation.None,
 })
 export class ModalAdvancedComponent extends BaseModalComponent implements AfterViewInit {
+    @ViewChild('footer', { read: ElementRef }) footer?: ElementRef;
+
+    hasFooter = false;
+
     ngAfterViewInit() {
         super.ngAfterViewInit();
+
+        this.hasFooter = !!this.footer && this.footer.nativeElement.children.length > 0;
 
         this.setFocus();
         this.refresh();

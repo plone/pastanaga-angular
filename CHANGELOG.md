@@ -1,3 +1,8 @@
+# 2.33.3 (2021-06-15)
+
+### Improvements
+- **Modals**: adapt content's margin-bottom to the presence of a footer [mpellerin42]
+
 # 2.33.2 (2021-06-15)
 
 ### Improvements

@@ -24,8 +24,12 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
 
     pa-modal-content {
         margin-top: var(--headerHeight, #{$header-height-small});
-        margin-bottom: $height-footer-modal;
+        margin-bottom: $spacing-dialog-sections;
         transition: margin-top $transition-hint;
+    }
+
+    &.with-footer pa-modal-content {
+        margin-bottom: $height-footer-modal;
     }
 
     pa-modal-footer {

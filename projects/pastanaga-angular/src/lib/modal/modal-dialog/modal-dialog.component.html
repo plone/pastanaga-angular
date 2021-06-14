@@ -5,6 +5,7 @@
 >
     <dialog class="pa-modal pa-modal-dialog pa-modal-fullscreen-on-small"
             role="dialog"
+            [class.with-footer]="hasFooter"
             [class.in]="!closing"
             [class.out]="closing"
             [attr.aria-labelledby]="'dialog-' + id + '-title'"
@@ -34,6 +35,8 @@
 
         <ng-content select="pa-modal-content"></ng-content>
 
-        <ng-content select="pa-modal-footer"></ng-content>
+        <div #footer>
+            <ng-content select="pa-modal-footer"></ng-content>
+        </div>
     </dialog>
 </div>
