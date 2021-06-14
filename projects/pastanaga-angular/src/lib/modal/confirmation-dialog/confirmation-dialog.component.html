@@ -17,9 +17,9 @@
 
         <div class="pa-modal-description body-s"
              qa="confirmation-description"
-             [id]="'dialog-' + id + '-description'">
-            {{ref.config.data?.description | translate}}
-        </div>
+             [id]="'dialog-' + id + '-description'"
+             [innerHTML]="ref.config.data?.description | translate"
+        ></div>
 
         <footer class="pa-modal-footer">
             <pa-button kind="secondary"
