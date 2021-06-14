@@ -1,3 +1,11 @@
+# 2.32.2 (2021-06-14)
+
+### Improvements
+- **Avatar**: Add avatar input to avatar component [mpellerin42]
+
+### Bugfix
+- **Select**: Fix change detection to display preselected option on pa-select [mpellerin42]
+
 # 2.32.1 (2021-06-11)
 
 ### Improvements
