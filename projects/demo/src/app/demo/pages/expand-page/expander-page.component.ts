@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     templateUrl: './expander-page.component.html',
-    styleUrls: ['./expander-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpanderPageComponent {
