@@ -1,3 +1,11 @@
+# 2.33.1 (2021-06-14)
+
+### Improvements
+- **Confirmation dialog**: Accept HTML on confirmation dialog description [mpellerin42]
+
+### Bugfix
+- **Confirmation dialog**: Emit `onClose` when closing the dialog [mpellerin42]
+
 # 2.33.0 (2021-06-14)
 
 ### Feature
