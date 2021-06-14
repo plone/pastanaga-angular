@@ -1,4 +1,7 @@
-# 2.32.2 (2021-06-14)
+# 2.33.0 (2021-06-14)
+
+### Feature
+- **Ellipsis tooltip**: New Ellipsis tooltip directive [mpellerin42]
 
 ### Improvements
 - **Avatar**: Add avatar input to avatar component [mpellerin42]

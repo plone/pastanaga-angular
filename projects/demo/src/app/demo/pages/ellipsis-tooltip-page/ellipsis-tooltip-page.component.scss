@@ -1,0 +1,7 @@
+@import "../../../../../../../../../apps/atlas-demo/src/variables";
+
+.example-container {
+    background-color: $color-accent-tertiary-lighter;
+    padding: rhythm(1);
+    width: rhythm(32);
+}
