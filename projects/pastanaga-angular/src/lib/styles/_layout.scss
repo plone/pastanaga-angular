@@ -69,3 +69,24 @@
         width: $width-formula-panel-plus-wide-large;
     }
 }
+
+.pa-scrollable-container-with-fixed-footer {
+    margin-bottom: rhythm(20);
+}
+
+.pa-fixed-footer-compact {
+    position: fixed;
+    bottom: 0;
+    padding: rhythm(6) 0;
+    height: rhythm(6) * 3;
+    background-color: $color-neutral-primary-lightest;
+    width: 100%;
+    max-width: calc(100vw - #{$margin-formula-small}*3);
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .pa-fixed-footer-compact {
+        margin: 0 auto;
+        max-width: $max-width-tight-compact;
+    }
+}
