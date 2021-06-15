@@ -22,9 +22,11 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
     @ViewChild('header', { read: ElementRef }) header?: ElementRef;
     @ViewChild('image', { read: ElementRef }) image?: ElementRef;
     @ViewChild('description', { read: ElementRef }) description?: ElementRef;
+    @ViewChild('footer', { read: ElementRef }) footer?: ElementRef;
 
     hasImage = false;
     hasDescription = false;
+    hasFooter = false;
 
     constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef, private element: ElementRef) {
         super(ref, cdr);
@@ -35,6 +37,8 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
 
         this.hasImage = !!this.image && this.image.nativeElement.children.length > 0;
         this.hasDescription = !!this.description && this.description.nativeElement.children.length > 0;
+        this.hasFooter = !!this.footer && this.footer.nativeElement.children.length > 0;
+
         this.setFocus();
         this.refresh();
 
