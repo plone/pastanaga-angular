@@ -22,7 +22,7 @@ export class ContainerPageComponent {
     compactWithFooterExample = `<div class="pa-scrollable-container">
     <div class="pa-main-container-tight">
         <div class="pa-child-container-compact">
-            <article class="pa-scrollable-container-with-fixed-footer"></article>
+            <article class="pa-content-with-fixed-footer"></article>
             <footer class="pa-fixed-footer-compact"></footer>
         </div>
     </div>

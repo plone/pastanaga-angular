@@ -70,15 +70,17 @@
     }
 }
 
-.pa-scrollable-container-with-fixed-footer {
-    margin-bottom: rhythm(20);
+$footer-height: rhythm(6) * 3;
+
+.pa-content-with-fixed-footer {
+    margin-bottom: $footer-height;
 }
 
 .pa-fixed-footer-compact {
     position: fixed;
     bottom: 0;
     padding: rhythm(6) 0;
-    height: rhythm(6) * 3;
+    height: $footer-height;
     background-color: $color-neutral-primary-lightest;
     width: 100%;
     max-width: calc(100vw - #{$margin-formula-small}*3);
