@@ -27,8 +27,35 @@
         @include fixed-footer;
     }
 
+    .pa-footer-container:not(.pa-modal-footer-one-button) {
+        pa-modal-footer pa-button {
+            width: calc((100% - #{rhythm(2)}) / 2);
+
+            .pa-button {
+                min-width: unset !important;
+                width: 100%;
+            }
+        }
+    }
+
+    @media (max-width: $size-viewport-medium-max) {
+        .pa-footer-container.pa-modal-footer-one-button {
+            pa-modal-footer pa-button {
+                width: 100%;
+
+                .pa-button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     @media (min-width: $size-viewport-medium-min) {
         @include centered-dialog;
         width: rhythm(64);
+
+        .pa-footer-container.pa-modal-footer-one-button pa-modal-footer {
+            justify-content: flex-end;
+        }
     }
 }

@@ -2,6 +2,9 @@
 
 ### Improvements
 - **Modals**: adapt content's margin-bottom to the presence of a footer [mpellerin42]
+- **Modal advanced**: [mpellerin42]
+    - footer with one button display it fullscreen on mobile and aligned on the right bigger viewport,
+    - footer with two buttons display them taking the whole space
 
 # 2.33.2 (2021-06-15)
 

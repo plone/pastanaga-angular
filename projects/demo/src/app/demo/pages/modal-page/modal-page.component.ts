@@ -131,7 +131,9 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
             .onClose.subscribe(console.log);
     }
 
-    openModal() {
-        this.modalService.openModal(ModalExampleComponent).onClose.subscribe(console.log);
+    openModal(oneButton = false) {
+        this.modalService
+            .openModal(ModalExampleComponent, new ModalConfig({ data: { oneButton } }))
+            .onClose.subscribe(console.log);
     }
 }

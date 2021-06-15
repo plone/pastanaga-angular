@@ -24,7 +24,9 @@
 
         <ng-content select="pa-modal-content"></ng-content>
 
-        <div #footer>
+        <div #footer
+             class="pa-footer-container"
+             [class.pa-modal-footer-one-button]="footerWithOneButton">
             <ng-content select="pa-modal-footer"></ng-content>
         </div>
     </dialog>
