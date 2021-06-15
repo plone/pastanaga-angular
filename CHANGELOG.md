@@ -1,3 +1,8 @@
+# 2.33.2 (2021-06-15)
+
+### Improvements
+- **Containers**: Supports a fixed footer in tight compact containers [ebrehault]
+
 # 2.33.1 (2021-06-14)
 
 ### Improvements

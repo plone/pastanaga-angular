@@ -19,6 +19,15 @@ export class ContainerPageComponent {
     </div>
 </div>`;
 
+    compactWithFooterExample = `<div class="pa-scrollable-container">
+    <div class="pa-main-container-tight">
+        <div class="pa-child-container-compact">
+            <article class="pa-content-with-fixed-footer"></article>
+            <footer class="pa-fixed-footer-compact"></footer>
+        </div>
+    </div>
+</div>`;
+
     panelExample = `<div class="pa-main-container">
     <div class="pa-main-side-panel">
         <!-- Panel content -->
