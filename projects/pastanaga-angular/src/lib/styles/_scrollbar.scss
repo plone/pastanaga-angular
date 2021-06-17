@@ -11,9 +11,6 @@ $scrollbar-dimension-large: $scrollbar-width-desktop - $scrollbar-padding-deskto
 }
 
 .pa-scrollable {
-    /* Firefox */
-    scrollbar-color: transparent transparent;
-
     /* Chrome, Edge, and Safari */
     &::-webkit-scrollbar {
         width: $scrollbar-dimension-small;
@@ -31,12 +28,10 @@ $scrollbar-dimension-large: $scrollbar-width-desktop - $scrollbar-padding-deskto
     }
 
     &.pa-scrolling {
-        scrollbar-color: $color-scrollbar-thumb-active transparent;
         &::-webkit-scrollbar-thumb {
             background-color: $color-scrollbar-thumb-active;
         }
         &.pa-fading-scrollbar {
-            scrollbar-color: $color-scrollbar-thumb-fading transparent;
             &::-webkit-scrollbar-thumb {
                 background-color: $color-scrollbar-thumb-fading;
             }

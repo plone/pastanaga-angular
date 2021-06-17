@@ -12,7 +12,7 @@ import {
     Renderer2,
 } from '@angular/core';
 import { fromEvent, merge, Subject } from 'rxjs';
-import { debounceTime, mapTo, skip, takeUntil, throttleTime } from 'rxjs/operators';
+import { debounceTime, mapTo, takeUntil, throttleTime } from 'rxjs/operators';
 import { markForCheck, TRANSITION_DURATION } from '../common';
 import { DOCUMENT } from '@angular/common';
 
@@ -45,10 +45,7 @@ export class ScrollableContainerDirective implements OnInit, AfterContentInit, O
                     this.resize.emit();
                 });
 
-            const scroll$ = fromEvent(this.element.nativeElement, 'scroll').pipe(
-                skip(1), // avoid first event which may not be an actual scroll
-                takeUntil(this._terminator),
-            );
+            const scroll$ = fromEvent(this.element.nativeElement, 'scroll').pipe(takeUntil(this._terminator));
 
             const showScrollbar$ = scroll$.pipe(
                 throttleTime(TRANSITION_DURATION.fast),

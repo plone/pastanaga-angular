@@ -14,12 +14,12 @@
     }
 
     $height-header: rhythm(12);
-    pa-modal-content {
+    .pa-modal-content {
         margin-top: $height-header;
         margin-bottom: $spacing-dialog-sections;
     }
 
-    &.with-footer pa-modal-content {
+    &.with-footer .pa-modal-content {
         margin-bottom: $height-footer-modal;
     }
 
