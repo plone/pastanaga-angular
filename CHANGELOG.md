@@ -1,3 +1,11 @@
+# 2.35.0 (2021-06-17)
+
+### Feature
+- **Scrollbar**: New paScrollableContainer directive styling scrollbars [mpellerin42]
+
+### Improvement
+- **Modal**: paScrollableContainer on modal's content [mpellerin42]
+
 # 2.34.0 (2021-06-17)
 
 ### Improvements

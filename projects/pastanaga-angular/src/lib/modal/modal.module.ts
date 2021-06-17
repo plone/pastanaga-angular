@@ -12,6 +12,7 @@ import { ModalAdvancedComponent } from './modal/modal-advanced.component';
 import { PaButtonModule } from '../button/button.module';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { PaTranslateModule } from '../translate/translate.module';
+import { PaScrollModule } from '../scroll/scroll.module';
 
 const COMPONENTS_AND_DIRECTIVES = [
     ConfirmationDialogComponent,
@@ -25,7 +26,7 @@ const COMPONENTS_AND_DIRECTIVES = [
 ];
 
 @NgModule({
-    imports: [CommonModule, PaButtonModule, PaTranslateModule],
+    imports: [CommonModule, PaButtonModule, PaTranslateModule, PaScrollModule],
     declarations: COMPONENTS_AND_DIRECTIVES,
     exports: COMPONENTS_AND_DIRECTIVES,
 })

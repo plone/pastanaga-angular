@@ -30,8 +30,7 @@
         text-align: center;
     }
 
-    pa-modal-content {
-        overflow-y: auto;
+    .pa-modal-content {
         padding: 0 $padding-modal;
         z-index: 0;
     }

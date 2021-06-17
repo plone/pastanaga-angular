@@ -35,6 +35,7 @@ import { AvatarPilePageComponent } from './demo/pages/avatar-pile-page/avatar-pi
 import { InfiniteScrollPageComponent } from './demo/pages/scroll-pages/infinite-scroll-page.component';
 import { ConfirmationDialogPageComponent } from './demo/pages/confirmation-dialog-page/confirmation-dialog-page.component';
 import { EllipsisTooltipPageComponent } from './demo/pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
+import { ScrollbarPageComponent } from './demo/pages/scrollbar-page/scrollbar-page.component';
 
 @Component({
     selector: 'app-root',
@@ -52,6 +53,7 @@ export class AppComponent {
                 { view: 'containers', title: 'Containers', type: ContainerPageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
                 { view: 'breakpoint', title: 'Breakpoint', type: BreakpointPageComponent },
+                { view: 'scrollbar', title: 'Scrollbar', type: ScrollbarPageComponent },
                 { view: 'translate', title: 'Translate', type: TranslatePageComponent },
             ],
         },

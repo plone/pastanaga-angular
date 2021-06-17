@@ -4,7 +4,7 @@
      (click)="outsideClick($event)"
 >
     <dialog class="pa-modal pa-modal-advanced pa-modal-fullscreen-on-small"
-            role="dialog"
+            role="alertdialog"
             [class.with-footer]="hasFooter"
             [class.in]="!closing"
             [class.out]="closing"
@@ -22,7 +22,9 @@
                        (click)="close(false)">{{'pastanaga.close' | translate}}</pa-button>
         </header>
 
-        <ng-content select="pa-modal-content"></ng-content>
+        <div class="pa-modal-content" paScrollableContainer>
+            <ng-content select="pa-modal-content"></ng-content>
+        </div>
 
         <div #footer
              class="pa-footer-container"
