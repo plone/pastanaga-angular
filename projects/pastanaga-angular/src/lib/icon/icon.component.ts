@@ -90,8 +90,10 @@ export class IconComponent {
     private updateSvg() {
         if (!!this._path) {
             if (isPlatformBrowser(this.platformId)) {
-                this.service.loadSvg(this._path).subscribe((svg) => {
-                    this.setSvg(svg.cloneNode(true) as SVGElement);
+                this.service.loadSvg(this._path)?.subscribe((svg) => {
+                    if (svg) {
+                        this.setSvg(svg.cloneNode(true) as SVGElement);
+                    }
                 });
             } else {
                 this.svgLoader.loadSvgFromSsr(this._path, this.renderer).subscribe((svg) => {
