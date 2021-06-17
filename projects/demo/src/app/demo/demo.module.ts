@@ -105,6 +105,7 @@ import { DataCardComponent } from './pages/scroll-pages/data-card/data-card.comp
 import { InfiniteScrollDemoComponent } from './pages/scroll-pages/infinite-scroll-demo/infinite-scroll-demo.component';
 import { ConfirmationDialogPageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-page.component';
 import { EllipsisTooltipPageComponent } from './pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
+import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -183,6 +184,7 @@ const COMPONENTS = [
     DataCardComponent,
     ConfirmationDialogPageComponent,
     EllipsisTooltipPageComponent,
+    ScrollbarPageComponent,
 ];
 
 @NgModule({

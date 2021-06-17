@@ -1,0 +1,54 @@
+@import "variables";
+
+
+$scrollbar-dimension-small: $scrollbar-width-mobile - $scrollbar-padding-mobile;
+$scrollbar-dimension-large: $scrollbar-width-desktop - $scrollbar-padding-desktop;
+
+
+.pa-scrollable-container {
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+
+.pa-scrollable {
+    /* Firefox */
+    scrollbar-color: transparent transparent;
+
+    /* Chrome, Edge, and Safari */
+    &::-webkit-scrollbar {
+        width: $scrollbar-dimension-small;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: rhythm(3);
+        border: $scrollbar-padding-mobile solid $color-scrollbar-thumb-border;
+        min-height: rhythm(4);
+    }
+
+    &.pa-scrolling {
+        scrollbar-color: $color-scrollbar-thumb-active transparent;
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-scrollbar-thumb-active;
+        }
+        &.pa-fading-scrollbar {
+            scrollbar-color: $color-scrollbar-thumb-fading transparent;
+            &::-webkit-scrollbar-thumb {
+                background-color: $color-scrollbar-thumb-fading;
+            }
+        }
+    }
+
+    @media (min-width: $size-viewport-large-min) {
+        &::-webkit-scrollbar {
+            width: calc(#{$scrollbar-width-desktop} - #{$scrollbar-padding-desktop});
+        }
+        &::-webkit-scrollbar-thumb {
+            border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border;
+        }
+    }
+}

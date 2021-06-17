@@ -1,11 +1,5 @@
 @import "variables";
 
-
-.pa-scrollable-container {
-    overflow-y: auto;
-    overflow-y: overlay;
-}
-
 .pa-main-container-tight,
 .pa-main-container-wide {
     margin: 0 $margin-formula-small;
