@@ -99,17 +99,6 @@
     padding: rhythm(1) rhythm(2);
     min-height: rhythm(9);
 
-    $lead-image-dimension: rhythm(6);
-    .pa-lead-image {
-        height: $lead-image-dimension;
-        width: $lead-image-dimension;
-
-        pa-icon svg {
-            height: $lead-image-dimension !important;
-            width: $lead-image-dimension !important;
-        }
-    }
-
     &.pa-disabled {
         cursor: default;
         opacity: .5;
@@ -168,6 +157,16 @@
     }
 }
 
+$lead-image-dimension: rhythm(6);
+.pa-lead-image {
+    height: $lead-image-dimension;
+    width: $lead-image-dimension;
+
+    pa-icon svg {
+        height: $lead-image-dimension !important;
+        width: $lead-image-dimension !important;
+    }
+}
 
 // ignore Angular components
 pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell, pa-table-cell-menu, pa-table-sortable-header-cell {
