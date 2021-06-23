@@ -1,3 +1,9 @@
+# 2.35.1 (2021-06-23)
+
+### Improvements
+- **Modal**: Optional class for pa-modal to take all available space in height [mpellerin42]
+- `pa-lead-image` class accessible outside tables [mpellerin42]
+
 # 2.35.0 (2021-06-17)
 
 ### Feature
