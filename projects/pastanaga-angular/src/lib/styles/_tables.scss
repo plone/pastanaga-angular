@@ -84,6 +84,9 @@
         opacity: .5;
         pointer-events: none;
     }
+    &.pa-clickable .pa-table-grid--cell {
+        cursor: pointer;
+    }
 }
 
 .pa-table-grid--header {

@@ -1,3 +1,8 @@
+# 2.35.2 (2021-06-23)
+
+### Bugfix
+- **Table**: display pointer cursor on clickable table row [ebrehault]
+
 # 2.35.1 (2021-06-23)
 
 ### Improvements
