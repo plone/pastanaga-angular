@@ -58,6 +58,10 @@
 @media (min-width: $size-viewport-medium-min) {
     .pa-modal {
         max-height: 90vh;
+
+        &.pa-take-available-height {
+            height: 90vh;
+        }
     }
 }
 
