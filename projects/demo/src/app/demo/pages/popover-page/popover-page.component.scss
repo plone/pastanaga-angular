@@ -1,0 +1,12 @@
+@import "../../../../../../../../../apps/atlas-demo/src/variables";
+
+.container {
+    display: inline-block;
+    position: relative;
+}
+
+.more {
+    color: $color-accent-primary-default;
+    cursor: pointer;
+    font-weight: $font-weight-semi-bold;
+}
