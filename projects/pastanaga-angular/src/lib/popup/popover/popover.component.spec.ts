@@ -30,14 +30,14 @@ describe('PopoverComponent', () => {
 
     it('should add o-visible class after adjusting popup position', () => {
         expect(component.adjust()).toBe(true);
-        expect(spectator.query('.pa-popup')?.classList).toContain('o-visible');
+        expect(spectator.query('.pa-popup')?.classList).toContain('pa-visible');
     });
 
     it('should remove o-visible class when closing', () => {
         const popup = spectator.query('.pa-popup');
-        popup?.classList.add('o-visible');
+        popup?.classList.add('pa-visible');
         component.close();
-        expect(popup?.classList).not.toContain('o-visible');
+        expect(popup?.classList).not.toContain('pa-visible');
     });
 
     describe('adjust', () => {

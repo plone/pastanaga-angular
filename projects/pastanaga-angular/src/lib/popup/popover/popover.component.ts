@@ -59,7 +59,7 @@ export class PopoverComponent extends PopupComponent implements OnInit {
 
         const rightDiff = this.window.innerWidth - popoverRect.right;
         if (this.window.innerHeight < popoverRect.bottom) {
-            if (rightDiff < popoverRect.width) {
+            if (rightDiff < popoverRect.width && !(popoverRect.left < 0)) {
                 this.moveToLeft(popover, holderRect);
             } else {
                 this.moveToRight(popover, holderRect);
@@ -87,18 +87,18 @@ export class PopoverComponent extends PopupComponent implements OnInit {
             ? `calc(-100% - ${holderRect.width + spacer}px)`
             : `calc(-100% - ${spacer}px)`;
         const translateY = `calc(-50% - ${holderRect.height}px/2)`;
-        this._style = {
-            ...this._style,
+        this.style = {
+            ...this.style,
             transform: `translateX(${translateX}) translateY(${translateY})`,
         };
         this.renderer.addClass(popup, 'arrow-right');
     }
 
     private moveToRight(popup: any, holderRect: DOMRect) {
-        const translateX = this.hasFlexParent ? `${spacer}px` : `calc(100% + ${spacer}px)`;
+        const translateX = this.hasFlexParent ? `${spacer}px` : `${holderRect.width + spacer}px`;
         const translateY = `calc(-50% - ${holderRect.height}px/2)`;
-        this._style = {
-            ...this._style,
+        this.style = {
+            ...this.style,
             transform: `translateX(${translateX}) translateY(${translateY})`,
         };
         this.renderer.addClass(popup, 'arrow-left');

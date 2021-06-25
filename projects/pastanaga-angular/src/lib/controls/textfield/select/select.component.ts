@@ -125,7 +125,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         if (this.control.disabled || this.readonly) {
             return;
         }
-        if (!!this.optionsDropdown && this.optionsDropdown._isDisplayed) {
+        if (!!this.optionsDropdown && this.optionsDropdown.isDisplayed) {
             // will trigger onClose event
             this.optionsDropdown.close();
         } else {

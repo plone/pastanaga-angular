@@ -16,7 +16,7 @@ export class ExtendedPopupDirective extends PopupDirective {}
     selector: '[paPopover]',
 })
 export class PopoverDirective implements OnDestroy {
-    @Input() set oPopover(popover: PopoverComponent | undefined) {
+    @Input() set paPopover(popover: PopoverComponent | undefined) {
         if (popover) {
             this.hasFlexParent =
                 this.window.getComputedStyle(this.element.nativeElement.parentElement).display === 'flex';
@@ -65,7 +65,7 @@ export class PopoverDirective implements OnDestroy {
                 takeUntil(this._terminator),
             )
             .subscribe(() => {
-                if (!this.popupDirective.popupDisabled && !this.popupDirective.paPopup?._isDisplayed) {
+                if (!this.popupDirective.popupDisabled && !this.popupDirective.paPopup?.isDisplayed) {
                     this.popupDirective.paPopup?.show(this.getPosition());
                 }
             });
@@ -80,7 +80,7 @@ export class PopoverDirective implements OnDestroy {
                 takeUntil(this._terminator),
             )
             .subscribe(() => {
-                if (!this.popupDirective.popupDisabled && !!this.popupDirective.paPopup?._isDisplayed) {
+                if (!this.popupDirective.popupDisabled && !!this.popupDirective.paPopup?.isDisplayed) {
                     this.popupDirective.paPopup.close();
                 }
             });

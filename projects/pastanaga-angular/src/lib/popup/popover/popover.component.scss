@@ -1,9 +1,9 @@
-@import "variables";
+@import "../../styles/variables";
 
 $arrow-size: rhythm(1.5);
 .pa-popup {
     box-shadow: none;
-    filter: drop-shadow(0px 6px 15px rgba($color-neutral-primary-default, 0.08));
+    filter: drop-shadow($drop-shadow-medium);
     opacity: 0;
     transition: opacity $transition-response;
 

@@ -58,13 +58,14 @@ export class PopupComponent implements OnInit, OnDestroy {
         return this._popupType;
     }
 
-    _id = '';
-    _stayVisible = false;
-    _isDisplayed = false;
-    _style?: any;
-    _handlers: (() => void)[] = [];
-    _dontAdjustPosition = false;
+    isDisplayed = false;
+    style?: any;
 
+    private _id = '';
+    private _handlers: (() => void)[] = [];
+    private _dontAdjustPosition = false;
+
+    private _stayVisible = false;
     private _adjustHeight = false;
     private _popupType: 'popup' | 'dropdown' = 'popup';
     private _originalHeight = 0;
@@ -85,7 +86,7 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this._id = !this.id ? `${this._popupType}-${nextId++}` : `${this.id}-${this._popupType}`;
-        this._isDisplayed = this._stayVisible;
+        this.isDisplayed = this.stayVisible;
     }
 
     ngOnDestroy() {
@@ -96,10 +97,10 @@ export class PopupComponent implements OnInit, OnDestroy {
         if (!hasSubLevel) {
             this.popupService.closeAllButId.next(this.id);
         }
-        this._style = style;
-        this._isDisplayed = true;
+        this.style = style;
+        this.isDisplayed = true;
         this.onOpen.emit();
-        if (!this._stayVisible) {
+        if (!this.stayVisible) {
             this._handlers.push(this.renderer.listen('document', 'click', (event) => this.onOutsideClick(event)));
             this._handlers.push(this.renderer.listen('document', 'keyup.esc', () => this.close()));
         }
@@ -110,7 +111,7 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     private adjustPosition() {
         window.setTimeout(() => {
-            if ((!this._dontAdjustPosition || this._adjustHeight) && !this.adjust()) {
+            if ((!this.dontAdjustPosition || this.adjustHeight) && !this.adjust()) {
                 const interval = window.setInterval(() => {
                     if (this.adjust()) {
                         window.clearInterval(interval);
@@ -170,8 +171,8 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     close(byClickingOutside?: boolean) {
-        if (!this._stayVisible && this._isDisplayed) {
-            this._isDisplayed = false;
+        if (!this.stayVisible && this.isDisplayed) {
+            this.isDisplayed = false;
             this.unListen();
             this.onClose.emit(byClickingOutside);
             markForCheck(this.cdr);

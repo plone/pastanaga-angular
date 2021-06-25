@@ -1,10 +1,15 @@
 @import "palette";
 @import "spacing";
 
+$drop-shadow-small: none !default;
+$drop-shadow-default: 0px 1px rhythm(1) rgba($color-neutral-primary-default, 0.12) !default;
+$drop-shadow-medium: 0px rhythm(1) rhythm(2) rgba($color-neutral-primary-default, 0.18) !default;
+$drop-shadow-large: 0px rhythm(1.5) rhythm(5) rgba($color-neutral-primary-default, 0.24) !default;
+
 $shadow-small: none !default;
-$shadow-default: 0px 1px rhythm(1) rgba($color-neutral-primary-default, 0.12), 0px 0px rhythm(.5) rgba($color-neutral-primary-default, 0.1) !default;
-$shadow-medium: 0px rhythm(1) rhythm(2) rgba($color-neutral-primary-default, 0.18), 0px 0px rhythm(.5) rgba($color-neutral-primary-default, 0.1) !default;
-$shadow-large: 0px rhythm(1.5) rhythm(5) rgba($color-neutral-primary-default, 0.24), 0px 0px rhythm(.5) rgba($color-neutral-primary-default, 0.1) !default;
+$shadow-default: $drop-shadow-default, 0px 0px rhythm(.5) rgba($color-neutral-primary-default, 0.1) !default;
+$shadow-medium: $drop-shadow-medium, 0px 0px rhythm(.5) rgba($color-neutral-primary-default, 0.1) !default;
+$shadow-large: $drop-shadow-large, 0px 0px rhythm(.5) rgba($color-neutral-primary-default, 0.1) !default;
 
 $color-shadow-focus: rgba($color-accent-primary-light, .6) !default;
 $shadow-focus: 0 0 0 rhythm(.25) $color-shadow-focus !default;
