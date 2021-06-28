@@ -1,3 +1,8 @@
+# 2.36.3 (2021-06-28)
+
+### Bugfix
+- **Modal**: Fix modal positioning and header/footer visibility on safari [mpellerin42] 
+
 # 2.36.2 (2021-06-28)
 
 ### Improvements
