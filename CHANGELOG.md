@@ -1,3 +1,11 @@
+# 2.36.1 (2021-06-28)
+
+### Improvements
+- **Scrollable container**: [mpellerin42]
+    - Automatically close all popups on scroll
+    - Remove fading style on scrollbar
+    - Improve scrollbar style: colors and dimensions
+
 # 2.36.0 (2021-06-28)
 
 ### Feature
