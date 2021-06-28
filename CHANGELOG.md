@@ -1,3 +1,8 @@
+# 2.36.2 (2021-06-28)
+
+### Improvements
+- **Infinite scroll**: more padding at infinite scroll bottom [ebrehault]
+
 # 2.36.1 (2021-06-28)
 
 ### Improvements
