@@ -15,13 +15,6 @@ export class PopupDirective implements OnInit {
         this._margin = coerceNumberProperty(value);
     }
     @Input()
-    set openOnHover(value: boolean) {
-        this._openOnHover = coerceBooleanProperty(value);
-    }
-    get openOnHover(): boolean {
-        return this._openOnHover;
-    }
-    @Input()
     get popupOnRight(): boolean {
         return this._popupOnRight;
     }
@@ -64,7 +57,6 @@ export class PopupDirective implements OnInit {
     private _popupOnRight = false;
     private _popupOnTop = false;
     private _sameWidth = false;
-    private _openOnHover = false;
     private _margin = MARGIN;
 
     constructor(private element: ElementRef, private service: PopupService, private renderer: Renderer2) {}
@@ -88,26 +80,13 @@ export class PopupDirective implements OnInit {
 
     toggle() {
         if (!!this.paPopup) {
-            if (this.paPopup._isDisplayed && !this.openOnly) {
+            if (this.paPopup.isDisplayed && !this.openOnly) {
                 this.paPopup.close();
             } else {
                 const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
                 this.paPopup.show(position);
                 this.addActiveStateOnParentButton();
             }
-        }
-    }
-
-    @HostListener('mouseenter')
-    onHover() {
-        if (this._openOnHover && !this._disabled && !this.paPopup?._isDisplayed) {
-            this.paPopup?.show(this.getPosition());
-        }
-    }
-    @HostListener('mouseleave')
-    onLeave() {
-        if (this._openOnHover && !this._disabled && !!this.paPopup?._isDisplayed) {
-            this.paPopup.close();
         }
     }
 

@@ -1,0 +1,31 @@
+<pa-demo-page>
+    <pa-demo-title>Popover</pa-demo-title>
+    <pa-demo-description>
+        <p>Popover component is specific kind of popup which has an arrow pointing to the element carrying <code>oPopover</code> directive.
+            By default, it is positioned centered below the parent. </p>
+        <p>The popover will automatically reposition itself to the right or the left in case there is not enough space on screen to be centered below.</p>
+        <p>On desktop, the popover is displayed when hovering the parent. On mobile and tablet, it is displayed by clicking on the parent.</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        To: some@email.com, other@email.com, any@email.com,
+        <div class="container">
+            <div class="more"
+                 [paPopover]="moreRecipientsPopup">
+                and 3 more
+            </div>
+            <pa-popover #moreRecipientsPopup>
+                To: first@more.com, second@more.com, third@more.com
+            </pa-popover>
+        </div>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <p>The popover component doesn't have any input on its own but it inherits the ones from <code>PopupComponent</code>.
+            See <a href="@@popup">popup documentation page</a> for more details.</p>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>{{codeSample}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

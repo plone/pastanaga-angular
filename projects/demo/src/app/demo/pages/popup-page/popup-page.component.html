@@ -5,30 +5,30 @@
             Pastanaga provides a component and a directive allowing to give a popup behaviour to any component.
         </p>
         <ul>
+            <li><code>PopupComponent</code>: Component to be extended by any component needing a popup behaviour.</li>
             <li>
-                <code>PopupComponent</code>: Component to be extended by any component needing a popup behaviour.
-            </li>
-            <li>
-                <code>PopupDirective</code>: Directive allowing to open a popup by clicking or hovering on the element it belongs to
+                <code>PopupDirective</code>: Directive allowing to open a popup by clicking on the element it belongs to
             </li>
         </ul>
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-button [paPopup]="myPopup"
-                   [popupOnRight]="popupOnRight"
-                   [popupOnTop]="popupOnTop"
-                   [sameWidth]="sameWidth"
-                   #myPopupDirective="paPopupRef"
-                   size="small">Open popup</pa-button>
+        <pa-button
+            [paPopup]="myPopup"
+            [popupOnRight]="popupOnRight"
+            [popupOnTop]="popupOnTop"
+            [sameWidth]="sameWidth"
+            #myPopupDirective="paPopupRef"
+            size="small"
+            >Open popup</pa-button
+        >
         <pa-popup #myPopup>Popup content</pa-popup>
 
         <div>
-            <p>Popup can also appear on hover of an <a href="#" [paPopup]="myHoverPopup" openOnHover>element</a></p>
-            <pa-popup #myHoverPopup>Popup opening on hover</pa-popup>
-        </div>
-        <div>
-            <p>We can also toggle a popup programmatically: <pa-button size="small" (click)="openProgrammatically($event)">Toggle first popup</pa-button></p>
+            <p>
+                We can also toggle a popup programmatically:
+                <pa-button size="small" (click)="openProgrammatically($event)">Toggle first popup</pa-button>
+            </p>
         </div>
     </pa-demo-examples>
     <pa-demo-configuration>
@@ -48,12 +48,18 @@
         <h3>Inputs</h3>
         <dl>
             <dt>companionElement</dt>
-            <dd>When clicking on the companion element – which is outside the popup and must be an HTML element – the popup won’t close. It offers external interactions (like filtering the popup content for example). <small>(optional)</small>
-                <br>When companionElement is an angular component, you must provide its nativeElement, <i>eg.</i> <code>[companionElement]="somePaInput.element.nativeElement"</code>
+            <dd>
+                When clicking on the companion element – which is outside the popup and must be an HTML element – the
+                popup won’t close. It offers external interactions (like filtering the popup content for example).
+                <small>(optional)</small> <br />When companionElement is an angular component, you must provide its
+                nativeElement, <i>eg.</i> <code>[companionElement]="somePaInput.element.nativeElement"</code>
             </dd>
 
             <dt>dontAdjustPosition</dt>
-            <dd>Keep default popup position even if there is not enough space to display it entirely. <small>(default: false)</small></dd>
+            <dd>
+                Keep default popup position even if there is not enough space to display it entirely.
+                <small>(default: false)</small>
+            </dd>
 
             <dt>id</dt>
             <dd>Popup's id <small>(optional, an id will be generated if none is provided)</small></dd>
@@ -69,15 +75,15 @@
             <dd>Event emitted whenever the popup is opened</dd>
         </dl>
 
-        <br>
+        <br />
         <h2>PopupDirective</h2>
         <h3>Inputs</h3>
         <dl>
-            <dt>openOnHover</dt>
-            <dd>Display popup when hovering the element containing the popup directive. <small>(default: false)</small></dd>
-
             <dt>openOnly</dt>
-            <dd>Don't close popup when clicking on the element carrying the directive while the popup is visible. <small>(default: false)</small></dd>
+            <dd>
+                Don't close popup when clicking on the element carrying the directive while the popup is visible.
+                <small>(default: false)</small>
+            </dd>
 
             <dt>paPopup</dt>
             <dd>Popup to open when clicking on the element carrying the directive</dd>
@@ -86,7 +92,10 @@
             <dd>Don't open popup when clicking on the element carrying the directive</dd>
 
             <dt>popupPosition</dt>
-            <dd>Position style to be used on the popup <small>(optional: by default the popup is positioned on top of the element carrying the directive)</small></dd>
+            <dd>
+                Position style to be used on the popup
+                <small>(optional: by default the popup is positioned on top of the element carrying the directive)</small>
+            </dd>
 
             <dt>popupOnRight</dt>
             <dd>Set the popup on the right of the element carrying the directive <small>(default: false)</small></dd>
@@ -102,10 +111,9 @@
     <pa-demo-code>
         <pre><code>{{example}}</code></pre>
 
-        To open a popup programmatically, in your template add a reference to you popup directive:
+        To open a popup programmatically, in your template add a reference to your popup directive:
         <pre><code>{{openProgrammaticallyTemplate}}</code></pre>
         Then in your component, you can call <code>toggle</code> method of your directive to open/close the popup:
         <pre><code>{{openProgrammaticallyComponent}}</code></pre>
-
     </pa-demo-code>
 </pa-demo-page>

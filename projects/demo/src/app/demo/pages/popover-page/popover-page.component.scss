@@ -1,0 +1,11 @@
+@import "../../../../../../pastanaga-angular/src/lib/styles/variables";
+
+.container {
+    display: inline-block;
+}
+
+.more {
+    color: $color-accent-primary-default;
+    cursor: pointer;
+    font-weight: $font-weight-semi-bold;
+}

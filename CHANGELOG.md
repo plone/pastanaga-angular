@@ -1,3 +1,14 @@
+# 2.36.0 (2021-06-28)
+
+### Feature
+- **Popover**: New popover component – popup with arrow which is displayed on hover on desktop [mpellerin42]
+
+### Breaking changes
+- **Popup**: Remove `openOnHover` property from paPopup directive [mpellerin42]
+
+### Improvement
+- **Modal**: Update modal's footer to not be on top of potential popover [mpellerin42]
+
 # 2.35.2 (2021-06-23)
 
 ### Bugfix

@@ -66,6 +66,8 @@ export * from './lib/popup/popup.component';
 export * from './lib/popup/popup.directive';
 export * from './lib/popup/popup.module';
 export * from './lib/popup/popup.service';
+export * from './lib/popup/popover/popover.component';
+export * from './lib/popup/popover/popover.directive';
 
 export * from './lib/table/table.module';
 export * from './lib/table/table-cell/table-cell.component';

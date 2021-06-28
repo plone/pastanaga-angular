@@ -47,6 +47,7 @@ export class PositionStyle {
     top?: string;
     bottom?: string;
     width?: string;
+    transform?: string;
 }
 
 export const markForCheck = (cdr: ChangeDetectorRef) => {

@@ -36,6 +36,7 @@ import { InfiniteScrollPageComponent } from './demo/pages/scroll-pages/infinite-
 import { ConfirmationDialogPageComponent } from './demo/pages/confirmation-dialog-page/confirmation-dialog-page.component';
 import { EllipsisTooltipPageComponent } from './demo/pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
 import { ScrollbarPageComponent } from './demo/pages/scrollbar-page/scrollbar-page.component';
+import { PopoverPageComponent } from './demo/pages/popover-page/popover-page.component';
 
 @Component({
     selector: 'app-root',
@@ -71,6 +72,7 @@ export class AppComponent {
                 { view: 'expander', title: 'Expander', type: ExpanderPageComponent },
                 { view: 'infinite-scroll', title: 'Infinite scroll', type: InfiniteScrollPageComponent },
                 { view: 'popup', title: 'Popup', type: PopupPageComponent },
+                { view: 'popover', title: 'Popover', type: PopoverPageComponent },
                 { view: 'sidenav', title: 'Sidenav', type: SidenavPageComponent },
                 { view: 'tables', title: 'Tables', type: TablePageComponent },
                 { view: 'tabs', title: 'Tabs', type: TabsPageComponent },

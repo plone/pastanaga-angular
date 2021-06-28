@@ -29,15 +29,15 @@ describe('Popup', () => {
     });
 
     it('should be hidden by default', () => {
-        expect(component.popup?._isDisplayed).toBe(false);
+        expect(component.popup?.isDisplayed).toBe(false);
     });
 
     it('should appear when clicking on the element with popup directive and close when clicking outside', () => {
         fixture.debugElement.query(By.css('#myButton')).nativeElement.click();
         fixture.detectChanges();
-        expect(component.popup?._isDisplayed).toBe(true);
+        expect(component.popup?.isDisplayed).toBe(true);
         fixture.debugElement.query(By.css('#outside')).nativeElement.click();
         fixture.detectChanges();
-        expect(component.popup?._isDisplayed).toBe(false);
+        expect(component.popup?.isDisplayed).toBe(false);
     });
 });

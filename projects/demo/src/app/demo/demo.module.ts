@@ -106,6 +106,7 @@ import { InfiniteScrollDemoComponent } from './pages/scroll-pages/infinite-scrol
 import { ConfirmationDialogPageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-page.component';
 import { EllipsisTooltipPageComponent } from './pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
 import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.component';
+import { PopoverPageComponent } from './pages/popover-page/popover-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -185,6 +186,7 @@ const COMPONENTS = [
     ConfirmationDialogPageComponent,
     EllipsisTooltipPageComponent,
     ScrollbarPageComponent,
+    PopoverPageComponent,
 ];
 
 @NgModule({
