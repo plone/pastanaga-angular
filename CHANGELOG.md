@@ -1,3 +1,8 @@
+# 2.36.4 (2021-06-30)
+
+### Bugfix
+- **Modal**:  Fix modal variables imports [mpellerin42]
+
 # 2.36.3 (2021-06-28)
 
 ### Bugfix
