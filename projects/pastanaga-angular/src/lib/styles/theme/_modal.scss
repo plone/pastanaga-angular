@@ -1,4 +1,5 @@
-@import "../variables";
+@import "palette";
+@import "spacing";
 
 $background-color-modal: $color-neutral-primary-lightest;
 $padding-modal: rhythm(4);
