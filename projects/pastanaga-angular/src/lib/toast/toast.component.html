@@ -1,6 +1,6 @@
 <div #toastWrapper class="pa-toast-wrapper">
     <pa-icon *ngIf="_icon" class="pa-toast-icon" [name]="_icon"></pa-icon>
-    <div [class]="_class" [innerHTML]="message"></div>
+    <div [class]="_class" [innerHTML]="message | translate"></div>
     <button *ngIf="_actionButtonLabel" (click)="onAction()" class="pa-button pa-basic pa-small pa-toast-button">
         {{ _actionButtonLabel }}
     </button>

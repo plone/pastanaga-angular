@@ -11,7 +11,7 @@ import {
     RendererFactory2,
     ViewChild,
 } from '@angular/core';
-import { timer, pipe } from 'rxjs';
+import { timer } from 'rxjs';
 import { take, tap, switchMap } from 'rxjs/operators';
 import { ToastConfig, ToastType } from './toast.model';
 
@@ -78,7 +78,7 @@ export class ToastComponent implements OnInit, AfterViewInit {
                 tap(() => {
                     this.addClass('pa-toast-animate-out', this.toastWrapper);
                 }),
-                switchMap(() => timer(TOAST_ANIMATE_OUT))
+                switchMap(() => timer(TOAST_ANIMATE_OUT)),
             )
             .subscribe(() => this.dismiss.emit(this._id));
     }
