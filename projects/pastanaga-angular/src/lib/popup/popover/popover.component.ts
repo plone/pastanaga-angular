@@ -30,7 +30,7 @@ export class PopoverComponent extends PopupComponent implements OnInit {
         public renderer: Renderer2,
         public element: ElementRef,
         public cdr: ChangeDetectorRef,
-        @Inject(WINDOW) private window: Window,
+        @Inject(WINDOW) private window: any, // we need `any` so the non-Ivy compilation do not break when building the lib bundle
     ) {
         super(popupService, renderer, element, cdr);
     }
