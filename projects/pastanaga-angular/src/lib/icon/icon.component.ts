@@ -18,7 +18,6 @@ import { IconModel } from './icon.model';
 @Component({
     selector: 'pa-icon',
     templateUrl: './icon.component.html',
-    styleUrls: ['./icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
