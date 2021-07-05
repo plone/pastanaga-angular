@@ -1,3 +1,8 @@
+# 2.36.8 (2021-07-05)
+
+### Bugfix
+- Fix library build one more time [ebrehault]
+
 # 2.36.7 (2021-07-05)
 
 ### Bugfix
