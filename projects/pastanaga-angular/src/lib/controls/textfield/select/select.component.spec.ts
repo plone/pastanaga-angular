@@ -15,7 +15,7 @@ import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
 import { DropdownComponent } from '../../../dropdown/dropdown.component';
 import { PaTranslateModule } from '../../../translate/translate.module';
-import { TranslatePipe } from '../../../translate/translate.pipe';
+import { PA_LANG, PA_TRANSLATIONS, TranslatePipe } from '../../../translate/translate.pipe';
 
 @Component({ template: '' })
 class TestComponent {
@@ -44,30 +44,33 @@ class TestComponent {
     onExpanded() {}
 }
 
-// TODO: refactor to test only the select here. Options should have their own tests
-describe.skip('SelectComponent', () => {
+describe('SelectComponent', () => {
     let component: SelectComponent;
     let host: TestComponent;
     let spectator: SpectatorHost<SelectComponent, TestComponent>;
     const createHost = createHostFactory({
         component: SelectComponent,
         imports: [
-            MockModule(FormsModule),
-            MockModule(ReactiveFormsModule),
+            FormsModule,
+            ReactiveFormsModule,
             MockModule(A11yModule),
-            MockModule(PaFormFieldModule),
-            MockModule(PaDropdownModule),
-            MockModule(PaPopupModule),
+            PaFormFieldModule,
+            PaDropdownModule,
+            PaPopupModule,
             MockModule(PaIconModule),
             MockModule(PaTranslateModule),
         ],
         host: TestComponent,
-        providers: [MockProvider(SvgIconRegistryService)],
-        mocks: [MockComponent(FormFieldHintComponent)],
-        declarations: [
-            MockComponent(SelectOptionsComponent),
-            MockPipe(TranslatePipe, (value) => `translate--${value}`),
+        providers: [
+            MockProvider(SvgIconRegistryService),
+            { provide: PA_LANG, useValue: 'en_US' },
+            {
+                provide: PA_TRANSLATIONS,
+                useFactory: () => ({}),
+            },
         ],
+        mocks: [MockComponent(FormFieldHintComponent)],
+        declarations: [SelectOptionsComponent, MockPipe(TranslatePipe, (value) => `translate--${value}`)],
         detectChanges: false,
     });
     const thenInputHasAttribute = (attribute: string, value: any) => {
@@ -124,7 +127,7 @@ describe.skip('SelectComponent', () => {
         whenHostHasTwoOptionModels();
         expect(spectator.query('pa-dropdown')).toBeTruthy();
         expect(spectator.query('pa-select-options')).toBeTruthy();
-        expect(spectator.queryAll('pa-dropdown pa-select-options')).toHaveLength(2);
+        expect(spectator.queryAll('pa-dropdown pa-option')).toHaveLength(2);
     });
 
     it('should apply standalone value', () => {

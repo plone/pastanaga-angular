@@ -1,3 +1,9 @@
+# 2.36.6 (2021-07-05)
+
+### Improvements
+- Restore skipped tests [ebrehault]
+- Move pa-icon style to global [ebrehault]
+
 # 2.36.5 (2021-07-05)
 
 ### Bugfix
