@@ -1,11 +1,11 @@
 import { ToastComponent } from './toast.component';
-import { PaIconModule } from '../..';
+import { PaIconModule, PaTranslateModule } from '../..';
 import { MockModule } from 'ng-mocks';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 
 describe('ToastComponent', () => {
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaIconModule)],
+        imports: [MockModule(PaIconModule), MockModule(PaTranslateModule)],
         component: ToastComponent,
         detectChanges: false,
     });
