@@ -39,7 +39,7 @@ export class PopoverDirective implements OnDestroy {
         @Host() public popupDirective: ExtendedPopupDirective,
         private element: ElementRef,
         private breakpoint: BreakpointObserver,
-        @Inject(WINDOW) private window: Window,
+        @Inject(WINDOW) private window: any, // we need `any` so the non-Ivy compilation do not break when building the lib bundle
     ) {
         breakpoint.currentMode.pipe(takeUntil(this._terminator)).subscribe((mode) => (this.mode = mode));
     }
