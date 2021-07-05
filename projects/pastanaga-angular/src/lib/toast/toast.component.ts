@@ -47,6 +47,7 @@ export class ToastComponent implements OnInit, AfterViewInit {
             this._action = value.action;
             this._actionButtonLabel = value.buttonLabel;
             this._icon = value.icon;
+            this.translateParams = value.translateParams;
         }
     }
 
@@ -57,6 +58,7 @@ export class ToastComponent implements OnInit, AfterViewInit {
     _actionButtonLabel?: string;
     _action?: () => any;
     _class = '';
+    translateParams?: { [key: string]: string | number };
 
     constructor(private rendererFactory: RendererFactory2) {
         this.renderer = rendererFactory.createRenderer(null, null);

@@ -1,3 +1,12 @@
+# 2.36.5 (2021-07-05)
+
+### Bugfix
+- Fix input size to be 48px [mpellerin42]
+
+### Improvements
+- **Drodpown options**: translate option description [mpellerin42]
+- **Toast**: Translate toast messages [mpellerin42]
+
 # 2.36.4 (2021-06-30)
 
 ### Bugfix
