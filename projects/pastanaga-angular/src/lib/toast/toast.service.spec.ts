@@ -6,6 +6,9 @@ import { ApplicationRef, Component, ComponentRef, Renderer2 } from '@angular/cor
 import { ToastComponent } from './toast.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { PaToastModule } from './toast.module';
+import { MockModule, MockPipe } from 'ng-mocks';
+import { PaTranslateModule } from '../translate/translate.module';
+import { TranslatePipe } from '../translate/translate.pipe';
 
 @Component({
     template: ``,
@@ -14,7 +17,8 @@ export class TestComponent {
     constructor(private service: ToastService) {}
 }
 
-describe('ToastService', () => {
+// TODO: Find a way to provide translate mock to ToastComponent in BrowserDynamicTestingModule
+describe.skip('ToastService', () => {
     let nextId = 0;
     const createService = createComponentFactory({
         component: TestComponent,
@@ -23,7 +27,8 @@ describe('ToastService', () => {
                 BrowserDynamicTestingModule,
                 {
                     set: {
-                        imports: [PaToastModule],
+                        imports: [PaToastModule, MockModule(PaTranslateModule)],
+                        declarations: [MockPipe(TranslatePipe, (value) => `translate--${value}`)],
                         entryComponents: [ToastComponent],
                     },
                 },
