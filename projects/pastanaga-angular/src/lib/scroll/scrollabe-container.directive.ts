@@ -29,7 +29,7 @@ export class ScrollableContainerDirective implements OnInit, AfterContentInit, O
     private _scrollActive = false;
 
     constructor(
-        @Inject(DOCUMENT) private document: Document,
+        @Inject(DOCUMENT) private document: any,
         private element: ElementRef,
         private renderer: Renderer2,
         private ngZone: NgZone,
