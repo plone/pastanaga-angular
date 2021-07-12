@@ -1,3 +1,8 @@
+# 2.36.9 (2021-07-10)
+
+### Improvments
+- Allow to export standalone css [ebrehault]
+
 # 2.36.8 (2021-07-05)
 
 ### Bugfix

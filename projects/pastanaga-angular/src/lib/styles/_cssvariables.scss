@@ -1,0 +1,61 @@
+@import "variables";
+
+:root {
+    --color-neutral-primary-default: #{$color-neutral-primary-default};
+    --color-neutral-primary-lighter: #{$color-neutral-primary-lighter};
+    --color-neutral-primary-lightest: #{$color-neutral-primary-lightest};
+    --color-neutral-secondary-default: #{$color-neutral-secondary-default};
+    --color-neutral-secondary-light: #{$color-neutral-secondary-light};
+    --color-neutral-secondary-lighter: #{$color-neutral-secondary-lighter};
+    --color-neutral-secondary-lightest: #{$color-neutral-secondary-lightest};
+    --color-accent-primary-darker: #{$color-accent-primary-darker};
+    --color-accent-primary-dark: #{$color-accent-primary-dark};
+    --color-accent-primary-default: #{$color-accent-primary-default};
+    --color-accent-primary-light: #{$color-accent-primary-light};
+    --color-accent-primary-lighter: #{$color-accent-primary-lighter};
+    --color-accent-primary-lightest: #{$color-accent-primary-lightest};
+    --color-accent-secondary-darker: #{$color-accent-secondary-darker};
+    --color-accent-secondary-dark: #{$color-accent-secondary-dark};
+    --color-accent-secondary-default: #{$color-accent-secondary-default};
+    --color-accent-secondary-light: #{$color-accent-secondary-light};
+    --color-accent-secondary-lighter: #{$color-accent-secondary-lighter};
+    --color-accent-secondary-lightest: #{$color-accent-secondary-lightest};
+    --color-accent-tertiary-darker: #{$color-accent-tertiary-darker};
+    --color-accent-tertiary-dark: #{$color-accent-tertiary-dark};
+    --color-accent-tertiary-default: #{$color-accent-tertiary-default};
+    --color-accent-tertiary-light: #{$color-accent-tertiary-light};
+    --color-accent-tertiary-lighter: #{$color-accent-tertiary-lighter};
+    --color-accent-tertiary-lightest: #{$color-accent-tertiary-lightest};
+    --color-neutral-inverted-default: #{$color-neutral-inverted-default};
+    --color-neutral-inverted-light: #{$color-neutral-inverted-light};
+    --color-neutral-inverted-lighter: #{$color-neutral-inverted-lighter};
+    --color-neutral-inverted-lightest: #{$color-neutral-inverted-lightest};
+
+    --shadow-small: #{$shadow-small};
+    --shadow-default: #{$shadow-default};
+    --shadow-medium: #{$shadow-medium};
+    --shadow-large: #{$shadow-large};
+
+    --font-family-sans-serif: #{$font-family-sans-serif};
+    --font-family-monospace: #{$font-family-monospace};
+    --font-family-body: #{$font-family-body};
+
+    --font-weight-thin: #{$font-weight-thin};
+    --font-weight-regular: #{$font-weight-regular};
+    --font-weight-semi-bold: #{$font-weight-semi-bold};
+    --font-weight-bold: #{$font-weight-bold};
+
+    --font-size-xxs: #{$font-size-base * .625};
+    --font-size-xs: #{$font-size-base * .75};
+    --font-size-s: #{$font-size-base * .875};
+    --font-size-m: #{$font-size-base};
+    --font-size-l: #{$font-size-base * 1.125};
+    --font-size-xl: #{$font-size-base * 1.25};
+    --font-size-xxl: #{$font-size-base * 1.5};
+
+    --line-height-s: #{$font-size-base * 1};
+    --line-height-m: #{$font-size-base * 1.25};
+    --line-height-l: #{$font-size-base * 1.5};
+    --line-height-xl: #{$font-size-base * 1.75};
+    --line-height-xxl: #{$font-size-base * 2};
+}
