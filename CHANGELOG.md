@@ -1,3 +1,9 @@
+# 1.21.2 (2021-07-13)
+
+### Improvements
+
+-   Clean up to support module federation [ebrehault]
+
 # 1.21.1 (2021-06-03)
 
 ### Improvements

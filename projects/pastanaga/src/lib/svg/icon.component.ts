@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, Renderer2, ViewEncapsulation, ChangeDetectionStrategy, } from '@angular/core';
+import { Component, ElementRef, Input, Renderer2, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject } from '@angular/core';
@@ -12,7 +12,7 @@ import { Icon, IconSize } from '../common/utils';
     template: `<ng-content></ng-content>`,
     styleUrls: ['./icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent {
     @Input() set icon(value: Icon) {
@@ -38,21 +38,27 @@ export class IconComponent {
     }
 
     @Input()
-    get hidden(): boolean { return this._hidden; }
+    get hidden(): boolean {
+        return this._hidden;
+    }
     set hidden(value: boolean) {
         this._hidden = coerceBooleanProperty(value);
         this.updateSvg();
     }
 
     @Input()
-    get small(): boolean { return this._small; }
+    get small(): boolean {
+        return this._small;
+    }
     set small(value: boolean) {
         this._small = coerceBooleanProperty(value);
         this.updateSvg();
     }
 
     @Input()
-    get color(): string { return this._color; }
+    get color(): string {
+        return this._color;
+    }
     set color(value: string) {
         this._color = value;
         this.updateSvg();
@@ -74,17 +80,18 @@ export class IconComponent {
         private service: SvgIconRegistryService,
         private svgLoader: SvgLoader,
         @Inject(PLATFORM_ID) protected platformId: Object
-    ) {
-    }
+    ) {}
 
     private updateSvg() {
         if (!!this.iconPath) {
             if (isPlatformBrowser(this.platformId)) {
-                this.service.loadSvg(this.iconPath).subscribe(svg => {
-                    this.setSvg(svg.cloneNode(true) as SVGElement);
+                this.service.loadSvg(this.iconPath)?.subscribe((svg) => {
+                    if (svg) {
+                        this.setSvg(svg.cloneNode(true) as SVGElement);
+                    }
                 });
             } else {
-                this.svgLoader.loadSvgFromSsr(this.iconPath, this.renderer).subscribe(svg => {
+                this.svgLoader.loadSvgFromSsr(this.iconPath, this.renderer).subscribe((svg) => {
                     this.setSvg(svg);
                 });
             }
