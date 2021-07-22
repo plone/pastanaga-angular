@@ -1,3 +1,8 @@
+# 2.36.10 (2021-07-22)
+
+### Bugfix
+- Change chevron expander color [barcafa]
+
 # 2.36.9 (2021-07-10)
 
 ### Improvments
