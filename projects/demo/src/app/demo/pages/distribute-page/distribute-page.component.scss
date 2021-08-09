@@ -1,0 +1,58 @@
+@import "../../../../../../pastanaga-angular/src/lib/styles/variables";
+
+.distribute-example-container {
+    display: flex;
+}
+.example-column {
+    margin-bottom: $distribute-medium-viewport-small;
+    width: 50%;
+
+    h5 {
+        margin-bottom: $distribute-xsmall-viewport-all;
+    }
+    .example {
+        display: flex;
+        align-items: center;
+        margin-bottom: $distribute-small-viewport-all;
+
+        small {
+            margin-left: rhythm(.5);
+        }
+    }
+    .example:before {
+        background: $color-accent-tertiary-default;
+        content: '';
+        display: inline-block;
+        margin-right: $distribute-xsmall-viewport-all;
+        height: 100%;
+        width: rhythm(1);
+    }
+}
+.xsmall {
+    height: $distribute-xsmall-viewport-all;
+}
+.small {
+    height: $distribute-small-viewport-all;
+}
+.layout-small {
+    .medium {
+        height: $distribute-medium-viewport-small;
+    }
+    .large {
+        height: $distribute-large-viewport-small;
+    }
+}
+.layout-medium {
+    .medium {
+        height: $distribute-medium-viewport-medium;
+    }
+    .large {
+        height: $distribute-large-viewport-medium;
+    }
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .example-column {
+        margin-bottom: $distribute-medium-viewport-medium;
+    }
+}

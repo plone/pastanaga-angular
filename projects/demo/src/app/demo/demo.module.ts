@@ -107,6 +107,7 @@ import { ConfirmationDialogPageComponent } from './pages/confirmation-dialog-pag
 import { EllipsisTooltipPageComponent } from './pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
 import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.component';
 import { PopoverPageComponent } from './pages/popover-page/popover-page.component';
+import { DistributePageComponent } from './pages/distribute-page/distribute-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -187,6 +188,7 @@ const COMPONENTS = [
     EllipsisTooltipPageComponent,
     ScrollbarPageComponent,
     PopoverPageComponent,
+    DistributePageComponent,
 ];
 
 @NgModule({

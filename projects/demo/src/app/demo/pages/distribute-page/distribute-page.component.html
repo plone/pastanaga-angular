@@ -1,0 +1,43 @@
+<pa-demo-page>
+    <pa-demo-title>Distribute</pa-demo-title>
+
+    <pa-demo-description>
+        <p>Distribute scss variables define the space between blocks of content:
+            it is meant to be used as the separation between containers inside the main container.</p>
+        <p>Can be used for both vertical and horizontal spaces.</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <div class="example-column layout-small">
+            <h5>All viewports</h5>
+            <div class="example xsmall">xsmall <small>(16px – 2 rhythm)</small></div>
+            <div class="example small">small <small>(24px – 3 rhythm)</small></div>
+        </div>
+
+        <div class="distribute-example-container">
+            <div class="example-column layout-small">
+                <h5>Viewport small</h5>
+                <div class="example medium">medium <small>(32px – 4 rhythm)</small></div>
+                <div class="example large">large <small>(40px – 5 rhythm)</small></div>
+            </div>
+            <div class="example-column layout-medium">
+                <h5>Viewport medium and large</h5>
+                <div class="example medium">medium <small>(48px – 6 rhythm)</small></div>
+                <div class="example large">large <small>(80px – 10 rhythm)</small></div>
+            </div>
+        </div>
+    </pa-demo-examples>
+    <pa-demo-code>
+        Scss variables:
+        <pre><code>
+$distribute-xsmall-viewport-all // can be used in any media query
+$distribute-small-viewport-all  // can be used in any media query
+
+$distribute-medium-viewport-small // to be used on small devices only
+$distribute-large-viewport-small  // to be used on small devices only
+
+$distribute-medium-viewport-medium // to be used on medium and bigger viewports
+$distribute-large-viewport-medium  // to be used on medium and bigger viewports
+        </code></pre>
+    </pa-demo-code>
+</pa-demo-page>
