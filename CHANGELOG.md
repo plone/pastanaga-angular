@@ -1,3 +1,8 @@
+# 2.36.11 (2021-08-10)
+
+### Improvements
+- **Distribute**: New scss variables to define the space between blocks of content [mpellerin42] 
+
 # 2.36.10 (2021-07-22)
 
 ### Bugfix
@@ -5,8 +10,8 @@
 
 # 2.36.9 (2021-07-10)
 
-### Improvments
-- Allow to export standalone css [ebrehault]
+### Improvements
+- Allow exporting standalone css [ebrehault]
 
 # 2.36.8 (2021-07-05)
 

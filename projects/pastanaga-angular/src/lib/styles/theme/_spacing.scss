@@ -49,6 +49,16 @@ $size-viewport-xlarge-min  : 1440px !default;
 $grid-cols:     12 !default;
 $grid-gutters:  12px !default;
 
+// distribute: define the space between blocks of content inside the main container
+$distribute-xsmall-viewport-all:    rhythm(2) !default;
+$distribute-small-viewport-all:     rhythm(3) !default;
+$distribute-medium-viewport-small:  rhythm(4) !default;
+$distribute-large-viewport-small:   rhythm(5) !default;
+$distribute-medium-viewport-medium: rhythm(6) !default;
+$distribute-large-viewport-medium:  rhythm(10) !default;
+
+
+
 // headings spacing
 $margin-bottom-title:       rhythm(3) !default;
 $margin-bottom-paragraph:   rhythm(1.5) !default;

@@ -37,6 +37,7 @@ import { ConfirmationDialogPageComponent } from './demo/pages/confirmation-dialo
 import { EllipsisTooltipPageComponent } from './demo/pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
 import { ScrollbarPageComponent } from './demo/pages/scrollbar-page/scrollbar-page.component';
 import { PopoverPageComponent } from './demo/pages/popover-page/popover-page.component';
+import { DistributePageComponent } from './demo/pages/distribute-page/distribute-page.component';
 
 @Component({
     selector: 'app-root',
@@ -52,6 +53,7 @@ export class AppComponent {
                 { view: 'focusable', title: 'Focusable', type: FocusablePageComponent },
                 { view: 'accessibility', title: 'Accessibility', type: AccessibilityPageComponent },
                 { view: 'containers', title: 'Containers', type: ContainerPageComponent },
+                { view: 'distribute', title: 'Distribute', type: DistributePageComponent },
                 { view: 'grid', title: 'Grid', type: GridPageComponent },
                 { view: 'breakpoint', title: 'Breakpoint', type: BreakpointPageComponent },
                 { view: 'scrollbar', title: 'Scrollbar', type: ScrollbarPageComponent },
