@@ -14,18 +14,62 @@
 .pa-toast-error-wrapper {
     background: $background-toast-error;
     color: $color-toast-error;
+
+    .pa-toast-button {
+        color: $color-toast-error;
+
+        &:hover {
+            background: $background-toast-button-error-hover;
+        }
+        &:active {
+            background: $background-toast-button-error-active;
+        }
+    }
 }
 .pa-toast-info-wrapper {
     background: $background-toast-info;
     color: $color-toast-info;
+
+    .pa-toast-button {
+        color: $color-toast-info;
+
+        &:hover {
+            background: $background-toast-button-info-hover;
+        }
+        &:active {
+            background: $background-toast-button-info-active;
+        }
+    }
 }
 .pa-toast-success-wrapper {
     background: $background-toast-success;
     color: $color-toast-success;
+
+    .pa-toast-button {
+        color: $color-toast-success;
+
+        &:hover {
+            background: $background-toast-button-success-hover;
+        }
+        &:active {
+            background: $background-toast-button-success-active;
+        }
+    }
 }
 .pa-toast-warning-wrapper {
     background: $background-toast-warning;
     color: $color-toast-warning;
+
+    .pa-toast-button {
+        color: $color-toast-warning;
+
+        &:hover {
+            background: $background-toast-button-warning-hover;
+        }
+        &:active {
+            background: $background-toast-button-warning-active;
+        }
+    }
 }
 .pa-toast-animate-out {
     animation: toastout $transition-process-out;
@@ -50,16 +94,8 @@ pa-icon {
 .pa-toast-button {
     margin-left: rhythm(6);
     background: transparent;
-    border: none;
-    color: $color-neutral-primary-lightest;
-    background: $color-background-button-primary-basic;
     border: $border-button-primary-basic;
-    &:hover {
-        background: rgba($color-neutral-primary-lightest, 0.1);
-    }
-    &:active {
-        background: rgba($color-neutral-secondary-default, 0.15);
-    }
+    min-width: 0 !important;
 }
 
 @-webkit-keyframes toastin {
