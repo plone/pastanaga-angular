@@ -1,0 +1,13 @@
+@import "shadows";
+
+// Background color
+$background-toast-info: $color-accent-primary-default !default;
+$background-toast-success: $color-accent-tertiary-default !default;
+$background-toast-error: $color-accent-secondary-default !default;
+$background-toast-warning: $color-accent-secondary-light !default;
+
+// Text color
+$color-toast-success: $color-neutral-primary-lightest !default;
+$color-toast-error: $color-neutral-primary-lightest !default;
+$color-toast-warning: $color-neutral-primary-lightest !default;
+$color-toast-info: $color-neutral-primary-lightest !default;

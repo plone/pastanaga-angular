@@ -1,3 +1,8 @@
+# 2.36.13 (2021-08-13)
+
+### Improvements
+- **Toasts**: Tokenize and update toast colors [mpellerin42]
+
 # 2.36.12 (2021-08-13)
 
 ### Improvements
