@@ -1,3 +1,8 @@
+# 2.36.12 (2021-08-13)
+
+### Improvements
+- **Avatar**: Allow overriding the tooltip displayed when hovering the avatar [mpellerin42]
+
 # 2.36.11 (2021-08-10)
 
 ### Improvements

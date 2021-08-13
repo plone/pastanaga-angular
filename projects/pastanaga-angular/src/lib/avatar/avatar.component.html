@@ -1,6 +1,6 @@
 <span class="pa-avatar pa-avatar-{{size}}"
       [class.no-avatar]="!initials"
-      [paTooltip]="userName"
+      [paTooltip]="tooltip"
 >
     <img *ngIf="base64Image; else avatarInitials"
          [src]="base64Image"
