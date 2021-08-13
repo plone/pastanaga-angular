@@ -1,3 +1,8 @@
+# 2.36.14 (2021-08-13)
+
+### Bugfix
+- **Toggle**: Add margin between toggle and text [barcafa]
+
 # 2.36.13 (2021-08-13)
 
 ### Improvements
