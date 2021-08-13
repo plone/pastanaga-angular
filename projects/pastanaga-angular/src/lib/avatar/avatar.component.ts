@@ -82,6 +82,14 @@ export class AvatarComponent {
         return this._size;
     }
 
+    @Input()
+    set tooltip(value: string) {
+        this._tooltip = value || '';
+    }
+    get tooltip() {
+        return this._tooltip || this.userName;
+    }
+
     get base64Image() {
         return this._base64Image;
     }
@@ -99,6 +107,7 @@ export class AvatarComponent {
     private _autoBackground = false;
     private _backgroundColorClass?: string;
     private _size: 'tiny' | 'small' | 'medium' | 'huge' = 'medium';
+    private _tooltip = '';
 
     constructor(private cdr: ChangeDetectorRef) {}
 
