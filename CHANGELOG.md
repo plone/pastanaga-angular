@@ -1,3 +1,8 @@
+# 2.36.15 (2021-08-20)
+
+### Improvements
+- **Modal dialog**: Increase the delay for setting modal header height on mobile [mpellerin42] 
+
 # 2.36.14 (2021-08-13)
 
 ### Bugfix

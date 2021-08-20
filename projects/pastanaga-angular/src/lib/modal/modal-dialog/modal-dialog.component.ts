@@ -10,6 +10,8 @@ import {
 import { BaseModalComponent } from '../base-modal.component';
 import { ModalRef } from '../modal.model';
 import { TRANSITION_DURATION } from '../../common';
+import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'pa-modal-dialog',
@@ -28,8 +30,22 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
     hasDescription = false;
     hasFooter = false;
 
-    constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef, private element: ElementRef) {
+    private _headerHeightSettingDelay = TRANSITION_DURATION.moderate;
+
+    constructor(
+        public ref: ModalRef,
+        protected cdr: ChangeDetectorRef,
+        private element: ElementRef,
+        private breakpoint: BreakpointObserver,
+    ) {
         super(ref, cdr);
+        this.breakpoint.currentMode
+            .pipe(takeUntil(this._terminator))
+            .subscribe(
+                (mode) =>
+                    (this._headerHeightSettingDelay =
+                        mode === 'mobile' ? TRANSITION_DURATION.slow : TRANSITION_DURATION.moderate),
+            );
     }
 
     ngAfterViewInit() {
@@ -47,6 +63,6 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
                 '--headerHeight',
                 `${Math.ceil(this.header?.nativeElement.getBoundingClientRect().height)}px`,
             );
-        }, TRANSITION_DURATION.moderate);
+        }, this._headerHeightSettingDelay);
     }
 }
