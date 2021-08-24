@@ -104,7 +104,7 @@ export class PopupDirective implements OnInit {
         const position: PositionStyle = {
             position: 'absolute',
             top: !this.popupOnTop ? top + this._margin + 'px' : undefined,
-            bottom: this.popupOnTop ? bottom - this._margin + 'px' : undefined,
+            bottom: this.popupOnTop ? bottom + this._margin + 'px' : undefined,
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
 
