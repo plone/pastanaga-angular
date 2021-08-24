@@ -1,3 +1,8 @@
+# 2.36.16 (2021-08-24)
+
+### Bugfix
+- **Popup**: Fix margin when using popupOnTop [mpellerin42]
+
 # 2.36.15 (2021-08-20)
 
 ### Improvements
