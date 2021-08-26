@@ -1,3 +1,8 @@
+# 2.36.17 (2021-08-26)
+
+### Bugfix
+- **Tables**: Fix styling for buttons inside tables [barcafa]
+
 # 2.36.16 (2021-08-24)
 
 ### Bugfix

@@ -129,25 +129,6 @@
 .pa-table-grid--menu-cell {
     justify-content: center;
 
-    .pa-button {
-        background: $color-background-table-menu-button !important;
-
-        &:hover {
-            background: $color-background-table-menu-button-hover !important;
-
-            svg {
-                fill: $color-icon-table-menu-button-hover !important;
-            }
-        }
-        &:active {
-            background: $color-background-table-menu-button-active !important;
-        }
-
-        svg {
-            fill: $color-icon-table-menu-button !important;
-        }
-    }
-
     &.pa-table-grid--header .pa-button {
         display: flex;
         padding: 0;
