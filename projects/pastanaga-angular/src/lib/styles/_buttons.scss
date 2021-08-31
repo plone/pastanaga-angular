@@ -31,7 +31,7 @@
     &.pa-button-icon {
         border-radius: 50%;
     }
-    &:not(.pa-button-icon):not(.pa-button-icon-text) {
+    &:not(.pa-button-icon):not(.pa-button-icon-text):not(.pa-small) {
         min-width: rhythm(20);
     }
 
@@ -39,9 +39,6 @@
         font-size: font-size(s);
         line-height: rhythm(3);
         padding: $padding-button-small;
-        &:not(.pa-button-icon):not(.pa-button-icon-text) {
-            min-width: auto;
-        }
         &.pa-button-icon {
             padding: $padding-button-icon-small;
         }
