@@ -1,3 +1,7 @@
+# 2.36.18 (2021-08-31)
+### Improvements
+- **Button**: updating small size button styling [faustoonna]
+
 # 2.36.17 (2021-08-26)
 
 ### Bugfix
