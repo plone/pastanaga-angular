@@ -35,9 +35,6 @@ $footer-height: rhythm(6) * 3;
         margin: 0 auto;
         max-width: $max-width-tight-compact;
     }
-}
-
-@media (min-width: $size-viewport-medium-min) {
     .pa-fixed-footer-compact {
         margin: 0 auto;
         max-width: $max-width-tight-compact;
