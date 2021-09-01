@@ -1,3 +1,8 @@
+# 2.36.19 (2021-09-01)
+
+### Bugfix
+- **Layout**: Fix layout footer gradient [barcafa]
+
 # 2.36.18 (2021-08-31)
 ### Improvements
 - **Button**: updating small size button styling [faustoonna]

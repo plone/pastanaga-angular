@@ -6,6 +6,22 @@
     max-width: calc(100vw - #{$margin-formula-small}*2);
 }
 
+$footer-height: rhythm(6) * 3;
+
+.pa-content-with-fixed-footer {
+    margin-bottom: rhythm(6);
+}
+
+.pa-fixed-footer-compact {
+    position: fixed;
+    bottom: 0;
+    padding: rhythm(6) 0;
+    height: $footer-height;
+    background: linear-gradient(180deg, rgba($color-neutral-primary-lightest, 0) 0%, $color-neutral-primary-lightest 54.71%);
+    width: 100%;
+    max-width: calc(100vw - #{$margin-formula-small}*2);
+}
+
 @media (min-width: $size-viewport-medium-min) {
     .pa-main-container-tight {
         margin: 0 $margin-formula-tight-medium;
@@ -16,6 +32,10 @@
         max-width: calc(100vw - #{$margin-formula-wide-medium}*2);
     }
     .pa-child-container-compact {
+        margin: 0 auto;
+        max-width: $max-width-tight-compact;
+    }
+    .pa-fixed-footer-compact {
         margin: 0 auto;
         max-width: $max-width-tight-compact;
     }
@@ -44,6 +64,13 @@
     }
 }
 
+@media (min-width: $size-viewport-large-with-panel-min) {
+    .pa-main-side-panel + .pa-main-container-wide,
+    .pa-main-container-wide.pa-side-on-right {
+        width: $width-formula-panel-plus-wide-large;
+    }
+}
+
 @media (min-width: $size-viewport-xlarge-min) {
     .pa-main-container-tight,
     .pa-main-container-wide {
@@ -55,35 +82,5 @@
     }
     .pa-main-container-wide {
         max-width: #{$max-width-container-wide-xlarge}rem;
-    }
-}
-
-@media (min-width: $size-viewport-large-with-panel-min) {
-    .pa-main-side-panel + .pa-main-container-wide,
-    .pa-main-container-wide.pa-side-on-right {
-        width: $width-formula-panel-plus-wide-large;
-    }
-}
-
-$footer-height: rhythm(6) * 3;
-
-.pa-content-with-fixed-footer {
-    margin-bottom: $footer-height;
-}
-
-.pa-fixed-footer-compact {
-    position: fixed;
-    bottom: 0;
-    padding: rhythm(6) 0;
-    height: $footer-height;
-    background-color: $color-neutral-primary-lightest;
-    width: 100%;
-    max-width: calc(100vw - #{$margin-formula-small}*3);
-}
-
-@media (min-width: $size-viewport-medium-min) {
-    .pa-fixed-footer-compact {
-        margin: 0 auto;
-        max-width: $max-width-tight-compact;
     }
 }
