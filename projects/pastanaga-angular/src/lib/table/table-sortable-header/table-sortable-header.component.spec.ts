@@ -10,6 +10,7 @@ import { PaTranslateModule } from '../../translate/translate.module';
 import { TableCellComponent } from '../table-cell/table-cell.component';
 import { PaPopupModule } from '../../popup/popup.module';
 import { PaDropdownModule } from '../../dropdown/dropdown.module';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('TableSortableHeaderComponent', () => {
     const mode: BehaviorSubject<ViewportMode> = new BehaviorSubject<ViewportMode>('desktop');
@@ -136,17 +137,18 @@ describe('TableSortableHeaderComponent', () => {
             expect(component.sortableCells).toEqual([cell1, cell3]);
         });
 
-        it('should set sortMenuPosition relatively to mobileCellContainer', () => {
+        it('should set sortMenuPosition relatively to mobileCellContainer', fakeAsync(() => {
             component.mobileCellContainer = {
                 cellElement: {
                     nativeElement: { getBoundingClientRect: jest.fn(() => ({ top: 100, left: 10, height: 30 })) },
                 },
             } as TableSortableHeaderCellComponent;
             component.ngAfterViewInit();
+            tick();
             expect(component.sortMenuPosition).toEqual({
                 position: 'absolute',
                 top: 130,
             });
-        });
+        }));
     });
 });

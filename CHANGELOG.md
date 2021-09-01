@@ -1,4 +1,10 @@
+# 2.36.21 (2021-09-01)
+
+### Bugfix
+- **TableSortableHeader**: fix sorting dropdown position [mpellerin42]
+
 # 2.36.20 (2021-09-01)
+
 ### Bugfix
 
 - **Button**: Reverting small size button's icon size to "medium" [faustoonna] 
