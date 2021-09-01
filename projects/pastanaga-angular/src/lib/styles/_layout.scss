@@ -8,6 +8,10 @@
 
 $footer-height: rhythm(6) * 3;
 
+.pa-content-with-fixed-footer {
+    margin-bottom: rhythm(6);
+}
+
 .pa-fixed-footer-compact {
     position: fixed;
     bottom: 0;
