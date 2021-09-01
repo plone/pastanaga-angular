@@ -57,13 +57,15 @@ export class TableSortableHeaderComponent implements AfterViewInit {
     constructor(private breakpointObserver: BreakpointObserver) {}
 
     ngAfterViewInit(): void {
-        const elementRect = this.mobileCellContainer?.cellElement?.nativeElement.getBoundingClientRect();
-        if (!!elementRect) {
-            this.sortMenuPosition = {
-                position: 'absolute',
-                top: elementRect.top + elementRect.height,
-            };
-        }
+        setTimeout(() => {
+            const elementRect = this.mobileCellContainer?.cellElement?.nativeElement.getBoundingClientRect();
+            if (!!elementRect) {
+                this.sortMenuPosition = {
+                    position: 'absolute',
+                    top: elementRect.top + elementRect.height,
+                };
+            }
+        });
     }
 
     sortBy(id: string) {
