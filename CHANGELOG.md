@@ -1,3 +1,8 @@
+# 2.36.20 (2021-09-01)
+### Bugfix
+
+- **Button**: Reverting small size button's icon size to "medium" [faustoonna] 
+
 # 2.36.19 (2021-09-01)
 
 ### Bugfix
