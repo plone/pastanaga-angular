@@ -24,7 +24,9 @@ describe('ButtonComponent', () => {
         expect(component._iconSize).toEqual(Size.large);
         component.size = Size.medium;
         expect(component._iconSize).toEqual(Size.medium);
+    });
+    it('should set icon size "medium" when the button size is "small"', () => {
         component.size = Size.small;
-        expect(component._iconSize).toEqual(Size.small);
+        expect(component._iconSize).toEqual(Size.medium);
     });
 });
