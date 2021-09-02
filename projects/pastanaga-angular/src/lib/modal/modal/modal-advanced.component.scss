@@ -12,14 +12,15 @@
         padding: $spacing-dialog-sections $padding-modal;
     }
 
-    $height-header: rhythm(12);
     .pa-modal-content {
-        margin-top: $height-header;
+        margin-top: $height-header-footer-modal;
         margin-bottom: $spacing-dialog-sections;
+        min-height: calc(100% - #{$height-header-footer-modal} - #{$spacing-dialog-sections});
     }
 
     &.with-footer .pa-modal-content {
-        margin-bottom: $height-footer-modal;
+        margin-bottom: $height-header-footer-modal;
+        min-height: calc(100% - #{$height-header-footer-modal} * 2);
     }
 
     pa-modal-footer {
