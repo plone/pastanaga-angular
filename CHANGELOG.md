@@ -1,3 +1,8 @@
+# 2.36.23 (2021-09-02)
+
+### Improvement
+- **Ellipsis tooltip**: set updateEllipsisTooltip method public, so it can be called externally [mpellerin42]
+
 # 2.36.22 (2021-09-02)
 
 ### Improvement
