@@ -1,3 +1,8 @@
+# 2.36.22 (2021-09-02)
+
+### Improvement
+- **Modal advanced**: Compute content min-height to take all available space [mpellerin42]
+
 # 2.36.21 (2021-09-01)
 
 ### Bugfix

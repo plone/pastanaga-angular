@@ -4,7 +4,7 @@
 $background-color-modal: $color-neutral-primary-lightest;
 $padding-modal: rhythm(4);
 $spacing-dialog-sections: rhythm(3);
-$height-footer-modal: rhythm(12);
+$height-header-footer-modal: rhythm(12);
 
 @mixin centered-dialog() {
     top: 50%;
