@@ -39,7 +39,7 @@ export class EllipsisTooltipDirective implements AfterViewInit, OnChanges {
         }
     }
 
-    private updateEllipsisTooltip() {
+    updateEllipsisTooltip() {
         const hasEllipsis = this.element.nativeElement.offsetWidth < this.element.nativeElement.scrollWidth;
         if (hasEllipsis) {
             this.tooltipDirective.type = 'system';
