@@ -1,3 +1,10 @@
+# 2.36.24 (2021-09-13)
+
+### Improvements
+- **Popup**: [mpellerin42]
+  - Close only popups (not dropdowns) when receiving closeAllPopups event
+  - Decrease complexity in adjust popup method
+
 # 2.36.23 (2021-09-02)
 
 ### Improvement

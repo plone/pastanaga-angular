@@ -91,7 +91,7 @@ export class PopupComponent implements OnInit, OnDestroy {
                 filter((id) => id !== this._id),
                 takeUntil(this._terminator),
             )
-            .subscribe((id) => this.close());
+            .subscribe(() => this.close());
     }
 
     ngOnInit() {
@@ -153,25 +153,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         const diffX = rect.left + rect.width - right;
         const diffY = rect.top + this._originalHeight - bottom;
         if (!this._dontAdjustPosition) {
-            if (diffX > 0) {
-                element.style.left = `calc(${element.style.left} - ${diffX}px)`;
-                isAdjusted = true;
-            } else if (rect.left < 0) {
-                element.style.left = `0px`;
-                isAdjusted = true;
-            }
-            if (diffY > 0) {
-                const currentTop = element.style.top || '';
-                if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight) {
-                    // enough space above, we display the dropdown on top
-                    element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${MARGIN * 2}px)`;
-                    isAdjusted = true;
-                } else if (!!currentTop) {
-                    // not enough space, we just align the dropdown bottom with the parent bottom
-                    element.style.top = `calc(${currentTop} - ${diffY}px)`;
-                    isAdjusted = true;
-                }
-            }
+            isAdjusted = this._adjustPosition(element, rect, diffX, diffY);
         } else if (this._adjustHeight && diffY > 0) {
             element.style.maxHeight = `${this._originalHeight - diffY - MARGIN}px`;
             isAdjusted = true;
@@ -180,6 +162,29 @@ export class PopupComponent implements OnInit, OnDestroy {
             markForCheck(this.cdr);
         }
         return true;
+    }
+
+    private _adjustPosition(element: HTMLElement, rect: DOMRect, diffX: number, diffY: number): boolean {
+        if (diffX > 0) {
+            element.style.left = `calc(${element.style.left} - ${diffX}px)`;
+            return true;
+        } else if (rect.left < 0) {
+            element.style.left = `0px`;
+            return true;
+        }
+        if (diffY > 0) {
+            const currentTop = element.style.top || '';
+            if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight) {
+                // enough space above, we display the dropdown on top
+                element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${MARGIN * 2}px)`;
+                return true;
+            } else if (!!currentTop) {
+                // not enough space, we just align the dropdown bottom with the parent bottom
+                element.style.top = `calc(${currentTop} - ${diffY}px)`;
+                return true;
+            }
+        }
+        return false;
     }
 
     close(byClickingOutside?: boolean) {
