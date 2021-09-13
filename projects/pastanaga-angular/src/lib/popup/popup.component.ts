@@ -13,6 +13,8 @@ import {
 import { PopupService } from './popup.service';
 import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 let nextId = 0;
 export const MARGIN = 4;
@@ -69,6 +71,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     private _adjustHeight = false;
     private _popupType: 'popup' | 'dropdown' = 'popup';
     private _originalHeight = 0;
+    private _terminator = new Subject();
 
     constructor(
         protected popupService: PopupService,
@@ -76,12 +79,19 @@ export class PopupComponent implements OnInit, OnDestroy {
         protected element: ElementRef,
         protected cdr: ChangeDetectorRef,
     ) {
-        this.popupService.closeAllPopups.subscribe(() => this.close());
-        this.popupService.closeAllButId.subscribe((id) => {
-            if (id !== this._id) {
-                this.close();
-            }
-        });
+        this.popupService.closeAllPopups
+            .pipe(
+                filter(() => this.popupType === 'popup'),
+                takeUntil(this._terminator),
+            )
+            .subscribe(() => this.close());
+
+        this.popupService.closeAllButId
+            .pipe(
+                filter((id) => id !== this._id),
+                takeUntil(this._terminator),
+            )
+            .subscribe(() => this.close());
     }
 
     ngOnInit() {
@@ -91,6 +101,8 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.unListen();
+        this._terminator.next();
+        this._terminator.complete();
     }
 
     show(style: PositionStyle, hasSubLevel = false) {
@@ -141,25 +153,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         const diffX = rect.left + rect.width - right;
         const diffY = rect.top + this._originalHeight - bottom;
         if (!this._dontAdjustPosition) {
-            if (diffX > 0) {
-                element.style.left = `calc(${element.style.left} - ${diffX}px)`;
-                isAdjusted = true;
-            } else if (rect.left < 0) {
-                element.style.left = `0px`;
-                isAdjusted = true;
-            }
-            if (diffY > 0) {
-                const currentTop = element.style.top || '';
-                if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight) {
-                    // enough space above, we display the dropdown on top
-                    element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${MARGIN * 2}px)`;
-                    isAdjusted = true;
-                } else if (!!currentTop) {
-                    // not enough space, we just align the dropdown bottom with the parent bottom
-                    element.style.top = `calc(${currentTop} - ${diffY}px)`;
-                    isAdjusted = true;
-                }
-            }
+            isAdjusted = this._adjustPosition(element, rect, diffX, diffY);
         } else if (this._adjustHeight && diffY > 0) {
             element.style.maxHeight = `${this._originalHeight - diffY - MARGIN}px`;
             isAdjusted = true;
@@ -168,6 +162,29 @@ export class PopupComponent implements OnInit, OnDestroy {
             markForCheck(this.cdr);
         }
         return true;
+    }
+
+    private _adjustPosition(element: HTMLElement, rect: DOMRect, diffX: number, diffY: number): boolean {
+        if (diffX > 0) {
+            element.style.left = `calc(${element.style.left} - ${diffX}px)`;
+            return true;
+        } else if (rect.left < 0) {
+            element.style.left = `0px`;
+            return true;
+        }
+        if (diffY > 0) {
+            const currentTop = element.style.top || '';
+            if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight) {
+                // enough space above, we display the dropdown on top
+                element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${MARGIN * 2}px)`;
+                return true;
+            } else if (!!currentTop) {
+                // not enough space, we just align the dropdown bottom with the parent bottom
+                element.style.top = `calc(${currentTop} - ${diffY}px)`;
+                return true;
+            }
+        }
+        return false;
     }
 
     close(byClickingOutside?: boolean) {
