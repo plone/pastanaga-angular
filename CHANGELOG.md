@@ -1,3 +1,8 @@
+# 2.36.25 (2021-09-13)
+
+### Bugfix
+- **Table**: don't display hover/active states on rows which are not clickable [mpellerin42]
+
 # 2.36.24 (2021-09-13)
 
 ### Improvements
