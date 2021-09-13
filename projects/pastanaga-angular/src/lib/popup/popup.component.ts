@@ -13,6 +13,8 @@ import {
 import { PopupService } from './popup.service';
 import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 let nextId = 0;
 export const MARGIN = 4;
@@ -69,6 +71,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     private _adjustHeight = false;
     private _popupType: 'popup' | 'dropdown' = 'popup';
     private _originalHeight = 0;
+    private _terminator = new Subject();
 
     constructor(
         protected popupService: PopupService,
@@ -76,12 +79,19 @@ export class PopupComponent implements OnInit, OnDestroy {
         protected element: ElementRef,
         protected cdr: ChangeDetectorRef,
     ) {
-        this.popupService.closeAllPopups.subscribe(() => this.close());
-        this.popupService.closeAllButId.subscribe((id) => {
-            if (id !== this._id) {
-                this.close();
-            }
-        });
+        this.popupService.closeAllPopups
+            .pipe(
+                filter(() => this.popupType === 'popup'),
+                takeUntil(this._terminator),
+            )
+            .subscribe(() => this.close());
+
+        this.popupService.closeAllButId
+            .pipe(
+                filter((id) => id !== this._id),
+                takeUntil(this._terminator),
+            )
+            .subscribe((id) => this.close());
     }
 
     ngOnInit() {
@@ -91,6 +101,8 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.unListen();
+        this._terminator.next();
+        this._terminator.complete();
     }
 
     show(style: PositionStyle, hasSubLevel = false) {
