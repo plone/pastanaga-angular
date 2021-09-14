@@ -21,6 +21,7 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
     @Input()
     set role(value: 'listbox' | 'menu') {
         this._role = value || 'menu';
+        this.popupType = value !== 'menu' ? 'dropdown' : 'menu';
     }
     get role(): 'listbox' | 'menu' {
         return this._role;
@@ -35,7 +36,7 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
         protected cdr: ChangeDetectorRef,
     ) {
         super(popupService, renderer, element, cdr);
-        this.popupType = 'dropdown';
+        this.popupType = 'menu';
     }
 
     ngOnInit(): void {

@@ -46,8 +46,7 @@
                  [adjustHeight]="adjustHeight"
                  [companionElement]="selectInput"
                  (onClose)="dropDownClosed()"
-                 (onOpen)="dropDownOpened()"
-                 >
+                 (onOpen)="dropDownOpened()">
 
         <ng-container *ngIf="dropDownModels.length; else contentOptions">
             <pa-select-options

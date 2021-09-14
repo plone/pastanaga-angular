@@ -53,7 +53,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
-    set popupType(value: 'popup' | 'dropdown') {
+    set popupType(value: 'popup' | 'dropdown' | 'menu') {
         this._popupType = value;
     }
     get popupType() {
@@ -69,7 +69,7 @@ export class PopupComponent implements OnInit, OnDestroy {
 
     private _stayVisible = false;
     private _adjustHeight = false;
-    private _popupType: 'popup' | 'dropdown' = 'popup';
+    private _popupType: 'popup' | 'dropdown' | 'menu' = 'popup';
     private _originalHeight = 0;
     private _terminator = new Subject();
 
@@ -81,7 +81,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     ) {
         this.popupService.closeAllPopups
             .pipe(
-                filter(() => this.popupType === 'popup'),
+                filter(() => this.popupType === 'popup' || this.popupType === 'menu'),
                 takeUntil(this._terminator),
             )
             .subscribe(() => this.close());
