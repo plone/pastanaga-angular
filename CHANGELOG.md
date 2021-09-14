@@ -1,3 +1,11 @@
+# 2.36.26 (2021-09-14)
+
+### Bugfix
+- **Popup** / **Dropdown**: [mpellerin42]
+  - Add a new popupType `menu` so popups and menus are closed on `closeAllPopups` event, while dropdowns are not
+  - Set dropdown default `popupType` to `menu` instead of `dropdown`
+  - Update dropdown `popupType` when dropdown `role` changes
+
 # 2.36.25 (2021-09-13)
 
 ### Bugfix
@@ -7,7 +15,7 @@
 
 ### Improvements
 - **Popup**: [mpellerin42]
-  - Close only popups (not dropdowns) when receiving closeAllPopups event
+  - Close only popups (not dropdowns) when receiving `closeAllPopups` event
   - Decrease complexity in adjust popup method
 
 # 2.36.23 (2021-09-02)
