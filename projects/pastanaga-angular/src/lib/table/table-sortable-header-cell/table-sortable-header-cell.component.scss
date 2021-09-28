@@ -14,7 +14,7 @@ button {
 
     &:active,
     &.pa-active {
-        color: $color-neutral-primary-default;
+        color: $color-black;
     }
     pa-icon {
         display: flex;
@@ -32,7 +32,7 @@ button {
         }
         &:hover, &:active, &.pa-keyboard-focus {
             cursor: pointer;
-            color: $color-neutral-primary-default;
+            color: $color-black;
 
             pa-icon {
                 opacity: 1;

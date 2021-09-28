@@ -10,7 +10,7 @@
     white-space: nowrap;
 
     li {
-        border-bottom: 1px solid $color-neutral-primary-lighter;
+        border-bottom: 1px solid $color-neutral-lighter;
     }
     &.pa-full-width-tabs {
         pa-tab {
@@ -28,7 +28,7 @@ pa-tab {
         @include font-size(m);
         @include line-height(l);
         font-weight: $font-weight-regular;
-        color: $color-neutral-primary-default;
+        color: $color-black;
         border: 0;
         padding: 0;
         background: transparent;
@@ -101,7 +101,7 @@ pa-tab {
 
 
             &[aria-expanded="true"] {
-                color: $color-neutral-primary-default;
+                color: $color-black;
                 cursor: default;
             }
 

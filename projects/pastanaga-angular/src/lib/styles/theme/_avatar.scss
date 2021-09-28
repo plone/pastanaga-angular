@@ -2,14 +2,14 @@
 @import "spacing";
 @import "typography";
 
-$avatar-primary:    $color-accent-primary-lightest !default;
-$avatar-secondary:  $color-accent-secondary-lightest !default;
-$avatar-tertiary:   $color-accent-tertiary-lightest !default;
+$avatar-primary: $color-primary-lightest !default;
+$avatar-secondary: $color-secondary-lightest !default;
+$avatar-tertiary: $color-tertiary-lightest !default;
 
 $size-avatar-tiny:                          rhythm(3) !default;
 $size-avatar-small:                         rhythm(4) !default;
 $size-avatar-medium:                        rhythm(6) !default;
 $size-avatar-huge:                          rhythm(16) !default;
-$background-color-avatar-default:           $color-neutral-secondary-lighter !default;
+$background-color-avatar-default: $color-neutral-light !default;
 $font-weight-avatar-icon-alt:               $font-weight-semi-bold !default;
 $font-weight-avatar-initials:               $font-weight-thin !default;

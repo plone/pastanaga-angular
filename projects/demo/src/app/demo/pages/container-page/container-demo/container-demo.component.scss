@@ -1,7 +1,7 @@
 @import "../../../../../../../pastanaga-angular/src/lib/styles/variables";
 
 :host {
-    background-color: $color-neutral-primary-lightest;
+    background-color: $color-white;
     height: 100%;
     left: 0;
     position: fixed;
@@ -28,7 +28,7 @@
 
     .pa-main-side-panel,
     [class^="pa-main-container-"] {
-        background-color: $color-neutral-secondary-light;
+        background-color: $color-neutral-regular;
         display: block;
         height: rhythm(5);
         line-height: rhythm(5);
@@ -41,33 +41,33 @@
     }
 
     .pa-main-side-panel {
-        background-color: $color-neutral-secondary-default;
+        background-color: $color-neutral-strong;
     }
 
     @media (min-width: $size-viewport-medium-min) {
         [class^="pa-main-container-"] {
-            background-color: $color-accent-secondary-default;
+            background-color: $color-secondary-regular;
         }
         .pa-child-container-compact {
-            background-color: $color-accent-secondary-lighter;
+            background-color: $color-secondary-lighter;
         }
     }
 
     @media (min-width: $size-viewport-large-min) {
         [class^="pa-main-container-"] {
-            background-color: $color-accent-tertiary-default;
+            background-color: $color-tertiary-regular;
         }
         .pa-child-container-compact {
-            background-color: $color-accent-tertiary-lighter;
+            background-color: $color-tertiary-lighter;
         }
     }
 
     @media (min-width: $size-viewport-xlarge-min) {
         [class^="pa-main-container-"] {
-            background-color: $color-accent-primary-light;
+            background-color: $color-primary-light;
         }
         .pa-child-container-compact {
-            background-color: $color-accent-primary-lighter;
+            background-color: $color-primary-lighter;
         }
     }
 }

@@ -6,35 +6,35 @@
     height: rhythm(4);
     padding-left: rhythm(3);
     h2 {
-        color: $color-neutral-primary-default;
+        color: $color-black;
     }
     span {
         font-size: font-size(m);
-        color: $color-neutral-secondary-default;
+        color: $color-neutral-strong;
     }
     pa-icon ::ng-deep svg {
-        fill: $color-neutral-secondary-default;
+        fill: $color-neutral-strong;
     }
     &:hover {
         span {
-                color: $color-neutral-primary-default;
+                color: $color-black;
         }
         pa-icon ::ng-deep svg {
-            fill: $color-neutral-primary-default;
+            fill: $color-black;
         }
     }
     &:active {
         span {
-                color: $color-neutral-secondary-default;
+                color: $color-neutral-strong;
         }
         pa-icon ::ng-deep svg {
-            fill: $color-neutral-secondary-default;
+            fill: $color-neutral-strong;
         }
     }
     &.active {
-        border-left: rhythm(.25) solid $color-accent-primary-default;
+        border-left: rhythm(.25) solid $color-primary-regular;
         span {
-            color: $color-neutral-primary-default;
+            color: $color-black;
             font-weight: $font-weight-bold;
         }
     }
@@ -54,34 +54,34 @@
     }
     &.inverted {
         h2 {
-            color: $color-neutral-primary-lightest;
+            color: $color-white;
         }
         span {
-            color: $color-neutral-secondary-light;
+            color: $color-neutral-regular;
         }
         pa-icon ::ng-deep svg {
-            fill: $color-neutral-secondary-light;
+            fill: $color-neutral-regular;
         }
         &:hover {
             span {
-                color: $color-neutral-primary-lightest;
+                color: $color-white;
             }
             pa-icon ::ng-deep svg {
-                fill: $color-neutral-primary-lightest;
+                fill: $color-white;
             }
         }
         &:active {
             span {
-                 color: $color-neutral-secondary-light;
+                 color: $color-neutral-regular;
             }
             pa-icon ::ng-deep svg {
-                fill: $color-neutral-secondary-light;
+                fill: $color-neutral-regular;
             }
         }
         &.active {
-            border-left: rhythm(.25) solid $color-accent-primary-light;
+            border-left: rhythm(.25) solid $color-primary-light;
             span {
-                color: $color-neutral-primary-lightest;
+                color: $color-white;
             }
         }
 

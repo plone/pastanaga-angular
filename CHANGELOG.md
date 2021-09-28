@@ -1,3 +1,15 @@
+# 2.37.0 (2021-09-28)
+
+### Breaking changes
+- **Colors**: [mpellerin42]
+  - Move black and white in their own color categories (which will carry alpha colors later)
+  - Keep only one category of neutral colors (no more primary/secondary on their token name)
+  - Simplify color token by removing the `accent` part for primary, secondary and tertiary colors 
+  - Replace darker/dark/default variations by stronger/strong/regular
+
+### Improvements
+  - Update color documentation [mpellerin42]
+
 # 2.36.26 (2021-09-14)
 
 ### Bugfix

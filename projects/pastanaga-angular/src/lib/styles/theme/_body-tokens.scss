@@ -5,18 +5,18 @@
 // COLORS
 //=====================================
 // Background
-$color-background-body: $color-neutral-primary-lightest !default;
+$color-background-body: $color-white !default;
 
 // Text
-$color-text-accent: $color-neutral-primary-default !default;
-$color-text-dim: $color-neutral-secondary-default !default;
-$color-text-disabled: $color-neutral-secondary-light !default;
+$color-text-accent: $color-black !default;
+$color-text-dim: $color-neutral-strong !default;
+$color-text-disabled: $color-neutral-regular !default;
 
 // Links
-$color-text-link-regular: $color-accent-primary-default !default;
-$color-text-link-regular-hover: $color-accent-primary-dark !default;
+$color-text-link-regular: $color-primary-regular !default;
+$color-text-link-regular-hover: $color-primary-strong !default;
 
-$color-text-title-default: $color-neutral-primary-default !default;
+$color-text-title-default: $color-black !default;
 
 //=====================================
 // TYPOGRAPHY

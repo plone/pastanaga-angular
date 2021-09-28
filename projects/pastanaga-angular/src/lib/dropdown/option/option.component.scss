@@ -26,7 +26,7 @@
     }
 
     .pa-option-description {
-        color: $color-neutral-secondary-default;
+        color: $color-neutral-strong;
     }
 
     &[hidden] {
@@ -81,6 +81,6 @@
     pa-icon.pa-option-selected-icon {
         position: absolute;
         right: $padding-menu-option-side;
-        color: $color-accent-primary-default;
+        color: $color-primary-regular;
     }
 }
