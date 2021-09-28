@@ -31,7 +31,7 @@ pa-demo-page {
         }
         dd {
             small {
-                color: $color-neutral-secondary-light;
+                color: $color-neutral-regular;
             }
         }
     }
@@ -50,7 +50,7 @@ pa-demo-page {
     pa-demo-usage {
         code {
             display: inline;
-            background: $color-neutral-primary-lighter;
+            background: $color-neutral-lighter;
             margin: 0;
             padding: 0 rhythm(.25);
             overflow: auto;
@@ -93,7 +93,7 @@ pa-demo-page {
     pa-demo-code code {
         display: block;
         padding: rhythm(1.5);
-        background-color: $color-neutral-secondary-lighter;
+        background-color: $color-neutral-light;
         margin: rhythm(1.5) 0;
         overflow: auto;
     }

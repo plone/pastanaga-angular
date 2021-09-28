@@ -11,44 +11,44 @@
 // text
 //
 //primary
-$color-text-button-primary-solid:              $color-neutral-primary-lightest !default;
-$color-text-button-primary-solid-hover:        $color-neutral-primary-lightest !default;
-$color-text-button-primary-solid-active:       $color-neutral-primary-lightest !default;
+$color-text-button-primary-solid: $color-white !default;
+$color-text-button-primary-solid-hover: $color-white !default;
+$color-text-button-primary-solid-active: $color-white !default;
 
-$color-text-button-primary-basic:         $color-accent-primary-dark !default;
-$color-text-button-primary-basic-hover:   $color-accent-primary-darker !default;
-$color-text-button-primary-basic-active:  $color-accent-primary-darker !default;
+$color-text-button-primary-basic: $color-primary-strong !default;
+$color-text-button-primary-basic-hover: $color-primary-stronger !default;
+$color-text-button-primary-basic-active: $color-primary-stronger !default;
 
 // secondary
-$color-text-button-secondary-solid:        $color-neutral-primary-default !default;
-$color-text-button-secondary-solid-hover:  $color-neutral-primary-default !default;
-$color-text-button-secondary-solid-active: $color-neutral-primary-default !default;
+$color-text-button-secondary-solid: $color-black !default;
+$color-text-button-secondary-solid-hover: $color-black !default;
+$color-text-button-secondary-solid-active: $color-black !default;
 
-$color-text-button-secondary-basic:           $color-neutral-primary-default !default;
-$color-text-button-secondary-basic-hover:     $color-neutral-primary-default !default;
-$color-text-button-secondary-basic-active:    $color-neutral-primary-default !default;
+$color-text-button-secondary-basic: $color-black !default;
+$color-text-button-secondary-basic-hover: $color-black !default;
+$color-text-button-secondary-basic-active: $color-black !default;
 
 // inverted
-$color-text-button-inverted-solid:        $color-neutral-primary-default !default;
-$color-text-button-inverted-solid-hover:  $color-neutral-primary-default !default;
-$color-text-button-inverted-solid-active: $color-neutral-primary-default !default;
+$color-text-button-inverted-solid: $color-black !default;
+$color-text-button-inverted-solid-hover: $color-black !default;
+$color-text-button-inverted-solid-active: $color-black !default;
 
-$color-text-button-inverted-basic:           $color-neutral-primary-lightest !default;
-$color-text-button-inverted-basic-hover:     $color-neutral-primary-lightest !default;
-$color-text-button-inverted-basic-active:    $color-neutral-primary-lightest !default;
+$color-text-button-inverted-basic: $color-white !default;
+$color-text-button-inverted-basic-hover: $color-white !default;
+$color-text-button-inverted-basic-active: $color-white !default;
 
 // destructive
-$color-text-button-destructive-solid:             $color-neutral-primary-lightest !default;
-$color-text-button-destructive-solid-hover:       $color-neutral-primary-lightest !default;
-$color-text-button-destructive-solid-active:      $color-neutral-primary-lightest !default;
+$color-text-button-destructive-solid: $color-white !default;
+$color-text-button-destructive-solid-hover: $color-white !default;
+$color-text-button-destructive-solid-active: $color-white !default;
 
-$color-text-button-destructive-basic:        $color-accent-secondary-dark !default;
-$color-text-button-destructive-basic-hover:  $color-accent-secondary-darker !default;
-$color-text-button-destructive-basic-active: $color-accent-secondary-darker !default;
+$color-text-button-destructive-basic: $color-secondary-strong !default;
+$color-text-button-destructive-basic-hover: $color-secondary-stronger !default;
+$color-text-button-destructive-basic-active: $color-secondary-stronger !default;
 
 // disabled
-$color-text-button-solid-disabled:                 $color-neutral-secondary-light !default;
-$color-text-button-basic-disabled:                 $color-neutral-secondary-light !default;
+$color-text-button-solid-disabled: $color-neutral-regular !default;
+$color-text-button-basic-disabled: $color-neutral-regular !default;
 $color-text-button-inverted-solid-disabled:        $color-neutral-inverted-lighter !default;
 $color-text-button-inverted-basic-disabled:        $color-neutral-inverted-lighter !default;
 
@@ -56,43 +56,43 @@ $color-text-button-inverted-basic-disabled:        $color-neutral-inverted-light
 // background
 //
 // primary
-$color-background-button-primary-solid:        $color-accent-primary-default !default;
-$color-background-button-primary-solid-hover:  $color-accent-primary-default !default;
-$color-background-button-primary-solid-active: $color-accent-primary-dark !default;
+$color-background-button-primary-solid: $color-primary-regular !default;
+$color-background-button-primary-solid-hover: $color-primary-regular !default;
+$color-background-button-primary-solid-active: $color-primary-strong !default;
 
 $color-background-button-primary-basic:           transparent !default;
-$color-background-button-primary-basic-hover:     $color-accent-primary-lightest !default;
-$color-background-button-primary-basic-active:    $color-accent-primary-lighter !default;
+$color-background-button-primary-basic-hover: $color-primary-lightest !default;
+$color-background-button-primary-basic-active: $color-primary-lighter !default;
 
 // secondary
-$color-background-button-secondary-solid:          $color-neutral-secondary-lighter !default;
-$color-background-button-secondary-solid-hover:    $color-neutral-secondary-light !default;
-$color-background-button-secondary-solid-active:   $color-neutral-secondary-default !default;
+$color-background-button-secondary-solid: $color-neutral-light !default;
+$color-background-button-secondary-solid-hover: $color-neutral-regular !default;
+$color-background-button-secondary-solid-active: $color-neutral-strong !default;
 
 $color-background-button-secondary-basic:         transparent !default;
-$color-background-button-secondary-basic-hover: $color-neutral-secondary-lighter !default;
-$color-background-button-secondary-basic-active:  $color-neutral-secondary-light !default;
+$color-background-button-secondary-basic-hover: $color-neutral-light !default;
+$color-background-button-secondary-basic-active: $color-neutral-regular !default;
 
 // inverted
-$color-background-button-inverted-solid:          $color-neutral-secondary-lightest !default;
-$color-background-button-inverted-solid-hover:    $color-neutral-primary-lighter !default;
-$color-background-button-inverted-solid-active:   $color-neutral-secondary-lighter !default;
+$color-background-button-inverted-solid: $color-neutral-lightest !default;
+$color-background-button-inverted-solid-hover: $color-neutral-lighter !default;
+$color-background-button-inverted-solid-active: $color-neutral-light !default;
 
 $color-background-button-inverted-basic:         transparent !default;
 $color-background-button-inverted-basic-hover:   $color-neutral-inverted-light !default;
 $color-background-button-inverted-basic-active:  $color-neutral-inverted-lighter !default;
 
 // destructive
-$color-background-button-destructive-solid:           $color-accent-secondary-dark !default;
-$color-background-button-destructive-solid-hover:     $color-accent-secondary-dark !default;
-$color-background-button-destructive-solid-active:    $color-accent-secondary-darker !default;
+$color-background-button-destructive-solid: $color-secondary-strong !default;
+$color-background-button-destructive-solid-hover: $color-secondary-strong !default;
+$color-background-button-destructive-solid-active: $color-secondary-stronger !default;
 
 $color-background-button-destructive-basic:          transparent !default;
-$color-background-button-destructive-basic-hover:    $color-accent-secondary-lightest !default;
-$color-background-button-destructive-basic-active:   $color-accent-secondary-lighter !default;
+$color-background-button-destructive-basic-hover: $color-secondary-lightest !default;
+$color-background-button-destructive-basic-active: $color-secondary-lighter !default;
 
 // disabled
-$color-background-button-solid-disabled:            $color-neutral-primary-lighter !default;
+$color-background-button-solid-disabled: $color-neutral-lighter !default;
 $color-background-button-basic-disabled:            transparent !default;
 $color-background-button-inverted-solid-disabled:   $color-neutral-inverted-light !default;
 

@@ -1,16 +1,19 @@
 // Colors palette
 
+// Black
+$_denim:   hsl(207,90%,7%);
+
+// White
+$_white:   hsl(0,0%,100%);
+
 // Grays
-$_black:   #000;
 $_dolphin: hsl(207,17%,58%);
 $_silver:  hsl(207,17%,80%);
 $_smoke:   hsl(207,17%,91%);
 $_snow:    hsl(207,17%,96%);
 $_steam:   hsl(207,17%,98%);
-$_white:   #fff;
 
 // Blues
-$_denim:     hsl(207,90%,7%);
 $_royal:     hsl(207,90%,31%);
 $_sapphire:  hsl(207,90%,43%);
 $_cobalt:    hsl(207,90%,55%);
@@ -34,42 +37,47 @@ $_tiffany:   hsl(175,60%,66%);
 $_spa:       hsl(175,60%,83%);
 $_aqua:      hsl(175,60%,90%);
 
+// General tokens
+$color-black:   $_denim !default;
+$color-white:   $_white !default;
+
+$color-neutral-strong:   $_dolphin !default;
+$color-neutral-regular:  $_silver !default;
+$color-neutral-light:    $_smoke !default;
+$color-neutral-lighter:  $_snow !default;
+$color-neutral-lightest: $_steam !default;
+
+$color-primary-stronger:    $_royal !default;
+$color-primary-strong:      $_sapphire !default;
+$color-primary-regular:     $_cobalt !default;
+$color-primary-light:       $_azure !default;
+$color-primary-lighter:     $_sky !default;
+$color-primary-lightest:    $_arctic !default;
+
+$color-secondary-stronger:  $_wine !default;
+$color-secondary-strong:    $_candy !default;
+$color-secondary-regular:   $_rose !default;
+$color-secondary-light:     $_poppy !default;
+$color-secondary-lighter:   $_flamingo !default;
+$color-secondary-lightest:  $_ballet !default;
+
+$color-tertiary-stronger:   $_puya !default;
+$color-tertiary-strong:     $_peacock !default;
+$color-tertiary-regular:    $_turquoise !default;
+$color-tertiary-light:      $_tiffany !default;
+$color-tertiary-lighter:    $_spa !default;
+$color-tertiary-lightest:   $_aqua !default;
+
+
+// To be reviewed
+
 // Alphas
 $_alpha_default:   hsla(0,0%,100%,0.5);
 $_alpha_light:     hsla(0,0%,100%,0.25);
 $_alpha_lighter:   hsla(0,0%,100%,0.15);
 $_alpha_lightest:  hsla(0,0%,100%,0.05);
 
-// General tokens
-$color-neutral-primary-default:     $_denim !default;
-$color-neutral-primary-lighter:     $_snow !default;
-$color-neutral-primary-lightest:    $_white !default;
-$color-neutral-secondary-default:   $_dolphin !default;
-$color-neutral-secondary-light:     $_silver !default;
-$color-neutral-secondary-lighter:   $_smoke !default;
-$color-neutral-secondary-lightest:  $_steam !default;
-
-$color-accent-primary-darker: $_royal !default;
-$color-accent-primary-dark: $_sapphire !default;
-$color-accent-primary-default: $_cobalt !default;
-$color-accent-primary-light: $_azure !default;
-$color-accent-primary-lighter: $_sky !default;
-$color-accent-primary-lightest: $_arctic !default;
-
-$color-accent-secondary-darker: $_wine !default;
-$color-accent-secondary-dark: $_candy !default;
-$color-accent-secondary-default: $_rose !default;
-$color-accent-secondary-light: $_poppy !default;
-$color-accent-secondary-lighter: $_flamingo !default;
-$color-accent-secondary-lightest: $_ballet !default;
-
-$color-accent-tertiary-darker: $_puya !default;
-$color-accent-tertiary-dark: $_peacock !default;
-$color-accent-tertiary-default: $_turquoise !default;
-$color-accent-tertiary-light: $_tiffany !default;
-$color-accent-tertiary-lighter: $_spa !default;
-$color-accent-tertiary-lightest: $_aqua !default;
-
+// Inverted
 $color-neutral-inverted-default:   $_alpha_default !default;
 $color-neutral-inverted-light:     $_alpha_light !default;
 $color-neutral-inverted-lighter:   $_alpha_lighter !default;

@@ -14,13 +14,13 @@
 
     .pa-buttons-container {
         display: flex;
-        border: 1px solid $color-neutral-secondary-lighter;
+        border: 1px solid $color-neutral-light;
         padding: rhythm(1);
         pa-button {
             margin: rhythm(1);
         }
         &.inverted {
-            background-color: $color-neutral-primary-default;
+            background-color: $color-black;
         }
     }
 }

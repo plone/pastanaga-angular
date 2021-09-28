@@ -1,7 +1,7 @@
 @import "variables";
 
 .pa-modal-backdrop {
-    background-color: rgba($color-neutral-primary-default, .5);
+    background-color: rgba($color-black, .5);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -26,7 +26,7 @@
     z-index: $z-index-modal;
 
     .pa-modal-description {
-        color: $color-neutral-secondary-default;
+        color: $color-neutral-strong;
         text-align: center;
     }
 

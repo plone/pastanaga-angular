@@ -2,7 +2,7 @@
 @import "../../styles/theme/modal";
 
 .pa-modal-advanced {
-    background-color: $color-neutral-primary-lightest;
+    background-color: $color-white;
 
     .pa-modal-header {
         @include fixed-header;

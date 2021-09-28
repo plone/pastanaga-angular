@@ -15,15 +15,15 @@ $overlay-anim-duration: .6s;
         top: 0;
         padding: 0 rhythm(3);
         z-index: $z-index-popup;
-        background-color: $color-neutral-primary-lighter;
+        background-color: $color-neutral-lighter;
         &.inverted {
-            background-color: $color-neutral-primary-default;
+            background-color: $color-black;
             .pa-close-side-nav-button ::ng-deep .pa-button.pa-secondary.pa-basic {
-                color: $color-neutral-primary-lightest;
+                color: $color-white;
 
                 &:hover {
                     background: transparent;
-                    color: $color-neutral-secondary-light;
+                    color: $color-neutral-regular;
                 }
             }
         }
@@ -82,7 +82,7 @@ $overlay-anim-duration: .6s;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: $color-neutral-primary-lightest;
+        background: $color-white;
         z-index: $z-index-popup;
         opacity: 0;
 

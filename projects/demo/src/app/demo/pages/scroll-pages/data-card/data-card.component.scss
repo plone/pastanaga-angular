@@ -1,7 +1,7 @@
 @import "../../../../../../../pastanaga-angular/src/lib/styles/variables";
 
 .pa-demo-card {
-    border-bottom: 1px solid $color-neutral-primary-lighter;
+    border-bottom: 1px solid $color-neutral-lighter;
     padding: rhythm(2) rhythm(1);
 
     .contact {
@@ -10,6 +10,6 @@
         margin-top: rhythm(1);
     }
     small {
-        color: $color-neutral-secondary-default;
+        color: $color-neutral-strong;
     }
 }

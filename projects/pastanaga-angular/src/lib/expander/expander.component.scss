@@ -9,7 +9,7 @@
         transition: transform $transition-hint;
 
         pa-icon svg {
-            fill: $color-neutral-primary-default;
+            fill: $color-black;
         }
     }
 
@@ -19,12 +19,12 @@
         width: 100%;
 
         .pa-expander-title {
-            color: $color-neutral-secondary-default;
+            color: $color-neutral-strong;
             cursor: pointer;
             flex: 1 0 auto;
 
             &:hover {
-                color: $color-neutral-primary-default;
+                color: $color-black;
             }
         }
 
@@ -56,7 +56,7 @@
         flex-direction: row-reverse;
 
         .pa-expander-title {
-            color: $color-neutral-primary-default;
+            color: $color-black;
         }
 
         .pa-expander-header-extra {

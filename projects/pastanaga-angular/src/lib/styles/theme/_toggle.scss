@@ -7,20 +7,20 @@
 //=====================================
 
 // Background
-$color-background-toggle-selected: $color-accent-primary-default !default;
-$color-background-toggle-selected-hover: $color-accent-primary-dark !default;
-$color-background-toggle-disabled: $color-neutral-primary-lighter !default;
+$color-background-toggle-selected: $color-primary-regular !default;
+$color-background-toggle-selected-hover: $color-primary-strong !default;
+$color-background-toggle-disabled: $color-neutral-lighter !default;
 
 // Border
 $color-border-toggle-selected: $color-background-toggle-selected !default;
 $color-border-toggle-selected-hover: $color-background-toggle-selected-hover !default;
-$color-border-toggle-unselected: $color-neutral-secondary-light !default;
-$color-border-toggle-unselected-hover: $color-neutral-primary-default !default;
+$color-border-toggle-unselected: $color-neutral-regular !default;
+$color-border-toggle-unselected-hover: $color-black !default;
 $color-border-toggle-disabled: $color-background-toggle-disabled !default;
 
 // Check
-$color-check-toggle: $color-neutral-primary-lightest !default;
-$color-check-toggle-disabled: $color-neutral-secondary-light !default;
+$color-check-toggle: $color-white !default;
+$color-check-toggle-disabled: $color-neutral-regular !default;
 
 //=====================================
 // SPACING
