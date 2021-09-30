@@ -1,3 +1,8 @@
+# 2.37.1 (2021-09-30)
+
+### Bugfix
+- **Popup**: replace `markForCheck` by `detectChanges` on `close` method so the UI is properly refreshed when it is called from an observable [mpellerin42]
+
 # 2.37.0 (2021-09-28)
 
 ### Breaking changes

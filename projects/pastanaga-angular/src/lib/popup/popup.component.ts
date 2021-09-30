@@ -11,7 +11,7 @@ import {
     Renderer2,
 } from '@angular/core';
 import { PopupService } from './popup.service';
-import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common';
+import { detectChanges, getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -192,7 +192,8 @@ export class PopupComponent implements OnInit, OnDestroy {
             this.isDisplayed = false;
             this.unListen();
             this.onClose.emit(byClickingOutside);
-            markForCheck(this.cdr);
+            // detectChanges instead of markForCheck because this method can be called from an observable
+            detectChanges(this.cdr);
         }
     }
 
