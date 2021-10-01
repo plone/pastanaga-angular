@@ -9,7 +9,7 @@
         transition: transform $transition-hint;
 
         pa-icon svg {
-            fill: $color-black;
+            fill: $color-dark-stronger;
         }
     }
 
@@ -24,7 +24,7 @@
             flex: 1 0 auto;
 
             &:hover {
-                color: $color-black;
+                color: $color-dark-stronger;
             }
         }
 
@@ -56,7 +56,7 @@
         flex-direction: row-reverse;
 
         .pa-expander-title {
-            color: $color-black;
+            color: $color-dark-stronger;
         }
 
         .pa-expander-header-extra {

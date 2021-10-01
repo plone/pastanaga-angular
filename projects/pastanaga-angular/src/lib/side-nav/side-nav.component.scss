@@ -17,9 +17,9 @@ $overlay-anim-duration: .6s;
         z-index: $z-index-popup;
         background-color: $color-neutral-lighter;
         &.inverted {
-            background-color: $color-black;
+            background-color: $color-dark-stronger;
             .pa-close-side-nav-button ::ng-deep .pa-button.pa-secondary.pa-basic {
-                color: $color-white;
+                color: $color-light-stronger;
 
                 &:hover {
                     background: transparent;
@@ -82,7 +82,7 @@ $overlay-anim-duration: .6s;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: $color-white;
+        background: $color-light-stronger;
         z-index: $z-index-popup;
         opacity: 0;
 

@@ -6,7 +6,7 @@
     height: rhythm(4);
     padding-left: rhythm(3);
     h2 {
-        color: $color-black;
+        color: $color-dark-stronger;
     }
     span {
         font-size: font-size(m);
@@ -17,10 +17,10 @@
     }
     &:hover {
         span {
-                color: $color-black;
+                color: $color-dark-stronger;
         }
         pa-icon ::ng-deep svg {
-            fill: $color-black;
+            fill: $color-dark-stronger;
         }
     }
     &:active {
@@ -34,7 +34,7 @@
     &.active {
         border-left: rhythm(.25) solid $color-primary-regular;
         span {
-            color: $color-black;
+            color: $color-dark-stronger;
             font-weight: $font-weight-bold;
         }
     }
@@ -54,7 +54,7 @@
     }
     &.inverted {
         h2 {
-            color: $color-white;
+            color: $color-light-stronger;
         }
         span {
             color: $color-neutral-regular;
@@ -64,10 +64,10 @@
         }
         &:hover {
             span {
-                color: $color-white;
+                color: $color-light-stronger;
             }
             pa-icon ::ng-deep svg {
-                fill: $color-white;
+                fill: $color-light-stronger;
             }
         }
         &:active {
@@ -81,7 +81,7 @@
         &.active {
             border-left: rhythm(.25) solid $color-primary-light;
             span {
-                color: $color-white;
+                color: $color-light-stronger;
             }
         }
 

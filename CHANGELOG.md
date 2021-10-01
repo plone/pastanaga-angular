@@ -1,3 +1,16 @@
+# 2.38.0 (2021-10-01)
+
+### Breaking changes
+- **Colors**: Don't name color categories with a real color name [mpellerin42]
+  - Rename $color-black to $color-dark-stronger
+  - Rename $color-white to $color-light-stronger
+
+### Bugfix
+- Fix white checkbox selected mark: use hexadecimal color code instead of HSL for white to prevent SASS to convert it into the keyword `white` [mpellerin42] 
+
+### Improvements
+- Update palette documentation page [mpellerin42]
+
 # 2.37.1 (2021-09-30)
 
 ### Bugfix

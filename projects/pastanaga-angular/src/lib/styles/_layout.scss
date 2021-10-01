@@ -17,7 +17,7 @@ $footer-height: rhythm(6) * 3;
     bottom: 0;
     padding: rhythm(6) 0;
     height: $footer-height;
-    background: linear-gradient(180deg, rgba($color-white, 0) 0%, $color-white 54.71%);
+    background: linear-gradient(180deg, rgba($color-light-stronger, 0) 0%, $color-light-stronger 54.71%);
     width: 100%;
     max-width: calc(100vw - #{$margin-formula-small}*2);
 }
