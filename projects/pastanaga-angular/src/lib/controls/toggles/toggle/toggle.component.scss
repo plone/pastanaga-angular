@@ -20,7 +20,7 @@ $toggle-transition-duration: .3s;
         margin: auto rhythm(2) auto auto;
 
         .pa-field-label {
-            color: $color-black;
+            color: $color-dark-stronger;
             position: inherit;
             max-width: 100%;
         }
@@ -64,7 +64,7 @@ $toggle-transition-duration: .3s;
             bottom: $toggle-slider-padding;
             left: $toggle-slider-padding;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-            background-color: $color-white;
+            background-color: $color-light-stronger;
         }
     }
 

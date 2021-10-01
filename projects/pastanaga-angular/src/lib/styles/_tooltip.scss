@@ -10,8 +10,8 @@
     box-shadow: $shadow-tooltip;
     border-radius: 1px;
     padding: rhythm(.5) rhythm(1);
-    background: $color-black;
-    color: $color-white;
+    background: $color-dark-stronger;
+    color: $color-light-stronger;
     white-space: nowrap;
     pointer-events: none;
 
@@ -30,7 +30,7 @@
     top: 0;
     margin-left: rhythm(1);
     margin-right: - rhythm(.25);
-    color: $color-white;
+    color: $color-light-stronger;
     line-height: 0;
 }
 

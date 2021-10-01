@@ -28,7 +28,7 @@ pa-tab {
         @include font-size(m);
         @include line-height(l);
         font-weight: $font-weight-regular;
-        color: $color-black;
+        color: $color-dark-stronger;
         border: 0;
         padding: 0;
         background: transparent;
@@ -101,7 +101,7 @@ pa-tab {
 
 
             &[aria-expanded="true"] {
-                color: $color-black;
+                color: $color-dark-stronger;
                 cursor: default;
             }
 

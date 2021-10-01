@@ -7,14 +7,14 @@ $background-toast-error: $color-secondary-regular !default;
 $background-toast-warning: $color-secondary-light !default;
 
 // Text color
-$color-toast-success: $color-white !default;
-$color-toast-error: $color-white !default;
-$color-toast-warning: $color-white !default;
-$color-toast-info: $color-white !default;
+$color-toast-success: $color-light-stronger !default;
+$color-toast-error: $color-light-stronger !default;
+$color-toast-warning: $color-light-stronger !default;
+$color-toast-info: $color-light-stronger !default;
 
 // button background
-$background-toast-button-default-hover: rgba($color-white, 0.15) !default;
-$background-toast-button-default-active: rgba($color-white, 0.25) !default;
+$background-toast-button-default-hover: rgba($color-light-stronger, 0.15) !default;
+$background-toast-button-default-active: rgba($color-light-stronger, 0.25) !default;
 
 $background-toast-button-info-hover: $background-toast-button-default-hover !default;
 $background-toast-button-success-hover: $background-toast-button-default-hover !default;

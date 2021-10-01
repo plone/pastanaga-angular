@@ -7,7 +7,7 @@
     margin-bottom: rhythm(5);
 
     & > div {
-        background-color: $color-white;
+        background-color: $color-light-stronger;
         display: grid;
         justify-items: center;
         padding: rhythm(1.5);
@@ -27,8 +27,8 @@
         }
     }
     div.inverted {
-        background-color: $color-black;
-        color: $color-white;
+        background-color: $color-dark-stronger;
+        color: $color-light-stronger;
     }
 }
 [class*="color-"] {
@@ -37,11 +37,11 @@
     border-radius: rhythm(3);
 }
 
-.color-black {
-    background-color: $color-black;
+.color-dark-stronger {
+    background-color: $color-dark-stronger;
 }
-.color-white {
-    background-color: $color-white;
+.color-light-stronger {
+    background-color: $color-light-stronger;
 }
 
 .color-neutral-strong {

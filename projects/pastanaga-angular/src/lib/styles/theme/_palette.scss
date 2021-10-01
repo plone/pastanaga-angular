@@ -1,10 +1,12 @@
 // Colors palette
 
-// Black
+// Blacks
 $_denim:   hsl(207,90%,7%);
 
-// White
-$_white:   hsl(0,0%,100%);
+// Whites
+// We cannot use HSL for white because hsl(0,0%,100%) is translated to the keyword `white` instead of the hexa code `#fff`,
+// which is breaking the code we use in `background-image: url()` where we encode the `#`
+$_white:   #fff;
 
 // Grays
 $_dolphin: hsl(207,17%,58%);
@@ -38,8 +40,9 @@ $_spa:       hsl(175,60%,83%);
 $_aqua:      hsl(175,60%,90%);
 
 // General tokens
-$color-black:   $_denim !default;
-$color-white:   $_white !default;
+$color-dark-stronger:    $_denim !default;
+
+$color-light-stronger:   $_white !default;
 
 $color-neutral-strong:   $_dolphin !default;
 $color-neutral-regular:  $_silver !default;
