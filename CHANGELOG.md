@@ -1,3 +1,9 @@
+# 1.21.3 (2021-10-05)
+
+### Bug fix
+
+-   Fix transparency in dialogs on Safari [ebrehault]
+
 # 1.21.2 (2021-07-13)
 
 ### Improvements

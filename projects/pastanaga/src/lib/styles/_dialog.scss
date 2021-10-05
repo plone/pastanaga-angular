@@ -33,10 +33,6 @@
     border-radius: border-radius(m);
     margin: rythm(2);
     background: $white;
-    @supports (-webkit-backdrop-filter:blur(9px)) {
-        background: rgba($white, .9);
-        -webkit-backdrop-filter: blur(9px);
-    }
     display: flex;
     flex: 1 1 0%;
     flex-flow: column nowrap;
