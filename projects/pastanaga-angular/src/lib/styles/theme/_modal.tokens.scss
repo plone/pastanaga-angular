@@ -1,5 +1,5 @@
-@import "palette";
-@import "spacing";
+@import "palette.tokens";
+@import "spacing.tokens";
 
 $background-color-modal: $color-light-stronger;
 $padding-modal: rhythm(4);

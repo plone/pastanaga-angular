@@ -1,6 +1,6 @@
-@import "palette";
-@import "spacing";
-@import "typography";
+@import "palette.tokens";
+@import "spacing.tokens";
+@import "typography.tokens";
 
 $avatar-primary: $color-primary-lightest !default;
 $avatar-secondary: $color-secondary-lightest !default;

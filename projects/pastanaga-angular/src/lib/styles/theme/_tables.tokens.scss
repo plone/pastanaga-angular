@@ -1,5 +1,5 @@
-@import "palette";
-@import "typography";
+@import "palette.tokens";
+@import "typography.tokens";
 
 $font-weight-text-table-header:         $font-weight-bold !default;
 $font-weight-table-row:                 $font-weight-regular !default;
