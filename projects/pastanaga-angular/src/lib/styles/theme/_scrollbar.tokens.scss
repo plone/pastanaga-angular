@@ -1,5 +1,5 @@
-@import "palette";
-@import "spacing";
+@import "palette.tokens";
+@import "spacing.tokens";
 
 $scrollbar-padding-mobile: rhythm(.25);
 $scrollbar-padding-desktop: rhythm(.5);

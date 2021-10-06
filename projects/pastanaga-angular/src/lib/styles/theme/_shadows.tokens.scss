@@ -1,5 +1,5 @@
-@import "palette";
-@import "spacing";
+@import "palette.tokens";
+@import "spacing.tokens";
 
 $drop-shadow-small: none !default;
 $drop-shadow-default: 0px 1px rhythm(1) rgba($color-dark-stronger, 0.12) !default;

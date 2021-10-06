@@ -1,5 +1,5 @@
 @import "../../styles/variables";
-@import "../../styles/theme/modal";
+@import "../../styles/theme/modal.tokens";
 
 $dimension-image: rhythm(12);
 $header-height-small: $padding-modal + $dimension-image + $spacing-dialog-sections*2 + line-height(l);

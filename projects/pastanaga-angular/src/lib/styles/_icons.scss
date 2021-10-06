@@ -5,24 +5,24 @@ pa-icon {
         vertical-align: middle;
         fill: currentColor;
         &.pa-small {
-            width: rhythm(2);
-            height: rhythm(2);
+            width: $size-icon-small;
+            height: $size-icon-small;
         }
         &.pa-medium {
-            width: rhythm(3);
-            height: rhythm(3);
+            width: $size-icon-medium;
+            height: $size-icon-medium;
         }
         &.pa-large {
-            width: rhythm(4);
-            height: rhythm(4);
+            width: $size-icon-large;
+            height: $size-icon-large;
         }
         &.pa-xlarge {
-            width: rhythm(5);
-            height: rhythm(5);
+            width: $size-icon-xlarge;
+            height: $size-icon-xlarge;
         }
         &.pa-xxlarge {
-            width: rhythm(6);
-            height: rhythm(6);
+            width: $size-icon-xxlarge;
+            height: $size-icon-xxlarge;
         }
     }
 }
