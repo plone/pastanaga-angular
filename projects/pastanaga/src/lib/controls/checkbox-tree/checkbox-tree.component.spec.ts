@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ControlModel } from '../control.model';
 import { Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +14,7 @@ import { TranslateModule } from '../../translate/translate.module';
 import { SvgModule } from '../../svg/svg.module';
 import { svgLoaderFactory } from '../../test.utils';
 import { getInitialGroupWithADisabled, getInitialTree, ids } from './checkbox-tree.test-data';
+import { LANG, TRANSLATIONS } from '../../translate/translate.pipe';
 
 // tslint:disable:max-line-length
 
@@ -25,11 +26,14 @@ class BaseTestComponent {
 @Component({
     selector: 'pa-test',
     template: `
-        <pa-checkbox-tree [checkboxes]="tree" countVisible
-                          (updatedTree)="tree = $event"
-                          (selection)="selection = $event"
-                          (allSelected)="allSelected = $event"></pa-checkbox-tree>
-    `
+        <pa-checkbox-tree
+            [checkboxes]="tree"
+            countVisible
+            (updatedTree)="tree = $event"
+            (selection)="selection = $event"
+            (allSelected)="allSelected = $event"
+        ></pa-checkbox-tree>
+    `,
 })
 class TestCountVisibleGroupComponent extends BaseTestComponent {
     tree: ControlModel[] = getInitialGroupWithADisabled();
@@ -38,11 +42,13 @@ class TestCountVisibleGroupComponent extends BaseTestComponent {
 @Component({
     selector: 'pa-test',
     template: `
-        <pa-checkbox-tree [checkboxes]="tree"
-                          (updatedTree)="tree = $event"
-                          (selection)="selection = $event"
-                          (allSelected)="allSelected = $event"></pa-checkbox-tree>
-    `
+        <pa-checkbox-tree
+            [checkboxes]="tree"
+            (updatedTree)="tree = $event"
+            (selection)="selection = $event"
+            (allSelected)="allSelected = $event"
+        ></pa-checkbox-tree>
+    `,
 })
 class TestCategorizedUncheckedTreeComponent extends BaseTestComponent {
     tree: ControlModel[] = getInitialTree();
@@ -50,12 +56,14 @@ class TestCategorizedUncheckedTreeComponent extends BaseTestComponent {
 @Component({
     selector: 'pa-test',
     template: `
-        <pa-checkbox-tree [checkboxes]="tree"
-                          mode="nested"
-                          (updatedTree)="tree = $event"
-                          (selection)="selection = $event"
-                          (allSelected)="allSelected = $event"></pa-checkbox-tree>
-    `
+        <pa-checkbox-tree
+            [checkboxes]="tree"
+            mode="nested"
+            (updatedTree)="tree = $event"
+            (selection)="selection = $event"
+            (allSelected)="allSelected = $event"
+        ></pa-checkbox-tree>
+    `,
 })
 class TestNestedUncheckedTreeComponent extends BaseTestComponent {
     tree: ControlModel[] = getInitialTree();
@@ -63,12 +71,14 @@ class TestNestedUncheckedTreeComponent extends BaseTestComponent {
 @Component({
     selector: 'pa-test',
     template: `
-        <pa-checkbox-tree [checkboxes]="tree"
-                          mode="nested"
-                          (updatedTree)="tree = $event"
-                          (selection)="selection = $event"
-                          (allSelected)="allSelected = $event"></pa-checkbox-tree>
-    `
+        <pa-checkbox-tree
+            [checkboxes]="tree"
+            mode="nested"
+            (updatedTree)="tree = $event"
+            (selection)="selection = $event"
+            (allSelected)="allSelected = $event"
+        ></pa-checkbox-tree>
+    `,
 })
 class TestNestedCheckedTreeComponent extends BaseTestComponent {
     tree: ControlModel[] = getNestedTreeAfterSelectingRoot1AndUnselectingSubChild1();
@@ -77,12 +87,14 @@ class TestNestedCheckedTreeComponent extends BaseTestComponent {
 @Component({
     selector: 'pa-test',
     template: `
-        <pa-checkbox-tree [checkboxes]="tree"
-                          mode="fileSystem"
-                          (updatedTree)="tree = $event"
-                          (selection)="selection = $event"
-                          (allSelected)="allSelected = $event"></pa-checkbox-tree>
-    `
+        <pa-checkbox-tree
+            [checkboxes]="tree"
+            mode="fileSystem"
+            (updatedTree)="tree = $event"
+            (selection)="selection = $event"
+            (allSelected)="allSelected = $event"
+        ></pa-checkbox-tree>
+    `,
 })
 class TestFileSystemUncheckedTreeComponent {
     tree: ControlModel[] = getInitialTree();
@@ -125,7 +137,7 @@ describe('CheckboxTree', () => {
                     loader: {
                         provide: SvgLoader,
                         useFactory: svgLoaderFactory,
-                    }
+                    },
                 }),
             ],
             declarations: [
@@ -138,8 +150,8 @@ describe('CheckboxTree', () => {
                 CheckboxComponent,
             ],
             providers: [
-                {provide: 'LANG', useValue: 'en_US'},
-                {provide: 'TRANSLATIONS', useValue: {en_US: en}},
+                { provide: LANG, useValue: 'en_US' },
+                { provide: TRANSLATIONS, useValue: { en_US: en } },
             ],
         }).compileComponents();
     }));
@@ -221,7 +233,13 @@ describe('CheckboxTree', () => {
             getRoot1Checkbox(fixture).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1());
-            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
+            expect(fixture.componentInstance.selection).toEqual([
+                ids.root1,
+                ids.child1,
+                ids.child2,
+                ids.subChild1,
+                ids.subChild2,
+            ]);
             expect(fixture.componentInstance.allSelected).toBe(false);
 
             getRoot1Checkbox(fixture).click();
@@ -269,7 +287,14 @@ describe('CheckboxTree', () => {
             getSelectAllButton(fixture).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getAllTreeSelected());
-            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2, ids.root2]);
+            expect(fixture.componentInstance.selection).toEqual([
+                ids.root1,
+                ids.child1,
+                ids.child2,
+                ids.subChild1,
+                ids.subChild2,
+                ids.root2,
+            ]);
         });
 
         it(`should select all tree and remove indeterminate state when clicking on select all button`, () => {
@@ -279,7 +304,14 @@ describe('CheckboxTree', () => {
             getSelectAllButton(fixture).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getAllTreeSelected());
-            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2, ids.root2]);
+            expect(fixture.componentInstance.selection).toEqual([
+                ids.root1,
+                ids.child1,
+                ids.child2,
+                ids.subChild1,
+                ids.subChild2,
+                ids.root2,
+            ]);
         });
 
         it(`should remove indeterminate state and select all children when selecting indeterminate parent`, () => {
@@ -290,7 +322,13 @@ describe('CheckboxTree', () => {
             getRoot1Checkbox(fixture).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1());
-            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
+            expect(fixture.componentInstance.selection).toEqual([
+                ids.root1,
+                ids.child1,
+                ids.child2,
+                ids.subChild1,
+                ids.subChild2,
+            ]);
         });
     });
 
@@ -309,7 +347,13 @@ describe('CheckboxTree', () => {
             getRoot1Checkbox(fixture).click();
             fixture.detectChanges();
             expect(fixture.componentInstance.tree).toEqual(getTreeAfterSelectingRoot1());
-            expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild1, ids.subChild2]);
+            expect(fixture.componentInstance.selection).toEqual([
+                ids.root1,
+                ids.child1,
+                ids.child2,
+                ids.subChild1,
+                ids.subChild2,
+            ]);
 
             getRoot1Checkbox(fixture).click();
             fixture.detectChanges();
@@ -336,7 +380,9 @@ describe('CheckboxTree', () => {
             fixture.detectChanges();
             getCheckbox(fixture, ids.subChild1).click();
             fixture.detectChanges();
-            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterSelectingRoot1AndUnselectingSubChild1());
+            expect(fixture.componentInstance.tree).toEqual(
+                getFileSystemTreeAfterSelectingRoot1AndUnselectingSubChild1()
+            );
             expect(fixture.componentInstance.selection).toEqual([ids.root1, ids.child1, ids.child2, ids.subChild2]);
         });
 
@@ -383,21 +429,22 @@ describe('CheckboxTree', () => {
             getCheckbox(fixture, ids.child1).click();
             getCheckbox(fixture, ids.child2).click();
             fixture.detectChanges();
-            expect(fixture.componentInstance.tree).toEqual(getFileSystemTreeAfterUnSelectingAllChildrenButNotSubChildren());
+            expect(fixture.componentInstance.tree).toEqual(
+                getFileSystemTreeAfterUnSelectingAllChildrenButNotSubChildren()
+            );
             expect(fixture.componentInstance.selection).toEqual([ids.subChild1, ids.subChild2]);
         });
     });
 });
 
-
 function getTreeAfterSelectingRoot1(): ControlModel[] {
     const tree = getInitialTree();
     tree[0].isSelected = true;
     tree[0].selectedChildren = 2;
-    (tree[0].children || []).forEach(child => {
+    (tree[0].children || []).forEach((child) => {
         child.isSelected = true;
         if (!!child.children && child.children.length > 0) {
-            child.children.forEach(subChild => subChild.isSelected = true);
+            child.children.forEach((subChild) => (subChild.isSelected = true));
             child.selectedChildren = 2;
         }
     });
@@ -481,7 +528,7 @@ function getFileSystemTreeAfterSelectingAllChildren(): ControlModel[] {
     tree[0].selectedChildren = 2;
     if (!!tree[0].children && !!tree[0].children[1].children) {
         tree[0].children[1].isSelected = true;
-        tree[0].children[1].children.forEach(subChild => subChild.isSelected = true);
+        tree[0].children[1].children.forEach((subChild) => (subChild.isSelected = true));
         tree[0].children[1].selectedChildren = 2;
     }
     return tree;
@@ -535,12 +582,10 @@ function getAllTreeSelected(): ControlModel[] {
 
 function getAllGroupButDisabledSelected(): ControlModel[] {
     const group = getInitialGroupWithADisabled();
-    group.forEach(checkbox => {
+    group.forEach((checkbox) => {
         if (!checkbox.isDisabled) {
             checkbox.isSelected = true;
         }
     });
     return group;
 }
-
-

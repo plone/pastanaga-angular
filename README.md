@@ -195,10 +195,10 @@ Translations can be overriden. For instance, several applications might use the 
 The different JSON files can be merged in a single one by using `mergeTranslations`. It takes a list of translations ordered by priority (the last ones override the first ones):
 
 ```typescript
-import { mergeTranslations, I18N_EN } from 'pastanaga-angular';
+import { mergeTranslations, I18N_EN, TRANSLATIONS, LANG } from 'pastanaga-angular';
 ...
-
-        {provide: 'TRANSLATIONS', useValue: {
+        { provide: LANG, useValue: 'en_US' },
+        { provide: TRANSLATIONS, useValue: {
             'en_US': mergeTranslations([I18N_EN, {...app1Specific['default']}]),
             'latin': {...la},
         }},
