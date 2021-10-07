@@ -11,30 +11,29 @@ import { TooltipModule } from '../tooltip/tooltip.module';
 import { ButtonModule } from '../button/button.module';
 import { AvatarModule } from '../avatar/avatar.module';
 import { SvgModule } from '../svg/svg.module';
+import { LANG, TRANSLATIONS } from '../translate/translate.pipe';
 
 const en = {
-    'common': {
-        'close': 'Close',
-        'loading': 'Loading…',
-        'dismiss': 'Dismiss',
+    common: {
+        close: 'Close',
+        loading: 'Loading…',
+        dismiss: 'Dismiss',
         'select-all': 'Select all',
         'deselect-all': 'Deselect all',
-        'expand': 'Expand',
-        'collapse': 'Collapse',
-        'reset': 'Reset',
-        'yes': 'Yes',
-        'no': 'No'
+        expand: 'Expand',
+        collapse: 'Collapse',
+        reset: 'Reset',
+        yes: 'Yes',
+        no: 'No',
     },
     'demo-page': {
-        'title': 'Pastanaga usage examples'
-    }
+        title: 'Pastanaga usage examples',
+    },
 };
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge (render)="onRender()">Pastanaga</pa-badge>
-    `
+    template: ` <pa-badge (render)="onRender()">Pastanaga</pa-badge> `,
 })
 class Test1Component {
     isRendered = false;
@@ -45,41 +44,31 @@ class Test1Component {
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge [isSmall]="true">Pastanaga</pa-badge>
-    `
+    template: ` <pa-badge [isSmall]="true">Pastanaga</pa-badge> `,
 })
-class Test2Component { }
+class Test2Component {}
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge [isAccented]="true">Pastanaga</pa-badge>
-    `
+    template: ` <pa-badge [isAccented]="true">Pastanaga</pa-badge> `,
 })
-class Test3Component { }
+class Test3Component {}
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge color="destructive">Pastanaga</pa-badge>
-    `
+    template: ` <pa-badge color="destructive">Pastanaga</pa-badge> `,
 })
-class Test4Component { }
+class Test4Component {}
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge hexaColor="#c0c0c0">Pastanaga</pa-badge>
-    `
+    template: ` <pa-badge hexaColor="#c0c0c0">Pastanaga</pa-badge> `,
 })
-class Test5Component { }
+class Test5Component {}
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge [canBeRemoved]="true" (remove)="onRemoved()">Pastanaga</pa-badge>
-    `
+    template: ` <pa-badge [canBeRemoved]="true" (remove)="onRemoved()">Pastanaga</pa-badge> `,
 })
 class Test6Component {
     isRemoved = false;
@@ -90,27 +79,21 @@ class Test6Component {
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge maxWidth="30px">A long long long long label</pa-badge>
-    `
+    template: ` <pa-badge maxWidth="30px">A long long long long label</pa-badge> `,
 })
-class Test7Component { }
+class Test7Component {}
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge [value]="10" [of]="100"></pa-badge>
-    `
+    template: ` <pa-badge [value]="10" [of]="100"></pa-badge> `,
 })
-class Test8Component { }
+class Test8Component {}
 
 @Component({
     selector: 'test',
-    template: `
-      <pa-badge [buttons]="[{name: 'Ok'}]">Pastanaga</pa-badge>
-    `
+    template: ` <pa-badge [buttons]="[{ name: 'Ok' }]">Pastanaga</pa-badge> `,
 })
-class Test9Component { }
+class Test9Component {}
 
 describe('BadgeComponent', () => {
     beforeEach(async(() => {
@@ -127,12 +110,12 @@ describe('BadgeComponent', () => {
                     loader: {
                         provide: SvgLoader,
                         useFactory: svgLoaderFactory,
-                    }
+                    },
                 }),
             ],
             providers: [
-                {provide: 'LANG', useValue: 'en_US'},
-                {provide: 'TRANSLATIONS', useValue: {'en_US': en}},
+                { provide: LANG, useValue: 'en_US' },
+                { provide: TRANSLATIONS, useValue: { en_US: en } },
             ],
             declarations: [
                 BadgeComponent,
@@ -145,7 +128,7 @@ describe('BadgeComponent', () => {
                 Test7Component,
                 Test8Component,
                 Test9Component,
-            ]
+            ],
         }).compileComponents();
     }));
     it('should emit when rendered', (done) => {

@@ -1,3 +1,9 @@
+# 1.22.0 (2021-10-07)
+
+### Breaking change
+
+-   Use injection tokens for LANG and TRANSLATIONS [ebrehault]
+
 # 1.21.3 (2021-10-05)
 
 ### Bug fix

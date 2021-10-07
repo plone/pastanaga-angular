@@ -37,7 +37,7 @@ import * as la from '../assets/i18n/la.json';
     ...
     providers: [
     {
-        provide: 'TRANSLATIONS',
+        provide: TRANSLATIONS,
          useValue: {
             'en_US': {...en},
             'latin': {...la},
