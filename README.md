@@ -192,16 +192,21 @@ import { TranslatePipe } from 'pastanaga-angular';
 
 Translations can be overriden. For instance, several applications might use the same internal library which comes with its translation, but in some cases, some of those translations must be different in the two apps.
 
-The different JSON files can be merged in a single one by using `mergeTranslations`. It takes a list of translations ordered by priority (the last ones override the first ones):
+The different JSON files can be merged in a single one by using `addTranslations`. It takes a list of translations ordered by priority (the last ones override the first ones):
 
 ```typescript
-import { mergeTranslations, I18N_EN, TRANSLATIONS, LANG } from 'pastanaga-angular';
+import { TranslateModule, I18N_EN, LANG } from 'pastanaga-angular';
 ...
+    imports: [
+        TranslateModule.addTranslations([
+            { en_US: I18N_EN },
+            { en_US: app1Specific  },
+            { latin: MY_I18N_LATIN },
+        ]),
+    ],
+    providers: [
         { provide: LANG, useValue: 'en_US' },
-        { provide: TRANSLATIONS, useValue: {
-            'en_US': mergeTranslations([I18N_EN, {...app1Specific['default']}]),
-            'latin': {...la},
-        }},
+    ]
 ```
 
 Note: to support JSON import, we need to add `"resolveJsonModule": true` in the tsconfig.json `compilerOptions`. Resulting objects will contain their data in a `default` entry, so we must write `{...en['default']}`.

@@ -1,3 +1,9 @@
+# 1.23.0 (2021-10-08)
+
+### Breaking change
+
+-   Allow to add translations incrementally when importing TranslateModule [ebrehault]
+
 # 1.22.0 (2021-10-07)
 
 ### Breaking change
