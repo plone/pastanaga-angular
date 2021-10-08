@@ -1,4 +1,4 @@
-import { TranslationEntries } from './translate.model';
+import { Translation, TranslationEntries } from './translate.model';
 
 function deepMerge(from: TranslationEntries, to: TranslationEntries): TranslationEntries {
     return Object.entries(from).reduce((all, [key, translation]) => {
@@ -11,8 +11,10 @@ function deepMerge(from: TranslationEntries, to: TranslationEntries): Translatio
     }, to);
 }
 
-export const mergeTranslations = (translations: TranslationEntries[]): TranslationEntries => {
-    return translations.reduce((all, current) => {
-        return deepMerge(all, current);
-    }, {} as TranslationEntries);
-}
+export const mergeTranslations = (existing: Translation, translations: Translation[]) => {
+    translations.forEach((translation) =>
+        Object.entries(translation).forEach(
+            ([lang, entries]) => (existing[lang] = deepMerge(entries, existing[lang] || {}))
+        )
+    );
+};
