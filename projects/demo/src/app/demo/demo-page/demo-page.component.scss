@@ -37,6 +37,11 @@ pa-demo-page {
     }
 
     pa-demo-description {
+        ul {
+            list-style: revert;
+            padding: revert;
+        }
+
         dl {
             dt {
                 margin-bottom: rhythm(1);

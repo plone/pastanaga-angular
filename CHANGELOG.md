@@ -1,3 +1,8 @@
+# 2.38.2 (2021-10-11)
+
+### Improvements
+- **Documentation**: Improve list style in description section [mpellerin42]
+
 # 2.38.1 (2021-10-06)
 
 ### Improvements
