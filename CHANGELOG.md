@@ -1,3 +1,9 @@
+# 2.38.3 (2021-10-12)
+
+### Improvements
+- **Popup**: Add `keepOthersOpen` input to popup component to control if other popups should be closed or not when current one is opened [mpellerin42]
+
+
 # 2.38.2 (2021-10-11)
 
 ### Improvements

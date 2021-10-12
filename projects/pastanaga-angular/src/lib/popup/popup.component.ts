@@ -50,6 +50,14 @@ export class PopupComponent implements OnInit, OnDestroy {
         this._adjustHeight = coerceBooleanProperty(value);
     }
 
+    @Input()
+    set keepOthersOpen(value: boolean) {
+        this._keepOthersOpen = coerceBooleanProperty(value);
+    }
+    get keepOthersOpen() {
+        return this._keepOthersOpen;
+    }
+
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
     @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
@@ -67,6 +75,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     private _handlers: (() => void)[] = [];
     private _dontAdjustPosition = false;
 
+    private _keepOthersOpen = false;
     private _stayVisible = false;
     private _adjustHeight = false;
     private _popupType: 'popup' | 'dropdown' | 'menu' = 'popup';
@@ -105,8 +114,8 @@ export class PopupComponent implements OnInit, OnDestroy {
         this._terminator.complete();
     }
 
-    show(style: PositionStyle, hasSubLevel = false) {
-        if (!hasSubLevel) {
+    show(style: PositionStyle) {
+        if (!this.keepOthersOpen) {
             this.popupService.closeAllButId.next(this.id);
         }
         this.style = style;
