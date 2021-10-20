@@ -1,3 +1,9 @@
+# 2.38.4 (2021-10-20)
+
+### Improvements
+- **Select**: Add `optionsPosition` input to select component to apply custom position on dropdown options [faustoonna]
+
+
 # 2.38.3 (2021-10-12)
 
 ### Improvements
