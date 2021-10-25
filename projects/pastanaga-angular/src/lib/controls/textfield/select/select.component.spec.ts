@@ -375,4 +375,28 @@ describe('SelectComponent', () => {
         whenFirstOptionClicked();
         expect(spectator.query('label.pa-sr-only')).toBeTruthy();
     }));
+
+    it(`should calculate its dropdown fixed position
+    when the user click on #selectInput`, fakeAsync(() => {
+        initWithTemplate(
+            `<pa-select qa="test-select-input" label="my field" placeholder="My Text">${optionsInTemplate}</pa-select>`,
+        );
+        spectator.click('.select-input.pa-field-control');
+        tick();
+        spectator.detectChanges();
+        expect(component.optionsDropdown?.style).toEqual({ position: 'fixed', top: '0px', width: '0px' });
+        discardPeriodicTasks();
+    }));
+    it(`should consider the container translate top margin
+        when it calculates the dropdown position`, fakeAsync(() => {
+        document.documentElement.style.setProperty('--containerTranslateY', '10');
+        initWithTemplate(
+            `<pa-select qa="test-select-input" label="my field" placeholder="My Text">${optionsInTemplate}</pa-select>`,
+        );
+        spectator.click('.select-input.pa-field-control');
+        tick();
+        spectator.detectChanges();
+        expect(component.optionsDropdown?.style).toEqual({ position: 'fixed', top: '-10px', width: '0px' });
+        discardPeriodicTasks();
+    }));
 });

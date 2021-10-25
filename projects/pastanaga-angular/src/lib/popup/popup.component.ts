@@ -118,7 +118,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         if (!this.keepOthersOpen) {
             this.popupService.closeAllButId.next(this.id);
         }
-        this.style = style;
+        this.setPopupPosition(style);
         this.isDisplayed = true;
         this.onOpen.emit();
         if (!this.stayVisible) {
@@ -128,6 +128,11 @@ export class PopupComponent implements OnInit, OnDestroy {
 
         markForCheck(this.cdr);
         this.adjustPosition();
+    }
+
+    setPopupPosition(position: PositionStyle | undefined) {
+        this.style = position;
+        markForCheck(this.cdr);
     }
 
     private adjustPosition() {

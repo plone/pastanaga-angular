@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { ModalDialogComponent } from './modal-dialog.component';
 import { Component } from '@angular/core';
@@ -10,9 +10,9 @@ import {
 } from '../modal.directive';
 import { MockDirective, MockModule } from 'ng-mocks';
 import { PaButtonModule } from '../../button/button.module';
-import { createSpyObject } from '@ngneat/spectator/jest';
 import { By } from '@angular/platform-browser';
 import { ModalConfig, ModalRef } from '../modal.model';
+import { TRANSITION_DURATION } from '../../common';
 
 @Component({
     template: ` <pa-modal-dialog>
@@ -83,4 +83,14 @@ describe('DialogComponent', () => {
             .componentInstance;
         expect(dialog.hasImage).toBe(true);
     });
+
+    it('should save the dialog new top offset in a global variable on afterViewInit', fakeAsync(() => {
+        fixture = TestBed.createComponent(TestDialogImageComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+        tick(TRANSITION_DURATION.slow);
+        expect(
+            window.getComputedStyle(document.documentElement).getPropertyValue('--containerTranslateY'),
+        ).toBeTruthy();
+    }));
 });

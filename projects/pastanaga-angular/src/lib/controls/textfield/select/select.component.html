@@ -22,8 +22,9 @@
         [paPopup]="optionsDropdown"
         [popupMargin]="0"
         [popupDisabled]="control.disabled || readonly"
-        [popupPosition]="optionsPosition"
+        [popupPosition]="dropdownPosition"
         (cdkFocusChange)="onControlFocused($event)"
+        (click)="updateDropdownPosition()"
     >
         <span class="pa-select-value" [class.placeholder]="!hasValue" [class.active]="isOpened">{{
             displayedValue
