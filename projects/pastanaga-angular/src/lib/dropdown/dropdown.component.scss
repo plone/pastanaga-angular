@@ -12,6 +12,7 @@ $option-height: rhythm(6);
 .pa-menu {
     list-style: none;
     margin: 0;
+    padding-left: 0;
 }
 
 @media (min-width: $size-viewport-large-min) {

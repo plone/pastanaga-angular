@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import "variables";
 
 .pa-select-value {
     font-weight: $font-weight-regular;
@@ -56,7 +56,7 @@
                     margin: 0;
                 }
                 &:focus,
-                &:active
+                &:active,
                 &.expanded {
                     border: $border-field-regular-active;
                     margin: 0;
@@ -102,9 +102,7 @@
 pa-dropdown {
     width: 100%;
 }
-:host ::ng-deep {
-    .pa-select pa-dropdown .pa-popup-wrapper {
-        max-width: none;
-        width: 100%;
-    }
+.pa-select pa-dropdown .pa-popup-wrapper {
+    max-width: none;
+    width: 100%;
 }
