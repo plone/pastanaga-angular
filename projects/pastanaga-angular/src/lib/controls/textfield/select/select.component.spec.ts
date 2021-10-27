@@ -2,20 +2,17 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectComponent } from './select.component';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
-import { PaFormFieldModule } from '../../form-field/form-field.module';
+import { PaFormFieldModule, FormFieldHintComponent } from '../../form-field';
 import { MockComponent, MockModule, MockPipe, MockProvider, ngMocks } from 'ng-mocks';
-import { FormFieldHintComponent } from '../../form-field/form-field-hint/form-field-hint.component';
-import { PaDropdownModule } from '../../../dropdown/dropdown.module';
-import { PaPopupModule } from '../../../popup/popup.module';
+import { PaDropdownModule, DropdownComponent } from '../../../dropdown';
+import { PaPopupModule } from '../../../popup';
 import { SelectOptionsComponent } from './select-options/select-options.component';
-import { PaIconModule } from '../../../icon/icon.module';
+import { PaIconModule } from '../../../icon';
 import { fakeAsync, discardPeriodicTasks, tick } from '@angular/core/testing';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
-import { DropdownComponent } from '../../../dropdown/dropdown.component';
-import { PaTranslateModule } from '../../../translate/translate.module';
-import { PA_LANG, PA_TRANSLATIONS, TranslatePipe } from '../../../translate/translate.pipe';
+import { PA_LANG, PA_TRANSLATIONS, TranslatePipe, PaTranslateModule } from '../../../translate';
 
 @Component({ template: '' })
 class TestComponent {

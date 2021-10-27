@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IErrorMessages } from '../../../../../../../pastanaga-angular/src';
+import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({

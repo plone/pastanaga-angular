@@ -8,7 +8,7 @@ import { PaPopupModule } from '../popup/popup.module';
 import { PaTranslateModule } from '../translate/translate.module';
 import { AvatarModel } from '../avatar/avatar.model';
 import { TranslatePipe } from '../translate/translate.pipe';
-import { PaTooltipModule } from '../tooltip/tootip.module';
+import { PaTooltipModule } from '../tooltip/tooltip.module';
 
 describe('AvatarPileComponent', () => {
     const createComponent = createComponentFactory({
@@ -86,7 +86,7 @@ describe('AvatarPileComponent', () => {
         });
 
         it('should emit clickOnMore', () => {
-            spyOn(component.clickOnMore, 'emit');
+            jest.spyOn(component.clickOnMore, 'emit');
             spectator.detectChanges();
             spectator.click(moreButtonSelector);
             expect(component.clickOnMore.emit).toHaveBeenCalled();

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
-import { PaFormControlDirective } from '../../../../../../../pastanaga-angular/src/lib/controls/form-field/pa-form-control.directive';
+import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -20,8 +20,6 @@ export class FormControlValidationExampleComponent implements AfterViewInit {
     errorsNgModel?: any;
 
     @ViewChildren(PaFormControlDirective) directives?: QueryList<PaFormControlDirective>;
-
-    constructor() {}
 
     ngAfterViewInit(): void {
         setTimeout(() => {

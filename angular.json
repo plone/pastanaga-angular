@@ -5,36 +5,35 @@
     "projects": {
         "pastanaga-angular": {
             "projectType": "library",
+            "root": "projects/pastanaga-angular",
+            "sourceRoot": "projects/pastanaga-angular/src",
+            "prefix": "pa",
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss",
                     "changeDetection": "OnPush"
                 }
             },
-            "root": "projects/pastanaga-angular",
-            "sourceRoot": "projects/pastanaga-angular/src",
-            "prefix": "pa",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
-                        "tsConfig": "projects/pastanaga-angular/tsconfig.lib.json",
                         "project": "projects/pastanaga-angular/ng-package.json"
                     },
                     "configurations": {
                         "production": {
                             "tsConfig": "projects/pastanaga-angular/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/pastanaga-angular/tsconfig.lib.json"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "production"
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
+                "test": {
+                    "builder": "@angular-builders/jest:run",
                     "options": {
-                        "tsConfig": [
-                            "projects/pastanaga-angular/tsconfig.lib.json",
-                            "projects/pastanaga-angular/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
+                        "tsConfig": "projects/pastanaga-angular/tsconfig.spec.json"
                     }
                 }
             }
@@ -43,7 +42,29 @@
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
-                    "style": "scss"
+                    "style": "scss",
+                    "skipTests": true
+                },
+                "@schematics/angular:class": {
+                    "skipTests": true
+                },
+                "@schematics/angular:directive": {
+                    "skipTests": true
+                },
+                "@schematics/angular:guard": {
+                    "skipTests": true
+                },
+                "@schematics/angular:interceptor": {
+                    "skipTests": true
+                },
+                "@schematics/angular:pipe": {
+                    "skipTests": true
+                },
+                "@schematics/angular:service": {
+                    "skipTests": true
+                },
+                "@schematics/angular:application": {
+                    "strict": true
                 }
             },
             "root": "projects/demo",
@@ -58,6 +79,7 @@
                         "main": "projects/demo/src/main.ts",
                         "polyfills": "projects/demo/src/polyfills.ts",
                         "tsConfig": "projects/demo/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
                         "assets": [
                             "projects/demo/src/favicon.png",
                             "projects/demo/src/assets",
@@ -67,87 +89,63 @@
                                 "output": "assets"
                             }
                         ],
-                        "styles": ["projects/demo/src/styles.scss"],
+                        "styles": [
+                            "projects/demo/src/styles.scss"
+                        ],
                         "scripts": [],
                         "stylePreprocessorOptions": {
                             "includePaths": ["src"]
-                        },
-                        "vendorChunk": true,
-                        "extractLicenses": false,
-                        "buildOptimizer": false,
-                        "sourceMap": true,
-                        "optimization": false,
-                        "namedChunks": true
+                        }
                     },
                     "configurations": {
                         "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "4kb"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "projects/demo/src/environments/environment.ts",
                                     "with": "projects/demo/src/environments/environment.prod.ts"
                                 }
                             ],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "namedChunks": false,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "2mb",
-                                    "maximumError": "5mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb",
-                                    "maximumError": "10kb"
-                                }
-                            ]
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
                         }
                     },
-                    "defaultConfiguration": ""
+                    "defaultConfiguration": "production"
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "demo:build"
-                    },
                     "configurations": {
                         "production": {
                             "browserTarget": "demo:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "demo:build:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
                         "browserTarget": "demo:build"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/demo/tsconfig.app.json",
-                            "projects/demo/tsconfig.spec.json",
-                            "projects/demo/e2e/tsconfig.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "projects/demo/e2e/protractor.conf.js",
-                        "devServerTarget": "demo:serve"
-                    },
-                    "configurations": {
-                        "production": {
-                            "devServerTarget": "demo:serve:production"
-                        }
                     }
                 },
                 "deploy": {

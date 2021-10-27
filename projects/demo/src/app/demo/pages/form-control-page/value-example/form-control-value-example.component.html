@@ -1,6 +1,6 @@
 <p>The value can be passed and received in a standalone way</p>
 <pre><code>{{standaloneCode}}</code></pre>
-<div class="example" #control paFormControl [value]="standaloneParentValue" (valueChange)="onStandaloneChange($event)">{{control.value}}</div>
+<div class="example" #control paFormControl [value]="standaloneParentValue" (valueChange)="onStandaloneChange($event)">{{formControl.value}}</div>
 <button (click)="standaloneChildToParentChange()">Change inside directive</button>
 <button (click)="standaloneParentToChildChange()">Change in parent</button>
 

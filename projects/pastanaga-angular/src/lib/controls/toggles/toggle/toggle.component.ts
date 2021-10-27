@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges, markForCheck } from '../../../common';
-import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
+import { PaFormControlDirective } from '../../form-field';
 import { NgControl } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { IErrorMessages } from '../../form-field.model';
@@ -73,7 +73,6 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
     }
 
     ngAfterViewInit() {
-        this;
         this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
             this.isChecked = val;
             detectChanges(this.cdr);

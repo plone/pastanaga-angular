@@ -1,5 +1,4 @@
-import { AfterViewInit, EventEmitter, OnDestroy } from '@angular/core';
-import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, Output } from '@angular/core';
+import { AfterViewInit, EventEmitter, OnDestroy, Component, ChangeDetectionStrategy, ElementRef, ViewChild, Output } from '@angular/core';
 
 @Component({
     selector: 'pa-infinite-scroll',

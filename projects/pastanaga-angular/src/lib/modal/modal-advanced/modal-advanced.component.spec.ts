@@ -3,8 +3,7 @@ import { PaButtonModule } from '../../button/button.module';
 import { ModalConfig, ModalRef } from '../modal.model';
 import { MockModule, MockPipe } from 'ng-mocks';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { PaTranslateModule } from '../../translate/translate.module';
-import { TranslatePipe } from '../../translate/translate.pipe';
+import { PaTranslateModule, TranslatePipe } from '../../translate';
 
 describe('ModalComponent', () => {
     const title = 'Modal advanced title';
@@ -19,7 +18,7 @@ describe('ModalComponent', () => {
                     id: 0,
                     config: new ModalConfig({ data: { title } }),
                 }),
-            },
+            }
         ],
         detectChanges: false,
     });
@@ -35,8 +34,8 @@ describe('ModalComponent', () => {
 
     describe('ngAfterViewInit', () => {
         it('should setFocus and refresh on ngAfterViewInit', () => {
-            spyOn(component, 'setFocus');
-            spyOn(component, 'refresh');
+            component.setFocus = jest.fn();
+            component.refresh = jest.fn();
 
             component.ngAfterViewInit();
 

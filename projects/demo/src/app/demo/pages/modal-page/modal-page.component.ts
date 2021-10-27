@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ModalConfig, ModalService } from '../../../../../../pastanaga-angular/src';
+import { ModalConfig, ModalService } from '@guillotinaweb/pastanaga-angular';
 import { DialogImageExampleComponent } from './dialog-image-example/dialog-image-example.component';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 

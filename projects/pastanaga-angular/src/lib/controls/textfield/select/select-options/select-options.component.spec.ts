@@ -3,10 +3,7 @@ import { Component } from '@angular/core';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../control.model';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { MockComponent, MockModule, ngMocks } from 'ng-mocks';
-import { OptionHeaderComponent } from '../../../../dropdown/option-header/option-header.component';
-import { SeparatorComponent } from '../../../../dropdown/separator/separator.component';
-import { OptionComponent } from '../../../../dropdown/option/option.component';
-import { PaDropdownModule } from '../../../../dropdown/dropdown.module';
+import { OptionHeaderComponent, OptionComponent, PaDropdownModule, SeparatorComponent } from '../../../../dropdown';
 
 @Component({ template: '' })
 class TestComponent {

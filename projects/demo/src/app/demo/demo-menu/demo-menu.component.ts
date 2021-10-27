@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
-import { ViewportMode } from '../../../../../pastanaga-angular/src';
+import { ViewportMode } from '@guillotinaweb/pastanaga-angular';
 
 export interface IDemoMenuSection {
     title: string;

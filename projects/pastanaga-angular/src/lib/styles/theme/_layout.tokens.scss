@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "spacing.tokens";
 
 $extra-rhythm: (
@@ -24,23 +25,23 @@ $size-viewport-xlarge-with-panel-min: 1760px;
 // In our formulas, some values must be without unit. To remove a unit from a value, we have to divide it by 1 unit.
 
 // Remove unit from breakpoints
-$width-breakpoint-small: $breakpoint-small / 1rem;
-$width-breakpoint-medium: $breakpoint-medium / 1rem;
-$width-breakpoint-large: $breakpoint-large / 1rem;
-$width-breakpoint-xlarge: $breakpoint-xlarge / 1rem;
+$width-breakpoint-small: math.div($breakpoint-small, 1rem);
+$width-breakpoint-medium: math.div($breakpoint-medium, 1rem);
+$width-breakpoint-large: math.div($breakpoint-large, 1rem);
+$width-breakpoint-xlarge: math.div($breakpoint-xlarge, 1rem);
 
 // Fixed margins value in rem without unit
-$margin-small: rhythm(2) / 1rem;
-$margin-medium: rhythm(8) / 1rem;
+$margin-small: math.div(rhythm(2), 1rem);
+$margin-medium: math.div(rhythm(8), 1rem);
 
-$margin-tight-large: rhythm(20) / 1rem;
-$margin-tight-xlarge: rhythm(40) / 1rem;
+$margin-tight-large: math.div(rhythm(20), 1rem);
+$margin-tight-xlarge: math.div(rhythm(40), 1rem);
 
-$margin-wide-large: rhythm(10) / 1rem;
-$margin-wide-xlarge: rhythm(20) / 1rem;
+$margin-wide-large: math.div(rhythm(10), 1rem);
+$margin-wide-xlarge: math.div(rhythm(20), 1rem);
 
-$max-width-container-tight-xlarge: extraRhythm(100) / 1rem;
-$max-width-container-wide-xlarge: extraRhythm(140) / 1rem;
+$max-width-container-tight-xlarge: math.div(extraRhythm(100), 1rem);
+$max-width-container-wide-xlarge: math.div(extraRhythm(140), 1rem);
 
 // Formula to compute side margin
 $margin-formula-small: calc(#{$margin-small}rem + #{$margin-medium - $margin-small} * ((100vw - #{$breakpoint-small}) / #{$width-breakpoint-medium - $width-breakpoint-small}));

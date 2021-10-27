@@ -8,11 +8,11 @@ import {
     ModalTitleDirective,
 } from './modal.directive';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
-import { ModalAdvancedComponent } from './modal/modal-advanced.component';
-import { PaButtonModule } from '../button/button.module';
+import { ModalAdvancedComponent } from './modal-advanced/modal-advanced.component';
+import { PaButtonModule } from '../button';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { PaTranslateModule } from '../translate/translate.module';
-import { PaScrollModule } from '../scroll/scroll.module';
+import { PaTranslateModule } from '../translate';
+import { PaScrollModule } from '../scroll';
 
 const COMPONENTS_AND_DIRECTIVES = [
     ConfirmationDialogComponent,

@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, QueryList, ViewChildren } from '@angular/core';
-import { PaFormControlDirective } from '../../../../../../../pastanaga-angular/src/lib/controls/form-field/pa-form-control.directive';
-import { markForCheck } from '../../../../../../../pastanaga-angular/src';
+import { PaFormControlDirective, markForCheck } from '@guillotinaweb/pastanaga-angular';
 import { FormControl } from '@angular/forms';
 
 @Component({

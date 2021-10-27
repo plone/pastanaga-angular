@@ -1,5 +1,6 @@
 import { ToastComponent } from './toast.component';
-import { PaIconModule, PaTranslateModule } from '../..';
+import { PaIconModule } from '../icon';
+import { PaTranslateModule } from '../translate';
 import { MockModule } from 'ng-mocks';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 

@@ -1,31 +1,31 @@
 {
-    "name": "@guillotinaweb/pastanaga-angular",
-    "description": "Provides Pastanaga UI elements as Angular components",
-    "version": "2.38.4",
-    "license": "MIT",
-    "keywords": [
-        "angular",
-        "pastanaga"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/guillotinaweb/pastanaga-angular"
-    },
-    "bugs": {
-        "url": "https://github.com/guillotinaweb/pastanaga-angular/issues"
-    },
-    "peerDependencies": {
-        "@angular/cdk": "^12.0.5",
-        "@angular/common": "^12.0.5",
-        "@angular/core": "^12.0.5",
-        "@ng-web-apis/common": "^1.9.0",
-        "angular-svg-icon": "^12.0.0",
-        "date-fns": "^2.14.0"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "dependencies": {
-        "tslib": "^2.3.0"
-    }
+  "name": "@guillotinaweb/pastanaga-angular",
+  "description": "Provides Pastanaga UI elements as Angular components",
+  "version": "2.39.0",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "pastanaga"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillotinaweb/pastanaga-angular"
+  },
+  "bugs": {
+    "url": "https://github.com/guillotinaweb/pastanaga-angular/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0",
+    "@angular/cdk": "^12.2.11",
+    "@ng-web-apis/common": "^1.12.1",
+    "angular-svg-icon": "^12.0.0",
+    "date-fns": "^2.25.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
 }

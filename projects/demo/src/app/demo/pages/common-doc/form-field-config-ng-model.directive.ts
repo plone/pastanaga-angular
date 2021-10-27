@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Directive } from '@angular/core';
-import { detectChanges } from '../../../../../../pastanaga-angular/src';
+import { detectChanges } from '@guillotinaweb/pastanaga-angular';
 
 @Directive({
     selector: '[paDemoFormFieldConfigNgModel]',

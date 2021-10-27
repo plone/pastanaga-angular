@@ -1,4 +1,4 @@
-import { Size } from '../../../../../../pastanaga-angular/src';
+import { Size } from '@guillotinaweb/pastanaga-angular';
 
 export class BaseIconPageComponent {
     size = Size;

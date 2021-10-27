@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../../../../pastanaga-angular/src';
+import { OptionHeaderModel, OptionModel, OptionSeparator } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './select-page.component.html',

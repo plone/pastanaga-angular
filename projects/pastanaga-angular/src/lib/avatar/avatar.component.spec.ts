@@ -3,7 +3,7 @@ import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { of } from 'rxjs';
 import { fakeAsync } from '@angular/core/testing';
 import { MockModule } from 'ng-mocks';
-import { PaTooltipModule } from '../tooltip/tootip.module';
+import { PaTooltipModule } from '../tooltip/tooltip.module';
 
 describe('AvatarComponent', () => {
     const createHost = createHostFactory({

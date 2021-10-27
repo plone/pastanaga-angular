@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AvatarModel, ToastService } from '../../../../../../pastanaga-angular/src';
+import { AvatarModel, ToastService } from '@guillotinaweb/pastanaga-angular';
 import { avatar } from '../../demo.component';
 
 @Component({

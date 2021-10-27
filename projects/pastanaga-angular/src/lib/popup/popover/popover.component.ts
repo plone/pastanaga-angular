@@ -59,7 +59,7 @@ export class PopoverComponent extends PopupComponent implements OnInit {
 
         const rightDiff = this.window.innerWidth - popoverRect.right;
         if (this.window.innerHeight < popoverRect.bottom) {
-            if (rightDiff < popoverRect.width && !(popoverRect.left < 0)) {
+            if (rightDiff < popoverRect.width && popoverRect.left >= 0) {
                 this.moveToLeft(popover, holderRect);
             } else {
                 this.moveToRight(popover, holderRect);

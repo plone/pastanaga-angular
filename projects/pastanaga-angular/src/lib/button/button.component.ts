@@ -6,7 +6,6 @@ import {
     Component,
     ElementRef,
     Input,
-    OnInit,
     ViewChild,
 } from '@angular/core';
 import { Aspect, detectChanges, Kind, Size } from '../common';
@@ -17,7 +16,7 @@ import { Aspect, detectChanges, Kind, Size } from '../common';
     styleUrls: ['./button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent implements AfterContentInit, OnInit {
+export class ButtonComponent implements AfterContentInit {
     @Input() set kind(value: Kind) {
         if (!!value) {
             this._kind = value;
@@ -87,8 +86,6 @@ export class ButtonComponent implements AfterContentInit, OnInit {
             }
         }, 0);
     }
-
-    ngOnInit(): void {}
 
     onClick($event: MouseEvent) {
         if (!!$event && this._type !== 'submit') {
