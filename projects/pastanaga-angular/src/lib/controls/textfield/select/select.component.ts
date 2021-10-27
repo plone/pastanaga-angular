@@ -33,7 +33,6 @@ type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
 @Component({
     selector: 'pa-select',
     templateUrl: './select.component.html',
-    styleUrls: ['./select.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent extends PaFormControlDirective implements OnChanges, AfterViewInit, OnDestroy {
