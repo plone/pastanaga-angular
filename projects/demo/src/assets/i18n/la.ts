@@ -1,4 +1,6 @@
-{
+import { TranslationEntries } from '@guillotinaweb/pastanaga-angular';
+
+export const DEMO_LA: TranslationEntries = {
     "common": {
         "close": "Claudere",
         "loading": "Tolenda…",
@@ -10,5 +12,4 @@
         "title": "Pastanaga usi exampla",
         "score": "{{points}} puncta de {{total}}"
     }
-
 }
