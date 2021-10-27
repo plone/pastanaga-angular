@@ -4,6 +4,7 @@ export interface ControlModelData {
     id: string;
     label: string;
     subLabel?: string;
+    sideLabel?: string;
     labelIcons?: LabelIcon[];
     value?: string;
     help?: string;
@@ -23,6 +24,7 @@ export class ControlModel {
     id = '';
     label = '';
     subLabel?: string;
+    sideLabel?: string;
     labelIcons?: LabelIcon[];
     value?: string;
     help?: string;
@@ -44,6 +46,7 @@ export class ControlModel {
         this.id = data.id || '';
         this.label = data.label || '';
         this.subLabel = data.subLabel || '';
+        this.sideLabel = data.sideLabel || '';
         this.labelIcons = data.labelIcons;
         this.value = data.value || '';
         this.help = data.help || '';
