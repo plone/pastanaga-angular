@@ -17,7 +17,6 @@ import { TranslatePageComponent } from './pages/translate-page/translate-page.co
 import * as enDemo from '../../assets/i18n/en.json';
 import * as custom from '../../assets/i18n/custom-en.json';
 import * as la from '../../assets/i18n/la.json';
-
 import {
     PaAvatarModule,
     PaAvatarPileModule,
@@ -40,7 +39,7 @@ import {
     PaTooltipModule,
     PaTranslateModule,
     PaScrollModule,
-} from '../../../../pastanaga-angular/src';
+} from '@guillotinaweb/pastanaga-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { BaseControlUsageComponent } from './pages/common-doc/base-control/base-control-usage.component';

@@ -134,7 +134,12 @@ export class AvatarComponent {
     private assignBackgroundColor() {
         let backgroundColor = 'default';
         if (this._autoBackground) {
-            const id = !!this._userId ? this._userId : this._userName ? this._userName : this._initials;
+            let id: string;
+            if (this._userId) {
+                id = this._userId;
+            } else {
+                id = this._userName ? this._userName : this._initials;
+            }
             backgroundColor = getAvatarColor(id);
         }
         this._backgroundColorClass = `pa-avatar-${backgroundColor}`;

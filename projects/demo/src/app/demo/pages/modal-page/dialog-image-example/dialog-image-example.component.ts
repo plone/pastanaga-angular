@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ModalRef } from '../../../../../../../pastanaga-angular/src';
+import { ModalRef } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './dialog-image-example.component.html',

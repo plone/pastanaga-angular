@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Traverser } from 'angular-traversal';
 import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
 import { ButtonPageComponent } from './demo/pages/button-page/button-page.component';
 import { IconPageComponent } from './demo/pages/icon-page/icon-page.component';
@@ -22,7 +23,6 @@ import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint
 import { InputPageComponent } from './demo/pages/input-page/input-page.component';
 import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { Traverser } from 'angular-traversal';
 import { ChipPageComponent } from './demo/pages/chip-page/chip-page.component';
 import { SidenavPageComponent } from './demo/pages/sidenav-page/sidenav-page.component';
 import { ContainerPageComponent } from './demo/pages/container-page/container-page.component';
@@ -40,7 +40,7 @@ import { PopoverPageComponent } from './demo/pages/popover-page/popover-page.com
 import { DistributePageComponent } from './demo/pages/distribute-page/distribute-page.component';
 
 @Component({
-    selector: 'app-root',
+    selector: 'pa-demo-root',
     templateUrl: './app.component.html',
 })
 export class AppComponent {

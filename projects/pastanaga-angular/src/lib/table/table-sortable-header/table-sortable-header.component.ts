@@ -8,7 +8,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { HeaderCell } from '../table.models';
-import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
+import { BreakpointObserver } from '../../breakpoint-observer';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PositionStyle } from '../../common';
 import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/table-sortable-header-cell.component';

@@ -10,9 +10,7 @@ import {
 } from '@angular/core';
 import { ExpanderBodyDirective } from './expander.directive';
 import { markForCheck } from '../common';
-import { BreakpointObserver } from '../breakpoint-observer/breakpoint.observer';
 import { Subject } from 'rxjs';
-import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 export const transitionDuration = 160;
@@ -53,7 +51,6 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
 
     constructor(
         private elementRef: ElementRef,
-        private breakpoint: BreakpointObserver,
         private cdr: ChangeDetectorRef,
     ) {}
 

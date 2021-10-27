@@ -15,6 +15,4 @@ export class PopoverPageComponent {
         To: first@more.com, second@more.com, third@more.com
     </pa-popover>
 </div>`;
-
-    constructor() {}
 }

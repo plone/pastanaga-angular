@@ -21,15 +21,15 @@ We changed the way to configure buttons:
 - `size` is now expecting one of the values of `Size` enum
 - `border` property is replaced by `aspect` which can be `solid` | `basic`
 
-See https://plone.github.io/pastanaga-angular/@@button for full documentation.  
+See https://plone.github.io/pastanaga-angular/@@button for full documentation.
 
 ### Icons
 `pa-icon` is now using a svg sprites to display icons by name. You can still provide a full path to display any other image though.
 
-See https://plone.github.io/pastanaga-angular/@@icon for full documentation.   
+See https://plone.github.io/pastanaga-angular/@@icon for full documentation.
 
 ### Form elements
-We changed form elements hierarchy so now they are all in the same place under `controls` folder. 
+We changed form elements hierarchy so now they are all in the same place under `controls` folder.
 They still belong to two distinct modules (`PaTextFieldModule` and `PaTogglesModule`).
 
 All controls are sharing some properties:
@@ -42,27 +42,31 @@ All controls are sharing some properties:
 In your application project, declare Pastanaga assets in `angular.json`:
 - when using npm package:
 ```json
-"assets": [
+{
+  "assets": [
     "src/favicon.ico",
     "src/assets",
     {
-        "glob": "**/*",
-        "input": "./node_modules/@guillotinaweb/pastanaga-angular/assets",
-        "output": "assets"
+      "glob": "**/*",
+      "input": "./node_modules/@guillotinaweb/pastanaga-angular/assets",
+      "output": "assets"
     }
-]
+  ]
+}
 ```
 - when using mrs-developer:
 ```json
-"assets": [
+{
+  "assets": [
     "src/favicon.ico",
     "src/assets",
     {
-        "glob": "**/*",
-        "input": "./src/develop/pastanaga-angular/projects/pastanaga-angular/assets",
-        "output": "assets"
+      "glob": "**/*",
+      "input": "./src/develop/pastanaga-angular/projects/pastanaga-angular/assets",
+      "output": "assets"
     }
-]
+  ]
+}
 ```
 
 Import Pastanaga core style in main app style (usually `src/styles.scss`):
@@ -85,20 +89,20 @@ $font-path: '../../../assets/fonts';
 @import "./develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/fonts";
 ```
 
-**Warning**: with angular 10, scss variable is now relative to the place it is called (seems weird so might change in the future). 
+**Warning**: with angular 10, scss variable is now relative to the place it is called (seems weird so might change in the future).
 
 
 ### Overriding theme
 
 Any project using pastanaga-angular must have two files (`pastanaga-core-overrides.scss` and `pastanaga-component-overrides.scss`) in their `src` folder.
 Those files can be empty if you want to use Pastanaga theme. If not, you can override pastanaga theme in there:
- - `pastanaga-core-overrides.scss` allows to override variables from:
-     - theme/palette
-     - theme/shadows
-     - theme/spacing
-     - theme/typography
-     - theme/z-index
- - `pastanaga-component-overrides.scss` allows to override variables from all other theming files like:
+- `pastanaga-core-overrides.scss` allows to override variables from:
+    - theme/palette
+    - theme/shadows
+    - theme/spacing
+    - theme/typography
+    - theme/z-index
+- `pastanaga-component-overrides.scss` allows to override variables from all other theming files like:
     - theme/avatar
     - theme/body-colors
     - theme/button
@@ -113,7 +117,7 @@ Pastanaga theme is defined in `src/lib/styles/theme` folder. Any variable with `
 Pastanaga theme is built around token. For example, `_palette.scss` contains all the colors used in Pastanaga with general token names (*e.g.* `$color-neutral-primary-default`, `$color-accent-primary-darker`).
 See the full list in https://plone.github.io/pastanaga-angular/@@palette.
 Then, some components have a second layer of tokens, for example buttons have a list of token for each aspect and state (*e.g.* `$color-text-button-primary-solid`, `$color-background-button-primary-solid`,…).
-So you can have your own theme by overwriting the whole color palette or just by changing some aspects of some components.  
+So you can have your own theme by overwriting the whole color palette or just by changing some aspects of some components.
 
 In angular.json configuration you should add `src` folder to be included in style preprocessing:
 ```json

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Kind, Size, Aspect } from '../../../../../../pastanaga-angular/src';
+import { Kind, Size, Aspect } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './button-page.component.html',

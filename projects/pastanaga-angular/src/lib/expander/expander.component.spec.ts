@@ -32,7 +32,7 @@ describe('ExpandComponent', () => {
     });
 
     it('should toggle the expand when clicking on the button', () => {
-        spyOn(component, 'toggleExpand');
+        jest.spyOn(component, 'toggleExpand');
         spectator.click('[qa="expand-button"]');
         expect(component.toggleExpand).toHaveBeenCalled();
     });
@@ -40,14 +40,14 @@ describe('ExpandComponent', () => {
     it('should not toggle the expand when clicking on the title for an expandable card', () => {
         component.card = true;
         spectator.detectChanges();
-        spyOn(component, 'toggleExpand');
+        jest.spyOn(component, 'toggleExpand');
 
         spectator.click('[qa="expand-title"]');
         expect(component.toggleExpand).not.toHaveBeenCalled();
     });
 
     it('should toggle the expand when clicking on the title', () => {
-        spyOn(component, 'toggleExpand');
+        jest.spyOn(component, 'toggleExpand');
         spectator.click('[qa="expand-title"]');
         expect(component.toggleExpand).toHaveBeenCalled();
     });

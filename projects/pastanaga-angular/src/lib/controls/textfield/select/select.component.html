@@ -1,44 +1,41 @@
-<div
-    class="pa-field pa-select"
-    [class.pa-field-readonly]="readonly"
-    [class.pa-field-disabled]="control.disabled"
-    [class.pa-field-error]="control.dirty && control.invalid"
->
-    <div
-        #selectInput
-        class="select-input pa-field-control"
-        paFocusable
-        cdkMonitorElementFocus
-        sameWidth
-        [class.pa-field-control-filled]="hasValue || isOpened"
-        [class.read-only]="readonly"
-        [class.disabled]="control.disabled"
-        [class.dim]="dim"
-        [class.expanded]="isOpened"
-        [id]="id"
-        [attr.name]="name"
-        [attr.aria-label]="label"
-        [attr.aria-describedby]="describedById"
-        [paPopup]="optionsDropdown"
-        [popupMargin]="0"
-        [popupDisabled]="control.disabled || readonly"
-        [popupPosition]="dropdownPosition"
-        (cdkFocusChange)="onControlFocused($event)"
-        (click)="updateDropdownPosition()"
+<div class="pa-field pa-select"
+     [class.pa-field-readonly]="readonly"
+     [class.pa-field-disabled]="control.disabled"
+     [class.pa-field-error]="control.dirty && control.invalid">
+    <div #selectInput class="select-input pa-field-control"
+         paFocusable
+         cdkMonitorElementFocus
+         sameWidth
+         [class.pa-field-control-filled]="hasValue || isOpened"
+         [class.read-only]="readonly"
+         [class.disabled]="control.disabled"
+         [class.dim]="dim"
+         [class.expanded]="isOpened"
+         [id]="id"
+         [attr.name]="name"
+         [attr.aria-label]="label"
+         [attr.aria-describedby]="describedById"
+         [paPopup]="optionsDropdown"
+         [popupPosition]="dropdownPosition"
+         [popupMargin]="0"
+         [popupDisabled]="control.disabled || readonly"
+         (cdkFocusChange)="onControlFocused($event)"
+         (click)="updateDropdownPosition()"
     >
-        <span class="pa-select-value" [class.placeholder]="!hasValue" [class.active]="isOpened">{{
-            displayedValue
-        }}</span>
+        <span class="pa-select-value"
+              [class.placeholder]="!hasValue"
+              [class.active]="isOpened"
+        >{{displayedValue}}</span>
     </div>
 
-    <label class="pa-field-label" [class.pa-sr-only]="dim && (hasValue || isOpened)" [for]="id">{{ label }}</label>
+    <label class="pa-field-label"
+           [class.pa-sr-only]="dim && (hasValue || isOpened)"
+           [for]="id">{{label}}</label>
 
-    <pa-icon
-        class="pa-select-chevron"
-        name="chevron-down"
-        [class.opened]="isOpened"
-        (click)="toggleDropdown()"
-    ></pa-icon>
+    <pa-icon class="pa-select-chevron"
+             name="chevron-down"
+             [class.opened]="isOpened"
+             (click)="toggleDropdown()"></pa-icon>
 
     <pa-form-field-hint
         [id]="describedById"
@@ -49,18 +46,20 @@
         [errorMessages]="errorMessages"
     ></pa-form-field-hint>
 
-    <pa-dropdown
-        #optionsDropdown
-        role="listbox"
-        [adjustHeight]="adjustHeight"
-        [companionElement]="selectInput"
-        (onClose)="dropDownClosed()"
-        (onOpen)="dropDownOpened()"
-    >
+    <pa-dropdown #optionsDropdown
+                 role="listbox"
+                 [adjustHeight]="adjustHeight"
+                 [companionElement]="selectInput"
+                 (onClose)="dropDownClosed()"
+                 (onOpen)="dropDownOpened()">
+
         <ng-container *ngIf="dropDownModels.length; else contentOptions">
-            <pa-select-options [options]="dropDownModels" (optionSelected)="selectOption($event)"></pa-select-options>
+            <pa-select-options [options]="dropDownModels"
+                               (optionSelected)="selectOption($event)"
+            ></pa-select-options>
         </ng-container>
 
         <ng-template #contentOptions><ng-content></ng-content></ng-template>
+
     </pa-dropdown>
 </div>

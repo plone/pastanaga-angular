@@ -8,8 +8,7 @@ import { AppMarker } from './app.marker';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PaDemoModule } from './demo/demo.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { I18N_EN, PaButtonModule, PaTranslateModule, PA_LANG } from 'projects/pastanaga-angular/src';
-import { PaSideNavModule } from 'projects/pastanaga-angular/src/lib/side-nav/side-nav.module';
+import { I18N_EN, PaButtonModule, PaTranslateModule, PA_LANG, PaSideNavModule } from '@guillotinaweb/pastanaga-angular';
 
 @NgModule({
     declarations: [AppComponent, WelcomePageComponent],

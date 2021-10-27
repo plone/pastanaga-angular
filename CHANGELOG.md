@@ -1,3 +1,12 @@
+# 2.39.0 (2021-10-27)
+
+### Improvements
+- Upgrade dependencies, including Angular to the latest version (12.2.0) and Jest to the latest version (27.3.1) [mpellerin42]
+- Update angular and typescript configuration to the latest standards [mpellerin42]
+- Fix scss compilation errors [mpellerin42]
+- Improve import paths in pastanaga demo [mpellerin42]
+- Fix most of the code smells found by sonar [mpellerin42]
+
 # 2.38.7 (2021-11-02) 
 
 ### Improvements

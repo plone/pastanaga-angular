@@ -10,13 +10,10 @@ import {
     ChangeDetectorRef,
     ElementRef,
     Renderer2,
-    OnInit,
     Output,
     EventEmitter,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { BreakpointObserver } from '../breakpoint-observer/breakpoint.observer';
 import { markForCheck } from '../common';
 import { SideNavItemComponent } from './side-nav-item.component';
 
@@ -37,7 +34,7 @@ export class SideNavComponent implements AfterContentInit {
 
     @Input()
     get visible(): boolean {
-        return !!this._visible;
+        return this._visible;
     }
     set visible(value: boolean) {
         if (this._mode !== 'desktop' && !this.modeChanged) {

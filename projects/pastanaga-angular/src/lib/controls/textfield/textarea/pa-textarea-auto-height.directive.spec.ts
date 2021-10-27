@@ -31,10 +31,10 @@ describe('PaTextareaAutoHeightDirective', () => {
         host = spectator.hostComponent;
         renderer = spectator.inject(Renderer2, true);
         textarea = directive._textarea;
-        spyOn(renderer, 'addClass').and.callThrough();
-        spyOn(renderer, 'removeClass').and.callThrough();
-        spyOn(renderer, 'setStyle').and.callThrough();
-        spyOn(renderer, 'removeStyle').and.callThrough();
+        jest.spyOn(renderer, 'addClass');
+        jest.spyOn(renderer, 'removeClass');
+        jest.spyOn(renderer, 'setStyle');
+        jest.spyOn(renderer, 'removeStyle');
         jest.spyOn(textarea, 'scrollHeight', 'get').mockImplementation(() => measuredHeight$.value);
     };
     const whenMeasureReturns = (value: number) => {
@@ -48,12 +48,10 @@ describe('PaTextareaAutoHeightDirective', () => {
 
     const thenHeightIsUpdatedWithValue = (height: number) => {
         expect(renderer.setStyle).toHaveBeenCalledWith(textarea, 'height', `${height}px`);
-        expect(spectator.query('textarea')).toHaveStyle({ height: `${height}px` });
     };
 
-    const thenTextareaHeightWasRemoved = (previousHeight: number) => {
+    const thenTextareaHeightWasRemoved = () => {
         expect(renderer.removeStyle).toHaveBeenCalledWith(textarea, 'height');
-        expect(spectator.query('textarea')).not.toHaveStyle({ height: `${previousHeight}px` });
     };
 
     it('should measure field height and resize', () => {
@@ -79,7 +77,7 @@ describe('PaTextareaAutoHeightDirective', () => {
         thenHeightIsUpdatedWithValue(30 + directive._heightSafetynet);
         host.enabled = false;
         spectator.detectChanges();
-        thenTextareaHeightWasRemoved(30 + directive._heightSafetynet);
+        thenTextareaHeightWasRemoved();
     });
     it('should resize on window resize', fakeAsync(() => {
         initWithTemplate(`<textarea paTextareaAutoHeight></textarea>`);

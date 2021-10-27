@@ -8,11 +8,11 @@ import {
 import { MockModule } from 'ng-mocks';
 import { PaIconModule } from '../../icon/icon.module';
 import { BehaviorSubject } from 'rxjs';
-import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer/breakpoint.observer';
+import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer';
 import { fakeAsync } from '@angular/core/testing';
 
 describe('TableSortableHeaderCellComponent', () => {
-    const mode: BehaviorSubject<ViewportMode> = new BehaviorSubject('desktop');
+    const mode: BehaviorSubject<ViewportMode> = new BehaviorSubject('desktop' as ViewportMode);
     const createComponent = createComponentFactory({
         imports: [MockModule(PaIconModule)],
         component: TableSortableHeaderCellComponent,

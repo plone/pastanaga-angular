@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, QueryList, ViewChildren } from '@angular/core';
-import { PaFormControlDirective } from '../../../../../../../pastanaga-angular/src/lib/controls/form-field/pa-form-control.directive';
+import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     selector: 'pa-demo-form-control-id-example',

@@ -22,16 +22,17 @@ import {
 import { NgControl } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
-import { OptionComponent } from '../../../dropdown/option/option.component';
-import { DropdownComponent } from '../../../dropdown/dropdown.component';
+import { DropdownComponent, OptionComponent } from '../../../dropdown';
 import { debounce, distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
 import { detectChanges, isVisibleInViewport, markForCheck, PositionStyle } from '../../../common';
 import { fromEvent, interval, Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
-import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
+import { PaFormControlDirective } from '../../form-field';
 import { IErrorMessages } from '../../form-field.model';
 import { WINDOW } from '@ng-web-apis/common';
+
+type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
 
 @Component({
     selector: 'pa-select',
@@ -43,7 +44,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     @Input() label = '';
     @Input() placeholder?: string;
 
-    @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
+    @Input() set options(values: OptionType[]) {
         this.dropDownModels = !!values ? values : [];
         this._updateDisplayedValue(this.control.value);
     }
@@ -64,8 +65,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         return this._dim;
     }
 
-    @Input() optionsPosition?: PositionStyle;
-
     @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @ViewChild('selectInput') selectInput?: ElementRef;
@@ -76,7 +75,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         return !!this.control.value;
     }
 
-    dropDownModels: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
+    dropDownModels: OptionType[] = [];
     isOpened = false;
     fieldType = 'select';
     describedById?: string;
@@ -244,7 +243,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
         // precedence of drop options provided in input over options provided as ngContent
         if (this.dropDownModels.length) {
-            const selectedOption = this.dropDownModels.find((option: OptionModel) => option.value === value);
+            const selectedOption = this.dropDownModels.find((option) => (option as OptionModel).value === value);
             label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
         }
         if (!label && !!this.ngContent && this.ngContent.length) {
@@ -288,7 +287,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     private _markOptionAsSelected() {
         if (this.dropDownModels.length) {
-            this.dropDownModels.forEach((option: OptionModel | OptionSeparator | OptionHeaderModel) => {
+            this.dropDownModels.forEach((option: OptionType) => {
                 if (option.type === ControlType.option) {
                     this._toggleSelectedOption(option as OptionModel);
                 }

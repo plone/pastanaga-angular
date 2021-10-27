@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TooltipComponent } from './tooltip.component';
-import { PaTranslateModule } from '../translate/translate.module';
+import { PaTranslateModule } from '../translate';
 import { TooltipDirective } from './tooltip.directive';
 import { EllipsisTooltipDirective, ExtendedTooltipDirective } from './ellipsis-tooltip.directive';
 

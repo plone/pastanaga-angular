@@ -15,7 +15,9 @@ export class InputFormatterDirective implements ControlValueAccessor {
     @Input() paInputFormatter!: (value: any) => any;
     @Input() paInputFormatterSkip = false;
 
-    private _writeToFormControl: (value: any) => void = () => {};
+    private _writeToFormControl: (value: any) => void = () => {
+        // Will be instantiated by registerOnChange
+    };
 
     @HostListener('input') onKeyup() {
         const val = this.formatValue(this.el.nativeElement.value);

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'pa-option-header',
@@ -10,8 +10,5 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['./option-header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OptionHeaderComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit(): void {}
+export class OptionHeaderComponent {
 }

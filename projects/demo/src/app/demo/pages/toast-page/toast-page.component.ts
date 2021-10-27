@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastService } from '../../../../../../pastanaga-angular/src/lib/toast/toast.service';
+import { ToastService } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './toast-page.component.html',

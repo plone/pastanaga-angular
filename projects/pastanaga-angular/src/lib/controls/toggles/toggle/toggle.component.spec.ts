@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
 import { MockComponent, MockModule } from 'ng-mocks';
-import { FormFieldHintComponent } from '../../form-field/form-field-hint/form-field-hint.component';
-import { PaFormFieldModule } from '../../form-field/form-field.module';
+import { FormFieldHintComponent, PaFormFieldModule } from '../../form-field';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 
@@ -39,7 +38,7 @@ describe('ToggleComponent', () => {
 
         describe('updateState', () => {
             beforeEach(() => {
-                spyOn(component, 'updateState');
+                jest.spyOn(component, 'updateState');
             });
             it('should call updateState when clicking on the label', () => {
                 spectator.detectChanges();

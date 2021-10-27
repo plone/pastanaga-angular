@@ -97,8 +97,8 @@ describe('ConfirmationDialogComponent', () => {
 
     describe('ngAfterViewInit', () => {
         it('should setFocus and refresh on ngAfterViewInit', () => {
-            spyOn(component, 'setFocus');
-            spyOn(component, 'refresh');
+            jest.spyOn(component, 'setFocus');
+            jest.spyOn(component, 'refresh');
 
             component.ngAfterViewInit();
 
@@ -109,7 +109,7 @@ describe('ConfirmationDialogComponent', () => {
 
     describe('actions', () => {
         beforeEach(() => {
-            spyOn(component.ref, 'close');
+            jest.spyOn(component.ref, 'close');
         });
 
         it('should close with false when clicking on cancel', () => {

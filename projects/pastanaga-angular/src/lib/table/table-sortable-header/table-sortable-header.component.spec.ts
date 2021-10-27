@@ -4,7 +4,7 @@ import { MockComponent, MockModule } from 'ng-mocks';
 import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/table-sortable-header-cell.component';
 import { TableCellMenuComponent } from '../table-cell-menu/table-cell-menu.component';
 import { BehaviorSubject } from 'rxjs';
-import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer/breakpoint.observer';
+import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer';
 import { HeaderCell, SortableHeaderCell } from '../table.models';
 import { PaTranslateModule } from '../../translate/translate.module';
 import { TableCellComponent } from '../table-cell/table-cell.component';
@@ -68,7 +68,7 @@ describe('TableSortableHeaderComponent', () => {
                 cell2 = new SortableHeaderCell({ id: '2', label: 'column 2' });
                 cell3 = new SortableHeaderCell({ id: '3', label: 'column 3' });
                 component.cells = [cell1, cell2, cell3];
-                spyOn(component.sort, 'emit');
+                jest.spyOn(component.sort, 'emit');
             });
 
             it('should toggle descending property of currentActive when sorting by same column', () => {

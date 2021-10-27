@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'pa-separator',
@@ -6,8 +6,5 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['separator.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SeparatorComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit(): void {}
+export class SeparatorComponent {
 }
