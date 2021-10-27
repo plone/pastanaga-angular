@@ -1,3 +1,9 @@
+# 1.23.1 (2021-10-27)
+
+### Improvement
+
+-   Added sideLabel to checkbox component [raul-onna]
+
 # 1.23.0 (2021-10-08)
 
 ### Breaking change

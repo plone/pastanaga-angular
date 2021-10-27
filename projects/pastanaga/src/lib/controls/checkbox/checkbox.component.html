@@ -32,6 +32,9 @@
                      [paTooltip]="icon.tooltip | translate"
                      class="pa-label-icon"></pa-icon>
         </span>
+        <span *ngIf="sideLabel" class="pa-side-label">
+              <small>{{sideLabel}}</small>
+        </span>
     </label>
 
     <small *ngIf="help" class="pa-field-help pa-ellipsis-text"

@@ -35,6 +35,7 @@ export class CheckboxComponent implements OnInit, AfterViewInit {
     }
     @Input() name?: string;
     @Input() subLabel?: string;
+    @Input() sideLabel?: string;
     @Input() labelIcons?: LabelIcon[];
     @Input() set disabled(value) { this._disabled = coerceBooleanProperty(value); }
     @Input() set selected(value) { this._selected = coerceBooleanProperty(value); }
