@@ -3,7 +3,6 @@ import { getPositionedParent, PositionStyle } from '../common';
 import { MARGIN, PopupComponent } from './popup.component';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
-import { Subject } from 'rxjs';
 
 @Directive({
     selector: '[paPopup]',
@@ -68,7 +67,6 @@ export class PopupDirective implements OnInit {
     private _margin = MARGIN;
     private _popupPosition?: PositionStyle;
 
-    position: Subject<PositionStyle | undefined> = new Subject<PositionStyle | undefined>();
     constructor(private element: ElementRef, private service: PopupService, private renderer: Renderer2) {}
 
     ngOnInit() {
