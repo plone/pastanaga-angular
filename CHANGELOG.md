@@ -1,3 +1,9 @@
+# 2.38.5 (2021-10-28)
+
+### Improvements
+- **Dialog**: Dialo TranslateY affects fixed position children, in order to patch this behaviour we expose the dialog top position in computed styled properties (`--containerTranslateY`).
+- **Select**: reverting previous changes, calculating the popup position on scroll and on toggle (taking in consideration the container offset y if available). [faustoonna]
+
 # 2.38.4 (2021-10-20)
 
 ### Improvements
