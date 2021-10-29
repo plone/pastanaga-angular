@@ -20,6 +20,7 @@ describe('Popup Directive', () => {
     const createHost = createHostFactory({
         component: TestComponent,
         declarations: [PopupComponent, PopupDirective],
+        detectChanges: false,
     });
     beforeEach(() => {
         const startingPaPosition = { position: 'fixed', top: '30' };
