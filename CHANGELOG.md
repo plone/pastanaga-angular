@@ -1,3 +1,8 @@
+# 2.38.6 (2021-10-29)
+
+### Bugfix
+- **Dialog** fixing Document token injection. [faustoonna]
+
 # 2.38.5 (2021-10-28)
 
 ### Improvements
