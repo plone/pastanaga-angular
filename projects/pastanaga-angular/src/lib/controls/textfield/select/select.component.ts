@@ -6,9 +6,12 @@ import {
     ContentChildren,
     ElementRef,
     EventEmitter,
+    Inject,
     Input,
+    NgZone,
     OnChanges,
     OnDestroy,
+    OnInit,
     Optional,
     Output,
     QueryList,
@@ -21,13 +24,14 @@ import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { OptionComponent } from '../../../dropdown/option/option.component';
 import { DropdownComponent } from '../../../dropdown/dropdown.component';
-import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { debounce, distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
 import { detectChanges, isVisibleInViewport, markForCheck, PositionStyle } from '../../../common';
-import { Subject } from 'rxjs';
+import { fromEvent, interval, Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
 import { IErrorMessages } from '../../form-field.model';
+import { WINDOW } from '@ng-web-apis/common';
 
 @Component({
     selector: 'pa-select',
@@ -35,7 +39,7 @@ import { IErrorMessages } from '../../form-field.model';
     styleUrls: ['./select.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent extends PaFormControlDirective implements OnChanges, AfterViewInit, OnDestroy {
+export class SelectComponent extends PaFormControlDirective implements OnChanges, OnInit, AfterViewInit, OnDestroy {
     @Input() label = '';
     @Input() placeholder?: string;
 
@@ -80,16 +84,22 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
      * either the selected option label, either the placeholder
      */
     displayedValue?: string;
+    dropdownPosition: PositionStyle = {};
+
     private optionsClosed$ = new Subject();
     private contentOptionsChanged$ = new Subject();
     private _hasFocus = false;
     private _dim = false;
+
+    protected _terminator = new Subject();
 
     constructor(
         protected element: ElementRef,
         @Optional() @Self() protected parentControl: NgControl,
         protected platform: Platform,
         public cdr: ChangeDetectorRef,
+        @Inject(WINDOW) private window: any,
+        private _ngZone: NgZone,
     ) {
         super(element, parentControl, cdr);
     }
@@ -100,6 +110,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     }
 
     ngAfterViewInit(): void {
+        this.updateDropdownPositionOnSroll();
         this._handleNgContent();
         this._checkDescribedBy();
         this._focusInput();
@@ -120,7 +131,41 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         this.optionsClosed$.next();
         this.optionsClosed$.complete();
         this.contentOptionsChanged$.complete();
+        this._terminator.next();
+        this._terminator.complete();
         super.ngOnDestroy();
+    }
+
+    updateDropdownPositionOnSroll() {
+        this._ngZone.runOutsideAngular(() => {
+            fromEvent(this.window, 'scroll')
+                .pipe(
+                    filter(() => this.isOpened),
+                    debounce(() => interval(50)),
+                    tap(() => this.updateDropdownPosition()),
+                    takeUntil(this._terminator),
+                )
+                .subscribe();
+        });
+    }
+
+    updateDropdownPosition() {
+        const rect = this.selectInput?.nativeElement.getBoundingClientRect();
+        let containerTranslateY = 0;
+        const containerTransformedOffsetTop = this.window
+            .getComputedStyle(document.documentElement)
+            .getPropertyValue('--containerTranslateY');
+
+        if (containerTransformedOffsetTop) {
+            containerTranslateY = parseInt(containerTransformedOffsetTop, 10);
+        }
+
+        this.dropdownPosition = {
+            position: 'fixed',
+            width: `${this.selectInput?.nativeElement.offsetWidth}px`,
+            top: `${rect.bottom - containerTranslateY}px`,
+        };
+        detectChanges(this.cdr);
     }
 
     toggleDropdown() {
@@ -150,7 +195,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
             this.control.markAsDirty();
             this.control.updateValueAndValidity();
         }
-
         this.optionsClosed$.next();
         this.isOpened = false;
         this.expanded.emit(false);

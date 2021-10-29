@@ -1,3 +1,10 @@
+# 2.38.5 (2021-10-28)
+
+### Improvements
+- **Dialog**: Dialog TranslateY affects fixed position children, in order to patch this behaviour we expose the dialog top position in computed styled properties (`--containerTranslateY`).
+- **Select**: reverting previous changes, calculating the popup position on scroll and on toggle (taking in consideration the container offset y if available). [faustoonna]
+- **PopopDirective**: managing `popupPosition` with setter and getter. It updates the popup style when the input value changes.
+
 # 2.38.4 (2021-10-20)
 
 ### Improvements
