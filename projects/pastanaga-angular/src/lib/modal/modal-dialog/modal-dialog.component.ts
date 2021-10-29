@@ -40,7 +40,7 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
         protected cdr: ChangeDetectorRef,
         private element: ElementRef,
         private breakpoint: BreakpointObserver,
-        @Inject(DOCUMENT) private document: Document,
+        @Inject(DOCUMENT) private document: any,
     ) {
         super(ref, cdr);
         this.breakpoint.currentMode
