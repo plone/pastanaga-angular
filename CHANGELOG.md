@@ -1,3 +1,8 @@
+# 2.38.7 (2021-11-02) 
+
+### Improvements
+- **Dialog** updating `--containerTranslateY` value when dialog's height changes. [faustoonna]
+
 # 2.38.6 (2021-10-29)
 
 ### Bugfix
