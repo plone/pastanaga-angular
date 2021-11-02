@@ -14,6 +14,14 @@ import { By } from '@angular/platform-browser';
 import { ModalConfig, ModalRef } from '../modal.model';
 import { TRANSITION_DURATION } from '../../common';
 
+window.ResizeObserver =
+    window.ResizeObserver ||
+    jest.fn().mockImplementation(() => ({
+        disconnect: jest.fn(),
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+    }));
+
 @Component({
     template: ` <pa-modal-dialog>
         <pa-modal-title>Dialog title</pa-modal-title>
@@ -25,6 +33,7 @@ import { TRANSITION_DURATION } from '../../common';
     </pa-modal-dialog>`,
 })
 export class TestDialogComponent {
+    customStyle: any = {};
     constructor(public modal: ModalRef) {}
 }
 
@@ -86,7 +95,6 @@ describe('DialogComponent', () => {
 
     it('should save the dialog new top offset in a global variable on afterViewInit', fakeAsync(() => {
         fixture = TestBed.createComponent(TestDialogImageComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
         tick(TRANSITION_DURATION.slow);
         expect(
