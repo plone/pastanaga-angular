@@ -6,7 +6,6 @@ import {
     ContentChildren,
     ElementRef,
     EventEmitter,
-    Inject,
     Input,
     NgZone,
     OnChanges,
@@ -23,14 +22,13 @@ import { NgControl } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { DropdownComponent, OptionComponent } from '../../../dropdown';
-import { debounce, distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
 import { detectChanges, isVisibleInViewport, markForCheck, PositionStyle } from '../../../common';
-import { fromEvent, interval, Subject } from 'rxjs';
+import { fromEvent, Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { PaFormControlDirective } from '../../form-field';
 import { IErrorMessages } from '../../form-field.model';
-import { WINDOW } from '@ng-web-apis/common';
 
 type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
 
@@ -96,7 +94,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         @Optional() @Self() protected parentControl: NgControl,
         protected platform: Platform,
         public cdr: ChangeDetectorRef,
-        @Inject(WINDOW) private window: any,
         private _ngZone: NgZone,
     ) {
         super(element, parentControl, cdr);
@@ -136,10 +133,9 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     updateDropdownPositionOnSroll() {
         this._ngZone.runOutsideAngular(() => {
-            fromEvent(this.window, 'scroll')
+            fromEvent(window, 'scroll')
                 .pipe(
                     filter(() => this.isOpened),
-                    debounce(() => interval(50)),
                     tap(() => this.updateDropdownPosition()),
                     takeUntil(this._terminator),
                 )
@@ -150,7 +146,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     updateDropdownPosition() {
         const rect = this.selectInput?.nativeElement.getBoundingClientRect();
         let containerTranslateY = 0;
-        const containerTransformedOffsetTop = this.window
+        const containerTransformedOffsetTop = window
             .getComputedStyle(document.documentElement)
             .getPropertyValue('--containerTranslateY');
 
