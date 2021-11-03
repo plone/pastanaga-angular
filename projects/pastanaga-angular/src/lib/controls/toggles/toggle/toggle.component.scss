@@ -1,5 +1,5 @@
 @use "sass:math";
-@import "../../../styles/variables";
+@import "../../../../styles/variables";
 
 $toggle-full-width: rhythm(6);
 $toggle-full-mid-width: math.div($toggle-full-width, 2);
