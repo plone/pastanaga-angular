@@ -1,4 +1,6 @@
-{
+import { TranslationEntries } from '@guillotinaweb/pastanaga-angular';
+
+export const DEMO_EN: TranslationEntries = {
     "calendar": {
         "next": "Next",
         "previous": "Previous",
