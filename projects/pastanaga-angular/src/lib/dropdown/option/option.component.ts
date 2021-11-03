@@ -6,14 +6,13 @@ import {
     ElementRef,
     EventEmitter,
     Input,
-    OnInit,
     Output,
 } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { PopupService } from '../../popup/popup.service';
+import { PopupService } from '../../popup';
 import { markForCheck } from '../../common';
-import { IconModel } from '../../icon/icon.model';
-import { AvatarModel } from '../../avatar/avatar.model';
+import { IconModel } from '../../icon';
+import { AvatarModel } from '../../avatar';
 
 @Component({
     selector: 'pa-option',
@@ -21,7 +20,7 @@ import { AvatarModel } from '../../avatar/avatar.model';
     styleUrls: ['./option.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OptionComponent implements AfterContentInit, OnInit {
+export class OptionComponent implements AfterContentInit {
     @Input()
     set value(value: string) {
         this._value = value || '';
@@ -117,8 +116,6 @@ export class OptionComponent implements AfterContentInit, OnInit {
     private _description = '';
 
     constructor(private element: ElementRef, private popupService: PopupService, private cdr: ChangeDetectorRef) {}
-
-    ngOnInit(): void {}
 
     ngAfterContentInit() {
         this.text = this.element.nativeElement.textContent.trim();

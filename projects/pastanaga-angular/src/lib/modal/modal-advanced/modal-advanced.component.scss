@@ -1,0 +1,61 @@
+@import "../../../styles/variables";
+@import "../../../styles/theme/modal.tokens";
+
+.pa-modal-advanced {
+    background-color: $color-light-stronger;
+
+    .pa-modal-header {
+        @include fixed-header;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: $spacing-dialog-sections $padding-modal;
+    }
+
+    .pa-modal-content {
+        margin-top: $height-header-footer-modal;
+        margin-bottom: $spacing-dialog-sections;
+        min-height: calc(100% - #{$height-header-footer-modal} - #{$spacing-dialog-sections});
+    }
+
+    &.with-footer .pa-modal-content {
+        margin-bottom: $height-header-footer-modal;
+        min-height: calc(100% - #{$height-header-footer-modal} * 2);
+    }
+
+    pa-modal-footer {
+        @include fixed-footer;
+    }
+
+    .pa-footer-container:not(.pa-modal-footer-one-button) {
+        pa-modal-footer pa-button {
+            width: calc((100% - #{rhythm(2)}) / 2);
+
+            .pa-button {
+                min-width: unset !important;
+                width: 100%;
+            }
+        }
+    }
+
+    @media (max-width: $size-viewport-medium-max) {
+        .pa-footer-container.pa-modal-footer-one-button {
+            pa-modal-footer pa-button {
+                width: 100%;
+
+                .pa-button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    @media (min-width: $size-viewport-medium-min) {
+        @include centered-dialog;
+        width: rhythm(64);
+
+        .pa-footer-container.pa-modal-footer-one-button pa-modal-footer {
+            justify-content: flex-end;
+        }
+    }
+}

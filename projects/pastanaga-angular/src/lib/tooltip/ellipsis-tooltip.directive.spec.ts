@@ -1,7 +1,6 @@
 import { EllipsisTooltipDirective, ExtendedTooltipDirective } from './ellipsis-tooltip.directive';
 import { ElementRef, SimpleChange } from '@angular/core';
 import { fakeAsync, tick } from '@angular/core/testing';
-import spyOn = jest.spyOn;
 
 describe('EllipsisTooltipDirective', () => {
     let directive: EllipsisTooltipDirective;
@@ -81,7 +80,7 @@ describe('EllipsisTooltipDirective', () => {
     describe('updateEllipsisTooltip', () => {
         it('should NOT set a tooltip when there is no ellipsis on the element', () => {
             directive = new EllipsisTooltipDirective(tooltipDirective, elementRef);
-            spyOn(directive.hasEllipsis, 'emit');
+            jest.spyOn(directive.hasEllipsis, 'emit');
             // @ts-ignore access private member
             directive.updateEllipsisTooltip();
             expect(tooltipDirective.type).toBe('action');
@@ -92,7 +91,7 @@ describe('EllipsisTooltipDirective', () => {
         it('should set a system tooltip with element text when there is an ellipsis on the element', () => {
             elementRef.nativeElement.scrollWidth = 200;
             directive = new EllipsisTooltipDirective(tooltipDirective, elementRef);
-            spyOn(directive.hasEllipsis, 'emit');
+            jest.spyOn(directive.hasEllipsis, 'emit');
             // @ts-ignore access private member
             directive.updateEllipsisTooltip();
             expect(tooltipDirective.type).toBe('system');

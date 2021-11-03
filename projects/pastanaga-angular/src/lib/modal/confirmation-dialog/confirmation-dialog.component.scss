@@ -1,5 +1,5 @@
-@import "../../styles/variables";
-@import "../../styles/theme/modal.tokens";
+@import "../../../styles/variables";
+@import "../../../styles/theme/modal.tokens";
 
 .pa-confirmation-dialog {
     @include centered-dialog;

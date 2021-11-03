@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { avatar } from '../../demo.component';
-import { AvatarModel, detectChanges, IconModel } from '../../../../../../pastanaga-angular/src';
+import { AvatarModel, detectChanges, IconModel } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     selector: 'pa-demo-chip-page',

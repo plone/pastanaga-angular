@@ -1,0 +1,148 @@
+@import "variables";
+
+.pa-tabs-list {
+    list-style: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+
+    li {
+        border-bottom: 1px solid $color-neutral-lighter;
+    }
+    &.pa-full-width-tabs {
+        pa-tab {
+            flex-grow: 1;
+        }
+    }
+}
+
+pa-tab {
+    display: inline-block;
+    min-width: 0;
+
+    .pa-tabs-link {
+        width: 100%;
+        @include font-size(m);
+        @include line-height(l);
+        font-weight: $font-weight-regular;
+        color: $color-dark-stronger;
+        border: 0;
+        padding: 0;
+        background: transparent;
+
+        &:hover {
+            background: $color-background-tab-link-hover;
+            transition: all .25s ease;
+
+            &:not([aria-expanded="true"]) {
+                color: $color-text-tab-link;
+                cursor: pointer;
+            }
+        }
+
+        &.pa-keyboard-focus {
+            box-shadow: unset;
+            .pa-tabs-link-wrapper {
+                box-shadow: $shadow-focus;
+            }
+        }
+
+        .pa-tabs-link-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            padding: $tab-menu-item-padding-mobile;
+            z-index: 1;
+            position: relative;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            pa-icon svg {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}
+
+@mixin pa-tabs-row {
+    .pa-tabs-slider {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: rhythm(.25);
+        background: $color-tab-slider-active;
+        transition: left .25s ease, width .25s ease;
+    }
+
+    pa-tab {
+        .pa-tabs-link {
+            @include size(xs);
+            font-weight: $font-weight-bold;
+            text-transform: uppercase;
+            color: $color-text-tab-link;
+            padding: rhythm(.25) 0;
+            transition: all .25s ease;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 100%;
+                background: $color-tab-slider;
+                height: 1px;
+                bottom: 0;
+                z-index: 0;
+            }
+
+
+            &[aria-expanded="true"] {
+                color: $color-dark-stronger;
+                cursor: default;
+            }
+
+            .pa-tabs-link-wrapper {
+                display: block;
+                text-align: center;
+                padding: $tab-menu-item-padding-desktop;
+                z-index: 1;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.pa-tabs-mobile {
+    flex-direction: row;
+
+    li {
+        border-bottom: none;
+    }
+
+    @include pa-tabs-row;
+
+    .pa-tabs-link-wrapper pa-icon {
+        display: none;
+    }
+}
+
+@media (min-width: $size-viewport-medium-min) {
+    .pa-tabs-list {
+        flex-direction: row;
+
+        li {
+            border-bottom: none;
+        }
+    }
+
+    @include pa-tabs-row;
+}
+

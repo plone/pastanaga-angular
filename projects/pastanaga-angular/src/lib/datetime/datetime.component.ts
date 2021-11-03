@@ -62,7 +62,7 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
     private updateFormattedTime(datetime: string): Observable<string> {
         return this.service.getFormattedDate(datetime, this.format, this._dateOnly, this._displaySeconds).pipe(
             filter((formattedDate) => !!formattedDate),
-            map((formattedDate: string) => formattedDate)
+            map((formattedDate) => formattedDate as string)
         );
     }
 

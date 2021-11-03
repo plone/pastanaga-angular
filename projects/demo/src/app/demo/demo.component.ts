@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { of, Subject } from 'rxjs';
-import { BreakpointObserver, markForCheck, ViewportMode } from '../../../../pastanaga-angular/src';
+import { BreakpointObserver, markForCheck, ViewportMode } from '@guillotinaweb/pastanaga-angular';
 import { takeUntil } from 'rxjs/operators';
 import { IDemoMenuSection } from './demo-menu/demo-menu.component';
 import { Traverser } from 'angular-traversal';

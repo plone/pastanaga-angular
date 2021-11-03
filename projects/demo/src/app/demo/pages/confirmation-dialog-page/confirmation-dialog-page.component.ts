@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ModalService } from '../../../../../../pastanaga-angular/src';
+import { ModalService } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './confirmation-dialog-page.component.html',

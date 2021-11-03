@@ -12,6 +12,4 @@ export class InfiniteScrollPageComponent {
 </pa-infinite-scroll>`;
 
     demoVisible = false;
-
-    constructor() {}
 }

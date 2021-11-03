@@ -1,9 +1,11 @@
-@import "../../../styles/variables";
+@use "sass:math";
+@import "../../../../styles/variables";
 
 $toggle-full-width: rhythm(6);
+$toggle-full-mid-width: math.div($toggle-full-width, 2);
 $toggle-full-height: rhythm(3);
 $toggle-slider-padding: rhythm(.25);
-$toggle-transition-duration: .3s;
+$toggle-transition-duration: $duration-fast;
 
 .pa-field {
     flex-direction: row;
@@ -60,7 +62,7 @@ $toggle-transition-duration: .3s;
             border-radius: 50%;
             transition: $toggle-transition-duration;
             top: $toggle-slider-padding;
-            right: $toggle-full-width / 2 + $toggle-slider-padding;
+            right: $toggle-full-mid-width + $toggle-slider-padding;
             bottom: $toggle-slider-padding;
             left: $toggle-slider-padding;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -72,9 +74,9 @@ $toggle-transition-duration: .3s;
         .pa-toggle-slider {
             background: $color-primary-regular;
             &:before {
-                -webkit-transform: translateX($toggle-full-width / 2);
-                -ms-transform: translateX($toggle-full-width / 2);
-                transform: translateX($toggle-full-width / 2);
+                -webkit-transform: translateX($toggle-full-mid-width);
+                -ms-transform: translateX($toggle-full-mid-width);
+                transform: translateX($toggle-full-mid-width);
             }
         }
     }

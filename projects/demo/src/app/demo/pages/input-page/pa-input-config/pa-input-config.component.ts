@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { IErrorMessages } from '../../../../../../../pastanaga-angular/src';
+import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -18,7 +18,7 @@ export class PaInputConfigComponent implements OnInit {
         email: 'Invalid email.',
         maxlength: 'Too many chars.',
     };
-    pattern = new RegExp('.?test.?');
+    pattern = /.?test.?/;
 
     stateForm = new FormGroup({
         value: new FormControl(),

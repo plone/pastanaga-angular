@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
-import { PopupDirective } from '../../../../../../../projects/pastanaga-angular/src/lib/popup/popup.directive';
+import { PopupDirective } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './popup-page.component.html',

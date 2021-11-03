@@ -14,10 +14,9 @@ import { TraversalModule } from 'angular-traversal';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { IconPageComponent } from './pages/icon-page/icon-page.component';
 import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
-import * as enDemo from '../../assets/i18n/en.json';
-import * as custom from '../../assets/i18n/custom-en.json';
-import * as la from '../../assets/i18n/la.json';
-
+import { DEMO_EN } from '../../assets/i18n/en';
+import { CUSTOM_EN } from '../../assets/i18n/custom-en';
+import { DEMO_LA } from '../../assets/i18n/la';
 import {
     PaAvatarModule,
     PaAvatarPileModule,
@@ -40,7 +39,7 @@ import {
     PaTooltipModule,
     PaTranslateModule,
     PaScrollModule,
-} from '../../../../pastanaga-angular/src';
+} from '@guillotinaweb/pastanaga-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { BaseControlUsageComponent } from './pages/common-doc/base-control/base-control-usage.component';
@@ -212,9 +211,9 @@ const COMPONENTS = [
         PaToastModule,
         PaTogglesModule,
         PaTranslateModule.addTranslations([
-            { en_US: { ...(enDemo as any).default } },
-            { en_US: { ...(custom as any).default } },
-            { latin: { ...la } },
+            { en_US: DEMO_EN },
+            { en_US: CUSTOM_EN },
+            { latin: DEMO_LA },
         ]),
         PaTabsModule,
         PaTableModule,

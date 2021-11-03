@@ -5,7 +5,7 @@ import { TabItemComponent } from './tab-item.component';
 import { MockComponent, MockModule, ngMocks } from 'ng-mocks';
 import { Subject } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
-import { PaIconModule } from '../icon/icon.module';
+import { PaIconModule } from '../icon';
 
 @Component({ template: '' })
 class TestComponent {

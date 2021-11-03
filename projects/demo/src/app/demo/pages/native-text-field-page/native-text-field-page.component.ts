@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     templateUrl: './native-text-field-page.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NativeTextFieldPageComponent implements OnInit {
+export class NativeTextFieldPageComponent {
     formControl = new FormControl();
     required?: any;
     maxlength?: any;
@@ -34,8 +34,4 @@ export class NativeTextFieldPageComponent implements OnInit {
         hasFocus: new FormControl(),
         acceptHtmlTags: new FormControl(),
     });
-
-    constructor() {}
-
-    ngOnInit(): void {}
 }

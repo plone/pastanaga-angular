@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { IErrorMessages } from '../../../../../../pastanaga-angular/src';
+import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './form-field-hint-page.component.html',
 })
-export class FormFieldHintPageComponent implements OnInit {
+export class FormFieldHintPageComponent {
     readonly helpMessage = 'a hint displayed to user';
     help?: string;
     readonly validationErrors: ValidationErrors = {
@@ -38,9 +38,6 @@ export class FormFieldHintPageComponent implements OnInit {
                     [showAllErrors]="showAllErrors"
                     [errorMessages]="errorMessages">
 </pa-form-field-hint>`;
-    constructor() {}
-
-    ngOnInit(): void {}
 
     toggleHelp() {
         this.help = this.hasHelp ? this.helpMessage : undefined;

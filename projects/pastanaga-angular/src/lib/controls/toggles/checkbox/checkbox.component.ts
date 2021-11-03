@@ -13,7 +13,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { PaFormControlDirective } from '../../form-field/pa-form-control.directive';
+import { PaFormControlDirective } from '../../form-field';
 import { takeUntil } from 'rxjs/operators';
 import { IErrorMessages } from '../../form-field.model';
 import { detectChanges } from '../../../common';
@@ -21,7 +21,6 @@ import { detectChanges } from '../../../common';
 @Component({
     selector: 'pa-checkbox',
     templateUrl: './checkbox.component.html',
-    styleUrls: ['./checkbox.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {

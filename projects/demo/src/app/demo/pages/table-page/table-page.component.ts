@@ -142,9 +142,9 @@ export class TablePageComponent {
 
     rowSelected?: string;
 
-    clickRow(id: string) {
+    clickRow(id: string | number) {
         console.log('Row has been clicked');
-        this.rowSelected = id === this.rowSelected ? '' : id;
+        this.rowSelected = id === this.rowSelected ? '' : `${id}`;
     }
 
     openMenu($event: MouseEvent) {
