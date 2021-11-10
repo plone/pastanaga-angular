@@ -1,43 +1,46 @@
 import { Component } from '@angular/core';
 import { Traverser } from 'angular-traversal';
-import { IDemoMenuSection } from './demo/demo-menu/demo-menu.component';
-import { ButtonPageComponent } from './demo/pages/button-page/button-page.component';
-import { IconPageComponent } from './demo/pages/icon-page/icon-page.component';
-import { CheckboxPageComponent } from './demo/pages/checkbox-page/checkbox-page.component';
-import { TranslatePageComponent } from './demo/pages/translate-page/translate-page.component';
-import { PopupPageComponent } from './demo/pages/popup-page/popup-page.component';
-import { DropdownPageComponent } from './demo/pages/dropdown-page/dropdown-page.component';
-import { SelectPageComponent } from './demo/pages/select-page/select-page.component';
-import { GridPageComponent } from './demo/pages/grid-page/grid-page.component';
-import { TabsPageComponent } from './demo/pages/tabs-page/tabs-page.component';
-import { TablePageComponent } from './demo/pages/table-page/table-page.component';
-import { TextareaPageComponent } from './demo/pages/text-area-page/textarea-page.component';
-import { AvatarPageComponent } from './demo/pages/avatar-page/avatar-page.component';
-import { DateTimePageComponent } from './demo/pages/datetime-page/datetime-page.component';
-import { TogglePageComponent } from './demo/pages/toggle-page/toggle-page.component';
-import { ToastPageComponent } from './demo/pages/toast-page/toast-page.component';
-import { TooltipPageComponent } from './demo/pages/tooltip-page/tooltip-page.component';
-import { PalettePageComponent } from './demo/pages/palette-page/palette-page.component';
-import { ModalPageComponent } from './demo/pages/modal-page/modal-page.component';
-import { BreakpointPageComponent } from './demo/pages/breakpoint-page/breakpoint-page.component';
-import { InputPageComponent } from './demo/pages/input-page/input-page.component';
-import { FocusablePageComponent } from './demo/pages/focusable-page/focusable-page.component';
+import {
+    IDemoMenuSection,
+    ButtonPageComponent,
+    IconPageComponent,
+    CheckboxPageComponent,
+    TranslatePageComponent,
+    PopupPageComponent,
+    DropdownPageComponent,
+    SelectPageComponent,
+    GridPageComponent,
+    TabsPageComponent,
+    TablePageComponent,
+    TextareaPageComponent,
+    AvatarPageComponent,
+    DateTimePageComponent,
+    TogglePageComponent,
+    ToastPageComponent,
+    TooltipPageComponent,
+    PalettePageComponent,
+    ModalPageComponent,
+    BreakpointPageComponent,
+    InputPageComponent,
+    FocusablePageComponent,
+    ChipPageComponent,
+    SidenavPageComponent,
+    ContainerPageComponent,
+    FormFieldHintPageComponent,
+    FormControlPageComponent,
+    NativeTextFieldPageComponent,
+    ExpanderPageComponent,
+    AccessibilityPageComponent,
+    AvatarPilePageComponent,
+    InfiniteScrollPageComponent,
+    ConfirmationDialogPageComponent,
+    EllipsisTooltipPageComponent,
+    ScrollbarPageComponent,
+    PopoverPageComponent,
+    DistributePageComponent,
+} from './demo';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { ChipPageComponent } from './demo/pages/chip-page/chip-page.component';
-import { SidenavPageComponent } from './demo/pages/sidenav-page/sidenav-page.component';
-import { ContainerPageComponent } from './demo/pages/container-page/container-page.component';
-import { FormFieldHintPageComponent } from './demo/pages/form-field-hint-page/form-field-hint-page.component';
-import { FormControlPageComponent } from './demo/pages/form-control-page/form-control-page.component';
-import { NativeTextFieldPageComponent } from './demo/pages/native-text-field-page/native-text-field-page.component';
-import { ExpanderPageComponent } from './demo/pages/expand-page/expander-page.component';
-import { AccessibilityPageComponent } from './demo/pages/accessibility/accessibility-page.component';
-import { AvatarPilePageComponent } from './demo/pages/avatar-pile-page/avatar-pile-page.component';
-import { InfiniteScrollPageComponent } from './demo/pages/scroll-pages/infinite-scroll-page.component';
-import { ConfirmationDialogPageComponent } from './demo/pages/confirmation-dialog-page/confirmation-dialog-page.component';
-import { EllipsisTooltipPageComponent } from './demo/pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
-import { ScrollbarPageComponent } from './demo/pages/scrollbar-page/scrollbar-page.component';
-import { PopoverPageComponent } from './demo/pages/popover-page/popover-page.component';
-import { DistributePageComponent } from './demo/pages/distribute-page/distribute-page.component';
+
 
 @Component({
     selector: 'pa-demo-root',
