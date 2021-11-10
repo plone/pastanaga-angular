@@ -1,0 +1,9 @@
+<div class="pa-card-wrapper"
+     paFocusable
+     [class.pa-disabled]="disabled"
+     (click)="onClick($event)"
+>
+    <div class="pa-card-content">
+        <ng-content></ng-content>
+    </div>
+</div>

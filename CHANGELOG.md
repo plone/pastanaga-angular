@@ -1,3 +1,8 @@
+# 2.39.1 (2021-11-10)
+
+### Feature
+- **Card**: New generic card wrapper component [mpellerin42]
+
 # 2.39.0 (2021-11-03)
 
 ### Improvements

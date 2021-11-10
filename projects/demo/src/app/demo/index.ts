@@ -9,6 +9,7 @@ export * from './pages/avatar-page/avatar-page.component';
 export * from './pages/avatar-pile-page/avatar-pile-page.component';
 export * from './pages/button-page/button-page.component';
 export * from './pages/breakpoint-page/breakpoint-page.component';
+export * from './pages/card-page/card-page.component';
 export * from './pages/checkbox-page/checkbox-page.component';
 export * from './pages/chip-page/chip-page.component';
 export * from './pages/common-doc/base-control/base-control-usage.component';

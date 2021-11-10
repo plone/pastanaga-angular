@@ -5,6 +5,7 @@ export * from './lib/avatar';
 export * from './lib/avatar-pile';
 export * from './lib/breakpoint-observer';
 export * from './lib/button';
+export * from './lib/card';
 export * from './lib/chips';
 export * from './lib/common';
 export * from './lib/controls';

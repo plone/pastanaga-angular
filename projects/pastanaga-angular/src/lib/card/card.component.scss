@@ -1,0 +1,37 @@
+@import "../../styles/variables";
+
+:host {
+    display: block;
+}
+
+.pa-card-wrapper {
+    background: $color-light-stronger;
+    border: 1px solid $color-neutral-light;
+    border-radius: $border-radius-default;
+    cursor: pointer;
+    padding: rhythm(2);
+    transition: background $transition-hint;
+
+    .pa-card-content {
+        opacity: 1;
+        transition: opacity $transition-hint;
+    }
+
+    &:hover {
+        background: $color-neutral-lighter;
+    }
+
+    &:active {
+        background: $color-neutral-light;
+    }
+
+    &:disabled,
+    &.pa-disabled {
+        cursor: default;
+        pointer-events: none;
+
+        .pa-card-content {
+            opacity: .3;
+        }
+    }
+}
