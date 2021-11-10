@@ -38,6 +38,7 @@ import {
     ScrollbarPageComponent,
     PopoverPageComponent,
     DistributePageComponent,
+    CardPageComponent
 } from './demo';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
@@ -69,6 +70,7 @@ export class AppComponent {
                 { view: 'avatar', title: 'Avatar', type: AvatarPageComponent },
                 { view: 'avatar-pile', title: 'Avatar pile', type: AvatarPilePageComponent },
                 { view: 'button', title: 'Button', type: ButtonPageComponent },
+                { view: 'card', title: 'Card', type: CardPageComponent },
                 { view: 'chip', title: 'Chip', type: ChipPageComponent },
                 { view: 'confirmation-dialog', title: 'Confirmation dialog', type: ConfirmationDialogPageComponent },
                 { view: 'modal', title: 'Modal', type: ModalPageComponent },

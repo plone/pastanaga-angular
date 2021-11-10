@@ -37,6 +37,7 @@ import {
     PaTooltipModule,
     PaTranslateModule,
     PaScrollModule,
+    PaCardModule,
 } from '@guillotinaweb/pastanaga-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
@@ -113,6 +114,7 @@ import { EllipsisTooltipPageComponent } from './pages/ellipsis-tooltip-page/elli
 import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.component';
 import { PopoverPageComponent } from './pages/popover-page/popover-page.component';
 import { DistributePageComponent } from './pages/distribute-page/distribute-page.component';
+import { CardPageComponent } from './pages/card-page/card-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -134,6 +136,7 @@ const COMPONENTS = [
     AvatarPilePageComponent,
     BreakpointPageComponent,
     ButtonPageComponent,
+    CardPageComponent,
     CheckboxPageComponent,
     ChipPageComponent,
     ContainerPageComponent,
@@ -206,6 +209,7 @@ const COMPONENTS = [
         PaAvatarModule,
         PaAvatarPileModule,
         PaButtonModule,
+        PaCardModule,
         PaChipsModule,
         PaIconModule,
         PaDropdownModule,
