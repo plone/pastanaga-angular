@@ -19,6 +19,7 @@ describe('IconComponent', () => {
                 },
             ],
             declarations: [IconComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
@@ -36,7 +37,7 @@ describe('IconComponent', () => {
         component.name = 'plus';
         fixture.detectChanges();
         expect(fixture.debugElement.query(By.css('svg use')).attributes['xlink:href']).toEqual(
-            'assets/glyphs-sprite.svg#plus'
+            'assets/glyphs-sprite.svg#plus',
         );
     });
 

@@ -1,3 +1,8 @@
+# 2.42.0 (2022-01-13)
+
+### Breaking change
+- Upgrade to Angular 13 [ebrehault]
+
 # 2.41.1 (2022-01-11)
 
 ### Bugfix

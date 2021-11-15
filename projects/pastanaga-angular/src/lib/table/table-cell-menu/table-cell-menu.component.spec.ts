@@ -12,6 +12,7 @@ describe('TableCellMenuComponent', () => {
         TestBed.configureTestingModule({
             declarations: [TableCellMenuComponent],
             imports: [MockModule(PaFocusableModule)],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
