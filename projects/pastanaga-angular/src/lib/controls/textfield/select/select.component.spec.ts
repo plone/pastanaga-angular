@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectComponent } from './select.component';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
-import { PaFormFieldModule, FormFieldHintComponent } from '../../form-field';
-import { MockModule, MockPipe, MockProvider, ngMocks } from 'ng-mocks';
+import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
+import { MockComponent, MockModule, MockPipe, MockProvider, ngMocks } from 'ng-mocks';
 import { PaDropdownModule, DropdownComponent } from '../../../dropdown';
 import { PaPopupModule } from '../../../popup';
 import { SelectOptionsComponent } from './select-options/select-options.component';
@@ -52,7 +52,6 @@ describe('SelectComponent', () => {
             FormsModule,
             ReactiveFormsModule,
             MockModule(A11yModule),
-            PaFormFieldModule,
             PaDropdownModule,
             PaPopupModule,
             MockModule(PaIconModule),
@@ -69,6 +68,8 @@ describe('SelectComponent', () => {
         ],
         declarations: [
             SelectOptionsComponent,
+            PaFormControlDirective,
+            MockComponent(FormFieldHintComponent),
             MockPipe(TranslatePipe, (value) => `translate--${value}`),
         ],
         detectChanges: false,

@@ -1,3 +1,8 @@
+# 2.39.2 (2021-11-17)
+
+### Improvement
+- **Form field hint**: translate form field hints [mpellerin42]
+
 # 2.39.1 (2021-11-10)
 
 ### Feature
