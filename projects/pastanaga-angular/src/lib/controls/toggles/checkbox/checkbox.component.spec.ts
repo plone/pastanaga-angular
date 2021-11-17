@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
-import { MockComponent, ngMocks } from 'ng-mocks';
+import { MockComponent, MockModule, MockPipe, ngMocks } from 'ng-mocks';
 import { CheckboxComponent } from './checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PaFormFieldModule } from '../../form-field/form-field.module';
-import { FormFieldHintComponent } from '../../form-field/form-field-hint/form-field-hint.component';
+import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
 import { fakeAsync, tick } from '@angular/core/testing';
+import { PaTranslateModule, TranslatePipe } from '../../../translate';
 
 @Component({ template: '' })
 class TestComponent {
@@ -22,10 +22,14 @@ describe('CheckboxComponent', () => {
     let spectator: SpectatorHost<CheckboxComponent, TestComponent>;
     const createHost = createHostFactory({
         component: CheckboxComponent,
-        imports: [FormsModule, ReactiveFormsModule, PaFormFieldModule],
+        imports: [FormsModule, ReactiveFormsModule, MockModule(PaTranslateModule)],
         host: TestComponent,
-        mocks: [MockComponent(FormFieldHintComponent)],
         detectChanges: false,
+        declarations: [
+            PaFormControlDirective,
+            MockComponent(FormFieldHintComponent),
+            MockPipe(TranslatePipe, jest.fn((key: string) => key))
+        ]
     });
     const thenInputHasAttribute = (attribute: string, value: any) => {
         expect(spectator.query('.pa-toggle-control')?.attributes.getNamedItem(attribute)?.value).toEqual(value);
