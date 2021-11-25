@@ -184,17 +184,17 @@ $font-size: (
 $line-height-base:            1.125rem !default;
 //$line-height-base:       1.28571428571rem !default; // 18/16
 $line-height: (
-        xs:   ($line-height-base * (12/18)),   // ~12px
-        s:    ($line-height-base * (15/18)),   // ~15px
+        xs:   ($line-height-base * calc(12 / 18)),   // ~12px
+        s:    ($line-height-base * calc(15 / 18)),   // ~15px
         m:    $line-height-base,               //  18px
-        l:    ($line-height-base * (21/18)),   // ~21px
-        xl:   ($line-height-base * (24/18)),   // ~24px
-        xxl:  ($line-height-base * (27/18)),   // ~27px
-        xxxl: ($line-height-base * (30/18)),   // ~30px
-        d:    ($line-height-base * (33/18)),   // ~33
-        xd:   ($line-height-base * (36/18)),   // ~36
-        xxd:  ($line-height-base * (42/18)),   // ~42
-        xxxd: ($line-height-base * (60/18))   // ~60
+        l:    ($line-height-base * calc(21 / 18)),   // ~21px
+        xl:   ($line-height-base * calc(24 / 18)),   // ~24px
+        xxl:  ($line-height-base * calc(27 / 18)),   // ~27px
+        xxxl: ($line-height-base * calc(30 / 18)),   // ~30px
+        d:    ($line-height-base * calc(33 / 18)),   // ~33
+        xd:   ($line-height-base * calc(36 / 18)),   // ~36
+        xxd:  ($line-height-base * calc(42 / 18)),   // ~42
+        xxxd: ($line-height-base * calc(60 / 18))   // ~60
 ) !default;
 @function line($tshirt-lheight) {
     @return map-get($line-height, $tshirt-lheight);
@@ -221,7 +221,7 @@ $letter-spacing: (
 $small-font-size:             85% !default;
 
 
-$headings-margin-bottom:      (rythm(1) / 2) !default;
+$headings-margin-bottom:      calc(rythm(1) / 2) !default;
 $headings-font-family:        inherit !default;
 $headings-font-weight:        $font-weight-light !default;
 $headings-line-height:        1.2 !default;
@@ -266,11 +266,11 @@ $h-presentation-dialog:       rythm(1)*60;   //720
 // RADIUS
 $radius-base:            3px !default;
 $border-radius: (
-        xs:   ($radius-base * (1/3)),   // ~1px
-        s:    ($radius-base * (2/3)),   // ~2px
+        xs:   ($radius-base * calc(1 / 3)),   // ~1px
+        s:    ($radius-base * calc(2 / 3)),   // ~2px
         m:    $radius-base,             //  3px
-        l:    ($radius-base * (2/1)),   // ~6px
-        xl:   ($radius-base * (4/1))    // ~12px
+        l:    ($radius-base * calc(2 / 1)),   // ~6px
+        xl:   ($radius-base * calc(4 / 1))    // ~12px
 ) !default;
 @function border-radius($br) {
     @return map-get($border-radius, $br);

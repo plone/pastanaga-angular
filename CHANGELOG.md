@@ -1,3 +1,9 @@
+# 1.24.0 (2022-01-13)
+
+### Breaking change
+
+-   Upgrade to Angular 13 [ebrehault]
+
 # 1.23.4 (2022-01-12)
 
 ### Improvements
@@ -8,13 +14,13 @@
 
 ### Improvements
 
-- Updated demo with translate service example
+-   Updated demo with translate service example
 
 # 1.23.2 (2021-11-25)
 
 ### Improvement
 
-- Added translate service to allow change current language [rboixaderg]
+-   Added translate service to allow change current language [rboixaderg]
 
 # 1.23.1 (2021-10-27)
 

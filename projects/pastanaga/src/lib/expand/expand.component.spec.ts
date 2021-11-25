@@ -58,28 +58,29 @@ class Test3Component {
 describe('ExpandComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                BrowserModule,
-                CommonModule,
-                BrowserAnimationsModule,
-                TooltipModule,
-                SvgModule,
-                AngularSvgIconModule.forRoot({
-                    loader: {
-                        provide: SvgLoader,
-                        useFactory: svgLoaderFactory,
-                    }
-                }),
-            ],
-            declarations: [
-                ExpandComponent,
-                ExpandTitleDirective,
-                ExpandDescriptionDirective,
-                Test1Component,
-                Test2Component,
-                Test3Component,
-            ],
-        }).compileComponents();
+    imports: [
+        BrowserModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        TooltipModule,
+        SvgModule,
+        AngularSvgIconModule.forRoot({
+            loader: {
+                provide: SvgLoader,
+                useFactory: svgLoaderFactory,
+            }
+        }),
+    ],
+    declarations: [
+        ExpandComponent,
+        ExpandTitleDirective,
+        ExpandDescriptionDirective,
+        Test1Component,
+        Test2Component,
+        Test3Component,
+    ],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
     }));
     it('should render title and description', (done) => {
         const fixture = TestBed.createComponent(Test1Component);

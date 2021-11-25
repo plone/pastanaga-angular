@@ -99,38 +99,39 @@ class Test9Component {}
 describe('BadgeComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                BrowserModule,
-                CommonModule,
-                ButtonModule,
-                AvatarModule,
-                TooltipModule,
-                TranslateModule,
-                SvgModule,
-                AngularSvgIconModule.forRoot({
-                    loader: {
-                        provide: SvgLoader,
-                        useFactory: svgLoaderFactory,
-                    },
-                }),
-            ],
-            providers: [
-                { provide: LANG, useValue: 'en_US' },
-                { provide: TRANSLATIONS, useValue: { en_US: en } },
-            ],
-            declarations: [
-                BadgeComponent,
-                Test1Component,
-                Test2Component,
-                Test3Component,
-                Test4Component,
-                Test5Component,
-                Test6Component,
-                Test7Component,
-                Test8Component,
-                Test9Component,
-            ],
-        }).compileComponents();
+    imports: [
+        BrowserModule,
+        CommonModule,
+        ButtonModule,
+        AvatarModule,
+        TooltipModule,
+        TranslateModule,
+        SvgModule,
+        AngularSvgIconModule.forRoot({
+            loader: {
+                provide: SvgLoader,
+                useFactory: svgLoaderFactory,
+            },
+        }),
+    ],
+    providers: [
+        { provide: LANG, useValue: 'en_US' },
+        { provide: TRANSLATIONS, useValue: { en_US: en } },
+    ],
+    declarations: [
+        BadgeComponent,
+        Test1Component,
+        Test2Component,
+        Test3Component,
+        Test4Component,
+        Test5Component,
+        Test6Component,
+        Test7Component,
+        Test8Component,
+        Test9Component,
+    ],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
     }));
     it('should emit when rendered', (done) => {
         const fixture = TestBed.createComponent(Test1Component);

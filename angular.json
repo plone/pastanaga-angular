@@ -102,13 +102,6 @@
                         "scripts": [],
                         "assets": ["src/favicon.ico", "src/assets"]
                     }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
                 }
             }
         },
@@ -137,13 +130,6 @@
                         "main": "projects/pastanaga/src/test.ts",
                         "tsConfig": "projects/pastanaga/tsconfig.spec.json",
                         "karmaConfig": "projects/pastanaga/karma.conf.js"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/pastanaga/tsconfig.lib.json", "projects/pastanaga/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
                     }
                 }
             }

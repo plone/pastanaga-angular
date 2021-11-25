@@ -45,7 +45,7 @@
 
             &.pa-field-with-icon {
                 margin-left: rythm(5) !important;
-                padding-left: rythm(1) / 3;
+                padding-left: calc(rythm(1) / 3);
             }
 
             &.pa-field-with-icon-block {

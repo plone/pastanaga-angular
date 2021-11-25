@@ -186,9 +186,9 @@ pa-button {
         & svg {
             width: rythm(1);
             height: rythm(1);
-            margin-left: -  rythm(.25);
-            margin-right: -  rythm(.25);
-            margin-top: - rythm(.25)/3;
+            margin-left: - rythm(.25);
+            margin-right: - rythm(.25);
+            margin-top: - calc(rythm(.25)/3);
         }
     }
 
@@ -201,9 +201,9 @@ pa-button {
         & svg {
             width: rythm(1.5);
             height: rythm(1.5);
-            margin-left: -  rythm(.5);
-            margin-right: -  rythm(.5);
-            margin-top: - rythm(.25)/2;
+            margin-left: - rythm(.5);
+            margin-right: - rythm(.5);
+            margin-top: - calc(rythm(.25)/2);
         }
         #{$root}-label.pa-with-icon {
             padding-left: rythm(1)
@@ -220,8 +220,8 @@ pa-button {
         & svg {
             width: rythm(3);
             height: rythm(3);
-            margin-left: - rythm(2.5)/2;
-            margin-right: - rythm(2.5)/2;
+            margin-left: - calc(rythm(2.5)/2);
+            margin-right: - calc(rythm(2.5)/2);
             margin-top: - rythm(.25);
         }
     }
