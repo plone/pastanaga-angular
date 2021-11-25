@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnInit,
+    ViewChild,
+    ViewContainerRef,
+} from '@angular/core';
 import {
     Avatar,
     BadgeModel,
@@ -6,10 +13,12 @@ import {
     DialogConfig,
     DialogService,
     getInitialTree,
+    markForCheck,
     SidebarService,
     Toaster,
     ToastModel,
     ToggleModel,
+    TranslateService,
 } from 'pastanaga-angular';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -338,7 +347,9 @@ export class DemoComponent implements OnInit {
     constructor(
         private toaster: Toaster,
         private sidebarService: SidebarService,
-        private dialogService: DialogService
+        private dialogService: DialogService,
+        private translateService: TranslateService,
+        private cd: ChangeDetectorRef
     ) {}
 
     ngOnInit() {
@@ -359,6 +370,11 @@ export class DemoComponent implements OnInit {
         } else {
             this.sections = { text: true };
         }
+    }
+
+    changeLanguage() {
+        this.translateService.setLang('ca');
+        markForCheck(this.cd);
     }
 
     selectForRange(selectedDate: Date) {
