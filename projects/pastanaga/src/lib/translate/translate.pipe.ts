@@ -1,7 +1,6 @@
 import { TranslateService } from './translate.service';
 import { Pipe, PipeTransform, Inject, InjectionToken } from '@angular/core';
 
-export const LANG = new InjectionToken<string>('pastanaga.v1.lang');
 export const TRANSLATIONS = new InjectionToken<string>('pastanaga.v1.translations');
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);

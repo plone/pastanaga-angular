@@ -1,5 +1,6 @@
-import { Injectable, Inject } from '@angular/core';
-import { LANG } from './translate.pipe';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
+
+export const LANG = new InjectionToken<string>('pastanaga.v1.lang');
 
 @Injectable({
     providedIn: 'root',
