@@ -14,7 +14,8 @@ import { TranslateModule } from '../../translate/translate.module';
 import { SvgModule } from '../../svg/svg.module';
 import { svgLoaderFactory } from '../../test.utils';
 import { getInitialGroupWithADisabled, getInitialTree, ids } from './checkbox-tree.test-data';
-import { LANG, TRANSLATIONS } from '../../translate/translate.pipe';
+import { TRANSLATIONS } from '../../translate/translate.pipe';
+import { LANG } from '../../translate/translate.service';
 
 // tslint:disable:max-line-length
 

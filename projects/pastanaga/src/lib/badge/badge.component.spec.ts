@@ -11,7 +11,8 @@ import { TooltipModule } from '../tooltip/tooltip.module';
 import { ButtonModule } from '../button/button.module';
 import { AvatarModule } from '../avatar/avatar.module';
 import { SvgModule } from '../svg/svg.module';
-import { LANG, TRANSLATIONS } from '../translate/translate.pipe';
+import { TRANSLATIONS } from '../translate/translate.pipe';
+import { LANG } from '../translate/translate.service';
 
 const en = {
     common: {
