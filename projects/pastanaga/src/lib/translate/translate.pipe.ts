@@ -7,7 +7,7 @@ const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
 
 @Pipe({
     name: 'translate',
-    pure: true,
+    pure: false,
 })
 export class TranslatePipe implements PipeTransform {
     lastKey?: string;
