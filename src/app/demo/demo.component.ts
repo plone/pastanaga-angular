@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    OnInit,
-    ViewChild,
-    ViewContainerRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import {
     Avatar,
     BadgeModel,
@@ -13,7 +6,6 @@ import {
     DialogConfig,
     DialogService,
     getInitialTree,
-    markForCheck,
     SidebarService,
     Toaster,
     ToastModel,
@@ -26,6 +18,7 @@ import packageInfo from '../../../projects/pastanaga/package.json';
 import { MultipleScreensDialogComponent } from './multiple-screens-dialog.component';
 import { OneScreenDialogComponent } from './one-screen-dialog.component';
 import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog.component';
+import { Traverser } from 'angular-traversal';
 
 // tslint:disable:max-line-length
 const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => {
@@ -349,7 +342,7 @@ export class DemoComponent implements OnInit {
         private sidebarService: SidebarService,
         private dialogService: DialogService,
         private translateService: TranslateService,
-        private cd: ChangeDetectorRef
+        private traverser: Traverser
     ) {}
 
     ngOnInit() {
@@ -374,7 +367,7 @@ export class DemoComponent implements OnInit {
 
     changeLanguage() {
         this.translateService.setLang('ca');
-        markForCheck(this.cd);
+        this.traverser.traverseHere();
     }
 
     selectForRange(selectedDate: Date) {
