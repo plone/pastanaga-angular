@@ -1,3 +1,9 @@
+# 1.23.3 (2021-11-25)
+
+### Improvements
+
+- Updated demo with translate service example
+
 # 1.23.2 (2021-11-25)
 
 ### Improvement
