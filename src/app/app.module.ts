@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 
 import * as enDemo from '../assets/i18n/en.json';
 import * as custom from '../assets/i18n/custom-en.json';
+import * as customCa from '../assets/i18n/custom-ca.json';
 import * as la from '../assets/i18n/la.json';
 import { DemoModule } from './demo/demo.module';
 import { I18N_EN, SidebarModule, LANG, TranslateModule } from 'pastanaga-angular';
@@ -25,6 +26,7 @@ import { PaDocPagesModule } from './doc/doc-pages.module';
             { en_US: I18N_EN },
             { en_US: { ...enDemo['default'] } },
             { en_US: { ...custom['default'] } },
+            { ca: { ...customCa['default'] } },
         ]),
     ],
     declarations: [AppComponent],
