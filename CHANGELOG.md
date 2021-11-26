@@ -1,4 +1,4 @@
-# 1.23.3 (2021-11-25)
+# 1.23.3 (2021-11-26)
 
 ### Improvements
 
@@ -9,6 +9,7 @@
 ### Improvement
 
 - Added translate service to allow change current language [rboixaderg]
+
 # 1.23.1 (2021-10-27)
 
 ### Improvement
