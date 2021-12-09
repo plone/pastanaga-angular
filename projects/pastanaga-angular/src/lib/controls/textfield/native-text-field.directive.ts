@@ -136,8 +136,13 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         this.blurring.emit(value);
         this._checkIsFilled();
         if (this.control.updateOn !== 'change') {
-            this.control.setValue(value);
             this.control.markAsTouched();
+            // with updateOn 'blur' strategy, the first change might not triggered within this cycle
+            // and therefore, potential validation errors may not be displayed
+            if (this.control.pristine && (this.control.value || value) && this.control.value !== value) {
+                this.control.markAsDirty();
+            }
+            this.control.setValue(value);
             this.control.updateValueAndValidity({ emitEvent: true });
         }
     }
