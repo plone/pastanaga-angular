@@ -1,3 +1,8 @@
+# 2.39.4 (2021-12-09)
+
+### Bugfix
+- **Select Component**: fixed selecting an option with keypress.enter is not closing the select [jCarret]
+
 # 2.39.3 (2021-12-09)
 
 ### Bugfix
