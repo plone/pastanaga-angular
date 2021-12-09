@@ -1,3 +1,8 @@
+# 2.39.3 (2021-12-09)
+
+### Bugfix
+- **Native text field**: fixed error state not displayed with updateOn blur [jCarret]
+
 # 2.39.2 (2021-11-17)
 
 ### Improvement
