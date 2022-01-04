@@ -1,5 +1,6 @@
 import { CardComponent } from './card.component';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { Keys } from '../common';
 
 describe('CardComponent', () => {
     let createComponent = createComponentFactory({
@@ -41,6 +42,13 @@ describe('CardComponent', () => {
         it('should be emitted when clicking on the card wrapper', () => {
             spectator.detectChanges();
             spectator.click('.pa-card-wrapper');
+            expect(component.cardClick.emit).toHaveBeenCalled();
+        });
+
+        it('should be emitted when focusing and pressing enter on the card wrapper', () => {
+            spectator.detectChanges();
+            spectator.focus('.pa-card-wrapper');
+            spectator.dispatchKeyboardEvent('.pa-card-wrapper', 'keyup', Keys.enter);
             expect(component.cardClick.emit).toHaveBeenCalled();
         });
 
