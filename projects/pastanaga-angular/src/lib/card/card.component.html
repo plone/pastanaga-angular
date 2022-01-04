@@ -2,6 +2,7 @@
      paFocusable
      [class.pa-disabled]="disabled"
      (click)="onClick($event)"
+     (keyup.enter)="onClick($event)"
 >
     <div class="pa-card-content">
         <ng-content></ng-content>

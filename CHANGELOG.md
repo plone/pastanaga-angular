@@ -1,3 +1,8 @@
+# 2.39.4 (2022-01-04)
+
+### Bugfix
+- **Card**: trigger `cardClick` event when pressing enter on a focused card [mpellerin42]
+
 # 2.39.3 (2021-12-09)
 
 ### Bugfix
