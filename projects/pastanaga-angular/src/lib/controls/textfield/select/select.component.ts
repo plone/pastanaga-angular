@@ -21,7 +21,7 @@ import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { DropdownComponent, OptionComponent } from '../../../dropdown';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { detectChanges, isVisibleInViewport, markForCheck, PositionStyle } from '../../../common';
+import { detectChanges, isVisibleInViewport, markForCheck } from '../../../common';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
@@ -59,8 +59,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     get dim() {
         return this._dim;
     }
-
-    @Input() optionsPosition?: PositionStyle;
 
     @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
