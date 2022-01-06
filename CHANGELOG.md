@@ -1,3 +1,11 @@
+# 2.40.0 (2022-01-06)
+
+### Breaking changes
+- Revert all changes done on the select dropdown position (revert version 2.38.7, 2.38.6, 2.38.5 and 2.38.4) [mpellerin42]
+
+### Bugfix
+- **Select**: Close the select on option selection [mpellerin42]
+
 # 2.39.4 (2022-01-04)
 
 ### Bugfix

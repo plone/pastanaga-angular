@@ -1,4 +1,3 @@
-import { fakeAsync, tick } from '@angular/core/testing';
 import { ModalDialogComponent } from './modal-dialog.component';
 import {
     ModalDescriptionDirective,
@@ -12,15 +11,6 @@ import { ModalConfig, ModalRef } from '../modal.model';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer';
 import { of } from 'rxjs';
-import { TRANSITION_DURATION } from '../../common';
-
-window.ResizeObserver =
-    window.ResizeObserver ||
-    jest.fn().mockImplementation(() => ({
-        disconnect: jest.fn(),
-        observe: jest.fn(),
-        unobserve: jest.fn(),
-    }));
 
 describe('DialogComponent', () => {
     const createHost = createHostFactory({
@@ -37,11 +27,11 @@ describe('DialogComponent', () => {
             {
                 provide: BreakpointObserver,
                 useValue: {
-                    currentMode: of('desktop' as ViewportMode)
-                }
-            }
+                    currentMode: of('desktop' as ViewportMode),
+                },
+            },
         ],
-        detectChanges: false
+        detectChanges: false,
     });
 
     let spectator: SpectatorHost<ModalDialogComponent>;
@@ -64,12 +54,6 @@ describe('DialogComponent', () => {
         it(`should hide image container by default`, () => {
             expect(component.hasImage).toBe(false);
         });
-
-        // FIXME: jest doesn't seem to work as before with global window and document
-        it.skip('should save the dialog new top offset in a global variable on afterViewInit', fakeAsync(() => {
-            tick(TRANSITION_DURATION.slow);
-            expect(window.getComputedStyle(document.documentElement).getPropertyValue('--containerTranslateY')).toBeTruthy();
-        }));
     });
 
 
@@ -88,5 +72,4 @@ describe('DialogComponent', () => {
 
         expect(component.hasImage).toBe(true);
     });
-
 });

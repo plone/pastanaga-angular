@@ -7,10 +7,8 @@ import {
     ElementRef,
     EventEmitter,
     Input,
-    NgZone,
     OnChanges,
     OnDestroy,
-    OnInit,
     Optional,
     Output,
     QueryList,
@@ -22,9 +20,9 @@ import { NgControl } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { DropdownComponent, OptionComponent } from '../../../dropdown';
-import { distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
-import { detectChanges, isVisibleInViewport, markForCheck, PositionStyle } from '../../../common';
-import { fromEvent, Subject } from 'rxjs';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { detectChanges, isVisibleInViewport, markForCheck } from '../../../common';
+import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { PaFormControlDirective } from '../../form-field';
@@ -37,7 +35,7 @@ type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
     templateUrl: './select.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent extends PaFormControlDirective implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+export class SelectComponent extends PaFormControlDirective implements OnChanges, AfterViewInit, OnDestroy {
     @Input() label = '';
     @Input() placeholder?: string;
 
@@ -80,21 +78,16 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
      * either the selected option label, either the placeholder
      */
     displayedValue?: string;
-    dropdownPosition: PositionStyle = {};
-
     private optionsClosed$ = new Subject();
     private contentOptionsChanged$ = new Subject();
     private _hasFocus = false;
     private _dim = false;
-
-    protected _terminator = new Subject();
 
     constructor(
         protected element: ElementRef,
         @Optional() @Self() protected parentControl: NgControl,
         protected platform: Platform,
         public cdr: ChangeDetectorRef,
-        private _ngZone: NgZone,
     ) {
         super(element, parentControl, cdr);
     }
@@ -105,7 +98,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     }
 
     ngAfterViewInit(): void {
-        this.updateDropdownPositionOnSroll();
         this._handleNgContent();
         this._checkDescribedBy();
         this._focusInput();
@@ -126,40 +118,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         this.optionsClosed$.next();
         this.optionsClosed$.complete();
         this.contentOptionsChanged$.complete();
-        this._terminator.next();
-        this._terminator.complete();
         super.ngOnDestroy();
-    }
-
-    updateDropdownPositionOnSroll() {
-        this._ngZone.runOutsideAngular(() => {
-            fromEvent(window, 'scroll')
-                .pipe(
-                    filter(() => this.isOpened),
-                    tap(() => this.updateDropdownPosition()),
-                    takeUntil(this._terminator),
-                )
-                .subscribe();
-        });
-    }
-
-    updateDropdownPosition() {
-        const rect = this.selectInput?.nativeElement.getBoundingClientRect();
-        let containerTranslateY = 0;
-        const containerTransformedOffsetTop = window
-            .getComputedStyle(document.documentElement)
-            .getPropertyValue('--containerTranslateY');
-
-        if (containerTransformedOffsetTop) {
-            containerTranslateY = parseInt(containerTransformedOffsetTop, 10);
-        }
-
-        this.dropdownPosition = {
-            position: 'fixed',
-            width: `${this.selectInput?.nativeElement.offsetWidth}px`,
-            top: `${rect.bottom - containerTranslateY}px`,
-        };
-        detectChanges(this.cdr);
     }
 
     toggleDropdown() {
@@ -189,6 +148,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
             this.control.markAsDirty();
             this.control.updateValueAndValidity();
         }
+
         this.optionsClosed$.next();
         this.isOpened = false;
         this.expanded.emit(false);
@@ -203,6 +163,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     selectOption(option: OptionModel | OptionComponent) {
         if (!option.disabled && this.isActive && option.value !== this.control.value) {
             this.control.patchValue(option.value);
+            this.optionsDropdown?.close();
         }
     }
 
