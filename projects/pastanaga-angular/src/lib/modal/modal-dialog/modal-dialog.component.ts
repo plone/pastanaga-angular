@@ -5,8 +5,6 @@ import {
     Component,
     ElementRef,
     Inject,
-    NgZone,
-    OnDestroy,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
@@ -16,7 +14,6 @@ import { TRANSITION_DURATION } from '../../common';
 import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
 import { takeUntil } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'pa-modal-dialog',
@@ -25,7 +22,7 @@ import { BehaviorSubject } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class ModalDialogComponent extends BaseModalComponent implements AfterViewInit, OnDestroy {
+export class ModalDialogComponent extends BaseModalComponent implements AfterViewInit {
     @ViewChild('dialogContainer', { read: ElementRef }) dialogContainer?: ElementRef;
     @ViewChild('header', { read: ElementRef }) header?: ElementRef;
     @ViewChild('image', { read: ElementRef }) image?: ElementRef;
@@ -37,19 +34,12 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
     hasFooter = false;
 
     private _headerHeightSettingDelay = TRANSITION_DURATION.moderate;
-    dialogHeightHasChanged$ = new BehaviorSubject<number>(0);
-    observer: ResizeObserver = new ResizeObserver((entries) => {
-        this.ngZone.runOutsideAngular(() => {
-            this.dialogHeightHasChanged$.next(entries[0].contentRect.top);
-        });
-    });
 
     constructor(
         public ref: ModalRef,
         protected cdr: ChangeDetectorRef,
         private element: ElementRef,
         private breakpoint: BreakpointObserver,
-        private ngZone: NgZone,
         @Inject(DOCUMENT) private document: any,
     ) {
         super(ref, cdr);
@@ -79,15 +69,9 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
             );
         }, this._headerHeightSettingDelay);
 
-        // updating dialog top offset on dialog height change
-        this.observer.observe(this.dialogContainer?.nativeElement);
-        this.dialogHeightHasChanged$.pipe(takeUntil(this._terminator)).subscribe(() => {
+        setTimeout(() => {
             const dialogRect = this.dialogContainer?.nativeElement.getBoundingClientRect();
             this.document.documentElement.style.setProperty('--containerTranslateY', `${Math.ceil(dialogRect.top)}`);
-        });
-    }
-
-    ngOnDestroy() {
-        this.observer.unobserve(this.dialogContainer?.nativeElement);
+        }, TRANSITION_DURATION.slow);
     }
 }
