@@ -4,7 +4,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    Inject,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
@@ -13,7 +12,6 @@ import { ModalRef } from '../modal.model';
 import { TRANSITION_DURATION } from '../../common';
 import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
 import { takeUntil } from 'rxjs/operators';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
     selector: 'pa-modal-dialog',
@@ -23,7 +21,6 @@ import { DOCUMENT } from '@angular/common';
     encapsulation: ViewEncapsulation.None,
 })
 export class ModalDialogComponent extends BaseModalComponent implements AfterViewInit {
-    @ViewChild('dialogContainer', { read: ElementRef }) dialogContainer?: ElementRef;
     @ViewChild('header', { read: ElementRef }) header?: ElementRef;
     @ViewChild('image', { read: ElementRef }) image?: ElementRef;
     @ViewChild('description', { read: ElementRef }) description?: ElementRef;
@@ -40,7 +37,6 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
         protected cdr: ChangeDetectorRef,
         private element: ElementRef,
         private breakpoint: BreakpointObserver,
-        @Inject(DOCUMENT) private document: any,
     ) {
         super(ref, cdr);
         this.breakpoint.currentMode
@@ -68,10 +64,5 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
                 `${Math.ceil(this.header?.nativeElement.getBoundingClientRect().height)}px`,
             );
         }, this._headerHeightSettingDelay);
-
-        setTimeout(() => {
-            const dialogRect = this.dialogContainer?.nativeElement.getBoundingClientRect();
-            this.document.documentElement.style.setProperty('--containerTranslateY', `${Math.ceil(dialogRect.top)}`);
-        }, TRANSITION_DURATION.slow);
     }
 }

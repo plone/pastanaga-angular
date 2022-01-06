@@ -1,28 +1,33 @@
-<div class="pa-modal-backdrop" tabindex="0" #modalContainer (click)="outsideClick($event)">
-    <dialog
-        class="pa-modal pa-modal-dialog pa-modal-fullscreen-on-small"
-        role="alertdialog"
-        #dialogContainer
-        [class.with-footer]="hasFooter"
-        [class.in]="!closing"
-        [class.out]="closing"
-        [attr.aria-labelledby]="'dialog-' + id + '-title'"
-        [attr.aria-describedby]="'dialog-' + id + '-description'"
+<div class="pa-modal-backdrop"
+     tabindex="0"
+     #modalContainer
+     (click)="outsideClick($event)"
+>
+    <dialog class="pa-modal pa-modal-dialog pa-modal-fullscreen-on-small"
+            role="alertdialog"
+            [class.with-footer]="hasFooter"
+            [class.in]="!closing"
+            [class.out]="closing"
+            [attr.aria-labelledby]="'dialog-' + id + '-title'"
+            [attr.aria-describedby]="'dialog-' + id + '-description'"
     >
         <header #header class="pa-modal-header">
-            <div #image role="presentation" [hidden]="!hasImage">
+            <div #image
+                 role="presentation"
+                 [hidden]="!hasImage"
+            >
                 <ng-content select="pa-modal-image"></ng-content>
             </div>
 
-            <div class="title-s" [id]="'dialog-' + id + '-title'">
+            <div class="title-s"
+                 [id]="'dialog-' + id + '-title'">
                 <ng-content select="pa-modal-title"></ng-content>
             </div>
 
-            <div
-                #description
-                class="pa-modal-description body-s"
-                [id]="'dialog-' + id + '-description'"
-                [hidden]="!hasDescription"
+            <div #description
+                 class="pa-modal-description body-s"
+                 [id]="'dialog-' + id + '-description'"
+                 [hidden]="!hasDescription"
             >
                 <ng-content select="pa-modal-description"></ng-content>
             </div>
