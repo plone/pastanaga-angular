@@ -163,6 +163,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     selectOption(option: OptionModel | OptionComponent) {
         if (!option.disabled && this.isActive && option.value !== this.control.value) {
             this.control.patchValue(option.value);
+            this.optionsDropdown?.close();
         }
     }
 
