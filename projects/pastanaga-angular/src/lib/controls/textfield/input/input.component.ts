@@ -25,13 +25,21 @@ import { NativeTextFieldDirective } from '../native-text-field.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent extends NativeTextFieldDirective implements OnChanges, OnInit, AfterViewInit, OnDestroy {
-    @Input() set type(value: TextInputType) {
+    @Input()
+    set type(value: TextInputType) {
         this._type = value || 'text';
         this._updateInputType();
     }
-
     get type() {
         return this._type;
+    }
+
+    @Input()
+    set icon(value: string | undefined) {
+        this._icon = value;
+    }
+    get icon() {
+        return this._icon;
     }
 
     @Input() autocapitalize?: string;
@@ -39,7 +47,7 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
     fieldType = 'input';
 
     private _type: TextInputType = 'text';
-
+    private _icon?: string;
     private _wasNumber = false;
 
     constructor(

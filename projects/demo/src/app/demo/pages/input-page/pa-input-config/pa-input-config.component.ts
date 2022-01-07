@@ -21,6 +21,7 @@ export class PaInputConfigComponent implements OnInit {
     pattern = /.?test.?/;
 
     stateForm = new FormGroup({
+        icon: new FormControl(),
         value: new FormControl(),
         type: new FormControl(),
         placeholder: new FormControl(),

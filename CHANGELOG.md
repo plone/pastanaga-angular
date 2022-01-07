@@ -1,3 +1,8 @@
+# 2.40.1 (2022-01-07)
+
+### Improvements
+- **Input**: Add optional icon to input fields [mpellerin42]
+
 # 2.40.0 (2022-01-06)
 
 ### Breaking changes

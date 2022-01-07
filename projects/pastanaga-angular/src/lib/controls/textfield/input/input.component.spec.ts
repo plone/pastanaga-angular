@@ -8,6 +8,7 @@ import { InputFormatterDirective } from '../input-formatter.directive';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { Keys } from '../../../common';
 import { PaTranslateModule, TranslatePipe } from '../../../translate';
+import { PaIconModule } from '../../../icon';
 
 @Component({ template: '' })
 class TestComponent {
@@ -35,13 +36,13 @@ class TestComponent {
     maxlength: any;
 }
 
-describe.skip('InputComponent', () => {
+describe('InputComponent', () => {
     let component: InputComponent;
     let host: TestComponent;
     let spectator: SpectatorHost<InputComponent, TestComponent>;
     const createHost = createHostFactory({
         component: InputComponent,
-        imports: [FormsModule, ReactiveFormsModule, MockModule(PaTranslateModule)],
+        imports: [FormsModule, ReactiveFormsModule, MockModule(PaIconModule), MockModule(PaTranslateModule)],
         host: TestComponent,
         detectChanges: false,
         declarations: [
