@@ -1,7 +1,9 @@
-<div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
+<div class="pa-field"
+     [class.pa-field-error]="control.dirty && control.invalid">
     <input #htmlInput
            class="pa-field-control"
            [class.pa-field-control-filled]="isFilled"
+           [class.pa-field-control-icon]="!!icon"
            [formControl]="control"
            [id]="id"
            [attr.name]="name"
@@ -17,7 +19,14 @@
            (keyup)="onKeyUp($event)"
            (focus)="onFocus($event)"
     >
-    <label class="pa-field-label" [for]="id"><ng-content></ng-content></label>
+    <label class="pa-field-label"
+           [class.pa-field-label-icon]="!!icon"
+           [for]="id">
+        <ng-content></ng-content>
+    </label>
+
+    <pa-icon *ngIf="!!icon" [name]="icon"></pa-icon>
+
     <pa-form-field-hint
         [id]="describedById"
         [help]="help"

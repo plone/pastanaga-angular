@@ -4,6 +4,16 @@
         <legend>Basic input html properties and attributes</legend>
         <div class="state-option">
             <div class="option">
+                <input formControlName="icon" [value]="'search'" id="withIcon" type="radio">
+                <label for="withIcon">With icon</label>
+            </div>
+            <div class="option">
+                <input formControlName="icon" [value]="null" id="noIcon" type="radio">
+                <label for="noIcon">No icon</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
                 <input formControlName="value" [value]="null" id="parentValueUndefined" type="radio">
                 <label for="parentValueUndefined">Parent Value Undefined</label>
             </div>
