@@ -1,7 +1,8 @@
-import { Pipe, PipeTransform, Inject, InjectionToken } from '@angular/core';
+import { Inject, InjectionToken, Pipe, PipeTransform } from '@angular/core';
+import { TranslateService } from './translate.service';
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
-export const PA_LANG = new InjectionToken<string>('pastanaga.lang');
+
 export const PA_TRANSLATIONS = new InjectionToken<string>('pastanaga.translations');
 
 @Pipe({
@@ -13,7 +14,8 @@ export class TranslatePipe implements PipeTransform {
     lastParams?: string;
     value: string | undefined = '';
 
-    constructor(@Inject(PA_LANG) private lang: any, @Inject(PA_TRANSLATIONS) private translations: any) {}
+    constructor(private translateService: TranslateService, @Inject(PA_TRANSLATIONS) private translations: any) {
+    }
 
     transform(key?: string, args?: any): string {
         if (!key) {
@@ -25,9 +27,9 @@ export class TranslatePipe implements PipeTransform {
         }
         const keys = !!key ? key.split('.') : [];
         this.value =
-            this.lang === 'en_US'
+            this.translateService.currentLanguage === 'en_US'
                 ? this.getValue(keys, 'en_US', this.translations)
-                : this.getValue(keys, this.lang, this.translations) || this.getValue(keys, 'en_US', this.translations);
+                : this.getValue(keys, this.translateService.currentLanguage, this.translations) || this.getValue(keys, 'en_US', this.translations);
         if (!!this.value && !!args) {
             this.lastParams = args;
             let value = this.value;
@@ -45,8 +47,7 @@ export class TranslatePipe implements PipeTransform {
     }
 
     private getValue(keys: string[], lang: string, translations: any): string | undefined {
-        const translateKeys = translations[lang] || {};
-        let value = translateKeys;
+        let value = translations[lang] || {};
         keys.forEach((k) => {
             if (!!value) {
                 value = value[k];

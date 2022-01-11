@@ -2,7 +2,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 
-import { TranslatePipe } from '../translate/translate.pipe';
+import { TranslatePipe, TranslateService } from '../translate';
 import { dates, mockTranslateEn, mockTranslateFr } from './test-data';
 
 describe('DateTimeService', () => {
@@ -10,7 +10,7 @@ describe('DateTimeService', () => {
 
     describe('en-US locale', () => {
         beforeEach(() => {
-            service = new DateTimeService(new TranslatePipe('en-US', { 'en-US': mockTranslateEn }), 'en-US');
+            service = new DateTimeService(new TranslatePipe(new TranslateService('en-US'), { 'en-US': mockTranslateEn }), 'en-US');
         });
 
         it('should be defined', () => {
@@ -141,7 +141,7 @@ describe('DateTimeService', () => {
     describe('fr-FR locale', () => {
         beforeEach(() => {
             registerLocaleData(localeFr, 'fr-FR');
-            service = new DateTimeService(new TranslatePipe('fr-FR', { 'fr-FR': mockTranslateFr }), 'fr-FR');
+            service = new DateTimeService(new TranslatePipe(new TranslateService('fr-FR'), { 'fr-FR': mockTranslateFr }), 'fr-FR');
         });
 
         describe('getFormattedDate method with human param', () => {
