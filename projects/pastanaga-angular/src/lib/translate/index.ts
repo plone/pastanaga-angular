@@ -3,4 +3,5 @@ export * from './translate.directive';
 export * from './translate.model';
 export * from './translate.module';
 export * from './translate.pipe';
+export * from './translate.service';
 export * from './translate.utils';

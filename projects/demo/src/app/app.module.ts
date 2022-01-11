@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { AppResolver } from './app.resolver';
 import { AppMarker } from './app.marker';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { PaDemoModule } from './demo/demo.module';
+import { PaDemoModule } from './demo';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { I18N_EN, PaButtonModule, PaTranslateModule, PA_LANG, PaSideNavModule } from '@guillotinaweb/pastanaga-angular';
+import { DEMO_LA } from '../assets';
 
 @NgModule({
     declarations: [AppComponent, WelcomePageComponent],
@@ -19,7 +20,7 @@ import { I18N_EN, PaButtonModule, PaTranslateModule, PA_LANG, PaSideNavModule } 
         PaDemoModule,
         PaButtonModule,
         PaSideNavModule,
-        PaTranslateModule.addTranslations([{ en_US: I18N_EN }]),
+        PaTranslateModule.addTranslations([{ en_US: I18N_EN }, {latin: DEMO_LA}]),
     ],
     providers: [
         { provide: Marker, useClass: AppMarker },
