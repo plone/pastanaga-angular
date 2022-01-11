@@ -7,14 +7,13 @@ import { ToastComponent } from './toast.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { PaToastModule } from './toast.module';
 import { MockModule, MockPipe } from 'ng-mocks';
-import { PaTranslateModule } from '../translate/translate.module';
-import { PA_LANG, PA_TRANSLATIONS, TranslatePipe } from '../translate/translate.pipe';
+import { PA_LANG, PA_TRANSLATIONS, PaTranslateModule, TranslatePipe } from '../translate';
 
 @Component({
     template: ``,
 })
 export class TestComponent {
-    constructor(private service: ToastService) {}
+    constructor() {}
 }
 
 describe('ToastService', () => {

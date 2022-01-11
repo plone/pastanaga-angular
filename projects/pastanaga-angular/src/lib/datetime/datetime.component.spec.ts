@@ -1,8 +1,7 @@
 import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PaTranslateModule } from '../translate/translate.module';
 
-import { TranslatePipe, PA_LANG } from '../translate/translate.pipe';
+import { PaTranslateModule, TranslatePipe, PA_LANG } from '../translate';
 import { DateTimeComponent } from './datetime.component';
 import { DATE_FORMAT, DateTimeService } from './datetime.service';
 import { dates, mockTranslateEn } from './test-data';

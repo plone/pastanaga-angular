@@ -8,6 +8,7 @@ export class TranslateDirective implements AfterViewChecked {
     key = '';
     lastParams?: any;
     currentParams?: any;
+
     @Input() set translate(key: string) {
         if (key) {
             this.key = key;

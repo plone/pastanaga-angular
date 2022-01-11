@@ -14,7 +14,7 @@ import { TraversalModule } from 'angular-traversal';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { IconPageComponent } from './pages/icon-page/icon-page.component';
 import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
-import { DEMO_EN, CUSTOM_EN, DEMO_LA } from '../../assets';
+import { DEMO_EN, CUSTOM_EN, DEMO_LA, DEMO_FR, CUSTOM_FR } from '../../assets';
 import {
     PaAvatarModule,
     PaAvatarPileModule,
@@ -224,6 +224,8 @@ const COMPONENTS = [
             { en_US: DEMO_EN },
             { en_US: CUSTOM_EN },
             { latin: DEMO_LA },
+            { fr: DEMO_FR },
+            { fr: CUSTOM_FR },
         ]),
         PaTabsModule,
         PaTableModule,

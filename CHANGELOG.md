@@ -1,3 +1,12 @@
+# 2.41.0 (2022-01-10)
+
+### Improvements:
+- **TranslateService**: Allow changing current language of the application [mpellerin42] (based on [rboixaderg] feature on pastanaga 1)
+- **Select**: Fix style (which has been broken on version 2.40.1) [mpellerin42]
+
+### Breaking changes
+- **TranslatePipe**: constructor now uses TranslateService instead of `PA_LANG` string [mpellerin42] (based on [rboixaderg] feature on pastanaga 1)
+
 # 2.40.1 (2022-01-07)
 
 ### Improvements
