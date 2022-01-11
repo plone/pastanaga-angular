@@ -10,6 +10,12 @@ export const DEMO_LA: TranslationEntries = {
     },
     "demo-page": {
         "title": "Pastanaga usi exampla",
-        "score": "{{points}} puncta de {{total}}"
+        "score": "{{points}} puncta de {{total}}",
+        languages: {
+            en: 'Anglicus',
+            fr: 'Gallico',
+            latin: 'Latinus'
+        },
+        'current-language-label': 'Current lingua'
     }
 }
