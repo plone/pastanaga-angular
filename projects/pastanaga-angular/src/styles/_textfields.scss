@@ -20,7 +20,7 @@ select:-webkit-autofill:focus {
     position: relative;
     margin-bottom: $margin-bottom-field;
 
-    pa-icon {
+    &:not(.pa-select) pa-icon {
         left: $padding-field-control-left;
         position: absolute;
         top: $padding-field-control-top;
