@@ -52,6 +52,7 @@ import { DEMO_LA } from '../assets/i18n/la';
         PaTranslateModule.addTranslations([{'en_US': {...moreTranslationsForThisModule}}])
     ]`;
     directiveSimpleExample = `<span translate>demo-page.title</span>`;
+    directiveAttributeExample = `<span translate="demo-page.title"></span>`;
     directiveWithParamsExample = `<span translate [translateParams]="{points: 10, total: 25}">demo-page.score</span>`;
     pipeSimpleExample = `<span>{{ 'demo-page.title' | translate}}</span>`;
     pipeWithParamsExample = `<span>{{ 'demo-page.score' | translate:{points: 10, total: 25} }}</span>`;
