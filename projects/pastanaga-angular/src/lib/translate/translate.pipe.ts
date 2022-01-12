@@ -25,6 +25,7 @@ export class TranslatePipe implements PipeTransform {
         if (key === this.lastKey && args === this.lastParams) {
             return this.value as string;
         }
+        this.lastKey = key;
         const keys = !!key ? key.split('.') : [];
         this.value = this.getValue(keys, this.translateService.currentLanguage, this.translations) || this.getValue(keys, 'en_US', this.translations);
         if (!!this.value && !!args) {

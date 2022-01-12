@@ -37,30 +37,35 @@ export class TranslateDirective implements AfterViewChecked {
         }
         for (let i = 0; i < nodes.length; ++i) {
             const node: any = nodes[i];
+            // node type 3 is a text node
             if (node.nodeType === 3) {
-                // node type 3 is a text node
-                let key = '';
-                if (this.key) {
-                    key = this.key;
-                    if (forceUpdate) {
-                        node.lastKey = null;
-                    }
-                } else {
-                    const content = this.getContent(node);
-                    const trimmedContent = content.trim();
-                    if (trimmedContent.length) {
-                        if (content !== node.currentValue) {
-                            key = trimmedContent;
-                            node.originalContent = this.getContent(node);
-                        } else if (node.originalContent && forceUpdate) {
-                            node.lastKey = null;
-                            key = node.originalContent.trim();
-                        }
-                    }
-                }
+                const key = this.getKeyAndUpdateNode(forceUpdate, node);
                 this.updateValue(key, node);
             }
         }
+    }
+
+    private getKeyAndUpdateNode(forceUpdate: boolean, node: any) {
+        let key = '';
+        if (this.key) {
+            key = this.key;
+            if (forceUpdate) {
+                node.lastKey = null;
+            }
+        } else {
+            const content = this.getContent(node);
+            const trimmedContent = content.trim();
+            if (trimmedContent.length) {
+                if (content !== node.currentValue) {
+                    key = trimmedContent;
+                    node.originalContent = this.getContent(node);
+                } else if (node.originalContent && forceUpdate) {
+                    node.lastKey = null;
+                    key = node.originalContent.trim();
+                }
+            }
+        }
+        return key;
     }
 
     updateValue(key: string, node: any) {
@@ -84,16 +89,12 @@ export class TranslateDirective implements AfterViewChecked {
         }
     }
 
-    getContent(node: any): string {
-        return !!node.textContent ? node.textContent : node.data;
+    getContent(node: HTMLElement): string {
+        return node.textContent || '';
     }
 
-    setContent(node: any, content: string): void {
-        if (!!node.textContent) {
-            node.textContent = content;
-        } else {
-            node.data = content;
-        }
+    setContent(node: HTMLElement, content: string): void {
+        node.textContent = content;
     }
 
     areEquals(obj1: any, obj2: any): boolean {

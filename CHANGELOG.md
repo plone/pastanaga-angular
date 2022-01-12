@@ -1,6 +1,14 @@
-# 2.41.0 (2022-01-10)
+# 2.41.1 (2022-01-11)
 
-### Improvements:
+### Bugfix
+- **Translation**: fix translation by attribute like `<span translate="translation-key"></span>` [mpellerin42]
+
+### Improvements
+- Increase test coverage on translate directive and pipe [mpellerin42]
+
+# 2.41.0 (2022-01-11)
+
+### Improvements
 - **TranslateService**: Allow changing current language of the application [mpellerin42] (based on [rboixaderg] feature on pastanaga 1)
 - **Select**: Fix style (which has been broken on version 2.40.1) [mpellerin42]
 

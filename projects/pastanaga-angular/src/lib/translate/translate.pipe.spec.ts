@@ -24,4 +24,17 @@ describe('TranslatePipe', () => {
         expect(pipe.transform('close')).toBe('Claudere');
         expect(pipe.transform('cancel')).toBe('Cancel');
     });
+
+    it('should keep last value in cache', () => {
+        const pipeAny = pipe as any;
+        jest.spyOn(pipeAny, 'getValue');
+
+        expect(pipe.transform('close')).toBe('Close');
+        expect(pipe.transform('close')).toBe('Close');
+        expect(pipeAny.getValue).toHaveBeenCalledTimes(1);
+    });
+
+    it('should return an empty string for empty key', () => {
+        expect(pipe.transform()).toBe('');
+    });
 });
