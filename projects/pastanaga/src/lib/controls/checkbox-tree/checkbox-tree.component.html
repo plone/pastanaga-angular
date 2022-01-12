@@ -17,7 +17,7 @@
     <div class="pa-field-group" *ngFor="let checkbox of _checkboxes">
         <div (mouseover)="onMouseOver(checkbox)"
              (mouseleave)="onMouseLeave(checkbox)">
-            <pa-button *ngIf="(!!checkbox.children && checkbox.children.length > 0) || (!checkbox.children && isAsync)"
+             <pa-button *ngIf="(!!checkbox.children && checkbox.children.length > 0) || (!checkbox.children && isAsync) && (!maxDepth || (checkbox.depth < maxDepth))"
                        id="pa-expand-checkbox-{{checkbox.id}}"
                        class="pa-expand"
                        color="secondary" size="small"
@@ -70,6 +70,7 @@
                               [shouldSort]="_shouldSort"
                               [mode]="mode"
                               [disabled]="_disabled"
+                              [maxDepth]="maxDepth"
                               (childrenSelection)="childrenSelection.emit($event)"
                               (isLoadingChildren)="_disableToggleChildren = $event"
                               (updatedTree)="setParentState($event, checkbox)"></pa-checkbox-tree>

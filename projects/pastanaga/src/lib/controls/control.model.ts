@@ -16,6 +16,7 @@ export interface ControlModelData {
     isExpanded?: boolean;
     isHidden?: boolean;
     isPrivate?: boolean;
+    depth?: number;
 
     children?: ControlModel[];
 }
@@ -37,6 +38,7 @@ export class ControlModel {
     isHidden = false;
     isPrivate = false;
     isLoadingChildren = false;
+    depth?: number;
 
     children?: ControlModel[];
     totalChildren?: number;
@@ -58,6 +60,7 @@ export class ControlModel {
         this.isExpanded = data.isExpanded || false;
         this.isHidden = data.isHidden || false;
         this.isPrivate = data.isPrivate || false;
+        this.depth = data.depth;
 
         this.children = data.children;
         if (!!this.children) {
