@@ -51,6 +51,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
         this._countVisible = coerceBooleanProperty(value);
         this.updateSelectionCount();
     }
+    @Input() maxDepth?: number;
 
     /**
      * Mode defined checkbox tree global behaviour:
@@ -324,7 +325,7 @@ export class CheckboxTreeComponent implements ControlValueAccessor, OnInit, OnCh
             this.isLoadingChildren.emit(this._isLoadingChildren);
             const requests: Observable<ControlModel[]>[] = [];
             for (const checkbox of this._checkboxes) {
-                if (!!checkbox.children) {
+                if (!!checkbox.children || (this.maxDepth && checkbox.depth && checkbox.depth >= this.maxDepth)) {
                     continue;
                 }
                 requests.push(this.getChildrenControls(checkbox));

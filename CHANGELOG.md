@@ -1,3 +1,9 @@
+# 1.23.4 (2022-01-12)
+
+### Improvements
+
+- Added optional maxdepth to checkbox tree component [raul-onna]
+
 # 1.23.3 (2021-11-26)
 
 ### Improvements
