@@ -4,7 +4,7 @@ on:
     push:
         branches:
             - master
-            - 2.x
+            - 1.x
 env:
     GH_ACTIONS_TOKEN: ${{ secrets.GH_ACTIONS_TOKEN }}
 jobs:

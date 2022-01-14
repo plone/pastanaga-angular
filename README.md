@@ -4,7 +4,7 @@
 
 ## Pastanaga 2.0 is now released
 
-For now, it's still living on its own branch: [origin/2.x](https://github.com/plone/pastanaga-angular/tree/2.x)
+Pastanaga v1 on its own branch: [origin/1.x](https://github.com/plone/pastanaga-angular/tree/1.x)
 
 Demo v1: https://plone.github.io/pastanaga-angular/v1/
 
