@@ -51,6 +51,7 @@ describe('Table', () => {
                 TableHeaderDirective,
                 TestComponent,
             ],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 

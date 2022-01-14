@@ -22,6 +22,7 @@ describe('Popup', () => {
         TestBed.configureTestingModule({
             imports: [],
             declarations: [PopupComponent, PopupDirective, TestComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;

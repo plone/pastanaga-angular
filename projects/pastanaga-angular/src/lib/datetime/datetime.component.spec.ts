@@ -16,6 +16,7 @@ describe('DateTimeComponent', () => {
             declarations: [DateTimeComponent],
             imports: [PaTranslateModule.addTranslations([{ en_US: { ...mockTranslateEn } }])],
             providers: [DateTimeService, TranslatePipe, { provide: PA_LANG, useValue: 'en_US' }],
+            teardown: { destroyAfterEach: false },
         });
         fixture = TestBed.createComponent(DateTimeComponent);
         component = fixture.componentInstance;
