@@ -126,35 +126,36 @@ function getCountBadge(fixture: ComponentFixture<BaseTestComponent>) {
 describe('CheckboxTree', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                BrowserModule,
-                CommonModule,
-                BadgeModule,
-                ButtonModule,
-                TooltipModule,
-                TranslateModule,
-                SvgModule,
-                AngularSvgIconModule.forRoot({
-                    loader: {
-                        provide: SvgLoader,
-                        useFactory: svgLoaderFactory,
-                    },
-                }),
-            ],
-            declarations: [
-                TestCountVisibleGroupComponent,
-                TestCategorizedUncheckedTreeComponent,
-                TestNestedUncheckedTreeComponent,
-                TestNestedCheckedTreeComponent,
-                TestFileSystemUncheckedTreeComponent,
-                CheckboxTreeComponent,
-                CheckboxComponent,
-            ],
-            providers: [
-                { provide: LANG, useValue: 'en_US' },
-                { provide: TRANSLATIONS, useValue: { en_US: en } },
-            ],
-        }).compileComponents();
+    imports: [
+        BrowserModule,
+        CommonModule,
+        BadgeModule,
+        ButtonModule,
+        TooltipModule,
+        TranslateModule,
+        SvgModule,
+        AngularSvgIconModule.forRoot({
+            loader: {
+                provide: SvgLoader,
+                useFactory: svgLoaderFactory,
+            },
+        }),
+    ],
+    declarations: [
+        TestCountVisibleGroupComponent,
+        TestCategorizedUncheckedTreeComponent,
+        TestNestedUncheckedTreeComponent,
+        TestNestedCheckedTreeComponent,
+        TestFileSystemUncheckedTreeComponent,
+        CheckboxTreeComponent,
+        CheckboxComponent,
+    ],
+    providers: [
+        { provide: LANG, useValue: 'en_US' },
+        { provide: TRANSLATIONS, useValue: { en_US: en } },
+    ],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
     }));
 
     describe('with countVisible', () => {

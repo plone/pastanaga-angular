@@ -8,7 +8,7 @@ import {
     OnDestroy,
     OnInit,
     Output,
-    Renderer2
+    Renderer2,
 } from '@angular/core';
 import { PopupService } from './popup.service';
 import { getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common/utils';
@@ -23,7 +23,9 @@ let nextId = 0;
 })
 export class PopupComponent implements OnInit, OnDestroy {
     @Input() id?: string;
-    @Input() set isAlwaysOn(value) { this._isAlwaysOn = coerceBooleanProperty(value); }
+    @Input() set isAlwaysOn(value) {
+        this._isAlwaysOn = coerceBooleanProperty(value);
+    }
     @Input() parentElement?: any;
 
     @Output() onClose: EventEmitter<boolean> = new EventEmitter();
@@ -33,12 +35,11 @@ export class PopupComponent implements OnInit, OnDestroy {
     style?: any;
     handlers: Function[] = [];
 
-
     constructor(
         public service: PopupService,
         public renderer: Renderer2,
         public element: ElementRef,
-        public cdr: ChangeDetectorRef,
+        public cdr: ChangeDetectorRef
     ) {
         this.service.closeAllPopups.subscribe(() => this.close());
         this.service.closeAllButId.subscribe((id) => {
@@ -58,7 +59,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     show(style: PositionStyle, hasSubLevel = false) {
-        if (!hasSubLevel) {
+        if (!hasSubLevel && this.id) {
             this.service.closeAllButId.next(this.id);
         }
         this.style = style;
@@ -89,7 +90,10 @@ export class PopupComponent implements OnInit, OnDestroy {
                 // menu is still empty
                 return false;
             }
-            const {bottom, right} = getVirtualScrollParentPosition(element) || {bottom: window.innerHeight, right: window.innerWidth};
+            const { bottom, right } = getVirtualScrollParentPosition(element) || {
+                bottom: window.innerHeight,
+                right: window.innerWidth,
+            };
             const diffX = rect.left + rect.width - right;
             if (diffX > 0) {
                 element.style.left = `calc(${element.style.left} - ${diffX}px)`;
@@ -130,15 +134,17 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     onOutsideClick(event) {
-        if (!this.element.nativeElement.contains(event.target)
-            && (!this.parentElement || !this.parentElement.contains(event.target))) {
+        if (
+            !this.element.nativeElement.contains(event.target) &&
+            (!this.parentElement || !this.parentElement.contains(event.target))
+        ) {
             this.service.closeAllSubMenu.next();
             this.close(true);
         }
     }
 
     unlisten() {
-        this.handlers.forEach(fn => fn());
+        this.handlers.forEach((fn) => fn());
         this.handlers = [];
     }
 }
