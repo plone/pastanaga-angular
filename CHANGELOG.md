@@ -1,3 +1,8 @@
+# 2.42.1 (2022-01-21)
+
+### Bugfix
+- **Translate demo**: don't import pastanaga variable in demo page to prevent compilation error on projects extending pastanaga documentation [mpellerin42]
+
 # 2.42.0 (2022-01-13)
 
 ### Breaking change
