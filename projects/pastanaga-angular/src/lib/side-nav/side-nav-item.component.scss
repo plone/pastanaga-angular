@@ -1,57 +1,56 @@
 @import '../../styles/variables';
 
 .pa-side-nav-item {
+    position: relative;
     display: flex;
     align-items: center;
-    height: rhythm(4);
-    padding-left: rhythm(3);
-    h2 {
-        color: $color-dark-stronger;
-    }
+    height: rhythm(6);
+    padding-left: rhythm(4);
+
     span {
         font-size: font-size(m);
+        line-height: line-height(l);
         color: $color-neutral-strong;
     }
-    pa-icon ::ng-deep svg {
-        fill: $color-neutral-strong;
-    }
+
     &:hover {
-        span {
+        &:not(.header) {
+            cursor: pointer;
+            background-color: $color-primary-lightest;
+            span {
                 color: $color-dark-stronger;
+            }
         }
-        pa-icon ::ng-deep svg {
-            fill: $color-dark-stronger;
-        }
+
     }
-    &:active {
-        span {
-                color: $color-neutral-strong;
-        }
-        pa-icon ::ng-deep svg {
-            fill: $color-neutral-strong;
-        }
-    }
+
     &.active {
-        border-left: rhythm(.25) solid $color-primary-regular;
+        ::before {
+            position: absolute;
+            content: '';
+            top: rhythm(1);
+            left: rhythm(2);
+            bottom: rhythm(1);
+            width: rhythm(0.25);
+            background: $color-primary-regular;
+        }
         span {
             color: $color-dark-stronger;
-            font-weight: $font-weight-bold;
         }
     }
+
     &.header {
-        margin: rhythm(3) 0;
         h2 {
-            font-size: font-size(xxl);
             margin: 0;
+            line-height: line-height(s);
+            font-size: font-size(xs);
+            font-weight: $font-weight-bold;
+            text-transform: uppercase;
+            color: $color-dark-stronger;
         }
     }
-    &:not(.header) {
-        margin: rhythm(1.5) 0;
-        cursor: pointer;
-    }
-    &.active {
-        padding-left: rhythm(3);
-    }
+
+
     &.inverted {
         h2 {
             color: $color-light-stronger;
@@ -84,10 +83,5 @@
                 color: $color-light-stronger;
             }
         }
-
-
-    }
-    pa-icon {
-        margin-left: rhythm(1.5);
     }
 }

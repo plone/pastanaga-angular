@@ -6,46 +6,40 @@ $overlay-anim-duration: .6s;
 
 :host {
     .pa-side-nav {
-        height: 100%;
+        height: 100vh;
         width: 100%;
         display: flex;
         flex-direction: column;
         position: fixed;
-        right: 0;
+        left: 0;
         top: 0;
-        padding: 0 rhythm(3);
+        padding: 0;
         z-index: $z-index-popup;
-        background-color: $color-neutral-lighter;
-        &.inverted {
-            background-color: $color-dark-stronger;
-            .pa-close-side-nav-button ::ng-deep .pa-button.pa-secondary.pa-basic {
-                color: $color-light-stronger;
+        background-color: $color-light-stronger;
 
-                &:hover {
-                    background: transparent;
-                    color: $color-neutral-regular;
-                }
-            }
-        }
         .pa-side-nav-items {
             flex-grow: 1;
             overflow: auto;
             padding: 0;
             margin-bottom: rhythm(5);
         }
+
         pa-side-nav-item {
             opacity: 0;
         }
+
         footer {
             display: flex;
             padding: rhythm(2) rhythm(3);
             justify-content: space-between;
         }
+
         header {
             display: flex;
             padding: rhythm(2) 0;
             justify-content: space-between;
         }
+
         &.animated {
             opacity: 1;
             animation-name: open-side-nav;
@@ -61,11 +55,11 @@ $overlay-anim-duration: .6s;
             }
 
         }
+
         @media (min-width: $size-viewport-medium-min) {
             width: 60vw;
         }
         @media (min-width: $size-viewport-large-min) {
-            position: relative;
             top: unset;
             right: unset;
             width: $width-side-panel;
@@ -82,7 +76,7 @@ $overlay-anim-duration: .6s;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: $color-light-stronger;
+        background: $color-dark-stronger;
         z-index: $z-index-popup;
         opacity: 0;
 
@@ -103,7 +97,7 @@ $overlay-anim-duration: .6s;
 
 @keyframes open-side-nav {
     0% {
-        transform: translateX(100vw);
+        transform: translateX(-100vw);
     }
     100% {
         transform: translateX(0);
@@ -116,6 +110,6 @@ $overlay-anim-duration: .6s;
 
     }
     100% {
-        transform: translateX(100vw);
+        transform: translateX(-100vw);
     }
 }
