@@ -1,10 +1,8 @@
-<li class="pa-side-nav-item" 
+<li class="pa-side-nav-item"
     paFocusable
     [paFocusDisabled]="header"
-    [class.active]="active" 
-    [class.inverted]="inverted" 
+    [class.active]="active"
     [class.header]="header">
-    <h2 *ngIf="header">{{label}}</h2>
+    <h2 *ngIf="header" class='title-xs'>{{label}}</h2>
     <span *ngIf="!header">{{label}}</span>
-    <pa-icon [name]="icon" [size]="header ? 'large' : 'medium'"></pa-icon>
 </li>

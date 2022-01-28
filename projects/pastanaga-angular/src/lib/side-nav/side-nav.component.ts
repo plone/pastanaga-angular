@@ -5,7 +5,6 @@ import {
     Input,
     ContentChildren,
     QueryList,
-    AfterContentInit,
     ViewChild,
     ChangeDetectorRef,
     ElementRef,
@@ -23,15 +22,7 @@ import { SideNavItemComponent } from './side-nav-item.component';
     styleUrls: ['./side-nav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideNavComponent implements AfterContentInit {
-    @Input()
-    get inverted(): boolean {
-        return this._inverted;
-    }
-    set inverted(value: boolean) {
-        this._inverted = coerceBooleanProperty(value);
-    }
-
+export class SideNavComponent {
     @Input()
     get visible(): boolean {
         return this._visible;
@@ -60,7 +51,6 @@ export class SideNavComponent implements AfterContentInit {
     @ViewChild('tabletOverlay', { read: ElementRef }) tabletOverlay?: ElementRef;
     @ContentChildren(SideNavItemComponent, { descendants: true }) contentChild!: QueryList<SideNavItemComponent>;
 
-    private _inverted = false;
     private _visible = true;
     private _mode = 'desktop';
 
@@ -88,11 +78,6 @@ export class SideNavComponent implements AfterContentInit {
                 markForCheck(this.cdr);
             }, this.closeNavBarDuration);
         }
-    }
-    ngAfterContentInit() {
-        this.contentChild.forEach((child) => {
-            child.inverted = this.inverted;
-        });
     }
 
     closeSideNav() {

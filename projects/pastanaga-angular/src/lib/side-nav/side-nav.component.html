@@ -4,8 +4,7 @@
          class="pa-side-nav-tablet-overlay"
          (click)="closeSideNav()"></div>
     <div #navBar
-         class="pa-side-nav"
-         [class.inverted]="inverted">
+         class="pa-side-nav">
         <header>
             <ng-content select="pa-side-nav-header"></ng-content>
             <pa-button *ngIf="mode !== 'desktop'"
