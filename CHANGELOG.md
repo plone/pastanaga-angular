@@ -1,3 +1,6 @@
+# 2.43.0 (2022-01-28)
+- **Side nav menu**: updating style, animation (it opens from the left now) and removing deprecated input (icon and inverted) [faustoonna]
+
 # 2.42.1 (2022-01-21)
 
 ### Bugfix

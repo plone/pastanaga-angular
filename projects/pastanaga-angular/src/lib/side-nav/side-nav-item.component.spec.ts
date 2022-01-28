@@ -32,17 +32,6 @@ describe('SideNavItem', () => {
         expect(spectator.query('h2')).toBeFalsy();
     });
 
-    it('should have inverted class when inverted input is set to true', () => {
-        component.inverted = true;
-        spectator.detectComponentChanges();
-        expect(spectator.query('li')?.classList.contains('inverted')).toBeTruthy();
-    });
-
-    it('should not be inverted by default', () => {
-        spectator.detectComponentChanges();
-        expect(spectator.query('li')?.classList.contains('inverted')).toBeFalsy();
-    });
-
     it('should have active class when active input is set to true', () => {
         component.active = true;
         spectator.detectComponentChanges();
