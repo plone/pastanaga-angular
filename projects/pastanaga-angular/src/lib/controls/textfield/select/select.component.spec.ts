@@ -150,6 +150,7 @@ describe('SelectComponent', () => {
         tick();
         thenSelectHasValue('1', '1');
         expect(spectator.queryAll('pa-dropdown pa-select-options pa-option .pa-option-selected')).toHaveLength(1);
+        discardPeriodicTasks();
     }));
 
     it('should manage formControl value', () => {
@@ -191,6 +192,7 @@ describe('SelectComponent', () => {
         whenFirstOptionClicked();
         thenSelectHasValue('first', 'first label');
         expect(host.value).toEqual('first');
+        discardPeriodicTasks();
     }));
 
     it('should propagate formControl value', () => {
@@ -221,6 +223,7 @@ describe('SelectComponent', () => {
         expect(spectator.query('.pa-select-value')?.innerHTML).toEqual('placeholder');
         whenFirstOptionClicked();
         expect(spectator.query('.pa-select-value')?.innerHTML).toEqual('first label');
+        discardPeriodicTasks();
     }));
 
     it('should apply disabled in standalone', () => {
@@ -350,6 +353,7 @@ describe('SelectComponent', () => {
         expect(component.control.valid).toEqual(false);
         expect(spectator.query('.pa-field-error')).toBeTruthy();
         expect(statusChanged).toHaveBeenCalledWith('INVALID');
+        discardPeriodicTasks();
     }));
 
     it('should display errorMessages', fakeAsync(() => {
@@ -368,6 +372,7 @@ describe('SelectComponent', () => {
         host.errorMessages = { required: 'field required' };
         spectator.detectChanges();
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
+        discardPeriodicTasks();
     }));
 
     it('should render in dim mode', fakeAsync(() => {
@@ -375,5 +380,6 @@ describe('SelectComponent', () => {
         expect(spectator.query('.pa-field-control.dim')).toBeTruthy();
         whenFirstOptionClicked();
         expect(spectator.query('label.pa-sr-only')).toBeTruthy();
+        discardPeriodicTasks();
     }));
 });

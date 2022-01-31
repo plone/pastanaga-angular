@@ -20,9 +20,9 @@ import { NgControl } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { DropdownComponent, OptionComponent } from '../../../dropdown';
-import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import {delay, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import { detectChanges, isVisibleInViewport, markForCheck } from '../../../common';
-import { Subject } from 'rxjs';
+import {fromEvent, Subject} from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { PaFormControlDirective } from '../../form-field';
@@ -83,6 +83,8 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     private _hasFocus = false;
     private _dim = false;
 
+    protected _terminator = new Subject();
+
     constructor(
         protected element: ElementRef,
         @Optional() @Self() protected parentControl: NgControl,
@@ -95,6 +97,17 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
         this._checkDescribedBy();
+        if (this.selectInput) {
+        fromEvent(this.selectInput.nativeElement, 'blur')
+            .pipe(delay(0), takeUntil(this.terminator$)).
+            subscribe(() => {
+                if(this.isOpened) {
+                    this.optionsClosed$.next();
+                    this.isOpened = false;
+                    this.expanded.emit(false);
+                }
+            });
+        }
     }
 
     ngAfterViewInit(): void {
@@ -118,6 +131,8 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         this.optionsClosed$.next();
         this.optionsClosed$.complete();
         this.contentOptionsChanged$.complete();
+        this._terminator.next();
+        this._terminator.complete();
         super.ngOnDestroy();
     }
 

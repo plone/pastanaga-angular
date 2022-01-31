@@ -1,3 +1,7 @@
+# 2.43.1 (2022-01-31)
+- **Select**: component should close when blur event is triggered by keyboard [jCarret]
+
+
 # 2.43.0 (2022-01-28)
 - **Side nav menu**: updating style, animation (it opens from the left now) and removing deprecated input (icon and inverted) [faustoonna]
 
