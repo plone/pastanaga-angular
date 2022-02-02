@@ -1,3 +1,9 @@
+# 1.24.1 (2022-02-02)
+
+### Improvements
+
+-   Added useDealy to toast component to manage the delay [niglesiz]
+
 # 1.24.0 (2022-01-13)
 
 ### Breaking change
@@ -8,7 +14,7 @@
 
 ### Improvements
 
-- Added optional maxdepth to checkbox tree component [raul-onna]
+-   Added optional maxdepth to checkbox tree component [raul-onna]
 
 # 1.23.3 (2021-11-26)
 

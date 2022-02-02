@@ -15,11 +15,12 @@ export class ToastModel {
     message: string;
 
     // params to be used by translate pipe
-    translateParams ?: any;
+    translateParams?: any;
 
     // Number of milliseconds that the toast will be visible before being dismissed automatically.
-    // If delay is set to ZERO (0), the toast won't be dismissible until the user interacts with it.
     delay?: number;
+
+    useDelay: boolean;
 
     // List of buttons to be displayed.
     buttons: ToastButtonModel[];
@@ -54,6 +55,8 @@ export class ToastModel {
         this.componentFactory = data.componentFactory;
         this.componentData = data.componentData;
 
+        this.useDelay = data.useDelay;
+
         if (this.buttons.length > 0) {
             this.onClick = new BehaviorSubject('');
         }
@@ -61,7 +64,6 @@ export class ToastModel {
 }
 
 export class ToastButtonModel {
-
     public static readonly PRIMARY = 'primary';
     public static readonly SECONDARY = 'secondary';
     public static readonly DESTRUCTIVE = 'destructive';
