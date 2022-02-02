@@ -1,4 +1,14 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    ViewChild,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+} from '@angular/core';
 import { ToastModel } from './toast.model';
 import { keyboardKeys } from '../keycodes.constant';
 import { markForCheck } from '../common/utils';
@@ -13,7 +23,6 @@ const HAS_LINK = /.*(\[(.+)\|(.+)\]).*/g;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastComponent implements OnInit {
-
     @Input() toast?: ToastModel;
     @Output() dismiss = new EventEmitter();
 
@@ -28,11 +37,8 @@ export class ToastComponent implements OnInit {
 
     ngOnInit() {
         if (!!this.toast) {
-            // If no button was defined, we need to add a delay if it was set to zero.
-            const hasDelay = (this.toast.delay && this.toast.delay > 0) || !this.toast.buttons.length;
             this.ariaLabeledBy = ARIA_KEY + this.toast.key;
-
-            if (hasDelay) {
+            if (this.toast.useDelay || !this.toast.buttons.length) {
                 const delay = this.toast.delay || DELAY;
                 setTimeout(() => this.dismiss.emit({ toast: this.toast }), delay);
             }
@@ -47,7 +53,7 @@ export class ToastComponent implements OnInit {
 
     handleDismiss(button?: string) {
         this.isDismissed = true;
-        this.dismiss.emit({toast: this.toast, button: button});
+        this.dismiss.emit({ toast: this.toast, button: button });
     }
 
     private parseMessage(message: string) {
@@ -71,8 +77,13 @@ export class ToastComponent implements OnInit {
     }
 
     private getLink(link: string, url: string): string {
-        return '<a class="pa-button pa-button-link" tabindex="0" href="' + url +
-            '"> <span class="pa-button-wrapper" tabindex="-1">' + link + ' </span></a>';
+        return (
+            '<a class="pa-button pa-button-link" tabindex="0" href="' +
+            url +
+            '"> <span class="pa-button-wrapper" tabindex="-1">' +
+            link +
+            ' </span></a>'
+        );
     }
 
     dismissWithESC($event) {
