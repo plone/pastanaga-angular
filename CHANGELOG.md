@@ -1,3 +1,8 @@
+# 2.43.2 (2022-02-02)
+
+### Bugfix
+- **Text fields**: Adjust the label position when the field is active [mpellerin42]
+
 # 2.43.1 (2022-01-31)
 - **Select**: component should close when blur event is triggered by keyboard [jCarret]
 
