@@ -42,6 +42,8 @@ select:-webkit-autofill:focus {
         max-width: calc(100% - #{$padding-field-control-left * 2});
         pointer-events: none;
         transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
+        transform-origin: 0 0;
+        -webkit-transform-origin-y: initial;
 
         &.pa-field-label-icon {
             left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
