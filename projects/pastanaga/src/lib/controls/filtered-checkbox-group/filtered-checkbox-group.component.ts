@@ -114,9 +114,9 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
         }
     }
 
-    toggleSelection() {
+    toggleSelection(checkboxId: string, isSelected: boolean) {
         this.updateSelectionCount();
-        this.emitSelectionChanged();
+        this.emitSelectionChanged(checkboxId, isSelected);
     }
 
     toggleSelectAll() {
@@ -142,10 +142,16 @@ export class FilteredCheckboxGroupComponent implements OnInit, OnChanges, OnDest
         this.selectAllLabel = this.translate.transform(label);
     }
 
-    private emitSelectionChanged() {
-        const selectedValues = (this._checkboxes || [])
+    private emitSelectionChanged(checkboxId?: string, isSelected?: boolean) {
+        let selectedValues = (this._checkboxes || [])
             .filter((control) => control.isSelected)
             .map((control) => getCheckboxValue(control));
+        selectedValues = selectedValues.filter(function(elem, index, self) {
+            return index === self.indexOf(elem);
+        });
+        if (!!checkboxId && !isSelected) {
+            selectedValues = selectedValues.filter((value) => value !== checkboxId);
+        }
         this.selection.emit(selectedValues);
         this.checkboxesChange.emit(this._checkboxes);
     }

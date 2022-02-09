@@ -41,8 +41,7 @@
         </div>
     </legend>
 
-    <cdk-virtual-scroll-viewport [itemSize]="30">
-        <pa-checkbox *cdkVirtualFor="let checkbox of filtered; trackBy: trackById"
+        <pa-checkbox *ngFor="let checkbox of filtered; trackBy: trackById"
                      [id]="checkbox.id"
                      [icon]="checkbox.icon"
                      [help]="checkbox.help"
@@ -51,7 +50,6 @@
                      [labelIcons]="checkbox.labelIcons"
                      [disabled]="checkbox.isDisabled || _disabled"
                      [(selected)]="checkbox.isSelected"
-                     (selection)="toggleSelection()">{{checkbox.label}}
+                     (selection)="toggleSelection(checkbox.id, checkbox.isSelected)">{{checkbox.label}}
         </pa-checkbox>
-    </cdk-virtual-scroll-viewport>
 </fieldset>
