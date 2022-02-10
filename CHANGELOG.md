@@ -1,3 +1,9 @@
+# 1.24.2 (2022-02-09)
+
+### Bug fixes
+
+-   Fixed selection of checkboxes with same id and removed virtual scroll from filtered checkbox group due to malfunction [raul-onna]
+
 # 1.24.1 (2022-02-02)
 
 ### Improvements
