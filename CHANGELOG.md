@@ -1,3 +1,9 @@
+# 1.24.3 (2022-02-11)
+
+### Bug fixes
+
+-   Added back virtual scroll due to performance issues [raul-onna]
+
 # 1.24.2 (2022-02-09)
 
 ### Bug fixes
