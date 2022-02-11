@@ -1,115 +1,76 @@
 @import '../../styles/variables';
 
-$open-menu-anim-duration: 1.2s;
-$close-menu-anim-duration: 1s;
-$overlay-anim-duration: .6s;
+.pa-side-nav {
+    background-color: $color-light-stronger;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: $width-side-panel;
+    z-index: $z-index-popup;
 
-:host {
-    .pa-side-nav {
-        height: 100vh;
-        width: 100%;
+    .pa-side-nav-items {
+        flex-grow: 1;
+        margin-bottom: 0;
+        overflow: auto;
+        padding: 0 0 rhythm(1);
+    }
+
+    pa-side-nav-item {
+        opacity: 0;
+    }
+
+    header {
+        align-items: flex-start;
         display: flex;
-        flex-direction: column;
-        position: fixed;
-        left: 0;
-        top: 0;
-        padding: 0;
-        z-index: $z-index-popup;
-        background-color: $color-light-stronger;
+        padding: rhythm(2);
+        justify-content: space-between;
+    }
 
-        .pa-side-nav-items {
-            flex-grow: 1;
-            overflow: auto;
-            padding: 0;
-            margin-bottom: rhythm(5);
-        }
+    footer:not([hidden]) {
+        display: flex;
+        padding: rhythm(2);
+    }
 
-        pa-side-nav-item {
-            opacity: 0;
-        }
 
-        footer {
-            display: flex;
-            padding: rhythm(2) rhythm(3);
-            justify-content: space-between;
-        }
+}
+.pa-side-nav-tablet-overlay {
+    background: $color-dark-stronger;
+    left: 0;
+    height: 100vh;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    transition: opacity $transition-response;
+    width: 100vw;
+    z-index: $z-index-popup;
 
-        header {
-            display: flex;
-            padding: rhythm(2) 0;
-            justify-content: space-between;
-        }
+    &.opened {
+        opacity: .5;
+    }
+}
+
+@media (max-width: $size-viewport-large-max) {
+    .pa-side-nav {
+        transform: translateX(-100%);
+        transition: transform $transition-slide;
 
         &.animated {
             opacity: 1;
-            animation-name: open-side-nav;
-            animation-duration: $open-menu-anim-duration;
-            animation-timing-function: cubic-bezier(0.233, 1, 0.336, 0.99);
-            animation-fill-mode: both;
-
-            &.closed {
-                animation-name: close-side-nav;
-                animation-duration: $close-menu-anim-duration;
-                animation-timing-function: cubic-bezier(0.233, 1, 0.336, 0.99);
-                animation-fill-mode: both;
-            }
-
-        }
-
-        @media (min-width: $size-viewport-medium-min) {
-            width: 60vw;
-        }
-        @media (min-width: $size-viewport-large-min) {
-            top: unset;
-            right: unset;
-            width: $width-side-panel;
-            left: 0;
-            header {
-                padding: rhythm(2) rhythm(3);
-            }
-        }
-    }
-    .pa-side-nav-tablet-overlay {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: $color-dark-stronger;
-        z-index: $z-index-popup;
-        opacity: 0;
-
-        &.opened {
-            opacity: .95;
-            transition-duration: $overlay-anim-duration;
-            transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+            transform: translateX(0);
         }
 
         &.closed {
-            opacity: 0;
-            transition-duration: $overlay-anim-duration;
-            transition-timing-function: cubic-bezier(0.58, 1, 0.42, 0);
+            transform: translateX(-100%);
         }
     }
 }
 
-
-@keyframes open-side-nav {
-    0% {
-        transform: translateX(-100vw);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes close-side-nav {
-    0% {
-        transform: translateX(0);
-
-    }
-    100% {
-        transform: translateX(-100vw);
+@media (min-width: $size-viewport-large-min) {
+    .pa-side-nav header {
+        padding: rhythm(2) rhythm(3);
     }
 }
