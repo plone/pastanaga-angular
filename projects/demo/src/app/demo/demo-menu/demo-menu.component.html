@@ -1,6 +1,7 @@
 <pa-button *ngIf="mode !== 'desktop'"
-           icon="menu-right"
            class="demo-menu-button"
+           icon="menu-left"
+           aspect="basic"
            (click)="toggleSideNav(true)">Menu
 </pa-button>
 
@@ -9,11 +10,16 @@
              (close)="toggleSideNav(false)">
     <pa-side-nav-header>
         <a href="#" traverseTo="/" paFocusable>
-            <img [src]="logo" alt="Logo">
+            <img [src]="logo" alt="">
         </a>
+
+        <pa-input class="demo-menu-filter-input"
+                  icon="search"
+                  (keyUp)="onKeyUp($event)"
+        >Filter</pa-input>
     </pa-side-nav-header>
 
-    <pa-side-nav-content class="section" *ngFor="let section of menu">
+    <pa-side-nav-content class="section" *ngFor="let section of visibleMenu">
         <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
         <pa-side-nav-item *ngFor="let page of section.pages"
                           [active]="page.view === activeItem"

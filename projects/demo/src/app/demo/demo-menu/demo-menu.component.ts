@@ -22,11 +22,16 @@ export class DemoMenuComponent {
         return this._mode;
     }
 
-    @Input() menu: IDemoMenuSection[] = [];
+    @Input() set menu (items: IDemoMenuSection[]) {
+        this._menu = items;
+        this.visibleMenu = [...items];
+    }
     @Input() logo = './assets/p-angular.svg';
     @Input() activeItem = '';
 
     isMenuVisible = true;
+    visibleMenu: IDemoMenuSection[] = [];
+    private _menu: IDemoMenuSection[] = [];
     private _mode: ViewportMode = 'desktop';
 
     toggleSideNav(value: boolean) {
@@ -38,5 +43,15 @@ export class DemoMenuComponent {
             this.isMenuVisible = false;
         }
         window.scrollTo(0, 0);
+    }
+
+    onKeyUp(filter: string) {
+        const filterKey = filter.toLocaleLowerCase();
+        this.visibleMenu = this._menu.map(section => {
+            return {
+                title: section.title,
+                pages: section.pages.filter(page => page.title.toLocaleLowerCase().includes(filterKey))
+            }
+        });
     }
 }

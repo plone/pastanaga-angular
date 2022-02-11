@@ -1,5 +1,12 @@
 @import "../../../../../pastanaga-angular/src/styles/variables";
 
+$header-padding-small: rhythm(2);
+$header-padding-medium: rhythm(3);
+
+header {
+
+}
+
 .demo-menu-button {
     position: absolute;
     top: rhythm(2);
@@ -7,8 +14,17 @@
     z-index: 3;
 }
 
+.demo-menu-filter-input {
+    display: block;
+    margin-top: rhythm(2);
+
+    ::ng-deep .pa-field {
+        margin-bottom: 0;
+    }
+}
+
 pa-side-nav-header img {
-    max-width: 100%;
+    max-width: calc(100% - #{$dimension-button-medium});
     max-height: rhythm(9);
 }
 
