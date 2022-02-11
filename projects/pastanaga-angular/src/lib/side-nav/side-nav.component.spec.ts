@@ -5,7 +5,7 @@ import { SideNavComponent } from './side-nav.component';
 import { PaButtonModule } from '../button/button.module';
 import { ReplaySubject } from 'rxjs';
 import { TranslatePipe } from '../translate/translate.pipe';
-import { BreakpointObserver, ViewportMode } from '../breakpoint-observer/breakpoint.observer';
+import { BreakpointObserver, ViewportMode } from '../breakpoint-observer';
 
 describe('SideNavComponent', () => {
     let spectator: Spectator<SideNavComponent>;
@@ -76,8 +76,8 @@ describe('SideNavComponent', () => {
                 expect(spectator.query('.pa-side-nav')).toBeTruthy();
             });
 
-            it(`should not have an overlay`, () => {
-                expect(spectator.query('.pa-side-nav-tablet-overlay')).toBe(null);
+            it(`should have an overlay`, () => {
+                expect(spectator.query('.pa-side-nav-tablet-overlay')).toBeTruthy();
             });
 
             it(`should have a close button`, () => {

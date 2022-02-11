@@ -10,11 +10,11 @@ import {
     ElementRef,
     Renderer2,
     Output,
-    EventEmitter,
+    EventEmitter, AfterViewInit,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { markForCheck } from '../common';
-import { SideNavItemComponent } from './side-nav-item.component';
+import { markForCheck, TRANSITION_DURATION } from '../common';
+import { SideNavItemComponent } from './side-nav-item/side-nav-item.component';
 
 @Component({
     selector: 'pa-side-nav',
@@ -22,7 +22,7 @@ import { SideNavItemComponent } from './side-nav-item.component';
     styleUrls: ['./side-nav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideNavComponent {
+export class SideNavComponent implements AfterViewInit {
     @Input()
     get visible(): boolean {
         return this._visible;
@@ -47,18 +47,28 @@ export class SideNavComponent {
 
     @Output() close: EventEmitter<void> = new EventEmitter<void>();
 
+    @ViewChild('header', { read: ElementRef }) header?: ElementRef;
+    @ViewChild('footer', { read: ElementRef }) footer?: ElementRef;
     @ViewChild('navBar', { read: ElementRef }) navBar?: ElementRef;
     @ViewChild('tabletOverlay', { read: ElementRef }) tabletOverlay?: ElementRef;
     @ContentChildren(SideNavItemComponent, { descendants: true }) contentChild!: QueryList<SideNavItemComponent>;
 
     private _visible = true;
     private _mode = 'desktop';
+    hasHeaderContent = false;
+    hasFooterContent = false;
 
     // we need to avoid animation when mode changed (from desktop to tablet for example)
     modeChanged = false;
-    readonly closeNavBarDuration = 1000;
+    readonly closeNavBarDuration = TRANSITION_DURATION.slow;
     terminator: Subject<void> = new Subject<void>();
+
     constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
+
+    ngAfterViewInit() {
+        this.hasHeaderContent = !!this.header && this.header.nativeElement.children.length > 1;
+        this.hasFooterContent = !!this.footer && this.footer.nativeElement.children.length > 0;
+    }
 
     triggerAnimation(isOpen: boolean) {
         if (isOpen) {

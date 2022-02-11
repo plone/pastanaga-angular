@@ -1,12 +1,22 @@
+# 2.43.3 (2022-02-11)
+
+### Improvements
+- **Side nav menu**: Improved and fix some minor issues in style [mpellerin42]
+- **Demo**: Add a filter input in the demo side nav [mpellerin42]
+
 # 2.43.2 (2022-02-02)
 
 ### Bugfix
 - **Text fields**: Adjust the label position when the field is active [mpellerin42]
 
 # 2.43.1 (2022-01-31)
+
+### Bugfix
 - **Select**: component should close when blur event is triggered by keyboard [jCarret]
 
 # 2.43.0 (2022-01-28)
+
+### Improvements
 - **Side nav menu**: updating style, animation (it opens from the left now) and removing deprecated input (icon and inverted) [faustoonna]
 
 # 2.42.1 (2022-01-21)
