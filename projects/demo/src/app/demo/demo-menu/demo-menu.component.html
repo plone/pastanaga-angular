@@ -6,26 +6,35 @@
 </pa-button>
 
 <pa-side-nav [mode]="mode"
-             [visible]="isMenuVisible"
-             (close)="toggleSideNav(false)">
+             [visible]="isMenuVisible">
     <pa-side-nav-header>
-        <a href="#" traverseTo="/" paFocusable>
-            <img [src]="logo" alt="">
-        </a>
+        <header class="pa-demo-sidenav-header">
+            <a href="#" traverseTo="/" paFocusable>
+                <img [src]="logo" alt="">
+            </a>
 
-        <pa-input class="demo-menu-filter-input"
-                  icon="search"
-                  (keyUp)="onKeyUp($event)"
-        >Filter</pa-input>
+            <pa-input class="demo-menu-filter-input"
+                      icon="search"
+                      (keyUp)="onKeyUp($event)"
+            >Filter</pa-input>
+
+            <pa-button *ngIf="mode !== 'desktop'"
+                       class="pa-close-side-nav-button"
+                       icon="cross"
+                       aspect="basic"
+                       (click)="toggleSideNav(false)"></pa-button>
+        </header>
     </pa-side-nav-header>
 
-    <pa-side-nav-content class="section" *ngFor="let section of visibleMenu">
-        <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
-        <pa-side-nav-item *ngFor="let page of section.pages"
-                          [active]="page.view === activeItem"
-                          [label]="page.title"
-                          [traverseTo]="'/@@' + page.view"
-                          (click)="onSelectedItem()">
-        </pa-side-nav-item>
+    <pa-side-nav-content>
+        <section *ngFor="let section of visibleMenu" class="section">
+            <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
+            <pa-side-nav-item *ngFor="let page of section.pages"
+                              [active]="page.view === activeItem"
+                              [label]="page.title"
+                              [traverseTo]="'/@@' + page.view"
+                              (click)="onSelectedItem()">
+            </pa-side-nav-item>
+        </section>
     </pa-side-nav-content>
 </pa-side-nav>

@@ -2,11 +2,13 @@
     <pa-demo-title>Sidenav</pa-demo-title>
 
     <pa-demo-description>
-        <p><code>pa-side-nav</code> is used to add menu content to your app</p>
+        <p><code>pa-side-nav</code> component allows to add a side navigation to your app.</p>
+        <p>The side navigation is always visible on desktop, while it is hidden and displayed only on user action such as clicking on a menu button on mobile and tablet.</p>
     </pa-demo-description>
+
     <pa-demo-usage>
         <h3><code>pa-side-nav</code></h3>
-        <p>It can contain <code>pa-side-nav-header</code>, <code>pa-side-nav-content</code>, and <code>pa-side-nav-footer</code></p>
+        <p>It can contain <code>pa-side-nav-header</code>, <code>pa-side-nav-content</code>, and <code>pa-side-nav-footer</code>.</p>
         <dl>
             <dt>Visible</dt>
             <dd>Manage the visibility of the component.</dd>
@@ -16,21 +18,20 @@
         </dl>
 
         <h3><code>pa-side-nav-header</code></h3>
-        <p> It works as a header for the sidenav, the content will be aligned to the top.</p>
+        <p>By default, the sidenav display only a close button on mobile/tablet. You can provide your own header within <code>pa-side-nav-header</code>.</p>
+
         <h3><code>pa-side-nav-content</code></h3>
-        <p>It'll contain <code>pa-side-nav-item</code></p>
+        <p>Container for <code>pa-side-nav-item</code>.</p>
 
         <h3><code>pa-side-nav-item</code></h3>
         <dl>
-            <dt>Header</dt>
+            <dt>header</dt>
             <dd>If true, it is rendered as a header.</dd>
-            <dt>Label</dt>
+            <dt>label</dt>
             <dd>Text to display.</dd>
-            <dt>Active</dt>
+            <dt>active</dt>
             <dd>If true, active styles will be applied.</dd>
         </dl>
-        <h3><code>pa-side-nav-footer</code></h3>
-        <p> It works as a footer for the sidenav, the content will be aligned to the bottom.</p>
     </pa-demo-usage>
 
     <pa-demo-code>
