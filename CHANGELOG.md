@@ -4,7 +4,6 @@
 - **Side nav**: [mpellerin42]
   - improve support for custom header
   - no more footer supported in sidenav
-  - 
 
 # 2.43.3 (2022-02-11)
 
