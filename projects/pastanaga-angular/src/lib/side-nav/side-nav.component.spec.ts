@@ -88,9 +88,19 @@ describe('SideNavComponent', () => {
     describe('when visible is false', () => {
         beforeEach(() => {
             component.visible = false;
-            spectator.detectComponentChanges();
         });
-        it(`should display nothing`, () => {
+
+        it(`should display the sidenav on desktop`, () => {
+            component.mode = 'desktop';
+            spectator.detectComponentChanges();
+            expect(spectator.query('.pa-side-nav')).toBeTruthy();
+            expect(spectator.query('.pa-side-nav-tablet-overlay')).toBeFalsy();
+            expect(spectator.query('.pa-close-side-nav-button')).toBeFalsy();
+        });
+
+        it(`should display nothing on mobile`, () => {
+            component.mode = 'mobile';
+            spectator.detectComponentChanges();
             expect(spectator.query('.pa-side-nav')).toBeFalsy();
             expect(spectator.query('.pa-side-nav-tablet-overlay')).toBeFalsy();
             expect(spectator.query('.pa-close-side-nav-button')).toBeFalsy();

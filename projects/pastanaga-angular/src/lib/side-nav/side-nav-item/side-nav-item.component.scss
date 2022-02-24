@@ -17,6 +17,7 @@
         &:not(.header) {
             cursor: pointer;
             background-color: $color-primary-lightest;
+
             span {
                 color: $color-dark-stronger;
             }
@@ -46,7 +47,7 @@
             font-size: font-size(xs);
             font-weight: $font-weight-bold;
             text-transform: uppercase;
-            color: $color-dark-stronger;
+            color: $color-neutral-strong;
         }
     }
 

@@ -16,9 +16,19 @@
     }
 }
 
-pa-side-nav-header img {
-    max-width: calc(100% - #{$dimension-button-medium});
-    max-height: rhythm(9);
+pa-side-nav-header {
+    display: block;
+    padding: rhythm(2);
+
+    img {
+        max-width: calc(100% - #{$dimension-button-medium});
+    }
+
+    .pa-close-side-nav-button {
+        position: absolute;
+        right: rhythm(2);
+        top: rhythm(2);
+    }
 }
 
 @media (min-width: $size-viewport-large-min) {

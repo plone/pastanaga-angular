@@ -27,15 +27,19 @@ export class SidenavPageComponent {
              [visible]="isMenuVisible"
              (close)="toggleSideNav()">
     <pa-side-nav-header>
-        <img src="asssets/logo.svg" alt="Logo">
+        <img src="assets/logo.svg" alt="Logo">
     </pa-side-nav-header>
 
-    <pa-side-nav-content class="section" *ngFor="let section of menu">
-        <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
-        <pa-side-nav-item *ngFor="let page of section.pages"
-                          [active]="page.view === activeItem"
-                          [label]="page.title"">
-        </pa-side-nav-item>
+    <pa-side-nav-content>
+        <section *ngFor="let section of visibleMenu" class="section">
+            <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
+            <pa-side-nav-item *ngFor="let page of section.pages"
+                              [active]="page.view === activeItem"
+                              [label]="page.title"
+                              [traverseTo]="'/@@' + page.view"
+                              (click)="onSelectedItem()">
+            </pa-side-nav-item>
+        </section>
     </pa-side-nav-content>
      <pa-side-nav-footer>
         <pa-button kind="primary" aspect="basic">

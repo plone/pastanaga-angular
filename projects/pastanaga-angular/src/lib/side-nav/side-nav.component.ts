@@ -10,10 +10,11 @@ import {
     ElementRef,
     Renderer2,
     Output,
-    EventEmitter, AfterViewInit,
+    EventEmitter,
+    AfterViewInit,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { markForCheck, TRANSITION_DURATION } from '../common';
+import { detectChanges, markForCheck, TRANSITION_DURATION } from '../common';
 import { SideNavItemComponent } from './side-nav-item/side-nav-item.component';
 
 @Component({
@@ -28,10 +29,9 @@ export class SideNavComponent implements AfterViewInit {
         return this._visible;
     }
     set visible(value: boolean) {
-        if (this._mode !== 'desktop' && !this.modeChanged) {
+        if (this._mode !== 'desktop') {
             this.triggerAnimation(value);
         } else {
-            this.modeChanged = false;
             this._visible = coerceBooleanProperty(value);
         }
     }
@@ -41,7 +41,6 @@ export class SideNavComponent implements AfterViewInit {
         return this._mode;
     }
     set mode(value: string) {
-        this.modeChanged = value !== this._mode;
         this._mode = value;
     }
 
@@ -55,19 +54,22 @@ export class SideNavComponent implements AfterViewInit {
 
     private _visible = true;
     private _mode = 'desktop';
-    hasHeaderContent = false;
+    hasHeader = false;
     hasFooterContent = false;
 
-    // we need to avoid animation when mode changed (from desktop to tablet for example)
-    modeChanged = false;
     readonly closeNavBarDuration = TRANSITION_DURATION.slow;
     terminator: Subject<void> = new Subject<void>();
 
     constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
 
     ngAfterViewInit() {
-        this.hasHeaderContent = !!this.header && this.header.nativeElement.children.length > 1;
+        this.updateFlags();
+    }
+
+    private updateFlags() {
+        this.hasHeader = !!this.header && this.header.nativeElement.children.length > 0;
         this.hasFooterContent = !!this.footer && this.footer.nativeElement.children.length > 0;
+        detectChanges(this.cdr);
     }
 
     triggerAnimation(isOpen: boolean) {
@@ -78,6 +80,7 @@ export class SideNavComponent implements AfterViewInit {
             setTimeout(() => {
                 this.addClass(this.navBar, 'animated');
                 this.addClass(this.tabletOverlay, 'opened');
+                this.updateFlags();
             });
         } else {
             this.addClass(this.tabletOverlay, 'closed');
