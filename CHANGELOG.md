@@ -1,3 +1,8 @@
+# 2.44.1 (2022-02-25)
+
+### Bugfix
+- **Select**: fix error state, border to be red [mpellerin42]
+
 # 2.44.0 (2022-02-24)
 
 ### Breaking changes

@@ -141,7 +141,7 @@ select:-webkit-autofill:focus {
         }
 
         .pa-field-control {
-            border: $border-field-error;
+            border: $border-field-error !important;
 
             &:not(:disabled):not(:read-only) {
                 &:hover {
