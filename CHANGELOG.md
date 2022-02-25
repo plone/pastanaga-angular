@@ -1,3 +1,8 @@
+# 2.44.1 (2022-02-25)
+
+### Bugfix
+- **Documentation**: fix side nav on the demo pages to prevent it to disappear when scrolling the page content [mpellerin42]
+
 # 2.44.0 (2022-02-24)
 
 ### Breaking changes

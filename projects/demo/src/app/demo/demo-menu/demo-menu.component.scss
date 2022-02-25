@@ -1,5 +1,11 @@
 @import "../../../../../pastanaga-angular/src/styles/variables";
 
+:host {
+    pa-side-nav ::ng-deep .pa-side-nav {
+        position: fixed;
+    }
+}
+
 .demo-menu-button {
     position: absolute;
     top: rhythm(2);
