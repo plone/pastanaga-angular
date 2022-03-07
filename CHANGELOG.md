@@ -1,3 +1,8 @@
+# 2.44.2 (2022-03-07)
+
+### Bugfix
+- **Side nav**: fix active item's font-weight [mpellerin42]
+
 # 2.44.1 (2022-02-25)
 
 ### Bugfix
