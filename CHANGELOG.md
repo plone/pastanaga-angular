@@ -1,3 +1,7 @@
+# 2.44.3 (2022-03-09)
+**Dropdown**: [barcafa]
+  - Add a new property `iconOnRight` to display an icon to the right on a dropdown option
+
 # 2.44.2 (2022-03-07)
 
 ### Bugfix

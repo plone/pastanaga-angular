@@ -21,7 +21,7 @@
             <pa-dropdown stayVisible>
                 <pa-option-header>Dropdown header</pa-option-header>
                 <pa-option icon="home" id="menu-item-1" (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
-                <pa-option disabled icon="globe" id="menu-item-2" (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
+                <pa-option disabled iconOnRight icon="globe" id="menu-item-2" (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
                 <pa-option icon="face-happy" id="menu-item-3"
                            description="Very long description which has an ellipsis and a tooltip allowing to read it all."
                            (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
@@ -78,6 +78,9 @@
 
             <dt>readonly</dt>
             <dd>Set readonly state <small>(default: false)</small></dd>
+
+            <dt>iconOnRight</dt>
+            <dd>Display the icon to the right of the option <small>(default: false)</small></dd>
 
             <dt>selected</dt>
             <dd>Set selected state <small>(default: false)</small></dd>
