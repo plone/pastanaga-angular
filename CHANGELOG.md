@@ -1,3 +1,9 @@
+# 2.44.4 (2022-03-09)
+
+### Fix
+
+- Restore the license [ebrehault]
+
 # 2.44.3 (2022-03-09)
 **Dropdown**: [barcafa]
   - Add a new property `iconOnRight` to display an icon to the right on a dropdown option
