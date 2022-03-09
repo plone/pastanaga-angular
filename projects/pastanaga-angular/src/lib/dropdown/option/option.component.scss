@@ -21,6 +21,7 @@
         max-width: 100%;
 
         &.smaller-wrapper {
+            flex: 1;
             max-width: calc(100% - #{rhythm(4)});
         }
     }
@@ -82,5 +83,9 @@
         position: absolute;
         right: $padding-menu-option-side;
         color: $color-primary-regular;
+    }
+
+    pa-icon.pa-option-right-icon {
+        margin-right: 0;
     }
 }

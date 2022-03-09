@@ -99,6 +99,14 @@ export class OptionComponent implements AfterContentInit {
         return this._description;
     }
 
+    @Input()
+    set iconOnRight(value: boolean) {
+        this._iconOnRight = coerceBooleanProperty(value);
+    }
+    get iconOnRight(): boolean {
+        return this._iconOnRight;
+    }
+
     @Output() selectOption: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
 
     text = '';
@@ -112,6 +120,7 @@ export class OptionComponent implements AfterContentInit {
     private _destructive = false;
     private _dontCloseOnSelect = false;
     private _readonly = false;
+    private _iconOnRight = false;
     private _avatar?: AvatarModel;
     private _description = '';
 

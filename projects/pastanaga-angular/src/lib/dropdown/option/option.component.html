@@ -10,7 +10,7 @@
     (click)="onSelect($event)"
     (keyup.enter)="onSelect($event)"
 >
-    <pa-icon *ngIf="!!icon" [icon]="_icon" [name]="iconName"></pa-icon>
+    <pa-icon *ngIf="!!icon && !iconOnRight" [icon]="_icon" [name]="iconName"></pa-icon>
     <pa-avatar *ngIf="!!avatar"
                [avatar]="avatar"
                size="small"
@@ -20,4 +20,9 @@
         <div class="pa-option-content body-m" paEllipsisTooltip><ng-content></ng-content></div>
         <div *ngIf="!!description" class="pa-option-description body-xs" paEllipsisTooltip>{{description | translate}}</div>
     </div>
+
+    <pa-icon *ngIf="!!icon && iconOnRight"
+        [class.pa-option-right-icon]="iconOnRight"
+        [icon]="_icon" [name]="iconName">
+    </pa-icon>
 </li>
