@@ -1,11 +1,11 @@
 <div class="pa-field pa-select"
+     paFocusable
+     cdkMonitorElementFocus
      [class.pa-field-readonly]="readonly"
      [class.pa-field-disabled]="control.disabled"
      [class.pa-field-error]="control.dirty && control.invalid">
     <div #selectInput
          class="select-input pa-field-control"
-         paFocusable
-         cdkMonitorElementFocus
          sameWidth
          [class.pa-field-control-filled]="hasValue || isOpened"
          [class.read-only]="readonly"
