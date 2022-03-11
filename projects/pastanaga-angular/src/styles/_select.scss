@@ -23,7 +23,7 @@
     $icon-width: rhythm(3);
     $icon-right-padding: rhythm(1);
     .pa-select-chevron {
-
+        pointer-events: none;
         cursor: pointer;
         position: absolute;
         right: $icon-right-padding;
@@ -48,6 +48,7 @@
     .pa-field-control {
         padding-right: calc(#{$icon-width + $icon-right-padding});
         width: 100%;
+        cursor: pointer;
         &:read-only {
             border: $border-field-regular;
             &:not(.disabled):not(.read-only) {

@@ -1,5 +1,8 @@
-# 2.44.4 (2022-03-09)
+# 2.44.5 (2022-03-11)
+**Select**: [barcafa]
+- Fix on hover styling for chevron icon
 
+# 2.44.4 (2022-03-09)
 ### Fix
 
 - Restore the license [ebrehault]
