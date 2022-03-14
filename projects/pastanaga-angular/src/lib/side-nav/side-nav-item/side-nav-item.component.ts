@@ -19,8 +19,10 @@ export class SideNavItemComponent {
     get label(): string {
         return this._label;
     }
-    set label(value: string) {
-        this._label = value;
+    set label(value: string | null) {
+        if (value) {
+            this._label = value;
+        }
     }
     @Input()
     get active(): boolean {
