@@ -7,7 +7,7 @@ export class TablePageComponent {
     isDescending = false;
     sorted = false;
     data: {
-        id: number;
+        id: string;
         name: string;
         tags: string;
         shared: string;
@@ -15,7 +15,7 @@ export class TablePageComponent {
         size: string;
     }[] = [
         {
-            id: 1,
+            id: '1',
             name: 'My_text_file.txt',
             tags: 'Bonjour, Occitania, França, Jenesepas',
             shared: '(AC) | (GD)',
@@ -23,7 +23,7 @@ export class TablePageComponent {
             size: '100 MB',
         },
         {
-            id: 2,
+            id: '2',
             name: 'contract.pdf',
             tags: 'Occitania',
             shared: '(AC)',
@@ -31,7 +31,7 @@ export class TablePageComponent {
             size: '15 KB',
         },
         {
-            id: 3,
+            id: '3',
             name: 'pelican-svgrepo-com.svg',
             tags: '',
             shared: '(EB)',
@@ -39,7 +39,7 @@ export class TablePageComponent {
             size: '100 bytes',
         },
         {
-            id: 4,
+            id: '4',
             name: 'Channel #general - 2020-01-23 (UTC).htm',
             tags: '',
             shared: '(EB) | (MP) (NI) (AC) (GD) (+3)',
@@ -47,7 +47,7 @@ export class TablePageComponent {
             size: '234.54 TB',
         },
         {
-            id: 5,
+            id: '5',
             name: 'Channel #big-important-things - 2020-01-23 (UTC).htm',
             tags: '',
             shared: '(EB)',
@@ -55,7 +55,7 @@ export class TablePageComponent {
             size: '24.56 MB',
         },
         {
-            id: 6,
+            id: '6',
             name: 'document.pdf',
             tags: '[França X]',
             shared: '(EB)',
@@ -67,7 +67,7 @@ export class TablePageComponent {
     code = `
 <pa-table columns="repeat(6, 1fr)">
     <pa-table-header>
-        <pa-table-sortable-header-cell label="Name" (sorted)="sortBy($event)"></pa-table-sortable-header-cell>
+        <pa-table-sortable-header-cell (sort)="sortBy($event)">Name</pa-table-sortable-header-cell>
         <pa-table-cell header>Tags</pa-table-cell>
         <pa-table-cell header>Shared with</pa-table-cell>
         <pa-table-cell header>Last updated</pa-table-cell>

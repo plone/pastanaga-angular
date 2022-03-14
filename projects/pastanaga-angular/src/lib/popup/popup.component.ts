@@ -31,14 +31,14 @@ export class PopupComponent implements OnInit, OnDestroy {
     get stayVisible(): boolean {
         return this._stayVisible;
     }
-    set stayVisible(value: boolean) {
+    set stayVisible(value: any) {
         this._stayVisible = coerceBooleanProperty(value);
     }
     @Input()
     get dontAdjustPosition(): boolean {
         return this._dontAdjustPosition;
     }
-    set dontAdjustPosition(value: boolean) {
+    set dontAdjustPosition(value: any) {
         this._dontAdjustPosition = coerceBooleanProperty(value);
     }
 
@@ -46,12 +46,12 @@ export class PopupComponent implements OnInit, OnDestroy {
     get adjustHeight(): boolean {
         return this._adjustHeight;
     }
-    set adjustHeight(value: boolean) {
+    set adjustHeight(value: any) {
         this._adjustHeight = coerceBooleanProperty(value);
     }
 
     @Input()
-    set keepOthersOpen(value: boolean) {
+    set keepOthersOpen(value: any) {
         this._keepOthersOpen = coerceBooleanProperty(value);
     }
     get keepOthersOpen() {

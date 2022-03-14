@@ -12,7 +12,7 @@ export class SideNavItemComponent {
     get header(): boolean {
         return this._header;
     }
-    set header(value: boolean) {
+    set header(value: any) {
         this._header = coerceBooleanProperty(value);
     }
     @Input()
@@ -26,7 +26,7 @@ export class SideNavItemComponent {
     get active(): boolean {
         return this._active;
     }
-    set active(value: boolean) {
+    set active(value: any) {
         this._active = coerceBooleanProperty(value);
     }
 

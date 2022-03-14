@@ -1,7 +1,7 @@
 import { Directive, Input } from '@angular/core';
-import { AvatarModel } from '../avatar/avatar.model';
+import { AvatarModel } from '../avatar';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { IconModel } from '../icon/icon.model';
+import { IconModel } from '../icon';
 
 @Directive()
 export class BaseChip {
@@ -12,7 +12,7 @@ export class BaseChip {
 
     @Input() value?: any;
 
-    @Input() set disabled(value: boolean) {
+    @Input() set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled() {

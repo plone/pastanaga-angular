@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { BreakpointObserver, markForCheck, ViewportMode } from '@guillotinaweb/pastanaga-angular';
 import { takeUntil } from 'rxjs/operators';
 import { IDemoMenuSection } from './demo-menu/demo-menu.component';
@@ -39,16 +39,11 @@ export class DemoComponent implements OnInit, OnDestroy {
     @Input() menu: IDemoMenuSection[] = [];
     @Input() logo = '';
 
-    mode?: ViewportMode;
+    mode: Observable<ViewportMode> = this.breakpoint.currentMode;
     activeItem = '';
     terminator = new Subject();
 
     constructor(private traverser: Traverser, private breakpoint: BreakpointObserver, private cdr: ChangeDetectorRef) {
-        this.breakpoint.currentMode.subscribe((mode) => {
-            this.mode = mode;
-            markForCheck(this.cdr);
-        });
-
         this.traverser.target.pipe(takeUntil(this.terminator)).subscribe((target: { view: string }) => {
             this.activeItem = target.view;
             markForCheck(this.cdr);

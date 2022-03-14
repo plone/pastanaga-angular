@@ -38,7 +38,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set icon(value: string | IconModel) {
+    set icon(value: string | IconModel | undefined) {
         this.iconName = typeof value === 'string' ? value : '';
         this._icon = typeof value === 'object' ? value : undefined;
     }
@@ -47,7 +47,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set destructive(value: boolean) {
+    set destructive(value: any) {
         this._destructive = coerceBooleanProperty(value);
     }
     get destructive(): boolean {
@@ -55,7 +55,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled(): boolean {
@@ -63,7 +63,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set selected(value: boolean) {
+    set selected(value: any) {
         this._selected = coerceBooleanProperty(value);
         // when selected is triggered programmatically by a parent component
         // change detection must be triggered manually
@@ -74,7 +74,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set dontCloseOnSelect(value: boolean) {
+    set dontCloseOnSelect(value: any) {
         this._dontCloseOnSelect = coerceBooleanProperty(value);
     }
     get dontCloseOnSelect(): boolean {
@@ -82,7 +82,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set readonly(value: boolean) {
+    set readonly(value: any) {
         this._readonly = coerceBooleanProperty(value);
     }
     get readonly(): boolean {
@@ -90,7 +90,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set description(value: string) {
+    set description(value: string | undefined) {
         if (!!value) {
             this._description = value;
         }
@@ -100,7 +100,7 @@ export class OptionComponent implements AfterContentInit {
     }
 
     @Input()
-    set iconOnRight(value: boolean) {
+    set iconOnRight(value: any) {
         this._iconOnRight = coerceBooleanProperty(value);
     }
     get iconOnRight(): boolean {
@@ -128,6 +128,13 @@ export class OptionComponent implements AfterContentInit {
 
     ngAfterContentInit() {
         this.text = this.element.nativeElement.textContent.trim();
+    }
+
+    onSelectClick($event: MouseEvent) {
+        this.onSelect($event);
+    }
+    onSelectEnter($event: Event) {
+        this.onSelect($event as KeyboardEvent);
     }
 
     onSelect($event: MouseEvent | KeyboardEvent) {

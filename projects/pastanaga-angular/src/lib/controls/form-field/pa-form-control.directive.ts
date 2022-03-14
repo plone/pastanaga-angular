@@ -54,7 +54,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
         this.writeValue(value);
     }
 
-    @Input() set readonly(value: boolean) {
+    @Input() set readonly(value: any) {
         this._readonly = coerceBooleanProperty(value);
     }
 
@@ -62,7 +62,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
         return this._readonly;
     }
 
-    @Input() set disabled(value: boolean) {
+    @Input() set disabled(value: any) {
         this.setDisabledState(coerceBooleanProperty(value));
     }
 

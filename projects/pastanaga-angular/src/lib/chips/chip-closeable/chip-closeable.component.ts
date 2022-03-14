@@ -8,7 +8,7 @@ import { BaseChip } from '../base-chip';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipCloseableComponent extends BaseChip {
-    @Input() set noCloseButton(value: boolean) {
+    @Input() set noCloseButton(value: any) {
         this.canClose = !coerceBooleanProperty(value);
     }
 

@@ -20,9 +20,9 @@ import { NgControl } from '@angular/forms';
 import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { DropdownComponent, OptionComponent } from '../../../dropdown';
-import {delay, distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import { delay, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { detectChanges, isVisibleInViewport, markForCheck } from '../../../common';
-import {fromEvent, Subject} from 'rxjs';
+import { fromEvent, Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { PaFormControlDirective } from '../../form-field';
@@ -44,7 +44,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         this._updateDisplayedValue(this.control.value);
     }
 
-    @Input() set hasFocus(value: boolean) {
+    @Input() set hasFocus(value: any) {
         this._hasFocus = coerceBooleanProperty(value);
         this._focusInput();
     }
@@ -53,7 +53,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     @Input() help?: string;
     @Input() errorMessages?: IErrorMessages;
     @Input() showAllErrors = true;
-    @Input() set dim(value: boolean) {
+    @Input() set dim(value: any) {
         this._dim = coerceBooleanProperty(value);
     }
     get dim() {
@@ -98,15 +98,15 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         super.ngOnChanges(changes);
         this._checkDescribedBy();
         if (this.selectInput) {
-        fromEvent(this.selectInput.nativeElement, 'blur')
-            .pipe(delay(0), takeUntil(this.terminator$)).
-            subscribe(() => {
-                if(this.isOpened) {
-                    this.optionsClosed$.next();
-                    this.isOpened = false;
-                    this.expanded.emit(false);
-                }
-            });
+            fromEvent(this.selectInput.nativeElement, 'blur')
+                .pipe(delay(0), takeUntil(this.terminator$))
+                .subscribe(() => {
+                    if (this.isOpened) {
+                        this.optionsClosed$.next();
+                        this.isOpened = false;
+                        this.expanded.emit(false);
+                    }
+                });
         }
     }
 

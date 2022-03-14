@@ -1,9 +1,8 @@
 import { Size } from '@guillotinaweb/pastanaga-angular';
 
 export class BaseIconPageComponent {
-    size = Size;
     icons: string[] = [];
-    selectedSize: Size = Size.medium;
+    selectedSize: Size = 'medium';
     selectedColor = 'none';
     selectedBackground = 'none';
     _selectedColor?: string;

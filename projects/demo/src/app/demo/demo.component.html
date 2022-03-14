@@ -1,7 +1,7 @@
 <div class="pa-main-container" paCustomViewHeight>
     <div class="pa-main-side-panel">
         <pa-demo-menu [menu]="menu"
-                      [mode]="mode"
+                      [mode]="mode | async"
                       [activeItem]="activeItem"
                       [logo]="logo"></pa-demo-menu>
     </div>

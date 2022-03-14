@@ -31,7 +31,7 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
         return this._resizable;
     }
 
-    set resizable(value: boolean) {
+    set resizable(value: any) {
         this._resizable = coerceBooleanProperty(value);
     }
 
@@ -50,7 +50,7 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
         return this._autoHeight;
     }
 
-    set autoHeight(value: boolean) {
+    set autoHeight(value: any) {
         this._autoHeight = coerceBooleanProperty(value);
     }
 
@@ -83,7 +83,7 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
     }
 
     private _maxHeight?: number;
-    autoMaxHeight?: number | null = null;
+    autoMaxHeight: number | null | undefined = null;
     fieldType = 'textarea';
 
     private _resizable = true;

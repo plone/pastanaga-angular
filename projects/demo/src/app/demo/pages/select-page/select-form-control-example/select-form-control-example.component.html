@@ -16,16 +16,12 @@
         (statusChange)="statusChangeEvent = $event"
         (expanded)="expandedEvent = $event">
         <ng-container *ngIf="config.optionsProvidedInTemplate">
-            <ng-container *ngFor="let item of dropdownContent">
-                <pa-option-header *ngIf="item.type === 'header'">{{item.label}}</pa-option-header>
-                <pa-separator *ngIf="item.type === 'separator'"></pa-separator>
-                <pa-option *ngIf="item.type === 'option' && !item.filtered"
-                           [disabled]="item.disabled"
-                           [destructive]="item.destructive"
-                           [icon]="item.icon"
-                           [value]="item.value"
-                >{{item.label}}</pa-option>
-            </ng-container>
+            <pa-option-header>Options from template</pa-option-header>
+            <pa-option disabled icon="audio" value="audio">Audio</pa-option>
+            <pa-option icon="audio" value="audio">Audio</pa-option>
+            <pa-option icon="image" value="image">Image</pa-option>
+            <pa-separator></pa-separator>
+            <pa-option icon="trash" value="delete" destructive>Delete</pa-option>
         </ng-container>
     </pa-select>
 

@@ -13,7 +13,7 @@ export class SelectNgModelExampleComponent extends FormFieldConfigNgModelDirecti
 
     expandedEvent?: any;
 
-    options?: (OptionModel | OptionSeparator | OptionHeaderModel)[];
+    options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
 
     constructor(protected cdr: ChangeDetectorRef) {
         super(cdr);
@@ -22,7 +22,7 @@ export class SelectNgModelExampleComponent extends FormFieldConfigNgModelDirecti
     updateConfig(config: any) {
         super.updateConfig(config);
         if (config.optionsProvidedInTemplate !== this.config.optionsProvidedInTemplate) {
-            this.options = config.optionsProvidedInTemplate ? undefined : this.dropdownContent;
+            this.options = config.optionsProvidedInTemplate ? [] : this.dropdownContent;
         }
 
         this.config = config;

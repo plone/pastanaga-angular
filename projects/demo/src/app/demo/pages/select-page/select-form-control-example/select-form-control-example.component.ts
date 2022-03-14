@@ -13,12 +13,12 @@ export class SelectFormControlExampleComponent extends FormFieldConfigFormContro
 
     expandedEvent?: any;
 
-    options?: (OptionModel | OptionSeparator | OptionHeaderModel)[];
+    options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
 
     updateConfig(config: any) {
         super.updateConfig(config);
         if (config.optionsProvidedInTemplate !== this.config.optionsProvidedInTemplate) {
-            this.options = config.optionsProvidedInTemplate ? undefined : this.dropdownContent;
+            this.options = config.optionsProvidedInTemplate ? [] : this.dropdownContent;
         }
         this.config = config;
     }

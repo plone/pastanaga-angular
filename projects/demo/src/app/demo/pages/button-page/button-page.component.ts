@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Kind, Size, Aspect } from '@guillotinaweb/pastanaga-angular';
+import { Size } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './button-page.component.html',
@@ -7,10 +7,7 @@ import { Kind, Size, Aspect } from '@guillotinaweb/pastanaga-angular';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonPageComponent {
-    kind = Kind;
-    aspect = Aspect;
-    size = Size;
-    selectedSize: Size = Size.medium;
+    selectedSize: Size = 'medium';
     activeState = false;
     disabledState = false;
     codeExample = `<pa-button [kind]="selectedKind"

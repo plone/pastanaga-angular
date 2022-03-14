@@ -12,7 +12,7 @@ export class TableRowComponent {
     get clickable(): boolean {
         return this._clickable;
     }
-    set clickable(value: boolean) {
+    set clickable(value: any) {
         this._clickable = coerceBooleanProperty(value);
     }
     private _clickable = false;
@@ -21,7 +21,7 @@ export class TableRowComponent {
     get last(): boolean {
         return this._last;
     }
-    set last(value: boolean) {
+    set last(value: any) {
         this._last = coerceBooleanProperty(value);
     }
     private _last = false;
@@ -30,7 +30,7 @@ export class TableRowComponent {
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
     private _disabled = false;

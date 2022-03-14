@@ -33,7 +33,7 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
     get hasFocus(): boolean {
         return this._hasFocus;
     }
-    set hasFocus(value: boolean) {
+    set hasFocus(value: any) {
         this._hasFocus = coerceBooleanProperty(value);
     }
     private _hasFocus = false;

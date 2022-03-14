@@ -22,7 +22,7 @@ import { IconModel } from './icon.model';
     encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent {
-    @Input() set icon(value: IconModel) {
+    @Input() set icon(value: IconModel | undefined) {
         if (!value) {
             return;
         }
@@ -71,7 +71,7 @@ export class IconComponent {
     _accessibilityName = '';
     _spritePath = '';
     _path = '';
-    _size: Size = Size.medium;
+    _size: Size = 'medium';
     _color = '';
     _background = '';
     _styles = '';

@@ -11,7 +11,7 @@ import {
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
-import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
+import { BreakpointObserver } from '../../breakpoint-observer';
 import { markForCheck } from '../../common';
 
 export const SORTABLE_ICON = 'chevron-down';
@@ -26,7 +26,7 @@ export const SORTED_DESCENDING_ICON = 'arrow-up';
 })
 export class TableSortableHeaderCellComponent implements OnChanges {
     @Input()
-    set enabled(value: boolean) {
+    set enabled(value: any) {
         this._enabled = coerceBooleanProperty(value);
     }
     get enabled() {
@@ -34,14 +34,14 @@ export class TableSortableHeaderCellComponent implements OnChanges {
     }
 
     @Input()
-    set active(value: boolean) {
+    set active(value: any) {
         this._active = coerceBooleanProperty(value);
     }
     get active() {
         return this._active;
     }
     @Input()
-    set isDescending(value: boolean) {
+    set isDescending(value: any) {
         this._isDescending = coerceBooleanProperty(value);
     }
     get isDescending() {
