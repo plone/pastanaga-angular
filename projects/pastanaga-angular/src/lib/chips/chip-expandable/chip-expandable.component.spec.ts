@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
-import { MockModule, ngMocks, MockedDebugElement } from 'ng-mocks';
+import { MockedDebugElement, MockModule, ngMocks } from 'ng-mocks';
 import { ButtonComponent } from '../../button/button.component';
 import { PaButtonModule } from '../../button/button.module';
 import { PaAvatarModule } from '../../avatar/avatar.module';
@@ -18,7 +18,8 @@ class TestComponent {
     disabled = true;
     ariaRole = 'role';
 
-    onExpand(event: any) {}
+    onExpand() {
+    }
 }
 
 describe('ChipExpandableComponent', () => {
@@ -39,9 +40,9 @@ describe('ChipExpandableComponent', () => {
         });
 
         it('should have an expand button with a chevron-down icon', () => {
-            expect(expandButton.attributes.aspect).toEqual('basic');
-            expect(expandButton.attributes.kind).toEqual('secondary');
-            expect(expandButton.attributes.size).toEqual('small');
+            expect(expandButton.attributes['aspect']).toEqual('basic');
+            expect(expandButton.attributes['kind']).toEqual('secondary');
+            expect(expandButton.attributes['size']).toEqual('small');
             expect(expandButton.attributes['ng-reflect-icon']).toEqual('chevron-down');
             expect(expandButton.attributes['ng-reflect-disabled']).toEqual('false');
         });

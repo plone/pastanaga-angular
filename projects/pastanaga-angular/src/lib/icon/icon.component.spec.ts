@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IconComponent } from './icon.component';
 import { By } from '@angular/platform-browser';
-import { Size } from '../common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { MockService } from 'ng-mocks';
 
@@ -43,8 +42,8 @@ describe('IconComponent', () => {
 
     it('should set the proper size', () => {
         component.name = 'plus';
-        component.size = Size.small;
+        component.size = 'small';
         fixture.detectChanges();
-        expect(fixture.debugElement.query(By.css('svg')).attributes.class).toEqual('pa-small');
+        expect(fixture.debugElement.query(By.css('svg')).attributes['class']).toEqual('pa-small');
     });
 });

@@ -40,6 +40,7 @@ describe('InputComponent', () => {
     let component: InputComponent;
     let host: TestComponent;
     let spectator: SpectatorHost<InputComponent, TestComponent>;
+
     const createHost = createHostFactory({
         component: InputComponent,
         imports: [FormsModule, ReactiveFormsModule, MockModule(PaIconModule), MockModule(PaTranslateModule)],
@@ -52,12 +53,15 @@ describe('InputComponent', () => {
             MockPipe(TranslatePipe, jest.fn((key: string) => key))
         ]
     });
+
     const thenInputHasAttribute = (attribute: string, value: any) => {
         expect(spectator.query('.pa-field-control')?.attributes.getNamedItem(attribute)?.value).toEqual(value);
     };
+
     const thenInputHasProperty = (property: string, value: any) => {
         expect((spectator.query<HTMLInputElement>('.pa-field-control') as any)[property]).toEqual(value);
     };
+
     it('should have an id, a name and a label', () => {
         spectator = createHost(`<pa-input [(ngModel)]="model">Label</pa-input>`);
         component = spectator.component;
@@ -68,6 +72,7 @@ describe('InputComponent', () => {
         const label = spectator.query('.pa-field-label');
         expect(label?.innerHTML).toEqual('Label');
     });
+
     it('should manage standalone value', () => {
         spectator = createHost(`<pa-input [value]="value">Label</pa-input>`);
         component = spectator.component;
@@ -79,6 +84,7 @@ describe('InputComponent', () => {
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
     });
+
     it('should manage ngModel value', fakeAsync(() => {
         spectator = createHost(`<pa-input [(ngModel)]="value">Label</pa-input>`);
         component = spectator.component;
@@ -91,6 +97,7 @@ describe('InputComponent', () => {
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
     }));
+
     it('should manage formControl value', () => {
         spectator = createHost(`<pa-input [formControl]="formControl">Label</pa-input>`);
         component = spectator.component;
@@ -102,6 +109,7 @@ describe('InputComponent', () => {
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
     });
+
     it('should manage formControlName value', () => {
         spectator = createHost(
             `<form [formGroup]="formGroup"><pa-input formControlName="control">Label</pa-input></form>`,
@@ -115,6 +123,7 @@ describe('InputComponent', () => {
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
     });
+
     it('should apply input type text', () => {
         spectator = createHost(`<pa-input [type]="type">Label</pa-input>`);
         component = spectator.component;
@@ -129,6 +138,7 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         thenInputHasProperty('type', 'text');
     });
+
     it('should apply input type number and click bound', () => {
         spectator = createHost(`<pa-input [type]="type">Label</pa-input>`);
         component = spectator.component;
@@ -154,6 +164,7 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         thenInputHasProperty('placeholder', 'A placeholder');
     });
+
     it('should toggle autocapitalize', () => {
         spectator = createHost(`<pa-input [autocapitalize]="autoCapitalize">Label</pa-input>`);
         component = spectator.component;
@@ -164,6 +175,7 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         thenInputHasAttribute('autocapitalize', 'off');
     });
+
     it('should apply autocomplete', () => {
         spectator = createHost(`<pa-input [noAutoComplete]="noAutocomplete">Label</pa-input>`);
         component = spectator.component;
@@ -174,21 +186,22 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         thenInputHasAttribute('autocomplete', 'off');
     });
+
     it('should toggle acceptHtmlTags', () => {
         spectator = createHost(`<pa-input [acceptHtmlTags]="acceptHtmlTags">Label</pa-input>`);
-        component = spectator.component;
         spectator.detectChanges();
-        expect(component.sanitizeHtmlTags).toBeDefined();
-        const formatter = ngMocks.find(spectator.debugElement, InputFormatterDirective);
-        expect(formatter).toBeDefined();
+        expect(spectator.component.sanitizeHtmlTags('<p>content</p>')).toBe('pcontent/p');
+
         host = spectator.hostComponent;
         host.acceptHtmlTags = true;
         spectator.detectChanges();
-        expect(component.sanitizeHtmlTags).not.toBeDefined();
+        expect(spectator.component.sanitizeHtmlTags('<p>content</p>')).toBe('<p>content</p>');
+
         host.acceptHtmlTags = false;
         spectator.detectChanges();
-        expect(component.sanitizeHtmlTags).toBeDefined();
+        expect(spectator.component.sanitizeHtmlTags('<p>content</p>')).toBe('pcontent/p');
     });
+
     it('should apply disabled in standalone', () => {
         spectator = createHost(`<pa-input [disabled]="disabled">Label</pa-input>`);
         component = spectator.component;
@@ -200,6 +213,7 @@ describe('InputComponent', () => {
         expect(component.control.disabled).toEqual(true);
         thenInputHasProperty('disabled', true);
     });
+
     it('should apply disabled in formGroup', () => {
         spectator = createHost(
             `<form [formGroup]="formGroup"><pa-input formControlName="control">Label</pa-input></form>`,
@@ -213,6 +227,7 @@ describe('InputComponent', () => {
         expect(component.control.disabled).toEqual(true);
         thenInputHasProperty('disabled', true);
     });
+
     it('should apply readonly', () => {
         spectator = createHost(`<pa-input [readonly]="readonly">Label</pa-input>`);
         component = spectator.component;
@@ -223,6 +238,7 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         thenInputHasProperty('readOnly', true);
     });
+
     it('should focus input', () => {
         spectator = createHost(`<pa-input [hasFocus]="hasFocus">Label</pa-input>`);
         component = spectator.component;
@@ -233,6 +249,7 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         expect(inputFocused).toHaveBeenCalled();
     });
+
     it('should display help', () => {
         spectator = createHost(`<pa-input [help]="help">Label</pa-input>`);
         component = spectator.component;
@@ -243,6 +260,7 @@ describe('InputComponent', () => {
         const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
         expect(hint.componentInstance.help).toEqual('a hint message');
     });
+
     it('should apply maxlength', () => {
         spectator = createHost(`<pa-input [maxlength]="maxlength">Label</pa-input>`);
         component = spectator.component;
@@ -252,6 +270,7 @@ describe('InputComponent', () => {
         thenInputHasProperty('maxLength', 3);
         thenInputHasAttribute('maxlength', '3');
     });
+
     it('should display errorMessages', () => {
         spectator = createHost(
             `<pa-input [(ngModel)]="model" [required]="required" [errorMessages]="errorMessages">Label</pa-input>`,
@@ -271,6 +290,7 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
     });
+
     it('should toggle showAllErrors', () => {
         spectator = createHost(
             `<pa-input [(ngModel)]="model" [required]="required" [showAllErrors]="showAllErrors">Label</pa-input>`,
@@ -290,6 +310,7 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         expect(hint.componentInstance.showAllErrors).toEqual(true);
     });
+
     it('should notify keyup and enter when not tab', () => {
         spectator = createHost(`<pa-input [value]="value">Label</pa-input>`);
         component = spectator.component;
@@ -308,6 +329,7 @@ describe('InputComponent', () => {
         expect(keyup).toHaveBeenCalledWith('test2');
         expect(enter).toHaveBeenCalledWith({ event: { key: 'Enter', target: true }, value: 'test2' });
     });
+
     it('should notify focusing only when active', () => {
         spectator = createHost(`<pa-input [value]="value">Label</pa-input>`);
         component = spectator.component;
@@ -322,6 +344,7 @@ describe('InputComponent', () => {
         component.onFocus({ focus: true, target: true });
         expect(focusing).toHaveBeenCalledWith({ focus: true, target: true });
     });
+
     it('should notify blurring', () => {
         spectator = createHost(`<pa-input [value]="value">Label</pa-input>`);
         component = spectator.component;

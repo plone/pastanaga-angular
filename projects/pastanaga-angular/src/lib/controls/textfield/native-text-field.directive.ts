@@ -57,9 +57,9 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     }
     @Input() set acceptHtmlTags(value: any) {
         const accept = coerceBooleanProperty(value);
-        if (!!this.sanitizeHtmlTags && accept) {
+        if (accept) {
             this.sanitizeHtmlTags = (val) => val;
-        } else if (!this.sanitizeHtmlTags && !accept) {
+        } else {
             this.sanitizeHtmlTags = sanitizeStringValue;
         }
     }
