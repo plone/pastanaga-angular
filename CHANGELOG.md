@@ -1,13 +1,27 @@
+# 2.45.0 (2022-03-14)
+
+### Breaking changes
+- `DATE_FORMAT` enum changed into `DateFormat` type [mpellerin42]
+- `Size`, `Aspect`, `Kind` enums changed into types [mpellerin42]
+
+### Improvements
+- **Stricter compiler option**: [mpellerin42]
+  - replace fullTemplateTypeCheck by strictTemplates
+  - add noPropertyAccessFromIndexSignature compiler option
+
 # 2.44.5 (2022-03-11)
-**Select**: [barcafa]
-- Fix on hover styling for chevron icon
+
+### Bugfix
+- **Select**: Fix on hover styling for chevron icon [barcafa]
 
 # 2.44.4 (2022-03-09)
-### Fix
 
+### Bugfix
 - Restore the license [ebrehault]
 
 # 2.44.3 (2022-03-09)
+
+### Improvements
 **Dropdown**: [barcafa]
   - Add a new property `iconOnRight` to display an icon to the right on a dropdown option
 
