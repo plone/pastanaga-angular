@@ -9,17 +9,17 @@ import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-con
 })
 export class SelectNgModelExampleComponent extends FormFieldConfigNgModelDirective {
     @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
-    config?: any = { optionsProvidedInTemplate: true, label: 'The label' };
+    override config?: any = { optionsProvidedInTemplate: true, label: 'The label' };
 
     expandedEvent?: any;
 
     options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
 
-    constructor(protected cdr: ChangeDetectorRef) {
+    constructor(protected override cdr: ChangeDetectorRef) {
         super(cdr);
     }
 
-    updateConfig(config: any) {
+    override updateConfig(config: any) {
         super.updateConfig(config);
         if (config.optionsProvidedInTemplate !== this.config.optionsProvidedInTemplate) {
             this.options = config.optionsProvidedInTemplate ? [] : this.dropdownContent;

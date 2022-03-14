@@ -41,19 +41,19 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.format && changes.format.currentValue && formats.indexOf(changes.format.currentValue) === -1) {
+        if (changes['format'] && changes['format'].currentValue && formats.indexOf(changes['format'].currentValue) === -1) {
             console.warn(`Invalid format "${this.format}", using "human" by default`);
             this.format = 'human';
         }
 
-        if (!!changes.datetime?.currentValue) {
+        if (!!changes['datetime']?.currentValue) {
             if (this.format === 'numerical') {
-                this.updateFormattedTime(changes.datetime.currentValue).subscribe((formattedDate: string) => {
+                this.updateFormattedTime(changes['datetime'].currentValue).subscribe((formattedDate: string) => {
                     this.formattedTime = formattedDate;
                     markForCheck(this.cdr);
                 });
             } else {
-                this.updateHumanFormattedTime(changes.datetime.currentValue).subscribe((formattedDate: string) => {
+                this.updateHumanFormattedTime(changes['datetime'].currentValue).subscribe((formattedDate: string) => {
                     this.formattedTime = formattedDate;
                     markForCheck(this.cdr);
                 });

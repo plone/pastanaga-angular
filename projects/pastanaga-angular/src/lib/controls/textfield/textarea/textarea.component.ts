@@ -84,7 +84,7 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
 
     private _maxHeight?: number;
     autoMaxHeight: number | null | undefined = null;
-    fieldType = 'textarea';
+    override fieldType = 'textarea';
 
     private _resizable = true;
     private _rows = 1;
@@ -95,35 +95,35 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
     private _verticalPadding = 0;
 
     constructor(
-        protected element: ElementRef,
-        @Optional() @Self() protected parentControl: NgControl,
-        protected cdr: ChangeDetectorRef,
-        protected textFieldUtility: TextFieldUtilityService,
-        protected renderer: Renderer2,
+        protected override element: ElementRef,
+        @Optional() @Self() protected override parentControl: NgControl,
+        protected override cdr: ChangeDetectorRef,
+        protected override textFieldUtility: TextFieldUtilityService,
+        protected override renderer: Renderer2,
     ) {
         super(element, parentControl, cdr, textFieldUtility, renderer);
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    override ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
         this._checkIsFilled();
         this._checkDescribedBy();
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
     }
 
-    ngAfterViewInit() {
+    override ngAfterViewInit() {
         this._computeMaxHeight();
         super.ngAfterViewInit();
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         super.ngOnDestroy();
     }
 
-    setDisabledState(isDisabled: boolean): void {
+    override setDisabledState(isDisabled: boolean): void {
         super.setDisabledState(isDisabled);
         if (this.htmlInputRef) {
             this.renderer.setProperty(this.htmlInputRef?.nativeElement, 'disabled', isDisabled);

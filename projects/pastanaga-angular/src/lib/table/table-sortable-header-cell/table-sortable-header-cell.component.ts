@@ -61,7 +61,7 @@ export class TableSortableHeaderCellComponent implements OnChanges {
     constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.active || changes.isDescending) {
+        if (changes['active'] || changes['isDescending']) {
             this.updateIcon();
         }
     }

@@ -81,9 +81,9 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     private _hasFocus = false;
 
     constructor(
-        protected element: ElementRef,
-        @Optional() @Self() protected parentControl: NgControl,
-        protected cdr: ChangeDetectorRef,
+        protected override element: ElementRef,
+        @Optional() @Self() protected override parentControl: NgControl,
+        protected override cdr: ChangeDetectorRef,
         protected textFieldUtility: TextFieldUtilityService,
         protected renderer: Renderer2,
     ) {
@@ -108,13 +108,13 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         this._focusInput();
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         this._stopAutoCompleteMonitor.next();
         this._stopAutoCompleteMonitor.complete();
         super.ngOnDestroy();
     }
 
-    setDisabledState(isDisabled: boolean): void {
+    override setDisabledState(isDisabled: boolean): void {
         super.setDisabledState(isDisabled);
         if (this.htmlInputRef) {
             this.renderer.setProperty(this.htmlInputRef?.nativeElement, 'disabled', isDisabled);

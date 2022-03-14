@@ -72,7 +72,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
 
     dropDownModels: OptionType[] = [];
     isOpened = false;
-    fieldType = 'select';
+    override fieldType = 'select';
     describedById?: string;
     /**
      * either the selected option label, either the placeholder
@@ -86,15 +86,15 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     protected _terminator = new Subject();
 
     constructor(
-        protected element: ElementRef,
-        @Optional() @Self() protected parentControl: NgControl,
+        protected override element: ElementRef,
+        @Optional() @Self() protected override parentControl: NgControl,
         protected platform: Platform,
-        public cdr: ChangeDetectorRef,
+        public override cdr: ChangeDetectorRef,
     ) {
         super(element, parentControl, cdr);
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    override ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
         this._checkDescribedBy();
         if (this.selectInput) {
@@ -127,7 +127,7 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
             .subscribe(() => markForCheck(this.cdr));
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         this.optionsClosed$.next();
         this.optionsClosed$.complete();
         this.contentOptionsChanged$.complete();

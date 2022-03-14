@@ -1,7 +1,7 @@
 <pa-modal-dialog>
     <pa-modal-image><img src="assets/ninja.svg" alt="ninja"></pa-modal-image>
     <pa-modal-title>Dialog title</pa-modal-title>
-    <pa-modal-description *ngIf="!!modal.config.data?.displayDescription">Dialog description</pa-modal-description>
+    <pa-modal-description *ngIf="!!modal.config.data?.['displayDescription']">Dialog description</pa-modal-description>
     <pa-modal-content>
         <div>
             <p>Some simple content, like a simple form.</p>

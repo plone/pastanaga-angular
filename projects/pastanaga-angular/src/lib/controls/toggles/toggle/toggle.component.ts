@@ -48,18 +48,18 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
     describedById?: string;
 
     constructor(
-        protected element: ElementRef,
-        @Optional() @Self() protected parentControl: NgControl,
-        protected cdr: ChangeDetectorRef,
+        protected override element: ElementRef,
+        @Optional() @Self() protected override parentControl: NgControl,
+        protected override cdr: ChangeDetectorRef,
         private renderer: Renderer2,
     ) {
         super(element, parentControl, cdr);
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    override ngOnChanges(changes: SimpleChanges): void {
         super.ngOnChanges(changes);
-        if (changes.hasFocus && !!this.input) {
-            if (changes.hasFocus.currentValue) {
+        if (changes['hasFocus'] && !!this.input) {
+            if (changes['hasFocus'].currentValue) {
                 this.input.nativeElement.focus();
             } else {
                 this.input.nativeElement.blur();
@@ -67,7 +67,7 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
         }
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
         this.isChecked = this.control.value;
     }
@@ -93,7 +93,7 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
         }
     }
 
-    ngOnDestroy(): void {
+    override ngOnDestroy(): void {
         super.ngOnDestroy();
     }
 
@@ -116,7 +116,7 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
         this._hasFocus = false;
     }
 
-    setDisabledState(isDisabled: boolean): void {
+    override setDisabledState(isDisabled: boolean): void {
         super.setDisabledState(isDisabled);
         if (this.input) {
             this.renderer.setProperty(this.input?.nativeElement, 'disabled', isDisabled);

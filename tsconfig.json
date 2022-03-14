@@ -16,6 +16,8 @@
         "moduleResolution": "node",
         "importHelpers": true,
         "resolveJsonModule": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
         "paths": {
             "pastanaga-angular": [
                 "dist/pastanaga-angular/pastanaga-angular",

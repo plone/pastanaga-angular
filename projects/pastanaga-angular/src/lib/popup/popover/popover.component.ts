@@ -26,20 +26,20 @@ export class PopoverComponent extends PopupComponent implements OnInit {
     hasFlexParent = false;
 
     constructor(
-        public popupService: PopupService,
-        public renderer: Renderer2,
-        public element: ElementRef,
-        public cdr: ChangeDetectorRef,
+        public override popupService: PopupService,
+        public override renderer: Renderer2,
+        public override element: ElementRef,
+        public override cdr: ChangeDetectorRef,
         @Inject(WINDOW) private window: any, // we need `any` so the non-Ivy compilation do not break when building the lib bundle
     ) {
         super(popupService, renderer, element, cdr);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
     }
 
-    adjust() {
+    override adjust() {
         const popover = this.getPopoverElement();
         const popoverRect = popover.getBoundingClientRect();
         const holderRect: DOMRect =
@@ -77,7 +77,7 @@ export class PopoverComponent extends PopupComponent implements OnInit {
         return true;
     }
 
-    close(byClickingOutside?: boolean) {
+    override close(byClickingOutside?: boolean) {
         this.renderer.removeClass(this.getPopoverElement(), 'pa-visible');
         super.close(byClickingOutside);
     }

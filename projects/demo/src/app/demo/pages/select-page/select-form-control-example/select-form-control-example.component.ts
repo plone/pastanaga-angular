@@ -9,13 +9,13 @@ import { FormFieldConfigFormControlDirective } from '../../common-doc/form-field
 })
 export class SelectFormControlExampleComponent extends FormFieldConfigFormControlDirective {
     @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
-    config?: any = { optionsProvidedInTemplate: true, label: 'The label' };
+    override config?: any = { optionsProvidedInTemplate: true, label: 'The label' };
 
     expandedEvent?: any;
 
     options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
 
-    updateConfig(config: any) {
+    override updateConfig(config: any) {
         super.updateConfig(config);
         if (config.optionsProvidedInTemplate !== this.config.optionsProvidedInTemplate) {
             this.options = config.optionsProvidedInTemplate ? [] : this.dropdownContent;

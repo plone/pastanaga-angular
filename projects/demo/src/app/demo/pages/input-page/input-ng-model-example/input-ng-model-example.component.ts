@@ -12,11 +12,11 @@ export class InputNgModelExampleComponent extends FormFieldConfigNgModelDirectiv
     blurEvent?: any;
     focusEvent?: any;
 
-    constructor(protected cdr: ChangeDetectorRef) {
+    constructor(protected override cdr: ChangeDetectorRef) {
         super(cdr);
     }
 
-    updateConfig(config: any) {
+    override updateConfig(config: any) {
         super.updateConfig(config);
         this.config = config;
     }
