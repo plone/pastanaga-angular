@@ -12,7 +12,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { PaFormControlDirective } from '../form-field/pa-form-control.directive';
+import { PaFormControlDirective } from '../form-field';
 import { NgControl } from '@angular/forms';
 import { TextFieldUtilityService } from './text-field-utility.service';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -34,7 +34,7 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         return this._maxlength;
     }
 
-    @Input() set noAutoComplete(value: boolean) {
+    @Input() set noAutoComplete(value: any) {
         const preventAutoComplete = coerceBooleanProperty(value);
         if (preventAutoComplete !== this._noAutoComplete) {
             this._noAutoComplete = preventAutoComplete;
@@ -51,15 +51,15 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     @Input() showAllErrors = true;
     @Input() placeholder?: string;
 
-    @Input() set hasFocus(value: boolean) {
+    @Input() set hasFocus(value: any) {
         this._hasFocus = coerceBooleanProperty(value);
         this._focusInput();
     }
-    @Input() set acceptHtmlTags(value: boolean) {
+    @Input() set acceptHtmlTags(value: any) {
         const accept = coerceBooleanProperty(value);
-        if (!!this.sanitizeHtmlTags && accept) {
-            this.sanitizeHtmlTags = undefined;
-        } else if (!this.sanitizeHtmlTags && !accept) {
+        if (accept) {
+            this.sanitizeHtmlTags = (val) => val;
+        } else {
             this.sanitizeHtmlTags = sanitizeStringValue;
         }
     }
@@ -73,7 +73,7 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
 
     isFilled = false;
     describedById?: string;
-    sanitizeHtmlTags?: (val: any) => any = sanitizeStringValue;
+    sanitizeHtmlTags: (val: any) => any = sanitizeStringValue;
 
     private _maxlength?: number;
     private _noAutoComplete = false;
@@ -81,9 +81,9 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     private _hasFocus = false;
 
     constructor(
-        protected element: ElementRef,
-        @Optional() @Self() protected parentControl: NgControl,
-        protected cdr: ChangeDetectorRef,
+        protected override element: ElementRef,
+        @Optional() @Self() protected override parentControl: NgControl,
+        protected override cdr: ChangeDetectorRef,
         protected textFieldUtility: TextFieldUtilityService,
         protected renderer: Renderer2,
     ) {
@@ -108,13 +108,13 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         this._focusInput();
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         this._stopAutoCompleteMonitor.next();
         this._stopAutoCompleteMonitor.complete();
         super.ngOnDestroy();
     }
 
-    setDisabledState(isDisabled: boolean): void {
+    override setDisabledState(isDisabled: boolean): void {
         super.setDisabledState(isDisabled);
         if (this.htmlInputRef) {
             this.renderer.setProperty(this.htmlInputRef?.nativeElement, 'disabled', isDisabled);

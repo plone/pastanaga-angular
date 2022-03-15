@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { AvatarModel } from '../avatar/avatar.model';
+import { AvatarModel } from '../avatar';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { TranslatePipe } from '../translate/translate.pipe';
+import { TranslatePipe } from '../translate';
 
 @Component({
     selector: 'pa-avatar-pile',
@@ -23,7 +23,7 @@ export class AvatarPileComponent {
     }
 
     @Input()
-    set customButton(value: boolean) {
+    set customButton(value: any) {
         this._customButtonBehavior = coerceBooleanProperty(value);
     }
     get customButton() {
@@ -31,7 +31,7 @@ export class AvatarPileComponent {
     }
 
     @Input()
-    set buttonAlwaysVisible(value: boolean) {
+    set buttonAlwaysVisible(value: any) {
         this._buttonAlwaysVisible = coerceBooleanProperty(value);
     }
     get buttonAlwaysVisible() {

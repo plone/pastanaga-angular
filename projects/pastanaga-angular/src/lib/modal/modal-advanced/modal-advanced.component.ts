@@ -21,7 +21,7 @@ export class ModalAdvancedComponent extends BaseModalComponent implements AfterV
     hasFooter = false;
     footerWithOneButton = false;
 
-    ngAfterViewInit() {
+    override ngAfterViewInit() {
         super.ngAfterViewInit();
 
         this.hasFooter = !!this.footer && this.footer.nativeElement.children.length > 0;

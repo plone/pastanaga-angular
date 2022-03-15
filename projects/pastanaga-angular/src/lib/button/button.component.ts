@@ -26,12 +26,12 @@ export class ButtonComponent implements AfterContentInit {
         if (!!value) {
             this._size = value;
             switch (this._size) {
-                case Size.large:
-                    this._iconSize = Size.large;
+                case 'large':
+                    this._iconSize = 'large';
                     break;
-                case Size.medium:
-                case Size.small:
-                    this._iconSize = Size.medium;
+                case 'medium':
+                case 'small':
+                    this._iconSize = 'medium';
                     break;
             }
         }
@@ -46,27 +46,27 @@ export class ButtonComponent implements AfterContentInit {
             this._type = value;
         }
     }
-    @Input() set disabled(value: boolean) {
+    @Input() set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
-    @Input() set active(value: boolean) {
+    @Input() set active(value: any) {
         this._active = coerceBooleanProperty(value);
     }
     @Input() set icon(value: string) {
         this._icon = value || '';
     }
-    @Input() set iconAndText(value: boolean) {
+    @Input() set iconAndText(value: any) {
         this._iconAndText = coerceBooleanProperty(value);
     }
 
     @ViewChild('textContainer') textContainer?: ElementRef;
 
     _type: 'button' | 'submit' | 'reset' = 'button';
-    _kind: Kind = Kind.secondary;
-    _size: Size = Size.medium;
-    _aspect: Aspect = Aspect.solid;
+    _kind: Kind = 'secondary';
+    _size: Size = 'medium';
+    _aspect: Aspect = 'solid';
     _icon = '';
-    _iconSize: Size = Size.medium;
+    _iconSize: Size = 'medium';
     _iconAndText = false;
 
     // state

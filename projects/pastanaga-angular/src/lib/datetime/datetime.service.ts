@@ -3,7 +3,7 @@ import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { isToday, isYesterday, isThisMinute, differenceInMinutes, isThisYear } from 'date-fns';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TranslatePipe } from '../translate/translate.pipe';
+import { TranslatePipe } from '../translate';
 
 /**
  * Date and time spec: https://docs.google.com/document/d/1VNtaS9_jmbcWRqYi3EkCk925rvTP1kczD73cD732-KM
@@ -16,10 +16,7 @@ import { TranslatePipe } from '../translate/translate.pipe';
  *  - numerical:
  *      - format date as numerical date like '12/31/2017'
  */
-export enum DATE_FORMAT {
-    human = 'human',
-    numerical = 'numerical',
-}
+export type DateFormat = 'human' | 'numerical';
 
 export class StringMap {
     yesterday: { key: string; value: string };
@@ -76,14 +73,14 @@ export class DateTimeService {
      */
     getFormattedDate(
         timestamp: string,
-        format: DATE_FORMAT,
+        format: DateFormat,
         dateOnly = false,
         displaySeconds = false
     ): Observable<string | null> {
-        if (format !== DATE_FORMAT.human && format !== DATE_FORMAT.numerical) {
+        if (format !== 'human' && format !== 'numerical') {
             throw new Error(`Unknown date/time format: ${format}`);
         } else {
-            if (format === DATE_FORMAT.numerical) {
+            if (format === 'numerical') {
                 return of(this.getNumericalDate(timestamp, dateOnly, displaySeconds));
             } else {
                 return this.getHumanDate(timestamp, dateOnly, displaySeconds);

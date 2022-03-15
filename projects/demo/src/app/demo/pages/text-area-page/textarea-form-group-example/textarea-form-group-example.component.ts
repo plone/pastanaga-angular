@@ -12,7 +12,7 @@ export class TextareaFormGroupExampleComponent extends FormFieldConfigFormGroupD
     blurEvent?: any;
     focusEvent?: any;
 
-    updateConfig(config: any) {
+    override updateConfig(config: any) {
         super.updateConfig(config);
         this.config = config;
     }

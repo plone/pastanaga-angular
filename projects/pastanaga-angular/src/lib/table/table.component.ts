@@ -13,7 +13,7 @@ export class TableComponent {
     get noHeader(): boolean {
         return this._noHeader;
     }
-    set noHeader(value: boolean) {
+    set noHeader(value: any) {
         this._noHeader = coerceBooleanProperty(value);
     }
 
@@ -29,7 +29,7 @@ export class TableComponent {
     get noAutoColumnStyle(): boolean {
         return this._noAutoColumnStyle;
     }
-    set noAutoColumnStyle(value: boolean) {
+    set noAutoColumnStyle(value: any) {
         this._noAutoColumnStyle = coerceBooleanProperty(value);
     }
 

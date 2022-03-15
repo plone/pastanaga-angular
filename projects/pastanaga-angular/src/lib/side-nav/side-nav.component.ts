@@ -16,6 +16,7 @@ import {
 import { Subject } from 'rxjs';
 import { detectChanges, markForCheck, TRANSITION_DURATION } from '../common';
 import { SideNavItemComponent } from './side-nav-item/side-nav-item.component';
+import { ViewportMode } from '../breakpoint-observer';
 
 @Component({
     selector: 'pa-side-nav',
@@ -28,20 +29,23 @@ export class SideNavComponent implements AfterViewInit {
     get visible(): boolean {
         return this._visible;
     }
-    set visible(value: boolean) {
+    set visible(value: any) {
+        const visible = coerceBooleanProperty(value);
         if (this._mode !== 'desktop') {
-            this.triggerAnimation(value);
+            this.triggerAnimation(visible);
         } else {
-            this._visible = coerceBooleanProperty(value);
+            this._visible = visible;
         }
     }
 
     @Input()
-    get mode(): string {
+    get mode(): ViewportMode {
         return this._mode;
     }
-    set mode(value: string) {
-        this._mode = value;
+    set mode(value: ViewportMode | null) {
+        if (value) {
+            this._mode = value;
+        }
     }
 
     @Output() close: EventEmitter<void> = new EventEmitter<void>();
@@ -53,7 +57,7 @@ export class SideNavComponent implements AfterViewInit {
     @ContentChildren(SideNavItemComponent, { descendants: true }) contentChild!: QueryList<SideNavItemComponent>;
 
     private _visible = true;
-    private _mode = 'desktop';
+    private _mode: ViewportMode = 'desktop';
     hasHeader = false;
     hasFooterContent = false;
 

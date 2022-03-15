@@ -28,20 +28,20 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
 
     @ViewChild('htmlElement') htmlElementRef?: ElementRef;
 
-    fieldType = 'checkbox';
+    override fieldType = 'checkbox';
     describedById?: string;
     isChecked = false;
 
     constructor(
-        protected element: ElementRef,
-        @Optional() @Self() protected parentControl: NgControl,
-        protected cdr: ChangeDetectorRef,
+        protected override element: ElementRef,
+        @Optional() @Self() protected override parentControl: NgControl,
+        protected override cdr: ChangeDetectorRef,
         private renderer: Renderer2,
     ) {
         super(element, parentControl, cdr);
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    override ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
     }
 
@@ -56,7 +56,7 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
         });
     }
 
-    setDisabledState(isDisabled: boolean): void {
+    override setDisabledState(isDisabled: boolean): void {
         super.setDisabledState(isDisabled);
         if (this.htmlElementRef) {
             this.renderer.setProperty(this.htmlElementRef?.nativeElement, 'disabled', isDisabled);

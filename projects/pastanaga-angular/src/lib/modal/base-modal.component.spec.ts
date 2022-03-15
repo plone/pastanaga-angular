@@ -39,9 +39,9 @@ describe('BaseModalComponent', () => {
         });
 
         it(`should setup keydown event listener`, () => {
-            expect(events.keydown).not.toBeDefined();
+            expect(events['keydown']).not.toBeDefined();
             baseModal.ngAfterViewInit();
-            expect(events.keydown).toBeDefined();
+            expect(events['keydown']).toBeDefined();
         });
     });
 
@@ -120,7 +120,7 @@ describe('BaseModalComponent', () => {
                 stopPropagation: mockStopPropagation,
             } as any) as KeyboardEvent;
 
-            events.keydown(fakeKeypressEvent);
+            events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(1);
             expect(mockEnterPressed.mock.calls.length).toBe(1);
             expect(mockClose.mock.calls.length).toBe(0);
@@ -133,7 +133,7 @@ describe('BaseModalComponent', () => {
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
             } as any) as KeyboardEvent;
-            events.keydown(fakeKeypressEvent);
+            events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(0);
             expect(mockEnterPressed.mock.calls.length).toBe(0);
             expect(mockClose.mock.calls.length).toBe(0);
@@ -145,7 +145,7 @@ describe('BaseModalComponent', () => {
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
             } as any) as KeyboardEvent;
-            events.keydown(fakeKeypressEvent);
+            events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(0);
             expect(mockEnterPressed.mock.calls.length).toBe(0);
             expect(mockClose.mock.calls.length).toBe(0);
@@ -158,7 +158,7 @@ describe('BaseModalComponent', () => {
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
             } as any) as KeyboardEvent;
-            events.keydown(fakeKeypressEvent);
+            events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(1);
             expect(mockEnterPressed.mock.calls.length).toBe(0);
             expect(mockClose.mock.calls.length).toBe(1);

@@ -26,7 +26,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
         this.updateContentHeight();
     }
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled() {
@@ -35,7 +35,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     private _disabled = false;
 
     @Input()
-    set card(value: boolean) {
+    set card(value: any) {
         this._card = coerceBooleanProperty(value);
     }
     get card() {
@@ -49,10 +49,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     expanded = true;
     contentHidden = false;
 
-    constructor(
-        private elementRef: ElementRef,
-        private cdr: ChangeDetectorRef,
-    ) {}
+    constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
 
     ngAfterViewInit() {
         this.updateContentHeight();

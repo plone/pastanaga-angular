@@ -8,8 +8,7 @@ import {
     OnInit,
     Renderer2,
 } from '@angular/core';
-import { PopupComponent } from '../popup/popup.component';
-import { PopupService } from '../popup/popup.service';
+import { PopupComponent, PopupService } from '../popup';
 
 @Component({
     selector: 'pa-dropdown',
@@ -30,20 +29,20 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
     private _role: 'listbox' | 'menu' = 'menu';
 
     constructor(
-        protected popupService: PopupService,
-        protected renderer: Renderer2,
-        protected element: ElementRef,
-        protected cdr: ChangeDetectorRef,
+        protected override popupService: PopupService,
+        protected override renderer: Renderer2,
+        protected override element: ElementRef,
+        protected override cdr: ChangeDetectorRef,
     ) {
         super(popupService, renderer, element, cdr);
         this.popupType = 'menu';
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         super.ngOnDestroy();
     }
 }

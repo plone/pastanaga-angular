@@ -34,7 +34,7 @@ export class EllipsisTooltipDirective implements AfterViewInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (!!changes.content?.currentValue && !changes.content.firstChange) {
+        if (!!changes['content']?.currentValue && !changes['content'].firstChange) {
             setTimeout(() => this.updateEllipsisTooltip(), 0);
         }
     }

@@ -11,7 +11,7 @@ import { AvatarModel } from './avatar.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
-    @Input() set avatar(value: AvatarModel) {
+    @Input() set avatar(value: AvatarModel | undefined) {
         if (value?.userName) {
             this.userName = value.userName;
         }
@@ -32,17 +32,21 @@ export class AvatarComponent {
         }
     }
 
-    @Input() set userId(value: string) {
-        this._userId = value;
-        this.assignBackgroundColor();
+    @Input() set userId(value: string | undefined) {
+        if (value) {
+            this._userId = value;
+            this.assignBackgroundColor();
+        }
     }
     get userId() {
         return this._userId;
     }
 
     @Input()
-    set userName(value: string) {
-        this._userName = value;
+    set userName(value: string | undefined) {
+        if (value) {
+            this._userName = value;
+        }
         this._initials = !!value ? getInitials(value) : '';
         this.assignBackgroundColor();
     }
@@ -51,7 +55,7 @@ export class AvatarComponent {
     }
 
     @Input()
-    set image(value: Observable<Blob>) {
+    set image(value: Observable<Blob> | undefined) {
         if (!!value) {
             this.loadImage(value);
         } else {
@@ -60,11 +64,11 @@ export class AvatarComponent {
     }
 
     @Input()
-    set imageSrc(value: string) {
+    set imageSrc(value: string | undefined) {
         this._base64Image = value;
     }
 
-    @Input() set autoBackground(value: boolean) {
+    @Input() set autoBackground(value: any) {
         this._autoBackground = coerceBooleanProperty(value);
         this.assignBackgroundColor();
     }
@@ -87,7 +91,7 @@ export class AvatarComponent {
         this._tooltip = value || '';
     }
     get tooltip() {
-        return this._tooltip || this.userName;
+        return this._tooltip || this.userName || '';
     }
 
     get base64Image() {

@@ -8,7 +8,7 @@ import { BaseModalComponent } from '../base-modal.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmationDialogComponent extends BaseModalComponent implements AfterViewInit {
-    ngAfterViewInit() {
+    override ngAfterViewInit() {
         super.ngAfterViewInit();
 
         this.setFocus();

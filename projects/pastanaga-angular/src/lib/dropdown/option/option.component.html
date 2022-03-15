@@ -7,8 +7,8 @@
     [class.pa-option-selected]="selected"
     [class.pa-option-with-description]="!!description"
     [hidden]="_hidden"
-    (click)="onSelect($event)"
-    (keyup.enter)="onSelect($event)"
+    (click)="onSelectClick($event)"
+    (keyup.enter)="onSelectEnter($event)"
 >
     <pa-icon *ngIf="!!icon && !iconOnRight" [icon]="_icon" [name]="iconName"></pa-icon>
     <pa-avatar *ngIf="!!avatar"

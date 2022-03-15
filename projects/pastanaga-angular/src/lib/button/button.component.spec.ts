@@ -1,6 +1,5 @@
 import { PaIconModule } from '../icon/icon.module';
 import { ButtonComponent } from './button.component';
-import { Size } from '../common';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { MockModule } from 'ng-mocks';
 
@@ -19,14 +18,14 @@ describe('ButtonComponent', () => {
     });
 
     it('should set the icon size according the button size for medium and large', () => {
-        expect(component._iconSize).toEqual(Size.medium);
-        component.size = Size.large;
-        expect(component._iconSize).toEqual(Size.large);
-        component.size = Size.medium;
-        expect(component._iconSize).toEqual(Size.medium);
+        expect(component._iconSize).toEqual('medium');
+        component.size = 'large';
+        expect(component._iconSize).toEqual('large');
+        component.size = 'medium';
+        expect(component._iconSize).toEqual('medium');
     });
     it('should set icon size "medium" when the button size is "small"', () => {
-        component.size = Size.small;
-        expect(component._iconSize).toEqual(Size.medium);
+        component.size = 'small';
+        expect(component._iconSize).toEqual('medium');
     });
 });

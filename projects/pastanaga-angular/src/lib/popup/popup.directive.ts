@@ -9,7 +9,7 @@ import { PopupService } from './popup.service';
     exportAs: 'paPopupRef',
 })
 export class PopupDirective implements OnInit {
-    @Input() paPopup?: PopupComponent;
+    @Input() paPopup?: PopupComponent | null;
     @Input() popupPosition?: PositionStyle;
     @Input() set popupMargin(value: number) {
         this._margin = coerceNumberProperty(value);
@@ -18,32 +18,32 @@ export class PopupDirective implements OnInit {
     get popupOnRight(): boolean {
         return this._popupOnRight;
     }
-    set popupOnRight(value: boolean) {
+    set popupOnRight(value: any) {
         this._popupOnRight = coerceBooleanProperty(value);
     }
     @Input()
     get popupOnTop(): boolean {
         return this._popupOnTop;
     }
-    set popupOnTop(value: boolean) {
+    set popupOnTop(value: any) {
         this._popupOnTop = coerceBooleanProperty(value);
     }
     @Input()
     get sameWidth(): boolean {
         return this._sameWidth;
     }
-    set sameWidth(value: boolean) {
+    set sameWidth(value: any) {
         this._sameWidth = coerceBooleanProperty(value);
     }
     @Input()
     get popupDisabled(): boolean {
         return this._disabled;
     }
-    set popupDisabled(value: boolean) {
+    set popupDisabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
     @Input()
-    set openOnly(value: boolean) {
+    set openOnly(value: any) {
         this._openOnly = coerceBooleanProperty(value);
     }
     get openOnly() {
@@ -99,7 +99,7 @@ export class PopupDirective implements OnInit {
         }
         const rootRect = this._rootParent.getBoundingClientRect();
         const top = rect.bottom - rootRect.top + this._rootParent.scrollTop;
-        const bottom = window.innerHeight - rect.top - window.pageYOffset;
+        const bottom = window.innerHeight - rect.top - window.scrollY;
 
         const position: PositionStyle = {
             position: 'absolute',

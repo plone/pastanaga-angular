@@ -1,7 +1,7 @@
 import { ChipCloseableComponent } from './chip-closeable.component';
 import { Component } from '@angular/core';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
-import { MockModule, ngMocks, MockedDebugElement } from 'ng-mocks';
+import { MockedDebugElement, MockModule, ngMocks } from 'ng-mocks';
 import { ButtonComponent } from '../../button/button.component';
 import { PaButtonModule } from '../../button/button.module';
 import { PaAvatarModule } from '../../avatar/avatar.module';
@@ -20,7 +20,8 @@ class TestComponent {
     ariaRole = 'role';
     value = 'the value';
 
-    onClose(event: any) {}
+    onClose() {
+    }
 }
 
 describe('ChipCloseableComponent', () => {
@@ -41,10 +42,10 @@ describe('ChipCloseableComponent', () => {
         });
 
         it('should have an enabled close button', () => {
-            expect(closeButton.attributes.aspect).toEqual('basic');
-            expect(closeButton.attributes.icon).toEqual('cross');
-            expect(closeButton.attributes.kind).toEqual('secondary');
-            expect(closeButton.attributes.size).toEqual('small');
+            expect(closeButton.attributes['aspect']).toEqual('basic');
+            expect(closeButton.attributes['icon']).toEqual('cross');
+            expect(closeButton.attributes['kind']).toEqual('secondary');
+            expect(closeButton.attributes['size']).toEqual('small');
             expect(closeButton.attributes['ng-reflect-disabled']).toEqual('false');
         });
 

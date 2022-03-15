@@ -13,7 +13,7 @@ export class TableLeadCellMultiLineComponent {
     get clickable(): boolean {
         return this._clickable;
     }
-    set clickable(value: boolean) {
+    set clickable(value: any) {
         this._clickable = coerceBooleanProperty(value);
     }
 
@@ -21,7 +21,7 @@ export class TableLeadCellMultiLineComponent {
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
 

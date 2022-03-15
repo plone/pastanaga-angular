@@ -1,12 +1,12 @@
 import { ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { DATE_FORMAT, DateTimeService } from './datetime.service';
+import { DateFormat, DateTimeService } from './datetime.service';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { filter, map, switchMap, takeUntil, takeWhile } from 'rxjs/operators';
 import { differenceInMinutes } from 'date-fns';
 import { Observable, Subject, timer } from 'rxjs';
 import { markForCheck } from '../common';
 
-const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical];
+const formats = ['human', 'numerical'];
 
 @Component({
     selector: 'pa-datetime',
@@ -14,16 +14,22 @@ const formats = [DATE_FORMAT.human, DATE_FORMAT.numerical];
 })
 export class DateTimeComponent implements OnChanges, OnDestroy {
     @Input() datetime?: string;
-    @Input() format = DATE_FORMAT.human;
+    @Input() format: DateFormat = 'human';
 
     @Input()
-    set dateOnly(value: boolean) {
+    set dateOnly(value: any) {
         this._dateOnly = coerceBooleanProperty(value);
+    }
+    get dateOnly() {
+        return this._dateOnly;
     }
 
     @Input()
-    set displaySeconds(value: boolean) {
+    set displaySeconds(value: any) {
         this._displaySeconds = coerceBooleanProperty(value);
+    }
+    get displaySeconds() {
+        return this._displaySeconds;
     }
 
     private _dateOnly = false;
@@ -31,22 +37,23 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
     private _terminator = new Subject();
     formattedTime = '';
 
-    constructor(private service: DateTimeService, private cdr: ChangeDetectorRef) {}
+    constructor(private service: DateTimeService, private cdr: ChangeDetectorRef) {
+    }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.format && changes.format.currentValue && formats.indexOf(changes.format.currentValue) === -1) {
-            console.warn(`Invalid format "${this.format}", using "${DATE_FORMAT.human}" by default`);
-            this.format = DATE_FORMAT.human;
+        if (changes['format'] && changes['format'].currentValue && formats.indexOf(changes['format'].currentValue) === -1) {
+            console.warn(`Invalid format "${this.format}", using "human" by default`);
+            this.format = 'human';
         }
 
-        if (!!changes.datetime?.currentValue) {
-            if (this.format === DATE_FORMAT.numerical) {
-                this.updateFormattedTime(changes.datetime.currentValue).subscribe((formattedDate: string) => {
+        if (!!changes['datetime']?.currentValue) {
+            if (this.format === 'numerical') {
+                this.updateFormattedTime(changes['datetime'].currentValue).subscribe((formattedDate: string) => {
                     this.formattedTime = formattedDate;
                     markForCheck(this.cdr);
                 });
             } else {
-                this.updateHumanFormattedTime(changes.datetime.currentValue).subscribe((formattedDate: string) => {
+                this.updateHumanFormattedTime(changes['datetime'].currentValue).subscribe((formattedDate: string) => {
                     this.formattedTime = formattedDate;
                     markForCheck(this.cdr);
                 });
@@ -60,9 +67,9 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
     }
 
     private updateFormattedTime(datetime: string): Observable<string> {
-        return this.service.getFormattedDate(datetime, this.format, this._dateOnly, this._displaySeconds).pipe(
+        return this.service.getFormattedDate(datetime, this.format, this.dateOnly, this.displaySeconds).pipe(
             filter((formattedDate) => !!formattedDate),
-            map((formattedDate) => formattedDate as string)
+            map((formattedDate) => formattedDate as string),
         );
     }
 
@@ -72,12 +79,12 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
         return minutesFromNow > limit
             ? this.updateFormattedTime(timestamp)
             : timer(0, 1000 * 60).pipe(
-                  switchMap(() => this.updateFormattedTime(timestamp)),
-                  takeWhile(() => {
-                      minutesFromNow++;
-                      return minutesFromNow <= limit + 2;
-                  }),
-                  takeUntil(this._terminator)
-              );
+                switchMap(() => this.updateFormattedTime(timestamp)),
+                takeWhile(() => {
+                    minutesFromNow++;
+                    return minutesFromNow <= limit + 2;
+                }),
+                takeUntil(this._terminator),
+            );
     }
 }

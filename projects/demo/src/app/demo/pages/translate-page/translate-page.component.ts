@@ -61,7 +61,7 @@ import { DEMO_LA } from '../assets/i18n/la';
     currentLanguage = 'en';
 
     constructor(private translateService: TranslateService, private traverser: Traverser) {
-        this.traverser.getQueryParams().pipe(filter(params => !!params.la)).subscribe(params => this.currentLanguage = params.la)
+        this.traverser.getQueryParams().pipe(filter(params => !!params['la'])).subscribe(params => this.currentLanguage = params['la'])
     }
 
     updateLanguage(language: string) {

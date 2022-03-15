@@ -44,38 +44,38 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
 
     @Input() autocapitalize?: string;
 
-    fieldType = 'input';
+    override fieldType = 'input';
 
     private _type: TextInputType = 'text';
     private _icon?: string;
     private _wasNumber = false;
 
     constructor(
-        protected element: ElementRef,
-        @Optional() @Self() protected parentControl: NgControl,
-        protected cdr: ChangeDetectorRef,
-        protected textFieldUtility: TextFieldUtilityService,
-        protected renderer: Renderer2,
+        protected override element: ElementRef,
+        @Optional() @Self() protected override parentControl: NgControl,
+        protected override cdr: ChangeDetectorRef,
+        protected override textFieldUtility: TextFieldUtilityService,
+        protected override renderer: Renderer2,
     ) {
         super(element, parentControl, cdr, textFieldUtility, renderer);
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    override ngOnChanges(changes: SimpleChanges) {
         super.ngOnChanges(changes);
         this._checkIsFilled();
         this._checkDescribedBy();
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
     }
 
-    ngAfterViewInit(): void {
+    override ngAfterViewInit(): void {
         this._updateInputType();
         super.ngAfterViewInit();
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         this._unTrackNumberInputClick();
         super.ngOnDestroy();
     }

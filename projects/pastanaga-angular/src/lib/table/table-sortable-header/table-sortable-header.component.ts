@@ -35,7 +35,7 @@ export class TableSortableHeaderComponent implements AfterViewInit {
         return this._cells;
     }
     @Input()
-    set menuColumn(value: boolean) {
+    set menuColumn(value: any) {
         this._menuColumn = coerceBooleanProperty(value);
     }
     get menuColumn() {

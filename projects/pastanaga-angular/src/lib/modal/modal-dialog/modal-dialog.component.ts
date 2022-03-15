@@ -10,7 +10,7 @@ import {
 import { BaseModalComponent } from '../base-modal.component';
 import { ModalRef } from '../modal.model';
 import { TRANSITION_DURATION } from '../../common';
-import { BreakpointObserver } from '../../breakpoint-observer/breakpoint.observer';
+import { BreakpointObserver } from '../../breakpoint-observer';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -33,8 +33,8 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
     private _headerHeightSettingDelay = TRANSITION_DURATION.moderate;
 
     constructor(
-        public ref: ModalRef,
-        protected cdr: ChangeDetectorRef,
+        public override ref: ModalRef,
+        protected override cdr: ChangeDetectorRef,
         private element: ElementRef,
         private breakpoint: BreakpointObserver,
     ) {
@@ -48,7 +48,7 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
             );
     }
 
-    ngAfterViewInit() {
+    override ngAfterViewInit() {
         super.ngAfterViewInit();
 
         this.hasImage = !!this.image && this.image.nativeElement.children.length > 0;

@@ -18,7 +18,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
         return this._enabled;
     }
 
-    set enabled(value: boolean) {
+    set enabled(value: any) {
         value = coerceBooleanProperty(value);
         // Only act if the actual value changed.
         if (this._enabled !== value) {
@@ -28,7 +28,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
     }
 
     @Input('paTextareaMaxHeight')
-    set maxHeight(value: number | undefined) {
+    set maxHeight(value: number | null | undefined) {
         this._maxHeight = value;
         if (this._enabled) {
             this.resizeToFitContent();
@@ -44,7 +44,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
     private _previousHeight = 0;
     private _previousValue?: string;
 
-    private _maxHeight?: number;
+    private _maxHeight: number | null | undefined;
     private _enabled = true;
     private _autoSizingChanged$ = new Subject<void>();
 

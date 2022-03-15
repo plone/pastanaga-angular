@@ -54,7 +54,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
         this.writeValue(value);
     }
 
-    @Input() set readonly(value: boolean) {
+    @Input() set readonly(value: any) {
         this._readonly = coerceBooleanProperty(value);
     }
 
@@ -62,7 +62,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
         return this._readonly;
     }
 
-    @Input() set disabled(value: boolean) {
+    @Input() set disabled(value: any) {
         this.setDisabledState(coerceBooleanProperty(value));
     }
 
@@ -76,7 +76,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
     @Input() set errorMessage(message: string | undefined) {
         if (!!message) {
             this.control.setErrors({ customError: message });
-        } else if (this.control.errors && this.control.errors.customError) {
+        } else if (this.control.errors && this.control.errors['customError']) {
             this.control.setErrors(null);
         }
     }
@@ -119,10 +119,10 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if ((changes.errorMessages || changes.showAllErrors) && this.control.dirty) {
+        if ((changes['errorMessages'] || changes['showAllErrors']) && this.control.dirty) {
             this.control.updateValueAndValidity();
         }
-        if (changes.id || changes.name) {
+        if (changes['id'] || changes['name']) {
             this._setupIdentifiers();
         }
     }

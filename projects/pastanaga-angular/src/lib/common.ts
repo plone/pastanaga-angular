@@ -20,25 +20,9 @@ export const Keys = {
     arrowLeft: 'ArrowLeft',
 };
 
-export enum Size {
-    small = 'small',
-    medium = 'medium',
-    large = 'large',
-    xlarge = 'xlarge',
-    xxlarge = 'xxlarge',
-}
-
-export enum Aspect {
-    solid = 'solid',
-    basic = 'basic',
-}
-
-export enum Kind {
-    primary = 'primary',
-    secondary = 'secondary',
-    inverted = 'inverted',
-    destructive = 'destructive',
-}
+export type Size = 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+export type Aspect = 'solid' | 'basic';
+export type Kind = 'primary' | 'secondary' | 'inverted' | 'destructive';
 
 export class PositionStyle {
     position?: string;

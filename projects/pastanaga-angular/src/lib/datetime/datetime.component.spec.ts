@@ -1,9 +1,9 @@
 import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaTranslateModule, TranslatePipe, PA_LANG } from '../translate';
+import { PA_LANG, PaTranslateModule, TranslatePipe } from '../translate';
 import { DateTimeComponent } from './datetime.component';
-import { DATE_FORMAT, DateTimeService } from './datetime.service';
+import { DateTimeService } from './datetime.service';
 import { dates, mockTranslateEn } from './test-data';
 
 describe('DateTimeComponent', () => {
@@ -35,7 +35,7 @@ describe('DateTimeComponent', () => {
 
     it('should display date in numerical', () => {
         component.datetime = dates.beforeYesterdayPM.timestamp;
-        component.format = DATE_FORMAT.numerical;
+        component.format = 'numerical';
 
         component.ngOnChanges({
             datetime: new SimpleChange(null, component.datetime, true),
@@ -47,7 +47,7 @@ describe('DateTimeComponent', () => {
 
     it('should display date in numerical with seconds', () => {
         component.datetime = dates.beforeYesterdayPM.timestamp;
-        component.format = DATE_FORMAT.numerical;
+        component.format = 'numerical';
         component.displaySeconds = true;
 
         component.ngOnChanges({
@@ -73,7 +73,7 @@ describe('DateTimeComponent', () => {
 
     it('should display date with seconds', () => {
         component.datetime = dates.beforeYesterdayPM.timestamp;
-        component.format = DATE_FORMAT.numerical;
+        component.format = 'numerical';
         component.displaySeconds = true;
 
         component.ngOnChanges({

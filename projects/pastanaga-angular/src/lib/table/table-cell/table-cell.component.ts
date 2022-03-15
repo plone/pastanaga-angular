@@ -12,7 +12,7 @@ export class TableCellComponent {
     get header(): boolean {
         return this._header;
     }
-    set header(value: boolean) {
+    set header(value: any) {
         this._header = coerceBooleanProperty(value);
     }
 
@@ -20,7 +20,7 @@ export class TableCellComponent {
     get clickable(): boolean {
         return this._clickable;
     }
-    set clickable(value: boolean) {
+    set clickable(value: any) {
         this._clickable = coerceBooleanProperty(value);
     }
 
@@ -28,7 +28,7 @@ export class TableCellComponent {
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
 
@@ -36,7 +36,7 @@ export class TableCellComponent {
     get noWrap(): boolean {
         return this._noWrap;
     }
-    set noWrap(value: boolean) {
+    set noWrap(value: any) {
         this._noWrap = coerceBooleanProperty(value);
     }
 
