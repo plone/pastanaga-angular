@@ -44,7 +44,12 @@ import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
 import { BaseControlUsageComponent } from './pages/common-doc/base-control/base-control-usage.component';
 import { CheckboxPageComponent } from './pages/checkbox-page/checkbox-page.component';
 import { DateTimePageComponent } from './pages/datetime-page/datetime-page.component';
-import { DialogImageExampleComponent, ModalExampleComponent, ModalPageComponent } from './pages/modal-page';
+import {
+    DialogExampleComponent,
+    DialogImageExampleComponent,
+    ModalExampleComponent,
+    ModalPageComponent,
+} from './pages/modal-page';
 import { DropdownPageComponent } from './pages/dropdown-page/dropdown-page.component';
 import { GridPageComponent } from './pages/grid-page/grid-page.component';
 import { PalettePageComponent } from './pages/palette-page/palette-page.component';
@@ -104,11 +109,7 @@ import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page
 import { ExpanderPageComponent } from './pages/expand-page/expander-page.component';
 import { AccessibilityPageComponent } from './pages/accessibility/accessibility-page.component';
 import { AvatarPilePageComponent } from './pages/avatar-pile-page/avatar-pile-page.component';
-import {
-    InfiniteScrollPageComponent,
-    DataCardComponent,
-    InfiniteScrollDemoComponent,
-} from './pages/scroll-pages';
+import { InfiniteScrollPageComponent, DataCardComponent, InfiniteScrollDemoComponent } from './pages/scroll-pages';
 import { ConfirmationDialogPageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-page.component';
 import { EllipsisTooltipPageComponent } from './pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
 import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.component';
@@ -128,6 +129,7 @@ const COMPONENTS = [
     DemoConfigurationDirective,
 
     BaseControlUsageComponent,
+    DialogExampleComponent,
     DialogImageExampleComponent,
     ModalExampleComponent,
 
@@ -238,5 +240,4 @@ const COMPONENTS = [
     declarations: COMPONENTS,
     exports: COMPONENTS,
 })
-export class PaDemoModule {
-}
+export class PaDemoModule {}

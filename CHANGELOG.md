@@ -1,3 +1,12 @@
+# 2.45.1 (2022-03-14)
+
+### Style changes
+- Modal dialog header's image, title and description changes: [faustoona]
+    - ***centered aligned*** when the modal has an image;
+    - ***left aligned*** when the modal doesn't have an image;
+    - setting title size to medium;
+    - setting description top margin to 12px;
+
 # 2.45.0 (2022-03-14)
 
 ### Breaking changes

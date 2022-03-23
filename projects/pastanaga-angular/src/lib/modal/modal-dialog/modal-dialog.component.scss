@@ -9,7 +9,8 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
     .pa-modal-header {
         @include fixed-header;
         padding: $padding-modal $padding-modal $spacing-dialog-sections;
-        text-align: center;
+        text-align: left;
+
 
         img {
             margin-bottom: $spacing-dialog-sections;
@@ -17,9 +18,17 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
             width: $dimension-image;
         }
 
-        .pa-modal-description {
-            margin-top: $spacing-dialog-sections;
+        .pa-modal-description, .pa-modal-description-centered {
+            margin-top: rhythm(1.5);
+            text-align: left;
         }
+        .pa-modal-description-centered {
+            text-align: center;
+        }
+    }
+
+    .pa-modal-header-centered {
+        text-align: center;
     }
 
     .pa-modal-content {

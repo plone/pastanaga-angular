@@ -11,7 +11,9 @@
             [attr.aria-labelledby]="'dialog-' + id + '-title'"
             [attr.aria-describedby]="'dialog-' + id + '-description'"
     >
-        <header #header class="pa-modal-header">
+        <header #header
+                class="pa-modal-header"
+                [class.pa-modal-header-centered]="hasImage">
             <div #image
                  role="presentation"
                  [hidden]="!hasImage"
@@ -19,13 +21,14 @@
                 <ng-content select="pa-modal-image"></ng-content>
             </div>
 
-            <div class="title-s"
+            <div class="title-m"
                  [id]="'dialog-' + id + '-title'">
                 <ng-content select="pa-modal-title"></ng-content>
             </div>
 
             <div #description
                  class="pa-modal-description body-s"
+                 [class.pa-modal-description-centered]="hasImage"
                  [id]="'dialog-' + id + '-description'"
                  [hidden]="!hasDescription"
             >

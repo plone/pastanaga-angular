@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ModalConfig, ModalService } from '@guillotinaweb/pastanaga-angular';
-import { DialogImageExampleComponent } from './dialog-image-example/dialog-image-example.component';
+import { DialogExampleComponent, DialogImageExampleComponent } from './dialog-example/dialog-example.component';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 
 @Component({
@@ -117,9 +117,21 @@ export class OwnModalComponent extends BaseModalComponent implements AfterViewIn
 
     constructor(private modalService: ModalService) {}
 
+    openDialog() {
+        this.modalService
+            .openModal(
+                DialogExampleComponent,
+                new ModalConfig({
+                    data: { displayDescription: true },
+                }),
+            )
+            .onClose.subscribe(console.log);
+    }
+
     openImageDialog() {
         this.modalService.openModal(DialogImageExampleComponent).onClose.subscribe(console.log);
     }
+
     openImageAndDescriptionDialog() {
         this.modalService
             .openModal(
