@@ -8,3 +8,11 @@ import { ModalRef } from '@guillotinaweb/pastanaga-angular';
 export class DialogImageExampleComponent {
     constructor(public modal: ModalRef) {}
 }
+
+@Component({
+    templateUrl: './dialog-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DialogExampleComponent {
+    constructor(public modal: ModalRef) {}
+}
