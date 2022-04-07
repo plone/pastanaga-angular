@@ -1,3 +1,8 @@
+# 2.45.2 (2022-04-07)
+
+### Improvements
+  - Add new `sync` symbol [raul-onna]
+
 # 2.45.1 (2022-03-14)
 
 ### Style changes
