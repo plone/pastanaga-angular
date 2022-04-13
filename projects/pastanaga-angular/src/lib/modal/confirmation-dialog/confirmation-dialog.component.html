@@ -21,7 +21,7 @@
              [innerHTML]="ref.config.data?.['description'] | translate"
         ></div>
 
-        <footer class="pa-modal-footer">
+        <footer class="pa-modal-footer pa-dual-buttons">
             <pa-button kind="secondary"
                        qa="confirmation-dialog-cancel-button"
                        (click)="ref.close(false)">{{ (ref.config.data?.['cancelLabel'] || 'pastanaga.cancel') | translate}}</pa-button>

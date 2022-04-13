@@ -43,15 +43,6 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
 
     pa-modal-footer {
         @include fixed-footer;
-
-        pa-button {
-            width: calc((100% - #{rhythm(2)}) / 2);
-
-            .pa-button {
-                min-width: unset !important;
-                width: 100%;
-            }
-        }
     }
 
     @media (min-width: $size-viewport-medium-min) {

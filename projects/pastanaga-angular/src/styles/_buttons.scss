@@ -153,3 +153,17 @@
         }
     }
 }
+
+.pa-dual-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    pa-button {
+        width: calc((100% - #{rhythm(2)}) / 2);
+
+        .pa-button {
+            min-width: unset !important;
+            width: 100%;
+        }
+    }
+}

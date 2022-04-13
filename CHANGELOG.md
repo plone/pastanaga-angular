@@ -1,3 +1,7 @@
+# 2.45.3 (2022-04-12)
+### Improvements
+- Add dual button styling for buttons [barcafa]
+
 # 2.45.2 (2022-04-07)
 
 ### Improvements
