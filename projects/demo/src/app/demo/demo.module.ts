@@ -20,6 +20,7 @@ import {
     PaAvatarPileModule,
     PaButtonModule,
     PaChipsModule,
+    PaDatePickerModule,
     PaDateTimeModule,
     PaDropdownModule,
     PaExpanderModule,
@@ -116,6 +117,7 @@ import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.co
 import { PopoverPageComponent } from './pages/popover-page/popover-page.component';
 import { DistributePageComponent } from './pages/distribute-page/distribute-page.component';
 import { CardPageComponent } from './pages/card-page/card-page.component';
+import { DatePickerPageComponent } from "./pages/date-picker-page/date-picker-page.component";
 
 const COMPONENTS = [
     DemoComponent,
@@ -143,6 +145,7 @@ const COMPONENTS = [
     ChipPageComponent,
     ContainerPageComponent,
     ContainerDemoComponent,
+    DatePickerPageComponent,
     DateTimePageComponent,
     DropdownPageComponent,
     FocusablePageComponent,
@@ -236,6 +239,7 @@ const COMPONENTS = [
         PaModalModule,
         PaSideNavModule,
         PaScrollModule,
+        PaDatePickerModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

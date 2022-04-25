@@ -1,0 +1,99 @@
+:host {
+    --day-width: 32px;
+    --header-color: #6c707f;
+
+    .calendar-popup {
+        font-size: 14px;
+        line-height: 24px;
+        color: #001530;
+
+        ::ng-deep {
+            .pa-popup {
+                width: 320px;
+            }
+        }
+    }
+
+    .calendar-header {
+        display: flex;
+        align-items: center;
+
+        .spacer {
+            flex-grow: 1;
+        }
+    }
+
+    .calendar-weekdays,
+    .calendar-row {
+        display: flex;
+        color: var(--header-color);
+        padding: 6px 0;
+        justify-content: space-around;
+    }
+
+    .calendar-weekdays {
+        border-bottom: 1px solid #e3e7eb;
+
+        div {
+            width: var(--day-width);
+            text-align: center;
+        }
+    }
+
+    .calendar-row ::ng-deep {
+        pa-button {
+            width: var(--day-width);
+
+            &.other-month,
+            &.other-month:hover {
+                button {
+                    color: #e3e7eb;
+                }
+            }
+        }
+    }
+
+    .calendar-row ::ng-deep .pa-button {
+        width: var(--day-width);
+
+        &::ng-deep.other-month,
+        &::ng-deep.other-month:hover {
+            color: #e3e7eb;
+        }
+    }
+
+    .calendar-list-header {
+        display: flex;
+        align-items: center;
+        color: var(--header-color);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        text-transform: uppercase;
+        padding: 20px 12px 12px;
+
+        .label {
+            flex-grow: 1;
+        }
+    }
+
+    .calendar-list-item {
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+
+        &.selected {
+            background-color: #e5f3ff;
+        }
+
+        &:hover,
+        &.selected:hover {
+            background-color: #f2f5f7;
+        }
+    }
+
+    .calendar-row ::ng-deep pa-button.selected {
+        background-color: #e5f3ff;
+        border-radius: 100px;
+    }
+}

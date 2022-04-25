@@ -20,6 +20,7 @@ export * from './pages/common-doc/form-field-config-standalone.directive';
 export * from './pages/confirmation-dialog-page/confirmation-dialog-page.component';
 export * from './pages/container-page/container-demo/container-demo.component';
 export * from './pages/container-page/container-page.component';
+export * from './pages/date-picker-page/date-picker-page.component';
 export * from './pages/datetime-page/datetime-page.component';
 export * from './pages/distribute-page/distribute-page.component';
 export * from './pages/dropdown-page/dropdown-page.component';

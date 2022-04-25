@@ -1,0 +1,97 @@
+<!-- TODO disabled -->
+<div [paPopup]="popup" popupOnRight="true" #popupRef="paPopupRef">
+    <pa-input size="small" [formControl]="formControl" (click)="handleInputClick($event)"></pa-input>
+</div>
+<pa-popup [ngSwitch]="mode" #popup (onOpen)="openWeeks()" (onClose)="handlePopupClose()" class="calendar-popup">
+    <ng-container *ngSwitchCase="'weeks'">
+        <div class="calendar-header">
+            <pa-button (click)="openYears($event)" kind="secondary" aspect="basic" size="small">
+                {{ trackedDate | date: 'yyyy' }}
+                <pa-icon name="chevron-down"></pa-icon>
+            </pa-button>
+            <pa-button (click)="openMonths($event)" kind="secondary" aspect="basic" size="small">
+                {{ trackedDate | date: 'LLLL' }}
+                <pa-icon name="chevron-down"></pa-icon>
+            </pa-button>
+            <div class="spacer"></div>
+            <pa-button
+                (click)="previousMonth()"
+                kind="secondary"
+                aspect="basic"
+                size="small"
+                icon="chevron-left"
+            ></pa-button>
+            <pa-button
+                (click)="nextMonth()"
+                kind="secondary"
+                aspect="basic"
+                size="small"
+                icon="chevron-right"
+            ></pa-button>
+        </div>
+        <div class="calendar-weekdays">
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+        </div>
+        <div *ngFor="let week of weeks" class="calendar-row">
+            <pa-button
+                *ngFor="let day of week"
+                (click)="selectDay(day)"
+                size="small"
+                aspect="basic"
+                [class.other-month]="day.otherMonth"
+                [class.selected]="day.selected"
+                >{{ day.number }}</pa-button
+            >
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'years'">
+        <div class="calendar-list-header">
+            <div class="label">Years</div>
+            <pa-button
+                (click)="openWeeks($event)"
+                kind="secondary"
+                aspect="basic"
+                size="small"
+                icon="chevron-left"
+            ></pa-button>
+        </div>
+        <div paScrollableContainer>
+            <div
+                *ngFor="let year of years"
+                (click)="selectYear($event, year.number)"
+                class="calendar-list-item"
+                [class.selected]="year.selected"
+            >
+                {{ year.number }}
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'months'">
+        <div class="calendar-list-header">
+            <div class="label">Months</div>
+            <pa-button
+                (click)="openWeeks($event)"
+                kind="secondary"
+                aspect="basic"
+                size="small"
+                icon="chevron-left"
+            ></pa-button>
+        </div>
+        <div paScrollableContainer>
+            <div
+                *ngFor="let month of months; index as i"
+                (click)="selectMonth($event, i)"
+                class="calendar-list-item"
+                [class.selected]="month.selected"
+            >
+                {{ month.name }}
+            </div>
+        </div>
+    </ng-container>
+</pa-popup>

@@ -1,6 +1,15 @@
 import { TranslationEntries } from '../translate.model';
 
 export const I18N_EN: TranslationEntries = {
+    'calendar': {
+        'monday': 'M',
+        'tuesday': 'T',
+        'wednesday': 'W',
+        'thursday': 'T',
+        'friday': 'F',
+        'saturday': 'S',
+        'sunday': 'S',
+    },
     pastanaga: {
         add: 'Add',
         back: 'Back',

@@ -1,0 +1,19 @@
+<pa-demo-page>
+    <pa-demo-title>Date Picker</pa-demo-title>
+
+    <pa-demo-description>Description</pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-date-picker [date]="date" [(ngModel)]="selection"></pa-date-picker>
+        {{ selection }}
+        <pa-date-picker [formControl]="formControl"></pa-date-picker>
+        {{ formControl.valueChanges | async }}
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <pre><code>CODE</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

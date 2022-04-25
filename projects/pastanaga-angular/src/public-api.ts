@@ -9,6 +9,7 @@ export * from './lib/card';
 export * from './lib/chips';
 export * from './lib/common';
 export * from './lib/controls';
+export * from './lib/date-picker';
 export * from './lib/datetime';
 export * from './lib/dropdown';
 export * from './lib/expander';
