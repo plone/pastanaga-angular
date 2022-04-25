@@ -1,4 +1,9 @@
+# 2.45.4 (2022-04-25)
+
+- update `icon_list` script to use python3 as python 2 is not provided in Mac OS X package anymore [mpellerin42]
+
 # 2.45.3 (2022-04-12)
+
 ### Improvements
 - Add dual button styling for buttons [barcafa]
 

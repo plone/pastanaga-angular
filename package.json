@@ -15,7 +15,7 @@
         "test": "npm run test:lib",
         "test:ci": "jest --config ./projects/pastanaga-angular/jest.lib.config.js --runInBand --ci",
         "get_version": "cat ./projects/pastanaga-angular/package.json | grep version  | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
-        "icon_list": "python -c \"import json; import xml.dom.minidom; print(json.dumps([el.getAttribute('id') for el in xml.dom.minidom.parseString(open('projects/pastanaga-angular/src/assets/glyphs-sprite.svg').read()).getElementsByTagName('symbol')]))\" > projects/demo/src/assets/glyphs.json",
+        "icon_list": "python3 -c \"import json; import xml.dom.minidom; print(json.dumps([el.getAttribute('id') for el in xml.dom.minidom.parseString(open('projects/pastanaga-angular/src/assets/glyphs-sprite.svg').read()).getElementsByTagName('symbol')]))\" > projects/demo/src/assets/glyphs.json",
         "prettier": "prettier --write ./projects/pastanaga-angular/src"
     },
     "private": true,

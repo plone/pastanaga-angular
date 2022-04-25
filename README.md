@@ -11,7 +11,7 @@ See https://plone.github.io/pastanaga-angular/v2/ for usage example and develope
 In Pastanaga 2+, we prefix all modules with `Pa`: `ButtonModule` becomes `PaButtonModule`.
 
 ### Components common properties
-Pastanaga now contains some useful enums for properties configuring several components:
+Pastanaga now contains some useful types for properties configuring several components:
 - `Kind`: primary | secondary | destructive | inverted
 - `Size`: tee-shirt size going from `small` to `xxlarge`. Not all sizes are available for all components
 
