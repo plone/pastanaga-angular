@@ -1,3 +1,8 @@
+# 2.45.5 (2022-04-28)
+
+### Improvements
+- Added unit tests to Toast Component [luispalomo]
+
 # 2.45.4 (2022-04-25)
 
 - update `icon_list` script to use python3 as python 2 is not provided in Mac OS X package anymore [mpellerin42]
