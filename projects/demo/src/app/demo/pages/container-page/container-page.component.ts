@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'atlas-demo-container-page',
@@ -43,6 +43,15 @@ export class ContainerPageComponent {
     </div>
     <div class="pa-main-side-panel">
         <!-- Panel content -->
+    </div>
+</div>`;
+
+    dockExample = `<div class="pa-main-container">
+    <div class="pa-main-dock">
+        <!-- Dock content -->
+    </div>
+    <div class="pa-main-container-wide">
+        <!-- View content -->
     </div>
 </div>`;
 }
