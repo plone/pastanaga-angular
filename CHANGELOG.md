@@ -1,3 +1,8 @@
+# 2.45.6 (2022-05-02)
+
+### Improvements
+- **Text fields**: Prevent read-only style to override disabled one [mpellerin42]
+
 # 2.45.5 (2022-04-28)
 
 ### Improvements
@@ -15,7 +20,7 @@
 # 2.45.2 (2022-04-07)
 
 ### Improvements
-  - Add new `sync` symbol [raul-onna]
+- Add new `sync` symbol [raul-onna]
 
 # 2.45.1 (2022-03-14)
 
