@@ -33,7 +33,7 @@
                 "test": {
                     "builder": "@angular-builders/jest:run",
                     "options": {
-                        "tsConfig": "projects/pastanaga-angular/tsconfig.spec.json"
+                        "tsConfig": "tsconfig.spec.json"
                     }
                 }
             }

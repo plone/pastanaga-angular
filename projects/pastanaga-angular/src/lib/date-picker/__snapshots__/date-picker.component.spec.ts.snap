@@ -1,0 +1,791 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePickerComponent generating years should max at current year when tracked is earlier 1`] = `
+Array [
+  Object {
+    "number": 2022,
+    "selected": false,
+  },
+  Object {
+    "number": 2021,
+    "selected": false,
+  },
+  Object {
+    "number": 2020,
+    "selected": false,
+  },
+  Object {
+    "number": 2019,
+    "selected": false,
+  },
+  Object {
+    "number": 2018,
+    "selected": false,
+  },
+  Object {
+    "number": 2017,
+    "selected": false,
+  },
+  Object {
+    "number": 2016,
+    "selected": false,
+  },
+  Object {
+    "number": 2015,
+    "selected": true,
+  },
+  Object {
+    "number": 2014,
+    "selected": false,
+  },
+  Object {
+    "number": 2013,
+    "selected": false,
+  },
+  Object {
+    "number": 2012,
+    "selected": false,
+  },
+  Object {
+    "number": 2011,
+    "selected": false,
+  },
+  Object {
+    "number": 2010,
+    "selected": false,
+  },
+  Object {
+    "number": 2009,
+    "selected": false,
+  },
+  Object {
+    "number": 2008,
+    "selected": false,
+  },
+  Object {
+    "number": 2007,
+    "selected": false,
+  },
+  Object {
+    "number": 2006,
+    "selected": false,
+  },
+  Object {
+    "number": 2005,
+    "selected": false,
+  },
+  Object {
+    "number": 2004,
+    "selected": false,
+  },
+  Object {
+    "number": 2003,
+    "selected": false,
+  },
+  Object {
+    "number": 2002,
+    "selected": false,
+  },
+  Object {
+    "number": 2001,
+    "selected": false,
+  },
+  Object {
+    "number": 2000,
+    "selected": false,
+  },
+]
+`;
+
+exports[`DatePickerComponent generating years should max at tracked year when tracked is later 1`] = `
+Array [
+  Object {
+    "number": 2040,
+    "selected": true,
+  },
+  Object {
+    "number": 2039,
+    "selected": false,
+  },
+  Object {
+    "number": 2038,
+    "selected": false,
+  },
+  Object {
+    "number": 2037,
+    "selected": false,
+  },
+  Object {
+    "number": 2036,
+    "selected": false,
+  },
+  Object {
+    "number": 2035,
+    "selected": false,
+  },
+  Object {
+    "number": 2034,
+    "selected": false,
+  },
+  Object {
+    "number": 2033,
+    "selected": false,
+  },
+  Object {
+    "number": 2032,
+    "selected": false,
+  },
+  Object {
+    "number": 2031,
+    "selected": false,
+  },
+  Object {
+    "number": 2030,
+    "selected": false,
+  },
+  Object {
+    "number": 2029,
+    "selected": false,
+  },
+  Object {
+    "number": 2028,
+    "selected": false,
+  },
+  Object {
+    "number": 2027,
+    "selected": false,
+  },
+  Object {
+    "number": 2026,
+    "selected": false,
+  },
+  Object {
+    "number": 2025,
+    "selected": false,
+  },
+  Object {
+    "number": 2024,
+    "selected": false,
+  },
+  Object {
+    "number": 2023,
+    "selected": false,
+  },
+  Object {
+    "number": 2022,
+    "selected": false,
+  },
+  Object {
+    "number": 2021,
+    "selected": false,
+  },
+  Object {
+    "number": 2020,
+    "selected": false,
+  },
+  Object {
+    "number": 2019,
+    "selected": false,
+  },
+  Object {
+    "number": 2018,
+    "selected": false,
+  },
+  Object {
+    "number": 2017,
+    "selected": false,
+  },
+  Object {
+    "number": 2016,
+    "selected": false,
+  },
+  Object {
+    "number": 2015,
+    "selected": false,
+  },
+  Object {
+    "number": 2014,
+    "selected": false,
+  },
+  Object {
+    "number": 2013,
+    "selected": false,
+  },
+  Object {
+    "number": 2012,
+    "selected": false,
+  },
+  Object {
+    "number": 2011,
+    "selected": false,
+  },
+  Object {
+    "number": 2010,
+    "selected": false,
+  },
+  Object {
+    "number": 2009,
+    "selected": false,
+  },
+  Object {
+    "number": 2008,
+    "selected": false,
+  },
+  Object {
+    "number": 2007,
+    "selected": false,
+  },
+  Object {
+    "number": 2006,
+    "selected": false,
+  },
+  Object {
+    "number": 2005,
+    "selected": false,
+  },
+  Object {
+    "number": 2004,
+    "selected": false,
+  },
+  Object {
+    "number": 2003,
+    "selected": false,
+  },
+  Object {
+    "number": 2002,
+    "selected": false,
+  },
+  Object {
+    "number": 2001,
+    "selected": false,
+  },
+  Object {
+    "number": 2000,
+    "selected": false,
+  },
+]
+`;
+
+exports[`DatePickerComponent generating years should min at 2000 year when tracked is later 1`] = `
+Array [
+  Object {
+    "number": 2022,
+    "selected": false,
+  },
+  Object {
+    "number": 2021,
+    "selected": false,
+  },
+  Object {
+    "number": 2020,
+    "selected": false,
+  },
+  Object {
+    "number": 2019,
+    "selected": false,
+  },
+  Object {
+    "number": 2018,
+    "selected": false,
+  },
+  Object {
+    "number": 2017,
+    "selected": false,
+  },
+  Object {
+    "number": 2016,
+    "selected": false,
+  },
+  Object {
+    "number": 2015,
+    "selected": false,
+  },
+  Object {
+    "number": 2014,
+    "selected": false,
+  },
+  Object {
+    "number": 2013,
+    "selected": false,
+  },
+  Object {
+    "number": 2012,
+    "selected": false,
+  },
+  Object {
+    "number": 2011,
+    "selected": false,
+  },
+  Object {
+    "number": 2010,
+    "selected": false,
+  },
+  Object {
+    "number": 2009,
+    "selected": false,
+  },
+  Object {
+    "number": 2008,
+    "selected": false,
+  },
+  Object {
+    "number": 2007,
+    "selected": false,
+  },
+  Object {
+    "number": 2006,
+    "selected": false,
+  },
+  Object {
+    "number": 2005,
+    "selected": false,
+  },
+  Object {
+    "number": 2004,
+    "selected": false,
+  },
+  Object {
+    "number": 2003,
+    "selected": false,
+  },
+  Object {
+    "number": 2002,
+    "selected": true,
+  },
+  Object {
+    "number": 2001,
+    "selected": false,
+  },
+  Object {
+    "number": 2000,
+    "selected": false,
+  },
+]
+`;
+
+exports[`DatePickerComponent generating years should min at tracked year when tracked is earlier 1`] = `
+Array [
+  Object {
+    "number": 2022,
+    "selected": false,
+  },
+  Object {
+    "number": 2021,
+    "selected": false,
+  },
+  Object {
+    "number": 2020,
+    "selected": false,
+  },
+  Object {
+    "number": 2019,
+    "selected": false,
+  },
+  Object {
+    "number": 2018,
+    "selected": false,
+  },
+  Object {
+    "number": 2017,
+    "selected": false,
+  },
+  Object {
+    "number": 2016,
+    "selected": false,
+  },
+  Object {
+    "number": 2015,
+    "selected": false,
+  },
+  Object {
+    "number": 2014,
+    "selected": false,
+  },
+  Object {
+    "number": 2013,
+    "selected": false,
+  },
+  Object {
+    "number": 2012,
+    "selected": false,
+  },
+  Object {
+    "number": 2011,
+    "selected": false,
+  },
+  Object {
+    "number": 2010,
+    "selected": false,
+  },
+  Object {
+    "number": 2009,
+    "selected": false,
+  },
+  Object {
+    "number": 2008,
+    "selected": false,
+  },
+  Object {
+    "number": 2007,
+    "selected": false,
+  },
+  Object {
+    "number": 2006,
+    "selected": false,
+  },
+  Object {
+    "number": 2005,
+    "selected": false,
+  },
+  Object {
+    "number": 2004,
+    "selected": false,
+  },
+  Object {
+    "number": 2003,
+    "selected": false,
+  },
+  Object {
+    "number": 2002,
+    "selected": false,
+  },
+  Object {
+    "number": 2001,
+    "selected": false,
+  },
+  Object {
+    "number": 2000,
+    "selected": false,
+  },
+  Object {
+    "number": 1999,
+    "selected": false,
+  },
+  Object {
+    "number": 1998,
+    "selected": true,
+  },
+]
+`;
+
+exports[`DatePickerComponent should generate months 1`] = `
+Array [
+  Object {
+    "name": "January",
+    "selected": false,
+  },
+  Object {
+    "name": "February",
+    "selected": false,
+  },
+  Object {
+    "name": "March",
+    "selected": false,
+  },
+  Object {
+    "name": "April",
+    "selected": false,
+  },
+  Object {
+    "name": "May",
+    "selected": false,
+  },
+  Object {
+    "name": "June",
+    "selected": false,
+  },
+  Object {
+    "name": "July",
+    "selected": true,
+  },
+  Object {
+    "name": "August",
+    "selected": false,
+  },
+  Object {
+    "name": "September",
+    "selected": false,
+  },
+  Object {
+    "name": "October",
+    "selected": false,
+  },
+  Object {
+    "name": "November",
+    "selected": false,
+  },
+  Object {
+    "name": "December",
+    "selected": false,
+  },
+]
+`;
+
+exports[`DatePickerComponent should generate weeks 1`] = `
+Array [
+  Array [
+    Object {
+      "date": 2022-06-26T04:00:00.000Z,
+      "number": 26,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-06-27T04:00:00.000Z,
+      "number": 27,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-06-28T04:00:00.000Z,
+      "number": 28,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-06-29T04:00:00.000Z,
+      "number": 29,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-06-30T04:00:00.000Z,
+      "number": 30,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-01T04:00:00.000Z,
+      "number": 1,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-02T04:00:00.000Z,
+      "number": 2,
+      "otherMonth": false,
+      "selected": false,
+    },
+  ],
+  Array [
+    Object {
+      "date": 2022-07-03T04:00:00.000Z,
+      "number": 3,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-04T04:00:00.000Z,
+      "number": 4,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-05T04:00:00.000Z,
+      "number": 5,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-06T04:00:00.000Z,
+      "number": 6,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-07T04:00:00.000Z,
+      "number": 7,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-08T04:00:00.000Z,
+      "number": 8,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-09T04:00:00.000Z,
+      "number": 9,
+      "otherMonth": false,
+      "selected": false,
+    },
+  ],
+  Array [
+    Object {
+      "date": 2022-07-10T04:00:00.000Z,
+      "number": 10,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-11T04:00:00.000Z,
+      "number": 11,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-12T04:00:00.000Z,
+      "number": 12,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-13T04:00:00.000Z,
+      "number": 13,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-14T04:00:00.000Z,
+      "number": 14,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-15T04:00:00.000Z,
+      "number": 15,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-16T04:00:00.000Z,
+      "number": 16,
+      "otherMonth": false,
+      "selected": false,
+    },
+  ],
+  Array [
+    Object {
+      "date": 2022-07-17T04:00:00.000Z,
+      "number": 17,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-18T04:00:00.000Z,
+      "number": 18,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-19T04:00:00.000Z,
+      "number": 19,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-20T04:00:00.000Z,
+      "number": 20,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-21T04:00:00.000Z,
+      "number": 21,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-22T04:00:00.000Z,
+      "number": 22,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-23T04:00:00.000Z,
+      "number": 23,
+      "otherMonth": false,
+      "selected": false,
+    },
+  ],
+  Array [
+    Object {
+      "date": 2022-07-24T04:00:00.000Z,
+      "number": 24,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-25T04:00:00.000Z,
+      "number": 25,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-26T04:00:00.000Z,
+      "number": 26,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-27T04:00:00.000Z,
+      "number": 27,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-28T04:00:00.000Z,
+      "number": 28,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-29T04:00:00.000Z,
+      "number": 29,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-07-30T04:00:00.000Z,
+      "number": 30,
+      "otherMonth": false,
+      "selected": false,
+    },
+  ],
+  Array [
+    Object {
+      "date": 2022-07-31T04:00:00.000Z,
+      "number": 31,
+      "otherMonth": false,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-08-01T04:00:00.000Z,
+      "number": 1,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-08-02T04:00:00.000Z,
+      "number": 2,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-08-03T04:00:00.000Z,
+      "number": 3,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-08-04T04:00:00.000Z,
+      "number": 4,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-08-05T04:00:00.000Z,
+      "number": 5,
+      "otherMonth": true,
+      "selected": false,
+    },
+    Object {
+      "date": 2022-08-06T04:00:00.000Z,
+      "number": 6,
+      "otherMonth": true,
+      "selected": false,
+    },
+  ],
+]
+`;

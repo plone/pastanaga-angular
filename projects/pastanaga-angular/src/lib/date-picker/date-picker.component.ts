@@ -23,7 +23,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-interface Day {
+export interface Day {
     otherMonth: boolean;
     number: number;
     date: Date;
@@ -198,7 +198,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
             // it bubbles up to the popup directive to keep open
             event.stopPropagation();
             event.preventDefault();
-            return;
         }
 
         // mark as touched

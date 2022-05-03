@@ -5,12 +5,19 @@ import { CommonModule } from '@angular/common';
 import { PaTextFieldModule } from '../controls';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaIconModule } from '../icon';
-import { PaScrollModule } from '../scroll';
-import { PaPopupModule } from "../popup";
+import { PaPopupModule } from '../popup';
 
 @NgModule({
-    imports: [CommonModule, PaButtonModule, PaTextFieldModule, ReactiveFormsModule, PaIconModule, PaScrollModule, PaPopupModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        PaButtonModule,
+        PaIconModule,
+        PaPopupModule,
+        PaTextFieldModule,
+    ],
     exports: [DatePickerComponent],
     declarations: [DatePickerComponent],
 })
-export class PaDatePickerModule {}
+export class PaDatePickerModule {
+}

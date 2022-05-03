@@ -1,18 +1,18 @@
 <!-- TODO disabled -->
 <div [paPopup]="popup" popupOnRight="true" #popupRef="paPopupRef">
-    <pa-input size="small" [formControl]="formControl" (click)="handleInputClick($event)"></pa-input>
+    <pa-input size="small" [formControl]="formControl" (click)="handleInputClick($event)">Pick a date</pa-input>
 </div>
 <pa-popup [ngSwitch]="mode" #popup (onOpen)="openWeeks()" (onClose)="handlePopupClose()" class="calendar-popup">
     <ng-container *ngSwitchCase="'weeks'">
         <div class="calendar-header">
-            <pa-button (click)="openYears($event)" kind="secondary" aspect="basic" size="small">
+            <button (click)="openYears($event)">
                 {{ trackedDate | date: 'yyyy' }}
                 <pa-icon name="chevron-down"></pa-icon>
-            </pa-button>
-            <pa-button (click)="openMonths($event)" kind="secondary" aspect="basic" size="small">
+            </button>
+            <button (click)="openMonths($event)">
                 {{ trackedDate | date: 'LLLL' }}
                 <pa-icon name="chevron-down"></pa-icon>
-            </pa-button>
+            </button>
             <div class="spacer"></div>
             <pa-button
                 (click)="previousMonth()"
