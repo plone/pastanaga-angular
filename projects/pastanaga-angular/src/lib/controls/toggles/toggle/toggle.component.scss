@@ -88,7 +88,7 @@ $toggle-transition-duration: $duration-fast;
     &.disabled {
         .pa-toggle-slider {
             cursor: default;
-            background: $color-neutral-regular;
+            background: $color-neutral-light;
             &:before {
                 background-color: $color-neutral-lighter;
             }

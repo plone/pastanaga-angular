@@ -58,10 +58,10 @@
             color: $color-light-stronger;
         }
         span {
-            color: $color-neutral-regular;
+            color: $color-neutral-light;
         }
         pa-icon ::ng-deep svg {
-            fill: $color-neutral-regular;
+            fill: $color-neutral-light;
         }
         &:hover {
             span {
@@ -73,10 +73,10 @@
         }
         &:active {
             span {
-                 color: $color-neutral-regular;
+                 color: $color-neutral-light;
             }
             pa-icon ::ng-deep svg {
-                fill: $color-neutral-regular;
+                fill: $color-neutral-light;
             }
         }
         &.active {
