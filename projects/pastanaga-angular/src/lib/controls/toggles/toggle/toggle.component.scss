@@ -54,7 +54,7 @@ $toggle-transition-duration: $duration-fast;
         left: 0;
         transition: $toggle-transition-duration;
         border-radius: $toggle-full-height;
-        background: $color-neutral-light;
+        background: $color-neutral-lighter;
         cursor: pointer;
         &:before {
             content: "";
@@ -90,7 +90,7 @@ $toggle-transition-duration: $duration-fast;
             cursor: default;
             background: $color-neutral-regular;
             &:before {
-                background-color: $color-neutral-light;
+                background-color: $color-neutral-lighter;
             }
         }
     }

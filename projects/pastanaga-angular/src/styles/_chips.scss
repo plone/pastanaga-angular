@@ -29,7 +29,7 @@ $chip-max-width-medium: rhythm(56);
         cursor: pointer;
 
         &:hover {
-            background: $color-neutral-light;
+            background: $color-neutral-lighter;
         }
         &.pa-selected {
             background: $color-primary-lightest;
