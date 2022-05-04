@@ -1,3 +1,8 @@
+# 2.46.0 (2022-05-04)
+### Breaking changes
+- Removal of variable `$color-neutral-strong` and color `$_steam` [barcafa]
+- Downscale of all greys to have only 4 [barcafa]
+
 # 2.45.6 (2022-05-02)
 
 ### Improvements
