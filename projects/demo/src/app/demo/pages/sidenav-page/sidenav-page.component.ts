@@ -5,8 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavPageComponent {
-    selectedMode = 'desktop';
-    isMenuVisible = true;
     menu = [
         {
             title: 'Section 1',
@@ -23,28 +21,35 @@ export class SidenavPageComponent {
             ],
         },
     ];
-    codeExample = `<pa-side-nav [mode]="mode"
+    customHeaderExample = `<pa-side-nav [mode]="mode"
              [visible]="isMenuVisible"
              (close)="toggleSideNav()">
     <pa-side-nav-header>
         <img src="assets/logo.svg" alt="Logo">
+        <h3>Some title</h3>
+        <pa-button *ngIf="mode !== 'desktop'"
+                   class="pa-close-side-nav-button"
+                   icon="cross"
+                   aspect="basic"
+                   (click)="toggleSideNav(false)"></pa-button>
     </pa-side-nav-header>
+</pa-side-nav>`;
 
+    codeExample = `<pa-side-nav [mode]="mode"
+             [visible]="isMenuVisible"
+             (close)="toggleSideNav()">
     <pa-side-nav-content>
         <section *ngFor="let section of visibleMenu" class="section">
-            <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
-            <pa-side-nav-item *ngFor="let page of section.pages"
-                              [active]="page.view === activeItem"
-                              [label]="page.title"
-                              [traverseTo]="'/@@' + page.view"
-                              (click)="onSelectedItem()">
-            </pa-side-nav-item>
+            <ul>
+                <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
+                <pa-side-nav-item *ngFor="let page of section.pages"
+                                  [active]="page.view === activeItem"
+                                  [label]="page.title"
+                                  [traverseTo]="'/@@' + page.view"
+                                  (click)="onSelectedItem()">
+                </pa-side-nav-item>
+            </ul>
         </section>
     </pa-side-nav-content>
-     <pa-side-nav-footer>
-        <pa-button kind="primary" aspect="basic">
-            Value
-        </pa-button>
-    </pa-side-nav-footer>
 </pa-side-nav>`;
 }

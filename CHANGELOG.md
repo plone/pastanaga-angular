@@ -3,6 +3,10 @@
 ### Feature
 - **Layout**: add a dock+wide layout [mpellerin42]
 
+### Breaking changes:
+- **Sidenav**: `pa-side-nav-content` doesn't wrap the content projection into an `ul` anymore. [mpellerin42]
+
+
 # 2.46.1 (2022-05-05)
 
 ### Improvements

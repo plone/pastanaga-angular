@@ -6,7 +6,8 @@
 </pa-button>
 
 <pa-side-nav [mode]="mode"
-             [visible]="isMenuVisible">
+             [visible]="isMenuVisible"
+             (close)="toggleSideNav(false)">
     <pa-side-nav-header>
         <header class="pa-demo-sidenav-header">
             <a href="#" traverseTo="/" paFocusable>
@@ -28,13 +29,15 @@
 
     <pa-side-nav-content>
         <section *ngFor="let section of visibleMenu" class="section">
-            <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
-            <pa-side-nav-item *ngFor="let page of section.pages"
-                              [active]="page.view === activeItem"
-                              [label]="page.title"
-                              [traverseTo]="'/@@' + page.view"
-                              (click)="onSelectedItem()">
-            </pa-side-nav-item>
+            <ul>
+                <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
+                <pa-side-nav-item *ngFor="let page of section.pages"
+                                  [active]="page.view === activeItem"
+                                  [label]="page.title"
+                                  [traverseTo]="'/@@' + page.view"
+                                  (click)="onSelectedItem()">
+                </pa-side-nav-item>
+            </ul>
         </section>
     </pa-side-nav-content>
 </pa-side-nav>
