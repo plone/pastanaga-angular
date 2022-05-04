@@ -1,3 +1,6 @@
+# 2.46.1 (2022-05-05)
+### Improvements
+- Manually update dependencies [barcafa]
 # 2.46.0 (2022-05-04)
 ### Breaking changes
 - Removal of variable `$color-neutral-strong` and color `$_steam` [barcafa]
