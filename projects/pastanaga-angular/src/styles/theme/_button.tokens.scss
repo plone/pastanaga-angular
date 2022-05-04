@@ -74,8 +74,8 @@ $color-background-button-secondary-basic-hover: $color-neutral-light !default;
 $color-background-button-secondary-basic-active: $color-neutral-regular !default;
 
 // inverted
-$color-background-button-inverted-solid: $color-neutral-lighter !default;
-$color-background-button-inverted-solid-hover: $color-neutral-lighter !default;
+$color-background-button-inverted-solid: $color-neutral-lightest !default;
+$color-background-button-inverted-solid-hover: $color-neutral-lightest !default;
 $color-background-button-inverted-solid-active: $color-neutral-light !default;
 
 $color-background-button-inverted-basic:         transparent !default;
@@ -92,7 +92,7 @@ $color-background-button-destructive-basic-hover: $color-secondary-lightest !def
 $color-background-button-destructive-basic-active: $color-secondary-lighter !default;
 
 // disabled
-$color-background-button-solid-disabled: $color-neutral-lighter !default;
+$color-background-button-solid-disabled: $color-neutral-lightest !default;
 $color-background-button-basic-disabled:            transparent !default;
 $color-background-button-inverted-solid-disabled:   $color-neutral-inverted-light !default;
 
