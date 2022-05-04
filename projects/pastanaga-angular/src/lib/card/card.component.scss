@@ -6,7 +6,7 @@
 
 .pa-card-wrapper {
     background: $color-light-stronger;
-    border: 1px solid $color-neutral-light;
+    border: 1px solid $color-neutral-lighter;
     border-radius: $border-radius-default;
     cursor: pointer;
     padding: rhythm(2);
@@ -18,11 +18,11 @@
     }
 
     &:hover {
-        background: $color-neutral-lighter;
+        background: $color-neutral-lightest;
     }
 
     &:active {
-        background: $color-neutral-light;
+        background: $color-neutral-lighter;
     }
 
     &:disabled,

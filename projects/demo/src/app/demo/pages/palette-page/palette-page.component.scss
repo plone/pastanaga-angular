@@ -1,8 +1,8 @@
 @import "../../../../../../pastanaga-angular/src/styles/variables";
 
 .grid-7 {
-    background-color: $color-neutral-lighter;
-    border: 1px solid $color-neutral-lighter;
+    background-color: $color-neutral-lightest;
+    border: 1px solid $color-neutral-lightest;
     grid-gap: 1px;
     margin-bottom: rhythm(5);
 
@@ -14,7 +14,7 @@
         height: 100%;
         small {
             @include font-size(xxs);
-            color: $color-neutral-strong;
+            color: $color-neutral-regular;
             line-height: rhythm(1.5);
             margin-top: rhythm(1);
         }
@@ -44,9 +44,6 @@
     background-color: $color-light-stronger;
 }
 
-.color-neutral-strong {
-    background-color: $color-neutral-strong;
-}
 .color-neutral-regular {
     background-color: $color-neutral-regular;
 }
