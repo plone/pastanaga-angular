@@ -10,7 +10,7 @@
     span {
         font-size: font-size(m);
         line-height: line-height(l);
-        color: $color-neutral-strong;
+        color: $color-neutral-regular;
     }
 
     &:hover {
@@ -48,7 +48,7 @@
             font-size: font-size(xs);
             font-weight: $font-weight-bold;
             text-transform: uppercase;
-            color: $color-neutral-strong;
+            color: $color-neutral-regular;
         }
     }
 

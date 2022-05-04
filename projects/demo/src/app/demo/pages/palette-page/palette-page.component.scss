@@ -14,7 +14,7 @@
         height: 100%;
         small {
             @include font-size(xxs);
-            color: $color-neutral-strong;
+            color: $color-neutral-regular;
             line-height: rhythm(1.5);
             margin-top: rhythm(1);
         }
