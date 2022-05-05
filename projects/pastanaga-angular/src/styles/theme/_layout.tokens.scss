@@ -53,5 +53,8 @@ $margin-formula-wide-large: calc(#{$margin-wide-large}rem + #{$margin-wide-xlarg
 $width-formula-panel-plus-wide-medium: calc(100vw - #{$width-side-panel} - 2*(#{$margin-medium}rem + #{$margin-wide-large - $margin-medium} * (((100vw - #{$width-side-panel}) - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium})));
 $width-formula-panel-plus-wide-large: calc(100vw - #{$width-side-panel} - 2*(#{$margin-wide-large}rem + #{$margin-wide-xlarge - $margin-wide-large} * (((100vw - #{$width-side-panel}) - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large})));
 
+$width-formula-dock-plus-wide-medium: calc(100vw - #{$width-dock} - 2*(#{$margin-medium}rem + #{$margin-wide-large - $margin-medium} * (((100vw - #{$width-dock}) - #{$breakpoint-medium}) / #{$width-breakpoint-large - $width-breakpoint-medium})));
+$width-formula-dock-plus-wide-large: calc(100vw - #{$width-dock} - 2*(#{$margin-wide-large}rem + #{$margin-wide-xlarge - $margin-wide-large} * (((100vw - #{$width-dock}) - #{$breakpoint-large}) / #{$width-breakpoint-xlarge - $width-breakpoint-large})));
+
 // Tight compact max-width:
 $max-width-tight-compact: extraRhythm(72);

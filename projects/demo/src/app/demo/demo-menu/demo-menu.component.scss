@@ -27,13 +27,14 @@ pa-side-nav-header {
     padding: rhythm(2);
 
     img {
+        height: rhythm(3);
         max-width: calc(100% - #{$dimension-button-medium});
     }
 
     .pa-close-side-nav-button {
         position: absolute;
-        right: rhythm(2);
-        top: rhythm(2);
+        right: rhythm(1);
+        top: rhythm(1);
     }
 }
 

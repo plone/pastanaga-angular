@@ -27,6 +27,7 @@
     }
 
     .pa-main-side-panel,
+    .pa-main-dock,
     [class^="pa-main-container-"] {
         background-color: $color-neutral-light;
         display: block;
@@ -40,6 +41,7 @@
         height: 100%;
     }
 
+    .pa-main-dock,
     .pa-main-side-panel {
         background-color: $color-neutral-regular;
     }

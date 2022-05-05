@@ -1,7 +1,19 @@
+# 2.47.0 (2022-05-05)
+
+### Feature
+- **Layout**: add a dock+wide layout [mpellerin42]
+
+### Breaking changes:
+- **Sidenav**: `pa-side-nav-content` doesn't wrap the content projection into an `ul` anymore. [mpellerin42]
+
+
 # 2.46.1 (2022-05-05)
+
 ### Improvements
 - Manually update dependencies [barcafa]
+
 # 2.46.0 (2022-05-04)
+
 ### Breaking changes
 - Removal of variable `$color-neutral-strong` and color `$_steam` [barcafa]
 - Downscale of all greys to have only 4 [barcafa]
