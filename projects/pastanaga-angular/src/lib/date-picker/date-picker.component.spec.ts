@@ -77,9 +77,8 @@ describe('DatePickerComponent', () => {
             expect(component.trackedDate.getTime()).toEqual(date.getTime() + 500);
         });
 
-        it('should keep date for invalid value', () => {
+        it('should clear date for invalid value', () => {
             // === Setup ===
-            const selected = componentAny._selectedDate = new Date();
             const tracked = component.trackedDate = new Date();
 
             // === Execute ===
@@ -87,7 +86,7 @@ describe('DatePickerComponent', () => {
             jest.advanceTimersByTime(500);
 
             // === Verify ===
-            expect(componentAny._selectedDate).toBe(selected);
+            expect(componentAny._selectedDate).toBe(undefined);
             expect(component.trackedDate).toBe(tracked);
         });
 
@@ -231,10 +230,6 @@ describe('DatePickerComponent', () => {
     });
 
     describe('popup close handler', () => {
-        beforeEach(() => {
-            componentAny._updateInput = jest.fn();
-        });
-
         it('should set tracked date to selected date', () => {
             // === Setup ===
             componentAny._selectedDate = new Date();
@@ -243,7 +238,6 @@ describe('DatePickerComponent', () => {
             component.handlePopupClose();
 
             // === Verify ===
-            expect(componentAny._updateInput).toHaveBeenCalled();
             expect(component.trackedDate).toBe(componentAny._selectedDate);
         });
 
@@ -256,7 +250,6 @@ describe('DatePickerComponent', () => {
             component.handlePopupClose();
 
             // === Verify ===
-            expect(componentAny._updateInput).toHaveBeenCalled();
             expect(component.trackedDate).toEqual(date);
         });
     });
@@ -390,23 +383,16 @@ describe('DatePickerComponent', () => {
             // === Execute ===
             componentAny._updateInput();
 
-            expect(component.formControl.setValue).toHaveBeenCalledWith(format(date, "MMMM d',' yyyy"), {
-                emitEvent: false,
-                emitModelToViewChange: true,
-            });
+            // === Verify ===
+            expect(component.formControl.setValue).toHaveBeenCalledWith(format(date, "MMMM d',' yyyy"));
         });
 
-        it('should be cleared when no date is seletec', () => {
-            // === Setup ===
-            componentAny._selectedDate = undefined;
-
+        it('should do nothing when no date is selected', () => {
             // === Execute ===
             componentAny._updateInput();
 
-            expect(component.formControl.setValue).toHaveBeenCalledWith('', {
-                emitEvent: false,
-                emitModelToViewChange: true,
-            });
+            // === Verify ===
+            expect(component.formControl.setValue).not.toHaveBeenCalled();
         });
     });
 

@@ -19,9 +19,8 @@ import {
     subMonths,
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { debounceTime, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { debounceTime, map } from 'rxjs/operators';
 
 export interface Day {
     otherMonth: boolean;
@@ -59,7 +58,7 @@ const DATE_FORMATS = [DEFAULT_FORMAT, "MMMM d',' yy"];
 export class DatePickerComponent implements OnInit, ControlValueAccessor {
     private _selectedDate?: Date;
 
-    private _onChange = (date: Date) => {};
+    private _onChange = (date: Date | undefined) => {};
 
     private _onTouched = () => {};
 
@@ -69,6 +68,8 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
     @ViewChild('popupRef') popupDirective?: PopupDirective;
     @ViewChild('popup') popup?: PopupComponent;
+
+
 
     @Input()
     get date() {
@@ -93,7 +94,15 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     disabled = true;
 
     constructor(private cd: ChangeDetectorRef) {
-        this.formControl = new FormControl();
+        this.formControl = new FormControl(null, (control: AbstractControl) => {
+            if (!DATE_FORMATS.some((format) => isMatch(control.value, format))) {
+                return {
+                    invalidFormat: 'Invalid date format',
+                };
+            }
+
+            return null;
+        });
         this.trackedDate = new Date();
     }
 
@@ -102,25 +111,23 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
         this.formControl.valueChanges
             .pipe(
                 debounceTime(500),
-                switchMap((value) => {
-                    const format = DATE_FORMATS.find((format) => isMatch(value, format));
-                    const date = format ? parse(value, format, this.trackedDate) : null;
-                    return of(date);
-                }),
+                map((value) => DATE_FORMATS.find((format) => isMatch(value, format)) || null),
             )
-            .subscribe((date) => {
-                if (!date) {
+            .subscribe((format) => {
+                if (!format) {
+                    this._selectedDate = undefined;
                     if (!this.formControl.value) {
-                        this._selectedDate = undefined;
                         this.trackedDate = new Date();
                     }
                 } else {
                     // this maintains the user's format for now
+                    const date = parse(this.formControl.value, format, this.trackedDate);
                     this._selectedDate = date;
                     this.trackedDate = date;
                 }
 
                 this.generateWeeks();
+                this._onChange(this._selectedDate);
 
                 this.cd.markForCheck();
             });
@@ -208,7 +215,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
 
     handlePopupClose() {
-        this._updateInput();
         this.trackedDate = this._selectedDate || new Date();
     }
 
@@ -260,12 +266,9 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
 
     private _updateInput() {
-        const value = this._selectedDate ? format(this._selectedDate, DEFAULT_FORMAT) : '';
-
-        this.formControl.setValue(value, {
-            emitEvent: false,
-            emitModelToViewChange: true,
-        });
+        if (this._selectedDate) {
+            this.formControl.setValue(format(this._selectedDate, DEFAULT_FORMAT));
+        }
     }
 
     /*
