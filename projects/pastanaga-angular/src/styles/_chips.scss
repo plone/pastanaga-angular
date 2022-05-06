@@ -6,7 +6,7 @@ $chip-max-width-medium: rhythm(56);
 .pa-chip {
     display: inline-flex;
     align-items: center;
-    background: $color-neutral-lighter;
+    background: $color-neutral-lightest;
     height: rhythm(4);
     max-width: $chip-max-width-small;
     padding: rhythm(.5) rhythm(1.5);
@@ -29,14 +29,14 @@ $chip-max-width-medium: rhythm(56);
         cursor: pointer;
 
         &:hover {
-            background: $color-neutral-light;
+            background: $color-neutral-lighter;
         }
         &.pa-selected {
             background: $color-primary-lightest;
         }
     }
     &.pa-disabled {
-        color: $color-neutral-regular;
+        color: $color-neutral-light;
     }
 
     pa-avatar,

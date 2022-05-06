@@ -17,15 +17,6 @@
 
     .pa-modal-footer {
         margin-top: $spacing-dialog-sections;
-
-        pa-button {
-            width: calc((100% - #{rhythm(2)}) / 2);
-
-            ::ng-deep .pa-button {
-                min-width: unset !important;
-                width: 100%;
-            }
-        }
     }
 
     @media (min-width: $size-viewport-medium-min) {

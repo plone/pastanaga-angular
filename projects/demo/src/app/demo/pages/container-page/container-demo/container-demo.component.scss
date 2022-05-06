@@ -27,8 +27,9 @@
     }
 
     .pa-main-side-panel,
+    .pa-main-dock,
     [class^="pa-main-container-"] {
-        background-color: $color-neutral-regular;
+        background-color: $color-neutral-light;
         display: block;
         height: rhythm(5);
         line-height: rhythm(5);
@@ -40,8 +41,9 @@
         height: 100%;
     }
 
+    .pa-main-dock,
     .pa-main-side-panel {
-        background-color: $color-neutral-strong;
+        background-color: $color-neutral-regular;
     }
 
     @media (min-width: $size-viewport-medium-min) {

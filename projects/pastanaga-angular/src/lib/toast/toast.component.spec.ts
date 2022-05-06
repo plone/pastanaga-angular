@@ -3,6 +3,7 @@ import { PaIconModule } from '../icon';
 import { PaTranslateModule } from '../translate';
 import { MockModule } from 'ng-mocks';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('ToastComponent', () => {
     const createComponent = createComponentFactory({
@@ -10,6 +11,9 @@ describe('ToastComponent', () => {
         component: ToastComponent,
         detectChanges: false,
     });
+
+    const DEFAULT_DELAY = 3400; // delay+animation
+    const BUTTON_DELAY = 5400; // delay+animation
 
     let component: ToastComponent;
     let spectator: Spectator<ToastComponent>;
@@ -30,4 +34,24 @@ describe('ToastComponent', () => {
         spectator.detectChanges();
         expect(spectator.query('.pa-toast-button')).toBeTruthy();
     });
+
+    it('should dismiss the default toast after the delay', fakeAsync(() => {
+        spectator.detectChanges();
+        jest.spyOn(component.dismiss, 'emit');
+        tick(DEFAULT_DELAY - 1);
+        expect(spectator.component.dismiss.emit).not.toHaveBeenCalled();
+        tick(1); 
+        expect(spectator.component.dismiss.emit).toHaveBeenCalled();
+    }));
+
+    it('should dismiss the button toast after the delay', fakeAsync(() => {
+        component.config = { buttonLabel: 'undo' };
+        spectator.detectChanges();
+        jest.spyOn(component.dismiss, 'emit');
+        tick(BUTTON_DELAY - 1);
+        expect(spectator.component.dismiss.emit).not.toHaveBeenCalled();
+        tick(1); 
+        expect(spectator.component.dismiss.emit).toHaveBeenCalled();
+    }));
+
 });

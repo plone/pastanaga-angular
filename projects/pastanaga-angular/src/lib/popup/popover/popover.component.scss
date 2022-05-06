@@ -12,7 +12,7 @@ $arrow-size: rhythm(1.5);
     }
 
     .pa-popup-wrapper {
-        background: $color-neutral-lighter;
+        background: $color-neutral-lightest;
         width: rhythm(32);
     }
 
@@ -28,7 +28,7 @@ $arrow-size: rhythm(1.5);
         }
         &:before {
             border-width: 0 $arrow-size $arrow-size $arrow-size;
-            border-color: transparent transparent $color-neutral-lighter transparent;
+            border-color: transparent transparent $color-neutral-lightest transparent;
             left: 50%;
             top: 1px;
             transform: translateX(-50%);
@@ -41,7 +41,7 @@ $arrow-size: rhythm(1.5);
         }
         &:before {
             border-width: $arrow-size 0 $arrow-size $arrow-size;
-            border-color: transparent transparent transparent $color-neutral-lighter;
+            border-color: transparent transparent transparent $color-neutral-lightest;
             right: 1px;
             top: 50%;
             transform: translateY(-50%);
@@ -54,7 +54,7 @@ $arrow-size: rhythm(1.5);
         }
         &:before {
             border-width: $arrow-size $arrow-size $arrow-size 0;
-            border-color: transparent $color-neutral-lighter transparent transparent;
+            border-color: transparent $color-neutral-lightest transparent transparent;
             left: 1px;
             top: 50%;
             transform: translateY(-50%);

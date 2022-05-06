@@ -19,8 +19,11 @@ pa-demo-page {
         h3 {
             margin-bottom: rhythm(2);
         }
-        h4 {
-            margin-bottom: rhythm(1);
+
+        &:not(.example-section) {
+            h4, h5, h6 {
+                margin-bottom: rhythm(1);
+            }
         }
     }
 
@@ -31,7 +34,7 @@ pa-demo-page {
         }
         dd {
             small {
-                color: $color-neutral-regular;
+                color: $color-neutral-light;
             }
         }
     }
@@ -55,7 +58,7 @@ pa-demo-page {
     pa-demo-usage {
         code {
             display: inline;
-            background: $color-neutral-lighter;
+            background: $color-neutral-lightest;
             margin: 0;
             padding: 0 rhythm(.25);
             overflow: auto;
@@ -98,7 +101,7 @@ pa-demo-page {
     pa-demo-code code {
         display: block;
         padding: rhythm(1.5);
-        background-color: $color-neutral-light;
+        background-color: $color-neutral-lighter;
         margin: rhythm(1.5) 0;
         overflow: auto;
     }

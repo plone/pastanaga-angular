@@ -26,7 +26,7 @@ select:-webkit-autofill:focus {
         top: $padding-field-control-top;
 
         svg {
-            fill: $color-neutral-strong;
+            fill: $color-neutral-regular;
         }
     }
 
@@ -121,6 +121,10 @@ select:-webkit-autofill:focus {
             border: $border-field-autofilled;
         }
 
+        &:read-only {
+            border: $border-field-readonly;
+        }
+
         &:disabled {
             border: $border-field-disabled;
             color: $color-text-field-control-disabled;
@@ -128,10 +132,6 @@ select:-webkit-autofill:focus {
             & ~ .pa-field-label {
                 color: $color-text-field-label-disabled;
             }
-        }
-
-        &:read-only {
-            border: $border-field-readonly;
         }
     }
 

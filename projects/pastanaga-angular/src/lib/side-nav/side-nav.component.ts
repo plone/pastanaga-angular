@@ -1,17 +1,17 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-    Component,
-    ChangeDetectionStrategy,
-    Input,
-    ContentChildren,
-    QueryList,
-    ViewChild,
-    ChangeDetectorRef,
-    ElementRef,
-    Renderer2,
-    Output,
-    EventEmitter,
     AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    ElementRef,
+    EventEmitter,
+    Input,
+    Output,
+    QueryList,
+    Renderer2,
+    ViewChild,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { detectChanges, markForCheck, TRANSITION_DURATION } from '../common';
@@ -31,7 +31,7 @@ export class SideNavComponent implements AfterViewInit {
     }
     set visible(value: any) {
         const visible = coerceBooleanProperty(value);
-        if (this._mode !== 'desktop') {
+        if (this.mode !== 'desktop') {
             this.triggerAnimation(visible);
         } else {
             this._visible = visible;

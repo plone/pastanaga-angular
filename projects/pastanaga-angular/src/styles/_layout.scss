@@ -52,14 +52,23 @@ $footer-height: rhythm(6) * 3;
     .pa-main-side-panel {
         width: $width-side-panel;
     }
+    .pa-main-dock {
+        width: $width-dock;
+    }
 
     .pa-main-container {
         display: flex;
         width: 100%;
     }
+
     .pa-main-side-panel + .pa-main-container-wide,
     .pa-main-container-wide.pa-side-on-right {
         width: $width-formula-panel-plus-wide-medium;
+        margin: 0 auto;
+    }
+
+    .pa-main-dock + .pa-main-container-wide {
+        width: $width-formula-dock-plus-wide-medium;
         margin: 0 auto;
     }
 }
@@ -68,6 +77,10 @@ $footer-height: rhythm(6) * 3;
     .pa-main-side-panel + .pa-main-container-wide,
     .pa-main-container-wide.pa-side-on-right {
         width: $width-formula-panel-plus-wide-large;
+    }
+
+    .pa-main-dock + .pa-main-container-wide {
+        width: $width-formula-dock-plus-wide-large;
     }
 }
 

@@ -25,8 +25,16 @@
                 subtracted from the overall viewport width and will impact the Wide layout applied to the "main
                 container" (which will be taking the rest of the available space).
             </dd>
+
+            <dt>Dock+Wide</dt>
+            <dd>
+                This layout should be used when the design presents a dock region that will come into view when
+                the viewport switches to large (1024px). The dock takes a fixed width of 72px which will be
+                subtracted from the overall viewport width and will impact the Wide layout applied to the "main
+                container" (which will be taking the rest of the available space).
+            </dd>
         </dl>
-        <p>They all share the same behavior before the medium breakpoint.</p>
+        <p>They all share the same behavior for the small breakpoint.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
@@ -82,6 +90,13 @@
         </p>
         <pa-demo-code>
             <pre><code>{{rightPanelExample}}</code></pre>
+        </pa-demo-code>
+
+
+        <h3>Dock+Wide</h3>
+        <p>Dock+Wide layout is done by creating the following DOM structure:</p>
+        <pa-demo-code>
+            <pre><code>{{dockExample}}</code></pre>
         </pa-demo-code>
     </pa-demo-usage>
 </pa-demo-page>
