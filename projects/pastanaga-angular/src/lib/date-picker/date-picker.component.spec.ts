@@ -8,6 +8,7 @@ import { PaIconModule } from '../icon';
 import { PaPopupModule } from '../popup';
 import { PaTextFieldModule } from '../controls';
 import { markForCheck, TRANSITION_DURATION } from '../common';
+import { zonedTimeToUtc } from 'date-fns-tz';
 
 jest.mock('../common', () => ({
     markForCheck: jest.fn(),
@@ -114,7 +115,7 @@ describe('DatePickerComponent', () => {
 
     it('should generate weeks', () => {
         // === Setup ===
-        component.trackedDate = new Date('2022-7-10');
+        component.trackedDate = zonedTimeToUtc(new Date('2022-7-10'), 'America/New_York');
 
         // === Execute ===
         componentAny.generateWeeks();
@@ -125,7 +126,7 @@ describe('DatePickerComponent', () => {
 
     it('should generate months', () => {
         // === Setup ===
-        component.trackedDate = new Date('2022-7-10');
+        component.trackedDate = zonedTimeToUtc(new Date('2022-7-10'), 'America/New_York');
 
         // === Execute ===
         componentAny.generateMonths();
@@ -141,7 +142,7 @@ describe('DatePickerComponent', () => {
 
         it('should max at current year when tracked is earlier', () => {
             // === Setup ===
-            component.trackedDate = new Date('2015-4-9');
+            component.trackedDate = zonedTimeToUtc(new Date('2015-4-9'), 'America/New_York');
 
             // === Execute ===
             componentAny.generateYears();
@@ -152,7 +153,7 @@ describe('DatePickerComponent', () => {
 
         it('should max at tracked year when tracked is later', () => {
             // === Setup ===
-            component.trackedDate = new Date('2040-4-9');
+            component.trackedDate = zonedTimeToUtc(new Date('2040-4-9'), 'America/New_York');
 
             // === Execute ===
             componentAny.generateYears();
@@ -163,7 +164,7 @@ describe('DatePickerComponent', () => {
 
         it('should min at 2000 year when tracked is later', () => {
             // === Setup ===
-            component.trackedDate = new Date('2002-4-9');
+            component.trackedDate = zonedTimeToUtc(new Date('2002-4-9'), 'America/New_York');
 
             // === Execute ===
             componentAny.generateYears();
@@ -174,7 +175,7 @@ describe('DatePickerComponent', () => {
 
         it('should min at tracked year when tracked is earlier', () => {
             // === Setup ===
-            component.trackedDate = new Date('1998-4-9');
+            component.trackedDate = zonedTimeToUtc(new Date('1998-4-9'), 'America/New_York');
 
             // === Execute ===
             componentAny.generateYears();
