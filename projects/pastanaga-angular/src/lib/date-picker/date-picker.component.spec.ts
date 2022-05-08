@@ -7,6 +7,14 @@ import { PaButtonModule } from '../button';
 import { PaIconModule } from '../icon';
 import { PaPopupModule } from '../popup';
 import { PaTextFieldModule } from '../controls';
+import { markForCheck, TRANSITION_DURATION } from '../common';
+
+jest.mock('../common', () => ({
+    markForCheck: jest.fn(),
+    TRANSITION_DURATION: {
+        moderate: 500
+    }
+}));
 
 describe('DatePickerComponent', () => {
     let component: DatePickerComponent;
@@ -42,7 +50,6 @@ describe('DatePickerComponent', () => {
     describe('form control changes', () => {
         beforeEach(() => {
             componentAny.generateWeeks = jest.fn();
-            componentAny.cd.markForCheck = jest.fn();
         });
 
         it('should debounce', () => {
@@ -51,14 +58,14 @@ describe('DatePickerComponent', () => {
 
             // === Verify ===
             expect(componentAny.generateWeeks).not.toHaveBeenCalled();
-            expect(componentAny.cd.markForCheck).not.toHaveBeenCalled();
+            expect(markForCheck).not.toHaveBeenCalled();
 
             // === Execute ===
-            jest.advanceTimersByTime(500);
+            jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
             expect(componentAny.generateWeeks).toHaveBeenCalled();
-            expect(componentAny.cd.markForCheck).toHaveBeenCalled();
+            expect(markForCheck).toHaveBeenCalledWith(componentAny.cdr);
         });
 
         it('should clear date when there is no value', () => {
@@ -70,20 +77,20 @@ describe('DatePickerComponent', () => {
 
             // === Execute ===
             component.formControl.setValue(null);
-            jest.advanceTimersByTime(500);
+            jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
             expect(componentAny._selectedDate).toBe(undefined);
-            expect(component.trackedDate.getTime()).toEqual(date.getTime() + 500);
+            expect(component.trackedDate.getTime()).toEqual(date.getTime() + TRANSITION_DURATION.moderate);
         });
 
         it('should clear date for invalid value', () => {
             // === Setup ===
-            const tracked = component.trackedDate = new Date();
+            const tracked = (component.trackedDate = new Date());
 
             // === Execute ===
             component.formControl.setValue('foobar');
-            jest.advanceTimersByTime(500);
+            jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
             expect(componentAny._selectedDate).toBe(undefined);
@@ -97,7 +104,7 @@ describe('DatePickerComponent', () => {
 
             // === Execute ===
             component.formControl.setValue(value);
-            jest.advanceTimersByTime(500);
+            jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
             expect(componentAny._selectedDate).toEqual(expected);

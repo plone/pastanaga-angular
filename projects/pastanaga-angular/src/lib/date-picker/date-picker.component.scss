@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 :host {
-    --day-width: 32px;
+    --day-width: #{rhythm(4)};
     --header-color: #{$color-neutral-regular};
     --text-color: #{$color-dark-stronger};
     --text-color-other-month: #{$color-neutral-light};
@@ -10,13 +10,13 @@
     --list-item-background-color-hover: #{$color-neutral-lighter};
 
     .calendar-popup {
-        font-size: 14px;
-        line-height: 24px;
+        font-size: font-size(s);
+        line-height: line-height(l);
         color: var(--text-color);
 
         ::ng-deep {
             .pa-popup {
-                width: 320px;
+                width: rhythm(40);
             }
         }
     }
@@ -44,7 +44,7 @@
     .calendar-row {
         display: flex;
         color: var(--header-color);
-        padding: 6px 0;
+        padding: rhythm(1) 0;
         justify-content: space-around;
     }
 
@@ -74,11 +74,11 @@
         display: flex;
         align-items: center;
         color: var(--header-color);
-        font-size: 12px;
+        font-size: font-size(xs);
         font-weight: 700;
-        line-height: 16px;
+        line-height: line-height(s);
         text-transform: uppercase;
-        padding: 20px 12px 12px;
+        padding: rhythm(2) rhythm(1.5) rhythm(1.5);
 
         .label {
             flex-grow: 1;
@@ -86,8 +86,8 @@
     }
 
     .calendar-list-item {
-        padding: 12px;
-        font-size: 16px;
+        padding: rhythm(1.5);
+        font-size: font-size(m);
         cursor: pointer;
 
         &.selected {
@@ -102,6 +102,6 @@
 
     .calendar-row ::ng-deep pa-button.selected {
         background-color: var(--selected-background-color);
-        border-radius: 100px;
+        border-radius: $border-radius-button;
     }
 }

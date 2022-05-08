@@ -21,6 +21,7 @@ import {
 import { PopupComponent, PopupDirective } from '../popup';
 import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, map } from 'rxjs/operators';
+import { markForCheck, TRANSITION_DURATION } from '../common';
 
 export interface Day {
     otherMonth: boolean;
@@ -69,8 +70,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     @ViewChild('popupRef') popupDirective?: PopupDirective;
     @ViewChild('popup') popup?: PopupComponent;
 
-
-
     @Input()
     get date() {
         return this._selectedDate;
@@ -93,7 +92,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
     disabled = true;
 
-    constructor(private cd: ChangeDetectorRef) {
+    constructor(private cdr: ChangeDetectorRef) {
         this.formControl = new FormControl(null, (control: AbstractControl) => {
             if (!DATE_FORMATS.some((format) => isMatch(control.value, format))) {
                 return {
@@ -110,7 +109,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
         // honor text entry
         this.formControl.valueChanges
             .pipe(
-                debounceTime(500),
+                debounceTime(TRANSITION_DURATION.moderate),
                 map((value) => DATE_FORMATS.find((format) => isMatch(value, format)) || null),
             )
             .subscribe((format) => {
@@ -129,7 +128,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
                 this.generateWeeks();
                 this._onChange(this._selectedDate);
 
-                this.cd.markForCheck();
+                markForCheck(this.cdr);
             });
     }
 
