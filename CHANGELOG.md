@@ -1,3 +1,12 @@
+# 2.47.1 (2022-05-09)
+
+### Improvements
+- Update dependencies: [mpellerin42]
+  - @angular: 13.3.6
+  - @ngneat/spectator: 10.0.1
+  - ng-mocks: 13.5.1
+  - @briebug/jest-schematic: 4.0.0
+
 # 2.47.0 (2022-05-05)
 
 ### Feature
