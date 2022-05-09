@@ -6,6 +6,7 @@
   - @ngneat/spectator: 10.0.1
   - ng-mocks: 13.5.1
   - @briebug/jest-schematic: 4.0.0
+  - @ng-web-apis/common: 2.0.0
 
 # 2.47.0 (2022-05-05)
 
