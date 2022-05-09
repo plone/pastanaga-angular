@@ -43,7 +43,7 @@
     "@angular-devkit/build-angular": "^13.2.4",
     "@angular/cli": "^13.3.5",
     "@angular/compiler-cli": "~13.3.6",
-    "@ngneat/spectator": "^8.3.0",
+    "@ngneat/spectator": "^10.0.1",
     "@types/jest": "^27.0.2",
     "@types/node": "^12.11.1",
     "angular-cli-ghpages": "^1.0.0",
