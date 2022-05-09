@@ -39,7 +39,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-builders/jest": "^13.0.0",
+    "@angular-builders/jest": "^13.0.3",
     "@angular-devkit/build-angular": "^13.2.4",
     "@angular/cli": "^13.3.5",
     "@angular/compiler-cli": "~13.3.6",
@@ -50,7 +50,7 @@
     "husky": "^7.0.4",
     "jest": "^27.3.1",
     "jest-preset-angular": "^11.0.1",
-    "ng-mocks": "^12.5.0",
+    "ng-mocks": "^13.5.1",
     "ng-packagr": "^13.0.3",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
