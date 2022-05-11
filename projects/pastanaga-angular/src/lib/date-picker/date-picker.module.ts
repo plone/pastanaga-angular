@@ -6,6 +6,7 @@ import { PaTextFieldModule } from '../controls';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaIconModule } from '../icon';
 import { PaPopupModule } from '../popup';
+import { PaTranslateModule } from '../translate';
 
 @NgModule({
     imports: [
@@ -15,9 +16,9 @@ import { PaPopupModule } from '../popup';
         PaIconModule,
         PaPopupModule,
         PaTextFieldModule,
+        PaTranslateModule,
     ],
     exports: [DatePickerComponent],
     declarations: [DatePickerComponent],
 })
-export class PaDatePickerModule {
-}
+export class PaDatePickerModule {}

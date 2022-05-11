@@ -1,6 +1,5 @@
-<!-- TODO disabled -->
 <div [paPopup]="popup" popupOnRight="true" #popupRef="paPopupRef">
-    <pa-input size="small" [formControl]="formControl" (click)="handleInputClick($event)">Pick a date</pa-input>
+    <pa-input size="small" [formControl]="formControl" (click)="handleInputClick($event)" [disabled]="disabled">Pick a date</pa-input>
 </div>
 <pa-popup [ngSwitch]="mode" #popup (onOpen)="openWeeks()" (onClose)="handlePopupClose()" class="calendar-popup">
     <ng-container *ngSwitchCase="'weeks'">
@@ -30,13 +29,7 @@
             ></pa-button>
         </div>
         <div class="calendar-weekdays">
-            <div>S</div>
-            <div>M</div>
-            <div>T</div>
-            <div>W</div>
-            <div>T</div>
-            <div>F</div>
-            <div>S</div>
+            <div *ngFor="let day of days">{{day}}</div>
         </div>
         <div *ngFor="let week of weeks" class="calendar-row">
             <pa-button
@@ -52,7 +45,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="'years'">
         <div class="calendar-list-header">
-            <div class="label">Years</div>
+            <div class="label" translate>calendar.years</div>
             <pa-button
                 (click)="openWeeks($event)"
                 kind="secondary"
@@ -61,7 +54,7 @@
                 icon="chevron-left"
             ></pa-button>
         </div>
-        <div paScrollableContainer>
+        <div>
             <div
                 *ngFor="let year of years"
                 (click)="selectYear($event, year.number)"
@@ -74,7 +67,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="'months'">
         <div class="calendar-list-header">
-            <div class="label">Months</div>
+            <div class="label" translate>calendar.months</div>
             <pa-button
                 (click)="openWeeks($event)"
                 kind="secondary"
@@ -83,7 +76,7 @@
                 icon="chevron-left"
             ></pa-button>
         </div>
-        <div paScrollableContainer>
+        <div>
             <div
                 *ngFor="let month of months; index as i"
                 (click)="selectMonth($event, i)"

@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/typography';
 
 :host {
     --day-width: #{rhythm(4)};
@@ -74,10 +75,7 @@
         display: flex;
         align-items: center;
         color: var(--header-color);
-        font-size: font-size(xs);
-        font-weight: 700;
-        line-height: line-height(s);
-        text-transform: uppercase;
+        @extend .overline;
         padding: rhythm(2) rhythm(1.5) rhythm(1.5);
 
         .label {

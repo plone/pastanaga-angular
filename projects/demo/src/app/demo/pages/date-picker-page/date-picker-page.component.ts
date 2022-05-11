@@ -5,7 +5,13 @@ import { FormControl } from "@angular/forms";
     templateUrl: 'date-picker-page.component.html',
 })
 export class DatePickerPageComponent {
-    date = new Date();
-    selection: Date | undefined;
-    formControl = new FormControl();
+    selectedTab: 'standalone' | 'ngmodel' | 'reactive' = 'ngmodel';
+
+    standaloneDate: Date | undefined;
+    ngModelDate: Date | undefined;
+    formControl: FormControl;
+
+    constructor() {
+        this.formControl = new FormControl();
+    }
 }

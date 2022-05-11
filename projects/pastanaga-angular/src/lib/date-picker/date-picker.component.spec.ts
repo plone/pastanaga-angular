@@ -12,8 +12,8 @@ import { markForCheck, TRANSITION_DURATION } from '../common';
 jest.mock('../common', () => ({
     markForCheck: jest.fn(),
     TRANSITION_DURATION: {
-        moderate: 500
-    }
+        moderate: 500,
+    },
 }));
 
 describe('DatePickerComponent', () => {
@@ -112,6 +112,39 @@ describe('DatePickerComponent', () => {
         });
     });
 
+    describe('disabled field ', () => {
+        it('should set disabled state using string', () => {
+            // === Setup ===
+            component.setDisabledState = jest.fn();
+
+            // === Execute ===
+            component.disabled = 'false';
+
+            // === Verify ===
+            expect(component.setDisabledState).toHaveBeenCalledWith(false);
+        });
+
+        it('should set disabled state using boolean', () => {
+            // === Setup ===
+            component.setDisabledState = jest.fn();
+
+            // === Execute ===
+            component.disabled = true;
+
+            // === Verify ===
+            expect(component.setDisabledState).toHaveBeenCalledWith(true);
+        });
+
+        it('should get value from control', () => {
+            // === Setup ===
+            const getter = jest.spyOn(component.formControl, 'disabled', 'get').mockReturnValue(true);
+
+            // === Verify ===
+            expect(component.disabled).toBe(true);
+            expect(getter).toHaveBeenCalled();
+        });
+    });
+
     it('should generate weeks', () => {
         // === Setup ===
         component.trackedDate = new Date('2022-7-10');
@@ -198,6 +231,23 @@ describe('DatePickerComponent', () => {
             // === Setup ===
             component.popup = { isDisplayed: true } as any;
             componentAny._touched = false;
+            jest.spyOn(component, 'disabled', 'get').mockReturnValue(false);
+            const touched = jest.fn();
+            component.registerOnTouched(touched);
+
+            // === Execute ===
+            component.handleInputClick(event);
+
+            // === Verify ===
+            expect(event.stopPropagation).toHaveBeenCalled();
+            expect(event.preventDefault).toHaveBeenCalled();
+        });
+
+        it('should trap events when input is disabled', () => {
+            // === Setup ===
+            component.popup = { isDisplayed: false } as any;
+            componentAny._touched = false;
+            jest.spyOn(component, 'disabled', 'get').mockReturnValue(true);
             const touched = jest.fn();
             component.registerOnTouched(touched);
 
@@ -222,10 +272,11 @@ describe('DatePickerComponent', () => {
             expect(event.preventDefault).not.toHaveBeenCalled();
         });
 
-        it('should mark as touched', () => {
+        it('should mark as touched when not disabled', () => {
             // === Setup ===
             const touched = jest.fn();
             component.registerOnTouched(touched);
+            jest.spyOn(component, 'disabled', 'get').mockReturnValue(false);
 
             // === Execute ===
             component.handleInputClick(event);
@@ -233,6 +284,20 @@ describe('DatePickerComponent', () => {
             // === Verify ===
             expect(touched).toHaveBeenCalled();
             expect(componentAny._touched).toBe(true);
+        });
+
+        it('should not mark as touched when disabled', () => {
+            // === Setup ===
+            const touched = jest.fn();
+            component.registerOnTouched(touched);
+            jest.spyOn(component, 'disabled', 'get').mockReturnValue(true);
+
+            // === Execute ===
+            component.handleInputClick(event);
+
+            // === Verify ===
+            expect(touched).not.toHaveBeenCalled();
+            expect(componentAny._touched).toBe(false);
         });
     });
 
@@ -449,5 +514,55 @@ describe('DatePickerComponent', () => {
 
         // === Verify ===
         expect(component.disabled).toBe(true);
+    });
+
+    describe('setting disabled state', () => {
+        it('should do nothing if already enabled', () => {
+            // === Setup ===
+            component.setDisabledState(false);
+            component.formControl.enable = jest.fn();
+
+            // === Execute ===
+            component.setDisabledState(false);
+
+            // === Verify ===
+            expect(component.formControl.enable).not.toHaveBeenCalled();
+        });
+
+        it('should do nothing if already disabled', () => {
+            // === Setup ===
+            component.setDisabledState(true);
+            component.formControl.disable = jest.fn();
+
+            // === Execute ===
+            component.setDisabledState(true);
+
+            // === Verify ===
+            expect(component.formControl.disable).not.toHaveBeenCalled();
+        });
+
+        it('should become disabled', () => {
+            // === Setup ===
+            component.setDisabledState(false);
+            component.formControl.disable = jest.fn();
+
+            // === Execute ===
+            component.setDisabledState(true);
+
+            // === Verify ===
+            expect(component.formControl.disable).toHaveBeenCalled();
+        });
+
+        it('should become enabled', () => {
+            // === Setup ===
+            component.setDisabledState(true);
+            component.formControl.enable = jest.fn();
+
+            // === Execute ===
+            component.setDisabledState(false);
+
+            // === Verify ===
+            expect(component.formControl.enable).toHaveBeenCalled();
+        });
     });
 });

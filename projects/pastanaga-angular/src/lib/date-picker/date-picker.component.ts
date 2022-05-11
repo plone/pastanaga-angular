@@ -1,8 +1,16 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Inject,
+    Input,
+    LOCALE_ID,
+    OnInit,
+    ViewChild,
+} from '@angular/core';
 import {
     add,
     addMonths,
-    format,
     getDate,
     getDay,
     getDaysInMonth,
@@ -22,6 +30,8 @@ import { PopupComponent, PopupDirective } from '../popup';
 import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, map } from 'rxjs/operators';
 import { markForCheck, TRANSITION_DURATION } from '../common';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { formatDate } from '@angular/common';
 
 export interface Day {
     otherMonth: boolean;
@@ -40,8 +50,15 @@ interface Year {
     selected: boolean;
 }
 
-const DEFAULT_FORMAT = "MMMM d',' yyyy";
-const DATE_FORMATS = [DEFAULT_FORMAT, "MMMM d',' yy"];
+const DATE_FORMATS = ["MMMM d',' yyyy", "MMMM d',' yy"];
+
+function range<T>(length: number, valueFunction: (index: number) => T): T[] {
+    const valuesArray = Array(length);
+    for (let i = 0; i < length; i++) {
+        valuesArray[i] = valueFunction(i);
+    }
+    return valuesArray;
+}
 
 @Component({
     selector: 'pa-date-picker',
@@ -86,13 +103,20 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
     mode: 'weeks' | 'months' | 'years' = 'weeks';
 
+    readonly days: string[] = range(7, (i) => formatDate(new Date(2017, 0, i + 1), 'EEEEE', this.locale));
     weeks: Day[][] = [];
     years: Year[] | undefined;
     months: Month[] | undefined;
 
-    disabled = true;
+    @Input() set disabled(value: any) {
+        this.setDisabledState(coerceBooleanProperty(value));
+    }
 
-    constructor(private cdr: ChangeDetectorRef) {
+    get disabled() {
+        return this.formControl.disabled;
+    }
+
+    constructor(@Inject(LOCALE_ID) private locale: string, private cdr: ChangeDetectorRef) {
         this.formControl = new FormControl(null, (control: AbstractControl) => {
             if (!DATE_FORMATS.some((format) => isMatch(control.value, format))) {
                 return {
@@ -165,21 +189,12 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
 
     private generateMonths(): void {
-        this.months = [
-            // TODO: translate
-            { name: 'January', selected: false },
-            { name: 'February', selected: false },
-            { name: 'March', selected: false },
-            { name: 'April', selected: false },
-            { name: 'May', selected: false },
-            { name: 'June', selected: false },
-            { name: 'July', selected: false },
-            { name: 'August', selected: false },
-            { name: 'September', selected: false },
-            { name: 'October', selected: false },
-            { name: 'November', selected: false },
-            { name: 'December', selected: false },
-        ];
+        this.months = range(12, (i) => {
+            return {
+                name: formatDate(new Date(2017, i, 1), 'LLLL', this.locale),
+                selected: false,
+            };
+        });
 
         const trackedMonth = getMonth(this.trackedDate);
         this.months.forEach((month, i) => (month.selected = i === trackedMonth));
@@ -199,7 +214,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
 
     handleInputClick(event: MouseEvent) {
-        if (this.popup?.isDisplayed) {
+        if (this.popup?.isDisplayed || this.disabled) {
             // using companionElement doesn't behave correctly; intercepting the click before
             // it bubbles up to the popup directive to keep open
             event.stopPropagation();
@@ -207,7 +222,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
         }
 
         // mark as touched
-        if (!this._touched && this._onTouched) {
+        if (!this.disabled && !this._touched && this._onTouched) {
             this._onTouched();
             this._touched = true;
         }
@@ -266,7 +281,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
     private _updateInput() {
         if (this._selectedDate) {
-            this.formControl.setValue(format(this._selectedDate, DEFAULT_FORMAT));
+            this.formControl.setValue(formatDate(this._selectedDate, 'longDate', this.locale));
         }
     }
 
@@ -289,6 +304,12 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
 
     setDisabledState(disabled: boolean) {
-        this.disabled = disabled;
+        if (disabled !== this.formControl.disabled) {
+            if (disabled) {
+                this.formControl.disable();
+            } else {
+                this.formControl.enable();
+            }
+        }
     }
 }

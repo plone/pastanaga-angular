@@ -4,14 +4,26 @@
     <pa-demo-description>Description</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-date-picker [date]="date" [(ngModel)]="selection"></pa-date-picker>
-        {{ selection }}
-        <pa-date-picker [formControl]="formControl"></pa-date-picker>
-        {{ formControl.valueChanges | async }}
+        <pa-tabs>
+            <pa-tab (click)="selectedTab = 'standalone'" [active]="selectedTab === 'standalone'">Standalone</pa-tab>
+            <pa-tab (click)="selectedTab = 'ngmodel'" [active]="selectedTab === 'ngmodel'">NgModel</pa-tab>
+            <pa-tab (click)="selectedTab = 'reactive'" [active]="selectedTab === 'reactive'">Reactive</pa-tab>
+        </pa-tabs>
+        <section *ngIf="selectedTab === 'standalone'">
+            <pa-date-picker [date]="standaloneDate"></pa-date-picker>
+            Selection: {{ standaloneDate }}
+        </section>
+        <section *ngIf="selectedTab === 'ngmodel'">
+            <pa-date-picker [(ngModel)]="ngModelDate"></pa-date-picker>
+            Selection: {{ ngModelDate }}
+        </section>
+        <section *ngIf="selectedTab === 'reactive'">
+            <pa-date-picker [formControl]="formControl" [disabled]="true"></pa-date-picker>
+            Selection: {{ formControl.value }}
+        </section>
     </pa-demo-examples>
 
-    <pa-demo-usage>
-    </pa-demo-usage>
+    <pa-demo-usage> </pa-demo-usage>
 
     <pa-demo-code>
         <pre><code>CODE</code></pre>
