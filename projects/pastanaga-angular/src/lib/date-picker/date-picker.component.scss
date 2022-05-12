@@ -1,0 +1,105 @@
+@import '../../styles/variables';
+@import '../../styles/typography';
+
+:host {
+    --day-width: #{rhythm(4)};
+    --header-color: #{$color-neutral-regular};
+    --text-color: #{$color-dark-stronger};
+    --text-color-other-month: #{$color-neutral-light};
+    --weekday-border-color: #{$color-neutral-light};
+    --selected-background-color: #{$color-primary-lightest};
+    --list-item-background-color-hover: #{$color-neutral-lighter};
+
+    .calendar-popup {
+        font-size: font-size(s);
+        line-height: line-height(l);
+        color: var(--text-color);
+
+        ::ng-deep {
+            .pa-popup {
+                width: rhythm(40);
+            }
+        }
+    }
+
+    .calendar-header {
+        display: flex;
+        align-items: center;
+
+        button {
+            border: none;
+            background: none;
+            outline: 0;
+
+            &:focus {
+                box-shadow: $shadow-focus !important;
+            }
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    }
+
+    .calendar-weekdays,
+    .calendar-row {
+        display: flex;
+        color: var(--header-color);
+        padding: rhythm(1) 0;
+        justify-content: space-around;
+    }
+
+    .calendar-weekdays {
+        border-bottom: 1px solid var(--weekday-border-color);
+
+        div {
+            width: var(--day-width);
+            text-align: center;
+        }
+    }
+
+    .calendar-row ::ng-deep pa-button {
+        button {
+            width: var(--day-width);
+        }
+
+        &.other-month,
+        &.other-month:hover {
+            button {
+                color: var(--text-color-other-month);
+            }
+        }
+    }
+
+    .calendar-list-header {
+        display: flex;
+        align-items: center;
+        color: var(--header-color);
+        @extend .overline;
+        padding: rhythm(2) rhythm(1.5) rhythm(1.5);
+
+        .label {
+            flex-grow: 1;
+        }
+    }
+
+    .calendar-list-item {
+        padding: rhythm(1.5);
+        font-size: font-size(m);
+        cursor: pointer;
+
+        &.selected {
+            background-color: var(--selected-background-color);
+        }
+
+        &:hover,
+        &.selected:hover {
+            background-color: var(--list-item-background-color-hover);
+        }
+    }
+
+    .calendar-row ::ng-deep pa-button.selected {
+        background-color: var(--selected-background-color);
+        border-radius: $border-radius-button;
+    }
+}

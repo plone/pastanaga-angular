@@ -1,3 +1,8 @@
+# 2.48.0 (2022-05-07)
+
+### Feature
+- Date picker component [dgsmith2]
+
 # 2.47.1 (2022-05-09)
 
 ### Improvements

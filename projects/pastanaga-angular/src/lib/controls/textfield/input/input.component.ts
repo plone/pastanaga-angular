@@ -51,7 +51,7 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
     private _wasNumber = false;
 
     constructor(
-        protected override element: ElementRef,
+        override element: ElementRef,
         @Optional() @Self() protected override parentControl: NgControl,
         protected override cdr: ChangeDetectorRef,
         protected override textFieldUtility: TextFieldUtilityService,
