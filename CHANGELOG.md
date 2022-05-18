@@ -1,3 +1,9 @@
+# 2.49.0 (2022-05-18)
+
+### Breaking changes:
+- **Demo**: replace traversing by routing in the demo [mpellerin42]
+
+
 # 2.48.0 (2022-05-07)
 
 ### Feature

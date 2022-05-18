@@ -10,7 +10,6 @@ import {
     DemoUsageDirective,
 } from './demo.directives';
 import { DemoMenuComponent } from './demo-menu/demo-menu.component';
-import { TraversalModule } from 'angular-traversal';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { IconPageComponent } from './pages/icon-page/icon-page.component';
 import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
@@ -117,6 +116,7 @@ import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.co
 import { PopoverPageComponent } from './pages/popover-page/popover-page.component';
 import { DistributePageComponent } from './pages/distribute-page/distribute-page.component';
 import { CardPageComponent } from './pages/card-page/card-page.component';
+import { RouterModule } from '@angular/router';
 import { DatePickerPageComponent } from "./pages/date-picker-page/date-picker-page.component";
 
 const COMPONENTS = [
@@ -207,9 +207,9 @@ const COMPONENTS = [
 @NgModule({
     imports: [
         CommonModule,
-        TraversalModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
 
         PaAvatarModule,
         PaAvatarPileModule,

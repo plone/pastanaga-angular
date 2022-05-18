@@ -10,7 +10,7 @@
              (close)="toggleSideNav(false)">
     <pa-side-nav-header>
         <header class="pa-demo-sidenav-header">
-            <a href="#" traverseTo="/" paFocusable>
+            <a href="#" routerLink="/" paFocusable>
                 <img [src]="logo" alt="">
             </a>
 
@@ -32,9 +32,11 @@
             <ul>
                 <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
                 <pa-side-nav-item *ngFor="let page of section.pages"
-                                  [active]="page.view === activeItem"
+                                  routerLinkActive
+                                  #rla="routerLinkActive"
+                                  [active]="rla.isActive"
                                   [label]="page.title"
-                                  [traverseTo]="'/@@' + page.view"
+                                  [routerLink]="'/' + page.view"
                                   (click)="onSelectedItem()">
                 </pa-side-nav-item>
             </ul>

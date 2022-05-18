@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@guillotinaweb/pastanaga-angular';
-import { Traverser } from 'angular-traversal';
 import { filter } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'pa-translate-doc',
@@ -60,14 +60,13 @@ import { DEMO_LA } from '../assets/i18n/la';
     languages = ['en', 'fr', 'latin'];
     currentLanguage = 'en';
 
-    constructor(private translateService: TranslateService, private traverser: Traverser) {
-        this.traverser.getQueryParams().pipe(filter(params => !!params['la'])).subscribe(params => this.currentLanguage = params['la'])
+    constructor(private translateService: TranslateService, private activatedRoute: ActivatedRoute, private router: Router) {
+        this.activatedRoute.params.pipe(filter(params => !!params['la'])).subscribe(params => this.currentLanguage = params['la'])
     }
 
     updateLanguage(language: string) {
         this.currentLanguage = language;
         this.translateService.currentLanguage = language;
-
-        this.traverser.traverse(`/@@translate?la=${language}`);
+        this.router.navigate(['/translate'], {queryParams: {la: language}});
     }
 }
