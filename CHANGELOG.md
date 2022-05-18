@@ -1,3 +1,8 @@
+# 2.49.1 (2022-05-18)
+
+### Fix
+- npm deps update to fix the publish step of Pastanaga workflow [mpellerin42]
+
 # 2.49.0 (2022-05-18)
 
 ### Breaking changes:
