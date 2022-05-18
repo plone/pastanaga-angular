@@ -32,7 +32,6 @@
     "@briebug/jest-schematic": "^4.0.0",
     "@ng-web-apis/common": "^2.0.0",
     "angular-svg-icon": "^13.0.0",
-    "angular-traversal": "^1.9.6",
     "date-fns": "^2.25.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

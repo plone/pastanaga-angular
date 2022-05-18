@@ -45,7 +45,7 @@ export class SidenavPageComponent {
                 <pa-side-nav-item *ngFor="let page of section.pages"
                                   [active]="page.view === activeItem"
                                   [label]="page.title"
-                                  [traverseTo]="'/@@' + page.view"
+                                  [routerLink]="'/' + page.view"
                                   (click)="onSelectedItem()">
                 </pa-side-nav-item>
             </ul>
