@@ -1,3 +1,8 @@
+# 2.50.0 (2022-05-20)
+
+### Breaking changes:
+- **Table sortable header**: viewport mode as input instead of using directly breakpoint observer [mpellerin42]
+
 # 2.49.1 (2022-05-18)
 
 ### Fix

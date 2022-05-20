@@ -1,4 +1,4 @@
-<ng-container *ngIf="(mode | async) !== 'mobile'; else mobileHeader">
+<ng-container *ngIf="mode !== 'mobile'; else mobileHeader">
     <ng-container *ngFor="let cell of cells">
         <pa-table-sortable-header-cell *ngIf="cell.sortable; else basicCell"
                                        [enabled]="cell.active"

@@ -8,7 +8,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { HeaderCell } from '../table.models';
-import { BreakpointObserver } from '../../breakpoint-observer';
+import { ViewportMode } from '../../breakpoint-observer';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PositionStyle } from '../../common';
 import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/table-sortable-header-cell.component';
@@ -34,6 +34,7 @@ export class TableSortableHeaderComponent implements AfterViewInit {
     get cells() {
         return this._cells;
     }
+
     @Input()
     set menuColumn(value: any) {
         this._menuColumn = coerceBooleanProperty(value);
@@ -42,19 +43,25 @@ export class TableSortableHeaderComponent implements AfterViewInit {
         return this._menuColumn;
     }
 
+    @Input()
+    set mode(value: ViewportMode) {
+        this._mode = value;
+    }
+    get mode() {
+        return this._mode;
+    }
+
     @Output() sort: EventEmitter<HeaderCell> = new EventEmitter<HeaderCell>();
 
     @ViewChild('mobileCellContainer') mobileCellContainer?: TableSortableHeaderCellComponent;
 
     private _cells: HeaderCell[] = [];
     private _menuColumn = false;
-    mode = this.breakpointObserver.currentMode;
+    private _mode: ViewportMode = 'desktop';
     mobileCell?: HeaderCell;
     sortableCells: HeaderCell[] = [];
     sortMenuOpen = false;
     sortMenuPosition?: PositionStyle;
-
-    constructor(private breakpointObserver: BreakpointObserver) {}
 
     ngAfterViewInit(): void {
         setTimeout(() => {
