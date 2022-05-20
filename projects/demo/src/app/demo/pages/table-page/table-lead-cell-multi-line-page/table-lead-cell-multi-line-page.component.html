@@ -1,0 +1,101 @@
+<pa-demo-page>
+    <pa-demo-title>Table lead cell multi line</pa-demo-title>
+
+    <pa-demo-description>
+        <pa-demo-common-table-description></pa-demo-common-table-description>
+    </pa-demo-description>
+
+    <pa-demo-usage>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>clickable</dt>
+            <dd>If true, hovering the cell will display a pointer cursor. <small>(default: false)</small></dd>
+
+            <dt>disabled</dt>
+            <dd>Disable the row by applying an opacity mask and preventing <code>pointer-events</code>. Disabled cell is not focusable. <small>(default: false)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-examples>
+
+        <div style="margin-bottom: 48px">
+            <p>Table with one column</p>
+            <pa-table>
+                <pa-table-header>
+                    <pa-table-cell header>
+                        Column 1
+                    </pa-table-cell>
+                </pa-table-header>
+                <pa-table-row>
+                    <pa-table-lead-cell-multi-line>
+                        <pa-table-lead-image>
+                            <pa-icon path="assets/ninja.svg"></pa-icon>
+                        </pa-table-lead-image>
+                        <pa-table-lead-title>
+                            Some title
+                        </pa-table-lead-title>
+                        <pa-table-lead-description>
+                            Some description
+                        </pa-table-lead-description>
+                    </pa-table-lead-cell-multi-line>
+                </pa-table-row>
+            </pa-table>
+        </div>
+
+        <div style="margin-bottom: 48px">
+            <p>Table with several columns</p>
+            <pa-table columns="1fr 1fr 1fr 1fr">
+                <pa-table-header>
+                    <pa-table-cell header>
+                        Column 1
+                    </pa-table-cell>
+                    <pa-table-cell header>
+                        Column 2
+                    </pa-table-cell>
+                    <pa-table-cell header>
+                        Column 3
+                    </pa-table-cell>
+                    <pa-table-cell header>
+                        Column 4
+                    </pa-table-cell>
+                </pa-table-header>
+                <pa-table-row>
+                    <pa-table-lead-cell-multi-line>
+                        <pa-table-lead-image>
+                            <pa-icon path="assets/ninja.svg"></pa-icon>
+                        </pa-table-lead-image>
+                        <pa-table-lead-title>
+                            Some title
+                        </pa-table-lead-title>
+                        <pa-table-lead-description>
+                            Some description
+                        </pa-table-lead-description>
+                    </pa-table-lead-cell-multi-line>
+
+                    <pa-table-cell>Something else</pa-table-cell>
+                    <pa-table-cell>Something else</pa-table-cell>
+                    <pa-table-cell>Something else</pa-table-cell>
+                </pa-table-row>
+            </pa-table>
+        </div>
+
+
+        <p>Table lead cell multi-line can also be used as a standalone component:</p>
+        <pa-table-lead-cell-multi-line>
+            <pa-table-lead-image>
+                <pa-icon path="assets/ninja.svg"></pa-icon>
+            </pa-table-lead-image>
+            <pa-table-lead-title>
+                Some title
+            </pa-table-lead-title>
+            <pa-table-lead-description>
+                Some description
+            </pa-table-lead-description>
+        </pa-table-lead-cell-multi-line>
+    </pa-demo-examples>
+
+    <pa-demo-code>
+        In this example, we used an icon as lead image but it could be any kind of image.
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>
