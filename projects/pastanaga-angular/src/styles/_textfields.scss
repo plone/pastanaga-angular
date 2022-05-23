@@ -21,12 +21,18 @@ select:-webkit-autofill:focus {
     margin-bottom: $margin-bottom-field;
 
     &:not(.pa-select) pa-icon {
-        left: $padding-field-control-left;
         position: absolute;
         top: $padding-field-control-top;
 
         svg {
             fill: $color-neutral-regular;
+        }
+
+        &:not(.pa-icon-on-right) {
+            left: $padding-field-control-left;
+        }
+        &.pa-icon-on-right {
+            right: $padding-field-control-left;
         }
     }
 
@@ -45,8 +51,11 @@ select:-webkit-autofill:focus {
         transform-origin: 0 0;
         -webkit-transform-origin-y: initial;
 
-        &.pa-field-label-icon {
+        &.pa-field-label-icon:not(.pa-icon-on-right) {
             left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+        }
+        &.pa-field-label-icon.pa-icon-on-right {
+            max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
         }
     }
 
@@ -65,7 +74,7 @@ select:-webkit-autofill:focus {
 
         -webkit-appearance: none;
 
-        &.pa-field-control-icon {
+        &.pa-field-control-icon:not(.pa-icon-on-right) {
             padding-left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
         }
 
@@ -106,7 +115,7 @@ select:-webkit-autofill:focus {
                 transform: scale(.8) translateY(-#{rhythm(4)}) translateX(-#{rhythm(.5)});
                 padding: 0 rhythm(1);
 
-                &.pa-field-label-icon {
+                &.pa-field-label-icon:not(.pa-icon-on-right) {
                     transform: scale(.8) translateY(-#{rhythm(4)}) translateX(calc(-#{rhythm(.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
                 }
             }
