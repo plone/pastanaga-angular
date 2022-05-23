@@ -1,9 +1,29 @@
 <pa-demo-page>
-    <pa-demo-title>Tables</pa-demo-title>
+    <pa-demo-title>Table</pa-demo-title>
 
-    <pa-demo-description>Allows to use Pastanaga table style (based on <code>display: grid</code>).</pa-demo-description>
+    <pa-demo-description>
+        <pa-demo-common-table-description></pa-demo-common-table-description>
+    </pa-demo-description>
 
     <pa-demo-examples>
+        <div style="margin-bottom: 48px">
+            <p>noHeader example:</p>
+            <pa-table noHeader columns="repeat(3, 1fr)">
+                <pa-table-row>
+                    <pa-table-cell>Cell 1</pa-table-cell>
+                    <pa-table-cell>Cell 2</pa-table-cell>
+                    <pa-table-cell>Cell 3</pa-table-cell>
+                </pa-table-row>
+                <pa-table-row>
+                    <pa-table-cell>Cell 1</pa-table-cell>
+                    <pa-table-cell>Cell 2</pa-table-cell>
+                    <pa-table-cell>Cell 3</pa-table-cell>
+                </pa-table-row>
+            </pa-table>
+        </div>
+
+
+        <p>Full example:</p>
         <pa-table columns="minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px">
             <pa-table-header>
                 <pa-table-sortable-header-cell [active]="sorted" [isDescending]="isDescending" (sort)="sortBy()">Name</pa-table-sortable-header-cell>
@@ -40,8 +60,7 @@
     </pa-demo-examples>
 
     <pa-demo-usage>
-        <h3><code>pa-table</code></h3>
-        <p>It can contain <code>pa-table-header</code>, <code>pa-table-sortable-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></p>
+        <h3>Inputs</h3>
         <dl>
             <dt>columns</dt>
             <dd>Define the <code>grid-template-columns</code> CSS attribute value. <small>(optional, default is <code>auto</code>)</small></dd>
@@ -52,66 +71,6 @@
 
             <dt>noHeader</dt>
             <dd>If true, table header is not displayed. <small>(optional)</small></dd>
-        </dl>
-
-        <h3><code>pa-table-header</code></h3>
-        <p> It can contain <code>pa-table-cell</code> and <code>pa-table-cell-menu</code></p>
-
-        <h3><code>pa-table-sortable-header</code></h3>
-        <p>Easy way to manage sorting on a table. On mobile, only the sorted column is displayed and clicking on it display a dropdown with all the sortable columns.</p>
-        <dl>
-            <dt>cells</dt>
-            <dd>List of <code>HeaderCell</code> to display. </dd>
-            <dt>menuColumn</dt>
-            <dd>Add an empty menu column when set <small>(optional)</small></dd>
-            <dt>sort</dt>
-            <dd>Emit sorted <code>HeaderCell</code> when sorting changes</dd>
-        </dl>
-
-        <h3><code>pa-table-row</code></h3>
-        <p> It can contain <code>pa-table-cell</code> and <code>pa-table-cell-menu</code>.
-            Applying the class <code>.pa-selected</code> to a row change its background color to be <code>$color-background-table-row-selected</code>.</p>
-        <dl>
-            <dt>clickable</dt>
-            <dd>If true, hovering the row will display a pointer cursor. <small>(optional)</small></dd>
-            <dt>disabled</dt>
-            <dd>Disable the row by applying an opacity mask and preventing <code>pointer-events</code>. <small>(default: false)</small></dd>
-        </dl>
-
-        <h3><code>pa-table-row-header</code></h3>
-        <p>It renders as a full width row, displaying a label. Free content.</p>
-
-        <h3><code>pa-table-cell</code></h3>
-        <p>It renders as a cell. Free content.</p>
-        <dl>
-            <dt>header</dt>
-            <dd>If true, cell is rendered as a header cell. <small>(optional)</small></dd>
-            <dt>disabled</dt>
-            <dd>Disable the cell by applying an opacity mask and preventing <code>pointer-events</code>. <small>(default: false)</small></dd>
-            <dt>clickable</dt>
-            <dd>If true, hovering the cell will display a pointer cursor. <small>(optional)</small></dd>
-            <dt>noWrap</dt>
-            <dd>Prevent the cell to wrap its content. You can then apply the class <code>pa-ellipsis</code> to your cell content. <small>(Default: false)</small></dd>
-        </dl>
-
-        <h3><code>pa-table-sortable-header-cell</code></h3>
-        <p>It renders as a sortable header cell with a sorting indicator.</p>
-        <dl>
-            <dt>active</dt>
-            <dd>If true, display the sorting indicator icon, otherwise it will display a chevron down icon on hover. <small>(Default: false)</small></dd>
-
-            <dt>isDescending</dt>
-            <dd>Set the sorting indicator to <code>arrow-up</code> icon. <small>By default, sorting indicator is <code>arrow-down</code></small></dd>
-
-            <dt>sort</dt>
-            <dd>Event triggered when clicking on the cell.</dd>
-        </dl>
-
-        <h3><code>pa-table-cell-menu</code></h3>
-        <p>It renders as a cell with centered aligned content and it must contain a <code>pa-button</code>.</p>
-        <dl>
-            <dt>header</dt>
-            <dd>If true, cell is rendered as a header cell and menu button is always visible. <small>(optional)</small></dd>
         </dl>
     </pa-demo-usage>
 

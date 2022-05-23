@@ -3,8 +3,6 @@ import { TableSortableHeaderComponent } from './table-sortable-header.component'
 import { MockComponent, MockModule } from 'ng-mocks';
 import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/table-sortable-header-cell.component';
 import { TableCellMenuComponent } from '../table-cell-menu/table-cell-menu.component';
-import { BehaviorSubject } from 'rxjs';
-import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer';
 import { HeaderCell, SortableHeaderCell } from '../table.models';
 import { PaTranslateModule } from '../../translate/translate.module';
 import { TableCellComponent } from '../table-cell/table-cell.component';
@@ -13,7 +11,6 @@ import { PaDropdownModule } from '../../dropdown/dropdown.module';
 import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('TableSortableHeaderComponent', () => {
-    const mode: BehaviorSubject<ViewportMode> = new BehaviorSubject<ViewportMode>('desktop');
     const createComponent = createComponentFactory({
         imports: [MockModule(PaTranslateModule), MockModule(PaPopupModule), MockModule(PaDropdownModule)],
         declarations: [
@@ -22,14 +19,6 @@ describe('TableSortableHeaderComponent', () => {
             MockComponent(TableSortableHeaderCellComponent),
         ],
         component: TableSortableHeaderComponent,
-        providers: [
-            {
-                provide: BreakpointObserver,
-                useValue: {
-                    currentMode: mode.asObservable(),
-                },
-            },
-        ],
         detectChanges: false,
     });
     let spectator: Spectator<TableSortableHeaderComponent>;
@@ -102,7 +91,7 @@ describe('TableSortableHeaderComponent', () => {
 
     describe('on mobile', () => {
         beforeEach(() => {
-            mode.next('mobile');
+            component.mode = 'mobile';
         });
 
         it('should display the active column only', () => {

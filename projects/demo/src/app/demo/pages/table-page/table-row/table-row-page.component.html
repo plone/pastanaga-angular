@@ -1,0 +1,59 @@
+<pa-demo-page>
+    <pa-demo-title>Table row</pa-demo-title>
+
+    <pa-demo-description>
+        <pa-demo-common-table-description></pa-demo-common-table-description>
+
+        <strong>Note:</strong>
+        <p>Applying the class <code>.pa-selected</code> to a row change its background color to be <code>$color-background-table-row-selected</code>.</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <pa-table columns="128px 128px 1fr 96px">
+            <pa-table-header>
+                <pa-table-cell header>Column 1</pa-table-cell>
+                <pa-table-cell header>Column 2</pa-table-cell>
+                <pa-table-cell header>Column 3</pa-table-cell>
+                <pa-table-cell header>Menu</pa-table-cell>
+            </pa-table-header>
+            <pa-table-row clickable
+                          [class.pa-selected]="selected === 1"
+                          (click)="selected = 1">
+                <pa-table-cell>Row 1</pa-table-cell>
+                <pa-table-cell>is</pa-table-cell>
+                <pa-table-cell>clickable {{selected === 1 ? 'and selected' : ''}}</pa-table-cell>
+                <pa-table-cell-menu><pa-button icon="trash" size="small"></pa-button></pa-table-cell-menu>
+            </pa-table-row>
+            <pa-table-row clickable
+                          [class.pa-selected]="selected === 2"
+                          (click)="selected = 2">
+                <pa-table-cell>Row 2</pa-table-cell>
+                <pa-table-cell>is</pa-table-cell>
+                <pa-table-cell>clickable {{selected === 2 ? 'and selected' : ''}}</pa-table-cell>
+                <pa-table-cell-menu><pa-button icon="trash" size="small"></pa-button></pa-table-cell-menu>
+            </pa-table-row>
+            <pa-table-row disabled
+                          (click)="selected = 3">
+                <pa-table-cell>Row 3</pa-table-cell>
+                <pa-table-cell>is</pa-table-cell>
+                <pa-table-cell>disabled {{selected === 3 ? 'and selected' : ''}}</pa-table-cell>
+                <pa-table-cell-menu><pa-button icon="trash" size="small"></pa-button></pa-table-cell-menu>
+            </pa-table-row>
+        </pa-table>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>clickable</dt>
+            <dd>If true, hovering the row will display a pointer cursor. <small>(default: false)</small></dd>
+            <dt>disabled</dt>
+            <dd>Disable the row by applying an opacity mask and preventing <code>pointer-events</code>. <small>(default: false)</small></dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <p>Code used for the example above, showing clickable, disabled and selected rows.</p>
+        <pre><code>{{code}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>
