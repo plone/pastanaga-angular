@@ -12,9 +12,9 @@
 @import "modal";
 @import "popup";
 @import "scrollbar";
-@import "select";
 @import "tabs";
 @import "tables";
 @import "textfields";
+@import "select"; // textfields must be before select so select style can override select one
 @import "toast";
 @import "tooltip";
