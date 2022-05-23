@@ -1,3 +1,9 @@
+# 2.50.1 (2022-05-23)
+
+### Fixes
+- **Select**: Fix error state: red border but grey label when not expanded [mpellerin42]
+- **Text fields**: Lighter border color when the field is not active [mpellerin42] 
+
 # 2.50.0 (2022-05-20)
 
 ### Breaking changes:
