@@ -1,3 +1,9 @@
+# 2.50.2 (2022-05-24)
+
+### Improvements:
+- **Date picker**: add calendar icon [mpellerin42]
+- **Input**: add iconOnRight option [mpellerin42]
+
 # 2.50.1 (2022-05-23)
 
 ### Fixes
