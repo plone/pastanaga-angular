@@ -8,6 +8,7 @@ import { PaIconModule } from '../icon';
 import { PaPopupModule } from '../popup';
 import { PaTextFieldModule } from '../controls';
 import { markForCheck, TRANSITION_DURATION } from '../common';
+import { PaTranslateModule } from '../translate';
 
 jest.mock('../common', () => ({
     markForCheck: jest.fn(),
@@ -27,6 +28,7 @@ describe('DatePickerComponent', () => {
             MockModule(PaIconModule),
             MockModule(PaPopupModule),
             MockModule(PaTextFieldModule),
+            MockModule(PaTranslateModule),
             ReactiveFormsModule,
         ],
     });

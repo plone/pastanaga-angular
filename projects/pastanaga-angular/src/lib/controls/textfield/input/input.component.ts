@@ -17,6 +17,7 @@ import { NgControl } from '@angular/forms';
 import { TextInputType } from '../../form-field.model';
 import { TextFieldUtilityService } from '../text-field-utility.service';
 import { NativeTextFieldDirective } from '../native-text-field.directive';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-input',
@@ -42,6 +43,14 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
         return this._icon;
     }
 
+    @Input()
+    set iconOnRight(value: any) {
+        this._iconOnRight = coerceBooleanProperty(value);
+    }
+    get iconOnRight(): boolean {
+        return this._iconOnRight;
+    }
+
     @Input() autocapitalize?: string;
 
     override fieldType = 'input';
@@ -49,6 +58,7 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
     private _type: TextInputType = 'text';
     private _icon?: string;
     private _wasNumber = false;
+    private _iconOnRight = false;
 
     constructor(
         override element: ElementRef,
