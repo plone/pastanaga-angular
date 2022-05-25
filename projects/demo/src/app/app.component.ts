@@ -38,19 +38,13 @@ import {
     ScrollbarPageComponent,
     PopoverPageComponent,
     DistributePageComponent,
-    CardPageComponent
+    CardPageComponent,
 } from './demo';
-import {
-    TableSortableHeaderPageComponent
-} from './demo/pages/table-page/table-sortable-header-page/table-sortable-header-page.component';
+import { TableSortableHeaderPageComponent } from './demo/pages/table-page/table-sortable-header-page/table-sortable-header-page.component';
 import { TableRowPageComponent } from './demo/pages/table-page/table-row/table-row-page.component';
 import { TableCellPageComponent } from './demo/pages/table-page/table-cell-page/table-cell-page.component';
-import {
-    TableSortableHeaderCellPageComponent
-} from './demo/pages/table-page/table-sortable-header-cell-page/table-sortable-header-cell-page.component';
-import {
-    TableLeadCellMultiLinePageComponent
-} from './demo/pages/table-page/table-lead-cell-multi-line-page/table-lead-cell-multi-line-page.component';
+import { TableSortableHeaderCellPageComponent } from './demo/pages/table-page/table-sortable-header-cell-page/table-sortable-header-cell-page.component';
+import { TableLeadCellMultiLinePageComponent } from './demo/pages/table-page/table-lead-cell-multi-line-page/table-lead-cell-multi-line-page.component';
 
 export const menu: IDemoMenuSection[] = [
     {
@@ -78,7 +72,7 @@ export const menu: IDemoMenuSection[] = [
             { view: 'chip', title: 'Chip', type: ChipPageComponent },
             { view: 'confirmation-dialog', title: 'Confirmation dialog', type: ConfirmationDialogPageComponent },
             { view: 'modal', title: 'Modal', type: ModalPageComponent },
-                { view: 'datepicker', title: 'Date Picker', type: DatePickerPageComponent },
+            { view: 'datepicker', title: 'Date Picker', type: DatePickerPageComponent },
             { view: 'datetime', title: 'Date/time', type: DateTimePageComponent },
             { view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent },
             { view: 'expander', title: 'Expander', type: ExpanderPageComponent },
@@ -98,10 +92,18 @@ export const menu: IDemoMenuSection[] = [
             { view: 'table', title: 'Table', type: TablePageComponent },
             { view: 'table-row', title: 'Table row', type: TableRowPageComponent },
             { view: 'table-cell', title: 'Table cell', type: TableCellPageComponent },
-            { view: 'table-lead-cell-multi-line', title: 'Table lead cell multi line', type: TableLeadCellMultiLinePageComponent },
+            {
+                view: 'table-lead-cell-multi-line',
+                title: 'Table lead cell multi line',
+                type: TableLeadCellMultiLinePageComponent,
+            },
             { view: 'table-sortable-header', title: 'Table sortable header', type: TableSortableHeaderPageComponent },
-            { view: 'table-sortable-header-cell', title: 'Table sortable header cell', type: TableSortableHeaderCellPageComponent },
-        ]
+            {
+                view: 'table-sortable-header-cell',
+                title: 'Table sortable header cell',
+                type: TableSortableHeaderCellPageComponent,
+            },
+        ],
     },
     {
         title: 'Form elements',

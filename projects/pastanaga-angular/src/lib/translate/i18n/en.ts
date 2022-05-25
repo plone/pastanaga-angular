@@ -1,10 +1,6 @@
 import { TranslationEntries } from '../translate.model';
 
 export const I18N_EN: TranslationEntries = {
-    calendar: {
-        months: 'Months',
-        years: 'Years',
-    },
     pastanaga: {
         add: 'Add',
         back: 'Back',

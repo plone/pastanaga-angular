@@ -117,21 +117,20 @@ import { PopoverPageComponent } from './pages/popover-page/popover-page.componen
 import { DistributePageComponent } from './pages/distribute-page/distribute-page.component';
 import { CardPageComponent } from './pages/card-page/card-page.component';
 import { RouterModule } from '@angular/router';
-import { DatePickerPageComponent } from "./pages/date-picker-page/date-picker-page.component";
 import {
-    CommonTableDescriptionComponent
-} from './pages/table-page/common-table-description/common-table-description.component';
-import {
-    TableSortableHeaderPageComponent
-} from './pages/table-page/table-sortable-header-page/table-sortable-header-page.component';
+    DatePickerConfigComponent,
+    DatePickerPageComponent,
+    DatePickerStandaloneExampleComponent,
+    DatePickerNgModelExampleComponent,
+    DatePickerFormControlExampleComponent,
+    DatePickerFormGroupExampleComponent,
+} from './pages/date-picker-page';
+import { CommonTableDescriptionComponent } from './pages/table-page/common-table-description/common-table-description.component';
+import { TableSortableHeaderPageComponent } from './pages/table-page/table-sortable-header-page/table-sortable-header-page.component';
 import { TableRowPageComponent } from './pages/table-page/table-row/table-row-page.component';
 import { TableCellPageComponent } from './pages/table-page/table-cell-page/table-cell-page.component';
-import {
-    TableSortableHeaderCellPageComponent
-} from './pages/table-page/table-sortable-header-cell-page/table-sortable-header-cell-page.component';
-import {
-    TableLeadCellMultiLinePageComponent
-} from './pages/table-page/table-lead-cell-multi-line-page/table-lead-cell-multi-line-page.component';
+import { TableSortableHeaderCellPageComponent } from './pages/table-page/table-sortable-header-cell-page/table-sortable-header-cell-page.component';
+import { TableLeadCellMultiLinePageComponent } from './pages/table-page/table-lead-cell-multi-line-page/table-lead-cell-multi-line-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -159,7 +158,12 @@ const COMPONENTS = [
     ChipPageComponent,
     ContainerPageComponent,
     ContainerDemoComponent,
+    DatePickerConfigComponent,
     DatePickerPageComponent,
+    DatePickerStandaloneExampleComponent,
+    DatePickerNgModelExampleComponent,
+    DatePickerFormControlExampleComponent,
+    DatePickerFormGroupExampleComponent,
     DateTimePageComponent,
     DropdownPageComponent,
     FocusablePageComponent,

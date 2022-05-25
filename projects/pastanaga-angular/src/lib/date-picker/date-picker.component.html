@@ -1,11 +1,14 @@
 <div [paPopup]="popup" popupOnRight="true" #popupRef="paPopupRef">
-    <pa-input size="small"
-              icon="calendar"
-              iconOnRight
-              [placeholder]="'pastanaga.date-picker.placeholder' | translate"
-              [formControl]="inputControl"
-              [disabled]="disabled"
-              (click)="handleInputClick($event)">{{'pastanaga.date-picker.label' | translate}}</pa-input>
+    <pa-input
+        #input
+        size="small"
+        icon="calendar"
+        iconOnRight
+        [placeholder]="'pastanaga.date-picker.placeholder' | translate"
+        [formControl]="inputControl"
+        (click)="handleInputClick($event)"
+        >{{ 'pastanaga.date-picker.label' | translate }}</pa-input
+    >
 </div>
 <pa-popup [ngSwitch]="mode" #popup (onOpen)="openWeeks()" (onClose)="handlePopupClose()" class="calendar-popup">
     <ng-container *ngSwitchCase="'weeks'">
@@ -35,7 +38,7 @@
             ></pa-button>
         </div>
         <div class="calendar-weekdays">
-            <div *ngFor="let day of days">{{day}}</div>
+            <div *ngFor="let day of days">{{ day }}</div>
         </div>
         <div *ngFor="let week of weeks" class="calendar-row">
             <pa-button
