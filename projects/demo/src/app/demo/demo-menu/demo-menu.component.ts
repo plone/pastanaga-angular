@@ -29,7 +29,6 @@ export class DemoMenuComponent {
         this.visibleMenu = [...items];
     }
     @Input() logo = './assets/p-angular.svg';
-    @Input() activeItem = '';
 
     isMenuVisible = true;
     visibleMenu: IDemoMenuSection[] = [];

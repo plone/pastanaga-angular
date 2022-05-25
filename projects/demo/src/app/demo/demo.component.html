@@ -2,10 +2,9 @@
     <div class="pa-main-side-panel">
         <pa-demo-menu [menu]="menu"
                       [mode]="mode | async"
-                      [activeItem]="activeItem"
                       [logo]="logo"></pa-demo-menu>
     </div>
     <div class="pa-main-container-wide">
-        <traverser-outlet></traverser-outlet>
+        <router-outlet></router-outlet>
     </div>
 </div>

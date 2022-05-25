@@ -6,6 +6,7 @@ import { OptionHeaderModel, OptionModel, OptionSeparator } from '@guillotinaweb/
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPageComponent {
+    model = '';
     selectedTab = 'standalone';
     dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
         new OptionHeaderModel({ id: 'audio', label: 'Audio' }),

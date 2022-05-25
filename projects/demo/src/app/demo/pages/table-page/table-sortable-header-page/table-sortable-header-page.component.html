@@ -1,0 +1,59 @@
+<pa-demo-page>
+    <pa-demo-title>Table sortable header</pa-demo-title>
+
+    <pa-demo-description>
+        <pa-demo-common-table-description></pa-demo-common-table-description>
+
+        <strong>Note:</strong>
+        <p>On mobile, only the sorted column is displayed and clicking on it displays a dropdown with all the sortable columns.</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <p>Header displaying several columns for tablet or desktop</p>
+        <pa-table columns="repeat(3, 1fr)">
+            <pa-table-sortable-header [cells]="headerCells"
+                                      (sort)="sortBy($event)"></pa-table-sortable-header>
+            <pa-table-row *ngFor="let row of rows">
+                <pa-table-cell>{{row.name}}</pa-table-cell>
+                <pa-table-cell>{{row.source}}</pa-table-cell>
+                <pa-table-cell>{{row.status}}</pa-table-cell>
+            </pa-table-row>
+        </pa-table>
+
+        <p>Header displaying only one the active for mobile</p>
+        <pa-table>
+            <pa-table-sortable-header mode="mobile"
+                                      [cells]="headerCells"
+                                      (sort)="sortBy($event)"></pa-table-sortable-header>
+            <pa-table-row *ngFor="let row of rows">
+                <pa-table-lead-cell-multi-line>
+                    <pa-table-lead-image><pa-icon path="assets/ninja.svg"></pa-icon></pa-table-lead-image>
+                    <pa-table-lead-title>{{row.name}}</pa-table-lead-title>
+                    <pa-table-lead-description>{{row.source}}</pa-table-lead-description>
+                </pa-table-lead-cell-multi-line>
+            </pa-table-row>
+        </pa-table>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3>Inputs</h3>
+        <dl>
+            <dt>cells</dt>
+            <dd>List of <code>HeaderCell</code> to display.</dd>
+
+            <dt>menuColumn</dt>
+            <dd>Add an empty menu column when set <small>(optional)</small></dd>
+
+            <dt>sort</dt>
+            <dd>Emit sorted <code>HeaderCell</code> when sorting changes</dd>
+        </dl>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <p>Code for the desktop example above:</p>
+        <pre><code>{{codeDesktop}}</code></pre>
+
+        <p>Code for the mobile example above:</p>
+        <pre><code>{{codeMobile}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>

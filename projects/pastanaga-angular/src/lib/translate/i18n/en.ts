@@ -8,6 +8,10 @@ export const I18N_EN: TranslationEntries = {
     pastanaga: {
         add: 'Add',
         back: 'Back',
+        calendar: {
+            months: 'Months',
+            years: 'Years',
+        },
         cancel: 'Cancel',
         clear: 'Clear',
         close: 'Close',
@@ -21,6 +25,10 @@ export const I18N_EN: TranslationEntries = {
             'one-minute-ago': '1 min ago',
             yesterday: 'Yesterday',
             at: 'at',
+        },
+        'date-picker': {
+            label: 'Pick a date',
+            placeholder: 'Month DD, YYYY'
         },
         delete: 'Delete',
         'deselect-all': 'Deselect all',

@@ -43,7 +43,8 @@
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss",
-                    "skipTests": true
+                    "skipTests": true,
+                    "changeDetection": "OnPush"
                 },
                 "@schematics/angular:class": {
                     "skipTests": true
@@ -103,7 +104,7 @@
                                 {
                                     "type": "initial",
                                     "maximumWarning": "1mb",
-                                    "maximumError": "1.5mb"
+                                    "maximumError": "2.5mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",

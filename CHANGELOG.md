@@ -1,3 +1,34 @@
+# 2.50.2 (2022-05-24)
+
+### Improvements:
+- **Date picker**: add calendar icon [mpellerin42]
+- **Input**: add iconOnRight option [mpellerin42]
+
+# 2.50.1 (2022-05-23)
+
+### Fixes
+- **Select**: Fix error state: red border but grey label when not expanded [mpellerin42]
+- **Text fields**: Lighter border color when the field is not active [mpellerin42] 
+
+# 2.50.0 (2022-05-20)
+
+### Breaking changes:
+- **Table sortable header**: viewport mode is now an input instead of coming directly from breakpoint observer [mpellerin42]
+
+### Improvements:
+- Better documentation for table components and directives [mpellerin42]
+
+# 2.49.1 (2022-05-18)
+
+### Fix
+- npm deps update to fix the publish step of Pastanaga workflow [mpellerin42]
+
+# 2.49.0 (2022-05-18)
+
+### Breaking changes:
+- **Demo**: replace traversing by routing in the demo [mpellerin42]
+
+
 # 2.48.0 (2022-05-07)
 
 ### Feature
