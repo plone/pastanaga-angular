@@ -7,6 +7,7 @@ export const I18N_EN: TranslationEntries = {
         calendar: {
             months: 'Months',
             years: 'Years',
+            'invalid-format': 'Invalid date format'
         },
         cancel: 'Cancel',
         clear: 'Clear',

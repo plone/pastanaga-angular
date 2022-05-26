@@ -1,3 +1,8 @@
+# 2.50.3 (2022-05-25)
+
+### Improvements:
+- **Date picker**: subclass `PaFormControlDirective` and demo [dgsmith2]
+
 # 2.50.2 (2022-05-24)
 
 ### Improvements:

@@ -5,6 +5,7 @@
         icon="calendar"
         iconOnRight
         [placeholder]="'pastanaga.date-picker.placeholder' | translate"
+        [readonly]="readonly"
         [formControl]="inputControl"
         (click)="handleInputClick($event)"
         >{{ 'pastanaga.date-picker.label' | translate }}</pa-input
@@ -63,7 +64,7 @@
                 icon="chevron-left"
             ></pa-button>
         </div>
-        <div>
+        <div class="calendar-list">
             <div
                 *ngFor="let year of years"
                 (click)="selectYear($event, year.number)"
@@ -85,7 +86,7 @@
                 icon="chevron-left"
             ></pa-button>
         </div>
-        <div>
+        <div class="calendar-list">
             <div
                 *ngFor="let month of months; index as i"
                 (click)="selectMonth($event, i)"
