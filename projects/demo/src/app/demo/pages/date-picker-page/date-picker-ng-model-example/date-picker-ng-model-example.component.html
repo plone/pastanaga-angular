@@ -1,0 +1,20 @@
+<div class="component">
+    <pa-date-picker
+        [(ngModel)]="model"
+        [disabled]="config.disabled"
+        [readonly]="config.readonly"
+        [errorMessage]="config.errorMessage"
+        [maxlength]="config.maxlength"
+        (valueChange)="valueChangeEvent = $event"
+        (statusChange)="statusChangeEvent = $event"
+        (ngModelChange)="ngModelChangeEvent = $event"
+    >
+    </pa-date-picker>
+
+    <ul>
+        <li>value change event: {{ valueChangeEvent | json }}</li>
+        <li>status change event: {{ statusChangeEvent | json }}</li>
+        <li>ngModelChange event: {{ ngModelChangeEvent | json }}</li>
+    </ul>
+</div>
+<pa-demo-date-picker-config (configChanged)="updateConfig($event)"></pa-demo-date-picker-config>

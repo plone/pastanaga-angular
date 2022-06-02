@@ -2,10 +2,12 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ElementRef,
     Inject,
     Input,
     LOCALE_ID,
-    OnInit,
+    Optional,
+    Self,
     ViewChild,
 } from '@angular/core';
 import {
@@ -27,11 +29,12 @@ import {
     subMonths,
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { debounceTime, map } from 'rxjs/operators';
+import { AbstractControl, FormControl, NgControl } from '@angular/forms';
+import { debounceTime, filter, map } from 'rxjs/operators';
 import { markForCheck, TRANSITION_DURATION } from '../common';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { formatDate } from '@angular/common';
+import { InputComponent, PaFormControlDirective } from '../controls';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 export interface Day {
     otherMonth: boolean;
@@ -65,41 +68,16 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     templateUrl: './date-picker.component.html',
     styleUrls: ['./date-picker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            multi: true,
-            useExisting: DatePickerComponent,
-        },
-    ],
 })
-export class DatePickerComponent implements OnInit, ControlValueAccessor {
+export class DatePickerComponent extends PaFormControlDirective {
     private _selectedDate?: Date;
-
-    private _onChange = (date: Date | undefined) => {};
-
-    private _onTouched = () => {};
-
-    private _touched = false;
-
-    formControl: FormControl;
 
     @ViewChild('popupRef') popupDirective?: PopupDirective;
     @ViewChild('popup') popup?: PopupComponent;
+    @ViewChild('input') input?: InputComponent;
 
-    @Input()
-    get date() {
-        return this._selectedDate;
-    }
-
-    set date(date: Date | undefined) {
-        this._selectedDate = date && startOfDay(date);
-        this.trackedDate = this._selectedDate || new Date();
-
-        this._updateInput();
-    }
-
-    trackedDate!: Date;
+    trackedDate: Date;
+    inputControl: FormControl;
 
     mode: 'weeks' | 'months' | 'years' = 'weeks';
 
@@ -108,50 +86,70 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     years: Year[] | undefined;
     months: Month[] | undefined;
 
-    @Input() set disabled(value: any) {
+    @Input()
+    override get disabled() {
+        return this.inputControl.disabled;
+    }
+
+    override set disabled(value: any) {
         this.setDisabledState(coerceBooleanProperty(value));
     }
 
-    get disabled() {
-        return this.formControl.disabled;
-    }
-
-    constructor(@Inject(LOCALE_ID) private locale: string, private cdr: ChangeDetectorRef) {
-        this.formControl = new FormControl(null, (control: AbstractControl) => {
-            if (!DATE_FORMATS.some((format) => isMatch(control.value, format))) {
+    constructor(
+        @Inject(LOCALE_ID) private locale: string,
+        element: ElementRef,
+        @Optional() @Self() parentControl: NgControl,
+        cdr: ChangeDetectorRef,
+    ) {
+        super(element, parentControl, cdr);
+        this.trackedDate = new Date();
+        this.inputControl = new FormControl(null, (control: AbstractControl) => {
+            if (control.value && !DATE_FORMATS.some((format) => isMatch(control.value, format))) {
                 return {
-                    invalidFormat: 'Invalid date format',
+                    invalidFormat: 'pastanaga.calendar.invalid-format',
                 };
             }
 
             return null;
         });
-        this.trackedDate = new Date();
+        // @ts-ignore
+        this.valueCompare = <D extends Date>(a: D, b: D) => isEqual(a, b);
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
+        super.ngOnInit();
+
+        // whenever date value changes make sure it is reflected in the input
+        this.control.valueChanges.pipe(filter((value) => !!value)).subscribe((value: Date) => {
+            const date = formatDate(value, 'longDate', this.locale);
+
+            // don't emit event because input only needs to respond to a change, not initiate
+            this.inputControl.setValue(date, { emitEvent: false });
+        });
+
         // honor text entry
-        this.formControl.valueChanges
+        this.inputControl.valueChanges
             .pipe(
                 debounceTime(TRANSITION_DURATION.moderate),
-                map((value) => DATE_FORMATS.find((format) => isMatch(value, format)) || null),
+                map((value) => ({
+                    value,
+                    format: DATE_FORMATS.find((format) => isMatch(value, format)) || null,
+                })),
             )
-            .subscribe((format) => {
+            .subscribe(({ value, format }) => {
+                let date: Date | undefined = undefined;
+
                 if (!format) {
-                    this._selectedDate = undefined;
-                    if (!this.formControl.value) {
+                    if (!value) {
                         this.trackedDate = new Date();
                     }
                 } else {
                     // this maintains the user's format for now
-                    const date = parse(this.formControl.value, format, this.trackedDate);
-                    this._selectedDate = date;
-                    this.trackedDate = date;
+                    date = parse(value, format, this.trackedDate);
                 }
 
+                this.setDate(date);
                 this.generateWeeks();
-                this._onChange(this._selectedDate);
-
                 markForCheck(this.cdr);
             });
     }
@@ -214,7 +212,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
 
     handleInputClick(event: MouseEvent) {
-        if (this.popup?.isDisplayed || this.disabled) {
+        if (this.popup?.isDisplayed || this.disabled || this.readonly) {
             // using companionElement doesn't behave correctly; intercepting the click before
             // it bubbles up to the popup directive to keep open
             event.stopPropagation();
@@ -222,9 +220,8 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
         }
 
         // mark as touched
-        if (!this.disabled && !this._touched && this._onTouched) {
-            this._onTouched();
-            this._touched = true;
+        if (!this.disabled && !this.readonly && this.onTouched) {
+            this.onTouched();
         }
     }
 
@@ -275,41 +272,25 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
         this.popupDirective?.toggle();
 
         // change date
-        this.date = day.date;
-        this._onChange(day.date);
+        this.setDate(day.date);
+
+        this.input?.htmlInputRef?.nativeElement.focus();
     }
 
-    private _updateInput() {
-        if (this._selectedDate) {
-            this.formControl.setValue(formatDate(this._selectedDate, 'longDate', this.locale));
+    private setDate(date: Date | undefined) {
+        this._selectedDate = date && startOfDay(date);
+        this.trackedDate = this._selectedDate || new Date();
+        this.onChange(this._selectedDate);
+    }
+
+    override setDisabledState(isDisabled: boolean) {
+        if (isDisabled === this.inputControl.disabled) {
+            return;
         }
-    }
-
-    /*
-     * ControlValueAccessor
-     */
-
-    writeValue(date: Date): void {
-        if (date) {
-            this.date = date;
-        }
-    }
-
-    registerOnChange(onChange: any): void {
-        this._onChange = onChange;
-    }
-
-    registerOnTouched(onTouched: any): void {
-        this._onTouched = onTouched;
-    }
-
-    setDisabledState(disabled: boolean) {
-        if (disabled !== this.formControl.disabled) {
-            if (disabled) {
-                this.formControl.disable();
-            } else {
-                this.formControl.enable();
-            }
+        if (isDisabled) {
+            this.inputControl.disable();
+        } else {
+            this.inputControl.enable();
         }
     }
 }

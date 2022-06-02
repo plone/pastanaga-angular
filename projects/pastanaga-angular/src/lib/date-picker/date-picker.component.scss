@@ -81,6 +81,11 @@
         }
     }
 
+    .calendar-list {
+        max-height: rhythm(32);
+        overflow: scroll;
+    }
+
     .calendar-list-item {
         padding: rhythm(1.5);
         font-size: font-size(m);

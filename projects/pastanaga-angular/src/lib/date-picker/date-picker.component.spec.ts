@@ -1,6 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { addMonths, format, parse, setMonth, setYear, subMonths } from 'date-fns';
+import { addMonths, parse, setMonth, setYear, startOfDay, subMonths } from 'date-fns';
 import { MockModule } from 'ng-mocks';
 import { DatePickerComponent, Day } from './date-picker.component';
 import { PaButtonModule } from '../button';
@@ -8,6 +8,7 @@ import { PaIconModule } from '../icon';
 import { PaPopupModule } from '../popup';
 import { PaTextFieldModule } from '../controls';
 import { markForCheck, TRANSITION_DURATION } from '../common';
+import { formatDate } from '@angular/common';
 import { PaTranslateModule } from '../translate';
 
 jest.mock('../common', () => ({
@@ -49,23 +50,50 @@ describe('DatePickerComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    describe('form control changes', () => {
+    describe('value control changes', () => {
+        beforeEach(() => {
+            component.inputControl.setValue = jest.fn();
+        });
+
+        it('should do  nothing for null value', () => {
+            // === Execute ===
+            component.control.setValue(null);
+
+            // === Verify ===
+            expect(component.inputControl.setValue).not.toHaveBeenCalled();
+        });
+
+        it('should update input control with value', () => {
+            // === Setup ===
+            const text = 'March 22, 1980';
+            const date = formatDate(text, 'longDate', componentAny.locale);
+
+            // === Execute ===
+            component.control.setValue(text);
+
+            // === Verify ===
+            expect(component.inputControl.setValue).toHaveBeenCalledWith(date, { emitEvent: false });
+        });
+    });
+
+    describe('input control changes', () => {
         beforeEach(() => {
             componentAny.generateWeeks = jest.fn();
+            componentAny.setDate = jest.fn();
         });
 
         it('should debounce', () => {
             // === Execute ===
-            component.formControl.setValue(null);
+            component.inputControl.setValue(null);
 
             // === Verify ===
             expect(componentAny.generateWeeks).not.toHaveBeenCalled();
-            expect(markForCheck).not.toHaveBeenCalled();
 
             // === Execute ===
             jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
+            expect(componentAny.setDate).toHaveBeenCalled();
             expect(componentAny.generateWeeks).toHaveBeenCalled();
             expect(markForCheck).toHaveBeenCalledWith(componentAny.cdr);
         });
@@ -78,25 +106,25 @@ describe('DatePickerComponent', () => {
             jest.setSystemTime(date);
 
             // === Execute ===
-            component.formControl.setValue(null);
+            component.inputControl.setValue(null);
             jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
-            expect(componentAny._selectedDate).toBe(undefined);
+            expect(componentAny.setDate).toHaveBeenCalledWith(undefined);
+            expect(componentAny.generateWeeks).toHaveBeenCalled();
+            expect(markForCheck).toHaveBeenCalledWith(componentAny.cdr);
             expect(component.trackedDate.getTime()).toEqual(date.getTime() + TRANSITION_DURATION.moderate);
         });
 
         it('should clear date for invalid value', () => {
-            // === Setup ===
-            const tracked = (component.trackedDate = new Date());
-
             // === Execute ===
-            component.formControl.setValue('foobar');
+            component.inputControl.setValue('foobar');
             jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
-            expect(componentAny._selectedDate).toBe(undefined);
-            expect(component.trackedDate).toBe(tracked);
+            expect(componentAny.setDate).toHaveBeenCalledWith(undefined);
+            expect(componentAny.generateWeeks).toHaveBeenCalled();
+            expect(markForCheck).toHaveBeenCalledWith(componentAny.cdr);
         });
 
         it('should update with date', () => {
@@ -105,12 +133,13 @@ describe('DatePickerComponent', () => {
             const expected = parse(value, "MMMM d',' yyyy", new Date());
 
             // === Execute ===
-            component.formControl.setValue(value);
+            component.inputControl.setValue(value);
             jest.advanceTimersByTime(TRANSITION_DURATION.moderate);
 
             // === Verify ===
-            expect(componentAny._selectedDate).toEqual(expected);
-            expect(component.trackedDate).toEqual(expected);
+            expect(componentAny.setDate).toHaveBeenCalledWith(expected);
+            expect(componentAny.generateWeeks).toHaveBeenCalled();
+            expect(markForCheck).toHaveBeenCalledWith(componentAny.cdr);
         });
     });
 
@@ -139,7 +168,7 @@ describe('DatePickerComponent', () => {
 
         it('should get value from control', () => {
             // === Setup ===
-            const getter = jest.spyOn(component.formControl, 'disabled', 'get').mockReturnValue(true);
+            const getter = jest.spyOn(component.inputControl, 'disabled', 'get').mockReturnValue(true);
 
             // === Verify ===
             expect(component.disabled).toBe(true);
@@ -234,6 +263,7 @@ describe('DatePickerComponent', () => {
             component.popup = { isDisplayed: true } as any;
             componentAny._touched = false;
             jest.spyOn(component, 'disabled', 'get').mockReturnValue(false);
+            component.readonly = false;
             const touched = jest.fn();
             component.registerOnTouched(touched);
 
@@ -243,6 +273,7 @@ describe('DatePickerComponent', () => {
             // === Verify ===
             expect(event.stopPropagation).toHaveBeenCalled();
             expect(event.preventDefault).toHaveBeenCalled();
+            expect(touched).toHaveBeenCalled();
         });
 
         it('should trap events when input is disabled', () => {
@@ -250,6 +281,7 @@ describe('DatePickerComponent', () => {
             component.popup = { isDisplayed: false } as any;
             componentAny._touched = false;
             jest.spyOn(component, 'disabled', 'get').mockReturnValue(true);
+            component.readonly = false;
             const touched = jest.fn();
             component.registerOnTouched(touched);
 
@@ -259,12 +291,32 @@ describe('DatePickerComponent', () => {
             // === Verify ===
             expect(event.stopPropagation).toHaveBeenCalled();
             expect(event.preventDefault).toHaveBeenCalled();
+            expect(touched).not.toHaveBeenCalled();
+        });
+
+        it('should trap events when input is readonly', () => {
+            // === Setup ===
+            component.popup = { isDisplayed: false } as any;
+            componentAny._touched = false;
+            jest.spyOn(component, 'disabled', 'get').mockReturnValue(false);
+            component.readonly = true;
+            const touched = jest.fn();
+            component.registerOnTouched(touched);
+
+            // === Execute ===
+            component.handleInputClick(event);
+
+            // === Verify ===
+            expect(event.stopPropagation).toHaveBeenCalled();
+            expect(event.preventDefault).toHaveBeenCalled();
+            expect(touched).not.toHaveBeenCalled();
         });
 
         it('should not trap events when popup is not displayed', () => {
             // === Setup ===
             component.popup = { isDisplayed: false } as any;
-            componentAny._touched = false;
+            const touched = jest.fn();
+            component.registerOnTouched(touched);
 
             // === Execute ===
             component.handleInputClick(event);
@@ -272,34 +324,7 @@ describe('DatePickerComponent', () => {
             // === Verify ===
             expect(event.stopPropagation).not.toHaveBeenCalled();
             expect(event.preventDefault).not.toHaveBeenCalled();
-        });
-
-        it('should mark as touched when not disabled', () => {
-            // === Setup ===
-            const touched = jest.fn();
-            component.registerOnTouched(touched);
-            jest.spyOn(component, 'disabled', 'get').mockReturnValue(false);
-
-            // === Execute ===
-            component.handleInputClick(event);
-
-            // === Verify ===
             expect(touched).toHaveBeenCalled();
-            expect(componentAny._touched).toBe(true);
-        });
-
-        it('should not mark as touched when disabled', () => {
-            // === Setup ===
-            const touched = jest.fn();
-            component.registerOnTouched(touched);
-            jest.spyOn(component, 'disabled', 'get').mockReturnValue(true);
-
-            // === Execute ===
-            component.handleInputClick(event);
-
-            // === Verify ===
-            expect(touched).not.toHaveBeenCalled();
-            expect(componentAny._touched).toBe(false);
         });
     });
 
@@ -429,85 +454,58 @@ describe('DatePickerComponent', () => {
     it('should select day', () => {
         // === Setup ===
         component.popupDirective!.toggle = jest.fn();
-        const spy = jest.spyOn(component, 'date', 'set');
-        const onChange = jest.fn();
-        component.registerOnChange(onChange);
+        const setDate = (componentAny.setDate = jest.fn());
         const day = {
             date: new Date(),
         } as Day;
+        component.input = {
+            htmlInputRef: {
+                nativeElement: {
+                    focus: jest.fn(),
+                },
+            },
+        } as any;
 
         // === Execute ===
         component.selectDay(day);
 
         // === Verify ===
-        expect(spy).toHaveBeenCalledWith(day.date);
-        expect(onChange).toHaveBeenCalledWith(day.date);
+        expect(setDate).toHaveBeenCalledWith(day.date);
+        expect(component.input?.htmlInputRef?.nativeElement.focus).toHaveBeenCalled();
     });
 
-    describe('updating input', () => {
+    describe('setting date', () => {
         beforeEach(() => {
-            component.formControl.setValue = jest.fn();
+            component.onChange = jest.fn();
         });
 
-        it('should format selected date', () => {
+        it('should use date value', () => {
             // === Setup ===
             const date = new Date();
-            componentAny._selectedDate = date;
+            const expected = startOfDay(date);
 
             // === Execute ===
-            componentAny._updateInput();
+            componentAny.setDate(date);
 
             // === Verify ===
-            expect(component.formControl.setValue).toHaveBeenCalledWith(format(date, "MMMM d',' yyyy"));
+            expect(componentAny._selectedDate).toEqual(expected);
+            expect(component.trackedDate).toEqual(expected);
+            expect(component.onChange).toHaveBeenCalledWith(expected);
         });
 
-        it('should do nothing when no date is selected', () => {
+        it('should handle undefined', () => {
+            // === Setup ===
+            const expected = new Date();
+            jest.setSystemTime(expected);
+
             // === Execute ===
-            componentAny._updateInput();
+            componentAny.setDate(undefined);
 
             // === Verify ===
-            expect(component.formControl.setValue).not.toHaveBeenCalled();
+            expect(componentAny._selectedDate).toEqual(undefined);
+            expect(component.trackedDate).toEqual(expected);
+            expect(component.onChange).toHaveBeenCalledWith(undefined);
         });
-    });
-
-    it('should write date only when defined', () => {
-        // === Setup ===
-        const expected = new Date();
-        const spy = jest.spyOn(component, 'date', 'set');
-
-        // === Execute ===
-        component.writeValue(expected);
-
-        // === Verify ===
-        expect(spy).toHaveBeenCalledWith(expected);
-
-        // === Execute ===
-        component.writeValue(null as any);
-
-        // === Verify ===
-        expect(spy).not.toHaveBeenCalledWith(null);
-    });
-
-    it('should register on change', () => {
-        // === Setup ===
-        const expected = jest.fn();
-
-        // === Execute ===
-        component.registerOnChange(expected);
-
-        // === Verify ===
-        expect(componentAny._onChange).toBe(expected);
-    });
-
-    it('should register on touched', () => {
-        // === Setup ===
-        const expected = jest.fn();
-
-        // === Execute ===
-        component.registerOnTouched(expected);
-
-        // === Verify ===
-        expect(componentAny._onTouched).toBe(expected);
     });
 
     it('should set disabled state', () => {
@@ -522,49 +520,49 @@ describe('DatePickerComponent', () => {
         it('should do nothing if already enabled', () => {
             // === Setup ===
             component.setDisabledState(false);
-            component.formControl.enable = jest.fn();
+            component.inputControl.enable = jest.fn();
 
             // === Execute ===
             component.setDisabledState(false);
 
             // === Verify ===
-            expect(component.formControl.enable).not.toHaveBeenCalled();
+            expect(component.inputControl.enable).not.toHaveBeenCalled();
         });
 
         it('should do nothing if already disabled', () => {
             // === Setup ===
             component.setDisabledState(true);
-            component.formControl.disable = jest.fn();
+            component.inputControl.disable = jest.fn();
 
             // === Execute ===
             component.setDisabledState(true);
 
             // === Verify ===
-            expect(component.formControl.disable).not.toHaveBeenCalled();
+            expect(component.inputControl.disable).not.toHaveBeenCalled();
         });
 
         it('should become disabled', () => {
             // === Setup ===
             component.setDisabledState(false);
-            component.formControl.disable = jest.fn();
+            component.inputControl.disable = jest.fn();
 
             // === Execute ===
             component.setDisabledState(true);
 
             // === Verify ===
-            expect(component.formControl.disable).toHaveBeenCalled();
+            expect(component.inputControl.disable).toHaveBeenCalled();
         });
 
         it('should become enabled', () => {
             // === Setup ===
             component.setDisabledState(true);
-            component.formControl.enable = jest.fn();
+            component.inputControl.enable = jest.fn();
 
             // === Execute ===
             component.setDisabledState(false);
 
             // === Verify ===
-            expect(component.formControl.enable).toHaveBeenCalled();
+            expect(component.inputControl.enable).toHaveBeenCalled();
         });
     });
 });
