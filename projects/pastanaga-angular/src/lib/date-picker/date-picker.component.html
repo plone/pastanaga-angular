@@ -4,11 +4,10 @@
         size="small"
         icon="calendar"
         iconOnRight
-        [placeholder]="'pastanaga.date-picker.placeholder' | translate"
         [readonly]="readonly"
         [formControl]="inputControl"
         (click)="handleInputClick($event)"
-        >{{ 'pastanaga.date-picker.label' | translate }}</pa-input
+        >{{ label || 'pastanaga.date-picker.label' | translate }}</pa-input
     >
 </div>
 <pa-popup [ngSwitch]="mode" #popup (onOpen)="openWeeks()" (onClose)="handlePopupClose()" class="calendar-popup">

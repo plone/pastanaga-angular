@@ -25,7 +25,6 @@ export const I18N_EN: TranslationEntries = {
         },
         'date-picker': {
             label: 'Pick a date',
-            placeholder: 'Month DD, YYYY'
         },
         delete: 'Delete',
         'deselect-all': 'Deselect all',

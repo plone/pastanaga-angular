@@ -1,3 +1,9 @@
+# 2.50.4 (2022-06-13)
+
+### Improvements:
+- **Date picker**: customizable label (placeholder) [dgsmith2]
+  - Accepts text as well as key to be processed by `TranslatePipe`
+
 # 2.50.3 (2022-05-25)
 
 ### Improvements:

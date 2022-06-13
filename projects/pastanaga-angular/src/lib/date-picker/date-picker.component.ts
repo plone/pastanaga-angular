@@ -87,6 +87,9 @@ export class DatePickerComponent extends PaFormControlDirective {
     months: Month[] | undefined;
 
     @Input()
+    label: string | undefined;
+
+    @Input()
     override get disabled() {
         return this.inputControl.disabled;
     }
