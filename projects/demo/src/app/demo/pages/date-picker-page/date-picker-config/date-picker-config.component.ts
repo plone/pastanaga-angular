@@ -16,6 +16,7 @@ export class DatePickerConfigComponent implements OnInit {
     pattern = /.?test.?/;
 
     stateForm = new FormGroup({
+        label: new FormControl(),
         disabled: new FormControl(),
         readonly: new FormControl(),
         errorMessage: new FormControl(),

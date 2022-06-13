@@ -4,6 +4,16 @@
         <legend>Input state</legend>
         <div class="state-option">
             <div class="option">
+                <input formControlName="label" [value]="null" id="labelUndefined" type="radio">
+                <label for="labelUndefined">label undefined</label>
+            </div>
+            <div class="option">
+                <input formControlName="label" value="Birthday" id="labelValuated" type="radio">
+                <label for="labelValuated">with label</label>
+            </div>
+        </div>
+        <div class="state-option">
+            <div class="option">
                 <input formControlName="disabled" [value]="null" id="disabledUndefined" type="radio" />
                 <label for="disabledUndefined">disabled undefined</label>
             </div>
