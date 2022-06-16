@@ -142,6 +142,7 @@ $border-button-basic-disabled:        none !default;
 
 // radius
 $border-radius-button: 100px !default;
+$border-radius-button-icon: 50% !default;
 
 
 //=====================================
@@ -355,7 +356,7 @@ $font-weight-button-label: $font-weight-semi-bold !default;
 
 @mixin disabled-inverted-solid() {
     color: $color-text-button-inverted-solid-disabled;
-    background: $color-text-button-inverted-solid-disabled;
+    background: $color-background-button-inverted-solid-disabled;
     border: $border-button-solid-disabled;
 }
 
