@@ -14,7 +14,8 @@
   - Add a CSS transition on button color
   - Tokenize button icon border radius
 - **Demo**: Improve readability of usage by using a darker neutral color for `small` tags [mpellerin42]
-- **Checkboxes**: Add some tokens for checkbox disabled colors [mpellerin42]
+- **Checkboxes**: Add tokens for checkbox disabled colors [mpellerin42]
+- **Scrollbars**: Add tokens for scrollbar border radius and distinction between active and inactive state [mpellerin42]
 
 # 2.50.4 (2022-06-13)
 
