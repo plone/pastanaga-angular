@@ -9,10 +9,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/guillotinaweb/pastanaga-angular"
+        "url": "git+https://github.com/plone/pastanaga-angular"
     },
     "bugs": {
-        "url": "https://github.com/guillotinaweb/pastanaga-angular/issues"
+        "url": "https://github.com/plone/pastanaga-angular/issues"
     },
     "peerDependencies": {
         "@angular/common": "^13.0.1",
