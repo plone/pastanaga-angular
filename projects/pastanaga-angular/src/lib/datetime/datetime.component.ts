@@ -34,7 +34,7 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
 
     private _dateOnly = false;
     private _displaySeconds = false;
-    private _terminator = new Subject();
+    private _terminator = new Subject<void>();
     formattedTime = '';
 
     constructor(private service: DateTimeService, private cdr: ChangeDetectorRef) {

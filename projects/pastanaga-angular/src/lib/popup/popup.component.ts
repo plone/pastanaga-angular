@@ -80,7 +80,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     private _adjustHeight = false;
     private _popupType: 'popup' | 'dropdown' | 'menu' = 'popup';
     private _originalHeight = 0;
-    private _terminator = new Subject();
+    private _terminator = new Subject<void>();
 
     constructor(
         protected popupService: PopupService,
@@ -115,7 +115,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     show(style: PositionStyle) {
-        if (!this.keepOthersOpen) {
+        if (!this.keepOthersOpen && this.id) {
             this.popupService.closeAllButId.next(this.id);
         }
         this.style = style;

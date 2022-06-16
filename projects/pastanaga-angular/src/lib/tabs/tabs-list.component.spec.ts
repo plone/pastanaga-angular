@@ -23,7 +23,7 @@ describe('TabsListComponent', () => {
         detectChanges: false,
     });
 
-    const tabsSelected = [new Subject(), new Subject(), new Subject()];
+    const tabsSelected = [new Subject<void>(), new Subject<void>(), new Subject<void>()];
     const tabsRect = [
         jest.fn(() => {
             return { x: 10, width: 10 };

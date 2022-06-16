@@ -45,7 +45,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
 
     @ContentChild(ExpanderBodyDirective, { read: ElementRef }) expanderContent?: ElementRef;
 
-    terminator = new Subject();
+    terminator = new Subject<void>();
     expanded = true;
     contentHidden = false;
 

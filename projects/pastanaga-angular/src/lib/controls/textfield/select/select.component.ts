@@ -78,12 +78,12 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
      * either the selected option label, either the placeholder
      */
     displayedValue?: string;
-    private optionsClosed$ = new Subject();
-    private contentOptionsChanged$ = new Subject();
+    private optionsClosed$ = new Subject<void>();
+    private contentOptionsChanged$ = new Subject<void>();
     private _hasFocus = false;
     private _dim = false;
 
-    protected _terminator = new Subject();
+    protected _terminator = new Subject<void>();
 
     constructor(
         protected override element: ElementRef,
