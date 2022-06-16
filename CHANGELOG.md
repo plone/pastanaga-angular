@@ -13,6 +13,7 @@
 - **Button**: [mpellerin42]
   - Add a CSS transition on button color
   - Tokenize button icon border radius
+- **Demo**: Improve readability of usage by using a darker neutral color for `small` tags [mpellerin42]
 
 # 2.50.4 (2022-06-13)
 
