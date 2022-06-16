@@ -12,6 +12,10 @@ export class BaseChip {
 
     @Input() value?: any;
 
+    @Input() backgroundColor?: string;
+    @Input() textColor?: string;
+    @Input() borderColor?: string;
+
     @Input() set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }

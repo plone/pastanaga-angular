@@ -21,7 +21,7 @@ export class TabItemComponent {
     }
 
     _active = false;
-    selected = new Subject();
+    selected = new Subject<void>();
     isMobile = this.bp.currentMode.pipe(map((mode) => mode === 'mobile'));
 
     @HostBinding('class.active') get valid() {

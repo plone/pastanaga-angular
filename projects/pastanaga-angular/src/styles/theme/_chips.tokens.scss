@@ -1,0 +1,16 @@
+@import "palette.tokens";
+@import "spacing.tokens";
+@import "typography.tokens";
+
+$color-background-chip-default: $color-neutral-lightest !default;
+$color-background-chip-default-hover: $color-neutral-lighter !default;
+$color-background-chip-default-selected: $color-primary-lightest !default;
+$color-background-chip-default-disabled: $color-neutral-light !default;
+
+$border-radius-chip: rhythm(5) !default;
+
+$border-chip: 1px solid transparent !default;
+$border-chip-disabled: 1px solid transparent !default;
+$border-chip-selected: 1px solid transparent !default;
+
+$font-size-chip: font-size(s) !default;

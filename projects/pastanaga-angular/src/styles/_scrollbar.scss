@@ -2,7 +2,7 @@
 
 .pa-scrollable-container {
     overflow-y: auto;
-    overflow-y: overlay;
+    scrollbar-gutter: auto;
 }
 
 .pa-scrollable {
@@ -12,12 +12,12 @@
     }
 
     &::-webkit-scrollbar-track {
-        background: transparent;
+        background: $color-scrollbar-track;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: transparent;
-        border-radius: rhythm(3);
+        background-color: $color-scrollbar-thumb;
+        border-radius: $scrollbar-border-radius;
         border: $scrollbar-padding-mobile solid $color-scrollbar-thumb-border;
         min-height: rhythm(4);
     }
@@ -26,6 +26,9 @@
         &::-webkit-scrollbar-thumb {
             background-color: $color-scrollbar-thumb-active;
         }
+        &::-webkit-scrollbar-track {
+            background: $color-scrollbar-track-active;
+        }
     }
 
     @media (min-width: $size-viewport-large-min) {
@@ -33,10 +36,10 @@
             width: $scrollbar-width-desktop;
         }
         &::-webkit-scrollbar-thumb {
-            border: $scrollbar-padding-desktop solid transparent;
+            border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border;
         }
         &.pa-scrolling::-webkit-scrollbar-thumb {
-            border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border;
+            border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border-active;
         }
     }
 }

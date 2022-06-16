@@ -77,7 +77,7 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
 
     private _maxlength?: number;
     private _noAutoComplete = false;
-    private _stopAutoCompleteMonitor = new Subject();
+    private _stopAutoCompleteMonitor = new Subject<void>();
     private _hasFocus = false;
 
     constructor(

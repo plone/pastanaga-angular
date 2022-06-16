@@ -42,7 +42,7 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
 
     private _displayAsTabOnMobile = false;
     private _xPosition = 0;
-    private _terminator = new Subject();
+    private _terminator = new Subject<void>();
 
     constructor(private ref: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 

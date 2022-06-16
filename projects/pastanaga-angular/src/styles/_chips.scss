@@ -4,14 +4,15 @@ $chip-max-width-small: rhythm(32);
 $chip-max-width-medium: rhythm(56);
 
 .pa-chip {
-    display: inline-flex;
     align-items: center;
-    background: $color-neutral-lightest;
+    background: $color-background-chip-default;
+    border: $border-chip;
+    border-radius: $border-radius-chip;
+    display: inline-flex;
     height: rhythm(4);
     max-width: $chip-max-width-small;
-    padding: rhythm(.5) rhythm(1.5);
-    border-radius: rhythm(5);
     overflow: hidden;
+    padding: rhythm(.5) rhythm(1.5);
 
     &.pa-with-avatar {
         padding-left: rhythm(.5);
@@ -29,14 +30,16 @@ $chip-max-width-medium: rhythm(56);
         cursor: pointer;
 
         &:hover {
-            background: $color-neutral-lighter;
+            background: $color-background-chip-default-hover;
         }
         &.pa-selected {
-            background: $color-primary-lightest;
+            background: $color-background-chip-default-selected;
+            border: $border-chip-selected;
         }
     }
     &.pa-disabled {
-        color: $color-neutral-light;
+        color: $color-background-chip-default-disabled;
+        border: $border-chip-disabled;
     }
 
     pa-avatar,
@@ -49,9 +52,10 @@ $chip-max-width-medium: rhythm(56);
     }
 }
 .pa-chip-content-wrapper {
+    font-size: $font-size-chip;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 

@@ -95,7 +95,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
     internalMode: InternalMode = STANDALONE;
 
     protected fieldType = 'field';
-    protected terminator$ = new Subject();
+    protected terminator$ = new Subject<void>();
 
     private _formControlName: string | number | null = null;
     private _readonly = false;

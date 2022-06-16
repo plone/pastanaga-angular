@@ -26,7 +26,7 @@ export class PopoverDirective implements OnDestroy {
         this.popupDirective.paPopup = popover;
     }
 
-    private _terminator = new Subject();
+    private _terminator = new Subject<void>();
 
     hasFlexParent = false;
     isVisibleOnHover: Observable<boolean> = this.breakpoint.currentMode.pipe(

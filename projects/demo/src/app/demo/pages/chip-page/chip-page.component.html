@@ -1,47 +1,64 @@
 <pa-demo-page>
     <pa-demo-title>Chips</pa-demo-title>
     <pa-demo-description>
-        <p>There are two kinds of chip: <strong>closeable chips</strong> and <strong>selectionable chips</strong>.</p>
-        <p>Both kinds have the same look and feel and can display an avatar and/or an icon.</p>
-        <p>Closeable chips can also display a close button on the right.</p>
-        <p>Selectionable chips don't have any button but support a select event and corresponding style.</p>
+        <p>There are three kinds of chip: <strong>closeable chips</strong>, <strong>selectionable chips</strong> and <strong>expandable chips</strong>.</p>
+        <p>All kinds have the same look and feel and can display an avatar and/or an icon on the left.</p>
+        <ul>
+            <li><code>pa-chip-closeable</code> display a close button on the right of the chip. The attribute <code>noCloseButton</code> allows to remove the close button.</li>
+            <li><code>pa-chip-selectionable</code> don't have any button but triggers a select event on click and applies specific style when selected</li>
+            <li><code>pa-chip-expandable</code> display a chevron button on the right. It triggers an <code>expanded</code> event on click and applies specific and toggle the chevron to be up or down.</li>
+        </ul>
     </pa-demo-description>
 
     <pa-demo-examples>
         <h4>Closeable chip</h4>
         <div class="chip-container">
-            <pa-chip-closeable noCloseButton>Not closable chip</pa-chip-closeable>
-            <pa-chip-closeable disabled>Disabled chip</pa-chip-closeable>
-            <pa-chip-closeable [icon]="icon">Icon chip</pa-chip-closeable>
-            <pa-chip-closeable *ngIf="first" (closed)="close('first')">Standard chip</pa-chip-closeable>
-            <pa-chip-closeable *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip-closeable>
-            <pa-chip-closeable *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with name avatar</pa-chip-closeable>
+            <pa-chip-closeable [textColor]="colorText" [backgroundColor]="colorBackground" noCloseButton>Not closable chip</pa-chip-closeable>
+            <pa-chip-closeable [textColor]="colorText" [backgroundColor]="colorBackground" disabled>Disabled chip</pa-chip-closeable>
+            <pa-chip-closeable [textColor]="colorText" [backgroundColor]="colorBackground" *ngIf="first" (closed)="close('first')">Standard chip</pa-chip-closeable>
+            <pa-chip-closeable [textColor]="colorText" [backgroundColor]="colorBackground" *ngIf="second" (closed)="close('second')" [avatar]="avatarWithImage">Chip with avatar</pa-chip-closeable>
+            <pa-chip-closeable [textColor]="colorText" [backgroundColor]="colorBackground" *ngIf="third" (closed)="close('third')" [avatar]="{userName: 'Amanda Caballerot'}">Chip with name avatar</pa-chip-closeable>
+            <pa-chip-closeable [textColor]="colorText" [backgroundColor]="colorBackground" *ngIf="fourth" [icon]="icon" (closed)="close('fourth')">Icon chip</pa-chip-closeable>
+            <pa-button size="small" (click)="reload()">Reset</pa-button>
         </div>
 
         <h4>Selectionable chip</h4>
         <div class="chip-container">
-            <pa-chip-selectionable [selected]="selection === 1" (select)="onSelect(1)">Selectionable chip</pa-chip-selectionable>
-            <pa-chip-selectionable [selected]="selection === 2" (select)="onSelect(2)" disabled>Disabled chip</pa-chip-selectionable>
-            <pa-chip-selectionable [selected]="selection === 3" (select)="onSelect(3)" [icon]="icon">Icon chip</pa-chip-selectionable>
-            <pa-chip-selectionable [selected]="selection === 4" (select)="onSelect(4)" [avatar]="avatarWithImage">Chip with avatar</pa-chip-selectionable>
-            <pa-chip-selectionable [selected]="selection === 5" (select)="onSelect(5)" [avatar]="{userName: 'Amanda Caballerot'}">Chip with name avatar</pa-chip-selectionable>
+            <pa-chip-selectionable [textColor]="colorText" [backgroundColor]="colorBackground" [selected]="selection === 1" (select)="onSelect(1)">Selectionable chip</pa-chip-selectionable>
+            <pa-chip-selectionable [textColor]="colorText" [backgroundColor]="colorBackground" [selected]="selection === 2" (select)="onSelect(2)" disabled>Disabled chip</pa-chip-selectionable>
+            <pa-chip-selectionable [textColor]="colorText" [backgroundColor]="colorBackground" [selected]="selection === 3" (select)="onSelect(3)" [icon]="icon">Icon chip</pa-chip-selectionable>
+            <pa-chip-selectionable [textColor]="colorText" [backgroundColor]="colorBackground" [selected]="selection === 4" (select)="onSelect(4)" [avatar]="avatarWithImage">Chip with avatar</pa-chip-selectionable>
+            <pa-chip-selectionable [textColor]="colorText" [backgroundColor]="colorBackground" [selected]="selection === 5" (select)="onSelect(5)" [avatar]="{userName: 'Amanda Caballerot'}">Chip with name avatar</pa-chip-selectionable>
         </div>
 
-        <h4>Selectionable chip</h4>
+        <h4>Expandable chip</h4>
         <div class="chip-container">
-            <pa-chip-expandable>+10</pa-chip-expandable>
+            <pa-chip-expandable [textColor]="colorText" [backgroundColor]="colorBackground" >+10</pa-chip-expandable>
+            <pa-chip-expandable disabled [textColor]="colorText" [backgroundColor]="colorBackground" >disabled</pa-chip-expandable>
         </div>
 
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-button (click)="reload()">Reset</pa-button>
+            <pa-select label="Background color" (valueChange)="updateBackground($event)">
+                <pa-option value="">Default</pa-option>
+                <pa-option value="arctic">Arctic</pa-option>
+                <pa-option value="ballet">Ballet</pa-option>
+                <pa-option value="agua">Agua</pa-option>
+            </pa-select>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-select label="Text color" (valueChange)="updateText($event)">
+                <pa-option value="">Default</pa-option>
+                <pa-option value="royal">Royal</pa-option>
+                <pa-option value="wine">Wine</pa-option>
+                <pa-option value="peacock">Peacock</pa-option>
+            </pa-select>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
         <h3>Common inputs</h3>
-
         <dl>
             <dt>ariaRole</dt>
             <dd>Defines the role attribute of the chip. <small>(listitem by default)</small></dd>
@@ -49,11 +66,20 @@
             <dt>avatar</dt>
             <dd><code>AvatarModel</code> configuring the avatar to display. <small>(optional)</small></dd>
 
+            <dt>backgroundColor</dt>
+            <dd>Hexadecimal color used to override the default background color. This colors is not applied on disabled chip.<small>(optional)</small></dd>
+
+            <dt>borderColor</dt>
+            <dd>Hexadecimal color used to override the default border color. This colors is not applied on disabled chip.<small>(optional)</small></dd>
+
             <dt>disabled</dt>
             <dd>Disable the chip. <small>(optional)</small></dd>
 
             <dt>icon</dt>
             <dd><code>IconModel</code> configuring the icon to display. <small>(optional)</small></dd>
+
+            <dt>textColor</dt>
+            <dd>Hexadecimal color used to override the default text color. This colors is not applied on disabled chip. <small>(optional)</small></dd>
 
             <dt>value</dt>
             <dd>A value held by the chip. <small>(optional)</small></dd>
@@ -82,6 +108,12 @@
         <dl>
             <dt>select</dt>
             <dd>Event trigger when clicking on the chip. <small>Triggered only if not disabled</small></dd>
+        </dl>
+
+        <h3><code>pa-chip-expandable</code></h3>
+        <dl>
+            <dt>expanded</dt>
+            <dd>Event triggered when clicking on the chip. It contains the mouse or keyboard event itself as well as the chip value. <small>Triggered only if not disabled</small></dd>
         </dl>
     </pa-demo-usage>
 

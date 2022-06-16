@@ -1,3 +1,29 @@
+# 2.50.5 (2022-06-16)
+
+### Fixes
+- Fix repo URL in package.json [mpellerin42]
+- Fix compilation errors when included as lib in a new Angular 13.3.0 project [mpellerin42]
+- Fix side nav item header's color [mpellerin42]
+- Fix background color for disabled inverted solid buttons [mpellerin42]
+- Fix expandable chips: don't trigger expanded event on disabled chip [mpellerin42]
+- Fix documentation: [mpellerin42]
+  - Fix the description and add documentation on expandable chips
+  - Fix some typos in modal documentation
+
+### Improvements
+- **Typography**:  [mpellerin42]
+  - Add typography demo page
+  - Add a class with `-mobile` suffix on all typography classes which are different on mobile and larger screens, so we can display how they render on desktop.
+- **Button**: [mpellerin42]
+  - Add a CSS transition on button color
+  - Tokenize button icon border radius
+- **Demo**: Improve readability of usage by using a darker neutral color for `small` tags [mpellerin42]
+- **Checkboxes**: Add tokens for checkbox disabled colors [mpellerin42]
+- **Scrollbars**: Add tokens for scrollbar border radius and distinction between active and inactive state [mpellerin42]
+- **Chips**: [mpellerin42]
+  - Tokenize chip colors and borders
+  - Add `backgroundColor`, `textColor` and `borderColor` inputs to all the chips
+
 # 2.50.4 (2022-06-13)
 
 ### Improvements:

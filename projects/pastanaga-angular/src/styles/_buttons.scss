@@ -9,7 +9,7 @@
     padding: 0;
     margin: 0;
     outline: 0;
-    transition: background-color $transition-hint, box-shadow $transition-hint;
+    transition: background-color $transition-hint, box-shadow $transition-hint, color $transition-hint;
     white-space: nowrap;
 
     .pa-button-wrapper {
@@ -29,7 +29,7 @@
     }
 
     &.pa-button-icon {
-        border-radius: 50%;
+        border-radius: $border-radius-button-icon;
     }
     &:not(.pa-button-icon):not(.pa-button-icon-text):not(.pa-small) {
         min-width: rhythm(20);

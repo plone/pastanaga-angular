@@ -12,6 +12,10 @@ export class ChipPageComponent {
     first = true;
     second = true;
     third = true;
+    fourth = true;
+
+    colorBackground = '';
+    colorText = '';
 
     readonly avatarWithImage: AvatarModel = {
         userName: 'Amanda',
@@ -43,8 +47,13 @@ export class ChipPageComponent {
             case 'second':
                 this.second = false;
                 break;
-            default:
+            case 'third':
                 this.third = false;
+                break;
+            case 'fourth':
+                this.fourth = false;
+                break;
+            default:
                 break;
         }
         detectChanges(this.cdr);
@@ -63,4 +72,37 @@ export class ChipPageComponent {
             this.selection = undefined;
         }
     }
+
+    updateBackground(colorName: string) {
+        switch (colorName) {
+            case 'arctic':
+                this.colorBackground = '#D8ECFDFF';
+                break;
+            case 'ballet':
+                this.colorBackground = '#FEE9E7FF';
+                break;
+            case 'agua':
+                this.colorBackground = '#D6F5F2FF';
+                break;
+            default:
+                this.colorBackground = '';
+        }
+    }
+
+    updateText(colorName: string) {
+        switch (colorName) {
+            case 'royal':
+                this.colorText = '#085696FF';
+                break;
+            case 'wine':
+                this.colorText = '#AA1C09FF';
+                break;
+            case 'peacock':
+                this.colorText = '#207E77FF';
+                break;
+            default:
+                this.colorText = '';
+        }
+    }
+
 }

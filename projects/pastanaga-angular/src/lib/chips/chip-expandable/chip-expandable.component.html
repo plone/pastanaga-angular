@@ -1,4 +1,6 @@
 <div class="pa-chip pa-with-button"
+     [style.background-color]="!disabled ? backgroundColor : ''"
+     [style.border-color]="!disabled ? borderColor : ''"
      [class.pa-with-avatar]="!!avatar"
      [attr.role]="ariaRole">
     <pa-avatar *ngIf="avatar"
@@ -11,12 +13,11 @@
 
     <pa-icon *ngIf="icon" class="pa-chip-icon" [icon]="icon"></pa-icon>
 
-    <span class="pa-chip-content-wrapper body-s">
+    <span class="pa-chip-content-wrapper body-s"
+          [style.color]="!disabled ? textColor : ''">
         <ng-content></ng-content>
     </span>
-    <pa-button
-               qa="chip-button"
-               [icon]="isExpanded? 'chevron-up': 'chevron-down'"
+    <pa-button [icon]="isExpanded? 'chevron-up': 'chevron-down'"
                size="small"
                kind="secondary"
                aspect="basic"

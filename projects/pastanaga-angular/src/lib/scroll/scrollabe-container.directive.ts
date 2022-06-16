@@ -25,7 +25,7 @@ export const SCROLL_INACTIVE_HIDING_THRESHOLD = 3000;
 export class ScrollableContainerDirective implements OnInit, AfterContentInit, OnDestroy {
     @Output() resize: EventEmitter<void> = new EventEmitter();
 
-    private _terminator = new Subject();
+    private _terminator = new Subject<void>();
     private _scrollActive = false;
 
     constructor(

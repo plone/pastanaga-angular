@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import ICON_LIST from '../../../../assets/glyphs.json';
+import * as ICON_LIST from '../../../../assets/glyphs.json';
 import { BaseIconPageComponent } from './base-icon-page.component';
 
 @Component({
