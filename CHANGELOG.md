@@ -4,7 +4,8 @@
 - Fix repo URL in package.json [mpellerin42]
 - Fix compilation errors when included as lib in a new Angular 13.3.0 project [mpellerin42]
 - Fix side nav item header's color [mpellerin42]
-- Fix background color for disabled inverted solid buttons [mpellerin42] 
+- Fix background color for disabled inverted solid buttons [mpellerin42]
+- Fix chips demo [mpellerin42]
 
 ### Improvements
 - **Typography**:  [mpellerin42]
@@ -16,6 +17,9 @@
 - **Demo**: Improve readability of usage by using a darker neutral color for `small` tags [mpellerin42]
 - **Checkboxes**: Add tokens for checkbox disabled colors [mpellerin42]
 - **Scrollbars**: Add tokens for scrollbar border radius and distinction between active and inactive state [mpellerin42]
+- **Chips**: [mpellerin42]
+  - Tokenize chip colors and borders
+  - 
 
 # 2.50.4 (2022-06-13)
 

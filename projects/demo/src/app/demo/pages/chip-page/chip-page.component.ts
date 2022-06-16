@@ -12,6 +12,7 @@ export class ChipPageComponent {
     first = true;
     second = true;
     third = true;
+    fourth = true;
 
     readonly avatarWithImage: AvatarModel = {
         userName: 'Amanda',
@@ -43,8 +44,13 @@ export class ChipPageComponent {
             case 'second':
                 this.second = false;
                 break;
-            default:
+            case 'third':
                 this.third = false;
+                break;
+            case 'fourth':
+                this.fourth = false;
+                break;
+            default:
                 break;
         }
         detectChanges(this.cdr);
