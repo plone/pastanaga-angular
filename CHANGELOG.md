@@ -1,13 +1,14 @@
-# 2.50.5 (2022-06-xx)
+# 2.50.5 (2022-06-16)
 
 ### Fixes
 - Fix repo URL in package.json [mpellerin42]
 - Fix compilation errors when included as lib in a new Angular 13.3.0 project [mpellerin42]
 - Fix side nav item header's color [mpellerin42]
 - Fix background color for disabled inverted solid buttons [mpellerin42]
-- Fix chips: [mpellerin42]
-  - expandable chips: don't trigger expanded event on disabled chip
-  - demo: fix the description and add documentation on expandable chips 
+- Fix expandable chips: don't trigger expanded event on disabled chip [mpellerin42]
+- Fix documentation: [mpellerin42]
+  - Fix the description and add documentation on expandable chips
+  - Fix some typos in modal documentation
 
 ### Improvements
 - **Typography**:  [mpellerin42]
