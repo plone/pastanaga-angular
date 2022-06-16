@@ -3,6 +3,7 @@
 ### Fixes
 - Fix repo URL in package.json [mpellerin42]
 - Fix compilation errors when included as lib in a new Angular 13.3.0 project [mpellerin42]
+- Fix side nav item header's color [mpellerin42]
 
 # 2.50.4 (2022-06-13)
 
