@@ -14,6 +14,9 @@ export class ChipPageComponent {
     third = true;
     fourth = true;
 
+    colorBackground = '';
+    colorText = '';
+
     readonly avatarWithImage: AvatarModel = {
         userName: 'Amanda',
         image: avatar,
@@ -69,4 +72,37 @@ export class ChipPageComponent {
             this.selection = undefined;
         }
     }
+
+    updateBackground(colorName: string) {
+        switch (colorName) {
+            case 'arctic':
+                this.colorBackground = '#D8ECFDFF';
+                break;
+            case 'ballet':
+                this.colorBackground = '#FEE9E7FF';
+                break;
+            case 'agua':
+                this.colorBackground = '#D6F5F2FF';
+                break;
+            default:
+                this.colorBackground = '';
+        }
+    }
+
+    updateText(colorName: string) {
+        switch (colorName) {
+            case 'royal':
+                this.colorText = '#085696FF';
+                break;
+            case 'wine':
+                this.colorText = '#AA1C09FF';
+                break;
+            case 'peacock':
+                this.colorText = '#207E77FF';
+                break;
+            default:
+                this.colorText = '';
+        }
+    }
+
 }

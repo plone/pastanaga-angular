@@ -7,12 +7,18 @@ import { BaseChip } from '../base-chip';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipExpandableComponent extends BaseChip {
-    @Output() expanded = new EventEmitter();
+    @Output() expanded: EventEmitter<{event: Event, value: any}> = new EventEmitter();
 
     isExpanded = false;
 
     expand($event: Event) {
-        this.isExpanded = !this.isExpanded;
-        this.expanded.emit({ event: $event, value: this.value });
+        if (!this.disabled) {
+            this.isExpanded = !this.isExpanded;
+            this.expanded.emit({ event: $event, value: this.value });
+        } else {
+            $event.stopPropagation();
+            $event.preventDefault();
+        }
+
     }
 }
