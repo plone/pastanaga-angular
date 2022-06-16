@@ -1,0 +1,18 @@
+@import "../../../../../../pastanaga-angular/src/styles/variables";
+
+.typography-table > div:not(.separator) {
+    padding: rhythm(1);
+}
+
+.header {
+    background: $color-neutral-light;
+    font-weight: $font-weight-semi-bold;
+}
+
+.separator {
+    border-bottom: 1px solid $color-neutral-light;
+}
+
+.tag-and-class {
+    font-weight: $font-weight-semi-bold;
+}

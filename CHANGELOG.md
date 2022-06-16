@@ -1,9 +1,14 @@
-# 2.50.5 (2022-06-09)
+# 2.50.5 (2022-06-xx)
 
 ### Fixes
 - Fix repo URL in package.json [mpellerin42]
 - Fix compilation errors when included as lib in a new Angular 13.3.0 project [mpellerin42]
 - Fix side nav item header's color [mpellerin42]
+
+### Improvements
+- **Typography**:  [mpellerin42]
+    - Add typography demo page
+    - Add a class with `-mobile` suffix on all typography classes which are different on mobile and larger screens, so we can display how they render on desktop.
 
 # 2.50.4 (2022-06-13)
 

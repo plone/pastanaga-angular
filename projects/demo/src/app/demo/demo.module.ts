@@ -131,6 +131,7 @@ import { TableRowPageComponent } from './pages/table-page/table-row/table-row-pa
 import { TableCellPageComponent } from './pages/table-page/table-cell-page/table-cell-page.component';
 import { TableSortableHeaderCellPageComponent } from './pages/table-page/table-sortable-header-cell-page/table-sortable-header-cell-page.component';
 import { TableLeadCellMultiLinePageComponent } from './pages/table-page/table-lead-cell-multi-line-page/table-lead-cell-multi-line-page.component';
+import { TypographyPageComponent } from './pages/typography-page/typography-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -226,6 +227,7 @@ const COMPONENTS = [
     TableSortableHeaderPageComponent,
     TableSortableHeaderCellPageComponent,
     TableLeadCellMultiLinePageComponent,
+    TypographyPageComponent,
 ];
 
 @NgModule({

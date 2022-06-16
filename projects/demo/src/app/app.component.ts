@@ -39,12 +39,12 @@ import {
     PopoverPageComponent,
     DistributePageComponent,
     CardPageComponent,
+    TypographyPageComponent,
+    TableRowPageComponent,
+    TableCellPageComponent,
+    TableLeadCellMultiLinePageComponent,
+    TableSortableHeaderCellPageComponent, TableSortableHeaderPageComponent
 } from './demo';
-import { TableSortableHeaderPageComponent } from './demo/pages/table-page/table-sortable-header-page/table-sortable-header-page.component';
-import { TableRowPageComponent } from './demo/pages/table-page/table-row/table-row-page.component';
-import { TableCellPageComponent } from './demo/pages/table-page/table-cell-page/table-cell-page.component';
-import { TableSortableHeaderCellPageComponent } from './demo/pages/table-page/table-sortable-header-cell-page/table-sortable-header-cell-page.component';
-import { TableLeadCellMultiLinePageComponent } from './demo/pages/table-page/table-lead-cell-multi-line-page/table-lead-cell-multi-line-page.component';
 
 export const menu: IDemoMenuSection[] = [
     {
@@ -53,6 +53,7 @@ export const menu: IDemoMenuSection[] = [
             { view: 'icon', title: 'Icons', type: IconPageComponent },
             { view: 'palette', title: 'Palette', type: PalettePageComponent },
             { view: 'focusable', title: 'Focusable', type: FocusablePageComponent },
+            { view: 'typography', title: 'Typography', type: TypographyPageComponent },
             { view: 'accessibility', title: 'Accessibility', type: AccessibilityPageComponent },
             { view: 'containers', title: 'Containers', type: ContainerPageComponent },
             { view: 'distribute', title: 'Distribute', type: DistributePageComponent },
