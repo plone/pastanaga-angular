@@ -49,7 +49,6 @@ select:-webkit-autofill:focus {
         pointer-events: none;
         transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
         transform-origin: 0 0;
-        -webkit-transform-origin-y: initial;
 
         &.pa-field-label-icon:not(.pa-icon-on-right) {
             left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
@@ -151,6 +150,12 @@ select:-webkit-autofill:focus {
 
         .pa-field-control {
             border: $border-field-error;
+            background: $color-background-field-error;
+            caret-color: $color-caret-field-control-error;
+
+            &:not(.pa-field-control-filled):not(:active):not(:focus) + .pa-field-label {
+                background: $color-background-field-error;
+            }
 
             &:not(:disabled):not(:read-only) {
                 &:hover {

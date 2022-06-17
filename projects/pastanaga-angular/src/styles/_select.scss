@@ -108,6 +108,7 @@
 .pa-field.pa-select.pa-field-error {
     .pa-field-control:not(.pa-field-control-filled) + .pa-field-label {
         color: $color-text-field-label-regular;
+        background: $color-background-field-error;
     }
 }
 

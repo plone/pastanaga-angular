@@ -7,6 +7,14 @@
     </pa-demo-description>
 
     <pa-demo-examples>
+        <p>The following input demonstrates error state: type a character and delete it.</p>
+        <pa-input [(ngModel)]="model"
+                  name="selectExample"
+                  required
+                  placeholder="Placeholder"
+                  help="Display the error state by typing something and deleting it"
+                  [errorMessages]="{required: 'Error message: required'}">Required input</pa-input>
+
         <pa-tabs>
             <pa-tab (click)="selectedTab = 'standalone'"
                     [active]="selectedTab === 'standalone'">Standalone</pa-tab>
