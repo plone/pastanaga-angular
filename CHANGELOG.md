@@ -1,3 +1,9 @@
+# 2.50.6 (2022-06-17)
+
+### Fix
+- **Icon demo**: load the icon list from a typescript file instead of a json one [mpellerin42]
+- **icon_list**: new script generating the icon list in typescript from the sprite svg [mpellerin42]
+
 # 2.50.5 (2022-06-16)
 
 ### Fixes
