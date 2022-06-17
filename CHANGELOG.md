@@ -1,3 +1,10 @@
+# 2.50.7 (2022-06-17)
+
+### Improvements
+- **Text fields**: [mpellerin42]
+  - Add better demo for inputs and select error state
+  - Add token for changing the background color of text fields for error state
+
 # 2.50.6 (2022-06-17)
 
 ### Fix
