@@ -1,3 +1,8 @@
+# 2.52.0 (2022-06-xx)
+
+### Improvements
+- upgrade rxjs to version 7 [mpellerin42]
+
 # 2.51.2 (2022-06-21)
 
 ### Fix
