@@ -1,3 +1,8 @@
+# 2.51.2 (2022-06-21)
+
+### Fix
+- fix build: specify project to build now angular 14 removed default project from angular.json [mpellerin42]
+
 # 2.51.1 (2022-06-21)
 
 ### Improvements
