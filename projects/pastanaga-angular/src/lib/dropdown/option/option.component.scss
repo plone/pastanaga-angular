@@ -36,9 +36,17 @@
     &:not(.pa-option-disabled):not(.pa-option-readonly) {
         &:hover {
             background-color: $color-background-menu-option-hover;
+
+            &.pa-option-destructive {
+                background-color: $color-background-menu-option-destructive-hover;
+            }
         }
         &:active {
             background-color: $color-background-menu-option-active;
+
+            &.pa-option-destructive {
+                background-color: $color-background-menu-option-destructive-active;
+            }
         }
         &.pa-option-selected{
             background-color: $color-background-menu-option-selected;
