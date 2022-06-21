@@ -29,7 +29,6 @@
     "@angular/platform-browser": "^14.0.2",
     "@angular/platform-browser-dynamic": "^14.0.2",
     "@angular/router": "^14.0.2",
-    "@briebug/jest-schematic": "^4.0.0",
     "@ng-web-apis/common": "^2.0.0",
     "angular-svg-icon": "^14.0.0",
     "date-fns": "^2.28.0",
