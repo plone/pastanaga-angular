@@ -1,5 +1,8 @@
 # 2.52.0 (2022-06-xx)
 
+### Breaking changes
+- Remove all translation keys not used by pastanaga components from Pastanaga's internal translation file [mpellerin42]
+
 ### Improvements
 - upgrade rxjs to version 7 [mpellerin42]
 
