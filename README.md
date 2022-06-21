@@ -2,6 +2,9 @@
 
 [![Build Status](https://github.com/plone/pastanaga-angular/workflows/CI/badge.svg)](https://github.com/plone/pastanaga-angular/actions?query=workflow%3ACI)
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+
 Provides Pastanaga elements as Angular components.
 
 See https://plone.github.io/pastanaga-angular/v2/ for usage example and developer guide.

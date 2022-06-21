@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-pa-select-config',
@@ -14,22 +14,22 @@ export class PaSelectConfigComponent implements OnInit {
         required: 'This field is required.',
     };
 
-    stateForm = new FormGroup({
-        optionsProvidedInTemplate: new FormControl(true),
-        adjustHeight: new FormControl(),
-        hasFocus: new FormControl(),
-        dim: new FormControl(false),
+    stateForm = new UntypedFormGroup({
+        optionsProvidedInTemplate: new UntypedFormControl(true),
+        adjustHeight: new UntypedFormControl(),
+        hasFocus: new UntypedFormControl(),
+        dim: new UntypedFormControl(false),
 
-        value: new FormControl(),
-        label: new FormControl('The label'),
-        placeholder: new FormControl(),
-        readonly: new FormControl(),
-        disabled: new FormControl(),
+        value: new UntypedFormControl(),
+        label: new UntypedFormControl('The label'),
+        placeholder: new UntypedFormControl(),
+        readonly: new UntypedFormControl(),
+        disabled: new UntypedFormControl(),
 
-        help: new FormControl(),
-        errorMessage: new FormControl(),
-        errorMessages: new FormControl(),
-        showAllErrors: new FormControl(),
+        help: new UntypedFormControl(),
+        errorMessage: new UntypedFormControl(),
+        errorMessages: new UntypedFormControl(),
+        showAllErrors: new UntypedFormControl(),
     });
 
     ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, QueryList, ViewChildren } from '@angular/core';
 import { PaFormControlDirective, markForCheck } from '@guillotinaweb/pastanaga-angular';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-form-control-value-example',
@@ -15,7 +15,7 @@ export class FormControlValueExampleComponent {
     (valueChange)="...">`;
     ngModelCode = `<input paFormControl [(ngModel)]="...">`;
     model = 'initial value';
-    formControl = new FormControl('');
+    formControl = new UntypedFormControl('');
     formControlCode = `<input paFormControl [formControl]="formControl">`;
     @ViewChildren(PaFormControlDirective) directives?: QueryList<PaFormControlDirective>;
 

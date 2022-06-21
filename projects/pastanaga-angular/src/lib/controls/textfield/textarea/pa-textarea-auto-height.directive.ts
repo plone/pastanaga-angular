@@ -3,7 +3,7 @@ import { Platform } from '@angular/cdk/platform';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { fromEvent, Subject } from 'rxjs';
 import { auditTime, filter, takeUntil } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /**
  * Highly inspired by CdkTextareaAutosize
@@ -35,7 +35,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
         }
     }
 
-    @Input() formControl?: FormControl;
+    @Input() formControl?: UntypedFormControl;
 
     /** Class that should be applied to the textarea while it's being measured. */
     readonly _measuringClass: string;

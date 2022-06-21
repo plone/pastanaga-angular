@@ -1,12 +1,12 @@
 import { Directive } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Directive({
     selector: '[paDemoFormFieldConfigFormGroup]',
 })
 export class FormFieldConfigFormGroupDirective {
-    form = new FormGroup({
-        control: new FormControl(),
+    form = new UntypedFormGroup({
+        control: new UntypedFormControl(),
     });
 
     valueChangeEvent?: any;
@@ -14,7 +14,7 @@ export class FormFieldConfigFormGroupDirective {
     config?: any = {};
 
     get formControl() {
-        return this.form.get('control') as FormControl;
+        return this.form.get('control') as UntypedFormControl;
     }
     updateConfig(config: any) {
         if (config.value !== this.config.value && (!!config.value || !!this.config.value)) {

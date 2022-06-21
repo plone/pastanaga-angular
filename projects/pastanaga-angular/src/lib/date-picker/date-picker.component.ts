@@ -29,7 +29,7 @@ import {
     subMonths,
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
-import { AbstractControl, FormControl, NgControl } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, NgControl } from '@angular/forms';
 import { debounceTime, filter, map } from 'rxjs/operators';
 import { markForCheck, TRANSITION_DURATION } from '../common';
 import { formatDate } from '@angular/common';
@@ -77,7 +77,7 @@ export class DatePickerComponent extends PaFormControlDirective {
     @ViewChild('input') input?: InputComponent;
 
     trackedDate: Date;
-    inputControl: FormControl;
+    inputControl: UntypedFormControl;
 
     mode: 'weeks' | 'months' | 'years' = 'weeks';
 
@@ -106,7 +106,7 @@ export class DatePickerComponent extends PaFormControlDirective {
     ) {
         super(element, parentControl, cdr);
         this.trackedDate = new Date();
-        this.inputControl = new FormControl(null, (control: AbstractControl) => {
+        this.inputControl = new UntypedFormControl(null, (control: AbstractControl) => {
             if (control.value && !DATE_FORMATS.some((format) => isMatch(control.value, format))) {
                 return {
                     invalidFormat: 'pastanaga.calendar.invalid-format',

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
@@ -33,9 +33,9 @@ Generated: <input paFormControl>`;
     <input paFormControl formControlName="fifth">
     <input paFormControl name="ignored" formControlName="sixth">
 </form>`;
-    form = new FormGroup({
-        fifth: new FormControl(),
-        sixth: new FormControl(),
+    form = new UntypedFormGroup({
+        fifth: new UntypedFormControl(),
+        sixth: new UntypedFormControl(),
     });
     fifthName?: string;
     sixthName?: string;

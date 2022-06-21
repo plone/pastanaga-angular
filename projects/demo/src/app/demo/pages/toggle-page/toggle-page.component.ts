@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     templateUrl: './toggle-page.component.html',
@@ -7,8 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class TogglePageComponent {
     firstToggle = false;
 
-    form: FormGroup = new FormGroup({
-        toggle: new FormControl(true),
+    form: UntypedFormGroup = new UntypedFormGroup({
+        toggle: new UntypedFormControl(true),
     });
     firstToggleStatus?: any;
     secondToggleStatus?: any;
