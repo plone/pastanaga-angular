@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import {
     ControlValueAccessor,
-    FormControl,
+    UntypedFormControl,
     FormControlDirective,
     FormControlName,
     NgControl,
@@ -91,7 +91,7 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
     readonly autoId: number;
     readonly htmlId: string | undefined;
 
-    control: FormControl = new FormControl();
+    control: UntypedFormControl = new UntypedFormControl();
     internalMode: InternalMode = STANDALONE;
 
     protected fieldType = 'field';

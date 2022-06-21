@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-date-picker-config',
@@ -15,11 +15,11 @@ export class DatePickerConfigComponent implements OnInit {
     };
     pattern = /.?test.?/;
 
-    stateForm = new FormGroup({
-        label: new FormControl(),
-        disabled: new FormControl(),
-        readonly: new FormControl(),
-        errorMessage: new FormControl(),
+    stateForm = new UntypedFormGroup({
+        label: new UntypedFormControl(),
+        disabled: new UntypedFormControl(),
+        readonly: new UntypedFormControl(),
+        errorMessage: new UntypedFormControl(),
     });
 
     ngOnInit(): void {

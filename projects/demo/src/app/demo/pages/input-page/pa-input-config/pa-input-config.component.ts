@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-pa-input-config',
@@ -20,22 +20,22 @@ export class PaInputConfigComponent implements OnInit {
     };
     pattern = /.?test.?/;
 
-    stateForm = new FormGroup({
-        icon: new FormControl(),
-        value: new FormControl(),
-        type: new FormControl(),
-        placeholder: new FormControl(),
-        autoCapitalize: new FormControl(),
-        preventAutocomplete: new FormControl(),
-        acceptHtml: new FormControl(),
-        disabled: new FormControl(),
-        readonly: new FormControl(),
-        hasFocus: new FormControl(),
-        help: new FormControl(),
-        errorMessage: new FormControl(),
-        errorMessages: new FormControl(),
-        showAllErrors: new FormControl(),
-        maxlength: new FormControl(),
+    stateForm = new UntypedFormGroup({
+        icon: new UntypedFormControl(),
+        value: new UntypedFormControl(),
+        type: new UntypedFormControl(),
+        placeholder: new UntypedFormControl(),
+        autoCapitalize: new UntypedFormControl(),
+        preventAutocomplete: new UntypedFormControl(),
+        acceptHtml: new UntypedFormControl(),
+        disabled: new UntypedFormControl(),
+        readonly: new UntypedFormControl(),
+        hasFocus: new UntypedFormControl(),
+        help: new UntypedFormControl(),
+        errorMessage: new UntypedFormControl(),
+        errorMessages: new UntypedFormControl(),
+        showAllErrors: new UntypedFormControl(),
+        maxlength: new UntypedFormControl(),
     });
 
     ngOnInit(): void {

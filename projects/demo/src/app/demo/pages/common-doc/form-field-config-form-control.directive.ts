@@ -1,11 +1,11 @@
 import { Directive } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Directive({
     selector: '[paDemoFormFieldConfigFormControl]',
 })
 export class FormFieldConfigFormControlDirective {
-    control = new FormControl();
+    control = new UntypedFormControl();
 
     valueChangeEvent?: any;
     statusChangeEvent?: any;

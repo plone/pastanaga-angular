@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
 import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-form-control-validation-example',
@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 })
 export class FormControlValidationExampleComponent implements AfterViewInit {
     status?: any;
-    firstControl?: FormControl;
+    firstControl?: UntypedFormControl;
     statusChangeCode = `<input paFormControl (statusChange)="status = $event">`;
 
     errorMessageCode = `<input paFormControl [errorMessage]="errorMessage">`;

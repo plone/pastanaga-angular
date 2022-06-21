@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'pa-demo-native-text-field-page',
@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NativeTextFieldPageComponent {
-    formControl = new FormControl();
+    formControl = new UntypedFormControl();
     required?: any;
     maxlength?: any;
     noAutoComplete?: any;
@@ -24,14 +24,14 @@ export class NativeTextFieldPageComponent {
     blurEvent?: any;
     statusEvent?: any;
 
-    config = new FormGroup({
-        placeholder: new FormControl(),
-        maxlength: new FormControl(),
-        noAutoComplete: new FormControl(),
-        help: new FormControl(),
-        errorMessages: new FormControl(),
-        showAllErrors: new FormControl(),
-        hasFocus: new FormControl(),
-        acceptHtmlTags: new FormControl(),
+    config = new UntypedFormGroup({
+        placeholder: new UntypedFormControl(),
+        maxlength: new UntypedFormControl(),
+        noAutoComplete: new UntypedFormControl(),
+        help: new UntypedFormControl(),
+        errorMessages: new UntypedFormControl(),
+        showAllErrors: new UntypedFormControl(),
+        hasFocus: new UntypedFormControl(),
+        acceptHtmlTags: new UntypedFormControl(),
     });
 }

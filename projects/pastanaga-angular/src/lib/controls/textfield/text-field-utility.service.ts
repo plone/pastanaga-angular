@@ -2,7 +2,7 @@ import { ElementRef, Injectable, NgZone } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { take, takeUntil } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 export class TextFieldUtilityService {
     constructor(private platform: Platform, private ngZone: NgZone, private autofillMonitor: AutofillMonitor) {}
 
-    public handleBrowserAutoFill(htmlElement: HTMLInputElement, control: FormControl, stopMonitoring: Subject<any>) {
+    public handleBrowserAutoFill(htmlElement: HTMLInputElement, control: UntypedFormControl, stopMonitoring: Subject<any>) {
         if (this.platform.isBrowser && !!htmlElement) {
             this.autofillMonitor
                 .monitor(htmlElement)
