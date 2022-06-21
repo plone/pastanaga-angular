@@ -1,3 +1,8 @@
+# 2.51.0 (2022-06-21)
+
+### Breaking changes
+- Migration to Angular 14 [mpellerin42]
+
 # 2.50.7 (2022-06-17)
 
 ### Improvements
