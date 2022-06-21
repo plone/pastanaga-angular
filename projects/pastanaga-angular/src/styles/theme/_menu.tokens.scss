@@ -7,10 +7,13 @@
 $color-text-menu-option-header: $color-neutral-regular !default;
 $color-text-menu-option-destructive: $color-secondary-regular !default;
 $color-text-menu-option-disabled: $color-neutral-light !default;
+
 $color-background-menu-option-hover: $color-neutral-lightest !default;
 $color-background-menu-option-active: $color-neutral-light !default;
 $color-background-menu-option-selected: $color-primary-lightest !default;
 $color-background-menu-option-disabled: $color-light-stronger !default;
+$color-background-menu-option-destructive-hover: $color-neutral-lightest !default;
+$color-background-menu-option-destructive-active: $color-neutral-light !default;
 
 $color-border-menu-separator: $color-neutral-lightest !default;
 

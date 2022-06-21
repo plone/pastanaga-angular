@@ -1,3 +1,8 @@
+# 2.51.1 (2022-06-21)
+
+### Improvements
+- **Dropdown**: add ability to change the background color of destructive dropdown options [mpellerin42]
+
 # 2.51.0 (2022-06-21)
 
 ### Breaking changes
