@@ -1,7 +1,6 @@
-import { Inject, InjectionToken, Pipe, PipeTransform } from '@angular/core';
+import { InjectionToken, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from './translate.service';
-import { FlattenTranslation, Translation } from './translate.model';
-import { formatTranslationEntries } from './translate.utils';
+import { Translation } from './translate.model';
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
 
@@ -18,19 +17,7 @@ export class TranslatePipe implements PipeTransform {
     lastParams?: string;
     value: string | undefined = '';
 
-    private readonly _flattenTranslations: FlattenTranslation = {};
-
-    constructor(
-        private translateService: TranslateService,
-        @Inject(PA_TRANSLATIONS) private translations: Translation,
-    ) {
-        if (Object.keys(translations).length > 0) {
-            this._flattenTranslations = Object.entries(translations).reduce((langMap, [lang, entries]) => {
-                langMap[lang] = formatTranslationEntries(entries);
-                return langMap;
-            }, {} as FlattenTranslation);
-        }
-
+    constructor(private translateService: TranslateService) {
     }
 
     transform(key?: string, args?: any): string {
@@ -61,7 +48,7 @@ export class TranslatePipe implements PipeTransform {
     }
 
     private getValue(key: string, lang: string): string | undefined {
-        const translations = this._flattenTranslations[lang] || {};
+        const translations = this.translateService.flattenTranslations[lang] || {};
         return translations[key];
     }
 }
