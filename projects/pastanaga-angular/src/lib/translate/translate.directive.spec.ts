@@ -13,7 +13,14 @@ const obj2 = { common: 1, color: 'blue' };
 const obj3 = { common: 1, second: 3 };
 
 describe('TranslateDirective', () => {
-    const translations = { en_US: { hello: 'Bonjour', welcome: 'Bienvenue {{name}}' } };
+    const translations = {
+        en_US: {
+            hello: 'Bonjour',
+            welcome: 'Bienvenue {{name}}',
+            'pastanaga.cancel': 'Cancel',
+            calendar: { months: 'Mois', years: 'Années' },
+        },
+    };
 
     let directive: TranslateDirective;
 
@@ -38,6 +45,18 @@ describe('TranslateDirective', () => {
             expect(spectator.query('span')?.textContent).toBe(translations.en_US.hello);
         });
 
+        it('should translate a flatten key', () => {
+            spectator = createDirective(`<span translate>pastanaga.cancel</span>`);
+            spectator.detectChanges();
+            expect(spectator.query('span')?.textContent).toBe(translations.en_US['pastanaga.cancel']);
+        });
+
+        it('should translate a hierarchical key', () => {
+            spectator = createDirective(`<span translate>calendar.months</span>`);
+            spectator.detectChanges();
+            expect(spectator.query('span')?.textContent).toBe(translations.en_US.calendar.months);
+        });
+
         it('should translate a key with params', () => {
             spectator = createDirective(`<span translate [translateParams]="{name: 'Toto'}">welcome</span>`);
             spectator.detectChanges();
@@ -46,7 +65,9 @@ describe('TranslateDirective', () => {
 
         it('should translate a key with params and update the params when it changes', () => {
             let params = { name: 'Toto' };
-            spectator = createDirective(`<span translate [translateParams]="params">welcome</span>`, { hostProps: { params } });
+            spectator = createDirective(`<span translate [translateParams]="params">welcome</span>`, {
+                hostProps: { params },
+            });
             spectator.detectChanges();
             expect(spectator.query('span')?.textContent).toBe(translations.en_US.welcome.replace('{{name}}', 'Toto'));
 
@@ -69,7 +90,7 @@ describe('TranslateDirective', () => {
         });
     });
 
-    describe.skip('areEquals', () => {
+    describe('areEquals', () => {
         beforeEach(() => {
             directive = new TranslateDirective(
                 new MockElementRef(),
@@ -90,5 +111,3 @@ describe('TranslateDirective', () => {
         });
     });
 });
-
-

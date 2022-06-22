@@ -5,6 +5,8 @@
 
 ### Improvements
 - upgrade rxjs to version 7 [mpellerin42]
+- **Translate**: [mpellerin42]
+  - Translation files can be flat or hierarchical (or a mix of both)
 
 # 2.51.2 (2022-06-21)
 

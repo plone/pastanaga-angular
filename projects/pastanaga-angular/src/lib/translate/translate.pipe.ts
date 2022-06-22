@@ -1,5 +1,7 @@
 import { Inject, InjectionToken, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from './translate.service';
+import { FlattenTranslation, Translation } from './translate.model';
+import { formatTranslationEntries } from './translate.utils';
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
 
@@ -14,7 +16,16 @@ export class TranslatePipe implements PipeTransform {
     lastParams?: string;
     value: string | undefined = '';
 
-    constructor(private translateService: TranslateService, @Inject(PA_TRANSLATIONS) private translations: any) {
+    private readonly _flattenTranslations: FlattenTranslation = {};
+
+    constructor(
+        private translateService: TranslateService,
+        @Inject(PA_TRANSLATIONS) private translations: Translation,
+    ) {
+        this._flattenTranslations = Object.entries(translations).reduce((langMap, [lang, entries]) => {
+            langMap[lang] = formatTranslationEntries(entries);
+            return langMap;
+        }, {} as FlattenTranslation);
     }
 
     transform(key?: string, args?: any): string {
@@ -26,8 +37,8 @@ export class TranslatePipe implements PipeTransform {
             return this.value as string;
         }
         this.lastKey = key;
-        const keys = !!key ? key.split('.') : [];
-        this.value = this.getValue(keys, this.translateService.currentLanguage, this.translations) || this.getValue(keys, 'en_US', this.translations);
+
+        this.value = this.getValue(key, this.translateService.currentLanguage) || this.getValue(key, 'en_US');
         if (!!this.value && !!args) {
             this.lastParams = args;
             let value = this.value;
@@ -44,13 +55,8 @@ export class TranslatePipe implements PipeTransform {
         return !!this.value || this.value === '' ? this.value : key;
     }
 
-    private getValue(keys: string[], lang: string, translations: any): string | undefined {
-        let value = translations[lang] || {};
-        keys.forEach((k) => {
-            if (!!value) {
-                value = value[k];
-            }
-        });
-        return !value || typeof value === 'string' ? value : keys.join('.');
+    private getValue(key: string, lang: string): string | undefined {
+        const translations = this._flattenTranslations[lang] || {};
+        return translations[key];
     }
 }
