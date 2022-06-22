@@ -1,10 +1,10 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { FlattenTranslation, Translation } from './translate.model';
-import { formatTranslationEntries, mergeTranslations } from './translate.utils';
+import { formatTranslationEntries } from './translate.utils';
 import { PA_TRANSLATIONS } from './translate.pipe';
 
 export const PA_LANG = new InjectionToken<string>('pastanaga.lang', {
-    factory: () => ''
+    factory: () => '',
 });
 
 @Injectable({
@@ -26,7 +26,7 @@ export class TranslateService {
         return this._currentLanguage;
     }
 
-    constructor(@Inject(PA_LANG) private lang: any, @Inject(PA_TRANSLATIONS) private translations: Translation,) {
+    constructor(@Inject(PA_LANG) private lang: any, @Inject(PA_TRANSLATIONS) private translations: Translation) {
         this._currentLanguage = lang;
 
         if (Object.keys(translations).length > 0) {

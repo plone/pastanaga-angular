@@ -94,7 +94,7 @@ describe('TranslateDirective', () => {
         beforeEach(() => {
             directive = new TranslateDirective(
                 new MockElementRef(),
-                new TranslatePipe(new TranslateService('en_US'), {}),
+                new TranslatePipe(new TranslateService('en_US', {})),
             );
         });
 

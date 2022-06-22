@@ -6,11 +6,11 @@ describe('TranslatePipe', () => {
     let translateService: TranslateService;
 
     beforeEach(() => {
-        translateService = new TranslateService('en_US');
-        pipe = new TranslatePipe(translateService, {
+        translateService = new TranslateService('en_US', {
             en_US: { close: 'Close', cancel: 'Cancel' },
             latin: { close: 'Claudere' },
         });
+        pipe = new TranslatePipe(translateService);
     });
 
     it('should translate to the proper language', () => {
