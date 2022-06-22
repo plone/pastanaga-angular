@@ -1,6 +1,8 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 
-export const PA_LANG = new InjectionToken<string>('pastanaga.lang');
+export const PA_LANG = new InjectionToken<string>('pastanaga.lang', {
+    factory: () => ''
+});
 
 @Injectable({
     providedIn: 'root',

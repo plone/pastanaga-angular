@@ -5,7 +5,9 @@ import { formatTranslationEntries } from './translate.utils';
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
 
-export const PA_TRANSLATIONS = new InjectionToken<string>('pastanaga.translations');
+export const PA_TRANSLATIONS = new InjectionToken<Translation>('pastanaga.translations', {
+    factory: () => ({})
+});
 
 @Pipe({
     name: 'translate',
@@ -22,10 +24,13 @@ export class TranslatePipe implements PipeTransform {
         private translateService: TranslateService,
         @Inject(PA_TRANSLATIONS) private translations: Translation,
     ) {
-        this._flattenTranslations = Object.entries(translations).reduce((langMap, [lang, entries]) => {
-            langMap[lang] = formatTranslationEntries(entries);
-            return langMap;
-        }, {} as FlattenTranslation);
+        if (Object.keys(translations).length > 0) {
+            this._flattenTranslations = Object.entries(translations).reduce((langMap, [lang, entries]) => {
+                langMap[lang] = formatTranslationEntries(entries);
+                return langMap;
+            }, {} as FlattenTranslation);
+        }
+
     }
 
     transform(key?: string, args?: any): string {
