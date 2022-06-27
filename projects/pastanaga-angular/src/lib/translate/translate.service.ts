@@ -1,19 +1,29 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { FlattenTranslation, Translation } from './translate.model';
-import { formatTranslationEntries } from './translate.utils';
+import { EventEmitter, Inject, Injectable, InjectionToken } from '@angular/core';
+import { FlattenTranslation, Translation, TranslationEntries } from './translate.model';
+import { formatTranslationEntries, mergeTranslations } from './translate.utils';
 import { PA_TRANSLATIONS } from './translate.pipe';
 
 export const PA_LANG = new InjectionToken<string>('pastanaga.lang', {
     factory: () => '',
 });
 
+export interface TranslationChangeEvent {
+    translations: any;
+    lang: string;
+}
+
 @Injectable({
     providedIn: 'root',
 })
 export class TranslateService {
     private _currentLanguage: string;
-
     private readonly _flattenTranslations: FlattenTranslation = {};
+
+    private _onTranslationChange: EventEmitter<TranslationChangeEvent> = new EventEmitter<TranslationChangeEvent>();
+
+    get onTranslationChange(): EventEmitter<TranslationChangeEvent> {
+        return this._onTranslationChange;
+    }
 
     get flattenTranslations() {
         return this._flattenTranslations;
@@ -35,5 +45,11 @@ export class TranslateService {
                 return langMap;
             }, {} as FlattenTranslation);
         }
+    }
+
+    initTranslations(lang: string, translation: TranslationEntries) {
+        const flattenTranslations = formatTranslationEntries(translation);
+        mergeTranslations(this._flattenTranslations, [{ [lang]: flattenTranslations }]);
+        this.onTranslationChange.next({ lang: this.currentLanguage, translations: this.flattenTranslations });
     }
 }

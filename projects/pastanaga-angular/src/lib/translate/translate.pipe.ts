@@ -1,6 +1,8 @@
-import { InjectionToken, Pipe, PipeTransform } from '@angular/core';
-import { TranslateService } from './translate.service';
+import { ChangeDetectorRef, InjectionToken, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { TranslateService, TranslationChangeEvent } from './translate.service';
 import { Translation } from './translate.model';
+import { Subscription } from 'rxjs';
+import { markForCheck } from '../common';
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
 
@@ -10,14 +12,20 @@ export const PA_TRANSLATIONS = new InjectionToken<Translation>('pastanaga.transl
 
 @Pipe({
     name: 'translate',
-    pure: true,
+    pure: false,
 })
-export class TranslatePipe implements PipeTransform {
+export class TranslatePipe implements PipeTransform, OnDestroy {
     lastKey?: string;
     lastParams?: string;
     value: string | undefined = '';
 
-    constructor(private translateService: TranslateService) {
+    onTranslationChange: Subscription | undefined;
+
+    constructor(private translateService: TranslateService, private cdr: ChangeDetectorRef) {
+    }
+
+    ngOnDestroy() {
+        this._cleanUpSubscriptions();
     }
 
     transform(key?: string, args?: any): string {
@@ -30,6 +38,22 @@ export class TranslatePipe implements PipeTransform {
         }
         this.lastKey = key;
 
+        this.updateValue(key, args);
+
+        // subscribe to onTranslationChange event, in case the translations change
+        if (!this.onTranslationChange) {
+            this.onTranslationChange = this.translateService.onTranslationChange.subscribe((event: TranslationChangeEvent) => {
+                if (this.lastKey && event.lang === this.translateService.currentLanguage) {
+                    this.lastKey = undefined;
+                    this.updateValue(key, args);
+                }
+            });
+        }
+
+        return !!this.value || this.value === '' ? this.value : key;
+    }
+
+    private updateValue(key: string, args: any) {
         this.value = this.getValue(key, this.translateService.currentLanguage) || this.getValue(key, 'en_US');
         if (!!this.value && !!args) {
             this.lastParams = args;
@@ -43,12 +67,20 @@ export class TranslatePipe implements PipeTransform {
             });
             this.value = value;
         }
-
-        return !!this.value || this.value === '' ? this.value : key;
+        if (!!this.value) {
+            markForCheck(this.cdr);
+        }
     }
 
     private getValue(key: string, lang: string): string | undefined {
         const translations = this.translateService.flattenTranslations[lang] || {};
         return translations[key];
+    }
+
+    private _cleanUpSubscriptions(): void {
+        if (typeof this.onTranslationChange !== 'undefined') {
+            this.onTranslationChange.unsubscribe();
+            this.onTranslationChange = undefined;
+        }
     }
 }

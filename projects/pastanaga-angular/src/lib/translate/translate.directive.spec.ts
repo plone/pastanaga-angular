@@ -1,6 +1,6 @@
 import { TranslateDirective } from './translate.directive';
 import { PA_TRANSLATIONS, TranslatePipe } from './translate.pipe';
-import { ElementRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { PA_LANG, TranslateService } from './translate.service';
 import { createDirectiveFactory, SpectatorDirective } from '@ngneat/spectator/jest';
 
@@ -94,7 +94,7 @@ describe('TranslateDirective', () => {
         beforeEach(() => {
             directive = new TranslateDirective(
                 new MockElementRef(),
-                new TranslatePipe(new TranslateService('en_US', {})),
+                new TranslatePipe(new TranslateService('en_US', {}), {} as ChangeDetectorRef),
             );
         });
 

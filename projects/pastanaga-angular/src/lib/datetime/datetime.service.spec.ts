@@ -3,6 +3,7 @@ import { DateTimeService } from './datetime.service';
 
 import { TranslatePipe, TranslateService } from '../translate';
 import { dates, mockTranslateEn, mockTranslateFr } from './test-data';
+import { ChangeDetectorRef } from '@angular/core';
 
 describe('DateTimeService', () => {
     let service: DateTimeService;
@@ -10,7 +11,9 @@ describe('DateTimeService', () => {
     describe('en-US locale', () => {
         beforeEach(() => {
             service = new DateTimeService(
-                new TranslatePipe(new TranslateService('en-US', { 'en-US': mockTranslateEn })),
+                new TranslatePipe(new TranslateService('en-US', { 'en-US': mockTranslateEn }), {
+                    markForCheck: () => {},
+                } as ChangeDetectorRef),
                 'en-US',
             );
         });
@@ -131,7 +134,9 @@ describe('DateTimeService', () => {
     describe('fr-FR locale', () => {
         beforeEach(() => {
             service = new DateTimeService(
-                new TranslatePipe(new TranslateService('fr-FR', { 'fr-FR': mockTranslateFr })),
+                new TranslatePipe(new TranslateService('fr-FR', { 'fr-FR': mockTranslateFr }), {
+                    markForCheck: () => {},
+                } as ChangeDetectorRef),
                 'fr-FR',
             );
         });

@@ -1,5 +1,6 @@
 import { TranslatePipe } from './translate.pipe';
 import { TranslateService } from './translate.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 describe('TranslatePipe', () => {
     let pipe: TranslatePipe;
@@ -10,7 +11,7 @@ describe('TranslatePipe', () => {
             en_US: { close: 'Close', cancel: 'Cancel' },
             latin: { close: 'Claudere' },
         });
-        pipe = new TranslatePipe(translateService);
+        pipe = new TranslatePipe(translateService, { markForCheck: () => {} } as ChangeDetectorRef);
     });
 
     it('should translate to the proper language', () => {
