@@ -75,12 +75,6 @@ pa-demo-page {
                 flex: 1 0 75%;
             }
         }
-
-        p + pa-demo-code,
-        p + pa-demo-code>pre,
-        p + pa-demo-code>pre>code,{
-            margin: 0;
-        }
     }
 
     pa-demo-examples {

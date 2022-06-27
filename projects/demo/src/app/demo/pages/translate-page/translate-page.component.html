@@ -105,6 +105,11 @@
             </pre>
         </pa-demo-code>
 
+        <p>Then language can be changed dynamically using <code>translateService.use</code> method:</p>
+        <pa-demo-code>
+            <pre><code>{{dynamicallyChangePastanagaLang}}</code></pre>
+        </pa-demo-code>
+
         <h3>Loading translations externally</h3>
         <p>You might want to use Pastanaga-angular in an existing project already using another translation system like <code>ngx-translate</code> for example.
         In such case, where we still want Pastanaga to be able to manage translations internally, you can provide translations files and languages to pastanaga dynamically directly in the <code>app.component</code>:

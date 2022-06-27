@@ -10,69 +10,33 @@ import { TranslateService } from '@guillotinaweb/pastanaga-angular';
 export class TranslatePageComponent {
     translations = `export const I18N_EN: TranslationEntries = {
     pastanaga: {
-        add: 'Add',
-        back: 'Back',
-        cancel: 'Cancel',
-        clear: 'Clear',
-        close: 'Close',
-        collapse: 'Collapse',
-        confirm: 'Confirm',
-        continue: 'Continue',
-        create: 'Create',
         datetime: {
             'a-few-seconds-ago': 'Just now',
             minutesAgo: '{{minutes}} mins ago',
             'one-minute-ago': '1 min ago',
             yesterday: 'Yesterday',
-            at: 'at',
         },
         // …
     },
 };
 `;
     flattenTranslations = `export const I18N_EN: TranslationEntries = {
-  'pastanaga.calendar.months': 'Months',
-  'pastanaga.calendar.years': 'Years',
-  'pastanaga.calendar.invalid-format': 'Invalid date format',
-  'pastanaga.cancel': 'Cancel',
-  'pastanaga.close': 'Close',
-  'pastanaga.collapse': 'Collapse',
-  'pastanaga.confirm': 'Confirm',
   'pastanaga.datetime.a-few-seconds-ago': 'Just now',
   'pastanaga.datetime.minutesAgo': '{{minutes}} mins ago',
   'pastanaga.datetime.one-minute-ago': '1 min ago',
-  'pastanaga.datetime.yesterday': 'Yesterday',
-  'pastanaga.at': 'at',
-  'pastanaga.date-picker.label': 'Pick a date',
-  'pastanaga.expand': 'Expand',
-  'pastanaga.more': 'More',
-  'pastanaga.show': 'Show {{type}}',
-  'pastanaga.sort-by': 'Sort by',
-  'pastanaga.total': '{{count}} total {{type}}'
+  //…
 };
 `;
     translationsMix = `export const I18N_EN: TranslationEntries = {
-  datetime: {
-    'a-few-seconds-ago': 'Just now',
-    minutesAgo: '{{minutes}} mins ago',
-    'one-minute-ago': '1 min ago',
-    yesterday: 'Yesterday',
-    at: 'at',
+  pastanaga: {
+    datetime: {
+      'a-few-seconds-ago': 'Just now',
+      minutesAgo: '{{minutes}} mins ago',
+    },
   },
-  'pastanaga.calendar.months': 'Months',
-  'pastanaga.calendar.years': 'Years',
-  'pastanaga.calendar.invalid-format': 'Invalid date format',
-  'pastanaga.cancel': 'Cancel',
-  'pastanaga.close': 'Close',
-  'pastanaga.collapse': 'Collapse',
-  'pastanaga.confirm': 'Confirm',
-  'pastanaga.at': 'at',
-  'pastanaga.date-picker.label': 'Pick a date',
-  'pastanaga.expand': 'Expand',
-  'pastanaga.more': 'More',
-  'pastanaga.show': 'Show {{type}}',
-  'pastanaga.sort-by': 'Sort by',
-  'pastanaga.total': '{{count}} total {{type}}'
+  'pastanaga.datetime.one-minute-ago': '1 min ago',
+  'pastanaga.datetime.yesterday': 'Yesterday',
+  //…
 };
 `;
     appModule = `
@@ -118,7 +82,7 @@ export class AppComponent implements OnDestroy {
     const lang = browserLang.match(/en|fr/) ? browserLang : 'en';
     ngxTranslate.use(lang);
     this.ngxTranslate.onLangChange.subscribe((event) => {
-      this.paTranslate.initTranslations(event.lang,  event.translations);
+      this.paTranslate.initTranslationsAndUse(event.lang,  event.translations);
     });
   }
 
@@ -154,6 +118,12 @@ export class AppComponent implements OnDestroy {
   bootstrap: [AppComponent]
 })
 export class AppModule { }`;
+
+    dynamicallyChangePastanagaLang = `constructor(private translateService: TranslateService) {}
+
+updateLanguage(language: string) {
+    this.translateService.use(language);
+}`;
 
     languages = ['en', 'fr', 'latin'];
     currentLanguage = 'en';
