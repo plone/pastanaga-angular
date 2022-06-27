@@ -1,6 +1,6 @@
 import { TranslateDirective } from './translate.directive';
 import { TranslatePipe } from './translate.pipe';
-import { ChangeDetectorRef, ElementRef } from '@angular/core';
+import { ElementRef } from '@angular/core';
 import { PA_LANG, PA_TRANSLATIONS, TranslateService } from './translate.service';
 import { createDirectiveFactory, SpectatorDirective } from '@ngneat/spectator/jest';
 
@@ -92,10 +92,7 @@ describe('TranslateDirective', () => {
 
     describe('areEquals', () => {
         beforeEach(() => {
-            directive = new TranslateDirective(
-                new MockElementRef(),
-                new TranslatePipe(new TranslateService('en_US', {}), {} as ChangeDetectorRef),
-            );
+            directive = new TranslateDirective(new MockElementRef(), new TranslateService('en_US', {}));
         });
 
         it('should be false when testing 2 objects with a different property ', () => {

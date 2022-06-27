@@ -43,7 +43,7 @@ describe('TranslateService', () => {
                 lang: 'fr',
                 translations: expectedTranslations,
             });
-            expect(service.lang).toBe('fr');
+            expect(service.currentLang).toBe('fr');
         });
     });
 });

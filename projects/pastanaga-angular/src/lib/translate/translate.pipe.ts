@@ -3,8 +3,6 @@ import { TranslateService, TranslationChangeEvent } from './translate.service';
 import { Subscription } from 'rxjs';
 import { markForCheck } from '../common';
 
-const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
-
 @Pipe({
     name: 'translate',
     pure: false,
@@ -14,7 +12,7 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
     lastParams?: string;
     value: string | undefined = '';
 
-    onTranslationChange: Subscription | undefined;
+    onTranslationChange?: Subscription;
 
     constructor(private translateService: TranslateService, private cdr: ChangeDetectorRef) {}
 
@@ -31,6 +29,7 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
             return this.value as string;
         }
         this.lastKey = key;
+        this.lastParams = args;
 
         this.updateValue(key, args);
 
@@ -50,27 +49,10 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
     }
 
     private updateValue(key: string, args: any) {
-        this.value = this.getValue(key, this.translateService.currentLanguage) || this.getValue(key, 'en_US');
-        if (!!this.value && !!args) {
-            this.lastParams = args;
-            let value = this.value;
-            Object.keys(args).forEach((param) => {
-                let paramValue = args[param];
-                if (typeof paramValue === 'string') {
-                    paramValue = paramValue.replace(HTML_TAG_DELIMITERS, (c) => '&#' + c.charCodeAt(0) + ';');
-                }
-                value = value.replace(new RegExp(`{{${param}}}`, 'g'), paramValue);
-            });
-            this.value = value;
-        }
+        this.value = this.translateService.getValue(key, args);
         if (!!this.value) {
             markForCheck(this.cdr);
         }
-    }
-
-    private getValue(key: string, lang: string): string | undefined {
-        const translations = this.translateService.flattenTranslations[lang] || {};
-        return translations[key];
     }
 
     private _cleanUpSubscriptions(): void {

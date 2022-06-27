@@ -15,14 +15,17 @@ export interface TranslationChangeEvent {
     lang: string;
 }
 
+const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
+
 @Injectable({
     providedIn: 'root',
 })
 export class TranslateService {
-    private _lang: string;
+    private _currentLang: string;
     private readonly _flattenTranslations: FlattenTranslation = {};
-
     private _onTranslationChange: EventEmitter<TranslationChangeEvent> = new EventEmitter<TranslationChangeEvent>();
+
+    defaultLang = 'en_US';
 
     get onTranslationChange(): EventEmitter<TranslationChangeEvent> {
         return this._onTranslationChange;
@@ -32,11 +35,11 @@ export class TranslateService {
         return this._flattenTranslations;
     }
 
-    set lang(language: string) {
-        this._lang = language;
+    set currentLang(language: string) {
+        this._currentLang = language;
     }
-    get lang() {
-        return this._lang;
+    get currentLang() {
+        return this._currentLang;
     }
 
     /**
@@ -44,17 +47,17 @@ export class TranslateService {
      * @param language
      */
     set currentLanguage(language: string) {
-        this._lang = language;
+        this._currentLang = language;
     }
     get currentLanguage() {
-        return this._lang;
+        return this._currentLang;
     }
 
     constructor(
         @Inject(PA_LANG) private injectedLang: any,
         @Inject(PA_TRANSLATIONS) private translations: Translation,
     ) {
-        this._lang = injectedLang;
+        this._currentLang = injectedLang;
 
         if (Object.keys(translations).length > 0) {
             this._flattenTranslations = Object.entries(translations).reduce((langMap, [lang, entries]) => {
@@ -65,9 +68,29 @@ export class TranslateService {
     }
 
     initTranslationsAndUse(lang: string, translation: TranslationEntries) {
-        this.lang = lang;
         const flattenTranslations = formatTranslationEntries(translation);
         mergeTranslations(this._flattenTranslations, [{ [lang]: flattenTranslations }]);
-        this.onTranslationChange.emit({ lang: this.lang, translations: this.flattenTranslations });
+        this.use(lang);
+    }
+
+    use(lang: string) {
+        this.currentLang = lang;
+        this.onTranslationChange.emit({ lang: this.currentLang, translations: this.flattenTranslations });
+    }
+
+    getValue(key: string, args?: any): string | undefined {
+        let value =
+            (this.flattenTranslations[this.currentLang] || {})[key] ||
+            (this.flattenTranslations[this.defaultLang] || {})[key];
+        if (!!value && !!args) {
+            Object.keys(args).forEach((param) => {
+                let paramValue = args[param];
+                if (typeof paramValue === 'string') {
+                    paramValue = paramValue.replace(HTML_TAG_DELIMITERS, (c) => '&#' + c.charCodeAt(0) + ';');
+                }
+                value = value.replace(new RegExp(`{{${param}}}`, 'g'), paramValue);
+            });
+        }
+        return value;
     }
 }
