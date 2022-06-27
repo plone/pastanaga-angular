@@ -1,7 +1,7 @@
 import { TranslateDirective } from './translate.directive';
-import { PA_TRANSLATIONS, TranslatePipe } from './translate.pipe';
+import { TranslatePipe } from './translate.pipe';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
-import { PA_LANG, TranslateService } from './translate.service';
+import { PA_LANG, PA_TRANSLATIONS, TranslateService } from './translate.service';
 import { createDirectiveFactory, SpectatorDirective } from '@ngneat/spectator/jest';
 
 class MockElementRef implements ElementRef {

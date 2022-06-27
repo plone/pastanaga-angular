@@ -1,14 +1,9 @@
-import { ChangeDetectorRef, InjectionToken, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from './translate.service';
-import { Translation } from './translate.model';
 import { Subscription } from 'rxjs';
 import { markForCheck } from '../common';
 
 const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
-
-export const PA_TRANSLATIONS = new InjectionToken<Translation>('pastanaga.translations', {
-    factory: () => ({})
-});
 
 @Pipe({
     name: 'translate',
@@ -21,8 +16,7 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
 
     onTranslationChange: Subscription | undefined;
 
-    constructor(private translateService: TranslateService, private cdr: ChangeDetectorRef) {
-    }
+    constructor(private translateService: TranslateService, private cdr: ChangeDetectorRef) {}
 
     ngOnDestroy() {
         this._cleanUpSubscriptions();
@@ -42,12 +36,14 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
 
         // subscribe to onTranslationChange event, in case the translations change
         if (!this.onTranslationChange) {
-            this.onTranslationChange = this.translateService.onTranslationChange.subscribe((event: TranslationChangeEvent) => {
-                if (this.lastKey && event.lang === this.translateService.currentLanguage) {
-                    this.lastKey = undefined;
-                    this.updateValue(key, args);
-                }
-            });
+            this.onTranslationChange = this.translateService.onTranslationChange.subscribe(
+                (event: TranslationChangeEvent) => {
+                    if (this.lastKey && event.lang === this.translateService.currentLanguage) {
+                        this.lastKey = undefined;
+                        this.updateValue(key, args);
+                    }
+                },
+            );
         }
 
         return !!this.value || this.value === '' ? this.value : key;

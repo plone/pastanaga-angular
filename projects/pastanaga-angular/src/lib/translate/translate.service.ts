@@ -1,10 +1,13 @@
 import { EventEmitter, Inject, Injectable, InjectionToken } from '@angular/core';
 import { FlattenTranslation, Translation, TranslationEntries } from './translate.model';
 import { formatTranslationEntries, mergeTranslations } from './translate.utils';
-import { PA_TRANSLATIONS } from './translate.pipe';
 
 export const PA_LANG = new InjectionToken<string>('pastanaga.lang', {
     factory: () => '',
+});
+
+export const PA_TRANSLATIONS = new InjectionToken<Translation>('pastanaga.translations', {
+    factory: () => ({}),
 });
 
 export interface TranslationChangeEvent {
@@ -16,7 +19,7 @@ export interface TranslationChangeEvent {
     providedIn: 'root',
 })
 export class TranslateService {
-    private _currentLanguage: string;
+    private _lang: string;
     private readonly _flattenTranslations: FlattenTranslation = {};
 
     private _onTranslationChange: EventEmitter<TranslationChangeEvent> = new EventEmitter<TranslationChangeEvent>();
@@ -29,27 +32,42 @@ export class TranslateService {
         return this._flattenTranslations;
     }
 
-    set currentLanguage(language: string) {
-        this._currentLanguage = language;
+    set lang(language: string) {
+        this._lang = language;
     }
-    get currentLanguage() {
-        return this._currentLanguage;
+    get lang() {
+        return this._lang;
     }
 
-    constructor(@Inject(PA_LANG) private lang: any, @Inject(PA_TRANSLATIONS) private translations: Translation) {
-        this._currentLanguage = lang;
+    /**
+     * Keeping for backward compatibility
+     * @param language
+     */
+    set currentLanguage(language: string) {
+        this._lang = language;
+    }
+    get currentLanguage() {
+        return this._lang;
+    }
+
+    constructor(
+        @Inject(PA_LANG) private injectedLang: any,
+        @Inject(PA_TRANSLATIONS) private translations: Translation,
+    ) {
+        this._lang = injectedLang;
 
         if (Object.keys(translations).length > 0) {
             this._flattenTranslations = Object.entries(translations).reduce((langMap, [lang, entries]) => {
-                langMap[lang] = formatTranslationEntries(entries);
+                langMap[lang] = formatTranslationEntries(entries as Translation);
                 return langMap;
             }, {} as FlattenTranslation);
         }
     }
 
-    initTranslations(lang: string, translation: TranslationEntries) {
+    initTranslationsAndUse(lang: string, translation: TranslationEntries) {
+        this.lang = lang;
         const flattenTranslations = formatTranslationEntries(translation);
         mergeTranslations(this._flattenTranslations, [{ [lang]: flattenTranslations }]);
-        this.onTranslationChange.next({ lang: this.currentLanguage, translations: this.flattenTranslations });
+        this.onTranslationChange.emit({ lang: this.lang, translations: this.flattenTranslations });
     }
 }
