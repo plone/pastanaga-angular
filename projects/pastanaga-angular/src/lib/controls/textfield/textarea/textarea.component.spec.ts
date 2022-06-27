@@ -37,7 +37,7 @@ class TestComponent {
     maxHeight: any;
 }
 
-describe.skip('TextareaComponent', () => {
+describe('TextareaComponent', () => {
     let component: TextareaComponent;
     let host: TestComponent;
     let spectator: SpectatorHost<TextareaComponent, TestComponent>;
@@ -51,8 +51,11 @@ describe.skip('TextareaComponent', () => {
             InputFormatterDirective,
             MockComponent(FormFieldHintComponent),
             MockDirective(PaTextareaAutoHeightDirective),
-            MockPipe(TranslatePipe, jest.fn((key: string) => key))
-        ]
+            MockPipe(
+                TranslatePipe,
+                jest.fn((key: string) => key),
+            ),
+        ],
     });
     const thenInputHasAttribute = (attribute: string, value: any) => {
         expect(spectator.query('.pa-field-control')?.attributes.getNamedItem(attribute)?.value).toEqual(value);
@@ -133,19 +136,22 @@ describe.skip('TextareaComponent', () => {
         spectator.detectChanges();
         thenInputHasAttribute('autocomplete', 'off');
     });
+
     it('should toggle acceptHtmlTags', () => {
-        initWithTemplate(`<pa-textarea [acceptHtmlTags]="acceptHtmlTags">Label</pa-textarea>`);
-        expect(component.sanitizeHtmlTags).toBeDefined();
-        const formatter = ngMocks.find(spectator.debugElement, InputFormatterDirective);
-        expect(formatter).toBeDefined();
+        spectator = createHost(`<pa-textarea [acceptHtmlTags]="acceptHtmlTags">Label</pa-textarea>`);
+        spectator.detectChanges();
+        expect(spectator.component.sanitizeHtmlTags('<span>content</span>')).toBe('spancontent/span');
+
         host = spectator.hostComponent;
         host.acceptHtmlTags = true;
         spectator.detectChanges();
-        expect(component.sanitizeHtmlTags).not.toBeDefined();
+        expect(spectator.component.sanitizeHtmlTags('<span>content</span>')).toBe('<span>content</span>');
+
         host.acceptHtmlTags = false;
         spectator.detectChanges();
-        expect(component.sanitizeHtmlTags).toBeDefined();
+        expect(spectator.component.sanitizeHtmlTags('<span>content</span>')).toBe('spancontent/span');
     });
+
     it('should apply disabled in standalone', () => {
         initWithTemplate(`<pa-textarea [disabled]="disabled">Label</pa-textarea>`);
         thenInputHasProperty('disabled', false);

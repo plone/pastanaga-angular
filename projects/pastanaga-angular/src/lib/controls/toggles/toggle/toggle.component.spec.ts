@@ -22,7 +22,7 @@ export class TestComponent {
     });
 }
 
-describe.skip('ToggleComponent', () => {
+describe('ToggleComponent', () => {
     describe('from itself', () => {
         let component: ToggleComponent;
         let spectator: Spectator<ToggleComponent>;
