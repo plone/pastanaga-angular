@@ -1,20 +1,23 @@
-import { Inject, InjectionToken, Pipe, PipeTransform } from '@angular/core';
-import { TranslateService } from './translate.service';
-
-const HTML_TAG_DELIMITERS = new RegExp(/[<>]/gim);
-
-export const PA_TRANSLATIONS = new InjectionToken<string>('pastanaga.translations');
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { TranslateService, TranslationChangeEvent } from './translate.service';
+import { Subscription } from 'rxjs';
+import { markForCheck } from '../common';
 
 @Pipe({
     name: 'translate',
-    pure: true,
+    pure: false,
 })
-export class TranslatePipe implements PipeTransform {
+export class TranslatePipe implements PipeTransform, OnDestroy {
     lastKey?: string;
     lastParams?: string;
     value: string | undefined = '';
 
-    constructor(private translateService: TranslateService, @Inject(PA_TRANSLATIONS) private translations: any) {
+    onTranslationChange?: Subscription;
+
+    constructor(private translateService: TranslateService, private cdr: ChangeDetectorRef) {}
+
+    ngOnDestroy() {
+        this._cleanUpSubscriptions();
     }
 
     transform(key?: string, args?: any): string {
@@ -26,31 +29,36 @@ export class TranslatePipe implements PipeTransform {
             return this.value as string;
         }
         this.lastKey = key;
-        const keys = !!key ? key.split('.') : [];
-        this.value = this.getValue(keys, this.translateService.currentLanguage, this.translations) || this.getValue(keys, 'en_US', this.translations);
-        if (!!this.value && !!args) {
-            this.lastParams = args;
-            let value = this.value;
-            Object.keys(args).forEach((param) => {
-                let paramValue = args[param];
-                if (typeof paramValue === 'string') {
-                    paramValue = paramValue.replace(HTML_TAG_DELIMITERS, (c) => '&#' + c.charCodeAt(0) + ';');
-                }
-                value = value.replace(new RegExp(`{{${param}}}`, 'g'), paramValue);
-            });
-            this.value = value;
+        this.lastParams = args;
+
+        this.updateValue(key, args);
+
+        // subscribe to onTranslationChange event, in case the translations change
+        if (!this.onTranslationChange) {
+            this.onTranslationChange = this.translateService.onTranslationChange.subscribe(
+                (event: TranslationChangeEvent) => {
+                    if (this.lastKey && event.lang === this.translateService.currentLanguage) {
+                        this.lastKey = undefined;
+                        this.updateValue(key, args);
+                    }
+                },
+            );
         }
 
         return !!this.value || this.value === '' ? this.value : key;
     }
 
-    private getValue(keys: string[], lang: string, translations: any): string | undefined {
-        let value = translations[lang] || {};
-        keys.forEach((k) => {
-            if (!!value) {
-                value = value[k];
-            }
-        });
-        return !value || typeof value === 'string' ? value : keys.join('.');
+    private updateValue(key: string, args: any) {
+        this.value = this.translateService.getValue(key, args);
+        if (!!this.value) {
+            markForCheck(this.cdr);
+        }
+    }
+
+    private _cleanUpSubscriptions(): void {
+        if (typeof this.onTranslationChange !== 'undefined') {
+            this.onTranslationChange.unsubscribe();
+            this.onTranslationChange = undefined;
+        }
     }
 }

@@ -1,4 +1,4 @@
-import { Translation, TranslationEntries } from './translate.model';
+import { FlattenTranslationEntries, Translation, TranslationEntries } from './translate.model';
 
 function deepMerge(from: TranslationEntries, to: TranslationEntries): TranslationEntries {
     return Object.entries(from).reduce((all, [key, translation]) => {
@@ -18,3 +18,22 @@ export const mergeTranslations = (existing: Translation, translations: Translati
         ),
     );
 };
+
+export const formatTranslationEntries = (entries: TranslationEntries): FlattenTranslationEntries => {
+    return flattenEntry('', entries);
+}
+
+const flattenEntry = (rootKey: string, entry: TranslationEntries): FlattenTranslationEntries => {
+    let flattenEntries: FlattenTranslationEntries = {};
+    Object.entries(entry).forEach(([key, value]) => {
+        const flattenKey = !!rootKey ? `${rootKey}.${key}` : key;
+        if (typeof value === 'string') {
+            flattenEntries[flattenKey] = value;
+        } else {
+            const flattenResult = flattenEntry(flattenKey, value);
+            flattenEntries = {...flattenEntries, ...flattenResult};
+        }
+    });
+    return flattenEntries;
+}
+

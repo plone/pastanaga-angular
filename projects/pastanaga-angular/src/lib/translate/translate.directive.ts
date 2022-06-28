@@ -1,13 +1,15 @@
-import { Directive, ElementRef, Input, AfterViewChecked } from '@angular/core';
-import { TranslatePipe } from './translate.pipe';
+import { Directive, ElementRef, Input, AfterViewChecked, OnDestroy } from '@angular/core';
+import { TranslateService, TranslationChangeEvent } from './translate.service';
+import { Subscription } from 'rxjs';
 
 @Directive({
     selector: '[translate]',
 })
-export class TranslateDirective implements AfterViewChecked {
+export class TranslateDirective implements AfterViewChecked, OnDestroy {
     key = '';
     lastParams?: any;
     currentParams?: any;
+    onTranslationChange?: Subscription;
 
     @Input() set translate(key: string) {
         if (key) {
@@ -21,19 +23,34 @@ export class TranslateDirective implements AfterViewChecked {
             this.checkNodes(true);
         }
     }
-    constructor(private eltRef: ElementRef, private translatePipe: TranslatePipe) {}
+
+    constructor(private element: ElementRef, private translateService: TranslateService) {
+        if (!this.onTranslationChange) {
+            this.onTranslationChange = this.translateService.onTranslationChange.subscribe(
+                (event: TranslationChangeEvent) => {
+                    if (event.lang === this.translateService.currentLang) {
+                        this.checkNodes(true);
+                    }
+                },
+            );
+        }
+    }
 
     ngAfterViewChecked() {
         this.checkNodes();
     }
 
+    ngOnDestroy() {
+        this._cleanUpSubscriptions();
+    }
+
     checkNodes(forceUpdate = false) {
-        let nodes: NodeList = this.eltRef.nativeElement.childNodes;
+        let nodes: NodeList = this.element.nativeElement.childNodes;
         // if the element is empty
         if (!nodes.length) {
             // we add the key as content
-            this.setContent(this.eltRef.nativeElement, this.key);
-            nodes = this.eltRef.nativeElement.childNodes;
+            this.setContent(this.element.nativeElement, this.key);
+            nodes = this.element.nativeElement.childNodes;
         }
         for (let i = 0; i < nodes.length; ++i) {
             const node: any = nodes[i];
@@ -76,7 +93,7 @@ export class TranslateDirective implements AfterViewChecked {
 
             this.lastParams = this.currentParams;
 
-            const translate = this.translatePipe.transform(key, this.currentParams);
+            const translate = this.translateService.getValue(key, this.currentParams);
             if (translate !== key) {
                 node.lastKey = key;
             }
@@ -99,5 +116,12 @@ export class TranslateDirective implements AfterViewChecked {
 
     areEquals(obj1: any, obj2: any): boolean {
         return JSON.stringify(obj1) === JSON.stringify(obj2);
+    }
+
+    private _cleanUpSubscriptions() {
+        if (typeof this.onTranslationChange !== 'undefined') {
+            this.onTranslationChange.unsubscribe();
+            this.onTranslationChange = undefined;
+        }
     }
 }

@@ -1,3 +1,16 @@
+# 2.52.0 (2022-06-27)
+
+### Breaking changes
+- Remove all translation keys not used by pastanaga components from Pastanaga's internal translation file [mpellerin42]
+
+### Improvements
+- upgrade rxjs to version 7 [mpellerin42]
+- **Translate**: [mpellerin42]
+  - Translation files can be flat or hierarchical (or a mix of both)
+  - Pipe refactoring so translations and lang can be updated dynamically
+  - Provide default empty values for PA_LANG and PA_TRANSLATIONS injection tokens
+  - Fix dynamic translations when using translate directive 
+
 # 2.51.2 (2022-06-21)
 
 ### Fix

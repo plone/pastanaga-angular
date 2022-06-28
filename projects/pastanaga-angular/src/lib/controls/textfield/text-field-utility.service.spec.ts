@@ -27,7 +27,7 @@ describe('TextFieldUtilityService', () => {
     it('should handleBrowserAutoFill until stopMonitoring', () => {
         const htmlElement = { value: '' } as any;
         const formControl = new FormControl();
-        const stopMonitoring = new Subject();
+        const stopMonitoring = new Subject<void>();
         jest.spyOn(autoFillMonitor, 'monitor');
         jest.spyOn(autoFillMonitor, 'stopMonitoring');
         service.handleBrowserAutoFill(htmlElement, formControl, stopMonitoring);
