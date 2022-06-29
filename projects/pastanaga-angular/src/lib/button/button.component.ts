@@ -25,17 +25,29 @@ export class ButtonComponent implements AfterContentInit {
     @Input() set size(value: Size) {
         if (!!value) {
             this._size = value;
-            switch (this._size) {
-                case 'large':
-                    this._iconSize = 'large';
-                    break;
-                case 'medium':
-                case 'small':
-                    this._iconSize = 'medium';
-                    break;
+            if (this._updateIconSize) {
+                switch (this._size) {
+                    case 'large':
+                        this._iconSize = 'large';
+                        break;
+                    case 'medium':
+                    case 'small':
+                        this._iconSize = 'medium';
+                        break;
+                }
             }
         }
     }
+    @Input() set iconSize(value: Size) {
+        if (!!value) {
+            this._iconSize = value;
+            this._updateIconSize = false;
+        }
+    }
+    get iconSize() {
+        return this._iconSize;
+    }
+
     @Input() set aspect(value: Aspect) {
         if (!!value) {
             this._aspect = value;
@@ -68,6 +80,7 @@ export class ButtonComponent implements AfterContentInit {
     _icon = '';
     _iconSize: Size = 'medium';
     _iconAndText = false;
+    private _updateIconSize = true;
 
     // state
     _disabled = false;
