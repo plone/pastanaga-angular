@@ -1,29 +1,29 @@
 @import "../../../../../../pastanaga-angular/src/styles/variables";
 
-.button-cell {
-    display: flex;
-    justify-content: space-between;
-}
 .section-title {
-    margin: rhythm(5) 0;
+    margin: rhythm(4) 0 rhythm(2);
 }
 .pa-container {
-    h3 {
-        margin: rhythm(2) 0;
-    }
-    h4{
-        margin: rhythm(1) 0;
-    }
-
+    margin-right: 0;
     .pa-buttons-container {
         display: flex;
-        border: 1px solid $color-neutral-lighter;
-        padding: rhythm(1);
+
         pa-button {
-            margin: rhythm(1);
+            margin-right: rhythm(2);
         }
         &.inverted {
             background-color: $color-dark-stronger;
+            padding: rhythm(1);
+        }
+    }
+    .pa-buttons-block {
+        display: flex;
+        padding: rhythm(1);
+    }
+
+    @media (max-width: $size-viewport-large-max) {
+        .pa-buttons-container {
+            flex-direction: column;
         }
     }
 }

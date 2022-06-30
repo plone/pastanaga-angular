@@ -1,3 +1,11 @@
+# 2.52.1 (2022-06-29)
+
+### Improvements
+- **Buttons**: [mpellerin42]
+  - Update size of large button based on their padding instead of based on their line-height
+  - Add iconSize option on buttons
+  - Improve example section of button documentation page
+
 # 2.52.0 (2022-06-27)
 
 ### Breaking changes

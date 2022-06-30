@@ -3,203 +3,210 @@
 
     <pa-demo-description>Buttons can contain text, icon or both.</pa-demo-description>
     <pa-demo-examples>
-        <h3 class="section-title">Primary</h3>
+        <h4 class="section-title">Primary</h4>
         <div class="pa-container">
-            <h4>Solid</h4>
             <div class="pa-buttons-container">
-                <pa-button kind="primary"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
-                        kind="primary"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="primary"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-            </div>
-            <h4>Basic</h4>
-            <div class="pa-buttons-container">
-                <pa-button
-                        kind="primary"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
+                <div class="pa-buttons-block">
+                    <pa-button kind="primary"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="primary"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               kind="primary"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                </div>
+
+                <div class="pa-buttons-block">
+                    <pa-button
                         kind="primary"
                         aspect="basic"
                         [size]="selectedSize"
                         [active]="activeState"
                         [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="primary"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
+                        (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="primary"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               kind="primary"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                </div>
             </div>
         </div>
-        <h3 class="section-title">Secondary</h3>
+
+        <h4 class="section-title">Secondary</h4>
         <div class="pa-container">
-            <h4>Solid</h4>
             <div class="pa-buttons-container">
-                <pa-button kind="secondary"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
-                        kind="secondary"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="secondary"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-            </div>
-            <h4>Basic</h4>
-            <div class="pa-buttons-container">
-                <pa-button
-                        kind="secondary"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
+                <div class="pa-buttons-block">
+                    <pa-button kind="secondary"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="secondary"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               kind="secondary"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                </div>
+                <div class="pa-buttons-block">
+                    <pa-button
                         kind="secondary"
                         aspect="basic"
                         [size]="selectedSize"
                         [active]="activeState"
                         [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="secondary"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
+                        (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="secondary"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               kind="secondary"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                </div>
             </div>
         </div>
-        <h3 class="section-title">Destructive</h3>
+
+        <h4 class="section-title">Destructive</h4>
         <div class="pa-container">
-            <h4>Solid</h4>
             <div class="pa-buttons-container">
-                <pa-button kind="destructive"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
-                        kind="destructive"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="destructive"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [active]="activeState"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-            </div>
-            <h4>Basic</h4>
-            <div class="pa-buttons-container">
-                <pa-button
-                        kind="destructive"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
+                <div class="pa-buttons-block">
+                    <pa-button kind="destructive"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="destructive"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               kind="destructive"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                </div>
+                <div class="pa-buttons-block">
+                    <pa-button
                         kind="destructive"
                         aspect="basic"
                         [size]="selectedSize"
+                        [active]="activeState"
                         [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="destructive"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
+                        (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="destructive"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               kind="destructive"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [active]="activeState"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                </div>
             </div>
         </div>
-        <h3 class="section-title">Inverted</h3>
+
+        <h4 class="section-title">Inverted</h4>
         <div class="pa-container">
-            <h4>Solid</h4>
             <div class="pa-buttons-container inverted">
-                <pa-button kind="inverted"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
-                        kind="inverted"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="inverted"
-                        aspect="solid"
-                        [size]="selectedSize"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-            </div>
-            <h4>Basic</h4>
-            <div class="pa-buttons-container inverted">
-                <pa-button
-                        kind="inverted"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        iconAndText
+                <div class="pa-buttons-block">
+                    <pa-button kind="inverted"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="inverted"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                    <pa-button icon="search"
+                               kind="inverted"
+                               aspect="solid"
+                               [size]="selectedSize"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Solid</pa-button>
+                </div>
+                <div class="pa-buttons-block">
+                    <pa-button
                         kind="inverted"
                         aspect="basic"
                         [size]="selectedSize"
                         [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
-                <pa-button icon="search"
-                        kind="inverted"
-                        aspect="basic"
-                        [size]="selectedSize"
-                        [disabled]="disabledState"
-                        (click)="clickOn($event)">Action</pa-button>
+                        (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               iconAndText
+                               kind="inverted"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                    <pa-button icon="search"
+                               kind="inverted"
+                               aspect="basic"
+                               [size]="selectedSize"
+                               [disabled]="disabledState"
+                               (click)="clickOn($event)">Basic</pa-button>
+                </div>
             </div>
         </div>
     </pa-demo-examples>
@@ -220,29 +227,7 @@
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>disabled</dt>
-            <dd>Set disabled state</dd>
-
-            <dt>icon</dt>
-            <dd>Icon name to be used. Button text will be hidden but accessible by screen reader.</dd>
-
-            <dt>iconAndText</dt>
-            <dd>Display icon and text together <small>(default: false)</small></dd>
-
-            <dt>kind</dt>
-            <dd>primary | secondary | destructive | inverted <small>(default: secondary)</small></dd>
-
-            <dt>size</dt>
-            <dd>small | medium | large <small>(default: medium)</small></dd>
-
-            <dt>type</dt>
-            <dd>button | submit | reset <small>(default: button)</small></dd>
-
-            <dt>aspect</dt>
-            <dd>solid | basic <small>(default: solid)</small></dd>
-        </dl>
+        <pa-demo-button-usage></pa-demo-button-usage>
     </pa-demo-usage>
 
     <pa-demo-code>
