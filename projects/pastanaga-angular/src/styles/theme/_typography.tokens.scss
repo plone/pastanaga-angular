@@ -82,5 +82,75 @@ $letter-spacing: (
 // TOKENS
 
 $font-size-body-paragraph: font-size(m) !default;
+
 $line-height-body: line-height(m) !default;
 
+// Font weight
+$font-weight-overline: $font-weight-bold !default;
+$font-weight-body-xs: $font-weight-regular !default;
+$font-weight-body-s: $font-weight-regular !default;
+$font-weight-body-m: $font-weight-regular !default;
+$font-weight-title-xxs: $font-weight-semi-bold !default;
+$font-weight-title-xs: $font-weight-semi-bold !default;
+$font-weight-title-s: $font-weight-semi-bold !default;
+$font-weight-title-m: $font-weight-semi-bold !default;
+$font-weight-title-l: $font-weight-semi-bold !default;
+$font-weight-display-s: $font-weight-semi-bold !default;
+$font-weight-display-m: $font-weight-semi-bold !default;
+
+// Font size
+$font-size-overline: font-size(xs) !default;
+$font-size-body-xs: font-size(xs) !default;
+$font-size-body-s: font-size(s) !default;
+$font-size-body-m: font-size(s) !default;
+$font-size-title-xxs: font-size(s) !default;
+$font-size-title-xs: font-size(m) !default;
+$font-size-title-s: font-size(l) !default;
+$font-size-title-m: font-size(xl) !default;
+$font-size-title-l: font-size(d1) !default;
+$font-size-display-s: font-size(d2) !default;
+$font-size-display-m: font-size(d3) !default;
+
+$font-size-title-s-md: font-size(xl) !default;
+$font-size-title-m-md: font-size(xxl) !default;
+$font-size-title-l-md: font-size(d1-md) !default;
+$font-size-display-s-md: font-size(d2-md) !default;
+$font-size-display-m-md: font-size(d3-md) !default;
+
+// Line height
+$line-height-overline: line-height(s) !default;
+$line-height-body-xs: line-height(s) !default;
+$line-height-body-s: line-height(m) !default;
+$line-height-body-m: line-height(l) !default;
+$line-height-title-xxs: line-height(m) !default;
+$line-height-title-xs: line-height(l) !default;
+$line-height-title-s: line-height(l) !default;
+$line-height-title-m: line-height(xl) !default;
+$line-height-title-l: line-height(d1) !default;
+$line-height-display-s: line-height(d2) !default;
+$line-height-display-m: line-height(d3) !default;
+
+$line-height-title-s-md: line-height(xl) !default;
+$line-height-title-m-md: line-height(xxl) !default;
+$line-height-title-l-md: line-height(d1-md) !default;
+$line-height-display-s-md: line-height(d2-md) !default;
+$line-height-display-m-md: line-height(d3-md) !default;
+
+// Letter spacing
+$letter-spacing-overline: letter-spacing(increase-s) !default;
+$letter-spacing-body-xs: letter-spacing(normal) !default;
+$letter-spacing-body-s: letter-spacing(normal) !default;
+$letter-spacing-body-m: letter-spacing(normal) !default;
+$letter-spacing-title-xxs: letter-spacing(normal) !default;
+$letter-spacing-title-xs: letter-spacing(normal) !default;
+$letter-spacing-title-s: letter-spacing(normal) !default;
+$letter-spacing-title-m: letter-spacing(decrease-xs) !default;
+$letter-spacing-title-l: letter-spacing(normal) !default;
+$letter-spacing-display-s: letter-spacing(decrease-s) !default;
+$letter-spacing-display-m: letter-spacing(decrease-m) !default;
+
+$letter-spacing-title-s-md: letter-spacing(normal) !default;
+$letter-spacing-title-m-md: letter-spacing(decrease-xs-md) !default;
+$letter-spacing-title-l-md: letter-spacing(normal) !default;
+$letter-spacing-display-s-md: letter-spacing(decrease-s-md) !default;
+$letter-spacing-display-m-md: letter-spacing(decrease-m-md) !default;
