@@ -15,7 +15,7 @@
     "test": "npm run test:lib",
     "test:ci": "jest --config ./projects/pastanaga-angular/jest.lib.config.js --runInBand --ci",
     "get_version": "cat ./projects/pastanaga-angular/package.json | grep version  | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
-    "icon_list": "scripts/icon_list.sh",
+    "icon_list": "scripts/update-glyphs.sh",
     "prettier": "prettier --write ./projects/pastanaga-angular/src"
   },
   "private": true,
