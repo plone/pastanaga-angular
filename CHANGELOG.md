@@ -1,4 +1,4 @@
-# 2.52.3 (2022-07-01)
+# 2.52.3 and 2.52.4 (2022-07-01)
 
 ### Bug fix
 - Fix demo deployment [mpellerin42]

@@ -8,7 +8,7 @@ git clone --branch=gh-pages https://${GH_ACTIONS_TOKEN}@github.com/plone/pastana
 cd publish
 # delete main demo: find and remove all files except current, v1 and .git directories
 find . -maxdepth 1 ! -name v1 ! -name .git ! -name . -exec rm -rv {} \;
-cp -r $REPO_PATH/dist/demo .
+cp -r $REPO_PATH/dist/demo/ .
 git add .
 git commit -m "Update main demo"
 git push -fq origin gh-pages 2>&1 > /dev/null
