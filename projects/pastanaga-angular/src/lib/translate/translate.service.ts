@@ -78,7 +78,10 @@ export class TranslateService {
         this.onTranslationChange.emit({ lang: this.currentLang, translations: this.flattenTranslations });
     }
 
-    getValue(key: string, args?: any): string | undefined {
+    getValue(key: string, args?: any): string {
+        if (!!args && typeof args !== 'object') {
+            throw new Error('Translation parameter must be an object');
+        }
         let value =
             (this.flattenTranslations[this.currentLang] || {})[key] ||
             (this.flattenTranslations[this.defaultLang] || {})[key];
@@ -91,6 +94,6 @@ export class TranslateService {
                 value = value.replace(new RegExp(`{{${param}}}`, 'g'), paramValue);
             });
         }
-        return value;
+        return value || key;
     }
 }
