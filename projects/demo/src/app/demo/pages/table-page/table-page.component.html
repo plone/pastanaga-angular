@@ -32,7 +32,7 @@
                 <pa-table-cell header>Last updated</pa-table-cell>
                 <pa-table-cell header>Size</pa-table-cell>
                 <pa-table-cell-menu header>
-                    <pa-button icon="menu-left" (click)="openMenu($event)"></pa-button>
+                    <pa-button icon="info" (click)="openMenu($event)"></pa-button>
                 </pa-table-cell-menu>
             </pa-table-header>
             <pa-table-row *ngFor="let item of [data[0],data[1],data[2]]" [class.pa-selected]="rowSelected === item.id" (click)="clickRow(item.id)" clickable>
