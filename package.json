@@ -6,7 +6,7 @@
     "prestart": "npm run icon_list",
     "start": "ng serve demo",
     "deploy": "npm run icon_list && ng deploy --base-href=/pastanaga-angular/",
-    "build:demo": "npm run icon_list && ng build demo --configuration production --base-href /pastanaga-angular/v2/ && cp ./dist/demo/v2/index.html ./dist/demo/v2/404.html",
+    "build:demo": "npm run icon_list && ng build demo --configuration production --base-href /pastanaga-angular/",
     "build": "cp src/pastanaga*.scss . && ng build pastanaga-angular --configuration production && cp ./README.md ./LICENSE.md ./dist/pastanaga-angular && cp -r projects/pastanaga-angular/src/styles ./dist/pastanaga-angular/lib && cp -r ./projects/pastanaga-angular/src/assets ./dist/pastanaga-angular && rm pastanaga*.scss",
     "export:css": "rm -rf ./dist/css && mkdir ./dist/css && sass ./src/standalone-css.scss ./dist/css/pastanaga.css -I ./src -s compressed && cp -r projects/pastanaga-angular/src/assets/fonts ./dist/css",
     "watch": "ng build --watch --configuration development",

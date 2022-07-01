@@ -1,3 +1,14 @@
+# 2.52.2 (2022-07-01)
+
+### Improvements
+- **Documentation**: [mpellerin42]
+  - improving README
+    - Add Table of content
+    - Add Setup and configuration section
+    - Fix outdated links and references
+  - moving demo to the root, so it is now accessible at https://plone.github.io/pastanaga-angular/. This should fix the routing and reloading problem.
+- **Typography**: Adding tokens allowing to override Pastanaga typography rules
+
 # 2.52.1 (2022-06-29)
 
 ### Improvements

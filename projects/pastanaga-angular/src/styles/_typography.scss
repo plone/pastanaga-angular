@@ -1,116 +1,128 @@
 @import "variables";
 
 .overline {
-    @include font-size(xs);
-    @include line-height(s);
-    @include letter-spacing(increase-s);
-    font-weight: $font-weight-bold;
+    font-size: $font-size-overline;
+    line-height: $line-height-overline;
+    letter-spacing: $letter-spacing-overline;
+    font-weight: $font-weight-overline;
     text-transform: uppercase;
 }
 
 .body-xs {
-    @include font-size(xs);
-    @include line-height(s);
-    @include letter-spacing(normal);
-    font-weight: $font-weight-regular;
+    font-size: $font-size-body-xs;
+    line-height: $line-height-body-xs;
+    letter-spacing: $letter-spacing-body-xs;
+    font-weight: $font-weight-body-xs;
 }
 
 .body-s {
-    @include font-size(s);
-    @include line-height(m);
-    @include letter-spacing(normal);
-    font-weight: $font-weight-regular;
+    font-size: $font-size-body-s;
+    line-height: $line-height-body-s;
+    letter-spacing: $letter-spacing-body-s;
+    font-weight: $font-weight-body-s;
 }
 
 .body-m {
-    @include font-size(m);
-    @include line-height(l);
-    @include letter-spacing(normal);
-    font-weight: $font-weight-regular;
+    font-size: $font-size-body-m;
+    line-height: $line-height-body-m;
+    letter-spacing: $letter-spacing-body-m;
+    font-weight: $font-weight-body-m;
 }
 
 h6,
 .title-xxs {
-    @include font-size(s);
-    @include line-height(m);
-    @include letter-spacing(normal);
-    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-title-xxs;
+    line-height: $line-height-title-xxs;
+    letter-spacing: $letter-spacing-title-xxs;
+    font-weight: $font-weight-title-xxs;
 }
 
 h5,
 .title-xs {
-    @include font-size(m);
-    @include line-height(l);
-    @include letter-spacing(normal);
-    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-title-xs;
+    line-height: $line-height-title-xs;
+    letter-spacing: $letter-spacing-title-xs;
+    font-weight: $font-weight-title-xs;
 }
 
 h4,
 .title-s,
 .title-s-mobile {
-    @include size(l);
-    @include letter-spacing(normal);
-    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-title-s;
+    line-height: $line-height-title-s;
+    letter-spacing: $letter-spacing-title-s;
+    font-weight: $font-weight-title-s;
 }
 
 h3,
 .title-m,
 .title-m-mobile {
-    @include size(xl);
-    @include letter-spacing(decrease-xs);
-    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-title-m;
+    line-height: $line-height-title-m;
+    letter-spacing: $letter-spacing-title-m;
+    font-weight: $font-weight-title-m;
 }
 
 h2,
 .title-l,
 .title-l-mobile {
-    @include size(d1);
-    @include letter-spacing(normal);
-    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-title-l;
+    line-height: $line-height-title-l;
+    letter-spacing: $letter-spacing-title-l;
+    font-weight: $font-weight-title-l;
 }
 
 h1,
 .display-s,
 .display-s-mobile {
-    @include size(d2);
-    @include letter-spacing(decrease-s);
-    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-display-s;
+    line-height: $line-height-display-s;
+    letter-spacing: $letter-spacing-display-s;
+    font-weight: $font-weight-display-s;
 }
 
 .display-m,
 .display-m-mobile {
-    @include size(d3);
-    @include letter-spacing(decrease-m);
-    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-display-m;
+    line-height: $line-height-display-m;
+    letter-spacing: $letter-spacing-display-m;
+    font-weight: $font-weight-display-m;
 }
 
 
 @media (min-width: $size-viewport-medium-min) {
     h4,
     .title-s {
-        @include size(xl);
+        font-size: $font-size-title-s-md;
+        line-height: $line-height-title-s-md;
+        letter-spacing: $letter-spacing-title-s-md;
     }
 
     h3,
     .title-m {
-        @include size(xxl);
-        @include letter-spacing(decrease-xs-md);
+        font-size: $font-size-title-m-md;
+        line-height: $line-height-title-m-md;
+        letter-spacing: $letter-spacing-title-m-md;
     }
 
     h2,
     .title-l {
-        @include size(d1-md);
+        font-size: $font-size-title-l-md;
+        line-height: $line-height-title-l-md;
+        letter-spacing: $letter-spacing-title-l-md;
     }
 
     h1,
     .display-s {
-        @include size(d2-md);
-        @include letter-spacing(decrease-s-md);
+        font-size: $font-size-display-s-md;
+        line-height: $line-height-display-s-md;
+        letter-spacing: $letter-spacing-display-s-md;
     }
 
     .display-m {
-        @include size(d3-md);
-        @include letter-spacing(decrease-m-md);
+        font-size: $font-size-display-m-md;
+        line-height: $line-height-display-m-md;
+        letter-spacing: $letter-spacing-display-m-md;
     }
 }
 

@@ -17,5 +17,5 @@ jobs:
                   node-version: 14.17
             - run: npm install
             - run: npm run build:demo
-            - run: cp ./dist/demo/v2/index.html ./dist/demo/v2/404.html
+            - run: cp ./dist/demo/index.html ./dist/demo/404.html
             - run: ./ghpages.sh
