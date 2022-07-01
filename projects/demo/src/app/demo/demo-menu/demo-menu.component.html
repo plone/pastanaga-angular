@@ -1,6 +1,6 @@
 <pa-button *ngIf="mode !== 'desktop'"
            class="demo-menu-button"
-           icon="menu-left"
+           icon="menu"
            aspect="basic"
            (click)="toggleSideNav(true)">Menu
 </pa-button>
@@ -15,7 +15,7 @@
             </a>
 
             <pa-input class="demo-menu-filter-input"
-                      icon="search"
+                      icon="filter"
                       (keyUp)="onKeyUp($event)"
             >Filter</pa-input>
 

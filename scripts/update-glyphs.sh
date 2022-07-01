@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo "Generate sprite from glyphs folder"
+python3 ./scripts/generate-sprite.py > ./projects/pastanaga-angular/src/assets/glyphs-sprite.svg
+cp ./projects/pastanaga-angular/src/assets/glyphs-sprite.svg ./projects/demo/src/assets
+
 echo "Generate json list of glyphs"
 python3 -c "import json; import xml.dom.minidom; print(json.dumps([el.getAttribute('id') for el in xml.dom.minidom.parseString(open('projects/pastanaga-angular/src/assets/glyphs-sprite.svg').read()).getElementsByTagName('symbol')]))" > projects/demo/src/assets/glyphs.json
 
