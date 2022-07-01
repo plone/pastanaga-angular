@@ -1,3 +1,13 @@
+# 2.53.0 (2022-07-01)
+
+### Improvement
+- New set of glyphs from [quanta-icons](https://github.com/plone/quanta-icons) [mpellerin42]
+
+### Bug fix
+- **Translate**: [mpellerin42]
+  - `getValue` is now always returning a string: either the translation found, either the key
+  - `getValue` will throw an error if `args` parameter is not an object
+
 # 2.52.3, 2.52.4  and 2.52.5 (2022-07-01)
 
 ### Bug fix

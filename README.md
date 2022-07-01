@@ -7,7 +7,7 @@
 
 Provides Pastanaga elements as Angular components.
 
-See https://plone.github.io/pastanaga-angular/ for usage example and developer guide.
+See https://plone.github.io/pastanaga-angular for usage example and developer guide.
 
 ## Table of content
 - [Setup](#setup)
@@ -74,7 +74,10 @@ In order for those files to be found during the compilation, you have to add `sr
 ```
 
 #### Assets
-If you want to use Pastanaga assets like fonts and glyphs sprite, declare them in `angular.json`:
+
+Pastanaga-angular is using [Poppins](https://fonts.google.com/specimen/Poppins) fonts and [Quanta](https://github.com/plone/quanta-icons) glyphs.
+
+If you want to use the same fonts and glyphs sprite, declare Pastanaga assets in `angular.json`:
 - when using npm package:
 ```json
 {
