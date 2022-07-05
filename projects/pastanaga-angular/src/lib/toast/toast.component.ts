@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { timer } from 'rxjs';
 import { take, tap, switchMap } from 'rxjs/operators';
-import { ToastButton, ToastConfig, ToastType } from './toast.model';
+import { ToastConfig, ToastType } from './toast.model';
 
 const TOAST_DEFAULT = 3000;
 const TOAST_BUTTON = 5000;
@@ -41,33 +41,28 @@ export class ToastComponent implements OnInit, AfterViewInit {
     @Input() message = '';
 
     @Input() set type(value: ToastType) {
-        this._class = `pa-toast-${value}`;
+        this._toastClass = `pa-toast-${value}`;
     }
 
     @Input()
     set config(conf: ToastConfig) {
         if (!!conf) {
-            this._icon = conf.icon;
-            this._actionButton = conf.button;
+            this._config = conf;
             this.translateParams = conf.translateParams;
         }
+    }
+    get config() {
+        return this._config;
     }
 
     @Output() dismiss = new EventEmitter<string>();
 
-    get icon() {
-        return this._icon;
-    }
-    get actionButton() {
-        return this._actionButton;
-    }
-    get class() {
-        return this._class;
+    get toastClass() {
+        return this._toastClass;
     }
     private _id = '';
-    private _icon?: string;
-    private _actionButton?: ToastButton;
-    private _class = '';
+    private _config: ToastConfig = {};
+    private _toastClass = '';
     translateParams?: { [key: string]: string | number };
 
     constructor(private rendererFactory: RendererFactory2) {
@@ -79,11 +74,15 @@ export class ToastComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.addClass(`${this.class}-wrapper`, this.toastWrapper);
+        this.addClass(`${this.toastClass}-wrapper`, this.toastWrapper);
     }
 
     setupAutoClause() {
-        const DELAY = !this._actionButton ? TOAST_DEFAULT : TOAST_BUTTON;
+        // Do not auto close by default when there is a button
+        if (this.config.button && !this.config.autoClose) {
+            return;
+        }
+        const DELAY = !this.config.button ? TOAST_DEFAULT : TOAST_BUTTON;
         timer(DELAY)
             .pipe(
                 take(1),
@@ -95,9 +94,9 @@ export class ToastComponent implements OnInit, AfterViewInit {
             .subscribe(() => this.dismiss.emit(this.id));
     }
 
-    onAction() {
-        if (this._actionButton) {
-            this._actionButton.action();
+    clickOnToastButton() {
+        if (this.config.button) {
+            this.config.button.action();
         }
         this.dismiss.emit(this.id);
     }

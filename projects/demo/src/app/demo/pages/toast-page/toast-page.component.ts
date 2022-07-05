@@ -14,7 +14,8 @@ this.toaster.openError(message, config);`;
 
     selectedType: ToastType = 'info';
     hasIcon = false;
-    selectedToastButton: 'none' | 'label' | 'icon' = 'none';
+    hasTitle = false;
+    selectedToastButton: 'none' | 'label' | 'icon' | 'autoClose' = 'none';
 
     constructor(private toaster: ToastService) {}
 
@@ -22,6 +23,9 @@ this.toaster.openError(message, config);`;
         let config: ToastConfig = {};
         if (this.hasIcon) {
             config.icon = this.getIconByType();
+        }
+        if (this.hasTitle) {
+            config.title = this.selectedType.charAt(0).toUpperCase() + this.selectedType.substring(1);
         }
 
         const message = `This is a${this.selectedType === 'info' || this.selectedType === 'error' ? 'n' : ''}
@@ -37,6 +41,9 @@ this.toaster.openError(message, config);`;
                               console.log('Undo was triggered');
                           },
                       };
+        }
+        if (this.selectedToastButton === 'autoClose') {
+            config.autoClose = true;
         }
         this._openToast(message, config);
     }

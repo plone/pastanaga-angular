@@ -95,7 +95,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        expect(createdToast?.instance.class).toEqual('pa-toast-info');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-info');
     });
 
     it('should open an success toast', () => {
@@ -104,7 +104,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        expect(createdToast?.instance.class).toEqual('pa-toast-success');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-success');
     });
 
     it('should open an warning toast', () => {
@@ -113,7 +113,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        expect(createdToast?.instance.class).toEqual('pa-toast-warning');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-warning');
     });
 
     it('should open an error toast', () => {
@@ -122,7 +122,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        expect(createdToast?.instance.class).toEqual('pa-toast-error');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-error');
     });
 
     it('should remove toast and container', () => {

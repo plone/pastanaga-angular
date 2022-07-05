@@ -21,6 +21,10 @@
     text-align: center;
 }
 
+.pa-toast-message-container {
+    text-align: left;
+}
+
 .pa-toast-error-wrapper {
     background: $background-toast-error;
     color: $color-toast-error;

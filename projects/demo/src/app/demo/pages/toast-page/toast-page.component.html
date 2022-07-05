@@ -24,11 +24,13 @@
                 <pa-option value="none">No button</pa-option>
                 <pa-option value="icon">Icon close button</pa-option>
                 <pa-option value="label">Label undo button</pa-option>
+                <pa-option value="autoClose">Label undo button with auto close</pa-option>
             </pa-select>
         </div>
 
         <div class="pa-demo-configuration-field">
             <pa-checkbox id="icon" [(ngModel)]="hasIcon">Toast with icon</pa-checkbox>
+            <pa-checkbox id="title" [(ngModel)]="hasTitle">Toast with title</pa-checkbox>
         </div>
     </pa-demo-configuration>
 
@@ -52,12 +54,21 @@
         <h3>Toast configuration</h3>
         <p>The methods allowing to display a toast can take an optional config parameter implementing <code>ToastConfig</code> interface:</p>
         <dl>
+            <dt>autoClose</dt>
+            <dd>By default, toasts are automatically dismissed after 3 seconds except if a button is configured, in which case toasts are not automatically dismissed.
+            <code>autoClose</code> allows to override this behavior by dismissing the toast automatically after 5 seconds when there is a button. <small>(this option has no effect when there is no button)</small></dd>
+
             <dt>button</dt>
-            <dd>Configure a button displayed on the right of the toast. Should follow <code>ToastButton</code> interface. <small>(optional)</small></dd>
+            <dd>Configure a button displayed on the right of the toast, implementing <code>ToastButton</code> interface. <small>(optional)</small></dd>
+
             <dt>icon</dt>
             <dd>Name of the icon to be displayed on the left of the toast. <small>(optional)</small></dd>
+
+            <dt>title</dt>
+            <dd>Optional title to be displayed on top of the toast message. <small>(optional)</small></dd>
+
             <dt>translateParams</dt>
-            <dd>Params to be passed to the pipe translating the toast message. <small>(optional)</small></dd>
+            <dd>Params passed to the translation pipes (the same params will be used for the message, the optional title, and the optional button label) . <small>(optional)</small></dd>
         </dl>
 
         <h3>Toast button configuration</h3>

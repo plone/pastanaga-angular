@@ -5,8 +5,10 @@ export interface ToastButton {
 }
 
 export interface ToastConfig {
+    autoClose?: boolean;
     button?: ToastButton;
     icon?: string;
+    title?: string;
     translateParams?: { [key: string]: string | number };
 }
 
