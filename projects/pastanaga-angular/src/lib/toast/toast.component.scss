@@ -30,6 +30,8 @@
     color: $color-toast-error;
 
     pa-button ::ng-deep .pa-button {
+        background: $background-toast-button-error;
+
         &:not(:disabled).pa-secondary.pa-basic {
             color: $color-toast-error;
         }
@@ -47,6 +49,8 @@
     color: $color-toast-info;
 
     pa-button ::ng-deep .pa-button {
+        background: $background-toast-button-info;
+
         &:not(:disabled).pa-secondary.pa-basic {
             color: $color-toast-info;
         }
@@ -64,6 +68,8 @@
     color: $color-toast-success;
 
     pa-button ::ng-deep .pa-button {
+        background: $background-toast-button-success;
+
         &:not(:disabled).pa-secondary.pa-basic {
             color: $color-toast-success;
         }
@@ -81,6 +87,8 @@
     color: $color-toast-warning;
 
     pa-button ::ng-deep .pa-button {
+        background: $background-toast-button-warning;
+
         &:not(:disabled).pa-secondary.pa-basic {
             color: $color-toast-warning;
         }

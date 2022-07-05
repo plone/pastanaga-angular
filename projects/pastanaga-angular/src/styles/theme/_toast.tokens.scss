@@ -17,8 +17,14 @@ $color-toast-warning: $color-light-stronger !default;
 $color-toast-info: $color-light-stronger !default;
 
 // button background
+$background-toast-button-default: transparent !default;
 $background-toast-button-default-hover: rgba($color-light-stronger, 0.15) !default;
 $background-toast-button-default-active: rgba($color-light-stronger, 0.25) !default;
+
+$background-toast-button-info: $background-toast-button-default !default;
+$background-toast-button-success: $background-toast-button-default !default;
+$background-toast-button-warning: $background-toast-button-default !default;
+$background-toast-button-error: $background-toast-button-default !default;
 
 $background-toast-button-info-hover: $background-toast-button-default-hover !default;
 $background-toast-button-success-hover: $background-toast-button-default-hover !default;

@@ -8,6 +8,7 @@
 ### Improvements
 - **Toasts**: [mpellerin42]
   - add tokens defining toasts spacing
+  - add tokens defining toast button background colors
   - add optional title and autoClose options to toasts
   - refactor toast template and style using pa-button
   - update the documentation
