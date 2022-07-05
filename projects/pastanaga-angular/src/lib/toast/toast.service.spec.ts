@@ -86,7 +86,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        expect(createdToast?.instance.icon).toEqual('warning');
+        expect(createdToast?.instance.config.icon).toEqual('warning');
     });
 
     it('should open an info toast', () => {
