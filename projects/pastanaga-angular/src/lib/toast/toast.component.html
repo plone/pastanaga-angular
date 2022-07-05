@@ -1,11 +1,14 @@
 <div #toastWrapper class="pa-toast-wrapper">
-    <pa-icon *ngIf="config.icon" class="pa-toast-icon" [name]="config.icon"></pa-icon>
 
-    <div class="pa-toast-message-container">
-        <div *ngIf="config.title" class="title-xxs" [innerHTML]="config.title | translate:translateParams"></div>
-        <div [class]="toastClass"
-             [class.body-s]="!!config.title"
-             [innerHTML]="message | translate:translateParams"></div>
+    <div class="pa-toast-message-wrapper">
+        <pa-icon *ngIf="config.icon" class="pa-toast-icon" [name]="config.icon"></pa-icon>
+
+        <div class="pa-toast-message-container">
+            <div *ngIf="config.title" class="title-xxs" [innerHTML]="config.title | translate:translateParams"></div>
+            <div [class]="toastClass"
+                 [class.body-s]="!!config.title"
+                 [innerHTML]="message | translate:translateParams"></div>
+        </div>
     </div>
 
     <pa-button *ngIf="config.button"

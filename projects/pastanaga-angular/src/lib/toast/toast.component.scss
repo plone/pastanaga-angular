@@ -6,8 +6,7 @@
     align-items: center;
     margin: 0 auto;
     opacity: 0;
-    animation: toastin $transition-process-in;
-    animation-fill-mode: forwards;
+    animation: toastIn $transition-process-in forwards;
     z-index: 1;
 }
 
@@ -15,14 +14,31 @@
     align-items: center;
     box-shadow: $shadow-default;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     min-width: $min-width-toast;
     padding: $padding-toast;
     text-align: center;
+
+    .pa-toast-message-wrapper {
+        align-items: center;
+        display: flex;
+    }
 }
 
 .pa-toast-message-container {
     text-align: left;
+}
+
+.pa-toast-animate-out {
+    animation: toastOut $transition-process-out forwards;
+}
+
+pa-icon {
+    margin-right: $space-toast-between-icon-and-text;
+}
+
+pa-button {
+    margin-left: $space-toast-between-button-and-text;
 }
 
 .pa-toast-error-wrapper {
@@ -101,20 +117,8 @@
         }
     }
 }
-.pa-toast-animate-out {
-    animation: toastout $transition-process-out;
-    animation-fill-mode: forwards;
-}
 
-pa-icon {
-    margin-right: $space-toast-between-icon-and-text;
-}
-
-pa-button {
-    margin-left: $space-toast-between-button-and-text;
-}
-
-@-webkit-keyframes toastin {
+@keyframes toastIn {
     from {
         opacity: 0;
         transform: translateY(- rhythm(8));
@@ -125,28 +129,7 @@ pa-button {
     }
 }
 
-@keyframes toastin {
-    from {
-        opacity: 0;
-        transform: translateY(- rhythm(8));
-    }
-    to {
-        opacity: 1;
-        transform: translateY(rhythm(3));
-    }
-}
-
-@-webkit-keyframes toastout {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-        transform: translateY(- rhythm(8));
-    }
-}
-
-@keyframes toastout {
+@keyframes toastOut {
     from {
         opacity: 1;
     }
