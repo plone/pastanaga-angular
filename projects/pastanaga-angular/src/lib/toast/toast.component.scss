@@ -77,18 +77,17 @@
 }
 
 .pa-toast-wrapper {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: rhythm(1.5);
-    min-width: rhythm(28);
     box-shadow: $shadow-default;
-    will-change: transform, opacity;
+    display: flex;
+    justify-content: center;
+    min-width: $min-width-toast;
+    padding: $padding-toast;
+    text-align: center;
 }
 
 pa-icon {
-    margin-right: rhythm(1.5);
+    margin-right: $space-toast-between-icon-and-text;
 }
 
 .pa-toast-button {
