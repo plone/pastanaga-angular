@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastComponent } from './toast.component';
-import { PaButtonModule } from '../button/button.module';
-import { PaIconModule } from '../icon/icon.module';
-import { PaTranslateModule } from '../translate/translate.module';
+import { PaButtonModule } from '../button';
+import { PaIconModule } from '../icon';
+import { PaTranslateModule } from '../translate';
 
 @NgModule({
     declarations: [ToastComponent],

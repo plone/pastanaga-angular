@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { timer } from 'rxjs';
 import { take, tap, switchMap } from 'rxjs/operators';
-import { ToastConfig, ToastType } from './toast.model';
+import { ToastButton, ToastConfig, ToastType } from './toast.model';
 
 const TOAST_DEFAULT = 3000;
 const TOAST_BUTTON = 5000;
@@ -34,6 +34,9 @@ export class ToastComponent implements OnInit, AfterViewInit {
     set id(value: string) {
         this._id = value;
     }
+    get id() {
+        return this._id;
+    }
 
     @Input() message = '';
 
@@ -42,22 +45,29 @@ export class ToastComponent implements OnInit, AfterViewInit {
     }
 
     @Input()
-    set config(value: ToastConfig) {
-        if (!!value) {
-            this._action = value.action;
-            this._actionButtonLabel = value.buttonLabel;
-            this._icon = value.icon;
-            this.translateParams = value.translateParams;
+    set config(conf: ToastConfig) {
+        if (!!conf) {
+            this._icon = conf.icon;
+            this._actionButton = conf.button;
+            this.translateParams = conf.translateParams;
         }
     }
 
     @Output() dismiss = new EventEmitter<string>();
 
-    _id = '';
-    _icon?: string;
-    _actionButtonLabel?: string;
-    _action?: () => any;
-    _class = '';
+    get icon() {
+        return this._icon;
+    }
+    get actionButton() {
+        return this._actionButton;
+    }
+    get class() {
+        return this._class;
+    }
+    private _id = '';
+    private _icon?: string;
+    private _actionButton?: ToastButton;
+    private _class = '';
     translateParams?: { [key: string]: string | number };
 
     constructor(private rendererFactory: RendererFactory2) {
@@ -69,11 +79,11 @@ export class ToastComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.addClass(`${this._class}-wrapper`, this.toastWrapper);
+        this.addClass(`${this.class}-wrapper`, this.toastWrapper);
     }
 
     setupAutoClause() {
-        const DELAY = !this._actionButtonLabel ? TOAST_DEFAULT : TOAST_BUTTON;
+        const DELAY = !this._actionButton ? TOAST_DEFAULT : TOAST_BUTTON;
         timer(DELAY)
             .pipe(
                 take(1),
@@ -82,14 +92,14 @@ export class ToastComponent implements OnInit, AfterViewInit {
                 }),
                 switchMap(() => timer(TOAST_ANIMATE_OUT)),
             )
-            .subscribe(() => this.dismiss.emit(this._id));
+            .subscribe(() => this.dismiss.emit(this.id));
     }
 
     onAction() {
-        if (this._action) {
-            this._action();
+        if (this._actionButton) {
+            this._actionButton.action();
         }
-        this.dismiss.emit(this._id);
+        this.dismiss.emit(this.id);
     }
 
     private addClass(cssClass: string, element?: ElementRef) {

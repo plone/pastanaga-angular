@@ -11,12 +11,24 @@
     z-index: 1;
 }
 
+.pa-toast-wrapper {
+    align-items: center;
+    box-shadow: $shadow-default;
+    display: flex;
+    justify-content: center;
+    min-width: $min-width-toast;
+    padding: $padding-toast;
+    text-align: center;
+}
+
 .pa-toast-error-wrapper {
     background: $background-toast-error;
     color: $color-toast-error;
 
-    .pa-toast-button {
-        color: $color-toast-error;
+    pa-button ::ng-deep .pa-button {
+        &:not(:disabled).pa-secondary.pa-basic {
+            color: $color-toast-error;
+        }
 
         &:hover {
             background: $background-toast-button-error-hover;
@@ -30,8 +42,10 @@
     background: $background-toast-info;
     color: $color-toast-info;
 
-    .pa-toast-button {
-        color: $color-toast-info;
+    pa-button ::ng-deep .pa-button {
+        &:not(:disabled).pa-secondary.pa-basic {
+            color: $color-toast-info;
+        }
 
         &:hover {
             background: $background-toast-button-info-hover;
@@ -45,8 +59,10 @@
     background: $background-toast-success;
     color: $color-toast-success;
 
-    .pa-toast-button {
-        color: $color-toast-success;
+    pa-button ::ng-deep .pa-button {
+        &:not(:disabled).pa-secondary.pa-basic {
+            color: $color-toast-success;
+        }
 
         &:hover {
             background: $background-toast-button-success-hover;
@@ -60,8 +76,10 @@
     background: $background-toast-warning;
     color: $color-toast-warning;
 
-    .pa-toast-button {
-        color: $color-toast-warning;
+    pa-button ::ng-deep .pa-button {
+        &:not(:disabled).pa-secondary.pa-basic {
+            color: $color-toast-warning;
+        }
 
         &:hover {
             background: $background-toast-button-warning-hover;
@@ -76,25 +94,12 @@
     animation-fill-mode: forwards;
 }
 
-.pa-toast-wrapper {
-    align-items: center;
-    box-shadow: $shadow-default;
-    display: flex;
-    justify-content: center;
-    min-width: $min-width-toast;
-    padding: $padding-toast;
-    text-align: center;
-}
-
 pa-icon {
     margin-right: $space-toast-between-icon-and-text;
 }
 
-.pa-toast-button {
-    margin-left: rhythm(6);
-    background: transparent;
-    border: $border-button-primary-basic;
-    min-width: 0 !important;
+pa-button {
+    margin-left: $space-toast-between-button-and-text;
 }
 
 @-webkit-keyframes toastin {

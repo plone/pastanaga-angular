@@ -1,47 +1,79 @@
 <pa-demo-page>
     <pa-demo-title>Toast</pa-demo-title>
-    <pa-demo-description>Service to render toasts.</pa-demo-description>
+    <pa-demo-description>
+        <p>Pastanaga provides a system for displaying toast messages by calling simply by calling <code>ToastService</code>.</p>
+        <p>Four types of toasts are supported: info, success, warning and error. Those types only differs by their colors.</p>
+        <p>Toast can also be customised with optional icon and button.</p>
+    </pa-demo-description>
 
     <pa-demo-examples>
-
+        <pa-button kind="primary" (click)="openToast()">Display toast</pa-button>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-button (click)="openInfo()">Default info toast</pa-button>
+            <pa-select label="Toast type" [(ngModel)]="selectedType">
+                <pa-option value="info">Info</pa-option>
+                <pa-option value="success">Success</pa-option>
+                <pa-option value="warning">Warning</pa-option>
+                <pa-option value="error">Error</pa-option>
+            </pa-select>
         </div>
+
         <div class="pa-demo-configuration-field">
-            <pa-button (click)="openWarn()">Warn toast</pa-button>
+            <pa-select label="Toast button" [(ngModel)]="selectedToastButton">
+                <pa-option value="none">No button</pa-option>
+                <pa-option value="icon">Icon close button</pa-option>
+                <pa-option value="label">Label undo button</pa-option>
+            </pa-select>
         </div>
+
         <div class="pa-demo-configuration-field">
-            <pa-button (click)="openSuccess()">Success toast</pa-button>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button (click)="openError()">Error toast</pa-button>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button (click)="openIconToast()">Toast with icon</pa-button>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button (click)="openButtonToast()">Toast with button</pa-button>
+            <pa-checkbox id="icon" [(ngModel)]="hasIcon">Toast with icon</pa-checkbox>
         </div>
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h2><code>ToastConfig</code></h2>
+        <p>Displaying a toast is done by calling <code>ToastService.open</code> method which takes 3 parameters:</p>
         <dl>
-            <dt>buttonLabel</dt>
-            <dd>label for the button if needed<small>(optional)</small></dd>
-            <dt>action</dt>
-            <dd>callback function to execute when button is clicked<small>(optional)</small></dd>
-            <dt>icon</dt>
-            <dd>name of the icon to use<small>(optional)</small></dd>
+            <dt>message</dt>
+            <dd>the message to display in the toast</dd>
+
+            <dt>type</dt>
+            <dd><code>info</code> | <code>success</code> | <code>warning</code> | <code>error</code></dd>
+
+            <dt>config</dt>
+            <dd>an optional toast configuration</dd>
         </dl>
-        <h2>Toast status</h2>
-        <p>The status of the toast (opening | opened | closed) can be accessed via the toastStatus Observable of toast service</p>
+
+        <p>To simplify its usage, <code>ToastService</code> also provides shortcut methods for the different type of toast:
+            <code>openInfo</code>, <code>openSuccess</code>, <code>openWarning</code>, <code>openError</code>.
+        They all take a message and an optional toast configuration.</p>
+
+        <h3>Toast configuration</h3>
+        <p>The methods allowing to display a toast can take an optional config parameter implementing <code>ToastConfig</code> interface:</p>
+        <dl>
+            <dt>button</dt>
+            <dd>Configure a button displayed on the right of the toast. Should follow <code>ToastButton</code> interface. <small>(optional)</small></dd>
+            <dt>icon</dt>
+            <dd>Name of the icon to be displayed on the left of the toast. <small>(optional)</small></dd>
+            <dt>translateParams</dt>
+            <dd>Params to be passed to the pipe translating the toast message. <small>(optional)</small></dd>
+        </dl>
+
+        <h3>Toast button configuration</h3>
+        <p>Toast button is configured using an object implementing <code>ToastButton</code> interface:</p>
+        <dl>
+            <dt>action</dt>
+            <dd>Callback function executed before closing the toast when clicking on toast button. <small>(required)</small></dd>
+            <dt>icon</dt>
+            <dd>NAme of the icon to be displayed in the button. <small>(optional)</small></dd>
+            <dt>label</dt>
+            <dd>Toast button's label. Will be used as aria-label only when <code>icon</code> is defined. <small>(optional)</small></dd>
+        </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
-        <pre><code>{{importCode}}</code></pre>
+        <p>Make sure to import <code>PaToastModule</code> in your application, and then use <code>ToastService</code> to display toasts.</p>
         <pre><code>{{code}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>
