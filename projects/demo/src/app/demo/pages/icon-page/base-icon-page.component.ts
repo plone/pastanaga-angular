@@ -16,10 +16,10 @@ export class BaseIconPageComponent {
 `;
 
     updateColor(value: string) {
-        this._selectedColor = value === 'none' ? undefined : value;
+        this._selectedColor = value === 'none' ? 'inherit' : value;
     }
 
     updateBackground(value: string) {
-        this._selectedBackground = value === 'none' ? undefined : value;
+        this._selectedBackground = value === 'none' ? 'transparent' : value;
     }
 }

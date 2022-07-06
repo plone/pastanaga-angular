@@ -1,13 +1,19 @@
-# Pastanaga Angular Components
+# Pastanaga Angular
 
 [![Build Status](https://github.com/plone/pastanaga-angular/workflows/CI/badge.svg)](https://github.com/plone/pastanaga-angular/actions?query=workflow%3ACI)
+[![npm version](https://badge.fury.io/js/@guillotinaweb%2Fpastanaga-angular.svg)](https://badge.fury.io/js/@guillotinaweb%2Fpastanaga-angular)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
+Pastanaga Angular is an Angular implementation of Pastanaga design system offering a set of re-usable UI components which are covering typical needs of any web application.
+It is maintained by [Plone](http://plone.org) and [Guillotina](http://guillotina.io) communities.
+It aims to remain simple, and pays particular attention to:
 
-Provides Pastanaga elements as Angular components.
+ - **Accessibility**: semantic is respected, and aria attributes are implemented where needed;
+ - **Internationalisation**: the translation service allows to manage several languages in a single Angular build, and support granular overriding;
+ - **Maintenance**: releases are frequent, and upgrade to latest Angular version is performed very quickly after each Angular release.
 
-See https://plone.github.io/pastanaga-angular for usage example and developer guide.
+See https://plone.github.io/pastanaga-angular for usage examples and developer guide.
 
 ## Table of content
 - [Setup](#setup)

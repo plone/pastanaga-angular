@@ -1,3 +1,22 @@
+# 2.54.0 (2022-07-05)
+
+### Breaking changes
+- **Toasts**: [mpellerin42]
+  - refactor toast config: `buttonLabel` and `action` are replaced by a `button` property containing the button configuration (this button configuration is including `label` and `action` properties)
+  - `toastStatus` observable was useless and has been removed
+
+### Improvements
+- **Toasts**: [mpellerin42]
+  - add tokens defining toasts spacing
+  - add tokens defining toast button background colors
+  - add optional title and autoClose options to toasts
+  - refactor toast template and style using pa-button
+  - update the documentation
+
+### Bug fix
+- **Glyphs**: add missing `warning` glyph [mpellerin42]
+- **Icon demo**: fix the configuration, so we can reset icon and background colors [mpellerin42]
+
 # 2.53.0 (2022-07-01)
 
 ### Improvement

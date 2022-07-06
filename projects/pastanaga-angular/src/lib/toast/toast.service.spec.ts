@@ -1,7 +1,5 @@
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { ToastService } from './toast.service';
-import { BehaviorSubject } from 'rxjs';
-import { ToastStatus } from './toast.model';
 import { ApplicationRef, Component, ComponentRef, Renderer2 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
@@ -43,7 +41,6 @@ describe('ToastService', () => {
     let spectator: Spectator<TestComponent>;
     let service: ToastService;
     let appRef: ApplicationRef;
-    let toastStatus: BehaviorSubject<ToastStatus>;
     let renderer: Renderer2;
     let toastContainer: HTMLElement | undefined;
     let toastMap: Map<string, ComponentRef<ToastComponent>>;
@@ -51,8 +48,6 @@ describe('ToastService', () => {
         spectator = createService();
         service = spectator.inject(ToastService);
         appRef = spectator.inject(ApplicationRef);
-        // @ts-ignore accessing private member
-        toastStatus = service._toastStatus;
         // @ts-ignore accessing private member
         renderer = service._renderer;
         // @ts-ignore accessing private member
@@ -83,18 +78,15 @@ describe('ToastService', () => {
 
         expect(setAttributes).toHaveBeenCalledWith(createdToast?.location.nativeElement, 'role', 'alert');
         expect(appendChild).toHaveBeenCalledWith(toastContainer, createdToast?.location.nativeElement);
-
-        expect(toastStatus.value).toEqual('opened');
     });
 
     it('should open a toast with config', () => {
-        service.open('a message', 'success', { buttonLabel: 'label' });
+        service.open('a message', 'warning', { icon: 'warning' });
         expect(toastMap.size).toEqual(1);
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        // @ts-ignore accessing private member
-        expect(createdToast?.instance._actionButtonLabel).toEqual('label');
+        expect(createdToast?.instance.config.icon).toEqual('warning');
     });
 
     it('should open an info toast', () => {
@@ -103,8 +95,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        // @ts-ignore accessing private member
-        expect(createdToast?.instance._class).toEqual('pa-toast-info');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-info');
     });
 
     it('should open an success toast', () => {
@@ -113,8 +104,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        // @ts-ignore accessing private member
-        expect(createdToast?.instance._class).toEqual('pa-toast-success');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-success');
     });
 
     it('should open an warning toast', () => {
@@ -123,8 +113,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        // @ts-ignore accessing private member
-        expect(createdToast?.instance._class).toEqual('pa-toast-warning');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-warning');
     });
 
     it('should open an error toast', () => {
@@ -133,8 +122,7 @@ describe('ToastService', () => {
         const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
         expect(createdToast).toBeTruthy();
         nextId++;
-        // @ts-ignore accessing private member
-        expect(createdToast?.instance._class).toEqual('pa-toast-error');
+        expect(createdToast?.instance.toastClass).toEqual('pa-toast-error');
     });
 
     it('should remove toast and container', () => {
@@ -151,8 +139,6 @@ describe('ToastService', () => {
         expect(toastMap.size).toEqual(0);
         expect(detachView).toHaveBeenCalledWith(createdToast?.hostView);
         expect(removeChild).toHaveBeenCalledWith(document.body, toastContainer);
-
-        expect(toastStatus.value).toEqual('closed');
         nextId++;
     });
 });

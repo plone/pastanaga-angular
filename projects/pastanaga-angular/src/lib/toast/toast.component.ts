@@ -34,30 +34,35 @@ export class ToastComponent implements OnInit, AfterViewInit {
     set id(value: string) {
         this._id = value;
     }
+    get id() {
+        return this._id;
+    }
 
     @Input() message = '';
 
     @Input() set type(value: ToastType) {
-        this._class = `pa-toast-${value}`;
+        this._toastClass = `pa-toast-${value}`;
     }
 
     @Input()
-    set config(value: ToastConfig) {
-        if (!!value) {
-            this._action = value.action;
-            this._actionButtonLabel = value.buttonLabel;
-            this._icon = value.icon;
-            this.translateParams = value.translateParams;
+    set config(conf: ToastConfig) {
+        if (!!conf) {
+            this._config = conf;
+            this.translateParams = conf.translateParams;
         }
+    }
+    get config() {
+        return this._config;
     }
 
     @Output() dismiss = new EventEmitter<string>();
 
-    _id = '';
-    _icon?: string;
-    _actionButtonLabel?: string;
-    _action?: () => any;
-    _class = '';
+    get toastClass() {
+        return this._toastClass;
+    }
+    private _id = '';
+    private _config: ToastConfig = {};
+    private _toastClass = '';
     translateParams?: { [key: string]: string | number };
 
     constructor(private rendererFactory: RendererFactory2) {
@@ -69,11 +74,15 @@ export class ToastComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.addClass(`${this._class}-wrapper`, this.toastWrapper);
+        this.addClass(`${this.toastClass}-wrapper`, this.toastWrapper);
     }
 
     setupAutoClause() {
-        const DELAY = !this._actionButtonLabel ? TOAST_DEFAULT : TOAST_BUTTON;
+        // Do not auto close by default when there is a button
+        if (this.config.button && !this.config.autoClose) {
+            return;
+        }
+        const DELAY = !this.config.button ? TOAST_DEFAULT : TOAST_BUTTON;
         timer(DELAY)
             .pipe(
                 take(1),
@@ -82,14 +91,14 @@ export class ToastComponent implements OnInit, AfterViewInit {
                 }),
                 switchMap(() => timer(TOAST_ANIMATE_OUT)),
             )
-            .subscribe(() => this.dismiss.emit(this._id));
+            .subscribe(() => this.dismiss.emit(this.id));
     }
 
-    onAction() {
-        if (this._action) {
-            this._action();
+    clickOnToastButton() {
+        if (this.config.button) {
+            this.config.button.action();
         }
-        this.dismiss.emit(this._id);
+        this.dismiss.emit(this.id);
     }
 
     private addClass(cssClass: string, element?: ElementRef) {

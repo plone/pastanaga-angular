@@ -8,21 +8,15 @@ import {
     RendererFactory2,
 } from '@angular/core';
 import { ToastComponent } from './toast.component';
-import { ToastConfig, ToastStatus, ToastType } from './toast.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { ToastConfig, ToastType } from './toast.model';
 
 let nextId = 0;
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-    private _toastStatus = new BehaviorSubject<ToastStatus>('closed');
     private readonly _renderer: Renderer2;
     private _toastContainer?: HTMLElement;
     private _toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
-
-    get toastStatus(): Observable<ToastStatus> {
-        return this._toastStatus.asObservable();
-    }
 
     get toastContainer(): HTMLElement {
         if (!this._toastContainer) {
@@ -61,7 +55,6 @@ export class ToastService {
     }
 
     open(message: string, type: ToastType, config?: ToastConfig): ComponentRef<ToastComponent> {
-        this._toastStatus.next('opening');
         const id = `pa-toast-${nextId++}`;
         const toast: ComponentRef<ToastComponent> = this.createToast(id, message, type, config);
 
@@ -70,7 +63,6 @@ export class ToastService {
 
         this._renderer.setAttribute(toast.location.nativeElement, 'role', 'alert');
         this._renderer.appendChild(this.toastContainer, toast.location.nativeElement);
-        this._toastStatus.next('opened');
         return toast;
     }
 
@@ -107,7 +99,6 @@ export class ToastService {
         this._toastMap.delete(id);
         if (!this._toastMap.size) {
             this.removeContainer();
-            this._toastStatus.next('closed');
         }
     }
 

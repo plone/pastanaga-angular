@@ -1,4 +1,5 @@
 import { ToastComponent } from './toast.component';
+import { PaButtonModule } from '../button';
 import { PaIconModule } from '../icon';
 import { PaTranslateModule } from '../translate';
 import { MockModule } from 'ng-mocks';
@@ -7,7 +8,7 @@ import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('ToastComponent', () => {
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaIconModule), MockModule(PaTranslateModule)],
+        imports: [MockModule(PaIconModule), MockModule(PaTranslateModule), MockModule(PaButtonModule)],
         component: ToastComponent,
         detectChanges: false,
     });
@@ -30,7 +31,7 @@ describe('ToastComponent', () => {
     });
 
     it('should display a button when an action is needed', () => {
-        component.config = { buttonLabel: 'undo' };
+        component.config = { button: { label: 'undo', action: () => {} } };
         spectator.detectChanges();
         expect(spectator.query('.pa-toast-button')).toBeTruthy();
     });
@@ -40,18 +41,17 @@ describe('ToastComponent', () => {
         jest.spyOn(component.dismiss, 'emit');
         tick(DEFAULT_DELAY - 1);
         expect(spectator.component.dismiss.emit).not.toHaveBeenCalled();
-        tick(1); 
+        tick(1);
         expect(spectator.component.dismiss.emit).toHaveBeenCalled();
     }));
 
     it('should dismiss the button toast after the delay', fakeAsync(() => {
-        component.config = { buttonLabel: 'undo' };
+        component.config = { autoClose: true, button: { label: 'undo', action: () => {} } };
         spectator.detectChanges();
         jest.spyOn(component.dismiss, 'emit');
         tick(BUTTON_DELAY - 1);
         expect(spectator.component.dismiss.emit).not.toHaveBeenCalled();
-        tick(1); 
+        tick(1);
         expect(spectator.component.dismiss.emit).toHaveBeenCalled();
     }));
-
 });

@@ -64,7 +64,7 @@ export class ButtonComponent implements AfterContentInit {
     @Input() set active(value: any) {
         this._active = coerceBooleanProperty(value);
     }
-    @Input() set icon(value: string) {
+    @Input() set icon(value: string | undefined) {
         this._icon = value || '';
     }
     @Input() set iconAndText(value: any) {
