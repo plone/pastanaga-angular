@@ -1,3 +1,11 @@
+# 2.54.1 (2022-07-06)
+
+### Bug fix
+- **Toasts**: Fix text alignment in toasts without icon nor button [mpellerin42]
+
+### Improvements
+- **Toasts**: Add a token allowing to change the padding when there is a button [mpellerin42]
+
 # 2.54.0 (2022-07-05)
 
 ### Breaking changes

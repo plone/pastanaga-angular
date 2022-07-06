@@ -14,19 +14,22 @@
     align-items: center;
     box-shadow: $shadow-default;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     min-width: $min-width-toast;
     padding: $padding-toast;
-    text-align: center;
 
     .pa-toast-message-wrapper {
         align-items: center;
         display: flex;
     }
-}
 
-.pa-toast-message-container {
-    text-align: left;
+    &.pa-toast-composed {
+        justify-content: space-between;
+    }
+
+    &.pa-toast-with-button {
+        padding: $padding-toast-with-button;
+    }
 }
 
 .pa-toast-animate-out {

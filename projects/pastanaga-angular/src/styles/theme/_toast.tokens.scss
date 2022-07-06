@@ -41,6 +41,7 @@ $background-toast-button-error-active: $background-toast-button-default-active !
 //=====================================
 $min-width-toast: rhythm(28) !default;
 $padding-toast: rhythm(1.5) !default;
+$padding-toast-with-button: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5) !default;
 
 $space-toast-between-icon-and-text: rhythm(1.5) !default;
-$space-toast-between-button-and-text: rhythm(6) !default;
+$space-toast-between-button-and-text: rhythm(2) !default;
