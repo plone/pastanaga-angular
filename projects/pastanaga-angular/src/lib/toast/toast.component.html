@@ -1,4 +1,7 @@
-<div #toastWrapper class="pa-toast-wrapper">
+<div #toastWrapper
+     class="pa-toast-wrapper"
+     [class.pa-toast-with-button]="!!config.button"
+     [class.pa-toast-composed]="!!config.icon || !!config.title || !!config.button">
 
     <div class="pa-toast-message-wrapper">
         <pa-icon *ngIf="config.icon" class="pa-toast-icon" [name]="config.icon"></pa-icon>
