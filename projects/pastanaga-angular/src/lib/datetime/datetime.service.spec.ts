@@ -1,21 +1,14 @@
 import '@angular/common/locales/global/fr';
 import { DateTimeService } from './datetime.service';
 
-import { TranslatePipe, TranslateService } from '../translate';
-import { dates, mockTranslateEn, mockTranslateFr } from './test-data';
-import { ChangeDetectorRef } from '@angular/core';
+import { dates } from './test-data';
 
 describe('DateTimeService', () => {
     let service: DateTimeService;
 
     describe('en-US locale', () => {
         beforeEach(() => {
-            service = new DateTimeService(
-                new TranslatePipe(new TranslateService('en-US', { 'en-US': mockTranslateEn }), {
-                    markForCheck: () => {},
-                } as ChangeDetectorRef),
-                'en-US',
-            );
+            service = new DateTimeService('en-US');
         });
 
         it('should be defined', () => {
@@ -127,91 +120,6 @@ describe('DateTimeService', () => {
                         expect(formattedNumerical).toBe(dates.beforeYesterdayPM.numericalWithSec);
                         done();
                     });
-            });
-        });
-    });
-
-    describe('fr-FR locale', () => {
-        beforeEach(() => {
-            service = new DateTimeService(
-                new TranslatePipe(new TranslateService('fr-FR', { 'fr-FR': mockTranslateFr }), {
-                    markForCheck: () => {},
-                } as ChangeDetectorRef),
-                'fr-FR',
-            );
-        });
-
-        describe('getFormattedDate method with human param', () => {
-            it('should return today morning as today H24', (done) => {
-                service.getFormattedDate(dates.todayAM.timestamp, 'human').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.todayAM.humanFr);
-                    done();
-                });
-            });
-
-            it('should format today afternoon as today H24', (done) => {
-                service.getFormattedDate(dates.todayPM.timestamp, 'human').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.todayPM.humanFr);
-                    done();
-                });
-            });
-
-            it('should return yesterday morning as yesterday H24', (done) => {
-                service.getFormattedDate(dates.yesterdayAM.timestamp, 'human').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.yesterdayAM.humanFr);
-                    done();
-                });
-            });
-
-            it('should format yesterday afternoon as yesterday H24', (done) => {
-                service.getFormattedDate(dates.yesterdayPM.timestamp, 'human').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.yesterdayPM.humanFr);
-                    done();
-                });
-            });
-        });
-
-        describe('getFormattedDate method with numerical param', () => {
-            it('should return before yesterday afternoon without time', (done) => {
-                service.getFormattedDate(dates.beforeYesterdayPM.timestamp, 'numerical').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.beforeYesterdayPM.numericalFr);
-                    done();
-                });
-            });
-
-            it('should format before yesterday morning as a numerical date H24', (done) => {
-                service.getFormattedDate(dates.beforeYesterdayAM.timestamp, 'numerical').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.beforeYesterdayAM.numericalFr);
-                    done();
-                });
-            });
-
-            it('should return today morning as today H24', (done) => {
-                service.getFormattedDate(dates.todayAM.timestamp, 'numerical').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.todayAM.numericalFr);
-                    done();
-                });
-            });
-
-            it('should format today afternoon as today H24', (done) => {
-                service.getFormattedDate(dates.todayPM.timestamp, 'numerical').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.todayPM.numericalFr);
-                    done();
-                });
-            });
-
-            it('should return yesterday morning as yesterday H24', (done) => {
-                service.getFormattedDate(dates.yesterdayAM.timestamp, 'numerical').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.yesterdayAM.numericalFr);
-                    done();
-                });
-            });
-
-            it('should format yesterday afternoon as yesterday H24', (done) => {
-                service.getFormattedDate(dates.yesterdayPM.timestamp, 'numerical').subscribe((formattedDate) => {
-                    expect(formattedDate).toBe(dates.yesterdayPM.numericalFr);
-                    done();
-                });
             });
         });
     });

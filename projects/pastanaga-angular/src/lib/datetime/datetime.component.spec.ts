@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DateTimeComponent } from './datetime.component';
 import { DateTimeService } from './datetime.service';
-import { dates, mockTranslateEn } from './test-data';
+import { dates} from './test-data';
 
 describe('DateTimeComponent', () => {
     let component: DateTimeComponent;

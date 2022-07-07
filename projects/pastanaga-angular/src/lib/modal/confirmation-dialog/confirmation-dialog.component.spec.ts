@@ -37,7 +37,7 @@ describe('ConfirmationDialogComponent', () => {
         });
 
         it('should display title set in modal ref', () => {
-            expect(spectator.query('[qa="confirmation-title"]')?.textContent?.trim()).toBe(`translate--${title}`);
+            expect(spectator.query('[qa="confirmation-title"]')?.textContent?.trim()).toBe(title);
         });
 
         it('should display pastanaga cancel and confirm labels on buttons', () => {

@@ -123,26 +123,3 @@ export const dates = {
         relativeFr: 'Il y a 10 minutes',
     },
 };
-
-export const mockTranslateEn = {
-    pastanaga: {
-        datetime: {
-            yesterday: 'Yesterday',
-            'a-few-seconds-ago': 'Just now',
-            'one-minute-ago': '1 min ago',
-            minutesAgo: '{{minutes}} mins ago',
-            at: 'at',
-        },
-    },
-};
-
-export const mockTranslateFr = {
-    pastanaga: {
-        datetime: {
-            yesterday: 'Hier',
-            'a-few-seconds-ago': 'Maintenant',
-            'one-minute-ago': 'Il y a 1 minute',
-            at: 'à',
-        },
-    },
-};

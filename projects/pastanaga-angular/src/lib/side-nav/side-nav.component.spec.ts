@@ -4,7 +4,6 @@ import { MockModule } from 'ng-mocks';
 import { SideNavComponent } from './side-nav.component';
 import { PaButtonModule } from '../button/button.module';
 import { ReplaySubject } from 'rxjs';
-import { TranslatePipe } from '../translate/translate.pipe';
 import { BreakpointObserver, ViewportMode } from '../breakpoint-observer';
 
 describe('SideNavComponent', () => {
@@ -14,7 +13,6 @@ describe('SideNavComponent', () => {
     const createComponent = createComponentFactory({
         component: SideNavComponent,
         imports: [MockModule(CommonModule), MockModule(PaButtonModule)],
-        mocks: [TranslatePipe],
         providers: [
             mockProvider(BreakpointObserver, {
                 currentMode: currentModeTest,
