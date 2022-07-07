@@ -7,7 +7,7 @@
         [readonly]="readonly"
         [formControl]="inputControl"
         (click)="handleInputClick($event)"
-        >{{ label || 'pastanaga.date-picker.label' | translate }}</pa-input
+        >{{ label || 'Pick a date' }}</pa-input
     >
 </div>
 <pa-popup [ngSwitch]="mode" #popup (onOpen)="openWeeks()" (onClose)="handlePopupClose()" class="calendar-popup">
@@ -54,7 +54,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="'years'">
         <div class="calendar-list-header overline">
-            <div class="label" translate>pastanaga.calendar.years</div>
+            <div class="label">Years</div>
             <pa-button
                 (click)="openWeeks($event)"
                 kind="secondary"
@@ -76,7 +76,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="'months'">
         <div class="calendar-list-header overline">
-            <div class="label" translate>pastanaga.calendar.months</div>
+            <div class="label">Months</div>
             <pa-button
                 (click)="openWeeks($event)"
                 kind="secondary"

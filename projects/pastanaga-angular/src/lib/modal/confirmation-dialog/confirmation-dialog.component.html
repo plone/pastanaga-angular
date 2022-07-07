@@ -12,22 +12,22 @@
     >
         <header class="pa-modal-header">
             <h4 qa="confirmation-title"
-                [id]="'dialog-' + id + '-title'">{{ref.config.data?.['title'] | translate}}</h4>
+                [id]="'dialog-' + id + '-title'">{{ref.config.data?.['title']}}</h4>
         </header>
 
         <div class="pa-modal-description body-s"
              qa="confirmation-description"
              [id]="'dialog-' + id + '-description'"
-             [innerHTML]="ref.config.data?.['description'] | translate"
+             [innerHTML]="ref.config.data?.['description']"
         ></div>
 
         <footer class="pa-modal-footer pa-dual-buttons">
             <pa-button kind="secondary"
                        qa="confirmation-dialog-cancel-button"
-                       (click)="ref.close(false)">{{ (ref.config.data?.['cancelLabel'] || 'pastanaga.cancel') | translate}}</pa-button>
+                       (click)="ref.close(false)">{{ (ref.config.data?.['cancelLabel'] || 'Cancel')}}</pa-button>
             <pa-button [kind]="ref.config.data?.['isDestructive'] ? 'destructive' : 'primary'"
                        qa="confirmation-dialog-confirm-button"
-                       (click)="ref.close(true)">{{ (ref.config.data?.['confirmLabel'] || 'pastanaga.confirm') | translate}}</pa-button>
+                       (click)="ref.close(true)">{{ (ref.config.data?.['confirmLabel'] || 'Confirm')}}</pa-button>
         </footer>
     </dialog>
 </div>

@@ -23,4 +23,3 @@ export * from './lib/table';
 export * from './lib/tabs';
 export * from './lib/toast';
 export * from './lib/tooltip';
-export * from './lib/translate';

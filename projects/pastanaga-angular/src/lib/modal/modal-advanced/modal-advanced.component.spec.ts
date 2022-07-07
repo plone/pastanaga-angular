@@ -3,14 +3,12 @@ import { PaButtonModule } from '../../button/button.module';
 import { ModalConfig, ModalRef } from '../modal.model';
 import { MockModule, MockPipe } from 'ng-mocks';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { PaTranslateModule, TranslatePipe } from '../../translate';
 
 describe('ModalComponent', () => {
     const title = 'Modal advanced title';
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaButtonModule), MockModule(PaTranslateModule)],
+        imports: [MockModule(PaButtonModule)],
         component: ModalAdvancedComponent,
-        declarations: [MockPipe(TranslatePipe, (value) => `translate--${value}`)],
         providers: [
             {
                 provide: ModalRef,

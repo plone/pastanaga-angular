@@ -5,7 +5,6 @@ import { CheckboxComponent } from './checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
 import { fakeAsync, tick } from '@angular/core/testing';
-import { PaTranslateModule, TranslatePipe } from '../../../translate';
 
 @Component({ template: '' })
 class TestComponent {
@@ -22,13 +21,12 @@ describe('CheckboxComponent', () => {
     let spectator: SpectatorHost<CheckboxComponent, TestComponent>;
     const createHost = createHostFactory({
         component: CheckboxComponent,
-        imports: [FormsModule, ReactiveFormsModule, MockModule(PaTranslateModule)],
+        imports: [FormsModule, ReactiveFormsModule],
         host: TestComponent,
         detectChanges: false,
         declarations: [
             PaFormControlDirective,
             MockComponent(FormFieldHintComponent),
-            MockPipe(TranslatePipe, jest.fn((key: string) => key))
         ]
     });
     const thenInputHasAttribute = (attribute: string, value: any) => {

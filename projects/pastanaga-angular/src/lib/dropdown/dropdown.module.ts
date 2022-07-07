@@ -10,7 +10,6 @@ import { OptionHeaderComponent } from './option-header/option-header.component';
 import { PaFocusableModule } from '../focusable';
 import { PaAvatarModule } from '../avatar';
 import { PaTooltipModule } from '../tooltip';
-import { PaTranslateModule } from '../translate';
 
 const COMPONENTS = [DropdownComponent, OptionHeaderComponent, OptionComponent, SeparatorComponent];
 
@@ -22,7 +21,6 @@ const COMPONENTS = [DropdownComponent, OptionHeaderComponent, OptionComponent, S
         PaFocusableModule,
         PaAvatarModule,
         PaTooltipModule,
-        PaTranslateModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

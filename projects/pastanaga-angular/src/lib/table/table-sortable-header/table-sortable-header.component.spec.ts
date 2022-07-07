@@ -4,7 +4,6 @@ import { MockComponent, MockModule } from 'ng-mocks';
 import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/table-sortable-header-cell.component';
 import { TableCellMenuComponent } from '../table-cell-menu/table-cell-menu.component';
 import { HeaderCell, SortableHeaderCell } from '../table.models';
-import { PaTranslateModule } from '../../translate/translate.module';
 import { TableCellComponent } from '../table-cell/table-cell.component';
 import { PaPopupModule } from '../../popup/popup.module';
 import { PaDropdownModule } from '../../dropdown/dropdown.module';
@@ -12,7 +11,7 @@ import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('TableSortableHeaderComponent', () => {
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaTranslateModule), MockModule(PaPopupModule), MockModule(PaDropdownModule)],
+        imports: [MockModule(PaPopupModule), MockModule(PaDropdownModule)],
         declarations: [
             MockComponent(TableCellComponent),
             MockComponent(TableCellMenuComponent),

@@ -1,14 +1,13 @@
 import { ExpanderComponent, transitionDuration } from './expander.component';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { PaButtonModule } from '../button/button.module';
-import { PaTranslateModule } from '../translate/translate.module';
 import { MockModule } from 'ng-mocks';
 import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('ExpandComponent', () => {
     const updateContentHeight = jest.fn();
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaButtonModule), MockModule(PaTranslateModule)],
+        imports: [MockModule(PaButtonModule)],
         component: ExpanderComponent,
         detectChanges: false,
     });

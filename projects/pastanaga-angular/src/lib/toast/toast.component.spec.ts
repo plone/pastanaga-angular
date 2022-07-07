@@ -1,14 +1,13 @@
 import { ToastComponent } from './toast.component';
 import { PaButtonModule } from '../button';
 import { PaIconModule } from '../icon';
-import { PaTranslateModule } from '../translate';
 import { MockModule } from 'ng-mocks';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('ToastComponent', () => {
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaIconModule), MockModule(PaTranslateModule), MockModule(PaButtonModule)],
+        imports: [MockModule(PaIconModule), MockModule(PaButtonModule)],
         component: ToastComponent,
         detectChanges: false,
     });

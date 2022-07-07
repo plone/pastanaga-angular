@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { AvatarModel } from '../avatar';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { TranslatePipe } from '../translate';
 
 @Component({
     selector: 'pa-avatar-pile',
@@ -44,7 +43,7 @@ export class AvatarPileComponent {
     }
     get buttonTooltip() {
         return (
-            this._buttonTooltip || this.translate.transform('pastanaga.show', { type: this.avatarCount + ' members' })
+            this._buttonTooltip || `Show ${this.avatarCount} members`
         );
     }
 
@@ -65,7 +64,7 @@ export class AvatarPileComponent {
     private _buttonAlwaysVisible = false;
     private _buttonTooltip = '';
 
-    constructor(private translate: TranslatePipe) {}
+    constructor() {}
 
     onClick() {
         this.clickOnMore.emit();

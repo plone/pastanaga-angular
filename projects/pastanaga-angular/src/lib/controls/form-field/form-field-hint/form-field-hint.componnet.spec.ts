@@ -1,18 +1,13 @@
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { FormFieldHintComponent } from './form-field-hint.component';
 import { MockModule, MockPipe } from 'ng-mocks';
-import { PaTranslateModule, TranslatePipe } from '../../../translate';
 
 describe('FormFieldHintComponent', () => {
     let spectator: Spectator<FormFieldHintComponent>;
     let component: FormFieldHintComponent;
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaTranslateModule)],
         component: FormFieldHintComponent,
         detectChanges: false,
-        declarations: [
-            MockPipe(TranslatePipe, jest.fn((key: string) => key))
-        ]
     });
     const detectChanges = () => {
         component.ngOnChanges({} as any);

@@ -12,7 +12,6 @@ import { fakeAsync, discardPeriodicTasks, tick } from '@angular/core/testing';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
-import { PA_LANG, PA_TRANSLATIONS, TranslatePipe, PaTranslateModule } from '../../../translate';
 
 @Component({ template: '' })
 class TestComponent {
@@ -55,22 +54,15 @@ describe('SelectComponent', () => {
             PaDropdownModule,
             PaPopupModule,
             MockModule(PaIconModule),
-            MockModule(PaTranslateModule),
         ],
         host: TestComponent,
         providers: [
             MockProvider(SvgIconRegistryService),
-            { provide: PA_LANG, useValue: 'en_US' },
-            {
-                provide: PA_TRANSLATIONS,
-                useFactory: () => ({}),
-            },
         ],
         declarations: [
             SelectOptionsComponent,
             PaFormControlDirective,
             MockComponent(FormFieldHintComponent),
-            MockPipe(TranslatePipe, (value) => `translate--${value}`),
         ],
         detectChanges: false,
     });

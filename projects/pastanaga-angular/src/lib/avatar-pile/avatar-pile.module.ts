@@ -4,7 +4,6 @@ import { PaButtonModule } from '../button';
 import { PaDropdownModule } from '../dropdown';
 import { PaPopupModule } from '../popup';
 import { PaTooltipModule } from '../tooltip';
-import { PaTranslateModule } from '../translate';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +14,6 @@ import { CommonModule } from '@angular/common';
         PaButtonModule,
         PaDropdownModule,
         PaPopupModule,
-        PaTranslateModule,
         PaTooltipModule,
     ],
     declarations: [AvatarPileComponent],

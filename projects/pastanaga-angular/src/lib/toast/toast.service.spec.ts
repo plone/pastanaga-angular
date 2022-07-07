@@ -4,8 +4,6 @@ import { ApplicationRef, Component, ComponentRef, Renderer2 } from '@angular/cor
 import { ToastComponent } from './toast.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { PaToastModule } from './toast.module';
-import { MockModule, MockPipe } from 'ng-mocks';
-import { PA_LANG, PA_TRANSLATIONS, PaTranslateModule, TranslatePipe } from '../translate';
 
 @Component({
     template: ``,
@@ -23,19 +21,11 @@ describe('ToastService', () => {
                 BrowserDynamicTestingModule,
                 {
                     set: {
-                        imports: [PaToastModule, MockModule(PaTranslateModule)],
-                        declarations: [MockPipe(TranslatePipe, (value) => `translate--${value}`)],
+                        imports: [PaToastModule],
                         entryComponents: [ToastComponent],
                     },
                 },
             ],
-        ],
-        providers: [
-            { provide: PA_LANG, useValue: 'en_US' },
-            {
-                provide: PA_TRANSLATIONS,
-                useFactory: () => ({}),
-            },
         ],
     });
     let spectator: Spectator<TestComponent>;

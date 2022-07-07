@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaButtonModule } from '../button/button.module';
-import { PaTranslateModule } from '../translate/translate.module';
 import { ExpanderHeaderDirective, ExpanderBodyDirective, ExpanderHeaderSideBlockDirective } from './expander.directive';
 import { ExpanderComponent } from './expander.component';
 
@@ -13,7 +12,7 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-    imports: [CommonModule, PaButtonModule, PaTranslateModule],
+    imports: [CommonModule, PaButtonModule],
     declarations: COMPONENTS,
     exports: COMPONENTS,
 })

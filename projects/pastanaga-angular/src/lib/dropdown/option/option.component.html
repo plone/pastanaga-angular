@@ -18,7 +18,7 @@
 
     <div class="pa-option-text-wrapper" [class.smaller-wrapper]="!!icon || !!avatar">
         <div class="pa-option-content body-m" paEllipsisTooltip><ng-content></ng-content></div>
-        <div *ngIf="!!description" class="pa-option-description body-xs" paEllipsisTooltip>{{description | translate}}</div>
+        <div *ngIf="!!description" class="pa-option-description body-xs" paEllipsisTooltip>{{description}}</div>
     </div>
 
     <pa-icon *ngIf="!!icon && iconOnRight"

@@ -5,9 +5,7 @@ import { PaAvatarModule } from '../avatar/avatar.module';
 import { PaButtonModule } from '../button/button.module';
 import { PaDropdownModule } from '../dropdown/dropdown.module';
 import { PaPopupModule } from '../popup/popup.module';
-import { PaTranslateModule } from '../translate/translate.module';
 import { AvatarModel } from '../avatar/avatar.model';
-import { TranslatePipe } from '../translate/translate.pipe';
 import { PaTooltipModule } from '../tooltip/tooltip.module';
 
 describe('AvatarPileComponent', () => {
@@ -18,9 +16,7 @@ describe('AvatarPileComponent', () => {
             MockModule(PaDropdownModule),
             MockModule(PaPopupModule),
             MockModule(PaTooltipModule),
-            MockModule(PaTranslateModule),
         ],
-        mocks: [TranslatePipe],
         component: AvatarPileComponent,
         detectChanges: false,
     });

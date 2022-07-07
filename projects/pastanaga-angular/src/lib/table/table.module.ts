@@ -9,7 +9,6 @@ import { TableRowHeaderComponent } from './table-row-header/table-row-header.com
 import { TableCellMenuComponent } from './table-cell-menu/table-cell-menu.component';
 import { PaFocusableModule } from '../focusable/focusable.module';
 import { TableSortableHeaderCellComponent } from './table-sortable-header-cell/table-sortable-header-cell.component';
-import { PaTranslateModule } from '../translate/translate.module';
 import { PaIconModule } from '../icon/icon.module';
 import { TableSortableHeaderComponent } from './table-sortable-header/table-sortable-header.component';
 import { PaDropdownModule } from '../dropdown/dropdown.module';
@@ -32,7 +31,7 @@ const components = [
 ];
 
 @NgModule({
-    imports: [CommonModule, PaFocusableModule, PaTranslateModule, PaIconModule, PaDropdownModule, PaPopupModule],
+    imports: [CommonModule, PaFocusableModule, PaIconModule, PaDropdownModule, PaPopupModule],
     exports: components,
     declarations: components,
 })

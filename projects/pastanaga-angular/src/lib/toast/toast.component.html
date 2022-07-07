@@ -7,10 +7,10 @@
         <pa-icon *ngIf="config.icon" class="pa-toast-icon" [name]="config.icon"></pa-icon>
 
         <div class="pa-toast-message-container">
-            <div *ngIf="config.title" class="title-xxs" [innerHTML]="config.title | translate:translateParams"></div>
+            <div *ngIf="config.title" class="title-xxs" [innerHTML]="config.title"></div>
             <div [class]="toastClass"
                  [class.body-s]="!!config.title"
-                 [innerHTML]="message | translate:translateParams"></div>
+                 [innerHTML]="message"></div>
         </div>
     </div>
 
@@ -19,5 +19,5 @@
                size="small"
                class="pa-toast-button"
                [icon]="config.button.icon"
-               (click)="clickOnToastButton()">{{config.button.label | translate:translateParams}}</pa-button>
+               (click)="clickOnToastButton()">{{config.button.label}}</pa-button>
 </div>

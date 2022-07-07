@@ -3,7 +3,6 @@ import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { isToday, isYesterday, isThisMinute, differenceInMinutes, isThisYear } from 'date-fns';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TranslatePipe } from '../translate';
 
 /**
  * Date and time spec: https://docs.google.com/document/d/1VNtaS9_jmbcWRqYi3EkCk925rvTP1kczD73cD732-KM
@@ -33,11 +32,11 @@ export class StringMap {
         this.at = { key: 'pastanaga.datetime.at', value: '' };
 
         if (translateMap) {
-            this.yesterday.value = translateMap[this.yesterday.key];
-            this.fewSecondsAgo.value = translateMap[this.fewSecondsAgo.key];
-            this.oneMinuteAgo.value = translateMap[this.oneMinuteAgo.key];
-            this.minutesAgo.value = translateMap[this.minutesAgo.key];
-            this.at.value = translateMap[this.at.key];
+            this.yesterday.value = 'Yesterday';
+            this.fewSecondsAgo.value = 'Just now';
+            this.oneMinuteAgo.value = '1 minute ago';
+            this.minutesAgo.value = '{{minutes}} mins ago';
+            this.at.value = 'at';
         }
     }
 }
@@ -51,11 +50,11 @@ export class DateTimeService {
     cache: { [key: string]: string | null } = {};
     numericalFormat: string;
 
-    constructor(private translate: TranslatePipe, @Inject(LOCALE_ID) private locale: string) {
+    constructor(@Inject(LOCALE_ID) private locale: string) {
         const stringMap = new StringMap();
         const stringKeys: string[] = Object.values(stringMap).map((item) => item.key);
         const values = stringKeys.reduce((acc: { [key: string]: string }, key) => {
-            acc[key] = this.translate.transform(key);
+            acc[key] = key;
             return acc;
         }, {});
         this.strings.next(new StringMap(values));

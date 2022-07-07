@@ -1,18 +1,15 @@
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { MockModule, MockPipe } from 'ng-mocks';
+import { MockModule } from 'ng-mocks';
 import { PaButtonModule } from '../../button/button.module';
-import { PaTranslateModule } from '../../translate/translate.module';
 import { ConfirmationData, ModalConfig, ModalRef } from '../modal.model';
-import { TranslatePipe } from '../../translate/translate.pipe';
 
 describe('ConfirmationDialogComponent', () => {
     const title = 'Confirmation title';
     const description = 'Confirmation description';
     const createComponent = createComponentFactory({
-        imports: [MockModule(PaButtonModule), MockModule(PaTranslateModule)],
+        imports: [MockModule(PaButtonModule)],
         component: ConfirmationDialogComponent,
-        declarations: [MockPipe(TranslatePipe, (value) => `translate--${value}`)],
         providers: [
             {
                 provide: ModalRef,
@@ -45,10 +42,10 @@ describe('ConfirmationDialogComponent', () => {
 
         it('should display pastanaga cancel and confirm labels on buttons', () => {
             expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')?.textContent?.trim()).toBe(
-                'translate--pastanaga.cancel',
+                'Cancel',
             );
             expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
-                'translate--pastanaga.confirm',
+                'Confirm',
             );
         });
 
@@ -66,8 +63,8 @@ describe('ConfirmationDialogComponent', () => {
                     title,
                     description,
                     isDestructive: true,
-                    confirmLabel: 'custom-confirm',
-                    cancelLabel: 'custom-cancel',
+                    confirmLabel: 'Confirm',
+                    cancelLabel: 'Cancel',
                 },
             });
             spectator.detectChanges();
@@ -75,16 +72,16 @@ describe('ConfirmationDialogComponent', () => {
 
         it('should display description set in modal ref', () => {
             expect(spectator.query('[qa="confirmation-description"]')?.textContent?.trim()).toBe(
-                `translate--${description}`,
+                description,
             );
         });
 
         it('should display cancel and confirm labels set in modal ref', () => {
             expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')?.textContent?.trim()).toBe(
-                'translate--custom-cancel',
+                'Cancel',
             );
             expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
-                'translate--custom-confirm',
+                'Confirm',
             );
         });
 

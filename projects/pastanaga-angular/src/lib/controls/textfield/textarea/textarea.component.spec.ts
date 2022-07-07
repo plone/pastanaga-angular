@@ -8,7 +8,6 @@ import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
 import { TextareaComponent } from './textarea.component';
 import { PaTextareaAutoHeightDirective } from './pa-textarea-auto-height.directive';
-import { PaTranslateModule, TranslatePipe } from '../../../translate';
 
 @Component({ template: '' })
 class TestComponent {
@@ -43,7 +42,7 @@ describe('TextareaComponent', () => {
     let spectator: SpectatorHost<TextareaComponent, TestComponent>;
     const createHost = createHostFactory({
         component: TextareaComponent,
-        imports: [FormsModule, ReactiveFormsModule, MockModule(PaTranslateModule)],
+        imports: [FormsModule, ReactiveFormsModule],
         host: TestComponent,
         detectChanges: false,
         declarations: [
@@ -51,10 +50,6 @@ describe('TextareaComponent', () => {
             InputFormatterDirective,
             MockComponent(FormFieldHintComponent),
             MockDirective(PaTextareaAutoHeightDirective),
-            MockPipe(
-                TranslatePipe,
-                jest.fn((key: string) => key),
-            ),
         ],
     });
     const thenInputHasAttribute = (attribute: string, value: any) => {

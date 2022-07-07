@@ -109,7 +109,7 @@ export class DatePickerComponent extends PaFormControlDirective {
         this.inputControl = new UntypedFormControl(null, (control: AbstractControl) => {
             if (control.value && !DATE_FORMATS.some((format) => isMatch(control.value, format))) {
                 return {
-                    invalidFormat: 'pastanaga.calendar.invalid-format',
+                    invalidFormat: 'Invalid date format',
                 };
             }
 

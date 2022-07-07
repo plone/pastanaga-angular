@@ -7,7 +7,6 @@ import { MockComponent, MockModule, MockPipe, ngMocks } from 'ng-mocks';
 import { InputFormatterDirective } from '../input-formatter.directive';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { Keys } from '../../../common';
-import { PaTranslateModule, TranslatePipe } from '../../../translate';
 import { PaIconModule } from '../../../icon';
 
 @Component({ template: '' })
@@ -43,14 +42,13 @@ describe('InputComponent', () => {
 
     const createHost = createHostFactory({
         component: InputComponent,
-        imports: [FormsModule, ReactiveFormsModule, MockModule(PaIconModule), MockModule(PaTranslateModule)],
+        imports: [FormsModule, ReactiveFormsModule, MockModule(PaIconModule)],
         host: TestComponent,
         detectChanges: false,
         declarations: [
             PaFormControlDirective,
             InputFormatterDirective,
             MockComponent(FormFieldHintComponent),
-            MockPipe(TranslatePipe, jest.fn((key: string) => key))
         ]
     });
 

@@ -4,10 +4,10 @@
                                        [enabled]="cell.active"
                                        [isDescending]="cell.descending"
                                        (sort)="sortBy(cell.id)"
-        >{{cell.label | translate}}</pa-table-sortable-header-cell>
+        >{{cell.label}}</pa-table-sortable-header-cell>
 
         <ng-template #basicCell>
-            <pa-table-cell header>{{cell.label | translate}}</pa-table-cell>
+            <pa-table-cell header>{{cell.label}}</pa-table-cell>
         </ng-template>
     </ng-container>
 </ng-container>
@@ -19,22 +19,22 @@
                                    [active]="sortMenuOpen"
                                    [paPopup]="sortMenu"
                                    [popupPosition]="sortMenuPosition"
-    >{{mobileCell?.label | translate}}
+    >{{mobileCell?.label }}
     </pa-table-sortable-header-cell>
 
     <ng-template #basicCell>
-        <pa-table-cell header>{{mobileCell?.label | translate}}</pa-table-cell>
+        <pa-table-cell header>{{mobileCell?.label }}</pa-table-cell>
     </ng-template>
 
     <pa-dropdown #sortMenu
                  (onOpen)="sortMenuOpen = true"
                  (onClose)="sortMenuOpen = false">
-        <pa-option-header>{{'pastanaga.sort-by' | translate }}</pa-option-header>
+        <pa-option-header>Sort by</pa-option-header>
         <pa-option *ngFor="let cell of sortableCells"
                    [icon]="!cell.active ? 'no-icon' : cell.descending ? 'arrow-up' : 'arrow-down'"
                    [selected]="cell.active"
                    (selectOption)="sortBy(cell.id)"
-        >{{cell.label | translate}}</pa-option>
+        >{{cell.label }}</pa-option>
     </pa-dropdown>
 </ng-template>
 

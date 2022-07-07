@@ -6,7 +6,6 @@ import { MockComponent, MockModule } from 'ng-mocks';
 import { FormFieldHintComponent, PaFormFieldModule } from '../../form-field';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { PaTranslateModule } from '../../../translate';
 
 @Component({
     template: ``,
@@ -27,7 +26,7 @@ describe('ToggleComponent', () => {
         let component: ToggleComponent;
         let spectator: Spectator<ToggleComponent>;
         const createComponent = createComponentFactory({
-            imports: [FormsModule, ReactiveFormsModule, MockModule(PaFormFieldModule), MockModule(PaTranslateModule)],
+            imports: [FormsModule, ReactiveFormsModule, MockModule(PaFormFieldModule)],
             component: ToggleComponent,
             detectChanges: false,
         });
