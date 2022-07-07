@@ -4,7 +4,6 @@ import {
     ButtonPageComponent,
     IconPageComponent,
     CheckboxPageComponent,
-    TranslatePageComponent,
     PopupPageComponent,
     DropdownPageComponent,
     SelectPageComponent,
@@ -43,7 +42,8 @@ import {
     TableRowPageComponent,
     TableCellPageComponent,
     TableLeadCellMultiLinePageComponent,
-    TableSortableHeaderCellPageComponent, TableSortableHeaderPageComponent
+    TableSortableHeaderCellPageComponent, 
+    TableSortableHeaderPageComponent,
 } from './demo';
 
 export const menu: IDemoMenuSection[] = [
@@ -60,7 +60,6 @@ export const menu: IDemoMenuSection[] = [
             { view: 'grid', title: 'Grid', type: GridPageComponent },
             { view: 'breakpoint', title: 'Breakpoint', type: BreakpointPageComponent },
             { view: 'scrollbar', title: 'Scrollbar', type: ScrollbarPageComponent },
-            { view: 'translate', title: 'Translate', type: TranslatePageComponent },
         ],
     },
     {

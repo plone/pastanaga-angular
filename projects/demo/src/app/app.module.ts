@@ -5,8 +5,7 @@ import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PaDemoModule } from './demo';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { I18N_EN, PaButtonModule, PaTranslateModule, PA_LANG, PaSideNavModule } from '@guillotinaweb/pastanaga-angular';
-import { DEMO_LA } from '../assets';
+import { PaButtonModule, PaSideNavModule } from '@guillotinaweb/pastanaga-angular';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -18,10 +17,6 @@ import { AppRoutingModule } from './app-routing.module';
         PaDemoModule,
         PaButtonModule,
         PaSideNavModule,
-        PaTranslateModule.addTranslations([{ en_US: I18N_EN }, {latin: DEMO_LA}]),
-    ],
-    providers: [
-        { provide: PA_LANG, useValue: 'en_US' },
     ],
     bootstrap: [AppComponent],
 })

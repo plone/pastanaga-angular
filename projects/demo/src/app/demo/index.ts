@@ -56,4 +56,3 @@ export * from './pages/toast-page/toast-page.component';
 export * from './pages/toggle-page/toggle-page.component';
 export * from './pages/tooltip-page/tooltip-page.component';
 export * from './pages/typography-page/typography-page.component';
-export * from './pages/translate-page/translate-page.component';
