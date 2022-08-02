@@ -1,0 +1,14 @@
+<p>Pastanaga provides a button component with:</p>
+<ul>
+    <li>4 different <strong>kinds</strong>: <code>primary</code>, <code>secondary</code>, <code>destructive</code> and <code>inverted</code></li>
+    <li>2 different <strong>aspects</strong>: <code>solid</code> and <code>basic</code></li>
+    <li>3 different <strong>sizes</strong>: <code>small</code>, <code>medium</code> and <code>large</code></li>
+</ul>
+
+<p>The text wrapped by <code>pa-button</code> tag is used as <code>aria-label</code> for accessibility purpose.
+    As a good practice, you should always set a text content for your buttons,
+    even for icon buttons: the text won't be visible on screen but it will be accessible for screen readers.</p>
+
+<p>There is no specific component for button links, because you can wrap a link directly in the <code>pa-button</code> tag:</p>
+<pre><code>{{buttonLinkCode}}</code></pre>
+<p>Links wrapped by <code>pa-button</code> have their style overridden so their color is inherited from the button style, and they have no decoration on hover.</p>

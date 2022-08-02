@@ -1,3 +1,10 @@
+# 2.54.2 (2022-08-02)
+
+### Improvements
+- **Buttons**: [mpellerin42]
+  - Add style in _button.scss for button wrapping links
+  - Improve button documentation
+
 # 2.54.1 (2022-07-06)
 
 ### Bug fix
