@@ -12,6 +12,13 @@
     transition: background-color $transition-hint, box-shadow $transition-hint, color $transition-hint;
     white-space: nowrap;
 
+    a {
+        color: inherit;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
     .pa-button-wrapper {
         display: inline-flex;
         align-items: center

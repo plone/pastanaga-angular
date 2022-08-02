@@ -133,6 +133,7 @@ import { TableSortableHeaderCellPageComponent } from './pages/table-page/table-s
 import { TableLeadCellMultiLinePageComponent } from './pages/table-page/table-lead-cell-multi-line-page/table-lead-cell-multi-line-page.component';
 import { TypographyPageComponent } from './pages/typography-page/typography-page.component';
 import { ButtonUsageComponent } from './pages/button-page/button-usage/button-usage.component';
+import { ButtonDescriptionComponent } from './pages/button-page/button-description/button-description.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -154,6 +155,7 @@ const COMPONENTS = [
     AvatarPageComponent,
     AvatarPilePageComponent,
     BreakpointPageComponent,
+    ButtonDescriptionComponent,
     ButtonPageComponent,
     ButtonUsageComponent,
     CardPageComponent,
