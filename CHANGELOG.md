@@ -1,3 +1,11 @@
+# 2.54.3 (2022-08-02)
+
+### Improvements
+- **Expander**: [mpellerin42]
+  - Add `buttonOnlyToggle` option preventing the expander to toggle when clicking on the title
+  - Don't display empty extra side block on expander's header
+  - Improve expander documentation
+
 # 2.54.2 (2022-08-02)
 
 ### Improvements

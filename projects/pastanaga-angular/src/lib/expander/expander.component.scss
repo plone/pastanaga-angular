@@ -20,8 +20,11 @@
 
         .pa-expander-title {
             color: $color-neutral-regular;
-            cursor: pointer;
             flex: 1 0 auto;
+
+            &:not(.pa-button-only) {
+                cursor: pointer;
+            }
 
             &:hover {
                 color: $color-dark-stronger;
