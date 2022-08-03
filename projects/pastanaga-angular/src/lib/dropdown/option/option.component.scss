@@ -6,9 +6,10 @@
 }
 
 .pa-option {
+    align-items: center;
     cursor: pointer;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     padding: $padding-menu-option-top $padding-menu-option-side;
 
     &.pa-option-with-description {

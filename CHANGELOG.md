@@ -1,10 +1,13 @@
-# 2.54.3 (2022-08-02)
+# 2.54.3 (2022-08-03)
 
 ### Improvements
 - **Expander**: [mpellerin42]
   - Add `buttonOnlyToggle` option preventing the expander to toggle when clicking on the title
   - Don't display empty extra side block on expander's header
   - Improve expander documentation
+
+### Bug fix
+- **Dropdown**: Remove the extra space on the right of the option when `iconOnRight` is set [mpellerin42]
 
 # 2.54.2 (2022-08-02)
 
