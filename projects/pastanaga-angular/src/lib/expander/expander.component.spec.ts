@@ -37,8 +37,8 @@ describe('ExpandComponent', () => {
         expect(component.toggleExpand).toHaveBeenCalled();
     });
 
-    it('should not toggle the expand when clicking on the title for an expandable card', () => {
-        component.card = true;
+    it('should not toggle the expand when clicking on the title for an expandable with buttonOnlyToggle option', () => {
+        component.buttonOnlyToggle = true;
         spectator.detectChanges();
         jest.spyOn(component, 'toggleExpand');
 
