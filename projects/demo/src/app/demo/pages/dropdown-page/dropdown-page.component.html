@@ -6,7 +6,7 @@
             It can be used to build a contextual menu for example.
         </p>
         <p>
-            <code>PaDropdownModule</code> contains every thing you need to build your dropdown:
+            <code>PaDropdownModule</code> contains every thing you need to build your dropdowns:
         </p>
         <ul>
             <li><code>DropdownComponent</code>: brings the popup behaviour and is mainly a wrapper for the list of options using the following components</li>
@@ -41,6 +41,45 @@
                 <pa-option (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
                 <pa-separator></pa-separator>
                 <pa-option destructive dontCloseOnSelect (selectOption)="onSelect($event)">Dropdown item destructive</pa-option>
+            </pa-dropdown>
+        </div>
+
+        <div>
+            <pa-button [paPopup]="level1" sameWidth>
+                <div style="display: flex; align-items: center">
+                    Multi-level dropdown
+                    <pa-icon name="chevron-down"></pa-icon>
+                </div>
+            </pa-button>
+
+            <pa-dropdown #level1 [companionElement]="level2Element?.nativeElement">
+                <pa-option icon="chevron-right"
+                           iconOnRight
+                           dontCloseOnSelect
+                           [popupPosition]="{position: 'relative', left: '100%', top: '4px'}"
+                           [paPopup]="level2"
+                           [selected]="level1Open === 'jedi'"
+                           (selectOption)="onLevel1Selection('jedi')">Jedi</pa-option>
+                <pa-option icon="chevron-right"
+                           iconOnRight
+                           dontCloseOnSelect
+                           [popupPosition]="{position: 'relative', left: '100%', top: '44px'}"
+                           [paPopup]="level2"
+                           [selected]="level1Open === 'rebels'"
+                           (selectOption)="onLevel1Selection('rebels')">Rebels</pa-option>
+                <pa-option icon="chevron-right"
+                           iconOnRight
+                           dontCloseOnSelect
+                           [popupPosition]="{position: 'relative', left: '100%', top: '84px'}"
+                           [paPopup]="level2"
+                           [selected]="level1Open === 'sith'"
+                           (selectOption)="onLevel1Selection('sith')">Sith</pa-option>
+            </pa-dropdown>
+
+            <pa-dropdown #level2>
+                <pa-option dontCloseOnSelect *ngFor="let option of level2Options">
+                    <pa-checkbox>{{option.label}}</pa-checkbox>
+                </pa-option>
             </pa-dropdown>
         </div>
     </pa-demo-examples>
@@ -97,6 +136,14 @@
     </pa-demo-usage>
 
     <pa-demo-code>
+        <strong>Simple menu</strong>
         <pre><code>{{codeExample}}</code></pre>
+
+        <strong>Multi-level dropdown</strong><br>
+        Template:
+        <pre><code>{{multiLevelTemplate}}</code></pre>
+
+        Script:
+        <pre><code>{{multiLevelScript}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

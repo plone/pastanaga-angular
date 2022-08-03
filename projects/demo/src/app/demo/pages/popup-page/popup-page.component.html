@@ -64,6 +64,9 @@
             <dt>id</dt>
             <dd>Popup's id <small>(optional, an id will be generated if none is provided)</small></dd>
 
+            <dt>keepOthersOpen</dt>
+            <dd>Control if other popups should be closed when current one is opened. <small>(default: false)</small></dd>
+
             <dt>stayVisible</dt>
             <dd>Keep the popup visible when set to true <small>(default: false)</small></dd>
         </dl>
@@ -113,7 +116,7 @@
 
         To open a popup programmatically, in your template add a reference to your popup directive:
         <pre><code>{{openProgrammaticallyTemplate}}</code></pre>
-        Then in your component, you can call <code>toggle</code> method of your directive to open/close the popup:
+        Then in your component, you can call <code style="display: inline; background: #fff;">toggle</code> method of your directive to open/close the popup:
         <pre><code>{{openProgrammaticallyComponent}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

@@ -1,10 +1,12 @@
-# 2.54.3 (2022-08-03)
+# 2.54.3 (2022-08-04)
 
 ### Improvements
 - **Expander**: [mpellerin42]
   - Add `buttonOnlyToggle` option preventing the expander to toggle when clicking on the title
   - Don't display empty extra side block on expander's header
   - Improve expander documentation
+- **Popup**: Add documentation for `keepOthersOpen` input [mpellerin42]
+- **Dropdown**: Add documentation for multi-level dropdowns [mpellerin42]
 
 ### Bug fix
 - **Dropdown**: Remove the extra space on the right of the option when `iconOnRight` is set [mpellerin42]
@@ -404,7 +406,7 @@
 ### Improvements
 - **Dialog**: Dialog TranslateY affects fixed position children, in order to patch this behaviour we expose the dialog top position in computed styled properties (`--containerTranslateY`). [faustoonna]
 - **Select**: reverting previous changes, calculating the popup position on scroll and on toggle (taking in consideration the container offset y if available). [faustoonna] 
-- **PopopDirective**: managing `popupPosition` with setter and getter. It updates the popup style when the input value changes. [faustoonna]
+- **PopupDirective**: managing `popupPosition` with setter and getter. It updates the popup style when the input value changes. [faustoonna]
 
 # 2.38.4 (2021-10-20)
 
