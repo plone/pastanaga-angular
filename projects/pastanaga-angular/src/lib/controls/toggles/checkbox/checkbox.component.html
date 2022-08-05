@@ -1,4 +1,6 @@
-<div class="pa-toggle" [class.pa-field-error]="control.dirty && control.invalid">
+<div class="pa-toggle"
+     [class.pa-disabled]="control.disabled"
+     [class.pa-field-error]="control.dirty && control.invalid">
     <div class="pa-checkbox-wrapper">
         <input #htmlElement
                type="checkbox"

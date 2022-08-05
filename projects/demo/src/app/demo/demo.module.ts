@@ -134,6 +134,7 @@ import { TableLeadCellMultiLinePageComponent } from './pages/table-page/table-le
 import { TypographyPageComponent } from './pages/typography-page/typography-page.component';
 import { ButtonUsageComponent } from './pages/button-page/button-usage/button-usage.component';
 import { ButtonDescriptionComponent } from './pages/button-page/button-description/button-description.component';
+import { RadioPageComponent } from './pages/radio-page/radio-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -232,6 +233,7 @@ const COMPONENTS = [
     TableSortableHeaderCellPageComponent,
     TableLeadCellMultiLinePageComponent,
     TypographyPageComponent,
+    RadioPageComponent,
 ];
 
 @NgModule({

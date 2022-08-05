@@ -45,6 +45,7 @@ import {
     TableLeadCellMultiLinePageComponent,
     TableSortableHeaderCellPageComponent, TableSortableHeaderPageComponent
 } from './demo';
+import { RadioPageComponent } from './demo/pages/radio-page/radio-page.component';
 
 export const menu: IDemoMenuSection[] = [
     {
@@ -111,6 +112,7 @@ export const menu: IDemoMenuSection[] = [
         pages: [
             { view: 'checkbox', title: 'Checkbox', type: CheckboxPageComponent },
             { view: 'input', title: 'Input', type: InputPageComponent },
+            { view: 'radio', title: 'Radio', type: RadioPageComponent },
             { view: 'select', title: 'Select', type: SelectPageComponent },
             { view: 'textarea', title: 'Textarea', type: TextareaPageComponent },
             { view: 'toggle', title: 'Toggle', type: TogglePageComponent },

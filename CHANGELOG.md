@@ -1,3 +1,8 @@
+# 2.55.0 (2022-08-05)
+
+### Feature
+- **Radio** and **radio-group**: Add a radio component and a radio-group directive. [mpellerin42]
+
 # 2.54.3 (2022-08-04)
 
 ### Improvements
