@@ -9,6 +9,11 @@
     As a good practice, you should always set a text content for your buttons,
     even for icon buttons: the text won't be visible on screen but it will be accessible for screen readers.</p>
 
-<p>There is no specific component for button links, because you can wrap a link directly in the <code>pa-button</code> tag:</p>
+<p>There is no specific component for button links because you can wrap a link directly in the <code>pa-button</code> tag:</p>
 <pre><code>{{buttonLinkCode}}</code></pre>
+<p>
+    If the <code>routerLink</code> directive is only on the link, the user will have to click on the link text to be redirected.
+    To make sure the user can click on any part of the button to be redirected, you should add the <code>routerLink</code> directive on the button itself.
+    Putting the <code>routerLink</code> on the <code>{{paButtonTag}}</code> only is also working, but keeping the link tag can be good for semantic and accessibility reasons.
+</p>
 <p>Links wrapped by <code>pa-button</code> have their style overridden so their color is inherited from the button style, and they have no decoration on hover.</p>
