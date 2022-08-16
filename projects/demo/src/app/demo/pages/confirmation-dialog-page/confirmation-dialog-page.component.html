@@ -10,13 +10,27 @@
     <pa-demo-examples>
         <pa-button class="open-modal-button" kind="primary" (click)="openConfirm()">Open a confirmation</pa-button>
         <pa-button class="open-modal-button" kind="destructive" (click)="openDestructiveConfirm()">Open a destructive confirmation</pa-button>
+
+        <div style="margin-top: 32px">
+            <label for="cancel-aspect-radios">Cancel button aspect:</label>
+            <pa-radio-group id="cancel-aspect-radios" style="margin-top: 8px"  [(value)]="cancelAspect">
+                <pa-radio value="basic">Basic</pa-radio>
+                <pa-radio value="solid">Solid</pa-radio>
+            </pa-radio-group>
+        </div>
     </pa-demo-examples>
 
     <pa-demo-usage>
         <h3>ConfirmationData</h3>
         <dl>
-            <dt>title</dt>
-            <dd>Title to be displayed in the confirmation dialog. This is the only mandatory property.</dd>
+            <dt>cancelAspect</dt>
+            <dd>Cancel button aspect (<code>basic</code> | <code>solid</code>). <small>Default: solid</small></dd>
+
+            <dt>cancelLabel</dt>
+            <dd>Label to display on the cancel button. <small>Default: pastanaga.cancel</small></dd>
+
+            <dt>confirmLabel</dt>
+            <dd>Label to display on the confirm button. <small>Default: pastanaga.confirm</small></dd>
 
             <dt>description</dt>
             <dd>Description to be displayed below the title. <small>Optional</small></dd>
@@ -24,11 +38,8 @@
             <dt>isDestructive</dt>
             <dd>When true, the confirmation button will be of kind <code>destructive</code>. <small>Default: false</small></dd>
 
-            <dt>cancelLabel</dt>
-            <dd>Label to display on the cancel button. <small>Default: pastanaga.cancel</small></dd>
-
-            <dt>confirmLabel</dt>
-            <dd>Label to display on the confirm button. <small>Default: pastanaga.confirm</small></dd>
+            <dt>title</dt>
+            <dd>Title to be displayed in the confirmation dialog. This is the only mandatory property.</dd>
         </dl>
     </pa-demo-usage>
 

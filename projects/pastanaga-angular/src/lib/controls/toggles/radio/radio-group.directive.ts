@@ -20,6 +20,7 @@ import { takeUntil } from 'rxjs/operators';
     exportAs: 'paRadioGroup',
     host: {
         role: 'radiogroup',
+        style: 'display: block',
     },
 })
 export class RadioGroupDirective extends PaFormControlDirective implements AfterViewInit, OnDestroy {

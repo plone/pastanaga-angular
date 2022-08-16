@@ -1,3 +1,9 @@
+# 2.55.2 (2022-08-16)
+
+### Improvements
+- **Confirmation dialog**: add `cancelAspect` option in `ConfirmationData` [mpellerin42]
+- **Radio group**: add `display: block` on `paRadioGroup` directive [mpellerin42]
+
 # 2.55.1 (2022-08-16)
 
 ### Bug fix

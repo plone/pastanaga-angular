@@ -1,4 +1,5 @@
 import { Observable, Subject } from 'rxjs';
+import { Aspect } from '../common';
 
 export interface ConfirmationData {
     title: string;
@@ -6,6 +7,7 @@ export interface ConfirmationData {
     isDestructive?: boolean;
     cancelLabel?: string;
     confirmLabel?: string;
+    cancelAspect?: Aspect;
 }
 
 export interface IModalConfig<D = any> {
