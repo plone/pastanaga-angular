@@ -23,7 +23,7 @@
     box-shadow: $shadow-modal;
     margin: 0;
 
-    z-index: $z-index-modal;
+    z-index: $z-index-modal-backdrop + 10;
 
     .pa-modal-description {
         color: $color-neutral-regular;
