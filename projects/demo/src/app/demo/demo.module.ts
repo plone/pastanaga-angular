@@ -13,11 +13,12 @@ import { DemoMenuComponent } from './demo-menu/demo-menu.component';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { IconPageComponent } from './pages/icon-page/icon-page.component';
 import { TranslatePageComponent } from './pages/translate-page/translate-page.component';
-import { DEMO_EN, CUSTOM_EN, DEMO_LA, DEMO_FR, CUSTOM_FR } from '../../assets';
+import { CUSTOM_EN, CUSTOM_FR, DEMO_EN, DEMO_FR, DEMO_LA } from '../../assets';
 import {
     PaAvatarModule,
     PaAvatarPileModule,
     PaButtonModule,
+    PaCardModule,
     PaChipsModule,
     PaDatePickerModule,
     PaDateTimeModule,
@@ -28,6 +29,7 @@ import {
     PaIconModule,
     PaModalModule,
     PaPopupModule,
+    PaScrollModule,
     PaSideNavModule,
     PaTableModule,
     PaTabsModule,
@@ -36,8 +38,6 @@ import {
     PaTogglesModule,
     PaTooltipModule,
     PaTranslateModule,
-    PaScrollModule,
-    PaCardModule,
 } from '@guillotinaweb/pastanaga-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarPageComponent } from './pages/avatar-page/avatar-page.component';
@@ -67,39 +67,39 @@ import { ContainerPageComponent } from './pages/container-page/container-page.co
 import { ContainerDemoComponent } from './pages/container-page/container-demo/container-demo.component';
 import { FormFieldHintPageComponent } from './pages/form-field-hint-page/form-field-hint-page.component';
 import {
-    FormControlPageComponent,
+    FormControlIdExampleComponent,
     FormControlNameExampleComponent,
-    FormControlValueExampleComponent,
+    FormControlPageComponent,
     FormControlStateExampleComponent,
     FormControlValidationExampleComponent,
-    FormControlIdExampleComponent,
+    FormControlValueExampleComponent,
     PaFormControlUsageComponent,
 } from './pages/form-control-page';
 import {
-    InputPageComponent,
-    InputStandaloneExampleComponent,
-    InputNgModelExampleComponent,
     InputFormControlExampleComponent,
     InputFormGroupExampleComponent,
+    InputNgModelExampleComponent,
+    InputPageComponent,
+    InputStandaloneExampleComponent,
     PaInputConfigComponent,
 } from './pages/input-page';
 import {
-    SelectPageComponent,
-    SelectStandaloneExampleComponent,
-    SelectNgModelExampleComponent,
+    PaSelectConfigComponent,
     SelectFormControlExampleComponent,
     SelectFormGroupExampleComponent,
-    PaSelectConfigComponent,
+    SelectNgModelExampleComponent,
+    SelectPageComponent,
+    SelectStandaloneExampleComponent,
 } from './pages/select-page';
 import { NativeTextFieldPageComponent } from './pages/native-text-field-page/native-text-field-page.component';
 import { NativeTextFieldUsageComponent } from './pages/native-text-field-page/usage/native-text-field-usage.component';
 import {
-    TextareaPageComponent,
     PaTextareaConfigComponent,
-    TextareaStandaloneExampleComponent,
-    TextareaNgModelExampleComponent,
     TextareaFormControlExampleComponent,
     TextareaFormGroupExampleComponent,
+    TextareaNgModelExampleComponent,
+    TextareaPageComponent,
+    TextareaStandaloneExampleComponent,
 } from './pages/text-area-page';
 import { FormFieldConfigStandaloneDirective } from './pages/common-doc/form-field-config-standalone.directive';
 import { FormFieldConfigNgModelDirective } from './pages/common-doc/form-field-config-ng-model.directive';
@@ -109,7 +109,7 @@ import { BreakpointPageComponent } from './pages/breakpoint-page/breakpoint-page
 import { ExpanderPageComponent } from './pages/expand-page/expander-page.component';
 import { AccessibilityPageComponent } from './pages/accessibility/accessibility-page.component';
 import { AvatarPilePageComponent } from './pages/avatar-pile-page/avatar-pile-page.component';
-import { InfiniteScrollPageComponent, DataCardComponent, InfiniteScrollDemoComponent } from './pages/scroll-pages';
+import { DataCardComponent, InfiniteScrollDemoComponent, InfiniteScrollPageComponent } from './pages/scroll-pages';
 import { ConfirmationDialogPageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-page.component';
 import { EllipsisTooltipPageComponent } from './pages/ellipsis-tooltip-page/ellipsis-tooltip-page.component';
 import { ScrollbarPageComponent } from './pages/scrollbar-page/scrollbar-page.component';
@@ -119,11 +119,11 @@ import { CardPageComponent } from './pages/card-page/card-page.component';
 import { RouterModule } from '@angular/router';
 import {
     DatePickerConfigComponent,
-    DatePickerPageComponent,
-    DatePickerStandaloneExampleComponent,
-    DatePickerNgModelExampleComponent,
     DatePickerFormControlExampleComponent,
     DatePickerFormGroupExampleComponent,
+    DatePickerNgModelExampleComponent,
+    DatePickerPageComponent,
+    DatePickerStandaloneExampleComponent,
 } from './pages/date-picker-page';
 import { CommonTableDescriptionComponent } from './pages/table-page/common-table-description/common-table-description.component';
 import { TableSortableHeaderPageComponent } from './pages/table-page/table-sortable-header-page/table-sortable-header-page.component';
@@ -135,6 +135,8 @@ import { TypographyPageComponent } from './pages/typography-page/typography-page
 import { ButtonUsageComponent } from './pages/button-page/button-usage/button-usage.component';
 import { ButtonDescriptionComponent } from './pages/button-page/button-description/button-description.component';
 import { RadioPageComponent } from './pages/radio-page/radio-page.component';
+import { ConfirmationDialogDescriptionComponent } from './pages/confirmation-dialog-page/confirmation-dialog-description.component';
+import { ConfirmationDialogUsageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-usage.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -234,6 +236,8 @@ const COMPONENTS = [
     TableLeadCellMultiLinePageComponent,
     TypographyPageComponent,
     RadioPageComponent,
+    ConfirmationDialogDescriptionComponent,
+    ConfirmationDialogUsageComponent,
 ];
 
 @NgModule({
