@@ -59,6 +59,23 @@ describe('ConfirmationDialogComponent', () => {
         });
     });
 
+    describe('actions', () => {
+        beforeEach(() => {
+            jest.spyOn(component.ref, 'close');
+            spectator.detectChanges();
+        });
+
+        it('should close with false when clicking on cancel', () => {
+            spectator.click('[qa="confirmation-dialog-cancel-button"]');
+            expect(component.ref.close).toHaveBeenCalledWith(false);
+        });
+
+        it('should close with true when clicking on confirm', () => {
+            spectator.click('[qa="confirmation-dialog-confirm-button"]');
+            expect(component.ref.close).toHaveBeenCalledWith(true);
+        });
+    });
+
     describe('when specific data is set', () => {
         beforeEach(() => {
             modalRef.config = new ModalConfig<ConfirmationData>({
@@ -95,6 +112,25 @@ describe('ConfirmationDialogComponent', () => {
         });
     });
 
+    describe('when onlyConfirm is set', () => {
+        beforeEach(() => {
+            modalRef.config = new ModalConfig<ConfirmationData>({
+                data: {
+                    title,
+                    onlyConfirm: true,
+                },
+            });
+            spectator.detectChanges();
+        });
+
+        it('should display only the confirmation button', () => {
+            expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')).toBeFalsy();
+            expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
+                'translate--pastanaga.confirm',
+            );
+        });
+    });
+
     describe('ngAfterViewInit', () => {
         it('should setFocus and refresh on ngAfterViewInit', () => {
             jest.spyOn(component, 'setFocus');
@@ -104,22 +140,6 @@ describe('ConfirmationDialogComponent', () => {
 
             expect(component.setFocus).toHaveBeenCalled();
             expect(component.refresh).toHaveBeenCalled();
-        });
-    });
-
-    describe('actions', () => {
-        beforeEach(() => {
-            jest.spyOn(component.ref, 'close');
-        });
-
-        it('should close with false when clicking on cancel', () => {
-            spectator.click('[qa="confirmation-dialog-cancel-button"]');
-            expect(component.ref.close).toHaveBeenCalledWith(false);
-        });
-
-        it('should close with true when clicking on confirm', () => {
-            spectator.click('[qa="confirmation-dialog-confirm-button"]');
-            expect(component.ref.close).toHaveBeenCalledWith(true);
         });
     });
 });
