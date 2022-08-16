@@ -22,6 +22,11 @@ import { Component } from '@angular/core';
                 <small>Default: false</small>
             </dd>
 
+            <dt>onlyConfirm</dt>
+            <dd>
+                When true, the dialog will have only one button: the confirmation one. <small>Default: false</small>
+            </dd>
+
             <dt>title</dt>
             <dd>Title to be displayed in the confirmation dialog. This is the only mandatory property.</dd>
         </dl>`,

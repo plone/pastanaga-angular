@@ -3,11 +3,13 @@ import { Aspect } from '../common';
 
 export interface ConfirmationData {
     title: string;
-    description?: string;
-    isDestructive?: boolean;
+
+    cancelAspect?: Aspect;
     cancelLabel?: string;
     confirmLabel?: string;
-    cancelAspect?: Aspect;
+    description?: string;
+    isDestructive?: boolean;
+    onlyConfirm?: boolean;
 }
 
 export interface IModalConfig<D = any> {

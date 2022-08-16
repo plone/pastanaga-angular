@@ -1,7 +1,9 @@
 # 2.55.2 (2022-08-16)
 
 ### Improvements
-- **Confirmation dialog**: add `cancelAspect` option in `ConfirmationData` [mpellerin42]
+- **Confirmation dialog**:  [mpellerin42]
+  - add `cancelAspect` option in `ConfirmationData`
+  - add `onlyConfirm` option in `ConfirmationData`
 - **Radio group**: add `display: block` on `paRadioGroup` directive [mpellerin42]
 
 # 2.55.1 (2022-08-16)

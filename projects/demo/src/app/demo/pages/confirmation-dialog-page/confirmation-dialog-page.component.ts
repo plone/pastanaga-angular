@@ -34,4 +34,13 @@ export class ConfirmationDialogPageComponent {
             cancelAspect: this.cancelAspect,
         });
     }
+
+    openConfirmOnly() {
+        this.modalService.openConfirm({
+            title: 'Something happened!',
+            description: 'Confirmation dialog can be used as an alert by using onlyConfirm option.',
+            confirmLabel: 'OK',
+            onlyConfirm: true,
+        });
+    }
 }
