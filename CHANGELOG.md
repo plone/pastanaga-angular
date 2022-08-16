@@ -1,3 +1,12 @@
+# 2.55.1 (2022-08-16)
+
+### Bug fix
+- Fix pa-option usage with pa-select importing only PaTextFieldModule [mpellerin42]
+
+### Improvements
+- Improve button link documentation [mpellerin42]
+- Improve icon documentation [mpellerin42]
+
 # 2.55.0 (2022-08-05)
 
 ### Feature
