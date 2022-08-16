@@ -3,11 +3,9 @@ export * from './input-formatter.directive';
 
 export * from './native-text-field.directive';
 
-export * from './select/select.component';
-export * from './select/select-options/select-options.component';
+export * from './select';
 
-export * from './textarea/textarea.component';
-export * from './textarea/pa-textarea-auto-height.directive';
+export * from './textarea';
 
 export * from './text-field.module';
 export * from './text-field-utility.service';
