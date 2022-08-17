@@ -115,8 +115,8 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
 
     show(style: PositionStyle) {
-        if (!this.keepOthersOpen && this.id) {
-            this.popupService.closeAllButId.next(this.id);
+        if (!this.keepOthersOpen && this._id) {
+            this.popupService.closeAllButId.next(this._id);
         }
         this.style = style;
         this.isDisplayed = true;
