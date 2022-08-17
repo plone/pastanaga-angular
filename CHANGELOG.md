@@ -1,3 +1,8 @@
+# 2.55.3 (2022-08-17)
+
+### Bug fix
+- **Popup**: close all popups when opening a new one and `keepOthersOpen` is false [mpellerin42]
+
 # 2.55.2 (2022-08-16)
 
 ### Improvements
