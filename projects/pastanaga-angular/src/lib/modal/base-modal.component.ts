@@ -59,6 +59,7 @@ export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
                 detectChanges(this.cdr);
                 if (!!this.ref) {
                     this.ref.dismiss(data);
+                    this.closing = false;
                 }
             }, TRANSITION_DURATION.moderate);
         }

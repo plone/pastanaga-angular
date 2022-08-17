@@ -21,9 +21,12 @@
              [innerHTML]="ref.config.data?.['description'] | translate"
         ></div>
 
-        <footer class="pa-modal-footer pa-dual-buttons">
-            <pa-button kind="secondary"
+        <footer class="pa-modal-footer"
+                [class.pa-dual-buttons]="!ref.config.data?.['onlyConfirm']">
+            <pa-button *ngIf="!ref.config.data?.['onlyConfirm']"
+                       kind="secondary"
                        qa="confirmation-dialog-cancel-button"
+                       [aspect]="ref.config.data?.['cancelAspect']"
                        (click)="ref.close(false)">{{ (ref.config.data?.['cancelLabel'] || 'pastanaga.cancel') | translate}}</pa-button>
             <pa-button [kind]="ref.config.data?.['isDestructive'] ? 'destructive' : 'primary'"
                        qa="confirmation-dialog-confirm-button"

@@ -1,3 +1,14 @@
+# 2.55.2 (2022-08-16)
+
+### Improvements
+- **Modals**: [mpellerin42]
+  - **service**: make sure to trigger detectChanges after instantiation of the modal
+  - **style**: compute modal z-index based on z-index of the modal backdrop
+- **Confirmation dialogs**:  [mpellerin42]
+  - add `cancelAspect` option in `ConfirmationData`
+  - add `onlyConfirm` option in `ConfirmationData`
+- **Radio groups**: add `display: block` on `paRadioGroup` directive [mpellerin42]
+
 # 2.55.1 (2022-08-16)
 
 ### Bug fix

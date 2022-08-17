@@ -28,10 +28,7 @@ export class ModalService {
     ) {}
 
     openConfirm(data: ConfirmationData): ModalRef {
-        return this.openModal(
-            ConfirmationDialogComponent,
-            new ModalConfig<ConfirmationData>({ data }),
-        );
+        return this.openModal(ConfirmationDialogComponent, new ModalConfig<ConfirmationData>({ data }));
     }
 
     openModal(component: Type<any>, config?: ModalConfig): ModalRef {
@@ -54,6 +51,10 @@ export class ModalService {
         const modalComponentRef = this.componentFactoryResolver.resolveComponentFactory(component).create(injector);
         this.appRef.attachView(modalComponentRef.hostView);
         document.body.appendChild(modalComponentRef.location.nativeElement);
+
+        if (modalComponentRef.instance?.refresh) {
+            modalComponentRef.instance.refresh();
+        }
 
         // freeze background
         this.freezeBackground(true);
