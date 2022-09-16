@@ -1,3 +1,8 @@
+# 2.55.4 (2022-09-16)
+
+### Bug fix
+- **Radio group**: wait for radios to be on the DOM before applying group name and value [mpellerin42]
+
 # 2.55.3 (2022-08-17)
 
 ### Bug fix
