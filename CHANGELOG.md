@@ -1,3 +1,8 @@
+# 2.55.5 (2022-09-16)
+
+### Bug fix
+- **Radio group**: mark radio group control as dirty when a radio change event is emitted [mpellerin42]
+
 # 2.55.4 (2022-09-16)
 
 ### Bug fix
