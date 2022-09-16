@@ -40,7 +40,12 @@ export class RadioGroupDirective extends PaFormControlDirective implements After
         this.waitForRadios(() => {
             this._radios?.forEach((radio) => {
                 radio.name = this.name;
-                radio.change.pipe(takeUntil(this.terminator$)).subscribe((res) => this.writeValue(res.value));
+                radio.change.pipe(takeUntil(this.terminator$)).subscribe((res) => {
+                    this.writeValue(res.value);
+                    if (this.control.pristine) {
+                        this.control.markAsDirty();
+                    }
+                });
                 radio._markForCheck();
             });
         });
