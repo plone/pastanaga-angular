@@ -62,4 +62,33 @@ describe('RadioGroupDirective', () => {
 
         flush();
     }));
+
+    it('should update radio checked status when selecting another radio of the group', fakeAsync(() => {
+        spectator = createHost(
+            `<pa-radio-group name="radio-gaga" [ngModel]="'gaga'">
+                        <pa-radio value="queen">Queen</pa-radio>
+                        <pa-radio value="radio">Radio</pa-radio>
+                        <pa-radio value="gaga">Gaga</pa-radio>
+                    </pa-radio-group>`,
+        );
+        directive = spectator.component;
+        spectator.detectChanges();
+
+        tick(200);
+
+        let radios = spectator.queryAll(RadioComponent);
+        expect(radios.length).toBe(3);
+        expect(radios[0].checked).toBe(false);
+        expect(radios[1].checked).toBe(false);
+        expect(radios[2].checked).toBe(true);
+
+        radios[0].select();
+
+        tick(200);
+
+        radios = spectator.queryAll(RadioComponent);
+        expect(radios[0].checked).toBe(true);
+        expect(radios[1].checked).toBe(false);
+        expect(radios[2].checked).toBe(false);
+    }));
 });
