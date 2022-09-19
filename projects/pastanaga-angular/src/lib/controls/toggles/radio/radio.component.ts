@@ -55,7 +55,7 @@ export class RadioComponent implements AfterContentInit {
 
     @Input() ariaLabel?: string;
 
-    @Output() change: EventEmitter<{ value: string }> = new EventEmitter();
+    @Output() change: EventEmitter<{ value: string; checked: boolean }> = new EventEmitter();
 
     checked = false;
     hasLabel = false;
@@ -82,7 +82,8 @@ export class RadioComponent implements AfterContentInit {
             if (!this.checked) {
                 this.checked = true;
             }
-            this.change.emit({ value: this.value });
+            this.change.emit({ value: this.value, checked: this.checked });
+            this.cdr.markForCheck();
         }
     }
 
@@ -92,5 +93,14 @@ export class RadioComponent implements AfterContentInit {
     select() {
         this.element.nativeElement.querySelector('.pa-toggle-control').checked = true;
         this._onInputChange();
+    }
+
+    /**
+     * Unselect this radio from the radio-group when another radio is selected.
+     */
+    unselect() {
+        this.element.nativeElement.querySelector('.pa-toggle-control').checked = false;
+        this.checked = false;
+        this.cdr.markForCheck();
     }
 }

@@ -82,7 +82,7 @@ describe('RadioComponent', () => {
 
         jest.spyOn(component.change, 'emit');
         spectator.click('.pa-toggle-label');
-        expect(component.change.emit).toHaveBeenCalledWith({ value: 'the value' });
+        expect(component.change.emit).toHaveBeenCalledWith({ value: 'the value', checked: true });
     });
 
     describe('when disabled', () => {

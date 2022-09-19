@@ -27,6 +27,7 @@ export class RadioGroupDirective extends PaFormControlDirective implements After
     @ContentChildren(forwardRef(() => RadioComponent), { descendants: true }) _radios?: QueryList<RadioComponent>;
 
     override fieldType = 'radiogroup';
+    private checkedRadio?: RadioComponent;
 
     constructor(
         protected override element: ElementRef,
@@ -41,7 +42,9 @@ export class RadioGroupDirective extends PaFormControlDirective implements After
             this._radios?.forEach((radio) => {
                 radio.name = this.name;
                 radio.change.pipe(takeUntil(this.terminator$)).subscribe((res) => {
-                    this.writeValue(res.value);
+                    if (res.checked) {
+                        this.writeValue(res.value);
+                    }
                     if (this.control.pristine) {
                         this.control.markAsDirty();
                     }
@@ -70,7 +73,11 @@ export class RadioGroupDirective extends PaFormControlDirective implements After
         super.writeValue(value);
         if (value) {
             this.waitForRadios(() => {
+                if (this.checkedRadio && this.checkedRadio.value !== value) {
+                    this.checkedRadio.unselect();
+                }
                 const radio = this._radios?.find((r) => r.value === value);
+                this.checkedRadio = radio;
                 if (radio && !radio.checked) {
                     radio.select();
                 }

@@ -1,3 +1,8 @@
+# 2.55.6 (2022-09-19)
+
+### Bug fix
+- **Radio group**: Fix radio checked state when belonging to radio group [mpellerin42]
+
 # 2.55.5 (2022-09-16)
 
 ### Bug fix
