@@ -1,4 +1,8 @@
-# 2.55.7 (2022-10-18)
+# 2.56.0 (2022-10-18)
+
+### Breaking Changes
+- **Popup directive**: [mpellerin42]
+  - rename `popupOnRight` attribute into `alignPopupOnLeft` to align the attribute name with its behavior 
 
 ### Documentation improvements
 - **Dropdown**: [mpellerin42] 

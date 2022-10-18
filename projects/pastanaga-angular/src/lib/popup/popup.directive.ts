@@ -15,11 +15,11 @@ export class PopupDirective implements OnInit {
         this._margin = coerceNumberProperty(value);
     }
     @Input()
-    get popupOnRight(): boolean {
-        return this._popupOnRight;
+    get alignPopupOnLeft(): boolean {
+        return this._alignPopupOnLeft;
     }
-    set popupOnRight(value: any) {
-        this._popupOnRight = coerceBooleanProperty(value);
+    set alignPopupOnLeft(value: any) {
+        this._alignPopupOnLeft = coerceBooleanProperty(value);
     }
     @Input()
     get popupOnTop(): boolean {
@@ -54,7 +54,7 @@ export class PopupDirective implements OnInit {
     private _disabled = false;
     private _openOnly = false;
 
-    private _popupOnRight = false;
+    private _alignPopupOnLeft = false;
     private _popupOnTop = false;
     private _sameWidth = false;
     private _margin = MARGIN;
@@ -108,7 +108,7 @@ export class PopupDirective implements OnInit {
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
 
-        if (this._popupOnRight) {
+        if (this._alignPopupOnLeft) {
             position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
         } else {
             position.right = Math.min(rootRect.right - rect.right, window.innerWidth - 240) + 'px';

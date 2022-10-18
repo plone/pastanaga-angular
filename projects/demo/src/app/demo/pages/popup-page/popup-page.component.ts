@@ -23,7 +23,7 @@ openProgrammatically(event: MouseEvent) {
 }
 `;
 
-    popupOnRight = false;
+    alignOnLeft = false;
     popupOnTop = false;
     sameWidth = false;
     @ViewChild('myPopupDirective') myPopupDirective?: PopupDirective;
