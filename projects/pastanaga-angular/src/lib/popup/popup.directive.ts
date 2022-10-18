@@ -1,14 +1,26 @@
-import { Directive, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    HostListener,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    Renderer2,
+    SimpleChanges,
+} from '@angular/core';
 import { PositionStyle } from '../common';
 import { POPUP_OFFSET, PopupComponent } from './popup.component';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
+import { Subject } from 'rxjs';
+import { takeUntil, throttleTime } from 'rxjs/operators';
 
 @Directive({
     selector: '[paPopup]',
     exportAs: 'paPopupRef',
 })
-export class PopupDirective implements OnInit, OnChanges {
+export class PopupDirective implements OnInit, OnChanges, OnDestroy {
     @Input() paPopup?: PopupComponent | null;
     @Input() popupPosition?: PositionStyle;
     @Input()
@@ -69,13 +81,24 @@ export class PopupDirective implements OnInit, OnChanges {
     private _popupOnRight = false;
     private _sameWidth = false;
     private _popupVerticalOffset = POPUP_OFFSET;
+    private _handlers: (() => void)[] = [];
+
+    private _scrollOrResize = new Subject<Event>();
+    private _terminator = new Subject<void>();
 
     constructor(private element: ElementRef, private service: PopupService, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.element.nativeElement.setAttribute('aria-haspopup', true);
 
-        this.paPopup?.onClose.subscribe(() => this.removeActiveStateFromParentButton());
+        this.paPopup?.onClose.pipe(takeUntil(this._terminator)).subscribe(() => {
+            this.removeActiveStateFromParentButton();
+            this.unListen();
+        });
+
+        this._scrollOrResize
+            .pipe(throttleTime(10), takeUntil(this._terminator))
+            .subscribe(() => this.paPopup?.updatePosition(this.getPosition()));
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -87,6 +110,12 @@ export class PopupDirective implements OnInit, OnChanges {
                 `Incompatible parameters: alignPopupOnLeft and popupOnRight cannot be used at the same time. alignPopupOnLeft is taking precedence.`,
             );
         }
+    }
+
+    ngOnDestroy() {
+        this.unListen();
+        this._terminator.next();
+        this._terminator.complete();
     }
 
     @HostListener('click', ['$event'])
@@ -107,6 +136,12 @@ export class PopupDirective implements OnInit, OnChanges {
             } else {
                 const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
                 this.paPopup.show(position);
+                this._handlers.push(
+                    this.renderer.listen('document', 'scroll', (event) => this._scrollOrResize.next(event)),
+                );
+                this._handlers.push(
+                    this.renderer.listen('window', 'resize', (event) => this._scrollOrResize.next(event)),
+                );
                 this.addActiveStateOnParentButton();
             }
         }
@@ -136,6 +171,11 @@ export class PopupDirective implements OnInit, OnChanges {
         }
 
         return position;
+    }
+
+    private unListen() {
+        this._handlers.forEach((fn) => fn());
+        this._handlers = [];
     }
 
     private addActiveStateOnParentButton() {

@@ -130,6 +130,11 @@ export class PopupComponent implements OnInit, OnDestroy {
         this.adjustPosition();
     }
 
+    updatePosition(style: PositionStyle) {
+        this.style = style;
+        markForCheck(this.cdr);
+    }
+
     private adjustPosition() {
         window.setTimeout(() => {
             if ((!this.dontAdjustPosition || this.adjustHeight) && !this.adjust()) {
