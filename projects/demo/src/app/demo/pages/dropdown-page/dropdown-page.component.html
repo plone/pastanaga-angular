@@ -9,7 +9,7 @@
             <code>PaDropdownModule</code> contains every thing you need to build your dropdowns:
         </p>
         <ul>
-            <li><code>DropdownComponent</code>: brings the popup behaviour and is mainly a wrapper for the list of options using the following components</li>
+            <li><code>DropdownComponent</code>: brings the popup behaviour and wraps the list of options using the following components</li>
             <li><code>OptionHeaderComponent</code>: header allowing to group options</li>
             <li><code>OptionComponent</code>: option item</li>
             <li><code>SeparatorComponent</code>: option separator</li>
@@ -76,7 +76,7 @@
                            (selectOption)="onLevel1Selection('sith')">Sith</pa-option>
             </pa-dropdown>
 
-            <pa-dropdown #level2>
+            <pa-dropdown #level2 keepOthersOpen>
                 <pa-option dontCloseOnSelect *ngFor="let option of level2Options">
                     <pa-checkbox>{{option.label}}</pa-checkbox>
                 </pa-option>
@@ -85,16 +85,30 @@
     </pa-demo-examples>
 
     <pa-demo-usage>
-        <h2><code>DropdownComponent</code></h2>
-        <p>Brings the popup behaviour and is mainly a wrapper for the list of options. It works with <code>ng-content</code>.</p>
+        <h2>DropdownComponent</h2>
+        <p>Dropdown component is mainly a wrapper (using <code>ng-content</code>) for the list of options to be displayed. It extends popup component adding the <code>role</code> attribute to it.</p>
+
+        <p>
+            Multi-level dropdown can be created by using the <code>companionElement</code> attribute on the first level dropdown
+            (targeting the 2nd level dropdown element), the <code>keepOthersOpen</code> attribute on the second level dropdown,
+            as well as <code>dontCloseOnSelect</code> attribute on options of both dropdowns.
+            See how in the Code section below.
+        </p>
 
         <h3>Inputs</h3>
         <dl>
             <dt>role</dt>
             <dd>listbox | menu <small>(default: menu)</small></dd>
         </dl>
+
         <br>
-        <h2><code>OptionComponent</code></h2>
+
+        <h2>PopupComponent</h2>
+        <p><code>DropdownComponent</code> extends <code>PopupComponent</code>, here are the Inputs and Outputs inherited from it:</p>
+        <pa-demo-popup-component-usage></pa-demo-popup-component-usage>
+
+        <br>
+        <h2>OptionComponent</h2>
         <h3>Inputs</h3>
         <dl>
             <dt>avatar</dt>
@@ -136,10 +150,10 @@
     </pa-demo-usage>
 
     <pa-demo-code>
-        <strong>Simple menu</strong>
+        <strong>Simple menu</strong>:
         <pre><code>{{codeExample}}</code></pre>
 
-        <strong>Multi-level dropdown</strong><br>
+        <p><strong>Multi-level dropdown</strong></p>
         Template:
         <pre><code>{{multiLevelTemplate}}</code></pre>
 

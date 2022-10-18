@@ -1,3 +1,11 @@
+# 2.55.7 (2022-10-18)
+
+### Documentation improvements
+- **Dropdown**: [mpellerin42] 
+  - Fix and document multi-level dropdown demo (`keepOthersOpen` attribute was missing)
+  - Add popup usage section in dropdown usage
+  - Improve global look and feel of dropdown documentation page
+
 # 2.55.6 (2022-09-19)
 
 ### Bug fix
