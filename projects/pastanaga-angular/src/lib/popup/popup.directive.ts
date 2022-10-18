@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
-import { getPositionedParent, PositionStyle } from '../common';
+import { PositionStyle } from '../common';
 import { POPUP_OFFSET, PopupComponent } from './popup.component';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
@@ -61,7 +61,6 @@ export class PopupDirective implements OnInit, OnChanges {
         return this._openOnly;
     }
 
-    private _positionedParent?: HTMLElement;
     private _disabled = false;
     private _openOnly = false;
 
@@ -113,49 +112,27 @@ export class PopupDirective implements OnInit, OnChanges {
         }
     }
 
-    /**
-     * By definition, the root parent is the first DOM element in the tree with a defined position (which is not position: static)
-     * or the Body.
-     * In some case – like in multi-level dropdowns – the root parent is the direct container of the popup directive
-     * and has the exact same left and right attributes. Such case makes getPosition returning a wrong position, and we prevent this
-     * by returning the next positioned parent instead.
-     * @param directiveElement
-     * @private
-     */
-    private getRootParent(directiveElement: HTMLElement): HTMLElement {
-        const rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
-        const rootRect = rootParent.getBoundingClientRect();
-        const directiveRect = directiveElement.getBoundingClientRect();
-        if (rootRect.left === directiveRect.left && rootRect.right === directiveRect.right) {
-            return this.getRootParent(rootParent.parentElement || rootParent);
-        }
-        return rootParent;
-    }
-
     getPosition(): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
         const directiveRect = directiveElement.getBoundingClientRect();
 
-        if (!this._positionedParent) {
-            this._positionedParent = this.getRootParent(directiveElement.parentElement || directiveElement);
-        }
-        const rootRect = this._positionedParent.getBoundingClientRect();
-        const top = directiveRect.bottom - rootRect.top + this._positionedParent.scrollTop;
-        const bottom = window.innerHeight - directiveRect.top - window.scrollY;
+        const top = directiveRect.top + directiveRect.height + this.popupVerticalOffset;
+        const bottom = window.innerHeight - directiveRect.top - window.scrollY + this.popupVerticalOffset;
 
         const position: PositionStyle = {
-            position: 'absolute',
-            top: !this.popupOnTop ? top + this.popupVerticalOffset + 'px' : undefined,
-            bottom: this.popupOnTop ? bottom + this.popupVerticalOffset + 'px' : undefined,
+            position: 'fixed',
+            top: !this.popupOnTop ? `${top}px` : undefined,
+            bottom: this.popupOnTop ? `${bottom}px` : undefined,
             width: this._sameWidth ? directiveRect.right - directiveRect.left + 'px' : undefined,
         };
 
+        const bodyRect = document.body.getBoundingClientRect();
         if (this.alignPopupOnLeft) {
-            position.left = `${Math.min(directiveRect.left - rootRect.left, window.innerWidth - 240)}px`;
+            position.left = `${directiveRect.left}px`;
         } else if (this.popupOnRight) {
-            position.left = `${Math.min(directiveRect.right, window.innerWidth - 240)}px`;
+            position.left = `${directiveRect.right}px`;
         } else {
-            position.right = `${Math.min(rootRect.right - directiveRect.right, window.innerWidth - 240)}px`;
+            position.right = `${bodyRect.right - directiveRect.right}px`;
         }
 
         return position;
