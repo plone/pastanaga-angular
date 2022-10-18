@@ -1,3 +1,20 @@
+# 2.56.0 (2022-10-18)
+
+### Breaking Changes
+- **Popup directive**: [mpellerin42]
+  - rename `popupOnRight` into `alignPopupOnLeft` to align the attribute name with its behavior
+  - rename `popupMargin` into `popupVerticalOffset` to align the attribute name with its behavior
+  - implement `popupOnRight` with a behavior aligned to its name: when true the popup is positioned on the right of the directive element
+  - CSS position is now fixed instead of absolute 
+
+### Documentation improvements
+- **Popup**: [mpellerin42]
+  - Add documentation for `popupOffset` attribute
+- **Dropdown**: [mpellerin42] 
+  - Fix and document multi-level dropdown demo (`keepOthersOpen` attribute was missing)
+  - Add popup usage section in dropdown usage
+  - Improve global look and feel of dropdown documentation page
+
 # 2.55.6 (2022-09-19)
 
 ### Bug fix

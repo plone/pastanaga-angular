@@ -1,25 +1,41 @@
-import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
-import { getPositionedParent, PositionStyle } from '../common';
-import { MARGIN, PopupComponent } from './popup.component';
+import {
+    Directive,
+    ElementRef,
+    HostListener,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    Renderer2,
+    SimpleChanges,
+} from '@angular/core';
+import { PositionStyle } from '../common';
+import { POPUP_OFFSET, PopupComponent } from './popup.component';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
+import { Subject } from 'rxjs';
+import { takeUntil, throttleTime } from 'rxjs/operators';
 
 @Directive({
     selector: '[paPopup]',
     exportAs: 'paPopupRef',
 })
-export class PopupDirective implements OnInit {
+export class PopupDirective implements OnInit, OnChanges, OnDestroy {
     @Input() paPopup?: PopupComponent | null;
     @Input() popupPosition?: PositionStyle;
-    @Input() set popupMargin(value: number) {
-        this._margin = coerceNumberProperty(value);
+    @Input()
+    set popupVerticalOffset(value: number) {
+        this._popupVerticalOffset = coerceNumberProperty(value);
+    }
+    get popupVerticalOffset() {
+        return this._popupVerticalOffset;
     }
     @Input()
-    get popupOnRight(): boolean {
-        return this._popupOnRight;
+    get alignPopupOnLeft(): boolean {
+        return this._alignPopupOnLeft;
     }
-    set popupOnRight(value: any) {
-        this._popupOnRight = coerceBooleanProperty(value);
+    set alignPopupOnLeft(value: any) {
+        this._alignPopupOnLeft = coerceBooleanProperty(value);
     }
     @Input()
     get popupOnTop(): boolean {
@@ -27,6 +43,13 @@ export class PopupDirective implements OnInit {
     }
     set popupOnTop(value: any) {
         this._popupOnTop = coerceBooleanProperty(value);
+    }
+    @Input()
+    get popupOnRight(): boolean {
+        return this._popupOnRight;
+    }
+    set popupOnRight(value: any) {
+        this._popupOnRight = coerceBooleanProperty(value);
     }
     @Input()
     get sameWidth(): boolean {
@@ -50,26 +73,54 @@ export class PopupDirective implements OnInit {
         return this._openOnly;
     }
 
-    private _rootParent?: HTMLElement;
     private _disabled = false;
     private _openOnly = false;
 
-    private _popupOnRight = false;
+    private _alignPopupOnLeft = false;
     private _popupOnTop = false;
+    private _popupOnRight = false;
     private _sameWidth = false;
-    private _margin = MARGIN;
+    private _popupVerticalOffset = POPUP_OFFSET;
+    private _handlers: (() => void)[] = [];
+
+    private _scrollOrResize = new Subject<Event>();
+    private _terminator = new Subject<void>();
 
     constructor(private element: ElementRef, private service: PopupService, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.element.nativeElement.setAttribute('aria-haspopup', true);
 
-        this.paPopup?.onClose.subscribe(() => this.removeActiveStateFromParentButton());
+        this.paPopup?.onClose.pipe(takeUntil(this._terminator)).subscribe(() => {
+            this.removeActiveStateFromParentButton();
+            this.unListen();
+        });
+
+        this._scrollOrResize
+            .pipe(throttleTime(10), takeUntil(this._terminator))
+            .subscribe(() => this.paPopup?.updatePosition(this.getPosition()));
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (
+            coerceBooleanProperty(changes['popupOnRight']?.currentValue) &&
+            coerceBooleanProperty(changes['alignPopupOnLeft']?.currentValue)
+        ) {
+            console.warn(
+                `Incompatible parameters: alignPopupOnLeft and popupOnRight cannot be used at the same time. alignPopupOnLeft is taking precedence.`,
+            );
+        }
+    }
+
+    ngOnDestroy() {
+        this.unListen();
+        this._terminator.next();
+        this._terminator.complete();
     }
 
     @HostListener('click', ['$event'])
     onClick($event: MouseEvent) {
-        if (!this._disabled) {
+        if (!this.popupDisabled) {
             this.toggle();
         }
         if ($event instanceof MouseEvent) {
@@ -85,6 +136,12 @@ export class PopupDirective implements OnInit {
             } else {
                 const position: PositionStyle = !!this.popupPosition ? this.popupPosition : this.getPosition();
                 this.paPopup.show(position);
+                this._handlers.push(
+                    this.renderer.listen('document', 'scroll', (event) => this._scrollOrResize.next(event)),
+                );
+                this._handlers.push(
+                    this.renderer.listen('window', 'resize', (event) => this._scrollOrResize.next(event)),
+                );
                 this.addActiveStateOnParentButton();
             }
         }
@@ -92,29 +149,33 @@ export class PopupDirective implements OnInit {
 
     getPosition(): PositionStyle {
         const directiveElement: HTMLElement = this.element.nativeElement;
-        const rect = directiveElement.getBoundingClientRect();
+        const directiveRect = directiveElement.getBoundingClientRect();
 
-        if (!this._rootParent) {
-            this._rootParent = getPositionedParent(directiveElement.parentElement || directiveElement);
-        }
-        const rootRect = this._rootParent.getBoundingClientRect();
-        const top = rect.bottom - rootRect.top + this._rootParent.scrollTop;
-        const bottom = window.innerHeight - rect.top - window.scrollY;
+        const top = directiveRect.top + directiveRect.height + this.popupVerticalOffset;
+        const bottom = window.innerHeight - directiveRect.top - window.scrollY + this.popupVerticalOffset;
 
         const position: PositionStyle = {
-            position: 'absolute',
-            top: !this.popupOnTop ? top + this._margin + 'px' : undefined,
-            bottom: this.popupOnTop ? bottom + this._margin + 'px' : undefined,
-            width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
+            position: 'fixed',
+            top: !this.popupOnTop ? `${top}px` : undefined,
+            bottom: this.popupOnTop ? `${bottom}px` : undefined,
+            width: this._sameWidth ? directiveRect.right - directiveRect.left + 'px' : undefined,
         };
 
-        if (this._popupOnRight) {
-            position.left = Math.min(rect.left - rootRect.left, window.innerWidth - 240) + 'px';
+        const bodyRect = document.body.getBoundingClientRect();
+        if (this.alignPopupOnLeft) {
+            position.left = `${directiveRect.left}px`;
+        } else if (this.popupOnRight) {
+            position.left = `${directiveRect.right}px`;
         } else {
-            position.right = Math.min(rootRect.right - rect.right, window.innerWidth - 240) + 'px';
+            position.right = `${bodyRect.right - directiveRect.right}px`;
         }
 
         return position;
+    }
+
+    private unListen() {
+        this._handlers.forEach((fn) => fn());
+        this._handlers = [];
     }
 
     private addActiveStateOnParentButton() {

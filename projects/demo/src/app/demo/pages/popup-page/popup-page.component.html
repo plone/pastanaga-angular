@@ -13,15 +13,13 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-button
-            [paPopup]="myPopup"
-            [popupOnRight]="popupOnRight"
-            [popupOnTop]="popupOnTop"
-            [sameWidth]="sameWidth"
-            #myPopupDirective="paPopupRef"
-            size="small"
-            >Open popup</pa-button
-        >
+        <pa-button [paPopup]="myPopup"
+                   [alignPopupOnLeft]="alignOnLeft"
+                   [popupOnTop]="popupOnTop"
+                   [sameWidth]="sameWidth"
+                   #myPopupDirective="paPopupRef"
+                   size="small"
+        >Open popup</pa-button>
         <pa-popup #myPopup>Popup content</pa-popup>
 
         <div>
@@ -33,7 +31,7 @@
     </pa-demo-examples>
     <pa-demo-configuration>
         <p>
-            <pa-checkbox id="popupOnRight" [(ngModel)]="popupOnRight">Open popup on right</pa-checkbox>
+            <pa-checkbox id="alignOnLeft" [(ngModel)]="alignOnLeft">Align popup on the left</pa-checkbox>
         </p>
         <p>
             <pa-checkbox id="popupOnTop" [(ngModel)]="popupOnTop">Open popup on top</pa-checkbox>
@@ -45,43 +43,16 @@
 
     <pa-demo-usage>
         <h2>PopupComponent</h2>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>companionElement</dt>
-            <dd>
-                When clicking on the companion element – which is outside the popup and must be an HTML element – the
-                popup won’t close. It offers external interactions (like filtering the popup content for example).
-                <small>(optional)</small> <br />When companionElement is an angular component, you must provide its
-                nativeElement, <em>eg.</em> <code>[companionElement]="somePaInput.element.nativeElement"</code>
-            </dd>
+        <pa-demo-popup-component-usage></pa-demo-popup-component-usage>
 
-            <dt>dontAdjustPosition</dt>
-            <dd>
-                Keep default popup position even if there is not enough space to display it entirely.
-                <small>(default: false)</small>
-            </dd>
-
-            <dt>id</dt>
-            <dd>Popup's id <small>(optional, an id will be generated if none is provided)</small></dd>
-
-            <dt>keepOthersOpen</dt>
-            <dd>Control if other popups should be closed when current one is opened. <small>(default: false)</small></dd>
-
-            <dt>stayVisible</dt>
-            <dd>Keep the popup visible when set to true <small>(default: false)</small></dd>
-        </dl>
-        <h3>Outputs</h3>
-        <dl>
-            <dt>onClose</dt>
-            <dd>Event emitted whenever the popup is closed</dd>
-            <dt>onOpen</dt>
-            <dd>Event emitted whenever the popup is opened</dd>
-        </dl>
-
-        <br />
+        <br/>
         <h2>PopupDirective</h2>
         <h3>Inputs</h3>
         <dl>
+            <dt>alignPopupOnLeft</dt>
+            <dd>Set the popup on the left of the element carrying the directive <small>(default: false, meaning the
+                popup is aligned on the right of the carrying directive by default)</small></dd>
+
             <dt>openOnly</dt>
             <dd>
                 Don't close popup when clicking on the element carrying the directive while the popup is visible.
@@ -94,17 +65,21 @@
             <dt>popupDisabled</dt>
             <dd>Don't open popup when clicking on the element carrying the directive</dd>
 
+            <dt>popupVerticalOffset</dt>
+            <dd>Vertical offset between the popup and its parent. <small>(default: 4px)</small></dd>
+
             <dt>popupPosition</dt>
             <dd>
                 Position style to be used on the popup
-                <small>(optional: by default the popup is positioned on top of the element carrying the directive)</small>
+                <small>(optional: by default the popup is positioned on top of the element carrying the
+                    directive)</small>
             </dd>
 
             <dt>popupOnRight</dt>
-            <dd>Set the popup on the right of the element carrying the directive <small>(default: false)</small></dd>
+            <dd>Set the popup position to be on the right of the element carrying the directive <small>(default: false)</small></dd>
 
             <dt>popupOnTop</dt>
-            <dd>Set the popup on the top of the element carrying the directive <small>(default: false)</small></dd>
+            <dd>Set the popup position to be on top of the element carrying the directive <small>(default: false)</small></dd>
 
             <dt>sameWidth</dt>
             <dd>Set the popup width equals to the element carrying the directive <small>(default: false)</small></dd>
@@ -116,7 +91,8 @@
 
         To open a popup programmatically, in your template add a reference to your popup directive:
         <pre><code>{{openProgrammaticallyTemplate}}</code></pre>
-        Then in your component, you can call <code style="display: inline; background: #fff;">toggle</code> method of your directive to open/close the popup:
+        Then in your component, you can call <code style="display: inline; background: #fff;">toggle</code> method of
+        your directive to open/close the popup:
         <pre><code>{{openProgrammaticallyComponent}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

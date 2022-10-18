@@ -137,6 +137,7 @@ import { ButtonDescriptionComponent } from './pages/button-page/button-descripti
 import { RadioPageComponent } from './pages/radio-page/radio-page.component';
 import { ConfirmationDialogDescriptionComponent } from './pages/confirmation-dialog-page/confirmation-dialog-description.component';
 import { ConfirmationDialogUsageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-usage.component';
+import { PopupComponentUsageComponent } from './pages/popup-page/popup-component-usage/popup-component-usage.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -199,6 +200,7 @@ const COMPONENTS = [
     PaInputConfigComponent,
     ModalPageComponent,
     PalettePageComponent,
+    PopupComponentUsageComponent,
     PopupPageComponent,
     SelectPageComponent,
     SelectStandaloneExampleComponent,

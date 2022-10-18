@@ -4,7 +4,7 @@ import { filter, map, take, takeUntil } from 'rxjs/operators';
 import { WINDOW } from '@ng-web-apis/common';
 import { PopoverComponent } from './popover.component';
 import { PopupDirective } from '../popup.directive';
-import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer/breakpoint.observer';
+import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer';
 import { PositionStyle } from '../../common';
 
 @Directive({

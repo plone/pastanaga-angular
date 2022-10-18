@@ -37,27 +37,30 @@ export class DropdownPageComponent {
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               [popupPosition]="{position: 'relative', left: '100%', top: '4px'}"
+               popupOnRight
                [paPopup]="level2"
+               [popupVerticalOffset]="-40"
                [selected]="level1Open === 'jedi'"
                (selectOption)="onLevel1Selection('jedi')">Jedi</pa-option>
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               [popupPosition]="{position: 'relative', left: '100%', top: '44px'}"
+               popupOnRight
                [paPopup]="level2"
+               [popupVerticalOffset]="-40"
                [selected]="level1Open === 'rebels'"
                (selectOption)="onLevel1Selection('rebels')">Rebels</pa-option>
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               [popupPosition]="{position: 'relative', left: '100%', top: '84px'}"
+               popupOnRight
                [paPopup]="level2"
+               [popupVerticalOffset]="-40"
                [selected]="level1Open === 'sith'"
                (selectOption)="onLevel1Selection('sith')">Sith</pa-option>
 </pa-dropdown>
 
-<pa-dropdown #level2>
+<pa-dropdown #level2 keepOthersOpen>
     <pa-option dontCloseOnSelect *ngFor="let option of level2Options">{{option.label}}</pa-option>
 </pa-dropdown>`;
     multiLevelScript = `
@@ -84,10 +87,10 @@ onLevel1Selection(selection: string) {
     }
 }`;
 
-    @ViewChild('level2', {read: ElementRef}) level2Element?: ElementRef;
+    @ViewChild('level2', { read: ElementRef }) level2Element?: ElementRef;
     @ViewChild('level2') level2Popup?: PopupComponent;
     level1Open = '';
-    level2Options: {label: string}[] = [];
+    level2Options: { label: string }[] = [];
 
     onSelect($event: MouseEvent | KeyboardEvent) {
         console.log(`Selected menu:`, $event);
@@ -95,16 +98,16 @@ onLevel1Selection(selection: string) {
 
     onLevel1Selection(selection: string) {
         this.level1Open = selection;
-        this.level2Popup?.close()
+        this.level2Popup?.close();
         switch (selection) {
             case 'jedi':
-                this.level2Options = [{label: 'Yoda'}, {label: 'Obiwan Kenobi'}, {label: 'Luke Skywalker'}];
+                this.level2Options = [{ label: 'Yoda' }, { label: 'Obiwan Kenobi' }, { label: 'Luke Skywalker' }];
                 break;
             case 'rebels':
-                this.level2Options = [{label: 'Leia Organa'}, {label: 'Han Solo'}, {label: 'Admiral Ackbar'}];
+                this.level2Options = [{ label: 'Leia Organa' }, { label: 'Han Solo' }, { label: 'Admiral Ackbar' }];
                 break;
             case 'sith':
-                this.level2Options = [{label: 'Sheev Palpatine'}, {label: 'Darth Vador'}, {label: 'Darth Maul'}];
+                this.level2Options = [{ label: 'Sheev Palpatine' }, { label: 'Darth Vador' }, { label: 'Darth Maul' }];
                 break;
             default:
                 this.level2Options = [];
