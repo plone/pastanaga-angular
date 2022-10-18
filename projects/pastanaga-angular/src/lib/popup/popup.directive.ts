@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { getPositionedParent, PositionStyle } from '../common';
-import { MARGIN, PopupComponent } from './popup.component';
+import { POPUP_OFFSET, PopupComponent } from './popup.component';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { PopupService } from './popup.service';
 
@@ -11,8 +11,12 @@ import { PopupService } from './popup.service';
 export class PopupDirective implements OnInit {
     @Input() paPopup?: PopupComponent | null;
     @Input() popupPosition?: PositionStyle;
-    @Input() set popupMargin(value: number) {
-        this._margin = coerceNumberProperty(value);
+    @Input()
+    set popupVerticalOffset(value: number) {
+        this._popupVerticalOffset = coerceNumberProperty(value);
+    }
+    get popupVerticalOffset() {
+        return this._popupVerticalOffset;
     }
     @Input()
     get alignPopupOnLeft(): boolean {
@@ -57,7 +61,7 @@ export class PopupDirective implements OnInit {
     private _alignPopupOnLeft = false;
     private _popupOnTop = false;
     private _sameWidth = false;
-    private _margin = MARGIN;
+    private _popupVerticalOffset = POPUP_OFFSET;
 
     constructor(private element: ElementRef, private service: PopupService, private renderer: Renderer2) {}
 
@@ -103,8 +107,8 @@ export class PopupDirective implements OnInit {
 
         const position: PositionStyle = {
             position: 'absolute',
-            top: !this.popupOnTop ? top + this._margin + 'px' : undefined,
-            bottom: this.popupOnTop ? bottom + this._margin + 'px' : undefined,
+            top: !this.popupOnTop ? top + this.popupVerticalOffset + 'px' : undefined,
+            bottom: this.popupOnTop ? bottom + this.popupVerticalOffset + 'px' : undefined,
             width: this._sameWidth ? rect.right - rect.left + 'px' : undefined,
         };
 

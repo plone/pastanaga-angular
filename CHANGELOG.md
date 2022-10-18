@@ -2,9 +2,12 @@
 
 ### Breaking Changes
 - **Popup directive**: [mpellerin42]
-  - rename `popupOnRight` attribute into `alignPopupOnLeft` to align the attribute name with its behavior 
+  - rename `popupOnRight` into `alignPopupOnLeft` to align the attribute name with its behavior
+  - rename `popupMargin` into `popupVerticalOffset` to align the attribute name with its behavior
 
 ### Documentation improvements
+- **Popup**: [mpellerin42]
+  - Add documentation for `popupOffset` attribute
 - **Dropdown**: [mpellerin42] 
   - Fix and document multi-level dropdown demo (`keepOthersOpen` attribute was missing)
   - Add popup usage section in dropdown usage

@@ -17,7 +17,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 let nextId = 0;
-export const MARGIN = 4;
+export const POPUP_OFFSET = 4;
 
 @Component({
     selector: 'pa-popup',
@@ -164,7 +164,7 @@ export class PopupComponent implements OnInit, OnDestroy {
         if (!this._dontAdjustPosition) {
             isAdjusted = this._adjustPosition(element, rect, diffX, diffY);
         } else if (this._adjustHeight && diffY > 0) {
-            element.style.maxHeight = `${this._originalHeight - diffY - MARGIN}px`;
+            element.style.maxHeight = `${this._originalHeight - diffY - POPUP_OFFSET}px`;
             isAdjusted = true;
         }
         if (isAdjusted) {
@@ -185,7 +185,7 @@ export class PopupComponent implements OnInit, OnDestroy {
             const currentTop = element.style.top || '';
             if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight) {
                 // enough space above, we display the dropdown on top
-                element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${MARGIN * 2}px)`;
+                element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${POPUP_OFFSET * 2}px)`;
                 return true;
             } else if (!!currentTop) {
                 // not enough space, we just align the dropdown bottom with the parent bottom
