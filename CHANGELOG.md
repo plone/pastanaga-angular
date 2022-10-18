@@ -4,6 +4,7 @@
 - **Popup directive**: [mpellerin42]
   - rename `popupOnRight` into `alignPopupOnLeft` to align the attribute name with its behavior
   - rename `popupMargin` into `popupVerticalOffset` to align the attribute name with its behavior
+  - implement `popupOnRight` with a behavior aligned to its name: when true the popup is positioned on the right of the directive element
 
 ### Documentation improvements
 - **Popup**: [mpellerin42]

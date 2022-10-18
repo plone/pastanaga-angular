@@ -56,22 +56,25 @@
                 <pa-option icon="chevron-right"
                            iconOnRight
                            dontCloseOnSelect
-                           [popupPosition]="{position: 'relative', left: '100%', top: '4px'}"
+                           popupOnRight
                            [paPopup]="level2"
+                           [popupVerticalOffset]="-40"
                            [selected]="level1Open === 'jedi'"
                            (selectOption)="onLevel1Selection('jedi')">Jedi</pa-option>
                 <pa-option icon="chevron-right"
                            iconOnRight
                            dontCloseOnSelect
-                           [popupPosition]="{position: 'relative', left: '100%', top: '44px'}"
+                           popupOnRight
                            [paPopup]="level2"
+                           [popupVerticalOffset]="-40"
                            [selected]="level1Open === 'rebels'"
                            (selectOption)="onLevel1Selection('rebels')">Rebels</pa-option>
                 <pa-option icon="chevron-right"
                            iconOnRight
                            dontCloseOnSelect
-                           [popupPosition]="{position: 'relative', left: '100%', top: '84px'}"
+                           popupOnRight
                            [paPopup]="level2"
+                           [popupVerticalOffset]="-40"
                            [selected]="level1Open === 'sith'"
                            (selectOption)="onLevel1Selection('sith')">Sith</pa-option>
             </pa-dropdown>
@@ -88,12 +91,14 @@
         <h2>DropdownComponent</h2>
         <p>Dropdown component is mainly a wrapper (using <code>ng-content</code>) for the list of options to be displayed. It extends popup component adding the <code>role</code> attribute to it.</p>
 
-        <p>
-            Multi-level dropdown can be created by using the <code>companionElement</code> attribute on the first level dropdown
-            (targeting the 2nd level dropdown element), the <code>keepOthersOpen</code> attribute on the second level dropdown,
-            as well as <code>dontCloseOnSelect</code> attribute on options of both dropdowns.
-            See how in the Code section below.
-        </p>
+        <p>Multi-level dropdown can be created by using <small>(more details on the Code section below)</small>:</p>
+        <ul>
+            <li><code>companionElement</code> attribute on the first level dropdown (targeting the 2nd level dropdown element)</li>
+            <li><code>keepOthersOpen</code> attribute on the second level dropdown</li>
+            <li><code>paPopup</code> and <code>popupOnRight</code> on the options of the first level dropdown</li>
+            <li><code>dontCloseOnSelect</code> attribute on options of both dropdowns</li>
+            <li>optionally, you can adjust the position of the 2nd level dropdown with <code>popupVerticalOffset</code> on the options of the first level dropdown</li>
+        </ul>
 
         <h3>Inputs</h3>
         <dl>

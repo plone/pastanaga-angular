@@ -37,22 +37,25 @@ export class DropdownPageComponent {
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               [popupPosition]="{position: 'relative', left: '100%', top: '4px'}"
+               popupOnRight
                [paPopup]="level2"
+               [popupVerticalOffset]="-40"
                [selected]="level1Open === 'jedi'"
                (selectOption)="onLevel1Selection('jedi')">Jedi</pa-option>
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               [popupPosition]="{position: 'relative', left: '100%', top: '44px'}"
+               popupOnRight
                [paPopup]="level2"
+               [popupVerticalOffset]="-40"
                [selected]="level1Open === 'rebels'"
                (selectOption)="onLevel1Selection('rebels')">Rebels</pa-option>
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               [popupPosition]="{position: 'relative', left: '100%', top: '84px'}"
+               popupOnRight
                [paPopup]="level2"
+               [popupVerticalOffset]="-40"
                [selected]="level1Open === 'sith'"
                (selectOption)="onLevel1Selection('sith')">Sith</pa-option>
 </pa-dropdown>
