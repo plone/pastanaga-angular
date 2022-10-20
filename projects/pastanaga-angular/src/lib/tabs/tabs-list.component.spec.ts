@@ -50,7 +50,7 @@ describe('TabsListComponent', () => {
         component.ref.nativeElement.getBoundingClientRect = jest.fn(() => ({ x: 5 }));
         ngMocks.findAll(spectator.debugElement, TabItemComponent).forEach((debugElement, index) => {
             debugElement.componentInstance.selected = tabsSelected[index];
-            debugElement.componentInstance.geTabRect = tabsRect[index];
+            debugElement.componentInstance.getTabRect = tabsRect[index];
             if (index === 0) {
                 debugElement.componentInstance._active = true;
             }

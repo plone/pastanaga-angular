@@ -1,7 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, HostBinding, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
-import { BreakpointObserver } from '../breakpoint-observer/breakpoint.observer';
-import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'pa-tab',
@@ -20,17 +18,16 @@ export class TabItemComponent {
         }
     }
 
-    _active = false;
+    private _active = false;
     selected = new Subject<void>();
-    isMobile = this.bp.currentMode.pipe(map((mode) => mode === 'mobile'));
 
     @HostBinding('class.active') get valid() {
-        return this._active;
+        return this.active;
     }
 
-    constructor(private ref: ElementRef, private bp: BreakpointObserver) {}
+    constructor(private ref: ElementRef) {}
 
-    geTabRect() {
+    getTabRect() {
         return this.ref.nativeElement.getBoundingClientRect();
     }
 }

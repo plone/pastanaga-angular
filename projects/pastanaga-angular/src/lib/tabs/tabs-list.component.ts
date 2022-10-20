@@ -22,17 +22,10 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsListComponent implements AfterContentInit, OnDestroy {
-    @Input() set notFullWidth(notFull: any) {
+    @Input()
+    set notFullWidth(notFull: any) {
         this.fullWidthTabItems = !coerceBooleanProperty(notFull);
         this.updateSlider();
-    }
-
-    @Input() set displayAsTabOnMobile(value: any) {
-        this._displayAsTabOnMobile = coerceBooleanProperty(value);
-    }
-
-    get displayAsTabOnMobile() {
-        return this._displayAsTabOnMobile;
     }
 
     @ContentChildren(TabItemComponent) tabItems!: QueryList<TabItemComponent>;
@@ -40,7 +33,6 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
     sliderStyle = '';
     fullWidthTabItems = true;
 
-    private _displayAsTabOnMobile = false;
     private _xPosition = 0;
     private _terminator = new Subject<void>();
 
@@ -82,12 +74,12 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
 
     updateSlider(item?: TabItemComponent) {
         if (!item && !!this.tabItems) {
-            item = this.tabItems.find((tabItem) => tabItem._active);
+            item = this.tabItems.find((tabItem) => tabItem.active);
         }
         if (!!item) {
             // wait for tab item to be rendered
             setTimeout(() => {
-                const tabRect = item?.geTabRect();
+                const tabRect = item?.getTabRect();
                 this.sliderStyle = `left: ${tabRect.x - this._xPosition}px; width: ${tabRect.width}px`;
                 detectChanges(this.cdr);
             });

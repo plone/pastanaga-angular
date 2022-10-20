@@ -5,7 +5,7 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-tabs [notFullWidth]="!fullWidth" [displayAsTabOnMobile]="displayAsTabsMobile">
+        <pa-tabs [notFullWidth]="!fullWidth">
             <pa-tab (click)="selectedTab = 'info'"
                     [active]="selectedTab === 'info'">Info
             </pa-tab>
@@ -35,7 +35,6 @@
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-checkbox [(ngModel)]="fullWidth">Full width tab</pa-checkbox>
-            <pa-checkbox [(ngModel)]="displayAsTabsMobile">Display as tabs on mobile</pa-checkbox>
         </div>
     </pa-demo-configuration>
     <pa-demo-usage>
@@ -44,11 +43,6 @@
             <dt>notFullWidth</dt>
             <dd>By default, tab items takes all the available space with flex grow. this option allows to disable this
                 behavior <small>(default: true)</small></dd>
-        </dl>
-        <dl>
-            <dt>displayAsTabOnMobile</dt>
-            <dd>By default, tab items on mobile are displayed as list, provide this value to have them on horizontal
-                <small>(default: false)</small></dd>
         </dl>
         <h3><code>pa-tab</code></h3>
         <dl>
