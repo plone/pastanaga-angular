@@ -14,16 +14,31 @@
             flex-grow: 1;
         }
     }
+
+    &:not(.no-slider) pa-tab .pa-tabs-link::after {
+        background: $color-tab-slider;
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        z-index: 0;
+    }
 }
 
 pa-tab {
     display: inline-block;
     min-width: 0;
 
+    .pa-tab-item {
+        line-height: 0;
+    }
+
     .pa-tabs-link {
         @include size(xs);
         background: $color-background-tab-link;
-        border: 0;
+        border: none;
         color: $color-text-tab-link;
         font-weight: $font-weight-tab-item;
         line-height: line-height(l);
@@ -31,17 +46,6 @@ pa-tab {
         text-transform: $text-transform-tab-item;
         transition: all $transition-response;
         width: 100%;
-
-        &::after {
-            background: $color-tab-slider;
-            bottom: 0;
-            content: "";
-            height: 1px;
-            left: 0;
-            position: absolute;
-            width: 100%;
-            z-index: 0;
-        }
 
         &:hover {
             background: $color-background-tab-link-hover;

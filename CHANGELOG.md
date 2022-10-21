@@ -6,7 +6,9 @@
   - Rename `$tab-menu-item-padding-mobile` and `$tab-menu-item-padding-desktop` tokens into `$padding-tab-item-small` and `$padding-tab-item-medium` to follow our naming convention 
 
 ### Improvements
-- **Tabs**: Add scss tokens to improve themability [mpellerin42]
+- **Tabs**: [mpellerin42]
+  - Add scss tokens to improve tabs theming
+  - Add `noSlider` option to tab list
 
 # 2.56.0 (2022-10-18)
 

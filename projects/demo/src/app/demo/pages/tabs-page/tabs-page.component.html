@@ -7,7 +7,7 @@
 
     <pa-demo-examples>
         <div class="tab-example-container">
-            <pa-tabs [notFullWidth]="!fullWidth">
+            <pa-tabs [notFullWidth]="!fullWidth" [noSlider]="!slider">
                 <pa-tab (click)="selectedTab = 'info'"
                         [active]="selectedTab === 'info'">Info
                 </pa-tab>
@@ -39,6 +39,7 @@
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
             <pa-checkbox [(ngModel)]="fullWidth">Full width tab</pa-checkbox>
+            <pa-checkbox [(ngModel)]="slider">Display slider</pa-checkbox>
         </div>
     </pa-demo-configuration>
     <pa-demo-usage>
@@ -46,6 +47,9 @@
 
         <h3><code>pa-tabs</code></h3>
         <dl>
+            <dt>noSlider</dt>
+            <dd>When true, no slider is displayed under the tab list. <small>(default: false)</small></dd>
+
             <dt>notFullWidth</dt>
             <dd>When true, the tab item width depend on their content. <small>(default: false, meaning tab items takes all the available space with flex grow)</small></dd>
         </dl>
