@@ -36,10 +36,10 @@ pa-tab {
     }
 
     .pa-tabs-link {
-        @include size(xs);
         background: $color-background-tab-link;
         border: none;
         color: $color-text-tab-link;
+        font-size: $font-size-tab-item;
         font-weight: $font-weight-tab-item;
         line-height: line-height(l);
         padding: rhythm(.25) 0;
