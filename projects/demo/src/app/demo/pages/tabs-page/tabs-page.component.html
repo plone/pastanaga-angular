@@ -1,36 +1,40 @@
 <pa-demo-page>
     <pa-demo-title>Tabs</pa-demo-title>
     <pa-demo-description>
-        Simple horizontal tabs on tablet and desktops, vertical tabs on mobiles.
+        <p>Pastanaga tabs organize content into separate views where only one view can be visible at a time.</p>
+        <p>Each tab's label is shown in the tab header and the active tab's label is highlighted with an animated primary color underline by default.</p>
     </pa-demo-description>
 
     <pa-demo-examples>
-        <pa-tabs [notFullWidth]="!fullWidth">
-            <pa-tab (click)="selectedTab = 'info'"
-                    [active]="selectedTab === 'info'">Info
-            </pa-tab>
-            <pa-tab (click)="selectedTab = 'settings'"
-                    [active]="selectedTab === 'settings'">Settings
-            </pa-tab>
-            <pa-tab (click)="selectedTab = 'notifications'"
-                    [active]="selectedTab === 'notifications'">Notifications
-            </pa-tab>
-        </pa-tabs>
-        <section id="panel-info"
-                 class="tab-content"
-                 *ngIf="selectedTab === 'info'">
-            Some information
-        </section>
-        <section id="panel-settings"
-                 class="tab-content"
-                 *ngIf="selectedTab === 'settings'">
-            Some settings
-        </section>
-        <section id="panel-notifications"
-                 class="tab-content"
-                 *ngIf="selectedTab === 'notifications'">
-            Some notifications
-        </section>
+        <div class="tab-example-container">
+            <pa-tabs [notFullWidth]="!fullWidth">
+                <pa-tab (click)="selectedTab = 'info'"
+                        [active]="selectedTab === 'info'">Info
+                </pa-tab>
+                <pa-tab (click)="selectedTab = 'settings'"
+                        [active]="selectedTab === 'settings'">Settings
+                </pa-tab>
+                <pa-tab (click)="selectedTab = 'notifications'"
+                        [active]="selectedTab === 'notifications'">Notifications
+                </pa-tab>
+            </pa-tabs>
+            <section id="panel-info"
+                     class="tab-content"
+                     *ngIf="selectedTab === 'info'">
+                Information tab content
+            </section>
+            <section id="panel-settings"
+                     class="tab-content"
+                     *ngIf="selectedTab === 'settings'">
+                Settings tab content
+            </section>
+            <section id="panel-notifications"
+                     class="tab-content"
+                     *ngIf="selectedTab === 'notifications'">
+                Notifications tab content
+            </section>
+        </div>
+
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
@@ -38,12 +42,14 @@
         </div>
     </pa-demo-configuration>
     <pa-demo-usage>
+        <p><code>pa-tabs</code> is the wrapper for <code>pa-tab</code> items.</p>
+
         <h3><code>pa-tabs</code></h3>
         <dl>
             <dt>notFullWidth</dt>
-            <dd>By default, tab items takes all the available space with flex grow. this option allows to disable this
-                behavior <small>(default: true)</small></dd>
+            <dd>When true, the tab item width depend on their content. <small>(default: false, meaning tab items takes all the available space with flex grow)</small></dd>
         </dl>
+
         <h3><code>pa-tab</code></h3>
         <dl>
             <dt>active</dt>

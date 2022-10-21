@@ -1,11 +1,16 @@
 @import "../../../../../../pastanaga-angular/src/styles/variables";
 
-.tab-content {
-    display: none;
+.tab-example-container {
+    --tab-parent-background: transparent;
+    --tab-content-background: transparent;
+    --tab-content-padding: rhythm(2) 0;
+    --tab-parent-padding: 0;
+
+    background-color: var(--tab-parent-background);
+    padding: var(--tab-parent-padding);
 }
 
-@media (min-width: $size-viewport-medium-min) {
-    .tab-content {
-        display: block;
-    }
+.tab-content {
+    background-color: var(--tab-content-background);
+    padding: var(--tab-content-padding);
 }
