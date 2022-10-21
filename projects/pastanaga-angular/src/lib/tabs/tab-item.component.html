@@ -1,11 +1,10 @@
-<li role="presentation" [class.active]="_active">
+<li role="presentation" class="pa-tab-item" [class.active]="active">
     <button class="pa-tabs-link"
             role="tab"
             paFocusable
-            [attr.aria-expanded]="_active">
+            [attr.aria-expanded]="active">
         <span class="pa-tabs-link-wrapper" tabindex="-1">
             <ng-content></ng-content>
-            <pa-icon *ngIf="isMobile | async" name="chevron-down"></pa-icon>
         </span>
     </button>
 </li>

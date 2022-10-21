@@ -1,21 +1,29 @@
 @import "variables";
 
 .pa-tabs-list {
-    list-style: none;
-    position: relative;
     display: flex;
-    flex-direction: column;
+    gap: $gap-between-tabs;
+    list-style: none;
     margin: 0;
     padding: 0;
+    position: relative;
     white-space: nowrap;
 
-    li {
-        border-bottom: 1px solid $color-neutral-lightest;
-    }
     &.pa-full-width-tabs {
         pa-tab {
             flex-grow: 1;
         }
+    }
+
+    &:not(.no-slider) pa-tab .pa-tabs-link::after {
+        background: $color-tab-slider;
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        z-index: 0;
     }
 }
 
@@ -23,24 +31,37 @@ pa-tab {
     display: inline-block;
     min-width: 0;
 
+    .pa-tab-item {
+        line-height: 0;
+    }
+
     .pa-tabs-link {
+        background: $color-background-tab-link;
+        border: none;
+        color: $color-text-tab-link;
+        font-size: $font-size-tab-item;
+        font-weight: $font-weight-tab-item;
+        line-height: line-height(l);
+        padding: rhythm(.25) 0;
+        text-transform: $text-transform-tab-item;
+        transition: all $transition-response;
         width: 100%;
-        @include font-size(m);
-        @include line-height(l);
-        font-weight: $font-weight-regular;
-        color: $color-dark-stronger;
-        border: 0;
-        padding: 0;
-        background: transparent;
 
         &:hover {
             background: $color-background-tab-link-hover;
-            transition: all .25s ease;
+            transition: all $transition-response;
 
             &:not([aria-expanded="true"]) {
                 color: $color-text-tab-link;
                 cursor: pointer;
             }
+        }
+
+        &[aria-expanded="true"] {
+            background: $color-background-tab-link-active;
+            color: $color-text-tab-link-active;
+            cursor: default;
+            font-weight: $font-weight-tab-item-active;
         }
 
         &.pa-keyboard-focus {
@@ -51,98 +72,30 @@ pa-tab {
         }
 
         .pa-tabs-link-wrapper {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            text-align: left;
-            padding: $tab-menu-item-padding-mobile;
-            z-index: 1;
-            position: relative;
+            display: block;
             overflow: hidden;
+            padding: $padding-tab-item-small;
+            position: relative;
+            text-align: center;
             text-overflow: ellipsis;
             white-space: nowrap;
-
-            pa-icon svg {
-                transform: rotate(-90deg);
-            }
+            z-index: 1;
         }
     }
 }
 
-@mixin pa-tabs-row {
-    .pa-tabs-slider {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: rhythm(.25);
-        background: $color-tab-slider-active;
-        transition: left .25s ease, width .25s ease;
-    }
-
-    pa-tab {
-        .pa-tabs-link {
-            @include size(xs);
-            font-weight: $font-weight-bold;
-            text-transform: uppercase;
-            color: $color-text-tab-link;
-            padding: rhythm(.25) 0;
-            transition: all .25s ease;
-
-            &::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                width: 100%;
-                background: $color-tab-slider;
-                height: 1px;
-                bottom: 0;
-                z-index: 0;
-            }
-
-
-            &[aria-expanded="true"] {
-                color: $color-dark-stronger;
-                cursor: default;
-            }
-
-            .pa-tabs-link-wrapper {
-                display: block;
-                text-align: center;
-                padding: $tab-menu-item-padding-desktop;
-                z-index: 1;
-                justify-content: center;
-                position: relative;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
-        }
-    }
-}
-
-.pa-tabs-mobile {
-    flex-direction: row;
-
-    li {
-        border-bottom: none;
-    }
-
-    @include pa-tabs-row;
-
-    .pa-tabs-link-wrapper pa-icon {
-        display: none;
-    }
+.pa-tabs-slider {
+    background: $color-tab-slider-active;
+    bottom: 0;
+    left: 0;
+    height: rhythm(.25);
+    position: absolute;
+    transition: left $transition-response, width $transition-response;
 }
 
 @media (min-width: $size-viewport-medium-min) {
-    .pa-tabs-list {
-        flex-direction: row;
-
-        li {
-            border-bottom: none;
-        }
+    pa-tab .pa-tabs-link .pa-tabs-link-wrapper {
+        padding: $padding-tab-item-medium;
     }
-
-    @include pa-tabs-row;
 }
-

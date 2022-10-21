@@ -9,7 +9,7 @@ import { PaIconModule } from '../icon';
 
 @Component({ template: '' })
 class TestComponent {
-    selectedTab = 'info';
+    selectedTab = 'tab1';
 }
 
 describe('TabsListComponent', () => {
@@ -50,25 +50,25 @@ describe('TabsListComponent', () => {
         component.ref.nativeElement.getBoundingClientRect = jest.fn(() => ({ x: 5 }));
         ngMocks.findAll(spectator.debugElement, TabItemComponent).forEach((debugElement, index) => {
             debugElement.componentInstance.selected = tabsSelected[index];
-            debugElement.componentInstance.geTabRect = tabsRect[index];
+            debugElement.componentInstance.getTabRect = tabsRect[index];
             if (index === 0) {
-                debugElement.componentInstance._active = true;
+                debugElement.componentInstance.active = true;
             }
         });
     });
     it('should set slider style at start', fakeAsync(() => {
         spectator.detectChanges();
-        tick(2);
+        tick();
         expect(component.sliderStyle).toEqual('left: 5px; width: 10px');
     }));
     it('should set slider style when tabItem selected', fakeAsync(() => {
         spectator.detectChanges();
-        tick(2);
+        tick();
         tabsSelected[1].next();
-        tick(1);
+        tick();
         expect(component.sliderStyle).toEqual('left: 15px; width: 20px');
         tabsSelected[2].next();
-        tick(1);
+        tick();
         expect(component.sliderStyle).toEqual('left: 25px; width: 30px');
     }));
 });

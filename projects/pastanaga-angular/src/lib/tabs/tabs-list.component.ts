@@ -11,9 +11,9 @@ import {
     Renderer2,
 } from '@angular/core';
 import { TabItemComponent } from './tab-item.component';
-import { fromEvent, interval, Subject } from 'rxjs';
+import { fromEvent, Subject } from 'rxjs';
 import { detectChanges } from '../common';
-import { debounce, takeUntil } from 'rxjs/operators';
+import { takeUntil, throttleTime } from 'rxjs/operators';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
@@ -22,25 +22,34 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsListComponent implements AfterContentInit, OnDestroy {
-    @Input() set notFullWidth(notFull: any) {
-        this.fullWidthTabItems = !coerceBooleanProperty(notFull);
-        this.updateSlider();
+    @Input()
+    set noSlider(value: any) {
+        this._noSlider = coerceBooleanProperty(value);
+        if (!this.noSlider) {
+            this.updateSlider();
+        }
+    }
+    get noSlider() {
+        return this._noSlider;
     }
 
-    @Input() set displayAsTabOnMobile(value: any) {
-        this._displayAsTabOnMobile = coerceBooleanProperty(value);
+    @Input()
+    set notFullWidth(value: any) {
+        this._notFullWidth = coerceBooleanProperty(value);
+        if (!this.noSlider) {
+            this.updateSlider();
+        }
     }
-
-    get displayAsTabOnMobile() {
-        return this._displayAsTabOnMobile;
+    get notFullWidth() {
+        return this._notFullWidth;
     }
 
     @ContentChildren(TabItemComponent) tabItems!: QueryList<TabItemComponent>;
 
     sliderStyle = '';
-    fullWidthTabItems = true;
 
-    private _displayAsTabOnMobile = false;
+    private _notFullWidth = false;
+    private _noSlider = false;
     private _xPosition = 0;
     private _terminator = new Subject<void>();
 
@@ -50,22 +59,26 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
         // wait for tabList to be rendered
         setTimeout(() => {
             this._xPosition = this.ref.nativeElement.getBoundingClientRect().x;
-            this.updateSlider();
             this.trackTabSelection();
+            if (!this.noSlider) {
+                this.updateSlider();
+            }
         });
+
         this.tabItems.changes.subscribe(() => {
-            this.updateSlider();
             this.trackTabSelection();
+            if (!this.noSlider) {
+                this.updateSlider();
+            }
         });
 
         fromEvent(window, 'resize')
-            .pipe(
-                debounce(() => interval(150)),
-                takeUntil(this._terminator),
-            )
+            .pipe(throttleTime(150), takeUntil(this._terminator))
             .subscribe(() => {
-                this._xPosition = this.ref.nativeElement.getBoundingClientRect().x;
-                this.updateSlider();
+                if (!this.noSlider) {
+                    this._xPosition = this.ref.nativeElement.getBoundingClientRect().x;
+                    this.updateSlider();
+                }
             });
     }
 
@@ -74,20 +87,24 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
         this._terminator.complete();
     }
 
-    trackTabSelection() {
+    private trackTabSelection() {
         this.tabItems.forEach((tabItem) => {
-            tabItem.selected.subscribe(() => this.updateSlider(tabItem));
+            tabItem.selected.subscribe(() => {
+                if (!this.noSlider) {
+                    this.updateSlider(tabItem);
+                }
+            });
         });
     }
 
-    updateSlider(item?: TabItemComponent) {
+    private updateSlider(item?: TabItemComponent) {
         if (!item && !!this.tabItems) {
-            item = this.tabItems.find((tabItem) => tabItem._active);
+            item = this.tabItems.find((tabItem) => tabItem.active);
         }
         if (!!item) {
             // wait for tab item to be rendered
             setTimeout(() => {
-                const tabRect = item?.geTabRect();
+                const tabRect = item?.getTabRect();
                 this.sliderStyle = `left: ${tabRect.x - this._xPosition}px; width: ${tabRect.width}px`;
                 detectChanges(this.cdr);
             });

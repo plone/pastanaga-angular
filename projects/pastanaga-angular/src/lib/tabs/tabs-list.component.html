@@ -1,8 +1,10 @@
 <ul class="pa-tabs-list" role="tablist"
-    [class.pa-full-width-tabs]="fullWidthTabItems"
-    [class.pa-tabs-mobile]="displayAsTabOnMobile">
+    [class.no-slider]="noSlider"
+    [class.pa-full-width-tabs]="!notFullWidth">
     <ng-content></ng-content>
-    <div class="pa-tabs-slider"
+
+    <div *ngIf="!noSlider"
+         class="pa-tabs-slider"
          role="presentation"
          style="{{sliderStyle}}"></div>
 </ul>

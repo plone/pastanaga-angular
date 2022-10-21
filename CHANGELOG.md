@@ -1,3 +1,15 @@
+# 2.57.0 (2022-10-21)
+
+### Breaking Changes
+- **Tabs**: [mpellerin42]
+  - Remove option `displayAsTabOnMobile`: tabs are always displayed as tabs for all breakpoints 
+  - Rename `$tab-menu-item-padding-mobile` and `$tab-menu-item-padding-desktop` tokens into `$padding-tab-item-small` and `$padding-tab-item-medium` to follow our naming convention 
+
+### Improvements
+- **Tabs**: [mpellerin42]
+  - Add scss tokens to improve tabs theming
+  - Add `noSlider` option to tab list
+
 # 2.56.0 (2022-10-18)
 
 ### Breaking Changes
