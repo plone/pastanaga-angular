@@ -1,3 +1,8 @@
+# 2.57.1 (2022-10-21)
+
+### Bug fix
+- **Tabs**: Remove tab item extra padding [mpellerin42]
+
 # 2.57.0 (2022-10-21)
 
 ### Breaking Changes
