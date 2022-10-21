@@ -2,6 +2,7 @@
 
 .pa-tabs-list {
     display: flex;
+    gap: $gap-between-tabs;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -21,13 +22,13 @@ pa-tab {
 
     .pa-tabs-link {
         @include size(xs);
-        background: transparent;
+        background: $color-background-tab-link;
         border: 0;
         color: $color-text-tab-link;
-        font-weight: $font-weight-bold;
+        font-weight: $font-weight-tab-item;
         line-height: line-height(l);
         padding: rhythm(.25) 0;
-        text-transform: uppercase;
+        text-transform: $text-transform-tab-item;
         transition: all $transition-response;
         width: 100%;
 
@@ -53,8 +54,10 @@ pa-tab {
         }
 
         &[aria-expanded="true"] {
-            color: $color-dark-stronger;
+            background: $color-background-tab-link-active;
+            color: $color-text-tab-link-active;
             cursor: default;
+            font-weight: $font-weight-tab-item-active;
         }
 
         &.pa-keyboard-focus {
