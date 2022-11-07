@@ -1,3 +1,8 @@
+# 2.57.2 (2022-11-07)
+
+### Pipeline Maintenance
+- Update GitHub actions to use node 16 [mpellerin42]
+
 # 2.57.1 (2022-10-21)
 
 ### Bug fix
