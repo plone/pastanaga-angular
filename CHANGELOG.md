@@ -1,3 +1,8 @@
+# 2.57.3 (unreleased)
+
+### Dependencies
+- Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]
+
 # 2.57.2 (2022-11-07)
 
 ### Pipeline Maintenance
