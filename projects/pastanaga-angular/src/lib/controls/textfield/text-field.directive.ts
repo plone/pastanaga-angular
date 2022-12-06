@@ -27,10 +27,12 @@ export class TextFieldDirective extends PaFormControlDirective implements AfterV
     }
 
     ngAfterViewInit() {
-        const label = this.element.nativeElement.querySelector('.pa-field-label');
-        if (label) {
-            this._labelWidth = label.getBoundingClientRect().width;
-        }
+        setTimeout(() => {
+            const label = this.element.nativeElement.querySelector('.pa-field-label');
+            if (label) {
+                this._labelWidth = label.getBoundingClientRect().width;
+            }
+        });
     }
 
     onFocus(event: any) {

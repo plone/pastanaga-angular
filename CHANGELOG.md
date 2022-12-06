@@ -12,6 +12,8 @@
   - Replace border-text-field tokens by border-color-text-field tokens
   - Use this new style structure on all our fields (input, textarea, select)
   - New `TextFieldDirective` managing label width as well as focus and content states
+  - Update label position to be properly aligned with the top border
+    - Add `rhythm(3.5)` value in rhythm map
 
 ### Improvements
 - Add autofilled input example [mpellerin42]
