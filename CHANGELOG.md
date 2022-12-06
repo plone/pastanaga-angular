@@ -18,7 +18,10 @@
 
 ### Improvements
 - Add autofilled input example [mpellerin42]
-- Add `pa-field-icon` class on input icon to prevent style leak [mpellerin42]
+- Text fields: [mpellerin42]
+  - Add `pa-field-icon` class on input icon to prevent style leak 
+  - Add `externalLabel` input on `TextFieldDirective` (used by all text fields)
+
 
 ### Dependencies
 - Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]

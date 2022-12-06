@@ -98,7 +98,7 @@ describe('TextareaComponent', () => {
         expect(component.control.value).toEqual(null);
         host.value = 'a parent value';
         spectator.detectChanges();
-        tick();
+        tick(100);
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
     }));
@@ -214,7 +214,7 @@ describe('TextareaComponent', () => {
 
         host.maxlength = 3;
         spectator.detectChanges();
-        tick(1);
+        tick(100);
         spectator.detectChanges();
         thenInputHasProperty('maxLength', 3);
         thenInputHasAttribute('maxlength', '3');
@@ -224,7 +224,7 @@ describe('TextareaComponent', () => {
             `<pa-textarea [(ngModel)]="model" [required]="required" [errorMessages]="errorMessages">Label</pa-textarea>`,
         );
         host.required = true;
-        tick();
+        tick(100);
         spectator.detectChanges();
 
         component.control.markAsDirty();
@@ -242,7 +242,7 @@ describe('TextareaComponent', () => {
             `<pa-textarea [(ngModel)]="model" [required]="required" [showAllErrors]="showAllErrors">Label</pa-textarea>`,
         );
         host.required = true;
-        tick();
+        tick(100);
         spectator.detectChanges();
 
         component.control.markAsDirty();

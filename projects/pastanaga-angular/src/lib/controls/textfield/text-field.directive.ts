@@ -15,8 +15,14 @@ export class TextFieldDirective extends PaFormControlDirective implements AfterV
         return this._hasFocus;
     }
 
+    @Input()
+    set externalLabel(value: any) {
+        this._externalLabel = coerceBooleanProperty(value);
+    }
+
     private _hasFocus = false;
     private _labelWidth?: number;
+    private _externalLabel = false;
 
     get hasContent() {
         return this.control.value?.length > 0;
@@ -24,6 +30,9 @@ export class TextFieldDirective extends PaFormControlDirective implements AfterV
 
     get labelWidth() {
         return `${this._labelWidth}px`;
+    }
+    get noLabel() {
+        return this._externalLabel || this.labelWidth === '0px';
     }
 
     ngAfterViewInit() {

@@ -50,8 +50,11 @@ describe('InputComponent', () => {
             PaFormControlDirective,
             InputFormatterDirective,
             MockComponent(FormFieldHintComponent),
-            MockPipe(TranslatePipe, jest.fn((key: string) => key))
-        ]
+            MockPipe(
+                TranslatePipe,
+                jest.fn((key: string) => key),
+            ),
+        ],
     });
 
     const thenInputHasAttribute = (attribute: string, value: any) => {
@@ -93,7 +96,7 @@ describe('InputComponent', () => {
         expect(component.control.value).toEqual(null);
         host.value = 'a parent value';
         spectator.detectChanges();
-        tick();
+        tick(100);
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
     }));
