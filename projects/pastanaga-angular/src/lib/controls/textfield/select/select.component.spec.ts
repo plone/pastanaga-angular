@@ -189,6 +189,7 @@ describe('SelectComponent', () => {
 
     it('should propagate ngModel value', fakeAsync(() => {
         initWithTemplate(`<pa-select [(ngModel)]="value">${optionsInTemplate}</pa-select>`);
+        tick();
         whenFirstOptionClicked();
         thenSelectHasValue('first', 'first label');
         expect(host.value).toEqual('first');
@@ -377,6 +378,7 @@ describe('SelectComponent', () => {
 
     it('should render in dim mode', fakeAsync(() => {
         initWithTemplate(`<pa-select label="my field" dim>${optionsInTemplate}</pa-select>`);
+        tick();
         expect(spectator.query('.pa-field-container.pa-dim')).toBeTruthy();
         whenFirstOptionClicked();
         expect(spectator.query('label.pa-sr-only')).toBeTruthy();
