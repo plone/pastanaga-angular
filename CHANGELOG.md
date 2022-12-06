@@ -14,6 +14,7 @@
   - New `TextFieldDirective` managing label width as well as focus and content states
   - Update label position to be properly aligned with the top border
     - Add `rhythm(3.5)` value in rhythm map
+    - Add class `no-internal-label` to remove the label space from the top border when label width is 0
 
 ### Improvements
 - Add autofilled input example [mpellerin42]

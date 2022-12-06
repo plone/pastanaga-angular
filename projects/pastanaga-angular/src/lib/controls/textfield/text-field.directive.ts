@@ -30,9 +30,10 @@ export class TextFieldDirective extends PaFormControlDirective implements AfterV
         setTimeout(() => {
             const label = this.element.nativeElement.querySelector('.pa-field-label');
             if (label) {
-                this._labelWidth = label.getBoundingClientRect().width;
+                this._labelWidth = label.getBoundingClientRect().width || 0;
+                this.cdr.markForCheck();
             }
-        });
+        }, 100);
     }
 
     onFocus(event: any) {

@@ -1,6 +1,7 @@
 <div class="pa-field"
      [style.--label-width]="labelWidth">
     <div class="pa-field-container"
+         [class.no-internal-label]="labelWidth === '0px'"
          [class.pa-focus]="hasFocus"
          [class.pa-content]="hasContent"
          [class.pa-disabled]="disabled || readonly"

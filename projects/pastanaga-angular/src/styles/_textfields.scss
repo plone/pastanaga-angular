@@ -40,6 +40,9 @@
             left: calc(var(--label-width) * #{$scale-text-field-label} + #{$padding-field-control-left}*2);
             right: 1px;
         }
+        &.no-internal-label::after {
+            left: 0;
+        }
 
         &:hover {
             border-color: $border-color-field-hover;
@@ -49,16 +52,15 @@
         &:active,
         &.pa-content,
         &.pa-focus {
-            border-top: none;
+            border-top: 1px solid transparent;
         }
         &:focus,
         &:active,
         &.pa-focus {
             border-color: $border-color-field-active;
+            border-top: 1px solid transparent;
         }
         &.pa-content {
-            border-top: none;
-
             &::after,
             &::before {
                 background: $border-color-field-regular;
@@ -100,7 +102,7 @@
             border-color: $border-color-field-readonly;
             border-style: dashed;
             &.pa-content {
-                border-top: none;
+                border-top: 1px solid transparent;
 
                 &::after,
                 &::before {
