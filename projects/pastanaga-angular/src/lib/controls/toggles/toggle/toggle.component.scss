@@ -28,6 +28,7 @@ $toggle-transition-duration: $duration-fast;
 
         .pa-field-label {
             color: $color-dark-stronger;
+            cursor: pointer;
             position: inherit;
             max-width: 100%;
         }
@@ -70,12 +71,12 @@ $toggle-transition-duration: $duration-fast;
             right: $toggle-full-mid-width + $toggle-slider-padding;
             bottom: $toggle-slider-padding;
             left: $toggle-slider-padding;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 rhythm(0.25) rhythm(0.5) rgba(0, 0, 0, 0.15);
             background-color: $color-light-stronger;
         }
     }
 
-    &.checked {
+    &.pa-checked {
         .pa-toggle-slider {
             background: $color-primary-regular;
             &:before {
@@ -84,11 +85,11 @@ $toggle-transition-duration: $duration-fast;
         }
     }
 
-    &.focused .pa-toggle-slider {
+    &:focus-within .pa-toggle-slider {
         box-shadow: $shadow-focus;
     }
 
-    &.disabled {
+    &.pa-disable {
         .pa-toggle-slider {
             cursor: default;
             background: $color-neutral-light;
