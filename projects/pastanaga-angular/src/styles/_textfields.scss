@@ -6,13 +6,10 @@
     position: relative;
     margin-bottom: $margin-bottom-field;
 
-    &:not(.pa-select) pa-icon {
+    .pa-field-icon {
+        color: $color-neutral-regular;
         position: absolute;
         top: $padding-field-control-top;
-
-        svg {
-            fill: $color-neutral-regular;
-        }
 
         &:not(.pa-icon-on-right) {
             left: $padding-field-control-left;

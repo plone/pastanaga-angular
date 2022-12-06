@@ -17,6 +17,7 @@
 
 ### Improvements
 - Add autofilled input example [mpellerin42]
+- Add `pa-field-icon` class on input icon to prevent style leak [mpellerin42]
 
 ### Dependencies
 - Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]

@@ -35,7 +35,10 @@
         </label>
     </div>
 
-    <pa-icon *ngIf="!!icon" [name]="icon" [class.pa-icon-on-right]="iconOnRight"></pa-icon>
+    <pa-icon *ngIf="!!icon"
+             [name]="icon"
+             [class.pa-icon-on-right]="iconOnRight"
+             class="pa-field-icon"></pa-icon>
 
     <pa-form-field-hint
         [id]="describedById"
