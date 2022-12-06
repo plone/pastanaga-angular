@@ -13,13 +13,18 @@ $toggle-transition-duration: $duration-fast;
 
     .pa-toggle-context {
         display: flex;
-        justify-content: space-between;
+        gap: rhythm(2);
+        justify-content: flex-end;
+
+        &.pa-label-on-right {
+            flex-direction: row-reverse;
+        }
     }
 
     .pa-toggle-label-container {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
-        margin: auto rhythm(2) auto auto;
 
         .pa-field-label {
             color: $color-dark-stronger;
@@ -74,8 +79,6 @@ $toggle-transition-duration: $duration-fast;
         .pa-toggle-slider {
             background: $color-primary-regular;
             &:before {
-                -webkit-transform: translateX($toggle-full-mid-width);
-                -ms-transform: translateX($toggle-full-mid-width);
                 transform: translateX($toggle-full-mid-width);
             }
         }

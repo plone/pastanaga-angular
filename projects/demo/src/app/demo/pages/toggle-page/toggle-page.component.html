@@ -15,6 +15,7 @@
                            name="firstToggle"
                            [(ngModel)]="firstToggle"
                            [hasFocus]="focusedFirstToggle"
+                           [labelOnRight]="labelOnRight"
                            [disabled]="disabled"
                            (statusChange)="firstToggleStatus = $event"
                 ></pa-toggle></div>
@@ -30,6 +31,7 @@
                         name="toggle"
                         formControlName="toggle"
                         help="help text"
+                        [labelOnRight]="labelOnRight"
                         [hasFocus]="focusedToggle"
                         (statusChange)="secondToggleStatus = $event"
                     >Label
@@ -42,15 +44,28 @@
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="focusFirstTrigger" [(ngModel)]="focusedFirstToggle">Focused state On first toggle
+            <pa-checkbox id="labelOnRight"
+                         [(ngModel)]="labelOnRight">
+                Display label on the right
             </pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="focusTrigger" [(ngModel)]="focusedToggle">Focused state On Second toggle</pa-checkbox>
+            <pa-checkbox id="focusFirstTrigger"
+                         [(ngModel)]="focusedFirstToggle">
+                Focused state On first toggle
+            </pa-checkbox>
         </div>
         <div class="pa-demo-configuration-field">
-            <pa-checkbox id="disabledTrigger" [(ngModel)]="disabled" (ngModelChange)="toggleDisabled()">Toggle
-                disabled
+            <pa-checkbox id="focusTrigger"
+                         [(ngModel)]="focusedToggle">
+                Focused state On Second toggle
+            </pa-checkbox>
+        </div>
+        <div class="pa-demo-configuration-field">
+            <pa-checkbox id="disabledTrigger"
+                         [(ngModel)]="disabled"
+                         (ngModelChange)="toggleDisabled()">
+                Toggle disabled
             </pa-checkbox>
         </div>
     </pa-demo-configuration>
@@ -64,6 +79,12 @@
         <dl>
             <dt>hasFocus</dt>
             <dd>Set to true to give focus on the input by default <small>(default: false)</small></dd>
+
+            <dt>help</dt>
+            <dd>Display the provided help message under the toggle <small>(Optional)</small></dd>
+
+            <dt>labelOnRight</dt>
+            <dd>Display the label on the right of the toggle <small>(default: false)</small></dd>
         </dl>
     </pa-demo-usage>
 

@@ -1,7 +1,11 @@
-<div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
-    <div class="pa-toggle-context" (click)="updateState(!isChecked)">
+<div class="pa-field"
+     [class.pa-field-error]="control.dirty && control.invalid">
+    <div class="pa-toggle-context"
+         [class.pa-label-on-right]="labelOnRight"
+         (click)="updateState(!isChecked)">
         <div class="pa-toggle-label-container" *ngIf="hasLabel">
-            <label #label [for]="id"
+            <label #label
+                   [for]="id"
                    class="pa-field-label"
                    aria-hidden="true"
             >
