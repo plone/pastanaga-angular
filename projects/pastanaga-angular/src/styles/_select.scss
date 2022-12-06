@@ -30,30 +30,30 @@
         right: $icon-right-padding;
         top: rhythm(1.5);
         width: $icon-width;
+
         &.opened {
             transform: rotate(180deg);
         }
     }
-    &.pa-field-disabled {
-        color: $color-text-field-control-disabled;
-        .pa-select-chevron {
-            cursor: default;
+
+    .pa-field-container {
+        &.pa-disabled {
+            color: $color-text-field-control-disabled;
+            .pa-select-chevron {
+                color: $color-text-field-control-disabled;
+            }
+        }
+        &.pa-readonly .pa-select-chevron {
+            color: $color-text-field-control-disabled;
+        }
+        &:not(.pa-disabled):not(.pa-readonly) {
+            cursor: pointer;
         }
     }
-    &.pa-field-readonly {
-        .pa-select-chevron {
-            cursor: default;
-        }
-    }
+
     .pa-field-control {
         padding-right: calc(#{$icon-width + $icon-right-padding});
         width: 100%;
-        cursor: pointer;
-
-        &.pa-keyboard-focus {
-            border: $border-field-autofilled;
-            box-shadow: none;
-        }
     }
     .pa-field-label {
         white-space: nowrap;
@@ -61,54 +61,25 @@
         text-overflow: ellipsis;
         max-width: calc(100% - #{$padding-field-control-left + $icon-width + $icon-right-padding});
     }
-}
 
-.pa-field.pa-select:not(.pa-field-error) {
-    .pa-field-control:read-only {
-        border: $border-field-regular;
+    .pa-dim,
+    .pa-field-container.pa-content.pa-dim {
+        border: 1px solid transparent;
 
-        &:not(.disabled):not(.read-only) {
-            &:hover {
-                border: $border-field-regular-hover;
-                margin: 0;
-            }
-            &:focus,
-            &:active,
-            &.expanded {
-                border: $border-field-regular-active;
-                margin: 0;
-
-                &::placeholder {
-                    opacity: 1;
-                    transition: all 1s ease;
-                }
-
-                &~.pa-field-label {
-                    color: $color-text-field-label-regular-active;
-                }
-            }
+        &::after,
+        &::before {
+            display: none;
         }
-        &.dim:not(:hover):not(:focus):not(:active):not(.expanded) {
-            border-color: transparent;
-            background-color: transparent;
+        &.pa-focus {
+            border: 1px solid $border-color-field-active;
         }
-        &.disabled:not(.dim) {
-            border: $border-field-disabled;
-            color: $color-text-field-control-disabled;
-
-            &~.pa-field-label {
-                color: $color-text-field-label-disabled;
-            }
+        &:not(.pa-focus):not(.pa-disabled):hover {
+            border: 1px solid $border-color-field-hover;
         }
-        &.read-only:not(.dim) {
-            border: $border-field-readonly;
+        &.pa-disabled,
+        &.pa-readonly {
+            border: 1px solid transparent;
         }
-    }
-}
-.pa-field.pa-select.pa-field-error {
-    .pa-field-control:not(.pa-field-control-filled) + .pa-field-label {
-        color: $color-text-field-label-regular;
-        background: $color-background-field-error;
     }
 }
 

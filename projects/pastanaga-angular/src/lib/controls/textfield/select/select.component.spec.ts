@@ -4,15 +4,15 @@ import { SelectComponent } from './select.component';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
 import { MockComponent, MockModule, MockPipe, MockProvider, ngMocks } from 'ng-mocks';
-import { PaDropdownModule, DropdownComponent } from '../../../dropdown';
+import { DropdownComponent, PaDropdownModule } from '../../../dropdown';
 import { PaPopupModule } from '../../../popup';
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { PaIconModule } from '../../../icon';
-import { fakeAsync, discardPeriodicTasks, tick } from '@angular/core/testing';
+import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
-import { PA_LANG, PA_TRANSLATIONS, TranslatePipe, PaTranslateModule } from '../../../translate';
+import { PA_LANG, PA_TRANSLATIONS, PaTranslateModule, TranslatePipe } from '../../../translate';
 
 @Component({ template: '' })
 class TestComponent {
@@ -228,21 +228,21 @@ describe('SelectComponent', () => {
 
     it('should apply disabled in standalone', () => {
         initWithTemplate(`<pa-select [value]="value" [disabled]="disabled">${optionsInTemplate}</pa-select>`);
-        expect(spectator.query('.pa-field-disabled')).toEqual(null);
+        expect(spectator.query('.pa-disabled')).toEqual(null);
         host.disabled = true;
         spectator.detectChanges();
         expect(component.control.disabled).toEqual(true);
-        expect(spectator.query('.pa-field-disabled')).toBeTruthy();
+        expect(spectator.query('.pa-disabled')).toBeTruthy();
     });
 
     it('should apply disabled in formGroup', () => {
         initWithTemplate(
             `<form [formGroup]="formGroup"><pa-select formControlName="control">${optionsInTemplate}</pa-select></form>`,
         );
-        expect(spectator.query('.pa-field-disabled')).toEqual(null);
+        expect(spectator.query('.pa-disabled')).toEqual(null);
         host.formGroup.disable();
         expect(component.control.disabled).toEqual(true);
-        expect(spectator.query('.pa-field-disabled')).toBeTruthy();
+        expect(spectator.query('.pa-disabled')).toBeTruthy();
         // value is not updated
         whenFirstOptionClicked();
         expect(component.control.value).toEqual(null);
@@ -250,10 +250,10 @@ describe('SelectComponent', () => {
 
     it('should apply readonly', () => {
         initWithTemplate(`<pa-select [value]="value" [readonly]="readonly">${optionsInTemplate}</pa-select>`);
-        expect(spectator.query('.pa-field-readonly')).toEqual(null);
+        expect(spectator.query('.pa-readonly')).toEqual(null);
         host.readonly = true;
         spectator.detectChanges();
-        expect(spectator.query('.pa-field-readonly')).toBeTruthy();
+        expect(spectator.query('.pa-readonly')).toBeTruthy();
         // value is not updated
         whenFirstOptionClicked();
         expect(component.control.value).toEqual(null);
@@ -377,7 +377,7 @@ describe('SelectComponent', () => {
 
     it('should render in dim mode', fakeAsync(() => {
         initWithTemplate(`<pa-select label="my field" dim>${optionsInTemplate}</pa-select>`);
-        expect(spectator.query('.pa-field-control.dim')).toBeTruthy();
+        expect(spectator.query('.pa-field-container.pa-dim')).toBeTruthy();
         whenFirstOptionClicked();
         expect(spectator.query('label.pa-sr-only')).toBeTruthy();
         discardPeriodicTasks();

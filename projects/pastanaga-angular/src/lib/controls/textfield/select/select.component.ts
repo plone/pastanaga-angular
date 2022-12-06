@@ -25,8 +25,8 @@ import { detectChanges, isVisibleInViewport, markForCheck } from '../../../commo
 import { fromEvent, Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
-import { PaFormControlDirective } from '../../form-field';
 import { IErrorMessages } from '../../form-field.model';
+import { TextFieldDirective } from '../text-field.directive';
 
 type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
 
@@ -35,18 +35,13 @@ type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
     templateUrl: './select.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent extends PaFormControlDirective implements OnChanges, AfterViewInit, OnDestroy {
+export class SelectComponent extends TextFieldDirective implements OnChanges, AfterViewInit, OnDestroy {
     @Input() label = '';
     @Input() placeholder?: string;
 
     @Input() set options(values: OptionType[]) {
         this.dropDownModels = !!values ? values : [];
         this._updateDisplayedValue(this.control.value);
-    }
-
-    @Input() set hasFocus(value: any) {
-        this._hasFocus = coerceBooleanProperty(value);
-        this._focusInput();
     }
 
     @Input() adjustHeight = false;
@@ -80,7 +75,6 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
     displayedValue?: string;
     private optionsClosed$ = new Subject<void>();
     private contentOptionsChanged$ = new Subject<void>();
-    private _hasFocus = false;
     private _dim = false;
 
     protected _terminator = new Subject<void>();
@@ -110,10 +104,12 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         }
     }
 
-    ngAfterViewInit(): void {
+    override ngAfterViewInit(): void {
+        super.ngAfterViewInit();
+
         this._handleNgContent();
         this._checkDescribedBy();
-        this._focusInput();
+        this.focusInput();
         this._updateDisplayedValue(this.control.value);
         // valueChanges may be triggered by an update value and validity...
         // we don't want to recompute the displayed option label in that case
@@ -182,8 +178,8 @@ export class SelectComponent extends PaFormControlDirective implements OnChanges
         }
     }
 
-    private _focusInput() {
-        if (this._hasFocus && this.isActive) {
+    override focusInput() {
+        if (this.hasFocus && this.isActive) {
             this._openOptionDropDown();
             if (!isVisibleInViewport(this.selectInput?.nativeElement)) {
                 this.selectInput?.nativeElement.scrollIntoView();

@@ -1,39 +1,44 @@
 <div class="pa-field pa-select"
-     [class.pa-field-readonly]="readonly"
-     [class.pa-field-disabled]="control.disabled"
-     [class.pa-field-error]="control.dirty && control.invalid">
-    <div #selectInput
-         class="select-input pa-field-control"
-         paFocusable
-         cdkMonitorElementFocus
-         sameWidth
-         [class.pa-field-control-filled]="hasValue || isOpened"
-         [class.read-only]="readonly"
-         [class.disabled]="control.disabled"
-         [class.dim]="dim"
-         [class.expanded]="isOpened"
-         [id]="id"
-         [attr.name]="name"
-         [attr.aria-label]="label"
-         [attr.aria-describedby]="describedById"
-         [paPopup]="optionsDropdown"
-         [popupVerticalOffset]="0"
-         [popupDisabled]="control.disabled || readonly"
-         (cdkFocusChange)="onControlFocused($event)">
-        <span class="pa-select-value"
-              [class.placeholder]="!hasValue"
-              [class.active]="isOpened"
-        >{{displayedValue}}</span>
+     [style.--label-width]="labelWidth">
+    <div class="pa-field-container"
+         [class.pa-dim]="dim"
+         [class.pa-focus]="isOpened"
+         [class.pa-content]="hasContent"
+         [class.pa-readonly]="readonly"
+         [class.pa-disabled]="control.disabled"
+         [class.pa-field-error]="control.dirty && control.invalid">
+        <div #selectInput
+             class="select-input pa-field-control"
+             tabindex="0"
+             cdkMonitorElementFocus
+             sameWidth
+             [class.pa-field-control-filled]="hasValue || isOpened"
+             [class.read-only]="readonly"
+             [class.disabled]="control.disabled"
+             [class.expanded]="isOpened"
+             [id]="id"
+             [attr.name]="name"
+             [attr.aria-label]="label"
+             [attr.aria-describedby]="describedById"
+             [paPopup]="optionsDropdown"
+             [popupVerticalOffset]="0"
+             [popupDisabled]="control.disabled || readonly"
+             (cdkFocusChange)="onControlFocused($event)">
+            <span class="pa-select-value"
+                  [class.placeholder]="!hasValue"
+                  [class.active]="isOpened"
+            >{{displayedValue}}</span>
+        </div>
+
+        <label class="pa-field-label"
+               [class.pa-sr-only]="dim && (hasValue || isOpened)"
+               [for]="id">{{label}}</label>
+
+        <pa-icon class="pa-select-chevron"
+                 name="chevron-down"
+                 [class.opened]="isOpened"
+                 (click)="toggleDropdown()"></pa-icon>
     </div>
-
-    <label class="pa-field-label"
-           [class.pa-sr-only]="dim && (hasValue || isOpened)"
-           [for]="id">{{label}}</label>
-
-    <pa-icon class="pa-select-chevron"
-             name="chevron-down"
-             [class.opened]="isOpened"
-             (click)="toggleDropdown()"></pa-icon>
 
     <pa-form-field-hint
         [id]="describedById"

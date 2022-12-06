@@ -1,4 +1,20 @@
-# 2.57.3 (unreleased)
+# 2.58.0 (2022-12-06)
+
+### Breaking changes
+- Text fields: [mpellerin42]
+  - No more background color on text fields by default
+  - Improve text field border so label doesn't require a background color and border keep space for the label on active and focus states
+  - Replace border-text-field tokens by border-color-text-field token
+  - Text field borders management:
+      - No more borders on input themselves
+      - Add a new `pa-field-container` carrying the classes for all the states (error, disabled, readonly, focus, has content)
+      - No more background required on labels to have them displayed over the top border
+  - Replace border-text-field tokens by border-color-text-field tokens
+  - Use this new style structure on all our fields (input, textarea, select)
+  - New `TextFieldDirective` managing label width as well as focus and content states
+
+### Improvements
+- Add autofilled input example [mpellerin42]
 
 ### Dependencies
 - Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]
