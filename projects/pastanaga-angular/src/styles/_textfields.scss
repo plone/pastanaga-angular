@@ -150,26 +150,26 @@
                 caret-color: $color-caret-field-control-error;
             }
         }
+    }
 
-        .pa-field-label {
-            position: absolute;
-            font-size: $font-size-field-control;
-            line-height: $line-height-field-control;
-            font-weight: $font-weight-label;
-            color: $color-text-field-label-regular;
-            left: $padding-field-control-left;
-            top: calc(#{$padding-field-control-top} + #{rhythm(.25)});
-            max-width: calc(100% - #{$padding-field-control-left * 2});
-            pointer-events: none;
-            transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
-            transform-origin: 0 0;
+    .pa-field-label {
+        position: absolute;
+        font-size: $font-size-field-control;
+        line-height: $line-height-field-control;
+        font-weight: $font-weight-label;
+        color: $color-text-field-label-regular;
+        left: $padding-field-control-left;
+        top: calc(#{$padding-field-control-top} + #{rhythm(.25)});
+        max-width: calc(100% - #{$padding-field-control-left * 2});
+        pointer-events: none;
+        transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
+        transform-origin: 0 0;
 
-            &.pa-field-label-icon:not(.pa-icon-on-right) {
-                left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
-            }
-            &.pa-field-label-icon.pa-icon-on-right {
-                max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
-            }
+        &.pa-field-label-icon:not(.pa-icon-on-right) {
+            left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+        }
+        &.pa-field-label-icon.pa-icon-on-right {
+            max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
         }
     }
 
