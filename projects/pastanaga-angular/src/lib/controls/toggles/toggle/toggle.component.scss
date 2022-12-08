@@ -42,6 +42,12 @@ $toggle-transition-duration: $duration-fast;
             cursor: default;
         }
     }
+
+    &.pa-has-help {
+        .pa-field-label {
+            margin-top: -#{rhythm(0.5)};
+        }
+    }
 }
 
 .pa-toggle-container {

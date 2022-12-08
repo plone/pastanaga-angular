@@ -23,7 +23,7 @@
   - Add `externalLabel` input on `TextFieldDirective` (used by all text fields)
 - Toggle: [mpellerin42]
   - add `labelOnRight` option
-  - improve style (help, cursor state)
+  - improve style (spacing, help, cursor state)
   - improve documentation
 - Typography: Add `xs` support for line-height [mpellerin42]
 
