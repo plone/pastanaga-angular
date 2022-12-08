@@ -227,6 +227,9 @@
     }
 }
 
+pa-form-field-hint {
+    line-height: line-height(xs);
+}
 .pa-field-help {
     @include size(xs);
     color: $color-text-field-control-help-regular;

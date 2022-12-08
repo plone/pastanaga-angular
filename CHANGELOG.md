@@ -1,4 +1,4 @@
-# 2.58.0 (2022-12-06)
+# 2.58.0 (2022-12-08)
 
 ### Breaking changes
 - Text fields: [mpellerin42]
@@ -23,8 +23,9 @@
   - Add `externalLabel` input on `TextFieldDirective` (used by all text fields)
 - Toggle: [mpellerin42]
   - add `labelOnRight` option
+  - improve style (help, cursor state)
   - improve documentation
-
+- Typography: Add `xs` support for line-height [mpellerin42]
 
 ### Dependencies
 - Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]

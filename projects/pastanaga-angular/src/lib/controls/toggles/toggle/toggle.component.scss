@@ -32,6 +32,18 @@ $toggle-transition-duration: $duration-fast;
             position: inherit;
             max-width: 100%;
         }
+        pa-form-field-hint ::ng-deep .pa-field-help {
+            margin-top: 0;
+        }
+    }
+
+    &.pa-disable {
+        .pa-toggle-label-container {
+            cursor: default;
+        }
+        .pa-field-label {
+            cursor: default;
+        }
     }
 }
 

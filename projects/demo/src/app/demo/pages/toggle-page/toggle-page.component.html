@@ -18,7 +18,7 @@
                            [labelOnRight]="labelOnRight"
                            [disabled]="disabled"
                            (statusChange)="firstToggleStatus = $event"
-                ></pa-toggle></div>
+                >Label</pa-toggle></div>
             <div class="col-2">Value: {{firstToggle}}, state: {{firstToggleStatus}}</div>
         </div>
 
@@ -41,6 +41,13 @@
                 </div>
             </div>
         </form>
+        <h4>Group of toggles</h4>
+        <div>
+            <pa-toggle labelOnRight [disabled]="disabled" help="Allows to do nice things">Enable some nice feature</pa-toggle>
+            <pa-toggle labelOnRight [disabled]="disabled" help="Displays great stuff">Another great feature</pa-toggle>
+            <pa-toggle labelOnRight [disabled]="disabled" help="Mind blowing feature">You're not ready for this one</pa-toggle>
+            <pa-toggle labelOnRight [disabled]="disabled" help="Ultimate Answer to the Question of life, the Universe and Everything related to it">42</pa-toggle>
+        </div>
     </pa-demo-examples>
     <pa-demo-configuration>
         <div class="pa-demo-configuration-field">
