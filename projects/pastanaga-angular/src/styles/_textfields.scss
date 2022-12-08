@@ -108,11 +108,11 @@
                 &::before {
                     // Not using rhythm here because we want to mimic browser's `border-style: dashed` property
                     background: repeating-linear-gradient(
-                            90deg,
-                            $border-color-field-readonly,
-                            $border-color-field-readonly 3px,
-                            transparent 3px,
-                            transparent 6px
+                        90deg,
+                        $border-color-field-readonly,
+                        $border-color-field-readonly 3px,
+                        transparent 3px,
+                        transparent 6px
                     );
                 }
             }
@@ -139,6 +139,7 @@
                 &.pa-content,
                 &.pa-focus {
                     border-color: $border-color-field-error;
+                    border-top: 1px solid transparent;
                 }
             }
             .pa-field-label {
@@ -150,27 +151,31 @@
                 caret-color: $color-caret-field-control-error;
             }
         }
+        // Definition specific for text field labels
+        .pa-field-label {
+            color: $color-text-field-label-regular;
+            left: $padding-field-control-left;
+            max-width: calc(100% - #{$padding-field-control-left * 2});
+            position: absolute;
+            top: calc(#{$padding-field-control-top} + #{rhythm(.25)});
+            transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
+            transform-origin: 0 0;
+
+            &.pa-field-label-icon:not(.pa-icon-on-right) {
+                left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+            }
+            &.pa-field-label-icon.pa-icon-on-right {
+                max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
+            }
+        }
     }
 
+    // Definition for labels of all pa-fields (including toggle ones)
     .pa-field-label {
-        position: absolute;
         font-size: $font-size-field-control;
         line-height: $line-height-field-control;
         font-weight: $font-weight-label;
-        color: $color-text-field-label-regular;
-        left: $padding-field-control-left;
-        top: calc(#{$padding-field-control-top} + #{rhythm(.25)});
-        max-width: calc(100% - #{$padding-field-control-left * 2});
         pointer-events: none;
-        transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
-        transform-origin: 0 0;
-
-        &.pa-field-label-icon:not(.pa-icon-on-right) {
-            left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
-        }
-        &.pa-field-label-icon.pa-icon-on-right {
-            max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
-        }
     }
 
     .pa-field-control {

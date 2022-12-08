@@ -27,10 +27,7 @@ $toggle-transition-duration: $duration-fast;
         flex-direction: column;
 
         .pa-field-label {
-            color: $color-dark-stronger;
             cursor: pointer;
-            position: inherit;
-            max-width: 100%;
         }
         pa-form-field-hint ::ng-deep .pa-field-help {
             margin-top: 0;
