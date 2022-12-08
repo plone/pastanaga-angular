@@ -13,18 +13,39 @@ $toggle-transition-duration: $duration-fast;
 
     .pa-toggle-context {
         display: flex;
-        justify-content: space-between;
+        gap: rhythm(2);
+        justify-content: flex-end;
+
+        &.pa-label-on-right {
+            flex-direction: row-reverse;
+        }
     }
 
     .pa-toggle-label-container {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
-        margin: auto rhythm(2) auto auto;
 
         .pa-field-label {
-            color: $color-dark-stronger;
-            position: inherit;
-            max-width: 100%;
+            cursor: pointer;
+        }
+        pa-form-field-hint ::ng-deep .pa-field-help {
+            margin-top: 0;
+        }
+    }
+
+    &.pa-disable {
+        .pa-toggle-label-container {
+            cursor: default;
+        }
+        .pa-field-label {
+            cursor: default;
+        }
+    }
+
+    &.pa-has-help {
+        .pa-field-label {
+            margin-top: -#{rhythm(0.5)};
         }
     }
 }
@@ -65,27 +86,25 @@ $toggle-transition-duration: $duration-fast;
             right: $toggle-full-mid-width + $toggle-slider-padding;
             bottom: $toggle-slider-padding;
             left: $toggle-slider-padding;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 rhythm(0.25) rhythm(0.5) rgba(0, 0, 0, 0.15);
             background-color: $color-light-stronger;
         }
     }
 
-    &.checked {
+    &.pa-checked {
         .pa-toggle-slider {
             background: $color-primary-regular;
             &:before {
-                -webkit-transform: translateX($toggle-full-mid-width);
-                -ms-transform: translateX($toggle-full-mid-width);
                 transform: translateX($toggle-full-mid-width);
             }
         }
     }
 
-    &.focused .pa-toggle-slider {
+    &:focus-within .pa-toggle-slider {
         box-shadow: $shadow-focus;
     }
 
-    &.disabled {
+    &.pa-disable {
         .pa-toggle-slider {
             cursor: default;
             background: $color-neutral-light;

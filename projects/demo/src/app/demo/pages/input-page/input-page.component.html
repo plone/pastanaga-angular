@@ -7,14 +7,18 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <p>The following input demonstrates error state: type a character and delete it.</p>
+        <p><strong>Error state: type a character and delete it.</strong></p>
         <pa-input [(ngModel)]="model"
-                  name="selectExample"
+                  name="inputExample"
                   required
                   placeholder="Placeholder"
                   help="Display the error state by typing something and deleting it"
                   [errorMessages]="{required: 'Error message: required'}">Required input</pa-input>
 
+        <p><strong>Autofill: click and select browser's suggestion</strong></p>
+        <pa-input name="email"
+                  id="email"
+                  type="text">Autofilled input</pa-input>
         <pa-tabs>
             <pa-tab (click)="selectedTab = 'standalone'"
                     [active]="selectedTab === 'standalone'">Standalone</pa-tab>

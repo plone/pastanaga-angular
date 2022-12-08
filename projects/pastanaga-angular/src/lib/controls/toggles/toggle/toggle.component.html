@@ -1,9 +1,18 @@
-<div class="pa-field" [class.pa-field-error]="control.dirty && control.invalid">
-    <div class="pa-toggle-context" (click)="updateState(!isChecked)">
-        <div class="pa-toggle-label-container" *ngIf="hasLabel">
-            <label #label [for]="id"
+<div class="pa-field"
+     [class.pa-has-help]="!!help"
+     [class.pa-disable]="control.disabled"
+     [class.pa-field-error]="control.dirty && control.invalid">
+    <div class="pa-toggle-context"
+         [class.pa-label-on-right]="labelOnRight"
+         (click)="updateState(!isChecked)">
+        <div class="pa-toggle-label-container"
+             tabindex="-1"
+             *ngIf="hasLabel">
+            <label #label
+                   [for]="id"
                    class="pa-field-label"
                    aria-hidden="true"
+                   (click)="updateState(!isChecked)"
             >
                 <ng-content></ng-content>
             </label>
@@ -16,7 +25,9 @@
             ></pa-form-field-hint>
         </div>
         <div class="pa-toggle-container"
-             [ngClass]="{checked: isChecked, focused: hasFocus, disabled: control.disabled}"
+             [class.pa-checked]="isChecked"
+             [class.pa-disable]="control.disabled"
+             [class.pa-focus]="hasFocus"
         >
             <input #inputElement
                    type="checkbox"

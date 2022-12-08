@@ -7,5 +7,6 @@ export * from './select';
 
 export * from './textarea';
 
+export * from './text-field.directive';
 export * from './text-field.module';
 export * from './text-field-utility.service';

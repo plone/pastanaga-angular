@@ -1,4 +1,31 @@
-# 2.57.3 (unreleased)
+# 2.58.0 (2022-12-08)
+
+### Breaking changes
+- Text fields: [mpellerin42]
+  - No more background color on text fields by default
+  - Improve text field border so label doesn't require a background color and border keep space for the label on active and focus states
+  - Replace border-text-field tokens by border-color-text-field token
+  - Text field borders management:
+      - No more borders on input themselves
+      - Add a new `pa-field-container` carrying the classes for all the states (error, disabled, readonly, focus, has content)
+      - No more background required on labels to have them displayed over the top border
+  - Replace border-text-field tokens by border-color-text-field tokens
+  - Use this new style structure on all our fields (input, textarea, select)
+  - New `TextFieldDirective` managing label width as well as focus and content states
+  - Update label position to be properly aligned with the top border
+    - Add `rhythm(3.5)` value in rhythm map
+    - Add class `no-internal-label` to remove the label space from the top border when label width is 0
+
+### Improvements
+- Add autofilled input example [mpellerin42]
+- Text fields: [mpellerin42]
+  - Add `pa-field-icon` class on input icon to prevent style leak 
+  - Add `externalLabel` input on `TextFieldDirective` (used by all text fields)
+- Toggle: [mpellerin42]
+  - add `labelOnRight` option
+  - improve style (spacing, help, cursor state)
+  - improve documentation
+- Typography: Add `xs` support for line-height [mpellerin42]
 
 ### Dependencies
 - Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]

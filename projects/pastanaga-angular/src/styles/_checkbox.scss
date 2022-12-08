@@ -97,16 +97,16 @@
         }
 
         .pa-toggle-control {
-            border: $border-field-error;
+            border-color: $border-color-field-error;
 
             &:not(:disabled) {
                 &:hover {
-                    border: $border-field-error-hover;
+                    border-color: $border-color-field-error;
                 }
 
                 &:focus,
                 &:active {
-                    border: $border-field-error-active;
+                    border-color: $border-color-field-error;
 
                     & ~ .pa-toggle-label {
                         color: $color-text-field-label-error;

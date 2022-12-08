@@ -4,15 +4,15 @@ import { SelectComponent } from './select.component';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
 import { MockComponent, MockModule, MockPipe, MockProvider, ngMocks } from 'ng-mocks';
-import { PaDropdownModule, DropdownComponent } from '../../../dropdown';
+import { DropdownComponent, PaDropdownModule } from '../../../dropdown';
 import { PaPopupModule } from '../../../popup';
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { PaIconModule } from '../../../icon';
-import { fakeAsync, discardPeriodicTasks, tick } from '@angular/core/testing';
+import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
-import { PA_LANG, PA_TRANSLATIONS, TranslatePipe, PaTranslateModule } from '../../../translate';
+import { PA_LANG, PA_TRANSLATIONS, PaTranslateModule, TranslatePipe } from '../../../translate';
 
 @Component({ template: '' })
 class TestComponent {
@@ -147,7 +147,7 @@ describe('SelectComponent', () => {
         thenSelectIsNotValuated();
         host.value = '1';
         spectator.detectChanges();
-        tick();
+        tick(100);
         thenSelectHasValue('1', '1');
         expect(spectator.queryAll('pa-dropdown pa-select-options pa-option .pa-option-selected')).toHaveLength(1);
         discardPeriodicTasks();
@@ -189,6 +189,7 @@ describe('SelectComponent', () => {
 
     it('should propagate ngModel value', fakeAsync(() => {
         initWithTemplate(`<pa-select [(ngModel)]="value">${optionsInTemplate}</pa-select>`);
+        tick(100);
         whenFirstOptionClicked();
         thenSelectHasValue('first', 'first label');
         expect(host.value).toEqual('first');
@@ -219,7 +220,7 @@ describe('SelectComponent', () => {
         expect(spectator.query('.pa-select-value')?.innerHTML).toEqual('');
         host.placeholder = 'placeholder';
         spectator.detectChanges();
-        tick();
+        tick(100);
         expect(spectator.query('.pa-select-value')?.innerHTML).toEqual('placeholder');
         whenFirstOptionClicked();
         expect(spectator.query('.pa-select-value')?.innerHTML).toEqual('first label');
@@ -228,21 +229,21 @@ describe('SelectComponent', () => {
 
     it('should apply disabled in standalone', () => {
         initWithTemplate(`<pa-select [value]="value" [disabled]="disabled">${optionsInTemplate}</pa-select>`);
-        expect(spectator.query('.pa-field-disabled')).toEqual(null);
+        expect(spectator.query('.pa-disabled')).toEqual(null);
         host.disabled = true;
         spectator.detectChanges();
         expect(component.control.disabled).toEqual(true);
-        expect(spectator.query('.pa-field-disabled')).toBeTruthy();
+        expect(spectator.query('.pa-disabled')).toBeTruthy();
     });
 
     it('should apply disabled in formGroup', () => {
         initWithTemplate(
             `<form [formGroup]="formGroup"><pa-select formControlName="control">${optionsInTemplate}</pa-select></form>`,
         );
-        expect(spectator.query('.pa-field-disabled')).toEqual(null);
+        expect(spectator.query('.pa-disabled')).toEqual(null);
         host.formGroup.disable();
         expect(component.control.disabled).toEqual(true);
-        expect(spectator.query('.pa-field-disabled')).toBeTruthy();
+        expect(spectator.query('.pa-disabled')).toBeTruthy();
         // value is not updated
         whenFirstOptionClicked();
         expect(component.control.value).toEqual(null);
@@ -250,10 +251,10 @@ describe('SelectComponent', () => {
 
     it('should apply readonly', () => {
         initWithTemplate(`<pa-select [value]="value" [readonly]="readonly">${optionsInTemplate}</pa-select>`);
-        expect(spectator.query('.pa-field-readonly')).toEqual(null);
+        expect(spectator.query('.pa-readonly')).toEqual(null);
         host.readonly = true;
         spectator.detectChanges();
-        expect(spectator.query('.pa-field-readonly')).toBeTruthy();
+        expect(spectator.query('.pa-readonly')).toBeTruthy();
         // value is not updated
         whenFirstOptionClicked();
         expect(component.control.value).toEqual(null);
@@ -268,7 +269,7 @@ describe('SelectComponent', () => {
         const expanded = jest.spyOn(host, 'onExpanded');
         host.hasFocus = true;
         spectator.detectChanges();
-        tick();
+        tick(100);
         expect(selectClicked).toHaveBeenCalled();
         expect(expanded).toHaveBeenCalledWith(true);
         spectator.detectChanges();
@@ -281,7 +282,7 @@ describe('SelectComponent', () => {
         expect(spectator.query('.pa-select-chevron')).toBeTruthy();
         expect(spectator.query('.pa-select-chevron.opened')).toEqual(null);
         spectator.click('.pa-field-control');
-        tick();
+        tick(100);
         spectator.detectChanges();
         expect(spectator.query('.pa-select-chevron.opened')).toBeTruthy();
         discardPeriodicTasks();
@@ -290,7 +291,7 @@ describe('SelectComponent', () => {
         initWithTemplate(`<pa-select [readonly]="readonly">${optionsInTemplate}</pa-select>`);
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(true);
         spectator.click('.pa-select-chevron');
-        tick();
+        tick(100);
         spectator.detectChanges();
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(false);
         spectator.click('.pa-select-chevron');
@@ -310,7 +311,7 @@ describe('SelectComponent', () => {
         expect(component.control.pristine).toEqual(true);
         expect(component.control.touched).toEqual(false);
         spectator.click('.pa-field-control');
-        tick();
+        tick(100);
         spectator.detectChanges();
         spectator.triggerEventHandler(DropdownComponent, 'onClose', true);
         expect(component.control.pristine).toEqual(false);
@@ -324,7 +325,7 @@ describe('SelectComponent', () => {
         const selectClicked = jest.spyOn(component.selectInput?.nativeElement, 'click');
         spectator.triggerEventHandler(CdkMonitorFocus, 'cdkFocusChange', 'keyboard');
         spectator.detectChanges();
-        tick();
+        tick(100);
         expect(selectClicked).toHaveBeenCalled();
         spectator.detectChanges();
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(false);
@@ -348,7 +349,7 @@ describe('SelectComponent', () => {
         expect(component.control.valid).toEqual(true);
         const statusChanged = jest.spyOn(host, 'statusChanged');
         host.required = true;
-        tick();
+        tick(100);
         spectator.detectChanges();
         expect(component.control.valid).toEqual(false);
         expect(spectator.query('.pa-field-error')).toBeTruthy();
@@ -363,7 +364,7 @@ describe('SelectComponent', () => {
         component.control.markAsDirty();
         expect(component.control.valid).toEqual(true);
         host.required = true;
-        tick();
+        tick(100);
         spectator.detectChanges();
         expect(component.control.valid).toEqual(false);
         const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
@@ -377,7 +378,8 @@ describe('SelectComponent', () => {
 
     it('should render in dim mode', fakeAsync(() => {
         initWithTemplate(`<pa-select label="my field" dim>${optionsInTemplate}</pa-select>`);
-        expect(spectator.query('.pa-field-control.dim')).toBeTruthy();
+        tick(100);
+        expect(spectator.query('.pa-field-container.pa-dim')).toBeTruthy();
         whenFirstOptionClicked();
         expect(spectator.query('label.pa-sr-only')).toBeTruthy();
         discardPeriodicTasks();

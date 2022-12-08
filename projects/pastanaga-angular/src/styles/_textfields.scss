@@ -1,32 +1,15 @@
 @import "variables";
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-    border: $border-field-autofilled;
-    -webkit-text-fill-color: inherit;
-    -webkit-box-shadow: 0 0 0 0 $color-background-field-autofilled inset;
-}
-
 .pa-field {
     $icon-width: rhythm(3);
 
     position: relative;
     margin-bottom: $margin-bottom-field;
 
-    &:not(.pa-select) pa-icon {
+    .pa-field-icon {
+        color: $color-neutral-regular;
         position: absolute;
         top: $padding-field-control-top;
-
-        svg {
-            fill: $color-neutral-regular;
-        }
 
         &:not(.pa-icon-on-right) {
             left: $padding-field-control-left;
@@ -36,26 +19,163 @@ select:-webkit-autofill:focus {
         }
     }
 
+    .pa-field-container {
+        border: 1px solid $border-color-field-regular;
+        border-radius: $border-radius-field;
+        &::after,
+        &::before {
+            content: '';
+            height: 1px;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+
+        &::before {
+            left: 0;
+            width: rhythm(1);
+        }
+
+        &::after {
+            left: calc(var(--label-width) * #{$scale-text-field-label} + #{$padding-field-control-left}*2);
+            right: 1px;
+        }
+        &.no-internal-label::after {
+            left: 0;
+        }
+
+        &:hover {
+            border-color: $border-color-field-hover;
+        }
+
+        &:focus,
+        &:active,
+        &.pa-content,
+        &.pa-focus {
+            border-top: 1px solid transparent;
+        }
+        &:focus,
+        &:active,
+        &.pa-focus {
+            border-color: $border-color-field-active;
+            border-top: 1px solid transparent;
+        }
+        &.pa-content {
+            &::after,
+            &::before {
+                background: $border-color-field-regular;
+            }
+            &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
+                &::after,
+                &::before {
+                    background: $border-color-field-hover;
+                }
+            }
+        }
+
+        &:not(.pa-disabled):not(.pa-readonly):not(.pa-field-error).pa-focus {
+            &::after,
+            &::before {
+                background: $border-color-field-active;
+            }
+            .pa-field-label {
+                color: $color-text-field-label-regular-active;
+            }
+        }
+
+        &.pa-disabled {
+            border-color: $border-color-field-disabled;
+
+            &::after,
+            &::before {
+                background: $border-color-field-disabled;
+            }
+            .pa-field-label {
+                color: $color-text-field-label-disabled;
+            }
+        }
+        &.pa-readonly {
+            .pa-field-label {
+                color: $color-text-field-label-disabled;
+            }
+
+            border-color: $border-color-field-readonly;
+            border-style: dashed;
+            &.pa-content {
+                border-top: 1px solid transparent;
+
+                &::after,
+                &::before {
+                    // Not using rhythm here because we want to mimic browser's `border-style: dashed` property
+                    background: repeating-linear-gradient(
+                        90deg,
+                        $border-color-field-readonly,
+                        $border-color-field-readonly 3px,
+                        transparent 3px,
+                        transparent 6px
+                    );
+                }
+            }
+            &:not(.pa-content) {
+                &::after,
+                &::before {
+                    display: none;
+                }
+            }
+        }
+        &.pa-field-error {
+            &:not(.pa-disabled):not(.pa-readonly) {
+                border-color: $border-color-field-error;
+
+                &::after,
+                &::before {
+                    background: $border-color-field-error;
+                }
+                &:hover {
+                    border-color: $border-color-field-error;
+                }
+                &:focus,
+                &:active,
+                &.pa-content,
+                &.pa-focus {
+                    border-color: $border-color-field-error;
+                    border-top: 1px solid transparent;
+                }
+            }
+            .pa-field-label {
+                color: $color-text-field-label-error;
+            }
+
+            .pa-field-control {
+                background: $color-background-field-error;
+                caret-color: $color-caret-field-control-error;
+            }
+        }
+        // Definition specific for text field labels
+        .pa-field-label {
+            color: $color-text-field-label-regular;
+            left: $padding-field-control-left;
+            max-width: calc(100% - #{$padding-field-control-left * 2});
+            position: absolute;
+            top: calc(#{$padding-field-control-top} + #{rhythm(.25)});
+            transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
+            transform-origin: 0 0;
+
+            &.pa-field-label-icon:not(.pa-icon-on-right) {
+                left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+            }
+            &.pa-field-label-icon.pa-icon-on-right {
+                max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
+            }
+        }
+    }
+
+    // Definition for labels of all pa-fields (including toggle ones)
     .pa-field-label {
-        position: absolute;
         font-size: $font-size-field-control;
         line-height: $line-height-field-control;
         font-weight: $font-weight-label;
-        background: $color-background-field-regular;
-        color: $color-text-field-label-regular;
-        left: $padding-field-control-left;
-        top: calc(#{$padding-field-control-top} + #{rhythm(.25)});
-        max-width: calc(100% - #{$padding-field-control-left * 2});
         pointer-events: none;
-        transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
-        transform-origin: 0 0;
-
-        &.pa-field-label-icon:not(.pa-icon-on-right) {
-            left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
-        }
-        &.pa-field-label-icon.pa-icon-on-right {
-            max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
-        }
     }
 
     .pa-field-control {
@@ -64,8 +184,7 @@ select:-webkit-autofill:focus {
         background: $color-background-field-regular;
         color: $color-text-field-control-regular;
         caret-color: $color-caret-field-control-active;
-        border: $border-field-regular;
-        border-radius: $border-radius-field;
+        border: none;
         padding: $padding-field-control-top $padding-field-control-left;
         outline: none;
         margin: $border-width-active - $border-width-regular;
@@ -85,96 +204,37 @@ select:-webkit-autofill:focus {
         }
 
         &:not(:disabled):not(:read-only) {
-            &:hover {
-                border: $border-field-regular-hover;
-                margin: 0;
-            }
-
             &:focus,
             &:active {
-                border: $border-field-regular-active;
-                margin: 0;
-
                 &::placeholder {
                     opacity: 1;
                     transition: all 1s ease;
-                }
-
-                & ~ .pa-field-label {
-                    color: $color-text-field-label-regular-active;
                 }
             }
         }
 
         &.pa-field-control-filled,
-        &.cdk-text-field-autofilled,
         &:not(:disabled):not(:read-only):focus,
         &:not(:disabled):not(:read-only):active {
             & ~ .pa-field-label {
-                transform: scale(.8) translateY(-#{rhythm(4)}) translateX(-#{rhythm(.5)});
+                transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(-#{rhythm(.5)});
                 padding: 0 rhythm(1);
 
                 &.pa-field-label-icon:not(.pa-icon-on-right) {
-                    transform: scale(.8) translateY(-#{rhythm(4)}) translateX(calc(-#{rhythm(.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
+                    transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(calc(-#{rhythm(.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
                 }
             }
-        }
-
-        &.cdk-text-field-autofilled:not(:disabled):not(:read-only) {
-            & ~ .pa-field-label {
-                background: linear-gradient(180deg, $color-background-field-regular 62.42%, $color-background-field-autofilled-transparent 63.83%, $color-background-field-autofilled 100%);
-                color: $color-text-field-label-autofilled;
-            }
-
-            border: $border-field-autofilled;
-        }
-
-        &:read-only {
-            border: $border-field-readonly;
         }
 
         &:disabled {
-            border: $border-field-disabled;
             color: $color-text-field-control-disabled;
-
-            & ~ .pa-field-label {
-                color: $color-text-field-label-disabled;
-            }
-        }
-    }
-
-    &.pa-field-error {
-        .pa-field-label {
-            color: $color-text-field-label-error;
-        }
-
-        .pa-field-control {
-            border: $border-field-error;
-            background: $color-background-field-error;
-            caret-color: $color-caret-field-control-error;
-
-            &:not(.pa-field-control-filled):not(:active):not(:focus) + .pa-field-label {
-                background: $color-background-field-error;
-            }
-
-            &:not(:disabled):not(:read-only) {
-                &:hover {
-                    border: $border-field-error-hover;
-                }
-
-                &:focus,
-                &:active {
-                    border: $border-field-error-active;
-
-                    & ~ .pa-field-label {
-                        color: $color-text-field-label-error;
-                    }
-                }
-            }
         }
     }
 }
 
+pa-form-field-hint {
+    line-height: line-height(xs);
+}
 .pa-field-help {
     @include size(xs);
     color: $color-text-field-control-help-regular;

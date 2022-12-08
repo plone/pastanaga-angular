@@ -1,6 +1,7 @@
 
 // Spacing
 $spacer: .5rem !default;    // 1 unit - 8px - 0.5rem
+/* prettier-ignore */
 $rhythm: (
     0: 0,
     .25: ($spacer * .25),   //   .25 unit -   2px -   .125 rem
@@ -9,6 +10,7 @@ $rhythm: (
     1.5: ($spacer * 1.5),   //  1.5  unit -  12px -   .75  rem
     2: ($spacer * 2),       //  2    unit -  16px -  1     rem
     3: ($spacer * 3),       //  3    unit -  24px -  1.5   rem
+    3.5: ($spacer * 3.5),   //  3.5  unit -  28px -  1.75   rem
     4: ($spacer * 4),       //  4    unit -  32px -  2     rem
     5: ($spacer * 5),       //  5    unit -  40px -  2.5   rem
     6: ($spacer * 6),       //  6    unit -  48px -  3     rem

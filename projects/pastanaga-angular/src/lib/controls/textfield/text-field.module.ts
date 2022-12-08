@@ -12,6 +12,7 @@ import { SelectComponent, SelectOptionsComponent } from './select';
 import { PaTextareaAutoHeightDirective, TextareaComponent } from './textarea';
 import { NativeTextFieldDirective } from './native-text-field.directive';
 import { PaDropdownModule, OptionComponent, OptionHeaderComponent, SeparatorComponent } from '../../dropdown';
+import { TextFieldDirective } from './text-field.directive';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { PaDropdownModule, OptionComponent, OptionHeaderComponent, SeparatorComp
         TextareaComponent,
         NativeTextFieldDirective,
         PaTextareaAutoHeightDirective,
+        TextFieldDirective,
     ],
     imports: [
         CommonModule,

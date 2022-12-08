@@ -17,6 +17,8 @@ $color-text-field-label-disabled: $color-neutral-light !default;
 $color-text-field-label-error: $color-secondary-regular !default;
 $color-text-field-label-autofilled: $color-autofilled !default;
 
+$scale-text-field-label: 0.8 !default;
+
 //
 // control
 //
@@ -28,10 +30,10 @@ $color-text-field-control-help-regular: $color-neutral-regular !default;
 $color-caret-field-control-active: $color-primary-regular !default;
 $color-caret-field-control-error: $color-secondary-regular !default;
 
-$color-background-field-regular: $color-light-stronger !default;
+$color-background-field-regular: none !default;
 $color-background-field-autofilled: $color-autofilled-background !default;
 $color-background-field-autofilled-transparent: $color-autofilled-background !default;
-$color-background-field-error: $color-light-stronger !default;
+$color-background-field-error: none !default;
 
 //=====================================
 // BORDERS
@@ -39,17 +41,15 @@ $color-background-field-error: $color-light-stronger !default;
 $border-width-regular: 1px !default;
 $border-width-active: 1px !default;
 
-$border-field-regular: $border-width-regular solid $color-neutral-lighter !default;
-$border-field-regular-hover: $border-width-active solid $color-neutral-regular !default;
-$border-field-regular-active: $border-width-active solid $color-primary-regular !default;
+$border-color-field-regular: $color-neutral-lighter !default;
+$border-color-field-hover: $color-neutral-regular !default;
+$border-color-field-active: $color-primary-regular !default;
 
-$border-field-error: $border-width-regular solid $color-secondary-regular !default;
-$border-field-error-hover: $border-width-active solid $color-secondary-regular !default;
-$border-field-error-active: $border-width-active solid $color-secondary-regular !default;
+$border-color-field-error: $color-secondary-regular !default;
 
-$border-field-disabled: $border-width-regular solid $color-neutral-light !default;
-$border-field-readonly: $border-width-regular dashed $color-neutral-light !default;
-$border-field-autofilled: $border-width-regular solid $color-autofilled !default;
+$border-color-field-disabled: $color-neutral-light !default;
+$border-color-field-readonly: $color-neutral-light !default;
+$border-color-field-autofilled: $color-autofilled !default;
 
 $border-radius-field: $border-radius-default !default;
 

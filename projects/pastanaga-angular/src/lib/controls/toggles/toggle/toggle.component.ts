@@ -28,15 +28,23 @@ import { IErrorMessages } from '../../form-field.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleComponent extends PaFormControlDirective implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-    @Input() errorMessages?: IErrorMessages;
     @Input()
-    get hasFocus(): boolean {
-        return this._hasFocus;
+    set labelOnRight(value: any) {
+        this._labelOnRight = coerceBooleanProperty(value);
     }
+    get labelOnRight(): boolean {
+        return this._labelOnRight;
+    }
+
+    @Input()
     set hasFocus(value: any) {
         this._hasFocus = coerceBooleanProperty(value);
     }
-    private _hasFocus = false;
+    get hasFocus(): boolean {
+        return this._hasFocus;
+    }
+
+    @Input() errorMessages?: IErrorMessages;
     @Input() help?: string;
 
     @ViewChild('inputElement') input?: ElementRef;
@@ -46,6 +54,9 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
 
     isChecked = false;
     describedById?: string;
+
+    private _hasFocus = false;
+    private _labelOnRight = false;
 
     constructor(
         protected override element: ElementRef,

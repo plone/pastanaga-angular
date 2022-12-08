@@ -73,7 +73,7 @@ describe('ToggleComponent', () => {
             host.hasFocus = true;
             spectator.detectChanges();
             tick();
-            expect(spectator.query<HTMLInputElement>('.pa-toggle-container.focused')).toBeTruthy();
+            expect(spectator.query<HTMLInputElement>('.pa-toggle-container.pa-focus')).toBeTruthy();
         }));
 
         it('should support disabling', fakeAsync(() => {

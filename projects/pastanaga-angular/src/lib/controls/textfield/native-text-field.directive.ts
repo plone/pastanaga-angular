@@ -12,7 +12,6 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { PaFormControlDirective } from '../form-field';
 import { NgControl } from '@angular/forms';
 import { TextFieldUtilityService } from './text-field-utility.service';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -21,11 +20,12 @@ import { isVisibleInViewport, Keys, markForCheck } from '../../common';
 import { IErrorMessages } from '../form-field.model';
 import { sanitizeStringValue } from '../form-field.utils';
 import { takeUntil } from 'rxjs/operators';
+import { TextFieldDirective } from './text-field.directive';
 
 @Directive({
     selector: '[paNativeTextField]',
 })
-export class NativeTextFieldDirective extends PaFormControlDirective implements AfterViewInit, OnDestroy {
+export class NativeTextFieldDirective extends TextFieldDirective implements AfterViewInit, OnDestroy {
     @Input() set maxlength(value: number | undefined) {
         this._maxlength = value;
     }
@@ -51,10 +51,6 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     @Input() showAllErrors = true;
     @Input() placeholder?: string;
 
-    @Input() set hasFocus(value: any) {
-        this._hasFocus = coerceBooleanProperty(value);
-        this._focusInput();
-    }
     @Input() set acceptHtmlTags(value: any) {
         const accept = coerceBooleanProperty(value);
         if (accept) {
@@ -78,7 +74,6 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
     private _maxlength?: number;
     private _noAutoComplete = false;
     private _stopAutoCompleteMonitor = new Subject<void>();
-    private _hasFocus = false;
 
     constructor(
         protected override element: ElementRef,
@@ -90,8 +85,10 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         super(element, parentControl, cdr);
     }
 
-    ngAfterViewInit() {
-        if (!!this.htmlInputRef) {
+    override ngAfterViewInit() {
+        super.ngAfterViewInit();
+
+        if (this.htmlInputRef) {
             this._updateAutoComplete();
             this.textFieldUtility.handleIosCaretPosition(this.htmlInputRef.nativeElement);
             this._checkIsFilled();
@@ -105,7 +102,7 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
             markForCheck(this.cdr);
         });
         this.setDisabledState(this.control.disabled);
-        this._focusInput();
+        this.focusInput();
     }
 
     override ngOnDestroy() {
@@ -121,7 +118,8 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         }
     }
 
-    onFocus(event: any) {
+    override onFocus(event: any) {
+        super.onFocus(event);
         this.onTouched();
 
         if (this.isActive) {
@@ -129,7 +127,9 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         }
     }
 
-    onBlur() {
+    override onBlur() {
+        super.onBlur();
+
         // if the fromControl uses { updateOn: 'blur' } or { updateOn: 'submit' }
         // we emit the element value as this.control.value might not be updated yet
         const value = this.control.updateOn !== 'change' ? this.htmlInputRef?.nativeElement?.value : this.control.value;
@@ -159,6 +159,15 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         }
     }
 
+    override focusInput() {
+        if (this.hasFocus && !!this.htmlInputRef && this.isActive) {
+            this.htmlInputRef.nativeElement.focus();
+            if (!isVisibleInViewport(this.htmlInputRef.nativeElement)) {
+                this.htmlInputRef.nativeElement.scrollIntoView();
+            }
+        }
+    }
+
     private _updateAutoComplete() {
         if (!this._noAutoComplete) {
             this.textFieldUtility.handleBrowserAutoFill(
@@ -183,15 +192,6 @@ export class NativeTextFieldDirective extends PaFormControlDirective implements 
         } else if (!this.help && this.control.errors === null) {
             this.describedById = undefined;
             markForCheck(this.cdr);
-        }
-    }
-
-    private _focusInput() {
-        if (this._hasFocus && !!this.htmlInputRef && this.isActive) {
-            this.htmlInputRef.nativeElement.focus();
-            if (!isVisibleInViewport(this.htmlInputRef.nativeElement)) {
-                this.htmlInputRef.nativeElement.scrollIntoView();
-            }
         }
     }
 }
