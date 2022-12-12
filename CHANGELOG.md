@@ -1,3 +1,8 @@
+# 2.58.1 (2022-12-12)
+
+### Bug fix
+- **Select**: Fix select spacing to be same height as other fields [mpellerin42]
+
 # 2.58.0 (2022-12-08)
 
 ### Breaking changes

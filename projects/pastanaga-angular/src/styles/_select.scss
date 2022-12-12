@@ -10,12 +10,12 @@
         transition: all 0s ease;
         &.active {
             opacity: 1;
-            transition: all 1s ease;
+            transition: all $transition-response;
         }
     }
 }
 .select-input {
-    height: rhythm(6);
+    height: calc(#{rhythm(6)} - #{rhythm(0.25)});
 }
 
 .pa-field.pa-select {
