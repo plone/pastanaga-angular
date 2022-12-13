@@ -1,3 +1,15 @@
+# 2.58.2 (2022-12-13)
+
+### Bug fix
+- **Text area**: [mpellerin42]
+  - Prevent repetition of resize icon when text area in error
+  - Prevent top border to disappear when pressing the resize icon on chrome
+- **Select**: Prevent top border to disappear when mouse is down while clicking on the dropdown [mpellerin42]
+- **Text fields**: Make sure text field height is always the same for one line fields [mpellerin42]
+
+### Improvements
+- Add error example and fix a typo on textarea documentation page
+
 # 2.58.1 (2022-12-12)
 
 ### Bug fix

@@ -3,13 +3,13 @@
     <div class="pa-field-container"
          [class.no-internal-label]="noLabel"
          [class.pa-dim]="dim"
-         [class.pa-focus]="isOpened"
+         [class.pa-focus]="isOpened || mouseDown"
          [class.pa-content]="hasContent"
          [class.pa-readonly]="readonly"
          [class.pa-disabled]="control.disabled"
          [class.pa-field-error]="control.dirty && control.invalid">
         <div #selectInput
-             class="select-input pa-field-control"
+             class="pa-field-control"
              tabindex="0"
              cdkMonitorElementFocus
              sameWidth
@@ -24,6 +24,8 @@
              [paPopup]="optionsDropdown"
              [popupVerticalOffset]="0"
              [popupDisabled]="control.disabled || readonly"
+             (mousedown)="onMouseDown()"
+             (mouseup)="onMouseUp()"
              (cdkFocusChange)="onControlFocused($event)">
             <span class="pa-select-value"
                   [class.placeholder]="!hasValue"

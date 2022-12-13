@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextareaPageComponent {
+    model = '';
     selectedTab = 'standalone';
 
     htmlExample = `<form #demoForm="ngForm">

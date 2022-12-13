@@ -65,6 +65,8 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
         return !!this.control.value;
     }
 
+    mouseDown = false;
+
     dropDownModels: OptionType[] = [];
     isOpened = false;
     override fieldType = 'select';
@@ -273,5 +275,13 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
         } else if (!option.selected && option.value === this.control.value) {
             option.selected = true;
         }
+    }
+
+    onMouseDown() {
+        this.mouseDown = true;
+    }
+
+    onMouseUp() {
+        this.mouseDown = false;
     }
 }
