@@ -22,6 +22,8 @@
     .pa-field-container {
         border: 1px solid $border-color-field-regular;
         border-radius: $border-radius-field;
+        display: flex;
+
         &::after,
         &::before {
             content: '';
@@ -179,15 +181,16 @@
     }
 
     .pa-field-control {
-        font-size: $font-size-field-control;
-        line-height: $line-height-field-control;
         background: $color-background-field-regular;
-        color: $color-text-field-control-regular;
-        caret-color: $color-caret-field-control-active;
         border: none;
-        padding: $padding-field-control-top $padding-field-control-left;
-        outline: none;
+        caret-color: $color-caret-field-control-active;
+        color: $color-text-field-control-regular;
+        font-size: $font-size-field-control;
+        height: calc(#{rhythm(6)} - #{rhythm(0.25)});
+        line-height: $line-height-field-control;
         margin: $border-width-active - $border-width-regular;
+        outline: none;
+        padding: $padding-field-control-top $padding-field-control-left;
         width: calc(100% - #{$border-width-regular});
 
         -webkit-appearance: none;

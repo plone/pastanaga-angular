@@ -26,6 +26,7 @@
                   (blur)="onBlur()"
                   (keyup)="onKeyUp($event)"
                   (focus)="onFocus($event)"
+                  (mousedown)="hasFocus = true"
         ></textarea>
         <label class="pa-field-label" [for]="id" aria-hidden="true">
             <ng-content></ng-content>
