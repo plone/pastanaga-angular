@@ -1,7 +1,7 @@
-@import "palette.tokens";
-@import "spacing.tokens";
-@import "shadows.tokens";
-@import "typography.tokens";
+@import 'palette.tokens';
+@import 'spacing.tokens';
+@import 'shadows.tokens';
+@import 'typography.tokens';
 
 //=====================================
 // COLORS
@@ -49,8 +49,8 @@ $color-text-button-destructive-basic-active: $color-secondary-stronger !default;
 // disabled
 $color-text-button-solid-disabled: $color-neutral-light !default;
 $color-text-button-basic-disabled: $color-neutral-light !default;
-$color-text-button-inverted-solid-disabled:        $color-neutral-inverted-lighter !default;
-$color-text-button-inverted-basic-disabled:        $color-neutral-inverted-lighter !default;
+$color-text-button-inverted-solid-disabled: $color-neutral-inverted-lighter !default;
+$color-text-button-inverted-basic-disabled: $color-neutral-inverted-lighter !default;
 
 //
 // background
@@ -60,7 +60,7 @@ $color-background-button-primary-solid: $color-primary-regular !default;
 $color-background-button-primary-solid-hover: $color-primary-regular !default;
 $color-background-button-primary-solid-active: $color-primary-strong !default;
 
-$color-background-button-primary-basic:           transparent !default;
+$color-background-button-primary-basic: transparent !default;
 $color-background-button-primary-basic-hover: $color-primary-lightest !default;
 $color-background-button-primary-basic-active: $color-primary-lighter !default;
 
@@ -69,7 +69,7 @@ $color-background-button-secondary-solid: $color-neutral-lighter !default;
 $color-background-button-secondary-solid-hover: $color-neutral-light !default;
 $color-background-button-secondary-solid-active: $color-neutral-regular !default;
 
-$color-background-button-secondary-basic:         transparent !default;
+$color-background-button-secondary-basic: transparent !default;
 $color-background-button-secondary-basic-hover: $color-neutral-lighter !default;
 $color-background-button-secondary-basic-active: $color-neutral-light !default;
 
@@ -78,92 +78,91 @@ $color-background-button-inverted-solid: $color-neutral-lightest !default;
 $color-background-button-inverted-solid-hover: $color-neutral-lightest !default;
 $color-background-button-inverted-solid-active: $color-neutral-lighter !default;
 
-$color-background-button-inverted-basic:         transparent !default;
-$color-background-button-inverted-basic-hover:   $color-neutral-inverted-light !default;
-$color-background-button-inverted-basic-active:  $color-neutral-inverted-lighter !default;
+$color-background-button-inverted-basic: transparent !default;
+$color-background-button-inverted-basic-hover: $color-neutral-inverted-light !default;
+$color-background-button-inverted-basic-active: $color-neutral-inverted-lighter !default;
 
 // destructive
 $color-background-button-destructive-solid: $color-secondary-strong !default;
 $color-background-button-destructive-solid-hover: $color-secondary-strong !default;
 $color-background-button-destructive-solid-active: $color-secondary-stronger !default;
 
-$color-background-button-destructive-basic:          transparent !default;
+$color-background-button-destructive-basic: transparent !default;
 $color-background-button-destructive-basic-hover: $color-secondary-lightest !default;
 $color-background-button-destructive-basic-active: $color-secondary-lighter !default;
 
 // disabled
 $color-background-button-solid-disabled: $color-neutral-lightest !default;
-$color-background-button-basic-disabled:            transparent !default;
-$color-background-button-inverted-solid-disabled:   $color-neutral-inverted-light !default;
+$color-background-button-basic-disabled: transparent !default;
+$color-background-button-inverted-solid-disabled: $color-neutral-inverted-light !default;
 
 //=====================================
 // BORDERS
 //=====================================
 
 // primary
-$border-button-primary-solid:          none !default;
-$border-button-primary-solid-hover:    none !default;
-$border-button-primary-solid-active:   none !default;
+$border-button-primary-solid: none !default;
+$border-button-primary-solid-hover: none !default;
+$border-button-primary-solid-active: none !default;
 
-$border-button-primary-basic:          none !default;
-$border-button-primary-basic-hover:    none !default;
-$border-button-primary-basic-active:   none !default;
+$border-button-primary-basic: none !default;
+$border-button-primary-basic-hover: none !default;
+$border-button-primary-basic-active: none !default;
 
 // secondary
-$border-button-secondary-solid:          none !default;
-$border-button-secondary-solid-hover:    none !default;
-$border-button-secondary-solid-active:   none !default;
+$border-button-secondary-solid: none !default;
+$border-button-secondary-solid-hover: none !default;
+$border-button-secondary-solid-active: none !default;
 
-$border-button-secondary-basic:          none !default;
-$border-button-secondary-basic-hover:    none !default;
-$border-button-secondary-basic-active:   none !default;
+$border-button-secondary-basic: none !default;
+$border-button-secondary-basic-hover: none !default;
+$border-button-secondary-basic-active: none !default;
 
 // inverted
-$border-button-inverted-solid:          none !default;
-$border-button-inverted-solid-hover:    none !default;
-$border-button-inverted-solid-active:   none !default;
+$border-button-inverted-solid: none !default;
+$border-button-inverted-solid-hover: none !default;
+$border-button-inverted-solid-active: none !default;
 
-$border-button-inverted-basic:          none !default;
-$border-button-inverted-basic-hover:    none !default;
-$border-button-inverted-basic-active:   none !default;
+$border-button-inverted-basic: none !default;
+$border-button-inverted-basic-hover: none !default;
+$border-button-inverted-basic-active: none !default;
 
 // destructive
-$border-button-destructive-solid:          none !default;
-$border-button-destructive-solid-hover:    none !default;
-$border-button-destructive-solid-active:   none !default;
+$border-button-destructive-solid: none !default;
+$border-button-destructive-solid-hover: none !default;
+$border-button-destructive-solid-active: none !default;
 
-$border-button-destructive-basic:          none !default;
-$border-button-destructive-basic-hover:    none !default;
-$border-button-destructive-basic-active:   none !default;
+$border-button-destructive-basic: none !default;
+$border-button-destructive-basic-hover: none !default;
+$border-button-destructive-basic-active: none !default;
 
 // disabled
-$border-button-solid-disabled:     none !default;
-$border-button-basic-disabled:        none !default;
+$border-button-solid-disabled: none !default;
+$border-button-basic-disabled: none !default;
 
 // radius
 $border-radius-button: 100px !default;
 $border-radius-button-icon: 50% !default;
 
-
 //=====================================
 // SPACING and SHADOWS
 //=====================================
 
-$padding-button-small:  rhythm(.5) rhythm(2) !default;
+$padding-button-small: rhythm(0.5) rhythm(2) !default;
 $padding-button-medium: rhythm(1) rhythm(2) !default;
-$padding-button-large:  rhythm(1.5) rhythm(3) !default;
+$padding-button-large: rhythm(1.5) rhythm(3) !default;
 
-$padding-button-icon-text-small:  rhythm(.5) rhythm(2) rhythm(.5) rhythm(1.5) !default;
+$padding-button-icon-text-small: rhythm(0.5) rhythm(2) rhythm(0.5) rhythm(1.5) !default;
 $padding-button-icon-text-medium: rhythm(1) rhythm(2) rhythm(1) rhythm(1.5) !default;
-$padding-button-icon-text-large:  rhythm(1.5) rhythm(3) rhythm(1.5) rhythm(2)!default;
+$padding-button-icon-text-large: rhythm(1.5) rhythm(3) rhythm(1.5) rhythm(2) !default;
 
-$padding-button-icon-small:     rhythm(.5) !default;
-$padding-button-icon-medium:    rhythm(1.5) !default;
-$padding-button-icon-large:     rhythm(2) !default;
+$padding-button-icon-small: rhythm(0.5) !default;
+$padding-button-icon-medium: rhythm(1.5) !default;
+$padding-button-icon-large: rhythm(2) !default;
 
-$dimension-button-small:    rhythm(4) !default;
-$dimension-button-medium:   rhythm(6) !default;
-$dimension-button-large:    rhythm(7) !default;
+$dimension-button-small: rhythm(4) !default;
+$dimension-button-medium: rhythm(6) !default;
+$dimension-button-large: rhythm(7) !default;
 
 $shadow-button-solid-hover: $shadow-small !default;
 $shadow-button-basic-hover: $shadow-small !default;
@@ -171,8 +170,10 @@ $shadow-button-basic-hover: $shadow-small !default;
 //=====================================
 // LABELS
 //=====================================
+$font-size-button-small: font-size(s) !default;
+$font-size-button-medium: font-size(m) !default;
+$font-size-button-large: font-size(m) !default;
 $font-weight-button-label: $font-weight-semi-bold !default;
-
 
 @mixin primary-solid() {
     color: $color-text-button-primary-solid;
@@ -342,13 +343,13 @@ $font-weight-button-label: $font-weight-semi-bold !default;
     }
 }
 
-@mixin disabled-solid () {
+@mixin disabled-solid() {
     color: $color-text-button-solid-disabled;
     background: $color-background-button-solid-disabled;
     border: $border-button-solid-disabled;
 }
 
-@mixin disabled-basic () {
+@mixin disabled-basic() {
     color: $color-text-button-basic-disabled;
     background: $color-background-button-basic-disabled;
     border: $border-button-basic-disabled;

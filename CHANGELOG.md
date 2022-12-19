@@ -1,3 +1,11 @@
+# 2.58.3 (2022-12-19)
+
+### Improvements
+- **Typography**: Remove useless class in typography documentation
+- **Theme**: [mpellerin42]
+  - Add tokens for side nav item font-size and item height
+  - Add token for button font-size
+
 # 2.58.2 (2022-12-13)
 
 ### Bug fix

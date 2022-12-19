@@ -4,12 +4,12 @@
     position: relative;
     display: flex;
     align-items: center;
-    height: rhythm(6);
+    height: $height-side-nav-item;
     padding-left: rhythm(4);
 
     span {
-        font-size: font-size(m);
-        line-height: line-height(l);
+        font-size: $font-size-side-nav-item;
+        line-height: $line-height-side-nav-item;
         color: $color-neutral-regular;
     }
 
@@ -22,7 +22,6 @@
                 color: $color-dark-stronger;
             }
         }
-
     }
 
     &.active {
@@ -52,7 +51,6 @@
         }
     }
 
-
     &.inverted {
         h2 {
             color: $color-light-stronger;
@@ -73,14 +71,14 @@
         }
         &:active {
             span {
-                 color: $color-neutral-light;
+                color: $color-neutral-light;
             }
             pa-icon ::ng-deep svg {
                 fill: $color-neutral-light;
             }
         }
         &.active {
-            border-left: rhythm(.25) solid $color-primary-light;
+            border-left: rhythm(0.25) solid $color-primary-light;
             span {
                 color: $color-light-stronger;
             }
