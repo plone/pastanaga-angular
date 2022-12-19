@@ -1,0 +1,6 @@
+@import 'spacing.tokens';
+@import 'typography.tokens';
+
+$font-size-side-nav-item: font-size(m) !default;
+$line-height-side-nav-item: line-height(l) !default;
+$height-side-nav-item: rhythm(6) !default;

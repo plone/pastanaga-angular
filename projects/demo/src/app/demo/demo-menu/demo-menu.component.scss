@@ -38,6 +38,10 @@ pa-side-nav-header {
     }
 }
 
+.side-nav-section {
+    margin-bottom: 0;
+}
+
 @media (min-width: $size-viewport-large-min) {
     pa-side-nav {
         pa-side-nav-header img {

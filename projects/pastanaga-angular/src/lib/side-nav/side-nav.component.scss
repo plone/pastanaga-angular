@@ -42,7 +42,7 @@
     z-index: $z-index-popup;
 
     &.opened {
-        opacity: .5;
+        opacity: 0.5;
     }
 }
 
@@ -68,4 +68,3 @@
         }
     }
 }
-

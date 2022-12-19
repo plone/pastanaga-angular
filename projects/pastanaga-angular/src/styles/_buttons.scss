@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .pa-button {
     background: transparent;
@@ -21,7 +21,7 @@
 
     .pa-button-wrapper {
         display: inline-flex;
-        align-items: center
+        align-items: center;
     }
     .pa-button-label {
         font-weight: $font-weight-button-label;
@@ -43,7 +43,7 @@
     }
 
     &.pa-small {
-        font-size: font-size(s);
+        font-size: $font-size-button-small;
         line-height: rhythm(3);
         padding: $padding-button-small;
         &.pa-button-icon {
@@ -55,7 +55,7 @@
     }
 
     &.pa-medium {
-        font-size: font-size(m);
+        font-size: $font-size-button-medium;
         line-height: rhythm(4);
         padding: $padding-button-medium;
 
@@ -68,7 +68,7 @@
     }
 
     &.pa-large {
-        font-size: font-size(m);
+        font-size: $font-size-button-large;
         line-height: rhythm(4);
         padding: $padding-button-large;
 
@@ -115,7 +115,6 @@
             &.pa-basic {
                 @include inverted-basic();
             }
-
         }
 
         &.pa-destructive {
@@ -135,7 +134,7 @@
                 }
 
                 &.pa-basic {
-                   @include hover-box-shadow-basic();
+                    @include hover-box-shadow-basic();
                 }
             }
         }
@@ -155,7 +154,7 @@
                 @include disabled-inverted-solid();
             }
             &.pa-basic {
-               @include disabled-inverted-basic();
+                @include disabled-inverted-basic();
             }
         }
     }
