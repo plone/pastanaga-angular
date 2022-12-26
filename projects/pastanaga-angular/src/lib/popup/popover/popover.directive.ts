@@ -99,7 +99,7 @@ export class PopoverDirective implements OnDestroy {
         const translateX = `calc(-50% + ${rectOrigin.width}px/2)`;
         const translateY = '8px';
         return {
-            position: 'absolute',
+            position: 'fixed',
             top: `${top}px`,
             left: `${rectOrigin.left}px`,
             transform: `translateX(${translateX}) translateY(${translateY})`,
