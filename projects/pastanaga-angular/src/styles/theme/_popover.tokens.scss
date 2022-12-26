@@ -1,0 +1,7 @@
+@import 'palette.tokens';
+@import 'spacing.tokens';
+
+$color-background-popover: $color-neutral-lightest !default;
+$color-text-popover: $color-dark-stronger !default;
+
+$size-arrow-popover: rhythm(1.5) !default;

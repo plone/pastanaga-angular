@@ -1,11 +1,11 @@
 import {
-    Component,
-    OnInit,
     ChangeDetectionStrategy,
-    Renderer2,
-    ElementRef,
     ChangeDetectorRef,
+    Component,
+    ElementRef,
     Inject,
+    OnInit,
+    Renderer2,
 } from '@angular/core';
 import { WINDOW } from '@ng-web-apis/common';
 import { PopupComponent } from '../popup.component';
@@ -17,7 +17,6 @@ export const spacer = 8;
 @Component({
     selector: 'pa-popover',
     templateUrl: './popover.component.html',
-    styleUrls: ['./popover.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopoverComponent extends PopupComponent implements OnInit {
