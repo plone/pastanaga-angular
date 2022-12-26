@@ -14,21 +14,18 @@ export class ExtendedPopupDirective extends PopupDirective {}
 
 @Directive({
     selector: '[paPopover]',
+    exportAs: 'paPopoverRef',
 })
 export class PopoverDirective implements OnDestroy {
     @Input() set paPopover(popover: PopoverComponent | undefined) {
         if (popover) {
-            this.hasFlexParent =
-                this.window.getComputedStyle(this.element.nativeElement.parentElement).display === 'flex';
             popover.popoverHolder = this.element.nativeElement;
-            popover.hasFlexParent = this.hasFlexParent;
         }
         this.popupDirective.paPopup = popover;
     }
 
     private _terminator = new Subject<void>();
 
-    hasFlexParent = false;
     isVisibleOnHover: Observable<boolean> = this.breakpoint.currentMode.pipe(
         map((mode) => mode === 'desktop'),
         takeUntil(this._terminator),
@@ -47,6 +44,16 @@ export class PopoverDirective implements OnDestroy {
     ngOnDestroy() {
         this._terminator.next();
         this._terminator.complete();
+    }
+
+    toggle() {
+        if (!this.popupDirective.popupDisabled) {
+            if (!this.popupDirective.paPopup?.isDisplayed) {
+                this.popupDirective.paPopup?.show(this.getPosition());
+            } else {
+                this.popupDirective.paPopup.close();
+            }
+        }
     }
 
     @HostListener('click', ['$event'])
@@ -88,14 +95,13 @@ export class PopoverDirective implements OnDestroy {
 
     private getPosition(): PositionStyle {
         const rectOrigin = this.element.nativeElement.getBoundingClientRect();
-        const top = this.hasFlexParent ? rectOrigin.top : rectOrigin.bottom;
-        const translateX = this.hasFlexParent
-            ? `calc(-50% - ${rectOrigin.width}px/2)`
-            : `calc(-50% + ${rectOrigin.width}px/2)`;
-        const translateY = this.hasFlexParent && this.mode === 'tablet' ? `calc(-50% + 16px)` : '8px';
+        const top = rectOrigin.bottom;
+        const translateX = `calc(-50% + ${rectOrigin.width}px/2)`;
+        const translateY = '8px';
         return {
-            position: 'fixed',
+            position: 'absolute',
             top: `${top}px`,
+            left: `${rectOrigin.left}px`,
             transform: `translateX(${translateX}) translateY(${translateY})`,
         };
     }

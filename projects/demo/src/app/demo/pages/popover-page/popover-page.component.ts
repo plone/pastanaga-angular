@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { PopoverDirective } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
     templateUrl: './popover-page.component.html',
@@ -15,4 +16,14 @@ export class PopoverPageComponent {
         To: first@more.com, second@more.com, third@more.com
     </pa-popover>
 </div>`;
+
+    @ViewChild('popoverDirective') popoverDirective?: PopoverDirective;
+
+    openProgrammatically(event: MouseEvent) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (this.popoverDirective) {
+            this.popoverDirective.toggle();
+        }
+    }
 }

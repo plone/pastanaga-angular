@@ -1,3 +1,10 @@
+# 2.58.4 (2022-12-26)
+
+### Improvements
+- **Popover**: [mpellerin42]
+  - Move popover style to global + tokenize its colors
+  - Fix popover position when parent is using flex
+
 # 2.58.3 (2022-12-19)
 
 ### Improvements

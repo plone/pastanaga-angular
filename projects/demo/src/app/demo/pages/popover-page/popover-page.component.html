@@ -18,6 +18,18 @@
                 To: first@more.com, second@more.com, third@more.com
             </pa-popover>
         </div>
+
+        <div class="flex-container">
+            <pa-button (click)="openProgrammatically($event)">Display popover programmatically</pa-button>
+            <pa-button icon="info"
+                       #popoverDirective="paPopoverRef"
+                       [paPopover]="refreshHelp">Refresh</pa-button>
+            <pa-button icon="trash"
+                       [paPopover]="deleteHelp">Delete</pa-button>
+
+            <pa-popover #refreshHelp>Refresh your memory</pa-popover>
+            <pa-popover #deleteHelp>Maybe not?…</pa-popover>
+        </div>
     </pa-demo-examples>
 
     <pa-demo-usage>

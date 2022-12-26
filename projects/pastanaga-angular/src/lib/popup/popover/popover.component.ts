@@ -22,8 +22,6 @@ export const spacer = 8;
 export class PopoverComponent extends PopupComponent implements OnInit {
     popoverHolder?: HTMLElement;
 
-    hasFlexParent = false;
-
     constructor(
         public override popupService: PopupService,
         public override renderer: Renderer2,
@@ -82,9 +80,7 @@ export class PopoverComponent extends PopupComponent implements OnInit {
     }
 
     private moveToLeft(popup: any, holderRect: DOMRect) {
-        const translateX = this.hasFlexParent
-            ? `calc(-100% - ${holderRect.width + spacer}px)`
-            : `calc(-100% - ${spacer}px)`;
+        const translateX = `calc(-100% - ${spacer}px)`;
         const translateY = `calc(-50% - ${holderRect.height}px/2)`;
         this.style = {
             ...this.style,
@@ -94,7 +90,7 @@ export class PopoverComponent extends PopupComponent implements OnInit {
     }
 
     private moveToRight(popup: any, holderRect: DOMRect) {
-        const translateX = this.hasFlexParent ? `${spacer}px` : `${holderRect.width + spacer}px`;
+        const translateX = `${holderRect.width + spacer}px`;
         const translateY = `calc(-50% - ${holderRect.height}px/2)`;
         this.style = {
             ...this.style,
