@@ -9,8 +9,7 @@ import { PopupComponent } from '../popup.component';
 describe('PopoverDirective', () => {
     let directive: PopoverDirective;
     let popupDirective: ExtendedPopupDirective;
-    let blockParentRef: ElementRef;
-    let flexParentRef: ElementRef;
+    let parentRef: ElementRef;
     const window: Window = {
         getComputedStyle: jest.fn((element) => element.style),
     } as any as Window;
@@ -26,16 +25,10 @@ describe('PopoverDirective', () => {
 
     beforeEach(() => {
         popupDirective = {} as ExtendedPopupDirective;
-        blockParentRef = {
+        parentRef = {
             nativeElement: {
                 getBoundingClientRect: jest.fn(),
                 parentElement: { style: { display: 'block' } },
-            },
-        };
-        flexParentRef = {
-            nativeElement: {
-                getBoundingClientRect: jest.fn(),
-                parentElement: { style: { display: 'flex' } },
             },
         };
         popoverComponent = {} as PopoverComponent;
@@ -43,13 +36,13 @@ describe('PopoverDirective', () => {
 
     describe('paPopover setter', () => {
         it('should set directive holder element in the component', () => {
-            directive = createDirective(blockParentRef);
+            directive = createDirective(parentRef);
             directive.paPopover = popoverComponent;
-            expect(popoverComponent.popoverHolder).toBe(blockParentRef.nativeElement);
+            expect(popoverComponent.popoverHolder).toBe(parentRef.nativeElement);
         });
 
         it('should set the component in paPopup property of the popup directive', () => {
-            directive = createDirective(blockParentRef);
+            directive = createDirective(parentRef);
             directive.paPopover = popoverComponent;
             expect(directive.popupDirective.paPopup).toBe(popoverComponent);
         });
@@ -57,24 +50,24 @@ describe('PopoverDirective', () => {
 
     describe('isVisibleOnHover', () => {
         it('should be false on mobile', waitForAsync(() => {
-            directive = createDirective(blockParentRef, 'mobile');
+            directive = createDirective(parentRef, 'mobile');
             directive.isVisibleOnHover.subscribe((hoverEnabled) => expect(hoverEnabled).toBe(false));
         }));
 
         it('should be false on tablet', waitForAsync(() => {
-            directive = createDirective(blockParentRef, 'tablet');
+            directive = createDirective(parentRef, 'tablet');
             directive.isVisibleOnHover.subscribe((hoverEnabled) => expect(hoverEnabled).toBe(false));
         }));
 
         it('should be true on desktop', waitForAsync(() => {
-            directive = createDirective(blockParentRef, 'desktop');
+            directive = createDirective(parentRef, 'desktop');
             directive.isVisibleOnHover.subscribe((hoverEnabled) => expect(hoverEnabled).toBe(true));
         }));
     });
 
     describe('onClick', () => {
         it('should set popupPosition on popupDirective', () => {
-            directive = createDirective(blockParentRef);
+            directive = createDirective(parentRef);
             const position = { position: 'fixed' };
             // @ts-ignore access private member
             directive.getPosition = jest.fn(() => position);
@@ -93,7 +86,7 @@ describe('PopoverDirective', () => {
         });
 
         it('should do nothing on mobile', () => {
-            directive = createDirective(blockParentRef, 'mobile');
+            directive = createDirective(parentRef, 'mobile');
             directive.popupDirective.paPopup = mockPopup;
             directive.onHover();
             expect(mockPopup.show).not.toHaveBeenCalled();
@@ -101,7 +94,7 @@ describe('PopoverDirective', () => {
 
         describe('on desktop', () => {
             beforeEach(() => {
-                directive = createDirective(blockParentRef, 'desktop');
+                directive = createDirective(parentRef, 'desktop');
                 directive.popupDirective.paPopup = mockPopup;
                 // @ts-ignore access private member
                 directive.getPosition = jest.fn(() => position);
@@ -134,7 +127,7 @@ describe('PopoverDirective', () => {
         });
 
         it('should do nothing on mobile', () => {
-            directive = createDirective(blockParentRef, 'mobile');
+            directive = createDirective(parentRef, 'mobile');
             directive.popupDirective.paPopup = mockPopup;
             directive.onLeave();
             expect(mockPopup.close).not.toHaveBeenCalled();
@@ -142,7 +135,7 @@ describe('PopoverDirective', () => {
 
         describe('on desktop', () => {
             beforeEach(() => {
-                directive = createDirective(blockParentRef, 'desktop');
+                directive = createDirective(parentRef, 'desktop');
                 directive.popupDirective.paPopup = mockPopup;
             });
 
@@ -175,60 +168,34 @@ describe('PopoverDirective', () => {
             bottom: 200,
         };
 
-        describe('on flex parent', () => {
-            beforeEach(() => {
-                flexParentRef.nativeElement.getBoundingClientRect.mockReturnValue(parentRect);
-            });
-
-            it('should position the top of the popover at the bottom of the parent element', () => {
-                directive = createDirective(flexParentRef);
-                // @ts-ignore access private member
-                const position = directive.getPosition();
-                expect(position.position).toBe('fixed');
-                expect(position.top).toBe(`${parentRect.bottom}px`);
-            });
-
-            it('should position the left of the popover on the left of the parent element', () => {
-                directive = createDirective(flexParentRef);
-                // @ts-ignore access private member
-                const position = directive.getPosition();
-                expect(position.position).toBe('fixed');
-                expect(position.left).toBe(`${parentRect.left}px`);
-            });
-
-            it('on desktop, should translate Y of 8px and translate X -50% plus the half of the parent width', () => {
-                directive = createDirective(flexParentRef);
-                // @ts-ignore access private member
-                const position = directive.getPosition();
-                expect(position.transform).toBe(`translateX(calc(-50% + ${parentRect.width}px/2)) translateY(8px)`);
-            });
+        beforeEach(() => {
+            parentRef.nativeElement.getBoundingClientRect.mockReturnValue(parentRect);
+            directive = createDirective(parentRef);
         });
 
-        describe('on block parent', () => {
-            beforeEach(() => {
-                blockParentRef.nativeElement.getBoundingClientRect.mockReturnValue(parentRect);
-                directive = createDirective(blockParentRef);
-            });
+        it('should position the top of popover at the bottom of the parent element', () => {
+            // @ts-ignore access private member
+            const position = directive.getPosition();
+            expect(position.position).toBe('fixed');
+            expect(position.top).toBe(`${parentRect.bottom}px`);
+        });
 
-            it('should position the top of popover at the bottom of the parent element', () => {
-                // @ts-ignore access private member
-                const position = directive.getPosition();
-                expect(position.position).toBe('fixed');
-                expect(position.top).toBe(`${parentRect.bottom}px`);
-            });
+        it('should position the left of the popover on the left of the parent element', () => {
+            // @ts-ignore access private member
+            const position = directive.getPosition();
+            expect(position.left).toBe(`${parentRect.left}px`);
+            expect(position.position).toBe('fixed');
+        });
 
-            it('should position the left of the popover on the left of the parent element', () => {
-                // @ts-ignore access private member
-                const position = directive.getPosition();
-                expect(position.left).toBe(`${parentRect.left}px`);
-                expect(position.position).toBe('fixed');
-            });
+        it('should translate Y by the offset (8px by default) and translate X of -50% plus the half of the parent width', () => {
+            // @ts-ignore access private member
+            let position = directive.getPosition();
+            expect(position.transform).toBe(`translateX(calc(-50% + ${parentRect.width}px/2)) translateY(8px)`);
 
-            it('should translate Y of 8px and translate X of -50% plus the half of the parent width', () => {
-                // @ts-ignore access private member
-                const position = directive.getPosition();
-                expect(position.transform).toBe(`translateX(calc(-50% + ${parentRect.width}px/2)) translateY(8px)`);
-            });
+            directive.paPopoverOffset = '4px';
+            // @ts-ignore access private member
+            position = directive.getPosition();
+            expect(position.transform).toBe(`translateX(calc(-50% + ${parentRect.width}px/2)) translateY(4px)`);
         });
     });
 });

@@ -17,13 +17,25 @@ export class ExtendedPopupDirective extends PopupDirective {}
     exportAs: 'paPopoverRef',
 })
 export class PopoverDirective implements OnDestroy {
-    @Input() set paPopover(popover: PopoverComponent | undefined) {
+    @Input()
+    set paPopover(popover: PopoverComponent | undefined) {
         if (popover) {
             popover.popoverHolder = this.element.nativeElement;
         }
         this.popupDirective.paPopup = popover;
     }
 
+    @Input()
+    set paPopoverOffset(value: string) {
+        if (value) {
+            this._offset = value;
+        }
+    }
+    get offset() {
+        return this._offset;
+    }
+
+    private _offset = '8px';
     private _terminator = new Subject<void>();
 
     isVisibleOnHover: Observable<boolean> = this.breakpoint.currentMode.pipe(
@@ -97,7 +109,7 @@ export class PopoverDirective implements OnDestroy {
         const rectOrigin = this.element.nativeElement.getBoundingClientRect();
         const top = rectOrigin.bottom;
         const translateX = `calc(-50% + ${rectOrigin.width}px/2)`;
-        const translateY = '8px';
+        const translateY = this._offset;
         return {
             position: 'fixed',
             top: `${top}px`,

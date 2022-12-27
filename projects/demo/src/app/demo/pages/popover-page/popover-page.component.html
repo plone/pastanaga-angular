@@ -1,7 +1,7 @@
 <pa-demo-page>
     <pa-demo-title>Popover</pa-demo-title>
     <pa-demo-description>
-        <p>Popover component is specific kind of popup which has an arrow pointing to the element carrying <code>oPopover</code> directive.
+        <p>Popover component is specific kind of popup which has an arrow pointing to the element carrying <code>paPopover</code> directive.
             By default, it is positioned centered below the parent. </p>
         <p>The popover will automatically reposition itself to the right or the left in case there is not enough space on screen to be centered below.</p>
         <p>On desktop, the popover is displayed when hovering the parent. On mobile and tablet, it is displayed by clicking on the parent.</p>
@@ -23,21 +23,33 @@
             <pa-button (click)="openProgrammatically($event)">Display popover programmatically</pa-button>
             <pa-button icon="info"
                        #popoverDirective="paPopoverRef"
-                       [paPopover]="refreshHelp">Refresh</pa-button>
+                       [paPopover]="refreshHelp"
+                       paPopoverOffset="4px">Refresh</pa-button>
             <pa-button icon="trash"
-                       [paPopover]="deleteHelp">Delete</pa-button>
+                       [paPopover]="deleteHelp"
+                       paPopoverOffset="0px">Delete</pa-button>
 
-            <pa-popover #refreshHelp>Refresh your memory</pa-popover>
-            <pa-popover #deleteHelp>Maybe not?…</pa-popover>
+            <pa-popover #refreshHelp>This popover has a 4px offset</pa-popover>
+            <pa-popover #deleteHelp>This popover has a 0px offset</pa-popover>
         </div>
     </pa-demo-examples>
 
     <pa-demo-usage>
-        <p>The popover component doesn't have any input on its own but it inherits the ones from <code>PopupComponent</code>.
+        <p>The popover component inherit most of its inputs and outputs from <code>PopupComponent</code>.
             See <a routerLink="/popup">popup documentation page</a> for more details.</p>
+
+        <h3>Inputs</h3>
+        <dl>
+            <dt>offset</dt>
+            <dd>Vertical offset between the parent and its popover <small>(default: 8px)</small></dd>
+        </dl>
+
     </pa-demo-usage>
 
     <pa-demo-code>
         <pre><code>{{codeSample}}</code></pre>
+
+        Defining an offset:
+        <pre><code>{{offsetSample}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

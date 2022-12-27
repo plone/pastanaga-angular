@@ -17,6 +17,12 @@ export class PopoverPageComponent {
     </pa-popover>
 </div>`;
 
+    offsetSample = `<pa-button icon="info"
+           #popoverDirective="paPopoverRef"
+           [paPopover]="refreshHelp"
+           paPopoverOffset="4px">Refresh</pa-button>
+<pa-popover #refreshHelp>This popover has a 4px offset</pa-popover>`;
+
     @ViewChild('popoverDirective') popoverDirective?: PopoverDirective;
 
     openProgrammatically(event: MouseEvent) {
