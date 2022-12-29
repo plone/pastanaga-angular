@@ -6,6 +6,7 @@
   - Fix popover position when parent is using flex
   - Add method to open popover programmatically
   - Add `paPopoverOffset` Input to define a specific vertical offset
+  - Replace popover `width` by `max-width` to prevent large popover when content is quite small
 
 # 2.58.3 (2022-12-19)
 
