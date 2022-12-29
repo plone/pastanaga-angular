@@ -1,7 +1,6 @@
-@import "../../../styles/variables";
+@import 'variables';
 
-$arrow-size: rhythm(1.5);
-.pa-popup {
+.pa-popup.pa-popover {
     box-shadow: none;
     filter: drop-shadow($drop-shadow-medium);
     opacity: 0;
@@ -12,8 +11,9 @@ $arrow-size: rhythm(1.5);
     }
 
     .pa-popup-wrapper {
-        background: $color-neutral-lightest;
-        width: rhythm(32);
+        background: $color-background-popover;
+        color: $color-text-popover;
+        max-width: rhythm(32);
     }
 
     &:before {
@@ -23,12 +23,12 @@ $arrow-size: rhythm(1.5);
     }
 
     &.arrow-top {
-        .pa-popup-wrapper{
-            margin-top: $arrow-size;
+        .pa-popup-wrapper {
+            margin-top: $size-arrow-popover;
         }
         &:before {
-            border-width: 0 $arrow-size $arrow-size $arrow-size;
-            border-color: transparent transparent $color-neutral-lightest transparent;
+            border-width: 0 $size-arrow-popover $size-arrow-popover $size-arrow-popover;
+            border-color: transparent transparent $color-background-popover transparent;
             left: 50%;
             top: 1px;
             transform: translateX(-50%);
@@ -36,11 +36,11 @@ $arrow-size: rhythm(1.5);
     }
 
     &.arrow-right {
-        .pa-popup-wrapper{
-            margin-right: $arrow-size;
+        .pa-popup-wrapper {
+            margin-right: $size-arrow-popover;
         }
         &:before {
-            border-width: $arrow-size 0 $arrow-size $arrow-size;
+            border-width: $size-arrow-popover 0 $size-arrow-popover $size-arrow-popover;
             border-color: transparent transparent transparent $color-neutral-lightest;
             right: 1px;
             top: 50%;
@@ -49,11 +49,11 @@ $arrow-size: rhythm(1.5);
     }
 
     &.arrow-left {
-        .pa-popup-wrapper{
-            margin-left: $arrow-size;
+        .pa-popup-wrapper {
+            margin-left: $size-arrow-popover;
         }
         &:before {
-            border-width: $arrow-size $arrow-size $arrow-size 0;
+            border-width: $size-arrow-popover $size-arrow-popover $size-arrow-popover 0;
             border-color: transparent $color-neutral-lightest transparent transparent;
             left: 1px;
             top: 50%;
