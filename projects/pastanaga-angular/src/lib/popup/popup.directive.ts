@@ -185,8 +185,17 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
     }
 
     private removeActiveStateFromParentButton() {
-        if (this.element.nativeElement.tagName.toLowerCase() === 'pa-button') {
+        if (this.element.nativeElement.tagName.toLowerCase() === 'pa-button' && !this.elementIsSetToActive()) {
             this.renderer.removeClass(this.element.nativeElement.children[0], 'pa-active');
         }
+    }
+
+    /**
+     * Check if element (like pa-button) was set to active programmatically.
+     * @private
+     */
+    private elementIsSetToActive() {
+        const ngActive = this.element.nativeElement.getAttribute('ng-reflect-active');
+        return ngActive === 'true' || ngActive === '';
     }
 }

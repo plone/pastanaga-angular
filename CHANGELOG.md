@@ -1,3 +1,8 @@
+# 2.58.5 (2023-01-02)
+
+### Bugfix
+- **Popover / Popup**: when a popover is set on a button which has an `active` state set programmatically, don't remove the active state when closing the popup [mpellerin42]
+
 # 2.58.4 (2022-12-26)
 
 ### Improvements
