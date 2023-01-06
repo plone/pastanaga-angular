@@ -1,3 +1,8 @@
+# 2.58.6 (2023-01-06)
+
+### Improvement
+- **Checkbox**: Add `noEllipsis` option [mpellerin42] 
+
 # 2.58.5 (2023-01-02)
 
 ### Bugfix

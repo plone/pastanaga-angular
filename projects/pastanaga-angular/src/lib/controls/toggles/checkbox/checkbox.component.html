@@ -12,7 +12,9 @@
                [attr.aria-checked]="isChecked"
                [attr.aria-describedby]="describedById"
         />
-        <label [for]="id" class="pa-toggle-label">
+        <label class="pa-toggle-label"
+               [for]="id"
+               [class.no-ellipsis]="noEllipsis">
             <ng-content></ng-content>
         </label>
     </div>
