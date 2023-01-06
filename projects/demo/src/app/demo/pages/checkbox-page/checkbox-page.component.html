@@ -9,6 +9,12 @@
     </pa-demo-description>
 
     <pa-demo-examples>
+        <p>By default, checkbox labels are displayed on one line, with an ellipsis if needed:</p>
+        <pa-checkbox>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque. Nulla pellentesque dignissim enim sit.</pa-checkbox>
+
+        <p><code>noEllipsis</code> option allows to display the full label and wrap it on several lines if needed:</p>
+        <pa-checkbox noEllipsis>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque. Nulla pellentesque dignissim enim sit.</pa-checkbox>
+
         <pa-tabs>
             <pa-tab (click)="selectedTab = 'standalone'" [active]="selectedTab === 'standalone'">Standalone</pa-tab>
             <pa-tab (click)="selectedTab = 'ngModel'" [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
@@ -92,16 +98,19 @@
     </pa-demo-configuration>
 
     <pa-demo-usage>
-        <h3>Inherited from <code>PaFormControlDirective</code></h3>
-        <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
-
         <h3>Specific to <code>CheckboxComponent</code></h3>
         <h4>Inputs</h4>
         <dl>
             <dt>errorMessages</dt>
             <dd>Provides default messages to display for the possible error keys when none is present in the errors object. If a message (string) is provided for a given key, it
                 will be displayed rather than the message provided in errorMessages.</dd>
+
+            <dt>noEllipsis</dt>
+            <dd>When true, display the full label and wrap it if needed. <small>(default: false)</small></dd>
         </dl>
+
+        <h3>Inherited from <code>PaFormControlDirective</code></h3>
+        <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
     </pa-demo-usage>
 
     <pa-demo-code>

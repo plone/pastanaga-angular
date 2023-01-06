@@ -86,9 +86,12 @@
         line-height: $line-height-checkbox-label;
         font-weight: $font-weight-label;
         margin-left: rhythm(1.5);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+
+        &:not(.no-ellipsis) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 
     &.pa-toggle.pa-field-error {
