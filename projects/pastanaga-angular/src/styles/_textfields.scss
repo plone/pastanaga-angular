@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .pa-field {
     $icon-width: rhythm(3);
@@ -39,7 +39,7 @@
         }
 
         &::after {
-            left: calc(var(--label-width) * #{$scale-text-field-label} + #{$padding-field-control-left}*2);
+            left: calc(var(--label-width) * #{$scale-text-field-label} + #{$padding-field-control-left}* 2);
             right: 1px;
         }
         &.no-internal-label::after {
@@ -53,7 +53,8 @@
         &:focus,
         &:active,
         &.pa-content,
-        &.pa-focus {
+        &.pa-focus,
+        &:has(.cdk-text-field-autofill-monitored) {
             border-top: 1px solid transparent;
         }
         &:focus,
@@ -62,6 +63,7 @@
             border-color: $border-color-field-active;
             border-top: 1px solid transparent;
         }
+        &:has(.cdk-text-field-autofill-monitored),
         &.pa-content {
             &::after,
             &::before {
@@ -159,7 +161,7 @@
             left: $padding-field-control-left;
             max-width: calc(100% - #{$padding-field-control-left * 2});
             position: absolute;
-            top: calc(#{$padding-field-control-top} + #{rhythm(.25)});
+            top: calc(#{$padding-field-control-top} + #{rhythm(0.25)});
             transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
             transform-origin: 0 0;
 
@@ -217,14 +219,16 @@
         }
 
         &.pa-field-control-filled,
+        &.cdk-text-field-autofilled,
         &:not(:disabled):not(:read-only):focus,
         &:not(:disabled):not(:read-only):active {
             & ~ .pa-field-label {
-                transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(-#{rhythm(.5)});
+                transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(-#{rhythm(0.5)});
                 padding: 0 rhythm(1);
 
                 &.pa-field-label-icon:not(.pa-icon-on-right) {
-                    transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(calc(-#{rhythm(.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
+                    transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)})
+                        translateX(calc(-#{rhythm(0.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
                 }
             }
         }
@@ -241,7 +245,7 @@ pa-form-field-hint {
 .pa-field-help {
     @include size(xs);
     color: $color-text-field-control-help-regular;
-    margin-top: rhythm(.25);
+    margin-top: rhythm(0.25);
 
     &.pa-field-help-error {
         color: $color-text-field-label-error;

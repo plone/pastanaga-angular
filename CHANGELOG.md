@@ -1,3 +1,8 @@
+# 2.58.7 (2023-01-10)
+
+### Bugfix
+- **Text fields**: Fix text field label position on chrome autofilled fields [mpellerin42]
+
 # 2.58.6 (2023-01-06)
 
 ### Improvement
