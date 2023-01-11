@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .pa-toggle {
     display: flex;
@@ -45,13 +45,22 @@
         &:checked {
             border-color: $color-border-toggle-selected;
             background-color: $color-background-toggle-selected;
-            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
+            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(
+                    #{$color-check-toggle},
+                    2
+                ) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
             background-size: $size-toggle-checkbox $size-toggle-checkbox;
 
             &:disabled {
-                background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(#{$color-check-toggle-disabled}, 2) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
+                background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(
+                        #{$color-check-toggle-disabled},
+                        2
+                    ) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
                 background-color: $color-background-toggle-disabled;
                 border-color: $color-border-toggle-selected-disabled;
+                &[type='radio'] {
+                    -webkit-appearance: auto;
+                }
             }
         }
 
@@ -68,7 +77,10 @@
             border-radius: $size-toggle-checkbox;
 
             &:checked {
-                background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" fill-rule="evenodd"/></svg>');
+                background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + str_slice(
+                        #{$color-check-toggle},
+                        2
+                    ) + '" fill-rule="evenodd"/></svg>');
 
                 &:disabled {
                     border-color: $color-border-toggle-selected-disabled;
