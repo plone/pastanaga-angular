@@ -2,1613 +2,1403 @@
 
 ### Bugfix
 
--   **Radio fields**: Fix style when radio is checked and disabled [ebrehault]
+- **Radio fields**: Fix style when radio is checked and disabled [ebrehault]
 
 # 2.58.7 (2023-01-10)
 
 ### Bugfix
-
--   **Text fields**: Fix text field label position on chrome autofilled fields [mpellerin42]
+- **Text fields**: Fix text field label position on chrome autofilled fields [mpellerin42]
 
 # 2.58.6 (2023-01-06)
 
 ### Improvement
-
--   **Checkbox**: Add `noEllipsis` option [mpellerin42]
+- **Checkbox**: Add `noEllipsis` option [mpellerin42] 
 
 # 2.58.5 (2023-01-02)
 
 ### Bugfix
-
--   **Popover / Popup**: when a popover is set on a button which has an `active` state set programmatically, don't remove the active state when closing the popup [mpellerin42]
+- **Popover / Popup**: when a popover is set on a button which has an `active` state set programmatically, don't remove the active state when closing the popup [mpellerin42]
 
 # 2.58.4 (2022-12-26)
 
 ### Improvements
-
--   **Popover**: [mpellerin42]
-    -   Move popover style to global + tokenize its colors
-    -   Fix popover position when parent is using flex
-    -   Add method to open popover programmatically
-    -   Add `paPopoverOffset` Input to define a specific vertical offset
-    -   Replace popover `width` by `max-width` to prevent large popover when content is quite small
+- **Popover**: [mpellerin42]
+  - Move popover style to global + tokenize its colors
+  - Fix popover position when parent is using flex
+  - Add method to open popover programmatically
+  - Add `paPopoverOffset` Input to define a specific vertical offset
+  - Replace popover `width` by `max-width` to prevent large popover when content is quite small
 
 # 2.58.3 (2022-12-19)
 
 ### Improvements
-
--   **Typography**: Remove useless class in typography documentation
--   **Theme**: [mpellerin42]
-    -   Add tokens for side nav item font-size and item height
-    -   Add token for button font-size
+- **Typography**: Remove useless class in typography documentation
+- **Theme**: [mpellerin42]
+  - Add tokens for side nav item font-size and item height
+  - Add token for button font-size
 
 # 2.58.2 (2022-12-13)
 
 ### Bug fix
-
--   **Text area**: [mpellerin42]
-    -   Prevent repetition of resize icon when text area in error
-    -   Prevent top border to disappear when pressing the resize icon on chrome
--   **Select**: Prevent top border to disappear when mouse is down while clicking on the dropdown [mpellerin42]
--   **Text fields**: Make sure text field height is always the same for one line fields [mpellerin42]
+- **Text area**: [mpellerin42]
+  - Prevent repetition of resize icon when text area in error
+  - Prevent top border to disappear when pressing the resize icon on chrome
+- **Select**: Prevent top border to disappear when mouse is down while clicking on the dropdown [mpellerin42]
+- **Text fields**: Make sure text field height is always the same for one line fields [mpellerin42]
 
 ### Improvements
-
--   Add error example and fix a typo on textarea documentation page
+- Add error example and fix a typo on textarea documentation page
 
 # 2.58.1 (2022-12-12)
 
 ### Bug fix
-
--   **Select**: Fix select spacing to be same height as other fields [mpellerin42]
+- **Select**: Fix select spacing to be same height as other fields [mpellerin42]
 
 # 2.58.0 (2022-12-08)
 
 ### Breaking changes
-
--   Text fields: [mpellerin42]
-    -   No more background color on text fields by default
-    -   Improve text field border so label doesn't require a background color and border keep space for the label on active and focus states
-    -   Replace border-text-field tokens by border-color-text-field token
-    -   Text field borders management:
-        -   No more borders on input themselves
-        -   Add a new `pa-field-container` carrying the classes for all the states (error, disabled, readonly, focus, has content)
-        -   No more background required on labels to have them displayed over the top border
-    -   Replace border-text-field tokens by border-color-text-field tokens
-    -   Use this new style structure on all our fields (input, textarea, select)
-    -   New `TextFieldDirective` managing label width as well as focus and content states
-    -   Update label position to be properly aligned with the top border
-        -   Add `rhythm(3.5)` value in rhythm map
-        -   Add class `no-internal-label` to remove the label space from the top border when label width is 0
+- Text fields: [mpellerin42]
+  - No more background color on text fields by default
+  - Improve text field border so label doesn't require a background color and border keep space for the label on active and focus states
+  - Replace border-text-field tokens by border-color-text-field token
+  - Text field borders management:
+      - No more borders on input themselves
+      - Add a new `pa-field-container` carrying the classes for all the states (error, disabled, readonly, focus, has content)
+      - No more background required on labels to have them displayed over the top border
+  - Replace border-text-field tokens by border-color-text-field tokens
+  - Use this new style structure on all our fields (input, textarea, select)
+  - New `TextFieldDirective` managing label width as well as focus and content states
+  - Update label position to be properly aligned with the top border
+    - Add `rhythm(3.5)` value in rhythm map
+    - Add class `no-internal-label` to remove the label space from the top border when label width is 0
 
 ### Improvements
-
--   Add autofilled input example [mpellerin42]
--   Text fields: [mpellerin42]
-    -   Add `pa-field-icon` class on input icon to prevent style leak
-    -   Add `externalLabel` input on `TextFieldDirective` (used by all text fields)
--   Toggle: [mpellerin42]
-    -   add `labelOnRight` option
-    -   improve style (spacing, help, cursor state)
-    -   improve documentation
--   Typography: Add `xs` support for line-height [mpellerin42]
+- Add autofilled input example [mpellerin42]
+- Text fields: [mpellerin42]
+  - Add `pa-field-icon` class on input icon to prevent style leak 
+  - Add `externalLabel` input on `TextFieldDirective` (used by all text fields)
+- Toggle: [mpellerin42]
+  - add `labelOnRight` option
+  - improve style (spacing, help, cursor state)
+  - improve documentation
+- Typography: Add `xs` support for line-height [mpellerin42]
 
 ### Dependencies
-
--   Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]
+- Bumps loader-utils from 2.0.2 to 2.0.3 [Dependabot]
 
 # 2.57.2 (2022-11-07)
 
 ### Pipeline Maintenance
-
--   Update GitHub actions to use node 16 [mpellerin42]
+- Update GitHub actions to use node 16 [mpellerin42]
 
 # 2.57.1 (2022-10-21)
 
 ### Bug fix
-
--   **Tabs**: Remove tab item extra padding [mpellerin42]
+- **Tabs**: Remove tab item extra padding [mpellerin42]
 
 # 2.57.0 (2022-10-21)
 
 ### Breaking Changes
-
--   **Tabs**: [mpellerin42]
-    -   Remove option `displayAsTabOnMobile`: tabs are always displayed as tabs for all breakpoints
-    -   Rename `$tab-menu-item-padding-mobile` and `$tab-menu-item-padding-desktop` tokens into `$padding-tab-item-small` and `$padding-tab-item-medium` to follow our naming convention
+- **Tabs**: [mpellerin42]
+  - Remove option `displayAsTabOnMobile`: tabs are always displayed as tabs for all breakpoints 
+  - Rename `$tab-menu-item-padding-mobile` and `$tab-menu-item-padding-desktop` tokens into `$padding-tab-item-small` and `$padding-tab-item-medium` to follow our naming convention 
 
 ### Improvements
-
--   **Tabs**: [mpellerin42]
-    -   Add scss tokens to improve tabs theming
-    -   Add `noSlider` option to tab list
+- **Tabs**: [mpellerin42]
+  - Add scss tokens to improve tabs theming
+  - Add `noSlider` option to tab list
 
 # 2.56.0 (2022-10-18)
 
 ### Breaking Changes
-
--   **Popup directive**: [mpellerin42]
-    -   rename `popupOnRight` into `alignPopupOnLeft` to align the attribute name with its behavior
-    -   rename `popupMargin` into `popupVerticalOffset` to align the attribute name with its behavior
-    -   implement `popupOnRight` with a behavior aligned to its name: when true the popup is positioned on the right of the directive element
-    -   CSS position is now fixed instead of absolute
+- **Popup directive**: [mpellerin42]
+  - rename `popupOnRight` into `alignPopupOnLeft` to align the attribute name with its behavior
+  - rename `popupMargin` into `popupVerticalOffset` to align the attribute name with its behavior
+  - implement `popupOnRight` with a behavior aligned to its name: when true the popup is positioned on the right of the directive element
+  - CSS position is now fixed instead of absolute 
 
 ### Documentation improvements
-
--   **Popup**: [mpellerin42]
-    -   Add documentation for `popupOffset` attribute
--   **Dropdown**: [mpellerin42]
-    -   Fix and document multi-level dropdown demo (`keepOthersOpen` attribute was missing)
-    -   Add popup usage section in dropdown usage
-    -   Improve global look and feel of dropdown documentation page
+- **Popup**: [mpellerin42]
+  - Add documentation for `popupOffset` attribute
+- **Dropdown**: [mpellerin42] 
+  - Fix and document multi-level dropdown demo (`keepOthersOpen` attribute was missing)
+  - Add popup usage section in dropdown usage
+  - Improve global look and feel of dropdown documentation page
 
 # 2.55.6 (2022-09-19)
 
 ### Bug fix
-
--   **Radio group**: Fix radio checked state when belonging to radio group [mpellerin42]
+- **Radio group**: Fix radio checked state when belonging to radio group [mpellerin42]
 
 # 2.55.5 (2022-09-16)
 
 ### Bug fix
-
--   **Radio group**: mark radio group control as dirty when a radio change event is emitted [mpellerin42]
+- **Radio group**: mark radio group control as dirty when a radio change event is emitted [mpellerin42]
 
 # 2.55.4 (2022-09-16)
 
 ### Bug fix
-
--   **Radio group**: wait for radios to be on the DOM before applying group name and value [mpellerin42]
+- **Radio group**: wait for radios to be on the DOM before applying group name and value [mpellerin42]
 
 # 2.55.3 (2022-08-17)
 
 ### Bug fix
-
--   **Popup**: close all popups when opening a new one and `keepOthersOpen` is false [mpellerin42]
+- **Popup**: close all popups when opening a new one and `keepOthersOpen` is false [mpellerin42]
 
 # 2.55.2 (2022-08-16)
 
 ### Improvements
-
--   **Modals**: [mpellerin42]
-    -   **service**: make sure to trigger detectChanges after instantiation of the modal
-    -   **style**: compute modal z-index based on z-index of the modal backdrop
--   **Confirmation dialogs**: [mpellerin42]
-    -   add `cancelAspect` option in `ConfirmationData`
-    -   add `onlyConfirm` option in `ConfirmationData`
--   **Radio groups**: add `display: block` on `paRadioGroup` directive [mpellerin42]
+- **Modals**: [mpellerin42]
+  - **service**: make sure to trigger detectChanges after instantiation of the modal
+  - **style**: compute modal z-index based on z-index of the modal backdrop
+- **Confirmation dialogs**:  [mpellerin42]
+  - add `cancelAspect` option in `ConfirmationData`
+  - add `onlyConfirm` option in `ConfirmationData`
+- **Radio groups**: add `display: block` on `paRadioGroup` directive [mpellerin42]
 
 # 2.55.1 (2022-08-16)
 
 ### Bug fix
-
--   Fix pa-option usage with pa-select importing only PaTextFieldModule [mpellerin42]
+- Fix pa-option usage with pa-select importing only PaTextFieldModule [mpellerin42]
 
 ### Improvements
-
--   Improve button link documentation [mpellerin42]
--   Improve icon documentation [mpellerin42]
+- Improve button link documentation [mpellerin42]
+- Improve icon documentation [mpellerin42]
 
 # 2.55.0 (2022-08-05)
 
 ### Feature
-
--   **Radio** and **radio-group**: Add a radio component and a radio-group directive. [mpellerin42]
+- **Radio** and **radio-group**: Add a radio component and a radio-group directive. [mpellerin42]
 
 # 2.54.3 (2022-08-04)
 
 ### Improvements
-
--   **Expander**: [mpellerin42]
-    -   Add `buttonOnlyToggle` option preventing the expander to toggle when clicking on the title
-    -   Don't display empty extra side block on expander's header
-    -   Improve expander documentation
--   **Popup**: Add documentation for `keepOthersOpen` input [mpellerin42]
--   **Dropdown**: Add documentation for multi-level dropdowns [mpellerin42]
+- **Expander**: [mpellerin42]
+  - Add `buttonOnlyToggle` option preventing the expander to toggle when clicking on the title
+  - Don't display empty extra side block on expander's header
+  - Improve expander documentation
+- **Popup**: Add documentation for `keepOthersOpen` input [mpellerin42]
+- **Dropdown**: Add documentation for multi-level dropdowns [mpellerin42]
 
 ### Bug fix
-
--   **Dropdown**: Remove the extra space on the right of the option when `iconOnRight` is set [mpellerin42]
+- **Dropdown**: Remove the extra space on the right of the option when `iconOnRight` is set [mpellerin42]
 
 # 2.54.2 (2022-08-02)
 
 ### Improvements
-
--   **Buttons**: [mpellerin42]
-    -   Add style in \_button.scss for button wrapping links
-    -   Improve button documentation
+- **Buttons**: [mpellerin42]
+  - Add style in _button.scss for button wrapping links
+  - Improve button documentation
 
 # 2.54.1 (2022-07-06)
 
 ### Bug fix
-
--   **Toasts**: Fix text alignment in toasts without icon nor button [mpellerin42]
+- **Toasts**: Fix text alignment in toasts without icon nor button [mpellerin42]
 
 ### Improvements
-
--   **Toasts**: Add a token allowing to change the padding when there is a button [mpellerin42]
+- **Toasts**: Add a token allowing to change the padding when there is a button [mpellerin42]
 
 # 2.54.0 (2022-07-05)
 
 ### Breaking changes
-
--   **Toasts**: [mpellerin42]
-    -   refactor toast config: `buttonLabel` and `action` are replaced by a `button` property containing the button configuration (this button configuration is including `label` and `action` properties)
-    -   `toastStatus` observable was useless and has been removed
+- **Toasts**: [mpellerin42]
+  - refactor toast config: `buttonLabel` and `action` are replaced by a `button` property containing the button configuration (this button configuration is including `label` and `action` properties)
+  - `toastStatus` observable was useless and has been removed
 
 ### Improvements
-
--   **Toasts**: [mpellerin42]
-    -   add tokens defining toasts spacing
-    -   add tokens defining toast button background colors
-    -   add optional title and autoClose options to toasts
-    -   refactor toast template and style using pa-button
-    -   update the documentation
+- **Toasts**: [mpellerin42]
+  - add tokens defining toasts spacing
+  - add tokens defining toast button background colors
+  - add optional title and autoClose options to toasts
+  - refactor toast template and style using pa-button
+  - update the documentation
 
 ### Bug fix
-
--   **Glyphs**: add missing `warning` glyph [mpellerin42]
--   **Icon demo**: fix the configuration, so we can reset icon and background colors [mpellerin42]
+- **Glyphs**: add missing `warning` glyph [mpellerin42]
+- **Icon demo**: fix the configuration, so we can reset icon and background colors [mpellerin42]
 
 # 2.53.0 (2022-07-01)
 
 ### Improvement
-
--   New set of glyphs from [quanta-icons](https://github.com/plone/quanta-icons) [mpellerin42]
-
-### Bug fix
-
--   **Translate**: [mpellerin42]
-    -   `getValue` is now always returning a string: either the translation found, either the key
-    -   `getValue` will throw an error if `args` parameter is not an object
-
-# 2.52.3, 2.52.4 and 2.52.5 (2022-07-01)
+- New set of glyphs from [quanta-icons](https://github.com/plone/quanta-icons) [mpellerin42]
 
 ### Bug fix
+- **Translate**: [mpellerin42]
+  - `getValue` is now always returning a string: either the translation found, either the key
+  - `getValue` will throw an error if `args` parameter is not an object
 
--   Fix demo deployment [mpellerin42]
+# 2.52.3, 2.52.4  and 2.52.5 (2022-07-01)
+
+### Bug fix
+- Fix demo deployment [mpellerin42]
 
 # 2.52.2 (2022-07-01)
 
 ### Improvements
-
--   **Documentation**: [mpellerin42]
-    -   improving README
-        -   Add Table of content
-        -   Add Setup and configuration section
-        -   Fix outdated links and references
-    -   moving demo to the root, so it is now accessible at https://plone.github.io/pastanaga-angular/. This should fix the routing and reloading problem.
--   **Typography**: Adding tokens allowing to override Pastanaga typography rules
+- **Documentation**: [mpellerin42]
+  - improving README
+    - Add Table of content
+    - Add Setup and configuration section
+    - Fix outdated links and references
+  - moving demo to the root, so it is now accessible at https://plone.github.io/pastanaga-angular/. This should fix the routing and reloading problem.
+- **Typography**: Adding tokens allowing to override Pastanaga typography rules
 
 # 2.52.1 (2022-06-29)
 
 ### Improvements
-
--   **Buttons**: [mpellerin42]
-    -   Update size of large button based on their padding instead of based on their line-height
-    -   Add iconSize option on buttons
-    -   Improve example section of button documentation page
+- **Buttons**: [mpellerin42]
+  - Update size of large button based on their padding instead of based on their line-height
+  - Add iconSize option on buttons
+  - Improve example section of button documentation page
 
 # 2.52.0 (2022-06-27)
 
 ### Breaking changes
-
--   Remove all translation keys not used by pastanaga components from Pastanaga's internal translation file [mpellerin42]
+- Remove all translation keys not used by pastanaga components from Pastanaga's internal translation file [mpellerin42]
 
 ### Improvements
-
--   upgrade rxjs to version 7 [mpellerin42]
--   **Translate**: [mpellerin42]
-    -   Translation files can be flat or hierarchical (or a mix of both)
-    -   Pipe refactoring so translations and lang can be updated dynamically
-    -   Provide default empty values for PA_LANG and PA_TRANSLATIONS injection tokens
-    -   Fix dynamic translations when using translate directive
+- upgrade rxjs to version 7 [mpellerin42]
+- **Translate**: [mpellerin42]
+  - Translation files can be flat or hierarchical (or a mix of both)
+  - Pipe refactoring so translations and lang can be updated dynamically
+  - Provide default empty values for PA_LANG and PA_TRANSLATIONS injection tokens
+  - Fix dynamic translations when using translate directive 
 
 # 2.51.2 (2022-06-21)
 
 ### Fix
-
--   fix build: specify project to build now angular 14 removed default project from angular.json [mpellerin42]
+- fix build: specify project to build now angular 14 removed default project from angular.json [mpellerin42]
 
 # 2.51.1 (2022-06-21)
 
 ### Improvements
-
--   **Dropdown**: add ability to change the background color of destructive dropdown options [mpellerin42]
+- **Dropdown**: add ability to change the background color of destructive dropdown options [mpellerin42]
 
 # 2.51.0 (2022-06-21)
 
 ### Breaking changes
-
--   Migration to Angular 14 [mpellerin42]
+- Migration to Angular 14 [mpellerin42]
 
 # 2.50.7 (2022-06-17)
 
 ### Improvements
-
--   **Text fields**: [mpellerin42]
-    -   Add better demo for inputs and select error state
-    -   Add token for changing the background color of text fields for error state
+- **Text fields**: [mpellerin42]
+  - Add better demo for inputs and select error state
+  - Add token for changing the background color of text fields for error state
 
 # 2.50.6 (2022-06-17)
 
 ### Fix
-
--   **Icon demo**: load the icon list from a typescript file instead of a json one [mpellerin42]
--   **icon_list**: new script generating the icon list in typescript from the sprite svg [mpellerin42]
+- **Icon demo**: load the icon list from a typescript file instead of a json one [mpellerin42]
+- **icon_list**: new script generating the icon list in typescript from the sprite svg [mpellerin42]
 
 # 2.50.5 (2022-06-16)
 
 ### Fixes
-
--   Fix repo URL in package.json [mpellerin42]
--   Fix compilation errors when included as lib in a new Angular 13.3.0 project [mpellerin42]
--   Fix side nav item header's color [mpellerin42]
--   Fix background color for disabled inverted solid buttons [mpellerin42]
--   Fix expandable chips: don't trigger expanded event on disabled chip [mpellerin42]
--   Fix documentation: [mpellerin42]
-    -   Fix the description and add documentation on expandable chips
-    -   Fix some typos in modal documentation
+- Fix repo URL in package.json [mpellerin42]
+- Fix compilation errors when included as lib in a new Angular 13.3.0 project [mpellerin42]
+- Fix side nav item header's color [mpellerin42]
+- Fix background color for disabled inverted solid buttons [mpellerin42]
+- Fix expandable chips: don't trigger expanded event on disabled chip [mpellerin42]
+- Fix documentation: [mpellerin42]
+  - Fix the description and add documentation on expandable chips
+  - Fix some typos in modal documentation
 
 ### Improvements
-
--   **Typography**: [mpellerin42]
-    -   Add typography demo page
-    -   Add a class with `-mobile` suffix on all typography classes which are different on mobile and larger screens, so we can display how they render on desktop.
--   **Button**: [mpellerin42]
-    -   Add a CSS transition on button color
-    -   Tokenize button icon border radius
--   **Demo**: Improve readability of usage by using a darker neutral color for `small` tags [mpellerin42]
--   **Checkboxes**: Add tokens for checkbox disabled colors [mpellerin42]
--   **Scrollbars**: Add tokens for scrollbar border radius and distinction between active and inactive state [mpellerin42]
--   **Chips**: [mpellerin42]
-    -   Tokenize chip colors and borders
-    -   Add `backgroundColor`, `textColor` and `borderColor` inputs to all the chips
+- **Typography**:  [mpellerin42]
+  - Add typography demo page
+  - Add a class with `-mobile` suffix on all typography classes which are different on mobile and larger screens, so we can display how they render on desktop.
+- **Button**: [mpellerin42]
+  - Add a CSS transition on button color
+  - Tokenize button icon border radius
+- **Demo**: Improve readability of usage by using a darker neutral color for `small` tags [mpellerin42]
+- **Checkboxes**: Add tokens for checkbox disabled colors [mpellerin42]
+- **Scrollbars**: Add tokens for scrollbar border radius and distinction between active and inactive state [mpellerin42]
+- **Chips**: [mpellerin42]
+  - Tokenize chip colors and borders
+  - Add `backgroundColor`, `textColor` and `borderColor` inputs to all the chips
 
 # 2.50.4 (2022-06-13)
 
 ### Improvements:
-
--   **Date picker**: customizable label (placeholder) [dgsmith2]
-    -   Accepts text as well as key to be processed by `TranslatePipe`
+- **Date picker**: customizable label (placeholder) [dgsmith2]
+  - Accepts text as well as key to be processed by `TranslatePipe`
 
 # 2.50.3 (2022-05-25)
 
 ### Improvements:
-
--   **Date picker**: subclass `PaFormControlDirective` and demo [dgsmith2]
+- **Date picker**: subclass `PaFormControlDirective` and demo [dgsmith2]
 
 # 2.50.2 (2022-05-24)
 
 ### Improvements:
-
--   **Date picker**: add calendar icon [mpellerin42]
--   **Input**: add iconOnRight option [mpellerin42]
+- **Date picker**: add calendar icon [mpellerin42]
+- **Input**: add iconOnRight option [mpellerin42]
 
 # 2.50.1 (2022-05-23)
 
 ### Fixes
-
--   **Select**: Fix error state: red border but grey label when not expanded [mpellerin42]
--   **Text fields**: Lighter border color when the field is not active [mpellerin42]
+- **Select**: Fix error state: red border but grey label when not expanded [mpellerin42]
+- **Text fields**: Lighter border color when the field is not active [mpellerin42] 
 
 # 2.50.0 (2022-05-20)
 
 ### Breaking changes:
-
--   **Table sortable header**: viewport mode is now an input instead of coming directly from breakpoint observer [mpellerin42]
+- **Table sortable header**: viewport mode is now an input instead of coming directly from breakpoint observer [mpellerin42]
 
 ### Improvements:
-
--   Better documentation for table components and directives [mpellerin42]
+- Better documentation for table components and directives [mpellerin42]
 
 # 2.49.1 (2022-05-18)
 
 ### Fix
-
--   npm deps update to fix the publish step of Pastanaga workflow [mpellerin42]
+- npm deps update to fix the publish step of Pastanaga workflow [mpellerin42]
 
 # 2.49.0 (2022-05-18)
 
 ### Breaking changes:
+- **Demo**: replace traversing by routing in the demo [mpellerin42]
 
--   **Demo**: replace traversing by routing in the demo [mpellerin42]
 
 # 2.48.0 (2022-05-07)
 
 ### Feature
-
--   Date picker component [dgsmith2]
+- Date picker component [dgsmith2]
 
 # 2.47.1 (2022-05-09)
 
 ### Improvements
-
--   Update dependencies: [mpellerin42]
-    -   @angular: 13.3.6
-    -   @ngneat/spectator: 10.0.1
-    -   ng-mocks: 13.5.1
-    -   @briebug/jest-schematic: 4.0.0
-    -   @ng-web-apis/common: 2.0.0
+- Update dependencies: [mpellerin42]
+  - @angular: 13.3.6
+  - @ngneat/spectator: 10.0.1
+  - ng-mocks: 13.5.1
+  - @briebug/jest-schematic: 4.0.0
+  - @ng-web-apis/common: 2.0.0
 
 # 2.47.0 (2022-05-05)
 
 ### Feature
-
--   **Layout**: add a dock+wide layout [mpellerin42]
+- **Layout**: add a dock+wide layout [mpellerin42]
 
 ### Breaking changes:
+- **Sidenav**: `pa-side-nav-content` doesn't wrap the content projection into an `ul` anymore. [mpellerin42]
 
--   **Sidenav**: `pa-side-nav-content` doesn't wrap the content projection into an `ul` anymore. [mpellerin42]
 
 # 2.46.1 (2022-05-05)
 
 ### Improvements
-
--   Manually update dependencies [barcafa]
+- Manually update dependencies [barcafa]
 
 # 2.46.0 (2022-05-04)
 
 ### Breaking changes
-
--   Removal of variable `$color-neutral-strong` and color `$_steam` [barcafa]
--   Downscale of all greys to have only 4 [barcafa]
+- Removal of variable `$color-neutral-strong` and color `$_steam` [barcafa]
+- Downscale of all greys to have only 4 [barcafa]
 
 # 2.45.6 (2022-05-02)
 
 ### Improvements
-
--   **Text fields**: Prevent read-only style to override disabled one [mpellerin42]
+- **Text fields**: Prevent read-only style to override disabled one [mpellerin42]
 
 # 2.45.5 (2022-04-28)
 
 ### Improvements
-
--   Added unit tests to Toast Component [luispalomo]
+- Added unit tests to Toast Component [luispalomo]
 
 # 2.45.4 (2022-04-25)
 
--   update `icon_list` script to use python3 as python 2 is not provided in Mac OS X package anymore [mpellerin42]
+- update `icon_list` script to use python3 as python 2 is not provided in Mac OS X package anymore [mpellerin42]
 
 # 2.45.3 (2022-04-12)
 
 ### Improvements
-
--   Add dual button styling for buttons [barcafa]
+- Add dual button styling for buttons [barcafa]
 
 # 2.45.2 (2022-04-07)
 
 ### Improvements
-
--   Add new `sync` symbol [raul-onna]
+- Add new `sync` symbol [raul-onna]
 
 # 2.45.1 (2022-03-14)
 
 ### Style changes
-
--   Modal dialog header's image, title and description changes: [faustoona]
-    -   **_centered aligned_** when the modal has an image;
-    -   **_left aligned_** when the modal doesn't have an image;
-    -   setting title size to medium;
-    -   setting description top margin to 12px;
+- Modal dialog header's image, title and description changes: [faustoona]
+    - ***centered aligned*** when the modal has an image;
+    - ***left aligned*** when the modal doesn't have an image;
+    - setting title size to medium;
+    - setting description top margin to 12px;
 
 # 2.45.0 (2022-03-14)
 
 ### Breaking changes
-
--   `DATE_FORMAT` enum changed into `DateFormat` type [mpellerin42]
--   `Size`, `Aspect`, `Kind` enums changed into types [mpellerin42]
+- `DATE_FORMAT` enum changed into `DateFormat` type [mpellerin42]
+- `Size`, `Aspect`, `Kind` enums changed into types [mpellerin42]
 
 ### Improvements
-
--   **Stricter compiler option**: [mpellerin42]
-    -   replace fullTemplateTypeCheck by strictTemplates
-    -   add noPropertyAccessFromIndexSignature compiler option
+- **Stricter compiler option**: [mpellerin42]
+  - replace fullTemplateTypeCheck by strictTemplates
+  - add noPropertyAccessFromIndexSignature compiler option
 
 # 2.44.5 (2022-03-11)
 
 ### Bugfix
-
--   **Select**: Fix on hover styling for chevron icon [barcafa]
+- **Select**: Fix on hover styling for chevron icon [barcafa]
 
 # 2.44.4 (2022-03-09)
 
 ### Bugfix
-
--   Restore the license [ebrehault]
+- Restore the license [ebrehault]
 
 # 2.44.3 (2022-03-09)
 
 ### Improvements
-
 **Dropdown**: [barcafa]
-
--   Add a new property `iconOnRight` to display an icon to the right on a dropdown option
+  - Add a new property `iconOnRight` to display an icon to the right on a dropdown option
 
 # 2.44.2 (2022-03-07)
 
 ### Bugfix
-
--   **Side nav**: fix active item's font-weight [mpellerin42]
+- **Side nav**: fix active item's font-weight [mpellerin42]
 
 # 2.44.1 (2022-02-25)
 
 ### Bugfix
-
--   **Documentation**: fix side nav on the demo pages to prevent it to disappear when scrolling the page content [mpellerin42]
+- **Documentation**: fix side nav on the demo pages to prevent it to disappear when scrolling the page content [mpellerin42]
 
 # 2.44.0 (2022-02-24)
 
 ### Breaking changes
-
--   **Side nav**: [mpellerin42]
-    -   improve support for custom header
-    -   no more footer supported in sidenav
+- **Side nav**: [mpellerin42]
+  - improve support for custom header
+  - no more footer supported in sidenav
 
 # 2.43.3 (2022-02-11)
 
 ### Improvements
-
--   **Side nav menu**: Improved and fix some minor issues in style [mpellerin42]
--   **Demo**: Add a filter input in the demo side nav [mpellerin42]
+- **Side nav menu**: Improved and fix some minor issues in style [mpellerin42]
+- **Demo**: Add a filter input in the demo side nav [mpellerin42]
 
 # 2.43.2 (2022-02-02)
 
 ### Bugfix
-
--   **Text fields**: Adjust the label position when the field is active [mpellerin42]
+- **Text fields**: Adjust the label position when the field is active [mpellerin42]
 
 # 2.43.1 (2022-01-31)
 
 ### Bugfix
-
--   **Select**: component should close when blur event is triggered by keyboard [jCarret]
+- **Select**: component should close when blur event is triggered by keyboard [jCarret]
 
 # 2.43.0 (2022-01-28)
 
 ### Improvements
-
--   **Side nav menu**: updating style, animation (it opens from the left now) and removing deprecated input (icon and inverted) [faustoonna]
+- **Side nav menu**: updating style, animation (it opens from the left now) and removing deprecated input (icon and inverted) [faustoonna]
 
 # 2.42.1 (2022-01-21)
 
 ### Bugfix
-
--   **Translate demo**: don't import pastanaga variable in demo page to prevent compilation error on projects extending pastanaga documentation [mpellerin42]
+- **Translate demo**: don't import pastanaga variable in demo page to prevent compilation error on projects extending pastanaga documentation [mpellerin42]
 
 # 2.42.0 (2022-01-13)
 
 ### Breaking change
-
--   Upgrade to Angular 13 [ebrehault]
+- Upgrade to Angular 13 [ebrehault]
 
 # 2.41.1 (2022-01-11)
 
 ### Bugfix
-
--   **Translation**: fix translation by attribute like `<span translate="translation-key"></span>` [mpellerin42]
+- **Translation**: fix translation by attribute like `<span translate="translation-key"></span>` [mpellerin42]
 
 ### Improvements
-
--   Increase test coverage on translate directive and pipe [mpellerin42]
+- Increase test coverage on translate directive and pipe [mpellerin42]
 
 # 2.41.0 (2022-01-11)
 
 ### Improvements
-
--   **TranslateService**: Allow changing current language of the application [mpellerin42] (based on [rboixaderg] feature on pastanaga 1)
--   **Select**: Fix style (which has been broken on version 2.40.1) [mpellerin42]
+- **TranslateService**: Allow changing current language of the application [mpellerin42] (based on [rboixaderg] feature on pastanaga 1)
+- **Select**: Fix style (which has been broken on version 2.40.1) [mpellerin42]
 
 ### Breaking changes
-
--   **TranslatePipe**: constructor now uses TranslateService instead of `PA_LANG` string [mpellerin42] (based on [rboixaderg] feature on pastanaga 1)
+- **TranslatePipe**: constructor now uses TranslateService instead of `PA_LANG` string [mpellerin42] (based on [rboixaderg] feature on pastanaga 1)
 
 # 2.40.1 (2022-01-07)
 
 ### Improvements
-
--   **Input**: Add optional icon to input fields [mpellerin42]
+- **Input**: Add optional icon to input fields [mpellerin42]
 
 # 2.40.0 (2022-01-06)
 
 ### Breaking changes
-
--   Revert all changes done on the select dropdown position (revert version 2.38.7, 2.38.6, 2.38.5 and 2.38.4) [mpellerin42]
+- Revert all changes done on the select dropdown position (revert version 2.38.7, 2.38.6, 2.38.5 and 2.38.4) [mpellerin42]
 
 ### Bugfix
-
--   **Select**: Close the select on option selection [mpellerin42]
+- **Select**: Close the select on option selection [mpellerin42]
 
 # 2.39.4 (2022-01-04)
 
 ### Bugfix
-
--   **Card**: trigger `cardClick` event when pressing enter on a focused card [mpellerin42]
+- **Card**: trigger `cardClick` event when pressing enter on a focused card [mpellerin42]
 
 # 2.39.3 (2021-12-09)
 
 ### Bugfix
-
--   **Native text field**: fixed error state not displayed with updateOn blur [jCarret]
+- **Native text field**: fixed error state not displayed with updateOn blur [jCarret]
 
 # 2.39.2 (2021-11-17)
 
 ### Improvement
-
--   **Form field hint**: translate form field hints [mpellerin42]
+- **Form field hint**: translate form field hints [mpellerin42]
 
 # 2.39.1 (2021-11-10)
 
 ### Feature
-
--   **Card**: New generic card wrapper component [mpellerin42]
+- **Card**: New generic card wrapper component [mpellerin42]
 
 # 2.39.0 (2021-11-03)
 
 ### Improvements
+- Upgrade dependencies, including Angular to the latest version (12.2.0) and Jest to the latest version (27.3.1) [mpellerin42]
+- Update angular and typescript configuration to the latest standards [mpellerin42]
+- Fix scss compilation errors [mpellerin42]
+- Improve import paths in pastanaga demo [mpellerin42]
+- Fix most of the code smells found by sonar [mpellerin42]
+- **Select**: Remove the debounce so the dropdown follows the select on scroll [mpellerin42]
 
--   Upgrade dependencies, including Angular to the latest version (12.2.0) and Jest to the latest version (27.3.1) [mpellerin42]
--   Update angular and typescript configuration to the latest standards [mpellerin42]
--   Fix scss compilation errors [mpellerin42]
--   Improve import paths in pastanaga demo [mpellerin42]
--   Fix most of the code smells found by sonar [mpellerin42]
--   **Select**: Remove the debounce so the dropdown follows the select on scroll [mpellerin42]
-
-# 2.38.7 (2021-11-02)
+# 2.38.7 (2021-11-02) 
 
 ### Improvements
-
--   **Dialog** updating `--containerTranslateY` value when dialog's height changes. [faustoonna]
+- **Dialog** updating `--containerTranslateY` value when dialog's height changes. [faustoonna]
 
 # 2.38.6 (2021-10-29)
 
 ### Bugfix
-
--   **Dialog** fixing Document token injection. [faustoonna]
+- **Dialog** fixing Document token injection. [faustoonna]
 
 # 2.38.5 (2021-10-28)
 
 ### Improvements
-
--   **Dialog**: Dialog TranslateY affects fixed position children, in order to patch this behaviour we expose the dialog top position in computed styled properties (`--containerTranslateY`). [faustoonna]
--   **Select**: reverting previous changes, calculating the popup position on scroll and on toggle (taking in consideration the container offset y if available). [faustoonna]
--   **PopupDirective**: managing `popupPosition` with setter and getter. It updates the popup style when the input value changes. [faustoonna]
+- **Dialog**: Dialog TranslateY affects fixed position children, in order to patch this behaviour we expose the dialog top position in computed styled properties (`--containerTranslateY`). [faustoonna]
+- **Select**: reverting previous changes, calculating the popup position on scroll and on toggle (taking in consideration the container offset y if available). [faustoonna] 
+- **PopupDirective**: managing `popupPosition` with setter and getter. It updates the popup style when the input value changes. [faustoonna]
 
 # 2.38.4 (2021-10-20)
 
 ### Improvements
+- **Select**: Add `optionsPosition` input to select component to apply custom position on dropdown options [faustoonna]
 
--   **Select**: Add `optionsPosition` input to select component to apply custom position on dropdown options [faustoonna]
 
 # 2.38.3 (2021-10-12)
 
 ### Improvements
+- **Popup**: Add `keepOthersOpen` input to popup component to control if other popups should be closed or not when current one is opened [mpellerin42]
 
--   **Popup**: Add `keepOthersOpen` input to popup component to control if other popups should be closed or not when current one is opened [mpellerin42]
 
 # 2.38.2 (2021-10-11)
 
 ### Improvements
-
--   **Documentation**: Improve list style in description section [mpellerin42]
+- **Documentation**: Improve list style in description section [mpellerin42]
 
 # 2.38.1 (2021-10-06)
 
 ### Improvements
-
--   Scss token files consistency: add `.tokens` suffix to all scss token files for consistency and readability [mpellerin42]
+- Scss token files consistency: add `.tokens` suffix to all scss token files for consistency and readability [mpellerin42]
 
 # 2.38.0 (2021-10-01)
 
 ### Breaking changes
-
--   **Colors**: Don't name color categories with a real color name [mpellerin42]
-    -   Rename `$color-black` to `$color-dark-stronger`
-    -   Rename `$color-white` to `$color-light-stronger`
+- **Colors**: Don't name color categories with a real color name [mpellerin42]
+  - Rename `$color-black` to `$color-dark-stronger`
+  - Rename `$color-white` to `$color-light-stronger`
 
 ### Bugfix
-
--   Fix white checkbox selected mark: use hexadecimal color code instead of HSL for white to prevent SASS to convert it into the keyword `white` [mpellerin42]
+- Fix white checkbox selected mark: use hexadecimal color code instead of HSL for white to prevent SASS to convert it into the keyword `white` [mpellerin42] 
 
 ### Improvements
-
--   Update palette documentation page [mpellerin42]
+- Update palette documentation page [mpellerin42]
 
 # 2.37.1 (2021-09-30)
 
 ### Bugfix
-
--   **Popup**: replace `markForCheck` by `detectChanges` on `close` method so the UI is properly refreshed when it is called from an observable [mpellerin42]
+- **Popup**: replace `markForCheck` by `detectChanges` on `close` method so the UI is properly refreshed when it is called from an observable [mpellerin42]
 
 # 2.37.0 (2021-09-28)
 
 ### Breaking changes
-
--   **Colors**: [mpellerin42]
-    -   Move black and white in their own color categories (which will carry alpha colors later)
-    -   Keep only one category of neutral colors (no more primary/secondary on their token name)
-    -   Simplify color token by removing the `accent` part for primary, secondary and tertiary colors
-    -   Replace darker/dark/default variations by stronger/strong/regular
+- **Colors**: [mpellerin42]
+  - Move black and white in their own color categories (which will carry alpha colors later)
+  - Keep only one category of neutral colors (no more primary/secondary on their token name)
+  - Simplify color token by removing the `accent` part for primary, secondary and tertiary colors 
+  - Replace darker/dark/default variations by stronger/strong/regular
 
 ### Improvements
-
--   Update color documentation [mpellerin42]
+  - Update color documentation [mpellerin42]
 
 # 2.36.26 (2021-09-14)
 
 ### Bugfix
-
--   **Popup** / **Dropdown**: [mpellerin42]
-    -   Add a new popupType `menu` so popups and menus are closed on `closeAllPopups` event, while dropdowns are not
-    -   Set dropdown default `popupType` to `menu` instead of `dropdown`
-    -   Update dropdown `popupType` when dropdown `role` changes
+- **Popup** / **Dropdown**: [mpellerin42]
+  - Add a new popupType `menu` so popups and menus are closed on `closeAllPopups` event, while dropdowns are not
+  - Set dropdown default `popupType` to `menu` instead of `dropdown`
+  - Update dropdown `popupType` when dropdown `role` changes
 
 # 2.36.25 (2021-09-13)
 
 ### Bugfix
-
--   **Table**: don't display hover/active states on rows which are not clickable [mpellerin42]
+- **Table**: don't display hover/active states on rows which are not clickable [mpellerin42]
 
 # 2.36.24 (2021-09-13)
 
 ### Improvements
-
--   **Popup**: [mpellerin42]
-    -   Close only popups (not dropdowns) when receiving `closeAllPopups` event
-    -   Decrease complexity in adjust popup method
+- **Popup**: [mpellerin42]
+  - Close only popups (not dropdowns) when receiving `closeAllPopups` event
+  - Decrease complexity in adjust popup method
 
 # 2.36.23 (2021-09-02)
 
 ### Improvement
-
--   **Ellipsis tooltip**: set updateEllipsisTooltip method public, so it can be called externally [mpellerin42]
+- **Ellipsis tooltip**: set updateEllipsisTooltip method public, so it can be called externally [mpellerin42]
 
 # 2.36.22 (2021-09-02)
 
 ### Improvement
-
--   **Modal advanced**: Compute content min-height to take all available space [mpellerin42]
+- **Modal advanced**: Compute content min-height to take all available space [mpellerin42]
 
 # 2.36.21 (2021-09-01)
 
 ### Bugfix
-
--   **TableSortableHeader**: fix sorting dropdown position [mpellerin42]
+- **TableSortableHeader**: fix sorting dropdown position [mpellerin42]
 
 # 2.36.20 (2021-09-01)
 
 ### Bugfix
 
--   **Button**: Reverting small size button's icon size to "medium" [faustoonna]
+- **Button**: Reverting small size button's icon size to "medium" [faustoonna] 
 
 # 2.36.19 (2021-09-01)
 
 ### Bugfix
-
--   **Layout**: Fix layout footer gradient [barcafa]
+- **Layout**: Fix layout footer gradient [barcafa]
 
 # 2.36.18 (2021-08-31)
-
 ### Improvements
-
--   **Button**: updating small size button styling [faustoonna]
+- **Button**: updating small size button styling [faustoonna]
 
 # 2.36.17 (2021-08-26)
 
 ### Bugfix
-
--   **Tables**: Fix styling for buttons inside tables [barcafa]
+- **Tables**: Fix styling for buttons inside tables [barcafa]
 
 # 2.36.16 (2021-08-24)
 
 ### Bugfix
-
--   **Popup**: Fix margin when using popupOnTop [mpellerin42]
+- **Popup**: Fix margin when using popupOnTop [mpellerin42]
 
 # 2.36.15 (2021-08-20)
 
 ### Improvements
-
--   **Modal dialog**: Increase the delay for setting modal header height on mobile [mpellerin42]
+- **Modal dialog**: Increase the delay for setting modal header height on mobile [mpellerin42] 
 
 # 2.36.14 (2021-08-13)
 
 ### Bugfix
-
--   **Toggle**: Add margin between toggle and text [barcafa]
+- **Toggle**: Add margin between toggle and text [barcafa]
 
 # 2.36.13 (2021-08-13)
 
 ### Improvements
-
--   **Toasts**: Tokenize and update toast colors [mpellerin42]
+- **Toasts**: Tokenize and update toast colors [mpellerin42]
 
 # 2.36.12 (2021-08-13)
 
 ### Improvements
-
--   **Avatar**: Allow overriding the tooltip displayed when hovering the avatar [mpellerin42]
+- **Avatar**: Allow overriding the tooltip displayed when hovering the avatar [mpellerin42]
 
 # 2.36.11 (2021-08-10)
 
 ### Improvements
-
--   **Distribute**: New scss variables to define the space between blocks of content [mpellerin42]
+- **Distribute**: New scss variables to define the space between blocks of content [mpellerin42] 
 
 # 2.36.10 (2021-07-22)
 
 ### Bugfix
-
--   Change chevron expander color [barcafa]
+- Change chevron expander color [barcafa]
 
 # 2.36.9 (2021-07-10)
 
 ### Improvements
-
--   Allow exporting standalone css [ebrehault]
+- Allow exporting standalone css [ebrehault]
 
 # 2.36.8 (2021-07-05)
 
 ### Bugfix
-
--   Fix library build one more time [ebrehault]
+- Fix library build one more time [ebrehault]
 
 # 2.36.7 (2021-07-05)
 
 ### Bugfix
-
--   Fix library build [ebrehault]
+- Fix library build [ebrehault]
 
 # 2.36.6 (2021-07-05)
 
 ### Improvements
-
--   Restore skipped tests [ebrehault]
--   Move pa-icon style to global [ebrehault]
+- Restore skipped tests [ebrehault]
+- Move pa-icon style to global [ebrehault]
 
 # 2.36.5 (2021-07-05)
 
 ### Bugfix
-
--   Fix input size to be 48px [mpellerin42]
+- Fix input size to be 48px [mpellerin42]
 
 ### Improvements
-
--   **Drodpown options**: translate option description [mpellerin42]
--   **Toast**: Translate toast messages [mpellerin42]
+- **Drodpown options**: translate option description [mpellerin42]
+- **Toast**: Translate toast messages [mpellerin42]
 
 # 2.36.4 (2021-06-30)
 
 ### Bugfix
-
--   **Modal**: Fix modal variables imports [mpellerin42]
+- **Modal**:  Fix modal variables imports [mpellerin42]
 
 # 2.36.3 (2021-06-28)
 
 ### Bugfix
-
--   **Modal**: Fix modal positioning and header/footer visibility on safari [mpellerin42]
+- **Modal**: Fix modal positioning and header/footer visibility on safari [mpellerin42] 
 
 # 2.36.2 (2021-06-28)
 
 ### Improvements
-
--   **Infinite scroll**: more padding at infinite scroll bottom [ebrehault]
+- **Infinite scroll**: more padding at infinite scroll bottom [ebrehault]
 
 # 2.36.1 (2021-06-28)
 
 ### Improvements
-
--   **Scrollable container**: [mpellerin42]
-    -   Automatically close all popups on scroll
-    -   Remove fading style on scrollbar
-    -   Improve scrollbar style: colors and dimensions
+- **Scrollable container**: [mpellerin42]
+    - Automatically close all popups on scroll
+    - Remove fading style on scrollbar
+    - Improve scrollbar style: colors and dimensions
 
 # 2.36.0 (2021-06-28)
 
 ### Feature
-
--   **Popover**: New popover component – popup with arrow which is displayed on hover on desktop [mpellerin42]
+- **Popover**: New popover component – popup with arrow which is displayed on hover on desktop [mpellerin42]
 
 ### Breaking changes
-
--   **Popup**: Remove `openOnHover` property from paPopup directive [mpellerin42]
+- **Popup**: Remove `openOnHover` property from paPopup directive [mpellerin42]
 
 ### Improvement
-
--   **Modal**: Update modal's footer to not be on top of potential popover [mpellerin42]
+- **Modal**: Update modal's footer to not be on top of potential popover [mpellerin42]
 
 # 2.35.2 (2021-06-23)
 
 ### Bugfix
-
--   **Table**: display pointer cursor on clickable table row [ebrehault]
+- **Table**: display pointer cursor on clickable table row [ebrehault]
 
 # 2.35.1 (2021-06-23)
 
 ### Improvements
-
--   **Modal**: Optional class for pa-modal to take all available space in height [mpellerin42]
--   `pa-lead-image` class accessible outside tables [mpellerin42]
+- **Modal**: Optional class for pa-modal to take all available space in height [mpellerin42]
+- `pa-lead-image` class accessible outside tables [mpellerin42]
 
 # 2.35.0 (2021-06-17)
 
 ### Feature
-
--   **Scrollbar**: New paScrollableContainer directive styling scrollbars [mpellerin42]
+- **Scrollbar**: New paScrollableContainer directive styling scrollbars [mpellerin42]
 
 ### Improvement
-
--   **Modal**: paScrollableContainer on modal's content [mpellerin42]
+- **Modal**: paScrollableContainer on modal's content [mpellerin42]
 
 # 2.34.0 (2021-06-17)
 
 ### Improvements
-
--   Upgrade to Angular 12 [ebrehault]
+- Upgrade to Angular 12 [ebrehault]
 
 # 2.33.3 (2021-06-15)
 
 ### Improvements
-
--   **Modals**: adapt content's margin-bottom to the presence of a footer [mpellerin42]
--   **Modal advanced**: [mpellerin42]
-    -   footer with one button display it fullscreen on mobile and aligned on the right bigger viewport,
-    -   footer with two buttons display them taking the whole space
+- **Modals**: adapt content's margin-bottom to the presence of a footer [mpellerin42]
+- **Modal advanced**: [mpellerin42]
+    - footer with one button display it fullscreen on mobile and aligned on the right bigger viewport,
+    - footer with two buttons display them taking the whole space
 
 # 2.33.2 (2021-06-15)
 
 ### Improvements
-
--   **Containers**: Supports a fixed footer in tight compact containers [ebrehault]
+- **Containers**: Supports a fixed footer in tight compact containers [ebrehault]
 
 # 2.33.1 (2021-06-14)
 
 ### Improvements
-
--   **Confirmation dialog**: Accept HTML on confirmation dialog description [mpellerin42]
+- **Confirmation dialog**: Accept HTML on confirmation dialog description [mpellerin42]
 
 ### Bugfix
-
--   **Confirmation dialog**: Emit `onClose` when closing the dialog [mpellerin42]
+- **Confirmation dialog**: Emit `onClose` when closing the dialog [mpellerin42]
 
 # 2.33.0 (2021-06-14)
 
 ### Feature
-
--   **Ellipsis tooltip**: New Ellipsis tooltip directive [mpellerin42]
+- **Ellipsis tooltip**: New Ellipsis tooltip directive [mpellerin42]
 
 ### Improvements
-
--   **Avatar**: Add avatar input to avatar component [mpellerin42]
--   **pa-option**: Add ellipsis tooltip on `pa-option` content and description [mpellerin42]
+- **Avatar**: Add avatar input to avatar component [mpellerin42]
+- **pa-option**: Add ellipsis tooltip on `pa-option` content and description [mpellerin42] 
 
 ### Bugfix
-
--   **Select**: Fix change detection to display preselected option on pa-select [mpellerin42]
+- **Select**: Fix change detection to display preselected option on pa-select [mpellerin42]
 
 # 2.32.1 (2021-06-11)
 
 ### Improvements
-
--   **Tooltip**: move style to global [ebrehault]
+- **Tooltip**: move style to global [ebrehault]
 
 # 2.32.0 (2021-06-11)
 
 ### Breaking changes
-
--   **Modal**: [mpellerin42]
-    -   `DialogComponent`
-        -   renamed `ModalDialogComponent` and corresponding selector `pa-modal-dialog`
-        -   displayed in fullscreen on small viewport
-    -   `ModalComponent`
-        -   renamed `ModalAdvancedComponent` and corresponding selector `pa-modal-advanced`
-        -   displayed in fullscreen on small viewport
-        -   Doesn't support `description` anymore
-    -   `ModalConfig`:
-        -   suppression of the following options: `fullscreen`, `showOverlay`, `withCloseButton`
-        -   replacement of `blocking` by `dismissable`: all modals are dismissable by default
-    -   The backdrop overlay behind the modals is always visible
+- **Modal**: [mpellerin42]
+    - `DialogComponent`
+        - renamed `ModalDialogComponent` and corresponding selector `pa-modal-dialog`
+        - displayed in fullscreen on small viewport
+    - `ModalComponent`
+        - renamed `ModalAdvancedComponent` and corresponding selector `pa-modal-advanced`
+        - displayed in fullscreen on small viewport
+        - Doesn't support `description` anymore 
+    - `ModalConfig`:
+        - suppression of the following options: `fullscreen`, `showOverlay`, `withCloseButton`
+        - replacement of `blocking` by `dismissable`: all modals are dismissable by default
+    - The backdrop overlay behind the modals is always visible
 
 ### Feature
-
--   **Confirmation dialog**: [mpellerin42]
-    -   new confirmation dialog component
-    -   new `openConfirm` method in `ModalService` to open a confirmation dialog
+- **Confirmation dialog**: [mpellerin42]
+    - new confirmation dialog component
+    - new `openConfirm` method in `ModalService` to open a confirmation dialog
 
 ### Improvements
-
--   **Modal**: [mpellerin42]
-    -   modal internal spacing and sizes updated
-    -   in and out transition updated
-    -   out transition now properly triggered when closing a modal from the template
+- **Modal**: [mpellerin42]
+    - modal internal spacing and sizes updated
+    - in and out transition updated
+    - out transition now properly triggered when closing a modal from the template
 
 # 2.31.1 (2021-06-08)
 
 ### Bugs fixes
-
--   **Containers**: set a max-width on containers for all screen sizes
+- **Containers**: set a max-width on containers for all screen sizes
 
 ### Improvements
-
--   **Avatar pile**: [mpellerin42]
-    -   Add `buttonAlwaysVisible` option to avatar pile component
-    -   Prevent clip mask to take space in avatar pile
+- **Avatar pile**:  [mpellerin42]
+    - Add `buttonAlwaysVisible` option to avatar pile component
+    - Prevent clip mask to take space in avatar pile
 
 # 2.31.0 (2021-06-04)
 
 ### Feature
-
--   **Infinite scroll**: New infinite scroll component [mpellerin42]
+- **Infinite scroll**: New infinite scroll component [mpellerin42]
 
 # 2.30.4 (2021-06-01)
 
 ### Bug fix
-
--   Fix library build [ebrehault]
+- Fix library build [ebrehault]
 
 # 2.30.3 (2021-05-31)
 
 ### Bug fix
-
--   **Table**: add margin after table-lead-image [ebrehault]
--   **Button**: no min-width for icon+text buttons [ebrehault]
+- **Table**: add margin after table-lead-image [ebrehault]
+- **Button**: no min-width for icon+text buttons [ebrehault]
 
 # 2.30.2 (2021-05-31)
 
 ### Bug fix
-
--   **Toggle**: update toggle state by clicking on its label [mpellerin42]
+- **Toggle**: update toggle state by clicking on its label [mpellerin42]
 
 # 2.30.1 (2021-05-27)
 
 ### Bug fixes
-
--   **Button**: Set pa-button host `display: inline-block` to fix button tooltip position [mpellerin42]
--   **Tooltip**: [mpellerin42]
-    -   Fix system tooltip positioning relative to the cursor: 16px below and 16px on the right of the cursor
-    -   Fix action and system tooltip position to take into account window scroll position
-    -   Fix tooltip position when element near the side of the screen to prevent the tooltip to cover the element
+- **Button**: Set pa-button host `display: inline-block` to fix button tooltip position [mpellerin42] 
+- **Tooltip**: [mpellerin42]
+    - Fix system tooltip positioning relative to the cursor: 16px below and 16px on the right of the cursor
+    - Fix action and system tooltip position to take into account window scroll position
+    - Fix tooltip position when element near the side of the screen to prevent the tooltip to cover the element
 
 # 2.30.0 (2021-05-25)
 
 ### Features
-
--   **Avatar pile**: New avatar pile component displaying a list of avatars [mpellerin42]
--   **Dropdown option**: [mpellerin42]
-    -   New avatar option on dropdown options
-    -   New readonly option on dropdown options
-
+- **Avatar pile**: New avatar pile component displaying a list of avatars [mpellerin42]
+- **Dropdown option**: [mpellerin42]
+    - New avatar option on dropdown options
+    - New readonly option on dropdown options
+    
 ### Improvements
-
--   **Buttons**: Min width of 160px for text buttons [mpellerin42]
--   **Dropdown**: [mpellerin42]
-    -   Set a max-height of 5.5 options so dropdown doesn't grow full screen
-    -   Remove internal padding on dropdowns
--   **Tooltip**: Update duration so tooltips are displayed faster [mpellerin42]
--   **Tokens**: Add generic duration tokens [mpellerin42]
+- **Buttons**: Min width of 160px for text buttons [mpellerin42]
+- **Dropdown**: [mpellerin42]
+    - Set a max-height of 5.5 options so dropdown doesn't grow full screen
+    - Remove internal padding on dropdowns
+- **Tooltip**: Update duration so tooltips are displayed faster [mpellerin42]
+- **Tokens**: Add generic duration tokens [mpellerin42]
 
 # 2.29.7 (2021-05-19)
 
 ### Bugfix
-
--   **Input Formatter**: Use `input` event [dgsmith2]
+- **Input Formatter**: Use `input` event [dgsmith2]
 
 # 2.29.6 (2021-05-19)
 
 ### Improvements
-
--   **Expander**: Added expandable card option to expander component [barcafa]
+- **Expander**: Added expandable card option to expander component [barcafa]
 
 # 2.29.5 (2021-05-17)
 
 ### Bugfix
-
--   **Toggle**: Fix toggle color [barcafa]
+- **Toggle**: Fix toggle color [barcafa]
 
 # 2.29.4 (2021-05-17)
 
 ### Bugfix
-
--   **Toggle**: Fix toggle styling [barcafa]
+- **Toggle**: Fix toggle styling [barcafa]
 
 # 2.29.3 (2021-05-06)
 
 ### Improvements
-
--   **Tabs**: Enable row tabs on mobile [barcafa]
+- **Tabs**: Enable row tabs on mobile [barcafa]
 
 # 2.29.2 (2021-05-06)
 
 ### Improvements
-
--   **Popup**: add active state on pa-button carrying the popup directive whenever the popup is opened [mpellerin42]
+- **Popup**: add active state on pa-button carrying the popup directive whenever the popup is opened [mpellerin42] 
 
 # 2.29.1 (2021-05-05)
 
 ### BugFix
-
--   **Select**: refresh displayed value when options change [ebrehault]
+- **Select**: refresh displayed value when options change [ebrehault]
 
 # 2.29.0 (2021-05-03)
 
 ### Breaking change
-
--   **Theme**: `.pa-sr` renamed in `.pa-sr-only` [ebrehault]
+- **Theme**: `.pa-sr` renamed in `.pa-sr-only` [ebrehault]
 
 ### Improvements
-
--   **Select**: `pa-select` supports dim mode [ebrehault]
+- **Select**: `pa-select` supports dim mode [ebrehault]
 
 # 2.28.1 (2021-04-22)
 
 ### BugFix
-
--   **Typography**: Update d1-md token to prevent low and high characters from being cut [mpellerin42]
+- **Typography**: Update d1-md token to prevent low and high characters from being cut [mpellerin42]
 
 # 2.28.0 (2021-04-22)
 
 ### Breaking change
-
--   **Translate**: [ebrehault]
-    -   Translations are now added from any module using the `addTranslations` static method
-    -   `mergeTranslations` is not available anymore
-
+- **Translate**: [ebrehault]
+    - Translations are now added from any module using the `addTranslations` static method
+    - `mergeTranslations` is not available anymore
+    
 ### BugFix
-
--   **Sortable Table Header**: Prevent sortable table header mobile dropdown to impact table rows [mpellerin42]
--   **Expander**: Update content height on expand to prevent overlap when window is resized while collapsed [mpellerin42]
--   **Typography**: Update display line-height to prevent low and high characters from being cut [mpellerin42]
+- **Sortable Table Header**: Prevent sortable table header mobile dropdown to impact table rows [mpellerin42]
+- **Expander**: Update content height on expand to prevent overlap when window is resized while collapsed [mpellerin42]
+- **Typography**: Update display line-height to prevent low and high characters from being cut [mpellerin42]
 
 # 2.27.1 (2021-04-21)
 
 ### Bugfix
-
--   **Tooltip**: Fix tooltip background color on safari [mpellerin42]
+- **Tooltip**: Fix tooltip background color on safari [mpellerin42]
 
 # 2.27.0 (2021-04-19)
 
 ### Improvements
-
--   **Chip**: Added expandable chip [barcafa]
+- **Chip**: Added expandable chip [barcafa]
 
 # 2.26.3 (2021-04-19)
 
 ### Improvements
-
--   **Modal**: Add a fullscreen option on modal config to display fullscreen modal on mobile [mpellerin42]
+- **Modal**: Add a fullscreen option on modal config to display fullscreen modal on mobile [mpellerin42]
 
 ### Bugfix
-
--   **Expander**: Prevent expander content to go over following expand (even if invisible) [mpellerin42]
+- **Expander**: Prevent expander content to go over following expand (even if invisible) [mpellerin42]
 
 # 2.26.2 (2021-04-16)
 
 ### Improvements
-
--   **Modal**: [mpellerin42]
-    -   Allow the display of an overlay for non-blocking modals
-    -   Update spacing
+- **Modal**: [mpellerin42]
+    - Allow the display of an overlay for non-blocking modals
+    - Update spacing
 
 # 2.26.1 (2021-04-15)
 
 ### Improvements
-
--   **Expander**: [mpellerin42]
-    -   Rename Expand to Expander for better clarity
-    -   Add `contentLoaded` input which update content height whenever it changes
--   **Transitions**: Update transition tokens [mpellerin42]
+- **Expander**: [mpellerin42]
+    - Rename Expand to Expander for better clarity
+    - Add `contentLoaded` input which update content height whenever it changes
+- **Transitions**: Update transition tokens [mpellerin42]
 
 # 2.26.0 (2021-04-14)
 
 ### Feature
-
--   **Expand**: New pa-expand component [mpellerin42]
--   **Transitions**: Create transition tokens [mpellerin42]
+- **Expand**: New pa-expand component [mpellerin42]
+- **Transitions**: Create transition tokens [mpellerin42]
 
 # 2.25.6 (2021-04-13)
 
 ### Bugfix
-
--   **Layout**: Fix wide+panel on xLarge screens [mpellerin42]
+- **Layout**: Fix wide+panel on xLarge screens [mpellerin42]
 
 # 2.25.5 (2021-04-12)
 
 ### Improvement
-
--   **Layout**: Add support for wide+panel layout (with panel on the right) [mpellerin42]
+- **Layout**: Add support for wide+panel layout (with panel on the right) [mpellerin42]
 
 # 2.25.4 (2021-04-06)
 
 ### Bugfix
-
--   **Checkbox**: fix border on checkbox to prevent wrong dashed border on safari [mpellerin42]
-    -   checkbox always has a 1px solid border
-    -   replace `$border-toggle` by `$color-border-toggle` tokens
-    -   set box-sizing to `content-box` and update size to take borders into account
+- **Checkbox**: fix border on checkbox to prevent wrong dashed border on safari [mpellerin42]
+    - checkbox always has a 1px solid border
+    - replace `$border-toggle` by `$color-border-toggle` tokens  
+    - set box-sizing to `content-box` and update size to take borders into account
 
 # 2.25.3 (2021-04-01)
 
 ### Improvement
-
--   **Avatar**: Update avatar default background color to be slightly darker [mpellerin42]
+- **Avatar**: Update avatar default background color to be slightly darker [mpellerin42]
 
 # 2.25.2 (2021-03-30)
 
 ### Improvement
-
--   **Table**:
-    -   support pa-icon as lead-image [mpellerin42]
-    -   Fix focus state on cells [mpellerin42]
+- **Table**:
+    - support pa-icon as lead-image [mpellerin42]
+    - Fix focus state on cells [mpellerin42]
 
 # 2.25.1 (2021-03-29)
 
 ### Improvement
-
--   **Chip**: set inner icon size to 16px in close button [mpellerin42]
+- **Chip**: set inner icon size to 16px in close button [mpellerin42]
 
 # 2.25.0 (2021-03-26)
 
 ### Feature
-
--   **Table**: [mpellerin42]
-    -   New component `pa-table-sortable-header` allowing managing the sorting seamlessly
-    -   New `pa-table-lead-cell-multi-line` component providing a layout for cells with a lead image, a title and a description
-    -   Fixing spacing on cells
-    -   Add `noAutoColumnStyle` option on table, allowing setting grid template by CSS
-    -   Add `disabled` property on all kind of cells and on rows
-    -   Add `noWrap` property on cells and provide `pa-ellipsis` class to support ellipsis on cell content
-    -   Rename `clickable` class to `pa-clickable` for consistency
+- **Table**: [mpellerin42]
+    - New component `pa-table-sortable-header` allowing managing the sorting seamlessly
+    - New `pa-table-lead-cell-multi-line` component providing a layout for cells with a lead image, a title and a description
+    - Fixing spacing on cells
+    - Add `noAutoColumnStyle` option on table, allowing setting grid template by CSS
+    - Add `disabled` property on all kind of cells and on rows
+    - Add `noWrap` property on cells and provide `pa-ellipsis` class to support ellipsis on cell content
+    - Rename `clickable` class to `pa-clickable` for consistency
 
 # 2.24.4 (2021-03-22)
 
 ### Improvements
-
--   **Toasts**: add some getters to allow toast service composition [mpellerin42]
+- **Toasts**: add some getters to allow toast service composition [mpellerin42]
 
 # 2.24.3 (2021-03-22)
 
 ### Improvements
-
--   **Buttons**: center button text by default [mpellerin42]
--   **Popup**: Manage popup visibility with a class to allow transitions [mpellerin42]
+- **Buttons**: center button text by default [mpellerin42]
+- **Popup**: Manage popup visibility with a class to allow transitions [mpellerin42]
 
 # 2.24.2 (2021-03-18)
 
 ### Improvements
-
--   **Buttons**: provide mixins for button style [mpellerin42]
+- **Buttons**: provide mixins for button style [mpellerin42]
 
 # 2.24.1 (2021-03-15)
 
 ### Improvements
-
--   **Colors**: better documentation of color palette, making it easier to be reused by other pastanaga based demo [mpellerin42]
+- **Colors**: better documentation of color palette, making it easier to be reused by other pastanaga based demo [mpellerin42]
 
 # 2.24.0 (2021-03-15)
 
 ### Breaking changes
-
--   **Size**: no more `xxsmall` nor `xsmall` sizes [mpellerin42]
--   **Icons**: [mpellerin42]
-    -   no more svg provided in assets (icons are in `glyphs-sprite.svg`)
-    -   the icon list provided and some of their names changed
-    -   documentation and components have been updated with the new names
--   **Button**: [mpellerin42]
-    -   `xsmall` button not supported anymore, use `small` button instead
-    -   display medium size icon in small button
-    -   fix small and medium button padding
+- **Size**: no more `xxsmall` nor `xsmall` sizes [mpellerin42]
+- **Icons**: [mpellerin42]
+    - no more svg provided in assets (icons are in `glyphs-sprite.svg`)
+    - the icon list provided and some of their names changed
+    - documentation and components have been updated with the new names
+- **Button**: [mpellerin42]
+    - `xsmall` button not supported anymore, use `small` button instead
+    - display medium size icon in small button
+    - fix small and medium button padding
 
 # 2.23.7 (2021-03-12)
 
 ### Bugfix
-
--   **Chips**: change chip max-width to be working on mobile without impacting chip look and feel when container is flex [mpellerin42]
+- **Chips**: change chip max-width to be working on mobile without impacting chip look and feel when container is flex [mpellerin42]
 
 # 2.23.6 (2021-03-12)
 
 ### Bugfix
-
--   **Chips**: prevent chips to be wider than their container [mpellerin42]
+- **Chips**: prevent chips to be wider than their container [mpellerin42] 
 
 # 2.23.5 (2021-03-11)
 
 ### Improvements
-
--   **PopupDirective**: Add `openOnly` input to prevent popup from closing when clicking on the element carrying the directive while the popup is visible [mpellerin42]
+- **PopupDirective**: Add `openOnly` input to prevent popup from closing when clicking on the element carrying the directive while the popup is visible [mpellerin42]
 
 # 2.23.4 (2021-03-10)
 
 ### Improvements
-
--   **OptionComponent**: fix line-height on options without icons [mpellerin42]
+- **OptionComponent**: fix line-height on options without icons [mpellerin42]
 
 # 2.23.3 (2021-03-10)
 
 ### Improvements
-
--   **OptionComponent**: [mpellerin42]
-    -   support `string` and `IconModel` for icon property
-    -   no more check mark on selected options
-    -   rhythm 8 spacing
+- **OptionComponent**: [mpellerin42]
+    - support `string` and `IconModel` for icon property
+    - no more check mark on selected options
+    - rhythm 8 spacing
 
 # 2.23.2 (2021-03-09)
 
 ### Improvements
-
--   **PopupDirective**: Allow to toggle popup programmatically [ebrehault]
+- **PopupDirective**: Allow to toggle popup programmatically [ebrehault]
 
 # 2.23.1 (2021-03-05)
 
 ### Improvements
-
--   **PopupDirective**: Allow to override popup margin [mpellerin42]
--   **Chips**: Fix minor spacing issues [mpellerin42]
+- **PopupDirective**: Allow to override popup margin [mpellerin42]
+- **Chips**: Fix minor spacing issues [mpellerin42]
 
 # 2.23.0 (2021-03-04)
 
 ### Breaking changes
-
--   **Chip**: `pa-chip` renamed to `pa-chip-closeable` [mpellerin42]
+- **Chip**: `pa-chip` renamed to `pa-chip-closeable` [mpellerin42]
 
 ### Improvements
-
--   **Chips**: New kind of chip – `pa-chip-selectionable` (without close button) allowing to chip selection [mpellerin42]
--   **Icon**: Support `IconModel` to fill all arguments of `pa-icon` at once [mpellerin42]
+- **Chips**: New kind of chip – `pa-chip-selectionable` (without close button) allowing to chip selection [mpellerin42]
+- **Icon**: Support `IconModel` to fill all arguments of `pa-icon` at once [mpellerin42]
 
 # 2.22.0 (2021-03-03)
 
 ### Breaking changes
-
--   **Table**: [mpellerin42]
-    -   No more `tableHeaderButton` component: use normal pa-button instead. On header cell pa-button are now styled without background nor box-shadow.
-    -   `pa-table-cell-header-sortable` renamed to `pa-table-sortable-header-cell`
-    -   replace `label` input of `pa-table-sortable-header-cell` by `ng-content` to stay consistent with other cell components
-    -   rename `reversed` input by `isDescending` to improve code clarity
-    -   rename `sorted` output by `sort`
-    -   update the documentation accordingly
+- **Table**: [mpellerin42]
+    - No more `tableHeaderButton` component: use normal pa-button instead. On header cell pa-button are now styled without background nor box-shadow.
+    - `pa-table-cell-header-sortable` renamed to `pa-table-sortable-header-cell`
+    - replace `label` input of `pa-table-sortable-header-cell` by `ng-content` to stay consistent with other cell components
+    - rename `reversed` input by `isDescending` to improve code clarity
+    - rename `sorted` output by `sort`
+    - update the documentation accordingly
 
 # 2.21.2 (2021-03-02)
 
 ### Improvement:
-
--   **Button**: add active state property on buttons [mpellerin42]
+- **Button**: add active state property on buttons [mpellerin42]
 
 # 2.21.1 (2021-03-01)
 
 ### Improvement:
-
--   **Table**: don't hide menu button by default in desktop tables [mpellerin42]
+- **Table**: don't hide menu button by default in desktop tables [mpellerin42] 
 
 # 2.21.0 (2021-02-23)
 
 ### Improvements:
-
--   **Form fields**: simplify and refactor fields implementation [julienCarret & ebrehault]
+- **Form fields**: simplify and refactor fields implementation [julienCarret & ebrehault]
 
 # 2.20.3 (2021-02-19)
 
 ### Improvements:
-
--   **Theme**: Add units to for saturation and lightness [dgsmith2]
+- **Theme**: Add units to for saturation and lightness [dgsmith2]
 
 # 2.20.2 (2021-02-16)
 
 ### Bugfix:
-
--   **Layout**: Fix tight compact container max-width value [mpellerin42]
+- **Layout**: Fix tight compact container max-width value [mpellerin42]
 
 # 2.20.1 (2021-02-15)
 
 ### Feature
-
--   **Layout**: [mpellerin42]
-    -   Add a new container based layout
-    -   Use Panel+Wide layout on our demo
+- **Layout**: [mpellerin42]
+    - Add a new container based layout
+    - Use Panel+Wide layout on our demo
 
 # 2.20.0 (2021-02-15)
 
 ### Breaking changes
-
--   **Breakpoints**: Update large and xLarge breakpoints to be respectively 1024px and 1440px [mpellerin42]
+- **Breakpoints**: Update large and xLarge breakpoints to be respectively 1024px and 1440px [mpellerin42]
 
 ### Improvements
-
--   **Breakpoints**: Update breakpoints documentation page [mpellerin42]
--   **Documentation pages**: [mpellerin42]
-    -   Add some space below the different titles to let the pages breath
-    -   Automatically scroll to top when navigating through demo pages.
--   **Spacing**: Add token for side panel width [mpellerin42]
+- **Breakpoints**: Update breakpoints documentation page [mpellerin42]
+- **Documentation pages**: [mpellerin42]
+    - Add some space below the different titles to let the pages breath
+    - Automatically scroll to top when navigating through demo pages.
+- **Spacing**: Add token for side panel width [mpellerin42]
 
 # 2.19.6 (2021-02-12)
 
 ### Bugfix
 
--   **Avatar**: Undefined avatar state use svg border image [barcafa]
+- **Avatar**: Undefined avatar state use svg border image [barcafa]
 
 # 2.19.5 (2021-02-10)
 
 ### Bugfix
 
--   **Toast**: Align toast text [barcafa]
+- **Toast**: Align toast text [barcafa]
 
 # 2.19.4 (2021-02-10)
 
 ### Bugfix
 
--   **Toast**: Set toast message as innerHTML [barcafa]
+- **Toast**: Set toast message as innerHTML [barcafa]
 
 # 2.19.3 (2021-02-5)
 
 ### Bugfix
-
--   **Typography**: Put back proper spacing in documentation pages [mpellerin42]
+- **Typography**: Put back proper spacing in documentation pages [mpellerin42]
 
 # 2.19.2 (2021-02-3)
 
 ### Bugfix
-
--   **Typography**: Use our monospace font token in our CSS reboot [mpellerin42]
+- **Typography**: Use our monospace font token in our CSS reboot [mpellerin42]
 
 # 2.19.1 (2021-02-3)
 
 ### Improvements
-
--   **Avatar**: fix font-weight to semi-bold [mpellerin42]
--   **Table**: fix padding on table rows [mpellerin42]
+- **Avatar**: fix font-weight to semi-bold [mpellerin42]
+- **Table**: fix padding on table rows [mpellerin42]
 
 # 2.19.0 (2021-02-1)
 
 ### Breaking changes
-
--   **Avatar**: [mpellerin42]
-    -   Size update: tiny | small | medium | huge (instead of small | medium | large)
-    -   Change the `undefined` state to be without background and with a dashed border
-    -   Update documentation page
+- **Avatar**: [mpellerin42]
+    - Size update: tiny | small | medium | huge (instead of small | medium | large)
+    - Change the `undefined` state to be without background and with a dashed border
+    - Update documentation page
 
 # 2.18.1 (2021-01-29)
 
 ### Improvement
-
--   **OptionModel**: add `hasSeparator` property to OptionModel to allow the creation of a menu dynamically [mpellerin42]
+- **OptionModel**: add `hasSeparator` property to OptionModel to allow the creation of a menu dynamically [mpellerin42] 
 
 # 2.18.0 (2021-01-25)
 
 ### Breaking changes
 
--   **Typography**: Improve typography setup and consistency [mpellerin42]
-    -   New naming convention for display sizes: d1, d2,… instead of dsmall, dmedium,…
-    -   New `-md` suffix applied to values meant to be used on medium breakpoint
-    -   Update some values in font-size and line-height mapping
-    -   Add mapping function and mixin for letter spacing
-    -   Update documentation page
+- **Typography**: Improve typography setup and consistency [mpellerin42]
+    - New naming convention for display sizes: d1, d2,… instead of dsmall, dmedium,…
+    - New `-md` suffix applied to values meant to be used on medium breakpoint
+    - Update some values in font-size and line-height mapping
+    - Add mapping function and mixin for letter spacing
+    - Update documentation page
+    
 
 # 2.17.11 (2021-01-18)
 
 ### Bugfix
 
--   **Tooltip**: Add missing export of tooltips in public-api [mpellerin42]
+- **Tooltip**: Add missing export of tooltips in public-api [mpellerin42]
 
 # 2.17.10 (2021-01-12)
 
 ### Bugfix
 
--   **Popup**: Fix for popup position [jlp0328]
+- **Popup**: Fix for popup position [jlp0328]
 
 # 2.17.9 (2021-01-11)
 
 ### Improvement
 
--   **Table**:
-    -   Added sortable header component [niglesias]
-    -   Added table header button to be used only in tables [niglesias]
-
+- **Table**: 
+    - Added sortable header component [niglesias]
+    - Added table header button to be used only in tables [niglesias]
+    
 # 2.17.8 (2021-01-11)
 
 ### Improvements
 
--   **Popup**: Fix prod build - Don't provide $event to HostListener when the method doesn't use it [mpellerin42]
+- **Popup**: Fix prod build - Don't provide $event to HostListener when the method doesn't use it [mpellerin42] 
 
 # 2.17.7 (2021-01-07)
 
 ### Bugfix
 
--   **Popup**: Fix width and position of dropdown [jlp0328]
+- **Popup**: Fix width and position of dropdown [jlp0328]
 
 # 2.17.6 (2021-01-07)
 
 ### Improvement
 
--   **Popup**: Add `openOnHover` attribute to popup directive [mpellerin42]
+- **Popup**: Add `openOnHover` attribute to popup directive [mpellerin42]
 
 # 2.17.5 (2021-01-05)
 
 ### Bugfix
 
--   **Dropdown**: Increase max-width of dropdown on large viewports [jlp0328]
+- **Dropdown**: Increase max-width of dropdown on large viewports [jlp0328]
 
 # 2.17.4 (2021-01-04)
 
 ### Improvements
 
--   **Tables**: add `last` input to table row component allowing to style properly row's border bottom (last row without border bottom) [mpellerin42]
+- **Tables**: add `last` input to table row component allowing to style properly row's border bottom (last row without border bottom) [mpellerin42]
 
 # 2.17.3 (2021-01-04)
 
 ### Bugfix
 
--   **Tables**: Remove z-index from table header which was causing side effect on some pages [mpellerin42]
+- **Tables**: Remove z-index from table header which was causing side effect on some pages [mpellerin42]
 
 # 2.17.2 (2020-12-22)
 
 ### Improvements
 
--   **Buttons**: add transitions to background color and box shadows on hover and active states [mpellerin42]
+- **Buttons**: add transitions to background color and box shadows on hover and active states [mpellerin42]
 
 # 2.17.1 (2020-12-21)
 
 ### Bugfix
 
--   **pa-select**: Fix dropdown position under pa-select [mpellerin42]
+- **pa-select**: Fix dropdown position under pa-select [mpellerin42]
 
 # 2.17.0 (2020-12-18)
 
 ### Breaking changes
 
--   Spacing in base 8:
-    -   Update our rhythm map to be base 8 instead of base 12 [mpellerin42]
-    -   Update all components to use the new rhythm map [mpellerin42]
+- Spacing in base 8:
+    - Update our rhythm map to be base 8 instead of base 12 [mpellerin42]
+    - Update all components to use the new rhythm map [mpellerin42]
 
 # 2.16.0 (2020-12-18)
 
 ### Breaking changes
 
--   **pa-select**:
-    -   User can no longer type in pa-select [jCarret]
-    -   free-text option removed [jCarret]
+- **pa-select**: 
+    - User can no longer type in pa-select [jCarret]
+    - free-text option removed [jCarret]
 
 # 2.15.8 (2020-12-17)
 
 ### Improvement
 
--   **Checkbox**: ellipsis on checkbox label [mpellerin42]
+- **Checkbox**: ellipsis on checkbox label [mpellerin42] 
 
 # 2.15.7 (2020-12-17)
 
 ### Improvement
 
--   **Popup**: when popup position is not adjusted, we adjust its height [ebrehault]
+- **Popup**: when popup position is not adjusted, we adjust its height [ebrehault]
 
 # 2.15.6 (2020-12-16)
 
 ### Improvement
 
--   **Sidenav**: Update demo and documentation [niglesias]
+- **Sidenav**: Update demo and documentation [niglesias]
 
 # 2.15.5 (2020-12-15)
 
 ### Improvement
 
--   **Input**: Support autocapitalize attribute [ebrehault]
+- **Input**: Support autocapitalize attribute [ebrehault]
 
 # 2.15.4 (2020-12-11)
 
 ### Bugfix
 
--   **Buttons**: CSS4 hover media query for buttons [jlp0328]
--   **Avatar**: Add color to avatar initials [jlp0328]
+- **Buttons**: CSS4 hover media query for buttons [jlp0328]
+- **Avatar**: Add color to avatar initials [jlp0328]
 
 # 2.15.3 (2020-12-10)
 
 ### Bugfix
 
--   **Datetime**: stop refresh date timer on component destroy [mpellerin42]
+- **Datetime**: stop refresh date timer on component destroy [mpellerin42]
 
 # 2.15.2 (2020-12-10)
 
 ### Bugfix
 
--   **Datetime**: refresh date time until it's more than 15min ago [mpellerin42]
+- **Datetime**: refresh date time until it's more than 15min ago [mpellerin42]
 
 # 2.15.1 (2020-12-10)
 
@@ -1625,20 +1415,21 @@
 
 ### Breaking changes
 
--   **ButtonComponent**: No more regular buttons [niglesias]
+- **ButtonComponent**: No more regular buttons [niglesias]
 
 # 2.14.6 (2020-12-09)
 
 ### Improvement
 
--   **Keys**: Complete Keys const [jCarret]
--   **dialog**: adapt width on mobile to avoid modal being full-width [jCarret]
+- **Keys**: Complete Keys const [jCarret]
+- **dialog**: adapt width on mobile to avoid modal being full-width [jCarret]
+
 
 # 2.14.5 (2020-12-09)
 
 ### Improvement
 
--   **Datetime**: refresh time displayed every minute when format is human and time less than 15min ago [mpellerin42]
+- **Datetime**: refresh time displayed every minute when format is human and time less than 15min ago [mpellerin42] 
 
 # 2.14.4 (2020-12-08)
 
@@ -1650,7 +1441,7 @@
 
 ### Improvements
 
--   Use GitHub Actions instead of Travis [ebrehault]
+- Use GitHub Actions instead of Travis [ebrehault]
 
 # 2.14.2 (2020-12-07)
 
