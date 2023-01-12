@@ -1,3 +1,9 @@
+# 2.58.9 (2023-01-12)
+
+### Bugfix
+
+- **Radio fields**: Fix (again) style when radio is checked and disabled [ebrehault]
+
 # 2.58.8 (2023-01-11)
 
 ### Bugfix

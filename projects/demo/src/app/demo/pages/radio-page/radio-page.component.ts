@@ -37,4 +37,7 @@ export class RadioPageComponent {
     formGroup = new FormGroup({
         favoriteMeal: new FormControl<string>('Lasagna'),
     });
+    formGroupDisabled = new FormGroup({
+        favoriteMeal: new FormControl<string>('Lasagna'),
+    });
 }
