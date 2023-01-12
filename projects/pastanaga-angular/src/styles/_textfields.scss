@@ -53,18 +53,37 @@
         &:focus,
         &:active,
         &.pa-content,
-        &.pa-focus,
-        &:has(.cdk-text-field-autofill-monitored) {
+        &.pa-focus {
             border-top: 1px solid transparent;
         }
+
         &:focus,
         &:active,
         &.pa-focus {
             border-color: $border-color-field-active;
             border-top: 1px solid transparent;
         }
-        &:has(.cdk-text-field-autofill-monitored),
+
         &.pa-content {
+            &::after,
+            &::before {
+                background: $border-color-field-regular;
+            }
+            &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
+                &::after,
+                &::before {
+                    background: $border-color-field-hover;
+                }
+            }
+        }
+        // :has needed to have Chrome autofill properly working, but Firefox does no support :has yet.
+        // Also "If the :has() pseudo-class itself is not supported in a browser, the entire selector block will fail"
+        // so we need to duplicate the blocks where :has is needed
+        // see https://developer.mozilla.org/en-US/docs/Web/CSS/:has
+        &:has(.cdk-text-field-autofilled) {
+            border-top: 1px solid transparent;
+        }
+        &:has(.cdk-text-field-autofilled) {
             &::after,
             &::before {
                 background: $border-color-field-regular;

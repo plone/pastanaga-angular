@@ -1,3 +1,9 @@
+# 2.58.10 (2023-01-13)
+
+### Bugfix
+
+- **Text field**: Fix top border on firefox (which was broken by 2.58.7 fix for chrome) [mpellerin42]
+
 # 2.58.9 (2023-01-12)
 
 ### Bugfix
