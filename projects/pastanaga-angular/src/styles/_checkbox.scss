@@ -52,15 +52,8 @@
             background-size: $size-toggle-checkbox $size-toggle-checkbox;
 
             &:disabled {
-                background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(
-                        #{$color-check-toggle-disabled},
-                        2
-                    ) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
                 background-color: $color-background-toggle-disabled;
                 border-color: $color-border-toggle-selected-disabled;
-                &[type='radio'] {
-                    -webkit-appearance: auto;
-                }
             }
         }
 
@@ -83,8 +76,9 @@
                     ) + '" fill-rule="evenodd"/></svg>');
 
                 &:disabled {
-                    border-color: $color-border-toggle-selected-disabled;
-                    background-color: $color-check-toggle-disabled;
+                    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="' + #{$color-check-toggle-disabled} + '" fill-rule="evenodd"/></svg>');
+                    border-color: $color-border-toggle-unselected-disabled;
+                    background-color: $color-border-toggle-selected-disabled;
                 }
             }
             &:disabled {
