@@ -62,7 +62,8 @@
 
         .pa-expander-header {
             background: $background-color-expanded-expander-header;
-            transition: background $transition-hint;
+            box-shadow: $box-shadow-expanded-expander-header;
+            transition: background $transition-hint, box-shadow $transition-hint;
 
             &:hover {
                 background: $background-color-expanded-expander-header-hover;
@@ -76,6 +77,7 @@
 
             .pa-expander-header {
                 background: $background-color-collapsed-expander-header;
+                box-shadow: $box-shadow-collapsed-expander-header;
 
                 &:hover {
                     background: $background-color-collapsed-expander-header-hover;
