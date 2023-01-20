@@ -25,7 +25,7 @@ describe('ExpandComponent', () => {
         expect(component.expanded).toBe(true);
     });
 
-    it('should not be expanded by default when it\'s a card', () => {
+    it("should not be expanded by default when it's a card", () => {
         component.card = true;
         spectator.detectChanges();
         expect(component.expanded).toBe(false);
@@ -68,6 +68,7 @@ describe('ExpandComponent', () => {
             component.updateContentHeight = updateContentHeight;
             component.expanded = false;
             component.contentHidden = true;
+            tick(transitionDuration);
             component.toggleExpand();
             expect(component.contentHidden).toBe(false);
             expect(component.expanded).toBe(false);
