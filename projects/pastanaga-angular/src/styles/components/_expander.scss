@@ -7,21 +7,14 @@
         transition: transform $transition-hint;
 
         pa-icon svg {
-            fill: $color-expanded-expander-header-icon;
-            transition: fill $transition-hint;
+            fill: $color-dark-stronger;
         }
     }
 
     .pa-expander-header {
         align-items: center;
-        background: $background-color-expanded-expander-header;
         display: flex;
-        transition: background $transition-hint;
         width: 100%;
-
-        &:hover {
-            background: $background-color-expanded-expander-header-hover;
-        }
 
         .pa-expander-title {
             color: $color-expanded-expander-header-title;
@@ -49,25 +42,6 @@
     }
 
     &.pa-collapsed {
-        .pa-expander-button .pa-button pa-icon svg {
-            fill: $color-collapsed-expander-header-icon;
-        }
-
-        .pa-expander-header {
-            background: $background-color-collapsed-expander-header;
-
-            &:hover {
-                background: $background-color-collapsed-expander-header-hover;
-            }
-
-            .pa-expander-title {
-                color: $color-collapsed-expander-header-title;
-                &:hover {
-                    color: $color-collapsed-expander-header-title-hover;
-                }
-            }
-        }
-
         .pa-expander-button .pa-button {
             transform: rotate(-90deg);
         }
@@ -77,22 +51,61 @@
             opacity: 0;
         }
     }
-}
 
-.pa-expander-card {
-    .pa-expander-header {
-        flex-direction: row-reverse;
-
-        .pa-expander-title {
-            color: $color-dark-stronger;
+    &:not(.pa-expander-card) {
+        .pa-expander-button .pa-button {
+            pa-icon svg {
+                fill: $color-expanded-expander-header-icon;
+                transition: fill $transition-hint;
+            }
         }
 
-        .pa-expander-header-extra {
-            margin-right: rhythm(3);
+        .pa-expander-header {
+            background: $background-color-expanded-expander-header;
+            transition: background $transition-hint;
+
+            &:hover {
+                background: $background-color-expanded-expander-header-hover;
+            }
+        }
+
+        &.pa-collapsed {
+            .pa-expander-button .pa-button pa-icon svg {
+                fill: $color-collapsed-expander-header-icon;
+            }
+
+            .pa-expander-header {
+                background: $background-color-collapsed-expander-header;
+
+                &:hover {
+                    background: $background-color-collapsed-expander-header-hover;
+                }
+
+                .pa-expander-title {
+                    color: $color-collapsed-expander-header-title;
+                    &:hover {
+                        color: $color-collapsed-expander-header-title-hover;
+                    }
+                }
+            }
         }
     }
 
-    &.pa-collapsed .pa-expander-button .pa-button {
-        transform: rotate(-180deg);
+    &.pa-expander-card {
+        .pa-expander-header {
+            flex-direction: row-reverse;
+
+            .pa-expander-title {
+                color: $color-dark-stronger;
+            }
+
+            .pa-expander-header-extra {
+                margin-right: rhythm(3);
+            }
+        }
+
+        &.pa-collapsed .pa-expander-button .pa-button {
+            transform: rotate(-180deg);
+        }
     }
 }

@@ -3,7 +3,7 @@
 ### Improvements
 
 - **Expander**: [mpellerin42]
-  - Add tokens allowing to change expander theme
+  - Add tokens allowing to change default expander theme
   - Add `collapsedByDefault` option
 
 # 2.58.10 (2023-01-13)
