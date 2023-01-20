@@ -1,14 +1,15 @@
 import {
-    Component,
-    ChangeDetectionStrategy,
-    ElementRef,
     AfterViewInit,
-    ContentChild,
-    Input,
+    ChangeDetectionStrategy,
     ChangeDetectorRef,
-    OnDestroy, ViewChild,
+    Component,
+    ContentChild,
+    ElementRef,
+    Input,
+    OnDestroy,
+    ViewChild,
 } from '@angular/core';
-import { ExpanderBodyDirective, ExpanderHeaderSideBlockDirective } from './expander.directive';
+import { ExpanderBodyDirective } from './expander.directive';
 import { markForCheck } from '../common';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -37,6 +38,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     @Input()
     set card(value: any) {
         this._card = coerceBooleanProperty(value);
+        this.expanded = false;
     }
     get card() {
         return this._card;
@@ -52,6 +54,12 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     }
     private _buttonOnlyToggle = false;
 
+    @Input() set collapsedByDefault(value: any) {
+        if (coerceBooleanProperty(value)) {
+            this.expanded = false;
+        }
+    }
+
     @ContentChild(ExpanderBodyDirective, { read: ElementRef }) expanderContent?: ElementRef;
     @ViewChild('sideBlock', { read: ElementRef }) sideBlock?: ElementRef;
 
@@ -66,9 +74,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit() {
         this.hasSideBlock = !!this.sideBlock && this.sideBlock.nativeElement.children.length > 0;
         this.updateContentHeight();
-        if (this.card) {
-            this.toggleExpand();
-        }
+        this.cdr.markForCheck();
     }
 
     ngOnDestroy() {

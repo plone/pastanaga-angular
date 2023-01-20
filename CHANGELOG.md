@@ -1,3 +1,11 @@
+# 2.58.11 (2023-01-20)
+
+### Improvements
+
+- **Expander**: [mpellerin42]
+  - Add tokens allowing to change expander theme
+  - Add `collapsedByDefault` option
+
 # 2.58.10 (2023-01-13)
 
 ### Bugfix

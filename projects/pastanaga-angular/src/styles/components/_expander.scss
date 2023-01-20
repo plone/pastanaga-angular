@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../theme/expander.tokens';
 
 .pa-expander {
     .pa-expander-button .pa-button {
@@ -6,25 +7,33 @@
         transition: transform $transition-hint;
 
         pa-icon svg {
-            fill: $color-dark-stronger;
+            fill: $color-expanded-expander-header-icon;
+            transition: fill $transition-hint;
         }
     }
 
     .pa-expander-header {
         align-items: center;
+        background: $background-color-expanded-expander-header;
         display: flex;
+        transition: background $transition-hint;
         width: 100%;
 
+        &:hover {
+            background: $background-color-expanded-expander-header-hover;
+        }
+
         .pa-expander-title {
-            color: $color-neutral-regular;
+            color: $color-expanded-expander-header-title;
             flex: 1 0 auto;
+            transition: color $transition-hint;
 
             &:not(.pa-button-only) {
                 cursor: pointer;
             }
 
             &:hover {
-                color: $color-dark-stronger;
+                color: $color-expanded-expander-header-title-hover;
             }
         }
 
@@ -40,6 +49,25 @@
     }
 
     &.pa-collapsed {
+        .pa-expander-button .pa-button pa-icon svg {
+            fill: $color-collapsed-expander-header-icon;
+        }
+
+        .pa-expander-header {
+            background: $background-color-collapsed-expander-header;
+
+            &:hover {
+                background: $background-color-collapsed-expander-header-hover;
+            }
+
+            .pa-expander-title {
+                color: $color-collapsed-expander-header-title;
+                &:hover {
+                    color: $color-collapsed-expander-header-title-hover;
+                }
+            }
+        }
+
         .pa-expander-button .pa-button {
             transform: rotate(-90deg);
         }
