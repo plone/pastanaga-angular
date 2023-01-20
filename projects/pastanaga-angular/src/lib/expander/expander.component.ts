@@ -5,8 +5,10 @@ import {
     Component,
     ContentChild,
     ElementRef,
+    EventEmitter,
     Input,
     OnDestroy,
+    Output,
     ViewChild,
 } from '@angular/core';
 import { ExpanderBodyDirective } from './expander.directive';
@@ -38,7 +40,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     @Input()
     set card(value: any) {
         this._card = coerceBooleanProperty(value);
-        this.expanded = false;
+        this._expanded = false;
     }
     get card() {
         return this._card;
@@ -54,17 +56,34 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     }
     private _buttonOnlyToggle = false;
 
-    @Input() set collapsedByDefault(value: any) {
+    @Input()
+    set expanded(value: any) {
         if (coerceBooleanProperty(value)) {
-            this.expanded = false;
+            this.expand();
+        } else {
+            this.collapse();
         }
     }
+    get expanded() {
+        return this._expanded;
+    }
+    private _expanded = true;
+
+    @Input()
+    set emitOnly(value: any) {
+        this._emitOnly = coerceBooleanProperty(value);
+    }
+    get emitOnly() {
+        return this._emitOnly;
+    }
+    private _emitOnly = false;
+
+    @Output() toggleExpander: EventEmitter<void> = new EventEmitter();
 
     @ContentChild(ExpanderBodyDirective, { read: ElementRef }) expanderContent?: ElementRef;
     @ViewChild('sideBlock', { read: ElementRef }) sideBlock?: ElementRef;
 
     terminator = new Subject<void>();
-    expanded = true;
     contentHidden = false;
 
     hasSideBlock = false;
@@ -89,22 +108,33 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     }
 
     toggleExpand() {
-        // when expanded, we collapse directly and hide content after the transition delay
-        if (this.expanded) {
-            this.expanded = false;
-            setTimeout(() => {
-                this.contentHidden = true;
-                markForCheck(this.cdr);
-            }, transitionDuration);
-        } else {
-            // when collapsed, we remove "display: none" before expanding the panel so the animation is visible
-            this.contentHidden = false;
-            this.updateContentHeight();
-            setTimeout(() => {
-                this.expanded = true;
-                markForCheck(this.cdr);
-            }, 0);
+        if (!this.emitOnly) {
+            if (this.expanded) {
+                this.collapse();
+            } else {
+                this.expand();
+            }
         }
+        this.toggleExpander.emit();
+    }
+
+    private collapse() {
+        // when expanded, we collapse directly and hide content after the transition delay
+        this._expanded = false;
+        setTimeout(() => {
+            this.contentHidden = true;
+            markForCheck(this.cdr);
+        }, transitionDuration);
+    }
+
+    private expand() {
+        // when collapsed, we remove "display: none" before expanding the panel so the animation is visible
+        this.contentHidden = false;
+        this.updateContentHeight();
+        setTimeout(() => {
+            this._expanded = true;
+            markForCheck(this.cdr);
+        }, 0);
     }
 
     private updateContentHeight() {

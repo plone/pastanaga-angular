@@ -4,7 +4,8 @@
 
 - **Expander**: [mpellerin42]
   - Add tokens allowing to change default expander theme
-  - Add `collapsedByDefault` option
+  - Add `emitOnly` and `expanded` options allowing accordion use case
+  - Update the documentation accordingly
 
 # 2.58.10 (2023-01-13)
 
