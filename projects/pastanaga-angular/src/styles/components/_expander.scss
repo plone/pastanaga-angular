@@ -14,6 +14,7 @@
     .pa-expander-header {
         align-items: center;
         display: flex;
+        position: relative;
         width: 100%;
 
         .pa-expander-title {
@@ -67,6 +68,10 @@
 
             &:hover {
                 background: $background-color-expanded-expander-header-hover;
+            }
+
+            .pa-expander-title {
+                line-height: rhythm(5);
             }
         }
 
