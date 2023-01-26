@@ -83,6 +83,19 @@
                 </pa-expander-body>
             </pa-expander>
         </section>
+        <hr>
+        <section>
+            <p><em>To build an accordion, you can use <code>emitOnly</code> and <code>expanded</code> properties to make sure only one expander is expanded at a time.</em></p>
+            <pa-expander *ngFor="let section of accordionContent"
+                         emitOnly
+                         [expanded]="accordionOpen === section.title"
+                         (toggleExpander)="toggleAccordion(section.title)">
+                <pa-expander-header>{{section.title}}</pa-expander-header>
+                <pa-expander-body>
+                    <p>{{section.content}}</p>
+                </pa-expander-body>
+            </pa-expander>
+        </section>
     </pa-demo-examples>
 
     <pa-demo-usage>
@@ -102,10 +115,26 @@
 
             <dt>disabled</dt>
             <dd>Disable the toggling action of the expander.</dd>
+
+            <dt>emitOnly</dt>
+            <dd>When true, the expander will not toggle automatically on click, it will only emit <code>toggleExpander</code> event. <small>(false by default)</small></dd>
+
+            <dt>expanded</dt>
+            <dd>Set expanded state: collapsed when false, expanded when true.</dd>
+        </dl>
+
+        <h3>Outputs</h3>
+        <dl>
+            <dt>toggleExpander</dt>
+            <dd>Event emitted when the user trigger the toggle, either by clicking on the expand button, either by clicking on the expander title (except if <code>buttonOnlyToggle</code> is <code>true</code>)</dd>
         </dl>
     </pa-demo-usage>
 
     <pa-demo-code>
+        Default expanders:
         <pre><code>{{codeSample}}</code></pre>
+
+        Accordion:
+        <pre><code>{{accordionExample}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>

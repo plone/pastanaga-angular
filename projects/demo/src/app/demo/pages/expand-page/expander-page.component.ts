@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     templateUrl: './expander-page.component.html',
@@ -34,4 +34,26 @@ export class ExpanderPageComponent {
             non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </pa-expander-body>
 </pa-expander>`;
+
+    accordionExample = `<pa-expander *ngFor="let section of accordionContent"
+             emitOnly
+             [expanded]="accordionOpen === section.title"
+             (toggleExpander)="accordionOpen = accordionOpen === section.title ? '' : section.title">
+    <pa-expander-header>{{section.title}}</pa-expander-header>
+    <pa-expander-body>
+        <p>{{section.content}}</p>
+    </pa-expander-body>
+</pa-expander>`;
+
+    accordionContent = [
+        { title: 'Beverage', content: 'water, milk, tea, coffee, juice' },
+        { title: 'Fruits', content: 'Kiwi, orange, lemon, banana, pineapple, apple' },
+        { title: 'Meat', content: 'beef, pork, lambs, sheep' },
+        { title: 'Vegetables', content: 'Spinach, potato, tomato, artichoke, beetroot' },
+    ];
+    accordionOpen = '';
+
+    toggleAccordion(title: string) {
+        this.accordionOpen = this.accordionOpen === title ? '' : title;
+    }
 }
