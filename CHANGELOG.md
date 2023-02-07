@@ -1,3 +1,9 @@
+# 2.58.12 (2023-02-07)
+
+### Bugfix
+
+- **Expander**: Fix expander's content visibility when `card` input is set [operramon]
+
 # 2.58.11 (2023-01-26)
 
 ### Improvements

@@ -41,6 +41,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     set card(value: any) {
         this._card = coerceBooleanProperty(value);
         this._expanded = false;
+        this.contentHidden = true;
     }
     get card() {
         return this._card;
