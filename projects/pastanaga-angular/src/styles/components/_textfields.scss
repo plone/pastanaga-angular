@@ -207,7 +207,6 @@
         caret-color: $color-caret-field-control-active;
         color: $color-text-field-control-regular;
         font-size: $font-size-field-control;
-        height: calc(#{rhythm(6)} - #{rhythm(0.25)});
         line-height: $line-height-field-control;
         margin: $border-width-active - $border-width-regular;
         outline: none;
@@ -215,6 +214,10 @@
         width: calc(100% - #{$border-width-regular});
 
         -webkit-appearance: none;
+
+        &:not(textarea) {
+            height: calc(#{rhythm(6)} - #{rhythm(0.25)});
+        }
 
         &.pa-field-control-icon:not(.pa-icon-on-right) {
             padding-left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
