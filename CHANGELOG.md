@@ -1,3 +1,9 @@
+# 2.58.13 (2023-02-09)
+
+### Bugfix
+
+- **Text field**: Don't set fixed height for mutiline fields [operramon]
+
 # 2.58.12 (2023-02-07)
 
 ### Bugfix
