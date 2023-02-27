@@ -1,3 +1,9 @@
+# 2.58.14 (2023-02-27)
+
+### Bugfix
+
+- **Sortable table**: Fix `table-sortable-header-cell` component to update the icon when `enabled` changes [mpellerin42]
+
 # 2.58.13 (2023-02-09)
 
 ### Bugfix

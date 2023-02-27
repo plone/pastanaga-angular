@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { BreakpointObserver } from '../../breakpoint-observer';
 import { markForCheck } from '../../common';
+import { take } from 'rxjs/operators';
 
 export const SORTABLE_ICON = 'chevron-down';
 export const SORTED_ASCENDING_ICON = 'arrow-down';
@@ -61,13 +62,13 @@ export class TableSortableHeaderCellComponent implements OnChanges {
     constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['active'] || changes['isDescending']) {
+        if (changes['active'] || changes['isDescending'] || changes['enabled']) {
             this.updateIcon();
         }
     }
 
     private updateIcon() {
-        this.breakpointObserver.currentMode.subscribe((mode) => {
+        this.breakpointObserver.currentMode.pipe(take(1)).subscribe((mode) => {
             if (mode === 'mobile') {
                 this.icon = SORTABLE_ICON;
             } else {
