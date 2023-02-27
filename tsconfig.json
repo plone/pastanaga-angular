@@ -2,37 +2,38 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./dist/out-tsc",
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "sourceMap": true,
-        "declaration": false,
-        "downlevelIteration": true,
-        "experimentalDecorators": true,
-        "esModuleInterop": true,
-        "moduleResolution": "node",
-        "importHelpers": true,
-        "resolveJsonModule": true,
-        "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "paths": {
-            "pastanaga-angular": [
-                "dist/pastanaga-angular/pastanaga-angular",
-                "dist/pastanaga-angular"
-            ],
-            "@guillotinaweb/pastanaga-angular": [
-                "projects/pastanaga-angular/src"
-            ]
-        },
-        "target": "es2020",
-        "module": "es2020",
-        "lib": [
-            "es2018",
-            "dom"
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "sourceMap": true,
+      "declaration": false,
+      "downlevelIteration": true,
+      "experimentalDecorators": true,
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "importHelpers": true,
+      "resolveJsonModule": true,
+      "noImplicitOverride": true,
+      "noPropertyAccessFromIndexSignature": true,
+      "paths": {
+        "pastanaga-angular": [
+          "dist/pastanaga-angular/pastanaga-angular",
+          "dist/pastanaga-angular"
+        ],
+        "@guillotinaweb/pastanaga-angular": [
+          "projects/pastanaga-angular/src"
         ]
+      },
+      "target": "ES2022",
+      "module": "es2020",
+      "lib": [
+        "es2018",
+        "dom"
+      ],
+      "useDefineForClassFields": false
     },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,
