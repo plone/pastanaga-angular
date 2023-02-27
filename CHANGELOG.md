@@ -1,3 +1,12 @@
+# 2.59.1 (2023-02-27)
+
+### Bugfixes
+- Add `styleIncludePaths` in `ng-package.json` (fix library build) [mpellerin42]
+- Fix CDK text field style import in `input.component.scss` [mpellerin42] 
+
+### Improvements
+- Extract build command in a new `build.sh` script [mpellerin42]
+
 # 2.59.0 (2023-02-27)
 
 ### Breaking change:
@@ -7,11 +16,6 @@
   - rxjs ^7.8.0
   - date-fns ^2.29.3
   - @ng-web-apis/common ^2.1.0
-- Add `styleIncludePaths` in `ng-package.json` (fix library build) [mpellerin42]
-
-### Improvements
-
-- Extract build command in a new `build.sh` script [mpellerin42]
 
 # 2.58.14 (2023-02-27)
 
