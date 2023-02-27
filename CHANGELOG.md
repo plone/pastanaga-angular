@@ -2,11 +2,16 @@
 
 ### Breaking change:
 
-- Upgrade to Angular 15.2  [mpellerin42]
-- Update peerDependencies to their latest version  [mpellerin42]
+- Upgrade to Angular 15.2 [mpellerin42]
+- Update peerDependencies to their latest version [mpellerin42]
   - rxjs ^7.8.0
   - date-fns ^2.29.3
   - @ng-web-apis/common ^2.1.0
+- Add `styleIncludePaths` in `ng-package.json` (fix library build) [mpellerin42]
+
+### Improvements
+
+- Extract build command in a new `build.sh` script [mpellerin42]
 
 # 2.58.14 (2023-02-27)
 
