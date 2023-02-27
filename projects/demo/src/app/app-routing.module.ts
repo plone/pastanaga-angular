@@ -16,10 +16,9 @@ const appRoutes: Routes = buildRoutesFromMenu();
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes, {
-            relativeLinkResolution: 'legacy',
-            paramsInheritanceStrategy: 'always',
-            initialNavigation: 'enabledBlocking',
-        }),
+    paramsInheritanceStrategy: 'always',
+    initialNavigation: 'enabledBlocking'
+}),
     ],
     exports: [RouterModule]
 })
