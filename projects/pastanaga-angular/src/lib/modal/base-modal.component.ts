@@ -5,7 +5,6 @@ import {
     ElementRef,
     EventEmitter,
     OnDestroy,
-    OnInit,
     Output,
     ViewChild,
 } from '@angular/core';
@@ -16,7 +15,7 @@ import { Subject } from 'rxjs';
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
-export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
+export class BaseModalComponent implements AfterViewInit, OnDestroy {
     @Output() enterPressed: EventEmitter<void> = new EventEmitter();
 
     @ViewChild('modalContainer') modalContainer?: ElementRef;
@@ -30,9 +29,7 @@ export class BaseModalComponent implements AfterViewInit, OnInit, OnDestroy {
 
     protected _terminator = new Subject<void>();
 
-    constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef) {}
-
-    ngOnInit() {
+    constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef) {
         this.ref.onClose.pipe(takeUntil(this._terminator)).subscribe(() => this.close());
     }
 

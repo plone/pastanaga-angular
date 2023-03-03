@@ -1,3 +1,8 @@
+# 2.59.2 (2023-03-3)
+
+### Bugfix
+- Make sure base modal listen to onClose before user can close it [mpellerin42]
+
 # 2.59.1 (2023-02-27)
 
 ### Bugfixes
