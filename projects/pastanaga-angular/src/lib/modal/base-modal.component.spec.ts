@@ -3,6 +3,7 @@ import { ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { ModalConfig, ModalRef } from './modal.model';
 import { Keys } from '../common';
 import { createSpyObject, SpyObject } from '@ngneat/spectator/jest';
+import { Subject } from 'rxjs';
 
 describe('BaseModalComponent', () => {
     let cdr: ChangeDetectorRef;
@@ -11,11 +12,11 @@ describe('BaseModalComponent', () => {
     let events: { [event: string]: EventListener } = {};
 
     beforeEach(() => {
-        cdr = ({
+        cdr = {
             markForCheck: jest.fn(() => {}),
             detectChanges: jest.fn(() => {}),
-        } as any) as ChangeDetectorRef;
-        modalRef = createSpyObject(ModalRef);
+        } as any as ChangeDetectorRef;
+        modalRef = createSpyObject(ModalRef, { onClose: new Subject().asObservable() });
         modalRef.id = 1;
         baseModal = new BaseModalComponent(modalRef, cdr);
     });
@@ -54,10 +55,10 @@ describe('BaseModalComponent', () => {
             mockClose = jest.fn(() => {});
             mockPreventDefault = jest.fn(() => {});
             baseModal.close = mockClose;
-            fakeMouseEvent = ({
+            fakeMouseEvent = {
                 target: { outerHTML: 'pa-modal-backdrop' },
                 preventDefault: mockPreventDefault,
-            } as any) as MouseEvent;
+            } as any as MouseEvent;
         });
 
         it(`should not close when config is not dismissable`, () => {
@@ -110,15 +111,15 @@ describe('BaseModalComponent', () => {
             mockClose = jest.fn(() => {});
 
             baseModal.close = mockClose;
-            baseModal.enterPressed = ({ emit: mockEnterPressed } as any) as EventEmitter<void>;
+            baseModal.enterPressed = { emit: mockEnterPressed } as any as EventEmitter<void>;
             baseModal.ngAfterViewInit();
         });
 
         it(`should emit enterPressed when pressing enter`, () => {
-            fakeKeypressEvent = ({
+            fakeKeypressEvent = {
                 key: Keys.enter,
                 stopPropagation: mockStopPropagation,
-            } as any) as KeyboardEvent;
+            } as any as KeyboardEvent;
 
             events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(1);
@@ -129,10 +130,10 @@ describe('BaseModalComponent', () => {
         it(`should do nothing if ref is not the last one`, () => {
             modalRef.isLast = false;
             baseModal.config = new ModalConfig();
-            fakeKeypressEvent = ({
+            fakeKeypressEvent = {
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
-            } as any) as KeyboardEvent;
+            } as any as KeyboardEvent;
             events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(0);
             expect(mockEnterPressed.mock.calls.length).toBe(0);
@@ -141,10 +142,10 @@ describe('BaseModalComponent', () => {
 
         it(`should do nothing when pressing ESC and dismissable is false`, () => {
             baseModal.config = new ModalConfig({ dismissable: false });
-            fakeKeypressEvent = ({
+            fakeKeypressEvent = {
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
-            } as any) as KeyboardEvent;
+            } as any as KeyboardEvent;
             events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(0);
             expect(mockEnterPressed.mock.calls.length).toBe(0);
@@ -154,10 +155,10 @@ describe('BaseModalComponent', () => {
         it(`should close when pressing ESC and config has dismissable set to true`, () => {
             modalRef.isLast = true;
             baseModal.config = new ModalConfig({ dismissable: true });
-            fakeKeypressEvent = ({
+            fakeKeypressEvent = {
                 key: Keys.esc,
                 stopPropagation: mockStopPropagation,
-            } as any) as KeyboardEvent;
+            } as any as KeyboardEvent;
             events['keydown'](fakeKeypressEvent);
             expect(mockStopPropagation.mock.calls.length).toBe(1);
             expect(mockEnterPressed.mock.calls.length).toBe(0);
