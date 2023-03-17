@@ -1,12 +1,12 @@
 import {
-    ComponentRef,
     ComponentFactoryResolver,
+    ComponentRef,
     Directive,
+    ElementRef,
     HostListener,
     Input,
-    ViewContainerRef,
-    ElementRef,
     Renderer2,
+    ViewContainerRef,
 } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
@@ -21,7 +21,7 @@ let nextId = 0;
     selector: '[paTooltip]',
 })
 export class TooltipDirective {
-    @Input('paTooltip') text = '';
+    @Input('paTooltip') text: string | undefined = '';
     @Input('paTooltipType') type: 'system' | 'action' = ACTION;
     @Input()
     get paTooltipOffset(): number {

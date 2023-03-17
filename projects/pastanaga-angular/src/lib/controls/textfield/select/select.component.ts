@@ -39,7 +39,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     @Input() label = '';
     @Input() placeholder?: string;
 
-    @Input() set options(values: OptionType[]) {
+    @Input() set options(values: OptionType[] | null) {
         this.dropDownModels = !!values ? values : [];
         this._updateDisplayedValue(this.control.value);
     }

@@ -1,3 +1,9 @@
+# 2.59.3 (2023-03-17)
+
+### Improvements
+
+- Improve typings on select and tooltip [mpellerin42]
+
 # 2.59.2 (2023-03-3)
 
 ### Bugfix
