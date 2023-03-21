@@ -17,7 +17,7 @@ import { PaFocusableModule } from '../focusable/focusable.module';
             <pa-table-cell header>Size</pa-table-cell>
         </pa-table-header>
         <pa-table-row-header>Today</pa-table-row-header>
-        <pa-table-row clickable id="row-1">
+        <pa-table-row hoverable id="row-1">
             <pa-table-cell header id="cell-1">My_text_file.txt</pa-table-cell>
             <pa-table-cell id="cell-2">Bonjour, Occitania, França, Jenesepas</pa-table-cell>
             <pa-table-cell>100 MB</pa-table-cell>

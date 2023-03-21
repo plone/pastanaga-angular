@@ -9,17 +9,17 @@
     .pa-table-grid--header {
         position: sticky;
         top: 0;
-        min-height: rhythm(4);
+        min-height: $min-height-table-header;
         background: $color-background-table-header;
         border-bottom: 1px $color-border-table-header solid;
         color: $color-text-table-header;
         font-size: font-size(xs);
         font-weight: $font-weight-text-table-header;
         line-height: line-height(s);
-        padding: rhythm(.5) rhythm(2);
-        text-transform: uppercase;
+        padding: $padding-table-header;
+        text-transform: $text-transform-table-header;
     }
-    .pa-table-grid--row > :first-child  {
+    .pa-table-grid--row > :first-child {
         z-index: 2;
     }
 }
@@ -31,8 +31,14 @@
         background: $color-background-table-row;
     }
 
+    .pa-table-grid--header,
+    .pa-table-grid--row {
+        transition: background $transition-hint;
+    }
+
     .pa-table-grid--row:hover .pa-table-grid--header,
-    .pa-table-grid--row.pa-clickable:hover .pa-table-grid--cell {
+    .pa-table-grid--row.pa-clickable:hover .pa-table-grid--cell,
+    .pa-table-grid--row.pa-hoverable:hover .pa-table-grid--cell {
         background: $color-background-table-row-hover;
     }
 
@@ -66,10 +72,10 @@
         background: $color-background-table-header-row;
         color: $color-text-table-header-row;
         margin-top: -1px;
-        padding: rhythm(.5) rhythm(1);
+        padding: $padding-table-row-header;
         border-top: 1px solid $color-border-table-header-row;
         position: sticky;
-        top: rhythm(4);
+        top: $min-height-table-header;
         z-index: 3;
     }
 
@@ -81,7 +87,7 @@
 
     &.pa-disabled .pa-table-grid--cell {
         cursor: default;
-        opacity: .5;
+        opacity: 0.5;
         pointer-events: none;
     }
     &.pa-clickable .pa-table-grid--cell {
@@ -99,12 +105,12 @@
     color: $color-text-table-row;
     display: flex;
     align-items: center;
-    padding: rhythm(1) rhythm(2);
-    min-height: rhythm(9);
+    padding: $padding-table-cell-small;
+    min-height: $min-height-table-cell;
 
     &.pa-disabled {
         cursor: default;
-        opacity: .5;
+        opacity: 0.5;
         pointer-events: none;
     }
     &.pa-keyboard-focus {
@@ -153,7 +159,12 @@ $lead-image-dimension: rhythm(6);
 }
 
 // ignore Angular components
-pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell, pa-table-cell-menu, pa-table-sortable-header-cell {
+pa-table-row,
+pa-table-row-header,
+pa-table-header,
+pa-table-cell,
+pa-table-cell-menu,
+pa-table-sortable-header-cell {
     display: contents;
 }
 
@@ -164,7 +175,7 @@ pa-table-row, pa-table-row-header, pa-table-header, pa-table-cell, pa-table-cell
     }
 
     .pa-table-grid--cell {
-        padding: rhythm(1.5) rhythm(2);
+        padding: $padding-table-cell-medium;
     }
 }
 
