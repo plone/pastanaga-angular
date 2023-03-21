@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
@@ -8,6 +8,15 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     encapsulation: ViewEncapsulation.None,
 })
 export class TableRowComponent {
+    @Input()
+    get hoverable(): boolean {
+        return this._hoverable;
+    }
+    set hoverable(value: any) {
+        this._hoverable = coerceBooleanProperty(value);
+    }
+    private _hoverable = false;
+
     @Input()
     get clickable(): boolean {
         return this._clickable;

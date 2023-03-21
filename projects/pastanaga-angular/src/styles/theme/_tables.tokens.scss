@@ -1,9 +1,10 @@
-@import "palette.tokens";
-@import "typography.tokens";
+@import 'palette.tokens';
+@import 'spacing.tokens';
+@import 'typography.tokens';
 
-$font-weight-text-table-header:         $font-weight-bold !default;
-$font-weight-table-row:                 $font-weight-regular !default;
-$font-weight-text-table-header-row:     $font-weight-thin !default;
+$font-weight-text-table-header: $font-weight-bold !default;
+$font-weight-table-row: $font-weight-regular !default;
+$font-weight-text-table-header-row: $font-weight-thin !default;
 
 $color-text-table-header: $color-neutral-regular !default;
 $color-text-table-header-row: $color-neutral-regular !default;
@@ -22,3 +23,13 @@ $color-background-table-row-selected: $color-primary-lightest !default;
 
 $color-icon-table-menu-button: $color-neutral-regular !default;
 $color-icon-table-menu-button-hover: $color-dark-stronger !default;
+
+$padding-table-header: rhythm(0.5) rhythm(2) !default;
+$padding-table-row-header: rhythm(0.5) rhythm(1) !default;
+$padding-table-cell-small: rhythm(1) rhythm(2) !default;
+$padding-table-cell-medium: rhythm(1.5) rhythm(2) !default;
+
+$min-height-table-header: rhythm(4) !default;
+$min-height-table-cell: rhythm(9) !default;
+
+$text-transform-table-header: uppercase !default;
