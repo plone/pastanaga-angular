@@ -22,7 +22,7 @@ import { PaFocusableModule } from '../focusable/focusable.module';
             <pa-table-cell id="cell-2">Bonjour, Occitania, França, Jenesepas</pa-table-cell>
             <pa-table-cell>100 MB</pa-table-cell>
         </pa-table-row>
-        <pa-table-row id="row-2">
+        <pa-table-row hoverable id="row-2">
             <pa-table-cell header>My_text_file.txt</pa-table-cell>
             <pa-table-cell>Bonjour, Occitania, França, Jenesepas</pa-table-cell>
             <pa-table-cell>100 MB</pa-table-cell>
@@ -86,6 +86,11 @@ describe('Table', () => {
     it('should set the clickable class on rows', () => {
         expect(fixture.debugElement.query(By.css('#row-1 .pa-table-grid--row.pa-clickable'))).toBeTruthy();
         expect(fixture.debugElement.query(By.css('#row-2 .pa-table-grid--row.pa-clickable'))).toBeFalsy();
+    });
+
+    it('should set the hoverable class on rows', () => {
+        expect(fixture.debugElement.query(By.css('#row-1 .pa-table-grid--row.pa-hoverable'))).toBeFalsy();
+        expect(fixture.debugElement.query(By.css('#row-2 .pa-table-grid--row.pa-hoverable'))).toBeTruthy();
     });
 
     it('should set the clickable class on headers', () => {

@@ -1,3 +1,11 @@
+# 2.59.4 (2023-03-21)
+
+### Improvements
+- Improve **table** theming [mpellerin42]
+  - add tokens for spacing
+  - add transition on background color change
+  - add hoverable option on rows
+
 # 2.59.3 (2023-03-17)
 
 ### Improvements
