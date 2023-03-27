@@ -8,6 +8,9 @@
     <pa-demo-usage>
         <h3>Inputs</h3>
         <dl>
+            <dt>center</dt>
+            <dd>If true, cell's content is horizontally centered. <small>(default: false)</small></dd>
+
             <dt>clickable</dt>
             <dd>If true, hovering the cell will display a pointer cursor. <small>(default: false)</small></dd>
 
@@ -23,17 +26,19 @@
     </pa-demo-usage>
 
     <pa-demo-examples>
-        <pa-table columns="1fr 1fr 1fr 96px">
+        <pa-table columns="1fr 1fr 1fr 1fr 96px">
             <pa-table-header>
                 <pa-table-cell header clickable>Clickable</pa-table-cell>
                 <pa-table-cell header disabled>Disabled</pa-table-cell>
                 <pa-table-cell header noWrap>noWrap</pa-table-cell>
+                <pa-table-cell header center>Center</pa-table-cell>
                 <pa-table-cell-menu header></pa-table-cell-menu>
             </pa-table-header>
             <pa-table-row>
                 <pa-table-cell clickable>Clickable</pa-table-cell>
                 <pa-table-cell disabled>Disabled</pa-table-cell>
                 <pa-table-cell noWrap><span paEllipsisTooltip>noWrap even if super long content going over the limit of the cell, displayed thanks to paEllipsisTooltip</span></pa-table-cell>
+                <pa-table-cell center>–</pa-table-cell>
                 <pa-table-cell-menu><pa-button icon="trash" size="small"></pa-button></pa-table-cell-menu>
             </pa-table-row>
         </pa-table>

@@ -10,7 +10,7 @@ button {
     padding: 0;
     margin: 0;
     font-weight: $font-weight-bold;
-    text-transform: uppercase;
+    text-transform: $text-transform-table-header;
 
     &:active,
     &.pa-active {
@@ -28,9 +28,11 @@ button {
 
         &.pa-enabled pa-icon {
             opacity: 1;
-            transition: transform ease-in-out .3s;
+            transition: transform ease-in-out 0.3s;
         }
-        &:hover, &:active, &.pa-keyboard-focus {
+        &:hover,
+        &:active,
+        &.pa-keyboard-focus {
             cursor: pointer;
             color: $color-dark-stronger;
 

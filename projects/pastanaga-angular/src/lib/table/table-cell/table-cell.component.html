@@ -1,9 +1,12 @@
-<div [class.pa-table-grid--cell]="!header"
-     [class.pa-table-grid--header]="header"
-     [class.pa-clickable]="clickable"
-     [class.pa-disabled]="disabled"
-     [class.pa-no-wrap]="noWrap"
-     paFocusable
-     [paFocusDisabled]="!clickable">
+<div
+    [class.pa-table-grid--cell]="!header"
+    [class.pa-table-grid--header]="header"
+    [class.pa-clickable]="clickable"
+    [class.pa-disabled]="disabled"
+    [class.pa-no-wrap]="noWrap"
+    [class.pa-center]="center"
+    paFocusable
+    [paFocusDisabled]="!clickable"
+>
     <ng-content></ng-content>
 </div>

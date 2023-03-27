@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
@@ -40,8 +40,17 @@ export class TableCellComponent {
         this._noWrap = coerceBooleanProperty(value);
     }
 
+    @Input()
+    get center(): boolean {
+        return this._center;
+    }
+    set center(value: any) {
+        this._center = coerceBooleanProperty(value);
+    }
+
     private _noWrap = false;
     private _disabled = false;
     private _header = false;
     private _clickable = false;
+    private _center = false;
 }

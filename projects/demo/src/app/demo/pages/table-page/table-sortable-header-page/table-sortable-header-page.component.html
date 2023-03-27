@@ -10,17 +10,18 @@
 
     <pa-demo-examples>
         <p>Header displaying several columns for tablet or desktop</p>
-        <pa-table columns="repeat(3, 1fr)">
+        <pa-table columns="repeat(4, 1fr)">
             <pa-table-sortable-header [cells]="headerCells"
                                       (sort)="sortBy($event)"></pa-table-sortable-header>
             <pa-table-row *ngFor="let row of rows">
                 <pa-table-cell>{{row.name}}</pa-table-cell>
                 <pa-table-cell>{{row.source}}</pa-table-cell>
-                <pa-table-cell>{{row.status}}</pa-table-cell>
+                <pa-table-cell center>{{row.status}}</pa-table-cell>
+                <pa-table-cell center>{{row.date}}</pa-table-cell>
             </pa-table-row>
         </pa-table>
 
-        <p>Header displaying only one the active for mobile</p>
+        <p>Header displaying only the active one on mobile mode</p>
         <pa-table>
             <pa-table-sortable-header mode="mobile"
                                       [cells]="headerCells"
