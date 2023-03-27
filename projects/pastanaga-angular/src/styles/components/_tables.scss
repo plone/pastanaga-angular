@@ -99,6 +99,10 @@
     display: flex;
     align-items: center;
     padding: 0 rhythm(1);
+
+    &.pa-center {
+        justify-content: center;
+    }
 }
 .pa-table-grid--cell {
     background: $color-background-table-row;
@@ -115,6 +119,9 @@
     }
     &.pa-keyboard-focus {
         box-shadow: inset $shadow-focus !important;
+    }
+    &.pa-center {
+        justify-content: center;
     }
 }
 
