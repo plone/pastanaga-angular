@@ -31,6 +31,22 @@ export class TableSortableHeaderPageComponent {
     </pa-table-row>
 </pa-table>`;
 
+    codeCheckboxColumn = `<pa-table columns="40px repeat(4, 1fr)">
+    <pa-table-sortable-header [cells]="headerCells"
+                              (sort)="sortBy($event)">
+        <pa-table-cell header>
+            <pa-checkbox></pa-checkbox>
+        </pa-table-cell>
+    </pa-table-sortable-header>
+    <pa-table-row *ngFor="let row of rows">
+        <pa-table-cell><pa-checkbox></pa-checkbox></pa-table-cell>
+        <pa-table-cell>{{row.name}}</pa-table-cell>
+        <pa-table-cell>{{row.source}}</pa-table-cell>
+        <pa-table-cell center>{{row.status}}</pa-table-cell>
+        <pa-table-cell center>{{row.date}}</pa-table-cell>
+    </pa-table-row>
+</pa-table>`;
+
     headerCells: HeaderCell[] = [
         new SortableHeaderCell({ id: 'name', label: 'Name', active: true }),
         new SortableHeaderCell({ id: 'source', label: 'Source' }),
