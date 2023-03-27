@@ -12,7 +12,8 @@
         <p>Header displaying several columns for tablet or desktop</p>
         <pa-table columns="repeat(4, 1fr)">
             <pa-table-sortable-header [cells]="headerCells"
-                                      (sort)="sortBy($event)"></pa-table-sortable-header>
+                                      (sort)="sortBy($event)">
+            </pa-table-sortable-header>
             <pa-table-row *ngFor="let row of rows">
                 <pa-table-cell>{{row.name}}</pa-table-cell>
                 <pa-table-cell>{{row.source}}</pa-table-cell>
@@ -32,6 +33,25 @@
                     <pa-table-lead-title>{{row.name}}</pa-table-lead-title>
                     <pa-table-lead-description>{{row.source}}</pa-table-lead-description>
                 </pa-table-lead-cell-multi-line>
+            </pa-table-row>
+        </pa-table>
+
+        <p>Header staring with a checkbox column</p>
+        <pa-table columns="40px repeat(4, 1fr)">
+            <pa-table-sortable-header [cells]="headerCells"
+                                      (sort)="sortBy($event)">
+                <pa-table-cell header>
+                    <pa-checkbox></pa-checkbox>
+                </pa-table-cell>
+            </pa-table-sortable-header>
+            <pa-table-row *ngFor="let row of rows">
+                <pa-table-cell>
+                    <pa-checkbox></pa-checkbox>
+                </pa-table-cell>
+                <pa-table-cell>{{row.name}}</pa-table-cell>
+                <pa-table-cell>{{row.source}}</pa-table-cell>
+                <pa-table-cell center>{{row.status}}</pa-table-cell>
+                <pa-table-cell center>{{row.date}}</pa-table-cell>
             </pa-table-row>
         </pa-table>
     </pa-demo-examples>
@@ -56,5 +76,8 @@
 
         <p>Code for the mobile example above:</p>
         <pre><code>{{codeMobile}}</code></pre>
+
+        <p>Code for the table starting with a checkbox column</p>
+        <pre><code>{{codeCheckboxColumn}}</code></pre>
     </pa-demo-code>
 </pa-demo-page>
