@@ -6,6 +6,7 @@ export interface IHeaderCell {
     active?: boolean;
     sortable?: boolean;
     descending?: boolean;
+    centered?: boolean;
 }
 
 export class HeaderCell {
@@ -14,6 +15,7 @@ export class HeaderCell {
     sortable: boolean;
     active: boolean;
     descending: boolean;
+    centered: boolean;
 
     constructor(data: IHeaderCell) {
         this.id = data.id;
@@ -21,6 +23,7 @@ export class HeaderCell {
         this.sortable = coerceBooleanProperty(data.sortable);
         this.active = coerceBooleanProperty(data.active);
         this.descending = coerceBooleanProperty(data.descending);
+        this.centered = coerceBooleanProperty(data.centered);
     }
 }
 

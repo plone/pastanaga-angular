@@ -49,6 +49,13 @@ export class TableSortableHeaderCellComponent implements OnChanges {
         return this._isDescending;
     }
 
+    @Input()
+    get center(): boolean {
+        return this._center;
+    }
+    set center(value: any) {
+        this._center = coerceBooleanProperty(value);
+    }
     @Output() sort = new EventEmitter();
 
     @ViewChild('cell', { read: ElementRef }) cellElement?: ElementRef;
@@ -58,6 +65,7 @@ export class TableSortableHeaderCellComponent implements OnChanges {
     private _enabled = false;
     private _active = false;
     private _isDescending = false;
+    private _center = false;
 
     constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {}
 

@@ -7,13 +7,14 @@ import { HeaderCell, SortableHeaderCell } from '@guillotinaweb/pastanaga-angular
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableSortableHeaderPageComponent {
-    codeDesktop = `<pa-table columns="repeat(3, 1fr)">
+    codeDesktop = `<pa-table columns="repeat(4, 1fr)">
     <pa-table-sortable-header [cells]="headerCells"
                               (sort)="sortBy($event)"></pa-table-sortable-header>
     <pa-table-row *ngFor="let row of rows">
         <pa-table-cell>{{row.name}}</pa-table-cell>
         <pa-table-cell>{{row.source}}</pa-table-cell>
-        <pa-table-cell>{{row.status}}</pa-table-cell>
+        <pa-table-cell center>{{row.status}}</pa-table-cell>
+        <pa-table-cell center>{{row.date}}</pa-table-cell>
     </pa-table-row>
 </pa-table>`;
 
@@ -30,16 +31,34 @@ export class TableSortableHeaderPageComponent {
     </pa-table-row>
 </pa-table>`;
 
+    codeCheckboxColumn = `<pa-table columns="40px repeat(4, 1fr)">
+    <pa-table-sortable-header [cells]="headerCells"
+                              (sort)="sortBy($event)">
+        <pa-table-cell header>
+            <pa-checkbox></pa-checkbox>
+        </pa-table-cell>
+    </pa-table-sortable-header>
+    <pa-table-row *ngFor="let row of rows">
+        <pa-table-cell><pa-checkbox></pa-checkbox></pa-table-cell>
+        <pa-table-cell>{{row.name}}</pa-table-cell>
+        <pa-table-cell>{{row.source}}</pa-table-cell>
+        <pa-table-cell center>{{row.status}}</pa-table-cell>
+        <pa-table-cell center>{{row.date}}</pa-table-cell>
+    </pa-table-row>
+</pa-table>`;
+
     headerCells: HeaderCell[] = [
         new SortableHeaderCell({ id: 'name', label: 'Name', active: true }),
         new SortableHeaderCell({ id: 'source', label: 'Source' }),
-        new HeaderCell({ id: 'status', label: 'Status' }),
+        new HeaderCell({ id: 'status', label: 'Status', centered: true }),
+        new SortableHeaderCell({ id: 'date', label: 'Date', centered: true }),
     ];
 
-    rows: { name: string; source: string; status: string }[] = [
-        { name: 'Aurora', source: 'Source 1', status: 'Sleeping' },
-        { name: 'Ariel', source: 'Source 2', status: 'Swimming' },
-        { name: 'Mulan', source: 'Source 3', status: 'Fighting' },
+    rows: { name: string; source: string; status: string; date: string }[] = [
+        { name: 'Aurora', source: 'Source 1', status: 'Sleeping', date: '1959' },
+        { name: 'Ariel', source: 'Source 2', status: 'Swimming', date: '1989' },
+        { name: 'Elsa', source: 'Source 3', status: '–', date: '2013' },
+        { name: 'Mulan', source: 'Source 4', status: 'Fighting', date: '1998' },
     ];
 
     sortBy(column: HeaderCell) {

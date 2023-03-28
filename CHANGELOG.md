@@ -1,3 +1,11 @@
+# 2.59.5 (2023-03-27)
+
+### Improvements
+- **Table** improvements [mpellerin42]
+  - add center option to table cells
+  - tokenize text-transform on header cells
+  - add `ng-content` on `table-sortable-header` allowing the addition of free content on first column. This is specially useful when we want to have a first column made of checkboxes for instance.
+
 # 2.59.4 (2023-03-21)
 
 ### Improvements
