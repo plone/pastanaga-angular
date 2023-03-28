@@ -21,8 +21,8 @@ import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/
 })
 export class TableSortableHeaderComponent implements AfterViewInit {
     @Input()
-    set cells(value: HeaderCell[]) {
-        if (!!value) {
+    set cells(value: HeaderCell[] | null | undefined) {
+        if (value) {
             this._cells = value.map((v) => ({ ...v }));
             this.mobileCell = this._cells.find((cell) => cell.active);
             this.sortableCells = this._cells.filter((cell) => cell.sortable);
@@ -31,7 +31,7 @@ export class TableSortableHeaderComponent implements AfterViewInit {
             }
         }
     }
-    get cells() {
+    get cells(): HeaderCell[] {
         return this._cells;
     }
 

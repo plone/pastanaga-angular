@@ -21,9 +21,11 @@ export class TableComponent {
     get columns(): string {
         return this._columns;
     }
-    set columns(value: string) {
-        this._columns = value;
-        this.columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
+    set columns(value: string | null | undefined) {
+        if (value) {
+            this._columns = value;
+            this.columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
+        }
     }
     @Input()
     get noAutoColumnStyle(): boolean {
