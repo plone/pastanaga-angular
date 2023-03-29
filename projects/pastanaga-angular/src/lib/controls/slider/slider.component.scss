@@ -1,0 +1,100 @@
+@import "../../../styles/variables";
+
+.pa-field .pa-field-control-range[type='range'] {
+    appearance: none;
+    float: right;
+    height: rhythm(0.5);
+    margin: rhythm(1) 0;
+    padding: 0;
+    transition: all $duration-superfast ease;
+    width: rhythm(16);
+}
+
+.pa-field .pa-field-control-range[type='range'] ~ .pa-field-help {
+    margin: 0;
+}
+
+.pa-field .pa-field-label {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.pa-field-control-output {
+    display: inline-block;
+    float: right;
+    font-weight: $font-weight-thin;
+    margin: 0 rhythm(1.5);
+}
+
+.pa-field input[type='range']:focus {
+    outline: none;
+}
+
+.pa-field input[type='range']:-moz-focusring,
+.pa-field input[type='range']::-moz-focus-inner,
+.pa-field input[type='range']::-moz-focus-outer {
+    border: 0;
+    outline: none;
+}
+
+.pa-field input[type='range']::-webkit-slider-runnable-track {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    height: rhythm(0.5);
+    background: $color-neutral-lighter;
+    transition: all $duration-superfast ease;
+    width: 100%;
+}
+
+.pa-field input[type='range']::-moz-range-track,
+.pa-field input[type='range']:active::-moz-range-track {
+    appearance: none;
+    background: $color-neutral-lighter;
+    cursor: pointer;
+    height: 6px;
+    transition: all $duration-superfast ease;
+    width: 100%;
+}
+
+.pa-field input[type='range']:focus::-webkit-slider-runnable-track {
+    background: $color-neutral-light;
+}
+
+.pa-field input[type='range']:focus::-moz-range-track {
+    background: $color-neutral-light;
+}
+
+.pa-field input[type='range']::-webkit-slider-thumb {
+    appearance: none;
+    background: $color-primary-regular;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    height: rhythm(1.5);
+    margin-top: - rhythm(0.5);
+    transition: all $duration-superfast ease;
+    width: rhythm(1.5);
+}
+
+.pa-field input[type='range']::-moz-range-thumb {
+    appearance: none;
+    background: $color-primary-regular;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    height: rhythm(1.5);
+    transition: all $duration-superfast ease;
+    width: rhythm(1.5);
+}
+
+.pa-field input[type='range']:hover::-webkit-slider-thumb {
+    transform: scale(1.1, 1.1);
+    transition: all $duration-superfast ease;
+}
+
+.pa-field input[type='range']:hover::-moz-range-thumb {
+    transform: scale(1.1, 1.1);
+    transition: all $duration-superfast ease;
+}
