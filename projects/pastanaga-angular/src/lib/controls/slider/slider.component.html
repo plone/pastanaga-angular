@@ -1,6 +1,6 @@
 <div class="pa-field pa-field-slider">
     <input class="pa-field-control pa-field-control-range" type="range"
-           [id]="id" [name]="name" [attr.aria-describedby]="helpId" [(ngModel)]="value"
+           [id]="id" [attr.name]="name" [attr.aria-describedby]="helpId" [(ngModel)]="value"
            [disabled]="isDisabled" [min]="min" [max]="max" [step]="step">
     <label class="pa-field-label" [for]="id" translate>
         <ng-content></ng-content>
