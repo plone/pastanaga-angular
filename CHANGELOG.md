@@ -1,3 +1,8 @@
+# 2.59.6 (2023-03-31)
+
+### Improvements
+- **Dropdown documentation**: add example on how to build a dropdown list of checkboxes [mpellerin42] 
+
 # 2.59.5 (2023-03-27)
 
 ### Improvements
