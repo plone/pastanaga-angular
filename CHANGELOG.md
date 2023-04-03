@@ -1,3 +1,11 @@
+# 2.60.0 (2023-04-03)
+
+### Improvements
+- **Dropdown documentation**: add example on how to build a dropdown list of checkboxes [mpellerin42] 
+
+### Feature
+- Slider component [operramon]
+
 # 2.59.5 (2023-03-27)
 
 ### Improvements

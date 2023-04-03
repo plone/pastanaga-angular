@@ -87,10 +87,24 @@ onLevel1Selection(selection: string) {
     }
 }`;
 
+    checkboxExample = `<pa-dropdown>
+    <pa-option *ngFor="let option of level2Options"
+               dontCloseOnSelect
+               (selectOption)="updateCheckbox(option, $event)">
+        <pa-checkbox [(value)]="option.checked">{{option.label}}</pa-checkbox>
+    </pa-option>
+</pa-dropdown>
+`;
+    checkboxCode = `updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
+    if ((event.target as HTMLElement).tagName === 'LI') {
+        option.checked = !option.checked;
+    }
+}`;
+
     @ViewChild('level2', { read: ElementRef }) level2Element?: ElementRef;
     @ViewChild('level2') level2Popup?: PopupComponent;
     level1Open = '';
-    level2Options: { label: string }[] = [];
+    level2Options: { label: string; checked?: boolean }[] = [];
 
     onSelect($event: MouseEvent | KeyboardEvent) {
         console.log(`Selected menu:`, $event);
@@ -117,5 +131,11 @@ onLevel1Selection(selection: string) {
     closeDropdowns() {
         this.level1Open = '';
         this.level2Popup?.close();
+    }
+
+    updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
+        if ((event.target as HTMLElement).tagName === 'LI') {
+            option.checked = !option.checked;
+        }
     }
 }

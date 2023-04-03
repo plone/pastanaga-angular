@@ -80,8 +80,10 @@
             </pa-dropdown>
 
             <pa-dropdown #level2 keepOthersOpen>
-                <pa-option dontCloseOnSelect *ngFor="let option of level2Options">
-                    <pa-checkbox>{{option.label}}</pa-checkbox>
+                <pa-option *ngFor="let option of level2Options"
+                           dontCloseOnSelect
+                           (selectOption)="updateCheckbox(option, $event)">
+                    <pa-checkbox [(value)]="option.checked">{{option.label}}</pa-checkbox>
                 </pa-option>
             </pa-dropdown>
         </div>
@@ -157,6 +159,16 @@
     <pa-demo-code>
         <strong>Simple menu</strong>:
         <pre><code>{{codeExample}}</code></pre>
+
+        <p><strong>Dropdown with checkboxes</strong></p>
+        <p>Creating a dropdown displaying a list of checkboxes is as easy as wrapping <code>pa-checkbox</code> element in <code>pa-option</code> one.
+            But <code>pa-option</code> style is generic, so clicking inside an option but not directly on checkbox’s input or label is not changing the checkbox value by default.
+            To work around this problem, you can listen to dropdown’s <code>selectOption</code> event and manually update checkbox value when corresponding event’s target is an <code>li</code> tag:
+        </p>
+        Template:
+        <pre><code>{{checkboxExample}}</code></pre>
+        Script:
+        <pre><code>{{checkboxCode}}</code></pre>
 
         <p><strong>Multi-level dropdown</strong></p>
         Template:
