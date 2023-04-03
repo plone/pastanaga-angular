@@ -21,7 +21,7 @@ import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/
 })
 export class TableSortableHeaderComponent implements AfterViewInit {
     @Input()
-    set cells(value: HeaderCell[]) {
+    set cells(value: HeaderCell[] | null) {
         if (!!value) {
             this._cells = value.map((v) => ({ ...v }));
             this.mobileCell = this._cells.find((cell) => cell.active);
@@ -76,7 +76,7 @@ export class TableSortableHeaderComponent implements AfterViewInit {
     }
 
     sortBy(id: string) {
-        const currentActive = this.cells.find((cell) => cell.active);
+        const currentActive = this.cells?.find((cell) => cell.active);
         let newActive: HeaderCell | undefined;
         if (!!currentActive) {
             if (currentActive.id === id) {
@@ -88,7 +88,7 @@ export class TableSortableHeaderComponent implements AfterViewInit {
             }
         }
         if (!newActive) {
-            newActive = this.cells.find((cell) => cell.id === id) as HeaderCell;
+            newActive = this.cells?.find((cell) => cell.id === id) as HeaderCell;
             newActive.active = true;
         }
         this.mobileCell = newActive;
