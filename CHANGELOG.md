@@ -1,3 +1,10 @@
+# 2.60.1 (2023-04-04)
+
+### Improvements
+
+- **Table**: Fix typing for stricter compiler [mpellerin42]
+- **CI/CD**: Upgrade to nodejs 18 [mpellerin42]
+
 # 2.60.0 (2023-04-03)
 
 ### Improvements
