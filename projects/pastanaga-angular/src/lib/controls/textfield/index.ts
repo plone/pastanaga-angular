@@ -10,3 +10,5 @@ export * from './textarea';
 export * from './text-field.directive';
 export * from './text-field.module';
 export * from './text-field-utility.service';
+
+export * from './typeahead-select/typeahead-select.component';

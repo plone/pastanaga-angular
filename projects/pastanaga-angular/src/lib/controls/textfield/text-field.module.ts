@@ -11,8 +11,9 @@ import { PaFormFieldModule } from '../form-field';
 import { SelectComponent, SelectOptionsComponent } from './select';
 import { PaTextareaAutoHeightDirective, TextareaComponent } from './textarea';
 import { NativeTextFieldDirective } from './native-text-field.directive';
-import { PaDropdownModule, OptionComponent, OptionHeaderComponent, SeparatorComponent } from '../../dropdown';
+import { OptionComponent, OptionHeaderComponent, PaDropdownModule, SeparatorComponent } from '../../dropdown';
 import { TextFieldDirective } from './text-field.directive';
+import { TypeaheadSelectComponent } from './typeahead-select/typeahead-select.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { TextFieldDirective } from './text-field.directive';
         NativeTextFieldDirective,
         PaTextareaAutoHeightDirective,
         TextFieldDirective,
+        TypeaheadSelectComponent,
     ],
     imports: [
         CommonModule,
@@ -46,6 +48,7 @@ import { TextFieldDirective } from './text-field.directive';
         OptionComponent,
         OptionHeaderComponent,
         SeparatorComponent,
+        TypeaheadSelectComponent,
     ],
 })
 export class PaTextFieldModule {}

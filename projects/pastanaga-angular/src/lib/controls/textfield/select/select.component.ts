@@ -6,6 +6,7 @@ import {
     ContentChildren,
     ElementRef,
     EventEmitter,
+    inject,
     Input,
     OnChanges,
     OnDestroy,
@@ -28,7 +29,7 @@ import { FocusOrigin } from '@angular/cdk/a11y';
 import { IErrorMessages } from '../../form-field.model';
 import { TextFieldDirective } from '../text-field.directive';
 
-type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
+export type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
 
 @Component({
     selector: 'pa-select',
@@ -40,7 +41,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     @Input() placeholder?: string;
 
     @Input() set options(values: OptionType[] | null) {
-        this.dropDownModels = !!values ? values : [];
+        this.dropdownOptions = !!values ? values : [];
         this._updateDisplayedValue(this.control.value);
     }
 
@@ -67,7 +68,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
 
     mouseDown = false;
 
-    dropDownModels: OptionType[] = [];
+    dropdownOptions: OptionType[] = [];
     isOpened = false;
     override fieldType = 'select';
     describedById?: string;
@@ -80,11 +81,10 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     private _dim = false;
 
     protected _terminator = new Subject<void>();
-
+    protected platform: Platform = inject(Platform);
     constructor(
         protected override element: ElementRef,
         @Optional() @Self() protected override parentControl: NgControl,
-        protected platform: Platform,
         public override cdr: ChangeDetectorRef,
     ) {
         super(element, parentControl, cdr);
@@ -201,7 +201,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
         });
     }
 
-    private _updateDisplayedValue(val?: string) {
+    protected _updateDisplayedValue(val?: string) {
         const selectedOptionLabel = this._findLabelByValue(val);
         this.displayedValue = selectedOptionLabel || this.placeholder;
         detectChanges(this.cdr);
@@ -211,8 +211,8 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
         let label: string | undefined;
 
         // precedence of drop options provided in input over options provided as ngContent
-        if (this.dropDownModels.length) {
-            const selectedOption = this.dropDownModels.find((option) => (option as OptionModel).value === value);
+        if (this.dropdownOptions.length) {
+            const selectedOption = this.dropdownOptions.find((option) => (option as OptionModel).value === value);
             label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
         }
         if (!label && !!this.ngContent && this.ngContent.length) {
@@ -255,14 +255,14 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     }
 
     private _markOptionAsSelected() {
-        if (this.dropDownModels.length) {
-            this.dropDownModels.forEach((option: OptionType) => {
+        if (this.dropdownOptions.length) {
+            this.dropdownOptions.forEach((option: OptionType) => {
                 if (option.type === ControlType.option) {
                     this._toggleSelectedOption(option as OptionModel);
                 }
             });
             // refresh array reference to trigger change detection in child component
-            this.dropDownModels = this.dropDownModels.slice();
+            this.dropdownOptions = this.dropdownOptions.slice();
         }
         if (!!this.ngContent) {
             this.ngContent.toArray().forEach((option) => this._toggleSelectedOption(option));

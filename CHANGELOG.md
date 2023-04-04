@@ -1,3 +1,12 @@
+# 2.61.0 (2023-04-04)
+
+### Feature
+- New **Typeahead select** component: it is like a `pa-select` component on which you can start typing to find the option you're looking for. [mpellerin42]
+
+### Improvements
+- Update angular to version 15.2.5 [mpellerin42]
+
+
 # 2.60.1 (2023-04-04)
 
 ### Improvements

@@ -8,7 +8,7 @@
          [class.pa-readonly]="readonly"
          [class.pa-disabled]="control.disabled"
          [class.pa-field-error]="control.dirty && control.invalid">
-        <div #selectInput
+        <input #selectInput
              class="pa-field-control"
              tabindex="0"
              cdkMonitorElementFocus
@@ -17,6 +17,7 @@
              [class.read-only]="readonly"
              [class.disabled]="control.disabled"
              [class.expanded]="isOpened"
+             [readonly]="readonly"
              [id]="id"
              [attr.name]="name"
              [attr.aria-label]="label"
@@ -24,14 +25,12 @@
              [paPopup]="optionsDropdown"
              [popupVerticalOffset]="0"
              [popupDisabled]="control.disabled || readonly"
+             [value]="displayedValue || ''"
+             (keyup)="filterOptions()"
              (mousedown)="onMouseDown()"
              (mouseup)="onMouseUp()"
+             (blur)="onBlur()"
              (cdkFocusChange)="onControlFocused($event)">
-            <span class="pa-select-value"
-                  [class.placeholder]="!hasValue"
-                  [class.active]="isOpened"
-            >{{displayedValue}}</span>
-        </div>
 
         <label class="pa-field-label"
                [class.pa-sr-only]="dim && (hasValue || isOpened)"
@@ -70,3 +69,4 @@
         </ng-template>
     </pa-dropdown>
 </div>
+
