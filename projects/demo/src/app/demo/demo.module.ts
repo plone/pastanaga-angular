@@ -138,6 +138,8 @@ import { RadioPageComponent } from './pages/radio-page/radio-page.component';
 import { ConfirmationDialogDescriptionComponent } from './pages/confirmation-dialog-page/confirmation-dialog-description.component';
 import { ConfirmationDialogUsageComponent } from './pages/confirmation-dialog-page/confirmation-dialog-usage.component';
 import { PopupComponentUsageComponent } from './pages/popup-page/popup-component-usage/popup-component-usage.component';
+import { TypeaheadSelectPageComponent } from './pages/typeahead-select-page/typeahead-select-page.component';
+import { SelectUsageComponent } from './pages/select-page/select-usage.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -203,6 +205,7 @@ const COMPONENTS = [
     PopupComponentUsageComponent,
     PopupPageComponent,
     SelectPageComponent,
+    SelectUsageComponent,
     SelectStandaloneExampleComponent,
     SelectNgModelExampleComponent,
     SelectFormControlExampleComponent,
@@ -214,6 +217,7 @@ const COMPONENTS = [
     ToastPageComponent,
     TogglePageComponent,
     TextareaPageComponent,
+    TypeaheadSelectPageComponent,
     PaTextareaConfigComponent,
     TextareaStandaloneExampleComponent,
     TextareaNgModelExampleComponent,

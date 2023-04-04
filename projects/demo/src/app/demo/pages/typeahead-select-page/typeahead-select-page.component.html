@@ -1,0 +1,46 @@
+<pa-demo-page>
+    <pa-demo-title>Typeahead select</pa-demo-title>
+    <pa-demo-description>
+        <p><code>pa-typeahead-select</code> is like a <code>pa-select</code> component on which you can start typing to find the option you're looking for.</p>
+    </pa-demo-description>
+
+    <pa-demo-examples>
+        <p><strong>Using ng-content:</strong></p>
+        <pa-typeahead-select label="Typeahead">
+            <pa-option
+                *ngFor="let country of countries"
+                [value]="country.code">
+                {{ country.name }}
+            </pa-option>
+        </pa-typeahead-select>
+
+        <p><strong>Using options:</strong></p>
+        <pa-typeahead-select label="Typeahead" [options]="countryOptions"></pa-typeahead-select>
+
+        <p><strong>With formGroup – value: {{formGroup.controls.country.value}}</strong></p>
+        <form [formGroup]="formGroup">
+            <pa-typeahead-select label="Typeahead"
+                                 formControlName="country"
+                                 [options]="countryOptions"
+            ></pa-typeahead-select>
+        </form>
+    </pa-demo-examples>
+
+    <pa-demo-usage>
+        <h3>Inherited from <code>PaFormControlDirective</code></h3>
+        <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
+
+        <br>
+        <h3>Inherited from <code>SelectComponent</code></h3>
+        <pa-demo-select-usage></pa-demo-select-usage>
+    </pa-demo-usage>
+
+    <pa-demo-code>
+        <p><strong>Using ng-content:</strong></p>
+        <pre><code>{{codeNgContent}}</code></pre>
+        <p><strong>Using options:</strong></p>
+        <pre><code>{{codeOptions}}</code></pre>
+        <p><strong>With formGroup:</strong></p>
+        <pre><code>{{codeFormGroup}}</code></pre>
+    </pa-demo-code>
+</pa-demo-page>
