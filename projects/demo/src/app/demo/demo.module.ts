@@ -31,6 +31,7 @@ import {
     PaPopupModule,
     PaScrollModule,
     PaSideNavModule,
+    PaSliderModule,
     PaTableModule,
     PaTabsModule,
     PaTextFieldModule,
@@ -140,6 +141,7 @@ import { ConfirmationDialogUsageComponent } from './pages/confirmation-dialog-pa
 import { PopupComponentUsageComponent } from './pages/popup-page/popup-component-usage/popup-component-usage.component';
 import { TypeaheadSelectPageComponent } from './pages/typeahead-select-page/typeahead-select-page.component';
 import { SelectUsageComponent } from './pages/select-page/select-usage.component';
+import { SliderPageComponent } from './pages/slider-page/slider-page.component';
 
 const COMPONENTS = [
     DemoComponent,
@@ -244,6 +246,7 @@ const COMPONENTS = [
     RadioPageComponent,
     ConfirmationDialogDescriptionComponent,
     ConfirmationDialogUsageComponent,
+    SliderPageComponent,
 ];
 
 @NgModule({
@@ -282,6 +285,7 @@ const COMPONENTS = [
         PaSideNavModule,
         PaScrollModule,
         PaDatePickerModule,
+        PaSliderModule,
     ],
     declarations: COMPONENTS,
     exports: COMPONENTS,

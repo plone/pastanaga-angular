@@ -48,6 +48,7 @@ import {
 } from './demo';
 import { RadioPageComponent } from './demo/pages/radio-page/radio-page.component';
 import { TypeaheadSelectPageComponent } from './demo/pages/typeahead-select-page/typeahead-select-page.component';
+import { SliderPageComponent } from './demo/pages/slider-page/slider-page.component';
 
 export const menu: IDemoMenuSection[] = [
     {
@@ -122,6 +123,7 @@ export const menu: IDemoMenuSection[] = [
             { view: 'formControl', title: 'Form control', type: FormControlPageComponent },
             { view: 'formFieldHint', title: 'Form field hint', type: FormFieldHintPageComponent },
             { view: 'nativeTextField', title: 'Native Text Field', type: NativeTextFieldPageComponent },
+            { view: 'slider', title: 'Slider', type: SliderPageComponent },
         ],
     },
 ];
