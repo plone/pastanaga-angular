@@ -18,11 +18,13 @@
             }}</pa-button>
         </header>
 
-        <div class="pa-modal-content" paScrollableContainer>
+        <div #content class="pa-modal-content" paScrollableContainer>
             <ng-content select="pa-modal-content"></ng-content>
         </div>
 
-        <div #footer class="pa-footer-container" [class.pa-modal-footer-one-button]="footerWithOneButton">
+        <div #footer class="pa-footer-container"
+             [class.scrolling-content]="hasScrollbar"
+             [class.pa-modal-footer-one-button]="footerWithOneButton">
             <ng-content select="pa-modal-footer"></ng-content>
         </div>
     </dialog>

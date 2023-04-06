@@ -19,11 +19,13 @@ export class BaseModalComponent implements AfterViewInit, OnDestroy {
     @Output() enterPressed: EventEmitter<void> = new EventEmitter();
 
     @ViewChild('modalContainer') modalContainer?: ElementRef;
+    @ViewChild('content') modalContent?: ElementRef;
 
     closing = false;
     off = false;
     id = 0;
     config = new ModalConfig();
+    hasScrollbar = false;
 
     protected _onKeyDown = this.onKeyDown.bind(this);
 
@@ -39,6 +41,10 @@ export class BaseModalComponent implements AfterViewInit, OnDestroy {
             this.config = this.ref.config;
         }
         document.addEventListener('keydown', this._onKeyDown);
+        this.hasScrollbar =
+            !!this.modalContent &&
+            this.modalContent.nativeElement.offsetHeight < this.modalContent.nativeElement.scrollHeight;
+        console.log(`Has scrollbar: ${this.hasScrollbar}`);
     }
 
     ngOnDestroy() {

@@ -36,11 +36,11 @@
             </div>
         </header>
 
-        <div class="pa-modal-content" paScrollableContainer>
+        <div #content class="pa-modal-content" paScrollableContainer>
             <ng-content select="pa-modal-content"></ng-content>
         </div>
 
-        <div #footer>
+        <div #footer [class.scrolling-content]="hasScrollbar">
             <ng-content select="pa-modal-footer"></ng-content>
         </div>
     </dialog>
