@@ -96,7 +96,7 @@ describe('InputComponent', () => {
         expect(component.control.value).toEqual(null);
         host.value = 'a parent value';
         spectator.detectChanges();
-        tick(100);
+        tick(300);
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
     }));
