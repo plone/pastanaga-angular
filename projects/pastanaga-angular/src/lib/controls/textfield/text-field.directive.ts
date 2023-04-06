@@ -42,7 +42,7 @@ export class TextFieldDirective extends PaFormControlDirective implements AfterV
                 this._labelWidth = label.getBoundingClientRect().width || 0;
                 this.cdr.markForCheck();
             }
-        }, 100);
+        }, 300);
     }
 
     onFocus(event: any) {

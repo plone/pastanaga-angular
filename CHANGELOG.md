@@ -1,3 +1,12 @@
+# 2.61.1 (2023-04-06)
+
+### Improvements
+- **Modal advanced**: add `fitContent` option to advanced modal, when true we don't set the modal width so it fits its content width [mpellerin42]
+
+### Bug fixes
+- **Modals**: fix modal style so the dropdowns are properly positioned in their content [mpellerin42]
+- **Text fields**: increase the delay before computing label width to prevent the label to be striked by the top border [mpellerin42]
+
 # 2.61.0 (2023-04-04)
 
 ### Feature

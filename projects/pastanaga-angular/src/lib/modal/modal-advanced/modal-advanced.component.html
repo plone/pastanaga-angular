@@ -1,34 +1,28 @@
-<div class="pa-modal-backdrop"
-     tabindex="0"
-     #modalContainer
-     (click)="outsideClick($event)"
->
-    <dialog class="pa-modal pa-modal-advanced pa-modal-fullscreen-on-small pa-take-available-height"
-            role="alertdialog"
-            [class.with-footer]="hasFooter"
-            [class.in]="!closing"
-            [class.out]="closing"
-            [attr.aria-labelledby]="'modal-' + id + '-title'"
-            [attr.aria-describedby]="'modal-' + id + '-description'"
+<div class="pa-modal-backdrop" [class.out]="closing" tabindex="0" #modalContainer (click)="outsideClick($event)">
+    <dialog
+        class="pa-modal pa-modal-advanced pa-modal-fullscreen-on-small pa-take-available-height"
+        role="alertdialog"
+        [class.with-footer]="hasFooter"
+        [class.fit-content]="fitContent"
+        [class.in]="!closing"
+        [class.out]="closing"
+        [attr.aria-labelledby]="'modal-' + id + '-title'"
+        [attr.aria-describedby]="'modal-' + id + '-description'"
     >
         <header class="pa-modal-header">
-            <div class="title-m"
-                 [id]="'modal-' + id + '-title'">
+            <div class="title-m" [id]="'modal-' + id + '-title'">
                 <ng-content select="pa-modal-title"></ng-content>
             </div>
-            <pa-button class="pa-close-button"
-                       icon="cross"
-                       aspect="basic"
-                       (click)="close(false)">{{'pastanaga.close' | translate}}</pa-button>
+            <pa-button class="pa-close-button" icon="cross" aspect="basic" (click)="close(false)">{{
+                'pastanaga.close' | translate
+            }}</pa-button>
         </header>
 
         <div class="pa-modal-content" paScrollableContainer>
             <ng-content select="pa-modal-content"></ng-content>
         </div>
 
-        <div #footer
-             class="pa-footer-container"
-             [class.pa-modal-footer-one-button]="footerWithOneButton">
+        <div #footer class="pa-footer-container" [class.pa-modal-footer-one-button]="footerWithOneButton">
             <ng-content select="pa-modal-footer"></ng-content>
         </div>
     </dialog>

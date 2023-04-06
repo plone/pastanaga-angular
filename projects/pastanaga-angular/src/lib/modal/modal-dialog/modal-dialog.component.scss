@@ -1,16 +1,14 @@
-@import "../../../styles/variables";
-@import "../../../styles/theme/modal.tokens";
+@import '../../../styles/variables';
+@import '../../../styles/theme/modal.tokens';
 
 $dimension-image: rhythm(12);
-$header-height-small: $padding-modal + $dimension-image + $spacing-dialog-sections*2 + line-height(l);
-$header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-sections*2 + line-height(xl);
+$header-height-small: $padding-modal + $dimension-image + $spacing-dialog-sections * 2 + line-height(l);
+$header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-sections * 2 + line-height(xl);
 
 .pa-modal-dialog {
     .pa-modal-header {
-        @include fixed-header;
         padding: $padding-modal $padding-modal $spacing-dialog-sections;
         text-align: left;
-
 
         img {
             margin-bottom: $spacing-dialog-sections;
@@ -18,7 +16,8 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
             width: $dimension-image;
         }
 
-        .pa-modal-description, .pa-modal-description-centered {
+        .pa-modal-description,
+        .pa-modal-description-centered {
             margin-top: rhythm(1.5);
             text-align: left;
         }
@@ -32,25 +31,11 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
     }
 
     .pa-modal-content {
-        margin-top: var(--headerHeight, #{$header-height-small});
         margin-bottom: $spacing-dialog-sections;
         transition: margin-top $transition-hint;
     }
 
-    &.with-footer .pa-modal-content {
-        margin-bottom: $height-header-footer-modal;
-    }
-
-    pa-modal-footer {
-        @include fixed-footer;
-    }
-
     @media (min-width: $size-viewport-medium-min) {
-        @include centered-dialog;
         width: rhythm(56);
-
-        pa-modal-content {
-            margin-top: var(--headerHeight, #{$header-height-medium});
-        }
     }
 }

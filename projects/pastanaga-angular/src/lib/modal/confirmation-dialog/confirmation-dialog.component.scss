@@ -1,13 +1,12 @@
-@import "../../../styles/variables";
-@import "../../../styles/theme/modal.tokens";
+@import '../../../styles/variables';
+@import '../../../styles/theme/modal.tokens';
 
 .pa-confirmation-dialog {
-    @include centered-dialog;
     background-color: $color-light-stronger;
     box-shadow: $shadow-modal;
     padding: $padding-modal;
     text-align: center;
-    width: $breakpoint-small - rhythm(2)*2; // smallest device width minus the margin in each side
+    width: $breakpoint-small - rhythm(2) * 2; // smallest device width minus the margin in each side
 
     .pa-modal-header {
         h4 {
@@ -23,4 +22,3 @@
         width: rhythm(48);
     }
 }
-
