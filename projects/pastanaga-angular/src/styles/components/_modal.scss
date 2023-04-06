@@ -1,29 +1,51 @@
 @import '../variables';
 
 .pa-modal-backdrop {
-    background-color: rgba($color-dark-stronger, .5);
+    align-items: center;
+    background-color: rgba($color-dark-stronger, 0.5);
+    display: flex;
+    justify-content: center;
+    opacity: 1;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: $z-index-modal-backdrop;
+
+    &.out {
+        opacity: 0;
+        transition: opacity $transition-process-out;
+    }
 }
 
 .pa-modal {
     align-items: stretch;
     border: 0;
     display: flex;
-    flex: 1 1 0;
     flex-flow: column nowrap;
+    opacity: 0;
     padding: 0;
     position: relative;
 
     background-color: $background-color-modal;
     box-shadow: $shadow-modal;
     margin: 0;
+    transition: opacity $transition-response;
 
     z-index: $z-index-modal-backdrop + 10;
+
+    &.in {
+        opacity: 1;
+    }
+
+    &.out {
+        opacity: 0;
+    }
+
+    &.off {
+        display: none;
+    }
 
     .pa-modal-description {
         color: $color-neutral-regular;
@@ -43,8 +65,16 @@
 
     pa-modal-footer,
     .pa-modal-footer {
+        align-items: center;
         display: flex;
+        gap: rhythm(2);
+        height: $height-header-footer-modal;
         justify-content: center;
+        padding: 0 $padding-modal;
+    }
+
+    .scrolling-content {
+        border-top: 1px solid $color-neutral-lighter;
     }
 
     @media (max-width: $size-viewport-medium-max) {
@@ -64,75 +94,3 @@
         }
     }
 }
-
-//=====================================
-// Modal animation
-//=====================================
-
-@keyframes modal-centered-in {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-50%) scale(0);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-50%) scale(1);
-    }
-}
-
-@keyframes modal-centered-out {
-    from {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-50%) scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-50%) scale(0);
-    }
-}
-
-@keyframes modal-fullscreen-in {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes modal-fullscreen-out {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0);
-    }
-}
-
-.pa-modal.in {
-    animation: modal-centered-in $transition-process-duration;
-}
-
-.pa-modal.out {
-    animation: modal-centered-out $transition-process-duration forwards;
-}
-
-.pa-modal.off {
-    display: none;
-}
-
-@media (max-width: $size-viewport-medium-max) {
-    .pa-modal.pa-modal-fullscreen-on-small {
-        &.in {
-            animation: modal-fullscreen-in $transition-process-duration;
-        }
-        &.out {
-            animation: modal-fullscreen-out $transition-process-duration;
-        }
-    }
-}
-

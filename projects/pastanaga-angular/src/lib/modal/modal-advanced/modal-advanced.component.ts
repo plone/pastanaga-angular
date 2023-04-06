@@ -3,10 +3,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    Input,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-modal-advanced',
@@ -16,6 +18,15 @@ import { BaseModalComponent } from '../base-modal.component';
     encapsulation: ViewEncapsulation.None,
 })
 export class ModalAdvancedComponent extends BaseModalComponent implements AfterViewInit {
+    @Input()
+    set fitContent(value: any) {
+        this._fitContent = coerceBooleanProperty(value);
+    }
+    get fitContent() {
+        return this._fitContent;
+    }
+    private _fitContent = false;
+
     @ViewChild('footer', { read: ElementRef }) footer?: ElementRef;
 
     hasFooter = false;

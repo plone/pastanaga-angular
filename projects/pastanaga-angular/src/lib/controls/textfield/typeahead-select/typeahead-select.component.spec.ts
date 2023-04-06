@@ -150,7 +150,7 @@ describe('TypeaheadSelectComponent', () => {
         thenSelectIsNotValuated();
         host.value = '1';
         spectator.detectChanges();
-        tick(100);
+        tick(300);
         thenSelectHasValue('1', '1');
         expect(spectator.queryAll('pa-dropdown pa-select-options pa-option .pa-option-selected')).toHaveLength(1);
         discardPeriodicTasks();
@@ -192,7 +192,7 @@ describe('TypeaheadSelectComponent', () => {
 
     it('should propagate ngModel value', fakeAsync(() => {
         initWithTemplate(`<pa-typeahead-select [(ngModel)]="value">${optionsInTemplate}</pa-typeahead-select>`);
-        tick(100);
+        tick(300);
         whenFirstOptionClicked();
         thenSelectHasValue('first', 'first label');
         expect(host.value).toEqual('first');
@@ -225,7 +225,7 @@ describe('TypeaheadSelectComponent', () => {
         expect((spectator.query('.pa-field-control') as HTMLInputElement)?.value).toEqual('');
         host.placeholder = 'placeholder';
         spectator.detectChanges();
-        tick(100);
+        tick(300);
         expect((spectator.query('.pa-field-control') as HTMLInputElement)?.value).toEqual('placeholder');
         whenFirstOptionClicked();
         expect((spectator.query('.pa-field-control') as HTMLInputElement)?.value).toEqual('first label');
@@ -278,7 +278,7 @@ describe('TypeaheadSelectComponent', () => {
         const expanded = jest.spyOn(host, 'onExpanded');
         host.hasFocus = true;
         spectator.detectChanges();
-        tick(100);
+        tick(300);
         expect(selectClicked).toHaveBeenCalled();
         expect(expanded).toHaveBeenCalledWith(true);
         spectator.detectChanges();
@@ -291,7 +291,7 @@ describe('TypeaheadSelectComponent', () => {
         expect(spectator.query('.pa-select-chevron')).toBeTruthy();
         expect(spectator.query('.pa-select-chevron.opened')).toEqual(null);
         spectator.click('.pa-field-control');
-        tick(100);
+        tick(300);
         spectator.detectChanges();
         expect(spectator.query('.pa-select-chevron.opened')).toBeTruthy();
         discardPeriodicTasks();
@@ -300,7 +300,7 @@ describe('TypeaheadSelectComponent', () => {
         initWithTemplate(`<pa-typeahead-select [readonly]="readonly">${optionsInTemplate}</pa-typeahead-select>`);
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(true);
         spectator.click('.pa-select-chevron');
-        tick(100);
+        tick(300);
         spectator.detectChanges();
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(false);
         spectator.click('.pa-select-chevron');
@@ -320,7 +320,7 @@ describe('TypeaheadSelectComponent', () => {
         expect(component.control.pristine).toEqual(true);
         expect(component.control.touched).toEqual(false);
         spectator.click('.pa-field-control');
-        tick(100);
+        tick(300);
         spectator.detectChanges();
         spectator.triggerEventHandler(DropdownComponent, 'onClose', true);
         expect(component.control.pristine).toEqual(false);
@@ -336,7 +336,7 @@ describe('TypeaheadSelectComponent', () => {
         const selectClicked = jest.spyOn(component.selectInput?.nativeElement, 'click');
         spectator.triggerEventHandler(CdkMonitorFocus, 'cdkFocusChange', 'keyboard');
         spectator.detectChanges();
-        tick(100);
+        tick(300);
         expect(selectClicked).toHaveBeenCalled();
         spectator.detectChanges();
         expect((spectator.query<HTMLElement>('.pa-popup') as any).hidden).toEqual(false);
@@ -360,7 +360,7 @@ describe('TypeaheadSelectComponent', () => {
         expect(component.control.valid).toEqual(true);
         const statusChanged = jest.spyOn(host, 'statusChanged');
         host.required = true;
-        tick(100);
+        tick(300);
         spectator.detectChanges();
         expect(component.control.valid).toEqual(false);
         expect(spectator.query('.pa-field-error')).toBeTruthy();
@@ -375,7 +375,7 @@ describe('TypeaheadSelectComponent', () => {
         component.control.markAsDirty();
         expect(component.control.valid).toEqual(true);
         host.required = true;
-        tick(100);
+        tick(300);
         spectator.detectChanges();
         expect(component.control.valid).toEqual(false);
         const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
@@ -389,7 +389,7 @@ describe('TypeaheadSelectComponent', () => {
 
     it('should render in dim mode', fakeAsync(() => {
         initWithTemplate(`<pa-typeahead-select label="my field" dim>${optionsInTemplate}</pa-typeahead-select>`);
-        tick(100);
+        tick(300);
         expect(spectator.query('.pa-field-container.pa-dim')).toBeTruthy();
         whenFirstOptionClicked();
         expect(spectator.query('label.pa-sr-only')).toBeTruthy();
