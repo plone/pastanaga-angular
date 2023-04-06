@@ -31,7 +31,6 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
     }
 
     .pa-modal-content {
-        margin-bottom: $spacing-dialog-sections;
         transition: margin-top $transition-hint;
     }
 

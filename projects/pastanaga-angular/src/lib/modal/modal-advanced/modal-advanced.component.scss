@@ -19,11 +19,6 @@
         min-height: calc(100% - #{$height-header-footer-modal} * 2);
     }
 
-    pa-modal-footer,
-    .pa-modal-footer {
-        height: $height-header-footer-modal;
-    }
-
     @media (max-width: $size-viewport-medium-max) {
         .pa-footer-container.pa-modal-footer-one-button {
             pa-modal-footer pa-button {

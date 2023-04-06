@@ -16,6 +16,7 @@
 
     .pa-modal-footer {
         margin-top: $spacing-dialog-sections;
+        height: auto;
     }
 
     @media (min-width: $size-viewport-medium-min) {
