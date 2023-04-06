@@ -44,7 +44,6 @@ export class BaseModalComponent implements AfterViewInit, OnDestroy {
         this.hasScrollbar =
             !!this.modalContent &&
             this.modalContent.nativeElement.offsetHeight < this.modalContent.nativeElement.scrollHeight;
-        console.log(`Has scrollbar: ${this.hasScrollbar}`);
     }
 
     ngOnDestroy() {
