@@ -1,3 +1,11 @@
+# 2.61.2 (2023-04-18)
+
+### Improvements
+
+- **Modals**: [mpellerin42]
+  - improve alignment of the close button of modal advanced header
+  - add some margin to dialog content when there's no footer on modal dialog
+
 # 2.61.1 (2023-04-06)
 
 ### Improvements
