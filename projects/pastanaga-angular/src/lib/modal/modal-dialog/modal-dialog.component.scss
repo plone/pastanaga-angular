@@ -34,6 +34,10 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
         transition: margin-top $transition-hint;
     }
 
+    &:not(.with-footer) .pa-modal-content {
+        margin-bottom: $padding-modal;
+    }
+
     @media (min-width: $size-viewport-medium-min) {
         width: rhythm(56);
     }

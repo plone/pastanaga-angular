@@ -48,6 +48,7 @@ import { DateTimePageComponent } from './pages/datetime-page/datetime-page.compo
 import {
     DialogExampleComponent,
     DialogImageExampleComponent,
+    DialogWithoutFooterExampleComponent,
     ModalExampleComponent,
     ModalPageComponent,
 } from './pages/modal-page';
@@ -157,6 +158,7 @@ const COMPONENTS = [
     BaseControlUsageComponent,
     DialogExampleComponent,
     DialogImageExampleComponent,
+    DialogWithoutFooterExampleComponent,
     ModalExampleComponent,
 
     AccessibilityPageComponent,
