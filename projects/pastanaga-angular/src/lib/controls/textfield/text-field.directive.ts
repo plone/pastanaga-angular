@@ -25,7 +25,7 @@ export class TextFieldDirective extends PaFormControlDirective implements AfterV
     private _externalLabel = false;
 
     get hasContent() {
-        return this.control.value?.length > 0;
+        return typeof this.control.value === 'number' ? true : this.control.value?.length > 0;
     }
 
     get labelWidth() {

@@ -39,7 +39,7 @@
         }
 
         &::after {
-            left: calc(var(--label-width) * #{$scale-text-field-label} + #{$padding-field-control-left}* 2);
+            left: calc(var(--label-width) + #{$padding-field-control-left});
             right: 1px;
         }
         &.no-internal-label::after {
@@ -53,6 +53,7 @@
         &:focus,
         &:active,
         &.pa-content,
+        &.pa-content.pa-disabled,
         &.pa-focus {
             border-top: 1px solid transparent;
         }
