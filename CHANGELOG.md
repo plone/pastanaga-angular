@@ -1,3 +1,9 @@
+# 2.61.3 (2023-04-25)
+
+### Improvements
+
+- **Modal advanced**: add `fitContentHeight` option to advanced modal, when true it fits its content height  [operramon]
+
 # 2.61.2 (2023-04-18)
 
 ### Improvements
