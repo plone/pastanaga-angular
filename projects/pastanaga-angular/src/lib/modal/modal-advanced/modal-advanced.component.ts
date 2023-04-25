@@ -27,6 +27,15 @@ export class ModalAdvancedComponent extends BaseModalComponent implements AfterV
     }
     private _fitContent = false;
 
+    @Input()
+    set fitContentHeight(value: any) {
+        this._fitContentHeight = coerceBooleanProperty(value);
+    }
+    get fitContentHeight() {
+        return this._fitContentHeight;
+    }
+    private _fitContentHeight = false;
+
     @ViewChild('footer', { read: ElementRef }) footer?: ElementRef;
 
     hasFooter = false;

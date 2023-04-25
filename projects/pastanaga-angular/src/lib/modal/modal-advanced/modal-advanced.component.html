@@ -1,9 +1,10 @@
 <div class="pa-modal-backdrop" [class.out]="closing" tabindex="0" #modalContainer (click)="outsideClick($event)">
     <dialog
-        class="pa-modal pa-modal-advanced pa-modal-fullscreen-on-small pa-take-available-height"
+        class="pa-modal pa-modal-advanced pa-modal-fullscreen-on-small"
         role="alertdialog"
         [class.with-footer]="hasFooter"
         [class.fit-content]="fitContent"
+        [class.pa-take-available-height]="!fitContentHeight"
         [class.in]="!closing"
         [class.out]="closing"
         [attr.aria-labelledby]="'modal-' + id + '-title'"
