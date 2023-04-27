@@ -1,3 +1,12 @@
+# 2.61.4 (2023-04-27)
+
+### Bug fixes
+
+- **Text fields**: [mpellerin42]
+  - Fix border top right position
+  - Fix border top color when field is disabled
+- **Avatar**: Improve typing [mpellerin42]
+
 # 2.61.3 (2023-04-25)
 
 ### Improvements

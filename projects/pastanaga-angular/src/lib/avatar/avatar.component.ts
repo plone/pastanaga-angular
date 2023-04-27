@@ -11,7 +11,7 @@ import { AvatarModel } from './avatar.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
-    @Input() set avatar(value: AvatarModel | undefined) {
+    @Input() set avatar(value: AvatarModel | undefined | null) {
         if (value?.userName) {
             this.userName = value.userName;
         }
