@@ -1,3 +1,12 @@
+# 2.61.5 (2023-05-15)
+
+### Improvements
+
+- Replace deprecated `ComponentFactoryResolver` in `ModalService`, `ToastService` and `TooltipDirective` [mpellerin42]
+- **Toast**: [mpellerin42]
+  - Prevent toast container to capture clicks 
+  - Add ability to close toasts by pressing escape
+
 # 2.61.4 (2023-04-27)
 
 ### Bug fixes

@@ -3,10 +3,13 @@
     <pa-demo-description>Directive that adds tooltip to any element.</pa-demo-description>
 
     <pa-demo-examples>
-        <pa-button paTooltip="This button has action tooltip">Hover me</pa-button>
-        <pa-button paTooltip="Close" icon="cross">Close</pa-button>
-        <pa-button paTooltip="This button has system tooltip" paTooltipType="system">Following mouse</pa-button>
-        <pa-button paTooltip="This tooltip has offset" [paTooltipOffset]="-80">With -80px offset</pa-button>
+        <div style="display: flex; align-items: center; gap: 16px">
+            <pa-button paTooltip="This button has action tooltip">Hover me</pa-button>
+            <pa-button paTooltip="Close" icon="cross">Close</pa-button>
+            <pa-button paTooltip="This button has system tooltip" paTooltipType="system">Following mouse</pa-button>
+            <pa-button paTooltip="This tooltip has offset" [paTooltipOffset]="-80">With -80px offset</pa-button>
+        </div>
+
     </pa-demo-examples>
 
     <pa-demo-usage>
