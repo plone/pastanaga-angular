@@ -1,14 +1,7 @@
-import {
-    ApplicationRef,
-    ComponentFactoryResolver,
-    ComponentRef,
-    Injectable,
-    Injector,
-    Renderer2,
-    RendererFactory2,
-} from '@angular/core';
+import { ApplicationRef, ComponentRef, createComponent, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { ToastConfig, ToastType } from './toast.model';
+import { Keys } from '../common';
 
 let nextId = 0;
 
@@ -16,7 +9,13 @@ let nextId = 0;
 export class ToastService {
     private readonly _renderer: Renderer2;
     private _toastContainer?: HTMLElement;
-    private _toastMap: Map<string, ComponentRef<ToastComponent>> = new Map();
+    private _toastMap: Map<
+        string,
+        {
+            component: ComponentRef<ToastComponent>;
+            unListeners: (() => void)[];
+        }
+    > = new Map();
 
     get toastContainer(): HTMLElement {
         if (!this._toastContainer) {
@@ -29,12 +28,7 @@ export class ToastService {
         return this._renderer;
     }
 
-    constructor(
-        private resolver: ComponentFactoryResolver,
-        private rendererFactory: RendererFactory2,
-        private appRef: ApplicationRef,
-        private injector: Injector,
-    ) {
+    constructor(private rendererFactory: RendererFactory2, private appRef: ApplicationRef) {
         this._renderer = rendererFactory.createRenderer(null, null);
     }
 
@@ -57,19 +51,28 @@ export class ToastService {
     open(message: string, type: ToastType, config?: ToastConfig): ComponentRef<ToastComponent> {
         const id = `pa-toast-${nextId++}`;
         const toast: ComponentRef<ToastComponent> = this.createToast(id, message, type, config);
+        const toastRefs = {
+            component: toast,
+            unListeners: [
+                this._renderer.listen(document, 'keyup', (event: KeyboardEvent) => {
+                    if (event.key === Keys.esc) {
+                        this.removeToast(id);
+                    }
+                }),
+            ],
+        };
 
         this.appRef.attachView(toast.hostView);
-        this._toastMap.set(id, toast);
+        this._toastMap.set(id, toastRefs);
 
         this._renderer.setAttribute(toast.location.nativeElement, 'role', 'alert');
         this._renderer.appendChild(this.toastContainer, toast.location.nativeElement);
+
         return toast;
     }
 
     private createToast(id: string, message: string, type: ToastType, config?: ToastConfig) {
-        const componentFactory = this.resolver.resolveComponentFactory(ToastComponent);
-
-        const componentRef = componentFactory.create(this.injector);
+        const componentRef = createComponent(ToastComponent, { environmentInjector: this.appRef.injector });
         componentRef.instance.id = id;
         componentRef.instance.message = message;
         componentRef.instance.type = type;
@@ -94,8 +97,9 @@ export class ToastService {
         if (!ref) {
             return;
         }
-        this.appRef.detachView(ref.hostView);
-        ref.destroy();
+        ref.unListeners.forEach((unListen) => unListen());
+        this.appRef.detachView(ref.component.hostView);
+        ref.component.destroy();
         this._toastMap.delete(id);
         if (!this._toastMap.size) {
             this.removeContainer();
