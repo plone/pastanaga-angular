@@ -25,7 +25,6 @@ describe('ToastService', () => {
                     set: {
                         imports: [PaToastModule, MockModule(PaTranslateModule)],
                         declarations: [MockPipe(TranslatePipe, (value) => `translate--${value}`)],
-                        entryComponents: [ToastComponent],
                     },
                 },
             ],
@@ -43,7 +42,13 @@ describe('ToastService', () => {
     let appRef: ApplicationRef;
     let renderer: Renderer2;
     let toastContainer: HTMLElement | undefined;
-    let toastMap: Map<string, ComponentRef<ToastComponent>>;
+    let toastMap: Map<
+        string,
+        {
+            component: ComponentRef<ToastComponent>;
+            unListeners: (() => void)[];
+        }
+    >;
     beforeEach(() => {
         spectator = createService();
         service = spectator.inject(ToastService);
@@ -66,7 +71,7 @@ describe('ToastService', () => {
         service.open('a message', 'success');
 
         expect(toastMap.size).toEqual(1);
-        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
         expect(createdToast).toBeTruthy();
 
         expect(attachView).toHaveBeenCalledWith(createdToast?.hostView);
@@ -83,7 +88,7 @@ describe('ToastService', () => {
     it('should open a toast with config', () => {
         service.open('a message', 'warning', { icon: 'warning' });
         expect(toastMap.size).toEqual(1);
-        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
         expect(createdToast).toBeTruthy();
         nextId++;
         expect(createdToast?.instance.config.icon).toEqual('warning');
@@ -92,7 +97,7 @@ describe('ToastService', () => {
     it('should open an info toast', () => {
         service.openInfo('info message');
         expect(toastMap.size).toEqual(1);
-        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
         expect(createdToast).toBeTruthy();
         nextId++;
         expect(createdToast?.instance.toastClass).toEqual('pa-toast-info');
@@ -101,7 +106,7 @@ describe('ToastService', () => {
     it('should open an success toast', () => {
         service.openSuccess('success message');
         expect(toastMap.size).toEqual(1);
-        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
         expect(createdToast).toBeTruthy();
         nextId++;
         expect(createdToast?.instance.toastClass).toEqual('pa-toast-success');
@@ -110,7 +115,7 @@ describe('ToastService', () => {
     it('should open an warning toast', () => {
         service.openWarning('warning message');
         expect(toastMap.size).toEqual(1);
-        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
         expect(createdToast).toBeTruthy();
         nextId++;
         expect(createdToast?.instance.toastClass).toEqual('pa-toast-warning');
@@ -119,7 +124,7 @@ describe('ToastService', () => {
     it('should open an error toast', () => {
         service.openError('error message');
         expect(toastMap.size).toEqual(1);
-        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
         expect(createdToast).toBeTruthy();
         nextId++;
         expect(createdToast?.instance.toastClass).toEqual('pa-toast-error');
@@ -130,12 +135,29 @@ describe('ToastService', () => {
         const removeChild = jest.spyOn(renderer, 'removeChild');
         service.openInfo('info message');
         expect(toastMap.size).toEqual(1);
-        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
         expect(createdToast).toBeTruthy();
         // @ts-ignore accessing private member
         toastContainer = service._toastContainer;
 
         createdToast?.instance.dismiss.emit(`pa-toast-${nextId}`);
+        expect(toastMap.size).toEqual(0);
+        expect(detachView).toHaveBeenCalledWith(createdToast?.hostView);
+        expect(removeChild).toHaveBeenCalledWith(document.body, toastContainer);
+        nextId++;
+    });
+
+    it('should close toast by pressing escape', () => {
+        const detachView = jest.spyOn(appRef, 'detachView');
+        const removeChild = jest.spyOn(renderer, 'removeChild');
+        service.openInfo('info message', { autoClose: false });
+        expect(toastMap.size).toEqual(1);
+        const createdToast: ComponentRef<ToastComponent> | undefined = toastMap.get(`pa-toast-${nextId}`)?.component;
+        expect(createdToast).toBeTruthy();
+        // @ts-ignore accessing private member
+        toastContainer = service._toastContainer;
+
+        spectator.dispatchKeyboardEvent(document.body, 'keyup', 'Escape');
         expect(toastMap.size).toEqual(0);
         expect(detachView).toHaveBeenCalledWith(createdToast?.hostView);
         expect(removeChild).toHaveBeenCalledWith(document.body, toastContainer);

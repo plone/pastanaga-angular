@@ -49,7 +49,6 @@ export class ToastService {
     }
 
     open(message: string, type: ToastType, config?: ToastConfig): ComponentRef<ToastComponent> {
-        const mainNow = Date.now();
         const id = `pa-toast-${nextId++}`;
         const toast: ComponentRef<ToastComponent> = this.createToast(id, message, type, config);
         const toastRefs = {
