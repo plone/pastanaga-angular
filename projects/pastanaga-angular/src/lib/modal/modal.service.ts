@@ -1,9 +1,9 @@
 import {
     ApplicationRef,
-    ComponentFactoryResolver,
     ComponentRef,
+    createComponent,
+    createEnvironmentInjector,
     Injectable,
-    Injector,
     NgZone,
     Type,
 } from '@angular/core';
@@ -20,12 +20,7 @@ export class ModalService {
 
     modals: ComponentRef<any>[] = [];
 
-    constructor(
-        private componentFactoryResolver: ComponentFactoryResolver,
-        private appRef: ApplicationRef,
-        private injector: Injector,
-        private zone: NgZone,
-    ) {}
+    constructor(private appRef: ApplicationRef, private zone: NgZone) {}
 
     openConfirm(data: ConfirmationData): ModalRef {
         return this.openModal(ConfirmationDialogComponent, new ModalConfig<ConfirmationData>({ data }));
@@ -37,18 +32,18 @@ export class ModalService {
         ref.onDismiss.subscribe(() => this.closeModal(ref));
 
         // instantiate injector
-        const injector = Injector.create({
-            providers: [
+        const injector = createEnvironmentInjector(
+            [
                 {
                     provide: ModalRef,
                     useValue: ref,
                 },
             ],
-            parent: this.injector,
-        });
+            this.appRef.injector,
+        );
 
         // instantiate modal component
-        const modalComponentRef = this.componentFactoryResolver.resolveComponentFactory(component).create(injector);
+        const modalComponentRef = createComponent(component, { environmentInjector: injector });
         this.appRef.attachView(modalComponentRef.hostView);
         document.body.appendChild(modalComponentRef.location.nativeElement);
 

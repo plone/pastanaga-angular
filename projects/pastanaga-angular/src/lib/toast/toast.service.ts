@@ -1,12 +1,4 @@
-import {
-    ApplicationRef,
-    ComponentFactoryResolver,
-    ComponentRef,
-    Injectable,
-    Injector,
-    Renderer2,
-    RendererFactory2,
-} from '@angular/core';
+import { ApplicationRef, ComponentRef, createComponent, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { ToastConfig, ToastType } from './toast.model';
 
@@ -29,12 +21,7 @@ export class ToastService {
         return this._renderer;
     }
 
-    constructor(
-        private resolver: ComponentFactoryResolver,
-        private rendererFactory: RendererFactory2,
-        private appRef: ApplicationRef,
-        private injector: Injector,
-    ) {
+    constructor(private rendererFactory: RendererFactory2, private appRef: ApplicationRef) {
         this._renderer = rendererFactory.createRenderer(null, null);
     }
 
@@ -67,9 +54,7 @@ export class ToastService {
     }
 
     private createToast(id: string, message: string, type: ToastType, config?: ToastConfig) {
-        const componentFactory = this.resolver.resolveComponentFactory(ToastComponent);
-
-        const componentRef = componentFactory.create(this.injector);
+        const componentRef = createComponent(ToastComponent, { environmentInjector: this.appRef.injector });
         componentRef.instance.id = id;
         componentRef.instance.message = message;
         componentRef.instance.type = type;

@@ -1,13 +1,4 @@
-import {
-    ComponentFactoryResolver,
-    ComponentRef,
-    Directive,
-    ElementRef,
-    HostListener,
-    Input,
-    Renderer2,
-    ViewContainerRef,
-} from '@angular/core';
+import { ComponentRef, Directive, ElementRef, HostListener, Input, Renderer2, ViewContainerRef } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { markForCheck } from '../common';
@@ -38,12 +29,7 @@ export class TooltipDirective {
 
     private component?: ComponentRef<TooltipComponent>;
 
-    constructor(
-        private element: ElementRef,
-        private viewContainerRef: ViewContainerRef,
-        private resolver: ComponentFactoryResolver,
-        private renderer: Renderer2,
-    ) {}
+    constructor(private element: ElementRef, private viewContainerRef: ViewContainerRef, private renderer: Renderer2) {}
 
     @HostListener('focusin', ['$event'])
     focus(event: MouseEvent | any) {
@@ -90,8 +76,8 @@ export class TooltipDirective {
     createTooltip(x: number, y: number, width: number, height: number) {
         this.id = `pa-tooltip-${nextId++}`;
         this.element.nativeElement.setAttribute('aria-describedby', this.id);
-        const factory = this.resolver.resolveComponentFactory(TooltipComponent);
-        this.component = this.viewContainerRef.createComponent(factory);
+
+        this.component = this.viewContainerRef.createComponent(TooltipComponent);
         this.component.instance.id = this.id;
         this.component.instance.text = this.text;
         this.component.instance.isAction = this.type === ACTION;
