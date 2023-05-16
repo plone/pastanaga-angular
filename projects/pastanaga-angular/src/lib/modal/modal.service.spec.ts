@@ -6,7 +6,6 @@ import { PaModalModule } from './modal.module';
 import { ModalConfig, ModalRef } from './modal.model';
 import { MockModule } from 'ng-mocks';
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({
     template: `<pa-modal-dialog>
@@ -23,7 +22,6 @@ describe('ModalService', () => {
         imports: [MockModule(PaModalModule)],
         service: ModalService,
         declarations: [TestDialogComponent],
-        overrideModules: [[BrowserDynamicTestingModule, { set: { entryComponents: [TestDialogComponent] } }]],
     });
     let service: ModalService;
     let spectator: SpectatorService<ModalService>;
