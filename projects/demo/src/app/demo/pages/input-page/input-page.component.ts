@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputPageComponent {
+    prefilledValue = 'I’m prefilled';
     model = '';
     selectedTab = 'standalone';
 

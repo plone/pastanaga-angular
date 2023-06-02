@@ -7,6 +7,10 @@
     </pa-demo-description>
 
     <pa-demo-examples>
+        <p><strong>Prefilled input</strong></p>
+        <pa-input [(ngModel)]="prefilledValue">Prefilled</pa-input>
+
+
         <p><strong>Error state: type a character and delete it.</strong></p>
         <pa-input [(ngModel)]="model"
                   name="inputExample"

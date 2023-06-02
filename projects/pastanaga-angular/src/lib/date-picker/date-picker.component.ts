@@ -29,7 +29,7 @@ import {
     subMonths,
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
-import { AbstractControl, UntypedFormControl, NgControl } from '@angular/forms';
+import { AbstractControl, NgControl, UntypedFormControl } from '@angular/forms';
 import { debounceTime, filter, map } from 'rxjs/operators';
 import { markForCheck, TRANSITION_DURATION } from '../common';
 import { formatDate } from '@angular/common';
@@ -126,8 +126,7 @@ export class DatePickerComponent extends PaFormControlDirective {
         this.control.valueChanges.pipe(filter((value) => !!value)).subscribe((value: Date) => {
             const date = formatDate(value, 'longDate', this.locale);
 
-            // don't emit event because input only needs to respond to a change, not initiate
-            this.inputControl.setValue(date, { emitEvent: false });
+            this.inputControl.setValue(date);
         });
 
         // honor text entry
