@@ -1,3 +1,9 @@
+# 2.61.6 (2023-06-02)
+
+### Bug fixes
+- **date-picker**: Fix prefilled date-picker display [mpellerin42]
+- **Radio documentation page**: Fix disabled radio group [mpellerin42]
+
 # 2.61.5 (2023-05-15)
 
 ### Improvements

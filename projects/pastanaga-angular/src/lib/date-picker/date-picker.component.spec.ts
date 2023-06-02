@@ -72,7 +72,7 @@ describe('DatePickerComponent', () => {
             component.control.setValue(text);
 
             // === Verify ===
-            expect(component.inputControl.setValue).toHaveBeenCalledWith(date, { emitEvent: false });
+            expect(component.inputControl.setValue).toHaveBeenCalledWith(date);
         });
     });
 

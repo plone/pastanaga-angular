@@ -32,7 +32,7 @@
     </pa-demo-description>
 
     <pa-demo-examples>
-        <label for="radio-group-season">Pick your favorite season <small>(radio group using ngModel)</small></label>
+        <label class="title-xxs" for="radio-group-season">Pick your favorite season <small>(radio group using ngModel)</small></label>
         <pa-radio-group name="radio-season" id="radio-group-season" [(ngModel)]="favoriteSeason">
             <pa-radio *ngFor="let season of seasons" [value]="season">{{ season }}</pa-radio>
         </pa-radio-group>
@@ -40,44 +40,39 @@
 
         <hr />
 
-        <p><small>Radio group using formControl</small></p>
+        <p class="title-xxs">Radio group using formControl</p>
         <pa-radio-group name="radio-icons" [formControl]="formControl">
             <div style="display: flex">
                 <div
                     *ngFor="let icon of icons"
-                    style="display: flex; flex-direction: column; align-items: center; margin-right: 30px"
-                >
+                    style="display: flex; flex-direction: column; align-items: center; margin-right: 30px">
                     <pa-icon size="large" [name]="icon"></pa-icon>
                     <pa-radio [value]="icon"></pa-radio>
                 </div>
             </div>
         </pa-radio-group>
         <p>Icon selected: {{ formControl.value }}</p>
-        <pa-button [disabled]="formControl.pristine" size="small"
-            >Button enabled when formControl.pristine is false</pa-button
-        >
+        <pa-button [disabled]="formControl.pristine" size="small">Button enabled when formControl.pristine is false</pa-button>
 
         <hr />
 
-        <p><small>Radio group using formGroup with formControlName</small></p>
+        <p class="title-xxs">Radio group using formGroup with formControlName</p>
         <form [formGroup]="formGroup">
             <label for="radio-meals">Pick your favorite meal</label>
             <pa-radio-group name="radio-meals" id="radio-meals" formControlName="favoriteMeal">
-                <pa-radio *ngFor="let meal of meals" [value]="meal.label" [disabled]="meal.disabled">{{
+                <pa-radio *ngFor="let meal of meals" [value]="meal.label">{{
                     meal.label
                 }}</pa-radio>
             </pa-radio-group>
             <p>Your favorite meal: {{ formGroup.getRawValue() | json }}</p>
-            <pa-button [disabled]="formGroup.pristine" size="small"
-                >Button enabled when form.pristine is false</pa-button
-            >
+            <pa-button [disabled]="formGroup.pristine" size="small">Button enabled when form.pristine is false</pa-button>
         </form>
-
-        <p><small>Radio group with disabled inputs</small></p>
+        <hr />
+        <p class="title-xxs">Radio group with disabled inputs</p>
         <form [formGroup]="formGroupDisabled">
             <label for="radio-meals-disabled">Pick your favorite meal</label>
             <pa-radio-group name="radio-disabled" id="radio-meals-disabled" formControlName="favoriteMeal">
-                <pa-radio *ngFor="let meal of meals" [value]="meal.label" [disabled]="true">{{ meal.label }}</pa-radio>
+                <pa-radio *ngFor="let meal of meals" [value]="meal.label">{{ meal.label }}</pa-radio>
             </pa-radio-group>
         </form>
     </pa-demo-examples>

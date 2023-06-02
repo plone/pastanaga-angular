@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerPageComponent {
+    prefilledDate = new Date().toISOString();
     selectedTab: 'standalone' | 'ngModel' | 'formControl' | 'formControlName' = 'standalone';
 
     standaloneBasicCode = `<pa-date-picker [value]="value" (valueChange)="doSomething($event)"></pa-date-picker>`;

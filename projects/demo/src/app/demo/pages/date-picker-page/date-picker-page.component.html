@@ -6,7 +6,7 @@
             style.
         </p>
         <p>
-            As other pastanaga's form fields, <code>pa-date-picker</code> supports 4 modes internally:
+            As other Pastanaga's form fields, <code>pa-date-picker</code> supports 4 modes internally:
             <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and
             <strong>formControlName</strong>, in order to be used in various context.
         </p>
@@ -14,6 +14,12 @@
     </pa-demo-description>
 
     <pa-demo-examples>
+        <p>
+
+        <strong>Pre-filled date picker</strong>
+        </p>
+        <pa-date-picker [(ngModel)]="prefilledDate"></pa-date-picker>
+
         <pa-tabs>
             <pa-tab (click)="selectedTab = 'standalone'" [active]="selectedTab === 'standalone'">Standalone</pa-tab>
             <pa-tab (click)="selectedTab = 'ngModel'" [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
