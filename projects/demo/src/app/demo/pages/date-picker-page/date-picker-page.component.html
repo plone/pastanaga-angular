@@ -24,9 +24,7 @@
             <pa-tab (click)="selectedTab = 'standalone'" [active]="selectedTab === 'standalone'">Standalone</pa-tab>
             <pa-tab (click)="selectedTab = 'ngModel'" [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
             <pa-tab (click)="selectedTab = 'formControl'" [active]="selectedTab === 'formControl'">Form Control</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControlName'" [active]="selectedTab === 'formControlName'"
-                >Form Control Name</pa-tab
-            >
+            <pa-tab (click)="selectedTab = 'formControlName'" [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
         </pa-tabs>
         <pa-demo-date-picker-standalone-example
             *ngIf="selectedTab === 'standalone'"

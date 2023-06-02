@@ -1,6 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { addMonths, parse, setMonth, setYear, startOfDay, subMonths } from 'date-fns';
+import { addMinutes, addMonths, parse, setMonth, setYear, subMonths } from 'date-fns';
 import { MockModule } from 'ng-mocks';
 import { DatePickerComponent, Day } from './date-picker.component';
 import { PaButtonModule } from '../button';
@@ -482,7 +482,7 @@ describe('DatePickerComponent', () => {
         it('should use date value', () => {
             // === Setup ===
             const date = new Date();
-            const expected = startOfDay(date);
+            const expected = addMinutes(date, date.getTimezoneOffset() * -1);
 
             // === Execute ===
             componentAny.setDate(date);

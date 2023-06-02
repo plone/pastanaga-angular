@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {
     add,
+    addMinutes,
     addMonths,
     getDate,
     getDay,
@@ -137,19 +138,24 @@ export class DatePickerComponent extends PaFormControlDirective {
                     value,
                     format: DATE_FORMATS.find((format) => isMatch(value, format)) || null,
                 })),
-            )
-            .subscribe(({ value, format }) => {
-                let date: Date | undefined = undefined;
+                map(({ value, format }) => {
+                    let date: Date | undefined = undefined;
 
-                if (!format) {
-                    if (!value) {
-                        this.trackedDate = new Date();
+                    if (!format) {
+                        if (!value) {
+                            this.trackedDate = new Date();
+                        }
+                    } else {
+                        // this maintains the user's format for now
+                        date = parse(value, format, this.trackedDate);
                     }
-                } else {
-                    // this maintains the user's format for now
-                    date = parse(value, format, this.trackedDate);
-                }
-
+                    return date;
+                }),
+                filter((date) => {
+                    return !date || !this._selectedDate || !isEqual(date, this._selectedDate);
+                }),
+            )
+            .subscribe((date) => {
                 this.setDate(date);
                 this.generateWeeks();
                 markForCheck(this.cdr);
@@ -280,7 +286,13 @@ export class DatePickerComponent extends PaFormControlDirective {
     }
 
     private setDate(date: Date | undefined) {
-        this._selectedDate = date && startOfDay(date);
+        /*
+         * date is corresponding to the start of the day in the current local, like 2023-06-02T00:00:00.000 GMT+0200
+         * If we keep it like this, date.toISOString() returns 2023-06-01T22:00:00.000Z (toISOString always converting the date provided date to UTC)
+         * So we add the timezone offset to the date: that way this._selectedDate.toISOString() will return 2023-06-02T00:00:00.000Z as expected
+         */
+        this._selectedDate = date && addMinutes(date, date.getTimezoneOffset() * -1);
+
         this.trackedDate = this._selectedDate || new Date();
         this.onChange(this._selectedDate);
     }

@@ -1,3 +1,10 @@
+# 2.61.7 (2023-06-02)
+
+### Bug fixes
+- **date-picker**: [mpellerin42]
+  - Prevent `setDate` to be called infinitely after selecting a date
+  - Make sure the date selected is returned in UTC without changing the actual date because of a timezone difference.
+
 # 2.61.6 (2023-06-02)
 
 ### Bug fixes
