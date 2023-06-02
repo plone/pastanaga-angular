@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./radio-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RadioPageComponent {
+export class RadioPageComponent implements OnInit {
     favoriteSeason = 'Spring';
     seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
 
@@ -40,4 +40,8 @@ export class RadioPageComponent {
     formGroupDisabled = new FormGroup({
         favoriteMeal: new FormControl<string>('Lasagna'),
     });
+
+    ngOnInit() {
+        this.formGroupDisabled.disable();
+    }
 }
