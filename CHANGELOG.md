@@ -4,6 +4,7 @@
 - **date-picker**: [mpellerin42]
   - Prevent `setDate` to be called infinitely when a date is set from the FormControl
   - Fix highlight of selected date
+  - Fix ability to clear the date
 
 # 2.61.7 (2023-06-02)
 

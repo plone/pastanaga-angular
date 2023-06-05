@@ -139,7 +139,6 @@ export class DatePickerComponent extends PaFormControlDirective {
         this.inputControl.valueChanges
             .pipe(
                 debounceTime(TRANSITION_DURATION.moderate),
-                filter((value) => !!value),
                 map((v) => {
                     const value = v as string;
                     return {

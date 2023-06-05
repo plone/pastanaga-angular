@@ -1,6 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { addMinutes, addMonths, parse, setMonth, setYear, subMonths } from 'date-fns';
+import { addMinutes, addMonths, setMonth, setYear, subMonths } from 'date-fns';
 import { MockModule } from 'ng-mocks';
 import { DatePickerComponent, Day } from './date-picker.component';
 import { PaButtonModule } from '../button';
@@ -82,9 +82,9 @@ describe('DatePickerComponent', () => {
             componentAny.setDate = jest.fn();
         });
 
-        it('should debounce', () => {
+        it('should debounce when a date is typed', () => {
             // === Execute ===
-            component.inputControl.setValue(null);
+            component.inputControl.setValue('March 22, 2022');
 
             // === Verify ===
             expect(componentAny.generateWeeks).not.toHaveBeenCalled();
@@ -130,7 +130,7 @@ describe('DatePickerComponent', () => {
         it('should update with date', () => {
             // === Setup ===
             const value = 'March 22, 2022';
-            const expected = parse(value, "MMMM d',' yyyy", new Date());
+            const expected = new Date('2022-03-22T00:00:00.000Z');
 
             // === Execute ===
             component.inputControl.setValue(value);
