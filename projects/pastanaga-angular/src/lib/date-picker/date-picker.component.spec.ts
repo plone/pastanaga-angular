@@ -1,6 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { addMinutes, addMonths, setMonth, setYear, subMonths } from 'date-fns';
+import { addMonths, setMonth, setYear, subMonths } from 'date-fns';
 import { MockModule } from 'ng-mocks';
 import { DatePickerComponent, Day } from './date-picker.component';
 import { PaButtonModule } from '../button';
@@ -482,7 +482,7 @@ describe('DatePickerComponent', () => {
         it('should use date value', () => {
             // === Setup ===
             const date = new Date();
-            const expected = addMinutes(date, date.getTimezoneOffset() * -1);
+            const expected = date;
 
             // === Execute ===
             componentAny.setDate(date);
@@ -490,7 +490,7 @@ describe('DatePickerComponent', () => {
             // === Verify ===
             expect(componentAny._selectedDate).toEqual(expected);
             expect(component.trackedDate).toEqual(expected);
-            expect(component.onChange).toHaveBeenCalledWith(expected);
+            expect(component.onChange).toHaveBeenCalledWith(expected.toISOString());
         });
 
         it('should handle undefined', () => {
