@@ -30,12 +30,12 @@ import {
     subMonths,
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
-import { AbstractControl, NgControl, UntypedFormControl } from '@angular/forms';
+import { AbstractControl, FormControl, NgControl } from '@angular/forms';
 import { debounceTime, filter, map } from 'rxjs/operators';
-import { markForCheck, TRANSITION_DURATION } from '../common';
 import { formatDate } from '@angular/common';
 import { InputComponent, PaFormControlDirective } from '../controls';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { markForCheck, TRANSITION_DURATION } from '../common';
 
 export interface Day {
     otherMonth: boolean;
@@ -78,7 +78,20 @@ export class DatePickerComponent extends PaFormControlDirective {
     @ViewChild('input') input?: InputComponent;
 
     trackedDate: Date;
-    inputControl: UntypedFormControl;
+    inputControl: FormControl<string | null> = new FormControl<string | null>(null, {
+        validators: [
+            () => {
+                return (control: AbstractControl) => {
+                    if (control.value && !DATE_FORMATS.some((format) => isMatch(control.value, format))) {
+                        return {
+                            invalidFormat: 'pastanaga.calendar.invalid-format',
+                        };
+                    }
+                    return null;
+                };
+            },
+        ],
+    });
 
     mode: 'weeks' | 'months' | 'years' = 'weeks';
 
@@ -107,15 +120,6 @@ export class DatePickerComponent extends PaFormControlDirective {
     ) {
         super(element, parentControl, cdr);
         this.trackedDate = new Date();
-        this.inputControl = new UntypedFormControl(null, (control: AbstractControl) => {
-            if (control.value && !DATE_FORMATS.some((format) => isMatch(control.value, format))) {
-                return {
-                    invalidFormat: 'pastanaga.calendar.invalid-format',
-                };
-            }
-
-            return null;
-        });
         // @ts-ignore
         this.valueCompare = <D extends Date>(a: D, b: D) => isEqual(a, b);
     }
@@ -124,20 +128,24 @@ export class DatePickerComponent extends PaFormControlDirective {
         super.ngOnInit();
 
         // whenever date value changes make sure it is reflected in the input
-        this.control.valueChanges.pipe(filter((value) => !!value)).subscribe((value: Date) => {
+        this.control.valueChanges.pipe(filter((value) => !!value)).subscribe((value: string) => {
             const date = formatDate(value, 'longDate', this.locale);
 
             this.inputControl.setValue(date);
+            this._selectedDate = this.getUtcDate(startOfDay(new Date(value)));
         });
 
         // honor text entry
         this.inputControl.valueChanges
             .pipe(
                 debounceTime(TRANSITION_DURATION.moderate),
-                map((value) => ({
-                    value,
-                    format: DATE_FORMATS.find((format) => isMatch(value, format)) || null,
-                })),
+                map((v) => {
+                    const value = v as string;
+                    return {
+                        value,
+                        format: DATE_FORMATS.find((format) => isMatch(value, format)) || null,
+                    };
+                }),
                 map(({ value, format }) => {
                     let date: Date | undefined = undefined;
 
@@ -147,7 +155,7 @@ export class DatePickerComponent extends PaFormControlDirective {
                         }
                     } else {
                         // this maintains the user's format for now
-                        date = parse(value, format, this.trackedDate);
+                        date = this.getUtcDate(parse(value, format, this.trackedDate));
                     }
                     return date;
                 }),
@@ -165,7 +173,7 @@ export class DatePickerComponent extends PaFormControlDirective {
     private generateWeeks(): void {
         this.weeks = [];
 
-        const monthStartDate = startOfDay(set(this.trackedDate, { date: 1 }));
+        const monthStartDate = this.getUtcDate(startOfDay(set(this.trackedDate, { date: 1 }))) as Date;
         const monthFirstDay = getDay(monthStartDate);
         const monthLastDay = getDay(lastDayOfMonth(this.trackedDate));
         const monthNumDays = getDaysInMonth(monthStartDate);
@@ -286,15 +294,20 @@ export class DatePickerComponent extends PaFormControlDirective {
     }
 
     private setDate(date: Date | undefined) {
-        /*
-         * date is corresponding to the start of the day in the current local, like 2023-06-02T00:00:00.000 GMT+0200
-         * If we keep it like this, date.toISOString() returns 2023-06-01T22:00:00.000Z (toISOString always converting the date provided date to UTC)
-         * So we add the timezone offset to the date: that way this._selectedDate.toISOString() will return 2023-06-02T00:00:00.000Z as expected
-         */
-        this._selectedDate = date && addMinutes(date, date.getTimezoneOffset() * -1);
+        this._selectedDate = date;
 
         this.trackedDate = this._selectedDate || new Date();
-        this.onChange(this._selectedDate);
+        // Patch this.control value (which is meant to be a timestamp, ie an ISO string representation of a Date)
+        this.onChange(this._selectedDate?.toISOString());
+    }
+
+    /**
+     * date is corresponding to the start of the day in the current local, like 2023-06-02T00:00:00.000 GMT+0200
+     * If we keep it like this, date.toISOString() returns 2023-06-01T22:00:00.000Z (toISOString always converting the date provided date to UTC)
+     * So we add the timezone offset to the date: that way this._selectedDate.toISOString() will return 2023-06-02T00:00:00.000Z as expected
+     */
+    private getUtcDate(date: Date | undefined) {
+        return date && addMinutes(date, date.getTimezoneOffset() * -1);
     }
 
     override setDisabledState(isDisabled: boolean) {
