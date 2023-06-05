@@ -147,7 +147,10 @@ export class DatePickerComponent extends PaFormControlDirective {
                         }
                     } else {
                         // this maintains the user's format for now
-                        date = parse(value, format, this.trackedDate);
+                        date = this.getUtcDate(parse(value, format, this.trackedDate));
+                        if (!this._selectedDate) {
+                            this._selectedDate = date;
+                        }
                     }
                     return date;
                 }),
@@ -286,15 +289,19 @@ export class DatePickerComponent extends PaFormControlDirective {
     }
 
     private setDate(date: Date | undefined) {
-        /*
-         * date is corresponding to the start of the day in the current local, like 2023-06-02T00:00:00.000 GMT+0200
-         * If we keep it like this, date.toISOString() returns 2023-06-01T22:00:00.000Z (toISOString always converting the date provided date to UTC)
-         * So we add the timezone offset to the date: that way this._selectedDate.toISOString() will return 2023-06-02T00:00:00.000Z as expected
-         */
-        this._selectedDate = date && addMinutes(date, date.getTimezoneOffset() * -1);
+        this._selectedDate = this.getUtcDate(date);
 
         this.trackedDate = this._selectedDate || new Date();
         this.onChange(this._selectedDate);
+    }
+
+    /**
+     * date is corresponding to the start of the day in the current local, like 2023-06-02T00:00:00.000 GMT+0200
+     * If we keep it like this, date.toISOString() returns 2023-06-01T22:00:00.000Z (toISOString always converting the date provided date to UTC)
+     * So we add the timezone offset to the date: that way this._selectedDate.toISOString() will return 2023-06-02T00:00:00.000Z as expected
+     */
+    private getUtcDate(date: Date | undefined) {
+        return date && addMinutes(date, date.getTimezoneOffset() * -1);
     }
 
     override setDisabledState(isDisabled: boolean) {

@@ -1,3 +1,8 @@
+# 2.61.8 (2023-06-05)
+
+### Bug fixes
+- **date-picker**: Prevent `setDate` to be called infinitely when a date is set from the FormControl [mpellerin42]
+
 # 2.61.7 (2023-06-02)
 
 ### Bug fixes
