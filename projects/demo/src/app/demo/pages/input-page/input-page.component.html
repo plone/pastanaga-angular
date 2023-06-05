@@ -19,6 +19,16 @@
                   help="Display the error state by typing something and deleting it"
                   [errorMessages]="{required: 'Error message: required'}">Required input</pa-input>
 
+        <p><strong>Input number</strong></p>
+        <div style="display: flex; gap: 16px; align-items: center">
+            <pa-input [(ngModel)]="someNumber"
+                      name="inputNumber"
+                      type="number"
+                      placeholder="Some number">Some number</pa-input>
+            <p>Some number: {{someNumber}} – Type {{getTypeOfSomeNumber()}}</p>
+        </div>
+
+
         <p><strong>Autofill: click and select browser's suggestion</strong></p>
         <pa-input name="email"
                   id="email"

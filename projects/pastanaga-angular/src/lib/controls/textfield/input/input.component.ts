@@ -18,6 +18,7 @@ import { TextInputType } from '../../form-field.model';
 import { TextFieldUtilityService } from '../text-field-utility.service';
 import { NativeTextFieldDirective } from '../native-text-field.directive';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { sanitizeNumberValue } from '../../form-field.utils';
 
 @Component({
     selector: 'pa-input',
@@ -104,6 +105,7 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
         if (!!this.htmlInputRef && this._type === 'number') {
             this._wasNumber = true;
             this.htmlInputRef.nativeElement.addEventListener('mouseup', this._numberInputClicked);
+            this.sanitizeHtmlTags = sanitizeNumberValue;
         } else {
             this._unTrackNumberInputClick();
         }
