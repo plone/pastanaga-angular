@@ -22,6 +22,7 @@ import {
     isEqual,
     isMatch,
     lastDayOfMonth,
+    parse,
     set,
     setMonth,
     setYear,
@@ -30,10 +31,11 @@ import {
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
 import { AbstractControl, FormControl, NgControl } from '@angular/forms';
-import { filter } from 'rxjs/operators';
+import { debounceTime, filter, map } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 import { InputComponent, PaFormControlDirective } from '../controls';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { markForCheck, TRANSITION_DURATION } from '../common';
 
 export interface Day {
     otherMonth: boolean;
@@ -129,45 +131,44 @@ export class DatePickerComponent extends PaFormControlDirective {
         this.control.valueChanges.pipe(filter((value) => !!value)).subscribe((value: string) => {
             const date = formatDate(value, 'longDate', this.locale);
 
-            console.log(`control value: ${value}`, `selection:`, this._selectedDate?.toISOString());
             this.inputControl.setValue(date);
             this._selectedDate = this.getUtcDate(startOfDay(new Date(value)));
         });
 
         // honor text entry
-        // this.inputControl.valueChanges
-        //     .pipe(
-        //         debounceTime(TRANSITION_DURATION.moderate),
-        //         filter((value) => !!value),
-        //         map((v) => {
-        //             const value = v as string;
-        //             return {
-        //                 value,
-        //                 format: DATE_FORMATS.find((format) => isMatch(value, format)) || null,
-        //             };
-        //         }),
-        //         map(({ value, format }) => {
-        //             let date: Date | undefined = undefined;
-        //
-        //             if (!format) {
-        //                 if (!value) {
-        //                     this.trackedDate = new Date();
-        //                 }
-        //             } else {
-        //                 // this maintains the user's format for now
-        //                 date = parse(value, format, this.trackedDate);
-        //             }
-        //             return date;
-        //         }),
-        //         filter((date) => {
-        //             return !date || !this._selectedDate || !isEqual(date, this._selectedDate);
-        //         }),
-        //     )
-        //     .subscribe((date) => {
-        //         this.setDate(date);
-        //         this.generateWeeks();
-        //         markForCheck(this.cdr);
-        //     });
+        this.inputControl.valueChanges
+            .pipe(
+                debounceTime(TRANSITION_DURATION.moderate),
+                filter((value) => !!value),
+                map((v) => {
+                    const value = v as string;
+                    return {
+                        value,
+                        format: DATE_FORMATS.find((format) => isMatch(value, format)) || null,
+                    };
+                }),
+                map(({ value, format }) => {
+                    let date: Date | undefined = undefined;
+
+                    if (!format) {
+                        if (!value) {
+                            this.trackedDate = new Date();
+                        }
+                    } else {
+                        // this maintains the user's format for now
+                        date = this.getUtcDate(parse(value, format, this.trackedDate));
+                    }
+                    return date;
+                }),
+                filter((date) => {
+                    return !date || !this._selectedDate || !isEqual(date, this._selectedDate);
+                }),
+            )
+            .subscribe((date) => {
+                this.setDate(date);
+                this.generateWeeks();
+                markForCheck(this.cdr);
+            });
     }
 
     private generateWeeks(): void {
@@ -294,7 +295,6 @@ export class DatePickerComponent extends PaFormControlDirective {
     }
 
     private setDate(date: Date | undefined) {
-        console.log(`setDate – `, date?.toISOString());
         this._selectedDate = date;
 
         this.trackedDate = this._selectedDate || new Date();
