@@ -55,7 +55,7 @@ describe('DatePickerComponent', () => {
             component.inputControl.setValue = jest.fn();
         });
 
-        it('should do  nothing for null value', () => {
+        it('should do nothing for null value', () => {
             // === Execute ===
             component.control.setValue(null);
 
