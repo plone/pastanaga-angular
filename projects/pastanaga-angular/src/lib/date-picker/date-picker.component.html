@@ -55,7 +55,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="'years'">
         <div class="calendar-list-header overline">
-            <div class="label" translate>pastanaga.calendar.years</div>
+            <div class="label">{{ 'pastanaga.calendar.years' | translate }}</div>
             <pa-button
                 (click)="openWeeks($event)"
                 kind="secondary"
@@ -77,7 +77,7 @@
     </ng-container>
     <ng-container *ngSwitchCase="'months'">
         <div class="calendar-list-header overline">
-            <div class="label" translate>pastanaga.calendar.months</div>
+            <div class="label">{{ 'pastanaga.calendar.months' | translate }}</div>
             <pa-button
                 (click)="openWeeks($event)"
                 kind="secondary"

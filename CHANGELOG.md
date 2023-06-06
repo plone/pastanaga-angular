@@ -4,6 +4,7 @@
 - **date-picker**: [mpellerin42]
   - Fix date format validator 
   - Add missing support for `externalLabel` option
+  - Use translate pipe instead of directive for years and month selector translations (because translate directive doesn't work on all contexts)
 
 # 2.61.9 (2023-06-06)
 
