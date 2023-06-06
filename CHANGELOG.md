@@ -1,7 +1,9 @@
 # 2.61.10 (2023-06-06)
 
 ### Bug fixes
-- **date-picker**: Fix date format validator [mpellerin42]
+- **date-picker**: [mpellerin42]
+  - Fix date format validator 
+  - Add missing support for `externalLabel` option
 
 # 2.61.9 (2023-06-06)
 

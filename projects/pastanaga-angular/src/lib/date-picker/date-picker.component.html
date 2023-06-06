@@ -4,10 +4,11 @@
         size="small"
         icon="calendar"
         iconOnRight
+        [externalLabel]="externalLabel"
         [readonly]="readonly"
         [formControl]="inputControl"
         (click)="handleInputClick($event)"
-        >{{ label || 'pastanaga.date-picker.label' | translate }}</pa-input
+        >{{ externalLabel ? '' : (label || 'pastanaga.date-picker.label' | translate) }}</pa-input
     >
 </div>
 <pa-popup [ngSwitch]="mode" #popup (onOpen)="openWeeks()" (onClose)="handlePopupClose()" class="calendar-popup">

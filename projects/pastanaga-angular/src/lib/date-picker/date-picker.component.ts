@@ -84,6 +84,15 @@ function DateValidator(): ValidatorFn {
 export class DatePickerComponent extends PaFormControlDirective {
     private _selectedDate?: Date;
 
+    @Input()
+    set externalLabel(value: any) {
+        this._externalLabel = coerceBooleanProperty(value);
+    }
+    get externalLabel() {
+        return this._externalLabel;
+    }
+    private _externalLabel = false;
+
     @ViewChild('popupRef') popupDirective?: PopupDirective;
     @ViewChild('popup') popup?: PopupComponent;
     @ViewChild('input') input?: InputComponent;
