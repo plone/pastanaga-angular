@@ -17,6 +17,9 @@ class TestComponent {
     formGroup = new FormGroup({
         control: new FormControl(),
     });
+    formGroupNumber = new FormGroup({
+        control: new FormControl<number>(0),
+    });
     type: any;
     placeholder: any;
     noAutocomplete: any;
@@ -125,6 +128,27 @@ describe('InputComponent', () => {
         spectator.detectChanges();
         expect(component.control.value).toEqual('a parent value');
         thenInputHasProperty('value', 'a parent value');
+    });
+
+    it('should manage formControlName with type number', () => {
+        spectator = createHost(
+            `<form [formGroup]="formGroupNumber"><pa-input type="number" formControlName="control">Label</pa-input></form>`,
+        );
+        component = spectator.component;
+        host = spectator.hostComponent;
+        spectator.detectChanges();
+        expect(component.control.value).toEqual(0);
+
+        // update input when from group changes
+        host.formGroupNumber.patchValue({ control: 100 });
+        spectator.detectChanges();
+        expect(component.control.value).toEqual(100);
+        thenInputHasProperty('value', '100');
+
+        // return properly typed rawValue after typing in the input
+        spectator.typeInElement('200', 'input');
+        spectator.detectChanges();
+        expect(host.formGroupNumber.getRawValue()).toEqual({ control: 200 });
     });
 
     it('should apply input type text', () => {

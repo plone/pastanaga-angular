@@ -7,7 +7,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class InputPageComponent {
     prefilledValue = 'I’m prefilled';
     model = '';
+    someNumber = 100;
     selectedTab = 'standalone';
+
+    getTypeOfSomeNumber() {
+        return typeof this.someNumber;
+    }
 
     standaloneBasicCode = `<pa-input [value]="value" (valueChange)="doSomething($event)">Label</pa-input>`;
     standaloneFullCode = `<pa-input

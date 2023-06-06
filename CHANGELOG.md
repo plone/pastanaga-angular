@@ -1,3 +1,8 @@
+# 2.61.9 (2023-06-05)
+
+### Bug fixes
+- **pa-input**: fix type of value returned by `pa-input[type=number]` to be `number` as expected [mpellerin42]
+
 # 2.61.8 (2023-06-05)
 
 ### Bug fixes

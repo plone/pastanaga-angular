@@ -66,3 +66,11 @@ export function sanitizeStringValue(value: any) {
     }
     return value;
 }
+
+export function sanitizeNumberValue(value: any) {
+    if (!!value && typeof value === 'string') {
+        const val = Number(value);
+        return isNaN(val) ? null : val;
+    }
+    return value;
+}
