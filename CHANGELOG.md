@@ -1,4 +1,12 @@
-# 2.61.9 (2023-06-05)
+# 2.61.10 (2023-06-06)
+
+### Bug fixes
+- **date-picker**: [mpellerin42]
+  - Fix date format validator 
+  - Add missing support for `externalLabel` option
+  - Use translate pipe instead of directive for years and month selector translations (because translate directive doesn't work on all contexts)
+
+# 2.61.9 (2023-06-06)
 
 ### Bug fixes
 - **pa-input**: fix type of value returned by `pa-input[type=number]` to be `number` as expected [mpellerin42]

@@ -30,7 +30,7 @@ import {
     subMonths,
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
-import { AbstractControl, FormControl, NgControl } from '@angular/forms';
+import { AbstractControl, FormControl, NgControl, ValidatorFn } from '@angular/forms';
 import { debounceTime, filter, map } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 import { InputComponent, PaFormControlDirective } from '../controls';
@@ -64,6 +64,17 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     return valuesArray;
 }
 
+function DateValidator(): ValidatorFn {
+    return (control: AbstractControl) => {
+        if (control.value && !DATE_FORMATS.some((format) => isMatch(control.value, format))) {
+            return {
+                invalidFormat: 'pastanaga.calendar.invalid-format',
+            };
+        }
+        return null;
+    };
+}
+
 @Component({
     selector: 'pa-date-picker',
     templateUrl: './date-picker.component.html',
@@ -73,24 +84,22 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
 export class DatePickerComponent extends PaFormControlDirective {
     private _selectedDate?: Date;
 
+    @Input()
+    set externalLabel(value: any) {
+        this._externalLabel = coerceBooleanProperty(value);
+    }
+    get externalLabel() {
+        return this._externalLabel;
+    }
+    private _externalLabel = false;
+
     @ViewChild('popupRef') popupDirective?: PopupDirective;
     @ViewChild('popup') popup?: PopupComponent;
     @ViewChild('input') input?: InputComponent;
 
     trackedDate: Date;
     inputControl: FormControl<string | null> = new FormControl<string | null>(null, {
-        validators: [
-            () => {
-                return (control: AbstractControl) => {
-                    if (control.value && !DATE_FORMATS.some((format) => isMatch(control.value, format))) {
-                        return {
-                            invalidFormat: 'pastanaga.calendar.invalid-format',
-                        };
-                    }
-                    return null;
-                };
-            },
-        ],
+        validators: [DateValidator()],
     });
 
     mode: 'weeks' | 'months' | 'years' = 'weeks';
