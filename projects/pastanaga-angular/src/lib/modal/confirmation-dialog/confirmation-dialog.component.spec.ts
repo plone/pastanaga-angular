@@ -6,6 +6,13 @@ import { PaTranslateModule } from '../../translate/translate.module';
 import { ConfirmationData, ModalConfig, ModalRef } from '../modal.model';
 import { TranslatePipe } from '../../translate/translate.pipe';
 
+class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+}
+global.ResizeObserver = ResizeObserver;
+
 describe('ConfirmationDialogComponent', () => {
     const title = 'Confirmation title';
     const description = 'Confirmation description';

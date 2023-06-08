@@ -5,6 +5,13 @@ import { Keys } from '../common';
 import { createSpyObject, SpyObject } from '@ngneat/spectator/jest';
 import { Subject } from 'rxjs';
 
+class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+}
+global.ResizeObserver = ResizeObserver;
+
 describe('BaseModalComponent', () => {
     let cdr: ChangeDetectorRef;
     let modalRef: SpyObject<ModalRef>;
