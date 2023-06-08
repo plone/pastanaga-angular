@@ -12,6 +12,12 @@ import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { BreakpointObserver, ViewportMode } from '../../breakpoint-observer';
 import { of } from 'rxjs';
 
+class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+}
+global.ResizeObserver = ResizeObserver;
 describe('DialogComponent', () => {
     const createHost = createHostFactory({
         imports: [MockModule(PaButtonModule)],
@@ -55,7 +61,6 @@ describe('DialogComponent', () => {
             expect(component.hasImage).toBe(false);
         });
     });
-
 
     it(`should display image container when pa-modal-image is present`, () => {
         spectator = createHost(`<pa-modal-dialog>

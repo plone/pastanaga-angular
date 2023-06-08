@@ -1,3 +1,10 @@
+# 2.61.11 (2023-06-08)
+
+### Improvements
+- **Modal**: [mpellerin42]
+  - modal advanced: Set `max-width` to `80vw` when option `fitContent` is set
+  - update `hasScrollbar` (allowing to display a line above the footer when the content is scrollable) on content resize
+
 # 2.61.10 (2023-06-06)
 
 ### Bug fixes
