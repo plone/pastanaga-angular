@@ -26,6 +26,7 @@ export class BaseModalComponent implements AfterViewInit, OnDestroy {
     id = 0;
     config = new ModalConfig();
     hasScrollbar = false;
+    contentResizeObserver: ResizeObserver = new ResizeObserver(() => this.updateHasScrollbar());
 
     protected _onKeyDown = this.onKeyDown.bind(this);
 
@@ -41,14 +42,20 @@ export class BaseModalComponent implements AfterViewInit, OnDestroy {
             this.config = this.ref.config;
         }
         document.addEventListener('keydown', this._onKeyDown);
+        this.contentResizeObserver.observe(this.modalContent?.nativeElement);
+    }
+
+    private updateHasScrollbar() {
         this.hasScrollbar =
             !!this.modalContent &&
             this.modalContent.nativeElement.offsetHeight < this.modalContent.nativeElement.scrollHeight;
+        this.cdr.markForCheck();
     }
 
     ngOnDestroy() {
         this._terminator.next();
         this._terminator.complete();
+        this.contentResizeObserver.disconnect();
     }
 
     close(data?: any) {
