@@ -8,7 +8,8 @@
         align-items: center;
         display: flex;
         justify-content: space-between;
-        padding: $spacing-dialog-sections calc(#{$padding-modal} - #{$padding-button-icon-medium}) $spacing-dialog-sections $padding-modal;
+        padding: $spacing-dialog-sections calc(#{$padding-modal} - #{$padding-button-icon-medium})
+            $spacing-dialog-sections $padding-modal;
     }
 
     .pa-modal-content {
@@ -34,6 +35,9 @@
     @media (min-width: $size-viewport-medium-min) {
         &:not(.fit-content) {
             width: rhythm(64);
+        }
+        &.fit-content {
+            max-width: 80vw;
         }
 
         .pa-footer-container.pa-modal-footer-one-button pa-modal-footer {

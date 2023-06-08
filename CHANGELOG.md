@@ -1,3 +1,8 @@
+# 2.61.11 (2023-06-08)
+
+### Improvements
+- **Modal advanced**: Set `max-width` to `80vw` when option `fitContent` is set [mpellerin42]
+
 # 2.61.10 (2023-06-06)
 
 ### Bug fixes
