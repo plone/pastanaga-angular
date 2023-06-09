@@ -1,48 +1,50 @@
-<div class="pa-field"
-     [class.pa-has-help]="!!help"
-     [class.pa-disable]="control.disabled"
-     [class.pa-field-error]="control.dirty && control.invalid">
-    <div class="pa-toggle-context"
-         [class.pa-label-on-right]="labelOnRight"
-         (click)="updateState(!isChecked)">
-        <div class="pa-toggle-label-container"
-             tabindex="-1"
-             *ngIf="hasLabel">
-            <label #label
-                   [for]="id"
-                   class="pa-field-label"
-                   aria-hidden="true"
-                   (click)="updateState(!isChecked)"
-            >
-                <ng-content></ng-content>
-            </label>
-            <pa-form-field-hint
-                [id]="describedById"
-                [help]="help"
-                [errors]="control.errors"
-                [showErrors]="control.dirty"
-                [errorMessages]="errorMessages"
-            ></pa-form-field-hint>
-        </div>
-        <div class="pa-toggle-container"
-             [class.pa-checked]="isChecked"
-             [class.pa-disable]="control.disabled"
-             [class.pa-focus]="hasFocus"
-        >
-            <input #inputElement
-                   type="checkbox"
-                   class="toggle-checkbox"
-                   [id]="id"
-                   [name]="name"
-                   [formControl]="control"
-                   [attr.aria-label]="label"
-                   [attr.aria-disabled]="control.disabled"
-                   [attr.aria-checked]="isChecked"
-                   [attr.aria-describedby]="describedById"
-                   (blur)="onBlur()"
-                   (focus)="onFocus()"
-            >
-            <span class="pa-toggle-slider"></span>
-        </div>
+<div
+  class="pa-field"
+  [class.pa-has-help]="!!help"
+  [class.pa-disable]="control.disabled"
+  [class.pa-field-error]="control.dirty && control.invalid">
+  <div
+    class="pa-toggle-context"
+    [class.pa-label-on-right]="labelOnRight"
+    (click)="updateState(!isChecked)">
+    <div
+      class="pa-toggle-label-container"
+      tabindex="-1"
+      *ngIf="hasLabel">
+      <label
+        #label
+        [for]="id"
+        class="pa-field-label"
+        aria-hidden="true"
+        (click)="updateState(!isChecked)">
+        <ng-content></ng-content>
+      </label>
+      <pa-form-field-hint
+        [id]="describedById"
+        [help]="help"
+        [errors]="control.errors"
+        [showErrors]="control.dirty"
+        [errorMessages]="errorMessages"></pa-form-field-hint>
     </div>
+    <div
+      class="pa-toggle-container"
+      [class.pa-checked]="isChecked"
+      [class.pa-disable]="control.disabled"
+      [class.pa-focus]="hasFocus">
+      <input
+        #inputElement
+        type="checkbox"
+        class="toggle-checkbox"
+        [id]="id"
+        [name]="name"
+        [formControl]="control"
+        [attr.aria-label]="label"
+        [attr.aria-disabled]="control.disabled"
+        [attr.aria-checked]="isChecked"
+        [attr.aria-describedby]="describedById"
+        (blur)="onBlur()"
+        (focus)="onFocus()" />
+      <span class="pa-toggle-slider"></span>
+    </div>
+  </div>
 </div>

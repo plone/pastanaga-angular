@@ -1,32 +1,95 @@
-<p>Pastanaga provides scss classes for building tables based on grid layout. Those classes are available in <a target="_blank"
-    href="https://github.com/plone/pastanaga-angular/blob/master/projects/pastanaga-angular/src/styles/_tables.scss">pastanaga-angular/src/styles/_tables.scss</a>.</p>
+<p>
+  Pastanaga provides scss classes for building tables based on grid layout. Those classes are available in
+  <a
+    target="_blank"
+    href="https://github.com/plone/pastanaga-angular/blob/master/projects/pastanaga-angular/src/styles/_tables.scss">
+    pastanaga-angular/src/styles/_tables.scss
+  </a>
+  .
+</p>
 <p>Pastanaga provides also some components and directives for building such tables more easily.</p>
 <strong>For basic tables:</strong>
 <ul>
-    <li><a routerLink="/table">pa-table</a>: Table wrapper component, required for all tables.
-        It can contain <code>pa-table-header</code>, <code>pa-table-sortable-header</code>, <code>pa-table-row</code>, and <code>pa-table-row-header</code></li>
-    <li><code>pa-table-header</code>: directive simply wrapping table header cells. It can contain <code>pa-table-cell</code> and <code>pa-table-cell-menu</code></li>
-    <li><code>pa-table-row-header</code>: it renders as a full width row, displaying a label. Free content.</li>
-    <li><a routerLink="/table-row">pa-table-row</a>: it can contain <code>pa-table-cell</code>, <code>pa-table-cell-menu</code> and <code>table-lead-cell-multi-line</code></li>
-    <li><a routerLink="/table-cell">pa-table-cell</a>: free content.</li>
-    <li><code>pa-table-cell-menu</code>: extends <a routerLink="/table-cell">pa-table-cell</a> component, and
-        renders as a cell with content centered. This kind of cell is meant to wrap a <code>pa-button</code>, on which specific style is applied on hover and when active.</li>
+  <li>
+    <a routerLink="/table">pa-table</a>
+    : Table wrapper component, required for all tables. It can contain
+    <code>pa-table-header</code>
+    ,
+    <code>pa-table-sortable-header</code>
+    ,
+    <code>pa-table-row</code>
+    , and
+    <code>pa-table-row-header</code>
+  </li>
+  <li>
+    <code>pa-table-header</code>
+    : directive simply wrapping table header cells. It can contain
+    <code>pa-table-cell</code>
+    and
+    <code>pa-table-cell-menu</code>
+  </li>
+  <li>
+    <code>pa-table-row-header</code>
+    : it renders as a full width row, displaying a label. Free content.
+  </li>
+  <li>
+    <a routerLink="/table-row">pa-table-row</a>
+    : it can contain
+    <code>pa-table-cell</code>
+    ,
+    <code>pa-table-cell-menu</code>
+    and
+    <code>table-lead-cell-multi-line</code>
+  </li>
+  <li>
+    <a routerLink="/table-cell">pa-table-cell</a>
+    : free content.
+  </li>
+  <li>
+    <code>pa-table-cell-menu</code>
+    : extends
+    <a routerLink="/table-cell">pa-table-cell</a>
+    component, and renders as a cell with content centered. This kind of cell is meant to wrap a
+    <code>pa-button</code>
+    , on which specific style is applied on hover and when active.
+  </li>
 </ul>
 
 <strong>For sortable tables:</strong>
 <ul>
-    <li><a routerLink="/table-sortable-header">pa-table-sortable-header</a>: easy way to manage sorting on a table.</li>
-    <li><a routerLink="/table-sortable-header-cell">pa-table-sortable-header-cell</a>: renders a sortable header cell with a sorting indicator.</li>
+  <li>
+    <a routerLink="/table-sortable-header">pa-table-sortable-header</a>
+    : easy way to manage sorting on a table.
+  </li>
+  <li>
+    <a routerLink="/table-sortable-header-cell">pa-table-sortable-header-cell</a>
+    : renders a sortable header cell with a sorting indicator.
+  </li>
 </ul>
 
 <strong>For mobile display:</strong>
-<p>On mobile, there is usually not enough space to display a table with several columns.
-    So Pastanaga provides a component <code>pa-table-lead-cell-multi-line</code> and some directives to display
-    the most important information of a row in one cell.</p>
+<p>
+  On mobile, there is usually not enough space to display a table with several columns. So Pastanaga provides a
+  component
+  <code>pa-table-lead-cell-multi-line</code>
+  and some directives to display the most important information of a row in one cell.
+</p>
 <p>Even though it was designed with mobile tables in mind, this component can be used as a cell in any table row.</p>
 <ul>
-    <li><a routerLink="/table-lead-cell-multi-line">pa-table-lead-cell-multi-line</a>: component allowing to display an image on the left, followed by a title and a description.</li>
-    <li><code>pa-table-lead-image</code>: directive wrapping the image to be displayed</li>
-    <li><code>pa-table-lead-title</code>: directive wrapping the title to be displayed</li>
-    <li><code>pa-table-lead-description</code>: directive wrapping the description to be displayed</li>
+  <li>
+    <a routerLink="/table-lead-cell-multi-line">pa-table-lead-cell-multi-line</a>
+    : component allowing to display an image on the left, followed by a title and a description.
+  </li>
+  <li>
+    <code>pa-table-lead-image</code>
+    : directive wrapping the image to be displayed
+  </li>
+  <li>
+    <code>pa-table-lead-title</code>
+    : directive wrapping the title to be displayed
+  </li>
+  <li>
+    <code>pa-table-lead-description</code>
+    : directive wrapping the description to be displayed
+  </li>
 </ul>

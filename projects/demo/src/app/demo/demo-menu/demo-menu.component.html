@@ -1,45 +1,60 @@
-<pa-button *ngIf="mode !== 'desktop'"
-           class="demo-menu-button"
-           icon="menu"
-           aspect="basic"
-           (click)="toggleSideNav(true)">Menu
+<pa-button
+  *ngIf="mode !== 'desktop'"
+  class="demo-menu-button"
+  icon="menu"
+  aspect="basic"
+  (click)="toggleSideNav(true)">
+  Menu
 </pa-button>
 
-<pa-side-nav [mode]="mode"
-             [visible]="isMenuVisible"
-             (close)="toggleSideNav(false)">
-    <pa-side-nav-header>
-        <header class="pa-demo-sidenav-header">
-            <a href="#" routerLink="/" paFocusable>
-                <img [src]="logo" alt="" />
-            </a>
+<pa-side-nav
+  [mode]="mode"
+  [visible]="isMenuVisible"
+  (close)="toggleSideNav(false)">
+  <pa-side-nav-header>
+    <header class="pa-demo-sidenav-header">
+      <a
+        href="#"
+        routerLink="/"
+        paFocusable>
+        <img
+          [src]="logo"
+          alt="" />
+      </a>
 
-            <pa-input class="demo-menu-filter-input"
-                      icon="filter"
-                      (keyUp)="onKeyUp($event)"
-            >Filter</pa-input>
+      <pa-input
+        class="demo-menu-filter-input"
+        icon="filter"
+        (keyUp)="onKeyUp($event)">
+        Filter
+      </pa-input>
 
-            <pa-button *ngIf="mode !== 'desktop'"
-                       class="pa-close-side-nav-button"
-                       icon="cross"
-                       aspect="basic"
-                       (click)="toggleSideNav(false)"></pa-button>
-        </header>
-    </pa-side-nav-header>
+      <pa-button
+        *ngIf="mode !== 'desktop'"
+        class="pa-close-side-nav-button"
+        icon="cross"
+        aspect="basic"
+        (click)="toggleSideNav(false)"></pa-button>
+    </header>
+  </pa-side-nav-header>
 
-    <pa-side-nav-content>
-        <section *ngFor="let section of visibleMenu" class="section">
-            <ul class="side-nav-section">
-                <pa-side-nav-item [label]="section.title" header></pa-side-nav-item>
-                <pa-side-nav-item *ngFor="let page of section.pages"
-                                  routerLinkActive
-                                  #rla="routerLinkActive"
-                                  [active]="rla.isActive"
-                                  [label]="page.title"
-                                  [routerLink]="'/' + page.view"
-                                  (click)="onSelectedItem()">
-                </pa-side-nav-item>
-            </ul>
-        </section>
-    </pa-side-nav-content>
+  <pa-side-nav-content>
+    <section
+      *ngFor="let section of visibleMenu"
+      class="section">
+      <ul class="side-nav-section">
+        <pa-side-nav-item
+          [label]="section.title"
+          header></pa-side-nav-item>
+        <pa-side-nav-item
+          *ngFor="let page of section.pages"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="rla.isActive"
+          [label]="page.title"
+          [routerLink]="'/' + page.view"
+          (click)="onSelectedItem()"></pa-side-nav-item>
+      </ul>
+    </section>
+  </pa-side-nav-content>
 </pa-side-nav>

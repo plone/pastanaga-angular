@@ -1,25 +1,59 @@
-<p><code>paFormControl</code> can be marked as <code>disabled</code> or <code>readonly</code>.</p>
-<p><strong>Important</strong>: <code>disabled</code> can not be used in combination with <code>FormControl</code> or <code>FormControlName</code> directive.</p>
+<p>
+  <code>paFormControl</code>
+  can be marked as
+  <code>disabled</code>
+  or
+  <code>readonly</code>
+  .
+</p>
+<p>
+  <strong>Important</strong>
+  :
+  <code>disabled</code>
+  can not be used in combination with
+  <code>FormControl</code>
+  or
+  <code>FormControlName</code>
+  directive.
+</p>
 <pre><code>{{code}}</code></pre>
 <div>
-    <input paFormControl [attr.disabled]="disabled || undefined" [attr.readonly]="readonly || undefined">
-    standalone formControl state: disabled({{controlDisabled}}), readonly({{controlReadonly}})
+  <input
+    paFormControl
+    [attr.disabled]="disabled || undefined"
+    [attr.readonly]="readonly || undefined" />
+  standalone formControl state: disabled({{ controlDisabled }}), readonly({{ controlReadonly }})
 </div>
 <div>
-    <input paFormControl [attr.disabled]="disabled || undefined" [attr.readonly]="readonly || undefined" [(ngModel)]="model">
-    ngModel formControl state: disabled({{modelDisabled}}), readonly({{modelReadonly}})
+  <input
+    paFormControl
+    [attr.disabled]="disabled || undefined"
+    [attr.readonly]="readonly || undefined"
+    [(ngModel)]="model" />
+  ngModel formControl state: disabled({{ modelDisabled }}), readonly({{ modelReadonly }})
 </div>
-<button (click)="setDisabled()">{{disabled ? 'Enable' : 'Disable'}}</button>
-<button (click)="setReadonly()">{{readonly ? 'Active' : 'Readonly'}}</button>
-<br><br>
-<p><code>paFormControl</code> exposes form control inner state and makes touched / pristine / dirty / pending / valid values accessible.<br>
-    NB: <code>ngControlStatus</code> classes will only be available when used with <code>ngModel</code> and <code>FormControl</code>, but the formControl's state can be used to create our own style.</p>
+<button (click)="setDisabled()">{{ disabled ? 'Enable' : 'Disable' }}</button>
+<button (click)="setReadonly()">{{ readonly ? 'Active' : 'Readonly' }}</button>
+<br />
+<br />
+<p>
+  <code>paFormControl</code>
+  exposes form control inner state and makes touched / pristine / dirty / pending / valid values accessible.
+  <br />
+  NB:
+  <code>ngControlStatus</code>
+  classes will only be available when used with
+  <code>ngModel</code>
+  and
+  <code>FormControl</code>
+  , but the formControl's state can be used to create our own style.
+</p>
 <ul>
-    <li><code>.ng-untouched</code></li>
-    <li><code>.ng-touched</code></li>
-    <li><code>.ng-pristine</code></li>
-    <li><code>.ng-dirty</code></li>
-    <li><code>.ng-valid</code></li>
-    <li><code>.ng-invalid</code></li>
-    <li><code>.ng-pending</code></li>
+  <li><code>.ng-untouched</code></li>
+  <li><code>.ng-touched</code></li>
+  <li><code>.ng-pristine</code></li>
+  <li><code>.ng-dirty</code></li>
+  <li><code>.ng-valid</code></li>
+  <li><code>.ng-invalid</code></li>
+  <li><code>.ng-pending</code></li>
 </ul>

@@ -6,8 +6,8 @@ import { TooltipDirective } from './tooltip.directive';
 import { EllipsisTooltipDirective, ExtendedTooltipDirective } from './ellipsis-tooltip.directive';
 
 @NgModule({
-    declarations: [TooltipComponent, TooltipDirective, EllipsisTooltipDirective, ExtendedTooltipDirective],
-    exports: [TooltipComponent, TooltipDirective, EllipsisTooltipDirective, ExtendedTooltipDirective],
-    imports: [CommonModule, PaTranslateModule],
+  declarations: [TooltipComponent, TooltipDirective, EllipsisTooltipDirective, ExtendedTooltipDirective],
+  exports: [TooltipComponent, TooltipDirective, EllipsisTooltipDirective, ExtendedTooltipDirective],
+  imports: [CommonModule, PaTranslateModule],
 })
 export class PaTooltipModule {}

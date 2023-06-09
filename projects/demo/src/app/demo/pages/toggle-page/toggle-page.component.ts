@@ -2,23 +2,23 @@ import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
-    templateUrl: './toggle-page.component.html',
+  templateUrl: './toggle-page.component.html',
 })
 export class TogglePageComponent {
-    firstToggle = false;
+  firstToggle = false;
 
-    form: UntypedFormGroup = new UntypedFormGroup({
-        toggle: new UntypedFormControl(true),
-    });
-    firstToggleStatus?: any;
-    secondToggleStatus?: any;
+  form: UntypedFormGroup = new UntypedFormGroup({
+    toggle: new UntypedFormControl(true),
+  });
+  firstToggleStatus?: any;
+  secondToggleStatus?: any;
 
-    focusedFirstToggle = false;
-    focusedToggle = false;
-    disabled = false;
-    labelOnRight = false;
+  focusedFirstToggle = false;
+  focusedToggle = false;
+  disabled = false;
+  labelOnRight = false;
 
-    code = `<pa-toggle
+  code = `<pa-toggle
     id="firstToggle"
     name="firstToggle"
     [(ngModel)]="firstToggle"
@@ -37,11 +37,11 @@ export class TogglePageComponent {
 </form>
 `;
 
-    toggleDisabled() {
-        if (this.disabled) {
-            this.form.get('toggle')?.disable();
-        } else {
-            this.form.get('toggle')?.enable();
-        }
+  toggleDisabled() {
+    if (this.disabled) {
+      this.form.get('toggle')?.disable();
+    } else {
+      this.form.get('toggle')?.enable();
     }
+  }
 }

@@ -9,16 +9,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        PaAvatarModule,
-        PaButtonModule,
-        PaDropdownModule,
-        PaPopupModule,
-        PaTranslateModule,
-        PaTooltipModule,
-    ],
-    declarations: [AvatarPileComponent],
-    exports: [AvatarPileComponent],
+  imports: [
+    CommonModule,
+    PaAvatarModule,
+    PaButtonModule,
+    PaDropdownModule,
+    PaPopupModule,
+    PaTranslateModule,
+    PaTooltipModule,
+  ],
+  declarations: [AvatarPileComponent],
+  exports: [AvatarPileComponent],
 })
 export class PaAvatarPileModule {}

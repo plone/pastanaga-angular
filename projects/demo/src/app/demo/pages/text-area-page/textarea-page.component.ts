@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-text-area-page',
-    templateUrl: './textarea-page.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-text-area-page',
+  templateUrl: './textarea-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextareaPageComponent {
-    model = '';
-    selectedTab = 'standalone';
+  model = '';
+  selectedTab = 'standalone';
 
-    htmlExample = `<form #demoForm="ngForm">
+  htmlExample = `<form #demoForm="ngForm">
     <pa-textarea
         [(ngModel)]="model"
         [placeholder]="config.placeholder"

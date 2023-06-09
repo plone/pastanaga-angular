@@ -1,20 +1,32 @@
 <pa-demo-page>
-    <pa-demo-title>Focusable directive</pa-demo-title>
+  <pa-demo-title>Focusable directive</pa-demo-title>
 
-    <pa-demo-description>
-        <p>
-            <code>paFocusable</code> directive mark any html element as focusable.<br />
-            Browser's default accessibility style is removed and a pastanaga <code>pa-keyboard-focus</code> class is
-            applied to the element when the focus is triggered by a keyboard action.
-        </p>
-        <p><code>paFocusDisabled</code> option allow to toggle <code>tabindex</code> from 0 to -1.</p>
-    </pa-demo-description>
-    <pa-demo-examples>
-        <div paFocusable>Lorem Ipsum...</div>
-        <div paFocusable [paFocusDisabled]="true">Disabled Lorem Ipsum...</div>
-    </pa-demo-examples>
+  <pa-demo-description>
+    <p>
+      <code>paFocusable</code>
+      directive mark any html element as focusable.
+      <br />
+      Browser's default accessibility style is removed and a pastanaga
+      <code>pa-keyboard-focus</code>
+      class is applied to the element when the focus is triggered by a keyboard action.
+    </p>
+    <p>
+      <code>paFocusDisabled</code>
+      option allow to toggle
+      <code>tabindex</code>
+      from 0 to -1.
+    </p>
+  </pa-demo-description>
+  <pa-demo-examples>
+    <div paFocusable>Lorem Ipsum...</div>
+    <div
+      paFocusable
+      [paFocusDisabled]="true">
+      Disabled Lorem Ipsum...
+    </div>
+  </pa-demo-examples>
 
-    <pa-demo-code>
-        <pre><code>{{code}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <pre><code>{{code}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

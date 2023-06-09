@@ -1,180 +1,312 @@
 <pa-demo-page>
-    <pa-demo-title>Dropdown</pa-demo-title>
-    <pa-demo-description>
-        <p>
-            Dropdown component allows to display a list of options in a popup.
-            It can be used to build a contextual menu for example.
-        </p>
-        <p>
-            <code>PaDropdownModule</code> contains every thing you need to build your dropdowns:
-        </p>
-        <ul>
-            <li><code>DropdownComponent</code>: brings the popup behaviour and wraps the list of options using the following components</li>
-            <li><code>OptionHeaderComponent</code>: header allowing to group options</li>
-            <li><code>OptionComponent</code>: option item</li>
-            <li><code>SeparatorComponent</code>: option separator</li>
-        </ul>
-    </pa-demo-description>
+  <pa-demo-title>Dropdown</pa-demo-title>
+  <pa-demo-description>
+    <p>
+      Dropdown component allows to display a list of options in a popup. It can be used to build a contextual menu for
+      example.
+    </p>
+    <p>
+      <code>PaDropdownModule</code>
+      contains every thing you need to build your dropdowns:
+    </p>
+    <ul>
+      <li>
+        <code>DropdownComponent</code>
+        : brings the popup behaviour and wraps the list of options using the following components
+      </li>
+      <li>
+        <code>OptionHeaderComponent</code>
+        : header allowing to group options
+      </li>
+      <li>
+        <code>OptionComponent</code>
+        : option item
+      </li>
+      <li>
+        <code>SeparatorComponent</code>
+        : option separator
+      </li>
+    </ul>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <div>
-            <pa-dropdown stayVisible>
-                <pa-option-header>Dropdown header</pa-option-header>
-                <pa-option icon="image" id="menu-item-1" (selectOption)="onSelect($event)">Icon on left</pa-option>
-                <pa-option disabled iconOnRight icon="info" id="menu-item-2" (selectOption)="onSelect($event)">Icon on right & disabled</pa-option>
-                <pa-option icon="folder" id="menu-item-3"
-                           description="Very long description which has an ellipsis and a tooltip allowing to read it all."
-                           (selectOption)="onSelect($event)">Icon on left</pa-option>
-                <pa-separator></pa-separator>
-                <pa-option icon="trash" destructive id="menu-item-destructive" (selectOption)="onSelect($event)">Icon on left & destructive item</pa-option>
-            </pa-dropdown>
+  <pa-demo-examples>
+    <div>
+      <pa-dropdown stayVisible>
+        <pa-option-header>Dropdown header</pa-option-header>
+        <pa-option
+          icon="image"
+          id="menu-item-1"
+          (selectOption)="onSelect($event)">
+          Icon on left
+        </pa-option>
+        <pa-option
+          disabled
+          iconOnRight
+          icon="info"
+          id="menu-item-2"
+          (selectOption)="onSelect($event)">
+          Icon on right & disabled
+        </pa-option>
+        <pa-option
+          icon="folder"
+          id="menu-item-3"
+          description="Very long description which has an ellipsis and a tooltip allowing to read it all."
+          (selectOption)="onSelect($event)">
+          Icon on left
+        </pa-option>
+        <pa-separator></pa-separator>
+        <pa-option
+          icon="trash"
+          destructive
+          id="menu-item-destructive"
+          (selectOption)="onSelect($event)">
+          Icon on left & destructive item
+        </pa-option>
+      </pa-dropdown>
+    </div>
+
+    <div>
+      <pa-button
+        icon="more-horizontal"
+        size="small"
+        [paPopup]="contextualMenu"></pa-button>
+
+      <pa-dropdown #contextualMenu>
+        <pa-option (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
+        <pa-option (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
+        <pa-option (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
+        <pa-separator></pa-separator>
+        <pa-option
+          destructive
+          dontCloseOnSelect
+          (selectOption)="onSelect($event)">
+          Dropdown item destructive
+        </pa-option>
+      </pa-dropdown>
+    </div>
+
+    <div>
+      <pa-button
+        [paPopup]="level1"
+        sameWidth>
+        <div style="display: flex; align-items: center">
+          Multi-level dropdown
+          <pa-icon name="chevron-down"></pa-icon>
         </div>
+      </pa-button>
 
+      <pa-dropdown
+        #level1
+        [companionElement]="level2Element?.nativeElement">
+        <pa-option
+          icon="chevron-right"
+          iconOnRight
+          dontCloseOnSelect
+          popupOnRight
+          [paPopup]="level2"
+          [popupVerticalOffset]="-40"
+          [selected]="level1Open === 'jedi'"
+          (selectOption)="onLevel1Selection('jedi')">
+          Jedi
+        </pa-option>
+        <pa-option
+          icon="chevron-right"
+          iconOnRight
+          dontCloseOnSelect
+          popupOnRight
+          [paPopup]="level2"
+          [popupVerticalOffset]="-40"
+          [selected]="level1Open === 'rebels'"
+          (selectOption)="onLevel1Selection('rebels')">
+          Rebels
+        </pa-option>
+        <pa-option
+          icon="chevron-right"
+          iconOnRight
+          dontCloseOnSelect
+          popupOnRight
+          [paPopup]="level2"
+          [popupVerticalOffset]="-40"
+          [selected]="level1Open === 'sith'"
+          (selectOption)="onLevel1Selection('sith')">
+          Sith
+        </pa-option>
+      </pa-dropdown>
 
-        <div>
-            <pa-button icon="more-horizontal" size="small"
-                       [paPopup]="contextualMenu"></pa-button>
+      <pa-dropdown
+        #level2
+        keepOthersOpen>
+        <pa-option
+          *ngFor="let option of level2Options"
+          dontCloseOnSelect
+          (selectOption)="updateCheckbox(option, $event)">
+          <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
+        </pa-option>
+      </pa-dropdown>
+    </div>
+  </pa-demo-examples>
 
-            <pa-dropdown #contextualMenu>
-                <pa-option (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
-                <pa-option (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
-                <pa-option (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
-                <pa-separator></pa-separator>
-                <pa-option destructive dontCloseOnSelect (selectOption)="onSelect($event)">Dropdown item destructive</pa-option>
-            </pa-dropdown>
-        </div>
+  <pa-demo-usage>
+    <h2>DropdownComponent</h2>
+    <p>
+      Dropdown component is mainly a wrapper (using
+      <code>ng-content</code>
+      ) for the list of options to be displayed. It extends popup component adding the
+      <code>role</code>
+      attribute to it.
+    </p>
 
-        <div>
-            <pa-button [paPopup]="level1" sameWidth>
-                <div style="display: flex; align-items: center">
-                    Multi-level dropdown
-                    <pa-icon name="chevron-down"></pa-icon>
-                </div>
-            </pa-button>
+    <p>
+      Multi-level dropdown can be created by using
+      <small>(more details on the Code section below)</small>
+      :
+    </p>
+    <ul>
+      <li>
+        <code>companionElement</code>
+        attribute on the first level dropdown (targeting the 2nd level dropdown element)
+      </li>
+      <li>
+        <code>keepOthersOpen</code>
+        attribute on the second level dropdown
+      </li>
+      <li>
+        <code>paPopup</code>
+        and
+        <code>popupOnRight</code>
+        on the options of the first level dropdown
+      </li>
+      <li>
+        <code>dontCloseOnSelect</code>
+        attribute on options of both dropdowns
+      </li>
+      <li>
+        optionally, you can adjust the position of the 2nd level dropdown with
+        <code>popupVerticalOffset</code>
+        on the options of the first level dropdown
+      </li>
+    </ul>
 
-            <pa-dropdown #level1 [companionElement]="level2Element?.nativeElement">
-                <pa-option icon="chevron-right"
-                           iconOnRight
-                           dontCloseOnSelect
-                           popupOnRight
-                           [paPopup]="level2"
-                           [popupVerticalOffset]="-40"
-                           [selected]="level1Open === 'jedi'"
-                           (selectOption)="onLevel1Selection('jedi')">Jedi</pa-option>
-                <pa-option icon="chevron-right"
-                           iconOnRight
-                           dontCloseOnSelect
-                           popupOnRight
-                           [paPopup]="level2"
-                           [popupVerticalOffset]="-40"
-                           [selected]="level1Open === 'rebels'"
-                           (selectOption)="onLevel1Selection('rebels')">Rebels</pa-option>
-                <pa-option icon="chevron-right"
-                           iconOnRight
-                           dontCloseOnSelect
-                           popupOnRight
-                           [paPopup]="level2"
-                           [popupVerticalOffset]="-40"
-                           [selected]="level1Open === 'sith'"
-                           (selectOption)="onLevel1Selection('sith')">Sith</pa-option>
-            </pa-dropdown>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>role</dt>
+      <dd>
+        listbox | menu
+        <small>(default: menu)</small>
+      </dd>
+    </dl>
 
-            <pa-dropdown #level2 keepOthersOpen>
-                <pa-option *ngFor="let option of level2Options"
-                           dontCloseOnSelect
-                           (selectOption)="updateCheckbox(option, $event)">
-                    <pa-checkbox [(value)]="option.checked">{{option.label}}</pa-checkbox>
-                </pa-option>
-            </pa-dropdown>
-        </div>
-    </pa-demo-examples>
+    <br />
 
-    <pa-demo-usage>
-        <h2>DropdownComponent</h2>
-        <p>Dropdown component is mainly a wrapper (using <code>ng-content</code>) for the list of options to be displayed. It extends popup component adding the <code>role</code> attribute to it.</p>
+    <h2>PopupComponent</h2>
+    <p>
+      <code>DropdownComponent</code>
+      extends
+      <code>PopupComponent</code>
+      , here are the Inputs and Outputs inherited from it:
+    </p>
+    <pa-demo-popup-component-usage></pa-demo-popup-component-usage>
 
-        <p>Multi-level dropdown can be created by using <small>(more details on the Code section below)</small>:</p>
-        <ul>
-            <li><code>companionElement</code> attribute on the first level dropdown (targeting the 2nd level dropdown element)</li>
-            <li><code>keepOthersOpen</code> attribute on the second level dropdown</li>
-            <li><code>paPopup</code> and <code>popupOnRight</code> on the options of the first level dropdown</li>
-            <li><code>dontCloseOnSelect</code> attribute on options of both dropdowns</li>
-            <li>optionally, you can adjust the position of the 2nd level dropdown with <code>popupVerticalOffset</code> on the options of the first level dropdown</li>
-        </ul>
+    <br />
+    <h2>OptionComponent</h2>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>avatar</dt>
+      <dd>
+        Avatar to display on the left side of the option.
+        <small>(optional)</small>
+      </dd>
 
-        <h3>Inputs</h3>
-        <dl>
-            <dt>role</dt>
-            <dd>listbox | menu <small>(default: menu)</small></dd>
-        </dl>
+      <dt>description</dt>
+      <dd>
+        Description to display below the option label.
+        <small>(optional)</small>
+      </dd>
 
-        <br>
+      <dt>destructive</dt>
+      <dd>
+        Set destructive color
+        <small>(default: false)</small>
+      </dd>
 
-        <h2>PopupComponent</h2>
-        <p><code>DropdownComponent</code> extends <code>PopupComponent</code>, here are the Inputs and Outputs inherited from it:</p>
-        <pa-demo-popup-component-usage></pa-demo-popup-component-usage>
+      <dt>disabled</dt>
+      <dd>
+        Set disabled state
+        <small>(default: false)</small>
+      </dd>
 
-        <br>
-        <h2>OptionComponent</h2>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>avatar</dt>
-            <dd>Avatar to display on the left side of the option. <small>(optional)</small></dd>
+      <dt>dontCloseOnSelect</dt>
+      <dd>
+        Don't close the menu when selecting this item
+        <small>(default: false – by default selecting an option is closing the menu)</small>
+      </dd>
 
-            <dt>description</dt>
-            <dd>Description to display below the option label. <small>(optional)</small></dd>
+      <dt>icon</dt>
+      <dd>
+        Icon name to be used for
+        <code>pa-icon</code>
+        <small>(optional)</small>
+      </dd>
 
-            <dt>destructive</dt>
-            <dd>Set destructive color <small>(default: false)</small></dd>
+      <dt>readonly</dt>
+      <dd>
+        Set readonly state
+        <small>(default: false)</small>
+      </dd>
 
-            <dt>disabled</dt>
-            <dd>Set disabled state <small>(default: false)</small></dd>
+      <dt>iconOnRight</dt>
+      <dd>
+        Display the icon to the right of the option
+        <small>(default: false)</small>
+      </dd>
 
-            <dt>dontCloseOnSelect</dt>
-            <dd>Don't close the menu when selecting this item <small>(default: false – by default selecting an option is closing the menu)</small></dd>
+      <dt>selected</dt>
+      <dd>
+        Set selected state
+        <small>(default: false)</small>
+      </dd>
 
-            <dt>icon</dt>
-            <dd>Icon name to be used for <code>pa-icon</code> <small>(optional)</small></dd>
+      <dt>value</dt>
+      <dd>Option value</dd>
+    </dl>
 
-            <dt>readonly</dt>
-            <dd>Set readonly state <small>(default: false)</small></dd>
+    <h3>Outputs</h3>
+    <dl>
+      <dt>selectOption</dt>
+      <dd>Event emitted when clicking (or pressing enter) on the option.</dd>
+    </dl>
+  </pa-demo-usage>
 
-            <dt>iconOnRight</dt>
-            <dd>Display the icon to the right of the option <small>(default: false)</small></dd>
+  <pa-demo-code>
+    <strong>Simple menu</strong>
+    :
+    <pre><code>{{codeExample}}</code></pre>
 
-            <dt>selected</dt>
-            <dd>Set selected state <small>(default: false)</small></dd>
+    <p><strong>Dropdown with checkboxes</strong></p>
+    <p>
+      Creating a dropdown displaying a list of checkboxes is as easy as wrapping
+      <code>pa-checkbox</code>
+      element in
+      <code>pa-option</code>
+      one. But
+      <code>pa-option</code>
+      style is generic, so clicking inside an option but not directly on checkbox’s input or label is not changing the
+      checkbox value by default. To work around this problem, you can listen to dropdown’s
+      <code>selectOption</code>
+      event and manually update checkbox value when corresponding event’s target is an
+      <code>li</code>
+      tag:
+    </p>
+    Template:
+    <pre><code>{{checkboxExample}}</code></pre>
+    Script:
+    <pre><code>{{checkboxCode}}</code></pre>
 
-            <dt>value</dt>
-            <dd>Option value</dd>
-        </dl>
+    <p><strong>Multi-level dropdown</strong></p>
+    Template:
+    <pre><code>{{multiLevelTemplate}}</code></pre>
 
-        <h3>Outputs</h3>
-        <dl>
-            <dt>selectOption</dt>
-            <dd>Event emitted when clicking (or pressing enter) on the option.</dd>
-        </dl>
-    </pa-demo-usage>
-
-    <pa-demo-code>
-        <strong>Simple menu</strong>:
-        <pre><code>{{codeExample}}</code></pre>
-
-        <p><strong>Dropdown with checkboxes</strong></p>
-        <p>Creating a dropdown displaying a list of checkboxes is as easy as wrapping <code>pa-checkbox</code> element in <code>pa-option</code> one.
-            But <code>pa-option</code> style is generic, so clicking inside an option but not directly on checkbox’s input or label is not changing the checkbox value by default.
-            To work around this problem, you can listen to dropdown’s <code>selectOption</code> event and manually update checkbox value when corresponding event’s target is an <code>li</code> tag:
-        </p>
-        Template:
-        <pre><code>{{checkboxExample}}</code></pre>
-        Script:
-        <pre><code>{{checkboxCode}}</code></pre>
-
-        <p><strong>Multi-level dropdown</strong></p>
-        Template:
-        <pre><code>{{multiLevelTemplate}}</code></pre>
-
-        Script:
-        <pre><code>{{multiLevelScript}}</code></pre>
-    </pa-demo-code>
+    Script:
+    <pre><code>{{multiLevelScript}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

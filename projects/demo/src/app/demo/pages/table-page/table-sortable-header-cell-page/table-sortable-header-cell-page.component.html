@@ -1,36 +1,55 @@
 <pa-demo-page>
-    <pa-demo-title>Table sortable header cell</pa-demo-title>
+  <pa-demo-title>Table sortable header cell</pa-demo-title>
 
-    <pa-demo-description>
-        <pa-demo-common-table-description></pa-demo-common-table-description>
-    </pa-demo-description>
+  <pa-demo-description>
+    <pa-demo-common-table-description></pa-demo-common-table-description>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <pa-table columns="repeat(3, 1fr)">
-            <pa-table-header>
-                <pa-table-sortable-header-cell enabled>Enabled</pa-table-sortable-header-cell>
-                <pa-table-sortable-header-cell enabled isDescending="false">Enabled and ascending</pa-table-sortable-header-cell>
-                <pa-table-sortable-header-cell enabled isDescending>Enabled and descending</pa-table-sortable-header-cell>
-            </pa-table-header>
-        </pa-table>
-    </pa-demo-examples>
+  <pa-demo-examples>
+    <pa-table columns="repeat(3, 1fr)">
+      <pa-table-header>
+        <pa-table-sortable-header-cell enabled>Enabled</pa-table-sortable-header-cell>
+        <pa-table-sortable-header-cell
+          enabled
+          isDescending="false">
+          Enabled and ascending
+        </pa-table-sortable-header-cell>
+        <pa-table-sortable-header-cell
+          enabled
+          isDescending>
+          Enabled and descending
+        </pa-table-sortable-header-cell>
+      </pa-table-header>
+    </pa-table>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>active</dt>
-            <dd>If true, display the sorting indicator icon, otherwise it will display a chevron down icon on hover. <small>(Default: false)</small></dd>
+  <pa-demo-usage>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>active</dt>
+      <dd>
+        If true, display the sorting indicator icon, otherwise it will display a chevron down icon on hover.
+        <small>(Default: false)</small>
+      </dd>
 
-            <dt>isDescending</dt>
-            <dd>Set the sorting indicator to <code>arrow-up</code> icon. <small>By default, sorting indicator is <code>arrow-down</code></small></dd>
+      <dt>isDescending</dt>
+      <dd>
+        Set the sorting indicator to
+        <code>arrow-up</code>
+        icon.
+        <small>
+          By default, sorting indicator is
+          <code>arrow-down</code>
+        </small>
+      </dd>
 
-            <dt>sort</dt>
-            <dd>Event triggered when clicking on the cell.</dd>
-        </dl>
-    </pa-demo-usage>
+      <dt>sort</dt>
+      <dd>Event triggered when clicking on the cell.</dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <p>Code for the example above</p>
-        <pre><code>{{code}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <p>Code for the example above</p>
+    <pre><code>{{code}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

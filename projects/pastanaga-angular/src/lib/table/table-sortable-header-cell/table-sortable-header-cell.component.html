@@ -1,6 +1,18 @@
-<div #cell class="pa-table-grid--header clickable" [class.pa-center]="center" (click)="sort.emit()" paFocusable>
-    <button type="button" [class.pa-enabled]="enabled" [class.pa-active]="active" paFocusable>
-        <ng-content></ng-content>
-        <pa-icon *ngIf="icon" [name]="icon" size="small"></pa-icon>
-    </button>
+<div
+  #cell
+  class="pa-table-grid--header clickable"
+  [class.pa-center]="center"
+  (click)="sort.emit()"
+  paFocusable>
+  <button
+    type="button"
+    [class.pa-enabled]="enabled"
+    [class.pa-active]="active"
+    paFocusable>
+    <ng-content></ng-content>
+    <pa-icon
+      *ngIf="icon"
+      [name]="icon"
+      size="small"></pa-icon>
+  </button>
 </div>

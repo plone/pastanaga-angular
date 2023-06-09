@@ -1,45 +1,64 @@
 <pa-demo-page>
-    <pa-demo-title>Card</pa-demo-title>
+  <pa-demo-title>Card</pa-demo-title>
 
-    <pa-demo-description>
-        <p>Pastanaga provides a generic card wrapper component managing card style like border, padding, state (hover/focus/disabled).</p>
-        <p>Card content is injected through a <code>ng-content</code></p>
-        <p>The card itself doesn't manage its own size: it will take the available size depending on its content.
-            The card container is responsible for managing the card size depending on the needs.</p>
-    </pa-demo-description>
+  <pa-demo-description>
+    <p>
+      Pastanaga provides a generic card wrapper component managing card style like border, padding, state
+      (hover/focus/disabled).
+    </p>
+    <p>
+      Card content is injected through a
+      <code>ng-content</code>
+    </p>
+    <p>
+      The card itself doesn't manage its own size: it will take the available size depending on its content. The card
+      container is responsible for managing the card size depending on the needs.
+    </p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <div class="card-container">
-            <pa-card (cardClick)="onClick()">
-                <div class="card-content-block"></div>
-            </pa-card>
-            <pa-card (cardClick)="onClick()">
-                <h4>Some title</h4>
-                <p class="body-s">Card content can be anything</p>
-            </pa-card>
-            <pa-card disabled (cardClick)="onClick()">
-                <h4>Disabled card</h4>
-                <p class="body-s">This card is disabled, clicking on it will not trigger cardClick event.</p>
-            </pa-card>
-        </div>
-    </pa-demo-examples>
+  <pa-demo-examples>
+    <div class="card-container">
+      <pa-card (cardClick)="onClick()">
+        <div class="card-content-block"></div>
+      </pa-card>
+      <pa-card (cardClick)="onClick()">
+        <h4>Some title</h4>
+        <p class="body-s">Card content can be anything</p>
+      </pa-card>
+      <pa-card
+        disabled
+        (cardClick)="onClick()">
+        <h4>Disabled card</h4>
+        <p class="body-s">This card is disabled, clicking on it will not trigger cardClick event.</p>
+      </pa-card>
+    </div>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>disabled</dt>
-            <dd>Disable the card, meaning clicking on the card will do nothing. <small>Optional</small></dd>
-        </dl>
+  <pa-demo-usage>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>disabled</dt>
+      <dd>
+        Disable the card, meaning clicking on the card will do nothing.
+        <small>Optional</small>
+      </dd>
+    </dl>
 
-        <h3>Outputs</h3>
-        <dl>
-            <dt>cardClick</dt>
-            <dd>Event emitted when clicking on an enabled card, and when pressing enter on an enabled and focused card.
-                It contains the <code>MouseEvent</code> or <code>KeyboardEvent</code> triggered.</dd>
-        </dl>
-    </pa-demo-usage>
+    <h3>Outputs</h3>
+    <dl>
+      <dt>cardClick</dt>
+      <dd>
+        Event emitted when clicking on an enabled card, and when pressing enter on an enabled and focused card. It
+        contains the
+        <code>MouseEvent</code>
+        or
+        <code>KeyboardEvent</code>
+        triggered.
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <pre><code>{{example}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <pre><code>{{example}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

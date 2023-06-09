@@ -1,85 +1,150 @@
 <pa-demo-page>
-    <pa-demo-title>Icons</pa-demo-title>
+  <pa-demo-title>Icons</pa-demo-title>
 
-    <pa-demo-description>
-        <p>Pastanaga provides a component <code>pa-icon</code> allowing to display an icon by its name from the glyph-sprite, or any image by their path.</p>
-        <p>Icons are inheriting their colors from the text color. Overriding an icon color is as simple as adding a css class on the <code>pa-icon</code> changing the text color.</p>
-        <p>In your application, you can either use your own glyph sprite or you can use Pastanaga one.
-            If you're using your own sprite, just make sure to include glyphs with the following names in your sprite as some Pastanaga components are using them:</p>
-        <ul>
-            <li>calendar: used in date-picker component</li>
-            <li>chevron-down: used in chip-expandable, select, date-picker, expander and tabs components</li>
-            <li>chevron-left: used in date-picker component</li>
-            <li>chevron-right: used in date-picker component</li>
-            <li>cross: used in chip-closeable, modal-advanced and side-nav components</li>
-            <li>more-horizontal: used in avatar-pile component</li>
-        </ul>
-        <p>Below is the list of all icons available in Pastanaga:</p>
-    </pa-demo-description>
+  <pa-demo-description>
+    <p>
+      Pastanaga provides a component
+      <code>pa-icon</code>
+      allowing to display an icon by its name from the glyph-sprite, or any image by their path.
+    </p>
+    <p>
+      Icons are inheriting their colors from the text color. Overriding an icon color is as simple as adding a css class
+      on the
+      <code>pa-icon</code>
+      changing the text color.
+    </p>
+    <p>
+      In your application, you can either use your own glyph sprite or you can use Pastanaga one. If you're using your
+      own sprite, just make sure to include glyphs with the following names in your sprite as some Pastanaga components
+      are using them:
+    </p>
+    <ul>
+      <li>calendar: used in date-picker component</li>
+      <li>chevron-down: used in chip-expandable, select, date-picker, expander and tabs components</li>
+      <li>chevron-left: used in date-picker component</li>
+      <li>chevron-right: used in date-picker component</li>
+      <li>cross: used in chip-closeable, modal-advanced and side-nav components</li>
+      <li>more-horizontal: used in avatar-pile component</li>
+    </ul>
+    <p>Below is the list of all icons available in Pastanaga:</p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <h3>Icon from path</h3>
-        <div class="icon-list-container">
-            <div class="icon-container">
-                <pa-icon path="assets/ninja.svg" [size]="selectedSize" [color]="_selectedColor" [background]="_selectedBackground"></pa-icon>
-                <span>assets/ninja.svg</span>
-            </div>
-        </div>
+  <pa-demo-examples>
+    <h3>Icon from path</h3>
+    <div class="icon-list-container">
+      <div class="icon-container">
+        <pa-icon
+          path="assets/ninja.svg"
+          [size]="selectedSize"
+          [color]="_selectedColor"
+          [background]="_selectedBackground"></pa-icon>
+        <span>assets/ninja.svg</span>
+      </div>
+    </div>
 
-        <h3>Icons from glyphs-sprite.svg</h3>
-        <div class="icon-list-container">
-            <div *ngFor="let iconName of icons" class="icon-container">
-                <pa-icon [name]="iconName" [size]="selectedSize" [color]="_selectedColor" [background]="_selectedBackground"></pa-icon>
-                <span>{{iconName}}</span>
-            </div>
-        </div>
-    </pa-demo-examples>
+    <h3>Icons from glyphs-sprite.svg</h3>
+    <div class="icon-list-container">
+      <div
+        *ngFor="let iconName of icons"
+        class="icon-container">
+        <pa-icon
+          [name]="iconName"
+          [size]="selectedSize"
+          [color]="_selectedColor"
+          [background]="_selectedBackground"></pa-icon>
+        <span>{{ iconName }}</span>
+      </div>
+    </div>
+  </pa-demo-examples>
 
-    <pa-demo-configuration>
-        <div class="pa-demo-configuration-field">
-            <pa-select label="Size" [(ngModel)]="selectedSize">
-                <pa-option value="small">small</pa-option>
-                <pa-option value="medium">medium</pa-option>
-                <pa-option value="large">large</pa-option>
-            </pa-select>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-select label="Color" [(ngModel)]="selectedColor">
-                <pa-option value="none" (selectOption)="updateColor('none')">None</pa-option>
-                <pa-option value="Blue" (selectOption)="updateColor('#0047FF')">Blue</pa-option>
-            </pa-select>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-select label="Background" [(ngModel)]="selectedBackground">
-                <pa-option value="none" (selectOption)="updateBackground('none')">None</pa-option>
-                <pa-option value="Yellow" (selectOption)="updateBackground('#FFA100')">Yellow</pa-option>
-            </pa-select>
-        </div>
-    </pa-demo-configuration>
+  <pa-demo-configuration>
+    <div class="pa-demo-configuration-field">
+      <pa-select
+        label="Size"
+        [(ngModel)]="selectedSize">
+        <pa-option value="small">small</pa-option>
+        <pa-option value="medium">medium</pa-option>
+        <pa-option value="large">large</pa-option>
+      </pa-select>
+    </div>
+    <div class="pa-demo-configuration-field">
+      <pa-select
+        label="Color"
+        [(ngModel)]="selectedColor">
+        <pa-option
+          value="none"
+          (selectOption)="updateColor('none')">
+          None
+        </pa-option>
+        <pa-option
+          value="Blue"
+          (selectOption)="updateColor('#0047FF')">
+          Blue
+        </pa-option>
+      </pa-select>
+    </div>
+    <div class="pa-demo-configuration-field">
+      <pa-select
+        label="Background"
+        [(ngModel)]="selectedBackground">
+        <pa-option
+          value="none"
+          (selectOption)="updateBackground('none')">
+          None
+        </pa-option>
+        <pa-option
+          value="Yellow"
+          (selectOption)="updateBackground('#FFA100')">
+          Yellow
+        </pa-option>
+      </pa-select>
+    </div>
+  </pa-demo-configuration>
 
-    <pa-demo-usage>
-        <p>
-            You must fill one of the following properties: <code>name</code> or <code>path</code>.
-        </p>
-        <dl>
-            <dt>name</dt>
-            <dd>Icon id to be found in svg sprite. Will be resolved as <code>{{nameResolvedExample}}</code>. <small>(optional)</small></dd>
+  <pa-demo-usage>
+    <p>
+      You must fill one of the following properties:
+      <code>name</code>
+      or
+      <code>path</code>
+      .
+    </p>
+    <dl>
+      <dt>name</dt>
+      <dd>
+        Icon id to be found in svg sprite. Will be resolved as
+        <code>{{ nameResolvedExample }}</code>
+        .
+        <small>(optional)</small>
+      </dd>
 
-            <dt>path</dt>
-            <dd>Path of the icon in asset folder. <small>(optional)</small></dd>
+      <dt>path</dt>
+      <dd>
+        Path of the icon in asset folder.
+        <small>(optional)</small>
+      </dd>
 
-            <dt>size</dt>
-            <dd>Size to be applied: small | medium | large. <small>(default: medium)</small></dd>
+      <dt>size</dt>
+      <dd>
+        Size to be applied: small | medium | large.
+        <small>(default: medium)</small>
+      </dd>
 
-            <dt>color</dt>
-            <dd>Color to apply to the icon (works only with svg icons). <small>(optional, can be useful if you need to apply a color coming from the backend)</small></dd>
+      <dt>color</dt>
+      <dd>
+        Color to apply to the icon (works only with svg icons).
+        <small>(optional, can be useful if you need to apply a color coming from the backend)</small>
+      </dd>
 
-            <dt>background</dt>
-            <dd>Background color to apply to the icon <small>(optional)</small></dd>
-        </dl>
-    </pa-demo-usage>
+      <dt>background</dt>
+      <dd>
+        Background color to apply to the icon
+        <small>(optional)</small>
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <pre><code>{{codeExample}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <pre><code>{{codeExample}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

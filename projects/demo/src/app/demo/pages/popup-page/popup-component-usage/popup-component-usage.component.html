@@ -1,32 +1,44 @@
 <h3>Inputs</h3>
 <dl>
-    <dt>companionElement</dt>
-    <dd>
-        When clicking on the companion element – which is outside the popup and must be an HTML element – the
-        popup won’t close. It offers external interactions (like filtering the popup content for example).
-        <small>(optional)</small> <br />When companionElement is an angular component, you must provide its
-        nativeElement, <em>eg.</em> <code>[companionElement]="somePaInput.element.nativeElement"</code>
-    </dd>
+  <dt>companionElement</dt>
+  <dd>
+    When clicking on the companion element – which is outside the popup and must be an HTML element – the popup won’t
+    close. It offers external interactions (like filtering the popup content for example).
+    <small>(optional)</small>
+    <br />
+    When companionElement is an angular component, you must provide its nativeElement,
+    <em>eg.</em>
+    <code>[companionElement]="somePaInput.element.nativeElement"</code>
+  </dd>
 
-    <dt>dontAdjustPosition</dt>
-    <dd>
-        Keep default popup position even if there is not enough space to display it entirely.
-        <small>(default: false)</small>
-    </dd>
+  <dt>dontAdjustPosition</dt>
+  <dd>
+    Keep default popup position even if there is not enough space to display it entirely.
+    <small>(default: false)</small>
+  </dd>
 
-    <dt>id</dt>
-    <dd>Popup's id <small>(optional, an id will be generated if none is provided)</small></dd>
+  <dt>id</dt>
+  <dd>
+    Popup's id
+    <small>(optional, an id will be generated if none is provided)</small>
+  </dd>
 
-    <dt>keepOthersOpen</dt>
-    <dd>Control if other popups should be closed when current one is opened. <small>(default: false)</small></dd>
+  <dt>keepOthersOpen</dt>
+  <dd>
+    Control if other popups should be closed when current one is opened.
+    <small>(default: false)</small>
+  </dd>
 
-    <dt>stayVisible</dt>
-    <dd>Keep the popup visible when set to true <small>(default: false)</small></dd>
+  <dt>stayVisible</dt>
+  <dd>
+    Keep the popup visible when set to true
+    <small>(default: false)</small>
+  </dd>
 </dl>
 <h3>Outputs</h3>
 <dl>
-    <dt>onClose</dt>
-    <dd>Event emitted whenever the popup is closed</dd>
-    <dt>onOpen</dt>
-    <dd>Event emitted whenever the popup is opened</dd>
+  <dt>onClose</dt>
+  <dd>Event emitted whenever the popup is closed</dd>
+  <dt>onOpen</dt>
+  <dd>Event emitted whenever the popup is opened</dd>
 </dl>

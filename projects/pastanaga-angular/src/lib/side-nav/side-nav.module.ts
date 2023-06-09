@@ -8,20 +8,20 @@ import { PaFocusableModule } from '../focusable';
 import { PaIconModule } from '../icon';
 
 @NgModule({
-    imports: [CommonModule, PaButtonModule, PaFocusableModule, PaIconModule],
-    declarations: [
-        SideNavComponent,
-        SideNavItemComponent,
-        SideNavHeaderDirective,
-        SideNavFooterDirective,
-        SideNavContentDirective,
-    ],
-    exports: [
-        SideNavComponent,
-        SideNavItemComponent,
-        SideNavHeaderDirective,
-        SideNavFooterDirective,
-        SideNavContentDirective,
-    ],
+  imports: [CommonModule, PaButtonModule, PaFocusableModule, PaIconModule],
+  declarations: [
+    SideNavComponent,
+    SideNavItemComponent,
+    SideNavHeaderDirective,
+    SideNavFooterDirective,
+    SideNavContentDirective,
+  ],
+  exports: [
+    SideNavComponent,
+    SideNavItemComponent,
+    SideNavHeaderDirective,
+    SideNavFooterDirective,
+    SideNavContentDirective,
+  ],
 })
 export class PaSideNavModule {}

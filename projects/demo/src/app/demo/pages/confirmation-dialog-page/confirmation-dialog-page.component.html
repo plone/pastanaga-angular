@@ -1,28 +1,45 @@
 <pa-demo-page>
-    <pa-demo-title>Confirmation dialog</pa-demo-title>
-    <pa-demo-description>
-        <pa-demo-confirmation-dialog-description></pa-demo-confirmation-dialog-description>
-    </pa-demo-description>
+  <pa-demo-title>Confirmation dialog</pa-demo-title>
+  <pa-demo-description>
+    <pa-demo-confirmation-dialog-description></pa-demo-confirmation-dialog-description>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <pa-button class="open-modal-button" kind="primary" (click)="openConfirm()">Open a confirmation</pa-button>
-        <pa-button class="open-modal-button" kind="destructive" (click)="openDestructiveConfirm()">Open a destructive confirmation</pa-button>
-        <pa-button class="open-modal-button" (click)="openConfirmOnly()">Open a confirmation without cancel button</pa-button>
+  <pa-demo-examples>
+    <pa-button
+      class="open-modal-button"
+      kind="primary"
+      (click)="openConfirm()">
+      Open a confirmation
+    </pa-button>
+    <pa-button
+      class="open-modal-button"
+      kind="destructive"
+      (click)="openDestructiveConfirm()">
+      Open a destructive confirmation
+    </pa-button>
+    <pa-button
+      class="open-modal-button"
+      (click)="openConfirmOnly()">
+      Open a confirmation without cancel button
+    </pa-button>
 
-        <div style="margin-top: 32px">
-            <label for="cancel-aspect-radios">Cancel button aspect:</label>
-            <pa-radio-group id="cancel-aspect-radios" style="margin-top: 8px"  [(value)]="cancelAspect">
-                <pa-radio value="basic">Basic</pa-radio>
-                <pa-radio value="solid">Solid</pa-radio>
-            </pa-radio-group>
-        </div>
-    </pa-demo-examples>
+    <div style="margin-top: 32px">
+      <label for="cancel-aspect-radios">Cancel button aspect:</label>
+      <pa-radio-group
+        id="cancel-aspect-radios"
+        style="margin-top: 8px"
+        [(value)]="cancelAspect">
+        <pa-radio value="basic">Basic</pa-radio>
+        <pa-radio value="solid">Solid</pa-radio>
+      </pa-radio-group>
+    </div>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <pa-demo-confirmation-dialog-usage></pa-demo-confirmation-dialog-usage>
-    </pa-demo-usage>
+  <pa-demo-usage>
+    <pa-demo-confirmation-dialog-usage></pa-demo-confirmation-dialog-usage>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <pre><code>{{openConfirmCode}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <pre><code>{{openConfirmCode}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

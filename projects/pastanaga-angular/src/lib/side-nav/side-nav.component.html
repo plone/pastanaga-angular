@@ -1,24 +1,28 @@
 <ng-container *ngIf="visible || mode === 'desktop'">
-    <div #tabletOverlay
-         *ngIf="mode !== 'desktop'"
-         class="pa-side-nav-tablet-overlay"
-         (click)="closeSideNav()"></div>
+  <div
+    #tabletOverlay
+    *ngIf="mode !== 'desktop'"
+    class="pa-side-nav-tablet-overlay"
+    (click)="closeSideNav()"></div>
 
-    <div #navBar
-         class="pa-side-nav">
-        <div #header
-             [hidden]="!hasHeader">
-            <ng-content select="pa-side-nav-header"></ng-content>
+  <div
+    #navBar
+    class="pa-side-nav">
+    <div
+      #header
+      [hidden]="!hasHeader">
+      <ng-content select="pa-side-nav-header"></ng-content>
 
-            <pa-button *ngIf="mode !== 'desktop' && !hasHeader"
-                       class="pa-close-side-nav-button"
-                       icon="cross"
-                       aspect="basic"
-                       (click)="closeSideNav()"></pa-button>
-        </div>
-
-        <div class="pa-side-nav-content">
-            <ng-content select="pa-side-nav-content"></ng-content>
-        </div>
+      <pa-button
+        *ngIf="mode !== 'desktop' && !hasHeader"
+        class="pa-close-side-nav-button"
+        icon="cross"
+        aspect="basic"
+        (click)="closeSideNav()"></pa-button>
     </div>
+
+    <div class="pa-side-nav-content">
+      <ng-content select="pa-side-nav-content"></ng-content>
+    </div>
+  </div>
 </ng-container>

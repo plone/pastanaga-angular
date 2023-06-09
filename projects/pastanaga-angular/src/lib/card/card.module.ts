@@ -4,8 +4,8 @@ import { CardComponent } from './card.component';
 import { PaFocusableModule } from '../focusable';
 
 @NgModule({
-    declarations: [CardComponent],
-    exports: [CardComponent],
-    imports: [CommonModule, PaFocusableModule],
+  declarations: [CardComponent],
+  exports: [CardComponent],
+  imports: [CommonModule, PaFocusableModule],
 })
 export class PaCardModule {}

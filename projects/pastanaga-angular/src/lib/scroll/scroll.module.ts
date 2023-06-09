@@ -4,8 +4,8 @@ import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.compo
 import { ScrollableContainerDirective } from './scrollabe-container.directive';
 
 @NgModule({
-    declarations: [InfiniteScrollComponent, ScrollableContainerDirective],
-    exports: [InfiniteScrollComponent, ScrollableContainerDirective],
-    imports: [CommonModule],
+  declarations: [InfiniteScrollComponent, ScrollableContainerDirective],
+  exports: [InfiniteScrollComponent, ScrollableContainerDirective],
+  imports: [CommonModule],
 })
 export class PaScrollModule {}

@@ -1,150 +1,241 @@
 <pa-demo-page>
-    <pa-demo-title>Date/time</pa-demo-title>
+  <pa-demo-title>Date/time</pa-demo-title>
 
-    <pa-demo-description>Date/time formatting component, based on app locale.</pa-demo-description>
+  <pa-demo-description>Date/time formatting component, based on app locale.</pa-demo-description>
 
-    <pa-demo-examples>
-        <pa-table columns="repeat(4, 1fr)">
-            <pa-table-header>
-                <pa-table-cell header>Human</pa-table-cell>
-                <pa-table-cell header>Human, date only</pa-table-cell>
-                <pa-table-cell header>Numerical</pa-table-cell>
-                <pa-table-cell header>Numerical, date only</pa-table-cell>
-            </pa-table-header>
-            <pa-table-row>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fewSecondsAgo" format="human"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fewSecondsAgo" format="human" dateOnly></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fewSecondsAgo" format="numerical"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fewSecondsAgo" format="numerical" dateOnly></pa-datetime>
-                </pa-table-cell>
-            </pa-table-row>
-            <pa-table-row>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="oneMinuteAgo" format="human"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="oneMinuteAgo" format="human" dateOnly></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="oneMinuteAgo" format="numerical"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="oneMinuteAgo" format="numerical" dateOnly></pa-datetime>
-                </pa-table-cell>
-            </pa-table-row>
-            <pa-table-row>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fifteenMinutesAgo" format="human"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fifteenMinutesAgo" format="human" dateOnly></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fifteenMinutesAgo" format="numerical"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="fifteenMinutesAgo" format="numerical" dateOnly></pa-datetime>
-                </pa-table-cell>
-            </pa-table-row>
-            <pa-table-row>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="todayAm" format="human"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="todayAm" format="human" dateOnly></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="todayAm" format="numerical"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="todayAm" format="numerical" dateOnly></pa-datetime>
-                </pa-table-cell>
-            </pa-table-row>
-            <pa-table-row>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="yesterdayPm" format="human"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="yesterdayPm" format="human" dateOnly></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="yesterdayPm" format="numerical"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="yesterdayPm" format="numerical" dateOnly></pa-datetime>
-                </pa-table-cell>
-            </pa-table-row>
-            <pa-table-row>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="thisYear" format="human"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="thisYear" format="human" dateOnly></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="thisYear" format="numerical"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="thisYear" format="numerical" dateOnly></pa-datetime>
-                </pa-table-cell>
-            </pa-table-row>
-            <pa-table-row>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="aDate" format="human"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="aDate" format="human" dateOnly></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="aDate" format="numerical"></pa-datetime>
-                </pa-table-cell>
-                <pa-table-cell>
-                    <pa-datetime [datetime]="aDate" format="numerical" dateOnly></pa-datetime>
-                </pa-table-cell>
-            </pa-table-row>
-        </pa-table>
-    </pa-demo-examples>
+  <pa-demo-examples>
+    <pa-table columns="repeat(4, 1fr)">
+      <pa-table-header>
+        <pa-table-cell header>Human</pa-table-cell>
+        <pa-table-cell header>Human, date only</pa-table-cell>
+        <pa-table-cell header>Numerical</pa-table-cell>
+        <pa-table-cell header>Numerical, date only</pa-table-cell>
+      </pa-table-header>
+      <pa-table-row>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fewSecondsAgo"
+            format="human"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fewSecondsAgo"
+            format="human"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fewSecondsAgo"
+            format="numerical"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fewSecondsAgo"
+            format="numerical"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+      </pa-table-row>
+      <pa-table-row>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="oneMinuteAgo"
+            format="human"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="oneMinuteAgo"
+            format="human"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="oneMinuteAgo"
+            format="numerical"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="oneMinuteAgo"
+            format="numerical"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+      </pa-table-row>
+      <pa-table-row>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fifteenMinutesAgo"
+            format="human"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fifteenMinutesAgo"
+            format="human"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fifteenMinutesAgo"
+            format="numerical"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="fifteenMinutesAgo"
+            format="numerical"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+      </pa-table-row>
+      <pa-table-row>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="todayAm"
+            format="human"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="todayAm"
+            format="human"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="todayAm"
+            format="numerical"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="todayAm"
+            format="numerical"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+      </pa-table-row>
+      <pa-table-row>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="yesterdayPm"
+            format="human"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="yesterdayPm"
+            format="human"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="yesterdayPm"
+            format="numerical"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="yesterdayPm"
+            format="numerical"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+      </pa-table-row>
+      <pa-table-row>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="thisYear"
+            format="human"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="thisYear"
+            format="human"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="thisYear"
+            format="numerical"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="thisYear"
+            format="numerical"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+      </pa-table-row>
+      <pa-table-row>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="aDate"
+            format="human"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="aDate"
+            format="human"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="aDate"
+            format="numerical"></pa-datetime>
+        </pa-table-cell>
+        <pa-table-cell>
+          <pa-datetime
+            [datetime]="aDate"
+            format="numerical"
+            dateOnly></pa-datetime>
+        </pa-table-cell>
+      </pa-table-row>
+    </pa-table>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <dl>
-            <dt>datetime</dt>
-            <dd>String. The date/time to display, in ISO format.</dd>
+  <pa-demo-usage>
+    <dl>
+      <dt>datetime</dt>
+      <dd>String. The date/time to display, in ISO format.</dd>
 
-            <dt>format</dt>
-            <dd>
-                String <small>(optional, default <code>human</code>)</small>
-                <ul>
-                    <li>human
-                        <ul>
-                            <li>format few seconds/minutes ago as relative time like 'Just now' or '10 minutes ago'</li>
-                            <li>format today/yesterday as human date like 'Today, 8:13AM'</li>
-                            <li>format date before yesterday like 'Dec 31, 2017' or just 'Oct 12' if in the current year</li>
-                        </ul>
-                    </li>
-                    <li>numerical
-                        <ul>
-                            <li>format date as numerical date like '12/31/2017'</li>
-                        </ul>
-                    </li>
-                </ul>
-            </dd>
+      <dt>format</dt>
+      <dd>
+        String
+        <small>
+          (optional, default
+          <code>human</code>
+          )
+        </small>
+        <ul>
+          <li>
+            human
+            <ul>
+              <li>format few seconds/minutes ago as relative time like 'Just now' or '10 minutes ago'</li>
+              <li>format today/yesterday as human date like 'Today, 8:13AM'</li>
+              <li>format date before yesterday like 'Dec 31, 2017' or just 'Oct 12' if in the current year</li>
+            </ul>
+          </li>
+          <li>
+            numerical
+            <ul>
+              <li>format date as numerical date like '12/31/2017'</li>
+            </ul>
+          </li>
+        </ul>
+      </dd>
 
-            <dt>dateOnly</dt>
-            <dd>Boolean. Do not display time <small>(optional, default <code>false</code>)</small></dd>
+      <dt>dateOnly</dt>
+      <dd>
+        Boolean. Do not display time
+        <small>
+          (optional, default
+          <code>false</code>
+          )
+        </small>
+      </dd>
 
-            <dt>displaySeconds</dt>
-            <dd>Boolean. Display seconds <small>(optional, default <code>false</code>)</small></dd>
-        </dl>
-    </pa-demo-usage>
+      <dt>displaySeconds</dt>
+      <dd>
+        Boolean. Display seconds
+        <small>
+          (optional, default
+          <code>false</code>
+          )
+        </small>
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <pre><code>{{code}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <pre><code>{{code}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

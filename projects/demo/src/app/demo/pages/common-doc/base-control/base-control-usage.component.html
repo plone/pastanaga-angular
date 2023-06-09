@@ -1,29 +1,84 @@
 <h3>Inputs</h3>
 <dl>
-    <dt>describedBy</dt>
-    <dd>Reference to an element describing the field, used in <code>aria-describedby</code> <small>(optional)</small>.</dd>
-    <dt>disabled</dt>
-    <dd>Set disabled state <small>(default: false)</small></dd>
-    <dt>errorMessage</dt>
-    <dd>Error message to display when field validation detects an error. <small>(optional)</small></dd>
-    <dt>errorMessages</dt>
-    <dd><code>IErrorMessages</code> defining all possible basic error messages (like <code>required</code>) <small>(optional: by default field will have the error state without any message displayed)</small></dd>
-    <dt>hasFocus</dt>
-    <dd>Set to true to focus on the html native element <small>(default: false)</small></dd>
-    <dt>help</dt>
-    <dd>Field's help <small>(optional)</small>. Only displayed when the form field is VALID. Used as <code>aria-describedby</code> reference when none is provided.</dd>
-    <dt>id</dt>
-    <dd>Form field's id <small>(optional)</small>. The html form element will have an id based on the provided value. If the value is not provided, an auto-generated id will be applied to the html nativeElement.</dd>
-    <dt>name</dt>
-    <dd>Input's <code>name</code> attribute <small>(optional)</small>. Is required by angular when using template driven forms.</dd>
-    <dt>readonly</dt>
-    <dd>Sets readonly state <small>(default: false)</small></dd>
-    <dt>showAllErrors</dt>
-    <dd>When true, display all error messages. Display only the the first one (from alphabetical order) otherwise <small>(default: true)</small></dd>
-    <dt>updateOn</dt>
-    <dd>Reports the <code>AbstractControl</code>'s update strategy (ie the event on which the control updates itself).<small>(type: UpdateOnStrategy, default: 'change')</small>. This can only be changed when form field is in standalone mode, otherwise parent's update strategy will be applied.</dd>
-    <dt>updateValidator</dt>
-    <dd>An event (<code>Subject</code>) to notify the component when parent's validators have changed. <small>(optional)</small></dd>
-    <dt>value</dt>
-    <dd>Field's value. Should only be used when form field is in standalone mode.</dd>
+  <dt>describedBy</dt>
+  <dd>
+    Reference to an element describing the field, used in
+    <code>aria-describedby</code>
+    <small>(optional)</small>
+    .
+  </dd>
+  <dt>disabled</dt>
+  <dd>
+    Set disabled state
+    <small>(default: false)</small>
+  </dd>
+  <dt>errorMessage</dt>
+  <dd>
+    Error message to display when field validation detects an error.
+    <small>(optional)</small>
+  </dd>
+  <dt>errorMessages</dt>
+  <dd>
+    <code>IErrorMessages</code>
+    defining all possible basic error messages (like
+    <code>required</code>
+    )
+    <small>(optional: by default field will have the error state without any message displayed)</small>
+  </dd>
+  <dt>hasFocus</dt>
+  <dd>
+    Set to true to focus on the html native element
+    <small>(default: false)</small>
+  </dd>
+  <dt>help</dt>
+  <dd>
+    Field's help
+    <small>(optional)</small>
+    . Only displayed when the form field is VALID. Used as
+    <code>aria-describedby</code>
+    reference when none is provided.
+  </dd>
+  <dt>id</dt>
+  <dd>
+    Form field's id
+    <small>(optional)</small>
+    . The html form element will have an id based on the provided value. If the value is not provided, an auto-generated
+    id will be applied to the html nativeElement.
+  </dd>
+  <dt>name</dt>
+  <dd>
+    Input's
+    <code>name</code>
+    attribute
+    <small>(optional)</small>
+    . Is required by angular when using template driven forms.
+  </dd>
+  <dt>readonly</dt>
+  <dd>
+    Sets readonly state
+    <small>(default: false)</small>
+  </dd>
+  <dt>showAllErrors</dt>
+  <dd>
+    When true, display all error messages. Display only the the first one (from alphabetical order) otherwise
+    <small>(default: true)</small>
+  </dd>
+  <dt>updateOn</dt>
+  <dd>
+    Reports the
+    <code>AbstractControl</code>
+    's update strategy (ie the event on which the control updates itself).
+    <small>(type: UpdateOnStrategy, default: 'change')</small>
+    . This can only be changed when form field is in standalone mode, otherwise parent's update strategy will be
+    applied.
+  </dd>
+  <dt>updateValidator</dt>
+  <dd>
+    An event (
+    <code>Subject</code>
+    ) to notify the component when parent's validators have changed.
+    <small>(optional)</small>
+  </dd>
+  <dt>value</dt>
+  <dd>Field's value. Should only be used when form field is in standalone mode.</dd>
 </dl>

@@ -6,11 +6,10 @@ import { Observable } from 'rxjs';
   selector: 'pa-demo-typography-page',
   templateUrl: './typography-page.component.html',
   styleUrls: ['./typography-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypographyPageComponent {
-    mode$: Observable<ViewportMode> = this.breakpoint.currentMode;
+  mode$: Observable<ViewportMode> = this.breakpoint.currentMode;
 
-    constructor(private breakpoint: BreakpointObserver) {
-    }
+  constructor(private breakpoint: BreakpointObserver) {}
 }

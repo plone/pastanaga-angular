@@ -1,10 +1,13 @@
-<div class="pa-main-container" paCustomViewHeight>
-    <div class="pa-main-side-panel">
-        <pa-demo-menu [menu]="menu"
-                      [mode]="mode | async"
-                      [logo]="logo"></pa-demo-menu>
-    </div>
-    <div class="pa-main-container-wide">
-        <router-outlet></router-outlet>
-    </div>
+<div
+  class="pa-main-container"
+  paCustomViewHeight>
+  <div class="pa-main-side-panel">
+    <pa-demo-menu
+      [menu]="menu"
+      [mode]="mode | async"
+      [logo]="logo"></pa-demo-menu>
+  </div>
+  <div class="pa-main-container-wide">
+    <router-outlet></router-outlet>
+  </div>
 </div>

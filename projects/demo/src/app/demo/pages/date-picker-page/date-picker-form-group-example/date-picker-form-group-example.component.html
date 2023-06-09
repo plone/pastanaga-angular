@@ -1,18 +1,16 @@
 <div class="component">
-    <form [formGroup]="form">
-        <pa-date-picker
-            formControlName="control"
-            [readonly]="config.readonly"
-            [errorMessage]="config.errorMessage"
-            (valueChange)="valueChangeEvent = $event"
-            (statusChange)="statusChangeEvent = $event"
-        >
-        </pa-date-picker>
-    </form>
+  <form [formGroup]="form">
+    <pa-date-picker
+      formControlName="control"
+      [readonly]="config.readonly"
+      [errorMessage]="config.errorMessage"
+      (valueChange)="valueChangeEvent = $event"
+      (statusChange)="statusChangeEvent = $event"></pa-date-picker>
+  </form>
 
-    <ul>
-        <li>value change event: {{ valueChangeEvent | json }}</li>
-        <li>status change event: {{ statusChangeEvent | json }}</li>
-    </ul>
+  <ul>
+    <li>value change event: {{ valueChangeEvent | json }}</li>
+    <li>status change event: {{ statusChangeEvent | json }}</li>
+  </ul>
 </div>
 <pa-demo-date-picker-config (configChanged)="updateConfig($event)"></pa-demo-date-picker-config>

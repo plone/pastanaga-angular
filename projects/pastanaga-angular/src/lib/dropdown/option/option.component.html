@@ -1,28 +1,44 @@
-<li class="pa-option" role="menuitem"
-    paFocusable
-    [paFocusDisabled]="disabled || readonly"
-    [class.pa-option-destructive]="destructive"
-    [class.pa-option-disabled]="disabled"
-    [class.pa-option-readonly]="readonly"
-    [class.pa-option-selected]="selected"
-    [class.pa-option-with-description]="!!description"
-    [hidden]="_hidden"
-    (click)="onSelectClick($event)"
-    (keyup.enter)="onSelectEnter($event)"
->
-    <pa-icon *ngIf="!!icon && !iconOnRight" [icon]="_icon" [name]="iconName"></pa-icon>
-    <pa-avatar *ngIf="!!avatar"
-               [avatar]="avatar"
-               size="small"
-    ></pa-avatar>
+<li
+  class="pa-option"
+  role="menuitem"
+  paFocusable
+  [paFocusDisabled]="disabled || readonly"
+  [class.pa-option-destructive]="destructive"
+  [class.pa-option-disabled]="disabled"
+  [class.pa-option-readonly]="readonly"
+  [class.pa-option-selected]="selected"
+  [class.pa-option-with-description]="!!description"
+  [hidden]="_hidden"
+  (click)="onSelectClick($event)"
+  (keyup.enter)="onSelectEnter($event)">
+  <pa-icon
+    *ngIf="!!icon && !iconOnRight"
+    [icon]="_icon"
+    [name]="iconName"></pa-icon>
+  <pa-avatar
+    *ngIf="!!avatar"
+    [avatar]="avatar"
+    size="small"></pa-avatar>
 
-    <div class="pa-option-text-wrapper" [class.smaller-wrapper]="!!icon || !!avatar">
-        <div class="pa-option-content body-m" paEllipsisTooltip><ng-content></ng-content></div>
-        <div *ngIf="!!description" class="pa-option-description body-xs" paEllipsisTooltip>{{description | translate}}</div>
+  <div
+    class="pa-option-text-wrapper"
+    [class.smaller-wrapper]="!!icon || !!avatar">
+    <div
+      class="pa-option-content body-m"
+      paEllipsisTooltip>
+      <ng-content></ng-content>
     </div>
+    <div
+      *ngIf="!!description"
+      class="pa-option-description body-xs"
+      paEllipsisTooltip>
+      {{ description | translate }}
+    </div>
+  </div>
 
-    <pa-icon *ngIf="!!icon && iconOnRight"
-        [class.pa-option-right-icon]="iconOnRight"
-        [icon]="_icon" [name]="iconName">
-    </pa-icon>
+  <pa-icon
+    *ngIf="!!icon && iconOnRight"
+    [class.pa-option-right-icon]="iconOnRight"
+    [icon]="_icon"
+    [name]="iconName"></pa-icon>
 </li>

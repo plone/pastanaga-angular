@@ -1,87 +1,87 @@
 @import '../../../styles/variables';
 
 .pa-side-nav-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: $height-side-nav-item;
-    padding-left: rhythm(4);
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: $height-side-nav-item;
+  padding-left: rhythm(4);
 
+  span {
+    font-size: $font-size-side-nav-item;
+    line-height: $line-height-side-nav-item;
+    color: $color-neutral-regular;
+  }
+
+  &:hover {
+    &:not(.header) {
+      cursor: pointer;
+      background-color: $color-primary-lightest;
+
+      span {
+        color: $color-dark-stronger;
+      }
+    }
+  }
+
+  &.active {
+    ::before {
+      position: absolute;
+      content: '';
+      top: rhythm(1);
+      left: rhythm(2);
+      bottom: rhythm(1);
+      width: rhythm(0.25);
+      background: $color-primary-regular;
+    }
     span {
-        font-size: $font-size-side-nav-item;
-        line-height: $line-height-side-nav-item;
-        color: $color-neutral-regular;
+      color: $color-dark-stronger;
+      font-weight: $font-weight-semi-bold;
     }
+  }
 
+  &.header {
+    h2 {
+      margin: 0;
+      line-height: line-height(s);
+      font-size: font-size(xs);
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      color: $color-dark-stronger;
+    }
+  }
+
+  &.inverted {
+    h2 {
+      color: $color-light-stronger;
+    }
+    span {
+      color: $color-neutral-light;
+    }
+    pa-icon ::ng-deep svg {
+      fill: $color-neutral-light;
+    }
     &:hover {
-        &:not(.header) {
-            cursor: pointer;
-            background-color: $color-primary-lightest;
-
-            span {
-                color: $color-dark-stronger;
-            }
-        }
+      span {
+        color: $color-light-stronger;
+      }
+      pa-icon ::ng-deep svg {
+        fill: $color-light-stronger;
+      }
     }
-
+    &:active {
+      span {
+        color: $color-neutral-light;
+      }
+      pa-icon ::ng-deep svg {
+        fill: $color-neutral-light;
+      }
+    }
     &.active {
-        ::before {
-            position: absolute;
-            content: '';
-            top: rhythm(1);
-            left: rhythm(2);
-            bottom: rhythm(1);
-            width: rhythm(0.25);
-            background: $color-primary-regular;
-        }
-        span {
-            color: $color-dark-stronger;
-            font-weight: $font-weight-semi-bold;
-        }
+      border-left: rhythm(0.25) solid $color-primary-light;
+      span {
+        color: $color-light-stronger;
+      }
     }
-
-    &.header {
-        h2 {
-            margin: 0;
-            line-height: line-height(s);
-            font-size: font-size(xs);
-            font-weight: $font-weight-bold;
-            text-transform: uppercase;
-            color: $color-dark-stronger;
-        }
-    }
-
-    &.inverted {
-        h2 {
-            color: $color-light-stronger;
-        }
-        span {
-            color: $color-neutral-light;
-        }
-        pa-icon ::ng-deep svg {
-            fill: $color-neutral-light;
-        }
-        &:hover {
-            span {
-                color: $color-light-stronger;
-            }
-            pa-icon ::ng-deep svg {
-                fill: $color-light-stronger;
-            }
-        }
-        &:active {
-            span {
-                color: $color-neutral-light;
-            }
-            pa-icon ::ng-deep svg {
-                fill: $color-neutral-light;
-            }
-        }
-        &.active {
-            border-left: rhythm(0.25) solid $color-primary-light;
-            span {
-                color: $color-light-stronger;
-            }
-        }
-    }
+  }
 }

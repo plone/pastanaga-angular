@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    templateUrl: './input-page.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './input-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputPageComponent {
-    prefilledValue = 'I’m prefilled';
-    model = '';
-    someNumber = 100;
-    selectedTab = 'standalone';
+  prefilledValue = 'I’m prefilled';
+  model = '';
+  someNumber = 100;
+  selectedTab = 'standalone';
 
-    getTypeOfSomeNumber() {
-        return typeof this.someNumber;
-    }
+  getTypeOfSomeNumber() {
+    return typeof this.someNumber;
+  }
 
-    standaloneBasicCode = `<pa-input [value]="value" (valueChange)="doSomething($event)">Label</pa-input>`;
-    standaloneFullCode = `<pa-input
+  standaloneBasicCode = `<pa-input [value]="value" (valueChange)="doSomething($event)">Label</pa-input>`;
+  standaloneFullCode = `<pa-input
     [value]="value"
 
     [id]="id"
@@ -42,8 +42,8 @@ export class InputPageComponent {
     (focusing)="focusEvent = $event"
 >Label</pa-input>`;
 
-    ngModelBasicCode = `<pa-input [(ngModel)]="value" (ngModelChange)="onModelChange()">Label</pa-input>`;
-    ngModelValidationCode = `<pa-input [(ngModel)]="value"
+  ngModelBasicCode = `<pa-input [(ngModel)]="value" (ngModelChange)="onModelChange()">Label</pa-input>`;
+  ngModelValidationCode = `<pa-input [(ngModel)]="value"
     type="email"
     name="myEmail"
     email
@@ -51,7 +51,7 @@ export class InputPageComponent {
     (ngModelChange)="onModelChange()"
 >Label</pa-input>`;
 
-    ngModelFullCode = `<pa-input
+  ngModelFullCode = `<pa-input
     [(ngModel)]="value"
 
     [id]="id"
@@ -78,15 +78,15 @@ export class InputPageComponent {
     (ngModelChange)="onModelChange()"
 >Label</pa-input>`;
 
-    formControlBasicCode = `<pa-input [formControl]="formControl">Label</pa-input>`;
+  formControlBasicCode = `<pa-input [formControl]="formControl">Label</pa-input>`;
 
-    formControlValidationCodeTs = `formControl = new FormControl(null, [customValidator, Validators.email])`;
-    formControlValidationCodeHtml = `<pa-input
+  formControlValidationCodeTs = `formControl = new FormControl(null, [customValidator, Validators.email])`;
+  formControlValidationCodeHtml = `<pa-input
     type="email"
     [formControl]="formControl"
 >Label</pa-input>`;
 
-    formControlFullCode = `<pa-input
+  formControlFullCode = `<pa-input
     [formControl]="formControl"
 
     [id]="id"
@@ -111,14 +111,14 @@ export class InputPageComponent {
     (focusing)="focusEvent = $event"
 >Label</pa-input>`;
 
-    formControlNameBasicCode = `<form [formGroup]="formGroup">
+  formControlNameBasicCode = `<form [formGroup]="formGroup">
     <pa-input formControlName="text">Label</pa-input>
 </form>`;
 
-    formControlNameValidationCodeTs = `formGroup = new FormGroup({
+  formControlNameValidationCodeTs = `formGroup = new FormGroup({
         text: new FormControl(null, [customValidator, Validators.email]),
     });`;
-    formControlNameValidationCodeHtml = `<form [formGroup]="formGroup">
+  formControlNameValidationCodeHtml = `<form [formGroup]="formGroup">
     <pa-input
         formControlName="text"
         type="email"
@@ -126,7 +126,7 @@ export class InputPageComponent {
     </pa-input>
 </form>`;
 
-    formControlNameFullCode = `<form [formGroup]="formGroup">
+  formControlNameFullCode = `<form [formGroup]="formGroup">
     <pa-input
         formControlName="text"
         [id]="id"

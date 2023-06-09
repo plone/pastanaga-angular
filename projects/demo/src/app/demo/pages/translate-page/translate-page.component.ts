@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
-    selector: 'pa-translate-doc',
-    templateUrl: './translate-page.component.html',
-    styleUrls: ['./translate-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'pa-translate-doc',
+  templateUrl: './translate-page.component.html',
+  styleUrls: ['./translate-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TranslatePageComponent {
-    translations = `export const I18N_EN: TranslationEntries = {
+  translations = `export const I18N_EN: TranslationEntries = {
     pastanaga: {
         datetime: {
             'a-few-seconds-ago': 'Just now',
@@ -20,14 +20,14 @@ export class TranslatePageComponent {
     },
 };
 `;
-    flattenTranslations = `export const I18N_EN: TranslationEntries = {
+  flattenTranslations = `export const I18N_EN: TranslationEntries = {
   'pastanaga.datetime.a-few-seconds-ago': 'Just now',
   'pastanaga.datetime.minutesAgo': '{{minutes}} mins ago',
   'pastanaga.datetime.one-minute-ago': '1 min ago',
   //…
 };
 `;
-    translationsMix = `export const I18N_EN: TranslationEntries = {
+  translationsMix = `export const I18N_EN: TranslationEntries = {
   pastanaga: {
     datetime: {
       'a-few-seconds-ago': 'Just now',
@@ -39,7 +39,7 @@ export class TranslatePageComponent {
   //…
 };
 `;
-    appModule = `
+  appModule = `
 import { I18N_EN, PaTranslateModule, PA_LANG } from '@guillotinaweb/pastanaga-angular';
 import { DEMO_LA } from '../assets/i18n/la';
 
@@ -53,18 +53,18 @@ import { DEMO_LA } from '../assets/i18n/la';
     ],
     //...
 `;
-    moreTranslations = `@NgModule({
+  moreTranslations = `@NgModule({
     imports : [
         //...
         PaTranslateModule.addTranslations([{'en_US': {...moreTranslationsForThisModule}}])
     ]`;
-    directiveSimpleExample = `<span translate>demo-page.title</span>`;
-    directiveAttributeExample = `<span translate='demo-page.title'></span>`;
-    directiveWithParamsExample = `<span translate [translateParams]='{points: 10, total: 25}'>demo-page.score</span>`;
-    pipeSimpleExample = `<span>{{ 'demo-page.title' | translate}}</span>`;
-    pipeWithParamsExample = `<span>{{ 'demo-page.score' | translate:{points: 10, total: 25} }}</span>`;
+  directiveSimpleExample = `<span translate>demo-page.title</span>`;
+  directiveAttributeExample = `<span translate='demo-page.title'></span>`;
+  directiveWithParamsExample = `<span translate [translateParams]='{points: 10, total: 25}'>demo-page.score</span>`;
+  pipeSimpleExample = `<span>{{ 'demo-page.title' | translate}}</span>`;
+  pipeWithParamsExample = `<span>{{ 'demo-page.score' | translate:{points: 10, total: 25} }}</span>`;
 
-    ngxTranslateAndPastanaga = `@Component({
+  ngxTranslateAndPastanaga = `@Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -96,7 +96,7 @@ export class AppComponent implements OnDestroy {
     this.ngxTranslate.use(lang);
   }
 }`;
-    noPaTranslateModule = `@NgModule({
+  noPaTranslateModule = `@NgModule({
   declarations: [
     AppComponent
   ],
@@ -119,19 +119,19 @@ export class AppComponent implements OnDestroy {
 })
 export class AppModule { }`;
 
-    dynamicallyChangePastanagaLang = `constructor(private translateService: TranslateService) {}
+  dynamicallyChangePastanagaLang = `constructor(private translateService: TranslateService) {}
 
 updateLanguage(language: string) {
     this.translateService.use(language);
 }`;
 
-    languages = ['en', 'fr', 'latin'];
-    currentLanguage = 'en';
+  languages = ['en', 'fr', 'latin'];
+  currentLanguage = 'en';
 
-    constructor(private translateService: TranslateService) {}
+  constructor(private translateService: TranslateService) {}
 
-    updateLanguage(language: string) {
-        this.currentLanguage = language;
-        this.translateService.use(language);
-    }
+  updateLanguage(language: string) {
+    this.currentLanguage = language;
+    this.translateService.use(language);
+  }
 }

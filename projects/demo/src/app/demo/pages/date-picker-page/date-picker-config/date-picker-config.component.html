@@ -1,62 +1,99 @@
 <h4>Configure component</h4>
-<form class="form-field-config" [formGroup]="stateForm">
-    <fieldset>
-        <legend>Input state</legend>
-        <div class="state-option">
-            <div class="option">
-                <input formControlName="label" [value]="null" id="labelUndefined" type="radio">
-                <label for="labelUndefined">label undefined</label>
-            </div>
-            <div class="option">
-                <input formControlName="label" value="Birthday" id="labelValuated" type="radio">
-                <label for="labelValuated">with label</label>
-            </div>
-        </div>
-        <div class="state-option">
-            <div class="option">
-                <input formControlName="disabled" [value]="null" id="disabledUndefined" type="radio" />
-                <label for="disabledUndefined">disabled undefined</label>
-            </div>
-            <div class="option">
-                <input formControlName="disabled" [value]="true" id="disabled" type="radio" />
-                <label for="disabled">disabled</label>
-            </div>
-            <div class="option">
-                <input formControlName="disabled" [value]="false" id="enabled" type="radio" />
-                <label for="enabled">enabled</label>
-            </div>
-        </div>
-        <div class="state-option">
-            <div class="option">
-                <input formControlName="readonly" [value]="null" id="readonlyUndefined" type="radio" />
-                <label for="readonlyUndefined">readonly undefined</label>
-            </div>
-            <div class="option">
-                <input formControlName="readonly" [value]="true" id="readonly" type="radio" />
-                <label for="readonly">readonly</label>
-            </div>
-            <div class="option">
-                <input formControlName="readonly" [value]="false" id="notReadonly" type="radio" />
-                <label for="notReadonly">not readonly</label>
-            </div>
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend>Error management</legend>
-        <div class="state-option">
-            <div class="option">
-                <input formControlName="errorMessage" [value]="null" id="errorMessageUndefined" type="radio" />
-                <label for="errorMessageUndefined">manual error message undefined</label>
-            </div>
-            <div class="option">
-                <input
-                    formControlName="errorMessage"
-                    value="A manually set error message"
-                    id="errorMessage"
-                    type="radio"
-                />
-                <label for="errorMessage">manual error message </label>
-            </div>
-        </div>
-    </fieldset>
+<form
+  class="form-field-config"
+  [formGroup]="stateForm">
+  <fieldset>
+    <legend>Input state</legend>
+    <div class="state-option">
+      <div class="option">
+        <input
+          formControlName="label"
+          [value]="null"
+          id="labelUndefined"
+          type="radio" />
+        <label for="labelUndefined">label undefined</label>
+      </div>
+      <div class="option">
+        <input
+          formControlName="label"
+          value="Birthday"
+          id="labelValuated"
+          type="radio" />
+        <label for="labelValuated">with label</label>
+      </div>
+    </div>
+    <div class="state-option">
+      <div class="option">
+        <input
+          formControlName="disabled"
+          [value]="null"
+          id="disabledUndefined"
+          type="radio" />
+        <label for="disabledUndefined">disabled undefined</label>
+      </div>
+      <div class="option">
+        <input
+          formControlName="disabled"
+          [value]="true"
+          id="disabled"
+          type="radio" />
+        <label for="disabled">disabled</label>
+      </div>
+      <div class="option">
+        <input
+          formControlName="disabled"
+          [value]="false"
+          id="enabled"
+          type="radio" />
+        <label for="enabled">enabled</label>
+      </div>
+    </div>
+    <div class="state-option">
+      <div class="option">
+        <input
+          formControlName="readonly"
+          [value]="null"
+          id="readonlyUndefined"
+          type="radio" />
+        <label for="readonlyUndefined">readonly undefined</label>
+      </div>
+      <div class="option">
+        <input
+          formControlName="readonly"
+          [value]="true"
+          id="readonly"
+          type="radio" />
+        <label for="readonly">readonly</label>
+      </div>
+      <div class="option">
+        <input
+          formControlName="readonly"
+          [value]="false"
+          id="notReadonly"
+          type="radio" />
+        <label for="notReadonly">not readonly</label>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Error management</legend>
+    <div class="state-option">
+      <div class="option">
+        <input
+          formControlName="errorMessage"
+          [value]="null"
+          id="errorMessageUndefined"
+          type="radio" />
+        <label for="errorMessageUndefined">manual error message undefined</label>
+      </div>
+      <div class="option">
+        <input
+          formControlName="errorMessage"
+          value="A manually set error message"
+          id="errorMessage"
+          type="radio" />
+        <label for="errorMessage">manual error message</label>
+      </div>
+    </div>
+  </fieldset>
 </form>

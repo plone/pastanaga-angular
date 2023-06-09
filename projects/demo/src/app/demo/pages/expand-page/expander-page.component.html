@@ -1,140 +1,197 @@
 <pa-demo-page>
-    <pa-demo-title>Expander</pa-demo-title>
-    <pa-demo-description>
-        <p>Expander component allows to expand/collapse a section by clicking on its header or on the chevron button next to it.</p>
-        <p>By default, expander is displayed like in a list: the toggle button being on the left. The <code>card</code>
-        option allows to display a card expander with the toggle button on the right.
-        </p>
-        <p><code>PaExpanderModule</code> provide different directives to be used with <code>pa-expander</code>:</p>
-        <ul>
-            <li><code>pa-expander-header</code>: its content is displayed next to the chevron button, clicking on it toggles the expander</li>
-            <li><code>pa-expander-body</code>: its content is displayed below expander's header. Visible only when expanded.</li>
-            <li><code>pa-expander-header-side-block</code>: its content is displayed next to the <code>pa-expander-header</code>. Clicking on it doesn't toggle the expander.</li>
-        </ul>
-    </pa-demo-description>
-    <pa-demo-examples>
-        <section>
-            <p><em>Default expanders like the following ones are expanded by default.</em></p>
-            <pa-expander>
-                <pa-expander-header>Section 1</pa-expander-header>
-                <pa-expander-body>
-                    <ol>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                        <li>Item 4</li>
-                    </ol>
-                </pa-expander-body>
-            </pa-expander>
-            <pa-expander>
-                <pa-expander-header>
-                    Section 2
-                </pa-expander-header>
-                <pa-expander-header-side-block>
-                    <pa-button size="small"
-                               icon="plus"
-                               aspect="basic">Add</pa-button>
-                </pa-expander-header-side-block>
-                <pa-expander-body>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </pa-expander-body>
-            </pa-expander>
-            <pa-expander>
-                <pa-expander-header>Section 3</pa-expander-header>
-                <pa-expander-body>
-                    <p>Smallest one</p>
-                </pa-expander-body>
-            </pa-expander>
-        </section>
-        <hr>
-        <section>
-            <p><em>Card expanders like the following ones are collapsed by default.</em></p>
-            <pa-expander card>
-                <pa-expander-header>
-                    <div class="title-xs">Card Title</div>
-                    <div>Description</div>
-                </pa-expander-header>
-                <pa-expander-body>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </pa-expander-body>
-            </pa-expander>
-        </section>
-        <hr>
-        <section>
-            <p><em>The following expander expands/collapses only when using the button on the right.</em></p>
-            <pa-expander card buttonOnlyToggle>
-                <pa-expander-header>
-                    <div class="title-xs">Card Title</div>
-                    <div>Description</div>
-                </pa-expander-header>
-                <pa-expander-header-side-block>
-                    <pa-icon size="large" path="assets/ninja.svg"></pa-icon>
-                </pa-expander-header-side-block>
-                <pa-expander-body>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </pa-expander-body>
-            </pa-expander>
-        </section>
-        <hr>
-        <section>
-            <p><em>To build an accordion, you can use <code>emitOnly</code> and <code>expanded</code> properties to make sure only one expander is expanded at a time.</em></p>
-            <pa-expander *ngFor="let section of accordionContent"
-                         emitOnly
-                         [expanded]="accordionOpen === section.title"
-                         (toggleExpander)="toggleAccordion(section.title)">
-                <pa-expander-header>{{section.title}}</pa-expander-header>
-                <pa-expander-body>
-                    <p>{{section.content}}</p>
-                </pa-expander-body>
-            </pa-expander>
-        </section>
-    </pa-demo-examples>
+  <pa-demo-title>Expander</pa-demo-title>
+  <pa-demo-description>
+    <p>
+      Expander component allows to expand/collapse a section by clicking on its header or on the chevron button next to
+      it.
+    </p>
+    <p>
+      By default, expander is displayed like in a list: the toggle button being on the left. The
+      <code>card</code>
+      option allows to display a card expander with the toggle button on the right.
+    </p>
+    <p>
+      <code>PaExpanderModule</code>
+      provide different directives to be used with
+      <code>pa-expander</code>
+      :
+    </p>
+    <ul>
+      <li>
+        <code>pa-expander-header</code>
+        : its content is displayed next to the chevron button, clicking on it toggles the expander
+      </li>
+      <li>
+        <code>pa-expander-body</code>
+        : its content is displayed below expander's header. Visible only when expanded.
+      </li>
+      <li>
+        <code>pa-expander-header-side-block</code>
+        : its content is displayed next to the
+        <code>pa-expander-header</code>
+        . Clicking on it doesn't toggle the expander.
+      </li>
+    </ul>
+  </pa-demo-description>
+  <pa-demo-examples>
+    <section>
+      <p><em>Default expanders like the following ones are expanded by default.</em></p>
+      <pa-expander>
+        <pa-expander-header>Section 1</pa-expander-header>
+        <pa-expander-body>
+          <ol>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+          </ol>
+        </pa-expander-body>
+      </pa-expander>
+      <pa-expander>
+        <pa-expander-header>Section 2</pa-expander-header>
+        <pa-expander-header-side-block>
+          <pa-button
+            size="small"
+            icon="plus"
+            aspect="basic">
+            Add
+          </pa-button>
+        </pa-expander-header-side-block>
+        <pa-expander-body>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </pa-expander-body>
+      </pa-expander>
+      <pa-expander>
+        <pa-expander-header>Section 3</pa-expander-header>
+        <pa-expander-body>
+          <p>Smallest one</p>
+        </pa-expander-body>
+      </pa-expander>
+    </section>
+    <hr />
+    <section>
+      <p><em>Card expanders like the following ones are collapsed by default.</em></p>
+      <pa-expander card>
+        <pa-expander-header>
+          <div class="title-xs">Card Title</div>
+          <div>Description</div>
+        </pa-expander-header>
+        <pa-expander-body>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+        </pa-expander-body>
+      </pa-expander>
+    </section>
+    <hr />
+    <section>
+      <p><em>The following expander expands/collapses only when using the button on the right.</em></p>
+      <pa-expander
+        card
+        buttonOnlyToggle>
+        <pa-expander-header>
+          <div class="title-xs">Card Title</div>
+          <div>Description</div>
+        </pa-expander-header>
+        <pa-expander-header-side-block>
+          <pa-icon
+            size="large"
+            path="assets/ninja.svg"></pa-icon>
+        </pa-expander-header-side-block>
+        <pa-expander-body>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+        </pa-expander-body>
+      </pa-expander>
+    </section>
+    <hr />
+    <section>
+      <p>
+        <em>
+          To build an accordion, you can use
+          <code>emitOnly</code>
+          and
+          <code>expanded</code>
+          properties to make sure only one expander is expanded at a time.
+        </em>
+      </p>
+      <pa-expander
+        *ngFor="let section of accordionContent"
+        emitOnly
+        [expanded]="accordionOpen === section.title"
+        (toggleExpander)="toggleAccordion(section.title)">
+        <pa-expander-header>{{ section.title }}</pa-expander-header>
+        <pa-expander-body>
+          <p>{{ section.content }}</p>
+        </pa-expander-body>
+      </pa-expander>
+    </section>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>buttonOnlyToggle</dt>
-            <dd>Prevent the expander to toggle when clicking on the title. When true, toggling works only using the header's button.</dd>
+  <pa-demo-usage>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>buttonOnlyToggle</dt>
+      <dd>
+        Prevent the expander to toggle when clicking on the title. When true, toggling works only using the header's
+        button.
+      </dd>
 
-            <dt>contentLoaded</dt>
-            <dd>Any value marking expander's content as loaded or updated so the expand can update its body height.</dd>
+      <dt>contentLoaded</dt>
+      <dd>Any value marking expander's content as loaded or updated so the expand can update its body height.</dd>
 
-            <dt>card</dt>
-            <dd>Card option allows to change the expander look and feel by displaying toggle button on the right and any
-                <code>pa-expander-header-side-block</code> on the left. When this option is set, the expander is
-                collapsed by default.
-            </dd>
+      <dt>card</dt>
+      <dd>
+        Card option allows to change the expander look and feel by displaying toggle button on the right and any
+        <code>pa-expander-header-side-block</code>
+        on the left. When this option is set, the expander is collapsed by default.
+      </dd>
 
-            <dt>disabled</dt>
-            <dd>Disable the toggling action of the expander.</dd>
+      <dt>disabled</dt>
+      <dd>Disable the toggling action of the expander.</dd>
 
-            <dt>emitOnly</dt>
-            <dd>When true, the expander will not toggle automatically on click, it will only emit <code>toggleExpander</code> event. <small>(false by default)</small></dd>
+      <dt>emitOnly</dt>
+      <dd>
+        When true, the expander will not toggle automatically on click, it will only emit
+        <code>toggleExpander</code>
+        event.
+        <small>(false by default)</small>
+      </dd>
 
-            <dt>expanded</dt>
-            <dd>Set expanded state: collapsed when false, expanded when true.</dd>
-        </dl>
+      <dt>expanded</dt>
+      <dd>Set expanded state: collapsed when false, expanded when true.</dd>
+    </dl>
 
-        <h3>Outputs</h3>
-        <dl>
-            <dt>toggleExpander</dt>
-            <dd>Event emitted when the user trigger the toggle, either by clicking on the expand button, either by clicking on the expander title (except if <code>buttonOnlyToggle</code> is <code>true</code>)</dd>
-        </dl>
-    </pa-demo-usage>
+    <h3>Outputs</h3>
+    <dl>
+      <dt>toggleExpander</dt>
+      <dd>
+        Event emitted when the user trigger the toggle, either by clicking on the expand button, either by clicking on
+        the expander title (except if
+        <code>buttonOnlyToggle</code>
+        is
+        <code>true</code>
+        )
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        Default expanders:
-        <pre><code>{{codeSample}}</code></pre>
+  <pa-demo-code>
+    Default expanders:
+    <pre><code>{{codeSample}}</code></pre>
 
-        Accordion:
-        <pre><code>{{accordionExample}}</code></pre>
-    </pa-demo-code>
+    Accordion:
+    <pre><code>{{accordionExample}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

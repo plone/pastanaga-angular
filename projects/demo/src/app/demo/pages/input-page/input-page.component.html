@@ -1,124 +1,196 @@
 <pa-demo-page>
-    <pa-demo-title>Input</pa-demo-title>
-    <pa-demo-description>
-        <p><code>pa-input</code> wraps an html <code>input</code> element and applies pastanaga's form field style.</p>
-        <p>As other pastanaga's form fields, <code>pa-input</code> supports 4 modes internally: <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and <strong>formControlName</strong>, in order to be used in various context.</p>
-        <p><code>pa-input</code> also supports internal and external validation.</p>
-    </pa-demo-description>
+  <pa-demo-title>Input</pa-demo-title>
+  <pa-demo-description>
+    <p>
+      <code>pa-input</code>
+      wraps an html
+      <code>input</code>
+      element and applies pastanaga's form field style.
+    </p>
+    <p>
+      As other pastanaga's form fields,
+      <code>pa-input</code>
+      supports 4 modes internally:
+      <strong>standalone</strong>
+      ,
+      <strong>model</strong>
+      ,
+      <strong>formControl</strong>
+      and
+      <strong>formControlName</strong>
+      , in order to be used in various context.
+    </p>
+    <p>
+      <code>pa-input</code>
+      also supports internal and external validation.
+    </p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <p><strong>Prefilled input</strong></p>
-        <pa-input [(ngModel)]="prefilledValue">Prefilled</pa-input>
+  <pa-demo-examples>
+    <p><strong>Prefilled input</strong></p>
+    <pa-input [(ngModel)]="prefilledValue">Prefilled</pa-input>
 
+    <p><strong>Error state: type a character and delete it.</strong></p>
+    <pa-input
+      [(ngModel)]="model"
+      name="inputExample"
+      required
+      placeholder="Placeholder"
+      help="Display the error state by typing something and deleting it"
+      [errorMessages]="{ required: 'Error message: required' }">
+      Required input
+    </pa-input>
 
-        <p><strong>Error state: type a character and delete it.</strong></p>
-        <pa-input [(ngModel)]="model"
-                  name="inputExample"
-                  required
-                  placeholder="Placeholder"
-                  help="Display the error state by typing something and deleting it"
-                  [errorMessages]="{required: 'Error message: required'}">Required input</pa-input>
+    <p><strong>Input number</strong></p>
+    <div style="display: flex; gap: 16px; align-items: center">
+      <pa-input
+        [(ngModel)]="someNumber"
+        name="inputNumber"
+        type="number"
+        placeholder="Some number">
+        Some number
+      </pa-input>
+      <p>Some number: {{ someNumber }} – Type {{ getTypeOfSomeNumber() }}</p>
+    </div>
 
-        <p><strong>Input number</strong></p>
-        <div style="display: flex; gap: 16px; align-items: center">
-            <pa-input [(ngModel)]="someNumber"
-                      name="inputNumber"
-                      type="number"
-                      placeholder="Some number">Some number</pa-input>
-            <p>Some number: {{someNumber}} – Type {{getTypeOfSomeNumber()}}</p>
-        </div>
+    <p><strong>Autofill: click and select browser's suggestion</strong></p>
+    <pa-input
+      name="email"
+      id="email"
+      type="text">
+      Autofilled input
+    </pa-input>
+    <pa-tabs>
+      <pa-tab
+        (click)="selectedTab = 'standalone'"
+        [active]="selectedTab === 'standalone'">
+        Standalone
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'ngModel'"
+        [active]="selectedTab === 'ngModel'">
+        NgModel
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControl'"
+        [active]="selectedTab === 'formControl'">
+        Form Control
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControlName'"
+        [active]="selectedTab === 'formControlName'">
+        Form Control Name
+      </pa-tab>
+    </pa-tabs>
+    <pa-demo-input-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-input-standalone-example>
+    <pa-demo-input-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-input-ng-model-example>
+    <pa-demo-input-form-control-example *ngIf="selectedTab === 'formControl'"></pa-demo-input-form-control-example>
+    <pa-demo-input-form-group-example *ngIf="selectedTab === 'formControlName'"></pa-demo-input-form-group-example>
+  </pa-demo-examples>
 
+  <pa-demo-usage>
+    <pa-demo-native-text-field-usage></pa-demo-native-text-field-usage>
 
-        <p><strong>Autofill: click and select browser's suggestion</strong></p>
-        <pa-input name="email"
-                  id="email"
-                  type="text">Autofilled input</pa-input>
-        <pa-tabs>
-            <pa-tab (click)="selectedTab = 'standalone'"
-                    [active]="selectedTab === 'standalone'">Standalone</pa-tab>
-            <pa-tab (click)="selectedTab = 'ngModel'"
-                    [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControl'"
-                    [active]="selectedTab === 'formControl'">Form Control</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControlName'"
-                    [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
-        </pa-tabs>
-        <pa-demo-input-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-input-standalone-example>
-        <pa-demo-input-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-input-ng-model-example>
-        <pa-demo-input-form-control-example *ngIf="selectedTab === 'formControl'"></pa-demo-input-form-control-example>
-        <pa-demo-input-form-group-example *ngIf="selectedTab === 'formControlName'"></pa-demo-input-form-group-example>
+    <br />
+    <h2>
+      Specific to
+      <code>InputComponent</code>
+    </h2>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>autocapitalize</dt>
+      <dd>
+        Allow to define the
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize"
+          target="_new">
+          HTML5 autocapitalize attribute
+        </a>
+        value.
+        <small>(optional)</small>
+        <br />
+        Note: it must be set to
+        <code>off</code>
+        to disable the autocapitalization applied by some smartphones.
+      </dd>
 
-    </pa-demo-examples>
+      <dt>icon</dt>
+      <dd>
+        Name of the icon to display in the input
+        <small>(optional)</small>
+      </dd>
 
-    <pa-demo-usage>
-        <pa-demo-native-text-field-usage></pa-demo-native-text-field-usage>
+      <dt>iconOnRight</dt>
+      <dd>
+        Display the icon on the right of the input
+        <small>(default: false)</small>
+      </dd>
 
-        <br>
-        <h2>Specific to <code>InputComponent</code></h2>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>autocapitalize</dt>
-            <dd>Allow to define the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize" target="_new">HTML5 autocapitalize attribute</a> value.
-                <small>(optional)</small>
-                <br>Note: it must be set to <code>off</code> to disable the autocapitalization applied by some smartphones.
-            </dd>
+      <dt>type</dt>
+      <dd>
+        Input type:
+        <code>TextInputType</code>
+        (text | number | password…)
+        <small>(default: text)</small>
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-            <dt>icon</dt>
-            <dd>Name of the icon to display in the input <small>(optional)</small></dd>
-
-            <dt>iconOnRight</dt>
-            <dd>Display the icon on the right of the input <small>(default: false)</small></dd>
-
-            <dt>type</dt>
-            <dd>Input type: <code>TextInputType</code> (text | number | password…) <small>(default: text)</small></dd>
-        </dl>
-    </pa-demo-usage>
-
-    <pa-demo-code>
-        <pa-tabs>
-            <pa-tab (click)="selectedTab = 'standalone'"
-                    [active]="selectedTab === 'standalone'">Standalone</pa-tab>
-            <pa-tab (click)="selectedTab = 'ngModel'"
-                    [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControl'"
-                    [active]="selectedTab === 'formControl'">Form Control</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControlName'"
-                    [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
-        </pa-tabs>
-        <br>
-        <div *ngIf="selectedTab === 'standalone'">
-            <h3>basic usage</h3>
-            <pre><code>{{standaloneBasicCode}}</code></pre>
-            <h3>full usage</h3>
-            <pre><code>{{standaloneFullCode}}</code></pre>
-        </div>
-        <div *ngIf="selectedTab === 'ngModel'">
-            <h3>basic usage</h3>
-            <pre><code>{{ngModelBasicCode}}</code></pre>
-            <h3>with angular validation</h3>
-            <pre><code>{{ngModelValidationCode}}</code></pre>
-            <h3>full usage</h3>
-            <pre><code>{{ngModelFullCode}}</code></pre>
-
-        </div>
-        <div *ngIf="selectedTab === 'formControl'">
-            <h3>basic usage</h3>
-            <pre><code>{{formControlBasicCode}}</code></pre>
-            <h3>with reactive form validation</h3>
-            <pre><code>{{formControlValidationCodeTs}}</code></pre>
-            <pre><code>{{formControlValidationCodeHtml}}</code></pre>
-            <h3>full usage</h3>
-            <pre><code>{{formControlFullCode}}</code></pre>
-        </div>
-        <div *ngIf="selectedTab === 'formControlName'">
-            <h3>basic usage</h3>
-            <pre><code>{{formControlNameBasicCode}}</code></pre>
-            <h3>with reactive form validation</h3>
-            <pre><code>{{formControlNameValidationCodeTs}}</code></pre>
-            <pre><code>{{formControlNameValidationCodeHtml}}</code></pre>
-            <h3>full usage</h3>
-            <pre><code>{{formControlNameFullCode}}</code></pre>
-        </div>
-
-    </pa-demo-code>
+  <pa-demo-code>
+    <pa-tabs>
+      <pa-tab
+        (click)="selectedTab = 'standalone'"
+        [active]="selectedTab === 'standalone'">
+        Standalone
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'ngModel'"
+        [active]="selectedTab === 'ngModel'">
+        NgModel
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControl'"
+        [active]="selectedTab === 'formControl'">
+        Form Control
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControlName'"
+        [active]="selectedTab === 'formControlName'">
+        Form Control Name
+      </pa-tab>
+    </pa-tabs>
+    <br />
+    <div *ngIf="selectedTab === 'standalone'">
+      <h3>basic usage</h3>
+      <pre><code>{{standaloneBasicCode}}</code></pre>
+      <h3>full usage</h3>
+      <pre><code>{{standaloneFullCode}}</code></pre>
+    </div>
+    <div *ngIf="selectedTab === 'ngModel'">
+      <h3>basic usage</h3>
+      <pre><code>{{ngModelBasicCode}}</code></pre>
+      <h3>with angular validation</h3>
+      <pre><code>{{ngModelValidationCode}}</code></pre>
+      <h3>full usage</h3>
+      <pre><code>{{ngModelFullCode}}</code></pre>
+    </div>
+    <div *ngIf="selectedTab === 'formControl'">
+      <h3>basic usage</h3>
+      <pre><code>{{formControlBasicCode}}</code></pre>
+      <h3>with reactive form validation</h3>
+      <pre><code>{{formControlValidationCodeTs}}</code></pre>
+      <pre><code>{{formControlValidationCodeHtml}}</code></pre>
+      <h3>full usage</h3>
+      <pre><code>{{formControlFullCode}}</code></pre>
+    </div>
+    <div *ngIf="selectedTab === 'formControlName'">
+      <h3>basic usage</h3>
+      <pre><code>{{formControlNameBasicCode}}</code></pre>
+      <h3>with reactive form validation</h3>
+      <pre><code>{{formControlNameValidationCodeTs}}</code></pre>
+      <pre><code>{{formControlNameValidationCodeHtml}}</code></pre>
+      <h3>full usage</h3>
+      <pre><code>{{formControlNameFullCode}}</code></pre>
+    </div>
+  </pa-demo-code>
 </pa-demo-page>

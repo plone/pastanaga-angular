@@ -3,28 +3,28 @@ import { OptionHeaderModel, OptionModel, OptionSeparator } from '@guillotinaweb/
 import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-config-ng-model.directive';
 
 @Component({
-    selector: 'pa-demo-select-ng-model-example',
-    templateUrl: './select-ng-model-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'pa-demo-select-ng-model-example',
+  templateUrl: './select-ng-model-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectNgModelExampleComponent extends FormFieldConfigNgModelDirective {
-    @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
-    override config?: any = { optionsProvidedInTemplate: true, label: 'The label' };
+  @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
+  override config?: any = { optionsProvidedInTemplate: true, label: 'The label' };
 
-    expandedEvent?: any;
+  expandedEvent?: any;
 
-    options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
+  options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
 
-    constructor(protected override cdr: ChangeDetectorRef) {
-        super(cdr);
+  constructor(protected override cdr: ChangeDetectorRef) {
+    super(cdr);
+  }
+
+  override updateConfig(config: any) {
+    super.updateConfig(config);
+    if (config.optionsProvidedInTemplate !== this.config.optionsProvidedInTemplate) {
+      this.options = config.optionsProvidedInTemplate ? [] : this.dropdownContent;
     }
 
-    override updateConfig(config: any) {
-        super.updateConfig(config);
-        if (config.optionsProvidedInTemplate !== this.config.optionsProvidedInTemplate) {
-            this.options = config.optionsProvidedInTemplate ? [] : this.dropdownContent;
-        }
-
-        this.config = config;
-    }
+    this.config = config;
+  }
 }

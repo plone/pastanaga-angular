@@ -1,3 +1,6 @@
-src/develop
+/dist
+/coverage
+.angular
+.github
+.run
 *.scss
-*.md

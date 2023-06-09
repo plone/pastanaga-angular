@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    templateUrl: './expander-page.component.html',
-    styleUrls: ['./expander-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './expander-page.component.html',
+  styleUrls: ['./expander-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpanderPageComponent {
-    codeSample = `<pa-expander>
+  codeSample = `<pa-expander>
     <pa-expander-header>Section 1</pa-expander-header>
     <pa-expander-body>
         <ul>
@@ -35,7 +35,7 @@ export class ExpanderPageComponent {
     </pa-expander-body>
 </pa-expander>`;
 
-    accordionExample = `<pa-expander *ngFor="let section of accordionContent"
+  accordionExample = `<pa-expander *ngFor="let section of accordionContent"
              emitOnly
              [expanded]="accordionOpen === section.title"
              (toggleExpander)="accordionOpen = accordionOpen === section.title ? '' : section.title">
@@ -45,15 +45,15 @@ export class ExpanderPageComponent {
     </pa-expander-body>
 </pa-expander>`;
 
-    accordionContent = [
-        { title: 'Beverage', content: 'water, milk, tea, coffee, juice' },
-        { title: 'Fruits', content: 'Kiwi, orange, lemon, banana, pineapple, apple' },
-        { title: 'Meat', content: 'beef, pork, lambs, sheep' },
-        { title: 'Vegetables', content: 'Spinach, potato, tomato, artichoke, beetroot' },
-    ];
-    accordionOpen = '';
+  accordionContent = [
+    { title: 'Beverage', content: 'water, milk, tea, coffee, juice' },
+    { title: 'Fruits', content: 'Kiwi, orange, lemon, banana, pineapple, apple' },
+    { title: 'Meat', content: 'beef, pork, lambs, sheep' },
+    { title: 'Vegetables', content: 'Spinach, potato, tomato, artichoke, beetroot' },
+  ];
+  accordionOpen = '';
 
-    toggleAccordion(title: string) {
-        this.accordionOpen = this.accordionOpen === title ? '' : title;
-    }
+  toggleAccordion(title: string) {
+    this.accordionOpen = this.accordionOpen === title ? '' : title;
+  }
 }

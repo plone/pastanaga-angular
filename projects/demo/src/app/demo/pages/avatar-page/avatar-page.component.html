@@ -1,111 +1,156 @@
 <pa-demo-page>
-    <pa-demo-title>Avatar</pa-demo-title>
+  <pa-demo-title>Avatar</pa-demo-title>
 
-    <pa-demo-description>You can use an Avatar to represent a user or a group. Avatars with no image can have an auto
-        assigned background color.
-    </pa-demo-description>
+  <pa-demo-description>
+    You can use an Avatar to represent a user or a group. Avatars with no image can have an auto assigned background
+    color.
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <h3>Kinds</h3>
-        <h4>Undefined (invited)</h4>
-        <pa-avatar></pa-avatar>
+  <pa-demo-examples>
+    <h3>Kinds</h3>
+    <h4>Undefined (invited)</h4>
+    <pa-avatar></pa-avatar>
 
-        <h4>Initials</h4>
-        <div class="avatar-row">
-            <pa-avatar userName="John Doe"></pa-avatar>
-            <p>User variation, the user photo is not set yet.</p>
-        </div>
-        <div class="avatar-row">
-            <pa-avatar userName="Darth Vador"
-                       autoBackground
-            ></pa-avatar>
-            <pa-avatar userName="John Doe"
-                       autoBackground
-            ></pa-avatar>
-            <pa-avatar userName="Steve Jobs"
-                       autoBackground
-            ></pa-avatar>
-            <p>Group variations, we apply 3 different colors based on the group name.</p>
-        </div>
+    <h4>Initials</h4>
+    <div class="avatar-row">
+      <pa-avatar userName="John Doe"></pa-avatar>
+      <p>User variation, the user photo is not set yet.</p>
+    </div>
+    <div class="avatar-row">
+      <pa-avatar
+        userName="Darth Vador"
+        autoBackground></pa-avatar>
+      <pa-avatar
+        userName="John Doe"
+        autoBackground></pa-avatar>
+      <pa-avatar
+        userName="Steve Jobs"
+        autoBackground></pa-avatar>
+      <p>Group variations, we apply 3 different colors based on the group name.</p>
+    </div>
 
-        <h3>Sizes</h3>
-        <h4>Huge</h4>
-        <div class="avatar-row">
-            <pa-avatar userName="John Doe"
-                       [image]="image"
-                       size="huge"
-            ></pa-avatar>
-            <pa-avatar userName="John Doe"
-                       size="huge"
-            ></pa-avatar>
-        </div>
+    <h3>Sizes</h3>
+    <h4>Huge</h4>
+    <div class="avatar-row">
+      <pa-avatar
+        userName="John Doe"
+        [image]="image"
+        size="huge"></pa-avatar>
+      <pa-avatar
+        userName="John Doe"
+        size="huge"></pa-avatar>
+    </div>
 
-        <h4>Medium</h4>
-        <div class="avatar-row">
-            <pa-avatar userName="Darth Vador"
-                       [image]="image"
-                       size="medium"
-            ></pa-avatar>
-            <pa-avatar userName="Darth Vador"
-                       size="medium"
-            ></pa-avatar>
-        </div>
+    <h4>Medium</h4>
+    <div class="avatar-row">
+      <pa-avatar
+        userName="Darth Vador"
+        [image]="image"
+        size="medium"></pa-avatar>
+      <pa-avatar
+        userName="Darth Vador"
+        size="medium"></pa-avatar>
+    </div>
 
-        <h4>Small</h4>
-        <div class="avatar-row">
-            <pa-avatar userName="Steve Jobs"
-                       [image]="image"
-                       size="small"
-            ></pa-avatar>
-            <pa-avatar userName="Steve Jobs"
-                       size="small"
-            ></pa-avatar>
-        </div>
+    <h4>Small</h4>
+    <div class="avatar-row">
+      <pa-avatar
+        userName="Steve Jobs"
+        [image]="image"
+        size="small"></pa-avatar>
+      <pa-avatar
+        userName="Steve Jobs"
+        size="small"></pa-avatar>
+    </div>
 
-        <h4>Tiny</h4>
-        <div class="avatar-row">
-            <pa-avatar userName="Steve Jobs"
-                       [image]="image"
-                       size="tiny"
-            ></pa-avatar>
-            <pa-avatar userName="Steve Jobs"
-                       size="tiny"
-            ></pa-avatar>
-        </div>
-    </pa-demo-examples>
+    <h4>Tiny</h4>
+    <div class="avatar-row">
+      <pa-avatar
+        userName="Steve Jobs"
+        [image]="image"
+        size="tiny"></pa-avatar>
+      <pa-avatar
+        userName="Steve Jobs"
+        size="tiny"></pa-avatar>
+    </div>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <h3>Inputs</h3>
+  <pa-demo-usage>
+    <h3>Inputs</h3>
 
-        <dl>
-            <dt>avatar</dt>
-            <dd><code>AvatarModel</code> allowing to fill all the inputs at once. <small>(optional)</small></dd>
+    <dl>
+      <dt>avatar</dt>
+      <dd>
+        <code>AvatarModel</code>
+        allowing to fill all the inputs at once.
+        <small>(optional)</small>
+      </dd>
 
-            <dt>autoBackground</dt>
-            <dd>Assign background color automatically according to <code>userName</code> or <code>userId</code>. <small>(false by default)</small></dd>
+      <dt>autoBackground</dt>
+      <dd>
+        Assign background color automatically according to
+        <code>userName</code>
+        or
+        <code>userId</code>
+        .
+        <small>(false by default)</small>
+      </dd>
 
-            <dt>image</dt>
-            <dd>Observable of blob to be displayed as avatar. Once the image is set, generated
-                initials and backgroundColor are not displayed anymore. <small>(optional)</small></dd>
+      <dt>image</dt>
+      <dd>
+        Observable of blob to be displayed as avatar. Once the image is set, generated initials and backgroundColor are
+        not displayed anymore.
+        <small>(optional)</small>
+      </dd>
 
-            <dt>imageSrc</dt>
-            <dd>Base64 string to be displayed as avatar. Once the image is set, generated
-                initials and backgroundColor are not displayed anymore. <small>(optional)</small></dd>
+      <dt>imageSrc</dt>
+      <dd>
+        Base64 string to be displayed as avatar. Once the image is set, generated initials and backgroundColor are not
+        displayed anymore.
+        <small>(optional)</small>
+      </dd>
 
-            <dt>size</dt>
-            <dd>Avatar's size. Can be <code>tiny</code> | <code>small</code> | <code>medium</code> | <code>huge</code>. <small>(medium by default)</small></dd>
+      <dt>size</dt>
+      <dd>
+        Avatar's size. Can be
+        <code>tiny</code>
+        |
+        <code>small</code>
+        |
+        <code>medium</code>
+        |
+        <code>huge</code>
+        .
+        <small>(medium by default)</small>
+      </dd>
 
-            <dt>userId</dt>
-            <dd>Used to generate a background color when no <code>image</code> is provided and <code>autoBackground</code> is <code>true</code>. <small>(optional)</small></dd>
+      <dt>userId</dt>
+      <dd>
+        Used to generate a background color when no
+        <code>image</code>
+        is provided and
+        <code>autoBackground</code>
+        is
+        <code>true</code>
+        .
+        <small>(optional)</small>
+      </dd>
 
-            <dt>userName</dt>
-            <dd>Used to generate displayed initials and a background color when no <code>image</code>
-                is provided and <code>autoBackground</code> is <code>true</code>. <small>(optional)</small></dd>
-        </dl>
-    </pa-demo-usage>
+      <dt>userName</dt>
+      <dd>
+        Used to generate displayed initials and a background color when no
+        <code>image</code>
+        is provided and
+        <code>autoBackground</code>
+        is
+        <code>true</code>
+        .
+        <small>(optional)</small>
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <pre><code>{{code}}</code></pre>
-    </pa-demo-code>
-
+  <pa-demo-code>
+    <pre><code>{{code}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

@@ -5,8 +5,8 @@ import { PaFormControlDirective } from './pa-form-control.directive';
 import { PaTranslateModule } from '../../translate';
 
 @NgModule({
-    declarations: [FormFieldHintComponent, PaFormControlDirective],
-    exports: [FormFieldHintComponent, PaFormControlDirective],
-    imports: [CommonModule, PaTranslateModule],
+  declarations: [FormFieldHintComponent, PaFormControlDirective],
+  exports: [FormFieldHintComponent, PaFormControlDirective],
+  imports: [CommonModule, PaTranslateModule],
 })
 export class PaFormFieldModule {}

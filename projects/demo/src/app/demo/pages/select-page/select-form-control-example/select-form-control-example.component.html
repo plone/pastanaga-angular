@@ -1,33 +1,47 @@
 <div class="component">
-    <pa-select
-        [options]="options"
-        [formControl]="control"
-        [label]="config.label"
-        [placeholder]="config.placeholder"
-        [adjustHeight]="config.adjustHeight"
-        [hasFocus]="config.hasFocus"
-        [readonly]="config.readonly"
-        [help]="config.help"
-        [showAllErrors]="config.showAllErrors"
-        [errorMessage]="config.errorMessage"
-        [errorMessages]="config.errorMessages"
-        [dim]="config.dim"
-        (valueChange)="valueChangeEvent = $event"
-        (statusChange)="statusChangeEvent = $event"
-        (expanded)="expandedEvent = $event">
-        <ng-container *ngIf="config.optionsProvidedInTemplate">
-            <pa-option-header>Options from template</pa-option-header>
-            <pa-option disabled icon="settings" value="settings">Settings</pa-option>
-            <pa-option icon="info" value="info">Info</pa-option>
-            <pa-separator></pa-separator>
-            <pa-option icon="trash" value="delete" destructive>Delete</pa-option>
-        </ng-container>
-    </pa-select>
+  <pa-select
+    [options]="options"
+    [formControl]="control"
+    [label]="config.label"
+    [placeholder]="config.placeholder"
+    [adjustHeight]="config.adjustHeight"
+    [hasFocus]="config.hasFocus"
+    [readonly]="config.readonly"
+    [help]="config.help"
+    [showAllErrors]="config.showAllErrors"
+    [errorMessage]="config.errorMessage"
+    [errorMessages]="config.errorMessages"
+    [dim]="config.dim"
+    (valueChange)="valueChangeEvent = $event"
+    (statusChange)="statusChangeEvent = $event"
+    (expanded)="expandedEvent = $event">
+    <ng-container *ngIf="config.optionsProvidedInTemplate">
+      <pa-option-header>Options from template</pa-option-header>
+      <pa-option
+        disabled
+        icon="settings"
+        value="settings">
+        Settings
+      </pa-option>
+      <pa-option
+        icon="info"
+        value="info">
+        Info
+      </pa-option>
+      <pa-separator></pa-separator>
+      <pa-option
+        icon="trash"
+        value="delete"
+        destructive>
+        Delete
+      </pa-option>
+    </ng-container>
+  </pa-select>
 
-    <ul>
-        <li>value change event: {{valueChangeEvent | json}}</li>
-        <li>status change event: {{statusChangeEvent | json}}</li>
-        <li>expanded event: {{expandedEvent | json}}</li>
-    </ul>
+  <ul>
+    <li>value change event: {{ valueChangeEvent | json }}</li>
+    <li>status change event: {{ statusChangeEvent | json }}</li>
+    <li>expanded event: {{ expandedEvent | json }}</li>
+  </ul>
 </div>
 <pa-demo-pa-select-config (configChanged)="updateConfig($event)"></pa-demo-pa-select-config>

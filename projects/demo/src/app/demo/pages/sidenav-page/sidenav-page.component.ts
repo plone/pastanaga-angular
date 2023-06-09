@@ -1,27 +1,27 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    templateUrl: './sidenav-page.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './sidenav-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavPageComponent {
-    menu = [
-        {
-            title: 'Section 1',
-            pages: [
-                { view: 'view1', title: 'section-title-1' },
-                { view: 'view2', title: 'section-title-2' },
-            ],
-        },
-        {
-            title: 'Section 2',
-            pages: [
-                { view: 'view1', title: 'section-title-1' },
-                { view: 'view2', title: 'section-title-2' },
-            ],
-        },
-    ];
-    customHeaderExample = `<pa-side-nav [mode]="mode"
+  menu = [
+    {
+      title: 'Section 1',
+      pages: [
+        { view: 'view1', title: 'section-title-1' },
+        { view: 'view2', title: 'section-title-2' },
+      ],
+    },
+    {
+      title: 'Section 2',
+      pages: [
+        { view: 'view1', title: 'section-title-1' },
+        { view: 'view2', title: 'section-title-2' },
+      ],
+    },
+  ];
+  customHeaderExample = `<pa-side-nav [mode]="mode"
              [visible]="isMenuVisible"
              (close)="toggleSideNav()">
     <pa-side-nav-header>
@@ -35,7 +35,7 @@ export class SidenavPageComponent {
     </pa-side-nav-header>
 </pa-side-nav>`;
 
-    codeExample = `<pa-side-nav [mode]="mode"
+  codeExample = `<pa-side-nav [mode]="mode"
              [visible]="isMenuVisible"
              (close)="toggleSideNav()">
     <pa-side-nav-content>

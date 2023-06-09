@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'pa-demo-pa-form-control-usage',
-    templateUrl: './pa-form-control-usage.component.html',
+  selector: 'pa-demo-pa-form-control-usage',
+  templateUrl: './pa-form-control-usage.component.html',
 })
 export class PaFormControlUsageComponent {}

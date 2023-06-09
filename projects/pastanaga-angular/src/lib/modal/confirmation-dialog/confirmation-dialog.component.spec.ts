@@ -7,146 +7,144 @@ import { ConfirmationData, ModalConfig, ModalRef } from '../modal.model';
 import { TranslatePipe } from '../../translate/translate.pipe';
 
 class ResizeObserver {
-    observe() {}
-    unobserve() {}
-    disconnect() {}
+  observe() {}
+  unobserve() {}
+  disconnect() {}
 }
 global.ResizeObserver = ResizeObserver;
 
 describe('ConfirmationDialogComponent', () => {
-    const title = 'Confirmation title';
-    const description = 'Confirmation description';
-    const createComponent = createComponentFactory({
-        imports: [MockModule(PaButtonModule), MockModule(PaTranslateModule)],
-        component: ConfirmationDialogComponent,
-        declarations: [MockPipe(TranslatePipe, (value) => `translate--${value}`)],
-        providers: [
-            {
-                provide: ModalRef,
-                useValue: new ModalRef({
-                    id: 0,
-                    config: new ModalConfig({ data: { title } }),
-                }),
-            },
-        ],
-        detectChanges: false,
-    });
-    let component: ConfirmationDialogComponent;
-    let spectator: Spectator<ConfirmationDialogComponent>;
-    let modalRef: ModalRef;
+  const title = 'Confirmation title';
+  const description = 'Confirmation description';
+  const createComponent = createComponentFactory({
+    imports: [MockModule(PaButtonModule), MockModule(PaTranslateModule)],
+    component: ConfirmationDialogComponent,
+    declarations: [MockPipe(TranslatePipe, (value) => `translate--${value}`)],
+    providers: [
+      {
+        provide: ModalRef,
+        useValue: new ModalRef({
+          id: 0,
+          config: new ModalConfig({ data: { title } }),
+        }),
+      },
+    ],
+    detectChanges: false,
+  });
+  let component: ConfirmationDialogComponent;
+  let spectator: Spectator<ConfirmationDialogComponent>;
+  let modalRef: ModalRef;
 
+  beforeEach(() => {
+    spectator = createComponent();
+    component = spectator.component;
+    modalRef = spectator.inject(ModalRef);
+  });
+
+  describe('by default', () => {
     beforeEach(() => {
-        spectator = createComponent();
-        component = spectator.component;
-        modalRef = spectator.inject(ModalRef);
+      spectator.detectChanges();
     });
 
-    describe('by default', () => {
-        beforeEach(() => {
-            spectator.detectChanges();
-        });
-
-        it('should display title set in modal ref', () => {
-            expect(spectator.query('[qa="confirmation-title"]')?.textContent?.trim()).toBe(`translate--${title}`);
-        });
-
-        it('should display pastanaga cancel and confirm labels on buttons', () => {
-            expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')?.textContent?.trim()).toBe(
-                'translate--pastanaga.cancel',
-            );
-            expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
-                'translate--pastanaga.confirm',
-            );
-        });
-
-        it('should display confirm button as primary kind', () => {
-            expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.getAttribute('ng-reflect-kind')).toBe(
-                'primary',
-            );
-        });
+    it('should display title set in modal ref', () => {
+      expect(spectator.query('[qa="confirmation-title"]')?.textContent?.trim()).toBe(`translate--${title}`);
     });
 
-    describe('actions', () => {
-        beforeEach(() => {
-            jest.spyOn(component.ref, 'close');
-            spectator.detectChanges();
-        });
-
-        it('should close with false when clicking on cancel', () => {
-            spectator.click('[qa="confirmation-dialog-cancel-button"]');
-            expect(component.ref.close).toHaveBeenCalledWith(false);
-        });
-
-        it('should close with true when clicking on confirm', () => {
-            spectator.click('[qa="confirmation-dialog-confirm-button"]');
-            expect(component.ref.close).toHaveBeenCalledWith(true);
-        });
+    it('should display pastanaga cancel and confirm labels on buttons', () => {
+      expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')?.textContent?.trim()).toBe(
+        'translate--pastanaga.cancel',
+      );
+      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
+        'translate--pastanaga.confirm',
+      );
     });
 
-    describe('when specific data is set', () => {
-        beforeEach(() => {
-            modalRef.config = new ModalConfig<ConfirmationData>({
-                data: {
-                    title,
-                    description,
-                    isDestructive: true,
-                    confirmLabel: 'custom-confirm',
-                    cancelLabel: 'custom-cancel',
-                },
-            });
-            spectator.detectChanges();
-        });
+    it('should display confirm button as primary kind', () => {
+      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.getAttribute('ng-reflect-kind')).toBe(
+        'primary',
+      );
+    });
+  });
 
-        it('should display description set in modal ref', () => {
-            expect(spectator.query('[qa="confirmation-description"]')?.textContent?.trim()).toBe(
-                `translate--${description}`,
-            );
-        });
-
-        it('should display cancel and confirm labels set in modal ref', () => {
-            expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')?.textContent?.trim()).toBe(
-                'translate--custom-cancel',
-            );
-            expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
-                'translate--custom-confirm',
-            );
-        });
-
-        it('should display confirm button as destructive kind', () => {
-            expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.getAttribute('ng-reflect-kind')).toBe(
-                'destructive',
-            );
-        });
+  describe('actions', () => {
+    beforeEach(() => {
+      jest.spyOn(component.ref, 'close');
+      spectator.detectChanges();
     });
 
-    describe('when onlyConfirm is set', () => {
-        beforeEach(() => {
-            modalRef.config = new ModalConfig<ConfirmationData>({
-                data: {
-                    title,
-                    onlyConfirm: true,
-                },
-            });
-            spectator.detectChanges();
-        });
-
-        it('should display only the confirmation button', () => {
-            expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')).toBeFalsy();
-            expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
-                'translate--pastanaga.confirm',
-            );
-        });
+    it('should close with false when clicking on cancel', () => {
+      spectator.click('[qa="confirmation-dialog-cancel-button"]');
+      expect(component.ref.close).toHaveBeenCalledWith(false);
     });
 
-    describe('ngAfterViewInit', () => {
-        it('should setFocus and refresh on ngAfterViewInit', () => {
-            jest.spyOn(component, 'setFocus');
-            jest.spyOn(component, 'refresh');
-
-            component.ngAfterViewInit();
-
-            expect(component.setFocus).toHaveBeenCalled();
-            expect(component.refresh).toHaveBeenCalled();
-        });
+    it('should close with true when clicking on confirm', () => {
+      spectator.click('[qa="confirmation-dialog-confirm-button"]');
+      expect(component.ref.close).toHaveBeenCalledWith(true);
     });
+  });
+
+  describe('when specific data is set', () => {
+    beforeEach(() => {
+      modalRef.config = new ModalConfig<ConfirmationData>({
+        data: {
+          title,
+          description,
+          isDestructive: true,
+          confirmLabel: 'custom-confirm',
+          cancelLabel: 'custom-cancel',
+        },
+      });
+      spectator.detectChanges();
+    });
+
+    it('should display description set in modal ref', () => {
+      expect(spectator.query('[qa="confirmation-description"]')?.textContent?.trim()).toBe(`translate--${description}`);
+    });
+
+    it('should display cancel and confirm labels set in modal ref', () => {
+      expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')?.textContent?.trim()).toBe(
+        'translate--custom-cancel',
+      );
+      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
+        'translate--custom-confirm',
+      );
+    });
+
+    it('should display confirm button as destructive kind', () => {
+      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.getAttribute('ng-reflect-kind')).toBe(
+        'destructive',
+      );
+    });
+  });
+
+  describe('when onlyConfirm is set', () => {
+    beforeEach(() => {
+      modalRef.config = new ModalConfig<ConfirmationData>({
+        data: {
+          title,
+          onlyConfirm: true,
+        },
+      });
+      spectator.detectChanges();
+    });
+
+    it('should display only the confirmation button', () => {
+      expect(spectator.query('[qa="confirmation-dialog-cancel-button"]')).toBeFalsy();
+      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.textContent?.trim()).toBe(
+        'translate--pastanaga.confirm',
+      );
+    });
+  });
+
+  describe('ngAfterViewInit', () => {
+    it('should setFocus and refresh on ngAfterViewInit', () => {
+      jest.spyOn(component, 'setFocus');
+      jest.spyOn(component, 'refresh');
+
+      component.ngAfterViewInit();
+
+      expect(component.setFocus).toHaveBeenCalled();
+      expect(component.refresh).toHaveBeenCalled();
+    });
+  });
 });

@@ -1,14 +1,14 @@
 export interface FlattenTranslationEntries {
-    [id: string]: string;
+  [id: string]: string;
 }
 export interface TranslationEntries {
-    [id: string]: string | TranslationEntries;
+  [id: string]: string | TranslationEntries;
 }
 
 export interface Translation {
-    [lang: string]: TranslationEntries;
+  [lang: string]: TranslationEntries;
 }
 
 export interface FlattenTranslation {
-    [lang: string]: FlattenTranslationEntries;
+  [lang: string]: FlattenTranslationEntries;
 }

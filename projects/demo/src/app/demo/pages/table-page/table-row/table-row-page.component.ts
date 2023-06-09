@@ -1,15 +1,15 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-    selector: 'pa-demo-table-row',
-    templateUrl: './table-row-page.component.html',
-    styles: [],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'pa-demo-table-row',
+  templateUrl: './table-row-page.component.html',
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableRowPageComponent {
-    selected = 1;
+  selected = 1;
 
-    code = `<pa-table columns="128px 128px 1fr 96px">
+  code = `<pa-table columns="128px 128px 1fr 96px">
     <pa-table-header>
         <pa-table-cell header>Column 1</pa-table-cell>
         <pa-table-cell header>Column 2</pa-table-cell>
@@ -39,5 +39,5 @@ export class TableRowPageComponent {
         <pa-table-cell>disabled {{selected === 3 ? 'and selected' : ''}}</pa-table-cell>
         <pa-table-cell-menu><pa-button icon="trash" size="small"></pa-button></pa-table-cell-menu>
     </pa-table-row>
-</pa-table>`
+</pa-table>`;
 }

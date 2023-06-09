@@ -2,15 +2,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Size } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
-    templateUrl: './button-page.component.html',
-    styleUrls: ['./button-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './button-page.component.html',
+  styleUrls: ['./button-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonPageComponent {
-    selectedSize: Size = 'medium';
-    activeState = false;
-    disabledState = false;
-    codeExample = `<pa-button [kind]="selectedKind"
+  selectedSize: Size = 'medium';
+  activeState = false;
+  disabledState = false;
+  codeExample = `<pa-button [kind]="selectedKind"
            [size]="selectedSize"
            [aspect]="selectedAspect"
            [disabled]="disabledState">
@@ -34,7 +34,7 @@ export class ButtonPageComponent {
     Value
 </pa-button>`;
 
-    clickOn($event: MouseEvent) {
-        console.log(`Clicked on button`, $event);
-    }
+  clickOn($event: MouseEvent) {
+    console.log(`Clicked on button`, $event);
+  }
 }

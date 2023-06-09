@@ -9,8 +9,8 @@ import { RadioComponent } from './radio/radio.component';
 import { RadioGroupDirective } from './radio/radio-group.directive';
 
 @NgModule({
-    declarations: [CheckboxComponent, ToggleComponent, RadioComponent, RadioGroupDirective],
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, PaFocusableModule, PaFormFieldModule],
-    exports: [CheckboxComponent, ToggleComponent, RadioComponent, RadioGroupDirective],
+  declarations: [CheckboxComponent, ToggleComponent, RadioComponent, RadioGroupDirective],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, PaFocusableModule, PaFormFieldModule],
+  exports: [CheckboxComponent, ToggleComponent, RadioComponent, RadioGroupDirective],
 })
 export class PaTogglesModule {}
