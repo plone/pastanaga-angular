@@ -1,3 +1,8 @@
+# 2.61.12 (2023-06-09)
+
+### Bugfix
+- **Modal**: do not try to observe on `modalContent` when it's not present [mpellerin42]
+
 # 2.61.11 (2023-06-08)
 
 ### Improvements
