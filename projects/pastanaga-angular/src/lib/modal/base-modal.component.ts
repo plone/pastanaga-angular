@@ -42,7 +42,9 @@ export class BaseModalComponent implements AfterViewInit, OnDestroy {
             this.config = this.ref.config;
         }
         document.addEventListener('keydown', this._onKeyDown);
-        this.contentResizeObserver.observe(this.modalContent?.nativeElement);
+        if (this.modalContent?.nativeElement) {
+            this.contentResizeObserver.observe(this.modalContent?.nativeElement);
+        }
     }
 
     private updateHasScrollbar() {
