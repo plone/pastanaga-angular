@@ -1,26 +1,33 @@
-<div class="pa-chip pa-with-button"
-     [style.background-color]="!disabled ? backgroundColor : ''"
-     [style.border-color]="!disabled ? borderColor : ''"
-     [class.pa-with-avatar]="!!avatar"
-     [attr.role]="ariaRole">
-    <pa-avatar *ngIf="avatar"
-               size="tiny"
-               [userId]="avatar.userId"
-               [userName]="avatar.userName"
-               [image]="avatar.image"
-               [imageSrc]="avatar.imageSrc"
-               [autoBackground]="avatar.autoBackground"></pa-avatar>
+<div
+  class="pa-chip pa-with-button"
+  [style.background-color]="!disabled ? backgroundColor : ''"
+  [style.border-color]="!disabled ? borderColor : ''"
+  [class.pa-with-avatar]="!!avatar"
+  [attr.role]="ariaRole">
+  <pa-avatar
+    *ngIf="avatar"
+    size="tiny"
+    [userId]="avatar.userId"
+    [userName]="avatar.userName"
+    [image]="avatar.image"
+    [imageSrc]="avatar.imageSrc"
+    [autoBackground]="avatar.autoBackground"></pa-avatar>
 
-    <pa-icon *ngIf="icon" class="pa-chip-icon" [icon]="icon"></pa-icon>
+  <pa-icon
+    *ngIf="icon"
+    class="pa-chip-icon"
+    [icon]="icon"></pa-icon>
 
-    <span class="pa-chip-content-wrapper body-s"
-          [style.color]="!disabled ? textColor : ''">
-        <ng-content></ng-content>
-    </span>
-    <pa-button [icon]="isExpanded? 'chevron-up': 'chevron-down'"
-               size="small"
-               kind="secondary"
-               aspect="basic"
-               [disabled]="disabled"
-               (click)="expand($event)"></pa-button>
+  <span
+    class="pa-chip-content-wrapper body-s"
+    [style.color]="!disabled ? textColor : ''">
+    <ng-content></ng-content>
+  </span>
+  <pa-button
+    [icon]="isExpanded ? 'chevron-up' : 'chevron-down'"
+    size="small"
+    kind="secondary"
+    aspect="basic"
+    [disabled]="disabled"
+    (click)="expand($event)"></pa-button>
 </div>

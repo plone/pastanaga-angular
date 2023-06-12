@@ -1,21 +1,23 @@
-<div class="pa-toggle"
-     [class.pa-disabled]="disabled">
-    <div class="pa-checkbox-wrapper">
-        <input type="radio"
-               class="pa-toggle-control"
-               paFocusable
-               [id]="id"
-               [attr.name]="name"
-               [attr.aria-label]="_ariaLabel"
-               [attr.aria-checked]="checked"
-               [disabled]="disabled"
-               (change)="_onInputChange()"
-        >
-        <label [for]="id"
-               #label
-               class="pa-toggle-label"
-               [hidden]="!hasLabel">
-            <ng-content></ng-content>
-        </label>
-    </div>
+<div
+  class="pa-toggle"
+  [class.pa-disabled]="disabled">
+  <div class="pa-checkbox-wrapper">
+    <input
+      type="radio"
+      class="pa-toggle-control"
+      paFocusable
+      [id]="id"
+      [attr.name]="name"
+      [attr.aria-label]="_ariaLabel"
+      [attr.aria-checked]="checked"
+      [disabled]="disabled"
+      (change)="_onInputChange()" />
+    <label
+      [for]="id"
+      #label
+      class="pa-toggle-label"
+      [hidden]="!hasLabel">
+      <ng-content></ng-content>
+    </label>
+  </div>
 </div>

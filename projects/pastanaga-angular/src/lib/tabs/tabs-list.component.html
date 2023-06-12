@@ -1,10 +1,13 @@
-<ul class="pa-tabs-list" role="tablist"
-    [class.no-slider]="noSlider"
-    [class.pa-full-width-tabs]="!notFullWidth">
-    <ng-content></ng-content>
+<ul
+  class="pa-tabs-list"
+  role="tablist"
+  [class.no-slider]="noSlider"
+  [class.pa-full-width-tabs]="!notFullWidth">
+  <ng-content></ng-content>
 
-    <div *ngIf="!noSlider"
-         class="pa-tabs-slider"
-         role="presentation"
-         style="{{sliderStyle}}"></div>
+  <div
+    *ngIf="!noSlider"
+    class="pa-tabs-slider"
+    role="presentation"
+    style="{{ sliderStyle }}"></div>
 </ul>

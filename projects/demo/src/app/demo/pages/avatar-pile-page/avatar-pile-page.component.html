@@ -1,76 +1,98 @@
 <pa-demo-page>
-    <pa-demo-title>Avatar pile</pa-demo-title>
+  <pa-demo-title>Avatar pile</pa-demo-title>
 
-    <pa-demo-description>
-        <p>Display a pile of small avatars.</p>
-        <p>Avatar pile has a maximum of 3 avatars before showing a horizontal ellipsis button.</p>
-        <p>Avatar pile doesn't sort the avatars: they are displayed in the exact same order as they are provided.</p>
-        <p>By default, clicking on the button display a dropdown with the list of all avatars.
-            You can setup your own behavior by setting <code>customButton</code> Input and listening to <code>clickOnMore</code> event.</p>
-    </pa-demo-description>
+  <pa-demo-description>
+    <p>Display a pile of small avatars.</p>
+    <p>Avatar pile has a maximum of 3 avatars before showing a horizontal ellipsis button.</p>
+    <p>Avatar pile doesn't sort the avatars: they are displayed in the exact same order as they are provided.</p>
+    <p>
+      By default, clicking on the button display a dropdown with the list of all avatars. You can setup your own
+      behavior by setting
+      <code>customButton</code>
+      Input and listening to
+      <code>clickOnMore</code>
+      event.
+    </p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <h4>Default behavior: button visible when more than 3 avatars in the pile</h4>
-        <p>
-            <pa-avatar-pile [avatars]="avatars.slice(0,1)"></pa-avatar-pile>
-        </p>
-        <p>
-            <pa-avatar-pile [avatars]="avatars.slice(0,2)"></pa-avatar-pile>
-        </p>
-        <p>
-            <pa-avatar-pile [avatars]="avatars.slice(0,3)"></pa-avatar-pile>
-        </p>
-        <p>
-            <pa-avatar-pile [avatars]="avatars"></pa-avatar-pile>
-        </p>
+  <pa-demo-examples>
+    <h4>Default behavior: button visible when more than 3 avatars in the pile</h4>
+    <p>
+      <pa-avatar-pile [avatars]="avatars.slice(0, 1)"></pa-avatar-pile>
+    </p>
+    <p>
+      <pa-avatar-pile [avatars]="avatars.slice(0, 2)"></pa-avatar-pile>
+    </p>
+    <p>
+      <pa-avatar-pile [avatars]="avatars.slice(0, 3)"></pa-avatar-pile>
+    </p>
+    <p>
+      <pa-avatar-pile [avatars]="avatars"></pa-avatar-pile>
+    </p>
 
-        <h4>Optional behavior: button always visible</h4>
-        <p>
-            <pa-avatar-pile [avatars]="avatars.slice(0,1)" buttonAlwaysVisible></pa-avatar-pile>
-        </p>
-        <p>
-            <pa-avatar-pile [avatars]="avatars.slice(0,2)" buttonAlwaysVisible></pa-avatar-pile>
-        </p>
-        <p>
-            <pa-avatar-pile [avatars]="avatars.slice(0,3)" buttonAlwaysVisible></pa-avatar-pile>
-        </p>
+    <h4>Optional behavior: button always visible</h4>
+    <p>
+      <pa-avatar-pile
+        [avatars]="avatars.slice(0, 1)"
+        buttonAlwaysVisible></pa-avatar-pile>
+    </p>
+    <p>
+      <pa-avatar-pile
+        [avatars]="avatars.slice(0, 2)"
+        buttonAlwaysVisible></pa-avatar-pile>
+    </p>
+    <p>
+      <pa-avatar-pile
+        [avatars]="avatars.slice(0, 3)"
+        buttonAlwaysVisible></pa-avatar-pile>
+    </p>
 
-        <h4>Custom button behavior</h4>
-        <p>
-            <pa-avatar-pile [avatars]="avatars"
-                            (clickOnMore)="displayToast()"
-                            customButton></pa-avatar-pile>
-        </p>
-    </pa-demo-examples>
+    <h4>Custom button behavior</h4>
+    <p>
+      <pa-avatar-pile
+        [avatars]="avatars"
+        (clickOnMore)="displayToast()"
+        customButton></pa-avatar-pile>
+    </p>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>avatars</dt>
-            <dd>List of avatars to display as a pile. A maximum of three avatars will be shown in the provided order (no internal sorting).</dd>
+  <pa-demo-usage>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>avatars</dt>
+      <dd>
+        List of avatars to display as a pile. A maximum of three avatars will be shown in the provided order (no
+        internal sorting).
+      </dd>
 
-            <dt>buttonAlwaysVisible</dt>
-            <dd>When set, the button is visible whatever the number of avatars in the list. <small>(Default: false)</small></dd>
+      <dt>buttonAlwaysVisible</dt>
+      <dd>
+        When set, the button is visible whatever the number of avatars in the list.
+        <small>(Default: false)</small>
+      </dd>
 
-            <dt>customButton</dt>
-            <dd>When set, clicking on the button won't open a dropdown with the list of users. <small>(Default: false)</small></dd>
-        </dl>
+      <dt>customButton</dt>
+      <dd>
+        When set, clicking on the button won't open a dropdown with the list of users.
+        <small>(Default: false)</small>
+      </dd>
+    </dl>
 
-        <h3>Outputs</h3>
-        <dl>
-            <dt>clickOnMore</dt>
-            <dd>Event emitted when clicking on the button</dd>
-        </dl>
-    </pa-demo-usage>
+    <h3>Outputs</h3>
+    <dl>
+      <dt>clickOnMore</dt>
+      <dd>Event emitted when clicking on the button</dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <h4>Default button behavior</h4>
-        <pre><code>{{simpleCode}}</code></pre>
+  <pa-demo-code>
+    <h4>Default button behavior</h4>
+    <pre><code>{{simpleCode}}</code></pre>
 
-        <h4>Always visible button behavior</h4>
-        <pre><code>{{alwaysVisibleButtonCode}}</code></pre>
+    <h4>Always visible button behavior</h4>
+    <pre><code>{{alwaysVisibleButtonCode}}</code></pre>
 
-        <h4>Custom button behavior</h4>
-        <pre><code>{{customButtonCode}}</code></pre>
-    </pa-demo-code>
+    <h4>Custom button behavior</h4>
+    <pre><code>{{customButtonCode}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

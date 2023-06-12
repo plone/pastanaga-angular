@@ -1,52 +1,55 @@
-<div class="pa-field"
-     [style.--label-width]="labelWidth">
-    <div class="pa-field-container"
-         [class.no-internal-label]="noLabel"
-         [class.pa-focus]="hasFocus"
-         [class.pa-content]="hasContent"
-         [class.pa-disabled]="disabled || readonly"
-         [class.pa-readonly]="readonly"
-         [class.pa-field-error]="control.dirty && control.invalid">
-        <input #htmlInput
-               class="pa-field-control"
-               [class.pa-field-control-filled]="isFilled"
-               [class.pa-field-control-icon]="!!icon"
-               [class.pa-icon-on-right]="iconOnRight"
-               [formControl]="control"
-               [id]="id"
-               [attr.name]="name"
-               [type]="type"
-               [attr.maxlength]="maxlength"
-               [attr.aria-describedby]="describedById"
-               [attr.placeholder]="placeholder"
-               [attr.autocomplete]="noAutoComplete ? 'off' : undefined"
-               [attr.autocapitalize]="autocapitalize || undefined"
-               [readonly]="readonly"
-               [paInputFormatter]="sanitizeHtmlTags"
-               (focus)="onFocus($event)"
-               (blur)="onBlur()"
-               (keyup)="onKeyUp($event)"
-        >
+<div
+  class="pa-field"
+  [style.--label-width]="labelWidth">
+  <div
+    class="pa-field-container"
+    [class.no-internal-label]="noLabel"
+    [class.pa-focus]="hasFocus"
+    [class.pa-content]="hasContent"
+    [class.pa-disabled]="disabled || readonly"
+    [class.pa-readonly]="readonly"
+    [class.pa-field-error]="control.dirty && control.invalid">
+    <input
+      #htmlInput
+      class="pa-field-control"
+      [class.pa-field-control-filled]="isFilled"
+      [class.pa-field-control-icon]="!!icon"
+      [class.pa-icon-on-right]="iconOnRight"
+      [formControl]="control"
+      [id]="id"
+      [attr.name]="name"
+      [type]="type"
+      [attr.maxlength]="maxlength"
+      [attr.aria-describedby]="describedById"
+      [attr.placeholder]="placeholder"
+      [attr.autocomplete]="noAutoComplete ? 'off' : undefined"
+      [attr.autocapitalize]="autocapitalize || undefined"
+      [readonly]="readonly"
+      [paInputFormatter]="sanitizeHtmlTags"
+      (focus)="onFocus($event)"
+      (blur)="onBlur()"
+      (keyup)="onKeyUp($event)" />
 
-        <label class="pa-field-label"
-               [class.pa-field-label-icon]="!!icon"
-               [class.pa-icon-on-right]="iconOnRight"
-               [for]="id">
-            <ng-content></ng-content>
-        </label>
-    </div>
+    <label
+      class="pa-field-label"
+      [class.pa-field-label-icon]="!!icon"
+      [class.pa-icon-on-right]="iconOnRight"
+      [for]="id">
+      <ng-content></ng-content>
+    </label>
+  </div>
 
-    <pa-icon *ngIf="!!icon"
-             [name]="icon"
-             [class.pa-icon-on-right]="iconOnRight"
-             class="pa-field-icon"></pa-icon>
+  <pa-icon
+    *ngIf="!!icon"
+    [name]="icon"
+    [class.pa-icon-on-right]="iconOnRight"
+    class="pa-field-icon"></pa-icon>
 
-    <pa-form-field-hint
-        [id]="describedById"
-        [help]="help"
-        [errors]="control.errors"
-        [showErrors]="control.dirty"
-        [showAllErrors]="showAllErrors"
-        [errorMessages]="errorMessages"
-    ></pa-form-field-hint>
+  <pa-form-field-hint
+    [id]="describedById"
+    [help]="help"
+    [errors]="control.errors"
+    [showErrors]="control.dirty"
+    [showAllErrors]="showAllErrors"
+    [errorMessages]="errorMessages"></pa-form-field-hint>
 </div>

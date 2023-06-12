@@ -15,16 +15,16 @@ import { PaTranslateModule } from '../translate';
 const COMPONENTS = [DropdownComponent, OptionHeaderComponent, OptionComponent, SeparatorComponent];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        PaIconModule,
-        PaPopupModule,
-        PaFocusableModule,
-        PaAvatarModule,
-        PaTooltipModule,
-        PaTranslateModule,
-    ],
-    declarations: COMPONENTS,
-    exports: COMPONENTS,
+  imports: [
+    CommonModule,
+    PaIconModule,
+    PaPopupModule,
+    PaFocusableModule,
+    PaAvatarModule,
+    PaTooltipModule,
+    PaTranslateModule,
+  ],
+  declarations: COMPONENTS,
+  exports: COMPONENTS,
 })
 export class PaDropdownModule {}

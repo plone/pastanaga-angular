@@ -1,11 +1,15 @@
-<div class="pa-table-grid" [style.grid-template-columns]="!noAutoColumnStyle ? columnsStyle : ''">
-    <div *ngIf="!noHeader" class="pa-table-grid--head">
-        <div class="pa-table-grid--row">
-            <ng-content select="pa-table-sortable-header"></ng-content>
-            <ng-content select="pa-table-header"></ng-content>
-        </div>
+<div
+  class="pa-table-grid"
+  [style.grid-template-columns]="!noAutoColumnStyle ? columnsStyle : ''">
+  <div
+    *ngIf="!noHeader"
+    class="pa-table-grid--head">
+    <div class="pa-table-grid--row">
+      <ng-content select="pa-table-sortable-header"></ng-content>
+      <ng-content select="pa-table-header"></ng-content>
     </div>
-    <div class="pa-table-grid--body">
-        <ng-content></ng-content>
-    </div>
+  </div>
+  <div class="pa-table-grid--body">
+    <ng-content></ng-content>
+  </div>
 </div>

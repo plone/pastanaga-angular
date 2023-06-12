@@ -1,72 +1,77 @@
-<div class="pa-field pa-select"
-     [style.--label-width]="labelWidth">
-    <div class="pa-field-container"
-         [class.no-internal-label]="noLabel"
-         [class.pa-dim]="dim"
-         [class.pa-focus]="isOpened || mouseDown"
-         [class.pa-content]="hasContent"
-         [class.pa-readonly]="readonly"
-         [class.pa-disabled]="control.disabled"
-         [class.pa-field-error]="control.dirty && control.invalid">
-        <input #selectInput
-             class="pa-field-control"
-             tabindex="0"
-             cdkMonitorElementFocus
-             sameWidth
-             [class.pa-field-control-filled]="hasValue || isOpened"
-             [class.read-only]="readonly"
-             [class.disabled]="control.disabled"
-             [class.expanded]="isOpened"
-             [readonly]="readonly"
-             [id]="id"
-             [attr.name]="name"
-             [attr.aria-label]="label"
-             [attr.aria-describedby]="describedById"
-             [paPopup]="optionsDropdown"
-             [popupVerticalOffset]="0"
-             [popupDisabled]="control.disabled || readonly"
-             [value]="displayedValue || ''"
-             (keyup)="filterOptions()"
-             (mousedown)="onMouseDown()"
-             (mouseup)="onMouseUp()"
-             (blur)="onBlur()"
-             (cdkFocusChange)="onControlFocused($event)">
+<div
+  class="pa-field pa-select"
+  [style.--label-width]="labelWidth">
+  <div
+    class="pa-field-container"
+    [class.no-internal-label]="noLabel"
+    [class.pa-dim]="dim"
+    [class.pa-focus]="isOpened || mouseDown"
+    [class.pa-content]="hasContent"
+    [class.pa-readonly]="readonly"
+    [class.pa-disabled]="control.disabled"
+    [class.pa-field-error]="control.dirty && control.invalid">
+    <input
+      #selectInput
+      class="pa-field-control"
+      tabindex="0"
+      cdkMonitorElementFocus
+      sameWidth
+      [class.pa-field-control-filled]="hasValue || isOpened"
+      [class.read-only]="readonly"
+      [class.disabled]="control.disabled"
+      [class.expanded]="isOpened"
+      [readonly]="readonly"
+      [id]="id"
+      [attr.name]="name"
+      [attr.aria-label]="label"
+      [attr.aria-describedby]="describedById"
+      [paPopup]="optionsDropdown"
+      [popupVerticalOffset]="0"
+      [popupDisabled]="control.disabled || readonly"
+      [value]="displayedValue || ''"
+      (keyup)="filterOptions()"
+      (mousedown)="onMouseDown()"
+      (mouseup)="onMouseUp()"
+      (blur)="onBlur()"
+      (cdkFocusChange)="onControlFocused($event)" />
 
-        <label class="pa-field-label"
-               [class.pa-sr-only]="dim && (hasValue || isOpened)"
-               [for]="id">{{label}}</label>
+    <label
+      class="pa-field-label"
+      [class.pa-sr-only]="dim && (hasValue || isOpened)"
+      [for]="id">
+      {{ label }}
+    </label>
 
-        <pa-icon class="pa-select-chevron"
-                 name="chevron-down"
-                 [class.opened]="isOpened"
-                 (click)="toggleDropdown()"></pa-icon>
-    </div>
+    <pa-icon
+      class="pa-select-chevron"
+      name="chevron-down"
+      [class.opened]="isOpened"
+      (click)="toggleDropdown()"></pa-icon>
+  </div>
 
-    <pa-form-field-hint
-        [id]="describedById"
-        [help]="help"
-        [errors]="control.errors"
-        [showErrors]="control.dirty"
-        [showAllErrors]="showAllErrors"
-        [errorMessages]="errorMessages"
-    ></pa-form-field-hint>
+  <pa-form-field-hint
+    [id]="describedById"
+    [help]="help"
+    [errors]="control.errors"
+    [showErrors]="control.dirty"
+    [showAllErrors]="showAllErrors"
+    [errorMessages]="errorMessages"></pa-form-field-hint>
 
-    <pa-dropdown #optionsDropdown
-                 role="listbox"
-                 [adjustHeight]="adjustHeight"
-                 [companionElement]="selectInput"
-                 (onClose)="dropDownClosed()"
-                 (onOpen)="dropDownOpened()">
+  <pa-dropdown
+    #optionsDropdown
+    role="listbox"
+    [adjustHeight]="adjustHeight"
+    [companionElement]="selectInput"
+    (onClose)="dropDownClosed()"
+    (onOpen)="dropDownOpened()">
+    <ng-container *ngIf="dropdownOptions.length; else contentOptions">
+      <pa-select-options
+        [options]="dropdownOptions"
+        (optionSelected)="selectOption($event)"></pa-select-options>
+    </ng-container>
 
-        <ng-container *ngIf="dropdownOptions.length; else contentOptions">
-            <pa-select-options [options]="dropdownOptions"
-                               (optionSelected)="selectOption($event)"
-            ></pa-select-options>
-        </ng-container>
-
-        <ng-template #contentOptions>
-            <ng-content></ng-content>
-        </ng-template>
-    </pa-dropdown>
+    <ng-template #contentOptions>
+      <ng-content></ng-content>
+    </ng-template>
+  </pa-dropdown>
 </div>
-

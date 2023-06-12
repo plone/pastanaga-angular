@@ -1,78 +1,128 @@
 <pa-demo-page>
-    <pa-demo-title>Textarea</pa-demo-title>
-    <pa-demo-description>
-        <p><code>pa-textarea</code> wraps an html <code>textarea</code> element and apply pastanaga's form field style.
-        </p>
-        <p>As other pastanaga's form fields, <code>pa-textarea</code> supports 4 modes internally:
-            <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and <strong>formControlName</strong>,
-            in order to be used in various context.</p>
-        <p><code>pa-textarea</code> also supports internal and external validation (required and maxlength).</p>
-        <p><code>pa-textarea</code> elements will automatically resize by default, but this behavior can be disabled by
-            setting <code>resizable</code> property to <code>false</code>.</p>
-    </pa-demo-description>
+  <pa-demo-title>Textarea</pa-demo-title>
+  <pa-demo-description>
+    <p>
+      <code>pa-textarea</code>
+      wraps an html
+      <code>textarea</code>
+      element and apply pastanaga's form field style.
+    </p>
+    <p>
+      As other pastanaga's form fields,
+      <code>pa-textarea</code>
+      supports 4 modes internally:
+      <strong>standalone</strong>
+      ,
+      <strong>model</strong>
+      ,
+      <strong>formControl</strong>
+      and
+      <strong>formControlName</strong>
+      , in order to be used in various context.
+    </p>
+    <p>
+      <code>pa-textarea</code>
+      also supports internal and external validation (required and maxlength).
+    </p>
+    <p>
+      <code>pa-textarea</code>
+      elements will automatically resize by default, but this behavior can be disabled by setting
+      <code>resizable</code>
+      property to
+      <code>false</code>
+      .
+    </p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <p><strong>Error state: type a character and delete it.</strong></p>
-        <pa-textarea [(ngModel)]="model"
-                     name="inputExample"
-                     required
-                     placeholder="Placeholder"
-                     help="Display the error state by typing something and deleting it"
-                     [errorMessages]="{required: 'Error message: required'}">Required input
-        </pa-textarea>
+  <pa-demo-examples>
+    <p><strong>Error state: type a character and delete it.</strong></p>
+    <pa-textarea
+      [(ngModel)]="model"
+      name="inputExample"
+      required
+      placeholder="Placeholder"
+      help="Display the error state by typing something and deleting it"
+      [errorMessages]="{ required: 'Error message: required' }">
+      Required input
+    </pa-textarea>
 
-        <pa-tabs>
-            <pa-tab (click)="selectedTab = 'standalone'"
-                    [active]="selectedTab === 'standalone'">Standalone
-            </pa-tab>
-            <pa-tab (click)="selectedTab = 'ngModel'"
-                    [active]="selectedTab === 'ngModel'">NgModel
-            </pa-tab>
-            <pa-tab (click)="selectedTab = 'formControl'"
-                    [active]="selectedTab === 'formControl'">Form Control
-            </pa-tab>
-            <pa-tab (click)="selectedTab = 'formControlName'"
-                    [active]="selectedTab === 'formControlName'">Form Control Name
-            </pa-tab>
-        </pa-tabs>
-        <pa-demo-textarea-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-textarea-standalone-example>
-        <pa-demo-textarea-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-textarea-ng-model-example>
-        <pa-demo-textarea-form-control-example
-            *ngIf="selectedTab === 'formControl'"></pa-demo-textarea-form-control-example>
-        <pa-demo-textarea-form-group-example
-            *ngIf="selectedTab === 'formControlName'"></pa-demo-textarea-form-group-example>
+    <pa-tabs>
+      <pa-tab
+        (click)="selectedTab = 'standalone'"
+        [active]="selectedTab === 'standalone'">
+        Standalone
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'ngModel'"
+        [active]="selectedTab === 'ngModel'">
+        NgModel
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControl'"
+        [active]="selectedTab === 'formControl'">
+        Form Control
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControlName'"
+        [active]="selectedTab === 'formControlName'">
+        Form Control Name
+      </pa-tab>
+    </pa-tabs>
+    <pa-demo-textarea-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-textarea-standalone-example>
+    <pa-demo-textarea-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-textarea-ng-model-example>
+    <pa-demo-textarea-form-control-example
+      *ngIf="selectedTab === 'formControl'"></pa-demo-textarea-form-control-example>
+    <pa-demo-textarea-form-group-example
+      *ngIf="selectedTab === 'formControlName'"></pa-demo-textarea-form-group-example>
+  </pa-demo-examples>
 
-    </pa-demo-examples>
+  <pa-demo-usage>
+    <pa-demo-native-text-field-usage></pa-demo-native-text-field-usage>
 
-    <pa-demo-usage>
-        <pa-demo-native-text-field-usage></pa-demo-native-text-field-usage>
+    <br />
 
-        <br>
+    <h2>
+      Specific to
+      <code>TextareaComponent</code>
+    </h2>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>autoHeight</dt>
+      <dd>
+        allow textarea to expand with user entries or according to currentValue: boolean
+        <small>(default: false)</small>
+      </dd>
 
-        <h2>Specific to <code>TextareaComponent</code></h2>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>autoHeight</dt>
-            <dd>allow textarea to expand with user entries or according to currentValue: boolean <small>(default:
-                false)</small></dd>
+      <dt>resizable</dt>
+      <dd>
+        boolean allowing user to resize the textarea
+        <small>(default: true)</small>
+      </dd>
 
-            <dt>resizable</dt>
-            <dd>boolean allowing user to resize the textarea <small>(default: true)</small></dd>
+      <dt>rows</dt>
+      <dd>
+        number of rows displayed in the textarea
+        <small>(default: 1)</small>
+      </dd>
 
-            <dt>rows</dt>
-            <dd>number of rows displayed in the textarea <small>(default: 1)</small></dd>
+      <dt>maxRows</dt>
+      <dd>
+        max number of rows when used in combination with autoHeight. Not used when a
+        <code>maxHeight</code>
+        is defined
+        <small>(optional)</small>
+      </dd>
 
-            <dt>maxRows</dt>
-            <dd>max number of rows when used in combination with autoHeight. Not used when a <code>maxHeight</code> is
-                defined <small>(optional)</small></dd>
+      <dt>maxHeight</dt>
+      <dd>
+        number of pixels defining the maxHeight of the textarea
+        <small>(optional)</small>
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-            <dt>maxHeight</dt>
-            <dd>number of pixels defining the maxHeight of the textarea <small>(optional)</small></dd>
-        </dl>
-    </pa-demo-usage>
-
-    <pa-demo-code>
-        <h3>ngModel template driven</h3>
-        <pre><code>{{htmlExample}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <h3>ngModel template driven</h3>
+    <pre><code>{{htmlExample}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

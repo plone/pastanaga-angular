@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    templateUrl: 'date-picker-page.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: 'date-picker-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerPageComponent {
-    prefilledDate = new Date().toISOString();
-    selectedTab: 'standalone' | 'ngModel' | 'formControl' | 'formControlName' = 'standalone';
+  prefilledDate = new Date().toISOString();
+  selectedTab: 'standalone' | 'ngModel' | 'formControl' | 'formControlName' = 'standalone';
 
-    standaloneBasicCode = `<pa-date-picker [value]="value" (valueChange)="doSomething($event)"></pa-date-picker>`;
-    standaloneFullCode = `<pa-date-picker
+  standaloneBasicCode = `<pa-date-picker [value]="value" (valueChange)="doSomething($event)"></pa-date-picker>`;
+  standaloneFullCode = `<pa-date-picker
     [value]="value"
 
     [id]="id"
@@ -23,8 +23,8 @@ export class DatePickerPageComponent {
     (statusChange)="statusChange = $event"
 ></pa-date-picker>`;
 
-    ngModelBasicCode = `<pa-date-picker [(ngModel)]="value" (ngModelChange)="onModelChange()"></pa-date-picker>`;
-    ngModelFullCode = `<pa-date-picker
+  ngModelBasicCode = `<pa-date-picker [(ngModel)]="value" (ngModelChange)="onModelChange()"></pa-date-picker>`;
+  ngModelFullCode = `<pa-date-picker
     [(ngModel)]="value"
 
     [id]="id"
@@ -38,15 +38,15 @@ export class DatePickerPageComponent {
     (ngModelChange)="onModelChange()"
 ></pa-date-picker>`;
 
-    formControlBasicCode = `<pa-date-picker [formControl]="formControl"></pa-date-picker>`;
+  formControlBasicCode = `<pa-date-picker [formControl]="formControl"></pa-date-picker>`;
 
-    formControlValidationCodeTs = `formControl = new FormControl(null, [customValidator, Validators.email])`;
-    formControlValidationCodeHtml = `<pa-input
+  formControlValidationCodeTs = `formControl = new FormControl(null, [customValidator, Validators.email])`;
+  formControlValidationCodeHtml = `<pa-input
     type="email"
     [formControl]="formControl"
 ></pa-input>`;
 
-    formControlFullCode = `<pa-date-picker
+  formControlFullCode = `<pa-date-picker
     [formControl]="formControl"
 
     [id]="id"
@@ -58,11 +58,11 @@ export class DatePickerPageComponent {
     (valueChange)="valueChange = $event"
 ></pa-date-picker>`;
 
-    formControlNameBasicCode = `<form [formGroup]="formGroup">
+  formControlNameBasicCode = `<form [formGroup]="formGroup">
     <pa-date-picker formControlName="text"></pa-date-picker>
 </form>`;
 
-    formControlNameFullCode = `<form [formGroup]="formGroup">
+  formControlNameFullCode = `<form [formGroup]="formGroup">
     <pa-date-picker
         formControlName="text"
         [id]="id"

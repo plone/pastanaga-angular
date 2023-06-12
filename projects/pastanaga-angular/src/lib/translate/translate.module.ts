@@ -9,22 +9,22 @@ import { PA_TRANSLATIONS } from './translate.service';
 const _TRANSLATIONS: Translation = {};
 
 @NgModule({
-    imports: [CommonModule],
-    exports: [TranslatePipe, TranslateDirective],
-    declarations: [TranslatePipe, TranslateDirective],
-    providers: [TranslatePipe],
+  imports: [CommonModule],
+  exports: [TranslatePipe, TranslateDirective],
+  declarations: [TranslatePipe, TranslateDirective],
+  providers: [TranslatePipe],
 })
 export class PaTranslateModule {
-    static addTranslations(newTranslations: Translation[]): ModuleWithProviders<PaTranslateModule> {
-        mergeTranslations(_TRANSLATIONS, newTranslations);
-        return {
-            ngModule: PaTranslateModule,
-            providers: [
-                {
-                    provide: PA_TRANSLATIONS,
-                    useFactory: () => _TRANSLATIONS,
-                },
-            ],
-        };
-    }
+  static addTranslations(newTranslations: Translation[]): ModuleWithProviders<PaTranslateModule> {
+    mergeTranslations(_TRANSLATIONS, newTranslations);
+    return {
+      ngModule: PaTranslateModule,
+      providers: [
+        {
+          provide: PA_TRANSLATIONS,
+          useFactory: () => _TRANSLATIONS,
+        },
+      ],
+    };
+  }
 }

@@ -1,119 +1,206 @@
 <pa-demo-page>
-    <pa-demo-title>Checkboxes</pa-demo-title>
+  <pa-demo-title>Checkboxes</pa-demo-title>
 
-    <pa-demo-description>
-        <p><code>pa-checkbox</code> wraps an <code>input</code> element of type <code>checkbox</code> and applies pastanaga's form field style.</p>
-        <p>As other pastanaga's form fields, <code>pa-checkbox</code> supports 4 modes internally: <strong>standalone</strong>, <strong>model</strong>, <strong>formControl</strong> and <strong>formControlName</strong>, in order to be used in various context.</p>
-        <p><code>pa-checkbox</code> uses <code>pa-form-field-hint</code> to display help and error messages.</p>
-        <p><strong>Important note: </strong> <code>readonly</code> is not applicable to input of type checkbox so the input inherited from <code>PaFormControlDirective</code> will have no effect.</p>
-    </pa-demo-description>
+  <pa-demo-description>
+    <p>
+      <code>pa-checkbox</code>
+      wraps an
+      <code>input</code>
+      element of type
+      <code>checkbox</code>
+      and applies pastanaga's form field style.
+    </p>
+    <p>
+      As other pastanaga's form fields,
+      <code>pa-checkbox</code>
+      supports 4 modes internally:
+      <strong>standalone</strong>
+      ,
+      <strong>model</strong>
+      ,
+      <strong>formControl</strong>
+      and
+      <strong>formControlName</strong>
+      , in order to be used in various context.
+    </p>
+    <p>
+      <code>pa-checkbox</code>
+      uses
+      <code>pa-form-field-hint</code>
+      to display help and error messages.
+    </p>
+    <p>
+      <strong>Important note:</strong>
+      <code>readonly</code>
+      is not applicable to input of type checkbox so the input inherited from
+      <code>PaFormControlDirective</code>
+      will have no effect.
+    </p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <p>By default, checkbox labels are displayed on one line, with an ellipsis if needed:</p>
-        <pa-checkbox>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque. Nulla pellentesque dignissim enim sit.</pa-checkbox>
+  <pa-demo-examples>
+    <p>By default, checkbox labels are displayed on one line, with an ellipsis if needed:</p>
+    <pa-checkbox>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque. Nulla pellentesque dignissim enim sit.
+    </pa-checkbox>
 
-        <p><code>noEllipsis</code> option allows to display the full label and wrap it on several lines if needed:</p>
-        <pa-checkbox noEllipsis>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque. Nulla pellentesque dignissim enim sit.</pa-checkbox>
+    <p>
+      <code>noEllipsis</code>
+      option allows to display the full label and wrap it on several lines if needed:
+    </p>
+    <pa-checkbox noEllipsis>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque. Nulla pellentesque dignissim enim sit.
+    </pa-checkbox>
 
-        <pa-tabs>
-            <pa-tab (click)="selectedTab = 'standalone'" [active]="selectedTab === 'standalone'">Standalone</pa-tab>
-            <pa-tab (click)="selectedTab = 'ngModel'" [active]="selectedTab === 'ngModel'">NgModel</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControl'" [active]="selectedTab === 'formControl'">Form Control</pa-tab>
-            <pa-tab (click)="selectedTab = 'formControlName'" [active]="selectedTab === 'formControlName'">Form Control Name</pa-tab>
-        </pa-tabs>
-        <div *ngIf="selectedTab === 'standalone'">
-            <div>
-                <pa-checkbox [value]="value"
-                             [disabled]="disabled"
-                             [errorMessages]="errorMessages"
-                             (valueChange)=" standaloneValueChange = $event"
-                             (statusChange)="standaloneStatusChange = $event"
-                >Standalone checkbox label</pa-checkbox>
-            </div>
-            <ul>
-                <li>value changed : {{standaloneValueChange}}</li>
-                <li>status changed : {{standaloneStatusChange}}</li>
-            </ul>
-
+    <pa-tabs>
+      <pa-tab
+        (click)="selectedTab = 'standalone'"
+        [active]="selectedTab === 'standalone'">
+        Standalone
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'ngModel'"
+        [active]="selectedTab === 'ngModel'">
+        NgModel
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControl'"
+        [active]="selectedTab === 'formControl'">
+        Form Control
+      </pa-tab>
+      <pa-tab
+        (click)="selectedTab = 'formControlName'"
+        [active]="selectedTab === 'formControlName'">
+        Form Control Name
+      </pa-tab>
+    </pa-tabs>
+    <div *ngIf="selectedTab === 'standalone'">
+      <div>
+        <pa-checkbox
+          [value]="value"
+          [disabled]="disabled"
+          [errorMessages]="errorMessages"
+          (valueChange)="standaloneValueChange = $event"
+          (statusChange)="standaloneStatusChange = $event">
+          Standalone checkbox label
+        </pa-checkbox>
+      </div>
+      <ul>
+        <li>value changed : {{ standaloneValueChange }}</li>
+        <li>status changed : {{ standaloneStatusChange }}</li>
+      </ul>
+    </div>
+    <div *ngIf="selectedTab === 'ngModel'">
+      <div>
+        <pa-checkbox
+          [(ngModel)]="model"
+          [disabled]="disabled"
+          [errorMessages]="errorMessages"
+          (valueChange)="ngModelValueChange = $event"
+          (statusChange)="ngModelStatusChange = $event">
+          NgModel checkbox label
+        </pa-checkbox>
+      </div>
+      <ul>
+        <li>value changed : {{ ngModelValueChange }}</li>
+        <li>status changed : {{ ngModelStatusChange }}</li>
+      </ul>
+    </div>
+    <div *ngIf="selectedTab === 'formControl'">
+      <div>
+        <div>
+          <pa-checkbox
+            [formControl]="formControl"
+            [errorMessages]="errorMessages"
+            (valueChange)="formControlValueChange = $event"
+            (statusChange)="formControlStatusChange = $event">
+            FormControl checkbox label
+          </pa-checkbox>
         </div>
-        <div *ngIf="selectedTab === 'ngModel'">
-            <div>
-                <pa-checkbox [(ngModel)]="model"
-                             [disabled]="disabled"
-                             [errorMessages]="errorMessages"
-                             (valueChange)=" ngModelValueChange = $event"
-                             (statusChange)="ngModelStatusChange = $event"
-                >NgModel checkbox label</pa-checkbox>
-            </div>
-            <ul>
-                <li>value changed : {{ngModelValueChange}}</li>
-                <li>status changed : {{ngModelStatusChange}}</li>
-            </ul>
-
+        <ul>
+          <li>value changed : {{ formControlValueChange }}</li>
+          <li>status changed : {{ formControlStatusChange }}</li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="selectedTab === 'formControlName'">
+      <form [formGroup]="form">
+        <div>
+          <pa-checkbox
+            formControlName="checkbox"
+            [errorMessages]="errorMessages"
+            (valueChange)="formControlNameValueChange = $event"
+            (statusChange)="formControlNameStatusChange = $event">
+            FormControlName checkbox label
+          </pa-checkbox>
         </div>
-        <div *ngIf="selectedTab === 'formControl'">
-            <div>
-                <div>
-                    <pa-checkbox [formControl]="formControl"
-                                 [errorMessages]="errorMessages"
-                                 (valueChange)=" formControlValueChange = $event"
-                                 (statusChange)="formControlStatusChange = $event"
-                    >FormControl checkbox label</pa-checkbox>
-                </div>
-                <ul>
-                    <li>value changed : {{formControlValueChange}}</li>
-                    <li>status changed : {{formControlStatusChange}}</li>
-                </ul>
-            </div>
-        </div>
-        <div *ngIf="selectedTab === 'formControlName'">
-            <form [formGroup]="form">
-                <div>
-                    <pa-checkbox formControlName="checkbox"
-                                 [errorMessages]="errorMessages"
-                                 (valueChange)=" formControlNameValueChange = $event"
-                                 (statusChange)="formControlNameStatusChange = $event"
-                    >FormControlName checkbox label</pa-checkbox>
-                </div>
-            </form>
-            <ul>
-                <li>value changed : {{formControlNameValueChange}}</li>
-                <li>status changed : {{formControlNameStatusChange}}</li>
-                <li>form value : {{formGroupValueChange | json}}</li>
-                <li>form status : {{formGroupStatusChange}}</li>
-            </ul>
-        </div>
-    </pa-demo-examples>
+      </form>
+      <ul>
+        <li>value changed : {{ formControlNameValueChange }}</li>
+        <li>status changed : {{ formControlNameStatusChange }}</li>
+        <li>form value : {{ formGroupValueChange | json }}</li>
+        <li>form status : {{ formGroupStatusChange }}</li>
+      </ul>
+    </div>
+  </pa-demo-examples>
 
-    <pa-demo-configuration>
-        <div class="pa-demo-configuration-field">
-            <pa-checkbox [(ngModel)]="disabled" (ngModelChange)="disableForm()">{{disabled ? 'Enable' : 'Disable'}}</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field" *ngIf="selectedTab === 'formControlName' || selectedTab === 'formControl'">
-            <pa-checkbox [(ngModel)]="hasErrorMessage" (ngModelChange)="toggleErrorMessages()">{{hasErrorMessage ? 'remove error messages' : 'add error messages'}}</pa-checkbox>
-        </div>
-        <div class="pa-demo-configuration-field">
-            <pa-button [size]="'small'" (click)="toggleValue()">Toggle in parent component</pa-button>
-        </div>
-    </pa-demo-configuration>
+  <pa-demo-configuration>
+    <div class="pa-demo-configuration-field">
+      <pa-checkbox
+        [(ngModel)]="disabled"
+        (ngModelChange)="disableForm()">
+        {{ disabled ? 'Enable' : 'Disable' }}
+      </pa-checkbox>
+    </div>
+    <div
+      class="pa-demo-configuration-field"
+      *ngIf="selectedTab === 'formControlName' || selectedTab === 'formControl'">
+      <pa-checkbox
+        [(ngModel)]="hasErrorMessage"
+        (ngModelChange)="toggleErrorMessages()">
+        {{ hasErrorMessage ? 'remove error messages' : 'add error messages' }}
+      </pa-checkbox>
+    </div>
+    <div class="pa-demo-configuration-field">
+      <pa-button
+        [size]="'small'"
+        (click)="toggleValue()">
+        Toggle in parent component
+      </pa-button>
+    </div>
+  </pa-demo-configuration>
 
-    <pa-demo-usage>
-        <h3>Specific to <code>CheckboxComponent</code></h3>
-        <h4>Inputs</h4>
-        <dl>
-            <dt>errorMessages</dt>
-            <dd>Provides default messages to display for the possible error keys when none is present in the errors object. If a message (string) is provided for a given key, it
-                will be displayed rather than the message provided in errorMessages.</dd>
+  <pa-demo-usage>
+    <h3>
+      Specific to
+      <code>CheckboxComponent</code>
+    </h3>
+    <h4>Inputs</h4>
+    <dl>
+      <dt>errorMessages</dt>
+      <dd>
+        Provides default messages to display for the possible error keys when none is present in the errors object. If a
+        message (string) is provided for a given key, it will be displayed rather than the message provided in
+        errorMessages.
+      </dd>
 
-            <dt>noEllipsis</dt>
-            <dd>When true, display the full label and wrap it if needed. <small>(default: false)</small></dd>
-        </dl>
+      <dt>noEllipsis</dt>
+      <dd>
+        When true, display the full label and wrap it if needed.
+        <small>(default: false)</small>
+      </dd>
+    </dl>
 
-        <h3>Inherited from <code>PaFormControlDirective</code></h3>
-        <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
-    </pa-demo-usage>
+    <h3>
+      Inherited from
+      <code>PaFormControlDirective</code>
+    </h3>
+    <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        <pre><code>{{code}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    <pre><code>{{code}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

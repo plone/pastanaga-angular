@@ -1,10 +1,16 @@
-<li role="presentation" class="pa-tab-item" [class.active]="active">
-    <button class="pa-tabs-link"
-            role="tab"
-            paFocusable
-            [attr.aria-expanded]="active">
-        <span class="pa-tabs-link-wrapper" tabindex="-1">
-            <ng-content></ng-content>
-        </span>
-    </button>
+<li
+  role="presentation"
+  class="pa-tab-item"
+  [class.active]="active">
+  <button
+    class="pa-tabs-link"
+    role="tab"
+    paFocusable
+    [attr.aria-expanded]="active">
+    <span
+      class="pa-tabs-link-wrapper"
+      tabindex="-1">
+      <ng-content></ng-content>
+    </span>
+  </button>
 </li>

@@ -1,102 +1,124 @@
 <pa-demo-page>
-    <pa-demo-title>Containers</pa-demo-title>
-    <pa-demo-description>
-        <p>Atlas provides three type of container based layouts: Tight, Wide and Panel+Wide:</p>
-        <dl>
-            <dt>Tight</dt>
-            <dd>
-                This layout is meant to be used when there is an aesthetic and functional purpose or interest in keeping
-                the content into a tight centered area (<em>eg.</em> web application). This brings the attention and
-                focus of the user to this area and the big margins let design breath and brings simplicity and
-                sophistication.
-            </dd>
+  <pa-demo-title>Containers</pa-demo-title>
+  <pa-demo-description>
+    <p>Atlas provides three type of container based layouts: Tight, Wide and Panel+Wide:</p>
+    <dl>
+      <dt>Tight</dt>
+      <dd>
+        This layout is meant to be used when there is an aesthetic and functional purpose or interest in keeping the
+        content into a tight centered area (
+        <em>eg.</em>
+        web application). This brings the attention and focus of the user to this area and the big margins let design
+        breath and brings simplicity and sophistication.
+      </dd>
 
-            <dt>Wide</dt>
-            <dd>
-                This layout is meant to use as much space as possible, ideal for cases where we are interested in
-                leveraging most of the available space (<em>eg.</em> website). This layout is provided with margins
-                allowing to keep a generous "safe area" which ensures that the content has space to breath.
-            </dd>
+      <dt>Wide</dt>
+      <dd>
+        This layout is meant to use as much space as possible, ideal for cases where we are interested in leveraging
+        most of the available space (
+        <em>eg.</em>
+        website). This layout is provided with margins allowing to keep a generous "safe area" which ensures that the
+        content has space to breath.
+      </dd>
 
-            <dt>Panel+Wide</dt>
-            <dd>
-                This layout should be used when the design presents a side panel region that will come into view when
-                the viewport switches to large (1024px). The side panel takes a fixed width of 320px which will be
-                subtracted from the overall viewport width and will impact the Wide layout applied to the "main
-                container" (which will be taking the rest of the available space).
-            </dd>
+      <dt>Panel+Wide</dt>
+      <dd>
+        This layout should be used when the design presents a side panel region that will come into view when the
+        viewport switches to large (1024px). The side panel takes a fixed width of 320px which will be subtracted from
+        the overall viewport width and will impact the Wide layout applied to the "main container" (which will be taking
+        the rest of the available space).
+      </dd>
 
-            <dt>Dock+Wide</dt>
-            <dd>
-                This layout should be used when the design presents a dock region that will come into view when
-                the viewport switches to large (1024px). The dock takes a fixed width of 72px which will be
-                subtracted from the overall viewport width and will impact the Wide layout applied to the "main
-                container" (which will be taking the rest of the available space).
-            </dd>
-        </dl>
-        <p>They all share the same behavior for the small breakpoint.</p>
-    </pa-demo-description>
+      <dt>Dock+Wide</dt>
+      <dd>
+        This layout should be used when the design presents a dock region that will come into view when the viewport
+        switches to large (1024px). The dock takes a fixed width of 72px which will be subtracted from the overall
+        viewport width and will impact the Wide layout applied to the "main container" (which will be taking the rest of
+        the available space).
+      </dd>
+    </dl>
+    <p>They all share the same behavior for the small breakpoint.</p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        <pa-button kind="primary" (click)="demoVisible = !demoVisible">Show container layout demo</pa-button>
+  <pa-demo-examples>
+    <pa-button
+      kind="primary"
+      (click)="demoVisible = !demoVisible">
+      Show container layout demo
+    </pa-button>
 
-        <pa-demo-container-demo [hidden]="!demoVisible" (back)="demoVisible = false"></pa-demo-container-demo>
-    </pa-demo-examples>
+    <pa-demo-container-demo
+      [hidden]="!demoVisible"
+      (back)="demoVisible = false"></pa-demo-container-demo>
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <h3>Tight</h3>
-        <p>
-            Tight layout is done by creating a <code>div</code> with the class <code>.pa-main-container-tight</code>.
-            This div is meant to be the main container of a view.
-        </p>
+  <pa-demo-usage>
+    <h3>Tight</h3>
+    <p>
+      Tight layout is done by creating a
+      <code>div</code>
+      with the class
+      <code>.pa-main-container-tight</code>
+      . This div is meant to be the main container of a view.
+    </p>
 
-        <p>
-            The tight main container might be still too large for some pages purpose, when the page contains a form for
-            example. In such case, we can use the class <code>.pa-child-container-compact</code> which adds a
-            <code>max-width</code>
-            and an auto-margin on the <code>div</code>.
-        </p>
-        <pa-demo-code>
-            <pre><code>{{compactExample}}</code></pre>
-        </pa-demo-code>
-        <p>
-            As the tight compact container is usually used to render forms, it provides a fixed-positioned footer where
-            we can put some buttons. The footer must use the class <code>.pa-fixed-footer-compact</code>. To make sure
-            the content bottom is not hidden, we have to use the
-            <code>.pa-content-with-fixed-footer</code>
-        </p>
-        <pa-demo-code>
-            <pre><code>{{compactWithFooterExample}}</code></pre>
-        </pa-demo-code>
+    <p>
+      The tight main container might be still too large for some pages purpose, when the page contains a form for
+      example. In such case, we can use the class
+      <code>.pa-child-container-compact</code>
+      which adds a
+      <code>max-width</code>
+      and an auto-margin on the
+      <code>div</code>
+      .
+    </p>
+    <pa-demo-code>
+      <pre><code>{{compactExample}}</code></pre>
+    </pa-demo-code>
+    <p>
+      As the tight compact container is usually used to render forms, it provides a fixed-positioned footer where we can
+      put some buttons. The footer must use the class
+      <code>.pa-fixed-footer-compact</code>
+      . To make sure the content bottom is not hidden, we have to use the
+      <code>.pa-content-with-fixed-footer</code>
+    </p>
+    <pa-demo-code>
+      <pre><code>{{compactWithFooterExample}}</code></pre>
+    </pa-demo-code>
 
-        <h3>Wide</h3>
-        <p>
-            Wide layout is done by creating a <code>div</code> with the class <code>pa-main-container-wide</code>. This
-            div is meant to be the main container of a view.
-        </p>
-        <pa-demo-code>
-            <pre><code>{{wideExample}}</code></pre>
-        </pa-demo-code>
+    <h3>Wide</h3>
+    <p>
+      Wide layout is done by creating a
+      <code>div</code>
+      with the class
+      <code>pa-main-container-wide</code>
+      . This div is meant to be the main container of a view.
+    </p>
+    <pa-demo-code>
+      <pre><code>{{wideExample}}</code></pre>
+    </pa-demo-code>
 
-        <h3>Panel+Wide</h3>
-        <p>Panel+Wide layout is done by creating the following DOM structure:</p>
-        <pa-demo-code>
-            <pre><code>{{panelExample}}</code></pre>
-        </pa-demo-code>
+    <h3>Panel+Wide</h3>
+    <p>Panel+Wide layout is done by creating the following DOM structure:</p>
+    <pa-demo-code>
+      <pre><code>{{panelExample}}</code></pre>
+    </pa-demo-code>
 
-        <p>
-            When side panel should be displayed on the right of the screen, add <code>pa-side-on-right</code> class on
-            <code>pa-main-container-wide</code> div:
-        </p>
-        <pa-demo-code>
-            <pre><code>{{rightPanelExample}}</code></pre>
-        </pa-demo-code>
+    <p>
+      When side panel should be displayed on the right of the screen, add
+      <code>pa-side-on-right</code>
+      class on
+      <code>pa-main-container-wide</code>
+      div:
+    </p>
+    <pa-demo-code>
+      <pre><code>{{rightPanelExample}}</code></pre>
+    </pa-demo-code>
 
-
-        <h3>Dock+Wide</h3>
-        <p>Dock+Wide layout is done by creating the following DOM structure:</p>
-        <pa-demo-code>
-            <pre><code>{{dockExample}}</code></pre>
-        </pa-demo-code>
-    </pa-demo-usage>
+    <h3>Dock+Wide</h3>
+    <p>Dock+Wide layout is done by creating the following DOM structure:</p>
+    <pa-demo-code>
+      <pre><code>{{dockExample}}</code></pre>
+    </pa-demo-code>
+  </pa-demo-usage>
 </pa-demo-page>

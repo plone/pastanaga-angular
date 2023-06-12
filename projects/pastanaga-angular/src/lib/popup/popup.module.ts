@@ -6,8 +6,8 @@ import { PopoverComponent } from './popover/popover.component';
 import { ExtendedPopupDirective, PopoverDirective } from './popover/popover.directive';
 
 @NgModule({
-    imports: [CommonModule],
-    exports: [PopupComponent, PopupDirective, PopoverComponent, PopoverDirective, ExtendedPopupDirective],
-    declarations: [PopupComponent, PopupDirective, PopoverComponent, PopoverDirective, ExtendedPopupDirective],
+  imports: [CommonModule],
+  exports: [PopupComponent, PopupDirective, PopoverComponent, PopoverDirective, ExtendedPopupDirective],
+  declarations: [PopupComponent, PopupDirective, PopoverComponent, PopoverDirective, ExtendedPopupDirective],
 })
 export class PaPopupModule {}

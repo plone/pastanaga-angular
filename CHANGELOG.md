@@ -1,3 +1,15 @@
+# 2.62.0 (2023-06-09)
+
+### Breaking changes
+- Upgrade to angular 16
+- Update tests tooling accordingly: 
+  - upgrade @angular-builders/jest to v16
+  - upgrade Jest to v29
+  - upgrade jest-preset-angular to v13.1
+  - upgrade @ngneat/spectator to v15
+  - upgrade ng-mocks to v 14.10
+- Update Prettier configuration for better standards
+
 # 2.61.12 (2023-06-09)
 
 ### Bugfix

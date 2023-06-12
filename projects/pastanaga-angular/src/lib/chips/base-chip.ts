@@ -5,22 +5,22 @@ import { IconModel } from '../icon';
 
 @Directive()
 export class BaseChip {
-    @Input() avatar?: AvatarModel;
-    @Input() icon?: IconModel;
+  @Input() avatar?: AvatarModel;
+  @Input() icon?: IconModel;
 
-    @Input() ariaRole = 'listitem';
+  @Input() ariaRole = 'listitem';
 
-    @Input() value?: any;
+  @Input() value?: any;
 
-    @Input() backgroundColor?: string;
-    @Input() textColor?: string;
-    @Input() borderColor?: string;
+  @Input() backgroundColor?: string;
+  @Input() textColor?: string;
+  @Input() borderColor?: string;
 
-    @Input() set disabled(value: any) {
-        this._disabled = coerceBooleanProperty(value);
-    }
-    get disabled() {
-        return this._disabled;
-    }
-    private _disabled = false;
+  @Input() set disabled(value: any) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  get disabled() {
+    return this._disabled;
+  }
+  private _disabled = false;
 }

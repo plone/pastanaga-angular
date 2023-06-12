@@ -10,19 +10,17 @@ import { DEMO_LA } from '../assets';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-    declarations: [AppComponent, WelcomePageComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        AngularSvgIconModule.forRoot(),
-        PaDemoModule,
-        PaButtonModule,
-        PaSideNavModule,
-        PaTranslateModule.addTranslations([{ en_US: I18N_EN }, {latin: DEMO_LA}]),
-    ],
-    providers: [
-        { provide: PA_LANG, useValue: 'en_US' },
-    ],
-    bootstrap: [AppComponent],
+  declarations: [AppComponent, WelcomePageComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularSvgIconModule.forRoot(),
+    PaDemoModule,
+    PaButtonModule,
+    PaSideNavModule,
+    PaTranslateModule.addTranslations([{ en_US: I18N_EN }, { latin: DEMO_LA }]),
+  ],
+  providers: [{ provide: PA_LANG, useValue: 'en_US' }],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

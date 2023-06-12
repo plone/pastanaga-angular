@@ -1,59 +1,83 @@
 <pa-demo-page>
-    <pa-demo-title>Sidenav</pa-demo-title>
+  <pa-demo-title>Sidenav</pa-demo-title>
 
-    <pa-demo-description>
-        <p><code>pa-side-nav</code> component allows to add a side navigation to your app.</p>
-        <p>The side navigation is always visible on desktop, while it is hidden and displayed only on user action such as clicking on a menu button on mobile and tablet.</p>
-    </pa-demo-description>
+  <pa-demo-description>
+    <p>
+      <code>pa-side-nav</code>
+      component allows to add a side navigation to your app.
+    </p>
+    <p>
+      The side navigation is always visible on desktop, while it is hidden and displayed only on user action such as
+      clicking on a menu button on mobile and tablet.
+    </p>
+  </pa-demo-description>
 
-    <pa-demo-examples>
-        The side navigation of Pastanaga's documentation is build using a sidenav component.
-    </pa-demo-examples>
+  <pa-demo-examples>
+    The side navigation of Pastanaga's documentation is build using a sidenav component.
+  </pa-demo-examples>
 
-    <pa-demo-usage>
-        <h3>Inputs</h3>
-        <dl>
-            <dt>mode</dt>
-            <dd>Viewport mode: mobile | tablet | desktop</dd>
+  <pa-demo-usage>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>mode</dt>
+      <dd>Viewport mode: mobile | tablet | desktop</dd>
 
-            <dt>visible</dt>
-            <dd>Manage the visibility of the component on mobile and tablet. <small>Ignored in desktop.</small></dd>
-        </dl>
+      <dt>visible</dt>
+      <dd>
+        Manage the visibility of the component on mobile and tablet.
+        <small>Ignored in desktop.</small>
+      </dd>
+    </dl>
 
-        <h3>Outputs</h3>
-        <dl>
-            <dt>close</dt>
-            <dd>Event emitted when triggering the closing of the side nav on mobile and tablet.</dd>
-        </dl>
+    <h3>Outputs</h3>
+    <dl>
+      <dt>close</dt>
+      <dd>Event emitted when triggering the closing of the side nav on mobile and tablet.</dd>
+    </dl>
 
-        <h3>Directives</h3>
+    <h3>Directives</h3>
 
-        <h4>Header</h4>
-        <p>By default, the sidenav displays only a close button on mobile/tablet.</p>
-        <p>You can provide your own header by using <code>pa-side-nav-header</code> directive.
-            When doing so, make sure to include a close button if you want one (it's always possible to close the sidenav by clicking on the overlay though)</p>
+    <h4>Header</h4>
+    <p>By default, the sidenav displays only a close button on mobile/tablet.</p>
+    <p>
+      You can provide your own header by using
+      <code>pa-side-nav-header</code>
+      directive. When doing so, make sure to include a close button if you want one (it's always possible to close the
+      sidenav by clicking on the overlay though)
+    </p>
 
-        <h4>Content</h4>
-        <p>All the content of a sidenav must be wrapped into <code>pa-side-nav-content</code> directive.</p>
-        <p>When the content is a list of navigation items, you can use <code>pa-side-nav-item</code> wrapped into an `ul`.</p>
+    <h4>Content</h4>
+    <p>
+      All the content of a sidenav must be wrapped into
+      <code>pa-side-nav-content</code>
+      directive.
+    </p>
+    <p>
+      When the content is a list of navigation items, you can use
+      <code>pa-side-nav-item</code>
+      wrapped into an `ul`.
+    </p>
 
-        <h5>SideNavItem inputs</h5>
-        <dl>
-            <dt>active</dt>
-            <dd>If true, active styles will be applied.</dd>
-            <dt>header</dt>
-            <dd>If true, the label will be displayed within a <code>h2</code> tag.</dd>
-            <dt>label</dt>
-            <dd>Label displayed</dd>
-        </dl>
-    </pa-demo-usage>
+    <h5>SideNavItem inputs</h5>
+    <dl>
+      <dt>active</dt>
+      <dd>If true, active styles will be applied.</dd>
+      <dt>header</dt>
+      <dd>
+        If true, the label will be displayed within a
+        <code>h2</code>
+        tag.
+      </dd>
+      <dt>label</dt>
+      <dd>Label displayed</dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        Custom header example, including a custom closing button:
-        <pre><code>{{customHeaderExample}}</code></pre>
+  <pa-demo-code>
+    Custom header example, including a custom closing button:
+    <pre><code>{{customHeaderExample}}</code></pre>
 
-        Sidenav content example, including a list of sidenav items:
-        <pre><code>{{codeExample}}</code></pre>
-    </pa-demo-code>
+    Sidenav content example, including a list of sidenav items:
+    <pre><code>{{codeExample}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>
-

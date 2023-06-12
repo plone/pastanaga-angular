@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    templateUrl: 'tabs-page.component.html',
-    styleUrls: ['./tabs-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: 'tabs-page.component.html',
+  styleUrls: ['./tabs-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsPageComponent {
-    selectedTab = 'info';
-    fullWidth = true;
-    slider = true;
+  selectedTab = 'info';
+  fullWidth = true;
+  slider = true;
 
-    codeExample = `
+  codeExample = `
 <pa-tabs>
     <pa-tab (click)="selectedTab = 'info'"
             [active]="selectedTab === 'info'">Info</pa-tab>

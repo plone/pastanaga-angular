@@ -6,7 +6,7 @@ import { PaIconModule } from '../icon';
 import { PaTranslateModule } from '../translate';
 
 @NgModule({
-    declarations: [ToastComponent],
-    imports: [CommonModule, PaButtonModule, PaIconModule, PaTranslateModule],
+  declarations: [ToastComponent],
+  imports: [CommonModule, PaButtonModule, PaIconModule, PaTranslateModule],
 })
 export class PaToastModule {}

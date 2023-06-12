@@ -1,56 +1,100 @@
 <pa-demo-page>
-    <pa-demo-title>Breakpoints</pa-demo-title>
+  <pa-demo-title>Breakpoints</pa-demo-title>
 
-    <pa-demo-description>
-        <p>Pastanaga-angular provides some scss variables for breakpoints so you can easily manage your responsive layouts. Breakpoints are defined as:</p>
-        <ul>
-            <li>Small: 0px to 599px</li>
-            <li>Medium: <strong>600px</strong> to 1023px</li>
-            <li>Large: <strong>1024px</strong> to 1439px</li>
-            <li>XLarge: <strong>1440px</strong> and more</li>
-        </ul>
-        <p>As layout can not always be managed entirely through css, Pastanaga provides also a <code>BreakpointObserver</code> service allowing to watch viewport current min/max size.</p>
-    </pa-demo-description>
+  <pa-demo-description>
+    <p>
+      Pastanaga-angular provides some scss variables for breakpoints so you can easily manage your responsive layouts.
+      Breakpoints are defined as:
+    </p>
+    <ul>
+      <li>Small: 0px to 599px</li>
+      <li>
+        Medium:
+        <strong>600px</strong>
+        to 1023px
+      </li>
+      <li>
+        Large:
+        <strong>1024px</strong>
+        to 1439px
+      </li>
+      <li>
+        XLarge:
+        <strong>1440px</strong>
+        and more
+      </li>
+    </ul>
+    <p>
+      As layout can not always be managed entirely through css, Pastanaga provides also a
+      <code>BreakpointObserver</code>
+      service allowing to watch viewport current min/max size.
+    </p>
+  </pa-demo-description>
 
-    <pa-demo-usage>
-        <h3>Scss</h3>
-        <dl>
-            <dt><code>$size-viewport-medium-min</code></dt>
-            <dd>Token to be used in <code>min-width</code> media queries for medium screens</dd>
-            <dt><code>$size-viewport-large-min</code></dt>
-            <dd>Token to be used in <code>min-width</code> media queries for large screens</dd>
-            <dt><code>$size-viewport-xlarge-min</code></dt>
-            <dd>Token to be used in <code>min-width</code> media queries for xlarge screens</dd>
-        </dl>
+  <pa-demo-usage>
+    <h3>Scss</h3>
+    <dl>
+      <dt><code>$size-viewport-medium-min</code></dt>
+      <dd>
+        Token to be used in
+        <code>min-width</code>
+        media queries for medium screens
+      </dd>
+      <dt><code>$size-viewport-large-min</code></dt>
+      <dd>
+        Token to be used in
+        <code>min-width</code>
+        media queries for large screens
+      </dd>
+      <dt><code>$size-viewport-xlarge-min</code></dt>
+      <dd>
+        Token to be used in
+        <code>min-width</code>
+        media queries for xlarge screens
+      </dd>
+    </dl>
 
-        <h3>Typescript</h3>
-        <h4>Types</h4>
-        <dl>
-            <dt><code>ViewportSize</code></dt>
-            <dd>Enum containing viewport sizes supported by Pastanaga (corresponding to the ones defined in css)</dd>
-            <dt><code>ViewportMode</code></dt>
-            <dd>'desktop' | 'tablet' | 'mobile'</dd>
-        </dl>
+    <h3>Typescript</h3>
+    <h4>Types</h4>
+    <dl>
+      <dt><code>ViewportSize</code></dt>
+      <dd>Enum containing viewport sizes supported by Pastanaga (corresponding to the ones defined in css)</dd>
+      <dt><code>ViewportMode</code></dt>
+      <dd>'desktop' | 'tablet' | 'mobile'</dd>
+    </dl>
 
-        <h4><code>BreakpointObserver</code></h4>
-        <dl>
-            <dt>currentMinSize</dt>
-            <dd>Observable returning <code>ViewportSize</code> corresponding to the current <code>min-width</code> from
-                css media query
-            </dd>
-            <dt>currentMaxSize</dt>
-            <dd>Observable returning <code>ViewportSize</code> corresponding to the current <code>max-width</code> from
-                css media query
-            </dd>
-            <dt>currentMode</dt>
-            <dd>Observable returning <code>ViewportMode</code> based on <code>currentMinSize</code></dd>
-        </dl>
-    </pa-demo-usage>
+    <h4><code>BreakpointObserver</code></h4>
+    <dl>
+      <dt>currentMinSize</dt>
+      <dd>
+        Observable returning
+        <code>ViewportSize</code>
+        corresponding to the current
+        <code>min-width</code>
+        from css media query
+      </dd>
+      <dt>currentMaxSize</dt>
+      <dd>
+        Observable returning
+        <code>ViewportSize</code>
+        corresponding to the current
+        <code>max-width</code>
+        from css media query
+      </dd>
+      <dt>currentMode</dt>
+      <dd>
+        Observable returning
+        <code>ViewportMode</code>
+        based on
+        <code>currentMinSize</code>
+      </dd>
+    </dl>
+  </pa-demo-usage>
 
-    <pa-demo-code>
-        Viewport sizes:
-        <pre><code>{{viewportSize}}</code></pre>
-        Current mode:
-        <pre><code>{{currentMode}}</code></pre>
-    </pa-demo-code>
+  <pa-demo-code>
+    Viewport sizes:
+    <pre><code>{{viewportSize}}</code></pre>
+    Current mode:
+    <pre><code>{{currentMode}}</code></pre>
+  </pa-demo-code>
 </pa-demo-page>

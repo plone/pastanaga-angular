@@ -3,15 +3,15 @@ import { Observable } from 'rxjs';
 import { avatar } from '../../demo.component';
 
 @Component({
-    selector: 'app-avatar-page',
-    templateUrl: './avatar-page.component.html',
-    styleUrls: ['./avatar-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-avatar-page',
+  templateUrl: './avatar-page.component.html',
+  styleUrls: ['./avatar-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarPageComponent {
-    image: Observable<Blob> = avatar;
+  image: Observable<Blob> = avatar;
 
-    code = `<pa-avatar userName="Steve Jobs"
+  code = `<pa-avatar userName="Steve Jobs"
            size="small"
            autoBackground
 ></pa-avatar>`;

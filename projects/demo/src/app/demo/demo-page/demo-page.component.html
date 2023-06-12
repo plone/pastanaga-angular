@@ -1,36 +1,43 @@
 <h1 class="doc-page-title">
-    <ng-content select="pa-demo-title"></ng-content>
+  <ng-content select="pa-demo-title"></ng-content>
 </h1>
 
 <section class="doc-section">
-    <p><ng-content select="pa-demo-description"></ng-content></p>
+  <p><ng-content select="pa-demo-description"></ng-content></p>
 </section>
 
-<section class="doc-section example-section"  [hidden]="!_hasExamples">
-    <h2 class="doc-section-title">Examples</h2>
-    <div #examples>
-        <ng-content select="pa-demo-examples"></ng-content>
-    </div>
+<section
+  class="doc-section example-section"
+  [hidden]="!_hasExamples">
+  <h2 class="doc-section-title">Examples</h2>
+  <div #examples>
+    <ng-content select="pa-demo-examples"></ng-content>
+  </div>
 
-    <div class="pa-demo-example-configuration" [hidden]="!_hasConfiguration">
-        <h3 class="pa-demo-example-configuration-title">Configuration options</h3>
-        <div #configuration>
-            <ng-content select="pa-demo-configuration"></ng-content>
-        </div>
+  <div
+    class="pa-demo-example-configuration"
+    [hidden]="!_hasConfiguration">
+    <h3 class="pa-demo-example-configuration-title">Configuration options</h3>
+    <div #configuration>
+      <ng-content select="pa-demo-configuration"></ng-content>
     </div>
+  </div>
 </section>
 
-
-<section class="doc-section" [hidden]="!_hasUsage">
-    <h2 class="doc-section-title">Usage</h2>
-    <div #usage>
-        <ng-content select="pa-demo-usage"></ng-content>
-    </div>
+<section
+  class="doc-section"
+  [hidden]="!_hasUsage">
+  <h2 class="doc-section-title">Usage</h2>
+  <div #usage>
+    <ng-content select="pa-demo-usage"></ng-content>
+  </div>
 </section>
 
-<section class="doc-section" [hidden]="!_hasCode">
-    <h2 class="doc-section-title">Code</h2>
-    <div #code>
-        <ng-content select="pa-demo-code"></ng-content>
-    </div>
+<section
+  class="doc-section"
+  [hidden]="!_hasCode">
+  <h2 class="doc-section-title">Code</h2>
+  <div #code>
+    <ng-content select="pa-demo-code"></ng-content>
+  </div>
 </section>

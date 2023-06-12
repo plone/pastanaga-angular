@@ -9,16 +9,16 @@ import { PaPopupModule } from '../popup';
 import { PaTranslateModule } from '../translate';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        PaButtonModule,
-        PaIconModule,
-        PaPopupModule,
-        PaTextFieldModule,
-        PaTranslateModule,
-    ],
-    exports: [DatePickerComponent],
-    declarations: [DatePickerComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    PaButtonModule,
+    PaIconModule,
+    PaPopupModule,
+    PaTextFieldModule,
+    PaTranslateModule,
+  ],
+  exports: [DatePickerComponent],
+  declarations: [DatePickerComponent],
 })
 export class PaDatePickerModule {}

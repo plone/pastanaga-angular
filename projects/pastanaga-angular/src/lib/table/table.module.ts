@@ -17,23 +17,23 @@ import { PaPopupModule } from '../popup/popup.module';
 import { TableLeadCellMultiLineComponent } from './table-lead-cell-multi-line/table-lead-cell-multi-line.component';
 
 const components = [
-    TableComponent,
-    TableRowComponent,
-    TableCellComponent,
-    TableRowHeaderComponent,
-    TableHeaderDirective,
-    TableCellMenuComponent,
-    TableLeadCellMultiLineComponent,
-    TableSortableHeaderComponent,
-    TableSortableHeaderCellComponent,
-    TableLeadImage,
-    TableLeadTitle,
-    TableLeadDescription,
+  TableComponent,
+  TableRowComponent,
+  TableCellComponent,
+  TableRowHeaderComponent,
+  TableHeaderDirective,
+  TableCellMenuComponent,
+  TableLeadCellMultiLineComponent,
+  TableSortableHeaderComponent,
+  TableSortableHeaderCellComponent,
+  TableLeadImage,
+  TableLeadTitle,
+  TableLeadDescription,
 ];
 
 @NgModule({
-    imports: [CommonModule, PaFocusableModule, PaTranslateModule, PaIconModule, PaDropdownModule, PaPopupModule],
-    exports: components,
-    declarations: components,
+  imports: [CommonModule, PaFocusableModule, PaTranslateModule, PaIconModule, PaDropdownModule, PaPopupModule],
+  exports: components,
+  declarations: components,
 })
 export class PaTableModule {}

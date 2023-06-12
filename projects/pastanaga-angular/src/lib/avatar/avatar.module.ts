@@ -4,8 +4,8 @@ import { AvatarComponent } from './avatar.component';
 import { PaTooltipModule } from '../tooltip';
 
 @NgModule({
-    declarations: [AvatarComponent],
-    exports: [AvatarComponent],
-    imports: [CommonModule, PaTooltipModule],
+  declarations: [AvatarComponent],
+  exports: [AvatarComponent],
+  imports: [CommonModule, PaTooltipModule],
 })
 export class PaAvatarModule {}

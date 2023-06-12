@@ -1,11 +1,11 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 :host {
-    display: block;
-    position: relative;
-    padding-bottom: rhythm(10);
+  display: block;
+  position: relative;
+  padding-bottom: rhythm(10);
 }
 .pa-infinite-scroll-mid-anchor {
-    position: absolute;
-    top: 50%;
+  position: absolute;
+  top: 50%;
 }

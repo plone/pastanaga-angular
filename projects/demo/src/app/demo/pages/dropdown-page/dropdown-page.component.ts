@@ -2,19 +2,19 @@ import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angu
 import { PopupComponent } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
-    selector: 'pa-demo-menu-page',
-    templateUrl: './dropdown-page.component.html',
-    styles: [
-        `
-            pa-demo-examples {
-                display: flex;
-            }
-        `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'pa-demo-menu-page',
+  templateUrl: './dropdown-page.component.html',
+  styles: [
+    `
+      pa-demo-examples {
+        display: flex;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownPageComponent {
-    codeExample = `<pa-button icon="more" size="small"
+  codeExample = `<pa-button icon="more" size="small"
            [paPopup]="contextualMenu"></pa-button>
 
 <pa-dropdown #contextualMenu>
@@ -26,7 +26,7 @@ export class DropdownPageComponent {
     <pa-option destructive dontCloseOnSelect (selectOption)="onSelect($event)">Menu item destructive</pa-option>
 </pa-dropdown>`;
 
-    multiLevelTemplate = `<pa-button [paPopup]="level1" sameWidth>
+  multiLevelTemplate = `<pa-button [paPopup]="level1" sameWidth>
     <div style="display: flex; align-items: center">
         Multi-level dropdown
         <pa-icon name="chevron-down"></pa-icon>
@@ -63,7 +63,7 @@ export class DropdownPageComponent {
 <pa-dropdown #level2 keepOthersOpen>
     <pa-option dontCloseOnSelect *ngFor="let option of level2Options">{{option.label}}</pa-option>
 </pa-dropdown>`;
-    multiLevelScript = `
+  multiLevelScript = `
 @ViewChild('level2', {read: ElementRef}) level2Element?: ElementRef;
 @ViewChild('level2') level2Popup?: PopupComponent;
 level1Open = '';
@@ -87,7 +87,7 @@ onLevel1Selection(selection: string) {
     }
 }`;
 
-    checkboxExample = `<pa-dropdown>
+  checkboxExample = `<pa-dropdown>
     <pa-option *ngFor="let option of level2Options"
                dontCloseOnSelect
                (selectOption)="updateCheckbox(option, $event)">
@@ -95,47 +95,47 @@ onLevel1Selection(selection: string) {
     </pa-option>
 </pa-dropdown>
 `;
-    checkboxCode = `updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
+  checkboxCode = `updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
     if ((event.target as HTMLElement).tagName === 'LI') {
         option.checked = !option.checked;
     }
 }`;
 
-    @ViewChild('level2', { read: ElementRef }) level2Element?: ElementRef;
-    @ViewChild('level2') level2Popup?: PopupComponent;
-    level1Open = '';
-    level2Options: { label: string; checked?: boolean }[] = [];
+  @ViewChild('level2', { read: ElementRef }) level2Element?: ElementRef;
+  @ViewChild('level2') level2Popup?: PopupComponent;
+  level1Open = '';
+  level2Options: { label: string; checked?: boolean }[] = [];
 
-    onSelect($event: MouseEvent | KeyboardEvent) {
-        console.log(`Selected menu:`, $event);
-    }
+  onSelect($event: MouseEvent | KeyboardEvent) {
+    console.log(`Selected menu:`, $event);
+  }
 
-    onLevel1Selection(selection: string) {
-        this.level1Open = selection;
-        this.level2Popup?.close();
-        switch (selection) {
-            case 'jedi':
-                this.level2Options = [{ label: 'Yoda' }, { label: 'Obiwan Kenobi' }, { label: 'Luke Skywalker' }];
-                break;
-            case 'rebels':
-                this.level2Options = [{ label: 'Leia Organa' }, { label: 'Han Solo' }, { label: 'Admiral Ackbar' }];
-                break;
-            case 'sith':
-                this.level2Options = [{ label: 'Sheev Palpatine' }, { label: 'Darth Vador' }, { label: 'Darth Maul' }];
-                break;
-            default:
-                this.level2Options = [];
-        }
+  onLevel1Selection(selection: string) {
+    this.level1Open = selection;
+    this.level2Popup?.close();
+    switch (selection) {
+      case 'jedi':
+        this.level2Options = [{ label: 'Yoda' }, { label: 'Obiwan Kenobi' }, { label: 'Luke Skywalker' }];
+        break;
+      case 'rebels':
+        this.level2Options = [{ label: 'Leia Organa' }, { label: 'Han Solo' }, { label: 'Admiral Ackbar' }];
+        break;
+      case 'sith':
+        this.level2Options = [{ label: 'Sheev Palpatine' }, { label: 'Darth Vador' }, { label: 'Darth Maul' }];
+        break;
+      default:
+        this.level2Options = [];
     }
+  }
 
-    closeDropdowns() {
-        this.level1Open = '';
-        this.level2Popup?.close();
-    }
+  closeDropdowns() {
+    this.level1Open = '';
+    this.level2Popup?.close();
+  }
 
-    updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
-        if ((event.target as HTMLElement).tagName === 'LI') {
-            option.checked = !option.checked;
-        }
+  updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
+    if ((event.target as HTMLElement).tagName === 'LI') {
+      option.checked = !option.checked;
     }
+  }
 }

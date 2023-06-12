@@ -17,4 +17,3 @@ export class DemoUsageDirective {}
 
 @Directive({ selector: 'pa-demo-code' })
 export class DemoCodeDirective {}
-
