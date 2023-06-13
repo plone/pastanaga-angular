@@ -3,44 +3,36 @@
   <pa-demo-description>A wrapper used to describe a form field with hint or error messages.</pa-demo-description>
 
   <pa-demo-examples>
-    <pa-form-field-hint
-      style="display: flex; min-height: 2rem"
-      id="id"
-      [help]="help"
-      [errors]="errors"
-      [showErrors]="showErrors"
-      [showAllErrors]="showAllErrors"
-      [errorMessages]="errorMessages"></pa-form-field-hint>
+    <h4>Hint</h4>
+    <p>
+      <pa-form-field-hint help="This is help hint"></pa-form-field-hint>
+    </p>
+    <h4>Error</h4>
+    <p>
+      <code>errorMessages</code>
+      :
+      <pa-form-field-hint [errorMessages]="fieldErrorMessages"></pa-form-field-hint>
+    </p>
+    <p>
+      <code>errors</code>
+      with
+      <code>showAllErrors</code>
+      set to false:
+      <pa-form-field-hint
+        [errors]="fieldErrorMessages"
+        [showAllErrors]="false"></pa-form-field-hint>
+    </p>
+    <p>
+      <code>errors</code>
+      with
+      <code>showAllErrors</code>
+      set to true:
+      <pa-form-field-hint
+        [errors]="fieldErrorMessages"
+        [showAllErrors]="true"></pa-form-field-hint>
+    </p>
   </pa-demo-examples>
-  <pa-demo-configuration>
-    <div class="pa-demo-configuration-field">
-      <pa-checkbox
-        [(ngModel)]="hasHelp"
-        (ngModelChange)="toggleHelp()">
-        help
-      </pa-checkbox>
-    </div>
-    <div class="pa-demo-configuration-field">
-      <pa-checkbox
-        [(ngModel)]="hasErrors"
-        (ngModelChange)="toggleErrors()">
-        errors
-      </pa-checkbox>
-    </div>
-    <div class="pa-demo-configuration-field">
-      <pa-checkbox [(ngModel)]="showErrors">showErrors</pa-checkbox>
-    </div>
-    <div class="pa-demo-configuration-field">
-      <pa-checkbox [(ngModel)]="showAllErrors">showAllErrors</pa-checkbox>
-    </div>
-    <div class="pa-demo-configuration-field">
-      <pa-checkbox
-        [(ngModel)]="hasErrorMessages"
-        (ngModelChange)="toggleErrorMessages()">
-        errorMessages
-      </pa-checkbox>
-    </div>
-  </pa-demo-configuration>
+
   <pa-demo-usage>
     <h3>Inputs</h3>
     <dl>

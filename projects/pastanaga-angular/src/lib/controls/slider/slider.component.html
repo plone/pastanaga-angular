@@ -1,32 +1,38 @@
-<div class="pa-field pa-field-slider">
-  <input
-    class="pa-field-control pa-field-control-range"
-    type="range"
-    [id]="id"
-    [attr.name]="name"
-    [attr.aria-describedby]="helpId"
-    [(ngModel)]="value"
-    [disabled]="isDisabled"
-    [min]="min"
-    [max]="max"
-    [step]="step" />
-  <label
-    class="pa-field-label"
-    [for]="id"
-    translate>
-    <ng-content></ng-content>
-  </label>
-  <output
-    class="pa-field-control-output"
-    [for]="id"
-    aria-hidden="true">
-    {{ value }}
-  </output>
-  <small
-    *ngIf="help"
-    class="pa-field-help"
-    [id]="helpId"
-    translate>
-    {{ help }}
-  </small>
+<div
+  class="pa-field pa-field-slider"
+  [class.pa-disabled]="disabled"
+  [class.pa-field-error]="control.dirty && control.invalid">
+  <div class="pa-field-slider-wrapper">
+    <label
+      #label
+      class="pa-field-label"
+      [class.no-label]="!hasLabel"
+      [for]="id"
+      translate>
+      <ng-content></ng-content>
+    </label>
+    <output
+      class="pa-field-control-output"
+      [style.min-width]="outputMinWidth"
+      [for]="id">
+      {{ control.value }}
+    </output>
+    <input
+      type="range"
+      class="pa-field-control pa-field-control-range"
+      [id]="id"
+      [attr.name]="name"
+      [attr.aria-describedby]="describedById"
+      [formControl]="control"
+      [min]="min"
+      [max]="max"
+      [step]="step" />
+  </div>
+
+  <pa-form-field-hint
+    [id]="describedById"
+    [help]="help"
+    [errors]="control.errors"
+    [showErrors]="control.dirty"
+    [errorMessages]="errorMessages"></pa-form-field-hint>
 </div>

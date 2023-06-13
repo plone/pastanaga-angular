@@ -14,12 +14,12 @@ export class FormFieldHintComponent implements OnChanges {
   /**
    * A hint to display, helping the user when filling a form field.
    */
-  @Input() help?: string;
+  @Input() help: string | undefined | null;
 
   /**
    * the ValidationErrors of a formControl
    */
-  @Input() errors?: ValidationErrors | null;
+  @Input() errors: ValidationErrors | undefined | null;
 
   /**
    * Activate the display of error messages (disable for example when formControl is pristine if you don't
@@ -35,15 +35,15 @@ export class FormFieldHintComponent implements OnChanges {
    * in the errors object. If a message (string) is provided for a given key, it
    * will be displayed rather than the message provided in errorMessages.
    */
-  @Input() errorMessages?: IErrorMessages;
+  @Input() errorMessages: IErrorMessages | undefined | null;
 
   /**
    * Id for the hint message, can be used for accessibility aria-describedby attribute in parent component
    */
-  @Input() set id(val: string | undefined) {
+  @Input()
+  set id(val: string | undefined) {
     this._id = !!val ? val : this.autoId;
   }
-
   get id() {
     return this._id;
   }
@@ -51,7 +51,7 @@ export class FormFieldHintComponent implements OnChanges {
   readonly autoId: string;
   private _id?: string;
 
-  hint?: string;
+  hint: string | undefined | null;
 
   constructor() {
     nextUniqueId++;

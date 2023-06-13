@@ -1,39 +1,20 @@
 <pa-demo-page>
-  <pa-demo-title><code>paFormControl</code></pa-demo-title>
+  <pa-demo-title>Form control</pa-demo-title>
+  <!-- prettier-ignore -->
   <pa-demo-description>
     <p>
       <code>paFormControl</code>
-      is a directive designed to build custom form elements: it creates or exposes a
-      <code>FormControl</code>
-      .
+      is a directive designed to build custom form elements. It creates or exposes a <code>FormControl</code>:
     </p>
-
-    <p>
-      In a standalone usage, it creates a
-      <code>FormControl</code>
-      :
-    </p>
-    <pre><code>{{standaloneCode}}</code></pre>
-
-    <p>
-      When used in combination with a ngModel, it exposes the corresponding formControl, allowing to manage its state
-      and validation:
-    </p>
-    <pre><code>{{ngModelCode}}</code></pre>
-
-    <p>
-      It can also reflects a given
-      <code>FormControl</code>
-      :
-    </p>
-    <pre><code>{{formControlCode}}</code></pre>
-
-    <code>paFormControl</code>
-    :
     <ul>
       <li>provides consistent id and name.</li>
       <li>allows consistent form control state management (readonly / disabled / status) on any use case.</li>
     </ul>
+    <p>
+      Pastanaga’s form fields components
+      (like <a routerLink="/input">pa-input</a>, <a routerLink="/select">pa-select</a>, <a routerLink="/checkbox">pa-checkbox</a>,…)
+      are extending this directive. So all our form field components have a consistent behavior.
+    </p>
     <p>
       Because it is a directive and not a component, it can be used on standard html elements with these three
       exceptions:
@@ -49,51 +30,40 @@
     </ul>
     <p>
       <strong>Important note:</strong>
-      the
-      <code>formControl</code>
-      will only be available after the
-      <code>OnInit</code>
-      lifecycle.
+      <code>formControl</code> will only be available after the <code>OnInit</code> lifecycle.
     </p>
-  </pa-demo-description>
 
-  <pa-demo-examples>
-    <pa-tabs>
-      <pa-tab
-        (click)="selected = 'id'"
-        [active]="selected === 'id'">
-        Id
-      </pa-tab>
-      <pa-tab
-        (click)="selected = 'name'"
-        [active]="selected === 'name'">
-        Name
-      </pa-tab>
-      <pa-tab
-        (click)="selected = 'value'"
-        [active]="selected === 'value'">
-        Value
-      </pa-tab>
-      <pa-tab
-        (click)="selected = 'state'"
-        [active]="selected === 'state'">
-        State (readonly / disabled)
-      </pa-tab>
-      <pa-tab
-        (click)="selected = 'validation'"
-        [active]="selected === 'validation'">
-        Validation / errors
-      </pa-tab>
-    </pa-tabs>
-    <pa-demo-form-control-id-example *ngIf="selected === 'id'"></pa-demo-form-control-id-example>
-    <pa-demo-form-control-name-example *ngIf="selected === 'name'"></pa-demo-form-control-name-example>
-    <pa-demo-form-control-value-example *ngIf="selected === 'value'"></pa-demo-form-control-value-example>
-    <pa-demo-form-control-validation-example
-      *ngIf="selected === 'validation'"></pa-demo-form-control-validation-example>
-    <pa-demo-form-control-state-example *ngIf="selected === 'state'"></pa-demo-form-control-state-example>
-  </pa-demo-examples>
+    <p>
+      In a standalone usage, it creates a <code>FormControl</code>:
+    </p>
+    <pre><code>{{standaloneCode}}</code></pre>
+
+    <p>
+      When used in combination with
+      <code>ngModel</code>, it exposes the corresponding formControl, allowing to manage its state and validation:
+    </p>
+    <pre><code>{{ngModelCode}}</code></pre>
+
+    <p>
+      It can also reflects a given <code>FormControl</code>:
+    </p>
+    <pre><code>{{formControlCode}}</code></pre>
+  </pa-demo-description>
 
   <pa-demo-usage>
     <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
+
+    <div style="margin-bottom: 40px"></div>
+    <h2>Details</h2>
+    <h4>Id generation</h4>
+    <pa-demo-form-control-id-example></pa-demo-form-control-id-example>
+    <h4>Name management</h4>
+    <pa-demo-form-control-name-example></pa-demo-form-control-name-example>
+    <h4>Value management</h4>
+    <pa-demo-form-control-value-example></pa-demo-form-control-value-example>
+    <h4>Validation management</h4>
+    <pa-demo-form-control-validation-example></pa-demo-form-control-validation-example>
+    <h4>State management</h4>
+    <pa-demo-form-control-state-example></pa-demo-form-control-state-example>
   </pa-demo-usage>
 </pa-demo-page>

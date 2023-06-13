@@ -19,7 +19,6 @@ import { detectChanges, markForCheck } from '../../../common';
 import { PaFormControlDirective } from '../../form-field';
 import { NgControl } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
-import { IErrorMessages } from '../../form-field.model';
 
 @Component({
   selector: 'pa-toggle',
@@ -44,16 +43,12 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
     return this._hasFocus;
   }
 
-  @Input() errorMessages?: IErrorMessages;
-  @Input() help?: string;
-
   @ViewChild('inputElement') input?: ElementRef;
   @ViewChild('label') labelElement?: ElementRef;
   label = '';
   hasLabel = true;
 
   isChecked = false;
-  describedById?: string;
 
   private _hasFocus = false;
   private _labelOnRight = false;

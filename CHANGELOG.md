@@ -1,3 +1,17 @@
+# 2.62.1 (2023-06-13)
+
+### Improvements
+- **Slider**:
+  - Support reactive forms by extending `PaFormControlDirective`
+  - Default to `min` value when no value is set
+  - Improve style (more flexible + better state management)
+- **PaFormControlDirective**: 
+  - factorize `errorMessages`, `help` and `describedById` as well as `_checkDescribedBy` method (which were defined on a lot of form fields components)
+  - mark for changes when control status changes
+- **Checkbox**: add support for help message in `pa-form-field-hint`
+- Form fields documentation improvements
+- Align `.editorconfig` with prettier config
+
 # 2.62.0 (2023-06-09)
 
 ### Breaking changes

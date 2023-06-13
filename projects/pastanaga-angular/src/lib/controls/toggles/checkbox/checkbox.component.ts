@@ -15,7 +15,6 @@ import {
 import { NgControl } from '@angular/forms';
 import { PaFormControlDirective } from '../../form-field';
 import { takeUntil } from 'rxjs/operators';
-import { IErrorMessages } from '../../form-field.model';
 import { detectChanges } from '../../../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
@@ -25,8 +24,6 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {
-  @Input() errorMessages?: IErrorMessages;
-
   @Input()
   set noEllipsis(value: any) {
     this._noEllipsis = coerceBooleanProperty(value);
@@ -38,7 +35,6 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
   @ViewChild('htmlElement') htmlElementRef?: ElementRef;
 
   override fieldType = 'checkbox';
-  describedById?: string;
   isChecked = false;
 
   private _noEllipsis = false;

@@ -27,7 +27,7 @@ export function isFormControlName(internalMode: InternalMode): boolean {
   return internalMode === FORM_CONTROL_NAME;
 }
 
-export function concatAllErrorMessages(errors: ValidationErrors, errorMessages?: IErrorMessages): string {
+export function concatAllErrorMessages(errors: ValidationErrors, errorMessages?: IErrorMessages | null): string {
   const messages: any = errorMessages || {};
   const displayedErrorMessage = Object.keys(errors)
     .sort()
@@ -43,7 +43,7 @@ export function concatAllErrorMessages(errors: ValidationErrors, errorMessages?:
   return displayedErrorMessage.length > 0 ? displayedErrorMessage.join(' ') : '';
 }
 
-export function findFirstErrorMessage(errors: ValidationErrors, errorMessages?: IErrorMessages): string {
+export function findFirstErrorMessage(errors: ValidationErrors, errorMessages?: IErrorMessages | null): string {
   const messages: any = errorMessages || {};
   const firstMessageKey = Object.keys(errors)
     .sort()

@@ -26,7 +26,6 @@ import { detectChanges, isVisibleInViewport, markForCheck } from '../../../commo
 import { fromEvent, Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
-import { IErrorMessages } from '../../form-field.model';
 import { TextFieldDirective } from '../text-field.directive';
 
 export type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
@@ -46,8 +45,6 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   }
 
   @Input() adjustHeight = false;
-  @Input() help?: string;
-  @Input() errorMessages?: IErrorMessages;
   @Input() showAllErrors = true;
   @Input() set dim(value: any) {
     this._dim = coerceBooleanProperty(value);
@@ -71,7 +68,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   dropdownOptions: OptionType[] = [];
   isOpened = false;
   override fieldType = 'select';
-  describedById?: string;
+
   /**
    * either the selected option label, either the placeholder
    */
@@ -220,16 +217,6 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
       label = !!selectedOption ? selectedOption.text : undefined;
     }
     return label;
-  }
-
-  private _checkDescribedBy() {
-    if ((!this.describedById && this.help) || this.control.errors) {
-      this.describedById = `${this.id}-hint`;
-      detectChanges(this.cdr);
-    } else if (!this.help && !this.control.errors) {
-      this.describedById = undefined;
-      detectChanges(this.cdr);
-    }
   }
 
   private _handleNgContent() {
