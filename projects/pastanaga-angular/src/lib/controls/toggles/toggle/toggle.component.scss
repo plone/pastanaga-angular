@@ -1,116 +1,116 @@
-@use "sass:math";
-@import "../../../../styles/variables";
+@use 'sass:math';
+@import '../../../../styles/variables';
 
 $toggle-full-width: rhythm(6);
 $toggle-full-mid-width: math.div($toggle-full-width, 2);
 $toggle-full-height: rhythm(3);
-$toggle-slider-padding: rhythm(.25);
+$toggle-slider-padding: rhythm(0.25);
 $toggle-transition-duration: $duration-fast;
 
 .pa-field {
-    flex-direction: row;
-    justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 
-    .pa-toggle-context {
-        display: flex;
-        gap: rhythm(2);
-        justify-content: flex-end;
+  .pa-toggle-context {
+    display: flex;
+    gap: rhythm(2);
+    justify-content: flex-end;
 
-        &.pa-label-on-right {
-            flex-direction: row-reverse;
-        }
+    &.pa-label-on-right {
+      flex-direction: row-reverse;
     }
+  }
 
+  .pa-toggle-label-container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    .pa-field-label {
+      cursor: pointer;
+    }
+    pa-form-field-hint ::ng-deep .pa-field-help {
+      margin-top: 0;
+    }
+  }
+
+  &.pa-disable {
     .pa-toggle-label-container {
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-
-        .pa-field-label {
-            cursor: pointer;
-        }
-        pa-form-field-hint ::ng-deep .pa-field-help {
-            margin-top: 0;
-        }
+      cursor: default;
     }
-
-    &.pa-disable {
-        .pa-toggle-label-container {
-            cursor: default;
-        }
-        .pa-field-label {
-            cursor: default;
-        }
+    .pa-field-label {
+      cursor: default;
     }
+  }
 
-    &.pa-has-help {
-        .pa-field-label {
-            margin-top: -#{rhythm(0.5)};
-        }
+  &.pa-has-help {
+    .pa-field-label {
+      margin-top: -#{rhythm(0.5)};
     }
+  }
 }
 
 .pa-toggle-container {
-    position: relative;
+  position: relative;
+  width: $toggle-full-width;
+  min-width: $toggle-full-width;
+  height: $toggle-full-height;
+  box-sizing: border-box;
+
+  input {
+    outline: 0;
+    opacity: 0;
+  }
+
+  .pa-toggle-checkbox {
     width: $toggle-full-width;
-    min-width: $toggle-full-width;
     height: $toggle-full-height;
-    box-sizing: border-box;
-
-    input {
-        outline: 0;
-        opacity: 0;
+    opacity: 0;
+  }
+  .pa-toggle-slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: $toggle-transition-duration;
+    border-radius: $toggle-full-height;
+    background: $color-neutral-lighter;
+    cursor: pointer;
+    &:before {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      transition: $toggle-transition-duration;
+      top: $toggle-slider-padding;
+      right: $toggle-full-mid-width + $toggle-slider-padding;
+      bottom: $toggle-slider-padding;
+      left: $toggle-slider-padding;
+      box-shadow: 0 rhythm(0.25) rhythm(0.5) rgba(0, 0, 0, 0.15);
+      background-color: $color-light-stronger;
     }
+  }
 
-    .pa-toggle-checkbox {
-        width: $toggle-full-width;
-        height: $toggle-full-height;
-        opacity: 0;
-    }
+  &.pa-checked {
     .pa-toggle-slider {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        transition: $toggle-transition-duration;
-        border-radius: $toggle-full-height;
-        background: $color-neutral-lighter;
-        cursor: pointer;
-        &:before {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            transition: $toggle-transition-duration;
-            top: $toggle-slider-padding;
-            right: $toggle-full-mid-width + $toggle-slider-padding;
-            bottom: $toggle-slider-padding;
-            left: $toggle-slider-padding;
-            box-shadow: 0 rhythm(0.25) rhythm(0.5) rgba(0, 0, 0, 0.15);
-            background-color: $color-light-stronger;
-        }
+      background: $color-primary-regular;
+      &:before {
+        transform: translateX($toggle-full-mid-width);
+      }
     }
+  }
 
-    &.pa-checked {
-        .pa-toggle-slider {
-            background: $color-primary-regular;
-            &:before {
-                transform: translateX($toggle-full-mid-width);
-            }
-        }
-    }
+  &:focus-within .pa-toggle-slider {
+    box-shadow: $shadow-focus;
+  }
 
-    &:focus-within .pa-toggle-slider {
-        box-shadow: $shadow-focus;
+  &.pa-disable {
+    .pa-toggle-slider {
+      cursor: default;
+      background: $color-neutral-light;
+      &:before {
+        background-color: $color-neutral-lighter;
+      }
     }
-
-    &.pa-disable {
-        .pa-toggle-slider {
-            cursor: default;
-            background: $color-neutral-light;
-            &:before {
-                background-color: $color-neutral-lighter;
-            }
-        }
-    }
+  }
 }

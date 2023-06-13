@@ -1,286 +1,286 @@
 @import '../variables';
 
 .pa-field {
-    $icon-width: rhythm(3);
+  $icon-width: rhythm(3);
 
-    position: relative;
-    margin-bottom: $margin-bottom-field;
+  position: relative;
+  margin-bottom: $margin-bottom-field;
 
-    .pa-field-icon {
-        color: $color-neutral-regular;
-        position: absolute;
-        top: $padding-field-control-top;
+  .pa-field-icon {
+    color: $color-neutral-regular;
+    position: absolute;
+    top: $padding-field-control-top;
 
-        &:not(.pa-icon-on-right) {
-            left: $padding-field-control-left;
-        }
-        &.pa-icon-on-right {
-            right: $padding-field-control-left;
-        }
+    &:not(.pa-icon-on-right) {
+      left: $padding-field-control-left;
+    }
+    &.pa-icon-on-right {
+      right: $padding-field-control-left;
+    }
+  }
+
+  .pa-field-container {
+    border: 1px solid $border-color-field-regular;
+    border-radius: $border-radius-field;
+    display: flex;
+
+    &::after,
+    &::before {
+      content: '';
+      height: 1px;
+      position: absolute;
+      top: 0;
+      z-index: 1;
     }
 
-    .pa-field-container {
-        border: 1px solid $border-color-field-regular;
-        border-radius: $border-radius-field;
-        display: flex;
+    &::before {
+      left: 0;
+      width: rhythm(1);
+    }
+
+    &::after {
+      left: calc(var(--label-width) + #{$padding-field-control-left});
+      right: 1px;
+    }
+    &.no-internal-label::after {
+      left: 0;
+    }
+
+    &:hover {
+      border-color: $border-color-field-hover;
+    }
+
+    &:focus,
+    &:active,
+    &.pa-content,
+    &.pa-content.pa-disabled,
+    &.pa-focus {
+      border-top: 1px solid transparent;
+    }
+
+    &:focus,
+    &:active,
+    &.pa-focus {
+      border-color: $border-color-field-active;
+      border-top: 1px solid transparent;
+    }
+
+    &.pa-content {
+      &::after,
+      &::before {
+        background: $border-color-field-regular;
+      }
+      &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
+        &::after,
+        &::before {
+          background: $border-color-field-hover;
+        }
+      }
+    }
+    // :has needed to have Chrome autofill properly working, but Firefox does no support :has yet.
+    // Also "If the :has() pseudo-class itself is not supported in a browser, the entire selector block will fail"
+    // so we need to duplicate the blocks where :has is needed
+    // see https://developer.mozilla.org/en-US/docs/Web/CSS/:has
+    &:has(.cdk-text-field-autofilled) {
+      border-top: 1px solid transparent;
+    }
+    &:has(.cdk-text-field-autofilled) {
+      &::after,
+      &::before {
+        background: $border-color-field-regular;
+      }
+      &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
+        &::after,
+        &::before {
+          background: $border-color-field-hover;
+        }
+      }
+    }
+
+    &:not(.pa-disabled):not(.pa-readonly):not(.pa-field-error).pa-focus {
+      &::after,
+      &::before {
+        background: $border-color-field-active;
+      }
+      .pa-field-label {
+        color: $color-text-field-label-regular-active;
+      }
+    }
+
+    &.pa-disabled {
+      border-color: $border-color-field-disabled;
+
+      &::after,
+      &::before {
+        background: $border-color-field-disabled;
+      }
+      .pa-field-label {
+        color: $color-text-field-label-disabled;
+      }
+    }
+    &.pa-readonly {
+      .pa-field-label {
+        color: $color-text-field-label-disabled;
+      }
+
+      border-color: $border-color-field-readonly;
+      border-style: dashed;
+      &.pa-content {
+        border-top: 1px solid transparent;
 
         &::after,
         &::before {
-            content: '';
-            height: 1px;
-            position: absolute;
-            top: 0;
-            z-index: 1;
+          // Not using rhythm here because we want to mimic browser's `border-style: dashed` property
+          background: repeating-linear-gradient(
+            90deg,
+            $border-color-field-readonly,
+            $border-color-field-readonly 3px,
+            transparent 3px,
+            transparent 6px
+          );
         }
-
+      }
+      &:not(.pa-content) {
+        &::after,
         &::before {
-            left: 0;
-            width: rhythm(1);
+          display: none;
         }
+      }
+    }
+    &.pa-field-error {
+      &:not(.pa-disabled):not(.pa-readonly) {
+        border-color: $border-color-field-error;
 
-        &::after {
-            left: calc(var(--label-width) + #{$padding-field-control-left});
-            right: 1px;
+        &::after,
+        &::before {
+          background: $border-color-field-error;
         }
-        &.no-internal-label::after {
-            left: 0;
-        }
-
         &:hover {
-            border-color: $border-color-field-hover;
+          border-color: $border-color-field-error;
         }
-
         &:focus,
         &:active,
         &.pa-content,
-        &.pa-content.pa-disabled,
         &.pa-focus {
-            border-top: 1px solid transparent;
+          border-color: $border-color-field-error;
+          border-top: 1px solid transparent;
         }
+      }
+      .pa-field-label {
+        color: $color-text-field-label-error;
+      }
 
-        &:focus,
-        &:active,
-        &.pa-focus {
-            border-color: $border-color-field-active;
-            border-top: 1px solid transparent;
-        }
-
-        &.pa-content {
-            &::after,
-            &::before {
-                background: $border-color-field-regular;
-            }
-            &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
-                &::after,
-                &::before {
-                    background: $border-color-field-hover;
-                }
-            }
-        }
-        // :has needed to have Chrome autofill properly working, but Firefox does no support :has yet.
-        // Also "If the :has() pseudo-class itself is not supported in a browser, the entire selector block will fail"
-        // so we need to duplicate the blocks where :has is needed
-        // see https://developer.mozilla.org/en-US/docs/Web/CSS/:has
-        &:has(.cdk-text-field-autofilled) {
-            border-top: 1px solid transparent;
-        }
-        &:has(.cdk-text-field-autofilled) {
-            &::after,
-            &::before {
-                background: $border-color-field-regular;
-            }
-            &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
-                &::after,
-                &::before {
-                    background: $border-color-field-hover;
-                }
-            }
-        }
-
-        &:not(.pa-disabled):not(.pa-readonly):not(.pa-field-error).pa-focus {
-            &::after,
-            &::before {
-                background: $border-color-field-active;
-            }
-            .pa-field-label {
-                color: $color-text-field-label-regular-active;
-            }
-        }
-
-        &.pa-disabled {
-            border-color: $border-color-field-disabled;
-
-            &::after,
-            &::before {
-                background: $border-color-field-disabled;
-            }
-            .pa-field-label {
-                color: $color-text-field-label-disabled;
-            }
-        }
-        &.pa-readonly {
-            .pa-field-label {
-                color: $color-text-field-label-disabled;
-            }
-
-            border-color: $border-color-field-readonly;
-            border-style: dashed;
-            &.pa-content {
-                border-top: 1px solid transparent;
-
-                &::after,
-                &::before {
-                    // Not using rhythm here because we want to mimic browser's `border-style: dashed` property
-                    background: repeating-linear-gradient(
-                        90deg,
-                        $border-color-field-readonly,
-                        $border-color-field-readonly 3px,
-                        transparent 3px,
-                        transparent 6px
-                    );
-                }
-            }
-            &:not(.pa-content) {
-                &::after,
-                &::before {
-                    display: none;
-                }
-            }
-        }
-        &.pa-field-error {
-            &:not(.pa-disabled):not(.pa-readonly) {
-                border-color: $border-color-field-error;
-
-                &::after,
-                &::before {
-                    background: $border-color-field-error;
-                }
-                &:hover {
-                    border-color: $border-color-field-error;
-                }
-                &:focus,
-                &:active,
-                &.pa-content,
-                &.pa-focus {
-                    border-color: $border-color-field-error;
-                    border-top: 1px solid transparent;
-                }
-            }
-            .pa-field-label {
-                color: $color-text-field-label-error;
-            }
-
-            .pa-field-control {
-                background: $color-background-field-error;
-                caret-color: $color-caret-field-control-error;
-            }
-        }
-        // Definition specific for text field labels
-        .pa-field-label {
-            color: $color-text-field-label-regular;
-            left: $padding-field-control-left;
-            max-width: calc(100% - #{$padding-field-control-left * 2});
-            position: absolute;
-            top: calc(#{$padding-field-control-top} + #{rhythm(0.25)});
-            transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
-            transform-origin: 0 0;
-
-            &.pa-field-label-icon:not(.pa-icon-on-right) {
-                left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
-            }
-            &.pa-field-label-icon.pa-icon-on-right {
-                max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
-            }
-        }
+      .pa-field-control {
+        background: $color-background-field-error;
+        caret-color: $color-caret-field-control-error;
+      }
     }
-
-    // Definition for labels of all pa-fields (including toggle ones)
+    // Definition specific for text field labels
     .pa-field-label {
-        font-size: $font-size-field-control;
-        line-height: $line-height-field-control;
-        font-weight: $font-weight-label;
-        pointer-events: none;
+      color: $color-text-field-label-regular;
+      left: $padding-field-control-left;
+      max-width: calc(100% - #{$padding-field-control-left * 2});
+      position: absolute;
+      top: calc(#{$padding-field-control-top} + #{rhythm(0.25)});
+      transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
+      transform-origin: 0 0;
+
+      &.pa-field-label-icon:not(.pa-icon-on-right) {
+        left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+      }
+      &.pa-field-label-icon.pa-icon-on-right {
+        max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
+      }
+    }
+  }
+
+  // Definition for labels of all pa-fields (including toggle ones)
+  .pa-field-label {
+    font-size: $font-size-field-control;
+    line-height: $line-height-field-control;
+    font-weight: $font-weight-label;
+    pointer-events: none;
+  }
+
+  .pa-field-control {
+    background: $color-background-field-regular;
+    border: none;
+    caret-color: $color-caret-field-control-active;
+    color: $color-text-field-control-regular;
+    font-size: $font-size-field-control;
+    line-height: $line-height-field-control;
+    margin: $border-width-active - $border-width-regular;
+    outline: none;
+    padding: $padding-field-control-top $padding-field-control-left;
+    width: calc(100% - #{$border-width-regular});
+
+    -webkit-appearance: none;
+
+    &:not(textarea) {
+      height: calc(#{rhythm(6)} - #{rhythm(0.25)});
     }
 
-    .pa-field-control {
-        background: $color-background-field-regular;
-        border: none;
-        caret-color: $color-caret-field-control-active;
-        color: $color-text-field-control-regular;
-        font-size: $font-size-field-control;
-        line-height: $line-height-field-control;
-        margin: $border-width-active - $border-width-regular;
-        outline: none;
-        padding: $padding-field-control-top $padding-field-control-left;
-        width: calc(100% - #{$border-width-regular});
+    &.pa-field-control-icon:not(.pa-icon-on-right) {
+      padding-left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+    }
 
-        -webkit-appearance: none;
+    &::placeholder {
+      color: $color-text-field-control-placeholder-regular;
+      font-weight: $font-weight-placeholder;
+      opacity: 0;
+      transition: all 0s ease;
+    }
 
-        &:not(textarea) {
-            height: calc(#{rhythm(6)} - #{rhythm(0.25)});
-        }
-
-        &.pa-field-control-icon:not(.pa-icon-on-right) {
-            padding-left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
-        }
-
+    &:not(:disabled):not(:read-only) {
+      &:focus,
+      &:active {
         &::placeholder {
-            color: $color-text-field-control-placeholder-regular;
-            font-weight: $font-weight-placeholder;
-            opacity: 0;
-            transition: all 0s ease;
+          opacity: 1;
+          transition: all 1s ease;
         }
-
-        &:not(:disabled):not(:read-only) {
-            &:focus,
-            &:active {
-                &::placeholder {
-                    opacity: 1;
-                    transition: all 1s ease;
-                }
-            }
-        }
-
-        &.pa-field-control-filled,
-        &.cdk-text-field-autofilled,
-        &:not(:disabled):not(:read-only):focus,
-        &:not(:disabled):not(:read-only):active {
-            & ~ .pa-field-label {
-                transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(-#{rhythm(0.5)});
-                padding: 0 rhythm(1);
-
-                &.pa-field-label-icon:not(.pa-icon-on-right) {
-                    transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)})
-                        translateX(calc(-#{rhythm(0.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
-                }
-            }
-        }
-
-        &:disabled {
-            color: $color-text-field-control-disabled;
-        }
+      }
     }
+
+    &.pa-field-control-filled,
+    &.cdk-text-field-autofilled,
+    &:not(:disabled):not(:read-only):focus,
+    &:not(:disabled):not(:read-only):active {
+      & ~ .pa-field-label {
+        transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(-#{rhythm(0.5)});
+        padding: 0 rhythm(1);
+
+        &.pa-field-label-icon:not(.pa-icon-on-right) {
+          transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)})
+            translateX(calc(-#{rhythm(0.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
+        }
+      }
+    }
+
+    &:disabled {
+      color: $color-text-field-control-disabled;
+    }
+  }
 }
 
 pa-form-field-hint {
-    line-height: line-height(xs);
+  line-height: line-height(xs);
 }
 .pa-field-help {
-    @include size(xs);
-    color: $color-text-field-control-help-regular;
-    margin-top: rhythm(0.25);
+  @include size(xs);
+  color: $color-text-field-control-help-regular;
+  margin-top: rhythm(0.25);
 
-    &.pa-field-help-error {
-        color: $color-text-field-label-error;
-    }
+  &.pa-field-help-error {
+    color: $color-text-field-label-error;
+  }
 }
 
 .pa-textarea-autosize-measuring {
-    height: auto !important;
-    overflow: hidden !important;
+  height: auto !important;
+  overflow: hidden !important;
 }
 
 .pa-textarea-autosize-measuring-firefox {
-    height: 0 !important;
-    overflow: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }

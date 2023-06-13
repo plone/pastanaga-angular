@@ -1,5 +1,5 @@
-@import "palette.tokens";
-@import "spacing.tokens";
+@import 'palette.tokens';
+@import 'spacing.tokens';
 
 $background-color-modal: $color-light-stronger;
 $padding-modal: rhythm(4);
@@ -7,24 +7,24 @@ $spacing-dialog-sections: rhythm(3);
 $height-header-footer-modal: rhythm(12);
 
 @mixin centered-dialog() {
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 @mixin fixed-header() {
-    background: $background-color-modal;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
+  background: $background-color-modal;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 @mixin fixed-footer() {
-    background: $background-color-modal;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    padding: $spacing-dialog-sections $padding-modal;
-    right: 0;
+  background: $background-color-modal;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  padding: $spacing-dialog-sections $padding-modal;
+  right: 0;
 }

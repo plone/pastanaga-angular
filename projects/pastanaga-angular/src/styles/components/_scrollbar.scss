@@ -1,45 +1,45 @@
 @import '../variables';
 
 .pa-scrollable-container {
-    overflow-y: auto;
-    scrollbar-gutter: auto;
+  overflow-y: auto;
+  scrollbar-gutter: auto;
 }
 
 .pa-scrollable {
-    /* Chrome, Edge, and Safari */
-    &::-webkit-scrollbar {
-        width: $scrollbar-width-mobile;
-    }
+  /* Chrome, Edge, and Safari */
+  &::-webkit-scrollbar {
+    width: $scrollbar-width-mobile;
+  }
 
-    &::-webkit-scrollbar-track {
-        background: $color-scrollbar-track;
-    }
+  &::-webkit-scrollbar-track {
+    background: $color-scrollbar-track;
+  }
 
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-scrollbar-thumb;
+    border-radius: $scrollbar-border-radius;
+    border: $scrollbar-padding-mobile solid $color-scrollbar-thumb-border;
+    min-height: rhythm(4);
+  }
+
+  &.pa-scrolling {
     &::-webkit-scrollbar-thumb {
-        background-color: $color-scrollbar-thumb;
-        border-radius: $scrollbar-border-radius;
-        border: $scrollbar-padding-mobile solid $color-scrollbar-thumb-border;
-        min-height: rhythm(4);
+      background-color: $color-scrollbar-thumb-active;
     }
+    &::-webkit-scrollbar-track {
+      background: $color-scrollbar-track-active;
+    }
+  }
 
-    &.pa-scrolling {
-        &::-webkit-scrollbar-thumb {
-            background-color: $color-scrollbar-thumb-active;
-        }
-        &::-webkit-scrollbar-track {
-            background: $color-scrollbar-track-active;
-        }
+  @media (min-width: $size-viewport-large-min) {
+    &::-webkit-scrollbar {
+      width: $scrollbar-width-desktop;
     }
-
-    @media (min-width: $size-viewport-large-min) {
-        &::-webkit-scrollbar {
-            width: $scrollbar-width-desktop;
-        }
-        &::-webkit-scrollbar-thumb {
-            border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border;
-        }
-        &.pa-scrolling::-webkit-scrollbar-thumb {
-            border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border-active;
-        }
+    &::-webkit-scrollbar-thumb {
+      border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border;
     }
+    &.pa-scrolling::-webkit-scrollbar-thumb {
+      border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border-active;
+    }
+  }
 }

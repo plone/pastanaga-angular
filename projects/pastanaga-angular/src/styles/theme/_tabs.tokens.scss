@@ -1,6 +1,6 @@
-@import "palette.tokens";
-@import "spacing.tokens";
-@import "typography.tokens";
+@import 'palette.tokens';
+@import 'spacing.tokens';
+@import 'typography.tokens';
 
 $color-text-tab-link: $color-neutral-regular !default;
 $color-text-tab-link-active: $color-dark-stronger !default;

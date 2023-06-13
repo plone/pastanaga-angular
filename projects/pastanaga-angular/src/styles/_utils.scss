@@ -1,5 +1,5 @@
 // Compute the width of an element display in a flex column depending on the number of columns ($colCount)
 // and the size of the gap between two columns ($col-gap).
 @function flexColumnWidth($colCount, $col-gap) {
-    @return calc((100% / #{$colCount}) - #{$col-gap} * #{$colCount - 1}/#{$colCount});
+  @return calc((100% / #{$colCount}) - #{$col-gap} * #{$colCount - 1}/#{$colCount});
 }

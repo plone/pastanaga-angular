@@ -6,39 +6,39 @@ $header-height-small: $padding-modal + $dimension-image + $spacing-dialog-sectio
 $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-sections * 2 + line-height(xl);
 
 .pa-modal-dialog {
-    .pa-modal-header {
-        padding: $padding-modal $padding-modal $spacing-dialog-sections;
-        text-align: left;
+  .pa-modal-header {
+    padding: $padding-modal $padding-modal $spacing-dialog-sections;
+    text-align: left;
 
-        img {
-            margin-bottom: $spacing-dialog-sections;
-            height: $dimension-image;
-            width: $dimension-image;
-        }
-
-        .pa-modal-description,
-        .pa-modal-description-centered {
-            margin-top: rhythm(1.5);
-            text-align: left;
-        }
-        .pa-modal-description-centered {
-            text-align: center;
-        }
+    img {
+      margin-bottom: $spacing-dialog-sections;
+      height: $dimension-image;
+      width: $dimension-image;
     }
 
-    .pa-modal-header-centered {
-        text-align: center;
+    .pa-modal-description,
+    .pa-modal-description-centered {
+      margin-top: rhythm(1.5);
+      text-align: left;
     }
+    .pa-modal-description-centered {
+      text-align: center;
+    }
+  }
 
-    .pa-modal-content {
-        transition: margin-top $transition-hint;
-    }
+  .pa-modal-header-centered {
+    text-align: center;
+  }
 
-    &:not(.with-footer) .pa-modal-content {
-        margin-bottom: $padding-modal;
-    }
+  .pa-modal-content {
+    transition: margin-top $transition-hint;
+  }
 
-    @media (min-width: $size-viewport-medium-min) {
-        width: rhythm(56);
-    }
+  &:not(.with-footer) .pa-modal-content {
+    margin-bottom: $padding-modal;
+  }
+
+  @media (min-width: $size-viewport-medium-min) {
+    width: rhythm(56);
+  }
 }

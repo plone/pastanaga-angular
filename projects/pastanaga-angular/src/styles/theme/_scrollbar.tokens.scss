@@ -1,10 +1,10 @@
-@import "palette.tokens";
-@import "spacing.tokens";
+@import 'palette.tokens';
+@import 'spacing.tokens';
 
 $scrollbar-border-radius: rhythm(3) !default;
 
-$scrollbar-padding-mobile: rhythm(.25) !default;
-$scrollbar-padding-desktop: rhythm(.5) !default;
+$scrollbar-padding-mobile: rhythm(0.25) !default;
+$scrollbar-padding-desktop: rhythm(0.5) !default;
 
 $scrollbar-width-mobile: rhythm(1) !default;
 $scrollbar-width-desktop: rhythm(2) !default;

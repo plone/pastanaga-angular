@@ -1,44 +1,44 @@
 @import '../../../styles/variables';
 
 button {
-    color: $color-text-table-header;
-    font-size: font-size(xs);
+  color: $color-text-table-header;
+  font-size: font-size(xs);
+  display: flex;
+  align-items: center;
+  border: transparent;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-weight: $font-weight-bold;
+  text-transform: $text-transform-table-header;
+
+  &:active,
+  &.pa-active {
+    color: $color-dark-stronger;
+  }
+  pa-icon {
     display: flex;
-    align-items: center;
-    border: transparent;
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    font-weight: $font-weight-bold;
-    text-transform: $text-transform-table-header;
+    margin-left: rhythm(1);
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-dark-stronger;
-    }
+  @media (min-width: $size-viewport-large-min) {
     pa-icon {
-        display: flex;
-        margin-left: rhythm(1);
+      opacity: 0;
     }
 
-    @media (min-width: $size-viewport-large-min) {
-        pa-icon {
-            opacity: 0;
-        }
-
-        &.pa-enabled pa-icon {
-            opacity: 1;
-            transition: transform ease-in-out 0.3s;
-        }
-        &:hover,
-        &:active,
-        &.pa-keyboard-focus {
-            cursor: pointer;
-            color: $color-dark-stronger;
-
-            pa-icon {
-                opacity: 1;
-            }
-        }
+    &.pa-enabled pa-icon {
+      opacity: 1;
+      transition: transform ease-in-out 0.3s;
     }
+    &:hover,
+    &:active,
+    &.pa-keyboard-focus {
+      cursor: pointer;
+      color: $color-dark-stronger;
+
+      pa-icon {
+        opacity: 1;
+      }
+    }
+  }
 }

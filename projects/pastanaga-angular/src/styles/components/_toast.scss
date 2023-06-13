@@ -1,9 +1,9 @@
 @import '../variables';
 .pa-toast-container {
-    content: '';
-    cursor: default;
-    position: fixed;
-    top: 0;
-    transform: translateX(calc(100vw / 2 - 100%/2));
-    z-index: $z-index-toast;
+  content: '';
+  cursor: default;
+  position: fixed;
+  top: 0;
+  transform: translateX(calc(100vw / 2 - 100% / 2));
+  z-index: $z-index-toast;
 }

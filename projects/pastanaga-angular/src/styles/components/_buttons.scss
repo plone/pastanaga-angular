@@ -1,176 +1,176 @@
 @import '../variables';
 
 .pa-button {
-    background: transparent;
-    border: none;
-    border-radius: $border-radius-button;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius-button;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  transition: background-color $transition-hint, box-shadow $transition-hint, color $transition-hint;
+  white-space: nowrap;
+
+  a {
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .pa-button-wrapper {
     display: inline-flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    outline: 0;
-    transition: background-color $transition-hint, box-shadow $transition-hint, color $transition-hint;
-    white-space: nowrap;
+    align-items: center;
+  }
+  .pa-button-label {
+    font-weight: $font-weight-button-label;
+  }
 
-    a {
-        color: inherit;
-        &:hover {
-            text-decoration: none;
-        }
-    }
+  svg {
+    display: block;
+    fill: currentColor;
+  }
+  .pa-icon-text {
+    margin-right: rhythm(1);
+  }
 
-    .pa-button-wrapper {
-        display: inline-flex;
-        align-items: center;
-    }
-    .pa-button-label {
-        font-weight: $font-weight-button-label;
-    }
+  &.pa-button-icon {
+    border-radius: $border-radius-button-icon;
+  }
+  &:not(.pa-button-icon):not(.pa-button-icon-text):not(.pa-small) {
+    min-width: rhythm(20);
+  }
 
-    svg {
-        display: block;
-        fill: currentColor;
+  &.pa-small {
+    font-size: $font-size-button-small;
+    line-height: rhythm(3);
+    padding: $padding-button-small;
+    &.pa-button-icon {
+      padding: $padding-button-icon-small;
     }
-    .pa-icon-text {
-        margin-right: rhythm(1);
+    &.pa-button-icon-text {
+      padding: $padding-button-icon-text-small;
     }
+  }
+
+  &.pa-medium {
+    font-size: $font-size-button-medium;
+    line-height: rhythm(4);
+    padding: $padding-button-medium;
 
     &.pa-button-icon {
-        border-radius: $border-radius-button-icon;
+      padding: $padding-button-icon-medium;
     }
-    &:not(.pa-button-icon):not(.pa-button-icon-text):not(.pa-small) {
-        min-width: rhythm(20);
+    &.pa-button-icon-text {
+      padding: $padding-button-icon-text-medium;
     }
+  }
 
-    &.pa-small {
-        font-size: $font-size-button-small;
-        line-height: rhythm(3);
-        padding: $padding-button-small;
-        &.pa-button-icon {
-            padding: $padding-button-icon-small;
-        }
-        &.pa-button-icon-text {
-            padding: $padding-button-icon-text-small;
-        }
+  &.pa-large {
+    font-size: $font-size-button-large;
+    line-height: rhythm(4);
+    padding: $padding-button-large;
+
+    &.pa-button-icon {
+      padding: $padding-button-icon-large;
     }
-
-    &.pa-medium {
-        font-size: $font-size-button-medium;
-        line-height: rhythm(4);
-        padding: $padding-button-medium;
-
-        &.pa-button-icon {
-            padding: $padding-button-icon-medium;
-        }
-        &.pa-button-icon-text {
-            padding: $padding-button-icon-text-medium;
-        }
+    &.pa-button-icon-text {
+      padding: $padding-button-icon-text-large;
     }
+  }
 
-    &.pa-large {
-        font-size: $font-size-button-large;
-        line-height: rhythm(4);
-        padding: $padding-button-large;
+  &.pa-regular {
+    margin: -1px;
+  }
 
-        &.pa-button-icon {
-            padding: $padding-button-icon-large;
-        }
-        &.pa-button-icon-text {
-            padding: $padding-button-icon-text-large;
-        }
+  &:not(:disabled) {
+    cursor: pointer;
+
+    &.pa-primary {
+      &.pa-solid {
+        @include primary-solid();
+      }
+
+      &.pa-basic {
+        @include primary-basic();
+      }
     }
 
-    &.pa-regular {
-        margin: -1px;
+    &.pa-secondary {
+      &.pa-solid {
+        @include secondary-solid();
+      }
+
+      &.pa-basic {
+        @include secondary-basic();
+      }
     }
 
-    &:not(:disabled) {
-        cursor: pointer;
+    &.pa-inverted {
+      &.pa-solid {
+        @include inverted-solid();
+      }
 
-        &.pa-primary {
-            &.pa-solid {
-                @include primary-solid();
-            }
-
-            &.pa-basic {
-                @include primary-basic();
-            }
-        }
-
-        &.pa-secondary {
-            &.pa-solid {
-                @include secondary-solid();
-            }
-
-            &.pa-basic {
-                @include secondary-basic();
-            }
-        }
-
-        &.pa-inverted {
-            &.pa-solid {
-                @include inverted-solid();
-            }
-
-            &.pa-basic {
-                @include inverted-basic();
-            }
-        }
-
-        &.pa-destructive {
-            &.pa-solid {
-                @include destructive-solid();
-            }
-
-            &.pa-basic {
-                @include destructive-basic();
-            }
-        }
-
-        @media (hover: hover) {
-            &:hover {
-                &.pa-solid {
-                    @include hover-box-shadow-solid();
-                }
-
-                &.pa-basic {
-                    @include hover-box-shadow-basic();
-                }
-            }
-        }
+      &.pa-basic {
+        @include inverted-basic();
+      }
     }
 
-    &:disabled {
+    &.pa-destructive {
+      &.pa-solid {
+        @include destructive-solid();
+      }
+
+      &.pa-basic {
+        @include destructive-basic();
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
         &.pa-solid {
-            @include disabled-solid();
+          @include hover-box-shadow-solid();
         }
 
         &.pa-basic {
-            @include disabled-basic();
+          @include hover-box-shadow-basic();
         }
-
-        &.pa-inverted {
-            &.pa-solid {
-                @include disabled-inverted-solid();
-            }
-            &.pa-basic {
-                @include disabled-inverted-basic();
-            }
-        }
+      }
     }
+  }
+
+  &:disabled {
+    &.pa-solid {
+      @include disabled-solid();
+    }
+
+    &.pa-basic {
+      @include disabled-basic();
+    }
+
+    &.pa-inverted {
+      &.pa-solid {
+        @include disabled-inverted-solid();
+      }
+      &.pa-basic {
+        @include disabled-inverted-basic();
+      }
+    }
+  }
 }
 
 .pa-dual-buttons,
 .pa-modal .pa-modal-footer.pa-dual-buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    pa-button {
-        width: calc((100% - #{rhythm(2)}) / 2);
+  pa-button {
+    width: calc((100% - #{rhythm(2)}) / 2);
 
-        .pa-button {
-            min-width: unset !important;
-            width: 100%;
-        }
+    .pa-button {
+      min-width: unset !important;
+      width: 100%;
     }
+  }
 }

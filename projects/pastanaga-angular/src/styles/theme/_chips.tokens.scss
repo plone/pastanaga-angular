@@ -1,6 +1,6 @@
-@import "palette.tokens";
-@import "spacing.tokens";
-@import "typography.tokens";
+@import 'palette.tokens';
+@import 'spacing.tokens';
+@import 'typography.tokens';
 
 $color-background-chip-default: $color-neutral-lightest !default;
 $color-background-chip-default-hover: $color-neutral-lighter !default;

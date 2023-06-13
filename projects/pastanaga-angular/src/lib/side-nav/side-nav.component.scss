@@ -1,70 +1,70 @@
 @import '../../styles/variables';
 
 .pa-side-nav {
-    background-color: $color-light-stronger;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    padding: 0;
+  background-color: $color-light-stronger;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: $width-side-panel;
+  z-index: $z-index-popup;
+
+  .pa-close-side-nav-button {
     position: absolute;
-    top: 0;
-    width: $width-side-panel;
-    z-index: $z-index-popup;
+    right: rhythm(2);
+    top: rhythm(2);
+  }
 
-    .pa-close-side-nav-button {
-        position: absolute;
-        right: rhythm(2);
-        top: rhythm(2);
-    }
+  .pa-side-nav-content {
+    flex-grow: 1;
+    margin-bottom: 0;
+    overflow: auto;
+    padding: 0 0 rhythm(1);
+  }
 
-    .pa-side-nav-content {
-        flex-grow: 1;
-        margin-bottom: 0;
-        overflow: auto;
-        padding: 0 0 rhythm(1);
-    }
-
-    pa-side-nav-item {
-        opacity: 0;
-    }
+  pa-side-nav-item {
+    opacity: 0;
+  }
 }
 
 .pa-side-nav-tablet-overlay {
-    background: $color-dark-stronger;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    transition: opacity $transition-response;
-    width: 100vw;
-    z-index: $z-index-popup;
+  background: $color-dark-stronger;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity $transition-response;
+  width: 100vw;
+  z-index: $z-index-popup;
 
-    &.opened {
-        opacity: 0.5;
-    }
+  &.opened {
+    opacity: 0.5;
+  }
 }
 
 @media (max-width: $size-viewport-large-max) {
-    :host {
-        position: fixed;
-        height: 100%;
-        top: 0;
-        z-index: 10;
+  :host {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+  }
+
+  .pa-side-nav {
+    transform: translateX(-100%);
+    transition: transform $transition-slide;
+
+    &.animated {
+      opacity: 1;
+      transform: translateX(0);
     }
 
-    .pa-side-nav {
-        transform: translateX(-100%);
-        transition: transform $transition-slide;
-
-        &.animated {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        &.closed {
-            transform: translateX(-100%);
-        }
+    &.closed {
+      transform: translateX(-100%);
     }
+  }
 }

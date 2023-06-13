@@ -1,168 +1,168 @@
 @import '../variables';
 
 .pa-table-grid {
-    display: grid;
+  display: grid;
 }
 .pa-table-grid--head {
-    display: contents;
+  display: contents;
 
-    .pa-table-grid--header {
-        position: sticky;
-        top: 0;
-        min-height: $min-height-table-header;
-        background: $color-background-table-header;
-        border-bottom: 1px $color-border-table-header solid;
-        color: $color-text-table-header;
-        font-size: font-size(xs);
-        font-weight: $font-weight-text-table-header;
-        line-height: line-height(s);
-        padding: $padding-table-header;
-        text-transform: $text-transform-table-header;
-    }
-    .pa-table-grid--row > :first-child {
-        z-index: 2;
-    }
+  .pa-table-grid--header {
+    position: sticky;
+    top: 0;
+    min-height: $min-height-table-header;
+    background: $color-background-table-header;
+    border-bottom: 1px $color-border-table-header solid;
+    color: $color-text-table-header;
+    font-size: font-size(xs);
+    font-weight: $font-weight-text-table-header;
+    line-height: line-height(s);
+    padding: $padding-table-header;
+    text-transform: $text-transform-table-header;
+  }
+  .pa-table-grid--row > :first-child {
+    z-index: 2;
+  }
 }
 .pa-table-grid--body {
-    display: contents;
+  display: contents;
 
-    .pa-table-grid--header {
-        box-shadow: inset 0px -1px 0px $color-border-table-row;
-        background: $color-background-table-row;
-    }
+  .pa-table-grid--header {
+    box-shadow: inset 0px -1px 0px $color-border-table-row;
+    background: $color-background-table-row;
+  }
 
-    .pa-table-grid--header,
-    .pa-table-grid--row {
-        transition: background $transition-hint;
-    }
+  .pa-table-grid--header,
+  .pa-table-grid--row {
+    transition: background $transition-hint;
+  }
 
-    .pa-table-grid--row:hover .pa-table-grid--header,
-    .pa-table-grid--row.pa-clickable:hover .pa-table-grid--cell,
-    .pa-table-grid--row.pa-hoverable:hover .pa-table-grid--cell {
-        background: $color-background-table-row-hover;
-    }
+  .pa-table-grid--row:hover .pa-table-grid--header,
+  .pa-table-grid--row.pa-clickable:hover .pa-table-grid--cell,
+  .pa-table-grid--row.pa-hoverable:hover .pa-table-grid--cell {
+    background: $color-background-table-row-hover;
+  }
 
-    .pa-selected .pa-table-grid--row .pa-table-grid--header,
-    .pa-selected .pa-table-grid--row .pa-table-grid--cell,
-    .pa-selected .pa-table-grid--row:hover .pa-table-grid--header,
-    .pa-selected .pa-table-grid--row:hover .pa-table-grid--cell {
-        background: $color-background-table-row-selected;
-    }
+  .pa-selected .pa-table-grid--row .pa-table-grid--header,
+  .pa-selected .pa-table-grid--row .pa-table-grid--cell,
+  .pa-selected .pa-table-grid--row:hover .pa-table-grid--header,
+  .pa-selected .pa-table-grid--row:hover .pa-table-grid--cell {
+    background: $color-background-table-row-selected;
+  }
 
-    /*
+  /*
      * FIXME: when table-grid-cell contains a button and you click on it, currently the whole line has the active state.
      * We need to find a way of preventing that.
      */
-    .pa-table-grid--row:active .pa-table-grid--header,
-    .pa-table-grid--row.pa-clickable:active .pa-table-grid--cell {
-        background: $color-background-table-row-active;
-    }
+  .pa-table-grid--row:active .pa-table-grid--header,
+  .pa-table-grid--row.pa-clickable:active .pa-table-grid--cell {
+    background: $color-background-table-row-active;
+  }
 }
 
 .pa-table-grid--row {
-    display: contents;
-    font-weight: $font-weight-table-row;
-    font-size: font-size(s);
-    line-height: line-height(m);
+  display: contents;
+  font-weight: $font-weight-table-row;
+  font-size: font-size(s);
+  line-height: line-height(m);
 
-    .pa-table-grid--row-header {
-        grid-column: 1 / -1;
-        font-weight: $font-weight-text-table-header-row;
-        font-size: font-size(xs);
-        background: $color-background-table-header-row;
-        color: $color-text-table-header-row;
-        margin-top: -1px;
-        padding: $padding-table-row-header;
-        border-top: 1px solid $color-border-table-header-row;
-        position: sticky;
-        top: $min-height-table-header;
-        z-index: 3;
-    }
+  .pa-table-grid--row-header {
+    grid-column: 1 / -1;
+    font-weight: $font-weight-text-table-header-row;
+    font-size: font-size(xs);
+    background: $color-background-table-header-row;
+    color: $color-text-table-header-row;
+    margin-top: -1px;
+    padding: $padding-table-row-header;
+    border-top: 1px solid $color-border-table-header-row;
+    position: sticky;
+    top: $min-height-table-header;
+    z-index: 3;
+  }
 
-    &:not(.pa-table-grid--row--last) {
-        .pa-table-grid--cell {
-            box-shadow: inset 0px -1px 0px $color-border-table-row;
-        }
+  &:not(.pa-table-grid--row--last) {
+    .pa-table-grid--cell {
+      box-shadow: inset 0px -1px 0px $color-border-table-row;
     }
+  }
 
-    &.pa-disabled .pa-table-grid--cell {
-        cursor: default;
-        opacity: 0.5;
-        pointer-events: none;
-    }
-    &.pa-clickable .pa-table-grid--cell {
-        cursor: pointer;
-    }
+  &.pa-disabled .pa-table-grid--cell {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &.pa-clickable .pa-table-grid--cell {
+    cursor: pointer;
+  }
 }
 
 .pa-table-grid--header {
-    display: flex;
-    align-items: center;
-    padding: 0 rhythm(1);
+  display: flex;
+  align-items: center;
+  padding: 0 rhythm(1);
 
-    &.pa-center {
-        justify-content: center;
-    }
+  &.pa-center {
+    justify-content: center;
+  }
 }
 .pa-table-grid--cell {
-    background: $color-background-table-row;
-    color: $color-text-table-row;
-    display: flex;
-    align-items: center;
-    padding: $padding-table-cell-small;
-    min-height: $min-height-table-cell;
+  background: $color-background-table-row;
+  color: $color-text-table-row;
+  display: flex;
+  align-items: center;
+  padding: $padding-table-cell-small;
+  min-height: $min-height-table-cell;
 
-    &.pa-disabled {
-        cursor: default;
-        opacity: 0.5;
-        pointer-events: none;
-    }
-    &.pa-keyboard-focus {
-        box-shadow: inset $shadow-focus !important;
-    }
-    &.pa-center {
-        justify-content: center;
-    }
+  &.pa-disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &.pa-keyboard-focus {
+    box-shadow: inset $shadow-focus !important;
+  }
+  &.pa-center {
+    justify-content: center;
+  }
 }
 
 .pa-table-grid--header,
 .pa-table-grid--cell {
-    &.pa-no-wrap {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+  &.pa-no-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-    .pa-ellipsis {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  .pa-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .pa-table-grid--menu-cell {
-    justify-content: center;
+  justify-content: center;
 
-    &.pa-table-grid--header .pa-button {
-        display: flex;
-        padding: 0;
+  &.pa-table-grid--header .pa-button {
+    display: flex;
+    padding: 0;
 
-        &:hover,
-        &:active {
-            background: transparent !important;
-            box-shadow: none !important;
-        }
+    &:hover,
+    &:active {
+      background: transparent !important;
+      box-shadow: none !important;
     }
+  }
 }
 
 $lead-image-dimension: rhythm(6);
 .pa-lead-image {
-    height: $lead-image-dimension;
-    width: $lead-image-dimension;
+  height: $lead-image-dimension;
+  width: $lead-image-dimension;
 
-    pa-icon svg {
-        height: $lead-image-dimension !important;
-        width: $lead-image-dimension !important;
-    }
+  pa-icon svg {
+    height: $lead-image-dimension !important;
+    width: $lead-image-dimension !important;
+  }
 }
 
 // ignore Angular components
@@ -172,27 +172,27 @@ pa-table-header,
 pa-table-cell,
 pa-table-cell-menu,
 pa-table-sortable-header-cell {
-    display: contents;
+  display: contents;
 }
 
 @media (min-width: $size-viewport-medium-min) {
-    .pa-table-grid--row {
-        font-size: font-size(m);
-        line-height: line-height(l);
-    }
+  .pa-table-grid--row {
+    font-size: font-size(m);
+    line-height: line-height(l);
+  }
 
-    .pa-table-grid--cell {
-        padding: $padding-table-cell-medium;
-    }
+  .pa-table-grid--cell {
+    padding: $padding-table-cell-medium;
+  }
 }
 
 @media (min-width: $size-viewport-large-min) {
-    .pa-table-grid--header,
-    .pa-table-grid--cell {
-        cursor: default;
-    }
-    .pa-table-grid--header.pa-clickable,
-    .pa-table-grid--cell.pa-clickable {
-        cursor: pointer;
-    }
+  .pa-table-grid--header,
+  .pa-table-grid--cell {
+    cursor: default;
+  }
+  .pa-table-grid--header.pa-clickable,
+  .pa-table-grid--cell.pa-clickable {
+    cursor: pointer;
+  }
 }

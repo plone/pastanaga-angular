@@ -1,37 +1,37 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 :host {
-    display: block;
+  display: block;
 }
 
 .pa-card-wrapper {
-    background: $color-light-stronger;
-    border: 1px solid $color-neutral-lighter;
-    border-radius: $border-radius-default;
-    cursor: pointer;
-    padding: rhythm(2);
-    transition: background $transition-hint;
+  background: $color-light-stronger;
+  border: 1px solid $color-neutral-lighter;
+  border-radius: $border-radius-default;
+  cursor: pointer;
+  padding: rhythm(2);
+  transition: background $transition-hint;
+
+  .pa-card-content {
+    opacity: 1;
+    transition: opacity $transition-hint;
+  }
+
+  &:hover {
+    background: $color-neutral-lightest;
+  }
+
+  &:active {
+    background: $color-neutral-lighter;
+  }
+
+  &:disabled,
+  &.pa-disabled {
+    cursor: default;
+    pointer-events: none;
 
     .pa-card-content {
-        opacity: 1;
-        transition: opacity $transition-hint;
+      opacity: 0.3;
     }
-
-    &:hover {
-        background: $color-neutral-lightest;
-    }
-
-    &:active {
-        background: $color-neutral-lighter;
-    }
-
-    &:disabled,
-    &.pa-disabled {
-        cursor: default;
-        pointer-events: none;
-
-        .pa-card-content {
-            opacity: .3;
-        }
-    }
+  }
 }

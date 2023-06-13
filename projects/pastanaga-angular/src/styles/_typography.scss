@@ -1,128 +1,126 @@
-@import "variables";
+@import 'variables';
 
 .overline {
-    font-size: $font-size-overline;
-    line-height: $line-height-overline;
-    letter-spacing: $letter-spacing-overline;
-    font-weight: $font-weight-overline;
-    text-transform: uppercase;
+  font-size: $font-size-overline;
+  line-height: $line-height-overline;
+  letter-spacing: $letter-spacing-overline;
+  font-weight: $font-weight-overline;
+  text-transform: uppercase;
 }
 
 .body-xs {
-    font-size: $font-size-body-xs;
-    line-height: $line-height-body-xs;
-    letter-spacing: $letter-spacing-body-xs;
-    font-weight: $font-weight-body-xs;
+  font-size: $font-size-body-xs;
+  line-height: $line-height-body-xs;
+  letter-spacing: $letter-spacing-body-xs;
+  font-weight: $font-weight-body-xs;
 }
 
 .body-s {
-    font-size: $font-size-body-s;
-    line-height: $line-height-body-s;
-    letter-spacing: $letter-spacing-body-s;
-    font-weight: $font-weight-body-s;
+  font-size: $font-size-body-s;
+  line-height: $line-height-body-s;
+  letter-spacing: $letter-spacing-body-s;
+  font-weight: $font-weight-body-s;
 }
 
 .body-m {
-    font-size: $font-size-body-m;
-    line-height: $line-height-body-m;
-    letter-spacing: $letter-spacing-body-m;
-    font-weight: $font-weight-body-m;
+  font-size: $font-size-body-m;
+  line-height: $line-height-body-m;
+  letter-spacing: $letter-spacing-body-m;
+  font-weight: $font-weight-body-m;
 }
 
 h6,
 .title-xxs {
-    font-size: $font-size-title-xxs;
-    line-height: $line-height-title-xxs;
-    letter-spacing: $letter-spacing-title-xxs;
-    font-weight: $font-weight-title-xxs;
+  font-size: $font-size-title-xxs;
+  line-height: $line-height-title-xxs;
+  letter-spacing: $letter-spacing-title-xxs;
+  font-weight: $font-weight-title-xxs;
 }
 
 h5,
 .title-xs {
-    font-size: $font-size-title-xs;
-    line-height: $line-height-title-xs;
-    letter-spacing: $letter-spacing-title-xs;
-    font-weight: $font-weight-title-xs;
+  font-size: $font-size-title-xs;
+  line-height: $line-height-title-xs;
+  letter-spacing: $letter-spacing-title-xs;
+  font-weight: $font-weight-title-xs;
 }
 
 h4,
 .title-s,
 .title-s-mobile {
-    font-size: $font-size-title-s;
-    line-height: $line-height-title-s;
-    letter-spacing: $letter-spacing-title-s;
-    font-weight: $font-weight-title-s;
+  font-size: $font-size-title-s;
+  line-height: $line-height-title-s;
+  letter-spacing: $letter-spacing-title-s;
+  font-weight: $font-weight-title-s;
 }
 
 h3,
 .title-m,
 .title-m-mobile {
-    font-size: $font-size-title-m;
-    line-height: $line-height-title-m;
-    letter-spacing: $letter-spacing-title-m;
-    font-weight: $font-weight-title-m;
+  font-size: $font-size-title-m;
+  line-height: $line-height-title-m;
+  letter-spacing: $letter-spacing-title-m;
+  font-weight: $font-weight-title-m;
 }
 
 h2,
 .title-l,
 .title-l-mobile {
-    font-size: $font-size-title-l;
-    line-height: $line-height-title-l;
-    letter-spacing: $letter-spacing-title-l;
-    font-weight: $font-weight-title-l;
+  font-size: $font-size-title-l;
+  line-height: $line-height-title-l;
+  letter-spacing: $letter-spacing-title-l;
+  font-weight: $font-weight-title-l;
 }
 
 h1,
 .display-s,
 .display-s-mobile {
-    font-size: $font-size-display-s;
-    line-height: $line-height-display-s;
-    letter-spacing: $letter-spacing-display-s;
-    font-weight: $font-weight-display-s;
+  font-size: $font-size-display-s;
+  line-height: $line-height-display-s;
+  letter-spacing: $letter-spacing-display-s;
+  font-weight: $font-weight-display-s;
 }
 
 .display-m,
 .display-m-mobile {
-    font-size: $font-size-display-m;
-    line-height: $line-height-display-m;
-    letter-spacing: $letter-spacing-display-m;
-    font-weight: $font-weight-display-m;
+  font-size: $font-size-display-m;
+  line-height: $line-height-display-m;
+  letter-spacing: $letter-spacing-display-m;
+  font-weight: $font-weight-display-m;
 }
-
 
 @media (min-width: $size-viewport-medium-min) {
-    h4,
-    .title-s {
-        font-size: $font-size-title-s-md;
-        line-height: $line-height-title-s-md;
-        letter-spacing: $letter-spacing-title-s-md;
-    }
+  h4,
+  .title-s {
+    font-size: $font-size-title-s-md;
+    line-height: $line-height-title-s-md;
+    letter-spacing: $letter-spacing-title-s-md;
+  }
 
-    h3,
-    .title-m {
-        font-size: $font-size-title-m-md;
-        line-height: $line-height-title-m-md;
-        letter-spacing: $letter-spacing-title-m-md;
-    }
+  h3,
+  .title-m {
+    font-size: $font-size-title-m-md;
+    line-height: $line-height-title-m-md;
+    letter-spacing: $letter-spacing-title-m-md;
+  }
 
-    h2,
-    .title-l {
-        font-size: $font-size-title-l-md;
-        line-height: $line-height-title-l-md;
-        letter-spacing: $letter-spacing-title-l-md;
-    }
+  h2,
+  .title-l {
+    font-size: $font-size-title-l-md;
+    line-height: $line-height-title-l-md;
+    letter-spacing: $letter-spacing-title-l-md;
+  }
 
-    h1,
-    .display-s {
-        font-size: $font-size-display-s-md;
-        line-height: $line-height-display-s-md;
-        letter-spacing: $letter-spacing-display-s-md;
-    }
+  h1,
+  .display-s {
+    font-size: $font-size-display-s-md;
+    line-height: $line-height-display-s-md;
+    letter-spacing: $letter-spacing-display-s-md;
+  }
 
-    .display-m {
-        font-size: $font-size-display-m-md;
-        line-height: $line-height-display-m-md;
-        letter-spacing: $letter-spacing-display-m-md;
-    }
+  .display-m {
+    font-size: $font-size-display-m-md;
+    line-height: $line-height-display-m-md;
+    letter-spacing: $letter-spacing-display-m-md;
+  }
 }
-

@@ -176,211 +176,211 @@ $font-size-button-large: font-size(m) !default;
 $font-weight-button-label: $font-weight-semi-bold !default;
 
 @mixin primary-solid() {
-    color: $color-text-button-primary-solid;
-    background: $color-background-button-primary-solid;
-    border: $border-button-primary-solid;
+  color: $color-text-button-primary-solid;
+  background: $color-background-button-primary-solid;
+  border: $border-button-primary-solid;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-primary-solid-hover;
-            background: $color-background-button-primary-solid-hover;
-            border: $border-button-primary-solid-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-primary-solid-hover;
+      background: $color-background-button-primary-solid-hover;
+      border: $border-button-primary-solid-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-primary-solid-active;
-        background: $color-background-button-primary-solid-active;
-        border: $border-button-primary-solid-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-primary-solid-active;
+    background: $color-background-button-primary-solid-active;
+    border: $border-button-primary-solid-active;
+  }
 }
 
 @mixin primary-basic() {
-    color: $color-text-button-primary-basic;
-    background: $color-background-button-primary-basic;
-    border: $border-button-primary-basic;
+  color: $color-text-button-primary-basic;
+  background: $color-background-button-primary-basic;
+  border: $border-button-primary-basic;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-primary-basic-hover;
-            background: $color-background-button-primary-basic-hover;
-            border: $border-button-primary-basic-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-primary-basic-hover;
+      background: $color-background-button-primary-basic-hover;
+      border: $border-button-primary-basic-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-primary-basic-active;
-        background: $color-background-button-primary-basic-active;
-        border: $border-button-primary-basic-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-primary-basic-active;
+    background: $color-background-button-primary-basic-active;
+    border: $border-button-primary-basic-active;
+  }
 }
 
 @mixin secondary-solid() {
-    color: $color-text-button-secondary-solid;
-    background: $color-background-button-secondary-solid;
-    border: $border-button-secondary-solid;
+  color: $color-text-button-secondary-solid;
+  background: $color-background-button-secondary-solid;
+  border: $border-button-secondary-solid;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-secondary-solid-hover;
-            background: $color-background-button-secondary-solid-hover;
-            border: $border-button-secondary-solid-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-secondary-solid-hover;
+      background: $color-background-button-secondary-solid-hover;
+      border: $border-button-secondary-solid-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-secondary-solid-active;
-        background: $color-background-button-secondary-solid-active;
-        border: $border-button-secondary-solid-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-secondary-solid-active;
+    background: $color-background-button-secondary-solid-active;
+    border: $border-button-secondary-solid-active;
+  }
 }
 
 @mixin secondary-basic() {
-    color: $color-text-button-secondary-basic;
-    background: $color-background-button-secondary-basic;
-    border: $border-button-secondary-basic;
+  color: $color-text-button-secondary-basic;
+  background: $color-background-button-secondary-basic;
+  border: $border-button-secondary-basic;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-secondary-basic-hover;
-            background: $color-background-button-secondary-basic-hover;
-            border: $border-button-secondary-basic-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-secondary-basic-hover;
+      background: $color-background-button-secondary-basic-hover;
+      border: $border-button-secondary-basic-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-secondary-basic-active;
-        background: $color-background-button-secondary-basic-active;
-        border: $border-button-secondary-basic-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-secondary-basic-active;
+    background: $color-background-button-secondary-basic-active;
+    border: $border-button-secondary-basic-active;
+  }
 }
 
 @mixin inverted-solid() {
-    color: $color-text-button-inverted-solid;
-    background: $color-background-button-inverted-solid;
-    border: $border-button-inverted-solid;
+  color: $color-text-button-inverted-solid;
+  background: $color-background-button-inverted-solid;
+  border: $border-button-inverted-solid;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-inverted-solid-hover;
-            background: $color-background-button-inverted-solid-hover;
-            border: $border-button-inverted-solid-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-inverted-solid-hover;
+      background: $color-background-button-inverted-solid-hover;
+      border: $border-button-inverted-solid-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-inverted-solid-active;
-        background: $color-background-button-inverted-solid-active;
-        border: $border-button-inverted-solid-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-inverted-solid-active;
+    background: $color-background-button-inverted-solid-active;
+    border: $border-button-inverted-solid-active;
+  }
 }
 
 @mixin inverted-basic() {
-    color: $color-text-button-inverted-basic;
-    background: $color-background-button-inverted-basic;
-    border: $border-button-secondary-basic;
+  color: $color-text-button-inverted-basic;
+  background: $color-background-button-inverted-basic;
+  border: $border-button-secondary-basic;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-inverted-basic-hover;
-            background: $color-background-button-inverted-basic-hover;
-            border: $border-button-inverted-basic-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-inverted-basic-hover;
+      background: $color-background-button-inverted-basic-hover;
+      border: $border-button-inverted-basic-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-inverted-basic-active;
-        background: $color-background-button-inverted-basic-active;
-        border: $border-button-inverted-basic-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-inverted-basic-active;
+    background: $color-background-button-inverted-basic-active;
+    border: $border-button-inverted-basic-active;
+  }
 }
 
 @mixin destructive-solid() {
-    color: $color-text-button-destructive-solid;
-    background: $color-background-button-destructive-solid;
-    border: $border-button-destructive-solid;
+  color: $color-text-button-destructive-solid;
+  background: $color-background-button-destructive-solid;
+  border: $border-button-destructive-solid;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-destructive-solid-hover;
-            background: $color-background-button-destructive-solid-hover;
-            border: $border-button-destructive-solid-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-destructive-solid-hover;
+      background: $color-background-button-destructive-solid-hover;
+      border: $border-button-destructive-solid-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-destructive-solid-active;
-        background: $color-background-button-destructive-solid-active;
-        border: $border-button-destructive-solid-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-destructive-solid-active;
+    background: $color-background-button-destructive-solid-active;
+    border: $border-button-destructive-solid-active;
+  }
 }
 
 @mixin destructive-basic() {
-    color: $color-text-button-destructive-basic;
-    background: $color-background-button-destructive-basic;
-    border: $border-button-destructive-basic;
+  color: $color-text-button-destructive-basic;
+  background: $color-background-button-destructive-basic;
+  border: $border-button-destructive-basic;
 
-    @media (hover: hover) {
-        &:hover {
-            color: $color-text-button-destructive-basic-hover;
-            background: $color-background-button-destructive-basic-hover;
-            border: $border-button-destructive-basic-hover;
-        }
+  @media (hover: hover) {
+    &:hover {
+      color: $color-text-button-destructive-basic-hover;
+      background: $color-background-button-destructive-basic-hover;
+      border: $border-button-destructive-basic-hover;
     }
+  }
 
-    &:active,
-    &.pa-active {
-        color: $color-text-button-destructive-basic-active;
-        background: $color-background-button-destructive-basic-active;
-        border: $border-button-destructive-basic-active;
-    }
+  &:active,
+  &.pa-active {
+    color: $color-text-button-destructive-basic-active;
+    background: $color-background-button-destructive-basic-active;
+    border: $border-button-destructive-basic-active;
+  }
 }
 
 @mixin disabled-solid() {
-    color: $color-text-button-solid-disabled;
-    background: $color-background-button-solid-disabled;
-    border: $border-button-solid-disabled;
+  color: $color-text-button-solid-disabled;
+  background: $color-background-button-solid-disabled;
+  border: $border-button-solid-disabled;
 }
 
 @mixin disabled-basic() {
-    color: $color-text-button-basic-disabled;
-    background: $color-background-button-basic-disabled;
-    border: $border-button-basic-disabled;
+  color: $color-text-button-basic-disabled;
+  background: $color-background-button-basic-disabled;
+  border: $border-button-basic-disabled;
 }
 
 @mixin disabled-inverted-solid() {
-    color: $color-text-button-inverted-solid-disabled;
-    background: $color-background-button-inverted-solid-disabled;
-    border: $border-button-solid-disabled;
+  color: $color-text-button-inverted-solid-disabled;
+  background: $color-background-button-inverted-solid-disabled;
+  border: $border-button-solid-disabled;
 }
 
 @mixin disabled-inverted-basic() {
-    color: $color-text-button-inverted-basic-disabled;
-    background: $color-background-button-basic-disabled;
-    border: $border-button-basic-disabled;
+  color: $color-text-button-inverted-basic-disabled;
+  background: $color-background-button-basic-disabled;
+  border: $border-button-basic-disabled;
 }
 
 @mixin hover-box-shadow-solid() {
-    box-shadow: $shadow-button-solid-hover;
+  box-shadow: $shadow-button-solid-hover;
 
-    &:active,
-    &.pa-active {
-        box-shadow: none;
-    }
+  &:active,
+  &.pa-active {
+    box-shadow: none;
+  }
 }
 
 @mixin hover-box-shadow-basic() {
-    box-shadow: $shadow-button-basic-hover;
+  box-shadow: $shadow-button-basic-hover;
 
-    &:active,
-    &.pa-active {
-        box-shadow: none;
-    }
+  &:active,
+  &.pa-active {
+    box-shadow: none;
+  }
 }

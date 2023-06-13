@@ -1,5 +1,5 @@
-@import "palette.tokens";
-@import "typography.tokens";
+@import 'palette.tokens';
+@import 'typography.tokens';
 
 //=====================================
 // COLORS
@@ -21,14 +21,14 @@ $color-text-title-default: $color-dark-stronger !default;
 //=====================================
 // TYPOGRAPHY
 //=====================================
-$font-weight-body:  $font-weight-thin !default;
+$font-weight-body: $font-weight-thin !default;
 $font-weight-title: $font-weight-semi-bold !default;
-$font-weight-dt:    $font-weight-thin !default;
-$font-weight-dd:    $font-weight-thin !default;
+$font-weight-dt: $font-weight-thin !default;
+$font-weight-dd: $font-weight-thin !default;
 $font-weight-label: $font-weight-semi-bold !default;
 $font-weight-placeholder: $font-weight-thin !default;
 $font-weight-menu-header: $font-weight-semi-bold !default;
-$font-weight-link:  $font-weight-semi-bold !default;
+$font-weight-link: $font-weight-semi-bold !default;
 
-$text-decoration-link:          none !default;
-$text-decoration-link-hover:    underline !default;
+$text-decoration-link: none !default;
+$text-decoration-link-hover: underline !default;
