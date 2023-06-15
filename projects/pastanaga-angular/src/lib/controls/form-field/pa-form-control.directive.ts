@@ -14,13 +14,20 @@ import {
 } from '@angular/core';
 import {
   ControlValueAccessor,
-  UntypedFormControl,
   FormControlDirective,
   FormControlName,
   NgControl,
   NgModel,
+  UntypedFormControl,
 } from '@angular/forms';
-import { FORM_CONTROL, FORM_CONTROL_NAME, InternalMode, NG_MODEL, STANDALONE } from '../form-field.model';
+import {
+  FORM_CONTROL,
+  FORM_CONTROL_NAME,
+  IErrorMessages,
+  InternalMode,
+  NG_MODEL,
+  STANDALONE,
+} from '../form-field.model';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { markForCheck } from '../../common';
 import { Subject } from 'rxjs';
@@ -32,20 +39,20 @@ let nextId = 0;
   selector: '[paFormControl]',
 })
 export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
-  @Input() set id(value: string | undefined) {
+  @Input()
+  set id(value: string | undefined) {
     if (value !== this.htmlId) {
       this._id = value;
     }
   }
-
   get id() {
     return this._formattedId;
   }
 
-  @Input() set name(value: string) {
+  @Input()
+  set name(value: string) {
     this._name = value;
   }
-
   get name() {
     return this._formattedName;
   }
@@ -54,21 +61,24 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
     this.writeValue(value);
   }
 
-  @Input() set readonly(value: any) {
+  @Input()
+  set readonly(value: any) {
     this._readonly = coerceBooleanProperty(value);
   }
-
   get readonly() {
     return this._readonly;
   }
 
-  @Input() set disabled(value: any) {
+  @Input()
+  set disabled(value: any) {
     this.setDisabledState(coerceBooleanProperty(value));
   }
-
   get disabled() {
     return this.control.disabled;
   }
+
+  @Input() help?: string;
+  @Input() errorMessages?: IErrorMessages;
 
   /**
    * Manual error messaging
@@ -93,6 +103,8 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
 
   control: UntypedFormControl = new UntypedFormControl();
   internalMode: InternalMode = STANDALONE;
+
+  describedById?: string;
 
   protected fieldType = 'field';
   protected terminator$ = new Subject<void>();
@@ -214,7 +226,10 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
       }
       this.updateHtmlValue(val);
     });
-    this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe((status) => this.statusChange.emit(status));
+    this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe((status) => {
+      this.statusChange.emit(status);
+      this.cdr.markForCheck();
+    });
   }
 
   private updateHtmlValue(val: any) {
@@ -229,6 +244,16 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
       this.control.disable();
     } else {
       this.control.enable();
+    }
+    this.cdr.markForCheck();
+  }
+
+  protected _checkDescribedBy() {
+    if ((!this.describedById && this.help) || this.control.errors) {
+      this.describedById = `${this.id}-hint`;
+    } else if (!this.help && this.control.errors === null) {
+      this.describedById = undefined;
+      markForCheck(this.cdr);
     }
   }
 }

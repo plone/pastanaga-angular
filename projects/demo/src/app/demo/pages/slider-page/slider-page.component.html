@@ -5,15 +5,103 @@
       <code>pa-slider</code>
       is a component wrapping an input range.
     </p>
+    <pa-demo-form-field-description component="pa-slider"></pa-demo-form-field-description>
   </pa-demo-description>
   <pa-demo-examples>
-    <pa-slider></pa-slider>
+    <div>
+      <div class="slider-line">
+        <pa-slider
+          max="10"
+          [disabled]="disable"
+          [(value)]="value">
+          Value
+        </pa-slider>
+        <div>value: {{ value }}</div>
+      </div>
+      <div class="slider-line">
+        <pa-slider
+          [disabled]="disable"
+          [(ngModel)]="model">
+          ngModel
+        </pa-slider>
+        <div>model: {{ model }}</div>
+      </div>
+      <div class="slider-line">
+        <pa-slider [formControl]="control">Form control</pa-slider>
+        <div>control.value: {{ control.value }}</div>
+      </div>
+
+      <p class="title-s">Form group</p>
+      <div class="slider-line">
+        <form [formGroup]="group">
+          <pa-slider formControlName="percent">Percent</pa-slider>
+          <pa-slider formControlName="total">Total</pa-slider>
+        </form>
+        <div>group.value: {{ group.value | json }}</div>
+      </div>
+      <div class="slider-line">
+        <pa-slider
+          [(ngModel)]="model2"
+          [disabled]="disable"
+          min="5"
+          max="150"
+          step="5"
+          help="Help: step is set to 5 on this one">
+          Slider with help
+        </pa-slider>
+        <div>model: {{ model2 }}</div>
+      </div>
+      <div class="slider-line">
+        <pa-slider
+          [disabled]="disable"
+          max="9999"
+          help="Slider without label but with some help"></pa-slider>
+      </div>
+    </div>
   </pa-demo-examples>
-  <!-- TODO
-   <pa-demo-usage>
-   </pa-demo-usage>
-    -->
+  <pa-demo-configuration>
+    <pa-checkbox
+      [value]="disable"
+      (valueChange)="toggleDisable()">
+      Disable
+    </pa-checkbox>
+  </pa-demo-configuration>
+  <pa-demo-usage>
+    <h3>
+      Inherited from
+      <code>PaFormControlDirective</code>
+    </h3>
+    <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
+
+    <h3>
+      Specific to
+      <code>pa-slider</code>
+    </h3>
+    <h4>Inputs</h4>
+    <dl>
+      <dt>max</dt>
+      <dd>
+        The greatest value in the range of permitted values.
+        <small>(default: 100)</small>
+      </dd>
+      <dt>min</dt>
+      <dd>
+        The lowest value in the range of permitted values.
+        <small>(default: 0)</small>
+      </dd>
+      <dt>step</dt>
+      <dd>
+        Number that specifies the granularity that the value must adhere to.
+        <small>(default: 1)</small>
+      </dd>
+    </dl>
+  </pa-demo-usage>
   <pa-demo-code>
-    <pre><code>{{code}}</code></pre>
+    ngModel example:
+    <pre><code>{{ngModelCode}}</code></pre>
+    formControl example:
+    <pre><code>{{formControlCode}}</code></pre>
+    formGroup example:
+    <pre><code>{{formGroupCode}}</code></pre>
   </pa-demo-code>
 </pa-demo-page>

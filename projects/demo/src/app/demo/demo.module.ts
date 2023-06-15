@@ -143,6 +143,7 @@ import { PopupComponentUsageComponent } from './pages/popup-page/popup-component
 import { TypeaheadSelectPageComponent } from './pages/typeahead-select-page/typeahead-select-page.component';
 import { SelectUsageComponent } from './pages/select-page/select-usage.component';
 import { SliderPageComponent } from './pages/slider-page/slider-page.component';
+import { FormFieldDescriptionComponent } from './pages/form-field-description.component';
 
 const COMPONENTS = [
   DemoComponent,
@@ -160,6 +161,8 @@ const COMPONENTS = [
   DialogImageExampleComponent,
   DialogWithoutFooterExampleComponent,
   ModalExampleComponent,
+
+  FormFieldDescriptionComponent,
 
   AccessibilityPageComponent,
   AvatarPageComponent,

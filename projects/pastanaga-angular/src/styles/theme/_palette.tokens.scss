@@ -1,91 +1,85 @@
 // Colors palette
 
 // Blacks
-$_denim:   hsl(207,90%,7%);
+$_denim: hsl(207, 90%, 7%);
 
 // Whites
 // We cannot use HSL for white because hsl(0,0%,100%) is translated to the keyword `white` instead of the hexa code `#fff`,
 // which is breaking the code we use in `background-image: url()` where we encode the `#`
-$_white:   #fff;
+$_white: #fff;
 
 // Grays
-$_dolphin: hsl(207,17%,58%);
-$_silver:  hsl(207,17%,80%);
-$_smoke:   hsl(207,17%,91%);
-$_snow:    hsl(207,17%,96%);
-$_steam:   hsl(207,17%,98%);
+$_dolphin: hsl(207, 17%, 58%);
+$_silver: hsl(207, 17%, 80%);
+$_smoke: hsl(207, 17%, 91%);
+$_snow: hsl(207, 17%, 96%);
+$_steam: hsl(207, 17%, 98%);
 
 // Blues
-$_royal:     hsl(207,90%,31%);
-$_sapphire:  hsl(207,90%,43%);
-$_cobalt:    hsl(207,90%,55%);
-$_azure:     hsl(207,90%,73%);
-$_sky:       hsl(207,90%,85%);
-$_arctic:    hsl(207,90%,92%);
+$_royal: hsl(207, 90%, 31%);
+$_sapphire: hsl(207, 90%, 43%);
+$_cobalt: hsl(207, 90%, 55%);
+$_azure: hsl(207, 90%, 73%);
+$_sky: hsl(207, 90%, 85%);
+$_arctic: hsl(207, 90%, 92%);
 
 // Reds
-$_wine:      hsl(7,90%,35%);
-$_candy:     hsl(7,90%,43%);
-$_rose:      hsl(7,90%,59%);
-$_poppy:     hsl(7,90%,78%);
-$_flamingo:  hsl(7,90%,89%);
-$_ballet:    hsl(7,90%,95%);
+$_wine: hsl(7, 90%, 35%);
+$_candy: hsl(7, 90%, 43%);
+$_rose: hsl(7, 90%, 59%);
+$_poppy: hsl(7, 90%, 78%);
+$_flamingo: hsl(7, 90%, 89%);
+$_ballet: hsl(7, 90%, 95%);
 
 // Teal
-$_puya:      hsl(175,60%,23%);
-$_peacock:   hsl(175,60%,31%);
-$_turquoise: hsl(175,60%,40%);
-$_tiffany:   hsl(175,60%,66%);
-$_spa:       hsl(175,60%,83%);
-$_aqua:      hsl(175,60%,90%);
+$_puya: hsl(175, 60%, 23%);
+$_peacock: hsl(175, 60%, 31%);
+$_turquoise: hsl(175, 60%, 40%);
+$_tiffany: hsl(175, 60%, 66%);
+$_spa: hsl(175, 60%, 83%);
+$_aqua: hsl(175, 60%, 90%);
 
 // General tokens
-$color-dark-stronger:    $_denim !default;
+$color-dark-stronger: $_denim !default;
 
-$color-light-stronger:   $_white !default;
+$color-light-stronger: $_white !default;
 
-$color-neutral-regular:  $_dolphin !default;
-$color-neutral-light:    $_silver !default;
-$color-neutral-lighter:  $_smoke !default;
-$color-neutral-lightest: $_snow  !default;
+$color-neutral-regular: $_dolphin !default;
+$color-neutral-light: $_silver !default;
+$color-neutral-lighter: $_smoke !default;
+$color-neutral-lightest: $_snow !default;
 
-$color-primary-stronger:    $_royal !default;
-$color-primary-strong:      $_sapphire !default;
-$color-primary-regular:     $_cobalt !default;
-$color-primary-light:       $_azure !default;
-$color-primary-lighter:     $_sky !default;
-$color-primary-lightest:    $_arctic !default;
+$color-primary-stronger: $_royal !default;
+$color-primary-strong: $_sapphire !default;
+$color-primary-regular: $_cobalt !default;
+$color-primary-light: $_azure !default;
+$color-primary-lighter: $_sky !default;
+$color-primary-lightest: $_arctic !default;
 
-$color-secondary-stronger:  $_wine !default;
-$color-secondary-strong:    $_candy !default;
-$color-secondary-regular:   $_rose !default;
-$color-secondary-light:     $_poppy !default;
-$color-secondary-lighter:   $_flamingo !default;
-$color-secondary-lightest:  $_ballet !default;
+$color-secondary-stronger: $_wine !default;
+$color-secondary-strong: $_candy !default;
+$color-secondary-regular: $_rose !default;
+$color-secondary-light: $_poppy !default;
+$color-secondary-lighter: $_flamingo !default;
+$color-secondary-lightest: $_ballet !default;
 
-$color-tertiary-stronger:   $_puya !default;
-$color-tertiary-strong:     $_peacock !default;
-$color-tertiary-regular:    $_turquoise !default;
-$color-tertiary-light:      $_tiffany !default;
-$color-tertiary-lighter:    $_spa !default;
-$color-tertiary-lightest:   $_aqua !default;
-
+$color-tertiary-stronger: $_puya !default;
+$color-tertiary-strong: $_peacock !default;
+$color-tertiary-regular: $_turquoise !default;
+$color-tertiary-light: $_tiffany !default;
+$color-tertiary-lighter: $_spa !default;
+$color-tertiary-lightest: $_aqua !default;
 
 // To be reviewed
 
 // Alphas
-$_alpha_default:   hsla(0,0%,100%,0.5);
-$_alpha_light:     hsla(0,0%,100%,0.25);
-$_alpha_lighter:   hsla(0,0%,100%,0.15);
-$_alpha_lightest:  hsla(0,0%,100%,0.05);
+$_alpha_default: hsla(0, 0%, 100%, 0.5);
+$_alpha_light: hsla(0, 0%, 100%, 0.25);
+$_alpha_lighter: hsla(0, 0%, 100%, 0.15);
+$_alpha_lightest: hsla(0, 0%, 100%, 0.05);
 
 // Inverted
-$color-neutral-inverted-default:   $_alpha_default !default;
-$color-neutral-inverted-light:     $_alpha_light !default;
-$color-neutral-inverted-lighter:   $_alpha_lighter !default;
-$color-neutral-inverted-lightest:  $_alpha_lightest !default;
-
-
-
-
-
+$color-neutral-inverted-default: $_alpha_default !default;
+$color-neutral-inverted-light: $_alpha_light !default;
+$color-neutral-inverted-lighter: $_alpha_lighter !default;
+$color-neutral-inverted-lightest: $_alpha_lightest !default;

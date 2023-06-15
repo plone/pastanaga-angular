@@ -120,10 +120,10 @@ export const menu: IDemoMenuSection[] = [
       { view: 'typeahead-select', title: 'Typeahead select', type: TypeaheadSelectPageComponent },
       { view: 'textarea', title: 'Textarea', type: TextareaPageComponent },
       { view: 'toggle', title: 'Toggle', type: TogglePageComponent },
+      { view: 'slider', title: 'Slider', type: SliderPageComponent },
       { view: 'formControl', title: 'Form control', type: FormControlPageComponent },
       { view: 'formFieldHint', title: 'Form field hint', type: FormFieldHintPageComponent },
       { view: 'nativeTextField', title: 'Native Text Field', type: NativeTextFieldPageComponent },
-      { view: 'slider', title: 'Slider', type: SliderPageComponent },
     ],
   },
 ];

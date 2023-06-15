@@ -1,6 +1,6 @@
-@import "palette.tokens";
-@import "spacing.tokens";
-@import "typography.tokens";
+@import 'palette.tokens';
+@import 'spacing.tokens';
+@import 'typography.tokens';
 
 //=====================================
 // COLORS
@@ -28,7 +28,7 @@ $color-check-toggle-disabled: $color-neutral-light !default;
 //=====================================
 // SPACING
 //=====================================
-$size-toggle-checkbox:   calc(#{rhythm(2)} - #{rhythm(.25)}) !default;
+$size-toggle-checkbox: calc(#{rhythm(2)} - #{rhythm(0.25)}) !default;
 
 //=====================================
 // TYPOGRAPHY

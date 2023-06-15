@@ -1,20 +1,20 @@
 @import '../variables';
 
 .pa-popup {
-    z-index: $z-index-popup;
-    box-shadow: $shadow-default;
-    border-radius: $border-radius-default;
-    min-width: rhythm(24);
-    max-height: rhythm(29);
-    overflow-x: hidden;
-    overflow-y: auto;
+  z-index: $z-index-popup;
+  box-shadow: $shadow-default;
+  border-radius: $border-radius-default;
+  min-width: rhythm(24);
+  max-height: rhythm(29);
+  overflow-x: hidden;
+  overflow-y: auto;
 
-    &.pa-hidden {
-        display: none;
-    }
+  &.pa-hidden {
+    display: none;
+  }
 
-    .pa-popup-wrapper {
-        padding: rhythm(2);
-        background: $color-light-stronger;
-    }
+  .pa-popup-wrapper {
+    padding: rhythm(2);
+    background: $color-light-stronger;
+  }
 }

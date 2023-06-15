@@ -1,127 +1,128 @@
 @import '../variables';
 
 .pa-toggle {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-    &:not(.pa-disabled) {
-        .pa-checkbox-wrapper,
-        .pa-toggle-control,
-        .pa-toggle-label {
-            cursor: pointer;
-        }
-
-        .pa-toggle-control:hover {
-            border-color: $color-border-toggle-unselected-hover;
-
-            &:checked {
-                border-color: $color-border-toggle-selected-hover;
-                background-color: $color-background-toggle-selected-hover;
-            }
-        }
+  &:not(.pa-disabled) {
+    .pa-checkbox-wrapper,
+    .pa-toggle-control,
+    .pa-toggle-label {
+      cursor: pointer;
     }
 
-    .pa-checkbox-wrapper {
-        display: inline-flex;
-        align-items: center;
-        max-width: 100%;
+    .pa-toggle-control:hover {
+      border-color: $color-border-toggle-unselected-hover;
+
+      &:checked {
+        border-color: $color-border-toggle-selected-hover;
+        background-color: $color-background-toggle-selected-hover;
+      }
+    }
+  }
+
+  .pa-checkbox-wrapper {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .pa-toggle-control {
+    -webkit-appearance: none;
+    border: 1px solid $color-border-toggle-unselected;
+    border-radius: $border-radius-default;
+    box-sizing: content-box;
+    flex: 1 0 auto;
+    margin: 0;
+    height: $size-toggle-checkbox;
+    width: $size-toggle-checkbox;
+
+    &.pa-keyboard-focus {
+      box-shadow: $shadow-focus-checkbox;
+    }
+
+    &:checked {
+      border-color: $color-border-toggle-selected;
+      background-color: $color-background-toggle-selected;
+      // prettier-ignore
+      background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
+      background-size: $size-toggle-checkbox $size-toggle-checkbox;
+
+      &:disabled {
+        background-color: $color-background-toggle-disabled;
+        border-color: $color-border-toggle-selected-disabled;
+      }
+    }
+
+    &:disabled {
+      border-color: $color-border-toggle-unselected-disabled;
+      background-color: $color-background-toggle-unselected-disabled;
+
+      & ~ .pa-toggle-label {
+        color: $color-text-disabled;
+      }
+    }
+
+    &[type='radio'] {
+      border-radius: $size-toggle-checkbox;
+
+      &:checked {
+        // prettier-ignore
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" fill-rule="evenodd"/></svg>');
+
+        &:disabled {
+          // prettier-ignore
+          background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="' + #{$color-check-toggle-disabled} + '" fill-rule="evenodd"/></svg>');
+          border-color: $color-border-toggle-unselected-disabled;
+          background-color: $color-border-toggle-selected-disabled;
+        }
+      }
+      &:disabled {
+        background-color: $color-background-toggle-unselected-disabled;
+      }
+    }
+  }
+
+  .pa-toggle-label {
+    font-size: $font-size-checkbox-label;
+    line-height: $line-height-checkbox-label;
+    font-weight: $font-weight-label;
+    margin-left: rhythm(1.5);
+
+    &:not(.no-ellipsis) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &.pa-toggle.pa-field-error {
+    .pa-toggle-label {
+      color: $color-text-field-label-error;
     }
 
     .pa-toggle-control {
-        -webkit-appearance: none;
-        border: 1px solid $color-border-toggle-unselected;
-        border-radius: $border-radius-default;
-        box-sizing: content-box;
-        flex: 1 0 auto;
-        margin: 0;
-        height: $size-toggle-checkbox;
-        width: $size-toggle-checkbox;
+      border-color: $border-color-field-error;
 
-        &.pa-keyboard-focus {
-            box-shadow: $shadow-focus-checkbox;
+      &:not(:disabled) {
+        &:hover {
+          border-color: $border-color-field-error;
         }
 
-        &:checked {
-            border-color: $color-border-toggle-selected;
-            background-color: $color-background-toggle-selected;
-            background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(
-                    #{$color-check-toggle},
-                    2
-                ) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
-            background-size: $size-toggle-checkbox $size-toggle-checkbox;
+        &:focus,
+        &:active {
+          border-color: $border-color-field-error;
 
-            &:disabled {
-                background-color: $color-background-toggle-disabled;
-                border-color: $color-border-toggle-selected-disabled;
-            }
-        }
-
-        &:disabled {
-            border-color: $color-border-toggle-unselected-disabled;
-            background-color: $color-background-toggle-unselected-disabled;
-
-            & ~ .pa-toggle-label {
-                color: $color-text-disabled;
-            }
-        }
-
-        &[type='radio'] {
-            border-radius: $size-toggle-checkbox;
-
-            &:checked {
-                background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + str_slice(
-                        #{$color-check-toggle},
-                        2
-                    ) + '" fill-rule="evenodd"/></svg>');
-
-                &:disabled {
-                    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="' + #{$color-check-toggle-disabled} + '" fill-rule="evenodd"/></svg>');
-                    border-color: $color-border-toggle-unselected-disabled;
-                    background-color: $color-border-toggle-selected-disabled;
-                }
-            }
-            &:disabled {
-                background-color: $color-background-toggle-unselected-disabled;
-            }
-        }
-    }
-
-    .pa-toggle-label {
-        font-size: $font-size-checkbox-label;
-        line-height: $line-height-checkbox-label;
-        font-weight: $font-weight-label;
-        margin-left: rhythm(1.5);
-
-        &:not(.no-ellipsis) {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-    }
-
-    &.pa-toggle.pa-field-error {
-        .pa-toggle-label {
+          & ~ .pa-toggle-label {
             color: $color-text-field-label-error;
+          }
         }
-
-        .pa-toggle-control {
-            border-color: $border-color-field-error;
-
-            &:not(:disabled) {
-                &:hover {
-                    border-color: $border-color-field-error;
-                }
-
-                &:focus,
-                &:active {
-                    border-color: $border-color-field-error;
-
-                    & ~ .pa-toggle-label {
-                        color: $color-text-field-label-error;
-                    }
-                }
-            }
-        }
+      }
     }
+  }
+
+  pa-form-field-hint {
+    margin-left: rhythm(3.5);
+  }
 }

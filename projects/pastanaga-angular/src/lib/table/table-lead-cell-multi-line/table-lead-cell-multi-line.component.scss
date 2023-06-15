@@ -1,21 +1,21 @@
 @import '../../../styles/variables';
 
 pa-table-lead-image {
-    margin-right: rhythm(1);
+  margin-right: rhythm(1);
 }
 
 .pa-lead-text {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .pa-lead-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .pa-lead-description {
-    color: $color-neutral-regular;
-    font-size: font-size(xs);
-    line-height: line-height(s);
+  color: $color-neutral-regular;
+  font-size: font-size(xs);
+  line-height: line-height(s);
 }

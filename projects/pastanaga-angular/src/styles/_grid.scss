@@ -1,117 +1,117 @@
-@import "variables";
+@import 'variables';
 
 /* (Very) inspired from KNACSS by AlsaCreations
    https://github.com/alsacreations/KNACSS
 */
 
 // classic Grid
-[class*=" grid-"],
-[class^="grid-"] {
-    display: grid;
-    grid-auto-flow: dense;
+[class*=' grid-'],
+[class^='grid-'] {
+  display: grid;
+  grid-auto-flow: dense;
 
-    // gutters
-    &.has-gutter {
-        grid-gap: $grid-gutters;
-    }
+  // gutters
+  &.has-gutter {
+    grid-gap: $grid-gutters;
+  }
 }
 
 // grid constructor (.grid-2 to .grid-$grid-cols)
 @for $i from 2 through $grid-cols {
-    [class*="grid-#{$i}"] {
-        grid-template-columns: repeat(#{$i}, 1fr);
-    }
+  [class*='grid-#{$i}'] {
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
 }
 
 // grid items constructor (.col-1 to .col-$grid-cols, .row-1 to .row-$grid-cols)
 @for $i from 1 through $grid-cols {
-    [class*="col-#{$i}"] {
-        grid-column: auto / span #{$i};
-    }
+  [class*='col-#{$i}'] {
+    grid-column: auto / span #{$i};
+  }
 
-    [class*="row-#{$i}"] {
-        grid-row: auto / span #{$i};
-    }
+  [class*='row-#{$i}'] {
+    grid-row: auto / span #{$i};
+  }
 }
 
 /* intermediate breakpoints */
 // -medium-X suffix means "X columns when > medium screen"
 // example : .grid-4-medium-6 will be 4 columns (< medium) then 6 columns (>= medium)
 @media (min-width: $size-viewport-medium-min) {
-    @for $i from 1 through $grid-cols {
-        [class*="grid-"][class*="-medium-#{$i}"] {
-            grid-template-columns: repeat(#{$i}, 1fr);
-        }
-
-        [class*="col-"][class*="-medium-#{$i}"] {
-            grid-column: auto / span #{$i};
-        }
+  @for $i from 1 through $grid-cols {
+    [class*='grid-'][class*='-medium-#{$i}'] {
+      grid-template-columns: repeat(#{$i}, 1fr);
     }
+
+    [class*='col-'][class*='-medium-#{$i}'] {
+      grid-column: auto / span #{$i};
+    }
+  }
 }
 
 @media (min-width: $size-viewport-large-min) {
-    @for $i from 1 through $grid-cols {
-        [class*="grid-"][class*="-large-#{$i}"] {
-            grid-template-columns: repeat(#{$i}, 1fr);
-        }
-
-        [class*="col-"][class*="-large-#{$i}"] {
-            grid-column: auto / span #{$i};
-        }
+  @for $i from 1 through $grid-cols {
+    [class*='grid-'][class*='-large-#{$i}'] {
+      grid-template-columns: repeat(#{$i}, 1fr);
     }
+
+    [class*='col-'][class*='-large-#{$i}'] {
+      grid-column: auto / span #{$i};
+    }
+  }
 }
 
 // grid order
 .item-first {
-    order: -1;
+  order: -1;
 }
 
 .item-last {
-    order: 1;
+  order: 1;
 }
 
 // grid offset
 .grid-offset {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 // spanning all columns or rows
 .col-all {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .row-all {
-    grid-row: 1 / -1;
+  grid-row: 1 / -1;
 }
 
 // for grid
 .center-items {
-    align-items: center;
+  align-items: center;
 }
 
 .full-height {
-    height: 100vh;
+  height: 100vh;
 }
 
 // for cells
 .align-center {
-    display: grid;
-    align-items: center;
+  display: grid;
+  align-items: center;
 }
 .align-bottom {
-    display: grid;
-    align-items: end;
+  display: grid;
+  align-items: end;
 }
 .justify-center {
-    display: grid;
-    justify-items: center;
+  display: grid;
+  justify-items: center;
 }
 .self-end {
-    justify-self: end
+  justify-self: end;
 }
 .justify-right {
-    display: grid;
-    justify-items: right;
+  display: grid;
+  justify-items: right;
 }
 
 /* -------------------------- */
@@ -122,40 +122,40 @@
 /* ------------- */
 
 @media (min-width: $size-viewport-large-min) {
-    /* layouts for large screens */
-    .large-hidden {
-        display: none !important;
-    }
+  /* layouts for large screens */
+  .large-hidden {
+    display: none !important;
+  }
 
-    .large-visible {
-        display: block !important;
-    }
+  .large-visible {
+    display: block !important;
+  }
 }
 
 /* medium screens */
 /* -------------- */
 
 @media (min-width: $size-viewport-medium-min) and (max-width: $size-viewport-large-max) {
-    /* layouts for medium screens */
-    .medium-hidden {
-        display: none !important;
-    }
+  /* layouts for medium screens */
+  .medium-hidden {
+    display: none !important;
+  }
 
-    .medium-visible {
-        display: block !important;
-    }
+  .medium-visible {
+    display: block !important;
+  }
 }
 
 /* small screens */
 /* ------------- */
 
 @media (max-width: $size-viewport-medium-max) {
-    /* layouts for small screens */
-    .small-hidden {
-        display: none !important;
-    }
+  /* layouts for small screens */
+  .small-hidden {
+    display: none !important;
+  }
 
-    .small-visible {
-        display: block !important;
-    }
+  .small-visible {
+    display: block !important;
+  }
 }

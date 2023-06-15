@@ -17,7 +17,6 @@ import { TextFieldUtilityService } from './text-field-utility.service';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 import { isVisibleInViewport, Keys, markForCheck } from '../../common';
-import { IErrorMessages } from '../form-field.model';
 import { sanitizeStringValue } from '../form-field.utils';
 import { takeUntil } from 'rxjs/operators';
 import { TextFieldDirective } from './text-field.directive';
@@ -46,8 +45,6 @@ export class NativeTextFieldDirective extends TextFieldDirective implements Afte
     return this._noAutoComplete;
   }
 
-  @Input() help?: string;
-  @Input() errorMessages?: IErrorMessages;
   @Input() showAllErrors = true;
   @Input() placeholder?: string;
 
@@ -68,7 +65,6 @@ export class NativeTextFieldDirective extends TextFieldDirective implements Afte
   @Output() blurring: EventEmitter<string | number> = new EventEmitter();
 
   isFilled = false;
-  describedById?: string;
   sanitizeHtmlTags: (val: any) => any = sanitizeStringValue;
 
   private _maxlength?: number;
@@ -184,14 +180,5 @@ export class NativeTextFieldDirective extends TextFieldDirective implements Afte
     // NB: depending on updateOn formHook, the input can be filled but the formControlValue not updated yet
     const value = this.control.value || this.htmlInputRef?.nativeElement.value;
     this.isFilled = !!value || value === 0;
-  }
-
-  protected _checkDescribedBy() {
-    if ((!this.describedById && this.help) || this.control.errors) {
-      this.describedById = `${this.id}-hint`;
-    } else if (!this.help && this.control.errors === null) {
-      this.describedById = undefined;
-      markForCheck(this.cdr);
-    }
   }
 }

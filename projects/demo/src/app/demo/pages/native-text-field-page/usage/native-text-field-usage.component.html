@@ -1,11 +1,14 @@
-<h2>
+<h3>
   Inherited from
   <code>PaFormControlDirective</code>
-</h2>
+</h3>
 <pa-demo-pa-form-control-usage></pa-demo-pa-form-control-usage>
 
-<h2>NativeTextFieldDirective</h2>
-<h3>Inputs</h3>
+<h3>
+  {{ native ? '' : 'Inherited from' }}
+  <code>NativeTextFieldDirective</code>
+</h3>
+<h4>Inputs</h4>
 <dl>
   <dt>maxlength</dt>
   <dd>
@@ -60,7 +63,7 @@
     <small>(default: false)</small>
   </dd>
 </dl>
-<h3>Outputs</h3>
+<h4>Outputs</h4>
 <dl>
   <dt>keyUp</dt>
   <dd>

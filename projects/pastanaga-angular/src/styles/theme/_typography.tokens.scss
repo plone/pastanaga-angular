@@ -1,8 +1,8 @@
-
 // Typography
-$font-family-sans-serif:      Poppins, Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-body:            $font-family-sans-serif !default;
+$font-family-sans-serif: Poppins, Futura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+$font-family-body: $font-family-sans-serif !default;
 
 $font-weight-thin: 300 !default;
 $font-weight-regular: 400 !default;
@@ -30,10 +30,10 @@ $font-size: (
     d3-md:  ($font-size-base * 4.5),    // 72px - 4.5 rem
 ) !default;
 @function font-size($t-shirt-size) {
-    @return map-get($font-size, $t-shirt-size)
+  @return map-get($font-size, $t-shirt-size);
 }
 @mixin font-size($size) {
-    font-size: font-size($size);
+  font-size: font-size($size);
 }
 /* prettier-ignore */
 $line-height: (
@@ -52,15 +52,15 @@ $line-height: (
     d3-md:  ($font-size-base * 6),      // 96px - 6 rem
 ) !default;
 @function line-height($t-shirt-size) {
-    @return map-get($line-height, $t-shirt-size)
+  @return map-get($line-height, $t-shirt-size);
 }
 @mixin line-height($size) {
-    line-height: line-height($size);
+  line-height: line-height($size);
 }
 
 @mixin size($size) {
-    font-size: font-size($size);
-    line-height: line-height($size);
+  font-size: font-size($size);
+  line-height: line-height($size);
 }
 /* prettier-ignore */
 $letter-spacing: (
@@ -74,12 +74,11 @@ $letter-spacing: (
     decrease-m-md:  -.09rem,    // -0.09rem   -   -1.44px
 ) !default;
 @function letter-spacing($t-shirt-size) {
-    @return map-get($letter-spacing, $t-shirt-size)
+  @return map-get($letter-spacing, $t-shirt-size);
 }
 @mixin letter-spacing($size) {
-    letter-spacing: letter-spacing($size);
+  letter-spacing: letter-spacing($size);
 }
-
 
 // TOKENS
 

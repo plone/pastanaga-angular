@@ -2,24 +2,24 @@
 @import '../../../styles/theme/modal.tokens';
 
 .pa-confirmation-dialog {
-    background-color: $color-light-stronger;
-    box-shadow: $shadow-modal;
-    padding: $padding-modal;
-    text-align: center;
-    width: $breakpoint-small - rhythm(2) * 2; // smallest device width minus the margin in each side
+  background-color: $color-light-stronger;
+  box-shadow: $shadow-modal;
+  padding: $padding-modal;
+  text-align: center;
+  width: $breakpoint-small - rhythm(2) * 2; // smallest device width minus the margin in each side
 
-    .pa-modal-header {
-        h4 {
-            margin-bottom: $spacing-dialog-sections;
-        }
+  .pa-modal-header {
+    h4 {
+      margin-bottom: $spacing-dialog-sections;
     }
+  }
 
-    .pa-modal-footer {
-        margin-top: $spacing-dialog-sections;
-        height: auto;
-    }
+  .pa-modal-footer {
+    margin-top: $spacing-dialog-sections;
+    height: auto;
+  }
 
-    @media (min-width: $size-viewport-medium-min) {
-        width: rhythm(48);
-    }
+  @media (min-width: $size-viewport-medium-min) {
+    width: rhythm(48);
+  }
 }

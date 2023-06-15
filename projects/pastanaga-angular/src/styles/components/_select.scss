@@ -1,89 +1,89 @@
 @import '../variables';
 
 .pa-select-value {
-    font-weight: $font-weight-regular;
+  font-weight: $font-weight-regular;
 
-    &.placeholder {
-        color: $color-text-field-control-placeholder-regular;
-        font-weight: $font-weight-placeholder;
-        opacity: 0;
-        transition: all 0s ease;
-        &.active {
-            opacity: 1;
-            transition: all $transition-response;
-        }
+  &.placeholder {
+    color: $color-text-field-control-placeholder-regular;
+    font-weight: $font-weight-placeholder;
+    opacity: 0;
+    transition: all 0s ease;
+    &.active {
+      opacity: 1;
+      transition: all $transition-response;
     }
+  }
 }
 
 .pa-field.pa-select {
-    position: relative;
+  position: relative;
 
-    $icon-width: rhythm(3);
-    $icon-right-padding: rhythm(1);
-    .pa-select-chevron {
-        pointer-events: none;
-        cursor: pointer;
-        position: absolute;
-        right: $icon-right-padding;
-        top: rhythm(1.5);
-        width: $icon-width;
+  $icon-width: rhythm(3);
+  $icon-right-padding: rhythm(1);
+  .pa-select-chevron {
+    pointer-events: none;
+    cursor: pointer;
+    position: absolute;
+    right: $icon-right-padding;
+    top: rhythm(1.5);
+    width: $icon-width;
 
-        &.opened {
-            transform: rotate(180deg);
-        }
+    &.opened {
+      transform: rotate(180deg);
     }
+  }
 
-    .pa-field-container {
-        &.pa-disabled {
-            color: $color-text-field-control-disabled;
-            .pa-select-chevron {
-                color: $color-text-field-control-disabled;
-            }
-        }
-        &.pa-readonly .pa-select-chevron {
-            color: $color-text-field-control-disabled;
-        }
-        &:not(.pa-disabled):not(.pa-readonly) {
-            cursor: pointer;
-        }
+  .pa-field-container {
+    &.pa-disabled {
+      color: $color-text-field-control-disabled;
+      .pa-select-chevron {
+        color: $color-text-field-control-disabled;
+      }
     }
+    &.pa-readonly .pa-select-chevron {
+      color: $color-text-field-control-disabled;
+    }
+    &:not(.pa-disabled):not(.pa-readonly) {
+      cursor: pointer;
+    }
+  }
 
-    .pa-field-control {
-        padding-right: calc(#{$icon-width + $icon-right-padding});
-        width: 100%;
-    }
-    .pa-field-label {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: calc(100% - #{$padding-field-control-left + $icon-width + $icon-right-padding});
-    }
+  .pa-field-control {
+    padding-right: calc(#{$icon-width + $icon-right-padding});
+    width: 100%;
+  }
+  .pa-field-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - #{$padding-field-control-left + $icon-width + $icon-right-padding});
+  }
 
-    .pa-dim,
-    .pa-field-container.pa-content.pa-dim {
-        border: 1px solid transparent;
+  .pa-dim,
+  .pa-field-container.pa-content.pa-dim {
+    border: 1px solid transparent;
 
-        &::after,
-        &::before {
-            display: none;
-        }
-        &.pa-focus {
-            border: 1px solid $border-color-field-active;
-        }
-        &:not(.pa-focus):not(.pa-disabled):hover {
-            border: 1px solid $border-color-field-hover;
-        }
-        &.pa-disabled,
-        &.pa-readonly {
-            border: 1px solid transparent;
-        }
+    &::after,
+    &::before {
+      display: none;
     }
+    &.pa-focus {
+      border: 1px solid $border-color-field-active;
+    }
+    &:not(.pa-focus):not(.pa-disabled):hover {
+      border: 1px solid $border-color-field-hover;
+    }
+    &.pa-disabled,
+    &.pa-readonly {
+      border: 1px solid transparent;
+    }
+  }
 }
 
 pa-dropdown {
-    width: 100%;
+  width: 100%;
 }
 .pa-select pa-dropdown .pa-popup-wrapper {
-    max-width: none;
-    width: 100%;
+  max-width: none;
+  width: 100%;
 }
