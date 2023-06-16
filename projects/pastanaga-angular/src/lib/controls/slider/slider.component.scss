@@ -1,5 +1,46 @@
 @import '../../../styles/variables';
 
+@mixin sliderTrack {
+  appearance: none;
+  border: 0;
+  height: rhythm(0.5);
+  background: $color-neutral-lighter;
+  transition: all $duration-superfast ease;
+  width: 100%;
+}
+
+@mixin sliderTrackFocus {
+  background: $color-neutral-light;
+}
+
+@mixin sliderTrackDisabled {
+  background: $color-neutral-lightest;
+}
+
+@mixin sliderThumb {
+  appearance: none;
+  background: $color-primary-regular;
+  border: 0;
+  border-radius: 50%;
+  height: rhythm(1.5);
+  transition: all $duration-superfast ease;
+  width: rhythm(1.5);
+}
+
+@mixin sliderThumbHover {
+  transform: scale(1.1, 1.1);
+  transition: all $transition-hint;
+}
+
+@mixin sliderThumbDisabled {
+  background: $color-neutral-light;
+}
+
+@mixin noFocusRing {
+  border: 0;
+  outline: none;
+}
+
 .pa-field.pa-field-slider {
   display: flex;
   flex-direction: column; // display pa-form-field-hint below the label
@@ -46,67 +87,65 @@
       outline: none;
     }
 
-    &:-moz-focusring,
-    &::-moz-focus-inner,
+    &:-moz-focusring {
+      @include noFocusRing();
+    }
+    &::-moz-focus-inner {
+      @include noFocusRing();
+    }
     &::-moz-focus-outer {
-      border: 0;
-      outline: none;
+      @include noFocusRing();
     }
 
-    &::-webkit-slider-runnable-track,
-    &::-moz-range-track,
+    &::-webkit-slider-runnable-track {
+      @include sliderTrack();
+    }
+    &::-moz-range-track {
+      @include sliderTrack();
+    }
     &:active::-moz-range-track {
-      appearance: none;
-      border: 0;
-      height: rhythm(0.5);
-      background: $color-neutral-lighter;
-      transition: all $duration-superfast ease;
-      width: 100%;
+      @include sliderTrack();
     }
 
-    &:focus::-webkit-slider-runnable-track,
+    &:focus::-webkit-slider-runnable-track {
+      @include sliderTrackFocus();
+    }
     &:focus::-moz-range-track {
-      background: $color-neutral-light;
+      @include sliderTrackFocus();
     }
 
     &::-webkit-slider-thumb {
-      appearance: none;
-      background: $color-primary-regular;
-      border: 0;
-      border-radius: 50%;
-      height: rhythm(1.5);
+      @include sliderThumb();
       margin-top: calc(#{rhythm(0.5)} * -1);
-      transition: all $duration-superfast ease;
-      width: rhythm(1.5);
     }
 
     &::-moz-range-thumb {
-      appearance: none;
-      background: $color-primary-regular;
-      border: 0;
-      border-radius: 50%;
-      height: rhythm(1.5);
-      transition: all $duration-superfast ease;
-      width: rhythm(1.5);
+      @include sliderThumb();
     }
   }
 
   &:not(.pa-disabled) .pa-field-control-range {
-    &::-webkit-slider-thumb,
-    &::-moz-range-thumb,
-    &::-webkit-slider-runnable-track,
-    &::-moz-range-track,
+    &::-webkit-slider-thumb {
+      cursor: pointer;
+    }
+    &::-moz-range-thumb {
+      cursor: pointer;
+    }
+    &::-webkit-slider-runnable-track {
+      cursor: pointer;
+    }
+    &::-moz-range-track {
+      cursor: pointer;
+    }
     &:active::-moz-range-track {
       cursor: pointer;
     }
 
-    &::-webkit-slider-thumb {
-      transform: scale(1.1, 1.1);
-      transition: all $transition-hint;
+    &:hover::-webkit-slider-thumb {
+      @include sliderThumbHover();
     }
     &:hover::-moz-range-thumb {
-      transform: scale(1.1, 1.1);
-      transition: all $transition-hint;
+      @include sliderThumbHover();
     }
   }
 
@@ -115,15 +154,21 @@
       color: $color-text-disabled;
     }
 
-    .pa-field-control-range::-moz-range-thumb,
+    .pa-field-control-range::-moz-range-thumb {
+      @include sliderThumbDisabled();
+    }
     .pa-field-control-range::-webkit-slider-thumb {
-      background: $color-neutral-light;
+      @include sliderThumbDisabled();
     }
 
-    .pa-field-control-range::-webkit-slider-runnable-track,
-    .pa-field-control-range::-moz-range-track,
+    .pa-field-control-range::-webkit-slider-runnable-track {
+      @include sliderTrackDisabled();
+    }
+    .pa-field-control-range::-moz-range-track {
+      @include sliderTrackDisabled();
+    }
     .pa-field-control-range:active::-moz-range-track {
-      background: $color-neutral-lightest;
+      @include sliderTrackDisabled();
     }
   }
 }
