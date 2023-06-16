@@ -1,3 +1,8 @@
+# 2.62.2 (2023-06-16)
+
+### Bug fix
+- **Slider**: Fix slider style (which wasn't working on webkit browsers)
+
 # 2.62.1 (2023-06-13)
 
 ### Improvements
