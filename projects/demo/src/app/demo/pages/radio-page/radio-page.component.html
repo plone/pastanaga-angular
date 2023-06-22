@@ -1,124 +1,115 @@
 <pa-demo-page>
   <pa-demo-title>Radio</pa-demo-title>
+  <!-- prettier-ignore -->
   <pa-demo-description>
     <p>
-      <code>pa-radio</code>
-      provides the same features as a native
-      <code>{{ htmlRadio }}</code>
-      enhanced with Pastanaga styling and accessibility.
+      <code>pa-radio</code> provides the same features as a native <code>{{ htmlRadio }}</code> enhanced with Pastanaga styling and accessibility.
     </p>
 
     <p>
-      The radio button label is provided as the content of the
-      <code>{{ paRadio }}</code>
-      element.
+      The radio button label is provided as the content of the <code>{{ paRadio }}</code> element.
     </p>
     <p>
-      <strong>Accessibility</strong>
-      :
-      <code>{{ paRadio }}</code>
-      automatically set an aria-label on the
-      <code>{{ htmlRadio }}</code>
-      . By default, the label provided to
-      <code>{{ paRadio }}</code>
-      is used as aria-label. If no label is set, paRadio will use for its Input
-      <code>ariaLabel</code>
-      . If no
-      <code>ariaLabel</code>
-      is set neither, the value will be used as aria-label.
+      <strong>Accessibility</strong>:
+      <code>{{ paRadio }}</code> automatically set an aria-label on the <code>{{ htmlRadio }}</code>. By default, the label provided to
+      <code>{{ paRadio }}</code> is used as aria-label. If no label is set, paRadio will use for its Input <code>ariaLabel</code>.
+      If no <code>ariaLabel</code> is set neither, the value will be used as aria-label.
     </p>
 
     <p>
       Radio buttons are generally used in radio-groups, which is a collection of radio buttons describing as a set of
       related options. A radio group is defined by giving each of radio buttons in the group the same name. To make it
       easier to create a radio-group, Pastanaga provides the directive
-      <code>{{ paRadioGroup }}</code>
-      .
+      <code>{{ paRadioGroup }}</code>.
     </p>
 
     <pa-demo-form-field-description component="pa-radio-group"></pa-demo-form-field-description>
   </pa-demo-description>
 
   <pa-demo-examples>
-    <label
-      class="title-xxs"
-      for="radio-group-season">
-      Pick your favorite season
-      <small>(radio group using ngModel)</small>
-    </label>
-    <pa-radio-group
-      name="radio-season"
-      id="radio-group-season"
-      [(ngModel)]="favoriteSeason">
-      <pa-radio
-        *ngFor="let season of seasons"
-        [value]="season">
-        {{ season }}
-      </pa-radio>
-    </pa-radio-group>
-    <p>Your favorite season is: {{ favoriteSeason }}</p>
+    <div class="examples">
+      <label
+        class="title-xxs"
+        for="radio-group-season">
+        Pick your favorite season
+        <small>(radio group using ngModel)</small>
+      </label>
+      <pa-radio-group
+        name="radio-season"
+        id="radio-group-season"
+        [(ngModel)]="favoriteSeason">
+        <pa-radio
+          *ngFor="let season of seasons"
+          [value]="season">
+          {{ season }}
+        </pa-radio>
+      </pa-radio-group>
+      <p>Your favorite season is: {{ favoriteSeason }}</p>
 
-    <hr />
+      <hr />
 
-    <p class="title-xxs">Radio group using formControl</p>
-    <pa-radio-group
-      name="radio-icons"
-      [formControl]="formControl">
-      <div style="display: flex">
-        <div
-          *ngFor="let icon of icons"
-          style="display: flex; flex-direction: column; align-items: center; margin-right: 30px">
-          <pa-icon
-            size="large"
-            [name]="icon"></pa-icon>
-          <pa-radio [value]="icon"></pa-radio>
+      <p class="title-xxs">Radio group using formControl</p>
+      <pa-radio-group
+        name="radio-icons"
+        [formControl]="formControl">
+        <div style="display: flex">
+          <div
+            *ngFor="let icon of icons"
+            style="display: flex; flex-direction: column; align-items: center; margin-right: 30px">
+            <pa-icon
+              size="large"
+              [name]="icon"></pa-icon>
+            <pa-radio [value]="icon"></pa-radio>
+          </div>
         </div>
-      </div>
-    </pa-radio-group>
-    <p>Icon selected: {{ formControl.value }}</p>
-    <pa-button
-      [disabled]="formControl.pristine"
-      size="small">
-      Button enabled when formControl.pristine is false
-    </pa-button>
-
-    <hr />
-
-    <p class="title-xxs">Radio group using formGroup with formControlName</p>
-    <form [formGroup]="formGroup">
-      <label for="radio-meals">Pick your favorite meal</label>
-      <pa-radio-group
-        name="radio-meals"
-        id="radio-meals"
-        formControlName="favoriteMeal">
-        <pa-radio
-          *ngFor="let meal of meals"
-          [value]="meal.label">
-          {{ meal.label }}
-        </pa-radio>
       </pa-radio-group>
-      <p>Your favorite meal: {{ formGroup.getRawValue() | json }}</p>
+      <p>Icon selected: {{ formControl.value }}</p>
       <pa-button
-        [disabled]="formGroup.pristine"
+        [disabled]="formControl.pristine"
         size="small">
-        Button enabled when form.pristine is false
+        Button enabled when formControl.pristine is false
       </pa-button>
-    </form>
-    <hr />
-    <p class="title-xxs">Radio group with disabled inputs</p>
-    <form [formGroup]="formGroupDisabled">
-      <label for="radio-meals-disabled">Pick your favorite meal</label>
-      <pa-radio-group
-        name="radio-disabled"
-        id="radio-meals-disabled"
-        formControlName="favoriteMeal">
-        <pa-radio
-          *ngFor="let meal of meals"
-          [value]="meal.label">
-          {{ meal.label }}
-        </pa-radio>
-      </pa-radio-group>
-    </form>
+
+      <hr />
+
+      <p class="title-xxs">Radio group using formGroup with formControlName</p>
+      <form [formGroup]="formGroup">
+        <label for="radio-meals">Pick your favorite meal</label>
+        <pa-radio-group
+          name="radio-meals"
+          id="radio-meals"
+          formControlName="favoriteMeal">
+          <pa-radio
+            *ngFor="let meal of meals"
+            [value]="meal.label"
+            [help]="meal.help">
+            {{ meal.label }}
+          </pa-radio>
+        </pa-radio-group>
+        <p>Your favorite meal: {{ formGroup.getRawValue() | json }}</p>
+        <pa-button
+          [disabled]="formGroup.pristine"
+          size="small">
+          Button enabled when form.pristine is false
+        </pa-button>
+      </form>
+      <hr />
+      <p class="title-xxs">Radio group with disabled inputs</p>
+      <form [formGroup]="formGroupDisabled">
+        <label for="radio-meals-disabled">Pick your favorite meal</label>
+        <pa-radio-group
+          name="radio-disabled"
+          id="radio-meals-disabled"
+          formControlName="favoriteMeal">
+          <pa-radio
+            *ngFor="let meal of meals"
+            [value]="meal.label"
+            [help]="meal.help">
+            {{ meal.label }}
+          </pa-radio>
+        </pa-radio-group>
+      </form>
+    </div>
   </pa-demo-examples>
 
   <pa-demo-usage>
@@ -136,6 +127,7 @@
       <dd>
         String used as aria label if no label is defined for the radio. When there is no label and no ariaLabel defined,
         the radio value will be used as aria-label.
+        <small>(optional)</small>
       </dd>
 
       <dt>disabled</dt>
@@ -144,11 +136,20 @@
         <small>(default: false)</small>
       </dd>
 
+      <dt>help</dt>
+      <dd>
+        Help message to be displayed below the label
+        <small>(optional)</small>
+      </dd>
+
       <dt>id</dt>
       <dd>Id of the radio button. If id is not provided, pa-radio will automatically generate one</dd>
 
       <dt>name</dt>
-      <dd>Radio button name.</dd>
+      <dd>
+        Radio button name.
+        <small>(optional)</small>
+      </dd>
     </dl>
 
     <h4>Outputs</h4>
@@ -158,12 +159,11 @@
     </dl>
 
     <h3>Radio group</h3>
+    <!-- prettier-ignore -->
     <p>
       Radio buttons should usually be placed inside a
-      <code>{{ paRadioGroup }}</code>
-      . The radio-group will automatically set the name of the
-      <code>{{ paRadio }}</code>
-      with its own.
+      <code>{{ paRadioGroup }}</code>. The radio-group will automatically set the name of the
+      <code>{{ paRadio }}</code> with its own.
     </p>
 
     <p>
@@ -178,5 +178,8 @@
   <pa-demo-code>
     Radio group example:
     <pre><code>{{radioGroupExample}}</code></pre>
+
+    Radio group with help:
+    <pre><code>{{radioGroupWithHelp}}</code></pre>
   </pa-demo-code>
 </pa-demo-page>

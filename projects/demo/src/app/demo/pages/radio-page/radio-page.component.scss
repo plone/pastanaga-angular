@@ -1,5 +1,12 @@
-@import "../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../pastanaga-angular/src/styles/variables';
+
+.examples,
+form {
+  display: flex;
+  flex-direction: column;
+  gap: rhythm(1);
+}
 
 hr {
-    margin: rhythm(3) 0;
+  margin: rhythm(2) 0;
 }

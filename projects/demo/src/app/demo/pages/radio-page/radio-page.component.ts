@@ -11,11 +11,11 @@ export class RadioPageComponent implements OnInit {
   favoriteSeason = 'Spring';
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
 
-  meals: { label: string; disabled: boolean }[] = [
-    { label: 'Spaghetti', disabled: false },
-    { label: 'Lasagna', disabled: false },
-    { label: 'Cheese', disabled: false },
-    { label: 'Ratatouille', disabled: true },
+  meals: { label: string; disabled: boolean; help: string }[] = [
+    { label: 'Spaghetti', disabled: false, help: 'With tomato sauce' },
+    { label: 'Lasagna', disabled: false, help: 'Spinach and cream' },
+    { label: 'Cheese', disabled: false, help: 'With toasted bread' },
+    { label: 'Ratatouille', disabled: true, help: 'With rice' },
   ];
 
   icons: string[] = ['trash', 'user', 'warning'];
@@ -32,6 +32,19 @@ export class RadioPageComponent implements OnInit {
               [value]="season">{{season}}</pa-radio>
 </pa-radio-group>
 <p>Your favorite season is: {{favoriteSeason}} </p>`;
+
+  radioGroupWithHelp = `<label for="radio-meals">Pick your favorite meal</label>
+<pa-radio-group
+  name="radio-meals"
+  id="radio-meals"
+  formControlName="favoriteMeal">
+  <pa-radio
+    *ngFor="let meal of meals"
+    [value]="meal.label"
+    [help]="meal.help">
+    {{ meal.label }}
+  </pa-radio>
+</pa-radio-group>`;
 
   formControl = new FormControl<string>('user');
   formGroup = new FormGroup({
