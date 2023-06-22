@@ -10,6 +10,7 @@
       [attr.name]="name"
       [attr.aria-label]="_ariaLabel"
       [attr.aria-checked]="checked"
+      [attr.aria-describedby]="help ? describedById : undefined"
       [disabled]="disabled"
       (change)="_onInputChange()" />
     <label
@@ -20,4 +21,9 @@
       <ng-content></ng-content>
     </label>
   </div>
+
+  <pa-form-field-hint
+    *ngIf="help"
+    [id]="describedById"
+    [help]="help"></pa-form-field-hint>
 </div>

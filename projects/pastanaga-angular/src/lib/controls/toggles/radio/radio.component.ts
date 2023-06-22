@@ -27,7 +27,16 @@ export class RadioComponent implements AfterContentInit {
 
   @ViewChild('label', { read: ElementRef, static: true }) label?: ElementRef;
 
-  @Input() id: string = this._uniqueId;
+  @Input() set id(value: string) {
+    if (value) {
+      this._id = value;
+    }
+    this.describedById = `${this.id}-hint`;
+  }
+  get id() {
+    return this._id;
+  }
+  private _id = this._uniqueId;
 
   @Input()
   set name(value: string) {
@@ -54,12 +63,14 @@ export class RadioComponent implements AfterContentInit {
   }
 
   @Input() ariaLabel?: string;
+  @Input() help?: string;
 
   @Output() change: EventEmitter<{ value: string; checked: boolean }> = new EventEmitter();
 
   checked = false;
   hasLabel = false;
   _ariaLabel = '';
+  describedById = '';
 
   constructor(private element: ElementRef, private cdr: ChangeDetectorRef) {}
 
