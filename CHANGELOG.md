@@ -1,3 +1,11 @@
+# 2.62.4 (2023-08-17)
+
+### Security fixes
+
+- Bumps word-wrap from 1.2.3 to 1.2.4.
+- Update Angular to version 16.2.1
+- Update ng-mocks, ng-packagr, jest, and prettier
+
 # 2.62.3 (2023-06-22)
 
 ### Improvement
