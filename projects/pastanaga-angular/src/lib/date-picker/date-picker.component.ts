@@ -31,7 +31,7 @@ import {
 } from 'date-fns';
 import { PopupComponent, PopupDirective } from '../popup';
 import { AbstractControl, FormControl, NgControl, ValidatorFn } from '@angular/forms';
-import { debounceTime, filter, map } from 'rxjs/operators';
+import { debounceTime, filter, map, startWith } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 import { InputComponent, PaFormControlDirective } from '../controls';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -137,12 +137,17 @@ export class DatePickerComponent extends PaFormControlDirective {
     super.ngOnInit();
 
     // whenever date value changes make sure it is reflected in the input
-    this.control.valueChanges.pipe(filter((value) => !!value)).subscribe((value: string) => {
-      const date = formatDate(value, 'longDate', this.locale);
+    this.control.valueChanges
+      .pipe(
+        startWith(this.control.value),
+        filter((value) => !!value),
+      )
+      .subscribe((value: string) => {
+        const date = formatDate(value, 'longDate', this.locale);
 
-      this.inputControl.setValue(date);
-      this._selectedDate = this.getUtcDate(startOfDay(new Date(value)));
-    });
+        this.inputControl.setValue(date);
+        this._selectedDate = this.getUtcDate(startOfDay(new Date(value)));
+      });
 
     // honor text entry
     this.inputControl.valueChanges

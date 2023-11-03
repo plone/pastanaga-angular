@@ -1,3 +1,8 @@
+# 2.62.5 (2023-11-03)
+
+### Bug fix
+- **date-picker**: Fix input initialization
+
 # 2.62.4 (2023-08-17)
 
 ### Security fixes
