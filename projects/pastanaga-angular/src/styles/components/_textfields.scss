@@ -181,7 +181,7 @@
       left: $padding-field-control-left;
       max-width: calc(100% - #{$padding-field-control-left * 2});
       position: absolute;
-      top: calc(#{$padding-field-control-top} + #{rhythm(0.25)});
+      top: $top-control-label;
       transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
       transform-origin: 0 0;
 
@@ -217,7 +217,7 @@
     -webkit-appearance: none;
 
     &:not(textarea) {
-      height: calc(#{rhythm(6)} - #{rhythm(0.25)});
+      height: $height-field-control;
     }
 
     &.pa-field-control-icon:not(.pa-icon-on-right) {
@@ -246,11 +246,12 @@
     &:not(:disabled):not(:read-only):focus,
     &:not(:disabled):not(:read-only):active {
       & ~ .pa-field-label {
-        transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)}) translateX(-#{rhythm(0.5)});
+        transform: scale(#{$scale-text-field-label}) translateY(-#{$translateY-text-field-label})
+          translateX(-#{rhythm(0.5)});
         padding: 0 rhythm(1);
 
         &.pa-field-label-icon:not(.pa-icon-on-right) {
-          transform: scale(#{$scale-text-field-label}) translateY(-#{rhythm(3.5)})
+          transform: scale(#{$scale-text-field-label}) translateY(-#{$translateY-text-field-label})
             translateX(calc(-#{rhythm(0.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
         }
       }

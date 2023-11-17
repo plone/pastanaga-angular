@@ -18,6 +18,7 @@ $color-text-field-label-error: $color-secondary-regular !default;
 $color-text-field-label-autofilled: $color-autofilled !default;
 
 $scale-text-field-label: 0.8 !default;
+$translateY-text-field-label: rhythm(3.5) !default;
 
 //
 // control
@@ -61,3 +62,5 @@ $line-height-field-control: line-height(l) !default;
 $padding-field-control-top: calc(#{rhythm(1.5)} - 1px) !default; // remove 1px taken by the border
 $padding-field-control-left: rhythm(1.5) !default;
 $margin-bottom-field: rhythm(3) !default;
+$height-field-control: calc(#{rhythm(6)} - #{rhythm(0.25)}) !default;
+$top-control-label: calc(#{$padding-field-control-top} + #{rhythm(0.25)}) !default;
