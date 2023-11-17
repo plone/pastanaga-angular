@@ -1,3 +1,8 @@
+# 2.62.6 (2023-11-17)
+
+### Improvement
+- **Text fields**: tokenize text fields height and padding so we can easily override them
+
 # 2.62.5 (2023-11-03)
 
 ### Bug fix
