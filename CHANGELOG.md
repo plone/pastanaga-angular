@@ -1,3 +1,8 @@
+# 2.62.7 (2023-11-17)
+
+### Bugfix
+- **Text fields**: Add missing token for select field’s chevron top position
+
 # 2.62.6 (2023-11-17)
 
 ### Improvement

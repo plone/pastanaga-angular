@@ -25,7 +25,7 @@
     cursor: pointer;
     position: absolute;
     right: $icon-right-padding;
-    top: rhythm(1.5);
+    top: $top-select-chevron;
     width: $icon-width;
 
     &.opened {
