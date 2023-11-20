@@ -1,4 +1,5 @@
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -12,7 +13,6 @@ import {
 } from '@angular/core';
 import { PopupService } from './popup.service';
 import { detectChanges, getVirtualScrollParentPosition, markForCheck, PositionStyle } from '../common';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -27,58 +27,20 @@ export const POPUP_OFFSET = 4;
 export class PopupComponent implements OnInit, OnDestroy {
   @Input() id?: string;
   @Input() companionElement?: any;
-  @Input()
-  get stayVisible(): boolean {
-    return this._stayVisible;
-  }
-  set stayVisible(value: any) {
-    this._stayVisible = coerceBooleanProperty(value);
-  }
-  @Input()
-  get dontAdjustPosition(): boolean {
-    return this._dontAdjustPosition;
-  }
-  set dontAdjustPosition(value: any) {
-    this._dontAdjustPosition = coerceBooleanProperty(value);
-  }
-
-  @Input()
-  get adjustHeight(): boolean {
-    return this._adjustHeight;
-  }
-  set adjustHeight(value: any) {
-    this._adjustHeight = coerceBooleanProperty(value);
-  }
-
-  @Input()
-  set keepOthersOpen(value: any) {
-    this._keepOthersOpen = coerceBooleanProperty(value);
-  }
-  get keepOthersOpen() {
-    return this._keepOthersOpen;
-  }
+  @Input({ transform: booleanAttribute }) adjustHeight = false;
+  @Input({ transform: booleanAttribute }) dontAdjustPosition = false;
+  @Input({ transform: booleanAttribute }) keepOthersOpen = false;
+  @Input({ transform: booleanAttribute }) stayVisible = false;
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter();
   @Output() onOpen: EventEmitter<void> = new EventEmitter();
 
-  set popupType(value: 'popup' | 'dropdown' | 'menu') {
-    this._popupType = value;
-  }
-  get popupType() {
-    return this._popupType;
-  }
-
+  popupType: 'popup' | 'dropdown' | 'menu' = 'popup';
   isDisplayed = false;
   style?: any;
 
   private _id = '';
   private _handlers: (() => void)[] = [];
-  private _dontAdjustPosition = false;
-
-  private _keepOthersOpen = false;
-  private _stayVisible = false;
-  private _adjustHeight = false;
-  private _popupType: 'popup' | 'dropdown' | 'menu' = 'popup';
   private _originalHeight = 0;
   private _terminator = new Subject<void>();
 
@@ -104,7 +66,7 @@ export class PopupComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this._id = !this.id ? `${this._popupType}-${nextId++}` : `${this.id}-${this._popupType}`;
+    this._id = !this.id ? `${this.popupType}-${nextId++}` : `${this.id}-${this.popupType}`;
     this.isDisplayed = this.stayVisible;
   }
 
@@ -166,9 +128,9 @@ export class PopupComponent implements OnInit, OnDestroy {
     };
     const diffX = rect.left + rect.width - right;
     const diffY = rect.top + this._originalHeight - bottom;
-    if (!this._dontAdjustPosition) {
+    if (!this.dontAdjustPosition) {
       isAdjusted = this._adjustPosition(element, rect, diffX, diffY);
-    } else if (this._adjustHeight && diffY > 0) {
+    } else if (this.adjustHeight && diffY > 0) {
       element.style.maxHeight = `${this._originalHeight - diffY - POPUP_OFFSET}px`;
       isAdjusted = true;
     }

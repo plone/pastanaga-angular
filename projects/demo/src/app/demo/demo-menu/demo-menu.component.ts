@@ -14,7 +14,7 @@ export interface IDemoMenuSection {
 })
 export class DemoMenuComponent {
   @Input()
-  set mode(value: ViewportMode | null) {
+  set mode(value: ViewportMode) {
     if (value) {
       this._mode = value;
       this.isMenuVisible = value === 'desktop';

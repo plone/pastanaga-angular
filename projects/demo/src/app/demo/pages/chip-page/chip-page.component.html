@@ -2,7 +2,9 @@
   <pa-demo-title>Chips</pa-demo-title>
   <pa-demo-description>
     <p>
-      There are three kinds of chip:
+      There are four kinds of chip:
+      <strong>basic chips</strong>
+      ,
       <strong>closeable chips</strong>
       ,
       <strong>selectionable chips</strong>
@@ -14,9 +16,7 @@
     <ul>
       <li>
         <code>pa-chip-closeable</code>
-        display a close button on the right of the chip. The attribute
-        <code>noCloseButton</code>
-        allows to remove the close button.
+        display a close button on the right of the chip.
       </li>
       <li>
         <code>pa-chip-selectionable</code>
@@ -26,20 +26,40 @@
         <code>pa-chip-expandable</code>
         display a chevron button on the right. It triggers an
         <code>expanded</code>
-        event on click and applies specific and toggle the chevron to be up or down.
+        event on click and toggle the chevron to be up or down.
       </li>
     </ul>
   </pa-demo-description>
 
   <pa-demo-examples>
-    <h4>Closeable chip</h4>
+    <h4>Basic chip</h4>
     <div class="chip-container">
+      <pa-chip
+        [textColor]="colorText"
+        [backgroundColor]="colorBackground">
+        Basic chip
+      </pa-chip>
+      <pa-chip
+        [textColor]="colorText"
+        [backgroundColor]="colorBackground"
+        [avatar]="avatarWithImage">
+        Chip with avatar
+      </pa-chip>
       <pa-chip-closeable
         [textColor]="colorText"
         [backgroundColor]="colorBackground"
-        noCloseButton>
-        Not closable chip
+        [avatar]="{ userName: 'Amanda Caballerot' }">
+        Chip with name avatar
       </pa-chip-closeable>
+      <pa-chip
+        [textColor]="colorText"
+        [backgroundColor]="colorBackground"
+        [icon]="icon">
+        Icon chip
+      </pa-chip>
+    </div>
+    <h4>Closeable chip</h4>
+    <div class="chip-container">
       <pa-chip-closeable
         [textColor]="colorText"
         [backgroundColor]="colorBackground"
@@ -83,6 +103,7 @@
       }
       <pa-button
         size="small"
+        kind="primary"
         (click)="reload()">
         Reset
       </pa-button>

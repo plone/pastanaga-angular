@@ -1,7 +1,15 @@
-import { ComponentRef, Directive, ElementRef, HostListener, Input, Renderer2, ViewContainerRef } from '@angular/core';
+import {
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  numberAttribute,
+  Renderer2,
+  ViewContainerRef,
+} from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
-import { coerceNumberProperty } from '@angular/cdk/coercion';
-import { markForCheck } from '../common';
+import { markForCheck, trimString } from '../common';
 
 const SYSTEM = 'system';
 const ACTION = 'action';
@@ -12,16 +20,9 @@ let nextId = 0;
   selector: '[paTooltip]',
 })
 export class TooltipDirective {
-  @Input('paTooltip') text: string | undefined = '';
-  @Input('paTooltipType') type: 'system' | 'action' = ACTION;
-  @Input()
-  get paTooltipOffset(): number {
-    return this.offset;
-  }
-  set paTooltipOffset(value: number) {
-    this.offset = coerceNumberProperty(value);
-  }
-  protected offset = 0;
+  @Input({ alias: 'paTooltip', transform: trimString }) text: string | undefined = '';
+  @Input({ alias: 'paTooltipType' }) type: 'system' | 'action' = ACTION;
+  @Input({ alias: 'paTooltipOffset', transform: numberAttribute }) offset = 0;
 
   id = '';
   isDisplayed = false;

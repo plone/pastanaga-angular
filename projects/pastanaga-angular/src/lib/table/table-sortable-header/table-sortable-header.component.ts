@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
@@ -9,7 +10,6 @@ import {
 } from '@angular/core';
 import { HeaderCell } from '../table.models';
 import { ViewportMode } from '../../breakpoint-observer';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PositionStyle } from '../../common';
 import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/table-sortable-header-cell.component';
 
@@ -20,6 +20,8 @@ import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableSortableHeaderComponent implements AfterViewInit {
+  @Input({ transform: booleanAttribute }) menuColumn = false;
+  @Input() mode: ViewportMode = 'desktop';
   @Input()
   set cells(value: HeaderCell[] | null) {
     if (!!value) {
@@ -35,29 +37,11 @@ export class TableSortableHeaderComponent implements AfterViewInit {
     return this._cells;
   }
 
-  @Input()
-  set menuColumn(value: any) {
-    this._menuColumn = coerceBooleanProperty(value);
-  }
-  get menuColumn() {
-    return this._menuColumn;
-  }
-
-  @Input()
-  set mode(value: ViewportMode) {
-    this._mode = value;
-  }
-  get mode() {
-    return this._mode;
-  }
-
   @Output() sort: EventEmitter<HeaderCell> = new EventEmitter<HeaderCell>();
 
   @ViewChild('mobileCellContainer') mobileCellContainer?: TableSortableHeaderCellComponent;
 
   private _cells: HeaderCell[] = [];
-  private _menuColumn = false;
-  private _mode: ViewportMode = 'desktop';
   mobileCell?: HeaderCell;
   sortableCells: HeaderCell[] = [];
   sortMenuOpen = false;

@@ -8,13 +8,10 @@
   [class.pa-option-readonly]="readonly"
   [class.pa-option-selected]="selected"
   [class.pa-option-with-description]="!!description"
-  [hidden]="_hidden"
   (click)="onSelectClick($event)"
   (keyup.enter)="onSelectEnter($event)">
   @if (!!icon && !iconOnRight) {
-    <pa-icon
-      [icon]="_icon"
-      [name]="iconName"></pa-icon>
+    <pa-icon [icon]="icon"></pa-icon>
   }
   @if (!!avatar) {
     <pa-avatar
@@ -42,7 +39,6 @@
   @if (!!icon && iconOnRight) {
     <pa-icon
       [class.pa-option-right-icon]="iconOnRight"
-      [icon]="_icon"
-      [name]="iconName"></pa-icon>
+      [icon]="icon"></pa-icon>
   }
 </li>

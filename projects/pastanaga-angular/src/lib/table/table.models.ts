@@ -1,5 +1,3 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-
 export interface IHeaderCell {
   id: string;
   label: string;
@@ -20,10 +18,10 @@ export class HeaderCell {
   constructor(data: IHeaderCell) {
     this.id = data.id;
     this.label = data.label;
-    this.sortable = coerceBooleanProperty(data.sortable);
-    this.active = coerceBooleanProperty(data.active);
-    this.descending = coerceBooleanProperty(data.descending);
-    this.centered = coerceBooleanProperty(data.centered);
+    this.sortable = data.sortable || false;
+    this.active = data.active || false;
+    this.descending = data.descending || false;
+    this.centered = data.centered || false;
   }
 }
 

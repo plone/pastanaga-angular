@@ -1,22 +1,24 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectorRef,
   Directive,
   ElementRef,
   EventEmitter,
   Input,
+  numberAttribute,
   OnDestroy,
   Optional,
   Output,
   Renderer2,
   Self,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { TextFieldUtilityService } from './text-field-utility.service';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
-import { isVisibleInViewport, Keys, markForCheck } from '../../common';
+import { isVisibleInViewport, Keys, markForCheck, trimString } from '../../common';
 import { sanitizeStringValue } from '../form-field.utils';
 import { takeUntil } from 'rxjs/operators';
 import { TextFieldDirective } from './text-field.directive';
@@ -25,37 +27,11 @@ import { TextFieldDirective } from './text-field.directive';
   selector: '[paNativeTextField]',
 })
 export class NativeTextFieldDirective extends TextFieldDirective implements AfterViewInit, OnDestroy {
-  @Input() set maxlength(value: number | undefined) {
-    this._maxlength = value;
-  }
-
-  get maxlength() {
-    return this._maxlength;
-  }
-
-  @Input() set noAutoComplete(value: any) {
-    const preventAutoComplete = coerceBooleanProperty(value);
-    if (preventAutoComplete !== this._noAutoComplete) {
-      this._noAutoComplete = preventAutoComplete;
-      this._updateAutoComplete();
-    }
-  }
-
-  get noAutoComplete(): boolean {
-    return this._noAutoComplete;
-  }
-
-  @Input() showAllErrors = true;
-  @Input() placeholder?: string;
-
-  @Input() set acceptHtmlTags(value: any) {
-    const accept = coerceBooleanProperty(value);
-    if (accept) {
-      this.sanitizeHtmlTags = (val) => val;
-    } else {
-      this.sanitizeHtmlTags = sanitizeStringValue;
-    }
-  }
+  @Input({ transform: numberAttribute }) maxlength?: number;
+  @Input({ transform: booleanAttribute }) noAutoComplete = false;
+  @Input({ transform: booleanAttribute }) showAllErrors = false;
+  @Input({ transform: trimString }) placeholder = '';
+  @Input({ transform: booleanAttribute }) acceptHtmlTags = false;
 
   @ViewChild('htmlInput') htmlInputRef?: ElementRef;
 
@@ -67,8 +43,6 @@ export class NativeTextFieldDirective extends TextFieldDirective implements Afte
   isFilled = false;
   sanitizeHtmlTags: (val: any) => any = sanitizeStringValue;
 
-  private _maxlength?: number;
-  private _noAutoComplete = false;
   private _stopAutoCompleteMonitor = new Subject<void>();
 
   constructor(
@@ -99,6 +73,22 @@ export class NativeTextFieldDirective extends TextFieldDirective implements Afte
     });
     this.setDisabledState(this.control.disabled);
     this.focusInput();
+  }
+
+  override ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
+    if (changes['acceptHtmlTags']) {
+      if (changes['acceptHtmlTags'].currentValue) {
+        this.sanitizeHtmlTags = (val) => val;
+      } else {
+        this.sanitizeHtmlTags = sanitizeStringValue;
+      }
+    }
+    if (changes['noAutoComplete']) {
+      if (changes['noAutoComplete'].currentValue !== this.noAutoComplete) {
+        this._updateAutoComplete();
+      }
+    }
   }
 
   override ngOnDestroy() {
@@ -165,7 +155,7 @@ export class NativeTextFieldDirective extends TextFieldDirective implements Afte
   }
 
   private _updateAutoComplete() {
-    if (!this._noAutoComplete) {
+    if (!this.noAutoComplete) {
       this.textFieldUtility.handleBrowserAutoFill(
         this.htmlInputRef?.nativeElement,
         this.control,

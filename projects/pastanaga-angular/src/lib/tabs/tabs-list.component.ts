@@ -1,61 +1,40 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  ContentChildren,
-  QueryList,
   AfterContentInit,
+  booleanAttribute,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Component,
+  ContentChildren,
   ElementRef,
-  OnDestroy,
   Input,
-  Renderer2,
+  OnChanges,
+  OnDestroy,
+  QueryList,
+  SimpleChanges,
 } from '@angular/core';
 import { TabItemComponent } from './tab-item.component';
 import { fromEvent, Subject } from 'rxjs';
 import { detectChanges } from '../common';
 import { takeUntil, throttleTime } from 'rxjs/operators';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'pa-tabs',
   templateUrl: 'tabs-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsListComponent implements AfterContentInit, OnDestroy {
-  @Input()
-  set noSlider(value: any) {
-    this._noSlider = coerceBooleanProperty(value);
-    if (!this.noSlider) {
-      this.updateSlider();
-    }
-  }
-  get noSlider() {
-    return this._noSlider;
-  }
-
-  @Input()
-  set notFullWidth(value: any) {
-    this._notFullWidth = coerceBooleanProperty(value);
-    if (!this.noSlider) {
-      this.updateSlider();
-    }
-  }
-  get notFullWidth() {
-    return this._notFullWidth;
-  }
+export class TabsListComponent implements AfterContentInit, OnDestroy, OnChanges {
+  @Input({ transform: booleanAttribute }) noSlider = false;
+  @Input({ transform: booleanAttribute }) notFullWidth = false;
 
   @ContentChildren(TabItemComponent) tabItems!: QueryList<TabItemComponent>;
 
   sliderStyle = '';
 
-  private _notFullWidth = false;
-  private _noSlider = false;
   private _xPosition = 0;
   private _terminator = new Subject<void>();
 
   constructor(
     private ref: ElementRef,
-    private renderer: Renderer2,
     private cdr: ChangeDetectorRef,
   ) {}
 
@@ -84,6 +63,12 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
           this.updateSlider();
         }
       });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['notFullWidth'] && !this.noSlider) {
+      this.updateSlider();
+    }
   }
 
   ngOnDestroy() {

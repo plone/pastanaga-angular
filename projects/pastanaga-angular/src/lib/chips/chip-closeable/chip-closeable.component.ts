@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { BaseChip } from '../base-chip';
 
 @Component({
@@ -8,12 +7,6 @@ import { BaseChip } from '../base-chip';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipCloseableComponent extends BaseChip {
-  @Input() set noCloseButton(value: any) {
-    this.canClose = !coerceBooleanProperty(value);
-  }
-
-  canClose = true;
-
   @Output() closed = new EventEmitter();
 
   close($event: Event) {

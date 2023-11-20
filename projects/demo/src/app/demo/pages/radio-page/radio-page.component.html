@@ -39,7 +39,9 @@
         id="radio-group-season"
         [(ngModel)]="favoriteSeason">
         @for (season of seasons; track season) {
-          <pa-radio [value]="season">
+          <pa-radio
+            [value]="season"
+            [id]="season">
             {{ season }}
           </pa-radio>
         }

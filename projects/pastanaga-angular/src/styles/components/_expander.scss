@@ -3,6 +3,7 @@
 
 .pa-expander {
   .pa-expander-button .pa-button {
+    padding: rhythm(0.5);
     transform: rotate(0);
     transition: transform $transition-hint;
 
@@ -14,6 +15,7 @@
   .pa-expander-header {
     align-items: center;
     display: flex;
+    gap: rhythm(0.5);
     position: relative;
     width: 100%;
 

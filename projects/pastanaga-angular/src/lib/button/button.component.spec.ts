@@ -1,51 +1,64 @@
 import { PaIconModule } from '../icon/icon.module';
 import { ButtonComponent } from './button.component';
-import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { MockModule } from 'ng-mocks';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
+import { MockModule, ngMocks } from 'ng-mocks';
+import { IconComponent } from '../icon';
+import { Component } from '@angular/core';
+
+@Component({ template: '' })
+class TestComponent {}
 
 describe('ButtonComponent', () => {
-  const createComponent = createComponentFactory({
-    imports: [MockModule(PaIconModule)],
-    component: ButtonComponent,
-    detectChanges: false,
-  });
+  let spectator: SpectatorHost<ButtonComponent, TestComponent>;
   let component: ButtonComponent;
-  let spectator: Spectator<ButtonComponent>;
-
-  beforeEach(() => {
-    spectator = createComponent();
-    component = spectator.component;
+  const createHost = createHostFactory({
+    component: ButtonComponent,
+    host: TestComponent,
+    imports: [MockModule(PaIconModule)],
   });
 
   describe('when iconSize is not set', () => {
-    it('should set the icon size according the button size for medium and large', () => {
-      expect(component._iconSize).toEqual('medium');
-
-      component.size = 'large';
-      expect(component._iconSize).toEqual('large');
-
-      component.size = 'medium';
-      expect(component._iconSize).toEqual('medium');
+    it('should set the icon size according the button size – medium by default', () => {
+      spectator = createHost(`<pa-button icon="search">Icon button</pa-button>`);
+      component = spectator.component;
+      expect(component.iconSize).toBeUndefined();
+      const icon = ngMocks.find(spectator.debugElement, IconComponent);
+      expect(icon.componentInstance.size).toEqual('medium');
     });
 
-    it('should set icon size "medium" when the button size is "small"', () => {
-      component.size = 'small';
-      expect(component._iconSize).toEqual('medium');
+    it('should set icon size to small when button size is small', () => {
+      spectator = createHost(`<pa-button icon="search" size="small">Icon button</pa-button>`);
+      component = spectator.component;
+      expect(component.iconSize).toBeUndefined();
+      const icon = ngMocks.find(spectator.debugElement, IconComponent);
+      expect(icon.componentInstance.size).toEqual('small');
+    });
+
+    it('should set icon size to large when button size is large', () => {
+      spectator = createHost(`<pa-button icon="search" size="large">Icon button</pa-button>`);
+      component = spectator.component;
+      expect(component.iconSize).toBeUndefined();
+      const icon = ngMocks.find(spectator.debugElement, IconComponent);
+      expect(icon.componentInstance.size).toEqual('large');
     });
   });
 
   describe('when iconSize is set', () => {
     it('should set icon size accordingly to iconSize', () => {
-      component.iconSize = 'small';
-      expect(component._iconSize).toEqual('small');
+      spectator = createHost(`<pa-button icon="search" iconSize="small">Icon button</pa-button>`);
+      component = spectator.component;
+      expect(component.iconSize).toBe('small');
+      const icon = ngMocks.find(spectator.debugElement, IconComponent);
+      expect(icon.componentInstance.size).toEqual('small');
     });
 
-    it('should set icon size accordingly to iconSize property even when size change', () => {
-      component.iconSize = 'small';
-      expect(component._iconSize).toEqual('small');
-
-      component.size = 'medium';
-      expect(component._iconSize).toEqual('small');
+    it('should set icon size accordingly to iconSize even when button size is set', () => {
+      spectator = createHost(`<pa-button icon="search" iconSize="medium" size="large">Icon button</pa-button>`);
+      component = spectator.component;
+      expect(component.size).toBe('large');
+      expect(component.iconSize).toBe('medium');
+      const icon = ngMocks.find(spectator.debugElement, IconComponent);
+      expect(icon.componentInstance.size).toEqual('medium');
     });
   });
 });

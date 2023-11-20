@@ -35,6 +35,16 @@
           Toggle first popup
         </pa-button>
       </p>
+      <p>
+        <pa-button
+          [paPopup]="myPopup"
+          [alignPopupOnLeft]="alignOnLeft"
+          [popupOnTop]="popupOnTop"
+          sameWidth
+          size="small">
+          Open popup with same width as this wide button
+        </pa-button>
+      </p>
     </div>
   </pa-demo-examples>
   <pa-demo-configuration>
@@ -50,13 +60,6 @@
         id="popupOnTop"
         [(ngModel)]="popupOnTop">
         Open popup on top
-      </pa-checkbox>
-    </p>
-    <p>
-      <pa-checkbox
-        id="sameWidth"
-        [(ngModel)]="sameWidth">
-        Open popup with same width
       </pa-checkbox>
     </p>
   </pa-demo-configuration>

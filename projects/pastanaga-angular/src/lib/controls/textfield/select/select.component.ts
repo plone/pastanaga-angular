@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -22,9 +23,8 @@ import { Platform } from '@angular/cdk/platform';
 import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { DropdownComponent, OptionComponent } from '../../../dropdown';
 import { delay, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { detectChanges, isVisibleInViewport, markForCheck } from '../../../common';
+import { detectChanges, isVisibleInViewport, markForCheck, trimString } from '../../../common';
 import { fromEvent, Subject } from 'rxjs';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { TextFieldDirective } from '../text-field.directive';
 
@@ -36,21 +36,15 @@ export type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent extends TextFieldDirective implements OnChanges, AfterViewInit, OnDestroy {
-  @Input() label = '';
-  @Input() placeholder?: string;
+  @Input({ transform: trimString }) label = '';
+  @Input({ transform: trimString }) placeholder = '';
+  @Input({ transform: booleanAttribute }) adjustHeight = false;
+  @Input({ transform: booleanAttribute }) showAllErrors = false;
+  @Input({ transform: booleanAttribute }) dim = false;
 
   @Input() set options(values: OptionType[] | null) {
     this.dropdownOptions = !!values ? values : [];
     this._updateDisplayedValue(this.control.value);
-  }
-
-  @Input() adjustHeight = false;
-  @Input() showAllErrors = true;
-  @Input() set dim(value: any) {
-    this._dim = coerceBooleanProperty(value);
-  }
-  get dim() {
-    return this._dim;
   }
 
   @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -75,10 +69,10 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   displayedValue?: string;
   private optionsClosed$ = new Subject<void>();
   private contentOptionsChanged$ = new Subject<void>();
-  private _dim = false;
 
   protected _terminator = new Subject<void>();
   protected platform: Platform = inject(Platform);
+
   constructor(
     protected override element: ElementRef,
     @Optional() @Self() protected override parentControl: NgControl,

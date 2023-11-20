@@ -1,5 +1,5 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { trimString } from '../../common';
 
 @Component({
   selector: 'pa-side-nav-item',
@@ -8,31 +8,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SideNavItemComponent {
-  @Input()
-  get header(): boolean {
-    return this._header;
-  }
-  set header(value: any) {
-    this._header = coerceBooleanProperty(value);
-  }
-  @Input()
-  get label(): string {
-    return this._label;
-  }
-  set label(value: string | null) {
-    if (value) {
-      this._label = value;
-    }
-  }
-  @Input()
-  get active(): boolean {
-    return this._active;
-  }
-  set active(value: any) {
-    this._active = coerceBooleanProperty(value);
-  }
-
-  private _active = false;
-  private _header = false;
-  private _label = '';
+  @Input({ transform: booleanAttribute }) active = false;
+  @Input({ transform: booleanAttribute }) header = false;
+  @Input({ transform: trimString }) label = '';
 }

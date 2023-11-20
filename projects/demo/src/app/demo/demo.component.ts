@@ -38,7 +38,7 @@ export class DemoComponent implements OnDestroy {
   @Input() menu: IDemoMenuSection[] = [];
   @Input() logo = '';
 
-  mode: Observable<ViewportMode> = this.breakpoint.currentMode;
+  mode$: Observable<ViewportMode> = this.breakpoint.currentMode;
   terminator = new Subject<void>();
 
   constructor(private breakpoint: BreakpointObserver) {}

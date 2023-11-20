@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { trimString } from '../common';
 
 @Component({
   selector: 'pa-table',
@@ -8,37 +16,18 @@ import { DomSanitizer } from '@angular/platform-browser';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class TableComponent {
-  @Input()
-  get noHeader(): boolean {
-    return this._noHeader;
-  }
-  set noHeader(value: any) {
-    this._noHeader = coerceBooleanProperty(value);
-  }
+export class TableComponent implements OnChanges {
+  @Input({ transform: booleanAttribute }) noHeader = false;
+  @Input({ transform: booleanAttribute }) noAutoColumnStyle = false;
+  @Input({ transform: trimString }) columns = 'auto';
 
-  @Input()
-  get columns(): string {
-    return this._columns;
-  }
-  set columns(value: string | undefined | null) {
-    if (value) {
-      this._columns = value;
-      this.columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
-    }
-  }
-  @Input()
-  get noAutoColumnStyle(): boolean {
-    return this._noAutoColumnStyle;
-  }
-  set noAutoColumnStyle(value: any) {
-    this._noAutoColumnStyle = coerceBooleanProperty(value);
-  }
-
-  private _noAutoColumnStyle = false;
-  private _noHeader = false;
-  private _columns = 'auto';
-  columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this._columns);
+  columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this.columns);
 
   constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['columns']) {
+      this.columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this.columns);
+    }
+  }
 }

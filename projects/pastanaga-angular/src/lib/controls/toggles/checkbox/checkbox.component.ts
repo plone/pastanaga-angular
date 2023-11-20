@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -16,7 +17,6 @@ import { NgControl } from '@angular/forms';
 import { PaFormControlDirective } from '../../form-field';
 import { takeUntil } from 'rxjs/operators';
 import { detectChanges } from '../../../common';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'pa-checkbox',
@@ -24,20 +24,12 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {
-  @Input()
-  set noEllipsis(value: any) {
-    this._noEllipsis = coerceBooleanProperty(value);
-  }
-  get noEllipsis() {
-    return this._noEllipsis;
-  }
+  @Input({ transform: booleanAttribute }) noEllipsis = false;
 
   @ViewChild('htmlElement') htmlElementRef?: ElementRef;
 
   override fieldType = 'checkbox';
   isChecked = false;
-
-  private _noEllipsis = false;
 
   constructor(
     protected override element: ElementRef,

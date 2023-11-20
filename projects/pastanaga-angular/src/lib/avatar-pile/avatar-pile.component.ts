@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { AvatarModel } from '../avatar';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { TranslatePipe } from '../translate';
 
 @Component({
@@ -22,21 +21,8 @@ export class AvatarPileComponent {
     return this._avatars;
   }
 
-  @Input()
-  set customButton(value: any) {
-    this._customButtonBehavior = coerceBooleanProperty(value);
-  }
-  get customButton() {
-    return this._customButtonBehavior;
-  }
-
-  @Input()
-  set buttonAlwaysVisible(value: any) {
-    this._buttonAlwaysVisible = coerceBooleanProperty(value);
-  }
-  get buttonAlwaysVisible() {
-    return this._buttonAlwaysVisible;
-  }
+  @Input({ transform: booleanAttribute }) customButton = false;
+  @Input({ transform: booleanAttribute }) buttonAlwaysVisible = false;
 
   @Input()
   set buttonTooltip(value: string) {
@@ -59,8 +45,6 @@ export class AvatarPileComponent {
   }
 
   private _avatars: AvatarModel[] = [];
-  private _customButtonBehavior = false;
-  private _buttonAlwaysVisible = false;
   private _buttonTooltip = '';
 
   constructor(private translate: TranslatePipe) {}
