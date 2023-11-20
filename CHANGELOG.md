@@ -1,3 +1,9 @@
+# 2.63.0 (2023-11-20)
+
+### Improvements
+
+- Support to Angular 17
+
 # 2.62.7 (2023-11-17)
 
 ### Bugfix
