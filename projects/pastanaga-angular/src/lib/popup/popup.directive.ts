@@ -86,7 +86,11 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
   private _scrollOrResize = new Subject<Event>();
   private _terminator = new Subject<void>();
 
-  constructor(private element: ElementRef, private service: PopupService, private renderer: Renderer2) {}
+  constructor(
+    private element: ElementRef,
+    private service: PopupService,
+    private renderer: Renderer2,
+  ) {}
 
   ngOnInit() {
     this.element.nativeElement.setAttribute('aria-haspopup', true);

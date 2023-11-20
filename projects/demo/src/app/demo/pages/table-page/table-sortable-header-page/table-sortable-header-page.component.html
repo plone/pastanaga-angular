@@ -17,12 +17,14 @@
       <pa-table-sortable-header
         [cells]="headerCells"
         (sort)="sortBy($event)"></pa-table-sortable-header>
-      <pa-table-row *ngFor="let row of rows">
-        <pa-table-cell>{{ row.name }}</pa-table-cell>
-        <pa-table-cell>{{ row.source }}</pa-table-cell>
-        <pa-table-cell center>{{ row.status }}</pa-table-cell>
-        <pa-table-cell center>{{ row.date }}</pa-table-cell>
-      </pa-table-row>
+      @for (row of rows; track row) {
+        <pa-table-row>
+          <pa-table-cell>{{ row.name }}</pa-table-cell>
+          <pa-table-cell>{{ row.source }}</pa-table-cell>
+          <pa-table-cell center>{{ row.status }}</pa-table-cell>
+          <pa-table-cell center>{{ row.date }}</pa-table-cell>
+        </pa-table-row>
+      }
     </pa-table>
 
     <p>Header displaying only the active one on mobile mode</p>
@@ -31,13 +33,15 @@
         mode="mobile"
         [cells]="headerCells"
         (sort)="sortBy($event)"></pa-table-sortable-header>
-      <pa-table-row *ngFor="let row of rows">
-        <pa-table-lead-cell-multi-line>
-          <pa-table-lead-image><pa-icon path="assets/ninja.svg"></pa-icon></pa-table-lead-image>
-          <pa-table-lead-title>{{ row.name }}</pa-table-lead-title>
-          <pa-table-lead-description>{{ row.source }}</pa-table-lead-description>
-        </pa-table-lead-cell-multi-line>
-      </pa-table-row>
+      @for (row of rows; track row) {
+        <pa-table-row>
+          <pa-table-lead-cell-multi-line>
+            <pa-table-lead-image><pa-icon path="assets/ninja.svg"></pa-icon></pa-table-lead-image>
+            <pa-table-lead-title>{{ row.name }}</pa-table-lead-title>
+            <pa-table-lead-description>{{ row.source }}</pa-table-lead-description>
+          </pa-table-lead-cell-multi-line>
+        </pa-table-row>
+      }
     </pa-table>
 
     <p>Header starting with a checkbox column</p>
@@ -49,15 +53,17 @@
           <pa-checkbox></pa-checkbox>
         </pa-table-cell>
       </pa-table-sortable-header>
-      <pa-table-row *ngFor="let row of rows">
-        <pa-table-cell>
-          <pa-checkbox></pa-checkbox>
-        </pa-table-cell>
-        <pa-table-cell>{{ row.name }}</pa-table-cell>
-        <pa-table-cell>{{ row.source }}</pa-table-cell>
-        <pa-table-cell center>{{ row.status }}</pa-table-cell>
-        <pa-table-cell center>{{ row.date }}</pa-table-cell>
-      </pa-table-row>
+      @for (row of rows; track row) {
+        <pa-table-row>
+          <pa-table-cell>
+            <pa-checkbox></pa-checkbox>
+          </pa-table-cell>
+          <pa-table-cell>{{ row.name }}</pa-table-cell>
+          <pa-table-cell>{{ row.source }}</pa-table-cell>
+          <pa-table-cell center>{{ row.status }}</pa-table-cell>
+          <pa-table-cell center>{{ row.date }}</pa-table-cell>
+        </pa-table-row>
+      }
     </pa-table>
   </pa-demo-examples>
 

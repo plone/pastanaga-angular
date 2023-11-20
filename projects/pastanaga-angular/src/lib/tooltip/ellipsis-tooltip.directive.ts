@@ -24,7 +24,10 @@ export class EllipsisTooltipDirective implements AfterViewInit, OnChanges {
 
   @Output() hasEllipsis: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(@Host() public tooltipDirective: ExtendedTooltipDirective, private element: ElementRef) {}
+  constructor(
+    @Host() public tooltipDirective: ExtendedTooltipDirective,
+    private element: ElementRef,
+  ) {}
 
   ngAfterViewInit() {
     this.element.nativeElement.style.setProperty('overflow', 'hidden');

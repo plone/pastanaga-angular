@@ -1,14 +1,14 @@
-@import "../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../pastanaga-angular/src/styles/variables';
 
 .chip-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: rhythm(2);
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: rhythm(2);
 
-    pa-chip-closeable,
-    pa-chip-selectionable,
-    pa-chip-expandable {
-        margin-right: rhythm(1);
-        margin-bottom: rhythm(1);
-    }
+  pa-chip-closeable,
+  pa-chip-selectionable,
+  pa-chip-expandable {
+    margin-right: rhythm(1);
+    margin-bottom: rhythm(1);
+  }
 }

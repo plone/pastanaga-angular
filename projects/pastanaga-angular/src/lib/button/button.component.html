@@ -12,11 +12,12 @@
     class="pa-button-wrapper"
     tabindex="-1"
     (click)="clickOnWrapper($event)">
-    <pa-icon
-      *ngIf="!!_icon"
-      [name]="_icon"
-      [size]="_iconSize"
-      [class.pa-icon-text]="_iconAndText"></pa-icon>
+    @if (!!_icon) {
+      <pa-icon
+        [name]="_icon"
+        [size]="_iconSize"
+        [class.pa-icon-text]="_iconAndText"></pa-icon>
+    }
     <span
       #textContainer
       class="pa-button-label"

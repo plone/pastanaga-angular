@@ -67,7 +67,10 @@ export class TableSortableHeaderCellComponent implements OnChanges {
   private _isDescending = false;
   private _center = false;
 
-  constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['active'] || changes['isDescending'] || changes['enabled']) {

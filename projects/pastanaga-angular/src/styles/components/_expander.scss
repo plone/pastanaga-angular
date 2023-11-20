@@ -39,7 +39,9 @@
   .pa-expander-body {
     opacity: 1;
     height: var(--contentHeight, 1px);
-    transition: opacity $transition-hint, height $transition-hint;
+    transition:
+      opacity $transition-hint,
+      height $transition-hint;
   }
 
   &.pa-collapsed {
@@ -64,7 +66,9 @@
     .pa-expander-header {
       background: $background-color-expanded-expander-header;
       box-shadow: $box-shadow-expanded-expander-header;
-      transition: background $transition-hint, box-shadow $transition-hint;
+      transition:
+        background $transition-hint,
+        box-shadow $transition-hint;
 
       &:hover {
         background: $background-color-expanded-expander-header-hover;

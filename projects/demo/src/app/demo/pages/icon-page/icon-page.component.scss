@@ -1,22 +1,22 @@
 // We can't import variables here if we want to be able to use those demo pages in other applications
 .icon-list-container {
-    background: #F1F3F4;
+  background: #f1f3f4;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 330px;
+  overflow: auto;
+  margin-bottom: 30px;
+
+  .icon-container {
+    width: 120px;
+    height: 60px;
+    margin: 18px 0;
     display: flex;
-    flex-wrap: wrap;
-    max-height: 330px;
-    overflow: auto;
-    margin-bottom: 30px;
+    flex-direction: column;
+    text-align: center;
 
-    .icon-container {
-        width: 120px;
-        height: 60px;
-        margin: 18px 0;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-
-        span {
-            font-size: 12px;
-        }
+    span {
+      font-size: 12px;
     }
+  }
 }

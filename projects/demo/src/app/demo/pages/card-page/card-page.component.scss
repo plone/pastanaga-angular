@@ -1,44 +1,44 @@
-@import "../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../pastanaga-angular/src/styles/variables';
 
 $grid-gap: rhythm(2);
 
 .card-content-block {
-    background: $color-tertiary-lightest;
-    min-height: rhythm(7);
-    position: relative;
+  background: $color-tertiary-lightest;
+  min-height: rhythm(7);
+  position: relative;
 
-    &:after {
-        content: 'Content placeholder';
-        color: $color-tertiary-light;
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translateX(-50%) translateY(-50%);
-    }
+  &:after {
+    content: 'Content placeholder';
+    color: $color-tertiary-light;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
 
 .card-container {
-    pa-card {
-        margin-bottom: $grid-gap;
+  pa-card {
+    margin-bottom: $grid-gap;
 
-        .body-s {
-            margin-bottom: 0;
-        }
+    .body-s {
+      margin-bottom: 0;
     }
+  }
 }
 
 @media (min-width: $size-viewport-medium-min) {
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
 
-        pa-card {
-            margin-right: $grid-gap;
-            width: flexColumnWidth(2, $grid-gap);
+    pa-card {
+      margin-right: $grid-gap;
+      width: flexColumnWidth(2, $grid-gap);
 
-            &:nth-child(even) {
-                margin-right: 0;
-            }
-        }
+      &:nth-child(even) {
+        margin-right: 0;
+      }
     }
+  }
 }

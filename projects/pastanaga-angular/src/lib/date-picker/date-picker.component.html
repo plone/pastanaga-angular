@@ -15,90 +15,96 @@
   </pa-input>
 </div>
 <pa-popup
-  [ngSwitch]="mode"
   #popup
   (onOpen)="openWeeks()"
   (onClose)="handlePopupClose()"
   class="calendar-popup">
-  <ng-container *ngSwitchCase="'weeks'">
-    <div class="calendar-header">
-      <button (click)="openYears($event)">
-        {{ trackedDate | date : 'yyyy' }}
-        <pa-icon name="chevron-down"></pa-icon>
-      </button>
-      <button (click)="openMonths($event)">
-        {{ trackedDate | date : 'LLLL' }}
-        <pa-icon name="chevron-down"></pa-icon>
-      </button>
-      <div class="spacer"></div>
-      <pa-button
-        (click)="previousMonth()"
-        kind="secondary"
-        aspect="basic"
-        size="small"
-        icon="chevron-left"></pa-button>
-      <pa-button
-        (click)="nextMonth()"
-        kind="secondary"
-        aspect="basic"
-        size="small"
-        icon="chevron-right"></pa-button>
-    </div>
-    <div class="calendar-weekdays">
-      <div *ngFor="let day of days">{{ day }}</div>
-    </div>
-    <div
-      *ngFor="let week of weeks"
-      class="calendar-row">
-      <pa-button
-        *ngFor="let day of week"
-        (click)="selectDay(day)"
-        size="small"
-        aspect="basic"
-        [class.other-month]="day.otherMonth"
-        [class.selected]="day.selected">
-        {{ day.number }}
-      </pa-button>
-    </div>
-  </ng-container>
-  <ng-container *ngSwitchCase="'years'">
-    <div class="calendar-list-header overline">
-      <div class="label">{{ 'pastanaga.calendar.years' | translate }}</div>
-      <pa-button
-        (click)="openWeeks($event)"
-        kind="secondary"
-        aspect="basic"
-        size="small"
-        icon="chevron-left"></pa-button>
-    </div>
-    <div class="calendar-list">
-      <div
-        *ngFor="let year of years"
-        (click)="selectYear($event, year.number)"
-        class="calendar-list-item"
-        [class.selected]="year.selected">
-        {{ year.number }}
+  @switch (mode) {
+    @case ('weeks') {
+      <div class="calendar-header">
+        <button (click)="openYears($event)">
+          {{ trackedDate | date: 'yyyy' }}
+          <pa-icon name="chevron-down"></pa-icon>
+        </button>
+        <button (click)="openMonths($event)">
+          {{ trackedDate | date: 'LLLL' }}
+          <pa-icon name="chevron-down"></pa-icon>
+        </button>
+        <div class="spacer"></div>
+        <pa-button
+          (click)="previousMonth()"
+          kind="secondary"
+          aspect="basic"
+          size="small"
+          icon="chevron-left"></pa-button>
+        <pa-button
+          (click)="nextMonth()"
+          kind="secondary"
+          aspect="basic"
+          size="small"
+          icon="chevron-right"></pa-button>
       </div>
-    </div>
-  </ng-container>
-  <ng-container *ngSwitchCase="'months'">
-    <div class="calendar-list-header overline">
-      <div class="label">{{ 'pastanaga.calendar.months' | translate }}</div>
-      <pa-button
-        (click)="openWeeks($event)"
-        kind="secondary"
-        aspect="basic"
-        size="small"
-        icon="chevron-left"></pa-button>
-    </div>
-    <div class="calendar-list">
-      <div
-        *ngFor="let month of months; index as i"
-        (click)="selectMonth($event, i)"
-        class="calendar-list-item"
-        [class.selected]="month.selected">
-        {{ month.name }}
+      <div class="calendar-weekdays">
+        @for (day of days; track day) {
+          <div>{{ day }}</div>
+        }
       </div>
-    </div>
-  </ng-container>
+      @for (week of weeks; track week) {
+        <div class="calendar-row">
+          @for (day of week; track day) {
+            <pa-button
+              (click)="selectDay(day)"
+              size="small"
+              aspect="basic"
+              [class.other-month]="day.otherMonth"
+              [class.selected]="day.selected">
+              {{ day.number }}
+            </pa-button>
+          }
+        </div>
+      }
+    }
+    @case ('years') {
+      <div class="calendar-list-header overline">
+        <div class="label">{{ 'pastanaga.calendar.years' | translate }}</div>
+        <pa-button
+          (click)="openWeeks($event)"
+          kind="secondary"
+          aspect="basic"
+          size="small"
+          icon="chevron-left"></pa-button>
+      </div>
+      <div class="calendar-list">
+        @for (year of years; track year) {
+          <div
+            (click)="selectYear($event, year.number)"
+            class="calendar-list-item"
+            [class.selected]="year.selected">
+            {{ year.number }}
+          </div>
+        }
+      </div>
+    }
+    @case ('months') {
+      <div class="calendar-list-header overline">
+        <div class="label">{{ 'pastanaga.calendar.months' | translate }}</div>
+        <pa-button
+          (click)="openWeeks($event)"
+          kind="secondary"
+          aspect="basic"
+          size="small"
+          icon="chevron-left"></pa-button>
+      </div>
+      <div class="calendar-list">
+        @for (month of months; track month; let i = $index) {
+          <div
+            (click)="selectMonth($event, i)"
+            class="calendar-list-item"
+            [class.selected]="month.selected">
+            {{ month.name }}
+          </div>
+        }
+      </div>
+    }
+  }
 </pa-popup>

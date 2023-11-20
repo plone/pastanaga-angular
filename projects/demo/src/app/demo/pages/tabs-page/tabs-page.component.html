@@ -29,24 +29,27 @@
           Notifications
         </pa-tab>
       </pa-tabs>
-      <section
-        id="panel-info"
-        class="tab-content"
-        *ngIf="selectedTab === 'info'">
-        Information tab content
-      </section>
-      <section
-        id="panel-settings"
-        class="tab-content"
-        *ngIf="selectedTab === 'settings'">
-        Settings tab content
-      </section>
-      <section
-        id="panel-notifications"
-        class="tab-content"
-        *ngIf="selectedTab === 'notifications'">
-        Notifications tab content
-      </section>
+      @if (selectedTab === 'info') {
+        <section
+          id="panel-info"
+          class="tab-content">
+          Information tab content
+        </section>
+      }
+      @if (selectedTab === 'settings') {
+        <section
+          id="panel-settings"
+          class="tab-content">
+          Settings tab content
+        </section>
+      }
+      @if (selectedTab === 'notifications') {
+        <section
+          id="panel-notifications"
+          class="tab-content">
+          Notifications tab content
+        </section>
+      }
     </div>
   </pa-demo-examples>
   <pa-demo-configuration>

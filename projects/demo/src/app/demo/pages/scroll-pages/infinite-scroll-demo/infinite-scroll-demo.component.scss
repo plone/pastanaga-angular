@@ -1,23 +1,23 @@
-@import "../../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../../pastanaga-angular/src/styles/variables';
 
 :host {
-    background-color: $color-light-stronger;
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: $z-index-modal;
+  background-color: $color-light-stronger;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-modal;
 }
 
 .pa-scrollable-container {
-    height: 100vh;
+  height: 100vh;
 }
 
 $header-padding: rhythm(3);
 
 pa-button {
-    left: $header-padding;
-    position: absolute;
-    top: $header-padding;
+  left: $header-padding;
+  position: absolute;
+  top: $header-padding;
 }

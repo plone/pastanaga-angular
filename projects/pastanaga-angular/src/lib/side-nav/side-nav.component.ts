@@ -64,7 +64,10 @@ export class SideNavComponent implements AfterViewInit {
   readonly closeNavBarDuration = TRANSITION_DURATION.slow;
   terminator: Subject<void> = new Subject<void>();
 
-  constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private renderer: Renderer2,
+  ) {}
 
   ngAfterViewInit() {
     this.updateFlags();

@@ -9,7 +9,11 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class TextFieldUtilityService {
-  constructor(private platform: Platform, private ngZone: NgZone, private autofillMonitor: AutofillMonitor) {}
+  constructor(
+    private platform: Platform,
+    private ngZone: NgZone,
+    private autofillMonitor: AutofillMonitor,
+  ) {}
 
   public handleBrowserAutoFill(
     htmlElement: HTMLInputElement,

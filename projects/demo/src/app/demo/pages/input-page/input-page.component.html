@@ -70,10 +70,18 @@
         Form Control Name
       </pa-tab>
     </pa-tabs>
-    <pa-demo-input-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-input-standalone-example>
-    <pa-demo-input-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-input-ng-model-example>
-    <pa-demo-input-form-control-example *ngIf="selectedTab === 'formControl'"></pa-demo-input-form-control-example>
-    <pa-demo-input-form-group-example *ngIf="selectedTab === 'formControlName'"></pa-demo-input-form-group-example>
+    @if (selectedTab === 'standalone') {
+      <pa-demo-input-standalone-example></pa-demo-input-standalone-example>
+    }
+    @if (selectedTab === 'ngModel') {
+      <pa-demo-input-ng-model-example></pa-demo-input-ng-model-example>
+    }
+    @if (selectedTab === 'formControl') {
+      <pa-demo-input-form-control-example></pa-demo-input-form-control-example>
+    }
+    @if (selectedTab === 'formControlName') {
+      <pa-demo-input-form-group-example></pa-demo-input-form-group-example>
+    }
   </pa-demo-examples>
 
   <pa-demo-usage>
@@ -148,37 +156,45 @@
       </pa-tab>
     </pa-tabs>
     <br />
-    <div *ngIf="selectedTab === 'standalone'">
-      <h3>basic usage</h3>
-      <pre><code>{{standaloneBasicCode}}</code></pre>
-      <h3>full usage</h3>
-      <pre><code>{{standaloneFullCode}}</code></pre>
-    </div>
-    <div *ngIf="selectedTab === 'ngModel'">
-      <h3>basic usage</h3>
-      <pre><code>{{ngModelBasicCode}}</code></pre>
-      <h3>with angular validation</h3>
-      <pre><code>{{ngModelValidationCode}}</code></pre>
-      <h3>full usage</h3>
-      <pre><code>{{ngModelFullCode}}</code></pre>
-    </div>
-    <div *ngIf="selectedTab === 'formControl'">
-      <h3>basic usage</h3>
-      <pre><code>{{formControlBasicCode}}</code></pre>
-      <h3>with reactive form validation</h3>
-      <pre><code>{{formControlValidationCodeTs}}</code></pre>
-      <pre><code>{{formControlValidationCodeHtml}}</code></pre>
-      <h3>full usage</h3>
-      <pre><code>{{formControlFullCode}}</code></pre>
-    </div>
-    <div *ngIf="selectedTab === 'formControlName'">
-      <h3>basic usage</h3>
-      <pre><code>{{formControlNameBasicCode}}</code></pre>
-      <h3>with reactive form validation</h3>
-      <pre><code>{{formControlNameValidationCodeTs}}</code></pre>
-      <pre><code>{{formControlNameValidationCodeHtml}}</code></pre>
-      <h3>full usage</h3>
-      <pre><code>{{formControlNameFullCode}}</code></pre>
-    </div>
+    @if (selectedTab === 'standalone') {
+      <div>
+        <h3>basic usage</h3>
+        <pre><code>{{standaloneBasicCode}}</code></pre>
+        <h3>full usage</h3>
+        <pre><code>{{standaloneFullCode}}</code></pre>
+      </div>
+    }
+    @if (selectedTab === 'ngModel') {
+      <div>
+        <h3>basic usage</h3>
+        <pre><code>{{ngModelBasicCode}}</code></pre>
+        <h3>with angular validation</h3>
+        <pre><code>{{ngModelValidationCode}}</code></pre>
+        <h3>full usage</h3>
+        <pre><code>{{ngModelFullCode}}</code></pre>
+      </div>
+    }
+    @if (selectedTab === 'formControl') {
+      <div>
+        <h3>basic usage</h3>
+        <pre><code>{{formControlBasicCode}}</code></pre>
+        <h3>with reactive form validation</h3>
+        <pre><code>{{formControlValidationCodeTs}}</code></pre>
+        <pre><code>{{formControlValidationCodeHtml}}</code></pre>
+        <h3>full usage</h3>
+        <pre><code>{{formControlFullCode}}</code></pre>
+      </div>
+    }
+    @if (selectedTab === 'formControlName') {
+      <div>
+        <h3>basic usage</h3>
+        <pre><code>{{formControlNameBasicCode}}</code></pre>
+        <h3>with reactive form validation</h3>
+        <pre><code>{{formControlNameValidationCodeTs}}</code></pre>
+        <pre><code>{{formControlNameValidationCodeHtml}}</code></pre>
+        <h3>full usage</h3>
+        <pre><code>{{formControlNameFullCode}}</code></pre>
+      </div>
+    }
   </pa-demo-code>
 </pa-demo-page>

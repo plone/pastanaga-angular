@@ -124,7 +124,11 @@ export class OptionComponent implements AfterContentInit {
   private _avatar?: AvatarModel;
   private _description = '';
 
-  constructor(private element: ElementRef, private popupService: PopupService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private element: ElementRef,
+    private popupService: PopupService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterContentInit() {
     this.text = this.element.nativeElement.textContent.trim();

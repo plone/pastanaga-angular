@@ -89,7 +89,10 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
 
   hasSideBlock = false;
 
-  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterViewInit() {
     this.hasSideBlock = !!this.sideBlock && this.sideBlock.nativeElement.children.length > 0;

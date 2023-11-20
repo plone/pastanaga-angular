@@ -37,7 +37,10 @@ export class DateTimeComponent implements OnChanges, OnDestroy {
   private _terminator = new Subject<void>();
   formattedTime = '';
 
-  constructor(private service: DateTimeService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private service: DateTimeService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['format'] && changes['format'].currentValue && formats.indexOf(changes['format'].currentValue) === -1) {

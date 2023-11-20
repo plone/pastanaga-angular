@@ -1,75 +1,75 @@
-@import "../../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../../pastanaga-angular/src/styles/variables';
 
 :host {
-    background-color: $color-light-stronger;
+  background-color: $color-light-stronger;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-modal;
+
+  $header-padding: rhythm(3);
+
+  header {
+    align-items: center;
+    display: flex;
+    min-height: $header-padding * 2 + rhythm(5);
+    justify-content: center;
+    padding: $header-padding;
+    margin-bottom: rhythm(3);
+
+    pa-button {
+      position: absolute;
+      left: $header-padding;
+      top: $header-padding;
+    }
+  }
+
+  .pa-main-side-panel,
+  .pa-main-dock,
+  [class^='pa-main-container-'] {
+    background-color: $color-neutral-light;
+    display: block;
+    height: rhythm(5);
+    line-height: rhythm(5);
+    margin-bottom: rhythm(3);
+    text-align: center;
+  }
+
+  .pa-child-container-compact {
     height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: $z-index-modal;
+  }
 
-    $header-padding: rhythm(3);
+  .pa-main-dock,
+  .pa-main-side-panel {
+    background-color: $color-neutral-regular;
+  }
 
-    header {
-        align-items: center;
-        display: flex;
-        min-height: $header-padding * 2 + rhythm(5);
-        justify-content: center;
-        padding: $header-padding;
-        margin-bottom: rhythm(3);
-
-        pa-button {
-            position: absolute;
-            left: $header-padding;
-            top: $header-padding;
-        }
+  @media (min-width: $size-viewport-medium-min) {
+    [class^='pa-main-container-'] {
+      background-color: $color-secondary-regular;
     }
-
-    .pa-main-side-panel,
-    .pa-main-dock,
-    [class^="pa-main-container-"] {
-        background-color: $color-neutral-light;
-        display: block;
-        height: rhythm(5);
-        line-height: rhythm(5);
-        margin-bottom: rhythm(3);
-        text-align: center;
-    }
-
     .pa-child-container-compact {
-        height: 100%;
+      background-color: $color-secondary-lighter;
     }
+  }
 
-    .pa-main-dock,
-    .pa-main-side-panel {
-        background-color: $color-neutral-regular;
+  @media (min-width: $size-viewport-large-min) {
+    [class^='pa-main-container-'] {
+      background-color: $color-tertiary-regular;
     }
+    .pa-child-container-compact {
+      background-color: $color-tertiary-lighter;
+    }
+  }
 
-    @media (min-width: $size-viewport-medium-min) {
-        [class^="pa-main-container-"] {
-            background-color: $color-secondary-regular;
-        }
-        .pa-child-container-compact {
-            background-color: $color-secondary-lighter;
-        }
+  @media (min-width: $size-viewport-xlarge-min) {
+    [class^='pa-main-container-'] {
+      background-color: $color-primary-light;
     }
-
-    @media (min-width: $size-viewport-large-min) {
-        [class^="pa-main-container-"] {
-            background-color: $color-tertiary-regular;
-        }
-        .pa-child-container-compact {
-            background-color: $color-tertiary-lighter;
-        }
+    .pa-child-container-compact {
+      background-color: $color-primary-lighter;
     }
-
-    @media (min-width: $size-viewport-xlarge-min) {
-        [class^="pa-main-container-"] {
-            background-color: $color-primary-light;
-        }
-        .pa-child-container-compact {
-            background-color: $color-primary-lighter;
-        }
-    }
+  }
 }

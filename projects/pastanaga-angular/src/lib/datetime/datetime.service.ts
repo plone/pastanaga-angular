@@ -51,7 +51,10 @@ export class DateTimeService {
   cache: { [key: string]: string | null } = {};
   numericalFormat: string;
 
-  constructor(private translate: TranslatePipe, @Inject(LOCALE_ID) private locale: string) {
+  constructor(
+    private translate: TranslatePipe,
+    @Inject(LOCALE_ID) private locale: string,
+  ) {
     const stringMap = new StringMap();
     const stringKeys: string[] = Object.values(stringMap).map((item) => item.key);
     const values = stringKeys.reduce((acc: { [key: string]: string }, key) => {

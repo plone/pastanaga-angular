@@ -2,7 +2,8 @@
 
 ### Improvements
 
-- Support to Angular 17
+- Upgrade Angular to v17
+- Use new Angular control flow syntax
 
 # 2.62.7 (2023-11-17)
 

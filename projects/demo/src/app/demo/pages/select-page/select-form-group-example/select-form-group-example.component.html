@@ -16,7 +16,7 @@
       (valueChange)="valueChangeEvent = $event"
       (statusChange)="statusChangeEvent = $event"
       (expanded)="expandedEvent = $event">
-      <ng-container *ngIf="config.optionsProvidedInTemplate">
+      @if (config.optionsProvidedInTemplate) {
         <pa-option-header>Options from template</pa-option-header>
         <pa-option
           disabled
@@ -36,7 +36,7 @@
           destructive>
           Delete
         </pa-option>
-      </ng-container>
+      }
     </pa-select>
   </form>
   <ul>

@@ -1,31 +1,35 @@
 $font-path: '../../assets/fonts';
-@import "../../pastanaga-angular/src/styles/core";
-@import "../../pastanaga-angular/src/styles/grid";
-@import "../../pastanaga-angular/src/styles/theme/fonts";
+@import '../../pastanaga-angular/src/styles/core';
+@import '../../pastanaga-angular/src/styles/grid';
+@import '../../pastanaga-angular/src/styles/theme/fonts';
 
 .form-field-config {
-    .state-option {
-        display: flex;
-        margin: rhythm(1) 0;
-    }
-    .option {
-        margin-right: rhythm(2);
+  .state-option {
+    display: flex;
+    margin: rhythm(1) 0;
+  }
+  .option {
+    margin-right: rhythm(2);
 
-        input {
-            margin-right: rhythm(1);
-        }
+    input {
+      margin-right: rhythm(1);
     }
-    fieldset {
-        margin: rhythm(3) 0;
-    }
+  }
+  fieldset {
+    margin: rhythm(3) 0;
+  }
 }
 .component {
+  display: flex;
+  pa-input,
+  pa-select,
+  pa-textarea,
+  ul,
+  form {
+    flex: 1;
+  }
+  li {
     display: flex;
-    pa-input, pa-select, pa-textarea, ul, form {
-        flex: 1;
-    }
-    li {
-        display: flex;
-        word-break: break-all;
-    }
+    word-break: break-all;
+  }
 }

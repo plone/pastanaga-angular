@@ -1,18 +1,17 @@
-@import "../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../pastanaga-angular/src/styles/variables';
 
 .container {
-    display: inline-block;
+  display: inline-block;
 }
 
 .more {
-    color: $color-primary-regular;
-    cursor: pointer;
-    font-weight: $font-weight-semi-bold;
+  color: $color-primary-regular;
+  cursor: pointer;
+  font-weight: $font-weight-semi-bold;
 }
 
-
 .flex-container {
-    display: flex;
-    gap: rhythm(2);
-    margin-top: rhythm(4);
+  display: flex;
+  gap: rhythm(2);
+  margin-top: rhythm(4);
 }

@@ -5,9 +5,10 @@
   [class.pa-full-width-tabs]="!notFullWidth">
   <ng-content></ng-content>
 
-  <div
-    *ngIf="!noSlider"
-    class="pa-tabs-slider"
-    role="presentation"
-    style="{{ sliderStyle }}"></div>
+  @if (!noSlider) {
+    <div
+      class="pa-tabs-slider"
+      role="presentation"
+      style="{{ sliderStyle }}"></div>
+  }
 </ul>

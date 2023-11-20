@@ -46,37 +46,41 @@
         disabled>
         Disabled chip
       </pa-chip-closeable>
-      <pa-chip-closeable
-        [textColor]="colorText"
-        [backgroundColor]="colorBackground"
-        *ngIf="first"
-        (closed)="close('first')">
-        Standard chip
-      </pa-chip-closeable>
-      <pa-chip-closeable
-        [textColor]="colorText"
-        [backgroundColor]="colorBackground"
-        *ngIf="second"
-        (closed)="close('second')"
-        [avatar]="avatarWithImage">
-        Chip with avatar
-      </pa-chip-closeable>
-      <pa-chip-closeable
-        [textColor]="colorText"
-        [backgroundColor]="colorBackground"
-        *ngIf="third"
-        (closed)="close('third')"
-        [avatar]="{ userName: 'Amanda Caballerot' }">
-        Chip with name avatar
-      </pa-chip-closeable>
-      <pa-chip-closeable
-        [textColor]="colorText"
-        [backgroundColor]="colorBackground"
-        *ngIf="fourth"
-        [icon]="icon"
-        (closed)="close('fourth')">
-        Icon chip
-      </pa-chip-closeable>
+      @if (first) {
+        <pa-chip-closeable
+          [textColor]="colorText"
+          [backgroundColor]="colorBackground"
+          (closed)="close('first')">
+          Standard chip
+        </pa-chip-closeable>
+      }
+      @if (second) {
+        <pa-chip-closeable
+          [textColor]="colorText"
+          [backgroundColor]="colorBackground"
+          (closed)="close('second')"
+          [avatar]="avatarWithImage">
+          Chip with avatar
+        </pa-chip-closeable>
+      }
+      @if (third) {
+        <pa-chip-closeable
+          [textColor]="colorText"
+          [backgroundColor]="colorBackground"
+          (closed)="close('third')"
+          [avatar]="{ userName: 'Amanda Caballerot' }">
+          Chip with name avatar
+        </pa-chip-closeable>
+      }
+      @if (fourth) {
+        <pa-chip-closeable
+          [textColor]="colorText"
+          [backgroundColor]="colorBackground"
+          [icon]="icon"
+          (closed)="close('fourth')">
+          Icon chip
+        </pa-chip-closeable>
+      }
       <pa-button
         size="small"
         (click)="reload()">

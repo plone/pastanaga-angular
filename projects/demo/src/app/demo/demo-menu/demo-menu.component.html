@@ -1,11 +1,12 @@
-<pa-button
-  *ngIf="mode !== 'desktop'"
-  class="demo-menu-button"
-  icon="menu"
-  aspect="basic"
-  (click)="toggleSideNav(true)">
-  Menu
-</pa-button>
+@if (mode !== 'desktop') {
+  <pa-button
+    class="demo-menu-button"
+    icon="menu"
+    aspect="basic"
+    (click)="toggleSideNav(true)">
+    Menu
+  </pa-button>
+}
 
 <pa-side-nav
   [mode]="mode"
@@ -29,32 +30,34 @@
         Filter
       </pa-input>
 
-      <pa-button
-        *ngIf="mode !== 'desktop'"
-        class="pa-close-side-nav-button"
-        icon="cross"
-        aspect="basic"
-        (click)="toggleSideNav(false)"></pa-button>
+      @if (mode !== 'desktop') {
+        <pa-button
+          class="pa-close-side-nav-button"
+          icon="cross"
+          aspect="basic"
+          (click)="toggleSideNav(false)"></pa-button>
+      }
     </header>
   </pa-side-nav-header>
 
   <pa-side-nav-content>
-    <section
-      *ngFor="let section of visibleMenu"
-      class="section">
-      <ul class="side-nav-section">
-        <pa-side-nav-item
-          [label]="section.title"
-          header></pa-side-nav-item>
-        <pa-side-nav-item
-          *ngFor="let page of section.pages"
-          routerLinkActive
-          #rla="routerLinkActive"
-          [active]="rla.isActive"
-          [label]="page.title"
-          [routerLink]="'/' + page.view"
-          (click)="onSelectedItem()"></pa-side-nav-item>
-      </ul>
-    </section>
+    @for (section of visibleMenu; track section) {
+      <section class="section">
+        <ul class="side-nav-section">
+          <pa-side-nav-item
+            [label]="section.title"
+            header></pa-side-nav-item>
+          @for (page of section.pages; track page) {
+            <pa-side-nav-item
+              routerLinkActive
+              #rla="routerLinkActive"
+              [active]="rla.isActive"
+              [label]="page.title"
+              [routerLink]="'/' + page.view"
+              (click)="onSelectedItem()"></pa-side-nav-item>
+          }
+        </ul>
+      </section>
+    }
   </pa-side-nav-content>
 </pa-side-nav>

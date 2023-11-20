@@ -22,8 +22,9 @@
     </label>
   </div>
 
-  <pa-form-field-hint
-    *ngIf="help"
-    [id]="describedById"
-    [help]="help"></pa-form-field-hint>
+  @if (help) {
+    <pa-form-field-hint
+      [id]="describedById"
+      [help]="help"></pa-form-field-hint>
+  }
 </div>

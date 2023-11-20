@@ -1,121 +1,122 @@
-@import "../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../pastanaga-angular/src/styles/variables';
 
 pa-demo-page {
-    display: block;
-    padding: rhythm(2) 0 rhythm(4);
+  display: block;
+  padding: rhythm(2) 0 rhythm(4);
 
-    .doc-page-title,
-    .doc-section-title,
-    .pa-demo-example-configuration-title {
-        margin-bottom: rhythm(4);
+  .doc-page-title,
+  .doc-section-title,
+  .pa-demo-example-configuration-title {
+    margin-bottom: rhythm(4);
+  }
+
+  section.doc-section {
+    margin-bottom: rhythm(6);
+
+    h2 {
+      margin-bottom: rhythm(3);
     }
 
-    section.doc-section {
-        margin-bottom: rhythm(6);
-
-        h2 {
-            margin-bottom: rhythm(3);
-        }
-
-        h3 {
-            margin-bottom: rhythm(2);
-        }
-
-        &:not(.example-section) {
-            h4, h5, h6 {
-                margin-bottom: rhythm(1);
-            }
-        }
+    h3 {
+      margin-bottom: rhythm(2);
     }
 
+    &:not(.example-section) {
+      h4,
+      h5,
+      h6 {
+        margin-bottom: rhythm(1);
+      }
+    }
+  }
+
+  dl {
+    dt {
+      font-weight: $font-weight-semi-bold;
+    }
+
+    dd {
+      small {
+        color: $color-neutral-regular;
+      }
+    }
+  }
+
+  pa-demo-description {
+    ul {
+      list-style: revert;
+      padding: revert;
+    }
 
     dl {
-        dt {
-            font-weight: $font-weight-semi-bold;
-        }
+      dt {
+        margin-bottom: rhythm(1);
+      }
 
-        dd {
-            small {
-                color: $color-neutral-regular;
-            }
-        }
+      dd {
+        margin-bottom: rhythm(2);
+      }
+    }
+  }
+
+  pa-demo-usage {
+    code {
+      display: inline;
+      background: $color-neutral-lightest;
+      margin: 0;
+      padding: 0 rhythm(0.25);
+      overflow: auto;
     }
 
-    pa-demo-description {
-        ul {
-            list-style: revert;
-            padding: revert;
-        }
+    dl {
+      display: flex;
+      flex-wrap: wrap;
 
-        dl {
-            dt {
-                margin-bottom: rhythm(1);
-            }
+      dt {
+        flex: 1 0 25%;
+        min-width: rhythm(24);
+      }
 
-            dd {
-                margin-bottom: rhythm(2);
-            }
-        }
+      dd {
+        flex: 1 0 75%;
+      }
+    }
+  }
+
+  pa-demo-examples {
+    display: block;
+    margin-bottom: rhythm(1.5);
+
+    > *:not(.icon-list-container) {
+      margin-right: rhythm(4);
     }
 
-    pa-demo-usage {
-        code {
-            display: inline;
-            background: $color-neutral-lightest;
-            margin: 0;
-            padding: 0 rhythm(.25);
-            overflow: auto;
-        }
-
-        dl {
-            display: flex;
-            flex-wrap: wrap;
-
-            dt {
-                flex: 1 0 25%;
-                min-width: rhythm(24);
-            }
-
-            dd {
-                flex: 1 0 75%;
-            }
-        }
+    h3:not(.typography) {
+      margin: rhythm(4) 0 rhythm(2);
     }
+  }
 
-    pa-demo-examples {
-        display: block;
-        margin-bottom: rhythm(1.5);
+  .pa-demo-example-configuration {
+    margin-top: rhythm(4);
 
-        > *:not(.icon-list-container) {
-            margin-right: rhythm(4);
-        }
-
-        h3:not(.typography) {
-            margin: rhythm(4) 0 rhythm(2);
-        }
+    .pa-demo-configuration-field {
+      margin-bottom: rhythm(1);
     }
+  }
 
-    .pa-demo-example-configuration {
-        margin-top: rhythm(4);
-
-        .pa-demo-configuration-field {
-            margin-bottom: rhythm(1);
-        }
+  pa-demo-code {
+    pre > code {
+      display: block;
+      padding: rhythm(1.5);
+      background-color: $color-neutral-lighter;
+      margin: rhythm(1.5) 0;
+      overflow: auto;
     }
-
-    pa-demo-code {
-        pre > code {
-            display: block;
-            padding: rhythm(1.5);
-            background-color: $color-neutral-lighter;
-            margin: rhythm(1.5) 0;
-            overflow: auto;
-        }
-    }
+  }
 }
 
 @media (max-width: $size-viewport-medium-max) {
-    .doc-page-title {
-        margin-left: rhythm(7);
-    }
+  .doc-page-title {
+    margin-left: rhythm(7);
+  }
 }

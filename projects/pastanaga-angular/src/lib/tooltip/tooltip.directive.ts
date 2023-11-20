@@ -29,7 +29,11 @@ export class TooltipDirective {
 
   private component?: ComponentRef<TooltipComponent>;
 
-  constructor(private element: ElementRef, private viewContainerRef: ViewContainerRef, private renderer: Renderer2) {}
+  constructor(
+    private element: ElementRef,
+    private viewContainerRef: ViewContainerRef,
+    private renderer: Renderer2,
+  ) {}
 
   @HostListener('focusin', ['$event'])
   focus(event: MouseEvent | any) {

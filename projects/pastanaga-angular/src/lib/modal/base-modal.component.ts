@@ -32,7 +32,10 @@ export class BaseModalComponent implements AfterViewInit, OnDestroy {
 
   protected _terminator = new Subject<void>();
 
-  constructor(public ref: ModalRef, protected cdr: ChangeDetectorRef) {
+  constructor(
+    public ref: ModalRef,
+    protected cdr: ChangeDetectorRef,
+  ) {
     this.ref.onClose.pipe(takeUntil(this._terminator)).subscribe(() => this.close());
   }
 

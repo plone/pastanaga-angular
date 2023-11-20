@@ -20,7 +20,10 @@ export class ModalService {
 
   modals: ComponentRef<any>[] = [];
 
-  constructor(private appRef: ApplicationRef, private zone: NgZone) {}
+  constructor(
+    private appRef: ApplicationRef,
+    private zone: NgZone,
+  ) {}
 
   openConfirm(data: ConfirmationData): ModalRef {
     return this.openModal(ConfirmationDialogComponent, new ModalConfig<ConfirmationData>({ data }));

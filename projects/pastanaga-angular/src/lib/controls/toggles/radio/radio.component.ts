@@ -72,7 +72,10 @@ export class RadioComponent implements AfterContentInit {
   _ariaLabel = '';
   describedById = '';
 
-  constructor(private element: ElementRef, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private element: ElementRef,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterContentInit() {
     this.hasLabel = this.label?.nativeElement.innerHTML.length > 0;

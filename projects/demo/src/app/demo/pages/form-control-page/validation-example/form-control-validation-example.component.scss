@@ -1,14 +1,17 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    input, div, span {
-        margin-bottom: 1rem;
-    }
-    .example, input {
-        border: 1px solid;
-        height: 2rem;
-    }
-    button {
-        margin-bottom: 1rem;
-    }
+  display: flex;
+  flex-direction: column;
+  input,
+  div,
+  span {
+    margin-bottom: 1rem;
+  }
+  .example,
+  input {
+    border: 1px solid;
+    height: 2rem;
+  }
+  button {
+    margin-bottom: 1rem;
+  }
 }

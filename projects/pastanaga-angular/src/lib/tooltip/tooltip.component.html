@@ -1,10 +1,11 @@
-<small
-  #tooltipText
-  *ngIf="text"
-  role="tooltip"
-  class="pa-tooltip body-xs"
-  [id]="id"
-  [class.pa-tooltip-system]="!isAction"
-  translate>
-  {{ text }}
-</small>
+@if (text) {
+  <small
+    #tooltipText
+    role="tooltip"
+    class="pa-tooltip body-xs"
+    [id]="id"
+    [class.pa-tooltip-system]="!isAction"
+    translate>
+    {{ text }}
+  </small>
+}

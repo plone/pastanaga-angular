@@ -53,7 +53,11 @@ export class TabsListComponent implements AfterContentInit, OnDestroy {
   private _xPosition = 0;
   private _terminator = new Subject<void>();
 
-  constructor(private ref: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private ref: ElementRef,
+    private renderer: Renderer2,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterContentInit(): void {
     // wait for tabList to be rendered

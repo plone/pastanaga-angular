@@ -66,74 +66,82 @@
         Form Control Name
       </pa-tab>
     </pa-tabs>
-    <div *ngIf="selectedTab === 'standalone'">
-      <div>
-        <pa-checkbox
-          [value]="value"
-          [disabled]="disabled"
-          [errorMessages]="errorMessages"
-          (valueChange)="standaloneValueChange = $event"
-          (statusChange)="standaloneStatusChange = $event">
-          Standalone checkbox label
-        </pa-checkbox>
-      </div>
-      <ul>
-        <li>value changed : {{ standaloneValueChange }}</li>
-        <li>status changed : {{ standaloneStatusChange }}</li>
-      </ul>
-    </div>
-    <div *ngIf="selectedTab === 'ngModel'">
-      <div>
-        <pa-checkbox
-          [(ngModel)]="model"
-          [disabled]="disabled"
-          [errorMessages]="errorMessages"
-          (valueChange)="ngModelValueChange = $event"
-          (statusChange)="ngModelStatusChange = $event">
-          NgModel checkbox label
-        </pa-checkbox>
-      </div>
-      <ul>
-        <li>value changed : {{ ngModelValueChange }}</li>
-        <li>status changed : {{ ngModelStatusChange }}</li>
-      </ul>
-    </div>
-    <div *ngIf="selectedTab === 'formControl'">
+    @if (selectedTab === 'standalone') {
       <div>
         <div>
           <pa-checkbox
-            [formControl]="formControl"
+            [value]="value"
+            [disabled]="disabled"
             [errorMessages]="errorMessages"
-            (valueChange)="formControlValueChange = $event"
-            (statusChange)="formControlStatusChange = $event">
-            FormControl checkbox label
+            (valueChange)="standaloneValueChange = $event"
+            (statusChange)="standaloneStatusChange = $event">
+            Standalone checkbox label
           </pa-checkbox>
         </div>
         <ul>
-          <li>value changed : {{ formControlValueChange }}</li>
-          <li>status changed : {{ formControlStatusChange }}</li>
+          <li>value changed : {{ standaloneValueChange }}</li>
+          <li>status changed : {{ standaloneStatusChange }}</li>
         </ul>
       </div>
-    </div>
-    <div *ngIf="selectedTab === 'formControlName'">
-      <form [formGroup]="form">
+    }
+    @if (selectedTab === 'ngModel') {
+      <div>
         <div>
           <pa-checkbox
-            formControlName="checkbox"
+            [(ngModel)]="model"
+            [disabled]="disabled"
             [errorMessages]="errorMessages"
-            (valueChange)="formControlNameValueChange = $event"
-            (statusChange)="formControlNameStatusChange = $event">
-            FormControlName checkbox label
+            (valueChange)="ngModelValueChange = $event"
+            (statusChange)="ngModelStatusChange = $event">
+            NgModel checkbox label
           </pa-checkbox>
         </div>
-      </form>
-      <ul>
-        <li>value changed : {{ formControlNameValueChange }}</li>
-        <li>status changed : {{ formControlNameStatusChange }}</li>
-        <li>form value : {{ formGroupValueChange | json }}</li>
-        <li>form status : {{ formGroupStatusChange }}</li>
-      </ul>
-    </div>
+        <ul>
+          <li>value changed : {{ ngModelValueChange }}</li>
+          <li>status changed : {{ ngModelStatusChange }}</li>
+        </ul>
+      </div>
+    }
+    @if (selectedTab === 'formControl') {
+      <div>
+        <div>
+          <div>
+            <pa-checkbox
+              [formControl]="formControl"
+              [errorMessages]="errorMessages"
+              (valueChange)="formControlValueChange = $event"
+              (statusChange)="formControlStatusChange = $event">
+              FormControl checkbox label
+            </pa-checkbox>
+          </div>
+          <ul>
+            <li>value changed : {{ formControlValueChange }}</li>
+            <li>status changed : {{ formControlStatusChange }}</li>
+          </ul>
+        </div>
+      </div>
+    }
+    @if (selectedTab === 'formControlName') {
+      <div>
+        <form [formGroup]="form">
+          <div>
+            <pa-checkbox
+              formControlName="checkbox"
+              [errorMessages]="errorMessages"
+              (valueChange)="formControlNameValueChange = $event"
+              (statusChange)="formControlNameStatusChange = $event">
+              FormControlName checkbox label
+            </pa-checkbox>
+          </div>
+        </form>
+        <ul>
+          <li>value changed : {{ formControlNameValueChange }}</li>
+          <li>status changed : {{ formControlNameStatusChange }}</li>
+          <li>form value : {{ formGroupValueChange | json }}</li>
+          <li>form status : {{ formGroupStatusChange }}</li>
+        </ul>
+      </div>
+    }
   </pa-demo-examples>
 
   <pa-demo-configuration>
@@ -144,15 +152,15 @@
         {{ disabled ? 'Enable' : 'Disable' }}
       </pa-checkbox>
     </div>
-    <div
-      class="pa-demo-configuration-field"
-      *ngIf="selectedTab === 'formControlName' || selectedTab === 'formControl'">
-      <pa-checkbox
-        [(ngModel)]="hasErrorMessage"
-        (ngModelChange)="toggleErrorMessages()">
-        {{ hasErrorMessage ? 'remove error messages' : 'add error messages' }}
-      </pa-checkbox>
-    </div>
+    @if (selectedTab === 'formControlName' || selectedTab === 'formControl') {
+      <div class="pa-demo-configuration-field">
+        <pa-checkbox
+          [(ngModel)]="hasErrorMessage"
+          (ngModelChange)="toggleErrorMessages()">
+          {{ hasErrorMessage ? 'remove error messages' : 'add error messages' }}
+        </pa-checkbox>
+      </div>
+    }
     <div class="pa-demo-configuration-field">
       <pa-button
         [size]="'small'"

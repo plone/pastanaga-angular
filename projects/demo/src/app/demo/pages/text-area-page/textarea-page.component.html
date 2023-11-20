@@ -50,12 +50,18 @@
         Form Control Name
       </pa-tab>
     </pa-tabs>
-    <pa-demo-textarea-standalone-example *ngIf="selectedTab === 'standalone'"></pa-demo-textarea-standalone-example>
-    <pa-demo-textarea-ng-model-example *ngIf="selectedTab === 'ngModel'"></pa-demo-textarea-ng-model-example>
-    <pa-demo-textarea-form-control-example
-      *ngIf="selectedTab === 'formControl'"></pa-demo-textarea-form-control-example>
-    <pa-demo-textarea-form-group-example
-      *ngIf="selectedTab === 'formControlName'"></pa-demo-textarea-form-group-example>
+    @if (selectedTab === 'standalone') {
+      <pa-demo-textarea-standalone-example></pa-demo-textarea-standalone-example>
+    }
+    @if (selectedTab === 'ngModel') {
+      <pa-demo-textarea-ng-model-example></pa-demo-textarea-ng-model-example>
+    }
+    @if (selectedTab === 'formControl') {
+      <pa-demo-textarea-form-control-example></pa-demo-textarea-form-control-example>
+    }
+    @if (selectedTab === 'formControlName') {
+      <pa-demo-textarea-form-group-example></pa-demo-textarea-form-group-example>
+    }
   </pa-demo-examples>
 
   <pa-demo-usage>
