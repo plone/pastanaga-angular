@@ -1,6 +1,6 @@
 <ng-content></ng-content>
 @if (mode !== 'mobile') {
-  @for (cell of cells; track cell) {
+  @for (cell of cells; track cell.id) {
     @if (cell.sortable) {
       <pa-table-sortable-header-cell
         [enabled]="cell.active"
@@ -12,18 +12,10 @@
     } @else {
       <pa-table-cell
         header
-        [center]="mobileCell?.centered">
-        {{ mobileCell?.label | translate }}
-      </pa-table-cell>
-    }
-
-    <ng-template #basicCell>
-      <pa-table-cell
-        header
         [center]="cell.centered">
         {{ cell.label | translate }}
       </pa-table-cell>
-    </ng-template>
+    }
   }
 } @else {
   @if (mobileCell?.sortable) {
@@ -35,23 +27,19 @@
       {{ mobileCell?.label | translate }}
     </pa-table-sortable-header-cell>
   } @else {
-    #basicCell|
-  }
-
-  <ng-template #basicCell>
     <pa-table-cell
       header
       [center]="mobileCell?.centered">
       {{ mobileCell?.label | translate }}
     </pa-table-cell>
-  </ng-template>
+  }
 
   <pa-dropdown
     #sortMenu
     (onOpen)="sortMenuOpen = true"
     (onClose)="sortMenuOpen = false">
     <pa-option-header>{{ 'pastanaga.sort-by' | translate }}</pa-option-header>
-    @for (cell of sortableCells; track cell) {
+    @for (cell of sortableCells; track cell.id) {
       <pa-option
         [icon]="!cell.active ? 'no-icon' : cell.descending ? 'arrow-up' : 'arrow-down'"
         [selected]="cell.active"
@@ -61,47 +49,7 @@
     }
   </pa-dropdown>
 }
+
 @if (menuColumn) {
   <pa-table-cell-menu header></pa-table-cell-menu>
 }
-
-<ng-template #mobileHeader>
-  @if (mobileCell?.sortable) {
-    <pa-table-sortable-header-cell
-      #mobileCellContainer
-      [active]="sortMenuOpen"
-      [paPopup]="sortMenu"
-      [popupPosition]="sortMenuPosition">
-      {{ mobileCell?.label | translate }}
-    </pa-table-sortable-header-cell>
-  } @else {
-    <pa-table-cell
-      header
-      [center]="mobileCell?.centered">
-      {{ mobileCell?.label | translate }}
-    </pa-table-cell>
-  }
-
-  <ng-template #basicCell>
-    <pa-table-cell
-      header
-      [center]="mobileCell?.centered">
-      {{ mobileCell?.label | translate }}
-    </pa-table-cell>
-  </ng-template>
-
-  <pa-dropdown
-    #sortMenu
-    (onOpen)="sortMenuOpen = true"
-    (onClose)="sortMenuOpen = false">
-    <pa-option-header>{{ 'pastanaga.sort-by' | translate }}</pa-option-header>
-    @for (cell of sortableCells; track cell) {
-      <pa-option
-        [icon]="!cell.active ? 'no-icon' : cell.descending ? 'arrow-up' : 'arrow-down'"
-        [selected]="cell.active"
-        (selectOption)="sortBy(cell.id)">
-        {{ cell.label | translate }}
-      </pa-option>
-    }
-  </pa-dropdown>
-</ng-template>
