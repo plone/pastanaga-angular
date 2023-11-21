@@ -11,6 +11,10 @@
 - Use new Angular control flow syntax
 - **Button**: Icon size is now the same as button size by default, and can be overridden with `iconSize` property
 
+### Bugfixes
+
+- **Popover**: Fix popover arrow left and right background color
+
 # 2.62.7 (2023-11-17)
 
 ### Bugfix

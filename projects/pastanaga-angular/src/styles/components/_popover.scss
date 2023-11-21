@@ -41,7 +41,7 @@
     }
     &:before {
       border-width: $size-arrow-popover 0 $size-arrow-popover $size-arrow-popover;
-      border-color: transparent transparent transparent $color-neutral-lightest;
+      border-color: transparent transparent transparent $color-background-popover;
       right: 1px;
       top: 50%;
       transform: translateY(-50%);
@@ -54,7 +54,7 @@
     }
     &:before {
       border-width: $size-arrow-popover $size-arrow-popover $size-arrow-popover 0;
-      border-color: transparent $color-neutral-lightest transparent transparent;
+      border-color: transparent $color-background-popover transparent transparent;
       left: 1px;
       top: 50%;
       transform: translateY(-50%);
