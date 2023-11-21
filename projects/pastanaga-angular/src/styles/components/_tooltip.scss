@@ -18,12 +18,16 @@
   &[aria-expanded='true'] {
     opacity: 1;
     visibility: visible;
-    transition: visibility 0s ease, opacity $transition-hint $duration-slow;
+    transition:
+      visibility 0s ease,
+      opacity $transition-hint $duration-slow;
   }
 }
 
 .pa-tooltip-system[aria-expanded='true'] {
-  transition: visibility 0s ease, opacity $transition-hint $duration-moderate;
+  transition:
+    visibility 0s ease,
+    opacity $transition-hint $duration-moderate;
 }
 
 .pa-tooltip > kbd,

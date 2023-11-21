@@ -1,4 +1,5 @@
 import {
+  booleanAttribute,
   ChangeDetectorRef,
   Directive,
   ElementRef,
@@ -29,7 +30,7 @@ import {
   STANDALONE,
 } from '../form-field.model';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { markForCheck } from '../../common';
+import { markForCheck, trimString } from '../../common';
 import { Subject } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
@@ -39,6 +40,9 @@ let nextId = 0;
   selector: '[paFormControl]',
 })
 export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
+  @Input({ transform: booleanAttribute }) readonly = false;
+  @Input({ transform: trimString }) help = '';
+  @Input() errorMessages?: IErrorMessages;
   @Input()
   set id(value: string | undefined) {
     if (value !== this.htmlId) {
@@ -62,23 +66,12 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
   }
 
   @Input()
-  set readonly(value: any) {
-    this._readonly = coerceBooleanProperty(value);
-  }
-  get readonly() {
-    return this._readonly;
-  }
-
-  @Input()
   set disabled(value: any) {
     this.setDisabledState(coerceBooleanProperty(value));
   }
   get disabled() {
     return this.control.disabled;
   }
-
-  @Input() help?: string;
-  @Input() errorMessages?: IErrorMessages;
 
   /**
    * Manual error messaging
@@ -110,7 +103,6 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
   protected terminator$ = new Subject<void>();
 
   private _formControlName: string | number | null = null;
-  private _readonly = false;
   private _id?: string;
   private _formattedId?: string;
   private _name?: string;
@@ -136,6 +128,8 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
     }
     if (changes['id'] || changes['name']) {
       this._setupIdentifiers();
+    }
+    if (changes['disabled']) {
     }
   }
 

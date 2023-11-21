@@ -20,9 +20,8 @@ $chip-max-width-medium: rhythm(56);
   &.pa-with-button {
     padding-right: rhythm(0.5);
 
-    .pa-button svg {
-      height: rhythm(2);
-      width: rhythm(2);
+    .pa-button {
+      padding: rhythm(0.5);
     }
   }
 

@@ -7,25 +7,26 @@
     class="pa-toggle-context"
     [class.pa-label-on-right]="labelOnRight"
     (click)="updateState(!isChecked)">
-    <div
-      class="pa-toggle-label-container"
-      tabindex="-1"
-      *ngIf="hasLabel">
-      <label
-        #label
-        [for]="id"
-        class="pa-field-label"
-        aria-hidden="true"
-        (click)="updateState(!isChecked)">
-        <ng-content></ng-content>
-      </label>
-      <pa-form-field-hint
-        [id]="describedById"
-        [help]="help"
-        [errors]="control.errors"
-        [showErrors]="control.dirty"
-        [errorMessages]="errorMessages"></pa-form-field-hint>
-    </div>
+    @if (hasLabel) {
+      <div
+        class="pa-toggle-label-container"
+        tabindex="-1">
+        <label
+          #label
+          [for]="id"
+          class="pa-field-label"
+          aria-hidden="true"
+          (click)="updateState(!isChecked)">
+          <ng-content></ng-content>
+        </label>
+        <pa-form-field-hint
+          [id]="describedById"
+          [help]="help"
+          [errors]="control.errors"
+          [showErrors]="control.dirty"
+          [errorMessages]="errorMessages"></pa-form-field-hint>
+      </div>
+    }
     <div
       class="pa-toggle-container"
       [class.pa-checked]="isChecked"

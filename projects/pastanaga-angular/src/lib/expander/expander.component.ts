@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -7,14 +8,15 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnDestroy,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { ExpanderBodyDirective } from './expander.directive';
 import { markForCheck } from '../common';
 import { Subject } from 'rxjs';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 export const transitionDuration = 160;
 
@@ -24,60 +26,15 @@ export const transitionDuration = 160;
   styleUrls: ['./expander.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExpanderComponent implements AfterViewInit, OnDestroy {
+export class ExpanderComponent implements AfterViewInit, OnChanges, OnDestroy {
+  @Input({ transform: booleanAttribute }) buttonOnlyToggle = false;
+  @Input({ transform: booleanAttribute }) disabled = false;
+  @Input({ transform: booleanAttribute }) emitOnly = false;
+  @Input({ transform: booleanAttribute }) expanded = true;
+  @Input({ transform: booleanAttribute }) card = false;
   @Input() set contentLoaded(value: any) {
     this.updateContentHeight();
   }
-  @Input()
-  set disabled(value: any) {
-    this._disabled = coerceBooleanProperty(value);
-  }
-  get disabled() {
-    return this._disabled;
-  }
-  private _disabled = false;
-
-  @Input()
-  set card(value: any) {
-    this._card = coerceBooleanProperty(value);
-    this._expanded = false;
-    this.contentHidden = true;
-  }
-  get card() {
-    return this._card;
-  }
-  private _card = false;
-
-  @Input()
-  set buttonOnlyToggle(value: any) {
-    this._buttonOnlyToggle = coerceBooleanProperty(value);
-  }
-  get buttonOnlyToggle() {
-    return this._buttonOnlyToggle;
-  }
-  private _buttonOnlyToggle = false;
-
-  @Input()
-  set expanded(value: any) {
-    if (coerceBooleanProperty(value)) {
-      this.expand();
-    } else {
-      this.collapse();
-    }
-  }
-  get expanded() {
-    return this._expanded;
-  }
-  private _expanded = true;
-
-  @Input()
-  set emitOnly(value: any) {
-    this._emitOnly = coerceBooleanProperty(value);
-  }
-  get emitOnly() {
-    return this._emitOnly;
-  }
-  private _emitOnly = false;
 
   @Output() toggleExpander: EventEmitter<void> = new EventEmitter();
 
@@ -86,15 +43,31 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
 
   terminator = new Subject<void>();
   contentHidden = false;
-
   hasSideBlock = false;
 
-  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterViewInit() {
     this.hasSideBlock = !!this.sideBlock && this.sideBlock.nativeElement.children.length > 0;
     this.updateContentHeight();
     this.cdr.markForCheck();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['expanded']) {
+      if (changes['expanded'].currentValue) {
+        this.expand();
+      } else {
+        this.collapse();
+      }
+    }
+    if (changes['card']?.currentValue) {
+      this.expanded = false;
+      this.contentHidden = true;
+    }
   }
 
   ngOnDestroy() {
@@ -121,7 +94,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
 
   private collapse() {
     // when expanded, we collapse directly and hide content after the transition delay
-    this._expanded = false;
+    this.expanded = false;
     setTimeout(() => {
       this.contentHidden = true;
       markForCheck(this.cdr);
@@ -133,7 +106,7 @@ export class ExpanderComponent implements AfterViewInit, OnDestroy {
     this.contentHidden = false;
     this.updateContentHeight();
     setTimeout(() => {
-      this._expanded = true;
+      this.expanded = true;
       markForCheck(this.cdr);
     }, 0);
   }

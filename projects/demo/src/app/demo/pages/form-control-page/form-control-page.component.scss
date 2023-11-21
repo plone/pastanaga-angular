@@ -1,20 +1,20 @@
 pa-demo-examples > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    li {
-        &:hover {
-            cursor: pointer;
-            h3 {
-                text-decoration: underline;
-            }
-        }
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    &:hover {
+      cursor: pointer;
+      h3 {
+        text-decoration: underline;
+      }
     }
+  }
 }
 
 .pa-select-chevron {
-    display: inline-block;
-    &.opened {
-        transform: rotate(180deg);
-    }
+  display: inline-block;
+  &.opened {
+    transform: rotate(180deg);
+  }
 }

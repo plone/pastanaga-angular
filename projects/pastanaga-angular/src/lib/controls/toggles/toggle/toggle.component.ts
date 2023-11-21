@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -14,7 +15,6 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { detectChanges, markForCheck } from '../../../common';
 import { PaFormControlDirective } from '../../form-field';
 import { NgControl } from '@angular/forms';
@@ -27,31 +27,15 @@ import { takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleComponent extends PaFormControlDirective implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-  @Input()
-  set labelOnRight(value: any) {
-    this._labelOnRight = coerceBooleanProperty(value);
-  }
-  get labelOnRight(): boolean {
-    return this._labelOnRight;
-  }
-
-  @Input()
-  set hasFocus(value: any) {
-    this._hasFocus = coerceBooleanProperty(value);
-  }
-  get hasFocus(): boolean {
-    return this._hasFocus;
-  }
+  @Input({ transform: booleanAttribute }) labelOnRight = false;
+  @Input({ transform: booleanAttribute }) hasFocus = false;
 
   @ViewChild('inputElement') input?: ElementRef;
   @ViewChild('label') labelElement?: ElementRef;
+
   label = '';
   hasLabel = true;
-
   isChecked = false;
-
-  private _hasFocus = false;
-  private _labelOnRight = false;
 
   constructor(
     protected override element: ElementRef,
@@ -87,7 +71,7 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
       this.describedById = status === 'INVALID' ? `${this.id}-hint` : undefined;
       detectChanges(this.cdr);
     });
-    if (this._hasFocus && !!this.input) {
+    if (this.hasFocus && !!this.input) {
       this.input.nativeElement.focus();
     }
     if (!!this.labelElement) {
@@ -115,11 +99,11 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
   }
 
   onFocus() {
-    this._hasFocus = true;
+    this.hasFocus = true;
   }
 
   onBlur() {
-    this._hasFocus = false;
+    this.hasFocus = false;
   }
 
   override setDisabledState(isDisabled: boolean): void {

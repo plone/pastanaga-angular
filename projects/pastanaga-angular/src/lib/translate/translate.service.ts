@@ -53,7 +53,10 @@ export class TranslateService {
     return this._currentLang;
   }
 
-  constructor(@Inject(PA_LANG) private injectedLang: any, @Inject(PA_TRANSLATIONS) private translations: Translation) {
+  constructor(
+    @Inject(PA_LANG) private injectedLang: any,
+    @Inject(PA_TRANSLATIONS) private translations: Translation,
+  ) {
     this._currentLang = injectedLang;
 
     if (Object.keys(translations).length > 0) {

@@ -1,9 +1,9 @@
-@import "../../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../../pastanaga-angular/src/styles/variables';
 
 .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: $color-neutral-lightest;
-    height: rhythm(40);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $color-neutral-lightest;
+  height: rhythm(40);
 }

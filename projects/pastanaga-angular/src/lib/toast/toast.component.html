@@ -4,30 +4,33 @@
   [class.pa-toast-with-button]="!!config.button"
   [class.pa-toast-composed]="!!config.icon || !!config.title || !!config.button">
   <div class="pa-toast-message-wrapper">
-    <pa-icon
-      *ngIf="config.icon"
-      class="pa-toast-icon"
-      [name]="config.icon"></pa-icon>
+    @if (config.icon) {
+      <pa-icon
+        class="pa-toast-icon"
+        [name]="config.icon"></pa-icon>
+    }
 
     <div class="pa-toast-message-container">
-      <div
-        *ngIf="config.title"
-        class="title-xxs"
-        [innerHTML]="config.title | translate : translateParams"></div>
+      @if (config.title) {
+        <div
+          class="title-xxs"
+          [innerHTML]="config.title | translate: translateParams"></div>
+      }
       <div
         [class]="toastClass"
         [class.body-s]="!!config.title"
-        [innerHTML]="message | translate : translateParams"></div>
+        [innerHTML]="message | translate: translateParams"></div>
     </div>
   </div>
 
-  <pa-button
-    *ngIf="config.button"
-    aspect="basic"
-    size="small"
-    class="pa-toast-button"
-    [icon]="config.button.icon"
-    (click)="clickOnToastButton()">
-    {{ config.button.label | translate : translateParams }}
-  </pa-button>
+  @if (config.button) {
+    <pa-button
+      aspect="basic"
+      size="small"
+      class="pa-toast-button"
+      [icon]="config.button.icon"
+      (click)="clickOnToastButton()">
+      {{ config.button.label | translate: translateParams }}
+    </pa-button>
+  }
 </div>

@@ -14,7 +14,7 @@
       <h4
         qa="confirmation-title"
         [id]="'dialog-' + id + '-title'">
-        {{ref.config.data?.['title'] | translate}}
+        {{ ref.config.data?.['title'] | translate }}
       </h4>
     </header>
 
@@ -27,19 +27,20 @@
     <footer
       class="pa-modal-footer"
       [class.pa-dual-buttons]="!ref.config.data?.['onlyConfirm']">
-      <pa-button
-        *ngIf="!ref.config.data?.['onlyConfirm']"
-        kind="secondary"
-        qa="confirmation-dialog-cancel-button"
-        [aspect]="ref.config.data?.['cancelAspect']"
-        (click)="ref.close(false)">
-        {{ (ref.config.data?.['cancelLabel'] || 'pastanaga.cancel') | translate}}
-      </pa-button>
+      @if (!ref.config.data?.['onlyConfirm']) {
+        <pa-button
+          kind="secondary"
+          qa="confirmation-dialog-cancel-button"
+          [aspect]="ref.config.data?.['cancelAspect']"
+          (click)="ref.close(false)">
+          {{ ref.config.data?.['cancelLabel'] || 'pastanaga.cancel' | translate }}
+        </pa-button>
+      }
       <pa-button
         [kind]="ref.config.data?.['isDestructive'] ? 'destructive' : 'primary'"
         qa="confirmation-dialog-confirm-button"
         (click)="ref.close(true)">
-        {{ (ref.config.data?.['confirmLabel'] || 'pastanaga.confirm') | translate}}
+        {{ ref.config.data?.['confirmLabel'] || 'pastanaga.confirm' | translate }}
       </pa-button>
     </footer>
   </dialog>

@@ -1,5 +1,5 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -26,48 +26,21 @@ export const SORTED_DESCENDING_ICON = 'arrow-up';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableSortableHeaderCellComponent implements OnChanges {
-  @Input()
-  set enabled(value: any) {
-    this._enabled = coerceBooleanProperty(value);
-  }
-  get enabled() {
-    return this._enabled;
-  }
+  @Input({ transform: booleanAttribute }) enabled = false;
+  @Input({ transform: booleanAttribute }) active = false;
+  @Input({ transform: booleanAttribute }) isDescending = false;
+  @Input({ transform: booleanAttribute }) center = false;
 
-  @Input()
-  set active(value: any) {
-    this._active = coerceBooleanProperty(value);
-  }
-  get active() {
-    return this._active;
-  }
-  @Input()
-  set isDescending(value: any) {
-    this._isDescending = coerceBooleanProperty(value);
-  }
-  get isDescending() {
-    return this._isDescending;
-  }
-
-  @Input()
-  get center(): boolean {
-    return this._center;
-  }
-  set center(value: any) {
-    this._center = coerceBooleanProperty(value);
-  }
   @Output() sort = new EventEmitter();
 
   @ViewChild('cell', { read: ElementRef }) cellElement?: ElementRef;
 
   icon?: string;
 
-  private _enabled = false;
-  private _active = false;
-  private _isDescending = false;
-  private _center = false;
-
-  constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['active'] || changes['isDescending'] || changes['enabled']) {
@@ -83,7 +56,7 @@ export class TableSortableHeaderCellComponent implements OnChanges {
         if (!this.enabled) {
           this.icon = SORTABLE_ICON;
         } else {
-          this.icon = coerceBooleanProperty(this.isDescending) ? SORTED_DESCENDING_ICON : SORTED_ASCENDING_ICON;
+          this.icon = this.isDescending ? SORTED_DESCENDING_ICON : SORTED_ASCENDING_ICON;
         }
       }
       markForCheck(this.cdr);

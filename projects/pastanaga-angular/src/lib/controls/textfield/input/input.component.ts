@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -17,8 +18,8 @@ import { NgControl } from '@angular/forms';
 import { TextInputType } from '../../form-field.model';
 import { TextFieldUtilityService } from '../text-field-utility.service';
 import { NativeTextFieldDirective } from '../native-text-field.directive';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { sanitizeNumberValue } from '../../form-field.utils';
+import { trimString } from '../../../common';
 
 @Component({
   selector: 'pa-input',
@@ -28,7 +29,7 @@ import { sanitizeNumberValue } from '../../form-field.utils';
 })
 export class InputComponent extends NativeTextFieldDirective implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input()
-  set type(value: TextInputType) {
+  set type(value: TextInputType | undefined | null) {
     this._type = value || 'text';
     this._updateInputType();
   }
@@ -36,30 +37,14 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
     return this._type;
   }
 
-  @Input()
-  set icon(value: string | undefined) {
-    this._icon = value;
-  }
-  get icon() {
-    return this._icon;
-  }
-
-  @Input()
-  set iconOnRight(value: any) {
-    this._iconOnRight = coerceBooleanProperty(value);
-  }
-  get iconOnRight(): boolean {
-    return this._iconOnRight;
-  }
-
-  @Input() autocapitalize?: string;
+  @Input({ transform: trimString }) icon = '';
+  @Input({ transform: booleanAttribute }) iconOnRight = false;
+  @Input({ transform: trimString }) autocapitalize = '';
 
   override fieldType = 'input';
 
   private _type: TextInputType = 'text';
-  private _icon?: string;
   private _wasNumber = false;
-  private _iconOnRight = false;
 
   constructor(
     override element: ElementRef,

@@ -1,6 +1,6 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterContentInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -8,7 +8,7 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import { Aspect, detectChanges, Kind, Size } from '../common';
+import { Aspect, Kind, Size, trimString } from '../common';
 
 @Component({
   selector: 'pa-button',
@@ -17,97 +17,40 @@ import { Aspect, detectChanges, Kind, Size } from '../common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent implements AfterContentInit {
-  @Input() set kind(value: Kind) {
-    if (!!value) {
-      this._kind = value;
-    }
-  }
-  @Input() set size(value: Size) {
-    if (!!value) {
-      this._size = value;
-      if (this._updateIconSize) {
-        switch (this._size) {
-          case 'large':
-            this._iconSize = 'large';
-            break;
-          case 'medium':
-          case 'small':
-            this._iconSize = 'medium';
-            break;
-        }
-      }
-    }
-  }
-  @Input() set iconSize(value: Size) {
-    if (!!value) {
-      this._iconSize = value;
-      this._updateIconSize = false;
-    }
-  }
-  get iconSize() {
-    return this._iconSize;
-  }
-
-  @Input() set aspect(value: Aspect) {
-    if (!!value) {
-      this._aspect = value;
-    }
-  }
-  @Input() set type(value: 'button' | 'submit' | 'reset') {
-    if (!!value) {
-      this._type = value;
-    }
-  }
-  @Input() set disabled(value: any) {
-    this._disabled = coerceBooleanProperty(value);
-  }
-  @Input() set active(value: any) {
-    this._active = coerceBooleanProperty(value);
-  }
-  @Input() set icon(value: string | undefined) {
-    this._icon = value || '';
-  }
-  @Input() set iconAndText(value: any) {
-    this._iconAndText = coerceBooleanProperty(value);
-  }
+  @Input() kind: Kind = 'secondary';
+  @Input() size: Size = 'medium';
+  @Input() aspect: Aspect = 'solid';
+  @Input() type: 'button' | 'submit' | 'reset' = 'button';
+  @Input({ transform: booleanAttribute }) disabled = false;
+  @Input({ transform: booleanAttribute }) active = false;
+  @Input({ transform: booleanAttribute }) iconAndText = false;
+  @Input({ transform: trimString }) icon = '';
+  @Input() iconSize?: Size;
 
   @ViewChild('textContainer') textContainer?: ElementRef;
 
-  _type: 'button' | 'submit' | 'reset' = 'button';
-  _kind: Kind = 'secondary';
-  _size: Size = 'medium';
-  _aspect: Aspect = 'solid';
-  _icon = '';
-  _iconSize: Size = 'medium';
-  _iconAndText = false;
-  private _updateIconSize = true;
-
-  // state
-  _disabled = false;
-  _active = false;
-
   // accessibility
-  _ariaLabel = '';
+  ariaLabel = '';
 
   constructor(protected cdr: ChangeDetectorRef) {}
 
   ngAfterContentInit() {
     setTimeout(() => {
       if (!!this.textContainer) {
-        this._ariaLabel = this.textContainer.nativeElement.textContent.trim();
-        detectChanges(this.cdr);
+        this.ariaLabel = this.textContainer.nativeElement.textContent.trim();
+        this.cdr.detectChanges();
       }
     }, 0);
   }
 
   onClick($event: MouseEvent) {
-    if (!!$event && this._type !== 'submit') {
+    if (!!$event && this.type !== 'submit') {
       $event.preventDefault();
     }
   }
 
   clickOnWrapper($event: MouseEvent) {
-    if (this._disabled) {
+    if (this.disabled) {
       $event.preventDefault();
       $event.stopPropagation();
     }

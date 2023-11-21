@@ -17,14 +17,14 @@
   </pa-demo-description>
 
   <pa-demo-examples>
-    To: some@email.com, other@email.com, any@email.com,
+    To: some&#64;email.com, other&#64;email.com, any&#64;email.com,
     <div class="container">
       <div
         class="more"
         [paPopover]="moreRecipientsPopup">
         and 3 more
       </div>
-      <pa-popover #moreRecipientsPopup>To: first@more.com, second@more.com, third@more.com</pa-popover>
+      <pa-popover #moreRecipientsPopup>To: first&#64;more.com, second&#64;more.com, third&#64;more.com</pa-popover>
     </div>
 
     <div class="flex-container">
@@ -43,9 +43,17 @@
         paPopoverOffset="0px">
         Delete
       </pa-button>
+      <pa-button
+        class="far-right"
+        [paPopover]="noSpace">
+        No space
+      </pa-button>
 
       <pa-popover #refreshHelp>This popover has a 4px offset</pa-popover>
       <pa-popover #deleteHelp>This popover has a 0px offset</pa-popover>
+      <pa-popover #noSpace>
+        This popover automatically display on the left as there’s not enough space below to be fully displayed
+      </pa-popover>
     </div>
   </pa-demo-examples>
 

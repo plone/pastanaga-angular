@@ -91,7 +91,9 @@ pa-tab {
   left: 0;
   height: rhythm(0.25);
   position: absolute;
-  transition: left $transition-response, width $transition-response;
+  transition:
+    left $transition-response,
+    width $transition-response;
 }
 
 @media (min-width: $size-viewport-medium-min) {

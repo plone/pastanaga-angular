@@ -210,6 +210,9 @@ describe('InputComponent', () => {
     host.noAutocomplete = true;
     spectator.detectChanges();
     thenInputHasAttribute('autocomplete', 'off');
+    host.noAutocomplete = false;
+    spectator.detectChanges();
+    thenInputHasAttribute('autocomplete', undefined);
   });
 
   it('should toggle acceptHtmlTags', () => {
@@ -327,7 +330,7 @@ describe('InputComponent', () => {
     component.control.updateValueAndValidity();
     expect(component.control.valid).toEqual(false);
     const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
-    expect(hint.componentInstance.showAllErrors).toEqual(undefined);
+    expect(hint.componentInstance.showAllErrors).toEqual(false);
 
     host.showAllErrors = true;
     spectator.detectChanges();

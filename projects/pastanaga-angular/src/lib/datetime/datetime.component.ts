@@ -1,10 +1,17 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+} from '@angular/core';
 import { DateFormat, DateTimeService } from './datetime.service';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { filter, map, switchMap, takeUntil, takeWhile } from 'rxjs/operators';
 import { differenceInMinutes } from 'date-fns';
 import { Observable, Subject, timer } from 'rxjs';
-import { markForCheck } from '../common';
+import { markForCheck, trimString } from '../common';
 
 const formats = ['human', 'numerical'];
 
@@ -13,31 +20,18 @@ const formats = ['human', 'numerical'];
   templateUrl: './datetime.component.html',
 })
 export class DateTimeComponent implements OnChanges, OnDestroy {
-  @Input() datetime?: string;
+  @Input({ transform: booleanAttribute }) dateOnly = false;
+  @Input({ transform: booleanAttribute }) displaySeconds = false;
+  @Input({ transform: trimString }) datetime = '';
   @Input() format: DateFormat = 'human';
 
-  @Input()
-  set dateOnly(value: any) {
-    this._dateOnly = coerceBooleanProperty(value);
-  }
-  get dateOnly() {
-    return this._dateOnly;
-  }
-
-  @Input()
-  set displaySeconds(value: any) {
-    this._displaySeconds = coerceBooleanProperty(value);
-  }
-  get displaySeconds() {
-    return this._displaySeconds;
-  }
-
-  private _dateOnly = false;
-  private _displaySeconds = false;
   private _terminator = new Subject<void>();
   formattedTime = '';
 
-  constructor(private service: DateTimeService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private service: DateTimeService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['format'] && changes['format'].currentValue && formats.indexOf(changes['format'].currentValue) === -1) {

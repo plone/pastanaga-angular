@@ -126,16 +126,17 @@
           properties to make sure only one expander is expanded at a time.
         </em>
       </p>
-      <pa-expander
-        *ngFor="let section of accordionContent"
-        emitOnly
-        [expanded]="accordionOpen === section.title"
-        (toggleExpander)="toggleAccordion(section.title)">
-        <pa-expander-header>{{ section.title }}</pa-expander-header>
-        <pa-expander-body>
-          <p>{{ section.content }}</p>
-        </pa-expander-body>
-      </pa-expander>
+      @for (section of accordionContent; track section.title) {
+        <pa-expander
+          emitOnly
+          [expanded]="accordionOpen === section.title"
+          (toggleExpander)="toggleAccordion(section.title)">
+          <pa-expander-header>{{ section.title }}</pa-expander-header>
+          <pa-expander-body>
+            <p>{{ section.content }}</p>
+          </pa-expander-body>
+        </pa-expander>
+      }
     </section>
   </pa-demo-examples>
 

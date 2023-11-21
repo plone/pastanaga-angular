@@ -1,15 +1,15 @@
-@import "../../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../../pastanaga-angular/src/styles/variables';
 
 .pa-demo-card {
-    border-bottom: 1px solid $color-neutral-lightest;
-    padding: rhythm(2) rhythm(1);
+  border-bottom: 1px solid $color-neutral-lightest;
+  padding: rhythm(2) rhythm(1);
 
-    .contact {
-        display: flex;
-        justify-content: space-between;
-        margin-top: rhythm(1);
-    }
-    small {
-        color: $color-neutral-regular;
-    }
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    margin-top: rhythm(1);
+  }
+  small {
+    color: $color-neutral-regular;
+  }
 }

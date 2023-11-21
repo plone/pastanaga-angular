@@ -1,10 +1,12 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
+  numberAttribute,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -15,7 +17,6 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { TextFieldUtilityService } from '../text-field-utility.service';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NativeTextFieldDirective } from '../native-text-field.directive';
 import { cssAsNumber } from '../../../common';
 
@@ -26,33 +27,9 @@ import { cssAsNumber } from '../../../common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextareaComponent extends NativeTextFieldDirective implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-  @Input()
-  get resizable(): boolean {
-    return this._resizable;
-  }
-
-  set resizable(value: any) {
-    this._resizable = coerceBooleanProperty(value);
-  }
-
-  @Input()
-  set rows(value: number) {
-    this._rows = value;
-    this._defaultRows = value;
-  }
-
-  get rows() {
-    return this._rows;
-  }
-
-  @Input()
-  get autoHeight(): boolean {
-    return this._autoHeight;
-  }
-
-  set autoHeight(value: any) {
-    this._autoHeight = coerceBooleanProperty(value);
-  }
+  @Input({ transform: booleanAttribute }) autoHeight = false;
+  @Input({ transform: booleanAttribute }) resizable = false;
+  @Input({ transform: numberAttribute }) rows = 1;
 
   @Input() set maxRows(max: number) {
     this._maxRows = max;
@@ -62,10 +39,9 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
       this.autoMaxHeight = null;
     }
   }
-
   private _maxRows?: number;
 
-  @Input() set maxHeight(max: number | undefined) {
+  @Input() set maxHeight(max: number | null | undefined) {
     // maxHeight can be set internally using maxRows
     // therefore we need to apply the change only when there's an actual change
     this._maxHeight = max;
@@ -77,20 +53,14 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
       this._computeMaxHeight();
     }
   }
-
   get maxHeight() {
     return this._maxHeight;
   }
+  private _maxHeight?: number | null;
 
-  private _maxHeight?: number;
   autoMaxHeight: number | null | undefined = null;
   override fieldType = 'textarea';
 
-  private _resizable = true;
-  private _rows = 1;
-  private _defaultRows = 1;
-
-  private _autoHeight = false;
   private _lineHeight = 0;
   private _verticalPadding = 0;
 

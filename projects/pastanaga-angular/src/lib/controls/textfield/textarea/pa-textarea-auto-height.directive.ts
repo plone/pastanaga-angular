@@ -14,10 +14,6 @@ import { UntypedFormControl } from '@angular/forms';
 })
 export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
   @Input('paTextareaAutoHeight')
-  get enabled(): boolean {
-    return this._enabled;
-  }
-
   set enabled(value: any) {
     value = coerceBooleanProperty(value);
     // Only act if the actual value changed.
@@ -25,6 +21,9 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
       this._enabled = value;
       this._toggleAutoHeight();
     }
+  }
+  get enabled(): boolean {
+    return this._enabled;
   }
 
   @Input('paTextareaMaxHeight')
@@ -55,7 +54,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
     private renderer: Renderer2,
   ) {
     this._textarea = this._elementRef.nativeElement as HTMLTextAreaElement;
-    this._measuringClass = _platform.FIREFOX
+    this._measuringClass = this._platform.FIREFOX
       ? 'pa-textarea-autosize-measuring-firefox'
       : 'pa-textarea-autosize-measuring';
   }
@@ -85,7 +84,7 @@ export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
 
   private _measureAutoHeight() {
     // Reset the textarea height to auto using the measuring class.
-    // Also temporarily force overflow:hidden, so scroll bars do not interfere with calculations.
+    // Also, temporarily force overflow:hidden, so scroll bars do not interfere with calculations.
     // Long placeholders that are wider than the textarea width may lead to a bigger scrollHeight
     // value. To ensure that the scrollHeight is not bigger than the content, the placeholders
     // need to be removed temporarily.

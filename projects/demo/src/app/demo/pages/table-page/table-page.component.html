@@ -44,49 +44,51 @@
             (click)="openMenu($event)"></pa-button>
         </pa-table-cell-menu>
       </pa-table-header>
-      <pa-table-row
-        *ngFor="let item of [data[0], data[1], data[2]]"
-        [class.pa-selected]="rowSelected === item.id"
-        (click)="clickRow(item.id)"
-        clickable>
-        <pa-table-cell header>{{ item.name }}</pa-table-cell>
-        <pa-table-cell>{{ item.tags }}</pa-table-cell>
-        <pa-table-cell>{{ item.shared }}</pa-table-cell>
-        <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
-        <pa-table-cell>{{ item.size }}</pa-table-cell>
-        <pa-table-cell-menu>
-          <pa-button
-            icon="more-horizontal"
-            size="small"
-            (click)="openMenu($event)">
-            Menu button
-          </pa-button>
-        </pa-table-cell-menu>
-      </pa-table-row>
+      @for (item of [data[0], data[1], data[2]]; track item.id) {
+        <pa-table-row
+          [class.pa-selected]="rowSelected === item.id"
+          (click)="clickRow(item.id)"
+          clickable>
+          <pa-table-cell header>{{ item.name }}</pa-table-cell>
+          <pa-table-cell>{{ item.tags }}</pa-table-cell>
+          <pa-table-cell>{{ item.shared }}</pa-table-cell>
+          <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
+          <pa-table-cell>{{ item.size }}</pa-table-cell>
+          <pa-table-cell-menu>
+            <pa-button
+              icon="more-horizontal"
+              size="small"
+              (click)="openMenu($event)">
+              Menu button
+            </pa-button>
+          </pa-table-cell-menu>
+        </pa-table-row>
+      }
       <pa-table-row-header>{{ subHeader }}</pa-table-row-header>
-      <pa-table-row
-        *ngFor="let item of [data[3], data[4], data[5]]"
-        [class.pa-selected]="rowSelected === item.id"
-        (click)="clickRow(item.id)"
-        clickable>
-        <pa-table-cell
-          header
-          noWrap>
-          <span class="pa-ellipsis">{{ item.name }}</span>
-        </pa-table-cell>
-        <pa-table-cell>{{ item.tags }}</pa-table-cell>
-        <pa-table-cell>{{ item.shared }}</pa-table-cell>
-        <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
-        <pa-table-cell>{{ item.size }}</pa-table-cell>
-        <pa-table-cell-menu>
-          <pa-button
-            icon="more-horizontal"
-            size="small"
-            (click)="openMenu($event)">
-            Menu button
-          </pa-button>
-        </pa-table-cell-menu>
-      </pa-table-row>
+      @for (item of [data[3], data[4], data[5]]; track item.id) {
+        <pa-table-row
+          [class.pa-selected]="rowSelected === item.id"
+          (click)="clickRow(item.id)"
+          clickable>
+          <pa-table-cell
+            header
+            noWrap>
+            <span class="pa-ellipsis">{{ item.name }}</span>
+          </pa-table-cell>
+          <pa-table-cell>{{ item.tags }}</pa-table-cell>
+          <pa-table-cell>{{ item.shared }}</pa-table-cell>
+          <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
+          <pa-table-cell>{{ item.size }}</pa-table-cell>
+          <pa-table-cell-menu>
+            <pa-button
+              icon="more-horizontal"
+              size="small"
+              (click)="openMenu($event)">
+              Menu button
+            </pa-button>
+          </pa-table-cell-menu>
+        </pa-table-row>
+      }
     </pa-table>
   </pa-demo-examples>
 

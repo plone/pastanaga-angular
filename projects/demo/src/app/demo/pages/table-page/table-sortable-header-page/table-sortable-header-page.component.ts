@@ -55,15 +55,15 @@ export class TableSortableHeaderPageComponent {
   ];
 
   rows: { name: string; source: string; status: string; date: string }[] = [
-    { name: 'Aurora', source: 'Source 1', status: 'Sleeping', date: '1959' },
     { name: 'Ariel', source: 'Source 2', status: 'Swimming', date: '1989' },
+    { name: 'Aurora', source: 'Source 1', status: 'Sleeping', date: '1959' },
     { name: 'Elsa', source: 'Source 3', status: '–', date: '2013' },
     { name: 'Mulan', source: 'Source 4', status: 'Fighting', date: '1998' },
   ];
 
   sortBy(column: HeaderCell) {
     const sortBy: 'source' | 'name' = column.id as 'source' | 'name';
-    if (column.descending) {
+    if (!column.descending) {
       this.rows.sort((a, b) => a[sortBy].toLocaleLowerCase().localeCompare(b[sortBy].toLocaleLowerCase()));
     } else {
       this.rows.sort((a, b) => b[sortBy].toLocaleLowerCase().localeCompare(a[sortBy].toLocaleLowerCase()));

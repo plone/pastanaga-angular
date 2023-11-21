@@ -1,12 +1,13 @@
 <div class="pa-avatar-pile">
-  <pa-avatar
-    *ngFor="let avatar of visibleAvatars; let first = first; let last = last"
-    [class.pa-avatar-moved]="!first"
-    [class.pa-avatar-clip]="!last || avatarCount > max || buttonAlwaysVisible"
-    [avatar]="avatar"
-    size="small"></pa-avatar>
+  @for (avatar of visibleAvatars; track avatar; let first = $first; let last = $last) {
+    <pa-avatar
+      [class.pa-avatar-moved]="!first"
+      [class.pa-avatar-clip]="!last || avatarCount > max || buttonAlwaysVisible"
+      [avatar]="avatar"
+      size="small"></pa-avatar>
+  }
 
-  <ng-container *ngIf="avatarCount > max || buttonAlwaysVisible">
+  @if (avatarCount > max || buttonAlwaysVisible) {
     <pa-button
       icon="more-horizontal"
       size="small"
@@ -19,16 +20,17 @@
     </pa-button>
 
     <pa-dropdown #avatarList>
-      <pa-option-header>{{ 'pastanaga.total' | translate : { count: avatarCount, type: 'members' } }}</pa-option-header>
-      <pa-option
-        *ngFor="let avatar of avatars"
-        readonly
-        [avatar]="avatar"
-        [description]="avatar.userId">
-        {{ avatar.userName }}
-      </pa-option>
+      <pa-option-header>{{ 'pastanaga.total' | translate: { count: avatarCount, type: 'members' } }}</pa-option-header>
+      @for (avatar of avatars; track avatar) {
+        <pa-option
+          readonly
+          [avatar]="avatar"
+          [description]="avatar.userId">
+          {{ avatar.userName }}
+        </pa-option>
+      }
     </pa-dropdown>
-  </ng-container>
+  }
 </div>
 
 <svg

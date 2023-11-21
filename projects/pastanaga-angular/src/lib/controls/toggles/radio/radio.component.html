@@ -8,7 +8,7 @@
       paFocusable
       [id]="id"
       [attr.name]="name"
-      [attr.aria-label]="_ariaLabel"
+      [attr.aria-label]="ariaLabel"
       [attr.aria-checked]="checked"
       [attr.aria-describedby]="help ? describedById : undefined"
       [disabled]="disabled"
@@ -22,8 +22,9 @@
     </label>
   </div>
 
-  <pa-form-field-hint
-    *ngIf="help"
-    [id]="describedById"
-    [help]="help"></pa-form-field-hint>
+  @if (help) {
+    <pa-form-field-hint
+      [id]="describedById"
+      [help]="help"></pa-form-field-hint>
+  }
 </div>

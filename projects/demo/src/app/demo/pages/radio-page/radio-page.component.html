@@ -38,11 +38,13 @@
         name="radio-season"
         id="radio-group-season"
         [(ngModel)]="favoriteSeason">
-        <pa-radio
-          *ngFor="let season of seasons"
-          [value]="season">
-          {{ season }}
-        </pa-radio>
+        @for (season of seasons; track season) {
+          <pa-radio
+            [value]="season"
+            [id]="season">
+            {{ season }}
+          </pa-radio>
+        }
       </pa-radio-group>
       <p>Your favorite season is: {{ favoriteSeason }}</p>
 
@@ -53,14 +55,14 @@
         name="radio-icons"
         [formControl]="formControl">
         <div style="display: flex">
-          <div
-            *ngFor="let icon of icons"
-            style="display: flex; flex-direction: column; align-items: center; margin-right: 30px">
-            <pa-icon
-              size="large"
-              [name]="icon"></pa-icon>
-            <pa-radio [value]="icon"></pa-radio>
-          </div>
+          @for (icon of icons; track icon) {
+            <div style="display: flex; flex-direction: column; align-items: center; margin-right: 30px">
+              <pa-icon
+                size="large"
+                [name]="icon"></pa-icon>
+              <pa-radio [value]="icon"></pa-radio>
+            </div>
+          }
         </div>
       </pa-radio-group>
       <p>Icon selected: {{ formControl.value }}</p>
@@ -79,12 +81,13 @@
           name="radio-meals"
           id="radio-meals"
           formControlName="favoriteMeal">
-          <pa-radio
-            *ngFor="let meal of meals"
-            [value]="meal.label"
-            [help]="meal.help">
-            {{ meal.label }}
-          </pa-radio>
+          @for (meal of meals; track meal.label) {
+            <pa-radio
+              [value]="meal.label"
+              [help]="meal.help">
+              {{ meal.label }}
+            </pa-radio>
+          }
         </pa-radio-group>
         <p>Your favorite meal: {{ formGroup.getRawValue() | json }}</p>
         <pa-button
@@ -101,12 +104,13 @@
           name="radio-disabled"
           id="radio-meals-disabled"
           formControlName="favoriteMeal">
-          <pa-radio
-            *ngFor="let meal of meals"
-            [value]="meal.label"
-            [help]="meal.help">
-            {{ meal.label }}
-          </pa-radio>
+          @for (meal of meals; track meal.label) {
+            <pa-radio
+              [value]="meal.label"
+              [help]="meal.help">
+              {{ meal.label }}
+            </pa-radio>
+          }
         </pa-radio-group>
       </form>
     </div>

@@ -1,4 +1,5 @@
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -34,8 +35,8 @@ import { AbstractControl, FormControl, NgControl, ValidatorFn } from '@angular/f
 import { debounceTime, filter, map, startWith } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 import { InputComponent, PaFormControlDirective } from '../controls';
+import { markForCheck, TRANSITION_DURATION, trimString } from '../common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { markForCheck, TRANSITION_DURATION } from '../common';
 
 export interface Day {
   otherMonth: boolean;
@@ -82,21 +83,21 @@ function DateValidator(): ValidatorFn {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerComponent extends PaFormControlDirective {
-  private _selectedDate?: Date;
-
+  @Input({ transform: booleanAttribute }) externalLabel = false;
+  @Input({ transform: trimString }) label?: string;
   @Input()
-  set externalLabel(value: any) {
-    this._externalLabel = coerceBooleanProperty(value);
+  override set disabled(value: any) {
+    this.setDisabledState(coerceBooleanProperty(value));
   }
-  get externalLabel() {
-    return this._externalLabel;
+  override get disabled() {
+    return this.inputControl.disabled;
   }
-  private _externalLabel = false;
 
   @ViewChild('popupRef') popupDirective?: PopupDirective;
   @ViewChild('popup') popup?: PopupComponent;
   @ViewChild('input') input?: InputComponent;
 
+  private _selectedDate?: Date;
   trackedDate: Date;
   inputControl: FormControl<string | null> = new FormControl<string | null>(null, {
     validators: [DateValidator()],
@@ -108,18 +109,6 @@ export class DatePickerComponent extends PaFormControlDirective {
   weeks: Day[][] = [];
   years: Year[] | undefined;
   months: Month[] | undefined;
-
-  @Input()
-  label: string | undefined;
-
-  @Input()
-  override get disabled() {
-    return this.inputControl.disabled;
-  }
-
-  override set disabled(value: any) {
-    this.setDisabledState(coerceBooleanProperty(value));
-  }
 
   constructor(
     @Inject(LOCALE_ID) private locale: string,

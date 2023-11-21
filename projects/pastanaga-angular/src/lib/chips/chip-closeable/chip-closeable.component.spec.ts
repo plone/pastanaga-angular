@@ -15,9 +15,7 @@ import { IconModel } from '../../icon/icon.model';
 class TestComponent {
   avatar: AvatarModel = { userName: 'the name' };
   icon: IconModel = { name: 'iconName' };
-  noCloseButton = true;
   disabled = true;
-  ariaRole = 'role';
   value = 'the value';
 
   onClose() {}
@@ -54,12 +52,6 @@ describe('ChipCloseableComponent', () => {
       spectator.dispatchMouseEvent(closeButton, 'click', 0, 0, mouseEvent);
       expect(closed).toHaveBeenCalledWith({ event: mouseEvent, value: 'the value' });
     });
-  });
-
-  it('should not have a close button when noCloseButton is set', () => {
-    spectator = createHost(`<pa-chip-closeable noCloseButton>A chip</pa-chip-closeable>`);
-    const button = spectator.query('[qa="chip-button"]');
-    expect(button).toEqual(null);
   });
 
   it('should display an avatar when avatar is set', () => {

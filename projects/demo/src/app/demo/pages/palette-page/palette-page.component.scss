@@ -1,115 +1,115 @@
-@import "../../../../../../pastanaga-angular/src/styles/variables";
+@import '../../../../../../pastanaga-angular/src/styles/variables';
 
 .grid-7 {
-    background-color: $color-neutral-lightest;
-    border: 1px solid $color-neutral-lightest;
-    grid-gap: 1px;
-    margin-bottom: rhythm(5);
+  background-color: $color-neutral-lightest;
+  border: 1px solid $color-neutral-lightest;
+  grid-gap: 1px;
+  margin-bottom: rhythm(5);
 
+  & > div {
+    background-color: $color-light-stronger;
+    display: grid;
+    justify-items: center;
+    padding: rhythm(1.5);
+    height: 100%;
+    small {
+      @include font-size(xxs);
+      color: $color-neutral-regular;
+      line-height: rhythm(1.5);
+      margin-top: rhythm(1);
+    }
     & > div {
-        background-color: $color-light-stronger;
-        display: grid;
-        justify-items: center;
-        padding: rhythm(1.5);
-        height: 100%;
-        small {
-            @include font-size(xxs);
-            color: $color-neutral-regular;
-            line-height: rhythm(1.5);
-            margin-top: rhythm(1);
-        }
-        & > div {
-            display: grid;
-            align-items: center;
-        }
-        &.title {
-            justify-items: left;
-        }
+      display: grid;
+      align-items: center;
     }
-    div.inverted {
-        background-color: $color-dark-stronger;
-        color: $color-light-stronger;
+    &.title {
+      justify-items: left;
     }
+  }
+  div.inverted {
+    background-color: $color-dark-stronger;
+    color: $color-light-stronger;
+  }
 }
-[class*="color-"] {
-    height: rhythm(6);
-    width: rhythm(6);
-    border-radius: rhythm(3);
+[class*='color-'] {
+  height: rhythm(6);
+  width: rhythm(6);
+  border-radius: rhythm(3);
 }
 
 .color-dark-stronger {
-    background-color: $color-dark-stronger;
+  background-color: $color-dark-stronger;
 }
 .color-light-stronger {
-    background-color: $color-light-stronger;
+  background-color: $color-light-stronger;
 }
 
 .color-neutral-regular {
-    background-color: $color-neutral-regular;
+  background-color: $color-neutral-regular;
 }
 .color-neutral-light {
-    background-color: $color-neutral-light;
+  background-color: $color-neutral-light;
 }
 .color-neutral-lighter {
-    background-color: $color-neutral-lighter;
+  background-color: $color-neutral-lighter;
 }
 .color-neutral-lightest {
-    background-color: $color-neutral-lightest;
+  background-color: $color-neutral-lightest;
 }
 
 .color-primary-stronger {
-    background-color: $color-primary-stronger;
+  background-color: $color-primary-stronger;
 }
 .color-primary-strong {
-    background-color: $color-primary-strong;
+  background-color: $color-primary-strong;
 }
 .color-primary-regular {
-    background-color: $color-primary-regular;
+  background-color: $color-primary-regular;
 }
 .color-primary-light {
-    background-color: $color-primary-light;
+  background-color: $color-primary-light;
 }
 .color-primary-lighter {
-    background-color: $color-primary-lighter;
+  background-color: $color-primary-lighter;
 }
 .color-primary-lightest {
-    background-color: $color-primary-lightest;
+  background-color: $color-primary-lightest;
 }
 
 .color-secondary-stronger {
-    background-color: $color-secondary-stronger;
+  background-color: $color-secondary-stronger;
 }
 .color-secondary-strong {
-    background-color: $color-secondary-strong;
+  background-color: $color-secondary-strong;
 }
 .color-secondary-regular {
-    background-color: $color-secondary-regular;
+  background-color: $color-secondary-regular;
 }
 .color-secondary-light {
-    background-color: $color-secondary-light;
+  background-color: $color-secondary-light;
 }
 .color-secondary-lighter {
-    background-color: $color-secondary-lighter;
+  background-color: $color-secondary-lighter;
 }
 .color-secondary-lightest {
-    background-color: $color-secondary-lightest;
+  background-color: $color-secondary-lightest;
 }
 
 .color-tertiary-stronger {
-    background-color: $color-tertiary-stronger;
+  background-color: $color-tertiary-stronger;
 }
 .color-tertiary-strong {
-    background-color: $color-tertiary-strong;
+  background-color: $color-tertiary-strong;
 }
 .color-tertiary-regular {
-    background-color: $color-tertiary-regular;
+  background-color: $color-tertiary-regular;
 }
 .color-tertiary-light {
-    background-color: $color-tertiary-light;
+  background-color: $color-tertiary-light;
 }
 .color-tertiary-lighter {
-    background-color: $color-tertiary-lighter;
+  background-color: $color-tertiary-lighter;
 }
 .color-tertiary-lightest {
-    background-color: $color-tertiary-lightest;
+  background-color: $color-tertiary-lightest;
 }

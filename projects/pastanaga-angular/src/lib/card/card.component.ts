@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { booleanAttribute, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'pa-card',
@@ -8,17 +7,9 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-  @Input()
-  set disabled(value: any) {
-    this._disabled = coerceBooleanProperty(value);
-  }
-  get disabled() {
-    return this._disabled;
-  }
+  @Input({ transform: booleanAttribute }) disabled = false;
 
   @Output() cardClick: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
-
-  private _disabled = false;
 
   onEnter($event: Event) {
     this.onClick($event as KeyboardEvent);

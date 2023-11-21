@@ -1,5 +1,9 @@
 import { ChangeDetectorRef, ViewRef } from '@angular/core';
 
+export function trimString(value: string | null | undefined) {
+  return value?.trim() ?? '';
+}
+
 /**
  * CSS transition duration as defined in CSS
  */

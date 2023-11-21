@@ -64,14 +64,12 @@
     [companionElement]="selectInput"
     (onClose)="dropDownClosed()"
     (onOpen)="dropDownOpened()">
-    <ng-container *ngIf="dropdownOptions.length; else contentOptions">
+    @if (dropdownOptions.length) {
       <pa-select-options
         [options]="dropdownOptions"
         (optionSelected)="selectOption($event)"></pa-select-options>
-    </ng-container>
-
-    <ng-template #contentOptions>
+    } @else {
       <ng-content></ng-content>
-    </ng-template>
+    }
   </pa-dropdown>
 </div>

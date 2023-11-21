@@ -1,7 +1,7 @@
-import { Directive, Input } from '@angular/core';
+import { booleanAttribute, Directive, Input } from '@angular/core';
 import { AvatarModel } from '../avatar';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { IconModel } from '../icon';
+import { trimString } from '../common';
 
 @Directive()
 export class BaseChip {
@@ -12,15 +12,9 @@ export class BaseChip {
 
   @Input() value?: any;
 
-  @Input() backgroundColor?: string;
-  @Input() textColor?: string;
-  @Input() borderColor?: string;
+  @Input({ transform: trimString }) backgroundColor = '';
+  @Input({ transform: trimString }) textColor = '';
+  @Input({ transform: trimString }) borderColor = '';
 
-  @Input() set disabled(value: any) {
-    this._disabled = coerceBooleanProperty(value);
-  }
-  get disabled() {
-    return this._disabled;
-  }
-  private _disabled = false;
+  @Input({ transform: booleanAttribute }) disabled = false;
 }

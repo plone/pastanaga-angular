@@ -8,17 +8,16 @@
   [class.pa-option-readonly]="readonly"
   [class.pa-option-selected]="selected"
   [class.pa-option-with-description]="!!description"
-  [hidden]="_hidden"
   (click)="onSelectClick($event)"
   (keyup.enter)="onSelectEnter($event)">
-  <pa-icon
-    *ngIf="!!icon && !iconOnRight"
-    [icon]="_icon"
-    [name]="iconName"></pa-icon>
-  <pa-avatar
-    *ngIf="!!avatar"
-    [avatar]="avatar"
-    size="small"></pa-avatar>
+  @if (!!icon && !iconOnRight) {
+    <pa-icon [icon]="icon"></pa-icon>
+  }
+  @if (!!avatar) {
+    <pa-avatar
+      [avatar]="avatar"
+      size="small"></pa-avatar>
+  }
 
   <div
     class="pa-option-text-wrapper"
@@ -28,17 +27,18 @@
       paEllipsisTooltip>
       <ng-content></ng-content>
     </div>
-    <div
-      *ngIf="!!description"
-      class="pa-option-description body-xs"
-      paEllipsisTooltip>
-      {{ description | translate }}
-    </div>
+    @if (!!description) {
+      <div
+        class="pa-option-description body-xs"
+        paEllipsisTooltip>
+        {{ description | translate }}
+      </div>
+    }
   </div>
 
-  <pa-icon
-    *ngIf="!!icon && iconOnRight"
-    [class.pa-option-right-icon]="iconOnRight"
-    [icon]="_icon"
-    [name]="iconName"></pa-icon>
+  @if (!!icon && iconOnRight) {
+    <pa-icon
+      [class.pa-option-right-icon]="iconOnRight"
+      [icon]="icon"></pa-icon>
+  }
 </li>

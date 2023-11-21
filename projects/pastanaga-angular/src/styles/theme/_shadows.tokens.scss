@@ -7,11 +7,19 @@ $drop-shadow-medium: 0px rhythm(1) rhythm(2) rgba($color-dark-stronger, 0.18) !d
 $drop-shadow-large: 0px rhythm(1.5) rhythm(5) rgba($color-dark-stronger, 0.24) !default;
 
 $shadow-small: none !default;
-$shadow-default: $drop-shadow-default, 0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
-$shadow-medium: $drop-shadow-medium, 0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
-$shadow-large: $drop-shadow-large, 0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
+$shadow-default:
+  $drop-shadow-default,
+  0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
+$shadow-medium:
+  $drop-shadow-medium,
+  0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
+$shadow-large:
+  $drop-shadow-large,
+  0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
 
 $color-shadow-focus: rgba($color-primary-light, 0.6) !default;
 $shadow-focus: 0 0 0 rhythm(0.25) $color-shadow-focus !default;
-$shadow-focus-checkbox: 0 0 0 rhythm(0.25) $color-light-stronger, 0 0 0 rhythm(0.5) $color-shadow-focus !default;
+$shadow-focus-checkbox:
+  0 0 0 rhythm(0.25) $color-light-stronger,
+  0 0 0 rhythm(0.5) $color-shadow-focus !default;
 $shadow-modal: $shadow-default !default;

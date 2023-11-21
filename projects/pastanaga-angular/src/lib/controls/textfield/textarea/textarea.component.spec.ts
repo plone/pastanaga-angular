@@ -245,7 +245,7 @@ describe('TextareaComponent', () => {
     component.control.updateValueAndValidity();
     expect(component.control.valid).toEqual(false);
     const hint = ngMocks.find(spectator.debugElement, FormFieldHintComponent);
-    expect(hint.componentInstance.showAllErrors).toEqual(undefined);
+    expect(hint.componentInstance.showAllErrors).toEqual(false);
 
     host.showAllErrors = true;
     spectator.detectChanges();

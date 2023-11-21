@@ -1,3 +1,20 @@
+# 2.63.0 (2023-11-21)
+
+### Breaking changes
+
+- Upgrade Angular to v17
+- No more `noCloseButton` option on `closeableChip` component. Use basic `pa-chip` component instead.
+- On fields, `showAllErrors` is now false by default
+
+### Improvements
+
+- Use new Angular control flow syntax
+- **Button**: Icon size is now the same as button size by default, and can be overridden with `iconSize` property
+
+### Bugfixes
+
+- **Popover**: Fix popover arrow left and right background color
+
 # 2.62.7 (2023-11-17)
 
 ### Bugfix

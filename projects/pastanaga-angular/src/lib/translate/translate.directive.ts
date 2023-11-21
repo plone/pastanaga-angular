@@ -24,7 +24,10 @@ export class TranslateDirective implements AfterViewChecked, OnDestroy {
     }
   }
 
-  constructor(private element: ElementRef, private translateService: TranslateService) {
+  constructor(
+    private element: ElementRef,
+    private translateService: TranslateService,
+  ) {
     if (!this.onTranslationChange) {
       this.onTranslationChange = this.translateService.onTranslationChange.subscribe(
         (event: TranslationChangeEvent) => {

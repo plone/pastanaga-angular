@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -8,11 +9,19 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { PopupService } from '../../popup';
-import { markForCheck } from '../../common';
+import { trimString } from '../../common';
 import { IconModel } from '../../icon';
 import { AvatarModel } from '../../avatar';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+
+function iconAttribute(value: string | IconModel | null | undefined): IconModel | null | undefined {
+  if (typeof value === 'string') {
+    return { name: value };
+  } else {
+    return value;
+  }
+}
 
 @Component({
   selector: 'pa-option',
@@ -21,110 +30,38 @@ import { AvatarModel } from '../../avatar';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionComponent implements AfterContentInit {
-  @Input()
-  set value(value: string) {
-    this._value = value || '';
-  }
-  get value(): string {
-    return this._value;
-  }
-
-  @Input()
-  set avatar(value: AvatarModel | undefined) {
-    this._avatar = value;
-  }
-  get avatar() {
-    return this._avatar;
-  }
-
-  @Input()
-  set icon(value: string | IconModel | undefined) {
-    this.iconName = typeof value === 'string' ? value : '';
-    this._icon = typeof value === 'object' ? value : undefined;
-  }
-  get icon(): string | IconModel {
-    return this._icon || this.iconName;
-  }
-
-  @Input()
-  set destructive(value: any) {
-    this._destructive = coerceBooleanProperty(value);
-  }
-  get destructive(): boolean {
-    return this._destructive;
-  }
-
-  @Input()
-  set disabled(value: any) {
-    this._disabled = coerceBooleanProperty(value);
-  }
-  get disabled(): boolean {
-    return this._disabled;
-  }
+  @Input({ transform: booleanAttribute }) destructive = false;
+  @Input({ transform: booleanAttribute }) disabled = false;
+  @Input({ transform: booleanAttribute }) dontCloseOnSelect = false;
+  @Input({ transform: booleanAttribute }) iconOnRight = false;
+  @Input({ transform: booleanAttribute }) readonly = false;
+  @Input({ transform: trimString }) description = '';
+  @Input({ transform: trimString }) value = '';
+  @Input({ transform: iconAttribute }) icon?: IconModel;
+  @Input() avatar?: AvatarModel;
 
   @Input()
   set selected(value: any) {
     this._selected = coerceBooleanProperty(value);
     // when selected is triggered programmatically by a parent component
     // change detection must be triggered manually
-    markForCheck(this.cdr);
+    // (as of angular v17, cannot be done in a transform function nor in ngOnChanges)
+    this.cdr.markForCheck();
   }
   get selected(): boolean {
     return this._selected;
   }
-
-  @Input()
-  set dontCloseOnSelect(value: any) {
-    this._dontCloseOnSelect = coerceBooleanProperty(value);
-  }
-  get dontCloseOnSelect(): boolean {
-    return this._dontCloseOnSelect;
-  }
-
-  @Input()
-  set readonly(value: any) {
-    this._readonly = coerceBooleanProperty(value);
-  }
-  get readonly(): boolean {
-    return this._readonly;
-  }
-
-  @Input()
-  set description(value: string | undefined) {
-    if (!!value) {
-      this._description = value;
-    }
-  }
-  get description() {
-    return this._description;
-  }
-
-  @Input()
-  set iconOnRight(value: any) {
-    this._iconOnRight = coerceBooleanProperty(value);
-  }
-  get iconOnRight(): boolean {
-    return this._iconOnRight;
-  }
+  private _selected = false;
 
   @Output() selectOption: EventEmitter<MouseEvent | KeyboardEvent> = new EventEmitter<MouseEvent | KeyboardEvent>();
 
   text = '';
-  iconName = '';
-  _icon?: IconModel;
-  _hidden = false;
 
-  private _value = '';
-  private _disabled = false;
-  private _selected = false;
-  private _destructive = false;
-  private _dontCloseOnSelect = false;
-  private _readonly = false;
-  private _iconOnRight = false;
-  private _avatar?: AvatarModel;
-  private _description = '';
-
-  constructor(private element: ElementRef, private popupService: PopupService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private element: ElementRef,
+    private popupService: PopupService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterContentInit() {
     this.text = this.element.nativeElement.textContent.trim();
@@ -141,7 +78,7 @@ export class OptionComponent implements AfterContentInit {
     if (!this.disabled && !this.readonly) {
       this.selectOption.emit($event);
 
-      if (!this._dontCloseOnSelect) {
+      if (!this.dontCloseOnSelect) {
         this.popupService.closeAllPopups.next();
       }
     } else {

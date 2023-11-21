@@ -14,7 +14,10 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
 
   onTranslationChange?: Subscription;
 
-  constructor(private translateService: TranslateService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private translateService: TranslateService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnDestroy() {
     this._cleanUpSubscriptions();

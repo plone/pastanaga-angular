@@ -28,7 +28,10 @@ export class ToastService {
     return this._renderer;
   }
 
-  constructor(private rendererFactory: RendererFactory2, private appRef: ApplicationRef) {
+  constructor(
+    private rendererFactory: RendererFactory2,
+    private appRef: ApplicationRef,
+  ) {
     this._renderer = rendererFactory.createRenderer(null, null);
   }
 

@@ -13,7 +13,6 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { Subject } from 'rxjs';
 import { detectChanges, markForCheck, TRANSITION_DURATION } from '../common';
 import { SideNavItemComponent } from './side-nav-item/side-nav-item.component';
 import { ViewportMode } from '../breakpoint-observer';
@@ -25,10 +24,8 @@ import { ViewportMode } from '../breakpoint-observer';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SideNavComponent implements AfterViewInit {
+  @Input() mode: ViewportMode = 'desktop';
   @Input()
-  get visible(): boolean {
-    return this._visible;
-  }
   set visible(value: any) {
     const visible = coerceBooleanProperty(value);
     if (this.mode !== 'desktop') {
@@ -37,15 +34,8 @@ export class SideNavComponent implements AfterViewInit {
       this._visible = visible;
     }
   }
-
-  @Input()
-  set mode(value: ViewportMode | null) {
-    if (value) {
-      this._mode = value;
-    }
-  }
-  get mode(): ViewportMode {
-    return this._mode;
+  get visible(): boolean {
+    return this._visible;
   }
 
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
@@ -57,14 +47,15 @@ export class SideNavComponent implements AfterViewInit {
   @ContentChildren(SideNavItemComponent, { descendants: true }) contentChild!: QueryList<SideNavItemComponent>;
 
   private _visible = true;
-  private _mode: ViewportMode = 'desktop';
   hasHeader = false;
   hasFooterContent = false;
 
   readonly closeNavBarDuration = TRANSITION_DURATION.slow;
-  terminator: Subject<void> = new Subject<void>();
 
-  constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private renderer: Renderer2,
+  ) {}
 
   ngAfterViewInit() {
     this.updateFlags();

@@ -22,7 +22,7 @@ import { IconModel } from './icon.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent {
-  @Input() set icon(value: IconModel | undefined) {
+  @Input() set icon(value: IconModel | null | undefined) {
     if (!value) {
       return;
     }

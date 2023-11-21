@@ -12,11 +12,11 @@
   <pa-demo-examples>
     <p><strong>Using ng-content:</strong></p>
     <pa-typeahead-select label="Typeahead">
-      <pa-option
-        *ngFor="let country of countries"
-        [value]="country.code">
-        {{ country.name }}
-      </pa-option>
+      @for (country of countries; track country.code) {
+        <pa-option [value]="country.code">
+          {{ country.name }}
+        </pa-option>
+      }
     </pa-typeahead-select>
 
     <p><strong>Using options:</strong></p>

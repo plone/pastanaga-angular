@@ -136,12 +136,13 @@
       <pa-dropdown
         #level2
         keepOthersOpen>
-        <pa-option
-          *ngFor="let option of level2Options"
-          dontCloseOnSelect
-          (selectOption)="updateCheckbox(option, $event)">
-          <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
-        </pa-option>
+        @for (option of level2Options; track option.label) {
+          <pa-option
+            dontCloseOnSelect
+            (selectOption)="updateCheckbox(option, $event)">
+            <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
+          </pa-option>
+        }
       </pa-dropdown>
     </div>
   </pa-demo-examples>

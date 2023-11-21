@@ -12,12 +12,13 @@
     <pa-select
       [value]="currentLanguage"
       [label]="'demo-page.current-language-label' | translate">
-      <pa-option
-        *ngFor="let language of languages"
-        [value]="language"
-        (selectOption)="updateLanguage(language)">
-        {{ 'demo-page.languages.' + language | translate }}
-      </pa-option>
+      @for (language of languages; track language) {
+        <pa-option
+          [value]="language"
+          (selectOption)="updateLanguage(language)">
+          {{ 'demo-page.languages.' + language | translate }}
+        </pa-option>
+      }
     </pa-select>
 
     <h4>Using the directive</h4>
@@ -79,7 +80,7 @@
       <p>
         <strong>Result</strong>
         :
-        <span>{{ 'demo-page.score' | translate : { points: 10, total: 25 } }}</span>
+        <span>{{ 'demo-page.score' | translate: { points: 10, total: 25 } }}</span>
       </p>
     </section>
 

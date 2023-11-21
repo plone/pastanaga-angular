@@ -1,18 +1,23 @@
-<ng-container *ngFor="let typedOption of typedOptions">
-  <pa-option-header *ngIf="typedOption.type === 'header' && !!typedOption.header">
-    {{ typedOption.header.label }}
-  </pa-option-header>
-  <pa-separator *ngIf="typedOption.type === 'separator'"></pa-separator>
-  <pa-option
-    *ngIf="typedOption.type === 'option' && !!typedOption.option && !typedOption.option.filtered"
-    [id]="typedOption.option.id"
-    [disabled]="typedOption.option.disabled"
-    [selected]="typedOption.option.selected"
-    [destructive]="typedOption.option.destructive"
-    [dontCloseOnSelect]="typedOption.option.dontCloseOnSelect"
-    [icon]="typedOption.option.icon"
-    [value]="typedOption.option.value"
-    (selectOption)="selectOption(typedOption.option)">
-    {{ typedOption.option.label }}
-  </pa-option>
-</ng-container>
+@for (typedOption of typedOptions; track typedOption) {
+  @if (typedOption.type === 'header' && !!typedOption.header) {
+    <pa-option-header>
+      {{ typedOption.header.label }}
+    </pa-option-header>
+  }
+  @if (typedOption.type === 'separator') {
+    <pa-separator></pa-separator>
+  }
+  @if (typedOption.type === 'option' && !!typedOption.option && !typedOption.option.filtered) {
+    <pa-option
+      [id]="typedOption.option.id"
+      [disabled]="typedOption.option.disabled"
+      [selected]="typedOption.option.selected"
+      [destructive]="typedOption.option.destructive"
+      [dontCloseOnSelect]="typedOption.option.dontCloseOnSelect"
+      [icon]="typedOption.option.icon"
+      [value]="typedOption.option.value"
+      (selectOption)="selectOption(typedOption.option)">
+      {{ typedOption.option.label }}
+    </pa-option>
+  }
+}

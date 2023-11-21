@@ -1,8 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { getAvatarColor, getInitials } from './avatar.utils';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Observable } from 'rxjs';
-import { detectChanges } from '../common';
+import { detectChanges, trimString } from '../common';
 import { AvatarModel } from './avatar.model';
 
 @Component({
@@ -10,10 +17,11 @@ import { AvatarModel } from './avatar.model';
   templateUrl: './avatar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvatarComponent {
+export class AvatarComponent implements OnChanges {
   @Input() set avatar(value: AvatarModel | undefined | null) {
     if (value?.userName) {
       this.userName = value.userName;
+      this._initials = getInitials(value.userName);
     }
     if (value?.userId) {
       this.userId = value.userId;
@@ -29,33 +37,17 @@ export class AvatarComponent {
     }
     if (typeof value?.autoBackground === 'boolean') {
       this.autoBackground = value?.autoBackground;
-    }
-  }
-
-  @Input() set userId(value: string | undefined) {
-    if (value) {
-      this._userId = value;
       this.assignBackgroundColor();
     }
   }
-  get userId() {
-    return this._userId;
-  }
+
+  @Input({ transform: trimString }) userId = '';
+  @Input({ transform: trimString }) userName = '';
+  @Input({ transform: booleanAttribute }) autoBackground = false;
+  @Input() size: 'tiny' | 'small' | 'medium' | 'huge' = 'medium';
 
   @Input()
-  set userName(value: string | undefined) {
-    if (value) {
-      this._userName = value;
-    }
-    this._initials = !!value ? getInitials(value) : '';
-    this.assignBackgroundColor();
-  }
-  get userName() {
-    return this._userName;
-  }
-
-  @Input()
-  set image(value: Observable<Blob> | undefined) {
+  set image(value: Observable<Blob> | null | undefined) {
     if (!!value) {
       this.loadImage(value);
     } else {
@@ -64,26 +56,8 @@ export class AvatarComponent {
   }
 
   @Input()
-  set imageSrc(value: string | undefined) {
-    this._base64Image = value;
-  }
-
-  @Input() set autoBackground(value: any) {
-    this._autoBackground = coerceBooleanProperty(value);
-    this.assignBackgroundColor();
-  }
-  get autoBackground() {
-    return this._autoBackground;
-  }
-
-  @Input()
-  set size(value: 'tiny' | 'small' | 'medium' | 'huge') {
-    if (!!value) {
-      this._size = value;
-    }
-  }
-  get size() {
-    return this._size;
+  set imageSrc(value: string | null | undefined) {
+    this._base64Image = value || undefined;
   }
 
   @Input()
@@ -104,16 +78,22 @@ export class AvatarComponent {
     return this._initials;
   }
 
-  private _userId = '';
-  private _userName = '';
   private _initials = '';
   private _base64Image?: string;
-  private _autoBackground = false;
   private _backgroundColorClass?: string;
-  private _size: 'tiny' | 'small' | 'medium' | 'huge' = 'medium';
   private _tooltip = '';
 
   constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['autoBackground'] || changes['userId'] || changes['userName']) {
+      this.assignBackgroundColor();
+    }
+    if (changes['userName']) {
+      const value = changes['userName'].currentValue;
+      this._initials = !!value ? getInitials(value) : '';
+    }
+  }
 
   loadImage(obs: Observable<Blob>) {
     obs.subscribe((blob: Blob) => {
@@ -137,12 +117,12 @@ export class AvatarComponent {
 
   private assignBackgroundColor() {
     let backgroundColor = 'default';
-    if (this._autoBackground) {
+    if (this.autoBackground) {
       let id: string;
-      if (this._userId) {
-        id = this._userId;
+      if (this.userId) {
+        id = this.userId;
       } else {
-        id = this._userName ? this._userName : this._initials;
+        id = this.userName ? this.userName : this._initials;
       }
       backgroundColor = getAvatarColor(id);
     }
