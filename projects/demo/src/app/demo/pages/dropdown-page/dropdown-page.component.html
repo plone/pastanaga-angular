@@ -69,7 +69,6 @@
       <pa-button
         icon="more-horizontal"
         size="small"
-        iconSize="medium"
         [paPopup]="contextualMenu"></pa-button>
 
       <pa-dropdown #contextualMenu>
@@ -137,7 +136,7 @@
       <pa-dropdown
         #level2
         keepOthersOpen>
-        @for (option of level2Options; track option) {
+        @for (option of level2Options; track option.label) {
           <pa-option
             dontCloseOnSelect
             (selectOption)="updateCheckbox(option, $event)">

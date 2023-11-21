@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Data, DataPage, ScrollPageService } from '../scroll-page.service';
+import { DataPage, ScrollPageService } from '../scroll-page.service';
 import { map, take, tap } from 'rxjs/operators';
 
 @Component({
@@ -32,9 +32,5 @@ export class InfiniteScrollDemoComponent {
         )
         .subscribe((lastIndex) => this.service.loadMore(lastIndex));
     }
-  }
-
-  trackById(index: number, card: Data) {
-    return card.index;
   }
 }

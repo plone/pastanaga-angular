@@ -126,7 +126,7 @@
           properties to make sure only one expander is expanded at a time.
         </em>
       </p>
-      @for (section of accordionContent; track section) {
+      @for (section of accordionContent; track section.title) {
         <pa-expander
           emitOnly
           [expanded]="accordionOpen === section.title"

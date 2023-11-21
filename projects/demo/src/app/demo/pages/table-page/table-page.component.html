@@ -44,7 +44,7 @@
             (click)="openMenu($event)"></pa-button>
         </pa-table-cell-menu>
       </pa-table-header>
-      @for (item of [data[0], data[1], data[2]]; track item) {
+      @for (item of [data[0], data[1], data[2]]; track item.id) {
         <pa-table-row
           [class.pa-selected]="rowSelected === item.id"
           (click)="clickRow(item.id)"
@@ -65,7 +65,7 @@
         </pa-table-row>
       }
       <pa-table-row-header>{{ subHeader }}</pa-table-row-header>
-      @for (item of [data[3], data[4], data[5]]; track item) {
+      @for (item of [data[3], data[4], data[5]]; track item.id) {
         <pa-table-row
           [class.pa-selected]="rowSelected === item.id"
           (click)="clickRow(item.id)"

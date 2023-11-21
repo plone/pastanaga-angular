@@ -10,9 +10,9 @@
     [class.pa-active]="active"
     paFocusable>
     <ng-content></ng-content>
-    @if (icon) {
+    @if (icon; as iconName) {
       <pa-icon
-        [name]="icon"
+        [name]="iconName"
         size="small"></pa-icon>
     }
   </button>

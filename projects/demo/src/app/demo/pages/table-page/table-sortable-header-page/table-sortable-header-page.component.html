@@ -17,7 +17,7 @@
       <pa-table-sortable-header
         [cells]="headerCells"
         (sort)="sortBy($event)"></pa-table-sortable-header>
-      @for (row of rows; track row) {
+      @for (row of rows; track row.name) {
         <pa-table-row>
           <pa-table-cell>{{ row.name }}</pa-table-cell>
           <pa-table-cell>{{ row.source }}</pa-table-cell>
@@ -33,7 +33,7 @@
         mode="mobile"
         [cells]="headerCells"
         (sort)="sortBy($event)"></pa-table-sortable-header>
-      @for (row of rows; track row) {
+      @for (row of rows; track row.name) {
         <pa-table-row>
           <pa-table-lead-cell-multi-line>
             <pa-table-lead-image><pa-icon path="assets/ninja.svg"></pa-icon></pa-table-lead-image>
@@ -53,7 +53,7 @@
           <pa-checkbox></pa-checkbox>
         </pa-table-cell>
       </pa-table-sortable-header>
-      @for (row of rows; track row) {
+      @for (row of rows; track row.name) {
         <pa-table-row>
           <pa-table-cell>
             <pa-checkbox></pa-checkbox>

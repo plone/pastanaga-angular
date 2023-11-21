@@ -81,7 +81,7 @@
           name="radio-meals"
           id="radio-meals"
           formControlName="favoriteMeal">
-          @for (meal of meals; track meal) {
+          @for (meal of meals; track meal.label) {
             <pa-radio
               [value]="meal.label"
               [help]="meal.help">
@@ -104,7 +104,7 @@
           name="radio-disabled"
           id="radio-meals-disabled"
           formControlName="favoriteMeal">
-          @for (meal of meals; track meal) {
+          @for (meal of meals; track meal.label) {
             <pa-radio
               [value]="meal.label"
               [help]="meal.help">

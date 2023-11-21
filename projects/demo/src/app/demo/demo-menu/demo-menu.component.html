@@ -41,13 +41,13 @@
   </pa-side-nav-header>
 
   <pa-side-nav-content>
-    @for (section of visibleMenu; track section) {
+    @for (section of visibleMenu; track section.title) {
       <section class="section">
         <ul class="side-nav-section">
           <pa-side-nav-item
             [label]="section.title"
             header></pa-side-nav-item>
-          @for (page of section.pages; track page) {
+          @for (page of section.pages; track page.title) {
             <pa-side-nav-item
               routerLinkActive
               #rla="routerLinkActive"
