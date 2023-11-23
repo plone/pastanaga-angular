@@ -1,3 +1,9 @@
+# 2.63.1 (2023-11-23)
+
+### Improvements
+
+- **Tabs**: tokenize tab slider height, and make it 2px by default
+
 # 2.63.0 (2023-11-21)
 
 ### Breaking changes
