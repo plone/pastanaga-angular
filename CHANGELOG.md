@@ -4,6 +4,10 @@
 
 - **Tabs**: tokenize tab slider height, and make it 2px by default
 
+### Security
+
+- Remove `jest-preset-angular` dependency, which is not used anymore and has a security vulnerability  
+
 # 2.63.0 (2023-11-21)
 
 ### Breaking changes
