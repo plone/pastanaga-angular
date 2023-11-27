@@ -1,15 +1,5 @@
 @import '../variables';
 
-.pa-radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: $gap-radio-group;
-
-  &.horizontal-group {
-    flex-direction: row;
-  }
-}
-
 .pa-toggle {
   display: flex;
   flex-direction: column;
@@ -134,5 +124,23 @@
 
   pa-form-field-hint {
     margin-left: rhythm(3.5);
+  }
+}
+
+.pa-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-radio-group;
+
+  &.horizontal-group {
+    flex-direction: row;
+  }
+
+  &:not(.horizontal-group) .pa-toggle .pa-checkbox-wrapper {
+    width: 100%;
+
+    .pa-toggle-label {
+      width: 100%;
+    }
   }
 }
