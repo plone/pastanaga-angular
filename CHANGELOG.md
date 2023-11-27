@@ -1,8 +1,11 @@
-# 2.63.1 (2023-11-23)
+# 2.63.1 (2023-11-27)
 
 ### Improvements
 
 - **Tabs**: tokenize tab slider height, and make it 2px by default
+- **RadioGroup**: 
+  - Improve the radio-group style by using flexbox with a gap (default to 8px between each radio, can be overridden using the `$gap-radio-group` token)
+  - Add a class `horizontal-group` changing the flexbox direction to row
 
 ### Security
 

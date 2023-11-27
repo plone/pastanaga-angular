@@ -1,5 +1,15 @@
 @import '../variables';
 
+.pa-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-radio-group;
+
+  &.horizontal-group {
+    flex-direction: row;
+  }
+}
+
 .pa-toggle {
   display: flex;
   flex-direction: column;
