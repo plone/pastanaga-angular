@@ -17,6 +17,7 @@
       [for]="id"
       #label
       class="pa-toggle-label"
+      [class.no-ellipsis]="noEllipsis"
       [hidden]="!hasLabel">
       <ng-content></ng-content>
     </label>

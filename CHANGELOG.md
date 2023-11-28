@@ -1,4 +1,4 @@
-# 2.63.1 (2023-11-27)
+# 2.63.1 (2023-11-28)
 
 ### Improvements
 
@@ -6,6 +6,7 @@
 - **RadioGroup**: 
   - Improve the radio-group style by using flexbox with a gap (default to 8px between each radio, can be overridden using the `$gap-radio-group` token)
   - Add a class `horizontal-group` changing the flexbox direction to row
+- **Radio**: Add `noEllipsis` option to radio component
 
 ### Security
 
