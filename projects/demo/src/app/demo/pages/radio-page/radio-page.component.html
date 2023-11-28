@@ -52,18 +52,17 @@
 
       <p class="title-xxs">Radio group using formControl</p>
       <pa-radio-group
+        class="horizontal-group"
         name="radio-icons"
         [formControl]="formControl">
-        <div style="display: flex">
-          @for (icon of icons; track icon) {
-            <div style="display: flex; flex-direction: column; align-items: center; margin-right: 30px">
-              <pa-icon
-                size="large"
-                [name]="icon"></pa-icon>
-              <pa-radio [value]="icon"></pa-radio>
-            </div>
-          }
-        </div>
+        @for (icon of icons; track icon) {
+          <div style="display: flex; flex-direction: column; align-items: center">
+            <pa-icon
+              size="large"
+              [name]="icon"></pa-icon>
+            <pa-radio [value]="icon"></pa-radio>
+          </div>
+        }
       </pa-radio-group>
       <p>Icon selected: {{ formControl.value }}</p>
       <pa-button
@@ -168,6 +167,17 @@
       Radio buttons should usually be placed inside a
       <code>{{ paRadioGroup }}</code>. The radio-group will automatically set the name of the
       <code>{{ paRadio }}</code> with its own.
+    </p>
+    <p>
+      By default,
+      <code>{{ paRadioGroup }}</code>
+      is using flexbox to display the
+      <code>{{ paRadio }}</code>
+      aligned in column. Adding the CSS class
+      <code>horizontal-group</code>
+      to the
+      <code>{{ paRadioGroup }}</code>
+      will change the alignment direction to row.
     </p>
 
     <p>

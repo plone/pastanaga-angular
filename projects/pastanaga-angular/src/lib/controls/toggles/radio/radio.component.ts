@@ -28,6 +28,7 @@ export class RadioComponent implements AfterContentInit, OnChanges {
   @Input({ transform: booleanAttribute }) disabled = false;
   @Input({ transform: trimString }) ariaLabel = '';
   @Input({ transform: trimString }) help = '';
+  @Input({ transform: booleanAttribute }) noEllipsis = false;
 
   @Output() change: EventEmitter<{ value: string; checked: boolean }> = new EventEmitter();
 
