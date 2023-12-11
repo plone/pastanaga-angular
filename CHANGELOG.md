@@ -1,3 +1,10 @@
+# 2.63.3 (2023-12-11)
+
+### Bugfix
+
+- Add `ChipComponent` in index.ts to fix the library build
+- Update peer dependencies declaration to angular 17
+
 # 2.63.2 (2023-12-11)
 
 ### Improvements
