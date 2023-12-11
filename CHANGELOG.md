@@ -1,3 +1,9 @@
+# 2.64.1 (2023-12-11)
+
+### Bugfix
+
+- Fix option side padding
+
 # 2.64.0 (2023-12-11)
 
 ### Breaking change
