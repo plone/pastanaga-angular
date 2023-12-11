@@ -1,3 +1,9 @@
+# 2.63.2 (2023-12-11)
+
+### Improvements
+
+- **Side nav**: tokenize side nav background color
+
 # 2.63.1 (2023-11-28)
 
 ### Improvements
