@@ -24,7 +24,8 @@
     [class.smaller-wrapper]="!!icon || !!avatar">
     <div
       class="pa-option-content body-m"
-      paEllipsisTooltip>
+      paEllipsisTooltip
+      [paEllipsisContent]="text">
       <ng-content></ng-content>
     </div>
     @if (!!description) {

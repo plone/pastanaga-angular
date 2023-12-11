@@ -194,6 +194,7 @@ describe('TypeaheadSelectComponent', () => {
     initWithTemplate(`<pa-typeahead-select [(ngModel)]="value">${optionsInTemplate}</pa-typeahead-select>`);
     tick(300);
     whenFirstOptionClicked();
+    tick();
     thenSelectHasValue('first', 'first label');
     expect(host.value).toEqual('first');
     discardPeriodicTasks();
@@ -228,6 +229,7 @@ describe('TypeaheadSelectComponent', () => {
     tick(300);
     expect((spectator.query('.pa-field-control') as HTMLInputElement)?.value).toEqual('placeholder');
     whenFirstOptionClicked();
+    tick();
     expect((spectator.query('.pa-field-control') as HTMLInputElement)?.value).toEqual('first label');
     discardPeriodicTasks();
   }));
@@ -392,6 +394,7 @@ describe('TypeaheadSelectComponent', () => {
     tick(300);
     expect(spectator.query('.pa-field-container.pa-dim')).toBeTruthy();
     whenFirstOptionClicked();
+    tick();
     expect(spectator.query('label.pa-sr-only')).toBeTruthy();
     discardPeriodicTasks();
   }));

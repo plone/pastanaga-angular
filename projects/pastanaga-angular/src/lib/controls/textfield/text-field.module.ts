@@ -14,6 +14,7 @@ import { NativeTextFieldDirective } from './native-text-field.directive';
 import { OptionComponent, OptionHeaderComponent, PaDropdownModule, SeparatorComponent } from '../../dropdown';
 import { TextFieldDirective } from './text-field.directive';
 import { TypeaheadSelectComponent } from './typeahead-select/typeahead-select.component';
+import { PaTooltipModule } from '../../tooltip';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { TypeaheadSelectComponent } from './typeahead-select/typeahead-select.co
     ReactiveFormsModule,
     PaFocusableModule,
     PaFormFieldModule,
+    PaTooltipModule,
   ],
   exports: [
     InputComponent,
