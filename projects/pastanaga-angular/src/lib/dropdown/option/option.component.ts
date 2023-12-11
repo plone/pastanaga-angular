@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterViewInit,
   booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -29,7 +29,7 @@ function iconAttribute(value: string | IconModel | null | undefined): IconModel 
   styleUrls: ['./option.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OptionComponent implements AfterContentInit {
+export class OptionComponent implements AfterViewInit {
   @Input({ transform: booleanAttribute }) destructive = false;
   @Input({ transform: booleanAttribute }) disabled = false;
   @Input({ transform: booleanAttribute }) dontCloseOnSelect = false;
@@ -63,7 +63,7 @@ export class OptionComponent implements AfterContentInit {
     private cdr: ChangeDetectorRef,
   ) {}
 
-  ngAfterContentInit() {
+  ngAfterViewInit() {
     this.text = this.element.nativeElement.textContent.trim();
   }
 

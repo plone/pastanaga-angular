@@ -67,6 +67,14 @@
       <pa-option value="value3">Option 3</pa-option>
     </pa-select>
 
+    <div style="max-width: 400px">
+      <p>Show how select handle long selected value:</p>
+      <pa-select label="Long options">
+        <pa-option value="long1">This is a quite long option which should show an ellipsis</pa-option>
+        <pa-option value="long2">This option is even longer and should also show an ellipsis</pa-option>
+      </pa-select>
+    </div>
+
     <pa-tabs>
       <pa-tab
         (click)="selectedTab = 'standalone'"

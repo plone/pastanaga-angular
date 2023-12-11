@@ -55,23 +55,23 @@ describe('EllipsisTooltipDirective', () => {
       tick();
       expect(updateEllipsisTooltipSpy).not.toHaveBeenCalled();
 
-      directive.ngOnChanges({ content: { currentValue: undefined } as SimpleChange });
+      directive.ngOnChanges({ paEllipsisContent: { currentValue: undefined } as SimpleChange });
       tick();
       expect(updateEllipsisTooltipSpy).not.toHaveBeenCalled();
     }));
 
     it('should do nothing on first content change', fakeAsync(() => {
-      directive.ngOnChanges({ content: { currentValue: 'content', firstChange: true } as SimpleChange });
+      directive.ngOnChanges({ paEllipsisContent: { currentValue: 'content', firstChange: true } as SimpleChange });
       tick();
       expect(updateEllipsisTooltipSpy).not.toHaveBeenCalled();
     }));
 
     it('should call updateEllipsisTooltip on second content change and following ones', fakeAsync(() => {
-      directive.ngOnChanges({ content: { currentValue: 'content', firstChange: false } as SimpleChange });
+      directive.ngOnChanges({ paEllipsisContent: { currentValue: 'content', firstChange: false } as SimpleChange });
       tick();
       expect(updateEllipsisTooltipSpy).toHaveBeenCalled();
 
-      directive.ngOnChanges({ content: { currentValue: 'new Content', firstChange: false } as SimpleChange });
+      directive.ngOnChanges({ paEllipsisContent: { currentValue: 'new Content', firstChange: false } as SimpleChange });
       tick();
       expect(updateEllipsisTooltipSpy).toHaveBeenCalledTimes(2);
     }));

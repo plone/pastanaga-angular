@@ -16,6 +16,8 @@
       tabindex="0"
       cdkMonitorElementFocus
       sameWidth
+      paEllipsisTooltip
+      [paEllipsisContent]="displayedValue"
       [class.pa-field-control-filled]="hasValue || isOpened"
       [class.read-only]="readonly"
       [class.disabled]="control.disabled"

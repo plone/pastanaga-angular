@@ -1,3 +1,14 @@
+# 2.64.0 (2023-12-11)
+
+### Breaking change
+
+- **paEllipsisTooltip**: Rename `content` attribute to `paEllipsisContent`
+
+### Bugfix
+
+- **Select**: Use `paEllipsisTooltip` and `paEllipsisContent` to properly display long selected value
+- **Option**: Use `paEllipsisContent` to properly display the tooltip on hover when the option has an ellipsis 
+
 # 2.63.3 (2023-12-11)
 
 ### Bugfix

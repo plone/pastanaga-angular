@@ -20,7 +20,7 @@ export class ExtendedTooltipDirective extends TooltipDirective {}
   selector: '[paEllipsisTooltip]',
 })
 export class EllipsisTooltipDirective implements AfterViewInit, OnChanges {
-  @Input() content?: string;
+  @Input() paEllipsisContent?: string;
 
   @Output() hasEllipsis: EventEmitter<boolean> = new EventEmitter();
 
@@ -37,7 +37,7 @@ export class EllipsisTooltipDirective implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!!changes['content']?.currentValue && !changes['content'].firstChange) {
+    if (!!changes['paEllipsisContent']?.currentValue && !changes['paEllipsisContent'].firstChange) {
       setTimeout(() => this.updateEllipsisTooltip(), 0);
     }
   }

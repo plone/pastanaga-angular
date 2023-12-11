@@ -191,6 +191,7 @@ describe('SelectComponent', () => {
     initWithTemplate(`<pa-select [(ngModel)]="value">${optionsInTemplate}</pa-select>`);
     tick(300);
     whenFirstOptionClicked();
+    tick();
     thenSelectHasValue('first', 'first label');
     expect(host.value).toEqual('first');
     discardPeriodicTasks();
@@ -223,6 +224,7 @@ describe('SelectComponent', () => {
     tick(300);
     expect(spectator.query('.pa-select-value')?.innerHTML.trim()).toEqual('placeholder');
     whenFirstOptionClicked();
+    tick();
     expect(spectator.query('.pa-select-value')?.innerHTML.trim()).toEqual('first label');
     discardPeriodicTasks();
   }));
@@ -381,6 +383,7 @@ describe('SelectComponent', () => {
     tick(300);
     expect(spectator.query('.pa-field-container.pa-dim')).toBeTruthy();
     whenFirstOptionClicked();
+    tick();
     expect(spectator.query('label.pa-sr-only')).toBeTruthy();
     discardPeriodicTasks();
   }));
