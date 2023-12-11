@@ -10,13 +10,18 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  padding: 0 $padding-menu-option-side;
 
-  .pa-option-content {
-    padding: $padding-menu-option-top $padding-menu-option-side;
+  &:not(.pa-option-with-description) .pa-option-content {
+    padding: $padding-menu-option-top 0;
   }
 
   &.pa-option-with-description {
-    padding: rhythm(0.5) $padding-menu-option-side;
+    padding: rhythm(0.25) $padding-menu-option-side;
+
+    .pa-option-content {
+      margin-bottom: calc(-1 * #{rhythm(0.5)});
+    }
   }
 
   .pa-option-text-wrapper {
