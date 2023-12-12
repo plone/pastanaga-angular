@@ -2,12 +2,12 @@ import { DropdownComponent } from './dropdown.component';
 import { OptionHeaderComponent } from './option-header/option-header.component';
 import { OptionComponent } from './option/option.component';
 import { SeparatorComponent } from './separator/separator.component';
-import { PaIconModule } from '../icon/icon.module';
-import { PaFocusableModule } from '../focusable/focusable.module';
-import { PaAvatarModule } from '../avatar/avatar.module';
+import { PaIconModule } from '../icon';
+import { PaFocusableModule } from '../focusable';
+import { PaAvatarModule } from '../avatar';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { MockComponent, MockModule } from 'ng-mocks';
-import { PopupService } from '../popup/popup.service';
+import { PopupService } from '../popup';
 import { Subject } from 'rxjs';
 
 const template = `<pa-dropdown>

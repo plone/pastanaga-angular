@@ -17,7 +17,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 function iconAttribute(value: string | IconModel | null | undefined): IconModel | null | undefined {
   if (typeof value === 'string') {
-    return { name: value };
+    return !!value ? { name: value } : null;
   } else {
     return value;
   }
