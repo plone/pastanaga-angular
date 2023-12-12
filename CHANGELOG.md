@@ -1,3 +1,9 @@
+# 2.64.2 (2023-12-12)
+
+### Bugfix
+
+- **Option**: Don't display icon when there is no icon set
+
 # 2.64.1 (2023-12-11)
 
 ### Bugfix
