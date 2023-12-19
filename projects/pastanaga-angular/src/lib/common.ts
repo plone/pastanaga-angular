@@ -63,14 +63,16 @@ export const getPositionedParent = (element: HTMLElement): HTMLElement => {
   }
 };
 
-export const hasContainerTypeSizeParent = (element: HTMLElement): boolean => {
+export const getContainerTypeSizeElement = (element: HTMLElement): HTMLElement | undefined => {
   const style = getComputedStyle(element);
   const isContainerTypeSize = style.containerType !== 'normal';
-  if (isContainerTypeSize || element.tagName === 'BODY') {
-    return isContainerTypeSize;
+  if (isContainerTypeSize) {
+    return element;
+  } else if (element.tagName === 'BODY') {
+    return undefined;
   }
   const parent = element.parentElement;
-  return parent ? hasContainerTypeSizeParent(parent) : false;
+  return parent ? getContainerTypeSizeElement(parent) : undefined;
 };
 
 export const getRealPosition = (element: HTMLElement): { top: number; left: number } => {

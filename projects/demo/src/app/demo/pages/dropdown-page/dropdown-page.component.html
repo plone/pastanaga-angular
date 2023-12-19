@@ -31,119 +31,247 @@
 
   <pa-demo-examples>
     <div>
-      <pa-dropdown stayVisible>
-        <pa-option-header>Dropdown header</pa-option-header>
-        <pa-option
-          icon="image"
-          id="menu-item-1"
-          (selectOption)="onSelect($event)">
-          Icon on left
-        </pa-option>
-        <pa-option
-          disabled
-          iconOnRight
-          icon="info"
-          id="menu-item-2"
-          (selectOption)="onSelect($event)">
-          Icon on right & disabled
-        </pa-option>
-        <pa-option
-          icon="folder"
-          id="menu-item-3"
-          description="Very long description which has an ellipsis and a tooltip allowing to read it all."
-          (selectOption)="onSelect($event)">
-          Icon on left
-        </pa-option>
-        <pa-separator></pa-separator>
-        <pa-option
-          icon="trash"
-          destructive
-          id="menu-item-destructive"
-          (selectOption)="onSelect($event)">
-          Icon on left & destructive item
-        </pa-option>
-      </pa-dropdown>
-    </div>
-
-    <div>
-      <pa-button
-        icon="more-horizontal"
-        size="small"
-        [paPopup]="contextualMenu"></pa-button>
-
-      <pa-dropdown #contextualMenu>
-        <pa-option (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
-        <pa-option (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
-        <pa-option (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
-        <pa-separator></pa-separator>
-        <pa-option
-          destructive
-          dontCloseOnSelect
-          (selectOption)="onSelect($event)">
-          Dropdown item destructive
-        </pa-option>
-      </pa-dropdown>
-    </div>
-
-    <div>
-      <pa-button
-        [paPopup]="level1"
-        sameWidth>
-        <div style="display: flex; align-items: center">
-          Multi-level dropdown
-          <pa-icon name="chevron-down"></pa-icon>
+      <p><strong>Normal container</strong></p>
+      <div style="margin-bottom: 32px; display: flex; gap: 16px">
+        <div>
+          <pa-dropdown stayVisible>
+            <pa-option-header>Dropdown header</pa-option-header>
+            <pa-option
+              icon="image"
+              id="menu-item-01"
+              (selectOption)="onSelect($event)">
+              Icon on left
+            </pa-option>
+            <pa-option
+              disabled
+              iconOnRight
+              icon="info"
+              id="menu-item-02"
+              (selectOption)="onSelect($event)">
+              Icon on right & disabled
+            </pa-option>
+            <pa-option
+              icon="folder"
+              id="menu-item-03"
+              description="Very long description which has an ellipsis and a tooltip allowing to read it all."
+              (selectOption)="onSelect($event)">
+              Icon on left
+            </pa-option>
+            <pa-separator></pa-separator>
+            <pa-option
+              icon="trash"
+              destructive
+              id="menu-item-destructive-0"
+              (selectOption)="onSelect($event)">
+              Icon on left & destructive item
+            </pa-option>
+          </pa-dropdown>
         </div>
-      </pa-button>
 
-      <pa-dropdown
-        #level1
-        [companionElement]="level2Element?.nativeElement">
-        <pa-option
-          icon="chevron-right"
-          iconOnRight
-          dontCloseOnSelect
-          popupOnRight
-          [paPopup]="level2"
-          [popupVerticalOffset]="-40"
-          [selected]="level1Open === 'jedi'"
-          (selectOption)="onLevel1Selection('jedi')">
-          Jedi
-        </pa-option>
-        <pa-option
-          icon="chevron-right"
-          iconOnRight
-          dontCloseOnSelect
-          popupOnRight
-          [paPopup]="level2"
-          [popupVerticalOffset]="-40"
-          [selected]="level1Open === 'rebels'"
-          (selectOption)="onLevel1Selection('rebels')">
-          Rebels
-        </pa-option>
-        <pa-option
-          icon="chevron-right"
-          iconOnRight
-          dontCloseOnSelect
-          popupOnRight
-          [paPopup]="level2"
-          [popupVerticalOffset]="-40"
-          [selected]="level1Open === 'sith'"
-          (selectOption)="onLevel1Selection('sith')">
-          Sith
-        </pa-option>
-      </pa-dropdown>
+        <div>
+          <pa-button
+            icon="more-horizontal"
+            size="small"
+            [paPopup]="contextualMenu"></pa-button>
 
-      <pa-dropdown
-        #level2
-        keepOthersOpen>
-        @for (option of level2Options; track option.label) {
-          <pa-option
-            dontCloseOnSelect
-            (selectOption)="updateCheckbox(option, $event)">
-            <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
-          </pa-option>
-        }
-      </pa-dropdown>
+          <pa-dropdown #contextualMenu>
+            <pa-option (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
+            <pa-option (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
+            <pa-option (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
+            <pa-separator></pa-separator>
+            <pa-option
+              destructive
+              dontCloseOnSelect
+              (selectOption)="onSelect($event)">
+              Dropdown item destructive
+            </pa-option>
+          </pa-dropdown>
+        </div>
+
+        <div>
+          <pa-button
+            [paPopup]="level1"
+            sameWidth>
+            <div style="display: flex; align-items: center">
+              Multi-level dropdown
+              <pa-icon name="chevron-down"></pa-icon>
+            </div>
+          </pa-button>
+
+          <pa-dropdown
+            #level1
+            [companionElement]="level2Element?.nativeElement">
+            <pa-option
+              icon="chevron-right"
+              iconOnRight
+              dontCloseOnSelect
+              popupOnRight
+              [paPopup]="level2"
+              [popupVerticalOffset]="-40"
+              [selected]="level1Open === 'jedi'"
+              (selectOption)="onLevel1Selection('jedi')">
+              Jedi
+            </pa-option>
+            <pa-option
+              icon="chevron-right"
+              iconOnRight
+              dontCloseOnSelect
+              popupOnRight
+              [paPopup]="level2"
+              [popupVerticalOffset]="-40"
+              [selected]="level1Open === 'rebels'"
+              (selectOption)="onLevel1Selection('rebels')">
+              Rebels
+            </pa-option>
+            <pa-option
+              icon="chevron-right"
+              iconOnRight
+              dontCloseOnSelect
+              popupOnRight
+              [paPopup]="level2"
+              [popupVerticalOffset]="-40"
+              [selected]="level1Open === 'sith'"
+              (selectOption)="onLevel1Selection('sith')">
+              Sith
+            </pa-option>
+          </pa-dropdown>
+
+          <pa-dropdown
+            #level2
+            keepOthersOpen>
+            @for (option of level2Options; track option.label) {
+              <pa-option
+                dontCloseOnSelect
+                (selectOption)="updateCheckbox(option, $event)">
+                <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
+              </pa-option>
+            }
+          </pa-dropdown>
+        </div>
+      </div>
+      <p>
+        <strong>
+          Container with
+          <code>container-type: size</code>
+        </strong>
+      </p>
+      <div style="container-type: size; width: fit-content; display: flex; gap: 16px; height: 200px">
+        <div>
+          <pa-dropdown stayVisible>
+            <pa-option-header>Dropdown header</pa-option-header>
+            <pa-option
+              icon="image"
+              id="menu-item-1"
+              (selectOption)="onSelect($event)">
+              Icon on left
+            </pa-option>
+            <pa-option
+              disabled
+              iconOnRight
+              icon="info"
+              id="menu-item-2"
+              (selectOption)="onSelect($event)">
+              Icon on right & disabled
+            </pa-option>
+            <pa-option
+              icon="folder"
+              id="menu-item-3"
+              description="Very long description which has an ellipsis and a tooltip allowing to read it all."
+              (selectOption)="onSelect($event)">
+              Icon on left
+            </pa-option>
+            <pa-separator></pa-separator>
+            <pa-option
+              icon="trash"
+              destructive
+              id="menu-item-destructive"
+              (selectOption)="onSelect($event)">
+              Icon on left & destructive item
+            </pa-option>
+          </pa-dropdown>
+        </div>
+
+        <div>
+          <pa-button
+            icon="more-horizontal"
+            size="small"
+            [paPopup]="contextualMenu0"></pa-button>
+
+          <pa-dropdown #contextualMenu0>
+            <pa-option (selectOption)="onSelect($event)">Dropdown item 1</pa-option>
+            <pa-option (selectOption)="onSelect($event)">Dropdown item 2</pa-option>
+            <pa-option (selectOption)="onSelect($event)">Dropdown item 3</pa-option>
+            <pa-separator></pa-separator>
+            <pa-option
+              destructive
+              dontCloseOnSelect
+              (selectOption)="onSelect($event)">
+              Dropdown item destructive
+            </pa-option>
+          </pa-dropdown>
+        </div>
+
+        <div>
+          <pa-button
+            [paPopup]="level01"
+            sameWidth>
+            <div style="display: flex; align-items: center">
+              Multi-level dropdown
+              <pa-icon name="chevron-down"></pa-icon>
+            </div>
+          </pa-button>
+
+          <pa-dropdown
+            #level01
+            [companionElement]="level2Element?.nativeElement">
+            <pa-option
+              icon="chevron-right"
+              iconOnRight
+              dontCloseOnSelect
+              popupOnRight
+              [paPopup]="level02"
+              [popupVerticalOffset]="-40"
+              [selected]="level1Open === 'jedi'"
+              (selectOption)="onLevel1Selection('jedi')">
+              Jedi
+            </pa-option>
+            <pa-option
+              icon="chevron-right"
+              iconOnRight
+              dontCloseOnSelect
+              popupOnRight
+              [paPopup]="level02"
+              [popupVerticalOffset]="-40"
+              [selected]="level1Open === 'rebels'"
+              (selectOption)="onLevel1Selection('rebels')">
+              Rebels
+            </pa-option>
+            <pa-option
+              icon="chevron-right"
+              iconOnRight
+              dontCloseOnSelect
+              popupOnRight
+              [paPopup]="level02"
+              [popupVerticalOffset]="-40"
+              [selected]="level1Open === 'sith'"
+              (selectOption)="onLevel1Selection('sith')">
+              Sith
+            </pa-option>
+          </pa-dropdown>
+
+          <pa-dropdown
+            #level02
+            keepOthersOpen>
+            @for (option of level2Options; track option.label) {
+              <pa-option
+                dontCloseOnSelect
+                (selectOption)="updateCheckbox(option, $event)">
+                <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
+              </pa-option>
+            }
+          </pa-dropdown>
+        </div>
+      </div>
     </div>
   </pa-demo-examples>
 
