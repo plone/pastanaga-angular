@@ -4,6 +4,10 @@
 
 - **Icons**: New `SPRITE_CACHE_VERSION` injection token allowing to manage the cache version of svg sprite
 
+### Bugfix
+
+- **Popup**: Fix popup position when one of the popup’s parent has `container-type: size`
+
 # 2.64.2 (2023-12-12)
 
 ### Bugfix

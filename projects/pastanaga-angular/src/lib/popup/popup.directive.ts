@@ -11,7 +11,7 @@ import {
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { PositionStyle } from '../common';
+import { hasContainerTypeSizeParent, PositionStyle } from '../common';
 import { POPUP_OFFSET, PopupComponent } from './popup.component';
 import { Subject } from 'rxjs';
 import { takeUntil, throttleTime } from 'rxjs/operators';
@@ -34,6 +34,7 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
   private _handlers: (() => void)[] = [];
   private _scrollOrResize = new Subject<Event>();
   private _terminator = new Subject<void>();
+  private _hasContainerSizeParent?: boolean;
 
   constructor(
     private element: ElementRef,
@@ -96,8 +97,22 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
     const directiveElement: HTMLElement = this.element.nativeElement;
     const directiveRect = directiveElement.getBoundingClientRect();
 
-    const top = directiveRect.top + directiveRect.height + this.popupVerticalOffset;
-    const bottom = window.innerHeight - directiveRect.top - window.scrollY + this.popupVerticalOffset;
+    let top: number;
+    let bottom: number;
+
+    const parentElement: HTMLElement | null = directiveElement.parentElement;
+    if (this._hasContainerSizeParent === undefined) {
+      this._hasContainerSizeParent = parentElement ? hasContainerTypeSizeParent(parentElement) : false;
+    }
+    if (this._hasContainerSizeParent) {
+      // when a parent has `container-type: size` or `container-type: inline-size`,
+      // the `position: fixed` are relative to the container and not to the window anymore
+      top = directiveRect.height + this.popupVerticalOffset;
+      bottom = this.popupVerticalOffset * -1;
+    } else {
+      top = directiveRect.top + directiveRect.height + this.popupVerticalOffset;
+      bottom = window.innerHeight - directiveRect.top - window.scrollY + this.popupVerticalOffset;
+    }
 
     const position: PositionStyle = {
       position: 'fixed',
@@ -108,11 +123,11 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
 
     const bodyRect = document.body.getBoundingClientRect();
     if (this.alignPopupOnLeft) {
-      position.left = `${directiveRect.left}px`;
+      position.left = this._hasContainerSizeParent ? '0px' : `${directiveRect.left}px`;
     } else if (this.popupOnRight) {
-      position.left = `${directiveRect.right}px`;
+      position.left = this._hasContainerSizeParent ? `${directiveRect.width}px` : `${directiveRect.right}px`;
     } else {
-      position.right = `${bodyRect.right - directiveRect.right}px`;
+      position.right = this._hasContainerSizeParent ? '0px' : `${bodyRect.right - directiveRect.right}px`;
     }
 
     return position;
