@@ -3,7 +3,9 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  inject,
   Inject,
+  InjectionToken,
   Input,
   PLATFORM_ID,
   Renderer2,
@@ -15,6 +17,11 @@ import { SvgLoader } from './svg-loader';
 import { markForCheck, Size } from '../common';
 import { IconModel } from './icon.model';
 
+export const SPRITE_CACHE_VERSION = new InjectionToken<string>('Cache version used when loading SVG sprite', {
+  providedIn: 'root',
+  factory: () => '',
+});
+
 @Component({
   selector: 'pa-icon',
   templateUrl: './icon.component.html',
@@ -22,6 +29,8 @@ import { IconModel } from './icon.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent {
+  private readonly cacheVersion = inject(SPRITE_CACHE_VERSION);
+
   @Input() set icon(value: IconModel | null | undefined) {
     if (!value) {
       return;
@@ -39,7 +48,7 @@ export class IconComponent {
   @Input() set name(value: string) {
     if (!!value) {
       this._name = value;
-      this._spritePath = `assets/glyphs-sprite.svg#${this._name}`;
+      this._spritePath = `assets/glyphs-sprite.svg${this.cacheVersion ? '?' + this.cacheVersion : ''}#${this._name}`;
       this.updateStyle();
     }
   }

@@ -1,3 +1,9 @@
+# 2.64.3 (2023-12-19)
+
+### Improvements
+
+- **Icons**: New `SPRITE_CACHE_VERSION` injection token allowing to manage the cache version of svg sprite
+
 # 2.64.2 (2023-12-12)
 
 ### Bugfix
