@@ -5,7 +5,11 @@
     <p>
       Pastanaga provides a component
       <code>pa-icon</code>
-      allowing to display an icon by its name from the glyph-sprite, or any image by their path.
+      allowing to display an icon from the
+      <code>glyph-sprite</code>
+      by using the icon name.
+      <code>pa-icon</code>
+      can also be used to display any image by providing their path.
     </p>
     <p>
       Icons are inheriting their colors from the text color. Overriding an icon color is as simple as adding a css class
@@ -26,6 +30,10 @@
       <li>cross: used in chip-closeable, modal-advanced and side-nav components</li>
       <li>more-horizontal: used in avatar-pile component</li>
     </ul>
+    <p>
+      Check the code section at the bottom of the page for an example explaining how to manage the cache on the glyphs
+      sprite.
+    </p>
     <p>Below is the list of all icons available in Pastanaga:</p>
   </pa-demo-description>
 
@@ -145,6 +153,15 @@
   </pa-demo-usage>
 
   <pa-demo-code>
+    Basic examples:
     <pre><code>{{codeExample}}</code></pre>
+
+    By default, there is no suffix added when loading the glyphs-sprite meaning the sprite will be cached by the
+    browser. But you can easily manage the cache by providing
+    <code>SPRITE_CACHE_VERSION</code>
+    token in your app module. For example, you can use a service containing a version number to define the
+    <code>SPRITE_CACHE_VERSION</code>
+    :
+    <pre><code>{{cacheVersionExample}}</code></pre>
   </pa-demo-code>
 </pa-demo-page>

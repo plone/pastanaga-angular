@@ -74,8 +74,11 @@
     <dl>
       <dt>alignPopupOnLeft</dt>
       <dd>
-        Set the popup on the left of the element carrying the directive
-        <small>(default: false, meaning the popup is aligned on the right of the carrying directive by default)</small>
+        Align the left side of the popup on the left side of the element carrying the directive
+        <small>
+          (default: false, meaning the right side of the popup is aligned on the right of the carrying directive by
+          default)
+        </small>
       </dd>
 
       <dt>openOnly</dt>
@@ -104,14 +107,21 @@
 
       <dt>popupOnRight</dt>
       <dd>
-        Set the popup position to be on the right of the element carrying the directive
+        Align the left side of the popup on the right side of the element carrying the directive
         <small>(default: false)</small>
       </dd>
 
       <dt>popupOnTop</dt>
       <dd>
-        Set the popup position to be on top of the element carrying the directive
-        <small>(default: false)</small>
+        Align the bottom of the popup on top of the element carrying the directive.
+
+        <small>
+          (default: false.
+          <strong>Warning:</strong>
+          does not work when one of the popup’s parent has
+          <code>container-type: size</code>
+          set.)
+        </small>
       </dd>
 
       <dt>sameWidth</dt>

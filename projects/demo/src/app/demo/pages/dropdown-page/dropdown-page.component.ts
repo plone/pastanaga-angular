@@ -37,7 +37,7 @@ export class DropdownPageComponent {
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               popupOnRight
+               alignPopupOnLeft
                [paPopup]="level2"
                [popupVerticalOffset]="-40"
                [selected]="level1Open === 'jedi'"
@@ -45,7 +45,7 @@ export class DropdownPageComponent {
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               popupOnRight
+               alignPopupOnLeft
                [paPopup]="level2"
                [popupVerticalOffset]="-40"
                [selected]="level1Open === 'rebels'"
@@ -53,7 +53,7 @@ export class DropdownPageComponent {
     <pa-option icon="chevron-right"
                iconOnRight
                dontCloseOnSelect
-               popupOnRight
+               alignPopupOnLeft
                [paPopup]="level2"
                [popupVerticalOffset]="-40"
                [selected]="level1Open === 'sith'"
