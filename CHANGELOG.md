@@ -1,3 +1,9 @@
+# 2.64.4 (2023-12-29)
+
+### Bugfix
+
+- **Tooltip**: Fix tooltip position when directive parent has `container-type: size`
+
 # 2.64.3 (2023-12-19)
 
 ### Improvements

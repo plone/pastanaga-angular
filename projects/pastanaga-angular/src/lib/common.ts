@@ -63,17 +63,31 @@ export const getPositionedParent = (element: HTMLElement): HTMLElement => {
   }
 };
 
-export const getContainerTypeSizeElement = (element: HTMLElement): HTMLElement | undefined => {
-  const style = getComputedStyle(element);
-  const isContainerTypeSize = style.containerType !== 'normal';
-  if (isContainerTypeSize) {
+export function getFixedRootParent(element: HTMLElement): HTMLElement {
+  if (element.tagName === 'BODY') {
     return element;
-  } else if (element.tagName === 'BODY') {
-    return undefined;
   }
-  const parent = element.parentElement;
-  return parent ? getContainerTypeSizeElement(parent) : undefined;
-};
+  // an element with `position: fixed` will be positioned relatively to the viewport
+  // unless one of the ancestor has a property `transform`, `filter`, `perspective`
+  // or has a containerType which is not normal
+  const style = getComputedStyle(element);
+  if (
+    style.transform !== 'none' ||
+    style.perspective !== 'none' ||
+    style.filter !== 'none' ||
+    style.containerType !== 'normal'
+  ) {
+    return element;
+  } else {
+    const parent = element.parentElement;
+    return parent ? getFixedRootParent(parent) : element;
+  }
+}
+
+export function getFixedRootParentIfAny(element: HTMLElement): HTMLElement | undefined {
+  const fixedRoot = getFixedRootParent(element);
+  return fixedRoot.tagName === 'BODY' ? undefined : fixedRoot;
+}
 
 export const getRealPosition = (element: HTMLElement): { top: number; left: number } => {
   let tmp: HTMLElement | null = element;

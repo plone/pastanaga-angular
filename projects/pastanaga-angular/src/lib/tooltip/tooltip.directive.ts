@@ -9,7 +9,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
-import { markForCheck, trimString } from '../common';
+import { getFixedRootParent, markForCheck, trimString } from '../common';
 
 const SYSTEM = 'system';
 const ACTION = 'action';
@@ -117,24 +117,9 @@ export class TooltipDirective {
       position = [event.clientX, event.clientY, rect.width, rect.height];
     }
     if (!this.rootParent) {
-      this.rootParent = this.getFixedRootParent(this.element.nativeElement);
+      this.rootParent = getFixedRootParent(this.element.nativeElement);
     }
     const rootRect = this.rootParent.getBoundingClientRect();
     return [position[0] - rootRect.left, position[1] - rootRect.top, position[2], position[3]];
-  }
-
-  getFixedRootParent(element: HTMLElement): HTMLElement {
-    if (element.tagName === 'BODY') {
-      return element;
-    }
-    // an element with `position: fixed` will be positioned relatively to the viewport
-    // unless one of the ancestor has a property `transform`, `filter` or `perspective`
-    const style = getComputedStyle(element);
-    if (style.transform !== 'none' || style.perspective !== 'none' || style.filter !== 'none') {
-      return element;
-    } else {
-      const parent = element.parentElement;
-      return parent ? this.getFixedRootParent(parent) : element;
-    }
   }
 }
