@@ -8,7 +8,7 @@ import { DropdownComponent, PaDropdownModule } from '../../../dropdown';
 import { PaPopupModule } from '../../../popup';
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { PaIconModule } from '../../../icon';
-import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
+import { discardPeriodicTasks, fakeAsync, flush, tick } from '@angular/core/testing';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
@@ -357,6 +357,7 @@ describe('SelectComponent', () => {
     expect(spectator.query('.pa-field-error')).toBeTruthy();
     expect(statusChanged).toHaveBeenCalledWith('INVALID');
     discardPeriodicTasks();
+    flush();
   }));
 
   it('should display errorMessages', fakeAsync(() => {
@@ -376,6 +377,7 @@ describe('SelectComponent', () => {
     spectator.detectChanges();
     expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
     discardPeriodicTasks();
+    flush();
   }));
 
   it('should render in dim mode', fakeAsync(() => {

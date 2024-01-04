@@ -15,7 +15,7 @@ describe('EllipsisTooltipDirective', () => {
         offsetWidth: 100,
         scrollWidth: 100,
         style: { setProperty: jest.fn() },
-        textContent: 'Text content of the element',
+        innerContent: 'Text content of the element',
       },
     };
   });

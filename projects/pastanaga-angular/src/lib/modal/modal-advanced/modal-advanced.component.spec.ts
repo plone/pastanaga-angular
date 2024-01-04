@@ -5,12 +5,6 @@ import { MockModule, MockPipe } from 'ng-mocks';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { PaTranslateModule, TranslatePipe } from '../../translate';
 
-class ResizeObserver {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-}
-global.ResizeObserver = ResizeObserver;
 describe('ModalComponent', () => {
   const title = 'Modal advanced title';
   const createComponent = createComponentFactory({

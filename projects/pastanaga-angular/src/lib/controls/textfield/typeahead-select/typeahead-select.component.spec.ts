@@ -1,4 +1,4 @@
-import { discardPeriodicTasks, fakeAsync, tick } from '@angular/core/testing';
+import { discardPeriodicTasks, fakeAsync, flush, tick } from '@angular/core/testing';
 
 import { TypeaheadSelectComponent } from './typeahead-select.component';
 import { Component } from '@angular/core';
@@ -368,6 +368,7 @@ describe('TypeaheadSelectComponent', () => {
     expect(spectator.query('.pa-field-error')).toBeTruthy();
     expect(statusChanged).toHaveBeenCalledWith('INVALID');
     discardPeriodicTasks();
+    flush();
   }));
 
   it('should display errorMessages', fakeAsync(() => {
@@ -387,6 +388,7 @@ describe('TypeaheadSelectComponent', () => {
     spectator.detectChanges();
     expect(hint.componentInstance.errorMessages).toEqual({ required: 'field required' });
     discardPeriodicTasks();
+    flush();
   }));
 
   it('should render in dim mode', fakeAsync(() => {

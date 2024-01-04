@@ -26,5 +26,12 @@ Object.defineProperty(document.body.style, 'transform', {
   },
 });
 
+class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+global.ResizeObserver = ResizeObserver;
+
 /* output shorter and more meaningful Zone error stack traces */
 Error.stackTraceLimit = 2;
