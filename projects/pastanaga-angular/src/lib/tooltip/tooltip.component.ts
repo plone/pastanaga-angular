@@ -1,12 +1,12 @@
 import {
   AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  ViewChild,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Component,
+  ElementRef,
   Inject,
+  Input,
+  ViewChild,
 } from '@angular/core';
 import { detectChanges, markForCheck } from '../common';
 import { WINDOW } from '@ng-web-apis/common';

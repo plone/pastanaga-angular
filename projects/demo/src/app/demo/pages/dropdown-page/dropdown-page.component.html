@@ -102,6 +102,7 @@
             #level1
             [companionElement]="level2Element?.nativeElement">
             <pa-option
+              id="level1option1"
               icon="chevron-right"
               iconOnRight
               dontCloseOnSelect
@@ -110,9 +111,10 @@
               [popupVerticalOffset]="-40"
               [selected]="level1Open === 'jedi'"
               (selectOption)="onLevel1Selection('jedi')">
-              Jedi
+              {{ 'demo-page.jedi' | translate }}
             </pa-option>
             <pa-option
+              id="level1option2"
               icon="chevron-right"
               iconOnRight
               dontCloseOnSelect
@@ -121,9 +123,10 @@
               [popupVerticalOffset]="-40"
               [selected]="level1Open === 'rebels'"
               (selectOption)="onLevel1Selection('rebels')">
-              Rebels
+              {{ 'demo-page.rebels' | translate }}
             </pa-option>
             <pa-option
+              id="level1option3"
               icon="chevron-right"
               iconOnRight
               dontCloseOnSelect
@@ -132,7 +135,7 @@
               [popupVerticalOffset]="-40"
               [selected]="level1Open === 'sith'"
               (selectOption)="onLevel1Selection('sith')">
-              Sith
+              {{ 'demo-page.sith' | translate }}
             </pa-option>
           </pa-dropdown>
 
@@ -223,7 +226,7 @@
 
           <pa-dropdown
             #level01
-            [companionElement]="level2Element?.nativeElement">
+            [companionElement]="level02Element?.nativeElement">
             <pa-option
               icon="chevron-right"
               iconOnRight
@@ -232,8 +235,8 @@
               [paPopup]="level02"
               [popupVerticalOffset]="-40"
               [selected]="level1Open === 'jedi'"
-              (selectOption)="onLevel1Selection('jedi')">
-              Jedi
+              (selectOption)="onLevel01Selection('jedi')">
+              Jedi Knights (may the force be with them)
             </pa-option>
             <pa-option
               icon="chevron-right"
@@ -243,7 +246,7 @@
               [paPopup]="level02"
               [popupVerticalOffset]="-40"
               [selected]="level1Open === 'rebels'"
-              (selectOption)="onLevel1Selection('rebels')">
+              (selectOption)="onLevel01Selection('rebels')">
               Rebels
             </pa-option>
             <pa-option
@@ -254,8 +257,8 @@
               [paPopup]="level02"
               [popupVerticalOffset]="-40"
               [selected]="level1Open === 'sith'"
-              (selectOption)="onLevel1Selection('sith')">
-              Sith
+              (selectOption)="onLevel01Selection('sith')">
+              Sith (Fear is the path to the dark side)
             </pa-option>
           </pa-dropdown>
 
@@ -266,7 +269,9 @@
               <pa-option
                 dontCloseOnSelect
                 (selectOption)="updateCheckbox(option, $event)">
-                <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
+                <pa-checkbox [(value)]="option.checked">
+                  {{ option.label }}
+                </pa-checkbox>
               </pa-option>
             }
           </pa-dropdown>

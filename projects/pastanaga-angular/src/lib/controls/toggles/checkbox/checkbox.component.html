@@ -16,7 +16,9 @@
     <label
       class="pa-toggle-label"
       [for]="id"
-      [class.no-ellipsis]="noEllipsis">
+      [class.no-ellipsis]="noEllipsis"
+      paEllipsisTooltip
+      [noEllipsis]="noEllipsis">
       <ng-content></ng-content>
     </label>
   </div>

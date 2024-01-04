@@ -102,7 +102,9 @@ onLevel1Selection(selection: string) {
 }`;
 
   @ViewChild('level2', { read: ElementRef }) level2Element?: ElementRef;
+  @ViewChild('level02', { read: ElementRef }) level02Element?: ElementRef;
   @ViewChild('level2') level2Popup?: PopupComponent;
+  @ViewChild('level02') level02Popup?: PopupComponent;
   level1Open = '';
   level2Options: { label: string; checked?: boolean }[] = [];
 
@@ -113,9 +115,29 @@ onLevel1Selection(selection: string) {
   onLevel1Selection(selection: string) {
     this.level1Open = selection;
     this.level2Popup?.close();
+    this.updateLevel2Options(selection);
+  }
+
+  onLevel01Selection(selection: string) {
+    this.level1Open = selection;
+    this.level02Popup?.close();
+    this.updateLevel2Options(selection);
+  }
+
+  updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
+    if ((event.target as HTMLElement).tagName === 'LI') {
+      option.checked = !option.checked;
+    }
+  }
+
+  private updateLevel2Options(selection: string) {
     switch (selection) {
       case 'jedi':
-        this.level2Options = [{ label: 'Yoda' }, { label: 'Obiwan Kenobi' }, { label: 'Luke Skywalker' }];
+        this.level2Options = [
+          { label: 'Yoda (Legendary Jedi Master)' },
+          { label: 'Obiwan Kenobi (Legendary Jedi Master)' },
+          { label: 'Luke Skywalker (Promising padawan)' },
+        ];
         break;
       case 'rebels':
         this.level2Options = [{ label: 'Leia Organa' }, { label: 'Han Solo' }, { label: 'Admiral Ackbar' }];
@@ -125,17 +147,6 @@ onLevel1Selection(selection: string) {
         break;
       default:
         this.level2Options = [];
-    }
-  }
-
-  closeDropdowns() {
-    this.level1Open = '';
-    this.level2Popup?.close();
-  }
-
-  updateCheckbox(option: { label: string; checked?: boolean }, event: MouseEvent | KeyboardEvent) {
-    if ((event.target as HTMLElement).tagName === 'LI') {
-      option.checked = !option.checked;
     }
   }
 }

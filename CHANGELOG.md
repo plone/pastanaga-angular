@@ -1,3 +1,18 @@
+# 2.64.4 (2023-01-04)
+
+### Bugfixes
+
+- **Tooltip**:
+  - Fix tooltip position when directive parent has `container-type: size`
+  - Display tooltip from dropdown option on the first hover event
+  - Prevent tooltip content to be duplicated
+- **Ellipsis Tooltip**:
+  - Update ellipsis tooltip in options when dropdown is displayed
+  - Add `noEllipsis` option to disable the ellipsis tooltip if needed: we cannot optionally add ellipsis tooltip directive,
+but in some components like checkbox, we need the ability to display an ellipsis or not.
+`noEllipsis` option allows to use `paEllipsisTooltip` and optionally disable it.    
+- **Checkbox**: Display a tooltip when the label has en ellipsis
+
 # 2.64.3 (2023-12-19)
 
 ### Improvements

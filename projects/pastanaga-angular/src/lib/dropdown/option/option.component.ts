@@ -65,6 +65,7 @@ export class OptionComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.text = this.element.nativeElement.textContent.trim();
+    this.cdr.markForCheck();
   }
 
   onSelectClick($event: MouseEvent) {

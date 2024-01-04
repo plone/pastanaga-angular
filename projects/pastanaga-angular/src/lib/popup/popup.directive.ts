@@ -11,7 +11,7 @@ import {
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { getContainerTypeSizeElement, PositionStyle } from '../common';
+import { getFixedRootParentIfAny, PositionStyle } from '../common';
 import { POPUP_OFFSET, PopupComponent } from './popup.component';
 import { Subject } from 'rxjs';
 import { takeUntil, throttleTime } from 'rxjs/operators';
@@ -34,8 +34,9 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
   private _handlers: (() => void)[] = [];
   private _scrollOrResize = new Subject<Event>();
   private _terminator = new Subject<void>();
-  private _hasContainerSizeParent?: boolean;
-  private _containerSizeElement?: HTMLElement;
+  private _hasFixedRootParent?: boolean;
+  private _fixedRootParent?: HTMLElement;
+  private _fixedRootParentChecked = false;
 
   constructor(
     private element: ElementRef,
@@ -103,16 +104,17 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
     let containerRect: DOMRect | undefined;
 
     const parentElement: HTMLElement | null = directiveElement.parentElement;
-    if (this._hasContainerSizeParent === undefined) {
-      this._containerSizeElement = parentElement ? getContainerTypeSizeElement(parentElement) : undefined;
-      this._hasContainerSizeParent = !!this._containerSizeElement;
+    if (this._hasFixedRootParent === undefined && !this._fixedRootParentChecked) {
+      this._fixedRootParent = parentElement ? getFixedRootParentIfAny(parentElement) : undefined;
+      this._hasFixedRootParent = !!this._fixedRootParent;
+      this._fixedRootParentChecked = true;
     }
-    if (this._hasContainerSizeParent && !!this._containerSizeElement) {
+    if (this._hasFixedRootParent && !!this._fixedRootParent) {
       // when a parent has `container-type: size` or `container-type: inline-size`,
       // the `position: fixed` are relative to the container and not to the window anymore
-      containerRect = this._containerSizeElement.getBoundingClientRect();
+      containerRect = this._fixedRootParent.getBoundingClientRect();
 
-      const scrollTop = this._containerSizeElement.scrollTop;
+      const scrollTop = this._fixedRootParent.scrollTop;
       top = directiveRect.top - containerRect.top + scrollTop + directiveRect.height + this.popupVerticalOffset;
       // popup on top cannot be computed with container-size because it would require the popup height which is not set at this moment
       // in this case we keep the popup below the directive
