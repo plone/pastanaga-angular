@@ -28,5 +28,8 @@ export const DEMO_EN: TranslationEntries = {
       latin: 'Latin',
     },
     'current-language-label': 'Current language',
+    jedi: 'Jedi Knights (may the force be with them)',
+    rebels: 'Rebels',
+    sith: 'Sith (Fear is the path to the dark side)',
   },
 };

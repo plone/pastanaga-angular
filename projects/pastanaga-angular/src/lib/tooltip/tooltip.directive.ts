@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
 import { getFixedRootParent, markForCheck, trimString } from '../common';
+import { BehaviorSubject } from 'rxjs';
 
 const SYSTEM = 'system';
 const ACTION = 'action';
@@ -25,9 +26,8 @@ export class TooltipDirective {
   @Input({ alias: 'paTooltipOffset', transform: numberAttribute }) offset = 0;
 
   id = '';
-  isDisplayed = false;
+  isDisplayed = new BehaviorSubject(false);
   rootParent?: HTMLElement;
-
   private component?: ComponentRef<TooltipComponent>;
 
   constructor(
@@ -51,21 +51,21 @@ export class TooltipDirective {
 
   @HostListener('mousemove', ['$event'])
   move(event: MouseEvent) {
-    if (!!this.text && this.isDisplayed && this.type === SYSTEM) {
+    if (!!this.text && this.isDisplayed.value && this.type === SYSTEM) {
       const position = this.getFixedPosition(event);
       this.show(position[0], position[1]);
     }
   }
 
   startDisplay(event: MouseEvent) {
-    if (!!this.text && !this.isDisplayed) {
+    if (!!this.text && !this.isDisplayed.value) {
       const position = this.getFixedPosition(event);
       if (!this.component) {
         this.createTooltip(position[0], position[1], position[2], position[3]);
       } else {
         this.show(position[0], position[1]);
       }
-      this.isDisplayed = true;
+      this.isDisplayed.next(true);
     }
   }
 
@@ -103,7 +103,7 @@ export class TooltipDirective {
     if (!!this.component) {
       this.component.instance.hide();
     }
-    this.isDisplayed = false;
+    this.isDisplayed.next(false);
   }
 
   getFixedPosition(event: MouseEvent): [number, number, number, number] {

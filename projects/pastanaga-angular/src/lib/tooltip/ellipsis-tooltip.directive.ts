@@ -6,6 +6,7 @@ import {
   Host,
   Input,
   OnChanges,
+  OnDestroy,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -19,10 +20,14 @@ export class ExtendedTooltipDirective extends TooltipDirective {}
 @Directive({
   selector: '[paEllipsisTooltip]',
 })
-export class EllipsisTooltipDirective implements AfterViewInit, OnChanges {
+export class EllipsisTooltipDirective implements AfterViewInit, OnChanges, OnDestroy {
   @Input() paEllipsisContent?: string;
 
   @Output() hasEllipsis: EventEmitter<boolean> = new EventEmitter();
+
+  private _hasEllipsis = false;
+
+  resizeObserver: ResizeObserver = new ResizeObserver(() => this.updateEllipsisTooltip());
 
   constructor(
     @Host() public tooltipDirective: ExtendedTooltipDirective,
@@ -33,21 +38,45 @@ export class EllipsisTooltipDirective implements AfterViewInit, OnChanges {
     this.element.nativeElement.style.setProperty('overflow', 'hidden');
     this.element.nativeElement.style.setProperty('text-overflow', 'ellipsis');
     this.element.nativeElement.style.setProperty('white-space', 'nowrap');
-    this.updateEllipsisTooltip();
+    if (this.element.nativeElement.offsetWidth === 0) {
+      this.resizeObserver.observe(this.element.nativeElement);
+    } else {
+      this.updateEllipsisTooltip();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!!changes['paEllipsisContent']?.currentValue && !changes['paEllipsisContent'].firstChange) {
-      setTimeout(() => this.updateEllipsisTooltip(), 0);
+    const currentValue = changes['paEllipsisContent']?.currentValue;
+    if (!!currentValue && !changes['paEllipsisContent'].firstChange) {
+      setTimeout(() => {
+        const previousValue = changes['paEllipsisContent']?.previousValue;
+        this.updateEllipsisTooltip(!!previousValue && currentValue !== previousValue);
+      }, 0);
     }
   }
 
-  updateEllipsisTooltip() {
+  ngOnDestroy() {
+    this.resizeObserver.disconnect();
+  }
+
+  updateEllipsisTooltip(textChanged = false) {
     const hasEllipsis = this.element.nativeElement.offsetWidth < this.element.nativeElement.scrollWidth;
-    if (hasEllipsis) {
-      this.tooltipDirective.type = 'system';
-      this.tooltipDirective.text = this.element.nativeElement.textContent;
+    if (!this._hasEllipsis) {
+      this._hasEllipsis = hasEllipsis;
+
+      if (this._hasEllipsis) {
+        this.tooltipDirective.type = 'system';
+        this.tooltipDirective.text = this.element.nativeElement.innerText;
+      }
+      this.hasEllipsis.emit(this._hasEllipsis);
+    } else {
+      if (this.element.nativeElement.offsetWidth > 0 && !hasEllipsis) {
+        this._hasEllipsis = hasEllipsis;
+        this.hasEllipsis.emit(this._hasEllipsis);
+      }
+      if (textChanged) {
+        this.tooltipDirective.text = this.element.nativeElement.innerText;
+      }
     }
-    this.hasEllipsis.emit(hasEllipsis);
   }
 }

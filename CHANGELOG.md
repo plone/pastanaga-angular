@@ -1,10 +1,12 @@
 # 2.64.4 (2023-01-04)
 
-### Bugfix
+### Bugfixes
 
 - **Tooltip**:
   - Fix tooltip position when directive parent has `container-type: size`
-  - Display tooltip from dropdown option on the first hover event 
+  - Display tooltip from dropdown option on the first hover event
+  - Prevent tooltip content to be duplicated
+  - Update ellipsis tooltip in options when dropdown is displayed
 
 # 2.64.3 (2023-12-19)
 
