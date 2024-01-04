@@ -269,7 +269,9 @@
               <pa-option
                 dontCloseOnSelect
                 (selectOption)="updateCheckbox(option, $event)">
-                <pa-checkbox [(value)]="option.checked">{{ option.label }}</pa-checkbox>
+                <pa-checkbox [(value)]="option.checked">
+                  {{ option.label }}
+                </pa-checkbox>
               </pa-option>
             }
           </pa-dropdown>

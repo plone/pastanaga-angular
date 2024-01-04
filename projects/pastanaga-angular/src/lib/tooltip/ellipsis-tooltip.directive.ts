@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   Directive,
   ElementRef,
   EventEmitter,
@@ -22,6 +23,7 @@ export class ExtendedTooltipDirective extends TooltipDirective {}
 })
 export class EllipsisTooltipDirective implements AfterViewInit, OnChanges, OnDestroy {
   @Input() paEllipsisContent?: string;
+  @Input({ transform: booleanAttribute }) noEllipsis?: string;
 
   @Output() hasEllipsis: EventEmitter<boolean> = new EventEmitter();
 
@@ -35,23 +37,27 @@ export class EllipsisTooltipDirective implements AfterViewInit, OnChanges, OnDes
   ) {}
 
   ngAfterViewInit() {
-    this.element.nativeElement.style.setProperty('overflow', 'hidden');
-    this.element.nativeElement.style.setProperty('text-overflow', 'ellipsis');
-    this.element.nativeElement.style.setProperty('white-space', 'nowrap');
-    if (this.element.nativeElement.offsetWidth === 0) {
-      this.resizeObserver.observe(this.element.nativeElement);
-    } else {
-      this.updateEllipsisTooltip();
+    if (!this.noEllipsis) {
+      this.element.nativeElement.style.setProperty('overflow', 'hidden');
+      this.element.nativeElement.style.setProperty('text-overflow', 'ellipsis');
+      this.element.nativeElement.style.setProperty('white-space', 'nowrap');
+      if (this.element.nativeElement.offsetWidth === 0) {
+        this.resizeObserver.observe(this.element.nativeElement);
+      } else {
+        this.updateEllipsisTooltip();
+      }
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const currentValue = changes['paEllipsisContent']?.currentValue;
-    if (!!currentValue && !changes['paEllipsisContent'].firstChange) {
-      setTimeout(() => {
-        const previousValue = changes['paEllipsisContent']?.previousValue;
-        this.updateEllipsisTooltip(!!previousValue && currentValue !== previousValue);
-      }, 0);
+    if (!this.noEllipsis) {
+      const currentValue = changes['paEllipsisContent']?.currentValue;
+      if (!!currentValue && !changes['paEllipsisContent'].firstChange) {
+        setTimeout(() => {
+          const previousValue = changes['paEllipsisContent']?.previousValue;
+          this.updateEllipsisTooltip(!!previousValue && currentValue !== previousValue);
+        }, 0);
+      }
     }
   }
 

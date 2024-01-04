@@ -28,15 +28,24 @@
     </p>
     <p>Style responsible for the ellipsis will be added automatically, but you need to manage the container size.</p>
 
-    <h3>Inputs and outputs</h3>
+    <h3>Inputs</h3>
     <dl>
       <dt>paEllipsisContent</dt>
       <dd>
-        Triggers a
-        <code>hasEllipsis</code>
-        event after its first change.
+        By default, the tooltip contains the same text as its parent element. paEllipsisContent allows to change the
+        content of the tooltip displayed.
       </dd>
+      <dt>noEllipsis</dt>
+      <dd>
+        Allows to use
+        <code>paEllipsisTooltip</code>
+        on an element and optionally disable it.
+        <small>(False by default)</small>
+      </dd>
+    </dl>
 
+    <h3>Outputs</h3>
+    <dl>
       <dt>hasEllipsis</dt>
       <dd>
         Emit a boolean indicating if the content has an ellipsis or not. Event emitted on
