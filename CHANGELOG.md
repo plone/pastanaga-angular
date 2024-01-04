@@ -1,8 +1,10 @@
-# 2.64.4 (2023-12-29)
+# 2.64.4 (2023-01-04)
 
 ### Bugfix
 
-- **Tooltip**: Fix tooltip position when directive parent has `container-type: size`
+- **Tooltip**:
+  - Fix tooltip position when directive parent has `container-type: size`
+  - Display tooltip from dropdown option on the first hover event 
 
 # 2.64.3 (2023-12-19)
 
