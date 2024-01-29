@@ -5,12 +5,14 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   numberAttribute,
   OnChanges,
   OnDestroy,
   OnInit,
   Optional,
+  Output,
   Renderer2,
   Self,
   SimpleChanges,
@@ -30,6 +32,8 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
   @Input({ transform: booleanAttribute }) autoHeight = false;
   @Input({ transform: booleanAttribute }) resizable = false;
   @Input({ transform: numberAttribute }) rows = 1;
+
+  @Output() resizing = new EventEmitter<DOMRect>();
 
   @Input() set maxRows(max: number) {
     this._maxRows = max;
@@ -63,6 +67,9 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
 
   private _lineHeight = 0;
   private _verticalPadding = 0;
+  private resizeObserver = new ResizeObserver((entries) => {
+    this.resizing.next(entries[0].target.getBoundingClientRect());
+  });
 
   constructor(
     protected override element: ElementRef,
@@ -87,10 +94,17 @@ export class TextareaComponent extends NativeTextFieldDirective implements OnIni
   override ngAfterViewInit() {
     this._computeMaxHeight();
     super.ngAfterViewInit();
+    if (this.resizable && this.htmlInputRef) {
+      this.resizeObserver.observe(this.htmlInputRef.nativeElement);
+    }
   }
 
   override ngOnDestroy() {
     super.ngOnDestroy();
+    if (this.htmlInputRef) {
+      this.resizeObserver.unobserve(this.htmlInputRef.nativeElement);
+      this.resizeObserver.disconnect();
+    }
   }
 
   override setDisabledState(isDisabled: boolean): void {

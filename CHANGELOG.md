@@ -1,3 +1,9 @@
+# 2.64.5 (2023-01-29)
+
+### Improvements
+
+- **Textarea**: add resizing event triggered by resizable textarea 
+
 # 2.64.4 (2023-01-04)
 
 ### Bugfixes
