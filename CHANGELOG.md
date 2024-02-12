@@ -1,10 +1,17 @@
-# 2.64.5 (2023-01-29)
+# 2.64.6 (2024-02-12)
+
+### Bugfixes
+
+- **Text field**: when the field was programmatically disabled while the focus was in, the field still had the focus state (even though it didn't have the focus) when the field was then enabled again.
+To prevent this bug, we now call `blur` on the field on `setDisableState` method.
+
+# 2.64.5 (2024-01-29)
 
 ### Improvements
 
 - **Textarea**: add resizing event triggered by resizable textarea 
 
-# 2.64.4 (2023-01-04)
+# 2.64.4 (2024-01-04)
 
 ### Bugfixes
 
