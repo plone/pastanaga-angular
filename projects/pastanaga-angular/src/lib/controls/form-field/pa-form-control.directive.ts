@@ -235,6 +235,9 @@ export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, Con
       return;
     }
     if (isDisabled) {
+      // when setting the control to disable, we also call blur on the corresponding field
+      // otherwise the field keeps the focus state when it is enabled again
+      this.element.nativeElement.querySelector('.pa-field-control')?.blur();
       this.control.disable();
     } else {
       this.control.enable();
