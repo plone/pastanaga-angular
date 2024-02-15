@@ -1,3 +1,9 @@
+# 2.64.7 (2024-02-15)
+
+### Improvements
+
+- **Security**: Fix dependabot issues
+
 # 2.64.6 (2024-02-12)
 
 ### Bugfixes
