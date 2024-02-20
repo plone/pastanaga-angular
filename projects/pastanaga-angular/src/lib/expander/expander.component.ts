@@ -64,7 +64,7 @@ export class ExpanderComponent implements AfterViewInit, OnChanges, OnDestroy {
         this.collapse();
       }
     }
-    if (changes['card']?.currentValue) {
+    if (changes['card']?.currentValue && !changes['expanded']?.currentValue) {
       this.expanded = false;
       this.contentHidden = true;
     }
