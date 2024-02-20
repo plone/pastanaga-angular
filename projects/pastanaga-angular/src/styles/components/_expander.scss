@@ -65,7 +65,7 @@
       }
     }
 
-    .pa-expander-header {
+    & > .pa-expander-header {
       background: $background-color-expanded-expander-header;
       box-shadow: $box-shadow-expanded-expander-header;
       transition:

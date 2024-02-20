@@ -1,3 +1,11 @@
+# 2.64.8 (2024-02-20)
+
+### Improvements
+
+- **Expander**: 
+  - Fix expander style to allow having a card expander inside a "normal" expander.
+  - Fix `expanded` option to work on card expander (allowing to have the expander open by default also for card expander)
+
 # 2.64.7 (2024-02-15)
 
 ### Improvements
