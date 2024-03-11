@@ -8,4 +8,5 @@ $background-card-active: $color-neutral-lighter !default;
 $border-card: 1px solid $color-neutral-lighter !default;
 $border-radius-card: $border-radius-default !default;
 
-$padding-card: rhythm(2) !default;
+$padding-horizontal-card: rhythm(2) !default;
+$padding-vertical-card: rhythm(2) !default;

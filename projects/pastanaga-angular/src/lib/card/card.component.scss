@@ -9,7 +9,7 @@
   border: $border-card;
   border-radius: $border-radius-card;
   cursor: pointer;
-  padding: $padding-card;
+  padding: $padding-vertical-card $padding-horizontal-card;
   transition: background $transition-hint;
 
   .pa-card-content {
