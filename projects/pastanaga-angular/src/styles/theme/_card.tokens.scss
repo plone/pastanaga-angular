@@ -1,0 +1,12 @@
+@import 'palette.tokens';
+@import 'spacing.tokens';
+
+$background-card: $color-light-stronger !default;
+$background-card-hover: $color-neutral-lightest !default;
+$background-card-active: $color-neutral-lighter !default;
+
+$border-card: 1px solid $color-neutral-lighter !default;
+$border-radius-card: $border-radius-default !default;
+
+$padding-horizontal-card: rhythm(2) !default;
+$padding-vertical-card: rhythm(2) !default;

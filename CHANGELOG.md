@@ -1,3 +1,9 @@
+# 2.64.9 (2024-03-11)
+
+### Improvements
+
+- **Card**: tokenize card style, so it can be easily overridden
+
 # 2.64.8 (2024-02-20)
 
 ### Improvements

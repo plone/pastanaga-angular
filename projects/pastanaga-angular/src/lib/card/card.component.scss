@@ -5,11 +5,11 @@
 }
 
 .pa-card-wrapper {
-  background: $color-light-stronger;
-  border: 1px solid $color-neutral-lighter;
-  border-radius: $border-radius-default;
+  background: $background-card;
+  border: $border-card;
+  border-radius: $border-radius-card;
   cursor: pointer;
-  padding: rhythm(2);
+  padding: $padding-vertical-card $padding-horizontal-card;
   transition: background $transition-hint;
 
   .pa-card-content {
@@ -18,11 +18,11 @@
   }
 
   &:hover {
-    background: $color-neutral-lightest;
+    background: $background-card-hover;
   }
 
   &:active {
-    background: $color-neutral-lighter;
+    background: $background-card-active;
   }
 
   &:disabled,
