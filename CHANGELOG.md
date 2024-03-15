@@ -3,8 +3,10 @@
 ### Improvements
 
 - **Toggle**: tokenize toggle style, so it can be easily overridden
+- **Buttons**: add specific button border tokens for icon buttons 
 
 ### Bug fixes
+
 - **Text fields**:
   - go back to normal border of fields, as the custom border top trick was not working well and preventing to use bigger border-radius
   - use same border-radius inside the input as in the field to prevent input background color to go over the borders 

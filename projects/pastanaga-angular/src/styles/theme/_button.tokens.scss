@@ -109,6 +109,10 @@ $border-button-primary-basic: none !default;
 $border-button-primary-basic-hover: none !default;
 $border-button-primary-basic-active: none !default;
 
+$border-button-icon-primary-basic: none !default;
+$border-button-icon-primary-basic-hover: none !default;
+$border-button-icon-primary-basic-active: none !default;
+
 // secondary
 $border-button-secondary-solid: none !default;
 $border-button-secondary-solid-hover: none !default;
@@ -117,6 +121,10 @@ $border-button-secondary-solid-active: none !default;
 $border-button-secondary-basic: none !default;
 $border-button-secondary-basic-hover: none !default;
 $border-button-secondary-basic-active: none !default;
+
+$border-button-icon-secondary-basic: none !default;
+$border-button-icon-secondary-basic-hover: none !default;
+$border-button-icon-secondary-basic-active: none !default;
 
 // inverted
 $border-button-inverted-solid: none !default;
@@ -127,6 +135,10 @@ $border-button-inverted-basic: none !default;
 $border-button-inverted-basic-hover: none !default;
 $border-button-inverted-basic-active: none !default;
 
+$border-button-icon-inverted-basic: none !default;
+$border-button-icon-inverted-basic-hover: none !default;
+$border-button-icon-inverted-basic-active: none !default;
+
 // destructive
 $border-button-destructive-solid: none !default;
 $border-button-destructive-solid-hover: none !default;
@@ -136,9 +148,15 @@ $border-button-destructive-basic: none !default;
 $border-button-destructive-basic-hover: none !default;
 $border-button-destructive-basic-active: none !default;
 
+$border-button-icon-destructive-basic: none !default;
+$border-button-icon-destructive-basic-hover: none !default;
+$border-button-icon-destructive-basic-active: none !default;
+
 // disabled
 $border-button-solid-disabled: none !default;
 $border-button-basic-disabled: none !default;
+$border-button-icon-basic-disabled: none !default;
+$border-button-inverted-basic-disabled: none !default;
 
 // radius
 $border-radius-button: 100px !default;
@@ -215,6 +233,20 @@ $font-weight-button-label: $font-weight-semi-bold !default;
     background: $color-background-button-primary-basic-active;
     border: $border-button-primary-basic-active;
   }
+
+  &.pa-button-icon {
+    border: $border-button-icon-primary-basic;
+
+    @media (hover: hover) {
+      &:hover {
+        border: $border-button-icon-primary-basic-hover;
+      }
+    }
+    &:active,
+    &.pa-active {
+      border: $border-button-icon-primary-basic-active;
+    }
+  }
 }
 
 @mixin secondary-solid() {
@@ -256,6 +288,20 @@ $font-weight-button-label: $font-weight-semi-bold !default;
     color: $color-text-button-secondary-basic-active;
     background: $color-background-button-secondary-basic-active;
     border: $border-button-secondary-basic-active;
+  }
+
+  &.pa-button-icon {
+    border: $border-button-icon-secondary-basic;
+
+    @media (hover: hover) {
+      &:hover {
+        border: $border-button-icon-secondary-basic-hover;
+      }
+    }
+    &:active,
+    &.pa-active {
+      border: $border-button-icon-secondary-basic-active;
+    }
   }
 }
 
@@ -299,6 +345,20 @@ $font-weight-button-label: $font-weight-semi-bold !default;
     background: $color-background-button-inverted-basic-active;
     border: $border-button-inverted-basic-active;
   }
+
+  &.pa-button-icon {
+    border: $border-button-icon-inverted-basic;
+
+    @media (hover: hover) {
+      &:hover {
+        border: $border-button-icon-inverted-basic-hover;
+      }
+    }
+    &:active,
+    &.pa-active {
+      border: $border-button-icon-inverted-basic-active;
+    }
+  }
 }
 
 @mixin destructive-solid() {
@@ -341,6 +401,20 @@ $font-weight-button-label: $font-weight-semi-bold !default;
     background: $color-background-button-destructive-basic-active;
     border: $border-button-destructive-basic-active;
   }
+
+  &.pa-button-icon {
+    border: $border-button-icon-destructive-basic;
+
+    @media (hover: hover) {
+      &:hover {
+        border: $border-button-icon-destructive-basic-hover;
+      }
+    }
+    &:active,
+    &.pa-active {
+      border: $border-button-icon-destructive-basic-active;
+    }
+  }
 }
 
 @mixin disabled-solid() {
@@ -353,6 +427,10 @@ $font-weight-button-label: $font-weight-semi-bold !default;
   color: $color-text-button-basic-disabled;
   background: $color-background-button-basic-disabled;
   border: $border-button-basic-disabled;
+
+  &.pa-button-icon {
+    border: $border-button-icon-basic-disabled;
+  }
 }
 
 @mixin disabled-inverted-solid() {
@@ -364,7 +442,11 @@ $font-weight-button-label: $font-weight-semi-bold !default;
 @mixin disabled-inverted-basic() {
   color: $color-text-button-inverted-basic-disabled;
   background: $color-background-button-basic-disabled;
-  border: $border-button-basic-disabled;
+  border: $border-button-inverted-basic-disabled;
+
+  &.pa-button-icon {
+    border: $border-button-icon-basic-disabled;
+  }
 }
 
 @mixin hover-box-shadow-solid() {
