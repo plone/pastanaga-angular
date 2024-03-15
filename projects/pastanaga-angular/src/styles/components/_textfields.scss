@@ -34,6 +34,11 @@
       }
     }
 
+    &:focus,
+    &:active,
+    &.pa-focus {
+      border-color: $border-color-field-active;
+    }
     &.pa-disabled {
       border-color: $border-color-field-disabled;
     }
@@ -60,13 +65,8 @@
     }
     // Definition specific for text field labels
     .pa-field-label {
-      background: linear-gradient(
-        180deg,
-        rgb(255, 255, 255) 0%,
-        rgb(255, 255, 255) 56%,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0) 100%
-      );
+      background: $color-background-field-label;
+      border-radius: $border-radius-field;
       color: $color-text-field-label-regular;
       left: $padding-field-control-left;
       max-width: calc(100% - #{$padding-field-control-left * 2});
