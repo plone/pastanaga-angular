@@ -4,6 +4,11 @@
 
 - **Toggle**: tokenize toggle style, so it can be easily overridden
 
+### Bug fixes
+- **Text fields**:
+  - go back to normal border of fields, as the custom border top trick was not working well and preventing to use bigger border-radius
+  - use same border-radius inside the input as in the field to prevent input background color to go over the borders 
+
 # 2.64.9 (2024-03-11)
 
 ### Improvements
@@ -356,7 +361,7 @@ but in some components like checkbox, we need the ability to display an ellipsis
 
 ### Bugfix
 
-- **Text field**: Don't set fixed height for mutiline fields [operramon]
+- **Text field**: Don't set fixed height for multiline fields [operramon]
 
 # 2.58.12 (2023-02-07)
 

@@ -24,84 +24,11 @@
     border-radius: $border-radius-field;
     display: flex;
 
-    &::after,
-    &::before {
-      content: '';
-      height: 1px;
-      position: absolute;
-      top: 0;
-      z-index: 1;
-    }
-
-    &::before {
-      left: 0;
-      width: rhythm(1);
-    }
-
-    &::after {
-      left: calc(var(--label-width) + #{$padding-field-control-left});
-      right: 1px;
-    }
-    &.no-internal-label::after {
-      left: 0;
-    }
-
     &:hover {
       border-color: $border-color-field-hover;
     }
 
-    &:focus,
-    &:active,
-    &.pa-content,
-    &.pa-content.pa-disabled,
-    &.pa-focus {
-      border-top: 1px solid transparent;
-    }
-
-    &:focus,
-    &:active,
-    &.pa-focus {
-      border-color: $border-color-field-active;
-      border-top: 1px solid transparent;
-    }
-
-    &.pa-content {
-      &::after,
-      &::before {
-        background: $border-color-field-regular;
-      }
-      &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
-        &::after,
-        &::before {
-          background: $border-color-field-hover;
-        }
-      }
-    }
-    // :has needed to have Chrome autofill properly working, but Firefox does no support :has yet.
-    // Also "If the :has() pseudo-class itself is not supported in a browser, the entire selector block will fail"
-    // so we need to duplicate the blocks where :has is needed
-    // see https://developer.mozilla.org/en-US/docs/Web/CSS/:has
-    &:has(.cdk-text-field-autofilled) {
-      border-top: 1px solid transparent;
-    }
-    &:has(.cdk-text-field-autofilled) {
-      &::after,
-      &::before {
-        background: $border-color-field-regular;
-      }
-      &:not(.pa-focus):not(.pa-disabled):not(.pa-readonly):hover {
-        &::after,
-        &::before {
-          background: $border-color-field-hover;
-        }
-      }
-    }
-
     &:not(.pa-disabled):not(.pa-readonly):not(.pa-field-error).pa-focus {
-      &::after,
-      &::before {
-        background: $border-color-field-active;
-      }
       .pa-field-label {
         color: $color-text-field-label-regular-active;
       }
@@ -109,14 +36,6 @@
 
     &.pa-disabled {
       border-color: $border-color-field-disabled;
-
-      &::after,
-      &::before {
-        background: $border-color-field-disabled;
-      }
-      .pa-field-label {
-        color: $color-text-field-label-disabled;
-      }
     }
     &.pa-readonly {
       .pa-field-label {
@@ -125,46 +44,10 @@
 
       border-color: $border-color-field-readonly;
       border-style: dashed;
-      &.pa-content {
-        border-top: 1px solid transparent;
-
-        &::after,
-        &::before {
-          // Not using rhythm here because we want to mimic browser's `border-style: dashed` property
-          background: repeating-linear-gradient(
-            90deg,
-            $border-color-field-readonly,
-            $border-color-field-readonly 3px,
-            transparent 3px,
-            transparent 6px
-          );
-        }
-      }
-      &:not(.pa-content) {
-        &::after,
-        &::before {
-          display: none;
-        }
-      }
     }
     &.pa-field-error {
       &:not(.pa-disabled):not(.pa-readonly) {
         border-color: $border-color-field-error;
-
-        &::after,
-        &::before {
-          background: $border-color-field-error;
-        }
-        &:hover {
-          border-color: $border-color-field-error;
-        }
-        &:focus,
-        &:active,
-        &.pa-content,
-        &.pa-focus {
-          border-color: $border-color-field-error;
-          border-top: 1px solid transparent;
-        }
       }
       .pa-field-label {
         color: $color-text-field-label-error;
@@ -177,6 +60,13 @@
     }
     // Definition specific for text field labels
     .pa-field-label {
+      background: linear-gradient(
+        180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(255, 255, 255) 56%,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
       color: $color-text-field-label-regular;
       left: $padding-field-control-left;
       max-width: calc(100% - #{$padding-field-control-left * 2});
@@ -205,6 +95,7 @@
   .pa-field-control {
     background: $color-background-field-regular;
     border: none;
+    border-radius: $border-radius-field;
     caret-color: $color-caret-field-control-active;
     color: $color-text-field-control-regular;
     font-size: $font-size-field-control;
