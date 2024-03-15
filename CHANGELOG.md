@@ -1,3 +1,9 @@
+# 2.64.10 (2024-03-15)
+
+### Improvements
+
+- **Toggle**: tokenize toggle style, so it can be easily overridden
+
 # 2.64.9 (2024-03-11)
 
 ### Improvements

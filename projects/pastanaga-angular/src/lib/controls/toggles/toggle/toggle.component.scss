@@ -1,10 +1,7 @@
 @use 'sass:math';
 @import '../../../../styles/variables';
 
-$toggle-full-width: rhythm(6);
-$toggle-full-mid-width: math.div($toggle-full-width, 2);
-$toggle-full-height: rhythm(3);
-$toggle-slider-padding: rhythm(0.25);
+$toggle-mid-width: math.div($width-toggle, 2);
 $toggle-transition-duration: $duration-fast;
 
 .pa-field {
@@ -52,9 +49,9 @@ $toggle-transition-duration: $duration-fast;
 
 .pa-toggle-container {
   position: relative;
-  width: $toggle-full-width;
-  min-width: $toggle-full-width;
-  height: $toggle-full-height;
+  width: $width-toggle;
+  min-width: $width-toggle;
+  height: $height-toggle;
   box-sizing: border-box;
 
   input {
@@ -63,8 +60,8 @@ $toggle-transition-duration: $duration-fast;
   }
 
   .pa-toggle-checkbox {
-    width: $toggle-full-width;
-    height: $toggle-full-height;
+    width: $width-toggle;
+    height: $height-toggle;
     opacity: 0;
   }
   .pa-toggle-slider {
@@ -74,28 +71,28 @@ $toggle-transition-duration: $duration-fast;
     bottom: 0;
     left: 0;
     transition: $toggle-transition-duration;
-    border-radius: $toggle-full-height;
-    background: $color-neutral-lighter;
+    border-radius: $height-toggle;
+    background: $color-background-toggle-slider;
     cursor: pointer;
     &:before {
       content: '';
       position: absolute;
       border-radius: 50%;
       transition: $toggle-transition-duration;
-      top: $toggle-slider-padding;
-      right: $toggle-full-mid-width + $toggle-slider-padding;
-      bottom: $toggle-slider-padding;
-      left: $toggle-slider-padding;
+      top: $padding-toggle-slider;
+      right: $toggle-mid-width + $padding-toggle-slider;
+      bottom: $padding-toggle-slider;
+      left: $padding-toggle-slider;
       box-shadow: 0 rhythm(0.25) rhythm(0.5) rgba(0, 0, 0, 0.15);
-      background-color: $color-light-stronger;
+      background-color: $color-background-toggle-button;
     }
   }
 
   &.pa-checked {
     .pa-toggle-slider {
-      background: $color-primary-regular;
+      background: $color-background-toggle-slider-selected;
       &:before {
-        transform: translateX($toggle-full-mid-width);
+        transform: translateX($toggle-mid-width);
       }
     }
   }
@@ -107,9 +104,9 @@ $toggle-transition-duration: $duration-fast;
   &.pa-disable {
     .pa-toggle-slider {
       cursor: default;
-      background: $color-neutral-light;
+      background: $color-background-toggle-slider-disabled;
       &:before {
-        background-color: $color-neutral-lighter;
+        background-color: $color-background-toggle-button-disabled;
       }
     }
   }
