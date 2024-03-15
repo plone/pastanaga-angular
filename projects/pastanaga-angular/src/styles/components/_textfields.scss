@@ -65,7 +65,6 @@
     }
     // Definition specific for text field labels
     .pa-field-label {
-      background: $color-background-field-label;
       border-radius: $border-radius-field;
       color: $color-text-field-label-regular;
       left: $padding-field-control-left;
@@ -137,6 +136,7 @@
     &:not(:disabled):not(:read-only):focus,
     &:not(:disabled):not(:read-only):active {
       & ~ .pa-field-label {
+        background: $color-background-field-label;
         transform: scale(#{$scale-text-field-label}) translateY(-#{$translateY-text-field-label})
           translateX(-#{rhythm(0.5)});
         padding: 0 rhythm(1);
