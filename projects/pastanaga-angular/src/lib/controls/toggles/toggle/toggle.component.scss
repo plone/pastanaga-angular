@@ -5,9 +5,6 @@ $toggle-mid-width: math.div($width-toggle, 2);
 $toggle-transition-duration: $duration-fast;
 
 .pa-field {
-  flex-direction: row;
-  justify-content: space-between;
-
   .pa-toggle-context {
     display: flex;
     gap: rhythm(2);
@@ -42,17 +39,18 @@ $toggle-transition-duration: $duration-fast;
 
   &.pa-has-help {
     .pa-field-label {
-      margin-top: -#{rhythm(0.5)};
+      margin-top: $margin-top-toggle-with-help-label;
     }
   }
 }
 
 .pa-toggle-container {
+  box-sizing: border-box;
+  height: $height-toggle;
+  margin: $margin-toggle-container;
+  min-width: $width-toggle;
   position: relative;
   width: $width-toggle;
-  min-width: $width-toggle;
-  height: $height-toggle;
-  box-sizing: border-box;
 
   input {
     outline: 0;
