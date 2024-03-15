@@ -9,10 +9,11 @@ $chip-max-width-medium: rhythm(56);
   border: $border-chip;
   border-radius: $border-radius-chip;
   display: inline-flex;
+  gap: rhythm(1);
   height: rhythm(4);
   max-width: $chip-max-width-small;
   overflow: hidden;
-  padding: rhythm(0.5) rhythm(1.5);
+  padding: $padding-chip;
 
   &.pa-with-avatar {
     padding-left: rhythm(0.5);
@@ -41,13 +42,8 @@ $chip-max-width-medium: rhythm(56);
     border: $border-chip-disabled;
   }
 
-  pa-avatar,
-  .pa-chip-icon {
-    margin-right: rhythm(1);
-  }
-
   pa-button {
-    margin-left: rhythm(1);
+    display: flex;
   }
 }
 .pa-chip-content-wrapper {

@@ -4,6 +4,7 @@
 
 - **Toggle**: tokenize toggle style, so it can be easily overridden
 - **Buttons**: add specific button border tokens for icon buttons 
+- **Chips**: tokenize chip padding, so it can be easily overridden
 
 ### Bug fixes
 
