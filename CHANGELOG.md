@@ -1,3 +1,9 @@
+# 2.65.1(2024-03-18)
+
+### Bug fixes
+
+- **Button**: fix alignment of text inside buttons in Chrome
+
 # 2.65.0 (2024-03-18)
 
 ### Breaking changes
