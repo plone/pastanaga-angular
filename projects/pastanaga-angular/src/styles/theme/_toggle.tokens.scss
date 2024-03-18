@@ -6,11 +6,18 @@
 // COLORS
 //=====================================
 
-// Background
+// Background checkbox/radio
 $color-background-toggle-selected: $color-primary-regular !default;
 $color-background-toggle-selected-hover: $color-primary-strong !default;
 $color-background-toggle-disabled: $color-neutral-lightest !default;
 $color-background-toggle-unselected-disabled: $color-neutral-lightest !default;
+
+// Background toggle
+$color-background-toggle-button: $color-light-stronger !default;
+$color-background-toggle-slider: $color-neutral-lighter !default;
+$color-background-toggle-slider-selected: $color-primary-regular !default;
+$color-background-toggle-slider-disabled: $color-neutral-light !default;
+$color-background-toggle-button-disabled: $color-neutral-lighter !default;
 
 // Border
 $color-border-toggle-selected: $color-background-toggle-selected !default;
@@ -30,6 +37,12 @@ $color-check-toggle-disabled: $color-neutral-light !default;
 //=====================================
 $size-toggle-checkbox: calc(#{rhythm(2)} - #{rhythm(0.25)}) !default;
 $gap-radio-group: rhythm(1) !default;
+
+$height-toggle: rhythm(3) !default;
+$width-toggle: rhythm(6) !default;
+$padding-toggle-slider: rhythm(0.25) !default;
+$margin-toggle-container: 0 !default;
+$margin-top-toggle-with-help-label: -#{rhythm(0.5)} !default;
 
 //=====================================
 // TYPOGRAPHY

@@ -19,9 +19,6 @@ export class TextFieldDirective extends PaFormControlDirective implements AfterV
 
   private _labelWidth?: number;
 
-  get hasContent() {
-    return typeof this.control.value === 'number' ? true : this.control.value?.length > 0;
-  }
   get labelWidth() {
     return `${this._labelWidth}px`;
   }

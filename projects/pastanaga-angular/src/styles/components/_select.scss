@@ -59,14 +59,8 @@
     max-width: calc(100% - #{$padding-field-control-left + $icon-width + $icon-right-padding});
   }
 
-  .pa-dim,
-  .pa-field-container.pa-content.pa-dim {
+  .pa-dim {
     border: 1px solid transparent;
-
-    &::after,
-    &::before {
-      display: none;
-    }
     &.pa-focus {
       border: 1px solid $border-color-field-active;
     }

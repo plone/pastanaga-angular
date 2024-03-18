@@ -1,3 +1,24 @@
+# 2.65.0 (2024-03-18)
+
+### Breaking changes
+
+- **Buttons**: change how the buttons sizes are computed and update the tokens accordingly.
+  - `$dimension-button-{size}` is renamed into `$height-button-{size}`. The button height is no longer depending on button’s padding and line-height, instead button’s height is defined by `$dimension-button-{size}` tokens.
+  - `$padding-button-{size}` is renamed into `$padding-sides-button-{size}`. Vertical padding is no longer needed now button’s height is defined with a token.
+  - `$padding-button-icon-text-{size}` is split into `$padding-left-button-icon-text-{size}` and `$padding-right-button-icon-text-{size}`.
+
+### Improvements
+
+- **Toggle**: tokenize toggle style, so it can be easily overridden
+- **Buttons**: add specific button border tokens for icon buttons 
+- **Chips**: tokenize chip padding, so it can be easily overridden
+
+### Bug fixes
+
+- **Text fields**:
+  - go back to normal border of fields, as the custom border top trick was not working well and preventing to use bigger border-radius
+  - use same border-radius inside the input as in the field to prevent input background color to go over the borders 
+
 # 2.64.9 (2024-03-11)
 
 ### Improvements
@@ -350,7 +371,7 @@ but in some components like checkbox, we need the ability to display an ellipsis
 
 ### Bugfix
 
-- **Text field**: Don't set fixed height for mutiline fields [operramon]
+- **Text field**: Don't set fixed height for multiline fields [operramon]
 
 # 2.58.12 (2023-02-07)
 
