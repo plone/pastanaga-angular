@@ -1,4 +1,11 @@
-# 2.64.10 (2024-03-15)
+# 2.65.0 (2024-03-18)
+
+### Breaking changes
+
+- **Buttons**: change how the buttons sizes are computed and update the tokens accordingly.
+  - `$dimension-button-{size}` is renamed into `$height-button-{size}`. The button height is no longer depending on button’s padding and line-height, instead button’s height is defined by `$dimension-button-{size}` tokens.
+  - `$padding-button-{size}` is renamed into `$padding-sides-button-{size}`. Vertical padding is no longer needed now button’s height is defined with a token.
+  - `$padding-button-icon-text-{size}` is split into `$padding-left-button-icon-text-{size}` and `$padding-right-button-icon-text-{size}`.
 
 ### Improvements
 

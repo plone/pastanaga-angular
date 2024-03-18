@@ -47,39 +47,46 @@
 
   &.pa-small {
     font-size: $font-size-button-small;
+    height: $height-button-small;
     line-height: rhythm(3);
-    padding: $padding-button-small;
+    padding: 0 $padding-sides-button-small;
+
     &.pa-button-icon {
       padding: $padding-button-icon-small;
     }
     &.pa-button-icon-text {
-      padding: $padding-button-icon-text-small;
+      padding-left: $padding-left-button-icon-text-small;
+      padding-right: $padding-right-button-icon-text-small;
     }
   }
 
   &.pa-medium {
     font-size: $font-size-button-medium;
+    height: $height-button-medium;
     line-height: rhythm(4);
-    padding: $padding-button-medium;
+    padding: 0 $padding-sides-button-medium;
 
     &.pa-button-icon {
       padding: $padding-button-icon-medium;
     }
     &.pa-button-icon-text {
-      padding: $padding-button-icon-text-medium;
+      padding-left: $padding-left-button-icon-text-medium;
+      padding-right: $padding-right-button-icon-text-medium;
     }
   }
 
   &.pa-large {
     font-size: $font-size-button-large;
+    height: $height-button-large;
     line-height: rhythm(4);
-    padding: $padding-button-large;
+    padding: 0 $padding-sides-button-large;
 
     &.pa-button-icon {
       padding: $padding-button-icon-large;
     }
     &.pa-button-icon-text {
-      padding: $padding-button-icon-text-large;
+      padding-left: $padding-left-button-icon-text-large;
+      padding-right: $padding-right-button-icon-text-large;
     }
   }
 

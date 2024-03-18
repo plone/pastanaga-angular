@@ -28,7 +28,7 @@ pa-side-nav-header {
 
   img {
     height: rhythm(3);
-    max-width: calc(100% - #{$dimension-button-medium});
+    max-width: calc(100% - #{$height-button-medium});
   }
 
   .pa-close-side-nav-button {
