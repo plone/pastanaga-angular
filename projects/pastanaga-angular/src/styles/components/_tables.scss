@@ -6,6 +6,15 @@
   &.with-border {
     border: 1px solid $color-border-table;
     border-radius: $border-radius-default;
+
+    .pa-table-grid--head {
+      pa-table-cell:first-of-type .pa-table-grid--header {
+        border-top-left-radius: $border-radius-default;
+      }
+      pa-table-cell:last-of-type .pa-table-grid--header {
+        border-top-right-radius: $border-radius-default;
+      }
+    }
   }
 }
 
@@ -15,8 +24,6 @@
   .pa-table-grid--header {
     background: $color-background-table-header;
     border-bottom: 1px $color-border-table-header solid;
-    border-top-left-radius: $border-radius-default;
-    border-top-right-radius: $border-radius-default;
     color: $color-text-table-header;
     font-size: font-size(xs);
     font-weight: $font-weight-text-table-header;
@@ -99,8 +106,11 @@
     }
   }
   &.pa-table-grid--row--last {
-    .pa-table-grid--cell {
+    pa-table-cell:first-of-type .pa-table-grid--cell {
       border-bottom-left-radius: $border-radius-default;
+    }
+
+    pa-table-cell:last-of-type .pa-table-grid--cell {
       border-bottom-right-radius: $border-radius-default;
     }
   }

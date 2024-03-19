@@ -1,3 +1,9 @@
+# 2.65.4 (2024-03-19)
+
+### Bug fixes
+
+- **Table**: Prevent round corners for cells in the middle of the table
+
 # 2.65.3 (2024-03-19)
 
 ### Bug fixes
