@@ -1,4 +1,10 @@
-# 2.65.1(2024-03-18)
+# 2.65.2 (2024-03-19)
+
+### Bug fixes
+
+- **Chip**: Fix button height in closeable chips
+
+# 2.65.1 (2024-03-18)
 
 ### Bug fixes
 
