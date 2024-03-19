@@ -144,13 +144,8 @@
 
   &.pa-table-grid--header .pa-button {
     display: flex;
+    height: rhythm(3);
     padding: 0;
-
-    &:hover,
-    &:active {
-      background: transparent !important;
-      box-shadow: none !important;
-    }
   }
 }
 
