@@ -12,7 +12,7 @@
   </pa-demo-description>
 
   <pa-demo-examples>
-    <p>Header displaying several columns for tablet or desktop</p>
+    <h4>Header displaying several columns for tablet or desktop</h4>
     <pa-table columns="repeat(4, 1fr)">
       <pa-table-sortable-header
         [cells]="headerCells"
@@ -27,7 +27,7 @@
       }
     </pa-table>
 
-    <p>Header displaying only the active one on mobile mode</p>
+    <h4>Header displaying only the active one on mobile mode</h4>
     <pa-table>
       <pa-table-sortable-header
         mode="mobile"
@@ -44,7 +44,7 @@
       }
     </pa-table>
 
-    <p>Header starting with a checkbox column</p>
+    <h4>Header starting with a checkbox column</h4>
     <pa-table columns="40px repeat(4, 1fr)">
       <pa-table-sortable-header
         [cells]="headerCells"
@@ -58,6 +58,22 @@
           <pa-table-cell>
             <pa-checkbox></pa-checkbox>
           </pa-table-cell>
+          <pa-table-cell>{{ row.name }}</pa-table-cell>
+          <pa-table-cell>{{ row.source }}</pa-table-cell>
+          <pa-table-cell center>{{ row.status }}</pa-table-cell>
+          <pa-table-cell center>{{ row.date }}</pa-table-cell>
+        </pa-table-row>
+      }
+    </pa-table>
+
+    <h4>Sortable header without background</h4>
+    <pa-table columns="repeat(4, 1fr)">
+      <pa-table-sortable-header
+        noBackground
+        [cells]="headerCells"
+        (sort)="sortBy($event)"></pa-table-sortable-header>
+      @for (row of rows; track row.name) {
+        <pa-table-row>
           <pa-table-cell>{{ row.name }}</pa-table-cell>
           <pa-table-cell>{{ row.source }}</pa-table-cell>
           <pa-table-cell center>{{ row.status }}</pa-table-cell>
@@ -81,6 +97,12 @@
       <dd>
         Add an empty menu column when set
         <small>(optional)</small>
+      </dd>
+
+      <dt>noBackground</dt>
+      <dd>
+        Use the same background for the header and the rows.
+        <small>(Optional, false by default)</small>
       </dd>
 
       <dt>sort</dt>

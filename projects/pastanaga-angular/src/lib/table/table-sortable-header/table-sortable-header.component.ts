@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  HostBinding,
   Input,
   Output,
   ViewChild,
@@ -35,6 +36,11 @@ export class TableSortableHeaderComponent implements AfterViewInit {
   }
   get cells() {
     return this._cells;
+  }
+  @Input({ transform: booleanAttribute }) noBackground = false;
+
+  @HostBinding('class.no-background') get headerWithoutBackground() {
+    return this.noBackground;
   }
 
   @Output() sort: EventEmitter<HeaderCell> = new EventEmitter<HeaderCell>();

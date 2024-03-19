@@ -7,7 +7,7 @@
 
   <pa-demo-examples>
     <div style="margin-bottom: 48px">
-      <p>noHeader example:</p>
+      <h4>noHeader example:</h4>
       <pa-table
         noHeader
         columns="repeat(3, 1fr)">
@@ -24,7 +24,7 @@
       </pa-table>
     </div>
 
-    <p>Full example:</p>
+    <h4>Full example:</h4>
     <pa-table
       columns="minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px">
       <pa-table-header>
@@ -90,20 +90,65 @@
         </pa-table-row>
       }
     </pa-table>
+
+    <h4>Table without background on the header</h4>
+    <pa-table columns="repeat(3, 1fr)">
+      <pa-table-header noBackground>
+        <pa-table-cell header>Column 1</pa-table-cell>
+        <pa-table-cell header>Column 2</pa-table-cell>
+        <pa-table-cell header>Column 3</pa-table-cell>
+      </pa-table-header>
+      <pa-table-row>
+        <pa-table-cell>Cell 1</pa-table-cell>
+        <pa-table-cell>Cell 2</pa-table-cell>
+        <pa-table-cell>Cell 3</pa-table-cell>
+      </pa-table-row>
+      <pa-table-row>
+        <pa-table-cell>Cell 1</pa-table-cell>
+        <pa-table-cell>Cell 2</pa-table-cell>
+        <pa-table-cell>Cell 3</pa-table-cell>
+      </pa-table-row>
+    </pa-table>
+
+    <h4>Table with a border</h4>
+    <pa-table
+      border
+      columns="repeat(3, 1fr)">
+      <pa-table-header>
+        <pa-table-cell header>Column 1</pa-table-cell>
+        <pa-table-cell header>Column 2</pa-table-cell>
+        <pa-table-cell header>Column 3</pa-table-cell>
+      </pa-table-header>
+      <pa-table-row>
+        <pa-table-cell>Cell 1</pa-table-cell>
+        <pa-table-cell>Cell 2</pa-table-cell>
+        <pa-table-cell>Cell 3</pa-table-cell>
+      </pa-table-row>
+      <pa-table-row last>
+        <pa-table-cell>Cell 1</pa-table-cell>
+        <pa-table-cell>Cell 2</pa-table-cell>
+        <pa-table-cell>Cell 3</pa-table-cell>
+      </pa-table-row>
+    </pa-table>
   </pa-demo-examples>
 
   <pa-demo-usage>
     <h3>Inputs</h3>
     <dl>
+      <dt>border</dt>
+      <dd>
+        If true, the border of the table is displayed.
+        <small>(optional, false by default)</small>
+      </dd>
       <dt>columns</dt>
       <dd>
         Define the
         <code>grid-template-columns</code>
         CSS attribute value.
         <small>
-          (optional, default is
+          (optional,
           <code>auto</code>
-          )
+          by default)
         </small>
       </dd>
 

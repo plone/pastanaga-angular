@@ -1,5 +1,6 @@
 <div
   class="pa-table-grid"
+  [class.with-border]="border"
   [style.grid-template-columns]="!noAutoColumnStyle ? columnsStyle : ''">
   @if (!noHeader) {
     <div class="pa-table-grid--head">

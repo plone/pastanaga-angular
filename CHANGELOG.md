@@ -1,8 +1,22 @@
+# 2.65.3 (2024-03-19)
+
+### Bug fixes
+
+- **Table**: Fix button height in table header
+
+### Improvements
+
+- **Chip**: Fix demo page where there was a closable chip in the basic examples
+- **Table**:
+  - Add an option `noBackground` on both `pa-table-header` directive and `pa-table-sortable-header` component
+  - Add an option `border` on the table
+
 # 2.65.2 (2024-03-19)
 
 ### Bug fixes
 
 - **Chip**: Fix button height in closeable chips
+
 
 # 2.65.1 (2024-03-18)
 
