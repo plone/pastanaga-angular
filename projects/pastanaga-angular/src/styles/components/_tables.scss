@@ -2,33 +2,47 @@
 
 .pa-table-grid {
   display: grid;
+
+  &.with-border {
+    border: 1px solid $color-border-table;
+    border-radius: $border-radius-default;
+  }
 }
+
 .pa-table-grid--head {
   display: contents;
 
   .pa-table-grid--header {
-    position: sticky;
-    top: 0;
-    min-height: $min-height-table-header;
     background: $color-background-table-header;
     border-bottom: 1px $color-border-table-header solid;
+    border-top-left-radius: $border-radius-default;
+    border-top-right-radius: $border-radius-default;
     color: $color-text-table-header;
     font-size: font-size(xs);
     font-weight: $font-weight-text-table-header;
     line-height: line-height(s);
+    min-height: $min-height-table-header;
     padding: $padding-table-header;
+    position: sticky;
     text-transform: $text-transform-table-header;
+    top: 0;
   }
+
+  .no-background .pa-table-grid--header {
+    background: $color-background-table-row;
+  }
+
   .pa-table-grid--row > :first-child {
     z-index: 2;
   }
 }
+
 .pa-table-grid--body {
   display: contents;
 
   .pa-table-grid--header {
-    box-shadow: inset 0px -1px 0px $color-border-table-row;
     background: $color-background-table-row;
+    box-shadow: inset 0px -1px 0px $color-border-table-row;
   }
 
   .pa-table-grid--header,
@@ -50,9 +64,9 @@
   }
 
   /*
-     * FIXME: when table-grid-cell contains a button and you click on it, currently the whole line has the active state.
-     * We need to find a way of preventing that.
-     */
+   * FIXME: when table-grid-cell contains a button and you click on it, currently the whole line has the active state.
+   * We need to find a way of preventing that.
+   */
   .pa-table-grid--row:active .pa-table-grid--header,
   .pa-table-grid--row.pa-clickable:active .pa-table-grid--cell {
     background: $color-background-table-row-active;
@@ -61,19 +75,19 @@
 
 .pa-table-grid--row {
   display: contents;
-  font-weight: $font-weight-table-row;
   font-size: font-size(s);
+  font-weight: $font-weight-table-row;
   line-height: line-height(m);
 
   .pa-table-grid--row-header {
-    grid-column: 1 / -1;
-    font-weight: $font-weight-text-table-header-row;
-    font-size: font-size(xs);
     background: $color-background-table-header-row;
+    border-top: 1px solid $color-border-table-header-row;
     color: $color-text-table-header-row;
+    font-size: font-size(xs);
+    font-weight: $font-weight-text-table-header-row;
+    grid-column: 1 / -1;
     margin-top: -1px;
     padding: $padding-table-row-header;
-    border-top: 1px solid $color-border-table-header-row;
     position: sticky;
     top: $min-height-table-header;
     z-index: 3;
@@ -84,42 +98,52 @@
       box-shadow: inset 0px -1px 0px $color-border-table-row;
     }
   }
+  &.pa-table-grid--row--last {
+    .pa-table-grid--cell {
+      border-bottom-left-radius: $border-radius-default;
+      border-bottom-right-radius: $border-radius-default;
+    }
+  }
 
   &.pa-disabled .pa-table-grid--cell {
     cursor: default;
     opacity: 0.5;
     pointer-events: none;
   }
+
   &.pa-clickable .pa-table-grid--cell {
     cursor: pointer;
   }
 }
 
 .pa-table-grid--header {
-  display: flex;
   align-items: center;
+  display: flex;
   padding: 0 rhythm(1);
 
   &.pa-center {
     justify-content: center;
   }
 }
+
 .pa-table-grid--cell {
+  align-items: center;
   background: $color-background-table-row;
   color: $color-text-table-row;
   display: flex;
-  align-items: center;
-  padding: $padding-table-cell-small;
   min-height: $min-height-table-cell;
+  padding: $padding-table-cell-small;
 
   &.pa-disabled {
     cursor: default;
     opacity: 0.5;
     pointer-events: none;
   }
+
   &.pa-keyboard-focus {
     box-shadow: inset $shadow-focus !important;
   }
+
   &.pa-center {
     justify-content: center;
   }

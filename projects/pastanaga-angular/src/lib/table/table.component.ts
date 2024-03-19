@@ -19,6 +19,7 @@ import { trimString } from '../common';
 export class TableComponent implements OnChanges {
   @Input({ transform: booleanAttribute }) noHeader = false;
   @Input({ transform: booleanAttribute }) noAutoColumnStyle = false;
+  @Input({ transform: booleanAttribute }) border = false;
   @Input({ transform: trimString }) columns = 'auto';
 
   columnsStyle = this.sanitizer.bypassSecurityTrustStyle(this.columns);

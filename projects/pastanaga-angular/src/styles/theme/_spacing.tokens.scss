@@ -37,7 +37,7 @@ $rhythm: (
   @return map-get($rhythm, $spacer-size) / $ratio;
 }
 
-$border-radius-default: rhythm(0.25) !default;
+$border-radius-default: rhythm(0.5) !default;
 
 // layout
 $size-viewport-medium-max: 599px !default;

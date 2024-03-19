@@ -1,8 +1,14 @@
-import { Directive } from '@angular/core';
+import { booleanAttribute, Directive, HostBinding, Input } from '@angular/core';
 
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: 'pa-table-header' })
-export class TableHeaderDirective {}
+export class TableHeaderDirective {
+  @Input({ transform: booleanAttribute }) noBackground = false;
+
+  @HostBinding('class.no-background') get headerWithoutBackground() {
+    return this.noBackground;
+  }
+}
 
 @Directive({ selector: 'pa-table-lead-image' })
 export class TableLeadImage {}
