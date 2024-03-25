@@ -1,8 +1,9 @@
-# 2.65.5 (2024-03-25)
+# 2.65.5 (2024-03-26)
 
 ### Improvements
 
 - **Buttons**: Remove the min-width set on the buttons
+- **Typography**: Create mixin for each typography class, so it can be used in any other class.
 
 # 2.65.4 (2024-03-19)
 
