@@ -1,3 +1,9 @@
+# 2.65.5 (2024-03-25)
+
+### Improvements
+
+- **Buttons**: Remove the min-width set on the buttons
+
 # 2.65.4 (2024-03-19)
 
 ### Bug fixes
