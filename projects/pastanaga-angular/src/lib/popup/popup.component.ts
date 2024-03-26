@@ -31,6 +31,8 @@ export class PopupComponent implements OnInit, OnDestroy {
   @Input({ transform: booleanAttribute }) dontAdjustPosition = false;
   @Input({ transform: booleanAttribute }) keepOthersOpen = false;
   @Input({ transform: booleanAttribute }) stayVisible = false;
+  // sameWidth is used in dropdowns to prevent adding a max-width when it's not needed
+  @Input({ transform: booleanAttribute }) sameWidth = false;
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter();
   @Output() onOpen: EventEmitter<void> = new EventEmitter();
