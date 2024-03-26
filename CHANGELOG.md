@@ -4,6 +4,7 @@
 
 - **Buttons**: Remove the min-width set on the buttons
 - **Typography**: Create mixin for each typography class, so it can be used in any other class.
+- **Toggle**: Make sure toggle label is always vertically aligned
 
 # 2.65.4 (2024-03-19)
 
