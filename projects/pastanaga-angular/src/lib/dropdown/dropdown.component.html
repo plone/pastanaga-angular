@@ -2,7 +2,9 @@
   class="pa-popup"
   [hidden]="!isDisplayed"
   [ngStyle]="style">
-  <div class="pa-popup-wrapper">
+  <div
+    class="pa-popup-wrapper"
+    [class.no-max-width]="sameWidth">
     <ul
       class="pa-menu"
       [attr.role]="role">
