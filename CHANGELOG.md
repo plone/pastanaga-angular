@@ -5,6 +5,7 @@
 - **Buttons**: Remove the min-width set on the buttons
 - **Typography**: Create mixin for each typography class, so it can be used in any other class.
 - **Toggle**: Make sure toggle label is always vertically aligned
+- **Select**: Adjust `popupVerticalOffset` on select component to place the dropdown right below the input
 
 # 2.65.4 (2024-03-19)
 
