@@ -62,6 +62,10 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
         `Incompatible parameters: alignPopupOnLeft and popupOnRight cannot be used at the same time. alignPopupOnLeft is taking precedence.`,
       );
     }
+
+    if (changes['sameWidth'] && this.paPopup) {
+      this.paPopup.sameWidth = changes['sameWidth'].currentValue;
+    }
   }
 
   ngOnDestroy() {

@@ -16,7 +16,7 @@ $option-height: rhythm(6);
 }
 
 @media (min-width: $size-viewport-large-min) {
-  .pa-popup-wrapper {
+  .pa-popup-wrapper:not(.no-max-width) {
     max-width: rhythm(32);
   }
 }
