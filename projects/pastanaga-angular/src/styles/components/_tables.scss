@@ -126,6 +126,13 @@
   }
 }
 
+pa-table-row-header:last-child {
+  .pa-table-grid--row-header {
+    border-bottom-left-radius: $border-radius-default;
+    border-bottom-right-radius: $border-radius-default;
+  }
+}
+
 .pa-table-grid--header {
   align-items: center;
   display: flex;
