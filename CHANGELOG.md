@@ -1,3 +1,17 @@
+# 2.65.5 (2024-03-29)
+
+### Improvements
+
+- **Buttons**: Remove the min-width set on the buttons
+- **Typography**: Create mixin for each typography class, so it can be used in any other class.
+- **Toggle**: Make sure toggle label is always vertically aligned
+- **Select**: Adjust `popupVerticalOffset` on select component to place the dropdown right below the input
+- **Popup** and **Dropdown**: Add `sameWidth` attribute to `popupComponent`, allowing to manage properly the `max-width` applied in Dropdowns.
+
+### Bug fix
+
+- **Table**: Fix border radius of when `pa-table-row-header` is the last child 
+
 # 2.65.4 (2024-03-19)
 
 ### Bug fixes

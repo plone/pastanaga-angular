@@ -42,9 +42,6 @@
   &.pa-button-icon {
     border-radius: $border-radius-button-icon;
   }
-  &:not(.pa-button-icon):not(.pa-button-icon-text):not(.pa-small) {
-    min-width: rhythm(20);
-  }
 
   &.pa-small {
     font-size: $font-size-button-small;
@@ -180,7 +177,6 @@
     width: calc((100% - #{rhythm(2)}) / 2);
 
     .pa-button {
-      min-width: unset !important;
       width: 100%;
     }
   }

@@ -6,6 +6,7 @@ $toggle-transition-duration: $duration-fast;
 
 .pa-field {
   .pa-toggle-context {
+    align-items: center;
     display: flex;
     gap: rhythm(2);
     justify-content: flex-end;
