@@ -1,3 +1,13 @@
+# 2.65.6 (2024-04-02)
+
+### Bug fix
+
+- **Table**: Fix z-index of `.pa-table-grid--header` to prevent table content to go over the header when scrolling
+
+### Improvements
+
+- Upgrade to angular 17.3.2 (fix dependabot issue)
+
 # 2.65.5 (2024-03-29)
 
 ### Improvements
