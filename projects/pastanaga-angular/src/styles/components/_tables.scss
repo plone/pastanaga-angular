@@ -33,6 +33,7 @@
     position: sticky;
     text-transform: $text-transform-table-header;
     top: 0;
+    z-index: 1;
   }
 
   .no-background .pa-table-grid--header {
