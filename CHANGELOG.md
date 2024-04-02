@@ -1,3 +1,9 @@
+# 2.65.7 (2024-04-02)
+
+### Bug fix
+
+- revert previous fix on table header
+
 # 2.65.6 (2024-04-02)
 
 ### Bug fix
