@@ -106,11 +106,13 @@
     }
   }
   &.pa-table-grid--row--last {
-    pa-table-cell:first-of-type .pa-table-grid--cell {
+    pa-table-cell:first-of-type .pa-table-grid--cell,
+    pa-table-cell-menu:first-of-type .pa-table-grid--menu-cell {
       border-bottom-left-radius: $border-radius-default;
     }
 
-    pa-table-cell:last-of-type .pa-table-grid--cell {
+    pa-table-cell:last-of-type .pa-table-grid--cell,
+    pa-table-cell-menu:last-of-type .pa-table-grid--menu-cell {
       border-bottom-right-radius: $border-radius-default;
     }
   }

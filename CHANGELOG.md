@@ -1,3 +1,9 @@
+# 2.65.8 (2024-04-04)
+
+### Bug fix
+
+- **Table**: Fix border radius of `pa-table-cell-menu` when `pa-table-row-header` is the last child
+
 # 2.65.7 (2024-04-02)
 
 ### Bug fix
@@ -26,7 +32,7 @@
 
 ### Bug fix
 
-- **Table**: Fix border radius of when `pa-table-row-header` is the last child 
+- **Table**: Fix border radius of `pa-table-cell` when `pa-table-row-header` is the last child 
 
 # 2.65.4 (2024-03-19)
 
