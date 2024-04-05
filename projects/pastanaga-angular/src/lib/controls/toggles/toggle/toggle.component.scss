@@ -23,6 +23,8 @@ $toggle-transition-duration: $duration-fast;
 
     .pa-field-label {
       cursor: pointer;
+      font-size: $font-size-checkbox-label;
+      line-height: $line-height-checkbox-label;
     }
     pa-form-field-hint ::ng-deep .pa-field-help {
       margin-top: 0;

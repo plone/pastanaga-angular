@@ -1,3 +1,9 @@
+# 2.65.9 (2024-04-05)
+
+### Bug fix
+
+- **Toggle**: Use the same font-size and line-height as checkboxes (using `$font-size-checkbox-label`, `$line-height-checkbox-label` tokens).
+
 # 2.65.8 (2024-04-04)
 
 ### Bug fix
