@@ -1,3 +1,9 @@
+# 2.65.10 (2024-04-06)
+
+### Bug fix
+
+- **Dropdown**: when the dropdown is included in a container with `position: fixed` (like in a modal for instance), and in a scrollable container, we automatically close the dropdown on scroll event to prevent the dropdown to move while scrolling.
+
 # 2.65.9 (2024-04-05)
 
 ### Bug fix

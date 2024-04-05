@@ -9,6 +9,7 @@ import {
   Renderer2,
 } from '@angular/core';
 import { PopupComponent, PopupService } from '../popup';
+import { getScrollableParent, hasPositionFixedParent } from '../common';
 
 @Component({
   selector: 'pa-dropdown',
@@ -28,6 +29,10 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
 
   private _role: 'listbox' | 'menu' = 'menu';
 
+  private _hasFixedRootParent?: boolean;
+  private _fixedRootParentChecked = false;
+  private _scrollableParent?: HTMLElement;
+
   constructor(
     protected override popupService: PopupService,
     protected override renderer: Renderer2,
@@ -40,9 +45,29 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
 
   override ngOnInit(): void {
     super.ngOnInit();
+
+    if (this._hasFixedRootParent === undefined && !this._fixedRootParentChecked) {
+      const parentElement: HTMLElement | null = this.element.nativeElement.parentElement;
+      this._hasFixedRootParent = !!parentElement && hasPositionFixedParent(parentElement);
+      this._fixedRootParentChecked = true;
+
+      if (parentElement && this._hasFixedRootParent) {
+        this._scrollableParent = getScrollableParent(parentElement);
+        this._scrollableParent.addEventListener('scroll', this.onScroll.bind(this));
+      }
+    }
   }
 
   override ngOnDestroy() {
     super.ngOnDestroy();
+    if (this._scrollableParent) {
+      this._scrollableParent.removeEventListener('scroll', this.onScroll.bind(this));
+    }
+  }
+
+  private onScroll() {
+    if (this.isDisplayed) {
+      this.close();
+    }
   }
 }
