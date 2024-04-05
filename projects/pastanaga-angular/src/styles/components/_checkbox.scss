@@ -130,17 +130,35 @@
 .pa-radio-group {
   display: flex;
   flex-direction: column;
-  gap: $gap-radio-group;
 
   &.horizontal-group {
     flex-direction: row;
+    gap: $gap-radio-group;
   }
 
-  &:not(.horizontal-group) .pa-toggle .pa-checkbox-wrapper {
-    width: 100%;
+  &:not(.horizontal-group) {
+    pa-radio {
+      border-radius: $border-radius-container;
+      padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
+      transition: background $transition-hint;
 
-    .pa-toggle-label {
+      &:nth-child(odd) {
+        background: $background-radio-group-odd-item;
+      }
+      &:nth-child(even) {
+        background: $background-radio-group-even-item;
+      }
+      &:hover {
+        background: $background-radio-group-hover-item;
+      }
+    }
+
+    .pa-toggle .pa-checkbox-wrapper {
       width: 100%;
+
+      .pa-toggle-label {
+        width: 100%;
+      }
     }
   }
 }
