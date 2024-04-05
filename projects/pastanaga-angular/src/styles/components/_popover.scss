@@ -12,6 +12,7 @@
 
   .pa-popup-wrapper {
     background: $color-background-popover;
+    border-radius: $border-radius-default;
     color: $color-text-popover;
     max-width: rhythm(32);
   }

@@ -21,6 +21,12 @@
       [hidden]="!hasLabel">
       <ng-content></ng-content>
     </label>
+    @if (popoverHelp) {
+      <pa-icon
+        name="info"
+        [paPopover]="help"></pa-icon>
+      <pa-popover #help>{{ popoverHelp }}</pa-popover>
+    }
   </div>
 
   @if (help) {

@@ -112,6 +112,20 @@
           }
         </pa-radio-group>
       </form>
+
+      <hr />
+      <p class="title-xxs">Radio group with popover help</p>
+      <pa-radio-group
+        name="radio-disabled"
+        id="radio-meals-popover">
+        @for (meal of meals; track meal.label) {
+          <pa-radio
+            [value]="meal.label"
+            [popoverHelp]="meal.help">
+            {{ meal.label }}
+          </pa-radio>
+        }
+      </pa-radio-group>
     </div>
   </pa-demo-examples>
 
@@ -152,6 +166,14 @@
       <dd>
         Radio button name.
         <small>(optional)</small>
+      </dd>
+
+      <dt>popoverHelp</dt>
+      <dd>
+        String to be displayed in a popover when hovering the
+        <code>info</code>
+        icon.
+        <small>(optional. The info icon is displayed only if popoverHelp has a value)</small>
       </dd>
     </dl>
 
