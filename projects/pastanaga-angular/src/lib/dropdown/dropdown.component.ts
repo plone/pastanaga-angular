@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -17,7 +18,7 @@ import { getScrollableParent, hasPositionFixedParent } from '../common';
   styleUrls: ['./dropdown.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownComponent extends PopupComponent implements OnInit, OnDestroy {
+export class DropdownComponent extends PopupComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input()
   set role(value: 'listbox' | 'menu') {
     this._role = value || 'menu';
@@ -43,19 +44,24 @@ export class DropdownComponent extends PopupComponent implements OnInit, OnDestr
     this.popupType = 'menu';
   }
 
-  override ngOnInit(): void {
-    super.ngOnInit();
-
+  ngAfterViewInit() {
     if (this._hasFixedRootParent === undefined && !this._fixedRootParentChecked) {
       const parentElement: HTMLElement | null = this.element.nativeElement.parentElement;
       this._hasFixedRootParent = !!parentElement && hasPositionFixedParent(parentElement);
       this._fixedRootParentChecked = true;
 
       if (parentElement && this._hasFixedRootParent) {
-        this._scrollableParent = getScrollableParent(parentElement);
-        this._scrollableParent.addEventListener('scroll', this.onScroll.bind(this));
+        // Make sure we wait for the full template to be enabled before getting the scrollable parent
+        setTimeout(() => {
+          this._scrollableParent = getScrollableParent(parentElement);
+          this._scrollableParent.addEventListener('scroll', this.onScroll.bind(this));
+        }, 0);
       }
     }
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
   }
 
   override ngOnDestroy() {
