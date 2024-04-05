@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { PopupComponent, PopupService } from '../popup';
 import { getScrollableParent, hasPositionFixedParent } from '../common';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'pa-dropdown',
@@ -34,6 +35,8 @@ export class DropdownComponent extends PopupComponent implements AfterViewInit, 
   private _fixedRootParentChecked = false;
   private _scrollableParent?: HTMLElement;
 
+  private readonly scrollEventListener;
+
   constructor(
     protected override popupService: PopupService,
     protected override renderer: Renderer2,
@@ -42,6 +45,7 @@ export class DropdownComponent extends PopupComponent implements AfterViewInit, 
   ) {
     super(popupService, renderer, element, cdr);
     this.popupType = 'menu';
+    this.scrollEventListener = this.onScroll.bind(this);
   }
 
   ngAfterViewInit() {
@@ -54,7 +58,6 @@ export class DropdownComponent extends PopupComponent implements AfterViewInit, 
         // Make sure we wait for the full template to be enabled before getting the scrollable parent
         setTimeout(() => {
           this._scrollableParent = getScrollableParent(parentElement);
-          this._scrollableParent.addEventListener('scroll', this.onScroll.bind(this));
         }, 0);
       }
     }
@@ -62,13 +65,20 @@ export class DropdownComponent extends PopupComponent implements AfterViewInit, 
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.onOpen.pipe(takeUntil(this._terminator)).subscribe(() => {
+      if (this._scrollableParent) {
+        this._scrollableParent.addEventListener('scroll', this.scrollEventListener);
+      }
+    });
+    this.onClose.pipe(takeUntil(this._terminator)).subscribe(() => {
+      if (this._scrollableParent) {
+        this._scrollableParent.removeEventListener('scroll', this.scrollEventListener);
+      }
+    });
   }
 
   override ngOnDestroy() {
     super.ngOnDestroy();
-    if (this._scrollableParent) {
-      this._scrollableParent.removeEventListener('scroll', this.onScroll.bind(this));
-    }
   }
 
   private onScroll() {

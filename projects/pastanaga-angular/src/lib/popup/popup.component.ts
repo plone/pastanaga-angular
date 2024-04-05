@@ -44,7 +44,7 @@ export class PopupComponent implements OnInit, OnDestroy {
   private _id = '';
   private _handlers: (() => void)[] = [];
   private _originalHeight = 0;
-  private _terminator = new Subject<void>();
+  protected _terminator = new Subject<void>();
 
   constructor(
     protected popupService: PopupService,
