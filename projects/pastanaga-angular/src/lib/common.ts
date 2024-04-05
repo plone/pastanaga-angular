@@ -89,6 +89,24 @@ export function getFixedRootParentIfAny(element: HTMLElement): HTMLElement | und
   return fixedRoot.tagName === 'BODY' ? undefined : fixedRoot;
 }
 
+export function hasPositionFixedParent(element: HTMLElement): boolean {
+  const fixedParent = getPositionedParent(element);
+  return fixedParent.tagName !== 'BODY';
+}
+
+export function getScrollableParent(element: HTMLElement): HTMLElement {
+  if (element.tagName === 'BODY') {
+    return element;
+  }
+  const style = getComputedStyle(element);
+  if (style.overflowY === 'auto' && element.scrollHeight > element.clientHeight) {
+    return element;
+  } else {
+    const parent = element.parentElement;
+    return parent ? getScrollableParent(parent) : element;
+  }
+}
+
 export const getRealPosition = (element: HTMLElement): { top: number; left: number } => {
   let tmp: HTMLElement | null = element;
   let tagName = tmp.tagName.toLowerCase();
