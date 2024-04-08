@@ -130,17 +130,43 @@
 .pa-radio-group {
   display: flex;
   flex-direction: column;
-  gap: $gap-radio-group;
 
   &.horizontal-group {
     flex-direction: row;
+    gap: $gap-radio-group;
   }
 
-  &:not(.horizontal-group) .pa-toggle .pa-checkbox-wrapper {
-    width: 100%;
+  &:not(.horizontal-group) {
+    pa-radio {
+      border-radius: $border-radius-container;
+      padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
+      transition: background $transition-hint;
 
-    .pa-toggle-label {
+      &:not(.pa-disabled):hover {
+        background: $background-radio-group-hover-item;
+      }
+    }
+
+    .pa-toggle .pa-checkbox-wrapper {
       width: 100%;
+
+      .pa-toggle-label {
+        width: 100%;
+      }
+    }
+
+    &.background-striped {
+      pa-radio {
+        &:nth-of-type(odd) {
+          background: $background-radio-group-odd-item;
+        }
+        &:nth-of-type(even) {
+          background: $background-radio-group-even-item;
+        }
+        &:not(.pa-disabled):hover {
+          background: $background-radio-group-hover-item;
+        }
+      }
     }
   }
 }

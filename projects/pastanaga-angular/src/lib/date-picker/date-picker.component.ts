@@ -143,10 +143,9 @@ export class DatePickerComponent extends PaFormControlDirective {
       .pipe(
         debounceTime(TRANSITION_DURATION.moderate),
         map((v) => {
-          const value = v as string;
           return {
-            value,
-            format: DATE_FORMATS.find((format) => isMatch(value, format)) || null,
+            value: v,
+            format: DATE_FORMATS.find((format) => (v ? isMatch(v, format) : false)) || null,
           };
         }),
         map(({ value, format }) => {
@@ -156,7 +155,7 @@ export class DatePickerComponent extends PaFormControlDirective {
             if (!value) {
               this.trackedDate = new Date();
             }
-          } else {
+          } else if (value) {
             // this maintains the user's format for now
             date = this.getUtcDate(parse(value, format, this.trackedDate));
           }

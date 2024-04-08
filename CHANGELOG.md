@@ -1,4 +1,21 @@
-# 2.65.10 (2024-04-06)
+# 2.65.11 (2024-04-08)
+
+### Improvements
+
+- **Radio groups**:
+  - Display radio with a background different for odd and even items by default when there are more than 2 radios in the group
+  - Display a different background color on hover
+  - Replace flex gap by a padding on radio items
+  - Add `noBackground` option to prevent the background to be shown on the radios
+- **Radio**: Add `popoverHelp` option allowing to display help on a popover when hovering an `info` icon on the right of the radio label
+- **Popover**: Set a min-width to prevent popover displayed on the side to be too small.
+
+### Bug fix
+
+- **Popover**: fix border-radius to be the same as popups
+- **Date picker**: fix bad typing used in input change detection
+
+# 2.65.10 (2024-04-05)
 
 ### Bug fix
 

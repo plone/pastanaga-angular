@@ -1,7 +1,7 @@
 {
     "name": "@guillotinaweb/pastanaga-angular",
     "description": "Provides Pastanaga UI elements as Angular components",
-    "version": "2.65.10",
+    "version": "2.65.11",
     "license": "MIT",
     "keywords": [
         "angular",
@@ -25,7 +25,7 @@
         "@angular/router": "^17.0.6",
         "@ng-web-apis/common": "^2.1.0",
         "angular-svg-icon": "^17.0.0",
-        "date-fns": "^2.30.0",
+        "date-fns": "^3.0.0",
         "rxjs": "^7.8.0"
     },
     "publishConfig": {

@@ -12,6 +12,10 @@ $color-background-toggle-selected-hover: $color-primary-strong !default;
 $color-background-toggle-disabled: $color-neutral-lightest !default;
 $color-background-toggle-unselected-disabled: $color-neutral-lightest !default;
 
+$background-radio-group-odd-item: $color-neutral-lightest !default;
+$background-radio-group-even-item: $color-light-stronger !default;
+$background-radio-group-hover-item: $color-neutral-lighter !default;
+
 // Background toggle
 $color-background-toggle-button: $color-light-stronger !default;
 $color-background-toggle-slider: $color-neutral-lighter !default;
