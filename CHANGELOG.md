@@ -7,6 +7,7 @@
   - Display a different background color on hover
   - Replace flex gap by a padding on radio items
   - Add `popoverHelp` option allowing to display help on a popover when hovering an `info` icon on the right of the radio label
+- **Popover**: Set a min-width to prevent popover displayed on the side to be too small.
 
 ### Bug fix
 
