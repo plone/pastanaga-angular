@@ -142,13 +142,13 @@
       padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
       transition: background $transition-hint;
 
-      &:nth-child(odd) {
+      &:nth-of-type(odd) {
         background: $background-radio-group-odd-item;
       }
-      &:nth-child(even) {
+      &:nth-of-type(even) {
         background: $background-radio-group-even-item;
       }
-      &:hover {
+      &:not(.pa-disabled):hover {
         background: $background-radio-group-hover-item;
       }
     }

@@ -6,6 +6,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   OnChanges,
   Output,
@@ -34,6 +35,10 @@ export class RadioComponent implements AfterContentInit, OnChanges {
   @Output() change: EventEmitter<{ value: string; checked: boolean }> = new EventEmitter();
 
   @ViewChild('label', { read: ElementRef, static: true }) label?: ElementRef;
+
+  @HostBinding('class.pa-disabled') get disabledRadio() {
+    return this.disabled;
+  }
 
   checked = false;
   hasLabel = false;
