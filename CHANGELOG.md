@@ -11,6 +11,7 @@
 ### Bug fix
 
 - **Popover**: fix border-radius to be the same as popups
+- **Date picker**: fix bad typing used in input change detection
 
 # 2.65.10 (2024-04-05)
 
