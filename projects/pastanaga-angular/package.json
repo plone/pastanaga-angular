@@ -1,7 +1,7 @@
 {
     "name": "@guillotinaweb/pastanaga-angular",
     "description": "Provides Pastanaga UI elements as Angular components",
-    "version": "2.65.11",
+    "version": "2.65.12",
     "license": "MIT",
     "keywords": [
         "angular",

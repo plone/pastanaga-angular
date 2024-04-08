@@ -1,3 +1,9 @@
+# 2.65.12 (2024-04-08)
+
+### Bug fix
+
+- Fix library build: Last version of date-fns require tsconfig to use `es2020`
+
 # 2.65.11 (2024-04-08)
 
 ### Improvements
