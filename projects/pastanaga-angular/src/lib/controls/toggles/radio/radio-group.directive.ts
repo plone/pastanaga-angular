@@ -1,10 +1,13 @@
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectorRef,
   ContentChildren,
   Directive,
   ElementRef,
   forwardRef,
+  HostBinding,
+  Input,
   OnDestroy,
   Optional,
   QueryList,
@@ -24,10 +27,17 @@ import { takeUntil } from 'rxjs/operators';
   },
 })
 export class RadioGroupDirective extends PaFormControlDirective implements AfterViewInit, OnDestroy {
+  @Input({ transform: booleanAttribute }) noBackground = false;
+
   @ContentChildren(forwardRef(() => RadioComponent), { descendants: true }) _radios?: QueryList<RadioComponent>;
 
   override fieldType = 'radiogroup';
   private checkedRadio?: RadioComponent;
+  radioCount = 0;
+
+  @HostBinding('class.background-striped') get alternateBackgrounds() {
+    return this.radioCount > 2 && !this.noBackground;
+  }
 
   constructor(
     protected override element: ElementRef,
@@ -51,6 +61,7 @@ export class RadioGroupDirective extends PaFormControlDirective implements After
         });
         radio._markForCheck();
       });
+      this.radioCount = this._radios?.length || 0;
     });
   }
 

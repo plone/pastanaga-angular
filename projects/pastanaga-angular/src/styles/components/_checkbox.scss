@@ -142,12 +142,6 @@
       padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
       transition: background $transition-hint;
 
-      &:nth-of-type(odd) {
-        background: $background-radio-group-odd-item;
-      }
-      &:nth-of-type(even) {
-        background: $background-radio-group-even-item;
-      }
       &:not(.pa-disabled):hover {
         background: $background-radio-group-hover-item;
       }
@@ -158,6 +152,20 @@
 
       .pa-toggle-label {
         width: 100%;
+      }
+    }
+
+    &.background-striped {
+      pa-radio {
+        &:nth-of-type(odd) {
+          background: $background-radio-group-odd-item;
+        }
+        &:nth-of-type(even) {
+          background: $background-radio-group-even-item;
+        }
+        &:not(.pa-disabled):hover {
+          background: $background-radio-group-hover-item;
+        }
       }
     }
   }

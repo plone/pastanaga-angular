@@ -116,7 +116,7 @@
       <hr />
       <p class="title-xxs">Radio group with popover help</p>
       <pa-radio-group
-        name="radio-disabled"
+        name="radio-popover"
         id="radio-meals-popover">
         @for (meal of meals; track meal.label) {
           <pa-radio
@@ -125,6 +125,29 @@
             {{ meal.label }}
           </pa-radio>
         }
+      </pa-radio-group>
+
+      <hr />
+      <p class="title-xxs">Alternate background is not displayed for groups of 2 radios</p>
+      <pa-radio-group
+        name="two-radios"
+        id="two-radios">
+        <pa-radio value="radio1">Radio 1</pa-radio>
+        <pa-radio value="radio2">Radio 2</pa-radio>
+      </pa-radio-group>
+      <hr />
+      <p class="title-xxs">
+        Alternate background is not displayed when
+        <code>noBackground</code>
+        option is set
+      </p>
+      <pa-radio-group
+        noBackground
+        name="no-background-radios"
+        id="no-background-radios">
+        <pa-radio value="radio1">Radio 1</pa-radio>
+        <pa-radio value="radio2">Radio 2</pa-radio>
+        <pa-radio value="radio3">Radio 3</pa-radio>
       </pa-radio-group>
     </div>
   </pa-demo-examples>
@@ -184,6 +207,15 @@
     </dl>
 
     <h3>Radio group</h3>
+    <h4>Inputs</h4>
+    <dl>
+      <dt>noBackground</dt>
+      <dd>
+        Don't display alternate backgrounds on radios
+        <small>(optional, false by default)</small>
+      </dd>
+    </dl>
+
     <!-- prettier-ignore -->
     <p>
       Radio buttons should usually be placed inside a
