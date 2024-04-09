@@ -5,9 +5,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnChanges,
   Optional,
+  Output,
   Renderer2,
   Self,
   SimpleChanges,
@@ -25,11 +27,19 @@ import { detectChanges } from '../../../common';
 })
 export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {
   @Input({ transform: booleanAttribute }) noEllipsis = false;
+  @Input() set indeterminate(value: boolean) {
+    this.isIndeterminate = value;
+    if (value) {
+      this.control.patchValue(false);
+    }
+  }
 
+  @Output() indeterminateChange = new EventEmitter<boolean>();
   @ViewChild('htmlElement') htmlElementRef?: ElementRef;
 
   override fieldType = 'checkbox';
   isChecked = false;
+  isIndeterminate = false;
 
   constructor(
     protected override element: ElementRef,
@@ -47,6 +57,10 @@ export class CheckboxComponent extends PaFormControlDirective implements OnChang
   ngAfterViewInit() {
     this.control.valueChanges.pipe(takeUntil(this.terminator$)).subscribe((val) => {
       this.isChecked = val;
+      if (val) {
+        this.isIndeterminate = false;
+        this.indeterminateChange.emit(false);
+      }
       detectChanges(this.cdr);
     });
     this.control.statusChanges.pipe(takeUntil(this.terminator$)).subscribe((status) => {

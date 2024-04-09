@@ -8,6 +8,7 @@
 
 // Background checkbox/radio
 $color-background-toggle-selected: $color-primary-regular !default;
+$color-background-toggle-indeterminate: $color-primary-regular !default;
 $color-background-toggle-selected-hover: $color-primary-strong !default;
 $color-background-toggle-disabled: $color-neutral-lightest !default;
 $color-background-toggle-unselected-disabled: $color-neutral-lightest !default;
@@ -25,6 +26,7 @@ $color-background-toggle-button-disabled: $color-neutral-lighter !default;
 
 // Border
 $color-border-toggle-selected: $color-background-toggle-selected !default;
+$color-border-toggle-indeterminate: $color-background-toggle-selected !default;
 $color-border-toggle-selected-hover: $color-background-toggle-selected-hover !default;
 $color-border-toggle-selected-disabled: $color-background-toggle-disabled !default;
 
@@ -34,6 +36,7 @@ $color-border-toggle-unselected-disabled: $color-neutral-light !default;
 
 // Check
 $color-check-toggle: $color-light-stronger !default;
+$color-check-toggle-indeterminate: $color-light-stronger !default;
 $color-check-toggle-disabled: $color-neutral-light !default;
 
 //=====================================
