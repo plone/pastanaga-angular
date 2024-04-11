@@ -21,6 +21,10 @@
       }
     }
   }
+  &:not(.pa-disabled).pa-indeterminate .pa-toggle-control:hover {
+    border-color: $color-border-toggle-selected-hover;
+    background-color: $color-background-toggle-selected-hover;
+  }
 
   .pa-checkbox-wrapper {
     display: inline-flex;
@@ -46,7 +50,7 @@
       border-color: $color-border-toggle-selected;
       background-color: $color-background-toggle-selected;
       // prettier-ignore
-      background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><g fill="none" fill-rule="evenodd"><polygon fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" points="29.021 17.021 11.021 17.021 11.021 9.021 7.021 9.021 7.021 21.021 29.021 21.021" transform="rotate(-45 18.02 15.02)"/></g></svg>');
+      background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" fill-rule="evenodd" d="M12.53 4.72a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-2.5-2.5a.75.75 0 0 1 1.06-1.06L6.5 9.69l4.97-4.97a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/></svg>');
       background-size: $size-toggle-checkbox $size-toggle-checkbox;
 
       &:disabled {
@@ -81,6 +85,19 @@
       &:disabled {
         background-color: $color-background-toggle-unselected-disabled;
       }
+    }
+  }
+
+  &.pa-indeterminate .pa-toggle-control {
+    border-color: $color-border-toggle-indeterminate;
+    background-color: $color-background-toggle-indeterminate;
+    // prettier-ignore
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"> <path fill="%23' + str_slice(#{$color-check-toggle-indeterminate}, 2) + '" fill-rule="evenodd" d="M3.75 8a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7A.75.75 0 0 1 3.75 8Z" clip-rule="evenodd"/></svg>');
+    background-size: $size-toggle-checkbox $size-toggle-checkbox;
+
+    &:disabled {
+      background-color: $color-background-toggle-disabled;
+      border-color: $color-border-toggle-selected-disabled;
     }
   }
 

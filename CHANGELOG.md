@@ -1,3 +1,11 @@
+# 2.65.13 (2024-04-11)
+
+### Improvements
+
+- **Checkbox**: 
+  - Support indeterminate state
+  - Check mark improvement (new svg)
+
 # 2.65.12 (2024-04-08)
 
 ### Bug fix

@@ -44,6 +44,21 @@
 
     <pa-checkbox help="Some help here">Label here</pa-checkbox>
 
+    <div style="margin-bottom: 16px">
+      <p>Checkboxes are supporting indeterminate state</p>
+      <pa-checkbox
+        [(indeterminate)]="isIndeterminate"
+        [(value)]="indeterminateSelection">
+        Can be used to build checkbox tree structure
+      </pa-checkbox>
+      <p>selection: {{ indeterminateSelection }}</p>
+      <pa-button
+        [disabled]="isIndeterminate"
+        (click)="isIndeterminate = true">
+        Put back indeterminate
+      </pa-button>
+    </div>
+
     <pa-tabs>
       <pa-tab
         (click)="selectedTab = 'standalone'"
@@ -184,10 +199,26 @@
         errorMessages.
       </dd>
 
+      <dt>indeterminate</dt>
+      <dd>
+        Display the checkbox as indeterminate. If the checkbox state was selected, the selection is automatically set to
+        false. Whenever the user clicks on the checkbox, its state will become selected and indeterminate will switch to
+        false.
+      </dd>
+
       <dt>noEllipsis</dt>
       <dd>
         When true, display the full label and wrap it if needed.
         <small>(default: false)</small>
+      </dd>
+    </dl>
+
+    <h4>Outputs</h4>
+    <dl>
+      <dt>indeterminateChange</dt>
+      <dd>
+        Event emitted whenever indeterminate state changes (happens when the user clicks on the checkbox which become
+        selected instead of indeterminate).
       </dd>
     </dl>
 

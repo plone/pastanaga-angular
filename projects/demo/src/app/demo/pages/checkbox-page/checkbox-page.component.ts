@@ -6,6 +6,9 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxPageComponent implements OnInit {
+  isIndeterminate = true;
+  indeterminateSelection = false;
+
   selectedTab = 'standalone';
 
   id?: string;
