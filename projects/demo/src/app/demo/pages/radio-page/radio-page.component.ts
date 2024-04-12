@@ -14,7 +14,7 @@ export class RadioPageComponent implements OnInit {
   meals: { label: string; disabled: boolean; help: string }[] = [
     { label: 'Spaghetti', disabled: false, help: 'With tomato sauce' },
     { label: 'Lasagna', disabled: false, help: 'Spinach and cream' },
-    { label: 'Cheese', disabled: false, help: 'With toasted bread' },
+    { label: 'Cheese', disabled: true, help: 'With toasted bread' },
     { label: 'Ratatouille', disabled: true, help: 'With rice' },
   ];
 

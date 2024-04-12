@@ -33,6 +33,7 @@ export class RadioGroupDirective extends PaFormControlDirective implements After
 
   override fieldType = 'radiogroup';
   private checkedRadio?: RadioComponent;
+  private initialSetDisabledState = true;
   radioCount = 0;
 
   @HostBinding('class.background-striped') get alternateBackgrounds() {
@@ -70,14 +71,19 @@ export class RadioGroupDirective extends PaFormControlDirective implements After
   }
 
   override setDisabledState(value: boolean) {
-    super.setDisabledState(value);
+    // we skip the first call to `setDisabledState` if `disabled` is `false`,
+    // to prevent overriding the 'disable' property of individual pa-radio components,
+    if (!this.initialSetDisabledState || value === true) {
+      super.setDisabledState(value);
 
-    this.waitForRadios(() => {
-      this._radios?.forEach((radio) => {
-        radio.disabled = this.disabled;
-        radio._markForCheck();
+      this.waitForRadios(() => {
+        this._radios?.forEach((radio) => {
+          radio.disabled = this.disabled;
+          radio._markForCheck();
+        });
       });
-    });
+    }
+    this.initialSetDisabledState = false;
   }
 
   override writeValue(value: any) {
