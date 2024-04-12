@@ -1,3 +1,9 @@
+# 2.65.14 (2024-04-12)
+
+### Bug fix
+
+- **Radio groups**: Improve `setDisabledState` method allowing specific `pa-radio` to be disabled
+
 # 2.65.13 (2024-04-11)
 
 ### Improvements
