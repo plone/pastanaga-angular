@@ -95,8 +95,28 @@
           Button enabled when form.pristine is false
         </pa-button>
       </form>
+
       <hr />
-      <p class="title-xxs">Radio group with disabled inputs</p>
+      <p class="title-xxs">Radio group with some disabled inputs</p>
+      <form [formGroup]="formGroup">
+        <label for="radio-meals-partially-disabled">Pick your favorite meal</label>
+        <pa-radio-group
+          name="radio-partially-disabled"
+          id="radio-meals-partially-disabled"
+          formControlName="favoriteMeal">
+          @for (meal of meals; track meal.label) {
+            <pa-radio
+              [value]="meal.label"
+              [help]="meal.help"
+              [disabled]="meal.disabled">
+              {{ meal.label }}
+            </pa-radio>
+          }
+        </pa-radio-group>
+      </form>
+
+      <hr />
+      <p class="title-xxs">Disabled radio group</p>
       <form [formGroup]="formGroupDisabled">
         <label for="radio-meals-disabled">Pick your favorite meal</label>
         <pa-radio-group
