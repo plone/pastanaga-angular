@@ -1,3 +1,9 @@
+# 2.65.15 (2024-04-18)
+
+### Improvements
+
+- **Table**: add new `borderRight` option on table cells allowing to display a right border inside the table.
+
 # 2.65.14 (2024-04-12)
 
 ### Bug fix

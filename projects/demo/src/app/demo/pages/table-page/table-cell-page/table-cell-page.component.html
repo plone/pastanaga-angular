@@ -8,6 +8,12 @@
   <pa-demo-usage>
     <h3>Inputs</h3>
     <dl>
+      <dt>borderRight</dt>
+      <dd>
+        Display a border on the right of the cell.
+        <small>(Default: false)</small>
+      </dd>
+
       <dt>center</dt>
       <dd>
         If true, cell's content is horizontally centered.
@@ -47,7 +53,7 @@
   </pa-demo-usage>
 
   <pa-demo-examples>
-    <pa-table columns="1fr 1fr 1fr 1fr 96px">
+    <pa-table columns="repeat(5, 1fr) 96px">
       <pa-table-header>
         <pa-table-cell
           header
@@ -66,6 +72,11 @@
         </pa-table-cell>
         <pa-table-cell
           header
+          borderRight>
+          borderRight
+        </pa-table-cell>
+        <pa-table-cell
+          header
           center>
           Center
         </pa-table-cell>
@@ -79,6 +90,7 @@
             noWrap even if super long content going over the limit of the cell, displayed thanks to paEllipsisTooltip
           </span>
         </pa-table-cell>
+        <pa-table-cell borderRight>Border on right</pa-table-cell>
         <pa-table-cell center>–</pa-table-cell>
         <pa-table-cell-menu>
           <pa-button

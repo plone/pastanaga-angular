@@ -12,4 +12,5 @@ export class TableCellComponent {
   @Input({ transform: booleanAttribute }) header = false;
   @Input({ transform: booleanAttribute }) noWrap = false;
   @Input({ transform: booleanAttribute }) center = false;
+  @Input({ transform: booleanAttribute }) borderRight = false;
 }

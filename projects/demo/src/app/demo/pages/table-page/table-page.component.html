@@ -34,7 +34,11 @@
           (sort)="sortBy()">
           Name
         </pa-table-sortable-header-cell>
-        <pa-table-cell header>Tags</pa-table-cell>
+        <pa-table-cell
+          header
+          borderRight>
+          Tags
+        </pa-table-cell>
         <pa-table-cell header>Shared with</pa-table-cell>
         <pa-table-cell header>Last updated</pa-table-cell>
         <pa-table-cell header>Size</pa-table-cell>
@@ -50,7 +54,7 @@
           (click)="clickRow(item.id)"
           clickable>
           <pa-table-cell header>{{ item.name }}</pa-table-cell>
-          <pa-table-cell>{{ item.tags }}</pa-table-cell>
+          <pa-table-cell borderRight>{{ item.tags }}</pa-table-cell>
           <pa-table-cell>{{ item.shared }}</pa-table-cell>
           <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
           <pa-table-cell>{{ item.size }}</pa-table-cell>
@@ -75,7 +79,7 @@
             noWrap>
             <span class="pa-ellipsis">{{ item.name }}</span>
           </pa-table-cell>
-          <pa-table-cell>{{ item.tags }}</pa-table-cell>
+          <pa-table-cell borderRight>{{ item.tags }}</pa-table-cell>
           <pa-table-cell>{{ item.shared }}</pa-table-cell>
           <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
           <pa-table-cell>{{ item.size }}</pa-table-cell>

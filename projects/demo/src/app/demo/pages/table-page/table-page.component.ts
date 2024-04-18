@@ -65,80 +65,75 @@ export class TablePageComponent {
   ];
   subHeader = 'Yesterday';
   code = `
-<pa-table columns="repeat(6, 1fr)">
-    <pa-table-header>
-        <pa-table-sortable-header-cell (sort)="sortBy($event)">Name</pa-table-sortable-header-cell>
-        <pa-table-cell header>Tags</pa-table-cell>
+<pa-table
+      columns="minmax(240px, 8fr) minmax(210px, 7fr) minmax(210px, 7fr) minmax(156px, 5fr) minmax(102px, 3fr) 60px">
+      <pa-table-header>
+        <pa-table-sortable-header-cell
+          [active]="sorted"
+          [isDescending]="isDescending"
+          (sort)="sortBy()">
+          Name
+        </pa-table-sortable-header-cell>
+        <pa-table-cell
+          header
+          borderRight>
+          Tags
+        </pa-table-cell>
         <pa-table-cell header>Shared with</pa-table-cell>
         <pa-table-cell header>Last updated</pa-table-cell>
         <pa-table-cell header>Size</pa-table-cell>
         <pa-table-cell-menu header>
-            <pa-button icon="more-horizontal" (click)="openMenu($event)"></pa-button>
+          <pa-button
+            icon="info"
+            (click)="openMenu($event)"></pa-button>
         </pa-table-cell-menu>
-    </pa-table-header>
-    <pa-table-row-header>Today</pa-table-row-header>
-    <pa-table-row (click)="clickRow()" clickable>
-        <pa-table-cell header>My_text_file.txt</pa-table-cell>
-        <pa-table-cell>Bonjour, Occitania, França, Jenesepas</pa-table-cell>
-        <pa-table-cell>(AC) | (GD)</pa-table-cell>
-        <pa-table-cell>Today, 9:45 AM</pa-table-cell>
-        <pa-table-cell>100 MB</pa-table-cell>
-        <pa-table-cell-menu>
-            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
-        </pa-table-cell-menu>
-    </pa-table-row>
-    <pa-table-row>
-        <pa-table-cell header>contract.pdf</pa-table-cell>
-        <pa-table-cell>Occitania</pa-table-cell>
-        <pa-table-cell>(AC)</pa-table-cell>
-        <pa-table-cell>1/2/2010</pa-table-cell>
-        <pa-table-cell>15 KB</pa-table-cell>
-        <pa-table-cell-menu>
-            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
-        </pa-table-cell-menu>
-    </pa-table-row>
-    <pa-table-row>
-        <pa-table-cell header>pelican-svgrepo-com.svg</pa-table-cell>
-        <pa-table-cell></pa-table-cell>
-        <pa-table-cell>(EB)</pa-table-cell>
-        <pa-table-cell>12/31/2007</pa-table-cell>
-        <pa-table-cell>100 bytes</pa-table-cell>
-        <pa-table-cell-menu>
-            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
-        </pa-table-cell-menu>
-    </pa-table-row>
-    <pa-table-row-header>Yesterday</pa-table-row-header>
-    <pa-table-row>
-        <pa-table-cell header noWrap><span class="pa-ellipsis">Channel #general - 2020-01-23 (UTC).htm</span></pa-table-cell>
-        <pa-table-cell></pa-table-cell>
-        <pa-table-cell>(EB) | (MP) (NI) (AC) (GD) (+3)</pa-table-cell>
-        <pa-table-cell>Yesterday, 12:56 PM</pa-table-cell>
-        <pa-table-cell>234.54 TB</pa-table-cell>
-        <pa-table-cell-menu>
-            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
-        </pa-table-cell-menu>
-    </pa-table-row>
-    <pa-table-row>
-        <pa-table-cell header>\Channel #big-important-things - 2020-01-23 (UTC).htm</pa-table-cell>
-        <pa-table-cell></pa-table-cell>
-        <pa-table-cell>(EB)</pa-table-cell>
-        <pa-table-cell>4/10/2020</pa-table-cell>
-        <pa-table-cell>24.56 MB</pa-table-cell>
-        <pa-table-cell-menu>
-            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
-        </pa-table-cell-menu>
-    </pa-table-row>
-    <pa-table-row>
-        <pa-table-cell header>document.pdf</pa-table-cell>
-        <pa-table-cell>[França X]</pa-table-cell>
-        <pa-table-cell>(EB)</pa-table-cell>
-        <pa-table-cell>11/11/2011</pa-table-cell>
-        <pa-table-cell>3.56 MB</pa-table-cell>
-        <pa-table-cell-menu>
-            <pa-button icon="more-horizontal" size="small" (click)="openMenu($event)">Menu button</pa-button>
-        </pa-table-cell-menu>
-    </pa-table-row>
-</pa-table>`;
+      </pa-table-header>
+      @for (item of [data[0], data[1], data[2]]; track item.id) {
+        <pa-table-row
+          [class.pa-selected]="rowSelected === item.id"
+          (click)="clickRow(item.id)"
+          clickable>
+          <pa-table-cell header>{{ item.name }}</pa-table-cell>
+          <pa-table-cell borderRight>{{ item.tags }}</pa-table-cell>
+          <pa-table-cell>{{ item.shared }}</pa-table-cell>
+          <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
+          <pa-table-cell>{{ item.size }}</pa-table-cell>
+          <pa-table-cell-menu>
+            <pa-button
+              icon="more-horizontal"
+              size="small"
+              (click)="openMenu($event)">
+              Menu button
+            </pa-button>
+          </pa-table-cell-menu>
+        </pa-table-row>
+      }
+      <pa-table-row-header>{{ subHeader }}</pa-table-row-header>
+      @for (item of [data[3], data[4], data[5]]; track item.id) {
+        <pa-table-row
+          [class.pa-selected]="rowSelected === item.id"
+          (click)="clickRow(item.id)"
+          clickable>
+          <pa-table-cell
+            header
+            noWrap>
+            <span class="pa-ellipsis">{{ item.name }}</span>
+          </pa-table-cell>
+          <pa-table-cell borderRight>{{ item.tags }}</pa-table-cell>
+          <pa-table-cell>{{ item.shared }}</pa-table-cell>
+          <pa-table-cell>{{ item.lastUpdate }}</pa-table-cell>
+          <pa-table-cell>{{ item.size }}</pa-table-cell>
+          <pa-table-cell-menu>
+            <pa-button
+              icon="more-horizontal"
+              size="small"
+              (click)="openMenu($event)">
+              Menu button
+            </pa-button>
+          </pa-table-cell-menu>
+        </pa-table-row>
+      }
+    </pa-table>`;
 
   rowSelected?: string;
 

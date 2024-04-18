@@ -180,6 +180,10 @@ pa-table-row-header:last-child {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  &.pa-border-right {
+    border-right: 1px solid $color-border-table;
+  }
 }
 
 .pa-table-grid--menu-cell {
