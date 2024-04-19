@@ -1,3 +1,9 @@
+# 2.65.16 (2024-04-19)
+
+### Improvements
+
+- **Input**: Support input native `min` and `max` attributes
+
 # 2.65.15 (2024-04-18)
 
 ### Improvements

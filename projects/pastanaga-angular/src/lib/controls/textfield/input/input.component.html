@@ -23,6 +23,8 @@
       [attr.placeholder]="placeholder"
       [attr.autocomplete]="noAutoComplete ? 'off' : undefined"
       [attr.autocapitalize]="autocapitalize || undefined"
+      [min]="min"
+      [max]="max"
       [readonly]="readonly"
       [paInputFormatter]="sanitizeHtmlTags"
       (focus)="onFocus($event)"

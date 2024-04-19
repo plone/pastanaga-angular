@@ -6,6 +6,7 @@ import {
   Component,
   ElementRef,
   Input,
+  numberAttribute,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -38,6 +39,8 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
   }
 
   @Input({ transform: trimString }) icon = '';
+  @Input({ transform: numberAttribute }) min?: number;
+  @Input({ transform: numberAttribute }) max?: number;
   @Input({ transform: booleanAttribute }) iconOnRight = false;
   @Input({ transform: trimString }) autocapitalize = '';
 
