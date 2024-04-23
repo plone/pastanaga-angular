@@ -32,6 +32,7 @@
         <pa-toggle
           id="firstToggle"
           name="firstToggle"
+          [withBackground]="withBackground"
           [(ngModel)]="firstToggle"
           [hasFocus]="focusedFirstToggle"
           [labelOnRight]="labelOnRight"
@@ -52,6 +53,7 @@
             name="toggle"
             formControlName="toggle"
             help="help text"
+            [withBackground]="withBackground"
             [labelOnRight]="labelOnRight"
             [hasFocus]="focusedToggle"
             (statusChange)="secondToggleStatus = $event">
@@ -65,24 +67,28 @@
     <div>
       <pa-toggle
         labelOnRight
+        [withBackground]="withBackground"
         [disabled]="disabled"
         help="Allows to do nice things">
         Enable some nice feature
       </pa-toggle>
       <pa-toggle
         labelOnRight
+        [withBackground]="withBackground"
         [disabled]="disabled"
         help="Displays great stuff">
         Another great feature
       </pa-toggle>
       <pa-toggle
         labelOnRight
+        [withBackground]="withBackground"
         [disabled]="disabled"
         help="Mind blowing feature">
         You're not ready for this one
       </pa-toggle>
       <pa-toggle
         labelOnRight
+        [withBackground]="withBackground"
         [disabled]="disabled"
         help="Ultimate Answer to the Question of life, the Universe and Everything related to it">
         42
@@ -119,6 +125,13 @@
         Toggle disabled
       </pa-checkbox>
     </div>
+    <div class="pa-demo-configuration-field">
+      <pa-checkbox
+        id="withBackground"
+        [(ngModel)]="withBackground">
+        With background
+      </pa-checkbox>
+    </div>
   </pa-demo-configuration>
 
   <pa-demo-usage>
@@ -149,6 +162,12 @@
       <dt>labelOnRight</dt>
       <dd>
         Display the label on the right of the toggle
+        <small>(default: false)</small>
+      </dd>
+
+      <dt>withBackground</dt>
+      <dd>
+        Display a background on the toggle box
         <small>(default: false)</small>
       </dd>
     </dl>

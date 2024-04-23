@@ -5,6 +5,25 @@ $toggle-mid-width: math.div($width-toggle, 2);
 $toggle-transition-duration: $duration-fast;
 
 .pa-field {
+  &.pa-with-background {
+    background: $background-toggle-container;
+    border-radius: $border-toggle-container;
+    padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
+    transition: background $transition-hint;
+  }
+
+  &:not(.pa-disable) {
+    cursor: pointer;
+
+    &.pa-with-background:hover {
+      background: $background-toggle-container-hover;
+
+      .pa-toggle-container .pa-toggle-slider {
+        background: $background-toggle-container-hover-slider;
+      }
+    }
+  }
+
   .pa-toggle-context {
     align-items: center;
     display: flex;
@@ -30,7 +49,6 @@ $toggle-transition-duration: $duration-fast;
       margin-top: 0;
     }
   }
-
   &.pa-disable {
     .pa-toggle-label-container {
       cursor: default;

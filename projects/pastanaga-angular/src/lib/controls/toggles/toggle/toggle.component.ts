@@ -29,6 +29,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ToggleComponent extends PaFormControlDirective implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Input({ transform: booleanAttribute }) labelOnRight = false;
   @Input({ transform: booleanAttribute }) hasFocus = false;
+  @Input({ transform: booleanAttribute }) withBackground = false;
 
   @ViewChild('inputElement') input?: ElementRef;
   @ViewChild('label') labelElement?: ElementRef;

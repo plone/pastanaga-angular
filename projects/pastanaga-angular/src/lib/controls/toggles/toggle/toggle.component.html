@@ -1,5 +1,6 @@
 <div
   class="pa-field"
+  [class.pa-with-background]="withBackground"
   [class.pa-has-help]="!!help"
   [class.pa-disable]="control.disabled"
   [class.pa-field-error]="control.dirty && control.invalid">

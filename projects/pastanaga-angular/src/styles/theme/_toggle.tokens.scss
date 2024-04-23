@@ -24,6 +24,12 @@ $color-background-toggle-slider-selected: $color-primary-regular !default;
 $color-background-toggle-slider-disabled: $color-neutral-light !default;
 $color-background-toggle-button-disabled: $color-neutral-lighter !default;
 
+// Optional toggle container
+$background-toggle-container: $color-neutral-lightest !default;
+$background-toggle-container-hover: $color-neutral-lighter !default;
+$background-toggle-container-hover-slider: $color-neutral-light !default;
+$border-toggle-container: $border-radius-container !default;
+
 // Border
 $color-border-toggle-selected: $color-background-toggle-selected !default;
 $color-border-toggle-indeterminate: $color-background-toggle-selected !default;

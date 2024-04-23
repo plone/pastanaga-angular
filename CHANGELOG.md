@@ -1,3 +1,9 @@
+# 2.65.17 (2024-04-23)
+
+### Improvements
+
+- **Toggles**: new `withBackground` option allowing to display the toggle container with a background color
+
 # 2.65.16 (2024-04-19)
 
 ### Improvements
