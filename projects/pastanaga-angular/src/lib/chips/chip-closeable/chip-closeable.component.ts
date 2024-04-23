@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BaseChip } from '../base-chip';
 
 @Component({
@@ -7,6 +7,7 @@ import { BaseChip } from '../base-chip';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipCloseableComponent extends BaseChip {
+  @Input({ transform: booleanAttribute }) readonly = false;
   @Output() closed = new EventEmitter();
 
   close($event: Event) {

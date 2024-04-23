@@ -1,5 +1,6 @@
 <div
-  class="pa-chip pa-with-button"
+  class="pa-chip"
+  [class.pa-with-button]="!readonly"
   [style.background-color]="!disabled ? backgroundColor : ''"
   [style.border-color]="!disabled ? borderColor : ''"
   [class.pa-with-avatar]="!!avatar"
@@ -25,11 +26,14 @@
     [style.color]="!disabled ? textColor : ''">
     <ng-content></ng-content>
   </span>
-  <pa-button
-    icon="cross"
-    size="small"
-    kind="secondary"
-    aspect="basic"
-    [disabled]="disabled"
-    (click)="close($event)"></pa-button>
+
+  @if (!readonly) {
+    <pa-button
+      icon="cross"
+      size="small"
+      kind="secondary"
+      aspect="basic"
+      [disabled]="disabled"
+      (click)="close($event)"></pa-button>
+  }
 </div>
