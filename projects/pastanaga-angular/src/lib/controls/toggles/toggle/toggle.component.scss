@@ -15,11 +15,15 @@ $toggle-transition-duration: $duration-fast;
   &:not(.pa-disable) {
     cursor: pointer;
 
-    &.pa-with-background:hover {
-      background: $background-toggle-container-hover;
-
+    &:hover {
       .pa-toggle-container .pa-toggle-slider {
         background: $background-toggle-container-hover-slider;
+      }
+      &.pa-with-background {
+        background: $background-toggle-container-hover;
+      }
+      .pa-toggle-container.pa-checked .pa-toggle-slider {
+        background: $color-background-toggle-slider-selected-hover;
       }
     }
   }
