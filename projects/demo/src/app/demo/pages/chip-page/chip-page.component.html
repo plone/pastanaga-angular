@@ -66,6 +66,12 @@
         disabled>
         Disabled chip
       </pa-chip-closeable>
+      <pa-chip-closeable
+        [textColor]="colorText"
+        [backgroundColor]="colorBackground"
+        readonly>
+        Readonly chip
+      </pa-chip-closeable>
       @if (first) {
         <pa-chip-closeable
           [textColor]="colorText"
@@ -247,7 +253,7 @@
     <h3><code>pa-chip-closeable</code></h3>
     <h4>Inputs</h4>
     <dl>
-      <dt>noCloseButton</dt>
+      <dt>Readonly</dt>
       <dd>
         Removes the close button from the chip.
         <small>(optional)</small>

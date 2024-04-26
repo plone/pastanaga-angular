@@ -1,3 +1,12 @@
+# 2.65.17 (2024-04-26)
+
+### Improvements
+
+- **Toggles**:
+  - new `withBackground` option allowing to display the toggle container with a background color
+  - add hover state on the toggle
+- **Closeable chip**: Support `readonly` option, hiding the close button. 
+
 # 2.65.16 (2024-04-19)
 
 ### Improvements

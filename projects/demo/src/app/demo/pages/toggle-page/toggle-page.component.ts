@@ -17,6 +17,7 @@ export class TogglePageComponent {
   focusedToggle = false;
   disabled = false;
   labelOnRight = false;
+  withBackground = false;
 
   code = `<pa-toggle
     id="firstToggle"
