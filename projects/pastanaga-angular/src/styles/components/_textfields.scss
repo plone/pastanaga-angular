@@ -41,6 +41,9 @@
     }
     &.pa-disabled {
       border-color: $border-color-field-disabled;
+      .pa-field-label {
+        color: $color-text-field-label-disabled;
+      }
     }
     &.pa-readonly {
       .pa-field-label {

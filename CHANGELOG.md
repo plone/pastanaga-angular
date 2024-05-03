@@ -1,3 +1,9 @@
+# 2.65.18 (2024-05-03)
+
+### Bug fix
+
+- **Text fields**: Put back disabled color on disabled fields’ label
+
 # 2.65.17 (2024-04-26)
 
 ### Improvements
