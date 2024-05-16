@@ -78,8 +78,8 @@
         &:disabled {
           // prettier-ignore
           background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="' + #{$color-check-toggle-disabled} + '" fill-rule="evenodd"/></svg>');
-          border-color: $color-border-toggle-unselected-disabled;
           background-color: $color-border-toggle-selected-disabled;
+          border-color: $color-border-toggle-unselected-disabled;
         }
       }
       &:disabled {
@@ -154,16 +154,6 @@
   }
 
   &:not(.horizontal-group) {
-    pa-radio {
-      border-radius: $border-radius-container;
-      padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
-      transition: background $transition-hint;
-
-      &:not(.pa-disabled):hover {
-        background: $background-radio-group-hover-item;
-      }
-    }
-
     .pa-toggle .pa-checkbox-wrapper {
       width: 100%;
 
@@ -172,8 +162,24 @@
       }
     }
 
+    &:not(.background-striped) {
+      gap: $gap-radio-group;
+
+      pa-radio :not(.pa-disabled):not(:checked):hover .pa-toggle-control {
+        border-color: $color-border-toggle-selected-hover;
+      }
+    }
+
     &.background-striped {
       pa-radio {
+        border-radius: $border-radius-container;
+        padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
+        transition: background $transition-hint;
+
+        &:not(.pa-disabled):hover {
+          background: $background-radio-group-hover-item;
+        }
+
         &:nth-of-type(odd) {
           background: $background-radio-group-odd-item;
         }
