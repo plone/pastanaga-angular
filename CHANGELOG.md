@@ -1,3 +1,9 @@
+# 2.65.19 (2024-05-16)
+
+### Improvements
+
+- **Date picker**: add `isInPopup` option allowing to use a date picker within a popup
+
 # 2.65.18 (2024-05-03)
 
 ### Bug fix

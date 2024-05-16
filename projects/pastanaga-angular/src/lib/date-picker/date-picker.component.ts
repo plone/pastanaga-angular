@@ -84,6 +84,7 @@ function DateValidator(): ValidatorFn {
 })
 export class DatePickerComponent extends PaFormControlDirective {
   @Input({ transform: booleanAttribute }) externalLabel = false;
+  @Input({ transform: booleanAttribute }) isInPopup = false;
   @Input({ transform: trimString }) label?: string;
   @Input()
   override set disabled(value: any) {
