@@ -18,6 +18,7 @@
   #popup
   (onOpen)="openWeeks()"
   (onClose)="handlePopupClose()"
+  [keepOthersOpen]="isInPopup"
   class="calendar-popup">
   @switch (mode) {
     @case ('weeks') {
