@@ -1,3 +1,13 @@
+# 2.65.20 (2024-05-30)
+
+### Improvements
+
+- **Modals**:
+  - Add tokens for confirmation dialog width and modals border radius
+  - Remove padding on confirmation dialog footer as it is needed only on advanced modals
+- **Radio-group**:
+  - Don't display hover state on radio button for groups without background stripes
+
 # 2.65.19 (2024-05-16)
 
 ### Improvements

@@ -1,10 +1,12 @@
 @import 'palette.tokens';
 @import 'spacing.tokens';
 
-$background-color-modal: $color-light-stronger;
-$padding-modal: rhythm(4);
-$spacing-dialog-sections: rhythm(3);
-$height-header-footer-modal: rhythm(12);
+$background-color-modal: $color-light-stronger !default;
+$padding-modal: rhythm(4) !default;
+$spacing-dialog-sections: rhythm(3) !default;
+$height-header-footer-modal: rhythm(12) !default;
+$width-confirm-dialog: rhythm(48) !default;
+$border-radius-modal: $border-radius-default !default;
 
 @mixin centered-dialog() {
   top: 50%;

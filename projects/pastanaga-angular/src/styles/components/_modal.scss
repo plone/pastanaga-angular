@@ -22,6 +22,7 @@
 .pa-modal {
   align-items: stretch;
   border: 0;
+  border-radius: $border-radius-modal;
   display: flex;
   flex-flow: column nowrap;
   opacity: 0;
@@ -70,7 +71,6 @@
     gap: rhythm(2);
     height: $height-header-footer-modal;
     justify-content: center;
-    padding: 0 $padding-modal;
   }
 
   .scrolling-content {
