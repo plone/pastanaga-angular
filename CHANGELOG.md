@@ -1,3 +1,9 @@
+# 2.65.21 (2024-05-31)
+
+### Improvements
+
+- **Select**: Display option’s help on the selected value when provided in `options` list. 
+
 # 2.65.20 (2024-05-30)
 
 ### Improvements

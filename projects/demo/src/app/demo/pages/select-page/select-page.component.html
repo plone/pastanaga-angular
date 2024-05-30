@@ -72,7 +72,20 @@
       <pa-select label="Long options">
         <pa-option value="long1">This is a quite long option which should show an ellipsis</pa-option>
         <pa-option value="long2">This option is even longer and should also show an ellipsis</pa-option>
+        <pa-option value="long3">This option has a label and a description and should also show an ellipsis</pa-option>
       </pa-select>
+      <br />
+      <p>
+        Show select containing options with description:
+        <small>
+          working only with options provided through
+          <code>options</code>
+          Input
+        </small>
+      </p>
+      <pa-select
+        value="desc1"
+        [options]="optionsWithDescription"></pa-select>
     </div>
     <br />
     <pa-tabs>

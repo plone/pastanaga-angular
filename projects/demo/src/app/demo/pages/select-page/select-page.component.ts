@@ -8,6 +8,23 @@ import { OptionHeaderModel, OptionModel, OptionSeparator } from '@guillotinaweb/
 export class SelectPageComponent {
   model = '';
   selectedTab = 'standalone';
+
+  optionsWithDescription: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
+    new OptionModel({ id: 'desc1', label: 'Option 1', help: 'Description 1', value: 'desc1' }),
+    new OptionModel({
+      id: 'desc2',
+      label: 'Another option with description',
+      help: 'Some description to be displayed',
+      value: 'desc2',
+    }),
+    new OptionModel({
+      id: 'desc3',
+      label: 'Super long option with description showing an ellipsis',
+      help: 'Another description to be displayed which is also really really long and should has an ellipsis as well',
+      value: 'desc3',
+    }),
+  ];
+
   dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
     new OptionHeaderModel({ id: 'audio', label: 'Audio' }),
     new OptionModel({ id: 'file1', label: 'User 1', value: 'user1' }),

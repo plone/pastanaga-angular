@@ -1,5 +1,14 @@
 @import '../variables';
 
+.pa-select-value-container {
+  display: flex;
+  flex-direction: column;
+
+  .pa-selected-help {
+    color: $color-neutral-regular;
+  }
+}
+
 .pa-select-value {
   font-weight: $font-weight-regular;
 
@@ -25,15 +34,19 @@
     cursor: pointer;
     position: absolute;
     right: $icon-right-padding;
-    top: $top-select-chevron;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform $transition-hint;
     width: $icon-width;
 
     &.opened {
-      transform: rotate(180deg);
+      transform: translateY(-50%) rotate(180deg);
     }
   }
 
   .pa-field-container {
+    position: relative;
+
     &.pa-disabled {
       color: $color-text-field-control-disabled;
       .pa-select-chevron {

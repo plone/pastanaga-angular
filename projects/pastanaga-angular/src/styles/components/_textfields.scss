@@ -109,7 +109,7 @@
 
     -webkit-appearance: none;
 
-    &:not(textarea) {
+    &:not(textarea):not(.pa-select-with-help) {
       height: $height-field-control;
     }
 
