@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {
   AccessibilityPageComponent,
+  AccordionItemPageComponent,
+  AccordionPageComponent,
   AvatarPageComponent,
   AvatarPilePageComponent,
   BreakpointPageComponent,
@@ -80,6 +82,8 @@ export const menu: IDemoMenuSection[] = [
       { view: 'datepicker', title: 'Date Picker', type: DatePickerPageComponent },
       { view: 'datetime', title: 'Date/time', type: DateTimePageComponent },
       { view: 'dropdown', title: 'Dropdown', type: DropdownPageComponent },
+      { view: 'accordion', title: 'Accordion', type: AccordionPageComponent },
+      { view: 'accordion-item', title: 'Accordion item', type: AccordionItemPageComponent },
       { view: 'expander', title: 'Expander', type: ExpanderPageComponent },
       { view: 'infinite-scroll', title: 'Infinite scroll', type: InfiniteScrollPageComponent },
       { view: 'popup', title: 'Popup', type: PopupPageComponent },

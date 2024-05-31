@@ -1,0 +1,19 @@
+<div
+  class="pa-accordion-item-header"
+  (click)="toggleAccordion()">
+  <pa-button
+    class="pa-accordion-button"
+    icon="chevron-right"
+    aspect="basic"
+    (click)="$event.stopPropagation(); toggleAccordion()">
+    {{ (expanded ? 'pastanaga.collapse' : 'pastanaga.expand') | translate }}
+  </pa-button>
+  <div class="pa-accordion-item-title">
+    <div class="title-m">{{ itemTitle }}</div>
+    <div class="body-s">{{ description }}</div>
+  </div>
+</div>
+
+<div class="pa-accordion-item-body">
+  <ng-content select="pa-accordion-item-body"></ng-content>
+</div>

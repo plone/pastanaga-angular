@@ -1,4 +1,8 @@
-# 2.65.21 (2024-05-31)
+# 2.66.0 (2024-05-31)
+
+### Feature
+
+- **Accordion**: new accordion component
 
 ### Improvements
 
