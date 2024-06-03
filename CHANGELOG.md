@@ -1,4 +1,4 @@
-# 2.66.0 (2024-05-31)
+# 2.66.0 (2024-06-03)
 
 ### Feature
 
@@ -6,7 +6,8 @@
 
 ### Improvements
 
-- **Select**: Display option’s help on the selected value when provided in `options` list. 
+- **Select**: Display option’s help on the selected value when provided in `options` list.
+- **Toggle**: Add an option `spaceBetweenLabelAndToggle` allowing to display label and toggle properly aligned on the left and on the right of the container.
 
 # 2.65.20 (2024-05-30)
 

@@ -37,6 +37,9 @@ $toggle-transition-duration: $duration-fast;
     &.pa-label-on-right {
       flex-direction: row-reverse;
     }
+    &.pa-space-between {
+      justify-content: space-between;
+    }
   }
 
   .pa-toggle-label-container {
