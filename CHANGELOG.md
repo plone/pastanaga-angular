@@ -1,4 +1,4 @@
-# 2.66.0 (2024-06-04)
+# 2.66.0 (2024-06-07)
 
 ### Feature
 
@@ -13,7 +13,9 @@
 
 ### Bug fix
 
-- **Toggle**: Trigger the click event when clicking anywhere on the toggle container  
+- **Toggle**: 
+  - Trigger the click event when clicking anywhere on the toggle container
+  - Fix label color when toggle is disabled
 
 # 2.65.20 (2024-05-30)
 

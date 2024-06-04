@@ -46,6 +46,7 @@ $toggle-transition-duration: $duration-fast;
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    flex: 1;
 
     .pa-field-label {
       cursor: pointer;
@@ -62,6 +63,7 @@ $toggle-transition-duration: $duration-fast;
     }
     .pa-field-label {
       cursor: default;
+      color: $color-text-disabled;
     }
   }
 

@@ -4,8 +4,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
+  EventEmitter,
   Input,
   OnDestroy,
+  Output,
   QueryList,
 } from '@angular/core';
 import { AccordionItemComponent } from './accordion-item/accordion-item.component';
@@ -27,12 +29,15 @@ export class AccordionComponent implements AfterViewInit, OnDestroy {
 
   @Input({ transform: booleanAttribute }) allowMultipleExpanded = false;
 
+  @Output() toggleAccordion = new EventEmitter<void>();
+
   @ContentChildren(AccordionItemComponent) items?: QueryList<AccordionItemComponent>;
 
   ngAfterViewInit() {
     this.items?.forEach((item) => {
       item.expandedChange.pipe(takeUntil(this.unsubscribeAll)).subscribe((expanded) => {
         item.expanded = expanded;
+        this.toggleAccordion.emit();
         if (!this.allowMultipleExpanded && expanded) {
           this.items?.forEach((otherItem) => {
             if (otherItem.id !== item.id) {
