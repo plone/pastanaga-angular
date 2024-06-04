@@ -1,3 +1,9 @@
+# 2.65.18 (2024-06-04)
+
+### Improvements
+
+- **Confirm dialog**: Make the modal larger and fix padding on the footer [ebrehault]
+
 # 2.65.17 (2024-04-26)
 
 ### Improvements
