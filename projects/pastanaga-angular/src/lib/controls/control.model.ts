@@ -1,3 +1,5 @@
+import { IconModel } from '../icon';
+
 export enum ControlType {
   checkbox = 'checkbox',
   radio = 'radio',
@@ -22,6 +24,8 @@ export interface IOptionModel extends IControlModel {
   destructive?: boolean;
   dontCloseOnSelect?: boolean;
   hasSeparator?: boolean;
+  iconModel?: IconModel;
+  iconOnRight?: boolean;
 }
 
 export class BaseControlModel {
@@ -59,12 +63,16 @@ export class OptionModel extends ControlModel {
   destructive: boolean;
   dontCloseOnSelect: boolean;
   hasSeparator: boolean;
+  iconModel?: IconModel;
+  iconOnRight?: boolean;
 
   constructor(data: IOptionModel) {
     super({ ...data, type: ControlType.option });
     this.destructive = data.destructive || false;
     this.dontCloseOnSelect = data.dontCloseOnSelect || false;
     this.hasSeparator = data.hasSeparator || false;
+    this.iconModel = data.iconModel;
+    this.iconOnRight = data.iconOnRight || false;
   }
 }
 

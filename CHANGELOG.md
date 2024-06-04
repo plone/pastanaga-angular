@@ -6,7 +6,9 @@
 
 ### Improvements
 
-- **Select**: Display option’s help on the selected value when provided in `options` list.
+- **Select**:
+  - Display option’s help on the selected value when provided in `options` list.
+  - Improve control model to allow better management of option’s icon when passed programmatically
 - **Toggle**: Add an option `spaceBetweenLabelAndToggle` allowing to display label and toggle properly aligned on the left and on the right of the container.
 
 ### Bug fix
