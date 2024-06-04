@@ -3,12 +3,12 @@
   [class.pa-with-background]="withBackground"
   [class.pa-has-help]="!!help"
   [class.pa-disable]="control.disabled"
-  [class.pa-field-error]="control.dirty && control.invalid">
+  [class.pa-field-error]="control.dirty && control.invalid"
+  (click)="updateState(!isChecked)">
   <div
     class="pa-toggle-context"
     [class.pa-label-on-right]="labelOnRight"
-    [class.pa-space-between]="spaceBetweenLabelAndToggle"
-    (click)="updateState(!isChecked)">
+    [class.pa-space-between]="spaceBetweenLabelAndToggle">
     @if (hasLabel) {
       <div
         class="pa-toggle-label-container"

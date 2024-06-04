@@ -63,6 +63,8 @@ $padding-accordion-body: rhythm(2);
       height: 0;
       opacity: 0;
       padding: 0 $padding-accordion-body;
+      position: relative;
+      z-index: -1;
     }
   }
 
