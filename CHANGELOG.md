@@ -4,6 +4,10 @@
 
 - **Dropdown**: better spacing for options with description
 
+### Bugfix
+
+- **Accordion**:  Fix export of accordion body directive
+
 # 2.66.0 (2024-06-07)
 
 ### Feature
