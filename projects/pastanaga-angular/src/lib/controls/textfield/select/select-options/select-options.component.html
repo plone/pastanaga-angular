@@ -14,8 +14,10 @@
       [selected]="typedOption.option.selected"
       [destructive]="typedOption.option.destructive"
       [dontCloseOnSelect]="typedOption.option.dontCloseOnSelect"
-      [icon]="typedOption.option.icon"
+      [icon]="typedOption.option.iconModel || typedOption.option.icon"
+      [iconOnRight]="typedOption.option.iconOnRight"
       [value]="typedOption.option.value"
+      [description]="typedOption.option.help"
       (selectOption)="selectOption(typedOption.option)">
       {{ typedOption.option.label }}
     </pa-option>

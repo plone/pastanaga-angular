@@ -1,6 +1,7 @@
 /*
  * Public API Surface of pastanaga-angular
  */
+export * from './lib/accordion';
 export * from './lib/avatar';
 export * from './lib/avatar-pile';
 export * from './lib/breakpoint-observer';

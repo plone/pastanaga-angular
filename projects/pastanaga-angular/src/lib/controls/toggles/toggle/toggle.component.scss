@@ -37,12 +37,16 @@ $toggle-transition-duration: $duration-fast;
     &.pa-label-on-right {
       flex-direction: row-reverse;
     }
+    &.pa-space-between {
+      justify-content: space-between;
+    }
   }
 
   .pa-toggle-label-container {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    flex: 1;
 
     .pa-field-label {
       cursor: pointer;
@@ -59,6 +63,7 @@ $toggle-transition-duration: $duration-fast;
     }
     .pa-field-label {
       cursor: default;
+      color: $color-text-disabled;
     }
   }
 

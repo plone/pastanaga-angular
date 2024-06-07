@@ -30,6 +30,7 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
   @Input({ transform: booleanAttribute }) labelOnRight = false;
   @Input({ transform: booleanAttribute }) hasFocus = false;
   @Input({ transform: booleanAttribute }) withBackground = false;
+  @Input({ transform: booleanAttribute }) spaceBetweenLabelAndToggle = false;
 
   @ViewChild('inputElement') input?: ElementRef;
   @ViewChild('label') labelElement?: ElementRef;

@@ -1,3 +1,22 @@
+# 2.66.0 (2024-06-07)
+
+### Feature
+
+- **Accordion**: new accordion component
+
+### Improvements
+
+- **Select**:
+  - Display option’s help on the selected value when provided in `options` list.
+  - Improve control model to allow better management of option’s icon when passed programmatically
+- **Toggle**: Add an option `spaceBetweenLabelAndToggle` allowing to display label and toggle properly aligned on the left and on the right of the container.
+
+### Bug fix
+
+- **Toggle**: 
+  - Trigger the click event when clicking anywhere on the toggle container
+  - Fix label color when toggle is disabled
+
 # 2.65.20 (2024-05-30)
 
 ### Improvements

@@ -1,0 +1,81 @@
+@import '../../../styles/variables';
+
+$padding-accordion-body: rhythm(2);
+
+:host {
+  border: 1px solid $color-neutral-light;
+  border-bottom: none;
+  display: block;
+
+  &:first-of-type {
+    border-top-left-radius: $border-radius-default;
+    border-top-right-radius: $border-radius-default;
+  }
+  &:last-of-type {
+    border-bottom: 1px solid $color-neutral-light;
+    border-bottom-left-radius: $border-radius-default;
+    border-bottom-right-radius: $border-radius-default;
+  }
+
+  .pa-accordion-item-header {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: rhythm(1);
+    padding: rhythm(1.5) rhythm(2) rhythm(1.5) rhythm(1);
+    position: relative;
+
+    &:after {
+      background: $color-neutral-lighter;
+      bottom: 0;
+      content: '';
+      height: 0;
+      left: rhythm(2);
+      position: absolute;
+      width: calc(100% - #{rhythm(4)});
+    }
+
+    .pa-accordion-item-title {
+      flex: 1;
+
+      .body-s {
+        color: $color-neutral-regular;
+      }
+    }
+
+    .pa-accordion-button ::ng-deep .pa-button {
+      transition: transform $transition-hint;
+    }
+  }
+
+  .pa-accordion-item-body {
+    height: calc(var(--contentHeight, 1px) + #{$padding-accordion-body} * 2);
+    opacity: 1;
+    padding: $padding-accordion-body;
+    transition:
+      height $transition-response,
+      opacity $transition-hint,
+      padding $transition-response;
+  }
+
+  &.pa-accordion-collapsed {
+    .pa-accordion-item-body {
+      height: 0;
+      opacity: 0;
+      padding: 0 $padding-accordion-body;
+      position: relative;
+      z-index: -1;
+    }
+  }
+
+  &:not(.pa-accordion-collapsed) {
+    .pa-accordion-item-header {
+      .pa-accordion-button ::ng-deep .pa-button {
+        transform: rotate(90deg);
+      }
+      &:after {
+        height: 1px;
+      }
+    }
+  }
+}

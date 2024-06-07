@@ -60,6 +60,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   mouseDown = false;
 
   dropdownOptions: OptionType[] = [];
+  selectedOption?: OptionModel;
   isOpened = false;
   override fieldType = 'select';
 
@@ -205,6 +206,9 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     if (this.dropdownOptions.length) {
       const selectedOption = this.dropdownOptions.find((option) => (option as OptionModel).value === value);
       label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
+      if (selectedOption instanceof OptionModel) {
+        this.selectedOption = selectedOption;
+      }
     }
     if (!label && !!this.ngContent && this.ngContent.length) {
       const selectedOption = this.ngContent.find((option) => option.value === this.control.value);

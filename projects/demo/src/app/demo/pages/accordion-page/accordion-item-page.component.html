@@ -1,0 +1,68 @@
+<pa-demo-page>
+  <pa-demo-title>Accordion item</pa-demo-title>
+  <pa-demo-description>
+    <p>Accordion item allows to expand/collapse a section.</p>
+    <p>
+      It can be used by itself using its
+      <code>expanded</code>
+      input, or grouped in an
+      <a routerLink="/accordion">accordion</a>
+      component
+    </p>
+  </pa-demo-description>
+  <pa-demo-examples>
+    <pa-accordion-item
+      id="item1"
+      itemTitle="Standalone accordion item"
+      description="Some description also visible in the header"
+      [(expanded)]="expanded">
+      <pa-accordion-item-body>
+        <p>Some content</p>
+        <p>Some content that can be long or short.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </p>
+      </pa-accordion-item-body>
+    </pa-accordion-item>
+  </pa-demo-examples>
+
+  <pa-demo-usage>
+    <h3>Inputs</h3>
+    <dl>
+      <dt>description</dt>
+      <dd>Optional description to be displayed below the title in the item’s header.</dd>
+      <dt>expanded</dt>
+      <dd>
+        Boolean controlling the state of the item: expanded when true.
+        <small>(false, and so collapsed by default)</small>
+      </dd>
+      <dt>id</dt>
+      <dd>
+        Item identifier.
+        <small>required</small>
+      </dd>
+      <dt>itemTitle</dt>
+      <dd>Item title to be displayed on the item’s header</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <dl>
+      <dt>expandedChange</dt>
+      <dd>
+        Event emitted when toggling the accordion item. It contains a boolean corresponding to the new item state.
+      </dd>
+    </dl>
+
+    <h3>Directive</h3>
+    <!-- prettier-ignore -->
+    <p>The item content must be wrapped in <code>pa-accordion-item-body</code> tag.</p>
+  </pa-demo-usage>
+
+  <pa-demo-code>
+    <pre><code>{{code}}</code></pre>
+  </pa-demo-code>
+</pa-demo-page>

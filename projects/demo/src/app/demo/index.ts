@@ -4,6 +4,7 @@ export * from './demo.module';
 export * from './demo-menu/demo-menu.component';
 export * from './demo-page/demo-page.component';
 
+export * from './pages/accordion-page';
 export * from './pages/accessibility/accessibility-page.component';
 export * from './pages/avatar-page/avatar-page.component';
 export * from './pages/avatar-pile-page/avatar-pile-page.component';
@@ -39,6 +40,7 @@ export * from './pages/native-text-field-page/native-text-field-page.component';
 export * from './pages/palette-page/palette-page.component';
 export * from './pages/popover-page/popover-page.component';
 export * from './pages/popup-page/popup-page.component';
+export * from './pages/radio-page/radio-page.component';
 export * from './pages/scroll-pages';
 export * from './pages/scrollbar-page/scrollbar-page.component';
 export * from './pages/select-page';

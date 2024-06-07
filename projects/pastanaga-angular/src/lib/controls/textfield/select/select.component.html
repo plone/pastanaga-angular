@@ -15,12 +15,11 @@
       tabindex="0"
       cdkMonitorElementFocus
       sameWidth
-      paEllipsisTooltip
-      [paEllipsisContent]="displayedValue"
       [class.pa-field-control-filled]="hasValue || isOpened"
       [class.read-only]="readonly"
       [class.disabled]="control.disabled"
       [class.expanded]="isOpened"
+      [class.pa-select-with-help]="selectedOption && selectedOption.help"
       [id]="id"
       [attr.name]="name"
       [attr.aria-label]="label"
@@ -31,12 +30,24 @@
       (mousedown)="onMouseDown()"
       (mouseup)="onMouseUp()"
       (cdkFocusChange)="onControlFocused($event)">
-      <span
-        class="pa-select-value"
-        [class.placeholder]="!hasValue"
-        [class.active]="isOpened">
-        {{ displayedValue }}
-      </span>
+      <div class="pa-select-value-container">
+        <span
+          class="pa-select-value"
+          paEllipsisTooltip
+          [paEllipsisContent]="displayedValue"
+          [class.placeholder]="!hasValue"
+          [class.active]="isOpened">
+          {{ displayedValue }}
+        </span>
+        @if (selectedOption && selectedOption.help) {
+          <span
+            class="pa-selected-help body-xs"
+            paEllipsisTooltip
+            [paEllipsisContent]="selectedOption.help">
+            {{ selectedOption.help }}
+          </span>
+        }
+      </div>
     </div>
 
     <label
