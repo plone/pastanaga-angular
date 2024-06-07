@@ -1,3 +1,9 @@
+# 2.66.1 (2024-06-10)
+
+### Improvements
+
+- **Dropdown**: better spacing for options with description
+
 # 2.66.0 (2024-06-07)
 
 ### Feature
