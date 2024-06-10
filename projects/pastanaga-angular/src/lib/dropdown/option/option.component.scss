@@ -17,11 +17,7 @@
   }
 
   &.pa-option-with-description {
-    padding: rhythm(0.25) $padding-menu-option-side;
-
-    .pa-option-content {
-      margin-bottom: calc(-1 * #{rhythm(0.5)});
-    }
+    padding: rhythm(1) $padding-menu-option-side;
   }
 
   .pa-option-text-wrapper {
