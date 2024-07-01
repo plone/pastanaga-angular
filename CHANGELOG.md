@@ -1,3 +1,11 @@
+# 2.66.2 (2024-07-01)
+
+### Bugfixes
+
+- **Table**:
+  - Fix first row corners on table with borders and without header
+  - Prevent double border on last row without the need of adding `last` attribute on rows
+
 # 2.66.1 (2024-06-10)
 
 ### Improvements

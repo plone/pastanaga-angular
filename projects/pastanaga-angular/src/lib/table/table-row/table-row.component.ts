@@ -10,5 +10,4 @@ export class TableRowComponent {
   @Input({ transform: booleanAttribute }) clickable = false;
   @Input({ transform: booleanAttribute }) disabled = false;
   @Input({ transform: booleanAttribute }) hoverable = false;
-  @Input({ transform: booleanAttribute }) last = false;
 }
