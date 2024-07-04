@@ -62,6 +62,7 @@ $padding-accordion-body: rhythm(2);
     .pa-accordion-item-body {
       height: 0;
       opacity: 0;
+      overflow: hidden;
       padding: 0 $padding-accordion-body;
       position: relative;
       z-index: -1;

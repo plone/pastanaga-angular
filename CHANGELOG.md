@@ -1,3 +1,9 @@
+# 2.66.3 (2024-07-04)
+
+### Bugfixes
+
+- **Accordion**: prevent collapsed accordion to overflow
+
 # 2.66.2 (2024-07-01)
 
 ### Bugfixes
