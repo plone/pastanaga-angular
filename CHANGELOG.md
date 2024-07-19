@@ -1,3 +1,13 @@
+# 2.66.4 (2024-07-19)
+
+### Improvements
+
+- **Popup**: Prevent popups from overlapping the component containing the `PopupDirective` when there is not enough space
+
+### Bugfixes
+
+- **Select**: Hide the help text when no option is selected
+
 # 2.66.3 (2024-07-04)
 
 ### Bugfixes

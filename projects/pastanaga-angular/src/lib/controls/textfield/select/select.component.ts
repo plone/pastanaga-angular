@@ -206,9 +206,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     if (this.dropdownOptions.length) {
       const selectedOption = this.dropdownOptions.find((option) => (option as OptionModel).value === value);
       label = !!selectedOption ? (selectedOption as OptionModel).label : undefined;
-      if (selectedOption instanceof OptionModel) {
-        this.selectedOption = selectedOption;
-      }
+      this.selectedOption = selectedOption instanceof OptionModel ? selectedOption : undefined;
     }
     if (!label && !!this.ngContent && this.ngContent.length) {
       const selectedOption = this.ngContent.find((option) => option.value === this.control.value);

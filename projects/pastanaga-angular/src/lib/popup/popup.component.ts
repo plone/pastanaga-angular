@@ -40,6 +40,7 @@ export class PopupComponent implements OnInit, OnDestroy {
   popupType: 'popup' | 'dropdown' | 'menu' = 'popup';
   isDisplayed = false;
   style?: any;
+  popupHolder?: HTMLElement;
 
   private _id = '';
   private _handlers: (() => void)[] = [];
@@ -152,9 +153,10 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
     if (diffY > 0) {
       const currentTop = element.style.top || '';
-      if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight) {
+      const holderHeight = this.popupHolder?.clientHeight || 0;
+      if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > (this._originalHeight + holderHeight)) {
         // enough space above, we display the dropdown on top
-        element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${POPUP_OFFSET * 2}px)`;
+        element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${holderHeight}px - ${POPUP_OFFSET * 2}px)`;
         return true;
       } else if (!!currentTop) {
         // not enough space, we just align the dropdown bottom with the parent bottom
