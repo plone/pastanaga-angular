@@ -21,7 +21,16 @@ import { takeUntil, throttleTime } from 'rxjs/operators';
   exportAs: 'paPopupRef',
 })
 export class PopupDirective implements OnInit, OnChanges, OnDestroy {
-  @Input() paPopup?: PopupComponent | null;
+  @Input()
+  set paPopup(popup: PopupComponent | undefined | null) {
+    if (popup) {
+      popup.popupHolder = this.element.nativeElement;
+    }
+    this._paPopup = popup;
+  }
+  get paPopup() {
+    return this._paPopup;
+  }
   @Input() popupPosition?: PositionStyle;
   @Input({ transform: numberAttribute }) popupVerticalOffset = POPUP_OFFSET;
   @Input({ transform: booleanAttribute }) alignPopupOnLeft = false;
@@ -31,6 +40,7 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
   @Input({ transform: booleanAttribute }) popupDisabled = false;
   @Input({ transform: booleanAttribute }) openOnly = false;
 
+  private _paPopup?: PopupComponent | null;
   private _handlers: (() => void)[] = [];
   private _scrollOrResize = new Subject<Event>();
   private _terminator = new Subject<void>();
