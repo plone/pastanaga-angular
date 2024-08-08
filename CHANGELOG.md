@@ -1,3 +1,9 @@
+# 2.67.0 (2024-08-08)
+
+### Improvements
+
+- Upgrade to Angular 18 
+
 # 2.66.4 (2024-07-19)
 
 ### Improvements

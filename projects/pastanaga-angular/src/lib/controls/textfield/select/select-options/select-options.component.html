@@ -1,4 +1,4 @@
-@for (typedOption of typedOptions; track typedOption) {
+@for (typedOption of typedOptions; track typedOption.id) {
   @if (typedOption.type === 'header' && !!typedOption.header) {
     <pa-option-header>
       {{ typedOption.header.label }}

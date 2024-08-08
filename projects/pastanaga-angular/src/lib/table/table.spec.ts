@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { TableHeaderDirective } from './table.directives';
@@ -62,7 +62,7 @@ describe('Table', () => {
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [MockModule(PaFocusableModule)],
       declarations: [

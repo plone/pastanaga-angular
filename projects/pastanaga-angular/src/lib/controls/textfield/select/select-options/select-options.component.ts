@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../control.model';
 
+let optionId = 0;
+
 @Component({
   selector: 'pa-select-options',
   templateUrl: './select-options.component.html',
@@ -11,19 +13,20 @@ export class SelectOptionsComponent {
     this.typedOptions = (values || []).map((value) => {
       switch (value.type) {
         case 'header':
-          return { type: 'header', header: value as OptionHeaderModel };
+          return { id: optionId++, type: 'header', header: value as OptionHeaderModel };
         case 'option':
-          return { type: 'option', option: value as OptionModel };
+          return { id: optionId++, type: 'option', option: value as OptionModel };
         case 'separator':
-          return { type: 'separator', separator: value as OptionSeparator };
+          return { id: optionId++, type: 'separator', separator: value as OptionSeparator };
         default:
-          return { type: 'null' };
+          return { id: optionId++, type: 'null' };
       }
     });
   }
   @Output() optionSelected = new EventEmitter<OptionModel>();
 
   typedOptions: {
+    id: number;
     type: 'header' | 'separator' | 'option' | 'null';
     option?: OptionModel;
     header?: OptionHeaderModel;
