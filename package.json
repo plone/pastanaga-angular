@@ -30,7 +30,7 @@
     "@angular/platform-browser-dynamic": "^18.1.4",
     "@angular/router": "^18.1.4",
     "@ng-web-apis/common": "^2.1.0",
-    "angular-svg-icon": "^17.0.0",
+    "angular-svg-icon": "^18.0.1",
     "date-fns": "^3.6.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.4.0",
