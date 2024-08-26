@@ -18,7 +18,32 @@ export class AccordionItemPageComponent {
   description="Some description also visible in the header"
   [(expanded)]="expanded">
   <pa-accordion-item-body>
-    Some content
+    Some static content
   </pa-accordion-item-body>
 </pa-accordion-item>`;
+
+  conditionalExampleTemplate = `<pa-accordion-item
+  #myAccordionItem
+  id="item1"
+  itemTitle="Standalone accordion item"
+  description="Some description also visible in the header"
+  [(expanded)]="expanded">
+  <pa-accordion-item-body>
+    <p>Some static content.</p>
+    @if (dynamicContent) {
+      <p>Some dynamic content.</p>
+    }
+  </pa-accordion-item-body>
+</pa-accordion-item>`;
+
+  updateHeightExample = `export class MyComponent {
+  @ViewChild('myAccordionItem', { read: AccordionItemComponent }) myAccordionItem?: AccordionItemComponent;
+  expanded = false;
+  dynamicContent = false;
+
+  toggleDynamicContent() {
+    this.dynamicContent = !this.dynamicContent;
+    this.myAccordionItem?.updateContentHeight();
+  }
+}`;
 }

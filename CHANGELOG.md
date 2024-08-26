@@ -1,3 +1,11 @@
+# 2.67.1 (2024-08-26)
+
+### Improvements
+
+- **Accordion**:
+  - Allow the usage of HTML tags in `accordion-item` description 
+  - Add documentation on how to update the accordion item height
+
 # 2.67.0 (2024-08-08)
 
 ### Improvements
