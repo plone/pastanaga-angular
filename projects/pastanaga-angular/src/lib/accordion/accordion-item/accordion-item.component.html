@@ -10,7 +10,9 @@
   </pa-button>
   <div class="pa-accordion-item-title">
     <div class="title-m">{{ itemTitle }}</div>
-    <div class="body-s">{{ description }}</div>
+    <div
+      class="body-s"
+      [innerHTML]="description"></div>
   </div>
 </div>
 

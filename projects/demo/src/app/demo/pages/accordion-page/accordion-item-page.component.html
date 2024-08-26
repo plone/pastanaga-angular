@@ -63,6 +63,20 @@
   </pa-demo-usage>
 
   <pa-demo-code>
+    <h4>Static accordion item:</h4>
     <pre><code>{{code}}</code></pre>
+
+    <h4>updateContentHeight method</h4>
+    <!-- prettier-ignore -->
+    <p>
+      When the content of an accordion item is dynamically loaded, or when it contains some blocks conditionally
+      visible, you may need the component to update its height. <code>accordion-item</code> component includes a public method <code>updateContentHeight</code> to do so.
+    </p>
+    <p>For example, given the following template:</p>
+    <pre><code>{{conditionalExampleTemplate}}</code></pre>
+
+    <!-- prettier-ignore -->
+    <p>We then reference the accordion item in the component, so we can call <code>updateContentHeight</code> whenever we need.</p>
+    <pre><code>{{updateHeightExample}}</code></pre>
   </pa-demo-code>
 </pa-demo-page>
