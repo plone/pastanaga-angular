@@ -34,6 +34,16 @@ export class AccordionComponent implements AfterViewInit, OnDestroy {
   @ContentChildren(AccordionItemComponent) items?: QueryList<AccordionItemComponent>;
 
   ngAfterViewInit() {
+    this.items?.changes.subscribe(() => this.accordionItemsUpdated());
+  }
+
+  ngOnDestroy() {
+    this.unsubscribeAll.next();
+    this.unsubscribeAll.complete();
+  }
+
+  private accordionItemsUpdated() {
+    this.unsubscribeAll.next();
     this.items?.forEach((item) => {
       item.expandedChange.pipe(takeUntil(this.unsubscribeAll)).subscribe((expanded) => {
         item.expanded = expanded;
@@ -47,10 +57,5 @@ export class AccordionComponent implements AfterViewInit, OnDestroy {
         }
       });
     });
-  }
-
-  ngOnDestroy() {
-    this.unsubscribeAll.next();
-    this.unsubscribeAll.complete();
   }
 }
