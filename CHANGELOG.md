@@ -1,3 +1,9 @@
+# 2.67.2 (2024-08-27)
+
+### Improvements
+
+- **Accordion**: update event listeners on accordion items whenever they change 
+
 # 2.67.1 (2024-08-26)
 
 ### Improvements
