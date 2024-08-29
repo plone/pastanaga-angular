@@ -1,3 +1,9 @@
+# 2.67.3 (2024-08-29)
+
+### Bug fix
+
+- **Accordion**: initialize accordion event listener properly for static accordions 
+
 # 2.67.2 (2024-08-27)
 
 ### Improvements

@@ -34,6 +34,7 @@ export class AccordionComponent implements AfterViewInit, OnDestroy {
   @ContentChildren(AccordionItemComponent) items?: QueryList<AccordionItemComponent>;
 
   ngAfterViewInit() {
+    this.accordionItemsUpdated();
     this.items?.changes.subscribe(() => this.accordionItemsUpdated());
   }
 
