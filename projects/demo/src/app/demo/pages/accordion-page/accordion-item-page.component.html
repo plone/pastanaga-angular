@@ -28,13 +28,40 @@
         </p>
       </pa-accordion-item-body>
     </pa-accordion-item>
+    <pa-accordion-item
+      id="item2"
+      itemTitle="Another accordion item with some extra content in its description"
+      description="Some description also visible in the header"
+      [(expanded)]="expanded2">
+      <pa-accordion-item-extra-description>
+        <p>
+          Any extra content can be added within
+          <code>pa-accordion-item-extra-description</code>
+          directive.
+        </p>
+        <pa-button (click)="$event.preventDefault(); $event.stopPropagation()">Some button</pa-button>
+      </pa-accordion-item-extra-description>
+      <pa-accordion-item-body>
+        <p>Some content</p>
+        <p>Some content that can be long or short.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </p>
+      </pa-accordion-item-body>
+    </pa-accordion-item>
   </pa-demo-examples>
 
   <pa-demo-usage>
     <h3>Inputs</h3>
     <dl>
       <dt>description</dt>
-      <dd>Optional description to be displayed below the title in the item’s header.</dd>
+      <!-- prettier-ignore -->
+      <dd>Optional description to be displayed below the title in the item’s header.
+        The description is displayed with an <code>innerHTML</code> block, so it can contain simple HTML markup.</dd>
       <dt>expanded</dt>
       <dd>
         Boolean controlling the state of the item: expanded when true.
@@ -57,14 +84,19 @@
       </dd>
     </dl>
 
-    <h3>Directive</h3>
+    <h3>Directives</h3>
     <!-- prettier-ignore -->
     <p>The item content must be wrapped in <code>pa-accordion-item-body</code> tag.</p>
+    <!-- prettier-ignore -->
+    <p>Whenever you need to display some components in the accordion item description, you can use the <code>pa-accordion-item-extra-description</code> directive.</p>
   </pa-demo-usage>
 
   <pa-demo-code>
     <h4>Static accordion item:</h4>
     <pre><code>{{code}}</code></pre>
+
+    <h4>Static accordion item with extra content in its description:</h4>
+    <pre><code>{{codeWithExtraContent}}</code></pre>
 
     <h4>updateContentHeight method</h4>
     <!-- prettier-ignore -->
