@@ -1,3 +1,9 @@
+# 2.67.4 (2024-08-30)
+
+### Improvements
+
+- **Accordion**: Support extra description content in accordion items.
+
 # 2.67.3 (2024-08-29)
 
 ### Bug fix

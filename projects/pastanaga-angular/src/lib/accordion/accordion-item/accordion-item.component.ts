@@ -22,6 +22,12 @@ import { PaTranslateModule } from '../../translate';
 })
 export class AccordionBodyDirective {}
 
+@Directive({
+  selector: 'pa-accordion-item-extra-description',
+  standalone: true,
+})
+export class AccordionExtraDescriptionDirective {}
+
 @Component({
   selector: 'pa-accordion-item',
   standalone: true,
