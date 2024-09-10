@@ -1,3 +1,9 @@
+# 2.67.5 (2024-09-10)
+
+### Bug fix
+
+- **Select**: Don't keep active state when selecting option
+
 # 2.67.4 (2024-08-30)
 
 ### Improvements

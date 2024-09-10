@@ -169,6 +169,8 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     if (!option.disabled && this.isActive && option.value !== this.control.value) {
       this.control.patchValue(option.value);
       this.optionsDropdown?.close();
+      this.isOpened = false;
+      this.cdr.detectChanges();
     }
   }
 
