@@ -92,6 +92,7 @@ export class ToggleComponent extends PaFormControlDirective implements OnInit, O
   updateState(event: boolean) {
     if (!this.control.disabled) {
       this.control.setValue(event);
+      this.control.markAsDirty();
     }
   }
 

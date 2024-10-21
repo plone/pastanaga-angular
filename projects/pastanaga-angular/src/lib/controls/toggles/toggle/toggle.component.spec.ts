@@ -141,6 +141,7 @@ describe('ToggleComponent', () => {
       spectator.detectChanges();
       tick();
       expect(host.form.value.checked).toEqual(false);
+      expect(host.form.dirty).toEqual(true);
     }));
 
     it('should set checked state if true initially', () => {
