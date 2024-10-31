@@ -1,37 +1,37 @@
 {
-    "name": "@guillotinaweb/pastanaga-angular",
-    "description": "Provides Pastanaga UI elements as Angular components",
-    "version": "2.67.6",
-    "license": "MIT",
-    "keywords": [
-        "angular",
-        "pastanaga"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/plone/pastanaga-angular"
-    },
-    "bugs": {
-        "url": "https://github.com/plone/pastanaga-angular/issues"
-    },
-    "peerDependencies": {
-        "@angular/animations": "^17.0.6",
-        "@angular/cdk": "^17.0.3",
-        "@angular/common": "^17.0.6",
-        "@angular/core": "^17.0.6",
-        "@angular/forms": "^17.0.6",
-        "@angular/platform-browser": "^17.0.6",
-        "@angular/platform-browser-dynamic": "^17.0.6",
-        "@angular/router": "^17.0.6",
-        "@ng-web-apis/common": "^2.1.0",
-        "angular-svg-icon": "^17.0.0",
-        "date-fns": "^3.0.0",
-        "rxjs": "^7.8.0"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "dependencies": {
-        "tslib": "^2.4.0"
-    }
+  "name": "@guillotinaweb/pastanaga-angular",
+  "description": "Provides Pastanaga UI elements as Angular components",
+  "version": "2.67.7",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "pastanaga"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plone/pastanaga-angular"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/pastanaga-angular/issues"
+  },
+  "peerDependencies": {
+    "@angular/animations": "^17.0.6",
+    "@angular/cdk": "^17.0.3",
+    "@angular/common": "^17.0.6",
+    "@angular/core": "^17.0.6",
+    "@angular/forms": "^17.0.6",
+    "@angular/platform-browser": "^17.0.6",
+    "@angular/platform-browser-dynamic": "^17.0.6",
+    "@angular/router": "^17.0.6",
+    "@ng-web-apis/common": "^2.1.0",
+    "angular-svg-icon": "^17.0.0",
+    "date-fns": "^3.0.0",
+    "rxjs": "^7.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tslib": "^2.4.0"
+  }
 }
