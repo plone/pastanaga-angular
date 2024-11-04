@@ -1,9 +1,15 @@
+# 2.67.7 (2024-11-04)
+
+### Bug fix
+
+- **Popup**: Fix parent container position on iPhone Safari
+
 # 2.67.6 (2024-10-21)
 
 ### Bug fix
 
 - **Toggle**: mark as dirty when the user changes the value
-ss
+
 # 2.67.5 (2024-09-10)
 
 ### Bug fix

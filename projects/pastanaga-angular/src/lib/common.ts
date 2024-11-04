@@ -75,7 +75,7 @@ export function getFixedRootParent(element: HTMLElement): HTMLElement {
     style.transform !== 'none' ||
     style.perspective !== 'none' ||
     style.filter !== 'none' ||
-    style.containerType !== 'normal'
+    (!!style.containerType && style.containerType !== 'normal')
   ) {
     return element;
   } else {
