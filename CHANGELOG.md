@@ -1,3 +1,9 @@
+# 2.67.8 (2024-11-25)
+
+### Improvements
+
+- **Dropdown**: Better spacing for options with an icon aligned to the right
+
 # 2.67.7 (2024-11-04)
 
 ### Bug fix
