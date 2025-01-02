@@ -5,6 +5,7 @@ import { HeaderCell, SortableHeaderCell } from '@guillotinaweb/pastanaga-angular
   selector: 'pa-demo-table-sortable-header-page',
   templateUrl: './table-sortable-header-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableSortableHeaderPageComponent {
   codeDesktop = `<pa-table columns="repeat(4, 1fr)">

@@ -5,6 +5,7 @@ import { PaFormControlDirective, detectChanges } from '@guillotinaweb/pastanaga-
   selector: 'pa-demo-form-control-state-example',
   templateUrl: './form-control-state-example.component.html',
   styleUrls: ['./form-control-state-example.component.scss'],
+  standalone: false,
 })
 export class FormControlStateExampleComponent {
   disabled = false;

@@ -10,6 +10,7 @@ const FORMATTER_CONTROL_VALUE_ACCESSOR: Provider = {
 @Directive({
   selector: '[paInputFormatter]',
   providers: [FORMATTER_CONTROL_VALUE_ACCESSOR],
+  standalone: false,
 })
 export class InputFormatterDirective implements ControlValueAccessor {
   @Input() paInputFormatter!: (value: any) => any;

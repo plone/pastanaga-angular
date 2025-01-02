@@ -4,27 +4,27 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { fakeAsync, tick } from '@angular/core/testing';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestNoIdComponent {}
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestIdComponent {
   usedId?: string;
 }
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestNameStandaloneComponent {
   name = 'name';
 }
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestNameReactiveComponent {
   form = new FormGroup({
     first: new FormControl(),
   });
 }
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestReadonlyDisabledComponent {
   readonly?: boolean;
   disabled?: boolean;
@@ -32,7 +32,7 @@ class TestReadonlyDisabledComponent {
   control = new FormControl();
 }
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   @ViewChild('ref', { read: ElementRef }) reference?: ElementRef;
   status?: any;

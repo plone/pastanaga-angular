@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   templateUrl: './breakpoint-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BreakpointPageComponent {
   viewportSize = `export enum ViewportSize {

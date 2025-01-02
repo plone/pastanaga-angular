@@ -5,6 +5,7 @@ import { FormFieldConfigStandaloneDirective } from '../../common-doc/form-field-
   selector: 'pa-demo-date-picker-standalone-example',
   templateUrl: './date-picker-standalone-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DatePickerStandaloneExampleComponent extends FormFieldConfigStandaloneDirective {
   override updateConfig(config: any) {

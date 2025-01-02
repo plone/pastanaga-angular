@@ -4,6 +4,7 @@ import { ModalRef } from '@guillotinaweb/pastanaga-angular';
 @Component({
   templateUrl: './dialog-image-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DialogImageExampleComponent {
   constructor(public modal: ModalRef) {}
@@ -12,6 +13,7 @@ export class DialogImageExampleComponent {
 @Component({
   templateUrl: './dialog-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DialogExampleComponent {
   constructor(public modal: ModalRef) {}
@@ -32,6 +34,7 @@ export class DialogExampleComponent {
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DialogWithoutFooterExampleComponent {
   constructor(public modal: ModalRef) {}

@@ -6,6 +6,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './radio-page.component.html',
   styleUrls: ['./radio-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RadioPageComponent implements OnInit {
   favoriteSeason = 'Spring';

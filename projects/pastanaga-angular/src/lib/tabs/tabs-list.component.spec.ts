@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { PaIconModule } from '../icon';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   selectedTab = 'tab1';
 }

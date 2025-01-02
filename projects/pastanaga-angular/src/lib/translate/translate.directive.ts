@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[translate]',
+  standalone: false,
 })
 export class TranslateDirective implements AfterViewChecked, OnDestroy {
   key = '';

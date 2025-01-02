@@ -9,6 +9,7 @@ let nextUniqueId = 0;
   selector: 'pa-form-field-hint',
   templateUrl: './form-field-hint.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FormFieldHintComponent implements OnChanges {
   /**

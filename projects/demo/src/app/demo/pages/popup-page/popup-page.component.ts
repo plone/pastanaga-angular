@@ -4,6 +4,7 @@ import { PopupDirective } from '@guillotinaweb/pastanaga-angular';
 @Component({
   templateUrl: './popup-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PopupPageComponent {
   example = `<pa-button [paPopup]="myPopup" size="small">Open popup</pa-button>

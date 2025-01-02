@@ -135,6 +135,7 @@ export const menu: IDemoMenuSection[] = [
 @Component({
   selector: 'pa-demo-root',
   templateUrl: './app.component.html',
+  standalone: false,
 })
 export class AppComponent {
   menu: IDemoMenuSection[] = menu;

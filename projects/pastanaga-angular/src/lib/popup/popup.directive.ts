@@ -19,6 +19,7 @@ import { takeUntil, throttleTime } from 'rxjs/operators';
 @Directive({
   selector: '[paPopup]',
   exportAs: 'paPopupRef',
+  standalone: false,
 })
 export class PopupDirective implements OnInit, OnChanges, OnDestroy {
   @Input()

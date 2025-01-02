@@ -5,6 +5,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, EventEmitter, Inp
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CardComponent {
   @Input({ transform: booleanAttribute }) disabled = false;

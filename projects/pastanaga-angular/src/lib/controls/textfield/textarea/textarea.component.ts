@@ -27,6 +27,7 @@ import { cssAsNumber } from '../../../common';
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextareaComponent extends NativeTextFieldDirective implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Input({ transform: booleanAttribute }) autoHeight = false;

@@ -4,6 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: './ellipsis-tooltip-page.component.html',
   styleUrls: ['./ellipsis-tooltip-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class EllipsisTooltipPageComponent {
   code = `<div class="example-container">

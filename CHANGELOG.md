@@ -1,3 +1,9 @@
+# 2.68.0 (2025-01-02)
+
+### Breaking change
+
+- Upgrade to Angular 19
+
 # 2.67.8 (2024-11-25)
 
 ### Improvements

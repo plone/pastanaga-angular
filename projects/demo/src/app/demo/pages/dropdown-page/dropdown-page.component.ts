@@ -12,6 +12,7 @@ import { PopupComponent } from '@guillotinaweb/pastanaga-angular';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DropdownPageComponent {
   codeExample = `<pa-button icon="more" size="small"

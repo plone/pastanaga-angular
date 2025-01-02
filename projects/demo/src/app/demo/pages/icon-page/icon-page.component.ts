@@ -6,6 +6,7 @@ import { BaseIconPageComponent } from './base-icon-page.component';
   templateUrl: './icon-page.component.html',
   styleUrls: ['./icon-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class IconPageComponent extends BaseIconPageComponent implements OnInit {
   ngOnInit(): void {

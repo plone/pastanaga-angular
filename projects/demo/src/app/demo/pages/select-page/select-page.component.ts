@@ -4,6 +4,7 @@ import { OptionHeaderModel, OptionModel, OptionSeparator } from '@guillotinaweb/
 @Component({
   templateUrl: './select-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectPageComponent {
   model = '';

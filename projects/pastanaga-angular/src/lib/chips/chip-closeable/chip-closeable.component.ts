@@ -5,6 +5,7 @@ import { BaseChip } from '../base-chip';
   selector: 'pa-chip-closeable',
   templateUrl: './chip-closeable.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ChipCloseableComponent extends BaseChip {
   @Input({ transform: booleanAttribute }) readonly = false;

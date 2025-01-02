@@ -11,5 +11,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   styleUrls: ['./option-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OptionHeaderComponent {}

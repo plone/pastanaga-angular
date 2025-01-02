@@ -25,6 +25,7 @@ import { TextFieldDirective } from './text-field.directive';
 
 @Directive({
   selector: '[paNativeTextField]',
+  standalone: false,
 })
 export class NativeTextFieldDirective extends TextFieldDirective implements AfterViewInit, OnDestroy {
   @Input({ transform: numberAttribute }) maxlength?: number;

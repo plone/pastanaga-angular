@@ -3,6 +3,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   templateUrl: './toggle-page.component.html',
+  standalone: false,
 })
 export class TogglePageComponent {
   firstToggle = false;

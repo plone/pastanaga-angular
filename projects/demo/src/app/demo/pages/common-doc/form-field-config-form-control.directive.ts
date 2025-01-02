@@ -3,6 +3,7 @@ import { UntypedFormControl } from '@angular/forms';
 
 @Directive({
   selector: '[paDemoFormFieldConfigFormControl]',
+  standalone: false,
 })
 export class FormFieldConfigFormControlDirective {
   control = new UntypedFormControl();

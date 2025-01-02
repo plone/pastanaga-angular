@@ -6,6 +6,7 @@ import { FormFieldConfigStandaloneDirective } from '../../common-doc/form-field-
   selector: 'pa-demo-select-standalone-example',
   templateUrl: './select-standalone-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectStandaloneExampleComponent extends FormFieldConfigStandaloneDirective {
   @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];

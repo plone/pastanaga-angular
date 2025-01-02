@@ -5,6 +5,7 @@ import { FormFieldConfigFormGroupDirective } from '../../common-doc/form-field-c
   selector: 'pa-demo-input-form-group-example',
   templateUrl: './input-form-group-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InputFormGroupExampleComponent extends FormFieldConfigFormGroupDirective {
   keyupEvent?: any;

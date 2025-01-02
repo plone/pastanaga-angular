@@ -11,6 +11,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableLeadCellMultiLinePageComponent {
   code = `<pa-table-lead-cell-multi-line>

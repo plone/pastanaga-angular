@@ -6,6 +6,7 @@ import { UntypedFormControl } from '@angular/forms';
   selector: 'pa-demo-form-control-validation-example',
   templateUrl: './form-control-validation-example.component.html',
   styleUrls: ['./form-control-validation-example.component.scss'],
+  standalone: false,
 })
 export class FormControlValidationExampleComponent implements AfterViewInit {
   status?: any;

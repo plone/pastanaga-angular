@@ -18,6 +18,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DropdownComponent extends PopupComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input()

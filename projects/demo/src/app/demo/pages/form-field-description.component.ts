@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
       <li>Reactive form: using <code>formControl</code> and <code>formControlName</code> directives,</li>
     </ul>
   </div>`,
+  standalone: false,
 })
 export class FormFieldDescriptionComponent {
   @Input() component = '';

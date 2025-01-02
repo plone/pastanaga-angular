@@ -5,6 +5,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, Input, ViewEncaps
   templateUrl: 'table-row.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class TableRowComponent {
   @Input({ transform: booleanAttribute }) clickable = false;

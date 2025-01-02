@@ -11,6 +11,7 @@ export interface IDemoMenuSection {
   templateUrl: './demo-menu.component.html',
   styleUrls: ['./demo-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DemoMenuComponent {
   @Input()

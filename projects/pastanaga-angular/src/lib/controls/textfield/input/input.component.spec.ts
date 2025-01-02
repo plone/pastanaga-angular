@@ -10,7 +10,7 @@ import { Keys } from '../../../common';
 import { PaTranslateModule, TranslatePipe } from '../../../translate';
 import { PaIconModule } from '../../../icon';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   value: any;
   formControl = new FormControl();

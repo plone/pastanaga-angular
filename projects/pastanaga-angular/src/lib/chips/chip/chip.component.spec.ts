@@ -10,7 +10,7 @@ import { IconComponent } from '../../icon/icon.component';
 import { IconModel } from '../../icon/icon.model';
 import { ChipComponent } from './chip.component';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   avatar: AvatarModel = { userName: 'the name' };
   icon: IconModel = { name: 'iconName' };

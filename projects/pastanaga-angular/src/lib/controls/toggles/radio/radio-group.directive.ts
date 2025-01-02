@@ -25,6 +25,7 @@ import { takeUntil } from 'rxjs/operators';
     role: 'radiogroup',
     class: 'pa-radio-group',
   },
+  standalone: false,
 })
 export class RadioGroupDirective extends PaFormControlDirective implements AfterViewInit, OnDestroy {
   @Input({ transform: booleanAttribute }) noBackground = false;

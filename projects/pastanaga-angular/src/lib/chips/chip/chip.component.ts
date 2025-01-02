@@ -5,5 +5,6 @@ import { BaseChip } from '../base-chip';
   selector: 'pa-chip',
   templateUrl: './chip.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ChipComponent extends BaseChip {}

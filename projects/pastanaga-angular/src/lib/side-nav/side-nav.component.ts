@@ -22,6 +22,7 @@ import { ViewportMode } from '../breakpoint-observer';
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SideNavComponent implements AfterViewInit {
   @Input() mode: ViewportMode = 'desktop';

@@ -21,6 +21,7 @@ import { takeUntil, throttleTime } from 'rxjs/operators';
   selector: 'pa-tabs',
   templateUrl: 'tabs-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabsListComponent implements AfterContentInit, OnDestroy, OnChanges {
   @Input({ transform: booleanAttribute }) noSlider = false;

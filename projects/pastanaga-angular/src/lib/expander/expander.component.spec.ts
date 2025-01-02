@@ -7,7 +7,7 @@ import { fakeAsync, tick } from '@angular/core/testing';
 import { SpectatorHost } from '@ngneat/spectator';
 import { Component } from '@angular/core';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {}
 
 describe('ExpandComponent', () => {

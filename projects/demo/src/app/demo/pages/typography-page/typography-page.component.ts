@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './typography-page.component.html',
   styleUrls: ['./typography-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TypographyPageComponent {
   mode$: Observable<ViewportMode> = this.breakpoint.currentMode;

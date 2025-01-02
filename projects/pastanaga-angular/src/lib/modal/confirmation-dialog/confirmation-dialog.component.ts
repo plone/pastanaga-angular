@@ -6,6 +6,7 @@ import { BaseModalComponent } from '../base-modal.component';
   templateUrl: './confirmation-dialog.component.html',
   styleUrls: ['./confirmation-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ConfirmationDialogComponent extends BaseModalComponent implements AfterViewInit {
   override ngAfterViewInit() {

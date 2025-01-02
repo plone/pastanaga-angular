@@ -18,6 +18,7 @@ const formats = ['human', 'numerical'];
 @Component({
   selector: 'pa-datetime',
   templateUrl: './datetime.component.html',
+  standalone: false,
 })
 export class DateTimeComponent implements OnChanges, OnDestroy {
   @Input({ transform: booleanAttribute }) dateOnly = false;

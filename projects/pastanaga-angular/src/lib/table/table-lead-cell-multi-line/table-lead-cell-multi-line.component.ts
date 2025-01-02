@@ -6,6 +6,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, Input, ViewEncaps
   styleUrls: ['./table-lead-cell-multi-line.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class TableLeadCellMultiLineComponent {
   @Input({ transform: booleanAttribute }) clickable = false;

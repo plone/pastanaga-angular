@@ -6,6 +6,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
   selector: 'pa-demo-date-picker-config',
   templateUrl: './date-picker-config.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DatePickerConfigComponent implements OnInit {
   @Output() configChanged = new EventEmitter();

@@ -5,6 +5,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
   selector: 'pa-demo-native-text-field-page',
   templateUrl: './native-text-field-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NativeTextFieldPageComponent {
   formControl = new UntypedFormControl();

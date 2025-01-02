@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[paFocusable]',
+  standalone: false,
 })
 export class FocusableDirective implements AfterViewInit, OnDestroy {
   @Input() set paFocusDisabled(disabled: boolean) {

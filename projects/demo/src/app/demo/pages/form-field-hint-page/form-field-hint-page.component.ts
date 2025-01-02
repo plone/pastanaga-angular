@@ -4,6 +4,7 @@ import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
   templateUrl: './form-field-hint-page.component.html',
+  standalone: false,
 })
 export class FormFieldHintPageComponent {
   readonly helpMessage = 'a hint displayed to user';

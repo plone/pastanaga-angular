@@ -19,6 +19,7 @@ let nextId = 0;
 
 @Directive({
   selector: '[paTooltip]',
+  standalone: false,
 })
 export class TooltipDirective {
   @Input({ alias: 'paTooltip', transform: trimString }) text: string | undefined = '';

@@ -7,6 +7,7 @@ import { TranslatePipe } from '../translate';
   templateUrl: './avatar-pile.component.html',
   styleUrls: ['./avatar-pile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AvatarPileComponent {
   readonly max = 3;

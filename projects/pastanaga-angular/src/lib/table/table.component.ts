@@ -15,6 +15,7 @@ import { trimString } from '../common';
   templateUrl: 'table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class TableComponent implements OnChanges {
   @Input({ transform: booleanAttribute }) noHeader = false;

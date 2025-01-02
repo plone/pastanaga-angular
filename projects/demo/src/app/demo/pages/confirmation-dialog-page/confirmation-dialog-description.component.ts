@@ -18,6 +18,7 @@ import { Component, Input } from '@angular/core';
       to configure and open the confirmation dialog directly.
     </p>
   `,
+  standalone: false,
 })
 export class ConfirmationDialogDescriptionComponent {
   @Input() systemName = 'Pastanaga';

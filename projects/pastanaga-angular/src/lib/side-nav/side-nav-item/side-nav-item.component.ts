@@ -6,6 +6,7 @@ import { trimString } from '../../common';
   templateUrl: './side-nav-item.component.html',
   styleUrls: ['./side-nav-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SideNavItemComponent {
   @Input({ transform: booleanAttribute }) active = false;

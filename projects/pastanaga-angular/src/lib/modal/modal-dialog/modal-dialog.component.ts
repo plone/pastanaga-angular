@@ -19,6 +19,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./modal-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class ModalDialogComponent extends BaseModalComponent implements AfterViewInit {
   @ViewChild('header', { read: ElementRef }) header?: ElementRef;

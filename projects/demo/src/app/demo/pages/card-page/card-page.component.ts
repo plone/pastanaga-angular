@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'pa-demo-card-page',
   templateUrl: './card-page.component.html',
   styleUrls: ['./card-page.component.scss'],
+  standalone: false,
 })
 export class CardPageComponent {
   example = `<pa-card [disabled]="isDisabled"

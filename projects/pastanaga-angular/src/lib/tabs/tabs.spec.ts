@@ -10,6 +10,7 @@ import { of } from 'rxjs';
 
 @Component({
   template: ``,
+  standalone: false,
 })
 export class TestComponent {
   @ViewChild('tab1') tab1?: TabItemComponent;

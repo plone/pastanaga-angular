@@ -7,6 +7,7 @@ let optionId = 0;
   selector: 'pa-select-options',
   templateUrl: './select-options.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectOptionsComponent {
   @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {

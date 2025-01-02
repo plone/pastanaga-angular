@@ -27,6 +27,7 @@ export const SPRITE_CACHE_VERSION = new InjectionToken<string>('Cache version us
   templateUrl: './icon.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class IconComponent {
   private readonly cacheVersion = inject(SPRITE_CACHE_VERSION);

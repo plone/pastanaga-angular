@@ -9,5 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   styleUrls: ['separator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SeparatorComponent {}

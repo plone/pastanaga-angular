@@ -4,11 +4,13 @@ import { ApplicationRef, Component, ComponentRef, Renderer2 } from '@angular/cor
 import { ToastComponent } from './toast.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { PaToastModule } from './toast.module';
-import { MockModule, MockPipe } from 'ng-mocks';
+import { MockModule, MockPipe, MockProvider } from 'ng-mocks';
 import { PA_LANG, PA_TRANSLATIONS, PaTranslateModule, TranslatePipe } from '../translate';
+import { SvgIconRegistryService } from 'angular-svg-icon';
 
 @Component({
   template: ``,
+  standalone: false,
 })
 export class TestComponent {
   constructor() {}
@@ -30,6 +32,7 @@ describe('ToastService', () => {
       ],
     ],
     providers: [
+      MockProvider(SvgIconRegistryService),
       { provide: PA_LANG, useValue: 'en_US' },
       {
         provide: PA_TRANSLATIONS,

@@ -18,6 +18,7 @@ const SYSTEM_SPACING = 16;
   selector: 'pa-tooltip-element',
   templateUrl: './tooltip.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TooltipComponent implements AfterViewInit {
   @Input() text?: string;

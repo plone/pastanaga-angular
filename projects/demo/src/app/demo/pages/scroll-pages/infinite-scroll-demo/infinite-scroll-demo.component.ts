@@ -8,6 +8,7 @@ import { map, take, tap } from 'rxjs/operators';
   templateUrl: 'infinite-scroll-demo.component.html',
   styleUrls: ['infinite-scroll-demo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InfiniteScrollDemoComponent {
   @Output() back: EventEmitter<void> = new EventEmitter<void>();

@@ -14,6 +14,7 @@ import {
   templateUrl: './infinite-scroll.component.html',
   styleUrls: ['./infinite-scroll.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InfiniteScrollComponent implements AfterViewInit, OnDestroy {
   @Output() reachAnchor = new EventEmitter();

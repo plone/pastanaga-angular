@@ -71,5 +71,6 @@ import { Component } from '@angular/core';
       </dd>
     </dl>
   `,
+  standalone: false,
 })
 export class SelectUsageComponent {}

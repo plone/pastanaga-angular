@@ -4,6 +4,7 @@ import { markForCheck } from '@guillotinaweb/pastanaga-angular';
 @Component({
   templateUrl: './form-control-page.component.html',
   styleUrls: ['./form-control-page.component.scss'],
+  standalone: false,
 })
 export class FormControlPageComponent {
   selected = 'id';

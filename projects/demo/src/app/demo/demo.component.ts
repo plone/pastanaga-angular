@@ -33,6 +33,7 @@ export const avatar = of(b64toBlob(IMAGE, 'image/gif'));
 @Component({
   selector: 'pa-demo',
   templateUrl: './demo.component.html',
+  standalone: false,
 })
 export class DemoComponent implements OnDestroy {
   @Input() menu: IDemoMenuSection[] = [];

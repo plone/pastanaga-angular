@@ -18,6 +18,7 @@ export const spacer = 8;
   selector: 'pa-popover',
   templateUrl: './popover.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PopoverComponent extends PopupComponent implements OnInit {
   popoverHolder?: HTMLElement;

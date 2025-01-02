@@ -15,6 +15,7 @@ import { PaFormControlDirective } from '../form-field';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SliderComponent extends PaFormControlDirective implements AfterViewInit, OnInit {
   @Input({ transform: numberAttribute }) min = 0;

@@ -50,6 +50,7 @@ import { PaFocusableModule } from '../focusable/focusable.module';
       </pa-table-row>
     </pa-table>
   `,
+  standalone: false,
 })
 export class TestComponent {
   @ViewChild('table') table?: TableComponent;
