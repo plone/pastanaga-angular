@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-text-area-page',
   templateUrl: './textarea-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextareaPageComponent {
   model = '';

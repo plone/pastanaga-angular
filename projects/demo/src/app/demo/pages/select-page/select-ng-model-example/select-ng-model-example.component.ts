@@ -6,6 +6,7 @@ import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-con
   selector: 'pa-demo-select-ng-model-example',
   templateUrl: './select-ng-model-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectNgModelExampleComponent extends FormFieldConfigNgModelDirective {
   @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];

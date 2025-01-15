@@ -10,6 +10,7 @@ import { PaTranslateModule } from '../../../translate';
 
 @Component({
   template: ``,
+  standalone: false,
 })
 export class TestComponent {
   checked?: boolean;

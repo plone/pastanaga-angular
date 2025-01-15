@@ -16,6 +16,7 @@ import { BaseModalComponent } from '../base-modal.component';
   styleUrls: ['./modal-advanced.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class ModalAdvancedComponent extends BaseModalComponent implements AfterViewInit {
   @Input({ transform: booleanAttribute }) fitContent = false;

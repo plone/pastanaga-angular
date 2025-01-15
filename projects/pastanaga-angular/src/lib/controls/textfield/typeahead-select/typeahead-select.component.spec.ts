@@ -15,7 +15,7 @@ import { SvgIconRegistryService } from 'angular-svg-icon';
 import { A11yModule, CdkMonitorFocus } from '@angular/cdk/a11y';
 import { PA_LANG, PA_TRANSLATIONS, PaTranslateModule, TranslatePipe } from '../../../translate';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   value: any;
   formControl = new FormControl();

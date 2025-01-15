@@ -5,6 +5,7 @@ import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-con
   selector: 'pa-demo-input-ng-model-example',
   templateUrl: './input-ng-model-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InputNgModelExampleComponent extends FormFieldConfigNgModelDirective {
   keyupEvent?: any;

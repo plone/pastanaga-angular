@@ -5,6 +5,7 @@ import { PopoverDirective } from '@guillotinaweb/pastanaga-angular';
   templateUrl: './popover-page.component.html',
   styleUrls: ['./popover-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PopoverPageComponent {
   codeSample = `To: some@email.com, other@email.com, any@email.com,

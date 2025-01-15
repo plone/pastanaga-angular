@@ -7,6 +7,7 @@ import { avatar } from '../../demo.component';
   templateUrl: './avatar-page.component.html',
   styleUrls: ['./avatar-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AvatarPageComponent {
   image: Observable<Blob> = avatar;

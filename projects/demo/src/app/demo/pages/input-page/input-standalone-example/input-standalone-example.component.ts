@@ -5,6 +5,7 @@ import { FormFieldConfigStandaloneDirective } from '../../common-doc/form-field-
   selector: 'pa-demo-input-standalone-example',
   templateUrl: './input-standalone-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InputStandaloneExampleComponent extends FormFieldConfigStandaloneDirective {
   keyupEvent?: any;

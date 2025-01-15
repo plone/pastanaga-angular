@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
   selector: 'pa-tab',
   templateUrl: 'tab-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabItemComponent {
   @Input()

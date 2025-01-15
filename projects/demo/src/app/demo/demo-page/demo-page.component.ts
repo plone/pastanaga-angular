@@ -13,6 +13,7 @@ import {
   styleUrls: ['./demo-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DemoPageComponent implements AfterContentInit {
   @ViewChild('examples', { read: ElementRef, static: true }) examples?: ElementRef;

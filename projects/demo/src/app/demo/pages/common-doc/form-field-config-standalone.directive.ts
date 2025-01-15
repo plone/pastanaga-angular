@@ -2,6 +2,7 @@ import { Directive } from '@angular/core';
 
 @Directive({
   selector: '[paDemoFormFieldConfigStandalone]',
+  standalone: false,
 })
 export class FormFieldConfigStandaloneDirective {
   value?: any;

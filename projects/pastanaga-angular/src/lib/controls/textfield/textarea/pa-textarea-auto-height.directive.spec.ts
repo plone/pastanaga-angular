@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   maxHeight: any;
   enabled = true;

@@ -3,6 +3,7 @@ import { ToastConfig, ToastService, ToastType } from '@guillotinaweb/pastanaga-a
 
 @Component({
   templateUrl: './toast-page.component.html',
+  standalone: false,
 })
 export class ToastPageComponent {
   code = `constructor(private toaster: ToastService) {}

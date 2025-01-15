@@ -14,6 +14,7 @@ import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
       <pa-modal-description>Dialog description</pa-modal-description>
     </pa-modal-dialog>
   `,
+  standalone: false,
 })
 export class TestDialogComponent {
   constructor(public modal: ModalRef) {}

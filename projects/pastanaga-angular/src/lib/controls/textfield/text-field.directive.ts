@@ -4,6 +4,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Directive({
   selector: '[paTextField]',
+  standalone: false,
 })
 export class TextFieldDirective extends PaFormControlDirective implements AfterViewInit {
   @Input({ transform: booleanAttribute }) externalLabel = false;

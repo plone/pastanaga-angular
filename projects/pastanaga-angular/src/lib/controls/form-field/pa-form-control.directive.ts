@@ -38,6 +38,7 @@ let nextId = 0;
 
 @Directive({
   selector: '[paFormControl]',
+  standalone: false,
 })
 export class PaFormControlDirective implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
   @Input({ transform: booleanAttribute }) readonly = false;

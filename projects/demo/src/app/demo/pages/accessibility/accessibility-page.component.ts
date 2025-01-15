@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-accessibility-page',
   templateUrl: './accessibility-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AccessibilityPageComponent {
   code = `<a class="pa-sr-only" href="#main">Go to main content</a>`;

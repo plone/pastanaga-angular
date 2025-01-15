@@ -16,6 +16,7 @@ import { AvatarModel } from './avatar.model';
   selector: 'pa-avatar',
   templateUrl: './avatar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AvatarComponent implements OnChanges {
   @Input() set avatar(value: AvatarModel | undefined | null) {

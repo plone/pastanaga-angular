@@ -5,5 +5,6 @@ import { TableCellComponent } from '../table-cell/table-cell.component';
   selector: 'pa-table-cell-menu',
   templateUrl: './table-cell-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableCellMenuComponent extends TableCellComponent {}

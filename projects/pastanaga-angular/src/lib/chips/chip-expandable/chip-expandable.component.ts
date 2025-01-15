@@ -5,6 +5,7 @@ import { BaseChip } from '../base-chip';
   selector: 'pa-chip-expandable',
   templateUrl: './chip-expandable.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ChipExpandableComponent extends BaseChip {
   @Output() expanded: EventEmitter<{ event: Event; value: any }> = new EventEmitter();

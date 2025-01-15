@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: 'tabs-page.component.html',
   styleUrls: ['./tabs-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabsPageComponent {
   selectedTab = 'info';

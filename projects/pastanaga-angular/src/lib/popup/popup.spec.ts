@@ -15,6 +15,7 @@ import { By } from '@angular/platform-browser';
     </span>
     <pa-popup #myPopup></pa-popup>
   `,
+  standalone: false,
 })
 export class TestComponent {
   @ViewChild('myPopup') popup?: PopupComponent;

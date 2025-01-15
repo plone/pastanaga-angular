@@ -4,6 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'pa-demo-table-cell-page',
   templateUrl: './table-cell-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableCellPageComponent {
   code = `<pa-table columns="1fr 1fr 1fr 96px">

@@ -10,7 +10,7 @@ import { TextareaComponent } from './textarea.component';
 import { PaTextareaAutoHeightDirective } from './pa-textarea-auto-height.directive';
 import { PaTranslateModule, TranslatePipe } from '../../../translate';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   value: any;
   formControl = new FormControl();

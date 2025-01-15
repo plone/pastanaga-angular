@@ -6,6 +6,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
   selector: 'pa-demo-pa-input-config',
   templateUrl: './pa-input-config.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PaInputConfigComponent implements OnInit {
   @Output() configChanged = new EventEmitter();

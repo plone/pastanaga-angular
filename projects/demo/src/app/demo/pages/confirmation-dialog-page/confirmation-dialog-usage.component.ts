@@ -51,5 +51,6 @@ import { Component } from '@angular/core';
       <dd>Title to be displayed in the confirmation dialog. This is the only mandatory property.</dd>
     </dl>
   `,
+  standalone: false,
 })
 export class ConfirmationDialogUsageComponent {}

@@ -7,7 +7,7 @@ import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field
 import { fakeAsync, tick } from '@angular/core/testing';
 import { PaTranslateModule, TranslatePipe } from '../../../translate';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   model: any;
   required = false;

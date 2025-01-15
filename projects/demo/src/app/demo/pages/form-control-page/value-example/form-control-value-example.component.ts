@@ -6,6 +6,7 @@ import { UntypedFormControl } from '@angular/forms';
   selector: 'pa-demo-form-control-value-example',
   templateUrl: './form-control-value-example.component.html',
   styleUrls: ['./form-control-value-example.component.scss'],
+  standalone: false,
 })
 export class FormControlValueExampleComponent {
   standaloneParentValue?: any;

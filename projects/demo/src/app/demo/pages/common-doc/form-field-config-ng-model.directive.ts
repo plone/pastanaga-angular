@@ -3,6 +3,7 @@ import { detectChanges } from '@guillotinaweb/pastanaga-angular';
 
 @Directive({
   selector: '[paDemoFormFieldConfigNgModel]',
+  standalone: false,
 })
 export class FormFieldConfigNgModelDirective {
   model?: any;

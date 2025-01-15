@@ -24,6 +24,7 @@ const TOAST_ANIMATE_OUT = 400;
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ToastComponent implements OnInit, AfterViewInit {
   @ViewChild('toastWrapper', { read: ElementRef }) toastWrapper?: ElementRef;

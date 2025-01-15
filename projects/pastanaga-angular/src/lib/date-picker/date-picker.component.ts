@@ -81,6 +81,7 @@ function DateValidator(): ValidatorFn {
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DatePickerComponent extends PaFormControlDirective {
   @Input({ transform: booleanAttribute }) externalLabel = false;

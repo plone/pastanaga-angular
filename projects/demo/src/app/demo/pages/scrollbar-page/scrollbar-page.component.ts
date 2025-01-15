@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   templateUrl: './scrollbar-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ScrollbarPageComponent {
   code = `<div paScrollableContainer>dynamic scrollbar styling</div>

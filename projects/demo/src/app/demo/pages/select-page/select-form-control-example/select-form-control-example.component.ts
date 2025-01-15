@@ -6,6 +6,7 @@ import { FormFieldConfigFormControlDirective } from '../../common-doc/form-field
   selector: 'pa-demo-select-form-control-example',
   templateUrl: './select-form-control-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectFormControlExampleComponent extends FormFieldConfigFormControlDirective {
   @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];

@@ -5,6 +5,7 @@ import { FormFieldConfigFormGroupDirective } from '../../common-doc/form-field-c
   selector: 'pa-demo-date-picker-form-group-example',
   templateUrl: './date-picker-form-group-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DatePickerFormGroupExampleComponent extends FormFieldConfigFormGroupDirective {
   override updateConfig(config: any) {

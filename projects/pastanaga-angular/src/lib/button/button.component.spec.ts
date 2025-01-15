@@ -5,7 +5,7 @@ import { MockModule, ngMocks } from 'ng-mocks';
 import { IconComponent } from '../icon';
 import { Component } from '@angular/core';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {}
 
 describe('ButtonComponent', () => {

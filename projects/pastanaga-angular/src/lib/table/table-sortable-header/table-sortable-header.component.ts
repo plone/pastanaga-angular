@@ -19,6 +19,7 @@ import { TableSortableHeaderCellComponent } from '../table-sortable-header-cell/
   templateUrl: './table-sortable-header.component.html',
   styleUrls: ['table-sortable-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableSortableHeaderComponent implements AfterViewInit {
   @Input({ transform: booleanAttribute }) menuColumn = false;

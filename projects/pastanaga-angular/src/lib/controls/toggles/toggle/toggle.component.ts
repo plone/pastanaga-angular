@@ -25,6 +25,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './toggle.component.html',
   styleUrls: ['./toggle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ToggleComponent extends PaFormControlDirective implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Input({ transform: booleanAttribute }) labelOnRight = false;

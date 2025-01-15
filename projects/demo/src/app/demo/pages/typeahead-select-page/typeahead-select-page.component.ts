@@ -7,6 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   selector: 'pa-demo-typeahead-select-page',
   templateUrl: './typeahead-select-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TypeaheadSelectPageComponent {
   countries: { code: string; name: string }[] = Object.entries(COUNTRIES)

@@ -5,6 +5,7 @@ import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-con
   selector: 'pa-demo-textarea-ng-model-example',
   templateUrl: './textarea-ng-model-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextareaNgModelExampleComponent extends FormFieldConfigNgModelDirective {
   keyupEvent?: any;

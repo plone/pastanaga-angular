@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   templateUrl: './tooltip-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TooltipPageComponent {
   importCode = `imports: [

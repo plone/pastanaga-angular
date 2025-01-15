@@ -4,6 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'pa-demo-table-sortable-header-cell-page',
   templateUrl: './table-sortable-header-cell-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableSortableHeaderCellPageComponent {
   code = `<pa-table columns="repeat(3, 1fr)">

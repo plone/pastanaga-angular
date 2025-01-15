@@ -1,7 +1,10 @@
 import { booleanAttribute, Directive, HostBinding, Input } from '@angular/core';
 
 // tslint:disable-next-line:directive-selector
-@Directive({ selector: 'pa-table-header' })
+@Directive({
+  selector: 'pa-table-header',
+  standalone: false,
+})
 export class TableHeaderDirective {
   @Input({ transform: booleanAttribute }) noBackground = false;
 
@@ -10,11 +13,20 @@ export class TableHeaderDirective {
   }
 }
 
-@Directive({ selector: 'pa-table-lead-image' })
+@Directive({
+  selector: 'pa-table-lead-image',
+  standalone: false,
+})
 export class TableLeadImage {}
 
-@Directive({ selector: 'pa-table-lead-title' })
+@Directive({
+  selector: 'pa-table-lead-title',
+  standalone: false,
+})
 export class TableLeadTitle {}
 
-@Directive({ selector: 'pa-table-lead-description' })
+@Directive({
+  selector: 'pa-table-lead-description',
+  standalone: false,
+})
 export class TableLeadDescription {}

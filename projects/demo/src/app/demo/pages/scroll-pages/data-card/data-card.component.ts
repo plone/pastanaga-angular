@@ -6,6 +6,7 @@ import { Data } from '../scroll-page.service';
   templateUrl: './data-card.component.html',
   styleUrls: ['./data-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DataCardComponent {
   @Input() data?: Data;

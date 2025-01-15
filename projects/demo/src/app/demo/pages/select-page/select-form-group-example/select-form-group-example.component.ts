@@ -6,6 +6,7 @@ import { FormFieldConfigFormGroupDirective } from '../../common-doc/form-field-c
   selector: 'pa-demo-select-form-group-example',
   templateUrl: './select-form-group-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectFormGroupExampleComponent extends FormFieldConfigFormGroupDirective {
   @Input() dropdownContent: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];

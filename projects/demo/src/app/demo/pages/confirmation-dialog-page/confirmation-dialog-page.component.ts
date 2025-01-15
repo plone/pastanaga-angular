@@ -5,6 +5,7 @@ import { Aspect, ModalService } from '@guillotinaweb/pastanaga-angular';
   templateUrl: './confirmation-dialog-page.component.html',
   styleUrls: ['./confirmation-dialog-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ConfirmationDialogPageComponent {
   openConfirmCode = `openConfirm() {

@@ -6,6 +6,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
   selector: 'pa-demo-pa-textarea-config',
   templateUrl: './pa-textarea-config.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PaTextareaConfigComponent implements OnInit {
   @Output() configChanged = new EventEmitter();

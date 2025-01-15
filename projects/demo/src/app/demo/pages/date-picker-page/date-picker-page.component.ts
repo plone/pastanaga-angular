@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   templateUrl: 'date-picker-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DatePickerPageComponent {
   prefilledDate = new Date().toISOString();

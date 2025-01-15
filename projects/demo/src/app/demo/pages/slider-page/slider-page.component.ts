@@ -18,6 +18,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SliderPageComponent {
   ngModelCode = `<pa-slider

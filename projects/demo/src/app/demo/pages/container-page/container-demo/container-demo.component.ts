@@ -6,6 +6,7 @@ import { BreakpointObserver } from '@guillotinaweb/pastanaga-angular';
   templateUrl: './container-demo.component.html',
   styleUrls: ['./container-demo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ContainerDemoComponent {
   @Output() back: EventEmitter<void> = new EventEmitter<void>();

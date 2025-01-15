@@ -11,6 +11,7 @@ import { UntypedFormControl } from '@angular/forms';
  */
 @Directive({
   selector: '[paTextareaAutoHeight]',
+  standalone: false,
 })
 export class PaTextareaAutoHeightDirective implements AfterViewInit, OnDestroy {
   @Input('paTextareaAutoHeight')

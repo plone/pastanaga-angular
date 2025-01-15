@@ -23,6 +23,7 @@ export const POPUP_OFFSET = 4;
   selector: 'pa-popup',
   templateUrl: './popup.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PopupComponent implements OnInit, OnDestroy {
   @Input() id?: string;
@@ -154,7 +155,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     if (diffY > 0) {
       const currentTop = element.style.top || '';
       const holderHeight = this.popupHolder?.clientHeight || 0;
-      if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > (this._originalHeight + holderHeight)) {
+      if (currentTop.endsWith('px') && parseInt(currentTop.slice(0, -2), 10) > this._originalHeight + holderHeight) {
         // enough space above, we display the dropdown on top
         element.style.top = `calc(${currentTop} - ${this._originalHeight}px - ${holderHeight}px - ${POPUP_OFFSET * 2}px)`;
         return true;

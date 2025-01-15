@@ -5,7 +5,7 @@ import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { MockComponent, MockModule, ngMocks } from 'ng-mocks';
 import { OptionHeaderComponent, OptionComponent, PaDropdownModule, SeparatorComponent } from '../../../../dropdown';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   options: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [];
 

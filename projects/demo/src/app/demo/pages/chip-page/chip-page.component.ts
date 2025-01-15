@@ -6,6 +6,7 @@ import { AvatarModel, detectChanges, IconModel } from '@guillotinaweb/pastanaga-
   selector: 'pa-demo-chip-page',
   templateUrl: './chip-page.component.html',
   styleUrls: ['./chip-page.component.scss'],
+  standalone: false,
 })
 export class ChipPageComponent {
   createdCount = 0;

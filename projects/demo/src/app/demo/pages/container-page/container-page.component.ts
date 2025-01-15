@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './container-page.component.html',
   styleUrls: ['./container-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ContainerPageComponent {
   demoVisible = false;

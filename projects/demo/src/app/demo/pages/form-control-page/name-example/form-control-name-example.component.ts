@@ -6,6 +6,7 @@ import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
   selector: 'pa-demo-form-control-name-example',
   templateUrl: './form-control-name-example.component.html',
   styleUrls: ['./form-control-name-example.component.scss'],
+  standalone: false,
 })
 export class FormControlNameExampleComponent implements AfterViewInit {
   first = 'first value';

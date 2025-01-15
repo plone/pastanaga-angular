@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   selector: 'pa-chip-selectionable',
   templateUrl: './chip-selectionable.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ChipSelectionableComponent extends BaseChip {
   @Input() selected?: boolean;

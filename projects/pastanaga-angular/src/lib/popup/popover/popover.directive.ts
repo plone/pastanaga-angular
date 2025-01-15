@@ -9,12 +9,14 @@ import { PositionStyle } from '../../common';
 
 @Directive({
   selector: '[paPopover]',
+  standalone: false,
 })
 export class ExtendedPopupDirective extends PopupDirective {}
 
 @Directive({
   selector: '[paPopover]',
   exportAs: 'paPopoverRef',
+  standalone: false,
 })
 export class PopoverDirective implements OnDestroy {
   @Input()

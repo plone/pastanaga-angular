@@ -4,7 +4,7 @@ import { createDirectiveFactory, SpectatorDirective } from '@ngneat/spectator/je
 import { Keys } from '../../common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: false })
 class TestComponent {
   formControl = new FormControl();
   formatter = (val: any) => `${val}-formatted`;

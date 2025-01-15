@@ -4,7 +4,10 @@ import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { PaFocusableModule } from './focusable.module';
 import { TAB } from '@angular/cdk/keycodes';
 
-@Component({ template: '<div class="test" paFocusable [paFocusDisabled]="disabled">Disabled Lorem Ipsum...</div>' })
+@Component({
+  template: '<div class="test" paFocusable [paFocusDisabled]="disabled">Disabled Lorem Ipsum...</div>',
+  standalone: false,
+})
 export class TestComponent {
   disabled = false;
 }

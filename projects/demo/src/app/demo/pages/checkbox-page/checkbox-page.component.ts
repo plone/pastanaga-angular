@@ -4,6 +4,7 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 @Component({
   templateUrl: './checkbox-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CheckboxPageComponent implements OnInit {
   isIndeterminate = true;

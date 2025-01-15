@@ -5,6 +5,7 @@ import { FormFieldConfigFormControlDirective } from '../../common-doc/form-field
   selector: 'pa-demo-input-form-control-example',
   templateUrl: './input-form-control-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InputFormControlExampleComponent extends FormFieldConfigFormControlDirective {
   keyupEvent?: any;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   templateUrl: 'table-page.component.html',
+  standalone: false,
 })
 export class TablePageComponent {
   isDescending = false;

@@ -11,6 +11,7 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
   templateUrl: './modal-page.component.html',
   styleUrls: ['./modal-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ModalPageComponent {
   dialogTemplate = `<pa-modal-dialog>

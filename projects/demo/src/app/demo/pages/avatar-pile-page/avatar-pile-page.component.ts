@@ -4,6 +4,7 @@ import { avatar } from '../../demo.component';
 
 @Component({
   templateUrl: 'avatar-pile-page.component.html',
+  standalone: false,
 })
 export class AvatarPilePageComponent {
   avatars: AvatarModel[] = [

@@ -25,6 +25,7 @@ export const transitionDuration = 160;
   templateUrl: './expander.component.html',
   styleUrls: ['./expander.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ExpanderComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input({ transform: booleanAttribute }) buttonOnlyToggle = false;

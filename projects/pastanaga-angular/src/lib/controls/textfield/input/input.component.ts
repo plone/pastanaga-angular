@@ -27,6 +27,7 @@ import { trimString } from '../../../common';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InputComponent extends NativeTextFieldDirective implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input()

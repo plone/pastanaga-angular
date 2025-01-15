@@ -6,6 +6,7 @@ import { TranslateService } from '@guillotinaweb/pastanaga-angular';
   templateUrl: './translate-page.component.html',
   styleUrls: ['./translate-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TranslatePageComponent {
   translations = `export const I18N_EN: TranslationEntries = {

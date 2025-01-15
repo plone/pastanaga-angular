@@ -5,6 +5,7 @@ import { Size } from '@guillotinaweb/pastanaga-angular';
   templateUrl: './button-page.component.html',
   styleUrls: ['./button-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ButtonPageComponent {
   selectedSize: Size = 'medium';

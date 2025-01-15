@@ -28,6 +28,7 @@ function iconAttribute(value: string | IconModel | null | undefined): IconModel 
   templateUrl: './option.component.html',
   styleUrls: ['./option.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OptionComponent implements AfterViewInit {
   @Input({ transform: booleanAttribute }) destructive = false;

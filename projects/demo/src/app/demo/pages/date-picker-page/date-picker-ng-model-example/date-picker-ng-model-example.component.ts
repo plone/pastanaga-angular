@@ -5,6 +5,7 @@ import { FormFieldConfigNgModelDirective } from '../../common-doc/form-field-con
   selector: 'pa-demo-date-picker-ng-model-example',
   templateUrl: './date-picker-ng-model-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DatePickerNgModelExampleComponent extends FormFieldConfigNgModelDirective {
   constructor(protected override cdr: ChangeDetectorRef) {

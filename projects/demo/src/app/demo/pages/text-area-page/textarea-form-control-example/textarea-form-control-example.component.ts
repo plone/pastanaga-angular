@@ -5,6 +5,7 @@ import { FormFieldConfigFormControlDirective } from '../../common-doc/form-field
   selector: 'pa-demo-textarea-form-control-example',
   templateUrl: './textarea-form-control-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextareaFormControlExampleComponent extends FormFieldConfigFormControlDirective {
   keyupEvent?: any;

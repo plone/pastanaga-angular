@@ -21,6 +21,7 @@ let nextId = 0;
   selector: 'pa-radio',
   templateUrl: './radio.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RadioComponent implements AfterContentInit, OnChanges {
   @Input({ transform: trimString }) id = `pa-radio-${nextId++}`;

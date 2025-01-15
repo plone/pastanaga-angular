@@ -19,6 +19,7 @@ import { ControlType, OptionModel } from '../../control.model';
   templateUrl: './typeahead-select.component.html',
   styleUrls: ['./typeahead-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TypeaheadSelectComponent extends SelectComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() override set options(values: OptionType[] | null) {

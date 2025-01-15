@@ -4,6 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: './infinite-scroll-page.component.html',
   styleUrls: ['./infinite-scroll-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InfiniteScrollPageComponent {
   code = `<pa-infinite-scroll (reachAnchor)="loadMore()">

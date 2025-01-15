@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:map';
 @import 'spacing.tokens';
 
 // prettier-ignore
@@ -12,7 +13,7 @@ $extra-rhythm: (
   180: ($spacer * 180), //  180  unit - 1440px - 90   rem
 );
 @function extraRhythm($spacer-size) {
-  @return map-get($extra-rhythm, $spacer-size);
+  @return map.get($extra-rhythm, $spacer-size);
 }
 
 $breakpoint-small: extraRhythm(45);

@@ -3,6 +3,7 @@ import { startOfYear } from 'date-fns';
 
 @Component({
   templateUrl: 'datetime-page.component.html',
+  standalone: false,
 })
 export class DateTimePageComponent {
   todayAm: string;

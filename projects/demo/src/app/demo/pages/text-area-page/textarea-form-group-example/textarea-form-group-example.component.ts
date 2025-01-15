@@ -5,6 +5,7 @@ import { FormFieldConfigFormGroupDirective } from '../../common-doc/form-field-c
   selector: 'pa-demo-textarea-form-group-example',
   templateUrl: './textarea-form-group-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextareaFormGroupExampleComponent extends FormFieldConfigFormGroupDirective {
   keyupEvent?: any;

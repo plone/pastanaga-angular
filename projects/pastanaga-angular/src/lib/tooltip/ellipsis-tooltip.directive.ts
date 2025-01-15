@@ -15,11 +15,13 @@ import { TooltipDirective } from './tooltip.directive';
 
 @Directive({
   selector: '[paEllipsisTooltip]',
+  standalone: false,
 })
 export class ExtendedTooltipDirective extends TooltipDirective {}
 
 @Directive({
   selector: '[paEllipsisTooltip]',
+  standalone: false,
 })
 export class EllipsisTooltipDirective implements AfterViewInit, OnChanges, OnDestroy {
   @Input() paEllipsisContent?: string;

@@ -6,6 +6,7 @@ import { markForCheck } from '../common';
 @Pipe({
   name: 'translate',
   pure: false,
+  standalone: false,
 })
 export class TranslatePipe implements PipeTransform, OnDestroy {
   lastKey?: string;

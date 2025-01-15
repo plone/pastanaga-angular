@@ -24,6 +24,7 @@ import { detectChanges } from '../../../common';
   selector: 'pa-checkbox',
   templateUrl: './checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CheckboxComponent extends PaFormControlDirective implements OnChanges, AfterViewInit {
   @Input({ transform: booleanAttribute }) noEllipsis = false;

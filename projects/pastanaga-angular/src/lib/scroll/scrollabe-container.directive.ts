@@ -21,6 +21,7 @@ export const SCROLL_INACTIVE_HIDING_THRESHOLD = 3000;
 
 @Directive({
   selector: '[paScrollableContainer]',
+  standalone: false,
 })
 export class ScrollableContainerDirective implements OnInit, AfterContentInit, OnDestroy {
   @Output() resize: EventEmitter<void> = new EventEmitter();

@@ -34,6 +34,7 @@ export type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
   selector: 'pa-select',
   templateUrl: './select.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectComponent extends TextFieldDirective implements OnChanges, AfterViewInit, OnDestroy {
   @Input({ transform: trimString }) label = '';
