@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // Typography
 $font-family-sans-serif:
   Poppins,
@@ -41,7 +43,7 @@ $font-size: (
     d3-md:  ($font-size-base * 4.5),    // 72px - 4.5 rem
 ) !default;
 @function font-size($t-shirt-size) {
-  @return map-get($font-size, $t-shirt-size);
+  @return map.get($font-size, $t-shirt-size);
 }
 @mixin font-size($size) {
   font-size: font-size($size);
@@ -63,7 +65,7 @@ $line-height: (
     d3-md:  ($font-size-base * 6),      // 96px - 6 rem
 ) !default;
 @function line-height($t-shirt-size) {
-  @return map-get($line-height, $t-shirt-size);
+  @return map.get($line-height, $t-shirt-size);
 }
 @mixin line-height($size) {
   line-height: line-height($size);
@@ -85,7 +87,7 @@ $letter-spacing: (
     decrease-m-md:  -.09rem,    // -0.09rem   -   -1.44px
 ) !default;
 @function letter-spacing($t-shirt-size) {
-  @return map-get($letter-spacing, $t-shirt-size);
+  @return map.get($letter-spacing, $t-shirt-size);
 }
 @mixin letter-spacing($size) {
   letter-spacing: letter-spacing($size);
