@@ -1,19 +1,19 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
 
-$scrollbar-border-radius: rhythm(3) !default;
+$scrollbar-border-radius: spacing.rhythm(3) !default;
 
-$scrollbar-padding-mobile: rhythm(0.25) !default;
-$scrollbar-padding-desktop: rhythm(0.5) !default;
+$scrollbar-padding-mobile: spacing.rhythm(0.25) !default;
+$scrollbar-padding-desktop: spacing.rhythm(0.5) !default;
 
-$scrollbar-width-mobile: rhythm(1) !default;
-$scrollbar-width-desktop: rhythm(2) !default;
+$scrollbar-width-mobile: spacing.rhythm(1) !default;
+$scrollbar-width-desktop: spacing.rhythm(2) !default;
 
 $color-scrollbar-thumb: transparent !default;
-$color-scrollbar-thumb-active: $color-neutral-light !default;
+$color-scrollbar-thumb-active: palette.$color-neutral-light !default;
 
 $color-scrollbar-thumb-border: transparent !default;
-$color-scrollbar-thumb-border-active: $color-light-stronger !default;
+$color-scrollbar-thumb-border-active: palette.$color-light-stronger !default;
 
 $color-scrollbar-track: transparent !default;
 $color-scrollbar-track-active: transparent !default;

@@ -1,21 +1,25 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/popover.tokens";
+@use "../theme/shadows.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/transitions.tokens";
 
 .pa-popup.pa-popover {
   box-shadow: none;
-  filter: drop-shadow($drop-shadow-medium);
+  filter: drop-shadow(shadows.$drop-shadow-medium);
   opacity: 0;
-  transition: opacity $transition-response;
+  transition: opacity transitions.$transition-response;
 
   &.pa-visible {
     opacity: 1;
   }
 
   .pa-popup-wrapper {
-    background: $color-background-popover;
-    border-radius: $border-radius-default;
-    color: $color-text-popover;
-    max-width: rhythm(32);
-    min-width: rhythm(20);
+    background: popover.$color-background-popover;
+    border-radius: spacing.$border-radius-default;
+    color: popover.$color-text-popover;
+    max-width: spacing.rhythm(32);
+    min-width: spacing.rhythm(20);
   }
 
   &:before {
@@ -26,11 +30,11 @@
 
   &.arrow-top {
     .pa-popup-wrapper {
-      margin-top: $size-arrow-popover;
+      margin-top: popover.$size-arrow-popover;
     }
     &:before {
-      border-width: 0 $size-arrow-popover $size-arrow-popover $size-arrow-popover;
-      border-color: transparent transparent $color-background-popover transparent;
+      border-width: 0 popover.$size-arrow-popover popover.$size-arrow-popover popover.$size-arrow-popover;
+      border-color: transparent transparent popover.$color-background-popover transparent;
       left: 50%;
       top: 1px;
       transform: translateX(-50%);
@@ -39,11 +43,11 @@
 
   &.arrow-right {
     .pa-popup-wrapper {
-      margin-right: $size-arrow-popover;
+      margin-right: popover.$size-arrow-popover;
     }
     &:before {
-      border-width: $size-arrow-popover 0 $size-arrow-popover $size-arrow-popover;
-      border-color: transparent transparent transparent $color-background-popover;
+      border-width: popover.$size-arrow-popover 0 popover.$size-arrow-popover popover.$size-arrow-popover;
+      border-color: transparent transparent transparent popover.$color-background-popover;
       right: 1px;
       top: 50%;
       transform: translateY(-50%);
@@ -52,11 +56,11 @@
 
   &.arrow-left {
     .pa-popup-wrapper {
-      margin-left: $size-arrow-popover;
+      margin-left: popover.$size-arrow-popover;
     }
     &:before {
-      border-width: $size-arrow-popover $size-arrow-popover $size-arrow-popover 0;
-      border-color: transparent $color-background-popover transparent transparent;
+      border-width: popover.$size-arrow-popover popover.$size-arrow-popover popover.$size-arrow-popover 0;
+      border-color: transparent popover.$color-background-popover transparent transparent;
       left: 1px;
       top: 50%;
       transform: translateY(-50%);

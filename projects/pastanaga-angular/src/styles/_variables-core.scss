@@ -1,8 +1,8 @@
-@import 'theme/palette.tokens';
-@import 'theme/shadows.tokens';
-@import 'theme/spacing.tokens';
-@import 'theme/transitions.tokens';
-@import 'theme/typography.tokens';
-@import 'theme/z-index.tokens';
-@import 'theme/layout.tokens';
-@import 'theme/scrollbar.tokens';
+@forward 'theme/palette.tokens';
+@forward 'theme/shadows.tokens';
+@forward 'theme/spacing.tokens';
+@forward 'theme/transitions.tokens';
+@forward 'theme/typography.tokens';
+@forward 'theme/z-index.tokens';
+@forward 'theme/layout.tokens';
+@forward 'theme/scrollbar.tokens';

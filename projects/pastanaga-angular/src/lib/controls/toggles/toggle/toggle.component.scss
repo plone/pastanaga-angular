@@ -1,5 +1,5 @@
 @use 'sass:math';
-@import '../../../../styles/variables';
+@use '../../../../styles/variables' as *;
 
 $toggle-mid-width: math.div($width-toggle, 2);
 $toggle-transition-duration: $duration-fast;

@@ -1,4 +1,4 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/variables' as *;
 
 [class^='grid-'] > div {
   background-color: $color-tertiary-regular;

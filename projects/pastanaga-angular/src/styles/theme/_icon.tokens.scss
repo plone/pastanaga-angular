@@ -1,7 +1,7 @@
-@import 'spacing.tokens';
+@use 'spacing.tokens';
 
-$size-icon-small: rhythm(2);
-$size-icon-medium: rhythm(3);
-$size-icon-large: rhythm(4);
-$size-icon-xlarge: rhythm(5);
-$size-icon-xxlarge: rhythm(6);
+$size-icon-small: spacing.rhythm(2);
+$size-icon-medium: spacing.rhythm(3);
+$size-icon-large: spacing.rhythm(4);
+$size-icon-xlarge: spacing.rhythm(5);
+$size-icon-xxlarge: spacing.rhythm(6);

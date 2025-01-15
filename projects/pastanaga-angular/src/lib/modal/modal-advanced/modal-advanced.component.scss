@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/theme/modal.tokens';
+@use '../../../styles/variables' as *;
+@use '../../../styles/theme/modal.tokens' as modal;
 
 .pa-modal-advanced {
   background-color: $color-light-stronger;
@@ -8,20 +8,20 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: $spacing-dialog-sections calc(#{$padding-modal} - #{$padding-button-icon-medium}) $spacing-dialog-sections
-      $padding-modal;
+    padding: $spacing-dialog-sections calc(#{modal.$padding-modal} - #{$padding-button-icon-medium})
+      modal.$spacing-dialog-sections $padding-modal;
   }
 
   .pa-modal-content {
-    min-height: calc(100% - #{$height-header-footer-modal} - #{$spacing-dialog-sections});
+    min-height: calc(100% - #{modal.$height-header-footer-modal} - #{modal.$spacing-dialog-sections});
   }
 
   &.with-footer .pa-modal-content {
-    min-height: calc(100% - #{$height-header-footer-modal} * 2);
+    min-height: calc(100% - #{modal.$height-header-footer-modal} * 2);
   }
 
   pa-modal-footer {
-    padding: 0 $padding-modal;
+    padding: 0 modal.$padding-modal;
   }
 
   @media (max-width: $size-viewport-medium-max) {

@@ -1,4 +1,11 @@
-@import '../variables';
+@use "sass:string";
+@use '../variables';
+@use "../theme/body.tokens";
+@use "../theme/shadows.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/textfield.tokens";
+@use "../theme/toggle.tokens";
+@use "../theme/transitions.tokens";
 
 .pa-toggle {
   display: flex;
@@ -13,17 +20,17 @@
     }
 
     .pa-toggle-control:hover {
-      border-color: $color-border-toggle-unselected-hover;
+      border-color: toggle.$color-border-toggle-unselected-hover;
 
       &:checked {
-        border-color: $color-border-toggle-selected-hover;
-        background-color: $color-background-toggle-selected-hover;
+        border-color: toggle.$color-border-toggle-selected-hover;
+        background-color: toggle.$color-background-toggle-selected-hover;
       }
     }
   }
   &:not(.pa-disabled).pa-indeterminate .pa-toggle-control:hover {
-    border-color: $color-border-toggle-selected-hover;
-    background-color: $color-background-toggle-selected-hover;
+    border-color: toggle.$color-border-toggle-selected-hover;
+    background-color: toggle.$color-background-toggle-selected-hover;
   }
 
   .pa-checkbox-wrapper {
@@ -34,78 +41,78 @@
 
   .pa-toggle-control {
     -webkit-appearance: none;
-    border: 1px solid $color-border-toggle-unselected;
-    border-radius: $border-radius-default;
+    border: 1px solid toggle.$color-border-toggle-unselected;
+    border-radius: spacing.$border-radius-default;
     box-sizing: content-box;
     flex: 1 0 auto;
     margin: 0;
-    height: $size-toggle-checkbox;
-    width: $size-toggle-checkbox;
+    height: toggle.$size-toggle-checkbox;
+    width: toggle.$size-toggle-checkbox;
 
     &.pa-keyboard-focus {
-      box-shadow: $shadow-focus-checkbox;
+      box-shadow: shadows.$shadow-focus-checkbox;
     }
 
     &:checked {
-      border-color: $color-border-toggle-selected;
-      background-color: $color-background-toggle-selected;
+      border-color: toggle.$color-border-toggle-selected;
+      background-color: toggle.$color-background-toggle-selected;
       // prettier-ignore
-      background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" fill-rule="evenodd" d="M12.53 4.72a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-2.5-2.5a.75.75 0 0 1 1.06-1.06L6.5 9.69l4.97-4.97a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/></svg>');
-      background-size: $size-toggle-checkbox $size-toggle-checkbox;
+      background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23' + string.slice(#{toggle.$color-check-toggle}, 2) + '" fill-rule="evenodd" d="M12.53 4.72a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-2.5-2.5a.75.75 0 0 1 1.06-1.06L6.5 9.69l4.97-4.97a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/></svg>');
+      background-size: toggle.$size-toggle-checkbox toggle.$size-toggle-checkbox;
 
       &:disabled {
-        background-color: $color-background-toggle-disabled;
-        border-color: $color-border-toggle-selected-disabled;
+        background-color: toggle.$color-background-toggle-disabled;
+        border-color: toggle.$color-border-toggle-selected-disabled;
       }
     }
 
     &:disabled {
-      border-color: $color-border-toggle-unselected-disabled;
-      background-color: $color-background-toggle-unselected-disabled;
+      border-color: toggle.$color-border-toggle-unselected-disabled;
+      background-color: toggle.$color-background-toggle-unselected-disabled;
 
       & ~ .pa-toggle-label {
-        color: $color-text-disabled;
+        color: body.$color-text-disabled;
       }
     }
 
     &[type='radio'] {
-      border-radius: $size-toggle-checkbox;
+      border-radius: toggle.$size-toggle-checkbox;
 
       &:checked {
         // prettier-ignore
-        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + str_slice(#{$color-check-toggle}, 2) + '" fill-rule="evenodd"/></svg>');
+        background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="%23' + string.slice(#{toggle.$color-check-toggle}, 2) + '" fill-rule="evenodd"/></svg>');
 
         &:disabled {
           // prettier-ignore
-          background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="' + #{$color-check-toggle-disabled} + '" fill-rule="evenodd"/></svg>');
-          background-color: $color-border-toggle-selected-disabled;
-          border-color: $color-border-toggle-unselected-disabled;
+          background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="' + #{toggle.$color-check-toggle-disabled} + '" fill-rule="evenodd"/></svg>');
+          background-color: toggle.$color-border-toggle-selected-disabled;
+          border-color: toggle.$color-border-toggle-unselected-disabled;
         }
       }
       &:disabled {
-        background-color: $color-background-toggle-unselected-disabled;
+        background-color: toggle.$color-background-toggle-unselected-disabled;
       }
     }
   }
 
   &.pa-indeterminate .pa-toggle-control {
-    border-color: $color-border-toggle-indeterminate;
-    background-color: $color-background-toggle-indeterminate;
+    border-color: toggle.$color-border-toggle-indeterminate;
+    background-color: toggle.$color-background-toggle-indeterminate;
     // prettier-ignore
-    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"> <path fill="%23' + str_slice(#{$color-check-toggle-indeterminate}, 2) + '" fill-rule="evenodd" d="M3.75 8a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7A.75.75 0 0 1 3.75 8Z" clip-rule="evenodd"/></svg>');
-    background-size: $size-toggle-checkbox $size-toggle-checkbox;
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"> <path fill="%23' + string.slice(#{toggle.$color-check-toggle-indeterminate}, 2) + '" fill-rule="evenodd" d="M3.75 8a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7A.75.75 0 0 1 3.75 8Z" clip-rule="evenodd"/></svg>');
+    background-size: toggle.$size-toggle-checkbox toggle.$size-toggle-checkbox;
 
     &:disabled {
-      background-color: $color-background-toggle-disabled;
-      border-color: $color-border-toggle-selected-disabled;
+      background-color: toggle.$color-background-toggle-disabled;
+      border-color: toggle.$color-border-toggle-selected-disabled;
     }
   }
 
   .pa-toggle-label {
-    font-size: $font-size-checkbox-label;
-    line-height: $line-height-checkbox-label;
-    font-weight: $font-weight-label;
-    margin-left: rhythm(1.5);
+    font-size: toggle.$font-size-checkbox-label;
+    line-height: toggle.$line-height-checkbox-label;
+    font-weight: body.$font-weight-label;
+    margin-left: spacing.rhythm(1.5);
 
     &:not(.no-ellipsis) {
       overflow: hidden;
@@ -116,23 +123,23 @@
 
   &.pa-toggle.pa-field-error {
     .pa-toggle-label {
-      color: $color-text-field-label-error;
+      color: textfield.$color-text-field-label-error;
     }
 
     .pa-toggle-control {
-      border-color: $border-color-field-error;
+      border-color: textfield.$border-color-field-error;
 
       &:not(:disabled) {
         &:hover {
-          border-color: $border-color-field-error;
+          border-color: textfield.$border-color-field-error;
         }
 
         &:focus,
         &:active {
-          border-color: $border-color-field-error;
+          border-color: textfield.$border-color-field-error;
 
           & ~ .pa-toggle-label {
-            color: $color-text-field-label-error;
+            color: textfield.$color-text-field-label-error;
           }
         }
       }
@@ -140,7 +147,7 @@
   }
 
   pa-form-field-hint {
-    margin-left: rhythm(3.5);
+    margin-left: spacing.rhythm(3.5);
   }
 }
 
@@ -150,7 +157,7 @@
 
   &.horizontal-group {
     flex-direction: row;
-    gap: $gap-radio-group;
+    gap: toggle.$gap-radio-group;
   }
 
   &:not(.horizontal-group) {
@@ -163,31 +170,31 @@
     }
 
     &:not(.background-striped) {
-      gap: $gap-radio-group;
+      gap: toggle.$gap-radio-group;
 
       pa-radio :not(.pa-disabled):not(:checked):hover .pa-toggle-control {
-        border-color: $color-border-toggle-selected-hover;
+        border-color: toggle.$color-border-toggle-selected-hover;
       }
     }
 
     &.background-striped {
       pa-radio {
-        border-radius: $border-radius-container;
-        padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
-        transition: background $transition-hint;
+        border-radius: spacing.$border-radius-container;
+        padding: spacing.rhythm(1) spacing.rhythm(1) spacing.rhythm(1) spacing.rhythm(1.5);
+        transition: background transitions.$transition-hint;
 
         &:not(.pa-disabled):hover {
-          background: $background-radio-group-hover-item;
+          background: toggle.$background-radio-group-hover-item;
         }
 
         &:nth-of-type(odd) {
-          background: $background-radio-group-odd-item;
+          background: toggle.$background-radio-group-odd-item;
         }
         &:nth-of-type(even) {
-          background: $background-radio-group-even-item;
+          background: toggle.$background-radio-group-even-item;
         }
         &:not(.pa-disabled):hover {
-          background: $background-radio-group-hover-item;
+          background: toggle.$background-radio-group-hover-item;
         }
       }
     }

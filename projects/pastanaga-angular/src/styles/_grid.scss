@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'variables';
+@use "theme/spacing.tokens";
 
 /* (Very) inspired from KNACSS by AlsaCreations
    https://github.com/alsacreations/KNACSS
@@ -12,19 +13,19 @@
 
   // gutters
   &.has-gutter {
-    grid-gap: $grid-gutters;
+    grid-gap: spacing.$grid-gutters;
   }
 }
 
 // grid constructor (.grid-2 to .grid-$grid-cols)
-@for $i from 2 through $grid-cols {
+@for $i from 2 through spacing.$grid-cols {
   [class*='grid-#{$i}'] {
     grid-template-columns: repeat(#{$i}, 1fr);
   }
 }
 
 // grid items constructor (.col-1 to .col-$grid-cols, .row-1 to .row-$grid-cols)
-@for $i from 1 through $grid-cols {
+@for $i from 1 through spacing.$grid-cols {
   [class*='col-#{$i}'] {
     grid-column: auto / span #{$i};
   }
@@ -37,8 +38,8 @@
 /* intermediate breakpoints */
 // -medium-X suffix means "X columns when > medium screen"
 // example : .grid-4-medium-6 will be 4 columns (< medium) then 6 columns (>= medium)
-@media (min-width: $size-viewport-medium-min) {
-  @for $i from 1 through $grid-cols {
+@media (min-width: spacing.$size-viewport-medium-min) {
+  @for $i from 1 through spacing.$grid-cols {
     [class*='grid-'][class*='-medium-#{$i}'] {
       grid-template-columns: repeat(#{$i}, 1fr);
     }
@@ -49,8 +50,8 @@
   }
 }
 
-@media (min-width: $size-viewport-large-min) {
-  @for $i from 1 through $grid-cols {
+@media (min-width: spacing.$size-viewport-large-min) {
+  @for $i from 1 through spacing.$grid-cols {
     [class*='grid-'][class*='-large-#{$i}'] {
       grid-template-columns: repeat(#{$i}, 1fr);
     }
@@ -121,7 +122,7 @@
 /* large screens */
 /* ------------- */
 
-@media (min-width: $size-viewport-large-min) {
+@media (min-width: spacing.$size-viewport-large-min) {
   /* layouts for large screens */
   .large-hidden {
     display: none !important;
@@ -135,7 +136,7 @@
 /* medium screens */
 /* -------------- */
 
-@media (min-width: $size-viewport-medium-min) and (max-width: $size-viewport-large-max) {
+@media (min-width: spacing.$size-viewport-medium-min) and (max-width: spacing.$size-viewport-large-max) {
   /* layouts for medium screens */
   .medium-hidden {
     display: none !important;
@@ -149,7 +150,7 @@
 /* small screens */
 /* ------------- */
 
-@media (max-width: $size-viewport-medium-max) {
+@media (max-width: spacing.$size-viewport-medium-max) {
   /* layouts for small screens */
   .small-hidden {
     display: none !important;

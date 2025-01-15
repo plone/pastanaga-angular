@@ -1,25 +1,31 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/body.tokens";
+@use "../theme/palette.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/textfield.tokens";
+@use "../theme/transitions.tokens";
+@use "../theme/typography.tokens";
 
 .pa-select-value-container {
   display: flex;
   flex-direction: column;
 
   .pa-selected-help {
-    color: $color-neutral-regular;
+    color: palette.$color-neutral-regular;
   }
 }
 
 .pa-select-value {
-  font-weight: $font-weight-regular;
+  font-weight: typography.$font-weight-regular;
 
   &.placeholder {
-    color: $color-text-field-control-placeholder-regular;
-    font-weight: $font-weight-placeholder;
+    color: textfield.$color-text-field-control-placeholder-regular;
+    font-weight: body.$font-weight-placeholder;
     opacity: 0;
     transition: all 0s ease;
     &.active {
       opacity: 1;
-      transition: all $transition-response;
+      transition: all transitions.$transition-response;
     }
   }
 }
@@ -27,8 +33,8 @@
 .pa-field.pa-select {
   position: relative;
 
-  $icon-width: rhythm(3);
-  $icon-right-padding: rhythm(1);
+  $icon-width: spacing.rhythm(3);
+  $icon-right-padding: spacing.rhythm(1);
   .pa-select-chevron {
     pointer-events: none;
     cursor: pointer;
@@ -36,7 +42,7 @@
     right: $icon-right-padding;
     top: 50%;
     transform: translateY(-50%);
-    transition: transform $transition-hint;
+    transition: transform transitions.$transition-hint;
     width: $icon-width;
 
     &.opened {
@@ -48,13 +54,13 @@
     position: relative;
 
     &.pa-disabled {
-      color: $color-text-field-control-disabled;
+      color: textfield.$color-text-field-control-disabled;
       .pa-select-chevron {
-        color: $color-text-field-control-disabled;
+        color: textfield.$color-text-field-control-disabled;
       }
     }
     &.pa-readonly .pa-select-chevron {
-      color: $color-text-field-control-disabled;
+      color: textfield.$color-text-field-control-disabled;
     }
     &:not(.pa-disabled):not(.pa-readonly) {
       cursor: pointer;
@@ -69,16 +75,16 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100% - #{$padding-field-control-left + $icon-width + $icon-right-padding});
+    max-width: calc(100% - #{textfield.$padding-field-control-left + $icon-width + $icon-right-padding});
   }
 
   .pa-dim {
     border: 1px solid transparent;
     &.pa-focus {
-      border: 1px solid $border-color-field-active;
+      border: 1px solid textfield.$border-color-field-active;
     }
     &:not(.pa-focus):not(.pa-disabled):hover {
-      border: 1px solid $border-color-field-hover;
+      border: 1px solid textfield.$border-color-field-hover;
     }
     &.pa-disabled,
     &.pa-readonly {

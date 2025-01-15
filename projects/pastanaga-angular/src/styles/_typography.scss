@@ -1,79 +1,81 @@
-@import 'variables';
+@use 'variables';
+@use "theme/spacing.tokens";
+@use "theme/typography.tokens";
 
 .overline {
-  @include overline();
+  @include typography.overline();
 }
 .body-xs {
-  @include body-xs();
+  @include typography.body-xs();
 }
 .body-s {
-  @include body-s();
+  @include typography.body-s();
 }
 .body-m {
-  @include body-m();
+  @include typography.body-m();
 }
 
 h6,
 .title-xxs {
-  @include title-xxs();
+  @include typography.title-xxs();
 }
 
 h5,
 .title-xs {
-  @include title-xs();
+  @include typography.title-xs();
 }
 
 h4,
 .title-s,
 .title-s-mobile {
-  @include title-s-mobile();
+  @include typography.title-s-mobile();
 }
 
 h3,
 .title-m,
 .title-m-mobile {
-  @include title-m-mobile();
+  @include typography.title-m-mobile();
 }
 
 h2,
 .title-l,
 .title-l-mobile {
-  @include title-l-mobile();
+  @include typography.title-l-mobile();
 }
 
 h1,
 .display-s,
 .display-s-mobile {
-  @include display-s-mobile();
+  @include typography.display-s-mobile();
 }
 
 .display-m,
 .display-m-mobile {
-  @include display-m-mobile();
+  @include typography.display-m-mobile();
 }
 
-@media (min-width: $size-viewport-medium-min) {
+@media (min-width: spacing.$size-viewport-medium-min) {
   h4,
   .title-s {
-    @include title-s();
+    @include typography.title-s();
   }
 
   h3,
   .title-m {
-    @include title-m();
+    @include typography.title-m();
   }
 
   h2,
   .title-l {
-    @include title-l();
+    @include typography.title-l();
   }
 
   h1,
   .display-s {
-    @include display-s();
+    @include typography.display-s();
   }
 
   .display-m {
-    @include display-m();
+    @include typography.display-m();
   }
 }

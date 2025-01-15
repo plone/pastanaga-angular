@@ -1,3 +1,3 @@
-@import 'shadows.tokens';
+@use 'shadows.tokens';
 
-$shadow-tooltip: $shadow-default !default;
+$shadow-tooltip: shadows.$shadow-default !default;

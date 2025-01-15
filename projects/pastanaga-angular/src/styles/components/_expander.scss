@@ -1,35 +1,38 @@
-@import '../variables';
-@import '../theme/expander.tokens';
+@use '../variables';
+@use '../theme/expander.tokens';
+@use "../theme/palette.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/transitions.tokens";
 
 .pa-expander {
   .pa-expander-button .pa-button {
-    padding: rhythm(0.5);
+    padding: spacing.rhythm(0.5);
     transform: rotate(0);
-    transition: transform $transition-hint;
+    transition: transform transitions.$transition-hint;
 
     pa-icon svg {
-      fill: $color-dark-stronger;
+      fill: palette.$color-dark-stronger;
     }
   }
 
   .pa-expander-header {
     align-items: center;
     display: flex;
-    gap: rhythm(0.5);
+    gap: spacing.rhythm(0.5);
     position: relative;
     width: 100%;
 
     .pa-expander-title {
-      color: $color-expanded-expander-header-title;
+      color: expander.$color-expanded-expander-header-title;
       flex: 1 0 auto;
-      transition: color $transition-hint;
+      transition: color transitions.$transition-hint;
 
       &:not(.pa-button-only) {
         cursor: pointer;
       }
 
       &:hover {
-        color: $color-expanded-expander-header-title-hover;
+        color: expander.$color-expanded-expander-header-title-hover;
       }
     }
 
@@ -42,8 +45,8 @@
     opacity: 1;
     height: var(--contentHeight, 1px);
     transition:
-      opacity $transition-hint,
-      height $transition-hint;
+      opacity transitions.$transition-hint,
+      height transitions.$transition-hint;
   }
 
   &.pa-collapsed {
@@ -60,44 +63,44 @@
   &:not(.pa-expander-card) {
     .pa-expander-button .pa-button {
       pa-icon svg {
-        fill: $color-expanded-expander-header-icon;
-        transition: fill $transition-hint;
+        fill: expander.$color-expanded-expander-header-icon;
+        transition: fill transitions.$transition-hint;
       }
     }
 
     & > .pa-expander-header {
-      background: $background-color-expanded-expander-header;
-      box-shadow: $box-shadow-expanded-expander-header;
+      background: expander.$background-color-expanded-expander-header;
+      box-shadow: expander.$box-shadow-expanded-expander-header;
       transition:
-        background $transition-hint,
-        box-shadow $transition-hint;
+        background transitions.$transition-hint,
+        box-shadow transitions.$transition-hint;
 
       &:hover {
-        background: $background-color-expanded-expander-header-hover;
+        background: expander.$background-color-expanded-expander-header-hover;
       }
 
       .pa-expander-title {
-        line-height: rhythm(5);
+        line-height: spacing.rhythm(5);
       }
     }
 
     &.pa-collapsed {
       .pa-expander-button .pa-button pa-icon svg {
-        fill: $color-collapsed-expander-header-icon;
+        fill: expander.$color-collapsed-expander-header-icon;
       }
 
       .pa-expander-header {
-        background: $background-color-collapsed-expander-header;
-        box-shadow: $box-shadow-collapsed-expander-header;
+        background: expander.$background-color-collapsed-expander-header;
+        box-shadow: expander.$box-shadow-collapsed-expander-header;
 
         &:hover {
-          background: $background-color-collapsed-expander-header-hover;
+          background: expander.$background-color-collapsed-expander-header-hover;
         }
 
         .pa-expander-title {
-          color: $color-collapsed-expander-header-title;
+          color: expander.$color-collapsed-expander-header-title;
           &:hover {
-            color: $color-collapsed-expander-header-title-hover;
+            color: expander.$color-collapsed-expander-header-title-hover;
           }
         }
       }
@@ -109,11 +112,11 @@
       flex-direction: row-reverse;
 
       .pa-expander-title {
-        color: $color-dark-stronger;
+        color: palette.$color-dark-stronger;
       }
 
       .pa-expander-header-extra {
-        margin-right: rhythm(3);
+        margin-right: spacing.rhythm(3);
       }
     }
 

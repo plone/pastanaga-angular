@@ -1,17 +1,17 @@
-@import '../../../styles/variables';
-@import '../../../styles/theme/modal.tokens';
+@use '../../../styles/variables' as *;
+@use '../../../styles/theme/modal.tokens' as modal;
 
 $dimension-image: rhythm(12);
-$header-height-small: $padding-modal + $dimension-image + $spacing-dialog-sections * 2 + line-height(l);
-$header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-sections * 2 + line-height(xl);
+$header-height-small: modal.$padding-modal + $dimension-image + modal.$spacing-dialog-sections * 2 + line-height(l);
+$header-height-medium: modal.$padding-modal + $dimension-image + modal.$spacing-dialog-sections * 2 + line-height(xl);
 
 .pa-modal-dialog {
   .pa-modal-header {
-    padding: $padding-modal $padding-modal $spacing-dialog-sections;
+    padding: modal.$padding-modal modal.$padding-modal modal.$spacing-dialog-sections;
     text-align: left;
 
     img {
-      margin-bottom: $spacing-dialog-sections;
+      margin-bottom: modal.$spacing-dialog-sections;
       height: $dimension-image;
       width: $dimension-image;
     }
@@ -35,7 +35,7 @@ $header-height-medium: $padding-modal + $dimension-image + $spacing-dialog-secti
   }
 
   &:not(.with-footer) .pa-modal-content {
-    margin-bottom: $padding-modal;
+    margin-bottom: modal.$padding-modal;
   }
 
   @media (min-width: $size-viewport-medium-min) {

@@ -1,28 +1,29 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/icon.tokens";
 
 pa-icon {
   svg {
     vertical-align: middle;
     fill: currentColor;
     &.pa-small {
-      width: $size-icon-small;
-      height: $size-icon-small;
+      width: icon.$size-icon-small;
+      height: icon.$size-icon-small;
     }
     &.pa-medium {
-      width: $size-icon-medium;
-      height: $size-icon-medium;
+      width: icon.$size-icon-medium;
+      height: icon.$size-icon-medium;
     }
     &.pa-large {
-      width: $size-icon-large;
-      height: $size-icon-large;
+      width: icon.$size-icon-large;
+      height: icon.$size-icon-large;
     }
     &.pa-xlarge {
-      width: $size-icon-xlarge;
-      height: $size-icon-xlarge;
+      width: icon.$size-icon-xlarge;
+      height: icon.$size-icon-xlarge;
     }
     &.pa-xxlarge {
-      width: $size-icon-xxlarge;
-      height: $size-icon-xxlarge;
+      width: icon.$size-icon-xxlarge;
+      height: icon.$size-icon-xxlarge;
     }
   }
 }

@@ -1,5 +1,4 @@
-@import '../../../styles/variables';
-@import '../../../styles/theme/modal.tokens';
+@use '../../../styles/variables' as *;
 
 .pa-confirmation-dialog {
   background-color: $color-light-stronger;

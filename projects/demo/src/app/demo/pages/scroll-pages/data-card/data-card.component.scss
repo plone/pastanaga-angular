@@ -1,4 +1,4 @@
-@import '../../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../../pastanaga-angular/src/styles/variables' as *;
 
 .pa-demo-card {
   border-bottom: 1px solid $color-neutral-lightest;

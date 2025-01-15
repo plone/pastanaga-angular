@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .pa-side-nav {
   background-color: $background-color-side-nav;

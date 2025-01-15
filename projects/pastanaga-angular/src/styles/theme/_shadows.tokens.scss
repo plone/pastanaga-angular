@@ -1,25 +1,25 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
 
 $drop-shadow-small: none !default;
-$drop-shadow-default: 0px 1px rhythm(1) rgba($color-dark-stronger, 0.12) !default;
-$drop-shadow-medium: 0px rhythm(1) rhythm(2) rgba($color-dark-stronger, 0.18) !default;
-$drop-shadow-large: 0px rhythm(1.5) rhythm(5) rgba($color-dark-stronger, 0.24) !default;
+$drop-shadow-default: 0px 1px spacing.rhythm(1) rgba(palette.$color-dark-stronger, 0.12) !default;
+$drop-shadow-medium: 0px spacing.rhythm(1) spacing.rhythm(2) rgba(palette.$color-dark-stronger, 0.18) !default;
+$drop-shadow-large: 0px spacing.rhythm(1.5) spacing.rhythm(5) rgba(palette.$color-dark-stronger, 0.24) !default;
 
 $shadow-small: none !default;
 $shadow-default:
   $drop-shadow-default,
-  0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
+  0px 0px spacing.rhythm(0.5) rgba(palette.$color-dark-stronger, 0.1) !default;
 $shadow-medium:
   $drop-shadow-medium,
-  0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
+  0px 0px spacing.rhythm(0.5) rgba(palette.$color-dark-stronger, 0.1) !default;
 $shadow-large:
   $drop-shadow-large,
-  0px 0px rhythm(0.5) rgba($color-dark-stronger, 0.1) !default;
+  0px 0px spacing.rhythm(0.5) rgba(palette.$color-dark-stronger, 0.1) !default;
 
-$color-shadow-focus: rgba($color-primary-light, 0.6) !default;
-$shadow-focus: 0 0 0 rhythm(0.25) $color-shadow-focus !default;
+$color-shadow-focus: rgba(palette.$color-primary-light, 0.6) !default;
+$shadow-focus: 0 0 0 spacing.rhythm(0.25) $color-shadow-focus !default;
 $shadow-focus-checkbox:
-  0 0 0 rhythm(0.25) $color-light-stronger,
-  0 0 0 rhythm(0.5) $color-shadow-focus !default;
+  0 0 0 spacing.rhythm(0.25) palette.$color-light-stronger,
+  0 0 0 spacing.rhythm(0.5) $color-shadow-focus !default;
 $shadow-modal: $shadow-default !default;

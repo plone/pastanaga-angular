@@ -1,9 +1,11 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/z-index.tokens";
+
 .pa-toast-container {
   content: '';
   cursor: default;
   position: fixed;
   top: 0;
   transform: translateX(calc(100vw / 2 - 100% / 2));
-  z-index: $z-index-toast;
+  z-index: z-index.$z-index-toast;
 }

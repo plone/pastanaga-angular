@@ -1,4 +1,8 @@
-@import '../variables';
+@use "sass:string";
+@use '../variables';
+@use "../theme/avatar.tokens";
+@use "../theme/palette.tokens";
+@use "../theme/typography.tokens";
 
 @mixin full-size-circle() {
   width: 100%;
@@ -13,32 +17,32 @@
   position: relative;
 
   &.no-avatar {
-    background-image: url('data:image/svg+xml,%3csvg width="100%25" height="100%25" xmlns="http://www.w3.org/2000/svg"%3e%3crect width="100%25" height="100%25" fill="none" rx="100" ry="100" stroke="%23' + str_slice(
-        #{$color-neutral-light},
+    background-image: url('data:image/svg+xml,%3csvg width="100%25" height="100%25" xmlns="http://www.w3.org/2000/svg"%3e%3crect width="100%25" height="100%25" fill="none" rx="100" ry="100" stroke="%23' + string.slice(
+        #{palette.$color-neutral-light},
         2
       ) + '" stroke-width="2" stroke-dasharray="4%2c 6" stroke-dashoffset="0" stroke-linecap="butt"/%3e%3c/svg%3e');
   }
   &.pa-avatar-tiny {
-    @include font-size(xxs);
-    @include line-height(m);
-    height: $size-avatar-tiny;
-    width: $size-avatar-tiny;
+    @include typography.font-size(xxs);
+    @include typography.line-height(m);
+    height: avatar.$size-avatar-tiny;
+    width: avatar.$size-avatar-tiny;
   }
   &.pa-avatar-small {
-    @include font-size(s);
-    @include line-height(m);
-    height: $size-avatar-small;
-    width: $size-avatar-small;
+    @include typography.font-size(s);
+    @include typography.line-height(m);
+    height: avatar.$size-avatar-small;
+    width: avatar.$size-avatar-small;
   }
   &.pa-avatar-medium {
-    @include size(xl);
-    height: $size-avatar-medium;
-    width: $size-avatar-medium;
+    @include typography.size(xl);
+    height: avatar.$size-avatar-medium;
+    width: avatar.$size-avatar-medium;
   }
   &.pa-avatar-huge {
-    @include size(d2-md);
-    height: $size-avatar-huge;
-    width: $size-avatar-huge;
+    @include typography.size(d2-md);
+    height: avatar.$size-avatar-huge;
+    width: avatar.$size-avatar-huge;
   }
 
   .pa-avatar-img {
@@ -47,14 +51,14 @@
   }
 
   .pa-avatar-initials {
-    background: $background-color-avatar-default;
+    background: avatar.$background-color-avatar-default;
     border-bottom: none;
     display: inline-flex;
-    font-weight: $font-weight-semi-bold;
+    font-weight: typography.$font-weight-semi-bold;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    color: $color-dark-stronger;
+    color: palette.$color-dark-stronger;
     @include full-size-circle();
 
     span {
@@ -62,15 +66,15 @@
     }
 
     &.pa-avatar-primary {
-      background: $avatar-primary;
+      background: avatar.$avatar-primary;
     }
 
     &.pa-avatar-secondary {
-      background: $avatar-secondary;
+      background: avatar.$avatar-secondary;
     }
 
     &.pa-avatar-tertiary {
-      background: $avatar-tertiary;
+      background: avatar.$avatar-tertiary;
     }
   }
 }
