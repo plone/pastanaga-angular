@@ -28,6 +28,7 @@
       [step]="step"
       [readonly]="readonly"
       [paInputFormatter]="sanitizeHtmlTags"
+      [paInputFormatterUpdateInput]="type !== 'number'"
       (focus)="onFocus($event)"
       (blur)="onBlur()"
       (keyup)="onKeyUp($event)" />

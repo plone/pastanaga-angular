@@ -1,4 +1,4 @@
-import { Directive, ElementRef, forwardRef, HostListener, Input, Provider } from '@angular/core';
+import { booleanAttribute, Directive, ElementRef, forwardRef, HostListener, Input, Provider } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const FORMATTER_CONTROL_VALUE_ACCESSOR: Provider = {
@@ -14,7 +14,8 @@ const FORMATTER_CONTROL_VALUE_ACCESSOR: Provider = {
 })
 export class InputFormatterDirective implements ControlValueAccessor {
   @Input() paInputFormatter!: (value: any) => any;
-  @Input() paInputFormatterSkip = false;
+  @Input({ transform: booleanAttribute }) paInputFormatterUpdateInput = true;
+  @Input({ transform: booleanAttribute }) paInputFormatterSkip = false;
 
   private _writeToFormControl: (value: any) => void = () => {
     // Will be instantiated by registerOnChange
@@ -22,7 +23,7 @@ export class InputFormatterDirective implements ControlValueAccessor {
 
   @HostListener('input') onKeyup() {
     const val = this.formatValue(this.el.nativeElement.value);
-    if (val !== this.el.nativeElement.value) {
+    if (this.paInputFormatterUpdateInput && val !== this.el.nativeElement.value) {
       this.el.nativeElement.value = val;
     }
     this._writeToFormControl(val);
