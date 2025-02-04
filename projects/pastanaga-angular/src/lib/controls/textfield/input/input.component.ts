@@ -42,6 +42,7 @@ export class InputComponent extends NativeTextFieldDirective implements OnChange
   @Input({ transform: trimString }) icon = '';
   @Input({ transform: numberAttribute }) min?: number;
   @Input({ transform: numberAttribute }) max?: number;
+  @Input({ transform: numberAttribute }) step?: number;
   @Input({ transform: booleanAttribute }) iconOnRight = false;
   @Input({ transform: trimString }) autocapitalize = '';
 
