@@ -1,3 +1,11 @@
+# 2.68.1 (2025-02-04)
+
+### Improvements
+
+- **Input**:  
+  - Support input native `step` attribute
+  - Support entering decimal numbers via keyboard when input type is `number`
+  
 # 2.68.0 (2025-01-02)
 
 ### Breaking change
