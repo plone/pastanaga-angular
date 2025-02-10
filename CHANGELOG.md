@@ -1,3 +1,9 @@
+# 2.68.2 (2025-02-10)
+
+### Bug fix
+
+- **Date picker**: Show selected date when opening the calendar
+
 # 2.68.1 (2025-02-04)
 
 ### Improvements

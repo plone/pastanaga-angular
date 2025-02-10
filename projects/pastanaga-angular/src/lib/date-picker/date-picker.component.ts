@@ -138,6 +138,7 @@ export class DatePickerComponent extends PaFormControlDirective {
 
         this.inputControl.setValue(date);
         this._selectedDate = this.getUtcDate(startOfDay(new Date(value)));
+        this.trackedDate = this._selectedDate || new Date();
       });
 
     // honor text entry
