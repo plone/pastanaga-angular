@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import {
   add,
-  addMinutes,
   addMonths,
   getDate,
   getDay,
@@ -137,7 +136,7 @@ export class DatePickerComponent extends PaFormControlDirective {
         const date = formatDate(value, 'longDate', this.locale);
 
         this.inputControl.setValue(date);
-        this._selectedDate = this.getUtcDate(startOfDay(new Date(value)));
+        this._selectedDate = startOfDay(new Date(value));
         this.trackedDate = this._selectedDate || new Date();
       });
 
@@ -160,7 +159,7 @@ export class DatePickerComponent extends PaFormControlDirective {
             }
           } else if (value) {
             // this maintains the user's format for now
-            date = this.getUtcDate(parse(value, format, this.trackedDate));
+            date = parse(value, format, this.trackedDate);
           }
           return date;
         }),
@@ -178,7 +177,7 @@ export class DatePickerComponent extends PaFormControlDirective {
   private generateWeeks(): void {
     this.weeks = [];
 
-    const monthStartDate = this.getUtcDate(startOfDay(set(this.trackedDate, { date: 1 }))) as Date;
+    const monthStartDate = startOfDay(set(this.trackedDate, { date: 1 }));
     const monthFirstDay = getDay(monthStartDate);
     const monthLastDay = getDay(lastDayOfMonth(this.trackedDate));
     const monthNumDays = getDaysInMonth(monthStartDate);
@@ -304,15 +303,6 @@ export class DatePickerComponent extends PaFormControlDirective {
     this.trackedDate = this._selectedDate || new Date();
     // Patch this.control value (which is meant to be a timestamp, ie an ISO string representation of a Date)
     this.onChange(this._selectedDate?.toISOString());
-  }
-
-  /**
-   * date is corresponding to the start of the day in the current local, like 2023-06-02T00:00:00.000 GMT+0200
-   * If we keep it like this, date.toISOString() returns 2023-06-01T22:00:00.000Z (toISOString always converting the date provided date to UTC)
-   * So we add the timezone offset to the date: that way this._selectedDate.toISOString() will return 2023-06-02T00:00:00.000Z as expected
-   */
-  private getUtcDate(date: Date | undefined) {
-    return date && addMinutes(date, date.getTimezoneOffset() * -1);
   }
 
   override setDisabledState(isDisabled: boolean) {
