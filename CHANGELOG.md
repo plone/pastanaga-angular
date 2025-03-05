@@ -1,3 +1,11 @@
+# 2.68.3 (2025-03-04)
+
+### Bug fix
+
+- **Date picker**: 
+  - Dates are now set to 00:00:00 in the user's local time zone instead of UTC
+  - Dates are no longer miscalculated for users in time zones with a negative offset
+
 # 2.68.2 (2025-02-10)
 
 ### Bug fix

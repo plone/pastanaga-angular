@@ -130,7 +130,7 @@ describe('DatePickerComponent', () => {
     it('should update with date', () => {
       // === Setup ===
       const value = 'March 22, 2022';
-      const expected = new Date('2022-03-22T00:00:00.000Z');
+      const expected = new Date('2022-03-22T00:00:00.000');
 
       // === Execute ===
       component.inputControl.setValue(value);
