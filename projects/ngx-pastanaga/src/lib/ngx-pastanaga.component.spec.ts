@@ -8,9 +8,8 @@ describe('NgxPastanagaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxPastanagaComponent]
-    })
-    .compileComponents();
+      imports: [NgxPastanagaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NgxPastanagaComponent);
     component = fixture.componentInstance;

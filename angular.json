@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-pastanaga",
       "sourceRoot": "projects/ngx-pastanaga/src",
-      "prefix": "lib",
+      "prefix": "pa",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -23,8 +23,21 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-pastanaga/**/*.ts",
+              "projects/ngx-pastanaga/**/*.html"
+            ],
+            "eslintConfig": "projects/ngx-pastanaga/eslint.config.mjs"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": ["angular-eslint"]
   }
 }
