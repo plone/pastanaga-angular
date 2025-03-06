@@ -3,5 +3,28 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ngx-pastanaga": {
+      "projectType": "library",
+      "root": "projects/ngx-pastanaga",
+      "sourceRoot": "projects/ngx-pastanaga/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-pastanaga/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-pastanaga/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-pastanaga/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    }
   }
 }
