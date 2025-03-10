@@ -22,7 +22,10 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@tailwindcss/postcss": "^4.0.12",
+    "postcss": "^8.5.3",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.0.12",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
@@ -40,6 +43,7 @@
     "jest-preset-angular": "^14.5.3",
     "ng-packagr": "^19.2.0",
     "prettier": "3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "ts-node": "^10.9.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "8.25.0"

@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Inter:400,500,600");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Inter", "sans-serif";
+}
