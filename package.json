@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ngx-pastanaga",
     "watch": "ng build --watch --configuration development",
     "test:doc": "jest -c ./projects/documentation/jest.config.ts",
     "test:lib": "jest -c ./projects/ngx-pastanaga/jest.config.ts",
