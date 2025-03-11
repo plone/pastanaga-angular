@@ -8,6 +8,12 @@
       "root": "projects/ngx-pastanaga",
       "sourceRoot": "projects/ngx-pastanaga/src",
       "prefix": "pa",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "none"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -38,7 +44,16 @@
     },
     "documentation": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "none",
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        }
+      },
       "root": "projects/documentation",
       "sourceRoot": "projects/documentation/src",
       "prefix": "doc",
