@@ -1,70 +1,80 @@
-<div class="p-6">
-  <h1 class="font-bold">Palette</h1>
-  <ul>
-    <li class="flex items-center gap-4 text-center">
-      <span class="w-25"></span>
-      <div class="h-10 w-10">50</div>
-      <div class="h-10 w-10">100</div>
-      <div class="h-10 w-10">200</div>
-      <div class="h-10 w-10">300</div>
-      <div class="h-10 w-10">400</div>
-      <div class="h-10 w-10">500</div>
-      <div class="h-10 w-10">600</div>
-      <div class="h-10 w-10">700</div>
-      <div class="h-10 w-10">800</div>
-      <div class="h-10 w-10">900</div>
-      <div class="h-10 w-10">950</div>
-    </li>
+<doc-page>
+  <doc-title>Color palette</doc-title>
+  <doc-description>
+    <p>
+      Pastanaga 3 color palette is based on Tailwindcss base palette. We are
+      using the same 11 shades from 50 to 950. We just added a layer of theme
+      variables for the primitive tokens (gray, accent, green, orange and red)
+      so we can easily override the palette.
+    </p>
+    <div class="mt-8">
+      <ul>
+        <li class="flex items-center gap-4 text-center">
+          <span class="w-25"></span>
+          <div class="h-10 w-10">50</div>
+          <div class="h-10 w-10">100</div>
+          <div class="h-10 w-10">200</div>
+          <div class="h-10 w-10">300</div>
+          <div class="h-10 w-10">400</div>
+          <div class="h-10 w-10">500</div>
+          <div class="h-10 w-10">600</div>
+          <div class="h-10 w-10">700</div>
+          <div class="h-10 w-10">800</div>
+          <div class="h-10 w-10">900</div>
+          <div class="h-10 w-10">950</div>
+        </li>
 
-    <li class="mb-4 flex items-center gap-4">
-      <span class="w-25">Gray</span>
-      @for (color of grayColors; track $index) {
-        <div
-          class="h-10 w-10 rounded-sm {{
-            color
-          }} dark:border-1 dark:border-white/10"
-        ></div>
-      }
-    </li>
-    <li class="mb-4 flex items-center gap-4">
-      <span class="w-25">Accent</span>
-      @for (color of accentColors; track $index) {
-        <div
-          class="h-10 w-10 rounded-sm {{
-            color
-          }} dark:border-1 dark:border-white/10"
-        ></div>
-      }
-    </li>
-    <li class="mb-4 flex items-center gap-4">
-      <span class="w-25">Green</span>
-      @for (color of greenColors; track $index) {
-        <div
-          class="h-10 w-10 rounded-sm {{
-            color
-          }} dark:border-1 dark:border-white/10"
-        ></div>
-      }
-    </li>
-    <li class="mb-4 flex items-center gap-4">
-      <span class="w-25">Orange</span>
-      @for (color of orangeColors; track $index) {
-        <div
-          class="h-10 w-10 rounded-sm {{
-            color
-          }} dark:border-1 dark:border-white/10"
-        ></div>
-      }
-    </li>
-    <li class="mb-4 flex items-center gap-4">
-      <span class="w-25">Red</span>
-      @for (color of redColors; track $index) {
-        <div
-          class="h-10 w-10 rounded-sm {{
-            color
-          }} dark:border-1 dark:border-white/10"
-        ></div>
-      }
-    </li>
-  </ul>
-</div>
+        <li class="mb-4 flex items-center gap-4">
+          <span class="w-25">Gray</span>
+          @for (color of grayColors; track $index) {
+            <div
+              class="h-10 w-10 rounded-sm {{
+                color
+              }} dark:border-1 dark:border-white/10"
+            ></div>
+          }
+        </li>
+        <li class="mb-4 flex items-center gap-4">
+          <span class="w-25">Accent</span>
+          @for (color of accentColors; track $index) {
+            <div
+              class="h-10 w-10 rounded-sm {{
+                color
+              }} dark:border-1 dark:border-white/10"
+            ></div>
+          }
+        </li>
+        <li class="mb-4 flex items-center gap-4">
+          <span class="w-25">Green</span>
+          @for (color of greenColors; track $index) {
+            <div
+              class="h-10 w-10 rounded-sm {{
+                color
+              }} dark:border-1 dark:border-white/10"
+            ></div>
+          }
+        </li>
+        <li class="mb-4 flex items-center gap-4">
+          <span class="w-25">Orange</span>
+          @for (color of orangeColors; track $index) {
+            <div
+              class="h-10 w-10 rounded-sm {{
+                color
+              }} dark:border-1 dark:border-white/10"
+            ></div>
+          }
+        </li>
+        <li class="mb-4 flex items-center gap-4">
+          <span class="w-25">Red</span>
+          @for (color of redColors; track $index) {
+            <div
+              class="h-10 w-10 rounded-sm {{
+                color
+              }} dark:border-1 dark:border-white/10"
+            ></div>
+          }
+        </li>
+      </ul>
+    </div>
+  </doc-description>
+</doc-page>

@@ -1,3 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:400,500,600");
 @import "tailwindcss";
 @import "../../ngx-pastanaga/src/theme.css";
+
+doc-description a {
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--prose-link-color);
+  text-underline-offset: 3px;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}

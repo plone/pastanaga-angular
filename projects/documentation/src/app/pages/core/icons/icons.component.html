@@ -1,24 +1,72 @@
-<p>
-  With pa-icon using glyphs from <a href="https://heroicons.com/">heroicons</a>
-</p>
+<doc-page>
+  <doc-title>Icons</doc-title>
+  <doc-description>
+    <div class="flex flex-col gap-4">
+      <p>
+        Pastanaga 3 includes
+        <a href="https://heroicons.com/" target="_blank">heroicons</a> as a
+        sprite of svg icons and the component <code>pa-icon</code> allowing to
+        display them.
+      </p>
 
-<div
-  class="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-x-6 gap-y-4 pt-10 pb-16 sm:pt-11 md:pt-12"
->
-  @for (icon of icons; track $index) {
-    <div class="group">
-      <div class="relative h-34">
-        <div
-          class="absolute inset-0 flex h-full w-full cursor-auto items-center justify-center rounded-xl ring-1 ring-gray-200 ring-inset dark:ring-gray-50/50"
-        >
-          <pa-icon [name]="icon"></pa-icon>
+      <div>
+        <p class="mb-1">
+          The usage of this component is very simple, it only has one
+          <code>name</code> property allowing to chose which icon to be
+          displayed:
+        </p>
+        <div class="flex items-center gap-4">
+          <doc-code>{{ codeExample }}</doc-code>
+          <pa-icon name="x-circle"></pa-icon>
         </div>
       </div>
+
+      <div>
+        <p class="mb-1">
+          You can then style the icon using any tailwindcss class on the
+          component. Their color is based on the text color:
+        </p>
+        <div class="flex items-center gap-4">
+          <doc-code>{{ styleExample }}</doc-code>
+          <pa-icon
+            name="x-circle"
+            class="text-accent-500 dark:text-accent-400"
+          ></pa-icon>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-1">
+          By default, width and height are set to <code>w-6 h-6</code> but you
+          can override them by prividing any size class:
+        </p>
+        <div class="flex items-center gap-4">
+          <doc-code>{{ sizeExample }}</doc-code>
+          <pa-icon name="x-circle" class="h-10 w-10"></pa-icon>
+        </div>
+      </div>
+
+      <h2 class="mt-6 mb-4 text-xl">Icon list</h2>
       <div
-        class="mt-3 h-10 truncate text-center text-[0.8125rem] leading-5 text-gray-500 group-focus-within:line-clamp-2 group-focus-within:whitespace-normal group-hover:line-clamp-2 group-hover:whitespace-normal dark:text-gray-100"
+        class="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-x-6 gap-y-4 pb-16"
       >
-        {{ icon }}
+        @for (icon of icons; track $index) {
+          <div class="group">
+            <div class="relative h-34">
+              <div
+                class="absolute inset-0 flex h-full w-full cursor-auto items-center justify-center rounded-xl ring-1 ring-gray-200 ring-inset dark:ring-gray-50/50"
+              >
+                <pa-icon [name]="icon"></pa-icon>
+              </div>
+            </div>
+            <div
+              class="mt-3 h-10 truncate text-center text-[0.8125rem] leading-5 text-gray-500 group-focus-within:line-clamp-2 group-focus-within:whitespace-normal group-hover:line-clamp-2 group-hover:whitespace-normal dark:text-gray-100"
+            >
+              {{ icon }}
+            </div>
+          </div>
+        }
       </div>
     </div>
-  }
-</div>
+  </doc-description>
+</doc-page>

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PaIconComponent } from 'ngx-pastanaga';
+import { DocPageModule } from '../../doc-page/doc-page.module';
 
 @Component({
   selector: 'doc-overview',
-  imports: [PaIconComponent],
+  imports: [DocPageModule],
   templateUrl: './overview.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

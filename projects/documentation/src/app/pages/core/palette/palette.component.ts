@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DocPageModule } from '../../../doc-page/doc-page.module';
 
 @Component({
   selector: 'doc-palette',
-  imports: [],
+  imports: [DocPageModule],
   templateUrl: './palette.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
