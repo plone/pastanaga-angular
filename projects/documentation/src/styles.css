@@ -12,3 +12,13 @@ doc-description a {
     text-decoration-thickness: 2px;
   }
 }
+
+doc-description code {
+  background-color: var(--color-gray-100);
+  padding: --spacing(0.5) --spacing(1.5);
+  border-radius: var(--radius-xs);
+
+  @variant dark {
+    background-color: var(--color-gray-800);
+  }
+}

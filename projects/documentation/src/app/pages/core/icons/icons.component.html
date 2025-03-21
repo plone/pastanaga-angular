@@ -37,14 +37,32 @@
 
       <div>
         <p class="mb-1">
-          By default, width and height are set to <code>w-6 h-6</code> but you
-          can override them by prividing any size class:
+          By default, width and height are set to <code>w-6 h-6</code> (so 24px)
+          but you can override them by prividing any size class:
         </p>
         <div class="flex items-center gap-4">
           <doc-code>{{ sizeExample }}</doc-code>
           <pa-icon name="x-circle" class="h-10 w-10"></pa-icon>
         </div>
       </div>
+
+      <h2 class="mt-6 text-xl">Generating icon sprite</h2>
+      <p>
+        Pastanaga includes
+        <a href="https://heroicons.com/" target="_blank">heroicons</a> outlined
+        icons. They are stored in <code>ngx-pastanaga/glyphs</code> folder.
+        Pastanaga also provides a script allowing to turn icons stored in this
+        folder into a single svg sprite generated in
+        <code>ngx-pastanaga/src/assets</code> folder (and copied into
+        <code>documentation/public/assets</code> folder to be used in the
+        documentation app).
+      </p>
+      <p>
+        Whenever you update any svg in the glyphs folder, you must also update
+        the svg sprite by executing the following command from the workspace
+        root:
+      </p>
+      <doc-code>./scripts/update-glyphs.sh</doc-code>
 
       <h2 class="mt-6 mb-4 text-xl">Icon list</h2>
       <div
