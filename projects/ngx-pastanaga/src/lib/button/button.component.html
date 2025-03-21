@@ -1,0 +1,11 @@
+<button
+  class="transition-colors not-disabled:cursor-pointer font-semibold rounded-sm {{
+    colorClasses()
+  }}"
+  [disabled]="disabled()"
+  [type]="type()"
+>
+  <span class="flex items-center gap-2 {{ sizeClasses() }}"
+    ><ng-content></ng-content
+  ></span>
+</button>

@@ -1,0 +1,90 @@
+<doc-page>
+  <doc-title>Buttons</doc-title>
+  <doc-description>
+    <div class="flex flex-col gap-8">
+      <div>
+        <p class="mb-1 font-semibold">Default button:</p>
+        <div class="flex items-center gap-4">
+          <doc-code>{{ default }}</doc-code>
+          <pa-button>Default</pa-button>
+        </div>
+      </div>
+      <div>
+        <p class="mb-1 font-semibold">Button with icon:</p>
+        <doc-code>{{ icon }}</doc-code>
+        <div class="mt-2 flex items-center gap-4">
+          <pa-button
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          >
+          <pa-button
+            >Upload <pa-icon name="cloud-arrow-up"></pa-icon
+          ></pa-button>
+        </div>
+      </div>
+      <div>
+        <p class="mb-1 font-semibold">
+          Variants: <code>filled | outlined | text</code>
+        </p>
+        <doc-code>{{ variants }}</doc-code>
+        <div class="mt-2 flex items-center gap-4">
+          <pa-button variant="filled">Filled</pa-button>
+          <pa-button variant="outlined">Outlined</pa-button>
+          <pa-button variant="text">Text</pa-button>
+        </div>
+      </div>
+      <div>
+        <p class="mb-1 font-semibold">
+          Colors: <code>accent | neutral | red | orange | green</code>
+        </p>
+        <doc-code>{{ colors }}</doc-code>
+        <div class="mt-2 flex items-center gap-4">
+          <pa-button variant="filled">Accent</pa-button>
+          <pa-button variant="outlined">Accent</pa-button>
+          <pa-button variant="text">Accent</pa-button>
+          <pa-button color="neutral" variant="filled">Neutral</pa-button>
+          <pa-button color="neutral" variant="outlined">Neutral</pa-button>
+          <pa-button color="neutral" variant="text">Neutral</pa-button>
+        </div>
+        <div class="mt-2 flex items-center gap-4">
+          <pa-button color="red" variant="filled">Red</pa-button>
+          <pa-button color="red" variant="outlined">Red</pa-button>
+          <pa-button color="red" variant="text">Red</pa-button>
+          <pa-button color="orange" variant="filled">Orange</pa-button>
+          <pa-button color="orange" variant="outlined">Orange</pa-button>
+          <pa-button color="orange" variant="text">Orange</pa-button>
+          <pa-button color="green" variant="filled">Green</pa-button>
+          <pa-button color="green" variant="outlined">Green</pa-button>
+          <pa-button color="green" variant="text">Green</pa-button>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-1 font-semibold">Disabled button:</p>
+        <doc-code>{{ disabled }}</doc-code>
+        <div class="mt-2 flex items-center gap-4">
+          <pa-button disabled="true">Filled</pa-button>
+          <pa-button disabled="true" variant="outlined">Outline</pa-button>
+          <pa-button disabled="true" variant="text">Text</pa-button>
+          <pa-button disabled="true"
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          ><pa-button disabled="true" variant="outlined"
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          ><pa-button disabled="true" variant="text"
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          >
+        </div>
+      </div>
+      <div>
+        <p class="mb-1 font-semibold">Sizes: <code>xs | sm | md | lg</code></p>
+        <doc-code>{{ size }}</doc-code>
+        <div class="mt-2 flex items-center gap-4">
+          <pa-button>Default</pa-button>
+          <pa-button size="xs">Extra Small</pa-button>
+          <pa-button size="sm">Small</pa-button>
+          <pa-button size="md">Medium</pa-button>
+          <pa-button size="lg">Large</pa-button>
+        </div>
+      </div>
+    </div>
+  </doc-description>
+</doc-page>

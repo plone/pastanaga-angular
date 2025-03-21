@@ -4,6 +4,7 @@ import { IMenuSection } from './menu/menu.model';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { InstallationComponent } from './pages/installation/installation.component';
 import { IconsComponent } from './pages/core/icons/icons.component';
+import { ButtonsComponent } from './pages/components/buttons/buttons.component';
 
 export const menu: IMenuSection[] = [
   {
@@ -33,6 +34,16 @@ export const menu: IMenuSection[] = [
         title: 'Icons',
         path: 'icons',
         type: IconsComponent,
+      },
+    ],
+  },
+  {
+    title: 'Components',
+    pages: [
+      {
+        title: 'Buttons',
+        path: 'buttons',
+        type: ButtonsComponent,
       },
     ],
   },
