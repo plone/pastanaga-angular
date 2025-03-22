@@ -1,11 +1,12 @@
 <button
-  class="transition-colors not-disabled:cursor-pointer font-semibold rounded-sm {{
+  class="transition-colors not-disabled:cursor-pointer font-semibold {{
     colorClasses()
-  }}"
+  }} {{ roundedClasses() }}"
   [disabled]="disabled()"
   [type]="type()"
+  [ariaLabel]="computedAriaLabel()"
 >
-  <span class="flex items-center gap-2 {{ sizeClasses() }}"
+  <span #textContainer class="flex items-center gap-2 {{ sizeClasses() }}"
     ><ng-content></ng-content
   ></span>
 </button>

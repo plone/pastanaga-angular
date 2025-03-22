@@ -3,6 +3,17 @@
   <doc-description>
     <div class="flex flex-col gap-8">
       <div>
+        <p class="mb-1 font-semibold">Accessibility:</p>
+        <p class="mb-1">
+          By default, button text is automatically used as
+          <code>aria-label</code>. You can override this behavior by providing
+          your own <code>ariaLabel</code> as input. For icon only buttons, you
+          must use the <code>ariaLabel</code> attribute to make your button
+          accessible.
+        </p>
+        <doc-code>{{ accessibility }}</doc-code>
+      </div>
+      <div>
         <p class="mb-1 font-semibold">Default button:</p>
         <div class="flex items-center gap-4">
           <doc-code>{{ default }}</doc-code>
@@ -19,6 +30,9 @@
           <pa-button
             >Upload <pa-icon name="cloud-arrow-up"></pa-icon
           ></pa-button>
+          <pa-button ariaLabel="Upload"
+            ><pa-icon name="cloud-arrow-up"></pa-icon
+          ></pa-button>
         </div>
       </div>
       <div>
@@ -30,6 +44,15 @@
           <pa-button variant="filled">Filled</pa-button>
           <pa-button variant="outlined">Outlined</pa-button>
           <pa-button variant="text">Text</pa-button>
+          <pa-button variant="filled"
+            ><pa-icon name="x-mark"></pa-icon
+          ></pa-button>
+          <pa-button variant="outlined"
+            ><pa-icon name="x-mark"></pa-icon
+          ></pa-button>
+          <pa-button variant="text"
+            ><pa-icon name="x-mark"></pa-icon
+          ></pa-button>
         </div>
       </div>
       <div>
@@ -77,12 +100,35 @@
       <div>
         <p class="mb-1 font-semibold">Sizes: <code>xs | sm | md | lg</code></p>
         <doc-code>{{ size }}</doc-code>
-        <div class="mt-2 flex items-center gap-4">
-          <pa-button>Default</pa-button>
+        <div class="mt-2 flex flex-wrap items-center gap-4">
           <pa-button size="xs">Extra Small</pa-button>
+          <pa-button size="xs"
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          >
+          <pa-button size="xs" ariaLabel="Close"
+            ><pa-icon name="x-mark"></pa-icon
+          ></pa-button>
           <pa-button size="sm">Small</pa-button>
+          <pa-button size="sm"
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          >
+          <pa-button size="sm" ariaLabel="Close"
+            ><pa-icon name="x-mark"></pa-icon
+          ></pa-button>
           <pa-button size="md">Medium</pa-button>
+          <pa-button size="md"
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          >
+          <pa-button size="md" ariaLabel="Close"
+            ><pa-icon name="x-mark"></pa-icon
+          ></pa-button>
           <pa-button size="lg">Large</pa-button>
+          <pa-button size="lg"
+            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+          >
+          <pa-button size="lg" ariaLabel="Close"
+            ><pa-icon name="x-mark"></pa-icon
+          ></pa-button>
         </div>
       </div>
     </div>

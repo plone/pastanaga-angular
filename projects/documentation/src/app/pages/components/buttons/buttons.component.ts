@@ -16,4 +16,6 @@ export class ButtonsComponent {
   variants = `<pa-button variant="outlined">Outlined</pa-button>`;
   colors = `<pa-button color="neutral">Neutral</pa-button>`;
   size = `<pa-button size="sm">Small</pa-button>`;
+  accessibility = `<pa-button ariaLabel="Custom label">Default</pa-button>
+<pa-button ariaLabel="Close"><pa-icon name="x-mark"></pa-icon></pa-button>`;
 }

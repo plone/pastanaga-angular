@@ -1,9 +1,13 @@
 import {
+  AfterContentInit,
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
   input,
+  signal,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -11,24 +15,52 @@ import {
   imports: [],
   templateUrl: './button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'flex' },
 })
-export class PaButtonComponent {
+export class PaButtonComponent implements AfterContentInit {
+  @ViewChild('textContainer') textContainer?: ElementRef;
+
   type = input<'button' | 'submit' | 'reset'>('button');
   disabled = input(false, { transform: booleanAttribute });
   color = input<'accent' | 'neutral' | 'red' | 'orange' | 'green'>('accent');
   variant = input<'filled' | 'outlined' | 'text'>('filled');
   size = input<'xs' | 'sm' | 'md' | 'lg'>('md');
+  ariaLabel = input('');
+
+  label = signal('');
+  roundedClasses = signal('rounded-sm');
+  iconOnly = signal(false);
+  svgElement = signal<Element | null>(null);
+
+  computedAriaLabel = computed(() => this.label() || this.ariaLabel());
 
   sizeClasses = computed(() => {
+    const svgElement = this.svgElement();
     switch (this.size()) {
       case 'xs':
-        return 'px-2 py-0.5';
+        // reduce icon size if needed
+        if (svgElement?.classList.contains('h-6')) {
+          svgElement.classList.remove('h-6');
+          svgElement.classList.remove('w-6');
+          svgElement.classList.add('h-4');
+          svgElement.classList.add('w-4');
+        }
+        return this.iconOnly() ? 'p-1' : 'px-2 py-1 text-xs';
       case 'sm':
-        return 'px-3 py-1';
+        return this.iconOnly() ? 'p-1' : 'px-3 py-1';
       case 'md':
-        return 'px-4 py-2';
+        return this.iconOnly() ? 'p-2' : 'px-4 py-2';
       case 'lg':
-        return 'px-8 py-3';
+        // increase icon size if needed
+        if (svgElement?.classList.contains('h-6')) {
+          svgElement.classList.remove('h-6');
+          svgElement.classList.remove('w-6');
+          svgElement.classList.add('h-7');
+          svgElement.classList.add('w-7');
+        }
+        return this.iconOnly()
+          ? 'p-2'
+          : `${svgElement ? 'px-4' : 'px-6'} py-2 text-xl`;
     }
   });
 
@@ -87,4 +119,29 @@ export class PaButtonComponent {
         break;
     }
   });
+
+  ngAfterContentInit(): void {
+    setTimeout(() => {
+      if (this.textContainer) {
+        const label = this.textContainer.nativeElement.textContent.trim();
+        const iconElements =
+          this.textContainer.nativeElement.getElementsByTagName('pa-icon');
+        const hasIcon = iconElements.length === 1;
+
+        if (label) {
+          this.label.set(label);
+        }
+        if (hasIcon) {
+          this.svgElement.set(
+            iconElements.item(0).getElementsByTagName('svg').item(0),
+          );
+        }
+
+        if (!label && hasIcon) {
+          this.roundedClasses.set('rounded-full');
+          this.iconOnly.set(true);
+        }
+      }
+    }, 0);
+  }
 }
