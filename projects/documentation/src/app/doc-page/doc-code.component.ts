@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'doc-code',
   standalone: false,
   template: `<pre
-    class="rounded bg-gray-100 px-3 py-2 dark:bg-gray-800"
+    class="rounded bg-gray-100 px-3 py-2 text-wrap dark:bg-gray-800"
   ><code><ng-content></ng-content></code></pre>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

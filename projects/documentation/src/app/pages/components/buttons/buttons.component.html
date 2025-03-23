@@ -15,7 +15,7 @@
       </div>
       <div>
         <p class="mb-1 font-semibold">Default button:</p>
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center gap-4">
           <doc-code>{{ default }}</doc-code>
           <pa-button>Default</pa-button>
         </div>
@@ -23,7 +23,7 @@
       <div>
         <p class="mb-1 font-semibold">Button with icon:</p>
         <doc-code>{{ icon }}</doc-code>
-        <div class="mt-2 flex items-center gap-4">
+        <div class="mt-2 flex flex-wrap items-center gap-4">
           <pa-button
             ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
           >
@@ -40,7 +40,7 @@
           Variants: <code>filled | outlined | text</code>
         </p>
         <doc-code>{{ variants }}</doc-code>
-        <div class="mt-2 flex items-center gap-4">
+        <div class="mt-2 flex flex-wrap items-center gap-4">
           <pa-button variant="filled">Filled</pa-button>
           <pa-button variant="outlined">Outlined</pa-button>
           <pa-button variant="text">Text</pa-button>
@@ -60,50 +60,65 @@
           Colors: <code>accent | neutral | red | orange | green</code>
         </p>
         <doc-code>{{ colors }}</doc-code>
-        <div class="mt-2 flex items-center gap-4">
-          <pa-button [disabled]="isDisabled" variant="filled">Accent</pa-button>
-          <pa-button [disabled]="isDisabled" variant="outlined"
-            >Accent</pa-button
-          >
-          <pa-button [disabled]="isDisabled" variant="text">Accent</pa-button>
-          <pa-button [disabled]="isDisabled" color="neutral" variant="filled"
-            >Neutral</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="neutral" variant="outlined"
-            >Neutral</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="neutral" variant="text"
-            >Neutral</pa-button
-          >
+        <div class="mt-2 flex flex-wrap gap-4 max-sm:flex-col">
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button [disabled]="isDisabled" variant="filled"
+              >Accent</pa-button
+            >
+            <pa-button [disabled]="isDisabled" variant="outlined"
+              >Accent</pa-button
+            >
+            <pa-button [disabled]="isDisabled" variant="text">Accent</pa-button>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button [disabled]="isDisabled" color="neutral" variant="filled"
+              >Neutral</pa-button
+            >
+            <pa-button
+              [disabled]="isDisabled"
+              color="neutral"
+              variant="outlined"
+              >Neutral</pa-button
+            >
+            <pa-button [disabled]="isDisabled" color="neutral" variant="text"
+              >Neutral</pa-button
+            >
+          </div>
         </div>
-        <div class="mt-2 flex items-center gap-4">
-          <pa-button [disabled]="isDisabled" color="red" variant="filled"
-            >Red</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="red" variant="outlined"
-            >Red</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="red" variant="text"
-            >Red</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="orange" variant="filled"
-            >Orange</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="orange" variant="outlined"
-            >Orange</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="orange" variant="text"
-            >Orange</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="green" variant="filled"
-            >Green</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="green" variant="outlined"
-            >Green</pa-button
-          >
-          <pa-button [disabled]="isDisabled" color="green" variant="text"
-            >Green</pa-button
-          >
+        <div class="mt-2 flex flex-wrap gap-4 max-sm:flex-col">
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button [disabled]="isDisabled" color="red" variant="filled"
+              >Red</pa-button
+            >
+            <pa-button [disabled]="isDisabled" color="red" variant="outlined"
+              >Red</pa-button
+            >
+            <pa-button [disabled]="isDisabled" color="red" variant="text"
+              >Red</pa-button
+            >
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button [disabled]="isDisabled" color="orange" variant="filled"
+              >Orange</pa-button
+            >
+            <pa-button [disabled]="isDisabled" color="orange" variant="outlined"
+              >Orange</pa-button
+            >
+            <pa-button [disabled]="isDisabled" color="orange" variant="text"
+              >Orange</pa-button
+            >
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button [disabled]="isDisabled" color="green" variant="filled"
+              >Green</pa-button
+            >
+            <pa-button [disabled]="isDisabled" color="green" variant="outlined"
+              >Green</pa-button
+            >
+            <pa-button [disabled]="isDisabled" color="green" variant="text"
+              >Green</pa-button
+            >
+          </div>
         </div>
       </div>
 
@@ -114,38 +129,47 @@
           isDisabled ? "Enable buttons" : "Disable buttons"
         }}</pa-button>
       </div>
+
       <div>
         <p class="mb-1 font-semibold">Sizes: <code>xs | sm | md | lg</code></p>
         <doc-code>{{ size }}</doc-code>
-        <div class="mt-2 flex flex-wrap items-center gap-4">
-          <pa-button size="xs">Extra Small</pa-button>
-          <pa-button size="xs"
-            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
-          >
-          <pa-button size="xs" ariaLabel="Close"
-            ><pa-icon name="x-mark"></pa-icon
-          ></pa-button>
-          <pa-button size="sm">Small</pa-button>
-          <pa-button size="sm"
-            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
-          >
-          <pa-button size="sm" ariaLabel="Close"
-            ><pa-icon name="x-mark"></pa-icon
-          ></pa-button>
-          <pa-button size="md">Medium</pa-button>
-          <pa-button size="md"
-            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
-          >
-          <pa-button size="md" ariaLabel="Close"
-            ><pa-icon name="x-mark"></pa-icon
-          ></pa-button>
-          <pa-button size="lg">Large</pa-button>
-          <pa-button size="lg"
-            ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
-          >
-          <pa-button size="lg" ariaLabel="Close"
-            ><pa-icon name="x-mark"></pa-icon
-          ></pa-button>
+        <div class="mt-2 flex flex-wrap gap-4 max-sm:flex-col">
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button size="xs">Extra Small</pa-button>
+            <pa-button size="xs"
+              ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+            >
+            <pa-button size="xs" ariaLabel="Close"
+              ><pa-icon name="x-mark"></pa-icon
+            ></pa-button>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button size="sm">Small</pa-button>
+            <pa-button size="sm"
+              ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+            >
+            <pa-button size="sm" ariaLabel="Close"
+              ><pa-icon name="x-mark"></pa-icon
+            ></pa-button>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button size="md">Medium</pa-button>
+            <pa-button size="md"
+              ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+            >
+            <pa-button size="md" ariaLabel="Close"
+              ><pa-icon name="x-mark"></pa-icon
+            ></pa-button>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <pa-button size="lg">Large</pa-button>
+            <pa-button size="lg"
+              ><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button
+            >
+            <pa-button size="lg" ariaLabel="Close"
+              ><pa-icon name="x-mark"></pa-icon
+            ></pa-button>
+          </div>
         </div>
       </div>
     </div>
