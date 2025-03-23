@@ -67,54 +67,60 @@ export class PaButtonComponent implements AfterContentInit {
   colorClasses = computed(() => {
     const color = this.color();
     const variant = this.variant();
-    const border = variant === 'outlined' ? 'border' : '';
-    const filledDisabled = 'disabled:bg-gray-200';
-    const textDisabled = 'disabled:text-gray-400';
+    const filledDisabled = 'disabled:bg-gray-200 disabled:text-gray-400';
+    const outlinedDisabled =
+      'disabled:bg-transparent disabled:border-gray-400 disabled:text-gray-400';
+    const textDisabled = 'disabled:bg-transparent disabled:text-gray-400';
 
     switch (color) {
       case 'accent':
         switch (variant) {
           case 'filled':
-            return `bg-accent-500 hover:bg-accent-600 active:bg-accent-800 text-white ${filledDisabled} ${textDisabled}`;
+            return `bg-accent-500 hover:bg-accent-600 active:bg-accent-700 text-white ${filledDisabled}`;
           case 'outlined':
+            return `border text-accent-500 hover:bg-accent-400 hover:border-accent-400 active:bg-accent-600 active:border-accent-600 hover:text-white ${outlinedDisabled}`;
           case 'text':
-            return `${border} text-accent-500 hover:text-accent-800 active:text-accent-950 dark:not-disabled:hover:text-accent-400 dark:not-disabled:active:text-accent-300 ${textDisabled}`;
+            return `text-accent-500  hover:bg-accent-400 active:bg-accent-600 hover:text-white ${textDisabled}`;
         }
         break;
       case 'neutral':
         switch (variant) {
           case 'filled':
-            return `bg-gray-950 hover:bg-gray-700 active:bg-gray-600 text-white ${filledDisabled} dark:bg-gray-800 ${textDisabled}`;
+            return `bg-gray-600 hover:bg-gray-700 active:bg-gray-800 text-white ${filledDisabled}`;
           case 'outlined':
+            return `border text-gray-600 dark:text-white hover:bg-gray-500 hover:border-gray-500 active:bg-gray-700 active:border-gray-800 hover:text-white ${outlinedDisabled}`;
           case 'text':
-            return `${border} text-gray-950 hover:text-gray-600 active:text-gray-500 dark:text-white dark:hover:not-disabled:text-gray-200 dark:not-disabled:active:text-gray-400 ${textDisabled}`;
+            return `text-gray-600 dark:text-white hover:bg-gray-500 active:bg-gray-700 hover:text-white ${textDisabled}`;
         }
         break;
       case 'red':
         switch (variant) {
           case 'filled':
-            return `bg-red-500 hover:bg-red-600 active:bg-red-800 text-white ${filledDisabled} ${textDisabled}`;
+            return `bg-red-500 hover:bg-red-600 active:bg-red-700 text-white ${filledDisabled}`;
           case 'outlined':
+            return `border text-red-500 hover:bg-red-400 hover:border-red-400 active:bg-red-600 active:border-red-600 hover:text-white ${outlinedDisabled}`;
           case 'text':
-            return `${border} text-red-500 hover:text-red-800 active:text-red-950 dark:hover:not-disabled:text-red-400 dark:not-disabled:active:text-red-300 ${textDisabled}`;
+            return `text-red-500  hover:bg-red-400 active:bg-red-600 hover:text-white ${textDisabled}`;
         }
         break;
       case 'orange':
         switch (variant) {
           case 'filled':
-            return `bg-orange-500 hover:bg-orange-600 active:bg-orange-800 text-white ${filledDisabled} ${textDisabled}`;
+            return `bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white ${filledDisabled}`;
           case 'outlined':
+            return `border text-orange-500 hover:bg-orange-400 hover:border-orange-400 active:bg-orange-600 active:border-orange-600 hover:text-white ${outlinedDisabled}`;
           case 'text':
-            return `${border} text-orange-500 hover:text-orange-800 active:text-orange-950 dark:hover:not-disabled:text-orange-400 dark:not-disabled:active:text-orange-300  ${textDisabled}`;
+            return `text-orange-500  hover:bg-orange-400 active:bg-orange-600 hover:text-white ${textDisabled}`;
         }
         break;
       case 'green':
         switch (variant) {
           case 'filled':
-            return `bg-green-500 hover:bg-green-600 active:bg-green-800 text-white ${filledDisabled} ${textDisabled}`;
+            return `bg-green-500 hover:bg-green-600 active:bg-green-700 text-white ${filledDisabled}`;
           case 'outlined':
+            return `border text-green-500 hover:bg-green-400 hover:border-green-400 active:bg-green-600 active:border-green-600 hover:text-white ${outlinedDisabled}`;
           case 'text':
-            return `${border} text-green-500 hover:text-green-800 active:text-green-950 dark:hover:not-disabled:text-green-400 dark:not-disabled:active:text-green-300 ${textDisabled}`;
+            return `text-green-500  hover:bg-green-400 active:bg-green-600 hover:text-white ${textDisabled}`;
         }
         break;
     }

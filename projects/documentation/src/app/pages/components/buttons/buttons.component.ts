@@ -10,7 +10,7 @@ import { PaButtonComponent, PaIconComponent } from 'ngx-pastanaga';
 })
 export class ButtonsComponent {
   default = '<pa-button>Default</pa-button>';
-  disabled = '<pa-button disabled="true">Filled</pa-button>';
+  disabled = '<pa-button disabled="true">Label</pa-button>';
   icon = `<pa-button><pa-icon name="cloud-arrow-up"></pa-icon> Upload</pa-button>
 <pa-button>Upload <pa-icon name="cloud-arrow-up"></pa-icon></pa-button>`;
   variants = `<pa-button variant="outlined">Outlined</pa-button>`;
@@ -18,4 +18,6 @@ export class ButtonsComponent {
   size = `<pa-button size="sm">Small</pa-button>`;
   accessibility = `<pa-button ariaLabel="Custom label">Default</pa-button>
 <pa-button ariaLabel="Close"><pa-icon name="x-mark"></pa-icon></pa-button>`;
+
+  isDisabled = false;
 }
