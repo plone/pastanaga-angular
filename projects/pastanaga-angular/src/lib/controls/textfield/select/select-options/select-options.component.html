@@ -15,11 +15,19 @@
       [destructive]="typedOption.option.destructive"
       [dontCloseOnSelect]="typedOption.option.dontCloseOnSelect"
       [icon]="typedOption.option.iconModel || typedOption.option.icon"
-      [iconOnRight]="typedOption.option.iconOnRight"
+      [iconOnRight]="typedOption.option.iconOnRight || multiple"
       [value]="typedOption.option.value"
       [description]="typedOption.option.help"
       (selectOption)="selectOption(typedOption.option)">
-      {{ typedOption.option.label }}
+      @if (multiple) {
+        <pa-checkbox
+          [value]="typedOption.option.selected"
+          (click)="clickOnCheck($event, typedOption.option)">
+          {{ typedOption.option.label }}
+        </pa-checkbox>
+      } @else {
+        {{ typedOption.option.label }}
+      }
     </pa-option>
   }
 }

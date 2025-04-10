@@ -82,7 +82,8 @@
     @if (dropdownOptions.length) {
       <pa-select-options
         [options]="dropdownOptions"
-        (optionSelected)="selectOption($event)"></pa-select-options>
+        [multiple]="multiple"
+        (optionSelected)="multiple ? selectMultipleOptions($event) : selectOption($event)"></pa-select-options>
     } @else {
       <ng-content></ng-content>
     }
