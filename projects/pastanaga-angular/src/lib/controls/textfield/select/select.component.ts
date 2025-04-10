@@ -1,3 +1,5 @@
+import { FocusOrigin } from '@angular/cdk/a11y';
+import { Platform } from '@angular/cdk/platform';
 import {
   AfterViewInit,
   booleanAttribute,
@@ -19,13 +21,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { Platform } from '@angular/cdk/platform';
-import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
-import { DropdownComponent, OptionComponent } from '../../../dropdown';
+import { fromEvent, Subject } from 'rxjs';
 import { delay, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { detectChanges, isVisibleInViewport, markForCheck, trimString } from '../../../common';
-import { fromEvent, Subject } from 'rxjs';
-import { FocusOrigin } from '@angular/cdk/a11y';
+import { DropdownComponent, OptionComponent } from '../../../dropdown';
+import { ControlType, OptionHeaderModel, OptionModel, OptionSeparator } from '../../control.model';
 import { TextFieldDirective } from '../text-field.directive';
 
 export type OptionType = OptionModel | OptionSeparator | OptionHeaderModel;
@@ -42,6 +42,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   @Input({ transform: booleanAttribute }) adjustHeight = false;
   @Input({ transform: booleanAttribute }) showAllErrors = false;
   @Input({ transform: booleanAttribute }) dim = false;
+  @Input({ transform: booleanAttribute }) multiple = false;
 
   @Input() set options(values: OptionType[] | null) {
     this.dropdownOptions = !!values ? values : [];
@@ -64,6 +65,8 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   selectedOption?: OptionModel;
   isOpened = false;
   override fieldType = 'select';
+
+  private selectedOptions: OptionModel[] = [];
 
   /**
    * either the selected option label, either the placeholder
@@ -109,9 +112,13 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     // valueChanges may be triggered by an update value and validity...
     // we don't want to recompute the displayed option label in that case
     this.control.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.terminator$)).subscribe((val) => {
-      this._updateDisplayedValue(val);
-      this._markOptionAsSelected();
-      detectChanges(this.cdr);
+      if (!this.multiple) {
+        this._updateDisplayedValue(val);
+        this._markOptionAsSelected();
+        detectChanges(this.cdr);
+      } else {
+        this._updateDisplayMultipleValues(val);
+      }
     });
     this.control.statusChanges
       .pipe(distinctUntilChanged(), takeUntil(this.terminator$))
@@ -175,6 +182,24 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     }
   }
 
+  selectMultipleOptions(option: OptionModel) {
+    if (!option.disabled && this.isActive) {
+      if (!option.selected) {
+        option.selected = true;
+        this.selectedOptions.push(option);
+      } else {
+        option.selected = false;
+        const index = this.selectedOptions.findIndex((selectedOption) => selectedOption.id === option.id);
+        if (index >= 0) {
+          this.selectedOptions.splice(index, 1);
+        }
+      }
+      const value = this.selectedOptions.map((option) => option.value).join(',');
+      this.control.patchValue(value);
+      this.cdr.detectChanges();
+    }
+  }
+
   override focusInput() {
     if (this.hasFocus && this.isActive) {
       this._openOptionDropDown();
@@ -199,6 +224,13 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   protected _updateDisplayedValue(val?: string) {
     const selectedOptionLabel = this._findLabelByValue(val);
     this.displayedValue = selectedOptionLabel || this.placeholder;
+    detectChanges(this.cdr);
+  }
+
+  private _updateDisplayMultipleValues(val?: string) {
+    const values = val?.split(',') || [];
+    const labels = values.map((value) => this._findLabelByValue(value)).join(', ');
+    this.displayedValue = labels || this.placeholder;
     detectChanges(this.cdr);
   }
 

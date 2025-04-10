@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '../../../control.model';
 
 let optionId = 0;
@@ -10,6 +10,7 @@ let optionId = 0;
   standalone: false,
 })
 export class SelectOptionsComponent {
+  @Input({ transform: booleanAttribute }) multiple = false;
   @Input() set options(values: (OptionModel | OptionSeparator | OptionHeaderModel)[]) {
     this.typedOptions = (values || []).map((value) => {
       switch (value.type) {
@@ -36,5 +37,15 @@ export class SelectOptionsComponent {
 
   selectOption(option: OptionModel) {
     this.optionSelected.emit(option);
+  }
+
+  clickOnCheck(event: MouseEvent | KeyboardEvent, option: OptionModel) {
+    // Prevent side effect of bubbling event
+    event.stopPropagation();
+    if ((event.target as HTMLElement).tagName === 'LABEL') {
+      event.preventDefault();
+    }
+
+    this.selectOption(option);
   }
 }

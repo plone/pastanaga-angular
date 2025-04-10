@@ -33,6 +33,15 @@ import { Component } from '@angular/core';
       <dt>label</dt>
       <dd>Field's label</dd>
 
+      <dt>multiple</dt>
+      <dd>
+        Allow the selection of multiple options. This attribute works only when options are dynamically provided to the
+        select with
+        <code>options</code>
+        input.
+        <small>(optional)</small>
+      </dd>
+
       <dt>options</dt>
       <dd>
         Option list to be displayed in the dropdown
@@ -55,7 +64,7 @@ import { Component } from '@angular/core';
       <dt>showAllErrors</dt>
       <dd>
         Display all errors or only the first error encountered (errors being sorted by key)
-        <small>(default: true)</small>
+        <small>(default: false)</small>
       </dd>
     </dl>
 

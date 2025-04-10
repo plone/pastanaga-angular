@@ -45,6 +45,25 @@ export class SelectPageComponent {
     }),
   ];
 
+  multipleOptions: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
+    new OptionHeaderModel({ id: 'audio', label: 'Audio' }),
+    new OptionModel({ id: 'file1', label: 'User 1', value: 'user1' }),
+    new OptionModel({ id: 'file2', label: 'Audio 2', value: 'audio2', icon: 'audio', disabled: true }),
+    new OptionModel({ id: 'file3', label: 'Audio 3', value: 'audio3', icon: 'audio' }),
+    new OptionHeaderModel({ id: 'image', label: 'Images' }),
+    new OptionModel({ id: 'file4', label: 'Image 1', value: 'image1', icon: 'image' }),
+    new OptionModel({ id: 'file5', label: 'Image 2', value: 'image2', icon: 'image' }),
+    new OptionSeparator(),
+    new OptionModel({
+      id: 'danger',
+      label: 'Dangerous option',
+      value: 'danger',
+      icon: 'warning',
+      destructive: true,
+    }),
+  ];
+  multipleSelection = '';
+
   baseControlModelsUsage = `models: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
     new OptionHeaderModel({ label: 'Header' }),
     new OptionModel({ label: 'Option 1', value: 'option1' }),
