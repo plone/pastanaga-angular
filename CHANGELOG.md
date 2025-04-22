@@ -1,3 +1,9 @@
+# 2.68.5 (2025-04-22)
+
+### Improvement
+
+- **Textarea**: Change CSS resize property to be `vertical` instead of `both` when `resizable` is set to true
+
 # 2.68.4 (2025-04-10)
 
 ### Improvement
