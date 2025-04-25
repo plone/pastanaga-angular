@@ -102,9 +102,9 @@
             multiple
             placeholder="Select one or more options"
             [options]="multipleOptions"
-            (valueChange)="multipleSelection = $event"
+            [formControl]="multipleSelectControl"
             label="Multiple selection"></pa-select>
-          <div style="flex: 1">Value: {{ multipleSelection }}</div>
+          <div style="flex: 1">Value: {{ multipleSelectControl.getRawValue() }}</div>
         </div>
       </div>
     </div>
