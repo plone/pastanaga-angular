@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { OptionHeaderModel, OptionModel, OptionSeparator } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
@@ -9,6 +10,8 @@ import { OptionHeaderModel, OptionModel, OptionSeparator } from '@guillotinaweb/
 export class SelectPageComponent {
   model = '';
   selectedTab = 'standalone';
+
+  multipleSelectControl = new FormControl<string>('user1,audio3');
 
   optionsWithDescription: (OptionModel | OptionSeparator | OptionHeaderModel)[] = [
     new OptionModel({ id: 'desc1', label: 'Option 1', help: 'Description 1', value: 'desc1' }),

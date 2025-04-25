@@ -108,7 +108,13 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     this._handleNgContent();
     this._checkDescribedBy();
     this.focusInput();
-    this._updateDisplayedValue(this.control.value);
+    if (this.multiple) {
+      this._updateDisplayMultipleValues(this.control.value);
+      this._initSelectedOptionsForMultipleValue();
+    } else {
+      this._updateDisplayedValue(this.control.value);
+    }
+
     // valueChanges may be triggered by an update value and validity...
     // we don't want to recompute the displayed option label in that case
     this.control.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.terminator$)).subscribe((val) => {
@@ -234,6 +240,18 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     detectChanges(this.cdr);
   }
 
+  private _initSelectedOptionsForMultipleValue() {
+    const selectedValues = this.control.value.split(',');
+    (this.dropdownOptions || []).forEach((dropdownOption) => {
+      if (dropdownOption.type === ControlType.option) {
+        const option = dropdownOption as OptionModel;
+        if (selectedValues.includes(option.value)) {
+          this.selectedOptions.push(option);
+        }
+      }
+    });
+  }
+
   private _findLabelByValue(value?: string): string | undefined {
     let label: string | undefined;
 
@@ -288,10 +306,19 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
   }
 
   private _toggleSelectedOption(option: OptionComponent | OptionModel) {
-    if (option.selected && option.value !== this.control.value) {
-      option.selected = false;
-    } else if (!option.selected && option.value === this.control.value) {
-      option.selected = true;
+    if (this.multiple) {
+      const selectedValues = this.control.value.split(',');
+      if (option.selected && !selectedValues.includes(option.value)) {
+        option.selected = false;
+      } else if (!option.selected && selectedValues.includes(option.value)) {
+        option.selected = true;
+      }
+    } else {
+      if (option.selected && option.value !== this.control.value) {
+        option.selected = false;
+      } else if (!option.selected && option.value === this.control.value) {
+        option.selected = true;
+      }
     }
   }
 

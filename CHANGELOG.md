@@ -1,3 +1,9 @@
+# 2.68.6 (2025-04-25)
+
+### Bug fix
+
+- **Select**: Properly initialise selected options for select with `multiple: true`
+
 # 2.68.5 (2025-04-22)
 
 ### Improvement
