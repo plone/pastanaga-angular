@@ -46,7 +46,11 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
 
   @Input() set options(values: OptionType[] | null) {
     this.dropdownOptions = !!values ? values : [];
-    this._updateDisplayedValue(this.control.value);
+    if (values) {
+      this._initDisplayAndSelection();
+    } else {
+      this._updateDisplayedValue(this.control.value);
+    }
   }
 
   @Output() expanded: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -108,12 +112,7 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
     this._handleNgContent();
     this._checkDescribedBy();
     this.focusInput();
-    if (this.multiple) {
-      this._updateDisplayMultipleValues(this.control.value);
-      this._initSelectedOptionsForMultipleValue();
-    } else {
-      this._updateDisplayedValue(this.control.value);
-    }
+    this._initDisplayAndSelection();
 
     // valueChanges may be triggered by an update value and validity...
     // we don't want to recompute the displayed option label in that case
@@ -225,6 +224,18 @@ export class SelectComponent extends TextFieldDirective implements OnChanges, Af
         this.selectInput.nativeElement.click();
       }
     });
+  }
+
+  private _initDisplayAndSelection() {
+    if (this.multiple) {
+      this._updateDisplayMultipleValues(this.control.value);
+      if (this.control.value) {
+        this._initSelectedOptionsForMultipleValue();
+        this._markOptionAsSelected();
+      }
+    } else {
+      this._updateDisplayedValue(this.control.value);
+    }
   }
 
   protected _updateDisplayedValue(val?: string) {
