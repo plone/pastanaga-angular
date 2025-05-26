@@ -1,8 +1,8 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .chip-container {
   display: flex;
   flex-wrap: wrap;
-  gap: rhythm(1);
-  margin-bottom: rhythm(2);
+  gap: spacing.rhythm(1);
+  margin-bottom: spacing.rhythm(2);
 }

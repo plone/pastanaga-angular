@@ -1,15 +1,17 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
+@use '../../../../../../pastanaga-angular/src/styles/utils' as utils;
 
-$grid-gap: rhythm(2);
+$grid-gap: spacing.rhythm(2);
 
 .card-content-block {
-  background: $color-tertiary-lightest;
-  min-height: rhythm(7);
+  background: palette.$color-tertiary-lightest;
+  min-height: spacing.rhythm(7);
   position: relative;
 
   &:after {
     content: 'Content placeholder';
-    color: $color-tertiary-light;
+    color: palette.$color-tertiary-light;
     left: 50%;
     position: absolute;
     top: 50%;
@@ -27,14 +29,14 @@ $grid-gap: rhythm(2);
   }
 }
 
-@media (min-width: $size-viewport-medium-min) {
+@media (min-width: spacing.$size-viewport-medium-min) {
   .card-container {
     display: flex;
     flex-wrap: wrap;
 
     pa-card {
       margin-right: $grid-gap;
-      width: flexColumnWidth(2, $grid-gap);
+      width: utils.flexColumnWidth(2, $grid-gap);
 
       &:nth-child(even) {
         margin-right: 0;

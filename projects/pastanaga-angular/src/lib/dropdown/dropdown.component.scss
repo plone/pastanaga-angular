@@ -1,6 +1,6 @@
-@import '../../styles/variables';
+@use '../../styles/theme/spacing.tokens' as spacing;
 
-$option-height: rhythm(6);
+$option-height: spacing.rhythm(6);
 
 .pa-popup-wrapper {
   padding: 0;
@@ -15,8 +15,8 @@ $option-height: rhythm(6);
   padding-left: 0;
 }
 
-@media (min-width: $size-viewport-large-min) {
+@media (min-width: spacing.$size-viewport-large-min) {
   .pa-popup-wrapper:not(.no-max-width) {
-    max-width: rhythm(32);
+    max-width: spacing.rhythm(32);
   }
 }

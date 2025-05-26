@@ -1,29 +1,30 @@
-@import '../variables';
+@use '../theme/chips.tokens' as chips;
+@use '../theme/spacing.tokens' as spacing;
 
-$chip-max-width-small: rhythm(32);
-$chip-max-width-medium: rhythm(56);
+$chip-max-width-small: spacing.rhythm(32);
+$chip-max-width-medium: spacing.rhythm(56);
 
 .pa-chip {
   align-items: center;
-  background: $color-background-chip-default;
-  border: $border-chip;
-  border-radius: $border-radius-chip;
+  background: chips.$color-background-chip-default;
+  border: chips.$border-chip;
+  border-radius: chips.$border-radius-chip;
   display: inline-flex;
-  gap: rhythm(1);
-  height: rhythm(4);
+  gap: spacing.rhythm(1);
+  height: spacing.rhythm(4);
   max-width: $chip-max-width-small;
   overflow: hidden;
-  padding: $padding-chip;
+  padding: chips.$padding-chip;
 
   &.pa-with-avatar {
-    padding-left: rhythm(0.5);
+    padding-left: spacing.rhythm(0.5);
   }
   &.pa-with-button {
-    padding-right: rhythm(0.5);
+    padding-right: spacing.rhythm(0.5);
 
     .pa-button {
-      height: rhythm(3);
-      padding: rhythm(0.5);
+      height: spacing.rhythm(3);
+      padding: spacing.rhythm(0.5);
     }
   }
 
@@ -31,16 +32,16 @@ $chip-max-width-medium: rhythm(56);
     cursor: pointer;
 
     &:hover {
-      background: $color-background-chip-default-hover;
+      background: chips.$color-background-chip-default-hover;
     }
     &.pa-selected {
-      background: $color-background-chip-default-selected;
-      border: $border-chip-selected;
+      background: chips.$color-background-chip-default-selected;
+      border: chips.$border-chip-selected;
     }
   }
   &.pa-disabled {
-    color: $color-background-chip-default-disabled;
-    border: $border-chip-disabled;
+    color: chips.$color-background-chip-default-disabled;
+    border: chips.$border-chip-disabled;
   }
 
   pa-button {
@@ -48,13 +49,13 @@ $chip-max-width-medium: rhythm(56);
   }
 }
 .pa-chip-content-wrapper {
-  font-size: $font-size-chip;
+  font-size: chips.$font-size-chip;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-@media (min-width: $size-viewport-medium-min) {
+@media (min-width: spacing.$size-viewport-medium-min) {
   .pa-chip {
     max-width: $chip-max-width-medium;
   }

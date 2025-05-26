@@ -1,23 +1,25 @@
-@import '../../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
+@use '../../../../../../../pastanaga-angular/src/styles/theme/z-index.tokens' as z-index;
 
 :host {
-  background-color: $color-light-stronger;
+  background-color: palette.$color-light-stronger;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: $z-index-modal;
+  z-index: z-index.$z-index-modal;
 
-  $header-padding: rhythm(3);
+  $header-padding: spacing.rhythm(3);
 
   header {
     align-items: center;
     display: flex;
-    min-height: $header-padding * 2 + rhythm(5);
+    min-height: calc(#{$header-padding} * 2 + #{spacing.rhythm(5)});
     justify-content: center;
     padding: $header-padding;
-    margin-bottom: rhythm(3);
+    margin-bottom: spacing.rhythm(3);
 
     pa-button {
       position: absolute;
@@ -29,11 +31,11 @@
   .pa-main-side-panel,
   .pa-main-dock,
   [class^='pa-main-container-'] {
-    background-color: $color-neutral-light;
+    background-color: palette.$color-neutral-light;
     display: block;
-    height: rhythm(5);
-    line-height: rhythm(5);
-    margin-bottom: rhythm(3);
+    height: spacing.rhythm(5);
+    line-height: spacing.rhythm(5);
+    margin-bottom: spacing.rhythm(3);
     text-align: center;
   }
 
@@ -43,33 +45,33 @@
 
   .pa-main-dock,
   .pa-main-side-panel {
-    background-color: $color-neutral-regular;
+    background-color: palette.$color-neutral-regular;
   }
 
-  @media (min-width: $size-viewport-medium-min) {
+  @media (min-width: spacing.$size-viewport-medium-min) {
     [class^='pa-main-container-'] {
-      background-color: $color-secondary-regular;
+      background-color: palette.$color-secondary-regular;
     }
     .pa-child-container-compact {
-      background-color: $color-secondary-lighter;
-    }
-  }
-
-  @media (min-width: $size-viewport-large-min) {
-    [class^='pa-main-container-'] {
-      background-color: $color-tertiary-regular;
-    }
-    .pa-child-container-compact {
-      background-color: $color-tertiary-lighter;
+      background-color: palette.$color-secondary-lighter;
     }
   }
 
-  @media (min-width: $size-viewport-xlarge-min) {
+  @media (min-width: spacing.$size-viewport-large-min) {
     [class^='pa-main-container-'] {
-      background-color: $color-primary-light;
+      background-color: palette.$color-tertiary-regular;
     }
     .pa-child-container-compact {
-      background-color: $color-primary-lighter;
+      background-color: palette.$color-tertiary-lighter;
+    }
+  }
+
+  @media (min-width: spacing.$size-viewport-xlarge-min) {
+    [class^='pa-main-container-'] {
+      background-color: palette.$color-primary-light;
+    }
+    .pa-child-container-compact {
+      background-color: palette.$color-primary-lighter;
     }
   }
 }

@@ -1,4 +1,5 @@
-@import '../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../pastanaga-angular/src/styles/theme/button.tokens' as button;
+@use '../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 :host {
   pa-side-nav ::ng-deep .pa-side-nav {
@@ -8,14 +9,14 @@
 
 .demo-menu-button {
   position: absolute;
-  top: rhythm(2);
-  left: rhythm(2);
+  top: spacing.rhythm(2);
+  left: spacing.rhythm(2);
   z-index: 3;
 }
 
 .demo-menu-filter-input {
   display: block;
-  margin-top: rhythm(2);
+  margin-top: spacing.rhythm(2);
 
   ::ng-deep .pa-field {
     margin-bottom: 0;
@@ -24,17 +25,17 @@
 
 pa-side-nav-header {
   display: block;
-  padding: rhythm(2);
+  padding: spacing.rhythm(2);
 
   img {
-    height: rhythm(3);
-    max-width: calc(100% - #{$height-button-medium});
+    height: spacing.rhythm(3);
+    max-width: calc(100% - #{button.$height-button-medium});
   }
 
   .pa-close-side-nav-button {
     position: absolute;
-    right: rhythm(1);
-    top: rhythm(1);
+    right: spacing.rhythm(1);
+    top: spacing.rhythm(1);
   }
 }
 
@@ -42,13 +43,13 @@ pa-side-nav-header {
   margin-bottom: 0;
 }
 
-@media (min-width: $size-viewport-large-min) {
+@media (min-width: spacing.$size-viewport-large-min) {
   pa-side-nav {
     pa-side-nav-header img {
       max-width: 180px;
     }
     .section {
-      padding-top: rhythm(1.5);
+      padding-top: spacing.rhythm(1.5);
     }
   }
 }

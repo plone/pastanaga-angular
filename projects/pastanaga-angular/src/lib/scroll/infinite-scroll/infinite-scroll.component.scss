@@ -1,9 +1,9 @@
-@import '../../../styles/variables';
+@use '../../../styles/theme/spacing.tokens' as spacing;
 
 :host {
   display: block;
   position: relative;
-  padding-bottom: rhythm(10);
+  padding-bottom: spacing.rhythm(10);
 }
 .pa-infinite-scroll-mid-anchor {
   position: absolute;

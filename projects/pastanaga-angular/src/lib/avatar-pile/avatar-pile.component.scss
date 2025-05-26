@@ -1,10 +1,11 @@
-@import '../../styles/variables';
+@use '../../styles/theme/palette.tokens' as palette;
+@use '../../styles/theme/spacing.tokens' as spacing;
 
 .pa-avatar-pile {
   display: flex;
 
   pa-avatar ::ng-deep .pa-avatar {
-    background: $color-light-stronger;
+    background: palette.$color-light-stronger;
   }
   .pa-avatar-clip ::ng-deep img,
   .pa-avatar-clip ::ng-deep abbr {
@@ -14,19 +15,19 @@
   $list: 2 3;
   @each $i in $list {
     .pa-avatar-moved:nth-child(#{$i}) {
-      $translation: rhythm(1) * ($i - 1);
-      transform: translateX(-$translation);
+      $translation: calc(#{spacing.rhythm(1)} * (#{$i} - 1));
+      transform: translateX(calc(#{$translation} * -1));
     }
   }
 
   pa-button.pa-avatar-pile-button-with-1 {
-    transform: translateX(-#{rhythm(1)});
+    transform: translateX(calc(#{spacing.rhythm(1)} * -1));
   }
   pa-button.pa-avatar-pile-button-with-2 {
-    transform: translateX(-#{rhythm(2)});
+    transform: translateX(calc(#{spacing.rhythm(2)} * -1));
   }
   pa-button.pa-avatar-pile-button-with-3 {
-    transform: translateX(-#{rhythm(3)});
+    transform: translateX(calc(#{spacing.rhythm(3)} * -1));
   }
 }
 

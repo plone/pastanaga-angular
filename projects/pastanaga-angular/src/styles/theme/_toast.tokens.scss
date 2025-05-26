@@ -1,25 +1,27 @@
-@import 'shadows.tokens';
+@use 'shadows.tokens' as shadows;
+@use 'palette.tokens' as palette;
+@use 'spacing.tokens' as spacing;
 
 //=====================================
 // COLORS
 //=====================================
 
 // Background color
-$background-toast-info: $color-primary-regular !default;
-$background-toast-success: $color-tertiary-regular !default;
-$background-toast-error: $color-secondary-regular !default;
-$background-toast-warning: $color-secondary-light !default;
+$background-toast-info: palette.$color-primary-regular !default;
+$background-toast-success: palette.$color-tertiary-regular !default;
+$background-toast-error: palette.$color-secondary-regular !default;
+$background-toast-warning: palette.$color-secondary-light !default;
 
 // Text color
-$color-toast-success: $color-light-stronger !default;
-$color-toast-error: $color-light-stronger !default;
-$color-toast-warning: $color-light-stronger !default;
-$color-toast-info: $color-light-stronger !default;
+$color-toast-success: palette.$color-light-stronger !default;
+$color-toast-error: palette.$color-light-stronger !default;
+$color-toast-warning: palette.$color-light-stronger !default;
+$color-toast-info: palette.$color-light-stronger !default;
 
 // button background
 $background-toast-button-default: transparent !default;
-$background-toast-button-default-hover: rgba($color-light-stronger, 0.15) !default;
-$background-toast-button-default-active: rgba($color-light-stronger, 0.25) !default;
+$background-toast-button-default-hover: rgba(palette.$color-light-stronger, 0.15) !default;
+$background-toast-button-default-active: rgba(palette.$color-light-stronger, 0.25) !default;
 
 $background-toast-button-info: $background-toast-button-default !default;
 $background-toast-button-success: $background-toast-button-default !default;
@@ -39,9 +41,9 @@ $background-toast-button-error-active: $background-toast-button-default-active !
 //=====================================
 // SPACING
 //=====================================
-$min-width-toast: rhythm(28) !default;
-$padding-toast: rhythm(1.5) !default;
-$padding-toast-with-button: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5) !default;
+$min-width-toast: spacing.rhythm(28) !default;
+$padding-toast: spacing.rhythm(1.5) !default;
+$padding-toast-with-button: spacing.rhythm(1) spacing.rhythm(1) spacing.rhythm(1) spacing.rhythm(1.5) !default;
 
-$space-toast-between-icon-and-text: rhythm(1.5) !default;
-$space-toast-between-button-and-text: rhythm(2) !default;
+$space-toast-between-icon-and-text: spacing.rhythm(1.5) !default;
+$space-toast-between-button-and-text: spacing.rhythm(2) !default;

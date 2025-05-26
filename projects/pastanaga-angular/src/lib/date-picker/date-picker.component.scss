@@ -1,22 +1,26 @@
-@import '../../styles/variables';
+@use '../../styles/theme/button.tokens' as button;
+@use '../../styles/theme/palette.tokens' as palette;
+@use '../../styles/theme/shadows.tokens' as shadows;
+@use '../../styles/theme/spacing.tokens' as spacing;
+@use '../../styles/theme/typography.tokens' as typography;
 
 :host {
-  --day-width: #{rhythm(4)};
-  --header-color: #{$color-neutral-regular};
-  --text-color: #{$color-dark-stronger};
-  --text-color-other-month: #{$color-neutral-light};
-  --weekday-border-color: #{$color-neutral-light};
-  --selected-background-color: #{$color-primary-lightest};
-  --list-item-background-color-hover: #{$color-neutral-lighter};
+  --day-width: #{spacing.rhythm(4)};
+  --header-color: #{palette.$color-neutral-regular};
+  --text-color: #{palette.$color-dark-stronger};
+  --text-color-other-month: #{palette.$color-neutral-light};
+  --weekday-border-color: #{palette.$color-neutral-light};
+  --selected-background-color: #{palette.$color-primary-lightest};
+  --list-item-background-color-hover: #{palette.$color-neutral-lighter};
 
   .calendar-popup {
-    font-size: font-size(s);
-    line-height: line-height(l);
+    font-size: typography.font-size(s);
+    line-height: typography.line-height(l);
     color: var(--text-color);
 
     ::ng-deep {
       .pa-popup {
-        width: rhythm(40);
+        width: spacing.rhythm(40);
       }
     }
   }
@@ -31,7 +35,7 @@
       outline: 0;
 
       &:focus {
-        box-shadow: $shadow-focus !important;
+        box-shadow: shadows.$shadow-focus !important;
       }
     }
 
@@ -44,7 +48,7 @@
   .calendar-row {
     display: flex;
     color: var(--header-color);
-    padding: rhythm(1) 0;
+    padding: spacing.rhythm(1) 0;
     justify-content: space-around;
   }
 
@@ -74,7 +78,7 @@
     display: flex;
     align-items: center;
     color: var(--header-color);
-    padding: rhythm(2) rhythm(1.5) rhythm(1.5);
+    padding: spacing.rhythm(2) spacing.rhythm(1.5) spacing.rhythm(1.5);
 
     .label {
       flex-grow: 1;
@@ -82,13 +86,13 @@
   }
 
   .calendar-list {
-    max-height: rhythm(32);
+    max-height: spacing.rhythm(32);
     overflow: scroll;
   }
 
   .calendar-list-item {
-    padding: rhythm(1.5);
-    font-size: font-size(m);
+    padding: spacing.rhythm(1.5);
+    font-size: typography.font-size(m);
     cursor: pointer;
 
     &.selected {
@@ -103,6 +107,6 @@
 
   .calendar-row ::ng-deep pa-button.selected {
     background-color: var(--selected-background-color);
-    border-radius: $border-radius-button;
+    border-radius: button.$border-radius-button;
   }
 }

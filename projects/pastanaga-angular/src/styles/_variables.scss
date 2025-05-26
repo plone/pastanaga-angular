@@ -1,10 +1,10 @@
 // core tokens
-@import 'pastanaga-core-overrides';
-@import 'variables-core';
+// @import 'pastanaga-core-overrides';
+@use 'variables-core' as *;
 
 // component tokens
-@import 'pastanaga-component-overrides';
-@import 'variables-component';
+// @import 'pastanaga-component-overrides';
+@use 'variables-component' as *;
 
 // Utility scss functions and mixin
-@import 'utils';
+@use 'utils' as *;

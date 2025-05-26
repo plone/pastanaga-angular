@@ -1,15 +1,19 @@
 @use 'sass:math';
-@import '../../../../styles/variables';
+@use '../../../../styles/theme/body.tokens' as body;
+@use '../../../../styles/theme/spacing.tokens' as spacing;
+@use '../../../../styles/theme/shadows.tokens' as shadows;
+@use '../../../../styles/theme/transitions.tokens' as transitions;
+@use '../../../../styles/theme/toggle.tokens' as toggle;
 
-$toggle-mid-width: math.div($width-toggle, 2);
-$toggle-transition-duration: $duration-fast;
+$toggle-mid-width: math.div(toggle.$width-toggle, 2);
+$toggle-transition-duration: transitions.$duration-fast;
 
 .pa-field {
   &.pa-with-background {
-    background: $background-toggle-container;
-    border-radius: $border-toggle-container;
-    padding: rhythm(1) rhythm(1) rhythm(1) rhythm(1.5);
-    transition: background $transition-hint;
+    background: toggle.$background-toggle-container;
+    border-radius: toggle.$border-toggle-container;
+    padding: spacing.rhythm(1) spacing.rhythm(1) spacing.rhythm(1) spacing.rhythm(1.5);
+    transition: background transitions.$transition-hint;
   }
 
   &:not(.pa-disable) {
@@ -17,13 +21,13 @@ $toggle-transition-duration: $duration-fast;
 
     &:hover {
       .pa-toggle-container .pa-toggle-slider {
-        background: $background-toggle-container-hover-slider;
+        background: toggle.$background-toggle-container-hover-slider;
       }
       &.pa-with-background {
-        background: $background-toggle-container-hover;
+        background: toggle.$background-toggle-container-hover;
       }
       .pa-toggle-container.pa-checked .pa-toggle-slider {
-        background: $color-background-toggle-slider-selected-hover;
+        background: toggle.$color-background-toggle-slider-selected-hover;
       }
     }
   }
@@ -31,7 +35,7 @@ $toggle-transition-duration: $duration-fast;
   .pa-toggle-context {
     align-items: center;
     display: flex;
-    gap: rhythm(2);
+    gap: spacing.rhythm(2);
     justify-content: flex-end;
 
     &.pa-label-on-right {
@@ -50,8 +54,8 @@ $toggle-transition-duration: $duration-fast;
 
     .pa-field-label {
       cursor: pointer;
-      font-size: $font-size-checkbox-label;
-      line-height: $line-height-checkbox-label;
+      font-size: toggle.$font-size-checkbox-label;
+      line-height: toggle.$line-height-checkbox-label;
     }
     pa-form-field-hint ::ng-deep .pa-field-help {
       margin-top: 0;
@@ -63,24 +67,24 @@ $toggle-transition-duration: $duration-fast;
     }
     .pa-field-label {
       cursor: default;
-      color: $color-text-disabled;
+      color: body.$color-text-disabled;
     }
   }
 
   &.pa-has-help {
     .pa-field-label {
-      margin-top: $margin-top-toggle-with-help-label;
+      margin-top: toggle.$margin-top-toggle-with-help-label;
     }
   }
 }
 
 .pa-toggle-container {
   box-sizing: border-box;
-  height: $height-toggle;
-  margin: $margin-toggle-container;
-  min-width: $width-toggle;
+  height: toggle.$height-toggle;
+  margin: toggle.$margin-toggle-container;
+  min-width: toggle.$width-toggle;
   position: relative;
-  width: $width-toggle;
+  width: toggle.$width-toggle;
 
   input {
     outline: 0;
@@ -88,8 +92,8 @@ $toggle-transition-duration: $duration-fast;
   }
 
   .pa-toggle-checkbox {
-    width: $width-toggle;
-    height: $height-toggle;
+    width: toggle.$width-toggle;
+    height: toggle.$height-toggle;
     opacity: 0;
   }
   .pa-toggle-slider {
@@ -99,26 +103,26 @@ $toggle-transition-duration: $duration-fast;
     bottom: 0;
     left: 0;
     transition: $toggle-transition-duration;
-    border-radius: $height-toggle;
-    background: $color-background-toggle-slider;
+    border-radius: toggle.$height-toggle;
+    background: toggle.$color-background-toggle-slider;
     cursor: pointer;
     &:before {
       content: '';
       position: absolute;
       border-radius: 50%;
       transition: $toggle-transition-duration;
-      top: $padding-toggle-slider;
-      right: $toggle-mid-width + $padding-toggle-slider;
-      bottom: $padding-toggle-slider;
-      left: $padding-toggle-slider;
-      box-shadow: 0 rhythm(0.25) rhythm(0.5) rgba(0, 0, 0, 0.15);
-      background-color: $color-background-toggle-button;
+      top: toggle.$padding-toggle-slider;
+      right: $toggle-mid-width + toggle.$padding-toggle-slider;
+      bottom: toggle.$padding-toggle-slider;
+      left: toggle.$padding-toggle-slider;
+      box-shadow: 0 spacing.rhythm(0.25) spacing.rhythm(0.5) rgba(0, 0, 0, 0.15);
+      background-color: toggle.$color-background-toggle-button;
     }
   }
 
   &.pa-checked {
     .pa-toggle-slider {
-      background: $color-background-toggle-slider-selected;
+      background: toggle.$color-background-toggle-slider-selected;
       &:before {
         transform: translateX($toggle-mid-width);
       }
@@ -126,15 +130,15 @@ $toggle-transition-duration: $duration-fast;
   }
 
   &:focus-within .pa-toggle-slider {
-    box-shadow: $shadow-focus;
+    box-shadow: shadows.$shadow-focus;
   }
 
   &.pa-disable {
     .pa-toggle-slider {
       cursor: default;
-      background: $color-background-toggle-slider-disabled;
+      background: toggle.$color-background-toggle-slider-disabled;
       &:before {
-        background-color: $color-background-toggle-button-disabled;
+        background-color: toggle.$color-background-toggle-button-disabled;
       }
     }
   }

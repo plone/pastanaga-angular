@@ -1,34 +1,34 @@
-@import 'palette.tokens';
-@import 'typography.tokens';
+@use 'palette.tokens';
+@use 'typography.tokens';
 
 //=====================================
 // COLORS
 //=====================================
 // Background
-$color-background-body: $color-light-stronger !default;
+$color-background-body: palette.$color-light-stronger !default;
 
 // Text
-$color-text-accent: $color-dark-stronger !default;
-$color-text-dim: $color-neutral-regular !default;
-$color-text-disabled: $color-neutral-light !default;
+$color-text-accent: palette.$color-dark-stronger !default;
+$color-text-dim: palette.$color-neutral-regular !default;
+$color-text-disabled: palette.$color-neutral-light !default;
 
 // Links
-$color-text-link-regular: $color-primary-regular !default;
-$color-text-link-regular-hover: $color-primary-strong !default;
+$color-text-link-regular: palette.$color-primary-regular !default;
+$color-text-link-regular-hover: palette.$color-primary-strong !default;
 
-$color-text-title-default: $color-dark-stronger !default;
+$color-text-title-default: palette.$color-dark-stronger !default;
 
 //=====================================
 // TYPOGRAPHY
 //=====================================
-$font-weight-body: $font-weight-thin !default;
-$font-weight-title: $font-weight-semi-bold !default;
-$font-weight-dt: $font-weight-thin !default;
-$font-weight-dd: $font-weight-thin !default;
-$font-weight-label: $font-weight-semi-bold !default;
-$font-weight-placeholder: $font-weight-thin !default;
-$font-weight-menu-header: $font-weight-semi-bold !default;
-$font-weight-link: $font-weight-semi-bold !default;
+$font-weight-body: typography.$font-weight-thin !default;
+$font-weight-title: typography.$font-weight-semi-bold !default;
+$font-weight-dt: typography.$font-weight-thin !default;
+$font-weight-dd: typography.$font-weight-thin !default;
+$font-weight-label: typography.$font-weight-semi-bold !default;
+$font-weight-placeholder: typography.$font-weight-thin !default;
+$font-weight-menu-header: typography.$font-weight-semi-bold !default;
+$font-weight-link: typography.$font-weight-semi-bold !default;
 
 $text-decoration-link: none !default;
 $text-decoration-link-hover: underline !default;

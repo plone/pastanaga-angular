@@ -1,36 +1,36 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
-@import 'typography.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
+@use 'typography.tokens';
 
-$font-weight-text-table-header: $font-weight-bold !default;
-$font-weight-table-row: $font-weight-regular !default;
-$font-weight-text-table-header-row: $font-weight-thin !default;
+$font-weight-text-table-header: typography.$font-weight-bold !default;
+$font-weight-table-row: typography.$font-weight-regular !default;
+$font-weight-text-table-header-row: typography.$font-weight-thin !default;
 
-$color-text-table-header: $color-neutral-regular !default;
-$color-text-table-header-row: $color-neutral-regular !default;
-$color-text-table-row: $color-dark-stronger !default;
+$color-text-table-header: palette.$color-neutral-regular !default;
+$color-text-table-header-row: palette.$color-neutral-regular !default;
+$color-text-table-row: palette.$color-dark-stronger !default;
 
-$color-border-table: $color-neutral-light !default;
-$color-border-table-header: $color-neutral-lightest !default;
-$color-border-table-header-row: $color-neutral-lightest !default;
-$color-border-table-row: $color-neutral-lightest !default;
+$color-border-table: palette.$color-neutral-light !default;
+$color-border-table-header: palette.$color-neutral-lightest !default;
+$color-border-table-header-row: palette.$color-neutral-lightest !default;
+$color-border-table-row: palette.$color-neutral-lightest !default;
 
-$color-background-table-header: $color-neutral-lightest !default;
-$color-background-table-header-row: $color-neutral-lightest !default;
-$color-background-table-row: $color-light-stronger !default;
-$color-background-table-row-hover: $color-neutral-lightest !default;
-$color-background-table-row-active: $color-neutral-lightest !default;
-$color-background-table-row-selected: $color-primary-lightest !default;
+$color-background-table-header: palette.$color-neutral-lightest !default;
+$color-background-table-header-row: palette.$color-neutral-lightest !default;
+$color-background-table-row: palette.$color-light-stronger !default;
+$color-background-table-row-hover: palette.$color-neutral-lightest !default;
+$color-background-table-row-active: palette.$color-neutral-lightest !default;
+$color-background-table-row-selected: palette.$color-primary-lightest !default;
 
-$color-icon-table-menu-button: $color-neutral-regular !default;
-$color-icon-table-menu-button-hover: $color-dark-stronger !default;
+$color-icon-table-menu-button: palette.$color-neutral-regular !default;
+$color-icon-table-menu-button-hover: palette.$color-dark-stronger !default;
 
-$padding-table-header: rhythm(0.5) rhythm(2) !default;
-$padding-table-row-header: rhythm(0.5) rhythm(1) !default;
-$padding-table-cell-small: rhythm(1) rhythm(2) !default;
-$padding-table-cell-medium: rhythm(1.5) rhythm(2) !default;
+$padding-table-header: spacing.rhythm(0.5) spacing.rhythm(2) !default;
+$padding-table-row-header: spacing.rhythm(0.5) spacing.rhythm(1) !default;
+$padding-table-cell-small: spacing.rhythm(1) spacing.rhythm(2) !default;
+$padding-table-cell-medium: spacing.rhythm(1.5) spacing.rhythm(2) !default;
 
-$min-height-table-header: rhythm(4) !default;
-$min-height-table-cell: rhythm(9) !default;
+$min-height-table-header: spacing.rhythm(4) !default;
+$min-height-table-cell: spacing.rhythm(9) !default;
 
 $text-transform-table-header: uppercase !default;

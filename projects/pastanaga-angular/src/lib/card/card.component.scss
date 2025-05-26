@@ -1,28 +1,29 @@
-@import '../../styles/variables';
+@use '../../styles/theme/card.tokens' as card;
+@use '../../styles/theme/transitions.tokens' as transitions;
 
 :host {
   display: block;
 }
 
 .pa-card-wrapper {
-  background: $background-card;
-  border: $border-card;
-  border-radius: $border-radius-card;
+  background: card.$background-card;
+  border: card.$border-card;
+  border-radius: card.$border-radius-card;
   cursor: pointer;
-  padding: $padding-vertical-card $padding-horizontal-card;
-  transition: background $transition-hint;
+  padding: card.$padding-vertical-card card.$padding-horizontal-card;
+  transition: background transitions.$transition-hint;
 
   .pa-card-content {
     opacity: 1;
-    transition: opacity $transition-hint;
+    transition: opacity transitions.$transition-hint;
   }
 
   &:hover {
-    background: $background-card-hover;
+    background: card.$background-card-hover;
   }
 
   &:active {
-    background: $background-card-active;
+    background: card.$background-card-active;
   }
 
   &:disabled,

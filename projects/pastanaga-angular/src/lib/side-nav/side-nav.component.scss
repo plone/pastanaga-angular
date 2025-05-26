@@ -1,7 +1,11 @@
-@import '../../styles/variables';
+@use '../../styles/theme/palette.tokens' as palette;
+@use '../../styles/theme/spacing.tokens' as spacing;
+@use '../../styles/theme/transitions.tokens' as transitions;
+@use '../../styles/theme/z-index.tokens' as z-index;
+@use '../../styles/theme/side-nav.tokens' as side-nav;
 
 .pa-side-nav {
-  background-color: $background-color-side-nav;
+  background-color: side-nav.$background-color-side-nav;
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -9,20 +13,20 @@
   padding: 0;
   position: absolute;
   top: 0;
-  width: $width-side-panel;
-  z-index: $z-index-popup;
+  width: spacing.$width-side-panel;
+  z-index: z-index.$z-index-popup;
 
   .pa-close-side-nav-button {
     position: absolute;
-    right: rhythm(2);
-    top: rhythm(2);
+    right: spacing.rhythm(2);
+    top: spacing.rhythm(2);
   }
 
   .pa-side-nav-content {
     flex-grow: 1;
     margin-bottom: 0;
     overflow: auto;
-    padding: 0 0 rhythm(1);
+    padding: 0 0 spacing.rhythm(1);
   }
 
   pa-side-nav-item {
@@ -31,22 +35,22 @@
 }
 
 .pa-side-nav-tablet-overlay {
-  background: $color-dark-stronger;
+  background: palette.$color-dark-stronger;
   bottom: 0;
   left: 0;
   opacity: 0;
   position: fixed;
   top: 0;
-  transition: opacity $transition-response;
+  transition: opacity transitions.$transition-response;
   width: 100vw;
-  z-index: $z-index-popup;
+  z-index: z-index.$z-index-popup;
 
   &.opened {
     opacity: 0.5;
   }
 }
 
-@media (max-width: $size-viewport-large-max) {
+@media (max-width: spacing.$size-viewport-large-max) {
   :host {
     position: fixed;
     height: 100%;
@@ -56,7 +60,7 @@
 
   .pa-side-nav {
     transform: translateX(-100%);
-    transition: transform $transition-slide;
+    transition: transform transitions.$transition-slide;
 
     &.animated {
       opacity: 1;

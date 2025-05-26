@@ -1,7 +1,7 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
-@import 'shadows.tokens';
-@import 'typography.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
+@use 'shadows.tokens';
+@use 'typography.tokens';
 
 //=====================================
 // COLORS
@@ -11,90 +11,90 @@
 // text
 //
 //primary
-$color-text-button-primary-solid: $color-light-stronger !default;
-$color-text-button-primary-solid-hover: $color-light-stronger !default;
-$color-text-button-primary-solid-active: $color-light-stronger !default;
+$color-text-button-primary-solid: palette.$color-light-stronger !default;
+$color-text-button-primary-solid-hover: palette.$color-light-stronger !default;
+$color-text-button-primary-solid-active: palette.$color-light-stronger !default;
 
-$color-text-button-primary-basic: $color-primary-strong !default;
-$color-text-button-primary-basic-hover: $color-primary-stronger !default;
-$color-text-button-primary-basic-active: $color-primary-stronger !default;
+$color-text-button-primary-basic: palette.$color-primary-strong !default;
+$color-text-button-primary-basic-hover: palette.$color-primary-stronger !default;
+$color-text-button-primary-basic-active: palette.$color-primary-stronger !default;
 
 // secondary
-$color-text-button-secondary-solid: $color-dark-stronger !default;
-$color-text-button-secondary-solid-hover: $color-dark-stronger !default;
-$color-text-button-secondary-solid-active: $color-dark-stronger !default;
+$color-text-button-secondary-solid: palette.$color-dark-stronger !default;
+$color-text-button-secondary-solid-hover: palette.$color-dark-stronger !default;
+$color-text-button-secondary-solid-active: palette.$color-dark-stronger !default;
 
-$color-text-button-secondary-basic: $color-dark-stronger !default;
-$color-text-button-secondary-basic-hover: $color-dark-stronger !default;
-$color-text-button-secondary-basic-active: $color-dark-stronger !default;
+$color-text-button-secondary-basic: palette.$color-dark-stronger !default;
+$color-text-button-secondary-basic-hover: palette.$color-dark-stronger !default;
+$color-text-button-secondary-basic-active: palette.$color-dark-stronger !default;
 
 // inverted
-$color-text-button-inverted-solid: $color-dark-stronger !default;
-$color-text-button-inverted-solid-hover: $color-dark-stronger !default;
-$color-text-button-inverted-solid-active: $color-dark-stronger !default;
+$color-text-button-inverted-solid: palette.$color-dark-stronger !default;
+$color-text-button-inverted-solid-hover: palette.$color-dark-stronger !default;
+$color-text-button-inverted-solid-active: palette.$color-dark-stronger !default;
 
-$color-text-button-inverted-basic: $color-light-stronger !default;
-$color-text-button-inverted-basic-hover: $color-light-stronger !default;
-$color-text-button-inverted-basic-active: $color-light-stronger !default;
+$color-text-button-inverted-basic: palette.$color-light-stronger !default;
+$color-text-button-inverted-basic-hover: palette.$color-light-stronger !default;
+$color-text-button-inverted-basic-active: palette.$color-light-stronger !default;
 
 // destructive
-$color-text-button-destructive-solid: $color-light-stronger !default;
-$color-text-button-destructive-solid-hover: $color-light-stronger !default;
-$color-text-button-destructive-solid-active: $color-light-stronger !default;
+$color-text-button-destructive-solid: palette.$color-light-stronger !default;
+$color-text-button-destructive-solid-hover: palette.$color-light-stronger !default;
+$color-text-button-destructive-solid-active: palette.$color-light-stronger !default;
 
-$color-text-button-destructive-basic: $color-secondary-strong !default;
-$color-text-button-destructive-basic-hover: $color-secondary-stronger !default;
-$color-text-button-destructive-basic-active: $color-secondary-stronger !default;
+$color-text-button-destructive-basic: palette.$color-secondary-strong !default;
+$color-text-button-destructive-basic-hover: palette.$color-secondary-stronger !default;
+$color-text-button-destructive-basic-active: palette.$color-secondary-stronger !default;
 
 // disabled
-$color-text-button-solid-disabled: $color-neutral-light !default;
-$color-text-button-basic-disabled: $color-neutral-light !default;
-$color-text-button-inverted-solid-disabled: $color-neutral-inverted-lighter !default;
-$color-text-button-inverted-basic-disabled: $color-neutral-inverted-lighter !default;
+$color-text-button-solid-disabled: palette.$color-neutral-light !default;
+$color-text-button-basic-disabled: palette.$color-neutral-light !default;
+$color-text-button-inverted-solid-disabled: palette.$color-neutral-inverted-lighter !default;
+$color-text-button-inverted-basic-disabled: palette.$color-neutral-inverted-lighter !default;
 
 //
 // background
 //
 // primary
-$color-background-button-primary-solid: $color-primary-regular !default;
-$color-background-button-primary-solid-hover: $color-primary-regular !default;
-$color-background-button-primary-solid-active: $color-primary-strong !default;
+$color-background-button-primary-solid: palette.$color-primary-regular !default;
+$color-background-button-primary-solid-hover: palette.$color-primary-regular !default;
+$color-background-button-primary-solid-active: palette.$color-primary-strong !default;
 
 $color-background-button-primary-basic: transparent !default;
-$color-background-button-primary-basic-hover: $color-primary-lightest !default;
-$color-background-button-primary-basic-active: $color-primary-lighter !default;
+$color-background-button-primary-basic-hover: palette.$color-primary-lightest !default;
+$color-background-button-primary-basic-active: palette.$color-primary-lighter !default;
 
 // secondary
-$color-background-button-secondary-solid: $color-neutral-lighter !default;
-$color-background-button-secondary-solid-hover: $color-neutral-light !default;
-$color-background-button-secondary-solid-active: $color-neutral-regular !default;
+$color-background-button-secondary-solid: palette.$color-neutral-lighter !default;
+$color-background-button-secondary-solid-hover: palette.$color-neutral-light !default;
+$color-background-button-secondary-solid-active: palette.$color-neutral-regular !default;
 
 $color-background-button-secondary-basic: transparent !default;
-$color-background-button-secondary-basic-hover: $color-neutral-lighter !default;
-$color-background-button-secondary-basic-active: $color-neutral-light !default;
+$color-background-button-secondary-basic-hover: palette.$color-neutral-lighter !default;
+$color-background-button-secondary-basic-active: palette.$color-neutral-light !default;
 
 // inverted
-$color-background-button-inverted-solid: $color-neutral-lightest !default;
-$color-background-button-inverted-solid-hover: $color-neutral-lightest !default;
-$color-background-button-inverted-solid-active: $color-neutral-lighter !default;
+$color-background-button-inverted-solid: palette.$color-neutral-lightest !default;
+$color-background-button-inverted-solid-hover: palette.$color-neutral-lightest !default;
+$color-background-button-inverted-solid-active: palette.$color-neutral-lighter !default;
 
 $color-background-button-inverted-basic: transparent !default;
-$color-background-button-inverted-basic-hover: $color-neutral-inverted-light !default;
-$color-background-button-inverted-basic-active: $color-neutral-inverted-lighter !default;
+$color-background-button-inverted-basic-hover: palette.$color-neutral-inverted-light !default;
+$color-background-button-inverted-basic-active: palette.$color-neutral-inverted-lighter !default;
 
 // destructive
-$color-background-button-destructive-solid: $color-secondary-strong !default;
-$color-background-button-destructive-solid-hover: $color-secondary-strong !default;
-$color-background-button-destructive-solid-active: $color-secondary-stronger !default;
+$color-background-button-destructive-solid: palette.$color-secondary-strong !default;
+$color-background-button-destructive-solid-hover: palette.$color-secondary-strong !default;
+$color-background-button-destructive-solid-active: palette.$color-secondary-stronger !default;
 
 $color-background-button-destructive-basic: transparent !default;
-$color-background-button-destructive-basic-hover: $color-secondary-lightest !default;
-$color-background-button-destructive-basic-active: $color-secondary-lighter !default;
+$color-background-button-destructive-basic-hover: palette.$color-secondary-lightest !default;
+$color-background-button-destructive-basic-active: palette.$color-secondary-lighter !default;
 
 // disabled
-$color-background-button-solid-disabled: $color-neutral-lightest !default;
+$color-background-button-solid-disabled: palette.$color-neutral-lightest !default;
 $color-background-button-basic-disabled: transparent !default;
-$color-background-button-inverted-solid-disabled: $color-neutral-inverted-light !default;
+$color-background-button-inverted-solid-disabled: palette.$color-neutral-inverted-light !default;
 
 //=====================================
 // BORDERS
@@ -166,35 +166,35 @@ $border-radius-button-icon: 50% !default;
 // SPACING and SHADOWS
 //=====================================
 
-$padding-sides-button-small: rhythm(2) !default;
-$padding-sides-button-medium: rhythm(2) !default;
-$padding-sides-button-large: rhythm(3) !default;
+$padding-sides-button-small: spacing.rhythm(2) !default;
+$padding-sides-button-medium: spacing.rhythm(2) !default;
+$padding-sides-button-large: spacing.rhythm(3) !default;
 
-$padding-left-button-icon-text-small: rhythm(1.5) !default;
-$padding-right-button-icon-text-small: rhythm(2) !default;
-$padding-left-button-icon-text-medium: rhythm(1.5) !default;
-$padding-right-button-icon-text-medium: rhythm(2) !default;
-$padding-left-button-icon-text-large: rhythm(2) !default;
-$padding-right-button-icon-text-large: rhythm(3) !default;
+$padding-left-button-icon-text-small: spacing.rhythm(1.5) !default;
+$padding-right-button-icon-text-small: spacing.rhythm(2) !default;
+$padding-left-button-icon-text-medium: spacing.rhythm(1.5) !default;
+$padding-right-button-icon-text-medium: spacing.rhythm(2) !default;
+$padding-left-button-icon-text-large: spacing.rhythm(2) !default;
+$padding-right-button-icon-text-large: spacing.rhythm(3) !default;
 
-$padding-button-icon-small: rhythm(1) !default;
-$padding-button-icon-medium: rhythm(1.5) !default;
-$padding-button-icon-large: rhythm(1.5) !default;
+$padding-button-icon-small: spacing.rhythm(1) !default;
+$padding-button-icon-medium: spacing.rhythm(1.5) !default;
+$padding-button-icon-large: spacing.rhythm(1.5) !default;
 
-$height-button-small: rhythm(4) !default;
-$height-button-medium: rhythm(6) !default;
-$height-button-large: rhythm(7) !default;
+$height-button-small: spacing.rhythm(4) !default;
+$height-button-medium: spacing.rhythm(6) !default;
+$height-button-large: spacing.rhythm(7) !default;
 
-$shadow-button-solid-hover: $shadow-small !default;
-$shadow-button-basic-hover: $shadow-small !default;
+$shadow-button-solid-hover: shadows.$shadow-small !default;
+$shadow-button-basic-hover: shadows.$shadow-small !default;
 
 //=====================================
 // LABELS
 //=====================================
-$font-size-button-small: font-size(s) !default;
-$font-size-button-medium: font-size(m) !default;
-$font-size-button-large: font-size(m) !default;
-$font-weight-button-label: $font-weight-semi-bold !default;
+$font-size-button-small: typography.font-size(s) !default;
+$font-size-button-medium: typography.font-size(m) !default;
+$font-size-button-large: typography.font-size(m) !default;
+$font-weight-button-label: typography.$font-weight-semi-bold !default;
 
 @mixin primary-solid() {
   color: $color-text-button-primary-solid;

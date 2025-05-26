@@ -1,50 +1,52 @@
-@import '../../../styles/variables';
+@use '../../../styles/theme/palette.tokens' as palette;
+@use '../../../styles/theme/spacing.tokens' as spacing;
+@use '../../../styles/theme/transitions.tokens' as transitions;
 
-$padding-accordion-body: rhythm(2);
+$padding-accordion-body: spacing.rhythm(2);
 
 :host {
-  border: 1px solid $color-neutral-light;
+  border: 1px solid palette.$color-neutral-light;
   border-bottom: none;
   display: block;
 
   &:first-of-type {
-    border-top-left-radius: $border-radius-default;
-    border-top-right-radius: $border-radius-default;
+    border-top-left-radius: spacing.$border-radius-default;
+    border-top-right-radius: spacing.$border-radius-default;
   }
   &:last-of-type {
-    border-bottom: 1px solid $color-neutral-light;
-    border-bottom-left-radius: $border-radius-default;
-    border-bottom-right-radius: $border-radius-default;
+    border-bottom: 1px solid palette.$color-neutral-light;
+    border-bottom-left-radius: spacing.$border-radius-default;
+    border-bottom-right-radius: spacing.$border-radius-default;
   }
 
   .pa-accordion-item-header {
     align-items: center;
     cursor: pointer;
     display: flex;
-    gap: rhythm(1);
-    padding: rhythm(1.5) rhythm(2) rhythm(1.5) rhythm(1);
+    gap: spacing.rhythm(1);
+    padding: spacing.rhythm(1.5) spacing.rhythm(2) spacing.rhythm(1.5) spacing.rhythm(1);
     position: relative;
 
     &:after {
-      background: $color-neutral-lighter;
+      background: palette.$color-neutral-lighter;
       bottom: 0;
       content: '';
       height: 0;
-      left: rhythm(2);
+      left: spacing.rhythm(2);
       position: absolute;
-      width: calc(100% - #{rhythm(4)});
+      width: calc(100% - #{spacing.rhythm(4)});
     }
 
     .pa-accordion-item-title {
       flex: 1;
 
       .body-s {
-        color: $color-neutral-regular;
+        color: palette.$color-neutral-regular;
       }
     }
 
     .pa-accordion-button ::ng-deep .pa-button {
-      transition: transform $transition-hint;
+      transition: transform transitions.$transition-hint;
     }
   }
 
@@ -53,9 +55,9 @@ $padding-accordion-body: rhythm(2);
     opacity: 1;
     padding: $padding-accordion-body;
     transition:
-      height $transition-response,
-      opacity $transition-hint,
-      padding $transition-response;
+      height transitions.$transition-response,
+      opacity transitions.$transition-hint,
+      padding transitions.$transition-response;
   }
 
   &.pa-accordion-collapsed {

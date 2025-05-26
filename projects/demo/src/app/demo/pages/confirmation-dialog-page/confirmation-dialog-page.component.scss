@@ -1,5 +1,5 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .open-modal-button {
-  margin-bottom: rhythm(1);
+  margin-bottom: spacing.rhythm(1);
 }

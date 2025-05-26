@@ -1,7 +1,9 @@
-@import '../../../styles/variables';
+@use '../../../styles/theme/palette.tokens' as palette;
+@use '../../../styles/theme/spacing.tokens' as spacing;
+@use '../../../styles/theme/typography.tokens' as typography;
 
 pa-table-lead-image {
-  margin-right: rhythm(1);
+  margin-right: spacing.rhythm(1);
 }
 
 .pa-lead-text {
@@ -15,7 +17,7 @@ pa-table-lead-image {
 }
 
 .pa-lead-description {
-  color: $color-neutral-regular;
-  font-size: font-size(xs);
-  line-height: line-height(s);
+  color: palette.$color-neutral-regular;
+  font-size: typography.font-size(xs);
+  line-height: typography.line-height(s);
 }

@@ -1,30 +1,32 @@
-@import '../../../styles/variables';
-@import '../../../styles/theme/modal.tokens';
+@use '../../../styles/theme/palette.tokens' as palette;
+@use '../../../styles/theme/spacing.tokens' as spacing;
+@use '../../../styles/theme/button.tokens' as button;
+@use '../../../styles/theme/modal.tokens' as modal;
 
 .pa-modal-advanced {
-  background-color: $color-light-stronger;
+  background-color: palette.$color-light-stronger;
 
   .pa-modal-header {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: $spacing-dialog-sections calc(#{$padding-modal} - #{$padding-button-icon-medium}) $spacing-dialog-sections
-      $padding-modal;
+    padding: modal.$spacing-dialog-sections calc(#{modal.$padding-modal} - #{button.$padding-button-icon-medium})
+      modal.$spacing-dialog-sections modal.$padding-modal;
   }
 
   .pa-modal-content {
-    min-height: calc(100% - #{$height-header-footer-modal} - #{$spacing-dialog-sections});
+    min-height: calc(100% - #{modal.$height-header-footer-modal} - #{modal.$spacing-dialog-sections});
   }
 
   &.with-footer .pa-modal-content {
-    min-height: calc(100% - #{$height-header-footer-modal} * 2);
+    min-height: calc(100% - #{modal.$height-header-footer-modal} * 2);
   }
 
   pa-modal-footer {
-    padding: 0 $padding-modal;
+    padding: 0 modal.$padding-modal;
   }
 
-  @media (max-width: $size-viewport-medium-max) {
+  @media (max-width: spacing.$size-viewport-medium-max) {
     .pa-footer-container.pa-modal-footer-one-button {
       pa-modal-footer pa-button {
         width: 100%;
@@ -36,9 +38,9 @@
     }
   }
 
-  @media (min-width: $size-viewport-medium-min) {
+  @media (min-width: spacing.$size-viewport-medium-min) {
     &:not(.fit-content) {
-      width: rhythm(64);
+      width: spacing.rhythm(64);
     }
     &.fit-content {
       max-width: 80vw;

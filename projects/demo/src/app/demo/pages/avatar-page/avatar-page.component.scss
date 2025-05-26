@@ -1,15 +1,16 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .avatar-row {
   display: flex;
   align-items: center;
-  margin: rhythm(1) 0;
+  margin: spacing.rhythm(1) 0;
 
   & > div {
-    width: rhythm(9);
+    width: spacing.rhythm(9);
   }
   & > * {
-    margin-right: rhythm(1);
-    min-width: rhythm(6);
+    margin-bottom: 0;
+    margin-right: spacing.rhythm(1);
+    min-width: spacing.rhythm(6);
   }
 }

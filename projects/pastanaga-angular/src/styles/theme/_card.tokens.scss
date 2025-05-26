@@ -1,12 +1,12 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
 
-$background-card: $color-light-stronger !default;
-$background-card-hover: $color-neutral-lightest !default;
-$background-card-active: $color-neutral-lighter !default;
+$background-card: palette.$color-light-stronger !default;
+$background-card-hover: palette.$color-neutral-lightest !default;
+$background-card-active: palette.$color-neutral-lighter !default;
 
-$border-card: 1px solid $color-neutral-lighter !default;
-$border-radius-card: $border-radius-default !default;
+$border-card: 1px solid palette.$color-neutral-lighter !default;
+$border-radius-card: spacing.$border-radius-default !default;
 
-$padding-horizontal-card: rhythm(2) !default;
-$padding-vertical-card: rhythm(2) !default;
+$padding-horizontal-card: spacing.rhythm(2) !default;
+$padding-vertical-card: spacing.rhythm(2) !default;

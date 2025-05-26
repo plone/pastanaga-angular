@@ -1,12 +1,12 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .examples,
 form {
   display: flex;
   flex-direction: column;
-  gap: rhythm(1);
+  gap: spacing.rhythm(1);
 }
 
 hr {
-  margin: rhythm(2) 0;
+  margin: spacing.rhythm(2) 0;
 }

@@ -1,22 +1,22 @@
-$font-path: '../../assets/fonts';
-@import '../../pastanaga-angular/src/styles/core';
-@import '../../pastanaga-angular/src/styles/grid';
-@import '../../pastanaga-angular/src/styles/theme/fonts';
+@use '../../pastanaga-angular/src/styles/core';
+@use '../../pastanaga-angular/src/styles/grid';
+@use '../../pastanaga-angular/src/styles/theme/fonts';
+@use '../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .form-field-config {
   .state-option {
     display: flex;
-    margin: rhythm(1) 0;
+    margin: spacing.rhythm(1) 0;
   }
   .option {
-    margin-right: rhythm(2);
+    margin-right: spacing.rhythm(2);
 
     input {
-      margin-right: rhythm(1);
+      margin-right: spacing.rhythm(1);
     }
   }
   fieldset {
-    margin: rhythm(3) 0;
+    margin: spacing.rhythm(3) 0;
   }
 }
 .component {

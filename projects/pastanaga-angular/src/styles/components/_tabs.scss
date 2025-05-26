@@ -1,8 +1,13 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/shadows.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/tabs.tokens";
+@use "../theme/transitions.tokens";
+@use "../theme/typography.tokens";
 
 .pa-tabs-list {
   display: flex;
-  gap: $gap-between-tabs;
+  gap: tabs.$gap-between-tabs;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -16,10 +21,10 @@
   }
 
   &:not(.no-slider) pa-tab .pa-tabs-link::after {
-    background: $color-tab-slider;
+    background: tabs.$color-tab-slider;
     bottom: 0;
     content: '';
-    height: $height-tab-slider;
+    height: tabs.$height-tab-slider;
     left: 0;
     position: absolute;
     width: 100%;
@@ -36,38 +41,38 @@ pa-tab {
   }
 
   .pa-tabs-link {
-    background: $color-background-tab-link;
+    background: tabs.$color-background-tab-link;
     border: none;
-    color: $color-text-tab-link;
-    font-size: $font-size-tab-item;
-    font-weight: $font-weight-tab-item;
-    line-height: line-height(l);
+    color: tabs.$color-text-tab-link;
+    font-size: tabs.$font-size-tab-item;
+    font-weight: tabs.$font-weight-tab-item;
+    line-height: typography.line-height(l);
     padding: 0;
-    text-transform: $text-transform-tab-item;
-    transition: all $transition-response;
+    text-transform: tabs.$text-transform-tab-item;
+    transition: all transitions.$transition-response;
     width: 100%;
 
     &:hover {
-      background: $color-background-tab-link-hover;
-      transition: all $transition-response;
+      background: tabs.$color-background-tab-link-hover;
+      transition: all transitions.$transition-response;
 
       &:not([aria-expanded='true']) {
-        color: $color-text-tab-link;
+        color: tabs.$color-text-tab-link;
         cursor: pointer;
       }
     }
 
     &[aria-expanded='true'] {
-      background: $color-background-tab-link-active;
-      color: $color-text-tab-link-active;
+      background: tabs.$color-background-tab-link-active;
+      color: tabs.$color-text-tab-link-active;
       cursor: default;
-      font-weight: $font-weight-tab-item-active;
+      font-weight: tabs.$font-weight-tab-item-active;
     }
 
     &.pa-keyboard-focus {
       box-shadow: unset;
       .pa-tabs-link-wrapper {
-        box-shadow: $shadow-focus;
+        box-shadow: shadows.$shadow-focus;
       }
     }
 
@@ -75,7 +80,7 @@ pa-tab {
       align-items: center;
       display: block;
       overflow: hidden;
-      padding: $padding-tab-item-small;
+      padding: tabs.$padding-tab-item-small;
       position: relative;
       text-align: center;
       text-overflow: ellipsis;
@@ -86,18 +91,18 @@ pa-tab {
 }
 
 .pa-tabs-slider {
-  background: $color-tab-slider-active;
+  background: tabs.$color-tab-slider-active;
   bottom: 0;
   left: 0;
-  height: rhythm(0.25);
+  height: spacing.rhythm(0.25);
   position: absolute;
   transition:
-    left $transition-response,
-    width $transition-response;
+    left transitions.$transition-response,
+    width transitions.$transition-response;
 }
 
-@media (min-width: $size-viewport-medium-min) {
+@media (min-width: spacing.$size-viewport-medium-min) {
   pa-tab .pa-tabs-link .pa-tabs-link-wrapper {
-    padding: $padding-tab-item-medium;
+    padding: tabs.$padding-tab-item-medium;
   }
 }

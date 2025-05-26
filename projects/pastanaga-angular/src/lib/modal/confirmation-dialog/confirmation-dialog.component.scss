@@ -1,25 +1,30 @@
-@import '../../../styles/variables';
-@import '../../../styles/theme/modal.tokens';
+@use '../../../styles/theme/layout.tokens' as layout;
+@use '../../../styles/theme/palette.tokens' as palette;
+@use '../../../styles/theme/shadows.tokens' as shadows;
+@use '../../../styles/theme/spacing.tokens' as spacing;
+@use '../../../styles/theme/modal.tokens' as modal;
 
 .pa-confirmation-dialog {
-  background-color: $color-light-stronger;
-  box-shadow: $shadow-modal;
-  padding: $padding-modal;
+  background-color: palette.$color-light-stronger;
+  box-shadow: shadows.$shadow-modal;
+  padding: modal.$padding-modal;
   text-align: center;
-  width: $breakpoint-small - rhythm(2) * 2; // smallest device width minus the margin in each side
+  width: calc(
+    #{layout.$breakpoint-small} - #{spacing.rhythm(2)} * 2
+  ); // smallest device width minus the margin in each side
 
   .pa-modal-header {
     h4 {
-      margin-bottom: $spacing-dialog-sections;
+      margin-bottom: modal.$spacing-dialog-sections;
     }
   }
 
   .pa-modal-footer {
-    margin-top: $spacing-dialog-sections;
+    margin-top: modal.$spacing-dialog-sections;
     height: auto;
   }
 
-  @media (min-width: $size-viewport-medium-min) {
-    width: $width-confirm-dialog;
+  @media (min-width: spacing.$size-viewport-medium-min) {
+    width: modal.$width-confirm-dialog;
   }
 }

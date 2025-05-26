@@ -1,26 +1,26 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
-@import 'typography.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
+@use 'typography.tokens';
 
-$color-text-tab-link: $color-neutral-regular !default;
-$color-text-tab-link-active: $color-dark-stronger !default;
+$color-text-tab-link: palette.$color-neutral-regular !default;
+$color-text-tab-link-active: palette.$color-dark-stronger !default;
 
 $color-background-tab-link: transparent !default;
-$color-background-tab-link-hover: $color-neutral-lightest !default;
+$color-background-tab-link-hover: palette.$color-neutral-lightest !default;
 $color-background-tab-link-active: transparent !default;
 
-$color-tab-slider: $color-neutral-light !default;
-$color-tab-slider-active: $color-primary-regular !default;
+$color-tab-slider: palette.$color-neutral-light !default;
+$color-tab-slider-active: palette.$color-primary-regular !default;
 
-$font-size-tab-item: font-size(xs) !default;
-$font-weight-tab-item: $font-weight-bold !default;
-$font-weight-tab-item-active: $font-weight-bold !default;
+$font-size-tab-item: typography.font-size(xs) !default;
+$font-weight-tab-item: typography.$font-weight-bold !default;
+$font-weight-tab-item-active: typography.$font-weight-bold !default;
 
 $gap-between-tabs: 0 !default;
 
-$height-tab-slider: rhythm(0.25) !default;
+$height-tab-slider: spacing.rhythm(0.25) !default;
 
-$padding-tab-item-small: rhythm(1.5) !default;
-$padding-tab-item-medium: rhythm(1.5) !default;
+$padding-tab-item-small: spacing.rhythm(1.5) !default;
+$padding-tab-item-medium: spacing.rhythm(1.5) !default;
 
 $text-transform-tab-item: uppercase !default;

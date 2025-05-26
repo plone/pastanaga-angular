@@ -1,19 +1,21 @@
-@import '../variables';
+@use '../theme/button.tokens' as button;
+@use '../theme/spacing.tokens' as spacing;
+@use '../theme/transitions.tokens' as transitions;
 
 .pa-button {
   align-items: center;
   background: transparent;
   border: none;
-  border-radius: $border-radius-button;
+  border-radius: button.$border-radius-button;
   display: inline-flex;
   justify-content: center;
   padding: 0;
   margin: 0;
   outline: 0;
   transition:
-    background-color $transition-hint,
-    box-shadow $transition-hint,
-    color $transition-hint;
+    background-color transitions.$transition-hint,
+    box-shadow transitions.$transition-hint,
+    color transitions.$transition-hint;
   white-space: nowrap;
 
   a {
@@ -28,7 +30,7 @@
     align-items: center;
   }
   .pa-button-label {
-    font-weight: $font-weight-button-label;
+    font-weight: button.$font-weight-button-label;
   }
 
   svg {
@@ -36,55 +38,55 @@
     fill: currentColor;
   }
   .pa-icon-text {
-    margin-right: rhythm(1);
+    margin-right: spacing.rhythm(1);
   }
 
   &.pa-button-icon {
-    border-radius: $border-radius-button-icon;
+    border-radius: button.$border-radius-button-icon;
   }
 
   &.pa-small {
-    font-size: $font-size-button-small;
-    height: $height-button-small;
-    line-height: rhythm(3);
-    padding: 0 $padding-sides-button-small;
+    font-size: button.$font-size-button-small;
+    height: button.$height-button-small;
+    line-height: spacing.rhythm(3);
+    padding: 0 button.$padding-sides-button-small;
 
     &.pa-button-icon {
-      padding: $padding-button-icon-small;
+      padding: button.$padding-button-icon-small;
     }
     &.pa-button-icon-text {
-      padding-left: $padding-left-button-icon-text-small;
-      padding-right: $padding-right-button-icon-text-small;
+      padding-left: button.$padding-left-button-icon-text-small;
+      padding-right: button.$padding-right-button-icon-text-small;
     }
   }
 
   &.pa-medium {
-    font-size: $font-size-button-medium;
-    height: $height-button-medium;
-    line-height: rhythm(4);
-    padding: 0 $padding-sides-button-medium;
+    font-size: button.$font-size-button-medium;
+    height: button.$height-button-medium;
+    line-height: spacing.rhythm(4);
+    padding: 0 button.$padding-sides-button-medium;
 
     &.pa-button-icon {
-      padding: $padding-button-icon-medium;
+      padding: button.$padding-button-icon-medium;
     }
     &.pa-button-icon-text {
-      padding-left: $padding-left-button-icon-text-medium;
-      padding-right: $padding-right-button-icon-text-medium;
+      padding-left: button.$padding-left-button-icon-text-medium;
+      padding-right: button.$padding-right-button-icon-text-medium;
     }
   }
 
   &.pa-large {
-    font-size: $font-size-button-large;
-    height: $height-button-large;
-    line-height: rhythm(4);
-    padding: 0 $padding-sides-button-large;
+    font-size: button.$font-size-button-large;
+    height: button.$height-button-large;
+    line-height: spacing.rhythm(4);
+    padding: 0 button.$padding-sides-button-large;
 
     &.pa-button-icon {
-      padding: $padding-button-icon-large;
+      padding: button.$padding-button-icon-large;
     }
     &.pa-button-icon-text {
-      padding-left: $padding-left-button-icon-text-large;
-      padding-right: $padding-right-button-icon-text-large;
+      padding-left: button.$padding-left-button-icon-text-large;
+      padding-right: button.$padding-right-button-icon-text-large;
     }
   }
 
@@ -97,52 +99,52 @@
 
     &.pa-primary {
       &.pa-solid {
-        @include primary-solid();
+        @include button.primary-solid();
       }
 
       &.pa-basic {
-        @include primary-basic();
+        @include button.primary-basic();
       }
     }
 
     &.pa-secondary {
       &.pa-solid {
-        @include secondary-solid();
+        @include button.secondary-solid();
       }
 
       &.pa-basic {
-        @include secondary-basic();
+        @include button.secondary-basic();
       }
     }
 
     &.pa-inverted {
       &.pa-solid {
-        @include inverted-solid();
+        @include button.inverted-solid();
       }
 
       &.pa-basic {
-        @include inverted-basic();
+        @include button.inverted-basic();
       }
     }
 
     &.pa-destructive {
       &.pa-solid {
-        @include destructive-solid();
+        @include button.destructive-solid();
       }
 
       &.pa-basic {
-        @include destructive-basic();
+        @include button.destructive-basic();
       }
     }
 
     @media (hover: hover) {
       &:hover {
         &.pa-solid {
-          @include hover-box-shadow-solid();
+          @include button.hover-box-shadow-solid();
         }
 
         &.pa-basic {
-          @include hover-box-shadow-basic();
+          @include button.hover-box-shadow-basic();
         }
       }
     }
@@ -150,19 +152,19 @@
 
   &:disabled {
     &.pa-solid {
-      @include disabled-solid();
+      @include button.disabled-solid();
     }
 
     &.pa-basic {
-      @include disabled-basic();
+      @include button.disabled-basic();
     }
 
     &.pa-inverted {
       &.pa-solid {
-        @include disabled-inverted-solid();
+        @include button.disabled-inverted-solid();
       }
       &.pa-basic {
-        @include disabled-inverted-basic();
+        @include button.disabled-inverted-basic();
       }
     }
   }
@@ -174,7 +176,7 @@
   justify-content: space-between;
 
   pa-button {
-    width: calc((100% - #{rhythm(2)}) / 2);
+    width: calc((100% - #{spacing.rhythm(2)}) / 2);
 
     .pa-button {
       width: 100%;
