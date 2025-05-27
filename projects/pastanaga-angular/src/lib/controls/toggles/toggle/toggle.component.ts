@@ -15,15 +15,14 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { detectChanges, markForCheck } from '../../../common';
-import { PaFormControlDirective } from '../../form-field';
 import { NgControl } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
+import { detectChanges, markForCheck } from '../../../common';
+import { PaFormControlDirective } from '../../form-field';
 
 @Component({
   selector: 'pa-toggle',
   templateUrl: './toggle.component.html',
-  styleUrls: ['./toggle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
