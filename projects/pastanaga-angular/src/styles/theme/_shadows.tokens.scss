@@ -17,7 +17,7 @@ $shadow-large:
   $drop-shadow-large,
   0px 0px spacing.rhythm(0.5) rgba(0, 0, 0, 0.1) !default;
 
-$color-shadow-focus: rgba(palette.$color-primary-light, 0.6) !default;
+$color-shadow-focus: rgba(124, 192, 248, 0.6) !default;
 $shadow-focus: 0 0 0 spacing.rhythm(0.25) $color-shadow-focus !default;
 $shadow-focus-checkbox:
   0 0 0 spacing.rhythm(0.25) palette.$color-light-stronger,
