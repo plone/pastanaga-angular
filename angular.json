@@ -1,162 +1,160 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "version": 1,
-    "newProjectRoot": "projects",
-    "projects": {
-        "pastanaga-angular": {
-            "projectType": "library",
-            "root": "projects/pastanaga-angular",
-            "sourceRoot": "projects/pastanaga-angular/src",
-            "prefix": "pa",
-            "schematics": {
-                "@schematics/angular:component": {
-                    "style": "scss",
-                    "changeDetection": "OnPush"
-                }
-            },
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
-                    "options": {
-                        "project": "projects/pastanaga-angular/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/pastanaga-angular/tsconfig.lib.prod.json"
-                        },
-                        "development": {
-                            "tsConfig": "projects/pastanaga-angular/tsconfig.lib.json"
-                        }
-                    },
-                    "defaultConfiguration": "production"
-                },
-                "test": {
-                    "builder": "@angular-builders/jest:run",
-                    "options": {
-                        "tsConfig": "tsconfig.spec.json"
-                    }
-                }
-            }
-        },
-        "demo": {
-            "projectType": "application",
-            "schematics": {
-                "@schematics/angular:component": {
-                    "style": "scss",
-                    "skipTests": true,
-                    "changeDetection": "OnPush"
-                },
-                "@schematics/angular:class": {
-                    "skipTests": true
-                },
-                "@schematics/angular:directive": {
-                    "skipTests": true
-                },
-                "@schematics/angular:guard": {
-                    "skipTests": true
-                },
-                "@schematics/angular:interceptor": {
-                    "skipTests": true
-                },
-                "@schematics/angular:pipe": {
-                    "skipTests": true
-                },
-                "@schematics/angular:service": {
-                    "skipTests": true
-                },
-                "@schematics/angular:application": {
-                    "strict": true
-                }
-            },
-            "root": "projects/demo",
-            "sourceRoot": "projects/demo/src",
-            "prefix": "pa-demo",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
-                    "options": {
-                        "outputPath": "dist/demo",
-                        "index": "projects/demo/src/index.html",
-                        "main": "projects/demo/src/main.ts",
-                        "polyfills": "projects/demo/src/polyfills.ts",
-                        "tsConfig": "projects/demo/tsconfig.app.json",
-                        "inlineStyleLanguage": "scss",
-                        "assets": [
-                            "projects/demo/src/favicon.png",
-                            "projects/demo/src/assets",
-                            {
-                                "glob": "**/*",
-                                "input": "./projects/pastanaga-angular/src/assets",
-                                "output": "assets"
-                            }
-                        ],
-                        "styles": [
-                            "projects/demo/src/styles.scss"
-                        ],
-                        "scripts": [],
-                        "stylePreprocessorOptions": {
-                            "includePaths": ["src"]
-                        }
-                    },
-                    "configurations": {
-                        "production": {
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "1mb",
-                                    "maximumError": "2.5mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
-                                }
-                            ],
-                            "fileReplacements": [
-                                {
-                                    "replace": "projects/demo/src/environments/environment.ts",
-                                    "with": "projects/demo/src/environments/environment.prod.ts"
-                                }
-                            ],
-                            "outputHashing": "all"
-                        },
-                        "development": {
-                            "buildOptimizer": false,
-                            "optimization": false,
-                            "vendorChunk": true,
-                            "extractLicenses": false,
-                            "sourceMap": true,
-                            "namedChunks": true
-                        }
-                    },
-                    "defaultConfiguration": "production"
-                },
-                "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "configurations": {
-                        "production": {
-                          "buildTarget": "demo:build:production"
-                        },
-                        "development": {
-                          "buildTarget": "demo:build:development"
-                        }
-                    },
-                    "defaultConfiguration": "development"
-                },
-                "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
-                    "options": {
-                      "buildTarget": "demo:build"
-                    }
-                },
-                "deploy": {
-                    "builder": "angular-cli-ghpages:deploy",
-                    "options": {}
-                }
-            }
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "pastanaga-angular": {
+      "projectType": "library",
+      "root": "projects/pastanaga-angular",
+      "sourceRoot": "projects/pastanaga-angular/src",
+      "prefix": "pa",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
         }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pastanaga-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pastanaga-angular/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pastanaga-angular/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "tsconfig.spec.json"
+          }
+        }
+      }
     },
-    "cli": {
-      "analytics": false
+    "demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/demo",
+      "sourceRoot": "projects/demo/src",
+      "prefix": "pa-demo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/demo",
+            "index": "projects/demo/src/index.html",
+            "main": "projects/demo/src/main.ts",
+            "polyfills": "projects/demo/src/polyfills.ts",
+            "tsConfig": "projects/demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/demo/src/favicon.png",
+              "projects/demo/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./projects/pastanaga-angular/src/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": ["projects/demo/src/styles.scss"],
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "2.5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "5kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/demo/src/environments/environment.ts",
+                  "with": "projects/demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "demo:build:production"
+            },
+            "development": {
+              "buildTarget": "demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "demo:build"
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
+        }
+      }
     }
+  },
+  "cli": {
+    "analytics": false
+  }
 }

@@ -139,13 +139,13 @@ Import Pastanaga core style in your application style (usually `src/styles.scss`
 - when using npm package:
 
 ```scss
-@import '~@guillotinaweb/pastanaga-angular/lib/styles/core';
+@use '~@guillotinaweb/pastanaga-angular/lib/styles/core';
 ```
 
 - when using mrs-developer
 
 ```scss
-@import './develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/core';
+@use './develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/core';
 ```
 
 ## Theming
@@ -157,16 +157,18 @@ If you want to use Pastanaga fonts in your application, you need to and import P
 - when using npm package
 
 ```scss
-@import '~@guillotinaweb/pastanaga-angular/lib/styles/theme/fonts';
+@use '~@guillotinaweb/pastanaga-angular/lib/styles/theme/fonts';
 ```
 
 - when using `mrs-developer`
 
 ```scss
-@import './develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/theme/fonts';
+@use './develop/pastanaga-angular/projects/pastanaga-angular/lib/styles/theme/fonts';
 ```
 
 ### Overriding theme
+
+#### Pastanaga theme is based on tokens
 
 Pastanaga theme is defined in `src/lib/styles/theme` folder. Any variable with `!default` suffix can be overwritten.
 
@@ -175,6 +177,96 @@ See the full list in https://plone.github.io/pastanaga-angular/palette.
 
 Then, some components have a second layer of tokens. For example buttons have a list of tokens for each aspect and kind (_e.g._ `$color-text-button-primary-solid`, `$color-background-button-primary-solid`,…).
 So you can have your own theme by overwriting the whole color palette or just by changing some aspects of some components.
+
+#### Setting up your own theme
+
+If you have your own theme, you can override Pastanaga theme by creating a file `_overrides.scss` forwarding all the Pastanaga token files and overriding the ones you need, and loading it before loading Pastanaga cores in your main style.
+In the following example, we have a monorepo with a lib containing our theme next to Pastanaga library. In our theme library we have a file `_overrides.scss` as follow:
+
+```scss
+// core
+@forward '../theme/fonts';
+@forward '../theme/tokens/palette.tokens';
+@forward '../theme/tokens/spacing.tokens';
+@forward '../theme/tokens/typography.tokens';
+@forward '../theme/tokens/scrollbar.tokens';
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/shadows.tokens';
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/transitions.tokens';
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/z-index.tokens';
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/layout.tokens';
+
+// components
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/avatar.tokens';
+@forward '../theme/tokens/body.tokens';
+@forward '../theme/tokens/buttons.tokens';
+@forward '../theme/tokens/card.tokens';
+@forward '../theme/tokens/chips.tokens';
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/icon.tokens';
+@forward '../theme/tokens/expander.tokens';
+@forward '../theme/tokens/menu.tokens';
+@forward '../theme/tokens/modal.tokens';
+@forward '../theme/tokens/popover.tokens';
+@forward '../theme/tokens/table.tokens';
+@forward '../theme/tokens/tabs.tokens';
+@forward '../theme/tokens/textfield.tokens';
+@forward '../theme/tokens/toasts.tokens';
+@forward '../theme/tokens/toggle.tokens';
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/tooltip.tokens';
+
+// Utility scss functions and mixin
+@forward '../../pastanaga-angular/projects/pastanaga-angular/src/styles/utils';
+```
+
+Then in each of our theme file, we can override the token we want by using Sass `@forward with` syntax. In our example above, `_body.tokens.scss` is as followed:
+
+```scss
+@use '../tokens/palette.tokens' as palette;
+@use '../tokens/typography.tokens' as typography;
+@forward '../../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/body.tokens'
+  with(
+    $color-text-link-regular: inherit,
+    $color-text-link-regular-hover: inherit,
+    $color-text-disabled: palette.$color-neutral-regular,
+    $font-weight-label: typography.$font-weight-regular
+  );
+```
+
+#### Overriding the palette
+
+Overriding the palette is possible but a bit different as Pastanaga palette is defining Sass variables using pure CSS variable like
+
+```scss
+$color-neutral-regular: var(--color-neutral-regular, hsl(207, 17%, 58%)) !default;
+```
+
+Overriding them is done by defining CSS variables, like for example:
+
+```scss
+@forward '../../../pastanaga-angular/projects/pastanaga-angular/src/styles/theme/palette.tokens';
+:root {
+  --color-dark-stronger: #000;
+  --color-light-stronger: #fff;
+
+  --color-neutral-regular: hsl(0, 0%, 44%);
+  --color-neutral-light: hsl(0, 0%, 77%);
+  --color-neutral-lighter: hsl(0, 0%, 90%);
+  --color-neutral-lightest: hsl(240, 7%, 97%);
+
+  --color-primary-stronger: hsl(249, 100%, 24%);
+  --color-primary-strong: hsl(249, 100%, 40%);
+  --color-primary-regular: hsl(249, 100%, 50%);
+  --color-primary-light: hsl(249, 100%, 65%);
+  --color-primary-lighter: hsl(249, 100%, 92%);
+  --color-primary-lightest: hsl(249, 100%, 96%);
+
+  --color-secondary-stronger: hsl(336, 100%, 24%);
+  --color-secondary-strong: hsl(336, 100%, 36%);
+  --color-secondary-regular: hsl(336, 100%, 50%);
+  --color-secondary-light: hsl(336, 100%, 73%);
+  --color-secondary-lighter: hsl(336, 100%, 90%);
+  --color-secondary-lightest: hsl(336, 100%, 96%);
+}
+```
 
 ## Migration guide version 1.x to version 2.x
 
