@@ -1,74 +1,37 @@
 // Colors palette
 
-// Blacks
-$_denim: hsl(207, 90%, 7%);
+// General tokens
+$color-dark-stronger: var(--color-dark-stronger, hsl(207, 90%, 7%)) !default;
 
-// Whites
 // We cannot use HSL for white because hsl(0,0%,100%) is translated to the keyword `white` instead of the hexa code `#fff`,
 // which is breaking the code we use in `background-image: url()` where we encode the `#`
-$_white: #fff;
+$color-light-stronger: var(--color-light-strong, #fff) !default;
 
-// Grays
-$_dolphin: hsl(207, 17%, 58%);
-$_silver: hsl(207, 17%, 80%);
-$_smoke: hsl(207, 17%, 91%);
-$_snow: hsl(207, 17%, 96%);
-$_steam: hsl(207, 17%, 98%);
+$color-neutral-regular: var(--color-neutral-regular, hsl(207, 17%, 58%)) !default;
+$color-neutral-light: var(--color-neutral-light, hsl(207, 17%, 80%)) !default;
+$color-neutral-lighter: var(--color-neutral-lighter, hsl(207, 17%, 91%)) !default;
+$color-neutral-lightest: var(--color-neutral-lightest, hsl(207, 17%, 96%)) !default;
 
-// Blues
-$_royal: hsl(207, 90%, 31%);
-$_sapphire: hsl(207, 90%, 43%);
-$_cobalt: hsl(207, 90%, 55%);
-$_azure: hsl(207, 90%, 73%);
-$_sky: hsl(207, 90%, 85%);
-$_arctic: hsl(207, 90%, 92%);
+$color-primary-stronger: var(--color-primary-stronger, hsl(207, 90%, 31%)) !default;
+$color-primary-strong: var(--color-primary-strong, hsl(207, 90%, 43%)) !default;
+$color-primary-regular: var(--color-primary-regular, hsl(207, 90%, 55%)) !default;
+$color-primary-light: var(--color-primary-light, hsl(207, 90%, 73%)) !default;
+$color-primary-lighter: var(--color-primary-lighter, hsl(207, 90%, 85%)) !default;
+$color-primary-lightest: var(--color-primary-lightest, hsl(207, 90%, 92%)) !default;
 
-// Reds
-$_wine: hsl(7, 90%, 35%);
-$_candy: hsl(7, 90%, 43%);
-$_rose: hsl(7, 90%, 59%);
-$_poppy: hsl(7, 90%, 78%);
-$_flamingo: hsl(7, 90%, 89%);
-$_ballet: hsl(7, 90%, 95%);
+$color-secondary-stronger: var(--color-secondary-stronger, hsl(7, 90%, 35%)) !default;
+$color-secondary-strong: var(--color-secondary-strong, hsl(7, 90%, 43%)) !default;
+$color-secondary-regular: var(--color-secondary-regular, hsl(7, 90%, 59%)) !default;
+$color-secondary-light: var(--color-secondary-light, hsl(7, 90%, 78%)) !default;
+$color-secondary-lighter: var(--color-secondary-lighter, hsl(7, 90%, 89%)) !default;
+$color-secondary-lightest: var(--color-secondary-lightest, hsl(7, 90%, 95%)) !default;
 
-// Teal
-$_puya: hsl(175, 60%, 23%);
-$_peacock: hsl(175, 60%, 31%);
-$_turquoise: hsl(175, 60%, 40%);
-$_tiffany: hsl(175, 60%, 66%);
-$_spa: hsl(175, 60%, 83%);
-$_aqua: hsl(175, 60%, 90%);
-
-// General tokens
-$color-dark-stronger: $_denim !default;
-
-$color-light-stronger: $_white !default;
-
-$color-neutral-regular: $_dolphin !default;
-$color-neutral-light: $_silver !default;
-$color-neutral-lighter: $_smoke !default;
-$color-neutral-lightest: $_snow !default;
-
-$color-primary-stronger: $_royal !default;
-$color-primary-strong: $_sapphire !default;
-$color-primary-regular: $_cobalt !default;
-$color-primary-light: $_azure !default;
-$color-primary-lighter: $_sky !default;
-$color-primary-lightest: $_arctic !default;
-
-$color-secondary-stronger: $_wine !default;
-$color-secondary-strong: $_candy !default;
-$color-secondary-regular: $_rose !default;
-$color-secondary-light: $_poppy !default;
-$color-secondary-lighter: $_flamingo !default;
-$color-secondary-lightest: $_ballet !default;
-
-$color-tertiary-stronger: $_puya !default;
-$color-tertiary-strong: $_peacock !default;
-$color-tertiary-regular: $_turquoise !default;
-$color-tertiary-light: $_tiffany !default;
-$color-tertiary-lighter: $_spa !default;
-$color-tertiary-lightest: $_aqua !default;
+$color-tertiary-stronger: var(--color-tertiary-stronger, hsl(175, 60%, 23%)) !default;
+$color-tertiary-strong: var(--color-tertiary-strong, hsl(175, 60%, 31%)) !default;
+$color-tertiary-regular: var(--color-tertiary-regular, hsl(175, 60%, 40%)) !default;
+$color-tertiary-light: var(--color-tertiary-light, hsl(175, 60%, 66%)) !default;
+$color-tertiary-lighter: var(--color-tertiary-lighter, hsl(175, 60%, 83%)) !default;
+$color-tertiary-lightest: var(--color-tertiary-lightest, hsl(175, 60%, 90%)) !default;
 
 // To be reviewed
 
