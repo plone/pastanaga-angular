@@ -2,10 +2,9 @@
 @use '../../styles/theme/spacing.tokens' as spacing;
 @use '../../styles/theme/transitions.tokens' as transitions;
 @use '../../styles/theme/z-index.tokens' as z-index;
-@use '../../styles/theme/side-nav.tokens' as side-nav;
 
 .pa-side-nav {
-  background-color: side-nav.$background-color-side-nav;
+  background-color: palette.$color-light-stronger;
   bottom: 0;
   display: flex;
   flex-direction: column;

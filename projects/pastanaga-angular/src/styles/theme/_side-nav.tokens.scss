@@ -1,8 +1,0 @@
-@use 'palette.tokens';
-@use 'spacing.tokens';
-@use 'typography.tokens';
-
-$background-color-side-nav: palette.$color-light-stronger !default;
-$font-size-side-nav-item: typography.font-size(m) !default;
-$line-height-side-nav-item: typography.line-height(l) !default;
-$height-side-nav-item: spacing.rhythm(6) !default;

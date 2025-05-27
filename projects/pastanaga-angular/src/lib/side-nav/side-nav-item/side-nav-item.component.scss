@@ -1,19 +1,21 @@
 @use '../../../styles/theme/palette.tokens' as palette;
 @use '../../../styles/theme/spacing.tokens' as spacing;
 @use '../../../styles/theme/typography.tokens' as typography;
-@use '../../../styles/theme/side-nav.tokens' as side-nav;
 
 .pa-side-nav-item {
   position: relative;
   display: flex;
   align-items: center;
-  height: side-nav.$height-side-nav-item;
+  height: spacing.rhythm(5);
   padding-left: spacing.rhythm(4);
 
   span {
-    font-size: side-nav.$font-size-side-nav-item;
-    line-height: side-nav.$line-height-side-nav-item;
     color: palette.$color-neutral-regular;
+  }
+  &:not(.active) {
+    span.title-xs {
+      font-weight: typography.$font-weight-thin;
+    }
   }
 
   &:hover {
