@@ -42,9 +42,9 @@ $color-border-toggle-unselected-hover: palette.$color-dark-stronger !default;
 $color-border-toggle-unselected-disabled: palette.$color-neutral-light !default;
 
 // Check
-$color-check-toggle: palette.$color-light-stronger !default;
-$color-check-toggle-indeterminate: palette.$color-light-stronger !default;
-$color-check-toggle-disabled: palette.$color-neutral-light !default;
+$color-check-toggle: #fff !default;
+$color-check-toggle-indeterminate: #fff !default;
+$color-check-toggle-disabled: #c4c4c4 !default;
 
 //=====================================
 // SPACING
