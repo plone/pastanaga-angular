@@ -5,7 +5,7 @@ $color-dark-stronger: var(--color-dark-stronger, hsl(207, 90%, 7%)) !default;
 
 // We cannot use HSL for white because hsl(0,0%,100%) is translated to the keyword `white` instead of the hexa code `#fff`,
 // which is breaking the code we use in `background-image: url()` where we encode the `#`
-$color-light-stronger: var(--color-light-strong, #fff) !default;
+$color-light-stronger: var(--color-light-stronger, #fff) !default;
 
 $color-neutral-regular: var(--color-neutral-regular, hsl(207, 17%, 58%)) !default;
 $color-neutral-light: var(--color-neutral-light, hsl(207, 17%, 80%)) !default;

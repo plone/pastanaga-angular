@@ -20,8 +20,8 @@ $color-toast-info: palette.$color-light-stronger !default;
 
 // button background
 $background-toast-button-default: transparent !default;
-$background-toast-button-default-hover: rgba(palette.$color-light-stronger, 0.15) !default;
-$background-toast-button-default-active: rgba(palette.$color-light-stronger, 0.25) !default;
+$background-toast-button-default-hover: rgba(255, 255, 255, 0.15) !default;
+$background-toast-button-default-active: rgba(255, 255, 255, 0.25) !default;
 
 $background-toast-button-info: $background-toast-button-default !default;
 $background-toast-button-success: $background-toast-button-default !default;
