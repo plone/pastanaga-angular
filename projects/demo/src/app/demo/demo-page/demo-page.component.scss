@@ -1,43 +1,45 @@
-@import '../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
+@use '../../../../../pastanaga-angular/src/styles/theme/typography.tokens' as typography;
 
 pa-demo-page {
   display: block;
-  padding: rhythm(2) 0 rhythm(4);
+  padding: spacing.rhythm(2) 0 spacing.rhythm(4);
 
   .doc-page-title,
   .doc-section-title,
   .pa-demo-example-configuration-title {
-    margin-bottom: rhythm(4);
+    margin-bottom: spacing.rhythm(4);
   }
 
   section.doc-section {
-    margin-bottom: rhythm(6);
+    margin-bottom: spacing.rhythm(6);
 
     h2 {
-      margin-bottom: rhythm(3);
+      margin-bottom: spacing.rhythm(3);
     }
 
     h3 {
-      margin-bottom: rhythm(2);
+      margin-bottom: spacing.rhythm(2);
     }
 
     &:not(.example-section) {
       h4,
       h5,
       h6 {
-        margin-bottom: rhythm(1);
+        margin-bottom: spacing.rhythm(1);
       }
     }
   }
 
   dl {
     dt {
-      font-weight: $font-weight-regular;
+      font-weight: typography.$font-weight-regular;
     }
 
     dd {
       small {
-        color: $color-neutral-regular;
+        color: palette.$color-neutral-regular;
       }
     }
   }
@@ -50,11 +52,11 @@ pa-demo-page {
 
     dl {
       dt {
-        margin-bottom: rhythm(1);
+        margin-bottom: spacing.rhythm(1);
       }
 
       dd {
-        margin-bottom: rhythm(2);
+        margin-bottom: spacing.rhythm(2);
       }
     }
   }
@@ -62,9 +64,9 @@ pa-demo-page {
   pa-demo-usage {
     code {
       display: inline;
-      background: $color-neutral-lightest;
+      background: palette.$color-neutral-lightest;
       margin: 0;
-      padding: 0 rhythm(0.25);
+      padding: 0 spacing.rhythm(0.25);
       overflow: auto;
     }
 
@@ -74,7 +76,7 @@ pa-demo-page {
 
       dt {
         flex: 1 0 25%;
-        min-width: rhythm(24);
+        min-width: spacing.rhythm(24);
       }
 
       dd {
@@ -85,38 +87,38 @@ pa-demo-page {
 
   pa-demo-examples {
     display: block;
-    margin-bottom: rhythm(1.5);
+    margin-bottom: spacing.rhythm(1.5);
 
     > *:not(.icon-list-container) {
-      margin-right: rhythm(4);
+      margin-right: spacing.rhythm(4);
     }
 
     h3:not(.typography) {
-      margin: rhythm(4) 0 rhythm(2);
+      margin: spacing.rhythm(4) 0 spacing.rhythm(2);
     }
   }
 
   .pa-demo-example-configuration {
-    margin-top: rhythm(4);
+    margin-top: spacing.rhythm(4);
 
     .pa-demo-configuration-field {
-      margin-bottom: rhythm(1);
+      margin-bottom: spacing.rhythm(1);
     }
   }
 
   pa-demo-code {
     pre > code {
       display: block;
-      padding: rhythm(1.5);
-      background-color: $color-neutral-lighter;
-      margin: rhythm(1.5) 0;
+      padding: spacing.rhythm(1.5);
+      background-color: palette.$color-neutral-lighter;
+      margin: spacing.rhythm(1.5) 0;
       overflow: auto;
     }
   }
 }
 
-@media (max-width: $size-viewport-medium-max) {
+@media (max-width: spacing.$size-viewport-medium-max) {
   .doc-page-title {
-    margin-left: rhythm(7);
+    margin-left: spacing.rhythm(7);
   }
 }

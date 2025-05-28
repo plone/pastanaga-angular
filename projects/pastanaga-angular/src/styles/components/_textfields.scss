@@ -1,125 +1,131 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/body.tokens";
+@use "../theme/palette.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/textfield.tokens";
+@use "../theme/transitions.tokens";
+@use "../theme/typography.tokens";
 
 .pa-field {
-  $icon-width: rhythm(3);
+  $icon-width: spacing.rhythm(3);
 
   position: relative;
-  margin-bottom: $margin-bottom-field;
+  margin-bottom: textfield.$margin-bottom-field;
 
   .pa-field-icon {
-    color: $color-neutral-regular;
+    color: palette.$color-neutral-regular;
     position: absolute;
-    top: $padding-field-control-top;
+    top: textfield.$padding-field-control-top;
 
     &:not(.pa-icon-on-right) {
-      left: $padding-field-control-left;
+      left: textfield.$padding-field-control-left;
     }
     &.pa-icon-on-right {
-      right: $padding-field-control-left;
+      right: textfield.$padding-field-control-left;
     }
   }
 
   .pa-field-container {
-    border: 1px solid $border-color-field-regular;
-    border-radius: $border-radius-field;
+    border: 1px solid textfield.$border-color-field-regular;
+    border-radius: textfield.$border-radius-field;
     display: flex;
 
     &:hover {
-      border-color: $border-color-field-hover;
+      border-color: textfield.$border-color-field-hover;
     }
 
     &:not(.pa-disabled):not(.pa-readonly):not(.pa-field-error).pa-focus {
       .pa-field-label {
-        color: $color-text-field-label-regular-active;
+        color: textfield.$color-text-field-label-regular-active;
       }
     }
 
     &:focus,
     &:active,
     &.pa-focus {
-      border-color: $border-color-field-active;
+      border-color: textfield.$border-color-field-active;
     }
     &.pa-disabled {
-      border-color: $border-color-field-disabled;
+      border-color: textfield.$border-color-field-disabled;
       .pa-field-label {
-        color: $color-text-field-label-disabled;
+        color: textfield.$color-text-field-label-disabled;
       }
     }
     &.pa-readonly {
       .pa-field-label {
-        color: $color-text-field-label-disabled;
+        color: textfield.$color-text-field-label-disabled;
       }
 
-      border-color: $border-color-field-readonly;
+      border-color: textfield.$border-color-field-readonly;
       border-style: dashed;
     }
     &.pa-field-error {
       &:not(.pa-disabled):not(.pa-readonly) {
-        border-color: $border-color-field-error;
+        border-color: textfield.$border-color-field-error;
       }
       .pa-field-label {
-        color: $color-text-field-label-error;
+        color: textfield.$color-text-field-label-error;
       }
 
       .pa-field-control {
-        background: $color-background-field-error;
-        caret-color: $color-caret-field-control-error;
+        background: textfield.$color-background-field-error;
+        caret-color: textfield.$color-caret-field-control-error;
       }
     }
     // Definition specific for text field labels
     .pa-field-label {
-      border-radius: $border-radius-field;
-      color: $color-text-field-label-regular;
-      left: $padding-field-control-left;
-      max-width: calc(100% - #{$padding-field-control-left * 2});
+      border-radius: textfield.$border-radius-field;
+      color: textfield.$color-text-field-label-regular;
+      left: textfield.$padding-field-control-left;
+      max-width: calc(100% - #{textfield.$padding-field-control-left * 2});
       position: absolute;
-      top: $top-control-label;
-      transition: transform $transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
+      top: textfield.$top-control-label;
+      transition: transform transitions.$transition-hint-duration cubic-bezier(0.4, 0, 0.2, 1); // copied from google transition
       transform-origin: 0 0;
 
       &.pa-field-label-icon:not(.pa-icon-on-right) {
-        left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+        left: calc(#{textfield.$padding-field-control-left} * 2 + #{$icon-width});
       }
       &.pa-field-label-icon.pa-icon-on-right {
-        max-width: calc(100% - #{$padding-field-control-left * 2} - #{$icon-width});
+        max-width: calc(100% - #{textfield.$padding-field-control-left * 2} - #{$icon-width});
       }
     }
   }
 
   // Definition for labels of all pa-fields (including toggle ones)
   .pa-field-label {
-    font-size: $font-size-field-control;
-    line-height: $line-height-field-control;
-    font-weight: $font-weight-label;
+    font-size: textfield.$font-size-field-control;
+    line-height: textfield.$line-height-field-control;
+    font-weight: body.$font-weight-label;
     pointer-events: none;
   }
 
   .pa-field-control {
-    background: $color-background-field-regular;
+    background: textfield.$color-background-field-regular;
     border: none;
-    border-radius: $border-radius-field;
-    caret-color: $color-caret-field-control-active;
-    color: $color-text-field-control-regular;
-    font-size: $font-size-field-control;
-    line-height: $line-height-field-control;
-    margin: $border-width-active - $border-width-regular;
+    border-radius: textfield.$border-radius-field;
+    caret-color: textfield.$color-caret-field-control-active;
+    color: textfield.$color-text-field-control-regular;
+    font-size: textfield.$font-size-field-control;
+    line-height: textfield.$line-height-field-control;
+    margin: textfield.$border-width-active - textfield.$border-width-regular;
     outline: none;
-    padding: $padding-field-control-top $padding-field-control-left;
-    width: calc(100% - #{$border-width-regular});
+    padding: textfield.$padding-field-control-top textfield.$padding-field-control-left;
+    width: calc(100% - #{textfield.$border-width-regular});
 
     -webkit-appearance: none;
 
     &:not(textarea):not(.pa-select-with-help) {
-      height: $height-field-control;
+      height: textfield.$height-field-control;
     }
 
     &.pa-field-control-icon:not(.pa-icon-on-right) {
-      padding-left: calc(#{$padding-field-control-left} * 2 + #{$icon-width});
+      padding-left: calc(#{textfield.$padding-field-control-left} * 2 + #{$icon-width});
     }
 
     &::placeholder {
-      color: $color-text-field-control-placeholder-regular;
-      font-weight: $font-weight-placeholder;
+      color: textfield.$color-text-field-control-placeholder-regular;
+      font-weight: body.$font-weight-placeholder;
       opacity: 0;
       transition: all 0s ease;
     }
@@ -139,34 +145,34 @@
     &:not(:disabled):not(:read-only):focus,
     &:not(:disabled):not(:read-only):active {
       & ~ .pa-field-label {
-        background: $color-background-field-label;
-        transform: scale(#{$scale-text-field-label}) translateY(-#{$translateY-text-field-label})
-          translateX(-#{rhythm(0.5)});
-        padding: 0 rhythm(1);
+        background: textfield.$color-background-field-label;
+        transform: scale(#{textfield.$scale-text-field-label}) translateY(-#{textfield.$translateY-text-field-label})
+          translateX(-#{spacing.rhythm(0.5)});
+        padding: 0 spacing.rhythm(1);
 
         &.pa-field-label-icon:not(.pa-icon-on-right) {
-          transform: scale(#{$scale-text-field-label}) translateY(-#{$translateY-text-field-label})
-            translateX(calc(-#{rhythm(0.5)} - #{$icon-width} - #{$padding-field-control-left * 2}));
+          transform: scale(#{textfield.$scale-text-field-label}) translateY(-#{textfield.$translateY-text-field-label})
+            translateX(calc(-#{spacing.rhythm(0.5)} - #{$icon-width} - #{textfield.$padding-field-control-left * 2}));
         }
       }
     }
 
     &:disabled {
-      color: $color-text-field-control-disabled;
+      color: textfield.$color-text-field-control-disabled;
     }
   }
 }
 
 pa-form-field-hint {
-  line-height: line-height(xs);
+  line-height: typography.line-height(xs);
 }
 .pa-field-help {
-  @include size(xs);
-  color: $color-text-field-control-help-regular;
-  margin-top: rhythm(0.25);
+  @include typography.size(xs);
+  color: textfield.$color-text-field-control-help-regular;
+  margin-top: spacing.rhythm(0.25);
 
   &.pa-field-help-error {
-    color: $color-text-field-label-error;
+    color: textfield.$color-text-field-label-error;
   }
 }
 

@@ -1,7 +1,8 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 hr {
-  margin: rhythm(4) 0;
+  margin: spacing.rhythm(4) 0;
   border: none;
-  border-top: 1px solid $color-neutral-lighter;
+  border-top: 1px solid palette.$color-neutral-lighter;
 }

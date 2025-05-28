@@ -1,11 +1,14 @@
-@import '../variables';
+@use '../theme/palette.tokens' as palette;
+@use '../theme/shadows.tokens' as shadows;
+@use '../theme/spacing.tokens' as spacing;
+@use '../theme/z-index.tokens' as z-index;
 
 .pa-popup {
-  z-index: $z-index-popup;
-  box-shadow: $shadow-default;
-  border-radius: $border-radius-default;
-  min-width: rhythm(24);
-  max-height: rhythm(29);
+  z-index: z-index.$z-index-popup;
+  box-shadow: shadows.$shadow-default;
+  border-radius: spacing.$border-radius-default;
+  min-width: spacing.rhythm(24);
+  max-height: spacing.rhythm(29);
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -14,7 +17,7 @@
   }
 
   .pa-popup-wrapper {
-    padding: rhythm(2);
-    background: $color-light-stronger;
+    padding: spacing.rhythm(2);
+    background: palette.$color-light-stronger;
   }
 }

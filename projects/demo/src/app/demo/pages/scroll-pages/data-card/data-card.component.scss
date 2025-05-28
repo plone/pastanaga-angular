@@ -1,15 +1,16 @@
-@import '../../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .pa-demo-card {
-  border-bottom: 1px solid $color-neutral-lightest;
-  padding: rhythm(2) rhythm(1);
+  border-bottom: 1px solid palette.$color-neutral-lightest;
+  padding: spacing.rhythm(2) spacing.rhythm(1);
 
   .contact {
     display: flex;
     justify-content: space-between;
-    margin-top: rhythm(1);
+    margin-top: spacing.rhythm(1);
   }
   small {
-    color: $color-neutral-regular;
+    color: palette.$color-neutral-regular;
   }
 }

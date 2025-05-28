@@ -1,9 +1,11 @@
-@import '../../../styles/variables';
+@use '../../../styles/theme/body.tokens' as body;
+@use '../../../styles/theme/menu.tokens' as menu;
+@use '../../../styles/theme/typography.tokens' as typography;
 
 .pa-option-header {
-  @include size(xs);
-  font-weight: $font-weight-menu-header;
-  color: $color-text-menu-option-header;
-  padding: $padding-menu-option-top $padding-menu-option-side;
+  @include typography.size(xs);
+  font-weight: body.$font-weight-menu-header;
+  color: menu.$color-text-menu-option-header;
+  padding: menu.$padding-menu-option-top menu.$padding-menu-option-side;
   text-transform: uppercase;
 }

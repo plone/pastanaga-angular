@@ -1,3 +1,10 @@
+# 2.69.0 (2025-05-26)
+
+### Dependencies upgrade
+
+- Fix deprecations warnings on sass
+- Update the theme override methods accordingly
+
 # 2.68.6 & 2.68.7 (2025-04-25)
 
 ### Bug fix

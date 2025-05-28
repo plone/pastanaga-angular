@@ -1,17 +1,22 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/palette.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/tooltip.tokens";
+@use "../theme/transitions.tokens";
+@use "../theme/z-index.tokens";
 
 .pa-tooltip {
   position: fixed;
-  z-index: $z-index-tooltip;
+  z-index: z-index.$z-index-tooltip;
   display: block;
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
-  box-shadow: $shadow-tooltip;
+  box-shadow: tooltip.$shadow-tooltip;
   border-radius: 1px;
-  padding: rhythm(0.5) rhythm(1);
-  background: $color-dark-stronger;
-  color: $color-light-stronger;
+  padding: spacing.rhythm(0.5) spacing.rhythm(1);
+  background: palette.$color-dark-stronger;
+  color: palette.$color-light-stronger;
   white-space: nowrap;
   pointer-events: none;
 
@@ -20,21 +25,21 @@
     visibility: visible;
     transition:
       visibility 0s ease,
-      opacity $transition-hint $duration-slow;
+      opacity transitions.$transition-hint transitions.$duration-slow;
   }
 }
 
 .pa-tooltip-system[aria-expanded='true'] {
   transition:
     visibility 0s ease,
-    opacity $transition-hint $duration-moderate;
+    opacity transitions.$transition-hint transitions.$duration-moderate;
 }
 
 .pa-tooltip > kbd,
 .pa-tooltip-system > kbd {
   top: 0;
-  margin-left: rhythm(1);
-  margin-right: calc(#{rhythm(0.25)} * -1);
-  color: $color-light-stronger;
+  margin-left: spacing.rhythm(1);
+  margin-right: calc(#{spacing.rhythm(0.25)} * -1);
+  color: palette.$color-light-stronger;
   line-height: 0;
 }

@@ -1,10 +1,29 @@
 // core tokens
-@import 'pastanaga-core-overrides';
-@import 'variables-core';
+@use 'theme/palette.tokens' as *;
+@use 'theme/shadows.tokens' as *;
+@use 'theme/spacing.tokens' as *;
+@use 'theme/transitions.tokens' as *;
+@use 'theme/typography.tokens' as *;
+@use 'theme/z-index.tokens' as *;
+@use 'theme/layout.tokens' as *;
+@use 'theme/scrollbar.tokens' as *;
 
 // component tokens
-@import 'pastanaga-component-overrides';
-@import 'variables-component';
+@use 'theme/avatar.tokens' as *;
+@use 'theme/body.tokens' as *;
+@use 'theme/button.tokens' as *;
+@use 'theme/card.tokens' as *;
+@use 'theme/chips.tokens' as *;
+@use 'theme/icon.tokens' as *;
+@use 'theme/menu.tokens' as *;
+@use 'theme/modal.tokens' as *;
+@use 'theme/popover.tokens' as *;
+@use 'theme/tables.tokens' as *;
+@use 'theme/tabs.tokens' as *;
+@use 'theme/textfield.tokens' as *;
+@use 'theme/toast.tokens' as *;
+@use 'theme/toggle.tokens' as *;
+@use 'theme/tooltip.tokens' as *;
 
 // Utility scss functions and mixin
-@import 'utils';
+@use 'utils' as *;

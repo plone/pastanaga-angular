@@ -1,14 +1,16 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
+@use '../../../../../../pastanaga-angular/src/styles/theme/typography.tokens' as typography;
 
 .typography-table > div:not(.separator) {
-  padding: rhythm(1);
+  padding: spacing.rhythm(1);
 }
 
 .header {
-  background: $color-neutral-light;
-  font-weight: $font-weight-semi-bold;
+  background: palette.$color-neutral-light;
+  font-weight: typography.$font-weight-semi-bold;
 }
 
 .separator {
-  border-bottom: 1px solid $color-neutral-light;
+  border-bottom: 1px solid palette.$color-neutral-light;
 }

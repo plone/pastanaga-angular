@@ -1,39 +1,43 @@
-@import '../../../styles/variables';
+@use '../../../styles/theme/body.tokens' as body;
+@use '../../../styles/theme/palette.tokens' as palette;
+@use '../../../styles/theme/spacing.tokens' as spacing;
+@use '../../../styles/theme/transitions.tokens' as transitions;
+@use '../../../styles/theme/typography.tokens' as typography;
 
 @mixin sliderTrack {
   appearance: none;
   border: 0;
-  height: rhythm(0.5);
-  background: $color-neutral-lighter;
-  transition: all $duration-superfast ease;
+  height: spacing.rhythm(0.5);
+  background: palette.$color-neutral-lighter;
+  transition: all transitions.$duration-superfast ease;
   width: 100%;
 }
 
 @mixin sliderTrackFocus {
-  background: $color-neutral-light;
+  background: palette.$color-neutral-light;
 }
 
 @mixin sliderTrackDisabled {
-  background: $color-neutral-lightest;
+  background: palette.$color-neutral-lightest;
 }
 
 @mixin sliderThumb {
   appearance: none;
-  background: $color-primary-regular;
+  background: palette.$color-primary-regular;
   border: 0;
   border-radius: 50%;
-  height: rhythm(1.5);
-  transition: all $duration-superfast ease;
-  width: rhythm(1.5);
+  height: spacing.rhythm(1.5);
+  transition: all transitions.$duration-superfast ease;
+  width: spacing.rhythm(1.5);
 }
 
 @mixin sliderThumbHover {
   transform: scale(1.1, 1.1);
-  transition: all $transition-hint;
+  transition: all transitions.$transition-hint;
 }
 
 @mixin sliderThumbDisabled {
-  background: $color-neutral-light;
+  background: palette.$color-neutral-light;
 }
 
 @mixin noFocusRing {
@@ -56,11 +60,11 @@
 
   .pa-field-control-range {
     appearance: none;
-    height: rhythm(0.5);
-    margin: rhythm(1) 0;
-    max-width: calc(100% - #{rhythm(5)});
+    height: spacing.rhythm(0.5);
+    margin: spacing.rhythm(1) 0;
+    max-width: calc(100% - #{spacing.rhythm(5)});
     padding: 0;
-    transition: all $transition-hint;
+    transition: all transitions.$transition-hint;
   }
 
   .pa-field-label {
@@ -69,17 +73,17 @@
     line-height: inherit;
 
     &:not(.no-label) {
-      margin-right: rhythm(3);
-      min-width: rhythm(12);
+      margin-right: spacing.rhythm(3);
+      min-width: spacing.rhythm(12);
     }
   }
 
   .pa-field-control-output {
     display: inline-block;
-    font-weight: $font-weight-thin;
-    margin-right: rhythm(1);
+    font-weight: typography.$font-weight-thin;
+    margin-right: spacing.rhythm(1);
     text-align: right;
-    transition: color $transition-hint;
+    transition: color transitions.$transition-hint;
   }
 
   .pa-field-control-range {
@@ -116,7 +120,7 @@
 
     &::-webkit-slider-thumb {
       @include sliderThumb();
-      margin-top: calc(#{rhythm(0.5)} * -1);
+      margin-top: calc(#{spacing.rhythm(0.5)} * -1);
     }
 
     &::-moz-range-thumb {
@@ -151,7 +155,7 @@
 
   &.pa-disabled {
     .pa-field-control-output {
-      color: $color-text-disabled;
+      color: body.$color-text-disabled;
     }
 
     .pa-field-control-range::-moz-range-thumb {

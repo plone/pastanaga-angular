@@ -1,4 +1,5 @@
-@import '../../styles/variables';
+@use '../../styles/theme/spacing.tokens' as spacing;
+@use '../../styles/theme/transitions.tokens' as transitions;
 
 :host {
   display: flex;
@@ -6,138 +7,17 @@
   align-items: center;
   margin: 0 auto;
   opacity: 0;
-  animation: toastIn $transition-process-in forwards;
+  animation: toastIn transitions.$transition-process-in forwards;
   z-index: 1;
-}
-
-.pa-toast-wrapper {
-  align-items: center;
-  box-shadow: $shadow-default;
-  display: flex;
-  justify-content: center;
-  min-width: $min-width-toast;
-  padding: $padding-toast;
-
-  .pa-toast-message-wrapper {
-    align-items: center;
-    display: flex;
-  }
-
-  &.pa-toast-composed {
-    justify-content: space-between;
-  }
-
-  &.pa-toast-with-button {
-    padding: $padding-toast-with-button;
-  }
-}
-
-.pa-toast-animate-out {
-  animation: toastOut $transition-process-out forwards;
-}
-
-pa-icon {
-  margin-right: $space-toast-between-icon-and-text;
-}
-
-pa-button {
-  margin-left: $space-toast-between-button-and-text;
-}
-
-.pa-toast-error-wrapper {
-  background: $background-toast-error;
-  color: $color-toast-error;
-
-  pa-button ::ng-deep .pa-button {
-    background: $background-toast-button-error;
-
-    &:not(:disabled).pa-secondary.pa-basic {
-      color: $color-toast-error;
-    }
-
-    &:hover {
-      background: $background-toast-button-error-hover;
-    }
-    &:active {
-      background: $background-toast-button-error-active;
-    }
-  }
-}
-.pa-toast-info-wrapper {
-  background: $background-toast-info;
-  color: $color-toast-info;
-
-  pa-button ::ng-deep .pa-button {
-    background: $background-toast-button-info;
-
-    &:not(:disabled).pa-secondary.pa-basic {
-      color: $color-toast-info;
-    }
-
-    &:hover {
-      background: $background-toast-button-info-hover;
-    }
-    &:active {
-      background: $background-toast-button-info-active;
-    }
-  }
-}
-.pa-toast-success-wrapper {
-  background: $background-toast-success;
-  color: $color-toast-success;
-
-  pa-button ::ng-deep .pa-button {
-    background: $background-toast-button-success;
-
-    &:not(:disabled).pa-secondary.pa-basic {
-      color: $color-toast-success;
-    }
-
-    &:hover {
-      background: $background-toast-button-success-hover;
-    }
-    &:active {
-      background: $background-toast-button-success-active;
-    }
-  }
-}
-.pa-toast-warning-wrapper {
-  background: $background-toast-warning;
-  color: $color-toast-warning;
-
-  pa-button ::ng-deep .pa-button {
-    background: $background-toast-button-warning;
-
-    &:not(:disabled).pa-secondary.pa-basic {
-      color: $color-toast-warning;
-    }
-
-    &:hover {
-      background: $background-toast-button-warning-hover;
-    }
-    &:active {
-      background: $background-toast-button-warning-active;
-    }
-  }
 }
 
 @keyframes toastIn {
   from {
     opacity: 0;
-    transform: translateY(calc(#{rhythm(8)} * -1));
+    transform: translateY(calc(#{spacing.rhythm(8)} * -1));
   }
   to {
     opacity: 1;
-    transform: translateY(rhythm(3));
-  }
-}
-
-@keyframes toastOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: translateY(calc(#{rhythm(8)} * -1));
+    transform: translateY(spacing.rhythm(3));
   }
 }

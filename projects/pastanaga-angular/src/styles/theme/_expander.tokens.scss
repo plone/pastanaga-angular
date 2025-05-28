@@ -1,17 +1,18 @@
-@import '../variables';
+@use '../variables';
+@use "palette.tokens";
 
 // Collapsed theme
 $background-color-collapsed-expander-header: transparent !default;
 $background-color-collapsed-expander-header-hover: transparent !default;
 $box-shadow-collapsed-expander-header: none !default;
-$color-collapsed-expander-header-title: $color-neutral-regular !default;
-$color-collapsed-expander-header-title-hover: $color-dark-stronger !default;
-$color-collapsed-expander-header-icon: $color-dark-stronger !default;
+$color-collapsed-expander-header-title: palette.$color-neutral-regular !default;
+$color-collapsed-expander-header-title-hover: palette.$color-dark-stronger !default;
+$color-collapsed-expander-header-icon: palette.$color-dark-stronger !default;
 
 // Expanded theme
 $background-color-expanded-expander-header: transparent !default;
 $background-color-expanded-expander-header-hover: transparent !default;
 $box-shadow-expanded-expander-header: none !default;
-$color-expanded-expander-header-title: $color-neutral-regular !default;
-$color-expanded-expander-header-title-hover: $color-dark-stronger !default;
-$color-expanded-expander-header-icon: $color-dark-stronger !default;
+$color-expanded-expander-header-title: palette.$color-neutral-regular !default;
+$color-expanded-expander-header-title-hover: palette.$color-dark-stronger !default;
+$color-expanded-expander-header-icon: palette.$color-dark-stronger !default;

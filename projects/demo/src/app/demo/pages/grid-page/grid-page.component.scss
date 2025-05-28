@@ -1,11 +1,12 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 [class^='grid-'] > div {
-  background-color: $color-tertiary-regular;
-  color: $color-light-stronger;
-  padding: rhythm(0.25);
+  background-color: palette.$color-tertiary-regular;
+  color: palette.$color-light-stronger;
+  padding: spacing.rhythm(0.25);
 }
 
 pa-demo-examples code {
-  margin: rhythm(1.5) 0;
+  margin: spacing.rhythm(1.5) 0;
 }

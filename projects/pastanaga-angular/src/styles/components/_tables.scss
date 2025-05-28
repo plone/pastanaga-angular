@@ -1,26 +1,31 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/shadows.tokens";
+@use "../theme/spacing.tokens";
+@use "../theme/tables.tokens";
+@use "../theme/transitions.tokens";
+@use "../theme/typography.tokens";
 
 .pa-table-grid {
   display: grid;
 
   &.with-border {
-    border: 1px solid $color-border-table;
-    border-radius: $border-radius-default;
+    border: 1px solid tables.$color-border-table;
+    border-radius: spacing.$border-radius-default;
 
     .pa-table-grid--head {
       pa-table-cell:first-of-type .pa-table-grid--header {
-        border-top-left-radius: $border-radius-default;
+        border-top-left-radius: spacing.$border-radius-default;
       }
       pa-table-cell:last-of-type .pa-table-grid--header {
-        border-top-right-radius: $border-radius-default;
+        border-top-right-radius: spacing.$border-radius-default;
       }
     }
     pa-table-row:first-of-type {
       pa-table-cell:first-of-type .pa-table-grid--cell {
-        border-top-left-radius: $border-radius-default;
+        border-top-left-radius: spacing.$border-radius-default;
       }
       pa-table-cell:last-of-type .pa-table-grid--cell {
-        border-top-right-radius: $border-radius-default;
+        border-top-right-radius: spacing.$border-radius-default;
       }
     }
   }
@@ -30,21 +35,21 @@
   display: contents;
 
   .pa-table-grid--header {
-    background: $color-background-table-header;
-    border-bottom: 1px $color-border-table-header solid;
-    color: $color-text-table-header;
-    font-size: font-size(xs);
-    font-weight: $font-weight-text-table-header;
-    line-height: line-height(s);
-    min-height: $min-height-table-header;
-    padding: $padding-table-header;
+    background: tables.$color-background-table-header;
+    border-bottom: 1px tables.$color-border-table-header solid;
+    color: tables.$color-text-table-header;
+    font-size: typography.font-size(xs);
+    font-weight: tables.$font-weight-text-table-header;
+    line-height: typography.line-height(s);
+    min-height: tables.$min-height-table-header;
+    padding: tables.$padding-table-header;
     position: sticky;
-    text-transform: $text-transform-table-header;
+    text-transform: tables.$text-transform-table-header;
     top: 0;
   }
 
   .no-background .pa-table-grid--header {
-    background: $color-background-table-row;
+    background: tables.$color-background-table-row;
   }
 
   .pa-table-grid--row > :first-child {
@@ -56,26 +61,26 @@
   display: contents;
 
   .pa-table-grid--header {
-    background: $color-background-table-row;
-    box-shadow: inset 0px -1px 0px $color-border-table-row;
+    background: tables.$color-background-table-row;
+    box-shadow: inset 0px -1px 0px tables.$color-border-table-row;
   }
 
   .pa-table-grid--header,
   .pa-table-grid--row {
-    transition: background $transition-hint;
+    transition: background transitions.$transition-hint;
   }
 
   .pa-table-grid--row:hover .pa-table-grid--header,
   .pa-table-grid--row.pa-clickable:hover .pa-table-grid--cell,
   .pa-table-grid--row.pa-hoverable:hover .pa-table-grid--cell {
-    background: $color-background-table-row-hover;
+    background: tables.$color-background-table-row-hover;
   }
 
   .pa-selected .pa-table-grid--row .pa-table-grid--header,
   .pa-selected .pa-table-grid--row .pa-table-grid--cell,
   .pa-selected .pa-table-grid--row:hover .pa-table-grid--header,
   .pa-selected .pa-table-grid--row:hover .pa-table-grid--cell {
-    background: $color-background-table-row-selected;
+    background: tables.$color-background-table-row-selected;
   }
 
   /*
@@ -84,44 +89,44 @@
    */
   .pa-table-grid--row:active .pa-table-grid--header,
   .pa-table-grid--row.pa-clickable:active .pa-table-grid--cell {
-    background: $color-background-table-row-active;
+    background: tables.$color-background-table-row-active;
   }
 }
 
 pa-table-row:not(:last-of-type) .pa-table-grid--row {
   .pa-table-grid--cell {
-    box-shadow: inset 0px -1px 0px $color-border-table-row;
+    box-shadow: inset 0px -1px 0px tables.$color-border-table-row;
   }
 }
 pa-table-row:last-of-type .pa-table-grid--row {
   pa-table-cell:first-of-type .pa-table-grid--cell,
   pa-table-cell-menu:first-of-type .pa-table-grid--menu-cell {
-    border-bottom-left-radius: $border-radius-default;
+    border-bottom-left-radius: spacing.$border-radius-default;
   }
 
   pa-table-cell:last-of-type .pa-table-grid--cell,
   pa-table-cell-menu:last-of-type .pa-table-grid--menu-cell {
-    border-bottom-right-radius: $border-radius-default;
+    border-bottom-right-radius: spacing.$border-radius-default;
   }
 }
 
 .pa-table-grid--row {
   display: contents;
-  font-size: font-size(s);
-  font-weight: $font-weight-table-row;
-  line-height: line-height(m);
+  font-size: typography.font-size(s);
+  font-weight: tables.$font-weight-table-row;
+  line-height: typography.line-height(m);
 
   .pa-table-grid--row-header {
-    background: $color-background-table-header-row;
-    border-top: 1px solid $color-border-table-header-row;
-    color: $color-text-table-header-row;
-    font-size: font-size(xs);
-    font-weight: $font-weight-text-table-header-row;
+    background: tables.$color-background-table-header-row;
+    border-top: 1px solid tables.$color-border-table-header-row;
+    color: tables.$color-text-table-header-row;
+    font-size: typography.font-size(xs);
+    font-weight: tables.$font-weight-text-table-header-row;
     grid-column: 1 / -1;
     margin-top: -1px;
-    padding: $padding-table-row-header;
+    padding: tables.$padding-table-row-header;
     position: sticky;
-    top: $min-height-table-header;
+    top: tables.$min-height-table-header;
     z-index: 3;
   }
 
@@ -138,15 +143,15 @@ pa-table-row:last-of-type .pa-table-grid--row {
 
 pa-table-row-header:last-child {
   .pa-table-grid--row-header {
-    border-bottom-left-radius: $border-radius-default;
-    border-bottom-right-radius: $border-radius-default;
+    border-bottom-left-radius: spacing.$border-radius-default;
+    border-bottom-right-radius: spacing.$border-radius-default;
   }
 }
 
 .pa-table-grid--header {
   align-items: center;
   display: flex;
-  padding: 0 rhythm(1);
+  padding: 0 spacing.rhythm(1);
 
   &.pa-center {
     justify-content: center;
@@ -155,11 +160,11 @@ pa-table-row-header:last-child {
 
 .pa-table-grid--cell {
   align-items: center;
-  background: $color-background-table-row;
-  color: $color-text-table-row;
+  background: tables.$color-background-table-row;
+  color: tables.$color-text-table-row;
   display: flex;
-  min-height: $min-height-table-cell;
-  padding: $padding-table-cell-small;
+  min-height: tables.$min-height-table-cell;
+  padding: tables.$padding-table-cell-small;
 
   &.pa-disabled {
     cursor: default;
@@ -168,7 +173,7 @@ pa-table-row-header:last-child {
   }
 
   &.pa-keyboard-focus {
-    box-shadow: inset $shadow-focus !important;
+    box-shadow: inset shadows.$shadow-focus !important;
   }
 
   &.pa-center {
@@ -190,7 +195,7 @@ pa-table-row-header:last-child {
   }
 
   &.pa-border-right {
-    border-right: 1px solid $color-border-table;
+    border-right: 1px solid tables.$color-border-table;
   }
 }
 
@@ -199,12 +204,12 @@ pa-table-row-header:last-child {
 
   &.pa-table-grid--header .pa-button {
     display: flex;
-    height: rhythm(3);
+    height: spacing.rhythm(3);
     padding: 0;
   }
 }
 
-$lead-image-dimension: rhythm(6);
+$lead-image-dimension: spacing.rhythm(6);
 .pa-lead-image {
   height: $lead-image-dimension;
   width: $lead-image-dimension;
@@ -225,18 +230,18 @@ pa-table-sortable-header-cell {
   display: contents;
 }
 
-@media (min-width: $size-viewport-medium-min) {
+@media (min-width: spacing.$size-viewport-medium-min) {
   .pa-table-grid--row {
-    font-size: font-size(m);
-    line-height: line-height(l);
+    font-size: typography.font-size(m);
+    line-height: typography.line-height(l);
   }
 
   .pa-table-grid--cell {
-    padding: $padding-table-cell-medium;
+    padding: tables.$padding-table-cell-medium;
   }
 }
 
-@media (min-width: $size-viewport-large-min) {
+@media (min-width: spacing.$size-viewport-large-min) {
   .pa-table-grid--header,
   .pa-table-grid--cell {
     cursor: default;

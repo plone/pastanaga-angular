@@ -1,7 +1,8 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .section-title {
-  margin: rhythm(4) 0 rhythm(2);
+  margin: spacing.rhythm(4) 0 spacing.rhythm(2);
 }
 .pa-container {
   margin-right: 0;
@@ -9,19 +10,19 @@
     display: flex;
 
     pa-button {
-      margin-right: rhythm(2);
+      margin-right: spacing.rhythm(2);
     }
     &.inverted {
-      background-color: $color-dark-stronger;
-      padding: rhythm(1);
+      background-color: palette.$color-dark-stronger;
+      padding: spacing.rhythm(1);
     }
   }
   .pa-buttons-block {
     display: flex;
-    padding: rhythm(1);
+    padding: spacing.rhythm(1);
   }
 
-  @media (max-width: $size-viewport-large-max) {
+  @media (max-width: spacing.$size-viewport-large-max) {
     .pa-buttons-container {
       flex-direction: column;
     }

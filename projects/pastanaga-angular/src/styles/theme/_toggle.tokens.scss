@@ -1,35 +1,35 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
-@import 'typography.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
+@use 'typography.tokens';
 
 //=====================================
 // COLORS
 //=====================================
 
 // Background checkbox/radio
-$color-background-toggle-selected: $color-primary-regular !default;
-$color-background-toggle-indeterminate: $color-primary-regular !default;
-$color-background-toggle-selected-hover: $color-primary-strong !default;
-$color-background-toggle-disabled: $color-neutral-lightest !default;
-$color-background-toggle-unselected-disabled: $color-neutral-lightest !default;
+$color-background-toggle-selected: palette.$color-primary-regular !default;
+$color-background-toggle-indeterminate: palette.$color-primary-regular !default;
+$color-background-toggle-selected-hover: palette.$color-primary-strong !default;
+$color-background-toggle-disabled: palette.$color-neutral-lightest !default;
+$color-background-toggle-unselected-disabled: palette.$color-neutral-lightest !default;
 
-$background-radio-group-odd-item: $color-neutral-lightest !default;
-$background-radio-group-even-item: $color-light-stronger !default;
-$background-radio-group-hover-item: $color-neutral-lighter !default;
+$background-radio-group-odd-item: palette.$color-neutral-lightest !default;
+$background-radio-group-even-item: palette.$color-light-stronger !default;
+$background-radio-group-hover-item: palette.$color-neutral-lighter !default;
 
 // Background toggle
-$color-background-toggle-button: $color-light-stronger !default;
-$color-background-toggle-slider: $color-neutral-lighter !default;
-$color-background-toggle-slider-selected: $color-primary-regular !default;
-$color-background-toggle-slider-selected-hover: $color-primary-strong !default;
-$color-background-toggle-slider-disabled: $color-neutral-light !default;
-$color-background-toggle-button-disabled: $color-neutral-lighter !default;
+$color-background-toggle-button: palette.$color-light-stronger !default;
+$color-background-toggle-slider: palette.$color-neutral-lighter !default;
+$color-background-toggle-slider-selected: palette.$color-primary-regular !default;
+$color-background-toggle-slider-selected-hover: palette.$color-primary-strong !default;
+$color-background-toggle-slider-disabled: palette.$color-neutral-light !default;
+$color-background-toggle-button-disabled: palette.$color-neutral-lighter !default;
 
 // Optional toggle container
-$background-toggle-container: $color-neutral-lightest !default;
-$background-toggle-container-hover: $color-neutral-lighter !default;
-$background-toggle-container-hover-slider: $color-neutral-light !default;
-$border-toggle-container: $border-radius-container !default;
+$background-toggle-container: palette.$color-neutral-lightest !default;
+$background-toggle-container-hover: palette.$color-neutral-lighter !default;
+$background-toggle-container-hover-slider: palette.$color-neutral-light !default;
+$border-toggle-container: spacing.$border-radius-container !default;
 
 // Border
 $color-border-toggle-selected: $color-background-toggle-selected !default;
@@ -37,29 +37,29 @@ $color-border-toggle-indeterminate: $color-background-toggle-selected !default;
 $color-border-toggle-selected-hover: $color-background-toggle-selected-hover !default;
 $color-border-toggle-selected-disabled: $color-background-toggle-disabled !default;
 
-$color-border-toggle-unselected: $color-neutral-light !default;
-$color-border-toggle-unselected-hover: $color-dark-stronger !default;
-$color-border-toggle-unselected-disabled: $color-neutral-light !default;
+$color-border-toggle-unselected: palette.$color-neutral-light !default;
+$color-border-toggle-unselected-hover: palette.$color-dark-stronger !default;
+$color-border-toggle-unselected-disabled: palette.$color-neutral-light !default;
 
 // Check
-$color-check-toggle: $color-light-stronger !default;
-$color-check-toggle-indeterminate: $color-light-stronger !default;
-$color-check-toggle-disabled: $color-neutral-light !default;
+$color-check-toggle: #fff !default;
+$color-check-toggle-indeterminate: #fff !default;
+$color-check-toggle-disabled: #c4c4c4 !default;
 
 //=====================================
 // SPACING
 //=====================================
-$size-toggle-checkbox: calc(#{rhythm(2)} - #{rhythm(0.25)}) !default;
-$gap-radio-group: rhythm(1) !default;
+$size-toggle-checkbox: calc(#{spacing.rhythm(2)} - #{spacing.rhythm(0.25)}) !default;
+$gap-radio-group: spacing.rhythm(1) !default;
 
-$height-toggle: rhythm(3) !default;
-$width-toggle: rhythm(6) !default;
-$padding-toggle-slider: rhythm(0.25) !default;
+$height-toggle: spacing.rhythm(3) !default;
+$width-toggle: spacing.rhythm(6) !default;
+$padding-toggle-slider: spacing.rhythm(0.25) !default;
 $margin-toggle-container: 0 !default;
-$margin-top-toggle-with-help-label: -#{rhythm(0.5)} !default;
+$margin-top-toggle-with-help-label: -#{spacing.rhythm(0.5)} !default;
 
 //=====================================
 // TYPOGRAPHY
 //=====================================
-$font-size-checkbox-label: font-size(s);
-$line-height-checkbox-label: line-height(m);
+$font-size-checkbox-label: typography.font-size(s);
+$line-height-checkbox-label: typography.line-height(m);

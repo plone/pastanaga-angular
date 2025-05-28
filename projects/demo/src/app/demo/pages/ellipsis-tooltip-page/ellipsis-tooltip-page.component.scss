@@ -1,7 +1,8 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
 
 .example-container {
-  background-color: $color-tertiary-lighter;
-  padding: rhythm(1);
-  width: rhythm(32);
+  background-color: palette.$color-tertiary-lighter;
+  padding: spacing.rhythm(1);
+  width: spacing.rhythm(32);
 }

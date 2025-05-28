@@ -1,9 +1,135 @@
-@import '../variables';
+@use '../variables';
+@use '../theme/shadows.tokens' as shadows;
+@use '../theme/spacing.tokens' as spacing;
+@use '../theme/transitions.tokens' as transitions;
+@use '../theme/z-index.tokens';
+@use '../theme/toast.tokens' as toast;
+
 .pa-toast-container {
   content: '';
   cursor: default;
   position: fixed;
   top: 0;
   transform: translateX(calc(100vw / 2 - 100% / 2));
-  z-index: $z-index-toast;
+  z-index: z-index.$z-index-toast;
+}
+
+.pa-toast-wrapper {
+  align-items: center;
+  box-shadow: shadows.$shadow-default;
+  display: flex;
+  justify-content: center;
+  min-width: toast.$min-width-toast;
+  padding: toast.$padding-toast;
+
+  .pa-toast-message-wrapper {
+    align-items: center;
+    display: flex;
+
+    pa-icon {
+      margin-right: toast.$space-toast-between-icon-and-text;
+    }
+  }
+
+  &.pa-toast-composed {
+    justify-content: space-between;
+  }
+
+  &.pa-toast-with-button {
+    padding: toast.$padding-toast-with-button;
+  }
+
+  pa-button {
+    margin-left: toast.$space-toast-between-button-and-text;
+  }
+}
+
+.pa-toast-animate-out {
+  animation: toastOut transitions.$transition-process-out forwards;
+}
+
+.pa-toast-error-wrapper {
+  background: toast.$background-toast-error;
+  color: toast.$color-toast-error;
+
+  pa-button .pa-button {
+    background: toast.$background-toast-button-error;
+
+    &:not(:disabled).pa-secondary.pa-basic {
+      color: toast.$color-toast-error;
+    }
+
+    &:hover {
+      background: toast.$background-toast-button-error-hover !important;
+    }
+    &:active {
+      background: toast.$background-toast-button-error-active !important;
+    }
+  }
+}
+.pa-toast-info-wrapper {
+  background: toast.$background-toast-info;
+  color: toast.$color-toast-info;
+
+  pa-button .pa-button {
+    background: toast.$background-toast-button-info;
+
+    &:not(:disabled).pa-secondary.pa-basic {
+      color: toast.$color-toast-info;
+    }
+
+    &:hover {
+      background: toast.$background-toast-button-info-hover !important;
+    }
+    &:active {
+      background: toast.$background-toast-button-info-active !important;
+    }
+  }
+}
+.pa-toast-success-wrapper {
+  background: toast.$background-toast-success;
+  color: toast.$color-toast-success;
+
+  pa-button .pa-button {
+    background: toast.$background-toast-button-success;
+
+    &:not(:disabled).pa-secondary.pa-basic {
+      color: toast.$color-toast-success;
+    }
+
+    &:hover {
+      background: toast.$background-toast-button-success-hover !important;
+    }
+    &:active {
+      background: toast.$background-toast-button-success-active !important;
+    }
+  }
+}
+.pa-toast-warning-wrapper {
+  background: toast.$background-toast-warning;
+  color: toast.$color-toast-warning;
+
+  pa-button .pa-button {
+    background: toast.$background-toast-button-warning;
+
+    &:not(:disabled).pa-secondary.pa-basic {
+      color: toast.$color-toast-warning;
+    }
+
+    &:hover {
+      background: toast.$background-toast-button-warning-hover !important;
+    }
+    &:active {
+      background: toast.$background-toast-button-warning-active !important;
+    }
+  }
+}
+@keyframes toastOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(calc(#{spacing.rhythm(8)} * -1));
+  }
 }

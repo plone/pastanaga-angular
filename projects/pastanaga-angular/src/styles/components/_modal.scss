@@ -1,8 +1,13 @@
-@import '../variables';
+@use '../theme/modal.tokens' as modal;
+@use '../theme/palette.tokens' as palette;
+@use '../theme/shadows.tokens' as shadows;
+@use '../theme/spacing.tokens' as spacing;
+@use '../theme/transitions.tokens' as transitions;
+@use '../theme/z-index.tokens' as z-index;
 
 .pa-modal-backdrop {
   align-items: center;
-  background-color: rgba($color-dark-stronger, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   opacity: 1;
@@ -11,30 +16,30 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: $z-index-modal-backdrop;
+  z-index: z-index.$z-index-modal-backdrop;
 
   &.out {
     opacity: 0;
-    transition: opacity $transition-process-out;
+    transition: opacity transitions.$transition-process-out;
   }
 }
 
 .pa-modal {
   align-items: stretch;
   border: 0;
-  border-radius: $border-radius-modal;
+  border-radius: modal.$border-radius-modal;
   display: flex;
   flex-flow: column nowrap;
   opacity: 0;
   padding: 0;
   position: relative;
 
-  background-color: $background-color-modal;
-  box-shadow: $shadow-modal;
+  background-color: modal.$background-color-modal;
+  box-shadow: shadows.$shadow-modal;
   margin: 0;
-  transition: opacity $transition-response;
+  transition: opacity transitions.$transition-response;
 
-  z-index: $z-index-modal-backdrop + 10;
+  z-index: z-index.$z-index-modal-backdrop + 10;
 
   &.in {
     opacity: 1;
@@ -49,12 +54,12 @@
   }
 
   .pa-modal-description {
-    color: $color-neutral-regular;
+    color: palette.$color-neutral-regular;
     text-align: center;
   }
 
   .pa-modal-content {
-    padding: 0 $padding-modal;
+    padding: 0 modal.$padding-modal;
     z-index: 0;
   }
 
@@ -68,16 +73,16 @@
   .pa-modal-footer {
     align-items: center;
     display: flex;
-    gap: rhythm(2);
-    height: $height-header-footer-modal;
+    gap: spacing.rhythm(2);
+    height: modal.$height-header-footer-modal;
     justify-content: center;
   }
 
   .scrolling-content {
-    border-top: 1px solid $color-neutral-lighter;
+    border-top: 1px solid palette.$color-neutral-lighter;
   }
 
-  @media (max-width: $size-viewport-medium-max) {
+  @media (max-width: spacing.$size-viewport-medium-max) {
     &.pa-modal-fullscreen-on-small {
       height: 100%;
       width: 100%;
@@ -85,7 +90,7 @@
   }
 }
 
-@media (min-width: $size-viewport-medium-min) {
+@media (min-width: spacing.$size-viewport-medium-min) {
   .pa-modal {
     max-height: 90vh;
 

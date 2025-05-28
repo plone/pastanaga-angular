@@ -1,20 +1,22 @@
-@import '../../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens' as spacing;
+@use '../../../../../../../pastanaga-angular/src/styles/theme/z-index.tokens' as z-index;
 
 :host {
-  background-color: $color-light-stronger;
+  background-color: palette.$color-light-stronger;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: $z-index-modal;
+  z-index: z-index.$z-index-modal;
 }
 
 .pa-scrollable-container {
   height: 100vh;
 }
 
-$header-padding: rhythm(3);
+$header-padding: spacing.rhythm(3);
 
 pa-button {
   left: $header-padding;

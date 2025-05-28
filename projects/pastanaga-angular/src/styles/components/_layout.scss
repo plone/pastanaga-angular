@@ -1,59 +1,61 @@
-@import '../variables';
+@use '../theme/layout.tokens' as layout;
+@use '../theme/palette.tokens' as palette;
+@use '../theme/spacing.tokens' as spacing;
 
 .pa-main-container-tight,
 .pa-main-container-wide {
-  margin: 0 $margin-formula-small;
-  max-width: calc(100vw - #{$margin-formula-small}* 2);
+  margin: 0 layout.$margin-formula-small;
+  max-width: calc(100vw - #{layout.$margin-formula-small}* 2);
 }
 
-$footer-height: rhythm(6) * 3;
+$footer-height: spacing.rhythm(6) * 3;
 
 .pa-content-with-fixed-footer {
-  margin-bottom: rhythm(6);
+  margin-bottom: spacing.rhythm(6);
 }
 
 .pa-fixed-footer-compact {
   position: fixed;
   bottom: 0;
-  padding: rhythm(6) 0;
+  padding: spacing.rhythm(6) 0;
   height: $footer-height;
-  background: linear-gradient(180deg, rgba($color-light-stronger, 0) 0%, $color-light-stronger 54.71%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, palette.$color-light-stronger 54.71%);
   width: 100%;
-  max-width: calc(100vw - #{$margin-formula-small}* 2);
+  max-width: calc(100vw - #{layout.$margin-formula-small}* 2);
 }
 
-@media (min-width: $size-viewport-medium-min) {
+@media (min-width: spacing.$size-viewport-medium-min) {
   .pa-main-container-tight {
-    margin: 0 $margin-formula-tight-medium;
-    max-width: calc(100vw - #{$margin-formula-tight-medium}* 2);
+    margin: 0 layout.$margin-formula-tight-medium;
+    max-width: calc(100vw - #{layout.$margin-formula-tight-medium}* 2);
   }
   .pa-main-container-wide {
-    margin: 0 $margin-formula-wide-medium;
-    max-width: calc(100vw - #{$margin-formula-wide-medium}* 2);
+    margin: 0 layout.$margin-formula-wide-medium;
+    max-width: calc(100vw - #{layout.$margin-formula-wide-medium}* 2);
   }
   .pa-child-container-compact {
     margin: 0 auto;
-    max-width: $max-width-tight-compact;
+    max-width: layout.$max-width-tight-compact;
   }
   .pa-fixed-footer-compact {
     margin: 0 auto;
-    max-width: $max-width-tight-compact;
+    max-width: layout.$max-width-tight-compact;
   }
 }
 
-@media (min-width: $size-viewport-large-min) {
+@media (min-width: spacing.$size-viewport-large-min) {
   .pa-main-container-tight {
-    margin: 0 $margin-formula-tight-large;
+    margin: 0 layout.$margin-formula-tight-large;
   }
   .pa-main-container-wide {
-    margin: 0 $margin-formula-wide-large;
+    margin: 0 layout.$margin-formula-wide-large;
     width: auto;
   }
   .pa-main-side-panel {
-    width: $width-side-panel;
+    width: spacing.$width-side-panel;
   }
   .pa-main-dock {
-    width: $width-dock;
+    width: spacing.$width-dock;
   }
 
   .pa-main-container {
@@ -63,37 +65,37 @@ $footer-height: rhythm(6) * 3;
 
   .pa-main-side-panel + .pa-main-container-wide,
   .pa-main-container-wide.pa-side-on-right {
-    width: $width-formula-panel-plus-wide-medium;
+    width: layout.$width-formula-panel-plus-wide-medium;
     margin: 0 auto;
   }
 
   .pa-main-dock + .pa-main-container-wide {
-    width: $width-formula-dock-plus-wide-medium;
+    width: layout.$width-formula-dock-plus-wide-medium;
     margin: 0 auto;
   }
 }
 
-@media (min-width: $size-viewport-large-with-panel-min) {
+@media (min-width: layout.$size-viewport-large-with-panel-min) {
   .pa-main-side-panel + .pa-main-container-wide,
   .pa-main-container-wide.pa-side-on-right {
-    width: $width-formula-panel-plus-wide-large;
+    width: layout.$width-formula-panel-plus-wide-large;
   }
 
   .pa-main-dock + .pa-main-container-wide {
-    width: $width-formula-dock-plus-wide-large;
+    width: layout.$width-formula-dock-plus-wide-large;
   }
 }
 
-@media (min-width: $size-viewport-xlarge-min) {
+@media (min-width: spacing.$size-viewport-xlarge-min) {
   .pa-main-container-tight,
   .pa-main-container-wide {
     margin: 0 auto;
   }
 
   .pa-main-container-tight {
-    max-width: #{$max-width-container-tight-xlarge}rem;
+    max-width: #{layout.$max-width-container-tight-xlarge}rem;
   }
   .pa-main-container-wide {
-    max-width: #{$max-width-container-wide-xlarge}rem;
+    max-width: #{layout.$max-width-container-wide-xlarge}rem;
   }
 }

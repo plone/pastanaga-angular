@@ -1,4 +1,6 @@
-@import '../variables';
+@use '../variables';
+@use "../theme/scrollbar.tokens";
+@use "../theme/spacing.tokens";
 
 .pa-scrollable-container {
   overflow-y: auto;
@@ -8,38 +10,38 @@
 .pa-scrollable {
   /* Chrome, Edge, and Safari */
   &::-webkit-scrollbar {
-    width: $scrollbar-width-mobile;
+    width: scrollbar.$scrollbar-width-mobile;
   }
 
   &::-webkit-scrollbar-track {
-    background: $color-scrollbar-track;
+    background: scrollbar.$color-scrollbar-track;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $color-scrollbar-thumb;
-    border-radius: $scrollbar-border-radius;
-    border: $scrollbar-padding-mobile solid $color-scrollbar-thumb-border;
-    min-height: rhythm(4);
+    background-color: scrollbar.$color-scrollbar-thumb;
+    border-radius: scrollbar.$scrollbar-border-radius;
+    border: scrollbar.$scrollbar-padding-mobile solid scrollbar.$color-scrollbar-thumb-border;
+    min-height: spacing.rhythm(4);
   }
 
   &.pa-scrolling {
     &::-webkit-scrollbar-thumb {
-      background-color: $color-scrollbar-thumb-active;
+      background-color: scrollbar.$color-scrollbar-thumb-active;
     }
     &::-webkit-scrollbar-track {
-      background: $color-scrollbar-track-active;
+      background: scrollbar.$color-scrollbar-track-active;
     }
   }
 
-  @media (min-width: $size-viewport-large-min) {
+  @media (min-width: spacing.$size-viewport-large-min) {
     &::-webkit-scrollbar {
-      width: $scrollbar-width-desktop;
+      width: scrollbar.$scrollbar-width-desktop;
     }
     &::-webkit-scrollbar-thumb {
-      border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border;
+      border: scrollbar.$scrollbar-padding-desktop solid scrollbar.$color-scrollbar-thumb-border;
     }
     &.pa-scrolling::-webkit-scrollbar-thumb {
-      border: $scrollbar-padding-desktop solid $color-scrollbar-thumb-border-active;
+      border: scrollbar.$scrollbar-padding-desktop solid scrollbar.$color-scrollbar-thumb-border-active;
     }
   }
 }

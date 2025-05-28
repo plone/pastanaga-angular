@@ -1,5 +1,4 @@
-$font-path: './fonts';
-@import "../projects/pastanaga-angular/src/styles/core";
-@import "../projects/pastanaga-angular/src/styles/grid";
-@import "../projects/pastanaga-angular/src/styles/theme/fonts";
-@import "../projects/pastanaga-angular/src/styles/cssvariables";
+@use '../projects/pastanaga-angular/src/styles/core' as *;
+@use '../projects/pastanaga-angular/src/styles/grid' as *;
+@use '../projects/pastanaga-angular/src/styles/theme/fonts' as *;
+@use '../projects/pastanaga-angular/src/styles/cssvariables' as *;

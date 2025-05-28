@@ -1,6 +1,6 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
-@import 'typography.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
+@use 'typography.tokens';
 
 //=====================================
 // COLORS
@@ -11,31 +11,31 @@ $color-autofilled: hsl(223, 100%, 50%);
 //
 // label
 //
-$color-text-field-label-regular: $color-neutral-regular !default;
-$color-text-field-label-regular-active: $color-primary-regular !default;
-$color-text-field-label-disabled: $color-neutral-light !default;
-$color-text-field-label-error: $color-secondary-regular !default;
+$color-text-field-label-regular: palette.$color-neutral-regular !default;
+$color-text-field-label-regular-active: palette.$color-primary-regular !default;
+$color-text-field-label-disabled: palette.$color-neutral-light !default;
+$color-text-field-label-error: palette.$color-secondary-regular !default;
 $color-text-field-label-autofilled: $color-autofilled !default;
 
 $scale-text-field-label: 0.8 !default;
-$translateY-text-field-label: rhythm(3.5) !default;
+$translateY-text-field-label: spacing.rhythm(3.5) !default;
 
 //
 // control
 //
-$color-text-field-control-regular: $color-dark-stronger !default;
-$color-text-field-control-disabled: $color-neutral-light !default;
-$color-text-field-control-placeholder-regular: $color-neutral-regular !default;
-$color-text-field-control-help-regular: $color-neutral-regular !default;
+$color-text-field-control-regular: palette.$color-dark-stronger !default;
+$color-text-field-control-disabled: palette.$color-neutral-light !default;
+$color-text-field-control-placeholder-regular: palette.$color-neutral-regular !default;
+$color-text-field-control-help-regular: palette.$color-neutral-regular !default;
 
-$color-caret-field-control-active: $color-primary-regular !default;
-$color-caret-field-control-error: $color-secondary-regular !default;
+$color-caret-field-control-active: palette.$color-primary-regular !default;
+$color-caret-field-control-error: palette.$color-secondary-regular !default;
 
 $color-background-field-regular: none !default;
 $color-background-field-autofilled: $color-autofilled-background !default;
 $color-background-field-autofilled-transparent: $color-autofilled-background !default;
 $color-background-field-error: none !default;
-$color-background-field-label: $color-light-stronger !default;
+$color-background-field-label: palette.$color-light-stronger !default;
 
 //=====================================
 // BORDERS
@@ -43,26 +43,26 @@ $color-background-field-label: $color-light-stronger !default;
 $border-width-regular: 1px !default;
 $border-width-active: 1px !default;
 
-$border-color-field-regular: $color-neutral-lighter !default;
-$border-color-field-hover: $color-neutral-regular !default;
-$border-color-field-active: $color-primary-regular !default;
+$border-color-field-regular: palette.$color-neutral-lighter !default;
+$border-color-field-hover: palette.$color-neutral-regular !default;
+$border-color-field-active: palette.$color-primary-regular !default;
 
-$border-color-field-error: $color-secondary-regular !default;
+$border-color-field-error: palette.$color-secondary-regular !default;
 
-$border-color-field-disabled: $color-neutral-light !default;
-$border-color-field-readonly: $color-neutral-light !default;
+$border-color-field-disabled: palette.$color-neutral-light !default;
+$border-color-field-readonly: palette.$color-neutral-light !default;
 $border-color-field-autofilled: $color-autofilled !default;
 
-$border-radius-field: $border-radius-default !default;
+$border-radius-field: spacing.$border-radius-default !default;
 
 //=====================================
 // SPACING and SHADOWS
 //=====================================
-$font-size-field-control: font-size(m) !default;
-$line-height-field-control: line-height(l) !default;
-$padding-field-control-top: calc(#{rhythm(1.5)} - 1px) !default; // remove 1px taken by the border
-$padding-field-control-left: rhythm(1.5) !default;
-$margin-bottom-field: rhythm(3) !default;
-$height-field-control: calc(#{rhythm(6)} - #{rhythm(0.25)}) !default;
-$top-control-label: calc(#{$padding-field-control-top} + #{rhythm(0.25)}) !default;
-$top-select-chevron: rhythm(1.5) !default;
+$font-size-field-control: typography.font-size(m) !default;
+$line-height-field-control: typography.line-height(l) !default;
+$padding-field-control-top: calc(#{spacing.rhythm(1.5)} - 1px) !default; // remove 1px taken by the border
+$padding-field-control-left: spacing.rhythm(1.5) !default;
+$margin-bottom-field: spacing.rhythm(3) !default;
+$height-field-control: calc(#{spacing.rhythm(6)} - #{spacing.rhythm(0.25)}) !default;
+$top-control-label: calc(#{$padding-field-control-top} + #{spacing.rhythm(0.25)}) !default;
+$top-select-chevron: spacing.rhythm(1.5) !default;

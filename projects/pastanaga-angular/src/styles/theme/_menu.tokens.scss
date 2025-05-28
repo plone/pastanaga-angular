@@ -1,24 +1,24 @@
-@import 'palette.tokens';
-@import 'spacing.tokens';
+@use 'palette.tokens';
+@use 'spacing.tokens';
 
 //=====================================
 // COLORS
 //=====================================
-$color-text-menu-option-header: $color-neutral-regular !default;
-$color-text-menu-option-destructive: $color-secondary-regular !default;
-$color-text-menu-option-disabled: $color-neutral-light !default;
+$color-text-menu-option-header: palette.$color-neutral-regular !default;
+$color-text-menu-option-destructive: palette.$color-secondary-regular !default;
+$color-text-menu-option-disabled: palette.$color-neutral-light !default;
 
-$color-background-menu-option-hover: $color-neutral-lightest !default;
-$color-background-menu-option-active: $color-neutral-light !default;
-$color-background-menu-option-selected: $color-primary-lightest !default;
-$color-background-menu-option-disabled: $color-light-stronger !default;
-$color-background-menu-option-destructive-hover: $color-neutral-lightest !default;
-$color-background-menu-option-destructive-active: $color-neutral-light !default;
+$color-background-menu-option-hover: palette.$color-neutral-lightest !default;
+$color-background-menu-option-active: palette.$color-neutral-light !default;
+$color-background-menu-option-selected: palette.$color-primary-lightest !default;
+$color-background-menu-option-disabled: palette.$color-light-stronger !default;
+$color-background-menu-option-destructive-hover: palette.$color-neutral-lightest !default;
+$color-background-menu-option-destructive-active: palette.$color-neutral-light !default;
 
-$color-border-menu-separator: $color-neutral-lightest !default;
+$color-border-menu-separator: palette.$color-neutral-lightest !default;
 
 //=====================================
 // SPACING
 //=====================================
-$padding-menu-option-top: rhythm(1) !default;
-$padding-menu-option-side: rhythm(2) !default;
+$padding-menu-option-top: spacing.rhythm(1) !default;
+$padding-menu-option-side: spacing.rhythm(2) !default;

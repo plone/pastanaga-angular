@@ -1,22 +1,24 @@
-@import '../../../../../../pastanaga-angular/src/styles/variables';
+@use '../../../../../../pastanaga-angular/src/styles/theme/palette.tokens' as palette;
+@use '../../../../../../pastanaga-angular/src/styles/theme/typography.tokens' as typography;
+@use '../../../../../../pastanaga-angular/src/styles/theme/spacing.tokens';
 
 .container {
   display: inline-block;
 }
 
 .more {
-  color: $color-primary-regular;
+  color: palette.$color-primary-regular;
   cursor: pointer;
-  font-weight: $font-weight-semi-bold;
+  font-weight: typography.$font-weight-semi-bold;
 }
 
 .flex-container {
   display: flex;
-  gap: rhythm(2);
-  margin-top: rhythm(4);
+  gap: spacing.rhythm(2);
+  margin-top: spacing.rhythm(4);
 
   .far-right {
     position: absolute;
-    right: rhythm(0.5);
+    right: spacing.rhythm(0.5);
   }
 }
