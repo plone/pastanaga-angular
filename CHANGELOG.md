@@ -3,6 +3,7 @@
 ### Bug fix
 
 - **Option**: Move option style in theme folder so it can be overwritten
+- **Cards**: Move card style in theme folder so it can be overwritten
 
 # 2.69.0 (2025-05-26)
 
