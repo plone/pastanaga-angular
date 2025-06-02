@@ -1,0 +1,34 @@
+@use '../theme/card.tokens' as card;
+@use '../theme/transitions.tokens' as transitions;
+
+.pa-card-wrapper {
+  background: card.$background-card;
+  border: card.$border-card;
+  border-radius: card.$border-radius-card;
+  cursor: pointer;
+  padding: card.$padding-vertical-card card.$padding-horizontal-card;
+  transition: background transitions.$transition-hint;
+
+  .pa-card-content {
+    opacity: 1;
+    transition: opacity transitions.$transition-hint;
+  }
+
+  &:hover {
+    background: card.$background-card-hover;
+  }
+
+  &:active {
+    background: card.$background-card-active;
+  }
+
+  &:disabled,
+  &.pa-disabled {
+    cursor: default;
+    pointer-events: none;
+
+    .pa-card-content {
+      opacity: 0.3;
+    }
+  }
+}

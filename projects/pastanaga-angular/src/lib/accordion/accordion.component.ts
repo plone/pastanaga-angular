@@ -10,9 +10,9 @@ import {
   Output,
   QueryList,
 } from '@angular/core';
-import { AccordionItemComponent } from './accordion-item/accordion-item.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AccordionItemComponent } from './accordion-item/accordion-item.component';
 
 @Component({
   selector: 'pa-accordion',
@@ -21,7 +21,6 @@ import { takeUntil } from 'rxjs/operators';
   template: `
     <ng-content></ng-content>
   `,
-  styleUrl: './accordion.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionComponent implements AfterViewInit, OnDestroy {

@@ -1,3 +1,10 @@
+# 2.69.1 (2025-06-02)
+
+### Bug fix
+
+- **Option**: Move option style in theme folder so it can be overwritten
+- **Cards**: Move card style in theme folder so it can be overwritten
+
 # 2.69.0 (2025-05-26)
 
 ### Dependencies upgrade
