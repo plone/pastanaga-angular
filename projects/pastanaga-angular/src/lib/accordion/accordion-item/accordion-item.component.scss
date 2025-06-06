@@ -5,18 +5,40 @@
 $padding-accordion-body: spacing.rhythm(2);
 
 :host {
-  border: 1px solid palette.$color-neutral-light;
-  border-bottom: none;
   display: block;
 
-  &:first-of-type {
-    border-top-left-radius: spacing.$border-radius-default;
-    border-top-right-radius: spacing.$border-radius-default;
-  }
-  &:last-of-type {
-    border-bottom: 1px solid palette.$color-neutral-light;
-    border-bottom-left-radius: spacing.$border-radius-default;
-    border-bottom-right-radius: spacing.$border-radius-default;
+  &.pa-accordion-with-borders {
+    border: 1px solid palette.$color-neutral-light;
+    border-bottom: none;
+
+    &:first-of-type {
+      border-top-left-radius: spacing.$border-radius-default;
+      border-top-right-radius: spacing.$border-radius-default;
+    }
+    &:last-of-type {
+      border-bottom: 1px solid palette.$color-neutral-light;
+      border-bottom-left-radius: spacing.$border-radius-default;
+      border-bottom-right-radius: spacing.$border-radius-default;
+    }
+
+    .pa-accordion-item-header {
+      padding: spacing.rhythm(1.5) spacing.rhythm(2) spacing.rhythm(1.5) spacing.rhythm(1);
+
+      &:after {
+        background: palette.$color-neutral-lighter;
+        bottom: 0;
+        content: '';
+        height: 0;
+        left: spacing.rhythm(2);
+        position: absolute;
+        width: calc(100% - #{spacing.rhythm(4)});
+      }
+    }
+
+    .pa-accordion-item-body {
+      height: calc(var(--contentHeight, 1px) + #{$padding-accordion-body} * 2);
+      padding: $padding-accordion-body;
+    }
   }
 
   .pa-accordion-item-header {
@@ -24,18 +46,7 @@ $padding-accordion-body: spacing.rhythm(2);
     cursor: pointer;
     display: flex;
     gap: spacing.rhythm(1);
-    padding: spacing.rhythm(1.5) spacing.rhythm(2) spacing.rhythm(1.5) spacing.rhythm(1);
     position: relative;
-
-    &:after {
-      background: palette.$color-neutral-lighter;
-      bottom: 0;
-      content: '';
-      height: 0;
-      left: spacing.rhythm(2);
-      position: absolute;
-      width: calc(100% - #{spacing.rhythm(4)});
-    }
 
     .pa-accordion-item-title {
       flex: 1;
@@ -45,6 +56,9 @@ $padding-accordion-body: spacing.rhythm(2);
       }
     }
 
+    .pa-accordion-button.small ::ng-deep .pa-button {
+      padding: spacing.rhythm(0.5);
+    }
     .pa-accordion-button ::ng-deep .pa-button {
       transition: transform transitions.$transition-hint;
     }
@@ -52,8 +66,8 @@ $padding-accordion-body: spacing.rhythm(2);
 
   .pa-accordion-item-body {
     height: calc(var(--contentHeight, 1px) + #{$padding-accordion-body} * 2);
+    padding: $padding-accordion-body 0;
     opacity: 1;
-    padding: $padding-accordion-body;
     transition:
       height transitions.$transition-response,
       opacity transitions.$transition-hint,
