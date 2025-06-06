@@ -44,12 +44,17 @@ export class AccordionItemComponent implements AfterViewInit {
   @Input({ required: true }) itemTitle = '';
   @Input() description = '';
   @Input({ transform: booleanAttribute }) expanded = false;
+  @Input({ transform: booleanAttribute }) noBorders = false;
+  @Input({ transform: booleanAttribute }) small = false;
 
   @Output() expandedChange = new EventEmitter<boolean>();
 
   @ContentChild(AccordionBodyDirective, { read: ElementRef }) itemContent?: ElementRef;
   @HostBinding('class.pa-accordion-collapsed') get collapsed() {
     return !this.expanded;
+  }
+  @HostBinding('class.pa-accordion-with-borders') get withBorders() {
+    return !this.noBorders;
   }
 
   ngAfterViewInit() {

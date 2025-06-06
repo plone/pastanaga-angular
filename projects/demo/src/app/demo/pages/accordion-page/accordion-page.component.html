@@ -8,6 +8,7 @@
     </p>
   </pa-demo-description>
   <pa-demo-examples>
+    <p>Default accordion:</p>
     <pa-accordion>
       <pa-accordion-item
         id="item1"
@@ -51,6 +52,53 @@
         </pa-accordion-item-body>
       </pa-accordion-item>
     </pa-accordion>
+
+    <p>Small accordion without borders:</p>
+    <pa-accordion
+      small
+      noBorders>
+      <pa-accordion-item
+        id="small1"
+        itemTitle="Item 1"
+        description="Description 1">
+        <pa-accordion-item-body>
+          <p>Content 1</p>
+          <p>Some content that can be long or short.</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </pa-accordion-item-body>
+      </pa-accordion-item>
+      <pa-accordion-item
+        id="small2"
+        itemTitle="Item 2">
+        <pa-accordion-item-body>
+          <p>Content 2</p>
+          <p>Some content that can be long or short.</p>
+        </pa-accordion-item-body>
+      </pa-accordion-item>
+      <pa-accordion-item
+        id="small3"
+        itemTitle="Item 3">
+        <pa-accordion-item-body>
+          <p>Content 3</p>
+          <p>Some content that can be long or short.</p>
+        </pa-accordion-item-body>
+      </pa-accordion-item>
+      <pa-accordion-item
+        id="smalll4"
+        itemTitle="Item 4"
+        description="Description 4">
+        <pa-accordion-item-body>
+          <p>Content 4</p>
+          <p>Some content that can be long or short.</p>
+        </pa-accordion-item-body>
+      </pa-accordion-item>
+    </pa-accordion>
   </pa-demo-examples>
 
   <pa-demo-usage>
@@ -59,6 +107,16 @@
       <dt>allowMultipleExpanded</dt>
       <dd>
         Set to true to prevent items to be automatically closed when opening another one.
+        <small>(false by default)</small>
+      </dd>
+      <dt>noBorders</dt>
+      <dd>
+        Display the accordion items without external borders
+        <small>(false by default)</small>
+      </dd>
+      <dt>small</dt>
+      <dd>
+        Set the accordion items header with a small toggle button and a smaller title
         <small>(false by default)</small>
       </dd>
     </dl>

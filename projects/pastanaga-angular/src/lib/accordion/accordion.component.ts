@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  AfterContentInit,
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
@@ -23,16 +23,18 @@ import { AccordionItemComponent } from './accordion-item/accordion-item.componen
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionComponent implements AfterViewInit, OnDestroy {
+export class AccordionComponent implements AfterContentInit, OnDestroy {
   private unsubscribeAll = new Subject<void>();
 
   @Input({ transform: booleanAttribute }) allowMultipleExpanded = false;
+  @Input({ transform: booleanAttribute }) noBorders = false;
+  @Input({ transform: booleanAttribute }) small = false;
 
   @Output() toggleAccordion = new EventEmitter<void>();
 
   @ContentChildren(AccordionItemComponent) items?: QueryList<AccordionItemComponent>;
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.accordionItemsUpdated();
     this.items?.changes.subscribe(() => this.accordionItemsUpdated());
   }
@@ -45,6 +47,8 @@ export class AccordionComponent implements AfterViewInit, OnDestroy {
   private accordionItemsUpdated() {
     this.unsubscribeAll.next();
     this.items?.forEach((item) => {
+      item.noBorders = this.noBorders;
+      item.small = this.small;
       item.expandedChange.pipe(takeUntil(this.unsubscribeAll)).subscribe((expanded) => {
         item.expanded = expanded;
         this.toggleAccordion.emit();

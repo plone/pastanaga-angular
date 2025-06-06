@@ -1,3 +1,9 @@
+# 2.69.3 (2025-06-06)
+
+### Improvements
+
+- **Accordion**: Add `noBorders` and `small` options
+
 # 2.69.2 (2025-06-02)
 
 - Fix auto-tagging
