@@ -11,10 +11,10 @@ import {
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { getFixedRootParentIfAny, PositionStyle } from '../common';
-import { POPUP_OFFSET, PopupComponent } from './popup.component';
 import { Subject } from 'rxjs';
 import { takeUntil, throttleTime } from 'rxjs/operators';
+import { getFixedRootParentIfAny, PositionStyle } from '../common';
+import { POPUP_OFFSET, PopupComponent } from './popup.component';
 
 @Directive({
   selector: '[paPopup]',
@@ -125,8 +125,8 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
       this._fixedRootParentChecked = true;
     }
     if (this._hasFixedRootParent && !!this._fixedRootParent) {
-      // when a parent has `container-type: size` or `container-type: inline-size`,
-      // the `position: fixed` are relative to the container and not to the window anymore
+      // when a parent has a fixed position (or a property `transform`, `filter`, `perspective`),
+      // the `position: fixed` is relative to the container and not to the window anymore
       containerRect = this._fixedRootParent.getBoundingClientRect();
 
       const scrollTop = this._fixedRootParent.scrollTop;
