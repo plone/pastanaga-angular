@@ -69,14 +69,8 @@ export function getFixedRootParent(element: HTMLElement): HTMLElement {
   }
   // an element with `position: fixed` will be positioned relatively to the viewport
   // unless one of the ancestor has a property `transform`, `filter`, `perspective`
-  // or has a containerType which is not normal
   const style = getComputedStyle(element);
-  if (
-    style.transform !== 'none' ||
-    style.perspective !== 'none' ||
-    style.filter !== 'none' ||
-    (!!style.containerType && style.containerType !== 'normal')
-  ) {
+  if (style.transform !== 'none' || style.perspective !== 'none' || style.filter !== 'none') {
     return element;
   } else {
     const parent = element.parentElement;

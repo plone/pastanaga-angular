@@ -1,3 +1,9 @@
+# 2.69.4 (2025-06-19)
+
+### Bug fix
+
+- **Popup**: Fix popup position on container size
+
 # 2.69.3 (2025-06-06)
 
 ### Improvements
