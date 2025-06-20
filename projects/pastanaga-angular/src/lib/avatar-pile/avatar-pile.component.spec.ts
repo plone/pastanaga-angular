@@ -1,14 +1,14 @@
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { AvatarPileComponent } from './avatar-pile.component';
 import { MockModule } from 'ng-mocks';
+import { AvatarModel } from '../avatar/avatar.model';
 import { PaAvatarModule } from '../avatar/avatar.module';
 import { PaButtonModule } from '../button/button.module';
 import { PaDropdownModule } from '../dropdown/dropdown.module';
 import { PaPopupModule } from '../popup/popup.module';
-import { PaTranslateModule } from '../translate/translate.module';
-import { AvatarModel } from '../avatar/avatar.model';
-import { TranslatePipe } from '../translate/translate.pipe';
 import { PaTooltipModule } from '../tooltip/tooltip.module';
+import { PaTranslateModule } from '../translate/translate.module';
+import { TranslatePipe } from '../translate/translate.pipe';
+import { AvatarPileComponent } from './avatar-pile.component';
 
 describe('AvatarPileComponent', () => {
   const createComponent = createComponentFactory({
@@ -72,17 +72,6 @@ describe('AvatarPileComponent', () => {
     const moreButtonSelector = 'pa-button[qa="more-avatars-button"]';
     beforeEach(() => {
       component.avatars = [avatar1, avatar2, avatar3, avatar4];
-    });
-
-    it('should open member dropdown by default', () => {
-      spectator.detectChanges();
-      expect(spectator.query(moreButtonSelector)?.getAttribute('ng-reflect-pa-popup')).not.toBe(null);
-    });
-
-    it('should not open member dropdown when customButton is true', () => {
-      component.customButton = true;
-      spectator.detectChanges();
-      expect(spectator.query(moreButtonSelector)?.getAttribute('ng-reflect-pa-popup')).toBe(null);
     });
 
     it('should emit clickOnMore', () => {

@@ -1,3 +1,9 @@
+# 2.70.0 (2025-06-20)
+
+### Beaking changes
+
+- Upgrade to Angular 20
+
 # 2.69.4 (2025-06-19)
 
 ### Bug fix

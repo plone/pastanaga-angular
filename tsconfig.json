@@ -13,7 +13,7 @@
       "downlevelIteration": true,
       "experimentalDecorators": true,
       "esModuleInterop": true,
-      "moduleResolution": "node",
+      "moduleResolution": "bundler",
       "importHelpers": true,
       "resolveJsonModule": true,
       "noImplicitOverride": true,

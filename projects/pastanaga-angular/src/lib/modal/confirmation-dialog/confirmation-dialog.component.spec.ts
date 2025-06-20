@@ -1,10 +1,10 @@
-import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { MockModule, MockPipe } from 'ng-mocks';
-import { PaButtonModule } from '../../button/button.module';
+import { ButtonComponent, PaButtonModule } from '../../button';
 import { PaTranslateModule } from '../../translate/translate.module';
-import { ConfirmationData, ModalConfig, ModalRef } from '../modal.model';
 import { TranslatePipe } from '../../translate/translate.pipe';
+import { ConfirmationData, ModalConfig, ModalRef } from '../modal.model';
+import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
 class ResizeObserver {
   observe() {}
@@ -60,7 +60,7 @@ describe('ConfirmationDialogComponent', () => {
     });
 
     it('should display confirm button as primary kind', () => {
-      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.getAttribute('ng-reflect-kind')).toBe(
+      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]', { read: ButtonComponent })?.kind).toBe(
         'primary',
       );
     });
@@ -111,7 +111,7 @@ describe('ConfirmationDialogComponent', () => {
     });
 
     it('should display confirm button as destructive kind', () => {
-      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]')?.getAttribute('ng-reflect-kind')).toBe(
+      expect(spectator.query('[qa="confirmation-dialog-confirm-button"]', { read: ButtonComponent })?.kind).toBe(
         'destructive',
       );
     });

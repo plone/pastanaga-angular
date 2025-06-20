@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { fakeAsync, tick } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { MockComponent, MockModule, MockPipe, ngMocks } from 'ng-mocks';
-import { CheckboxComponent } from './checkbox.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
-import { fakeAsync, tick } from '@angular/core/testing';
+import { PaTooltipModule } from '../../../tooltip';
 import { PaTranslateModule, TranslatePipe } from '../../../translate';
+import { FormFieldHintComponent, PaFormControlDirective } from '../../form-field';
+import { CheckboxComponent } from './checkbox.component';
 
 @Component({ template: '', standalone: false })
 class TestComponent {
@@ -22,7 +23,7 @@ describe('CheckboxComponent', () => {
   let spectator: SpectatorHost<CheckboxComponent, TestComponent>;
   const createHost = createHostFactory({
     component: CheckboxComponent,
-    imports: [FormsModule, ReactiveFormsModule, MockModule(PaTranslateModule)],
+    imports: [FormsModule, ReactiveFormsModule, MockModule(PaTranslateModule), MockModule(PaTooltipModule)],
     host: TestComponent,
     detectChanges: false,
     declarations: [

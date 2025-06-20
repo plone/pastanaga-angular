@@ -10,7 +10,7 @@ jobs:
             - name: Test and build
               uses: actions/setup-node@v3
               with:
-                  node-version: 18
+                  node-version: 22
             - run: npm install
             - run: npm run test:ci && npm run build:demo
               env:

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { MockedDebugElement, MockModule, ngMocks } from 'ng-mocks';
-import { ButtonComponent } from '../../button/button.component';
-import { PaButtonModule } from '../../button/button.module';
-import { PaAvatarModule } from '../../avatar/avatar.module';
-import { PaIconModule } from '../../icon/icon.module';
 import { AvatarComponent } from '../../avatar/avatar.component';
 import { AvatarModel } from '../../avatar/avatar.model';
+import { PaAvatarModule } from '../../avatar/avatar.module';
+import { ButtonComponent } from '../../button/button.component';
+import { PaButtonModule } from '../../button/button.module';
 import { IconComponent } from '../../icon/icon.component';
 import { IconModel } from '../../icon/icon.model';
+import { PaIconModule } from '../../icon/icon.module';
 import { ChipExpandableComponent } from './chip-expandable.component';
 
 @Component({ template: '', standalone: false })
@@ -37,11 +37,11 @@ describe('ChipExpandableComponent', () => {
     });
 
     it('should have an expand button with a chevron-down icon', () => {
-      expect(expandButton.attributes['aspect']).toEqual('basic');
-      expect(expandButton.attributes['kind']).toEqual('secondary');
-      expect(expandButton.attributes['size']).toEqual('small');
-      expect(expandButton.attributes['ng-reflect-icon']).toEqual('chevron-down');
-      expect(expandButton.attributes['ng-reflect-disabled']).toEqual('false');
+      expect(expandButton.componentInstance.aspect).toEqual('basic');
+      expect(expandButton.componentInstance.kind).toEqual('secondary');
+      expect(expandButton.componentInstance.size).toEqual('small');
+      expect(expandButton.componentInstance.icon).toEqual('chevron-down');
+      expect(expandButton.componentInstance.disabled).toEqual(false);
     });
 
     it('should notify when clicking on expand button', () => {
