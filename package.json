@@ -41,7 +41,7 @@
     "@angular-devkit/build-angular": "^20.0.3",
     "@angular/cli": "^20.0.3",
     "@angular/compiler-cli": "^20.0.4",
-    "@ngneat/spectator": "^19.3.0",
+    "@ngneat/spectator": "^19.6.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.5",
     "husky": "^8.0.3",
