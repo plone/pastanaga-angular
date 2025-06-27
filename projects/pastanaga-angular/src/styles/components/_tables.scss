@@ -1,4 +1,5 @@
 @use '../variables';
+@use "../theme/palette.tokens";
 @use "../theme/shadows.tokens";
 @use "../theme/spacing.tokens";
 @use "../theme/tables.tokens";
@@ -209,6 +210,30 @@ pa-table-row-header:last-child {
   }
 }
 
+.pa-table-grid--header {
+  .pa-table-sort-button {
+    color: tables.$color-text-table-header;
+    font-size: typography.font-size(xs);
+    display: flex;
+    align-items: center;
+    border: transparent;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    font-weight: typography.$font-weight-bold;
+    text-transform: tables.$text-transform-table-header;
+
+    &:active,
+    &.pa-active {
+      color: palette.$color-dark-stronger;
+    }
+    pa-icon {
+      display: flex;
+      margin-left: spacing.rhythm(1);
+    }
+  }
+}
+
 $lead-image-dimension: spacing.rhythm(6);
 .pa-lead-image {
   height: $lead-image-dimension;
@@ -249,5 +274,27 @@ pa-table-sortable-header-cell {
   .pa-table-grid--header.pa-clickable,
   .pa-table-grid--cell.pa-clickable {
     cursor: pointer;
+  }
+  .pa-table-grid--header {
+    .pa-table-sort-button {
+      pa-icon {
+        opacity: 0;
+      }
+
+      &.pa-enabled pa-icon {
+        opacity: 1;
+        transition: transform ease-in-out 0.3s;
+      }
+      &:hover,
+      &:active,
+      &.pa-keyboard-focus {
+        cursor: pointer;
+        color: palette.$color-dark-stronger;
+
+        pa-icon {
+          opacity: 1;
+        }
+      }
+    }
   }
 }

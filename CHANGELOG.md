@@ -1,3 +1,9 @@
+# 2.70.1 (2025-06-27)
+
+### Improvements
+
+- **Table**: Move sortable header style in theme folder so it can be overwritten
+
 # 2.70.0 (2025-06-20)
 
 ### Beaking changes
