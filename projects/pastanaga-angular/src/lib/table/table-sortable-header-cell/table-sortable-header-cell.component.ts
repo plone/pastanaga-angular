@@ -22,7 +22,6 @@ export const SORTED_DESCENDING_ICON = 'arrow-up';
 @Component({
   selector: 'pa-table-sortable-header-cell',
   templateUrl: './table-sortable-header-cell.component.html',
-  styleUrls: ['./table-sortable-header-cell.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
