@@ -50,9 +50,6 @@ $chip-max-width-medium: spacing.rhythm(56);
 }
 .pa-chip-content-wrapper {
   font-size: chips.$font-size-chip;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 @media (min-width: spacing.$size-viewport-medium-min) {

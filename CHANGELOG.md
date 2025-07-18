@@ -1,3 +1,9 @@
+# 2.70.2 (2025-07-15)
+
+### Improvements
+
+- **Chip**: Display a tooltip when it has en ellipsis
+
 # 2.70.1 (2025-06-27)
 
 ### Improvements
