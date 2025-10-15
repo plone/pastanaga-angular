@@ -1,3 +1,9 @@
+# 2.70.3 (2025-10-13)
+
+### Bug fix
+
+- **Expander**: Allow overriding expander tokens
+
 # 2.70.2 (2025-07-15)
 
 ### Improvements
