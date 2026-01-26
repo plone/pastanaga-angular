@@ -114,7 +114,7 @@ describe('SideNavComponent', () => {
     it('should trigger next function from close subject', () => {
       const spy = jest.spyOn(component.close, 'emit');
       component.closeSideNav();
-      expect(spy).toBeCalled();
+      expect(spy).toHaveBeenCalled()
     });
   });
 });
