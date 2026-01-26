@@ -15,7 +15,7 @@ jobs:
             - name: setup Node
               uses: actions/setup-node@v3
               with:
-                  node-version: 18
+                  node-version: 22
             - run: ./tag-version.sh
             - run: npm install --legacy-peer-deps && npm run build
             - uses: JS-DevTools/npm-publish@v1
