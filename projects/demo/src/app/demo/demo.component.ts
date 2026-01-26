@@ -26,7 +26,7 @@ const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => 
     byteArrays.push(byteArray);
   }
 
-  return new Blob(byteArrays, { type: contentType });
+  return new Blob(byteArrays.map(b => new Uint8Array(b).buffer), { type: contentType });
 };
 export const avatar = of(b64toBlob(IMAGE, 'image/gif'));
 
