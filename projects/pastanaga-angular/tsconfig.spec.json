@@ -1,18 +1,12 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "../../out-tsc/spec",
-        "types": [
-            "jest",
-            "node"
-        ],
-        "module": "commonjs",
-        "emitDecoratorMetadata": true,
-        "allowJs": true
-    },
-    "files": [],
-    "include": [
-        "**/*.spec.ts",
-        "**/*.d.ts"
-    ]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/spec",
+    "types": ["jest", "node"],
+    "module": "commonjs",
+    "allowJs": true,
+    "isolatedModules": true
+  },
+  "files": [],
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
 }
