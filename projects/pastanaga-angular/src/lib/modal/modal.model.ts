@@ -34,6 +34,7 @@ export class ModalRef<D = any, R = any> {
   id: number;
   isLast: boolean;
   config: ModalConfig<D>;
+  previouslyFocused: HTMLElement | null = null;
 
   constructor(data: { id: number; config?: ModalConfig<D> }) {
     this.id = data.id;

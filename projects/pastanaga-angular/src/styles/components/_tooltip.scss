@@ -1,9 +1,9 @@
 @use '../variables';
-@use "../theme/palette.tokens";
-@use "../theme/spacing.tokens";
-@use "../theme/tooltip.tokens";
-@use "../theme/transitions.tokens";
-@use "../theme/z-index.tokens";
+@use '../theme/palette.tokens';
+@use '../theme/spacing.tokens';
+@use '../theme/tooltip.tokens';
+@use '../theme/transitions.tokens';
+@use '../theme/z-index.tokens';
 
 .pa-tooltip {
   position: fixed;

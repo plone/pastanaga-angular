@@ -32,6 +32,7 @@ export class ModalService {
   openModal(component: Type<any>, config?: ModalConfig): ModalRef {
     // create the modal reference
     const ref = new ModalRef({ id: counter++, config });
+    ref.previouslyFocused = document.activeElement as HTMLElement;
     ref.onDismiss.subscribe(() => this.closeModal(ref));
 
     // instantiate injector
@@ -78,6 +79,7 @@ export class ModalService {
           this.getModalInstance(this.modals[this.modals.length - 1]).isLast = true;
         }
       });
+      ref.previouslyFocused?.focus();
     }
     if (this.modals.length === 0) {
       this.freezeBackground(false);

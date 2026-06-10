@@ -1,9 +1,9 @@
 @use '../variables';
-@use "../theme/shadows.tokens";
-@use "../theme/spacing.tokens";
-@use "../theme/tabs.tokens";
-@use "../theme/transitions.tokens";
-@use "../theme/typography.tokens";
+@use '../theme/shadows.tokens';
+@use '../theme/spacing.tokens';
+@use '../theme/tabs.tokens';
+@use '../theme/transitions.tokens';
+@use '../theme/typography.tokens';
 
 .pa-tabs-list {
   display: flex;

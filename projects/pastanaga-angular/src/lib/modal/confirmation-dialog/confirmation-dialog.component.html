@@ -6,6 +6,9 @@
   <dialog
     class="pa-modal pa-confirmation-dialog"
     role="dialog"
+    cdkTrapFocus
+    cdkTrapFocusAutoCapture
+    tabindex="-1"
     [class.in]="!closing"
     [class.out]="closing"
     [attr.aria-labelledby]="'dialog-' + id + '-title'"

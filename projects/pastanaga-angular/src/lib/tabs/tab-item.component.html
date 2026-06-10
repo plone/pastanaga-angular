@@ -6,7 +6,8 @@
     class="pa-tabs-link"
     role="tab"
     paFocusable
-    [attr.aria-expanded]="active">
+    [attr.aria-selected]="active"
+    [attr.aria-controls]="ariaControls || null">
     <span
       class="pa-tabs-link-wrapper"
       tabindex="-1">

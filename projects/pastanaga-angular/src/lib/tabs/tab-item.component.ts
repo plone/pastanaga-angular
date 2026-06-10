@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
   templateUrl: 'tab-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
+  host: { role: 'presentation' },
 })
 export class TabItemComponent {
   @Input()
@@ -19,6 +20,8 @@ export class TabItemComponent {
     }
   }
 
+  @Input() ariaControls?: string;
+
   private _active = false;
   selected = new Subject<void>();
 
@@ -30,5 +33,13 @@ export class TabItemComponent {
 
   getTabRect() {
     return this.ref.nativeElement.getBoundingClientRect();
+  }
+
+  focusTab(): void {
+    this.ref.nativeElement.querySelector('.pa-tabs-link')?.focus();
+  }
+
+  isFocused(): boolean {
+    return this.ref.nativeElement.querySelector('.pa-tabs-link') === document.activeElement;
   }
 }

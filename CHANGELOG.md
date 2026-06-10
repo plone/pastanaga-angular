@@ -1,3 +1,13 @@
+# 2.71.1 (2026-06-11)
+
+### Improvements
+
+- **Modal**: Trap focus inside dialogs and restore focus to trigger element on close
+- **Popup**: Add `openOnFocus` option to open popup on keyboard focus
+- **Table**: Add `ariaLabel` input to `pa-table-cell`; improve row and tab ARIA semantics
+- **Dropdown**: Expose `Escape` key handler and ARIA role improvements, add arrow key navigation between options
+- **Tabs**: Add arrow key navigation between tabs
+
 # 2.71.0 (2026-01-26)
 
 - Upgrade to Angular 21

@@ -137,13 +137,11 @@ describe('ConfirmationDialogComponent', () => {
   });
 
   describe('ngAfterViewInit', () => {
-    it('should setFocus and refresh on ngAfterViewInit', () => {
-      jest.spyOn(component, 'setFocus');
+    it('should refresh on ngAfterViewInit', () => {
       jest.spyOn(component, 'refresh');
 
       component.ngAfterViewInit();
 
-      expect(component.setFocus).toHaveBeenCalled();
       expect(component.refresh).toHaveBeenCalled();
     });
   });

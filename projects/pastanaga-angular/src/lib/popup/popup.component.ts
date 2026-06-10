@@ -90,6 +90,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     if (!this.stayVisible) {
       this._handlers.push(this.renderer.listen('document', 'click', (event) => this.onOutsideClick(event)));
       this._handlers.push(this.renderer.listen('document', 'keyup.esc', () => this.close()));
+      this._handlers.push(this.renderer.listen('document', 'focusin', (event) => this.onFocusInDocument(event)));
     }
 
     markForCheck(this.cdr);
@@ -185,6 +186,13 @@ export class PopupComponent implements OnInit, OnDestroy {
     ) {
       this.popupService.closeAllSubMenu.next();
       this.close(true);
+    }
+  }
+
+  private onFocusInDocument(event: FocusEvent) {
+    const target = event.target as Node;
+    if (!this.element.nativeElement.contains(target) && (!this.popupHolder || !this.popupHolder.contains(target))) {
+      this.close();
     }
   }
 

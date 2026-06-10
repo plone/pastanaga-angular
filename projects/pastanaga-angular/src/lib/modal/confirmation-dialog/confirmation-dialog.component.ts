@@ -11,8 +11,6 @@ import { BaseModalComponent } from '../base-modal.component';
 export class ConfirmationDialogComponent extends BaseModalComponent implements AfterViewInit {
   override ngAfterViewInit() {
     super.ngAfterViewInit();
-
-    this.setFocus();
     this.refresh();
   }
 }

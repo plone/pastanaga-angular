@@ -6,6 +6,7 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  HostListener,
   Input,
   OnChanges,
   OnDestroy,
@@ -75,6 +76,25 @@ export class TabsListComponent implements AfterContentInit, OnDestroy, OnChanges
   ngOnDestroy() {
     this._terminator.next();
     this._terminator.complete();
+  }
+
+  @HostListener('keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
+      return;
+    }
+    const items = this.tabItems.toArray();
+    if (items.length === 0) {
+      return;
+    }
+    const activeIndex = items.findIndex((item) => item.isFocused());
+    if (activeIndex === -1) {
+      return;
+    }
+    event.preventDefault();
+    const delta = event.key === 'ArrowRight' ? 1 : -1;
+    const nextIndex = (activeIndex + delta + items.length) % items.length;
+    items[nextIndex].focusTab();
   }
 
   private trackTabSelection() {
