@@ -1,6 +1,6 @@
 @use '../variables';
-@use "../theme/scrollbar.tokens";
-@use "../theme/spacing.tokens";
+@use '../theme/scrollbar.tokens';
+@use '../theme/spacing.tokens';
 
 .pa-scrollable-container {
   overflow-y: auto;

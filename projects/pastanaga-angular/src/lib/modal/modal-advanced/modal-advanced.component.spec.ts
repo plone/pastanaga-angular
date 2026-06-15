@@ -33,13 +33,11 @@ describe('ModalComponent', () => {
   });
 
   describe('ngAfterViewInit', () => {
-    it('should setFocus and refresh on ngAfterViewInit', () => {
-      component.setFocus = jest.fn();
+    it('should refresh on ngAfterViewInit', () => {
       component.refresh = jest.fn();
 
       component.ngAfterViewInit();
 
-      expect(component.setFocus).toHaveBeenCalled();
       expect(component.refresh).toHaveBeenCalled();
     });
   });

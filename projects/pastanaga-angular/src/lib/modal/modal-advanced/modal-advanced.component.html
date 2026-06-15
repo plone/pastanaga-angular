@@ -7,6 +7,9 @@
   <dialog
     class="pa-modal pa-modal-advanced pa-modal-fullscreen-on-small"
     role="alertdialog"
+    cdkTrapFocus
+    cdkTrapFocusAutoCapture
+    tabindex="-1"
     [class.with-footer]="hasFooter"
     [class.fit-content]="fitContent"
     [class.pa-take-available-height]="!fitContentHeight"

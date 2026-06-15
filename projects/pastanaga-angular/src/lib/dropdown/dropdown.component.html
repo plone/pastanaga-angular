@@ -7,7 +7,8 @@
     [class.no-max-width]="sameWidth">
     <ul
       class="pa-menu"
-      [attr.role]="role">
+      [attr.role]="role"
+      [attr.aria-label]="ariaLabel || null">
       <ng-content></ng-content>
     </ul>
   </div>

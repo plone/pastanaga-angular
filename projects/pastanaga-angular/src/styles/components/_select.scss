@@ -1,10 +1,10 @@
 @use '../variables';
-@use "../theme/body.tokens";
-@use "../theme/palette.tokens";
-@use "../theme/spacing.tokens";
-@use "../theme/textfield.tokens";
-@use "../theme/transitions.tokens";
-@use "../theme/typography.tokens";
+@use '../theme/body.tokens';
+@use '../theme/palette.tokens';
+@use '../theme/spacing.tokens';
+@use '../theme/textfield.tokens';
+@use '../theme/transitions.tokens';
+@use '../theme/typography.tokens';
 
 .pa-select-value-container {
   display: flex;

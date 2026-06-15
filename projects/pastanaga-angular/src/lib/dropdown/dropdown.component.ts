@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -31,6 +32,8 @@ export class DropdownComponent extends PopupComponent implements AfterViewInit, 
   }
 
   private _role: 'listbox' | 'menu' = 'menu';
+
+  @Input() ariaLabel?: string;
 
   private _hasFixedRootParent?: boolean;
   private _fixedRootParentChecked = false;
@@ -70,6 +73,14 @@ export class DropdownComponent extends PopupComponent implements AfterViewInit, 
       if (this._scrollableParent) {
         this._scrollableParent.addEventListener('scroll', this.scrollEventListener);
       }
+      if (this._role === 'menu') {
+        setTimeout(() => {
+          const firstOption = this.element.nativeElement.querySelector(
+            'li.pa-option:not(.pa-option-disabled):not(.pa-option-readonly)',
+          ) as HTMLElement | null;
+          firstOption?.focus();
+        }, 0);
+      }
     });
     this.onClose.pipe(takeUntil(this._terminator)).subscribe(() => {
       if (this._scrollableParent) {
@@ -80,6 +91,38 @@ export class DropdownComponent extends PopupComponent implements AfterViewInit, 
 
   override ngOnDestroy() {
     super.ngOnDestroy();
+  }
+
+  @HostListener('keydown', ['$event'])
+  onDropdownKeydown(event: KeyboardEvent): void {
+    if (!this.isDisplayed) return;
+
+    const key = event.key;
+    if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)) return;
+
+    event.preventDefault();
+
+    const options = Array.from(
+      this.element.nativeElement.querySelectorAll('li.pa-option:not(.pa-option-disabled):not(.pa-option-readonly)'),
+    ) as HTMLElement[];
+
+    if (options.length === 0) return;
+
+    const focused = this.element.nativeElement.querySelector(':focus') as HTMLElement | null;
+    const currentIndex = focused ? options.indexOf(focused) : -1;
+
+    let nextIndex: number;
+    if (key === 'ArrowDown') {
+      nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0;
+    } else if (key === 'ArrowUp') {
+      nextIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1;
+    } else if (key === 'Home') {
+      nextIndex = 0;
+    } else {
+      nextIndex = options.length - 1;
+    }
+
+    options[nextIndex]?.focus();
   }
 
   private onScroll() {

@@ -1,8 +1,10 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   booleanAttribute,
   Directive,
   ElementRef,
   HostListener,
+  inject,
   Input,
   numberAttribute,
   OnChanges,
@@ -40,6 +42,7 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
   @Input({ transform: booleanAttribute }) sameWidth = false;
   @Input({ transform: booleanAttribute }) popupDisabled = false;
   @Input({ transform: booleanAttribute }) openOnly = false;
+  @Input({ transform: booleanAttribute }) openOnFocus = false;
 
   private _paPopup?: PopupComponent | null;
   private _handlers: (() => void)[] = [];
@@ -49,15 +52,23 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
   private _fixedRootParent?: HTMLElement;
   private _fixedRootParentChecked = false;
 
+  private _focusMonitor = inject(FocusMonitor);
+
   constructor(
     private element: ElementRef,
     private renderer: Renderer2,
   ) {}
 
   ngOnInit() {
-    this.element.nativeElement.setAttribute('aria-haspopup', true);
+    this.element.nativeElement.setAttribute('aria-haspopup', 'true');
+    this.element.nativeElement.setAttribute('aria-expanded', 'false');
+
+    this.paPopup?.onOpen.pipe(takeUntil(this._terminator)).subscribe(() => {
+      this.element.nativeElement.setAttribute('aria-expanded', 'true');
+    });
 
     this.paPopup?.onClose.pipe(takeUntil(this._terminator)).subscribe(() => {
+      this.element.nativeElement.setAttribute('aria-expanded', 'false');
       this.removeActiveStateFromParentButton();
       this.unListen();
     });
@@ -65,6 +76,17 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
     this._scrollOrResize
       .pipe(throttleTime(10), takeUntil(this._terminator))
       .subscribe(() => this.paPopup?.updatePosition(this.getPosition()));
+
+    if (this.openOnFocus) {
+      this._focusMonitor
+        .monitor(this.element, true)
+        .pipe(takeUntil(this._terminator))
+        .subscribe((origin) => {
+          if (origin === 'keyboard' && !this.paPopup?.isDisplayed) {
+            this.toggle();
+          }
+        });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -81,6 +103,7 @@ export class PopupDirective implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.unListen();
+    this._focusMonitor.stopMonitoring(this.element);
     this._terminator.next();
     this._terminator.complete();
   }

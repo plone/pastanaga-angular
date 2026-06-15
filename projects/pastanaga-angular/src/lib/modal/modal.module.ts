@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { A11yModule } from '@angular/cdk/a11y';
 import {
   ModalContentDirective,
   ModalDescriptionDirective,
@@ -26,7 +27,7 @@ const COMPONENTS_AND_DIRECTIVES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, PaButtonModule, PaTranslateModule, PaScrollModule],
+  imports: [CommonModule, A11yModule, PaButtonModule, PaTranslateModule, PaScrollModule],
   declarations: COMPONENTS_AND_DIRECTIVES,
   exports: COMPONENTS_AND_DIRECTIVES,
 })

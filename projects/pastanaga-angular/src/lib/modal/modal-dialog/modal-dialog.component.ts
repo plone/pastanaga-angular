@@ -56,7 +56,6 @@ export class ModalDialogComponent extends BaseModalComponent implements AfterVie
     this.hasDescription = !!this.description && this.description.nativeElement.children.length > 0;
     this.hasFooter = !!this.footer && this.footer.nativeElement.children.length > 0;
 
-    this.setFocus();
     this.refresh();
 
     setTimeout(() => {

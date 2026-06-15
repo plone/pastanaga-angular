@@ -1,16 +1,23 @@
 <div
   class="pa-table-grid"
+  role="table"
   [class.with-border]="border"
   [style.grid-template-columns]="!noAutoColumnStyle ? columnsStyle : ''">
   @if (!noHeader) {
-    <div class="pa-table-grid--head">
-      <div class="pa-table-grid--row">
+    <div
+      class="pa-table-grid--head"
+      role="rowgroup">
+      <div
+        class="pa-table-grid--row"
+        role="row">
         <ng-content select="pa-table-sortable-header"></ng-content>
         <ng-content select="pa-table-header"></ng-content>
       </div>
     </div>
   }
-  <div class="pa-table-grid--body">
+  <div
+    class="pa-table-grid--body"
+    role="rowgroup">
     <ng-content></ng-content>
   </div>
 </div>

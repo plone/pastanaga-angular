@@ -14,4 +14,5 @@ export class TableCellComponent {
   @Input({ transform: booleanAttribute }) noWrap = false;
   @Input({ transform: booleanAttribute }) center = false;
   @Input({ transform: booleanAttribute }) borderRight = false;
+  @Input() ariaLabel: string | null = null;
 }
