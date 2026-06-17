@@ -34,6 +34,7 @@ describe('Dropdown', () => {
         useValue: {
           closeAllPopups: new Subject(),
           closeAllButId: new Subject(),
+          openPopupElements: [],
         },
       },
     ],

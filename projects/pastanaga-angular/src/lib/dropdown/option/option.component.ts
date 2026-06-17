@@ -73,7 +73,11 @@ export class OptionComponent implements AfterViewInit {
     this.onSelect($event);
   }
   onSelectEnter($event: Event) {
-    this.onSelect($event as KeyboardEvent);
+    // Stop the keydown from bubbling further (e.g. to PopupDirective).
+    // Then synthesise a click so that (click) bindings on the host element fire,
+    // just as if the user had clicked with a mouse.
+    $event.stopPropagation();
+    ($event.target as HTMLElement)?.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
   }
 
   onSelect($event: MouseEvent | KeyboardEvent) {

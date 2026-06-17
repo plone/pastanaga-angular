@@ -9,7 +9,7 @@
   [class.pa-option-selected]="selected"
   [class.pa-option-with-description]="!!description"
   (click)="onSelectClick($event)"
-  (keyup.enter)="onSelectEnter($event)">
+  (keydown.enter)="onSelectEnter($event)">
   @if (!!icon && !iconOnRight) {
     <pa-icon [icon]="icon"></pa-icon>
   }

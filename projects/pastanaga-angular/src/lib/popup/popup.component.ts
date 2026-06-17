@@ -86,6 +86,7 @@ export class PopupComponent implements OnInit, OnDestroy {
     }
     this.style = style;
     this.isDisplayed = true;
+    this.popupService.openPopupElements.push(this.element.nativeElement);
     this.onOpen.emit();
     if (!this.stayVisible) {
       this._handlers.push(this.renderer.listen('document', 'click', (event) => this.onOutsideClick(event)));
@@ -173,6 +174,10 @@ export class PopupComponent implements OnInit, OnDestroy {
     if (!this.stayVisible && this.isDisplayed) {
       this.isDisplayed = false;
       this.unListen();
+      const idx = this.popupService.openPopupElements.indexOf(this.element.nativeElement);
+      if (idx !== -1) {
+        this.popupService.openPopupElements.splice(idx, 1);
+      }
       this.onClose.emit(byClickingOutside);
       // detectChanges instead of markForCheck because this method can be called from an observable
       detectChanges(this.cdr);
@@ -192,7 +197,12 @@ export class PopupComponent implements OnInit, OnDestroy {
   private onFocusInDocument(event: FocusEvent) {
     const target = event.target as Node;
     if (!this.element.nativeElement.contains(target) && (!this.popupHolder || !this.popupHolder.contains(target))) {
-      this.close();
+      const isInsideAnotherOpenPopup = this.popupService.openPopupElements.some(
+        (el) => el !== this.element.nativeElement && el.contains(target),
+      );
+      if (!isInsideAnotherOpenPopup) {
+        this.close();
+      }
     }
   }
 

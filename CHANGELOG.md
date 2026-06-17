@@ -1,3 +1,11 @@
+# 2.71.2 (2026-06-17)
+
+### Bug fix
+
+- **Dropdown**: Fix nested dropdowns closing immediately when a sub-menu opens and auto-focuses its first option — parent popup no longer closes when focus moves into another open popup
+- **Dropdown**: Fix `keydown.enter` on a focused option now correctly activates it (dispatches a synthetic click), enabling keyboard navigation in all menus including those using `(click)` bindings on `pa-option`
+- **Dropdown**: Fix single-level dropdowns opening and immediately closing when triggered by keyboard Enter — options now respond to `keydown.enter` instead of `keyup.enter`, preventing the key-release event from accidentally activating the auto-focused first item
+
 # 2.71.1 (2026-06-11)
 
 ### Improvements
