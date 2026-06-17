@@ -8,4 +8,5 @@ export class PopupService {
   closeAllButId: Subject<string> = new Subject<string>();
   closeAllSubMenu: Subject<void> = new Subject<void>();
   lastPosition?: PositionStyle;
+  openPopupElements: HTMLElement[] = [];
 }
