@@ -20,7 +20,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-builders/jest": "^21.0.3",
+    "@angular-builders/jest": "^22.0.0",
     "@angular/animations": "21.1.1",
     "@angular/cdk": "21.1.1",
     "@angular/common": "21.1.1",
@@ -38,7 +38,7 @@
     "zone.js": "^0.15.0"
   },
   "devDependencies": {
-    "@angular/build": "^21.2.7",
+    "@angular/build": "^22.0.3",
     "@angular/cli": "^21.1.4",
     "@angular/compiler-cli": "21.1.1",
     "@ngneat/spectator": "^22.1.0",
