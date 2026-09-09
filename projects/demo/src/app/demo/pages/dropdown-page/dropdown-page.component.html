@@ -100,7 +100,7 @@
 
           <pa-dropdown
             #level1
-            [companionElement]="level2Element?.nativeElement">
+            [companionElement]="$safeNavigationMigration(level2Element?.nativeElement)">
             <pa-option
               id="level1option1"
               icon="chevron-right"
@@ -226,7 +226,7 @@
 
           <pa-dropdown
             #level01
-            [companionElement]="level02Element?.nativeElement">
+            [companionElement]="$safeNavigationMigration(level02Element?.nativeElement)">
             <pa-option
               icon="chevron-right"
               iconOnRight

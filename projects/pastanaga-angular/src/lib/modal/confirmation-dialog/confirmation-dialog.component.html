@@ -17,7 +17,7 @@
       <h4
         qa="confirmation-title"
         [id]="'dialog-' + id + '-title'">
-        {{ ref.config.data?.['title'] | translate }}
+        {{ $safeNavigationMigration(ref.config.data?.['title']) | translate }}
       </h4>
     </header>
 
@@ -25,7 +25,7 @@
       class="pa-modal-description body-s"
       qa="confirmation-description"
       [id]="'dialog-' + id + '-description'"
-      [innerHTML]="ref.config.data?.['description'] | translate"></div>
+      [innerHTML]="$safeNavigationMigration(ref.config.data?.['description']) | translate"></div>
 
     <footer
       class="pa-modal-footer"
@@ -34,7 +34,7 @@
         <pa-button
           kind="secondary"
           qa="confirmation-dialog-cancel-button"
-          [aspect]="ref.config.data?.['cancelAspect']"
+          [aspect]="$safeNavigationMigration(ref.config.data?.['cancelAspect'])"
           (click)="ref.close(false)">
           {{ ref.config.data?.['cancelLabel'] || 'pastanaga.cancel' | translate }}
         </pa-button>
