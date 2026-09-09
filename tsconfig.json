@@ -2,7 +2,6 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-      "baseUrl": "./",
       "outDir": "./dist/out-tsc",
       "forceConsistentCasingInFileNames": true,
       "strict": true,
@@ -19,11 +18,11 @@
       "noPropertyAccessFromIndexSignature": true,
       "paths": {
         "pastanaga-angular": [
-          "dist/pastanaga-angular/pastanaga-angular",
-          "dist/pastanaga-angular"
+          "./dist/pastanaga-angular/pastanaga-angular",
+          "./dist/pastanaga-angular"
         ],
         "@guillotinaweb/pastanaga-angular": [
-          "projects/pastanaga-angular/src"
+          "./projects/pastanaga-angular/src"
         ]
       },
       "target": "ES2022",
