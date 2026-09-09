@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AvatarModel, ToastService } from '@guillotinaweb/pastanaga-angular';
 import { avatar } from '../../demo.component';
 
 @Component({
   templateUrl: 'avatar-pile-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class AvatarPilePageComponent {

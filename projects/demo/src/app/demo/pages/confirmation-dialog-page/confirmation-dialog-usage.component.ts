@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'pa-demo-confirmation-dialog-usage',
@@ -51,6 +51,7 @@ import { Component } from '@angular/core';
       <dd>Title to be displayed in the confirmation dialog. This is the only mandatory property.</dd>
     </dl>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ConfirmationDialogUsageComponent {}

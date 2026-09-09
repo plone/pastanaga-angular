@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { PaFormControlDirective, markForCheck } from '@guillotinaweb/pastanaga-angular';
 import { UntypedFormControl } from '@angular/forms';
 
@@ -6,6 +6,7 @@ import { UntypedFormControl } from '@angular/forms';
   selector: 'pa-demo-form-control-value-example',
   templateUrl: './form-control-value-example.component.html',
   styleUrls: ['./form-control-value-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormControlValueExampleComponent {

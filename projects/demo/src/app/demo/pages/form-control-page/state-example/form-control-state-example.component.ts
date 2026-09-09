@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { PaFormControlDirective, detectChanges } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
   selector: 'pa-demo-form-control-state-example',
   templateUrl: './form-control-state-example.component.html',
   styleUrls: ['./form-control-state-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormControlStateExampleComponent {

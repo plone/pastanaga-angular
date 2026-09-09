@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
 
@@ -6,6 +6,7 @@ import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
   selector: 'pa-demo-form-control-name-example',
   templateUrl: './form-control-name-example.component.html',
   styleUrls: ['./form-control-name-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormControlNameExampleComponent implements AfterViewInit {

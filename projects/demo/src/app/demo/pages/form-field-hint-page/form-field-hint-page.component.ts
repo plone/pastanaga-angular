@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 import { IErrorMessages } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
   templateUrl: './form-field-hint-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormFieldHintPageComponent {

@@ -1,9 +1,10 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
 import { markForCheck } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
   templateUrl: './form-control-page.component.html',
   styleUrls: ['./form-control-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormControlPageComponent {

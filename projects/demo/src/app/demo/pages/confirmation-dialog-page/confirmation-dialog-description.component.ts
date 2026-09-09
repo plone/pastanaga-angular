@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'pa-demo-confirmation-dialog-description',
@@ -18,6 +18,7 @@ import { Component, Input } from '@angular/core';
       to configure and open the confirmation dialog directly.
     </p>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ConfirmationDialogDescriptionComponent {

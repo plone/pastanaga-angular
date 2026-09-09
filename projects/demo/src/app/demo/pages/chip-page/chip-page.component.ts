@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
 import { avatar } from '../../demo.component';
 import { AvatarModel, detectChanges, IconModel } from '@guillotinaweb/pastanaga-angular';
 
@@ -6,6 +6,7 @@ import { AvatarModel, detectChanges, IconModel } from '@guillotinaweb/pastanaga-
   selector: 'pa-demo-chip-page',
   templateUrl: './chip-page.component.html',
   styleUrls: ['./chip-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ChipPageComponent {
