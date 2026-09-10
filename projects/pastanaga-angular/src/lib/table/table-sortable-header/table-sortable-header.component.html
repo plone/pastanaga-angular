@@ -24,13 +24,13 @@
       [active]="sortMenuOpen"
       [paPopup]="sortMenu"
       [popupPosition]="sortMenuPosition">
-      {{ mobileCell?.label | translate }}
+      {{ $safeNavigationMigration(mobileCell?.label) | translate }}
     </pa-table-sortable-header-cell>
   } @else {
     <pa-table-cell
       header
-      [center]="mobileCell?.centered">
-      {{ mobileCell?.label | translate }}
+      [center]="$safeNavigationMigration(mobileCell?.centered)">
+      {{ $safeNavigationMigration(mobileCell?.label) | translate }}
     </pa-table-cell>
   }
 

@@ -1,9 +1,10 @@
-import { AfterContentInit, Component, QueryList, ViewChildren } from '@angular/core';
+import { AfterContentInit, Component, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
 
 @Component({
   selector: 'pa-demo-form-control-id-example',
   templateUrl: './form-control-id-example.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormControlIdExampleComponent implements AfterContentInit {

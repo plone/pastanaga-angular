@@ -6,6 +6,7 @@ import {
   OnChanges,
   OnDestroy,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { DateFormat, DateTimeService } from './datetime.service';
 import { filter, map, switchMap, takeUntil, takeWhile } from 'rxjs/operators';
@@ -18,6 +19,7 @@ const formats = ['human', 'numerical'];
 @Component({
   selector: 'pa-datetime',
   templateUrl: './datetime.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class DateTimeComponent implements OnChanges, OnDestroy {

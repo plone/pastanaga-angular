@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { BreakpointObserver, ViewportMode } from '@guillotinaweb/pastanaga-angular';
 import { IDemoMenuSection } from './demo-menu/demo-menu.component';
@@ -26,13 +26,17 @@ const b64toBlob = (b64Data: string, contentType: string, sliceSize?: number) => 
     byteArrays.push(byteArray);
   }
 
-  return new Blob(byteArrays.map(b => new Uint8Array(b).buffer), { type: contentType });
+  return new Blob(
+    byteArrays.map((b) => new Uint8Array(b).buffer),
+    { type: contentType },
+  );
 };
 export const avatar = of(b64toBlob(IMAGE, 'image/gif'));
 
 @Component({
   selector: 'pa-demo',
   templateUrl: './demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class DemoComponent implements OnDestroy {

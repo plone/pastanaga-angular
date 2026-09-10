@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'pa-demo-form-field-description',
@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
       <li>Reactive form: using <code>formControl</code> and <code>formControlName</code> directives,</li>
     </ul>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormFieldDescriptionComponent {

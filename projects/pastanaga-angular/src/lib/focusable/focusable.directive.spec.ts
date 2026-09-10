@@ -1,12 +1,12 @@
-import { FocusableDirective } from './focusable.directive';
-import { Component } from '@angular/core';
+import { TAB } from '@angular/cdk/keycodes';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { PaFocusableModule } from './focusable.module';
-import { TAB } from '@angular/cdk/keycodes';
 
 @Component({
   template: '<div class="test" paFocusable [paFocusDisabled]="disabled">Disabled Lorem Ipsum...</div>',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TestComponent {
   disabled = false;
@@ -27,9 +27,13 @@ describe('FocusableDirective', () => {
     component = spectator.component;
   });
 
-  it('should set tabindex', () => {
+  it('should set tabindex to 0', () => {
     spectator.detectChanges();
     expect(spectator.query('.test')?.getAttribute('tabindex')).toEqual('0');
+    component.disabled = true;
+  });
+
+  it('should set tabindex to -1 when disabled', () => {
     component.disabled = true;
     spectator.detectChanges();
     expect(spectator.query('.test')?.getAttribute('tabindex')).toEqual('-1');

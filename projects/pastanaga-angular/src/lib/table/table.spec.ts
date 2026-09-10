@@ -1,13 +1,13 @@
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { TableHeaderDirective } from './table.directives';
-import { TableRowHeaderComponent } from './table-row-header/table-row-header.component';
-import { TableCellComponent } from './table-cell/table-cell.component';
-import { TableRowComponent } from './table-row/table-row.component';
-import { TableComponent } from './table.component';
 import { MockModule } from 'ng-mocks';
 import { PaFocusableModule } from '../focusable/focusable.module';
+import { TableCellComponent } from './table-cell/table-cell.component';
+import { TableRowHeaderComponent } from './table-row-header/table-row-header.component';
+import { TableRowComponent } from './table-row/table-row.component';
+import { TableComponent } from './table.component';
+import { TableHeaderDirective } from './table.directives';
 
 @Component({
   template: `
@@ -51,6 +51,7 @@ import { PaFocusableModule } from '../focusable/focusable.module';
     </pa-table>
   `,
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TestComponent {
   @ViewChild('table') table?: TableComponent;
@@ -88,23 +89,29 @@ describe('Table', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should allow to hide header', () => {
+  it('should display header by default', () => {
     expect(fixture.debugElement.query(By.css('.pa-table-grid--head'))).toBeTruthy();
+  });
+
+  it('should allow to hide header', () => {
     component.noHeader = true;
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('.pa-table-grid--head'))).toBeFalsy();
   });
 
-  it('should set grid-template-columns css attribute', () => {
+  it('should set grid-template-columns css attribute to equal size columns by default', () => {
     expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual(
       'repeat(3, 1fr)',
     );
+  });
+
+  it('should use columns attribute to set grid-template-columns', () => {
     component.columns = '60px 50px 40px';
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('.pa-table-grid')).styles['grid-template-columns']).toEqual(
       '60px 50px 40px',
     );
-  });
+  })
 
   it('should set the clickable class on rows', () => {
     expect(fixture.debugElement.query(By.css('#row-1 .pa-table-grid--row.pa-clickable'))).toBeTruthy();

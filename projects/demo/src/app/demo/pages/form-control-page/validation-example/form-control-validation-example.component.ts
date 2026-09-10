@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { PaFormControlDirective } from '@guillotinaweb/pastanaga-angular';
 import { UntypedFormControl } from '@angular/forms';
 
@@ -6,6 +6,7 @@ import { UntypedFormControl } from '@angular/forms';
   selector: 'pa-demo-form-control-validation-example',
   templateUrl: './form-control-validation-example.component.html',
   styleUrls: ['./form-control-validation-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormControlValidationExampleComponent implements AfterViewInit {
