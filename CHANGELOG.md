@@ -1,3 +1,9 @@
+# 2.72.1 (2026-09-22)
+
+### Improvement
+
+- **Icon**: manage icon color by font color as well as fill 
+
 # 2.72.0 (2026-09-09)
 
 - Upgrade to Angular 22
