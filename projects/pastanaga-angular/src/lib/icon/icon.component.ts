@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -11,11 +12,10 @@ import {
   Renderer2,
   ViewEncapsulation,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { SvgIconRegistryService } from 'angular-svg-icon';
-import { SvgLoader } from './svg-loader';
 import { markForCheck, Size } from '../common';
 import { IconModel } from './icon.model';
+import { SvgLoader } from './svg-loader';
 
 export const SPRITE_CACHE_VERSION = new InjectionToken<string>('Cache version used when loading SVG sprite', {
   providedIn: 'root',
@@ -131,7 +131,7 @@ export class IconComponent {
     const styles: string[] = [];
 
     if (this._color) {
-      styles.push(`fill: ${this._color};`);
+      styles.push(`color: ${this._color};`, `fill: ${this._color};`);
     }
 
     if (this._background) {
