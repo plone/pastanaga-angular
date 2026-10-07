@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@angular/build": "^22.1.7",
-    "@angular/cli": "^22.1.7",
+    "@angular/cli": "^22.2.2",
     "@angular/compiler-cli": "22.1.5",
     "@ngneat/spectator": "^22.1.0",
     "@types/jest": "^29.5.12",
