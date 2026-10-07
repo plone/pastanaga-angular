@@ -1,3 +1,9 @@
+# 2.72.2 (2026-10-07)
+
+### Improvement
+
+- Add a prefix to `.overline` (becoming `.body-overline`) css class to prevent conflicts with Tailwindcss integration
+
 # 2.72.1 (2026-09-22)
 
 ### Improvement

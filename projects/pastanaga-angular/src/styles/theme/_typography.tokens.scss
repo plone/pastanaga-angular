@@ -169,7 +169,7 @@ $letter-spacing-title-l-md: letter-spacing(normal) !default;
 $letter-spacing-display-s-md: letter-spacing(decrease-s-md) !default;
 $letter-spacing-display-m-md: letter-spacing(decrease-m-md) !default;
 
-@mixin overline {
+@mixin body-overline {
   font-size: $font-size-overline;
   line-height: $line-height-overline;
   letter-spacing: $letter-spacing-overline;

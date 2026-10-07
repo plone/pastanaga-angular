@@ -1,8 +1,8 @@
 @use 'theme/spacing.tokens' as spacing;
 @use 'theme/typography.tokens' as typography;
 
-.overline {
-  @include typography.overline();
+.body-overline {
+  @include typography.body-overline();
 }
 .body-xs {
   @include typography.body-xs();
