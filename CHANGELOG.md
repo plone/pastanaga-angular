@@ -1,3 +1,9 @@
+# 2.72.3 (2026-10-07)
+
+### Improvement
+
+- Update to angular 22.2 in order to solve dependabots issues
+
 # 2.72.2 (2026-10-07)
 
 ### Improvement
