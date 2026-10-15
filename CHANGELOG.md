@@ -1,3 +1,9 @@
+# 2.72.4 (2026-10-15)
+
+### Improvement
+
+- Remove @angular/animations peer dependency: the package is not used in Pastanaga, it's just a peer dep of @ngneat/spectator used for the tests.
+
 # 2.72.3 (2026-10-07)
 
 ### Improvement
@@ -14,7 +20,7 @@
 
 ### Improvement
 
-- **Icon**: manage icon color by font color as well as fill 
+- **Icon**: manage icon color by font color as well as fill
 
 # 2.72.0 (2026-09-09)
 
